@@ -51,8 +51,8 @@ class GraphDefinition {
 		Element elementStart,
 		String profile,
 		List<GraphDefinition_Link> link}) async {
-	 return GraphDefinition(
-			id: await newEntry('GraphDefinition'),
+	GraphDefinition newGraphDefinition = new GraphDefinition(
+			id: await newId('GraphDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,8 +87,10 @@ class GraphDefinition {
 			elementStart: elementStart,
 			profile: profile,
 			link: link);
-	}
-
+	var graphDefinitionBox = await Hive.openBox<GraphDefinition>('GraphDefinitionBox');
+	graphDefinitionBox.add(newGraphDefinition);
+	return newGraphDefinition;
+}
   @HiveField(0)
   final String resourceType= 'GraphDefinition';
   @HiveField(1)
@@ -222,8 +224,8 @@ class GraphDefinition_Link {
 		String description,
 		Element elementDescription,
 		List<GraphDefinition_Target> target}) async {
-	 return GraphDefinition_Link(
-			id: await newEntry('GraphDefinition_Link'),
+	GraphDefinition_Link newGraphDefinition_Link = new GraphDefinition_Link(
+			id: await newId('GraphDefinition_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -237,8 +239,10 @@ class GraphDefinition_Link {
 			description: description,
 			elementDescription: elementDescription,
 			target: target);
-	}
-
+	var graphDefinition_LinkBox = await Hive.openBox<GraphDefinition_Link>('GraphDefinition_LinkBox');
+	graphDefinition_LinkBox.add(newGraphDefinition_Link);
+	return newGraphDefinition_Link;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -289,8 +293,8 @@ class GraphDefinition_Target {
 		String profile,
 		List<GraphDefinition_Compartment> compartment,
 		List<GraphDefinition_Link> link}) async {
-	 return GraphDefinition_Target(
-			id: await newEntry('GraphDefinition_Target'),
+	GraphDefinition_Target newGraphDefinition_Target = new GraphDefinition_Target(
+			id: await newId('GraphDefinition_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -300,8 +304,10 @@ class GraphDefinition_Target {
 			profile: profile,
 			compartment: compartment,
 			link: link);
-	}
-
+	var graphDefinition_TargetBox = await Hive.openBox<GraphDefinition_Target>('GraphDefinition_TargetBox');
+	graphDefinition_TargetBox.add(newGraphDefinition_Target);
+	return newGraphDefinition_Target;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -347,8 +353,8 @@ class GraphDefinition_Compartment {
 		Element elementExpression,
 		String description,
 		Element elementDescription}) async {
-	 return GraphDefinition_Compartment(
-			id: await newEntry('GraphDefinition_Compartment'),
+	GraphDefinition_Compartment newGraphDefinition_Compartment = new GraphDefinition_Compartment(
+			id: await newId('GraphDefinition_Compartment'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			use: use,
@@ -361,8 +367,10 @@ class GraphDefinition_Compartment {
 			elementExpression: elementExpression,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var graphDefinition_CompartmentBox = await Hive.openBox<GraphDefinition_Compartment>('GraphDefinition_CompartmentBox');
+	graphDefinition_CompartmentBox.add(newGraphDefinition_Compartment);
+	return newGraphDefinition_Compartment;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

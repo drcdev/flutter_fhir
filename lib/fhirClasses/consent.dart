@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -47,8 +46,8 @@ class Consent {
 		CodeableConcept policyRule,
 		List<Consent_Verification> verification,
 		Consent_Provision provision}) async {
-	 return Consent(
-			id: await newEntry('Consent'),
+	Consent newConsent = new Consent(
+			id: await newId('Consent'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -74,8 +73,10 @@ class Consent {
 			policyRule: policyRule,
 			verification: verification,
 			provision: provision);
-	}
-
+	var consentBox = await Hive.openBox<Consent>('ConsentBox');
+	consentBox.add(newConsent);
+	return newConsent;
+}
   @HiveField(0)
   final String resourceType= 'Consent';
   @HiveField(1)
@@ -175,16 +176,18 @@ class Consent_Policy {
 		Element elementAuthority,
 		String uri,
 		Element elementUri}) async {
-	 return Consent_Policy(
-			id: await newEntry('Consent_Policy'),
+	Consent_Policy newConsent_Policy = new Consent_Policy(
+			id: await newId('Consent_Policy'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			authority: authority,
 			elementAuthority: elementAuthority,
 			uri: uri,
 			elementUri: elementUri);
-	}
-
+	var consent_PolicyBox = await Hive.openBox<Consent_Policy>('Consent_PolicyBox');
+	consent_PolicyBox.add(newConsent_Policy);
+	return newConsent_Policy;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -219,8 +222,8 @@ class Consent_Verification {
 		Reference verifiedWith,
 		DateTime verificationDate,
 		Element elementVerificationDate}) async {
-	 return Consent_Verification(
-			id: await newEntry('Consent_Verification'),
+	Consent_Verification newConsent_Verification = new Consent_Verification(
+			id: await newId('Consent_Verification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			verified: verified,
@@ -228,8 +231,10 @@ class Consent_Verification {
 			verifiedWith: verifiedWith,
 			verificationDate: verificationDate,
 			elementVerificationDate: elementVerificationDate);
-	}
-
+	var consent_VerificationBox = await Hive.openBox<Consent_Verification>('Consent_VerificationBox');
+	consent_VerificationBox.add(newConsent_Verification);
+	return newConsent_Verification;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -273,8 +278,8 @@ class Consent_Provision {
 		Period dataPeriod,
 		List<Consent_Data> data,
 		List<Consent_Provision> provision}) async {
-	 return Consent_Provision(
-			id: await newEntry('Consent_Provision'),
+	Consent_Provision newConsent_Provision = new Consent_Provision(
+			id: await newId('Consent_Provision'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -289,8 +294,10 @@ class Consent_Provision {
 			dataPeriod: dataPeriod,
 			data: data,
 			provision: provision);
-	}
-
+	var consent_ProvisionBox = await Hive.openBox<Consent_Provision>('Consent_ProvisionBox');
+	consent_ProvisionBox.add(newConsent_Provision);
+	return newConsent_Provision;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -338,14 +345,16 @@ class Consent_Actor {
 		List<Extension> modifierExtension,
 		CodeableConcept role,
 		Reference reference}) async {
-	 return Consent_Actor(
-			id: await newEntry('Consent_Actor'),
+	Consent_Actor newConsent_Actor = new Consent_Actor(
+			id: await newId('Consent_Actor'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
 			reference: reference);
-	}
-
+	var consent_ActorBox = await Hive.openBox<Consent_Actor>('Consent_ActorBox');
+	consent_ActorBox.add(newConsent_Actor);
+	return newConsent_Actor;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -374,15 +383,17 @@ class Consent_Data {
 		String meaning,
 		Element elementMeaning,
 		Reference reference}) async {
-	 return Consent_Data(
-			id: await newEntry('Consent_Data'),
+	Consent_Data newConsent_Data = new Consent_Data(
+			id: await newId('Consent_Data'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			meaning: meaning,
 			elementMeaning: elementMeaning,
 			reference: reference);
-	}
-
+	var consent_DataBox = await Hive.openBox<Consent_Data>('Consent_DataBox');
+	consent_DataBox.add(newConsent_Data);
+	return newConsent_Data;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

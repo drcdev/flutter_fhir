@@ -22,8 +22,8 @@ class Coding {
 		Element elementDisplay,
 		bool userSelected,
 		Element elementUserSelected}) async {
-	 return Coding(
-			id: await newEntry('Coding'),
+	Coding newCoding = new Coding(
+			id: await newId('Coding'),
 			extension: extension,
 			system: system,
 			elementSystem: elementSystem,
@@ -35,8 +35,10 @@ class Coding {
 			elementDisplay: elementDisplay,
 			userSelected: userSelected,
 			elementUserSelected: elementUserSelected);
-	}
-
+	var codingBox = await Hive.openBox<Coding>('CodingBox');
+	codingBox.add(newCoding);
+	return newCoding;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

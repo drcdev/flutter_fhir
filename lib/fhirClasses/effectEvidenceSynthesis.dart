@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -77,8 +76,8 @@ class EffectEvidenceSynthesis {
 		List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure,
 		List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate,
 		List<EffectEvidenceSynthesis_Certainty> certainty}) async {
-	 return EffectEvidenceSynthesis(
-			id: await newEntry('EffectEvidenceSynthesis'),
+	EffectEvidenceSynthesis newEffectEvidenceSynthesis = new EffectEvidenceSynthesis(
+			id: await newId('EffectEvidenceSynthesis'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -132,8 +131,10 @@ class EffectEvidenceSynthesis {
 			resultsByExposure: resultsByExposure,
 			effectEstimate: effectEstimate,
 			certainty: certainty);
-	}
-
+	var effectEvidenceSynthesisBox = await Hive.openBox<EffectEvidenceSynthesis>('EffectEvidenceSynthesisBox');
+	effectEvidenceSynthesisBox.add(newEffectEvidenceSynthesis);
+	return newEffectEvidenceSynthesis;
+}
   @HiveField(0)
   final String resourceType= 'EffectEvidenceSynthesis';
   @HiveField(1)
@@ -319,8 +320,8 @@ class EffectEvidenceSynthesis_SampleSize {
 		Element elementNumberOfStudies,
 		int numberOfParticipants,
 		Element elementNumberOfParticipants}) async {
-	 return EffectEvidenceSynthesis_SampleSize(
-			id: await newEntry('EffectEvidenceSynthesis_SampleSize'),
+	EffectEvidenceSynthesis_SampleSize newEffectEvidenceSynthesis_SampleSize = new EffectEvidenceSynthesis_SampleSize(
+			id: await newId('EffectEvidenceSynthesis_SampleSize'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -329,8 +330,10 @@ class EffectEvidenceSynthesis_SampleSize {
 			elementNumberOfStudies: elementNumberOfStudies,
 			numberOfParticipants: numberOfParticipants,
 			elementNumberOfParticipants: elementNumberOfParticipants);
-	}
-
+	var effectEvidenceSynthesis_SampleSizeBox = await Hive.openBox<EffectEvidenceSynthesis_SampleSize>('EffectEvidenceSynthesis_SampleSizeBox');
+	effectEvidenceSynthesis_SampleSizeBox.add(newEffectEvidenceSynthesis_SampleSize);
+	return newEffectEvidenceSynthesis_SampleSize;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -370,8 +373,8 @@ class EffectEvidenceSynthesis_ResultsByExposure {
 		Element elementExposureState,
 		CodeableConcept variantState,
 		Reference riskEvidenceSynthesis}) async {
-	 return EffectEvidenceSynthesis_ResultsByExposure(
-			id: await newEntry('EffectEvidenceSynthesis_ResultsByExposure'),
+	EffectEvidenceSynthesis_ResultsByExposure newEffectEvidenceSynthesis_ResultsByExposure = new EffectEvidenceSynthesis_ResultsByExposure(
+			id: await newId('EffectEvidenceSynthesis_ResultsByExposure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -380,8 +383,10 @@ class EffectEvidenceSynthesis_ResultsByExposure {
 			elementExposureState: elementExposureState,
 			variantState: variantState,
 			riskEvidenceSynthesis: riskEvidenceSynthesis);
-	}
-
+	var effectEvidenceSynthesis_ResultsByExposureBox = await Hive.openBox<EffectEvidenceSynthesis_ResultsByExposure>('EffectEvidenceSynthesis_ResultsByExposureBox');
+	effectEvidenceSynthesis_ResultsByExposureBox.add(newEffectEvidenceSynthesis_ResultsByExposure);
+	return newEffectEvidenceSynthesis_ResultsByExposure;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -423,8 +428,8 @@ class EffectEvidenceSynthesis_EffectEstimate {
 		Element elementValue,
 		CodeableConcept unitOfMeasure,
 		List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate}) async {
-	 return EffectEvidenceSynthesis_EffectEstimate(
-			id: await newEntry('EffectEvidenceSynthesis_EffectEstimate'),
+	EffectEvidenceSynthesis_EffectEstimate newEffectEvidenceSynthesis_EffectEstimate = new EffectEvidenceSynthesis_EffectEstimate(
+			id: await newId('EffectEvidenceSynthesis_EffectEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -435,8 +440,10 @@ class EffectEvidenceSynthesis_EffectEstimate {
 			elementValue: elementValue,
 			unitOfMeasure: unitOfMeasure,
 			precisionEstimate: precisionEstimate);
-	}
-
+	var effectEvidenceSynthesis_EffectEstimateBox = await Hive.openBox<EffectEvidenceSynthesis_EffectEstimate>('EffectEvidenceSynthesis_EffectEstimateBox');
+	effectEvidenceSynthesis_EffectEstimateBox.add(newEffectEvidenceSynthesis_EffectEstimate);
+	return newEffectEvidenceSynthesis_EffectEstimate;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -481,8 +488,8 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
 		Element elementFrom,
 		double to,
 		Element elementTo}) async {
-	 return EffectEvidenceSynthesis_PrecisionEstimate(
-			id: await newEntry('EffectEvidenceSynthesis_PrecisionEstimate'),
+	EffectEvidenceSynthesis_PrecisionEstimate newEffectEvidenceSynthesis_PrecisionEstimate = new EffectEvidenceSynthesis_PrecisionEstimate(
+			id: await newId('EffectEvidenceSynthesis_PrecisionEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -492,8 +499,10 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
 			elementFrom: elementFrom,
 			to: to,
 			elementTo: elementTo);
-	}
-
+	var effectEvidenceSynthesis_PrecisionEstimateBox = await Hive.openBox<EffectEvidenceSynthesis_PrecisionEstimate>('EffectEvidenceSynthesis_PrecisionEstimateBox');
+	effectEvidenceSynthesis_PrecisionEstimateBox.add(newEffectEvidenceSynthesis_PrecisionEstimate);
+	return newEffectEvidenceSynthesis_PrecisionEstimate;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -532,15 +541,17 @@ class EffectEvidenceSynthesis_Certainty {
 		List<CodeableConcept> rating,
 		List<Annotation> note,
 		List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent}) async {
-	 return EffectEvidenceSynthesis_Certainty(
-			id: await newEntry('EffectEvidenceSynthesis_Certainty'),
+	EffectEvidenceSynthesis_Certainty newEffectEvidenceSynthesis_Certainty = new EffectEvidenceSynthesis_Certainty(
+			id: await newId('EffectEvidenceSynthesis_Certainty'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			rating: rating,
 			note: note,
 			certaintySubcomponent: certaintySubcomponent);
-	}
-
+	var effectEvidenceSynthesis_CertaintyBox = await Hive.openBox<EffectEvidenceSynthesis_Certainty>('EffectEvidenceSynthesis_CertaintyBox');
+	effectEvidenceSynthesis_CertaintyBox.add(newEffectEvidenceSynthesis_Certainty);
+	return newEffectEvidenceSynthesis_Certainty;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -571,15 +582,17 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
 		CodeableConcept type,
 		List<CodeableConcept> rating,
 		List<Annotation> note}) async {
-	 return EffectEvidenceSynthesis_CertaintySubcomponent(
-			id: await newEntry('EffectEvidenceSynthesis_CertaintySubcomponent'),
+	EffectEvidenceSynthesis_CertaintySubcomponent newEffectEvidenceSynthesis_CertaintySubcomponent = new EffectEvidenceSynthesis_CertaintySubcomponent(
+			id: await newId('EffectEvidenceSynthesis_CertaintySubcomponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			rating: rating,
 			note: note);
-	}
-
+	var effectEvidenceSynthesis_CertaintySubcomponentBox = await Hive.openBox<EffectEvidenceSynthesis_CertaintySubcomponent>('EffectEvidenceSynthesis_CertaintySubcomponentBox');
+	effectEvidenceSynthesis_CertaintySubcomponentBox.add(newEffectEvidenceSynthesis_CertaintySubcomponent);
+	return newEffectEvidenceSynthesis_CertaintySubcomponent;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

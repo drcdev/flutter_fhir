@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -54,8 +53,8 @@ class Goal {
 		List<Annotation> note,
 		List<CodeableConcept> outcomeCode,
 		List<Reference> outcomeReference}) async {
-	 return Goal(
-			id: await newEntry('Goal'),
+	Goal newGoal = new Goal(
+			id: await newId('Goal'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,8 +85,10 @@ class Goal {
 			note: note,
 			outcomeCode: outcomeCode,
 			outcomeReference: outcomeReference);
-	}
-
+	var goalBox = await Hive.openBox<Goal>('GoalBox');
+	goalBox.add(newGoal);
+	return newGoal;
+}
   @HiveField(0)
   final String resourceType= 'Goal';
   @HiveField(1)
@@ -212,8 +213,8 @@ class Goal_Target {
 		String dueDate,
 		Element elementDueDate,
 		Duration dueDuration}) async {
-	 return Goal_Target(
-			id: await newEntry('Goal_Target'),
+	Goal_Target newGoal_Target = new Goal_Target(
+			id: await newId('Goal_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			measure: measure,
@@ -230,8 +231,10 @@ class Goal_Target {
 			dueDate: dueDate,
 			elementDueDate: elementDueDate,
 			dueDuration: dueDuration);
-	}
-
+	var goal_TargetBox = await Hive.openBox<Goal_Target>('Goal_TargetBox');
+	goal_TargetBox.add(newGoal_Target);
+	return newGoal_Target;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

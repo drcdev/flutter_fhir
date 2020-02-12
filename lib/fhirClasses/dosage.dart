@@ -36,8 +36,8 @@ class Dosage {
 		Ratio maxDosePerPeriod,
 		Quantity maxDosePerAdministration,
 		Quantity maxDosePerLifetime}) async {
-	 return Dosage(
-			id: await newEntry('Dosage'),
+	Dosage newDosage = new Dosage(
+			id: await newId('Dosage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -58,8 +58,10 @@ class Dosage {
 			maxDosePerPeriod: maxDosePerPeriod,
 			maxDosePerAdministration: maxDosePerAdministration,
 			maxDosePerLifetime: maxDosePerLifetime);
-	}
-
+	var dosageBox = await Hive.openBox<Dosage>('DosageBox');
+	dosageBox.add(newDosage);
+	return newDosage;
+}
   @HiveField(0)
   String id;
   @HiveField(1)
@@ -144,8 +146,8 @@ class Dosage_DoseAndRate {
 		Ratio rateRatio,
 		Range rateRange,
 		Quantity rateQuantity}) async {
-	 return Dosage_DoseAndRate(
-			id: await newEntry('Dosage_DoseAndRate'),
+	Dosage_DoseAndRate newDosage_DoseAndRate = new Dosage_DoseAndRate(
+			id: await newId('Dosage_DoseAndRate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -154,8 +156,10 @@ class Dosage_DoseAndRate {
 			rateRatio: rateRatio,
 			rateRange: rateRange,
 			rateQuantity: rateQuantity);
-	}
-
+	var dosage_DoseAndRateBox = await Hive.openBox<Dosage_DoseAndRate>('Dosage_DoseAndRateBox');
+	dosage_DoseAndRateBox.add(newDosage_DoseAndRate);
+	return newDosage_DoseAndRate;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

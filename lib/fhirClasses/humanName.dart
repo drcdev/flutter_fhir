@@ -26,8 +26,8 @@ class HumanName {
 		List<String> suffix,
 		List<Element> elementSuffix,
 		Period period}) async {
-	 return HumanName(
-			id: await newEntry('HumanName'),
+	HumanName newHumanName = new HumanName(
+			id: await newId('HumanName'),
 			extension: extension,
 			use: use,
 			elementUse: elementUse,
@@ -42,8 +42,10 @@ class HumanName {
 			suffix: suffix,
 			elementSuffix: elementSuffix,
 			period: period);
-	}
-
+	var humanNameBox = await Hive.openBox<HumanName>('HumanNameBox');
+	humanNameBox.add(newHumanName);
+	return newHumanName;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

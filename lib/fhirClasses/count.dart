@@ -22,8 +22,8 @@ class Count {
 		Element elementSystem,
 		String code,
 		Element elementCode}) async {
-	 return Count(
-			id: await newEntry('Count'),
+	Count newCount = new Count(
+			id: await newId('Count'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
@@ -35,8 +35,10 @@ class Count {
 			elementSystem: elementSystem,
 			code: code,
 			elementCode: elementCode);
-	}
-
+	var countBox = await Hive.openBox<Count>('CountBox');
+	countBox.add(newCount);
+	return newCount;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

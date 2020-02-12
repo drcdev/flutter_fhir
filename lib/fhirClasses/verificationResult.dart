@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
@@ -48,8 +47,8 @@ class VerificationResult {
 		List<VerificationResult_PrimarySource> primarySource,
 		VerificationResult_Attestation attestation,
 		List<VerificationResult_Validator> validator}) async {
-	 return VerificationResult(
-			id: await newEntry('VerificationResult'),
+	VerificationResult newVerificationResult = new VerificationResult(
+			id: await newId('VerificationResult'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -78,8 +77,10 @@ class VerificationResult {
 			primarySource: primarySource,
 			attestation: attestation,
 			validator: validator);
-	}
-
+	var verificationResultBox = await Hive.openBox<VerificationResult>('VerificationResultBox');
+	verificationResultBox.add(newVerificationResult);
+	return newVerificationResult;
+}
   @HiveField(0)
   final String resourceType= 'VerificationResult';
   @HiveField(1)
@@ -192,8 +193,8 @@ class VerificationResult_PrimarySource {
 		Element elementValidationDate,
 		CodeableConcept canPushUpdates,
 		List<CodeableConcept> pushTypeAvailable}) async {
-	 return VerificationResult_PrimarySource(
-			id: await newEntry('VerificationResult_PrimarySource'),
+	VerificationResult_PrimarySource newVerificationResult_PrimarySource = new VerificationResult_PrimarySource(
+			id: await newId('VerificationResult_PrimarySource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			who: who,
@@ -204,8 +205,10 @@ class VerificationResult_PrimarySource {
 			elementValidationDate: elementValidationDate,
 			canPushUpdates: canPushUpdates,
 			pushTypeAvailable: pushTypeAvailable);
-	}
-
+	var verificationResult_PrimarySourceBox = await Hive.openBox<VerificationResult_PrimarySource>('VerificationResult_PrimarySourceBox');
+	verificationResult_PrimarySourceBox.add(newVerificationResult_PrimarySource);
+	return newVerificationResult_PrimarySource;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -254,8 +257,8 @@ class VerificationResult_Attestation {
 		Element elementProxyIdentityCertificate,
 		Signature proxySignature,
 		Signature sourceSignature}) async {
-	 return VerificationResult_Attestation(
-			id: await newEntry('VerificationResult_Attestation'),
+	VerificationResult_Attestation newVerificationResult_Attestation = new VerificationResult_Attestation(
+			id: await newId('VerificationResult_Attestation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			who: who,
@@ -269,8 +272,10 @@ class VerificationResult_Attestation {
 			elementProxyIdentityCertificate: elementProxyIdentityCertificate,
 			proxySignature: proxySignature,
 			sourceSignature: sourceSignature);
-	}
-
+	var verificationResult_AttestationBox = await Hive.openBox<VerificationResult_Attestation>('VerificationResult_AttestationBox');
+	verificationResult_AttestationBox.add(newVerificationResult_Attestation);
+	return newVerificationResult_Attestation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -318,16 +323,18 @@ class VerificationResult_Validator {
 		String identityCertificate,
 		Element elementIdentityCertificate,
 		Signature attestationSignature}) async {
-	 return VerificationResult_Validator(
-			id: await newEntry('VerificationResult_Validator'),
+	VerificationResult_Validator newVerificationResult_Validator = new VerificationResult_Validator(
+			id: await newId('VerificationResult_Validator'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			organization: organization,
 			identityCertificate: identityCertificate,
 			elementIdentityCertificate: elementIdentityCertificate,
 			attestationSignature: attestationSignature);
-	}
-
+	var verificationResult_ValidatorBox = await Hive.openBox<VerificationResult_Validator>('VerificationResult_ValidatorBox');
+	verificationResult_ValidatorBox.add(newVerificationResult_Validator);
+	return newVerificationResult_Validator;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

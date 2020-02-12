@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -79,8 +78,8 @@ class EvidenceVariable {
 		String type,
 		Element elementType,
 		List<EvidenceVariable_Characteristic> characteristic}) async {
-	 return EvidenceVariable(
-			id: await newEntry('EvidenceVariable'),
+	EvidenceVariable newEvidenceVariable = new EvidenceVariable(
+			id: await newId('EvidenceVariable'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -131,8 +130,10 @@ class EvidenceVariable {
 			type: type,
 			elementType: elementType,
 			characteristic: characteristic);
-	}
-
+	var evidenceVariableBox = await Hive.openBox<EvidenceVariable>('EvidenceVariableBox');
+	evidenceVariableBox.add(newEvidenceVariable);
+	return newEvidenceVariable;
+}
   @HiveField(0)
   final String resourceType= 'EvidenceVariable';
   @HiveField(1)
@@ -323,8 +324,8 @@ class EvidenceVariable_Characteristic {
 		Duration timeFromStart,
 		String groupMeasure,
 		Element elementGroupMeasure}) async {
-	 return EvidenceVariable_Characteristic(
-			id: await newEntry('EvidenceVariable_Characteristic'),
+	EvidenceVariable_Characteristic newEvidenceVariable_Characteristic = new EvidenceVariable_Characteristic(
+			id: await newId('EvidenceVariable_Characteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -347,8 +348,10 @@ class EvidenceVariable_Characteristic {
 			timeFromStart: timeFromStart,
 			groupMeasure: groupMeasure,
 			elementGroupMeasure: elementGroupMeasure);
-	}
-
+	var evidenceVariable_CharacteristicBox = await Hive.openBox<EvidenceVariable_Characteristic>('EvidenceVariable_CharacteristicBox');
+	evidenceVariable_CharacteristicBox.add(newEvidenceVariable_Characteristic);
+	return newEvidenceVariable_Characteristic;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

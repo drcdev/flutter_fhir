@@ -59,8 +59,8 @@ class HealthcareService {
 		String availabilityExceptions,
 		Element elementAvailabilityExceptions,
 		List<Reference> endpoint}) async {
-	 return HealthcareService(
-			id: await newEntry('HealthcareService'),
+	HealthcareService newHealthcareService = new HealthcareService(
+			id: await newId('HealthcareService'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -100,8 +100,10 @@ class HealthcareService {
 			availabilityExceptions: availabilityExceptions,
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint);
-	}
-
+	var healthcareServiceBox = await Hive.openBox<HealthcareService>('HealthcareServiceBox');
+	healthcareServiceBox.add(newHealthcareService);
+	return newHealthcareService;
+}
   @HiveField(0)
   final String resourceType= 'HealthcareService';
   @HiveField(1)
@@ -242,15 +244,17 @@ class HealthcareService_Eligibility {
 		CodeableConcept code,
 		String comment,
 		Element elementComment}) async {
-	 return HealthcareService_Eligibility(
-			id: await newEntry('HealthcareService_Eligibility'),
+	HealthcareService_Eligibility newHealthcareService_Eligibility = new HealthcareService_Eligibility(
+			id: await newId('HealthcareService_Eligibility'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var healthcareService_EligibilityBox = await Hive.openBox<HealthcareService_Eligibility>('HealthcareService_EligibilityBox');
+	healthcareService_EligibilityBox.add(newHealthcareService_Eligibility);
+	return newHealthcareService_Eligibility;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -286,8 +290,8 @@ class HealthcareService_AvailableTime {
 		Element elementAvailableStartTime,
 		String availableEndTime,
 		Element elementAvailableEndTime}) async {
-	 return HealthcareService_AvailableTime(
-			id: await newEntry('HealthcareService_AvailableTime'),
+	HealthcareService_AvailableTime newHealthcareService_AvailableTime = new HealthcareService_AvailableTime(
+			id: await newId('HealthcareService_AvailableTime'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			daysOfWeek: daysOfWeek,
@@ -298,8 +302,10 @@ class HealthcareService_AvailableTime {
 			elementAvailableStartTime: elementAvailableStartTime,
 			availableEndTime: availableEndTime,
 			elementAvailableEndTime: elementAvailableEndTime);
-	}
-
+	var healthcareService_AvailableTimeBox = await Hive.openBox<HealthcareService_AvailableTime>('HealthcareService_AvailableTimeBox');
+	healthcareService_AvailableTimeBox.add(newHealthcareService_AvailableTime);
+	return newHealthcareService_AvailableTime;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -340,15 +346,17 @@ class HealthcareService_NotAvailable {
 		String description,
 		Element elementDescription,
 		Period during}) async {
-	 return HealthcareService_NotAvailable(
-			id: await newEntry('HealthcareService_NotAvailable'),
+	HealthcareService_NotAvailable newHealthcareService_NotAvailable = new HealthcareService_NotAvailable(
+			id: await newId('HealthcareService_NotAvailable'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
 			elementDescription: elementDescription,
 			during: during);
-	}
-
+	var healthcareService_NotAvailableBox = await Hive.openBox<HealthcareService_NotAvailable>('HealthcareService_NotAvailableBox');
+	healthcareService_NotAvailableBox.add(newHealthcareService_NotAvailable);
+	return newHealthcareService_NotAvailable;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

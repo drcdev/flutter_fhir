@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
@@ -84,8 +83,8 @@ class StructureMap {
 		List<StructureMap_Structure> structure,
 		List<String> import,
 		List<StructureMap_Group> group}) async {
-	 return StructureMap(
-			id: await newEntry('StructureMap'),
+	StructureMap newStructureMap = new StructureMap(
+			id: await newId('StructureMap'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -124,8 +123,10 @@ class StructureMap {
 			structure: structure,
 			import: import,
 			group: group);
-	}
-
+	var structureMapBox = await Hive.openBox<StructureMap>('StructureMapBox');
+	structureMapBox.add(newStructureMap);
+	return newStructureMap;
+}
   @HiveField(0)
   final String resourceType= 'StructureMap';
   @HiveField(1)
@@ -267,8 +268,8 @@ class StructureMap_Structure {
 		Element elementAlias,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return StructureMap_Structure(
-			id: await newEntry('StructureMap_Structure'),
+	StructureMap_Structure newStructureMap_Structure = new StructureMap_Structure(
+			id: await newId('StructureMap_Structure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			url: url,
@@ -278,8 +279,10 @@ class StructureMap_Structure {
 			elementAlias: elementAlias,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var structureMap_StructureBox = await Hive.openBox<StructureMap_Structure>('StructureMap_StructureBox');
+	structureMap_StructureBox.add(newStructureMap_Structure);
+	return newStructureMap_Structure;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -325,8 +328,8 @@ class StructureMap_Group {
 		Element elementDocumentation,
 		List<StructureMap_Input> input,
 		List<StructureMap_Rule> rule}) async {
-	 return StructureMap_Group(
-			id: await newEntry('StructureMap_Group'),
+	StructureMap_Group newStructureMap_Group = new StructureMap_Group(
+			id: await newId('StructureMap_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -339,8 +342,10 @@ class StructureMap_Group {
 			elementDocumentation: elementDocumentation,
 			input: input,
 			rule: rule);
-	}
-
+	var structureMap_GroupBox = await Hive.openBox<StructureMap_Group>('StructureMap_GroupBox');
+	structureMap_GroupBox.add(newStructureMap_Group);
+	return newStructureMap_Group;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -390,8 +395,8 @@ class StructureMap_Input {
 		Element elementMode,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return StructureMap_Input(
-			id: await newEntry('StructureMap_Input'),
+	StructureMap_Input newStructureMap_Input = new StructureMap_Input(
+			id: await newId('StructureMap_Input'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -402,8 +407,10 @@ class StructureMap_Input {
 			elementMode: elementMode,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var structureMap_InputBox = await Hive.openBox<StructureMap_Input>('StructureMap_InputBox');
+	structureMap_InputBox.add(newStructureMap_Input);
+	return newStructureMap_Input;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -449,8 +456,8 @@ class StructureMap_Rule {
 		List<StructureMap_Dependent> dependent,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return StructureMap_Rule(
-			id: await newEntry('StructureMap_Rule'),
+	StructureMap_Rule newStructureMap_Rule = new StructureMap_Rule(
+			id: await newId('StructureMap_Rule'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -461,8 +468,10 @@ class StructureMap_Rule {
 			dependent: dependent,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var structureMap_RuleBox = await Hive.openBox<StructureMap_Rule>('StructureMap_RuleBox');
+	structureMap_RuleBox.add(newStructureMap_Rule);
+	return newStructureMap_Rule;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -520,7 +529,7 @@ class StructureMap_Source {
 		Element elementDefaultValueDate,
 		String defaultValueDateTime,
 		Element elementDefaultValueDateTime,
-		double defaultValueDecimal,
+		int defaultValueDecimal,
 		Element elementDefaultValueDecimal,
 		String defaultValueId,
 		Element elementDefaultValueId,
@@ -589,8 +598,8 @@ class StructureMap_Source {
 		Element elementCheck,
 		String logMessage,
 		Element elementLogMessage}) async {
-	 return StructureMap_Source(
-			id: await newEntry('StructureMap_Source'),
+	StructureMap_Source newStructureMap_Source = new StructureMap_Source(
+			id: await newId('StructureMap_Source'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			context: context,
@@ -682,8 +691,10 @@ class StructureMap_Source {
 			elementCheck: elementCheck,
 			logMessage: logMessage,
 			elementLogMessage: elementLogMessage);
-	}
-
+	var structureMap_SourceBox = await Hive.openBox<StructureMap_Source>('StructureMap_SourceBox');
+	structureMap_SourceBox.add(newStructureMap_Source);
+	return newStructureMap_Source;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -707,7 +718,7 @@ class StructureMap_Source {
   Element elementDefaultValueDate;
   String defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementDefaultValueDateTime;
-  double defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementDefaultValueDecimal;
   String defaultValueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
   Element elementDefaultValueId;
@@ -898,8 +909,8 @@ class StructureMap_Target {
 		String transform,
 		Element elementTransform,
 		List<StructureMap_Parameter> parameter}) async {
-	 return StructureMap_Target(
-			id: await newEntry('StructureMap_Target'),
+	StructureMap_Target newStructureMap_Target = new StructureMap_Target(
+			id: await newId('StructureMap_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			context: context,
@@ -917,8 +928,10 @@ class StructureMap_Target {
 			transform: transform,
 			elementTransform: elementTransform,
 			parameter: parameter);
-	}
-
+	var structureMap_TargetBox = await Hive.openBox<StructureMap_Target>('StructureMap_TargetBox');
+	structureMap_TargetBox.add(newStructureMap_Target);
+	return newStructureMap_Target;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -978,10 +991,10 @@ class StructureMap_Parameter {
 		Element elementValueBoolean,
 		int valueInteger,
 		Element elementValueInteger,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal}) async {
-	 return StructureMap_Parameter(
-			id: await newEntry('StructureMap_Parameter'),
+	StructureMap_Parameter newStructureMap_Parameter = new StructureMap_Parameter(
+			id: await newId('StructureMap_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueId: valueId,
@@ -994,8 +1007,10 @@ class StructureMap_Parameter {
 			elementValueInteger: elementValueInteger,
 			valueDecimal: valueDecimal,
 			elementValueDecimal: elementValueDecimal);
-	}
-
+	var structureMap_ParameterBox = await Hive.openBox<StructureMap_Parameter>('StructureMap_ParameterBox');
+	structureMap_ParameterBox.add(newStructureMap_Parameter);
+	return newStructureMap_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1007,7 +1022,7 @@ class StructureMap_Parameter {
   Element elementValueBoolean;
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
   Element elementValueInteger;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
 
 StructureMap_Parameter(
@@ -1041,16 +1056,18 @@ class StructureMap_Dependent {
 		Element elementName,
 		List<String> variable,
 		List<Element> elementVariable}) async {
-	 return StructureMap_Dependent(
-			id: await newEntry('StructureMap_Dependent'),
+	StructureMap_Dependent newStructureMap_Dependent = new StructureMap_Dependent(
+			id: await newId('StructureMap_Dependent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			variable: variable,
 			elementVariable: elementVariable);
-	}
-
+	var structureMap_DependentBox = await Hive.openBox<StructureMap_Dependent>('StructureMap_DependentBox');
+	structureMap_DependentBox.add(newStructureMap_Dependent);
+	return newStructureMap_Dependent;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1641,7 +1658,7 @@ StructureMap_Source _$StructureMap_SourceFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementDefaultValueDateTime'] as Map<String, dynamic>),
-    defaultValueDecimal: (json['defaultValueDecimal'] as num)?.toDouble(),
+    defaultValueDecimal: json['defaultValueDecimal'] as int,
     elementDefaultValueDecimal: json['elementDefaultValueDecimal'] == null
         ? null
         : Element.fromJson(
@@ -2063,7 +2080,7 @@ StructureMap_Parameter _$StructureMap_ParameterFromJson(
     elementValueInteger: json['elementValueInteger'] == null
         ? null
         : Element.fromJson(json['elementValueInteger'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

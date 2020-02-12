@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -42,8 +41,8 @@ class EpisodeOfCare {
 		Reference careManager,
 		List<Reference> team,
 		List<Reference> account}) async {
-	 return EpisodeOfCare(
-			id: await newEntry('EpisodeOfCare'),
+	EpisodeOfCare newEpisodeOfCare = new EpisodeOfCare(
+			id: await newId('EpisodeOfCare'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -66,8 +65,10 @@ class EpisodeOfCare {
 			careManager: careManager,
 			team: team,
 			account: account);
-	}
-
+	var episodeOfCareBox = await Hive.openBox<EpisodeOfCare>('EpisodeOfCareBox');
+	episodeOfCareBox.add(newEpisodeOfCare);
+	return newEpisodeOfCare;
+}
   @HiveField(0)
   final String resourceType= 'EpisodeOfCare';
   @HiveField(1)
@@ -157,15 +158,17 @@ class EpisodeOfCare_StatusHistory {
 		String status,
 		Element elementStatus,
 		Period period}) async {
-	 return EpisodeOfCare_StatusHistory(
-			id: await newEntry('EpisodeOfCare_StatusHistory'),
+	EpisodeOfCare_StatusHistory newEpisodeOfCare_StatusHistory = new EpisodeOfCare_StatusHistory(
+			id: await newId('EpisodeOfCare_StatusHistory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			status: status,
 			elementStatus: elementStatus,
 			period: period);
-	}
-
+	var episodeOfCare_StatusHistoryBox = await Hive.openBox<EpisodeOfCare_StatusHistory>('EpisodeOfCare_StatusHistoryBox');
+	episodeOfCare_StatusHistoryBox.add(newEpisodeOfCare_StatusHistory);
+	return newEpisodeOfCare_StatusHistory;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -197,16 +200,18 @@ class EpisodeOfCare_Diagnosis {
 		CodeableConcept role,
 		int rank,
 		Element elementRank}) async {
-	 return EpisodeOfCare_Diagnosis(
-			id: await newEntry('EpisodeOfCare_Diagnosis'),
+	EpisodeOfCare_Diagnosis newEpisodeOfCare_Diagnosis = new EpisodeOfCare_Diagnosis(
+			id: await newId('EpisodeOfCare_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			condition: condition,
 			role: role,
 			rank: rank,
 			elementRank: elementRank);
-	}
-
+	var episodeOfCare_DiagnosisBox = await Hive.openBox<EpisodeOfCare_Diagnosis>('EpisodeOfCare_DiagnosisBox');
+	episodeOfCare_DiagnosisBox.add(newEpisodeOfCare_Diagnosis);
+	return newEpisodeOfCare_Diagnosis;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

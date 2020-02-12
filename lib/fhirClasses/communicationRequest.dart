@@ -57,8 +57,8 @@ class CommunicationRequest {
 		List<CodeableConcept> reasonCode,
 		List<Reference> reasonReference,
 		List<Annotation> note}) async {
-	 return CommunicationRequest(
-			id: await newEntry('CommunicationRequest'),
+	CommunicationRequest newCommunicationRequest = new CommunicationRequest(
+			id: await newId('CommunicationRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -96,8 +96,10 @@ class CommunicationRequest {
 			reasonCode: reasonCode,
 			reasonReference: reasonReference,
 			note: note);
-	}
-
+	var communicationRequestBox = await Hive.openBox<CommunicationRequest>('CommunicationRequestBox');
+	communicationRequestBox.add(newCommunicationRequest);
+	return newCommunicationRequest;
+}
   @HiveField(0)
   final String resourceType= 'CommunicationRequest';
   @HiveField(1)
@@ -233,16 +235,18 @@ class CommunicationRequest_Payload {
 		Element elementContentString,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
-	 return CommunicationRequest_Payload(
-			id: await newEntry('CommunicationRequest_Payload'),
+	CommunicationRequest_Payload newCommunicationRequest_Payload = new CommunicationRequest_Payload(
+			id: await newId('CommunicationRequest_Payload'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentString: contentString,
 			elementContentString: elementContentString,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
-	}
-
+	var communicationRequest_PayloadBox = await Hive.openBox<CommunicationRequest_Payload>('CommunicationRequest_PayloadBox');
+	communicationRequest_PayloadBox.add(newCommunicationRequest_Payload);
+	return newCommunicationRequest_Payload;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

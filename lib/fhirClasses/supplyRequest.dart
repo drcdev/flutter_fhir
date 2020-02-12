@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -54,8 +53,8 @@ class SupplyRequest {
 		List<Reference> reasonReference,
 		Reference deliverFrom,
 		Reference deliverTo}) async {
-	 return SupplyRequest(
-			id: await newEntry('SupplyRequest'),
+	SupplyRequest newSupplyRequest = new SupplyRequest(
+			id: await newId('SupplyRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,8 +86,10 @@ class SupplyRequest {
 			reasonReference: reasonReference,
 			deliverFrom: deliverFrom,
 			deliverTo: deliverTo);
-	}
-
+	var supplyRequestBox = await Hive.openBox<SupplyRequest>('SupplyRequestBox');
+	supplyRequestBox.add(newSupplyRequest);
+	return newSupplyRequest;
+}
   @HiveField(0)
   final String resourceType= 'SupplyRequest';
   @HiveField(1)
@@ -208,8 +209,8 @@ class SupplyRequest_Parameter {
 		Range valueRange,
 		bool valueBoolean,
 		Element elementValueBoolean}) async {
-	 return SupplyRequest_Parameter(
-			id: await newEntry('SupplyRequest_Parameter'),
+	SupplyRequest_Parameter newSupplyRequest_Parameter = new SupplyRequest_Parameter(
+			id: await newId('SupplyRequest_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -218,8 +219,10 @@ class SupplyRequest_Parameter {
 			valueRange: valueRange,
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean);
-	}
-
+	var supplyRequest_ParameterBox = await Hive.openBox<SupplyRequest_Parameter>('SupplyRequest_ParameterBox');
+	supplyRequest_ParameterBox.add(newSupplyRequest_Parameter);
+	return newSupplyRequest_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

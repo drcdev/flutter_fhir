@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -72,8 +71,8 @@ class OperationDefinition {
 		String outputProfile,
 		List<OperationDefinition_Parameter> parameter,
 		List<OperationDefinition_Overload> overload}) async {
-	 return OperationDefinition(
-			id: await newEntry('OperationDefinition'),
+	OperationDefinition newOperationDefinition = new OperationDefinition(
+			id: await newId('OperationDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -127,8 +126,10 @@ class OperationDefinition {
 			outputProfile: outputProfile,
 			parameter: parameter,
 			overload: overload);
-	}
-
+	var operationDefinitionBox = await Hive.openBox<OperationDefinition>('OperationDefinitionBox');
+	operationDefinitionBox.add(newOperationDefinition);
+	return newOperationDefinition;
+}
   @HiveField(0)
   final String resourceType= 'OperationDefinition';
   @HiveField(1)
@@ -326,8 +327,8 @@ class OperationDefinition_Parameter {
 		OperationDefinition_Binding binding,
 		List<OperationDefinition_ReferencedFrom> referencedFrom,
 		List<OperationDefinition_Parameter> part}) async {
-	 return OperationDefinition_Parameter(
-			id: await newEntry('OperationDefinition_Parameter'),
+	OperationDefinition_Parameter newOperationDefinition_Parameter = new OperationDefinition_Parameter(
+			id: await newId('OperationDefinition_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -348,8 +349,10 @@ class OperationDefinition_Parameter {
 			binding: binding,
 			referencedFrom: referencedFrom,
 			part: part);
-	}
-
+	var operationDefinition_ParameterBox = await Hive.openBox<OperationDefinition_Parameter>('OperationDefinition_ParameterBox');
+	operationDefinition_ParameterBox.add(newOperationDefinition_Parameter);
+	return newOperationDefinition_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -410,15 +413,17 @@ class OperationDefinition_Binding {
 		String strength,
 		Element elementStrength,
 		String valueSet}) async {
-	 return OperationDefinition_Binding(
-			id: await newEntry('OperationDefinition_Binding'),
+	OperationDefinition_Binding newOperationDefinition_Binding = new OperationDefinition_Binding(
+			id: await newId('OperationDefinition_Binding'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			strength: strength,
 			elementStrength: elementStrength,
 			valueSet: valueSet);
-	}
-
+	var operationDefinition_BindingBox = await Hive.openBox<OperationDefinition_Binding>('OperationDefinition_BindingBox');
+	operationDefinition_BindingBox.add(newOperationDefinition_Binding);
+	return newOperationDefinition_Binding;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -450,16 +455,18 @@ class OperationDefinition_ReferencedFrom {
 		Element elementSource,
 		String sourceId,
 		Element elementSourceId}) async {
-	 return OperationDefinition_ReferencedFrom(
-			id: await newEntry('OperationDefinition_ReferencedFrom'),
+	OperationDefinition_ReferencedFrom newOperationDefinition_ReferencedFrom = new OperationDefinition_ReferencedFrom(
+			id: await newId('OperationDefinition_ReferencedFrom'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			source: source,
 			elementSource: elementSource,
 			sourceId: sourceId,
 			elementSourceId: elementSourceId);
-	}
-
+	var operationDefinition_ReferencedFromBox = await Hive.openBox<OperationDefinition_ReferencedFrom>('OperationDefinition_ReferencedFromBox');
+	operationDefinition_ReferencedFromBox.add(newOperationDefinition_ReferencedFrom);
+	return newOperationDefinition_ReferencedFrom;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -493,16 +500,18 @@ class OperationDefinition_Overload {
 		List<Element> elementParameterName,
 		String comment,
 		Element elementComment}) async {
-	 return OperationDefinition_Overload(
-			id: await newEntry('OperationDefinition_Overload'),
+	OperationDefinition_Overload newOperationDefinition_Overload = new OperationDefinition_Overload(
+			id: await newId('OperationDefinition_Overload'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			parameterName: parameterName,
 			elementParameterName: elementParameterName,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var operationDefinition_OverloadBox = await Hive.openBox<OperationDefinition_Overload>('OperationDefinition_OverloadBox');
+	operationDefinition_OverloadBox.add(newOperationDefinition_Overload);
+	return newOperationDefinition_Overload;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

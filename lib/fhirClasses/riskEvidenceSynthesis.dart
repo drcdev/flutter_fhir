@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -75,8 +74,8 @@ class RiskEvidenceSynthesis {
 		RiskEvidenceSynthesis_SampleSize sampleSize,
 		RiskEvidenceSynthesis_RiskEstimate riskEstimate,
 		List<RiskEvidenceSynthesis_Certainty> certainty}) async {
-	 return RiskEvidenceSynthesis(
-			id: await newEntry('RiskEvidenceSynthesis'),
+	RiskEvidenceSynthesis newRiskEvidenceSynthesis = new RiskEvidenceSynthesis(
+			id: await newId('RiskEvidenceSynthesis'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -128,8 +127,10 @@ class RiskEvidenceSynthesis {
 			sampleSize: sampleSize,
 			riskEstimate: riskEstimate,
 			certainty: certainty);
-	}
-
+	var riskEvidenceSynthesisBox = await Hive.openBox<RiskEvidenceSynthesis>('RiskEvidenceSynthesisBox');
+	riskEvidenceSynthesisBox.add(newRiskEvidenceSynthesis);
+	return newRiskEvidenceSynthesis;
+}
   @HiveField(0)
   final String resourceType= 'RiskEvidenceSynthesis';
   @HiveField(1)
@@ -309,8 +310,8 @@ class RiskEvidenceSynthesis_SampleSize {
 		Element elementNumberOfStudies,
 		int numberOfParticipants,
 		Element elementNumberOfParticipants}) async {
-	 return RiskEvidenceSynthesis_SampleSize(
-			id: await newEntry('RiskEvidenceSynthesis_SampleSize'),
+	RiskEvidenceSynthesis_SampleSize newRiskEvidenceSynthesis_SampleSize = new RiskEvidenceSynthesis_SampleSize(
+			id: await newId('RiskEvidenceSynthesis_SampleSize'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -319,8 +320,10 @@ class RiskEvidenceSynthesis_SampleSize {
 			elementNumberOfStudies: elementNumberOfStudies,
 			numberOfParticipants: numberOfParticipants,
 			elementNumberOfParticipants: elementNumberOfParticipants);
-	}
-
+	var riskEvidenceSynthesis_SampleSizeBox = await Hive.openBox<RiskEvidenceSynthesis_SampleSize>('RiskEvidenceSynthesis_SampleSizeBox');
+	riskEvidenceSynthesis_SampleSizeBox.add(newRiskEvidenceSynthesis_SampleSize);
+	return newRiskEvidenceSynthesis_SampleSize;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -365,8 +368,8 @@ class RiskEvidenceSynthesis_RiskEstimate {
 		int numeratorCount,
 		Element elementNumeratorCount,
 		List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate}) async {
-	 return RiskEvidenceSynthesis_RiskEstimate(
-			id: await newEntry('RiskEvidenceSynthesis_RiskEstimate'),
+	RiskEvidenceSynthesis_RiskEstimate newRiskEvidenceSynthesis_RiskEstimate = new RiskEvidenceSynthesis_RiskEstimate(
+			id: await newId('RiskEvidenceSynthesis_RiskEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -380,8 +383,10 @@ class RiskEvidenceSynthesis_RiskEstimate {
 			numeratorCount: numeratorCount,
 			elementNumeratorCount: elementNumeratorCount,
 			precisionEstimate: precisionEstimate);
-	}
-
+	var riskEvidenceSynthesis_RiskEstimateBox = await Hive.openBox<RiskEvidenceSynthesis_RiskEstimate>('RiskEvidenceSynthesis_RiskEstimateBox');
+	riskEvidenceSynthesis_RiskEstimateBox.add(newRiskEvidenceSynthesis_RiskEstimate);
+	return newRiskEvidenceSynthesis_RiskEstimate;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -432,8 +437,8 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
 		Element elementFrom,
 		double to,
 		Element elementTo}) async {
-	 return RiskEvidenceSynthesis_PrecisionEstimate(
-			id: await newEntry('RiskEvidenceSynthesis_PrecisionEstimate'),
+	RiskEvidenceSynthesis_PrecisionEstimate newRiskEvidenceSynthesis_PrecisionEstimate = new RiskEvidenceSynthesis_PrecisionEstimate(
+			id: await newId('RiskEvidenceSynthesis_PrecisionEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -443,8 +448,10 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
 			elementFrom: elementFrom,
 			to: to,
 			elementTo: elementTo);
-	}
-
+	var riskEvidenceSynthesis_PrecisionEstimateBox = await Hive.openBox<RiskEvidenceSynthesis_PrecisionEstimate>('RiskEvidenceSynthesis_PrecisionEstimateBox');
+	riskEvidenceSynthesis_PrecisionEstimateBox.add(newRiskEvidenceSynthesis_PrecisionEstimate);
+	return newRiskEvidenceSynthesis_PrecisionEstimate;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -483,15 +490,17 @@ class RiskEvidenceSynthesis_Certainty {
 		List<CodeableConcept> rating,
 		List<Annotation> note,
 		List<RiskEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent}) async {
-	 return RiskEvidenceSynthesis_Certainty(
-			id: await newEntry('RiskEvidenceSynthesis_Certainty'),
+	RiskEvidenceSynthesis_Certainty newRiskEvidenceSynthesis_Certainty = new RiskEvidenceSynthesis_Certainty(
+			id: await newId('RiskEvidenceSynthesis_Certainty'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			rating: rating,
 			note: note,
 			certaintySubcomponent: certaintySubcomponent);
-	}
-
+	var riskEvidenceSynthesis_CertaintyBox = await Hive.openBox<RiskEvidenceSynthesis_Certainty>('RiskEvidenceSynthesis_CertaintyBox');
+	riskEvidenceSynthesis_CertaintyBox.add(newRiskEvidenceSynthesis_Certainty);
+	return newRiskEvidenceSynthesis_Certainty;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -522,15 +531,17 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
 		CodeableConcept type,
 		List<CodeableConcept> rating,
 		List<Annotation> note}) async {
-	 return RiskEvidenceSynthesis_CertaintySubcomponent(
-			id: await newEntry('RiskEvidenceSynthesis_CertaintySubcomponent'),
+	RiskEvidenceSynthesis_CertaintySubcomponent newRiskEvidenceSynthesis_CertaintySubcomponent = new RiskEvidenceSynthesis_CertaintySubcomponent(
+			id: await newId('RiskEvidenceSynthesis_CertaintySubcomponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			rating: rating,
 			note: note);
-	}
-
+	var riskEvidenceSynthesis_CertaintySubcomponentBox = await Hive.openBox<RiskEvidenceSynthesis_CertaintySubcomponent>('RiskEvidenceSynthesis_CertaintySubcomponentBox');
+	riskEvidenceSynthesis_CertaintySubcomponentBox.add(newRiskEvidenceSynthesis_CertaintySubcomponent);
+	return newRiskEvidenceSynthesis_CertaintySubcomponent;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

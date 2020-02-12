@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
@@ -60,8 +59,8 @@ class MedicationDispense {
 		MedicationDispense_Substitution substitution,
 		List<Reference> detectedIssue,
 		List<Reference> eventHistory}) async {
-	 return MedicationDispense(
-			id: await newEntry('MedicationDispense'),
+	MedicationDispense newMedicationDispense = new MedicationDispense(
+			id: await newId('MedicationDispense'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -100,8 +99,10 @@ class MedicationDispense {
 			substitution: substitution,
 			detectedIssue: detectedIssue,
 			eventHistory: eventHistory);
-	}
-
+	var medicationDispenseBox = await Hive.openBox<MedicationDispense>('MedicationDispenseBox');
+	medicationDispenseBox.add(newMedicationDispense);
+	return newMedicationDispense;
+}
   @HiveField(0)
   final String resourceType= 'MedicationDispense';
   @HiveField(1)
@@ -238,14 +239,16 @@ class MedicationDispense_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
-	 return MedicationDispense_Performer(
-			id: await newEntry('MedicationDispense_Performer'),
+	MedicationDispense_Performer newMedicationDispense_Performer = new MedicationDispense_Performer(
+			id: await newId('MedicationDispense_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor);
-	}
-
+	var medicationDispense_PerformerBox = await Hive.openBox<MedicationDispense_Performer>('MedicationDispense_PerformerBox');
+	medicationDispense_PerformerBox.add(newMedicationDispense_Performer);
+	return newMedicationDispense_Performer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -276,8 +279,8 @@ class MedicationDispense_Substitution {
 		CodeableConcept type,
 		List<CodeableConcept> reason,
 		List<Reference> responsibleParty}) async {
-	 return MedicationDispense_Substitution(
-			id: await newEntry('MedicationDispense_Substitution'),
+	MedicationDispense_Substitution newMedicationDispense_Substitution = new MedicationDispense_Substitution(
+			id: await newId('MedicationDispense_Substitution'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			wasSubstituted: wasSubstituted,
@@ -285,8 +288,10 @@ class MedicationDispense_Substitution {
 			type: type,
 			reason: reason,
 			responsibleParty: responsibleParty);
-	}
-
+	var medicationDispense_SubstitutionBox = await Hive.openBox<MedicationDispense_Substitution>('MedicationDispense_SubstitutionBox');
+	medicationDispense_SubstitutionBox.add(newMedicationDispense_Substitution);
+	return newMedicationDispense_Substitution;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

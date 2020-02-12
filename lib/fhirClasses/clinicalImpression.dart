@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -57,8 +56,8 @@ class ClinicalImpression {
 		List<Reference> prognosisReference,
 		List<Reference> supportingInfo,
 		List<Annotation> note}) async {
-	 return ClinicalImpression(
-			id: await newEntry('ClinicalImpression'),
+	ClinicalImpression newClinicalImpression = new ClinicalImpression(
+			id: await newId('ClinicalImpression'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -95,8 +94,10 @@ class ClinicalImpression {
 			prognosisReference: prognosisReference,
 			supportingInfo: supportingInfo,
 			note: note);
-	}
-
+	var clinicalImpressionBox = await Hive.openBox<ClinicalImpression>('ClinicalImpressionBox');
+	clinicalImpressionBox.add(newClinicalImpression);
+	return newClinicalImpression;
+}
   @HiveField(0)
   final String resourceType= 'ClinicalImpression';
   @HiveField(1)
@@ -227,14 +228,16 @@ class ClinicalImpression_Investigation {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		List<Reference> item}) async {
-	 return ClinicalImpression_Investigation(
-			id: await newEntry('ClinicalImpression_Investigation'),
+	ClinicalImpression_Investigation newClinicalImpression_Investigation = new ClinicalImpression_Investigation(
+			id: await newId('ClinicalImpression_Investigation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			item: item);
-	}
-
+	var clinicalImpression_InvestigationBox = await Hive.openBox<ClinicalImpression_Investigation>('ClinicalImpression_InvestigationBox');
+	clinicalImpression_InvestigationBox.add(newClinicalImpression_Investigation);
+	return newClinicalImpression_Investigation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -264,16 +267,18 @@ class ClinicalImpression_Finding {
 		Reference itemReference,
 		String basis,
 		Element elementBasis}) async {
-	 return ClinicalImpression_Finding(
-			id: await newEntry('ClinicalImpression_Finding'),
+	ClinicalImpression_Finding newClinicalImpression_Finding = new ClinicalImpression_Finding(
+			id: await newId('ClinicalImpression_Finding'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemCodeableConcept: itemCodeableConcept,
 			itemReference: itemReference,
 			basis: basis,
 			elementBasis: elementBasis);
-	}
-
+	var clinicalImpression_FindingBox = await Hive.openBox<ClinicalImpression_Finding>('ClinicalImpression_FindingBox');
+	clinicalImpression_FindingBox.add(newClinicalImpression_Finding);
+	return newClinicalImpression_Finding;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

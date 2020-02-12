@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -39,8 +38,8 @@ class ResearchSubject {
 		String actualArm,
 		Element elementActualArm,
 		Reference consent}) async {
-	 return ResearchSubject(
-			id: await newEntry('ResearchSubject'),
+	ResearchSubject newResearchSubject = new ResearchSubject(
+			id: await newId('ResearchSubject'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -61,8 +60,10 @@ class ResearchSubject {
 			actualArm: actualArm,
 			elementActualArm: elementActualArm,
 			consent: consent);
-	}
-
+	var researchSubjectBox = await Hive.openBox<ResearchSubject>('ResearchSubjectBox');
+	researchSubjectBox.add(newResearchSubject);
+	return newResearchSubject;
+}
   @HiveField(0)
   final String resourceType= 'ResearchSubject';
   @HiveField(1)

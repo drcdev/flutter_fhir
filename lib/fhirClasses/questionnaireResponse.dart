@@ -41,8 +41,8 @@ class QuestionnaireResponse {
 		Reference author,
 		Reference source,
 		List<QuestionnaireResponse_Item> item}) async {
-	 return QuestionnaireResponse(
-			id: await newEntry('QuestionnaireResponse'),
+	QuestionnaireResponse newQuestionnaireResponse = new QuestionnaireResponse(
+			id: await newId('QuestionnaireResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -65,8 +65,10 @@ class QuestionnaireResponse {
 			author: author,
 			source: source,
 			item: item);
-	}
-
+	var questionnaireResponseBox = await Hive.openBox<QuestionnaireResponse>('QuestionnaireResponseBox');
+	questionnaireResponseBox.add(newQuestionnaireResponse);
+	return newQuestionnaireResponse;
+}
   @HiveField(0)
   final String resourceType= 'QuestionnaireResponse';
   @HiveField(1)
@@ -161,8 +163,8 @@ class QuestionnaireResponse_Item {
 		Element elementText,
 		List<QuestionnaireResponse_Answer> answer,
 		List<QuestionnaireResponse_Item> item}) async {
-	 return QuestionnaireResponse_Item(
-			id: await newEntry('QuestionnaireResponse_Item'),
+	QuestionnaireResponse_Item newQuestionnaireResponse_Item = new QuestionnaireResponse_Item(
+			id: await newId('QuestionnaireResponse_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			linkId: linkId,
@@ -173,8 +175,10 @@ class QuestionnaireResponse_Item {
 			elementText: elementText,
 			answer: answer,
 			item: item);
-	}
-
+	var questionnaireResponse_ItemBox = await Hive.openBox<QuestionnaireResponse_Item>('QuestionnaireResponse_ItemBox');
+	questionnaireResponse_ItemBox.add(newQuestionnaireResponse_Item);
+	return newQuestionnaireResponse_Item;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -214,7 +218,7 @@ class QuestionnaireResponse_Answer {
 		List<Extension> modifierExtension,
 		bool valueBoolean,
 		Element elementValueBoolean,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		int valueInteger,
 		Element elementValueInteger,
@@ -233,8 +237,8 @@ class QuestionnaireResponse_Answer {
 		Quantity valueQuantity,
 		Reference valueReference,
 		List<QuestionnaireResponse_Item> item}) async {
-	 return QuestionnaireResponse_Answer(
-			id: await newEntry('QuestionnaireResponse_Answer'),
+	QuestionnaireResponse_Answer newQuestionnaireResponse_Answer = new QuestionnaireResponse_Answer(
+			id: await newId('QuestionnaireResponse_Answer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueBoolean: valueBoolean,
@@ -258,14 +262,16 @@ class QuestionnaireResponse_Answer {
 			valueQuantity: valueQuantity,
 			valueReference: valueReference,
 			item: item);
-	}
-
+	var questionnaireResponse_AnswerBox = await Hive.openBox<QuestionnaireResponse_Answer>('QuestionnaireResponse_AnswerBox');
+	questionnaireResponse_AnswerBox.add(newQuestionnaireResponse_Answer);
+	return newQuestionnaireResponse_Answer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   bool valueBoolean; //  pattern: ^true|false$
   Element elementValueBoolean;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
   Element elementValueInteger;
@@ -590,7 +596,7 @@ QuestionnaireResponse_Answer _$QuestionnaireResponse_AnswerFromJson(
     elementValueBoolean: json['elementValueBoolean'] == null
         ? null
         : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

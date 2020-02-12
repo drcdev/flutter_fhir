@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -44,8 +43,8 @@ class Person {
 		bool active,
 		Element elementActive,
 		List<Person_Link> link}) async {
-	 return Person(
-			id: await newEntry('Person'),
+	Person newPerson = new Person(
+			id: await newId('Person'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -68,8 +67,10 @@ class Person {
 			active: active,
 			elementActive: elementActive,
 			link: link);
-	}
-
+	var personBox = await Hive.openBox<Person>('PersonBox');
+	personBox.add(newPerson);
+	return newPerson;
+}
   @HiveField(0)
   final String resourceType= 'Person';
   @HiveField(1)
@@ -159,15 +160,17 @@ class Person_Link {
 		Reference target,
 		String assurance,
 		Element elementAssurance}) async {
-	 return Person_Link(
-			id: await newEntry('Person_Link'),
+	Person_Link newPerson_Link = new Person_Link(
+			id: await newId('Person_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			target: target,
 			assurance: assurance,
 			elementAssurance: elementAssurance);
-	}
-
+	var person_LinkBox = await Hive.openBox<Person_Link>('Person_LinkBox');
+	person_LinkBox.add(newPerson_Link);
+	return newPerson_Link;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

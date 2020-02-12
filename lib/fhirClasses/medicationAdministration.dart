@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
@@ -56,8 +55,8 @@ class MedicationAdministration {
 		List<Annotation> note,
 		MedicationAdministration_Dosage dosage,
 		List<Reference> eventHistory}) async {
-	 return MedicationAdministration(
-			id: await newEntry('MedicationAdministration'),
+	MedicationAdministration newMedicationAdministration = new MedicationAdministration(
+			id: await newId('MedicationAdministration'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -91,8 +90,10 @@ class MedicationAdministration {
 			note: note,
 			dosage: dosage,
 			eventHistory: eventHistory);
-	}
-
+	var medicationAdministrationBox = await Hive.openBox<MedicationAdministration>('MedicationAdministrationBox');
+	medicationAdministrationBox.add(newMedicationAdministration);
+	return newMedicationAdministration;
+}
   @HiveField(0)
   final String resourceType= 'MedicationAdministration';
   @HiveField(1)
@@ -214,14 +215,16 @@ class MedicationAdministration_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
-	 return MedicationAdministration_Performer(
-			id: await newEntry('MedicationAdministration_Performer'),
+	MedicationAdministration_Performer newMedicationAdministration_Performer = new MedicationAdministration_Performer(
+			id: await newId('MedicationAdministration_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor);
-	}
-
+	var medicationAdministration_PerformerBox = await Hive.openBox<MedicationAdministration_Performer>('MedicationAdministration_PerformerBox');
+	medicationAdministration_PerformerBox.add(newMedicationAdministration_Performer);
+	return newMedicationAdministration_Performer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -255,8 +258,8 @@ class MedicationAdministration_Dosage {
 		Quantity dose,
 		Ratio rateRatio,
 		Quantity rateQuantity}) async {
-	 return MedicationAdministration_Dosage(
-			id: await newEntry('MedicationAdministration_Dosage'),
+	MedicationAdministration_Dosage newMedicationAdministration_Dosage = new MedicationAdministration_Dosage(
+			id: await newId('MedicationAdministration_Dosage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			text: text,
@@ -267,8 +270,10 @@ class MedicationAdministration_Dosage {
 			dose: dose,
 			rateRatio: rateRatio,
 			rateQuantity: rateQuantity);
-	}
-
+	var medicationAdministration_DosageBox = await Hive.openBox<MedicationAdministration_Dosage>('MedicationAdministration_DosageBox');
+	medicationAdministration_DosageBox.add(newMedicationAdministration_Dosage);
+	return newMedicationAdministration_Dosage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

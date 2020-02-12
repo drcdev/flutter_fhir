@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/elementDefinition.dart';
@@ -75,8 +74,8 @@ class StructureDefinition {
 		Element elementDerivation,
 		StructureDefinition_Snapshot snapshot,
 		StructureDefinition_Differential differential}) async {
-	 return StructureDefinition(
-			id: await newEntry('StructureDefinition'),
+	StructureDefinition newStructureDefinition = new StructureDefinition(
+			id: await newId('StructureDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -130,8 +129,10 @@ class StructureDefinition {
 			elementDerivation: elementDerivation,
 			snapshot: snapshot,
 			differential: differential);
-	}
-
+	var structureDefinitionBox = await Hive.openBox<StructureDefinition>('StructureDefinitionBox');
+	structureDefinitionBox.add(newStructureDefinition);
+	return newStructureDefinition;
+}
   @HiveField(0)
   final String resourceType= 'StructureDefinition';
   @HiveField(1)
@@ -319,8 +320,8 @@ class StructureDefinition_Mapping {
 		Element elementName,
 		String comment,
 		Element elementComment}) async {
-	 return StructureDefinition_Mapping(
-			id: await newEntry('StructureDefinition_Mapping'),
+	StructureDefinition_Mapping newStructureDefinition_Mapping = new StructureDefinition_Mapping(
+			id: await newId('StructureDefinition_Mapping'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identity: identity,
@@ -331,8 +332,10 @@ class StructureDefinition_Mapping {
 			elementName: elementName,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var structureDefinition_MappingBox = await Hive.openBox<StructureDefinition_Mapping>('StructureDefinition_MappingBox');
+	structureDefinition_MappingBox.add(newStructureDefinition_Mapping);
+	return newStructureDefinition_Mapping;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -374,16 +377,18 @@ class StructureDefinition_Context {
 		Element elementType,
 		String expression,
 		Element elementExpression}) async {
-	 return StructureDefinition_Context(
-			id: await newEntry('StructureDefinition_Context'),
+	StructureDefinition_Context newStructureDefinition_Context = new StructureDefinition_Context(
+			id: await newId('StructureDefinition_Context'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			expression: expression,
 			elementExpression: elementExpression);
-	}
-
+	var structureDefinition_ContextBox = await Hive.openBox<StructureDefinition_Context>('StructureDefinition_ContextBox');
+	structureDefinition_ContextBox.add(newStructureDefinition_Context);
+	return newStructureDefinition_Context;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -414,13 +419,15 @@ class StructureDefinition_Snapshot {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<ElementDefinition> element}) async {
-	 return StructureDefinition_Snapshot(
-			id: await newEntry('StructureDefinition_Snapshot'),
+	StructureDefinition_Snapshot newStructureDefinition_Snapshot = new StructureDefinition_Snapshot(
+			id: await newId('StructureDefinition_Snapshot'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			element: element);
-	}
-
+	var structureDefinition_SnapshotBox = await Hive.openBox<StructureDefinition_Snapshot>('StructureDefinition_SnapshotBox');
+	structureDefinition_SnapshotBox.add(newStructureDefinition_Snapshot);
+	return newStructureDefinition_Snapshot;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -445,13 +452,15 @@ class StructureDefinition_Differential {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<ElementDefinition> element}) async {
-	 return StructureDefinition_Differential(
-			id: await newEntry('StructureDefinition_Differential'),
+	StructureDefinition_Differential newStructureDefinition_Differential = new StructureDefinition_Differential(
+			id: await newId('StructureDefinition_Differential'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			element: element);
-	}
-
+	var structureDefinition_DifferentialBox = await Hive.openBox<StructureDefinition_Differential>('StructureDefinition_DifferentialBox');
+	structureDefinition_DifferentialBox.add(newStructureDefinition_Differential);
+	return newStructureDefinition_Differential;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

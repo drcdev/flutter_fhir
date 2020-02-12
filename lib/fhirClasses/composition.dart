@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -48,8 +47,8 @@ class Composition {
 		List<Composition_RelatesTo> relatesTo,
 		List<Composition_Event> event,
 		List<Composition_Section> section}) async {
-	 return Composition(
-			id: await newEntry('Composition'),
+	Composition newComposition = new Composition(
+			id: await newId('Composition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -78,8 +77,10 @@ class Composition {
 			relatesTo: relatesTo,
 			event: event,
 			section: section);
-	}
-
+	var compositionBox = await Hive.openBox<Composition>('CompositionBox');
+	compositionBox.add(newComposition);
+	return newComposition;
+}
   @HiveField(0)
   final String resourceType= 'Composition';
   @HiveField(1)
@@ -189,8 +190,8 @@ class Composition_Attester {
 		DateTime time,
 		Element elementTime,
 		Reference party}) async {
-	 return Composition_Attester(
-			id: await newEntry('Composition_Attester'),
+	Composition_Attester newComposition_Attester = new Composition_Attester(
+			id: await newId('Composition_Attester'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -198,8 +199,10 @@ class Composition_Attester {
 			time: time,
 			elementTime: elementTime,
 			party: party);
-	}
-
+	var composition_AttesterBox = await Hive.openBox<Composition_Attester>('Composition_AttesterBox');
+	composition_AttesterBox.add(newComposition_Attester);
+	return newComposition_Attester;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -235,16 +238,18 @@ class Composition_RelatesTo {
 		Element elementCode,
 		Identifier targetIdentifier,
 		Reference targetReference}) async {
-	 return Composition_RelatesTo(
-			id: await newEntry('Composition_RelatesTo'),
+	Composition_RelatesTo newComposition_RelatesTo = new Composition_RelatesTo(
+			id: await newId('Composition_RelatesTo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
 			targetIdentifier: targetIdentifier,
 			targetReference: targetReference);
-	}
-
+	var composition_RelatesToBox = await Hive.openBox<Composition_RelatesTo>('Composition_RelatesToBox');
+	composition_RelatesToBox.add(newComposition_RelatesTo);
+	return newComposition_RelatesTo;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -277,15 +282,17 @@ class Composition_Event {
 		List<CodeableConcept> code,
 		Period period,
 		List<Reference> detail}) async {
-	 return Composition_Event(
-			id: await newEntry('Composition_Event'),
+	Composition_Event newComposition_Event = new Composition_Event(
+			id: await newId('Composition_Event'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			period: period,
 			detail: detail);
-	}
-
+	var composition_EventBox = await Hive.openBox<Composition_Event>('Composition_EventBox');
+	composition_EventBox.add(newComposition_Event);
+	return newComposition_Event;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -325,8 +332,8 @@ class Composition_Section {
 		List<Reference> entry,
 		CodeableConcept emptyReason,
 		List<Composition_Section> section}) async {
-	 return Composition_Section(
-			id: await newEntry('Composition_Section'),
+	Composition_Section newComposition_Section = new Composition_Section(
+			id: await newId('Composition_Section'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			title: title,
@@ -341,8 +348,10 @@ class Composition_Section {
 			entry: entry,
 			emptyReason: emptyReason,
 			section: section);
-	}
-
+	var composition_SectionBox = await Hive.openBox<Composition_Section>('Composition_SectionBox');
+	composition_SectionBox.add(newComposition_Section);
+	return newComposition_Section;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

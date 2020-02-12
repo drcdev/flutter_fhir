@@ -21,16 +21,18 @@ class Timing {
 		List<Element> elementEvent,
 		Timing_Repeat repeat,
 		CodeableConcept code}) async {
-	 return Timing(
-			id: await newEntry('Timing'),
+	Timing newTiming = new Timing(
+			id: await newId('Timing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			event: event,
 			elementEvent: elementEvent,
 			repeat: repeat,
 			code: code);
-	}
-
+	var timingBox = await Hive.openBox<Timing>('TimingBox');
+	timingBox.add(newTiming);
+	return newTiming;
+}
   @HiveField(0)
   String id;
   @HiveField(1)
@@ -98,8 +100,8 @@ class Timing_Repeat {
 		List<Element> elementWhen,
 		int offset,
 		Element elementOffset}) async {
-	 return Timing_Repeat(
-			id: await newEntry('Timing_Repeat'),
+	Timing_Repeat newTiming_Repeat = new Timing_Repeat(
+			id: await newId('Timing_Repeat'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			boundsDuration: boundsDuration,
@@ -133,8 +135,10 @@ class Timing_Repeat {
 			elementWhen: elementWhen,
 			offset: offset,
 			elementOffset: elementOffset);
-	}
-
+	var timing_RepeatBox = await Hive.openBox<Timing_Repeat>('Timing_RepeatBox');
+	timing_RepeatBox.add(newTiming_Repeat);
+	return newTiming_Repeat;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

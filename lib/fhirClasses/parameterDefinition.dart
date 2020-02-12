@@ -25,8 +25,8 @@ class ParameterDefinition {
 		String type,
 		Element elementType,
 		String profile}) async {
-	 return ParameterDefinition(
-			id: await newEntry('ParameterDefinition'),
+	ParameterDefinition newParameterDefinition = new ParameterDefinition(
+			id: await newId('ParameterDefinition'),
 			extension: extension,
 			name: name,
 			elementName: elementName,
@@ -41,8 +41,10 @@ class ParameterDefinition {
 			type: type,
 			elementType: elementType,
 			profile: profile);
-	}
-
+	var parameterDefinitionBox = await Hive.openBox<ParameterDefinition>('ParameterDefinitionBox');
+	parameterDefinitionBox.add(newParameterDefinition);
+	return newParameterDefinition;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

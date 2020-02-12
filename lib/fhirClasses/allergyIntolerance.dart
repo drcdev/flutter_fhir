@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -59,8 +58,8 @@ class AllergyIntolerance {
 		Element elementLastOccurrence,
 		List<Annotation> note,
 		List<AllergyIntolerance_Reaction> reaction}) async {
-	 return AllergyIntolerance(
-			id: await newEntry('AllergyIntolerance'),
+	AllergyIntolerance newAllergyIntolerance = new AllergyIntolerance(
+			id: await newId('AllergyIntolerance'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -97,8 +96,10 @@ class AllergyIntolerance {
 			elementLastOccurrence: elementLastOccurrence,
 			note: note,
 			reaction: reaction);
-	}
-
+	var allergyIntoleranceBox = await Hive.openBox<AllergyIntolerance>('AllergyIntoleranceBox');
+	allergyIntoleranceBox.add(newAllergyIntolerance);
+	return newAllergyIntolerance;
+}
   @HiveField(0)
   final String resourceType= 'AllergyIntolerance';
   @HiveField(1)
@@ -237,8 +238,8 @@ class AllergyIntolerance_Reaction {
 		Element elementSeverity,
 		CodeableConcept exposureRoute,
 		List<Annotation> note}) async {
-	 return AllergyIntolerance_Reaction(
-			id: await newEntry('AllergyIntolerance_Reaction'),
+	AllergyIntolerance_Reaction newAllergyIntolerance_Reaction = new AllergyIntolerance_Reaction(
+			id: await newId('AllergyIntolerance_Reaction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substance: substance,
@@ -251,8 +252,10 @@ class AllergyIntolerance_Reaction {
 			elementSeverity: elementSeverity,
 			exposureRoute: exposureRoute,
 			note: note);
-	}
-
+	var allergyIntolerance_ReactionBox = await Hive.openBox<AllergyIntolerance_Reaction>('AllergyIntolerance_ReactionBox');
+	allergyIntolerance_ReactionBox.add(newAllergyIntolerance_Reaction);
+	return newAllergyIntolerance_Reaction;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

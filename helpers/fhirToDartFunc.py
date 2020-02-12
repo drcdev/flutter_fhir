@@ -1,39 +1,239 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Feb 12 10:06:20 2020
 
-import os
+@author: grey
+"""
 
-fhirDir = './lib/fhirClasses/'
+#makes first letter of word lowercase
+def lowcc(string):
+    return string[0].lower()+string[1:len(string)]
+
+#makes first letter of word lowercase
+def upcc(string):
+    return string[0].upper()+string[1:len(string)]
+
+#returns the item if it's a primitive, otherwise returns type of primitive
+def primitiveDart(string):
+    primitivesDart = {'base64Binary': 'String', 'boolean': 'bool', 
+        'canonical': 'String', 'code': 'String', 'date': 'String', 
+        'dateTime': 'DateTime', 'decimal': 'double', 'id': 'String', 
+        'instant': 'DateTime', 'integer': 'int', 'markdown': 'String', 
+        'oid': 'String', 'positiveInt': 'int', 'string': 'String', 
+        'time': 'String', 'unsignedInt': 'int', 'uri': 'String', 
+        'url': 'String', 'uuid': 'String', 'xhtml': 'String'}
+    if(string in primitivesDart):
+        return(primitivesDart[string])
+    else:
+        return(string)
+
+#checks if it's a primitive type
+def isPrimitive(string):
+    if('"' in string):
+        string = string[1:len(string)-1]
+    return(string in ['base64Binary', 'boolean', 'canonical', 'code', 'date',
+                      'dateTime', 'decimal', 'id', 'instant', 'integer', 
+                      'markdown', 'oid', 'positiveInt', 'string', 'time',
+                      'unsignedInt', 'uri', 'url', 'uuid', 'number'])
+    
+#returns comments in multiple lines, all <= 70 characters
+def less70(string):   
+    new = ''
+    line = ''
+    strings = string.split(' ')
+    for i in strings:
+        if((len(line) + len(i)) > 70):
+            new += '\n  // ' + line
+            line = i
+        else:
+            line += ' ' + i
+    new += '\n  // ' + line
+    return new  
+
+def rem_(string):
+    if(string[0] == '_'):
+        return('element' + upcc(string[1:len(string)]))
+    if(string == 'class'):
+        return('classs')
+    if(string == 'extends'):
+        return('extend')
+    if(string == 'for'):
+        return('fore')
+    if(string == 'assert'):
+        return('asserts')
+    else:
+        return(string)    
+
+#turns word list into lists to avoid using reserved term
+def lists(string):
+    return('Lists' if string == 'List' else string)   
+
+#only defines Hivefield for primary object in dart file
+def HiveField(HiveField, objects):
+    return ('  @HiveField(' + str(HiveField) + ')\n') if '_' not in objects else ''
+
+def hiveProperties(ref, space, field):
+    return ''.join([primitiveDart(ref), 
+                    space, 
+                    rem_(field), 
+                    ',\n'])
+
+def refProperties(ref, space, field):
+    return ''.join([primitiveDart(ref), 
+                    space, 
+                    rem_(field), 
+                    ';\n'])
+
+#returns HiveCode
+def HiveCode(properties, objects):
+    hiveCode = ''.join(['\tstatic Future<',
+                        lists(objects),
+                        '> newInstance({\n'])
+    
+    for field in properties:
         
-for filename in os.listdir(fhirDir):
-    if('.g.dart' not in filename and 'resourceList' not in filename):
-        with open(fhirDir + filename, encoding='utf8') as file1:
-            code1 = file1.read()
-            code1 = code1.replace("\n\npart '" + filename.replace('.dart', '.g.dart') + "';","")
-            code1 = code1.replace('ResourceList resource', 'dynamic resource')
-            code1 = code1.replace('ResourceList outcome', 'dynamic outcome')
-            code1 = code1.replace('<ResourceList>', '<dynamic>')
-        with open(fhirDir + filename.replace('.dart', '.g.dart'), encoding='utf8') as file2:
-            code2 = file2.read() 
-            code2 = code2.replace("\n\npart of '" + filename + "';\n", '')
-            code2 = code2.replace('''contained: json['contained'] as List''',
-                                  '''contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
-        ?.toList()''')
-            code2 = code2.replace('''resource: json['resource'],''',
-                                  '''    resource: json['resource'] == null
-        ? null
-        : ResourceTypes(json['resource']['resourceType'], json['resource'] as Map<String, dynamic>),''')
-            code2 = code2.replace('''outcome: json['outcome'],''',
-                                  '''    outcome: json['outcome'] == null
-        ? null
-        : ResourceTypes(json['outcome']['resourceType'], json['outcome'] as Map<String, dynamic>),''')
+        #if items is NOT included it means that the item is NOT an array/list
+        if('items' not in properties[field]):
+                
+            #if  there's a $ref in it, print out that value
+            if('$ref' in properties[field]):
+                hiveCode = ''.join([hiveCode, '\t\t',
+                                    hiveProperties((properties[field]['$ref']).split('/definitions/')[1],
+                                                  ' ', field)])
+                    
+            #if  there's a const in it, print out that value
+            elif('const' in properties[field]):  
+                                
+                value = properties[field]['const']
+                #don't print resourceType as HiveCode since it's constant
+                if(field != 'resourceType'):
+                    hiveCode = ''.join([hiveCode, '\t\t',
+                                    hiveProperties((properties[field]['$ref']).split('/definitions/')[1],
+                                                  ' ', field)])
+                
+            elif('pattern' in properties[field]):  
+                value = properties[field]
+                
+                #if the type is a number, declare it an int or a double
+                if('number' == value['type']):
+                        hiveCode = ''.join([hiveCode, 
+                                            hiveProperties('\t\tdouble' if ('decimal' or 'Decimal') in field else '\t\tint',
+                                                          ' ', field)])
+                else:
+                    hiveCode = ''.join([hiveCode,
+                                        '\t\t',
+                                        hiveProperties(primitiveDart(value['type']),
+                                                      ' ', field)])
+                    
+            elif('enum' in properties[field]):
+                hiveCode = ''.join([hiveCode, '\t\t', 
+                                    hiveProperties('String', ' ', field)])
 
-        with open(fhirDir + filename, "w", encoding="utf-8") as f:
-            f.write(code1 + '\n' + code2)
-        os.remove(fhirDir + filename.replace('.dart', '.g.dart'))
-f.close()
+        #if it does include items, it is an array/list
+        elif('$ref' in properties[field]['items']):      
+            value = properties[field]['items']['$ref'].split('/definitions/')[1]
+            
+            #make the item a list since it's an array in json
+            hiveCode = ''.join([hiveCode,  
+                                '\t\t',
+                                'List<',
+                                hiveProperties(primitiveDart(value), '> ', field)])
+            
+        #if it does include items, it is an array/list
+        elif('enum' in properties[field]['items']):
+            
+            #make the item a list since it's an array in json
+            hiveCode = ''.join([hiveCode, 
+                                '\t\t',
+                                hiveProperties('List<String>', ' ', field)])
 
+    hiveCode = ''.join([hiveCode, 
+                        '}) async {\n\t',
+                        lists(objects),
+                        ' new',
+                        lists(objects),
+                        ' = new ',
+                        lists(objects),
+                        '(\n'])
+
+    for field in properties:
+        if(rem_(field) != 'resourceType'):
+            if(field == 'id'):
+                hiveCode = ''.join([hiveCode, 
+                                    "\t\t\tid: await newId('", 
+                                    objects,
+                                    "'),\n"])
+            else:
+                hiveCode = ''.join([hiveCode, '\t\t\t', rem_(field), ': ', rem_(field), ',\n'])
+    hiveCode = ''.join([hiveCode, 
+                        ');\n\tvar ', 
+                        lowcc(lists(objects)), 
+                        'Box = await Hive.openBox<',
+                        lists(objects),
+                        ">('",
+                        lists(objects),
+                        "Box');\n\t",
+                        lowcc(lists(objects)),
+                        'Box.add(new',
+                        lists(objects),
+                        ');\n\treturn new',
+                        lists(objects),
+                        ';\n}'])    
+    hiveCode = hiveCode.replace(',\n}) ', '}) ')
+    hiveCode = hiveCode.replace('final String', 'String')
+    hiveCode = hiveCode.replace(',\n);\n\tvar', ');\n\tvar')
+    return(hiveCode)
+
+patientFunc1 = '''  factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
+      Map<String, dynamic> toJson() => _$PatientToJson(this);
+    }'''
+patientFunc2 = '''String printName(){
+        return('${(this.name?.first?.family?.toString() ?? '')}'
+            ', '
+            '${(this.name?.first?.given?.first?.toString() ?? '')}'
+        );
+      }
+    
+      factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
+      Map<String, dynamic> toJson() => _$PatientToJson(this);
+    }
+    
+    Future<Patient> readPatient(String id) async {
+      final directory = await getApplicationDocumentsDirectory(); //get current directory
+      Patient pt = Patient.fromJson(jsonDecode(await File('${directory.path}/' + id + '.txt').readAsString())); //read patient from file
+      return(pt);
+    }
+    
+    Future<List<Patient>> readPtList() async {
+      final directory = await getApplicationDocumentsDirectory(); //get current directory
+      List<String> ptNumbers = (await File('${directory.path}/fhir/patient.txt').readAsString()).split('\\n');
+      var ptList = new List<Patient>();
+      for(var i = 0; i < ptNumbers.length; i++){
+        final pt = File('${directory.path}/fhir/patient/' + ptNumbers[i] + '.txt');
+        var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
+        ptList.add(newpt);
+      }
+      return ptList;
+    }'''
+    
+patientReplace1 ='''import 'package:hive/hive.dart';
+    import 'package:json_annotation/json_annotation.dart';
+    import 'package:flutter/foundation.dart';
+    import 'package:meta/meta.dart';
+    import 'package:flutter_fhir/fhirClasses/classes.dart';\n'''
+
+patientReplace2 = '''import 'dart:io';
+    import 'dart:convert';
+    
+    import 'package:flutter/foundation.dart';
+    import 'package:meta/meta.dart';
+    import 'package:flutter_fhir/fhirClasses/classes.dart';
+    import 'package:path_provider/path_provider.dart';
+    import 'package:hive/hive.dart';
+    import 'package:json_annotation/json_annotation.dart';
+    '''
+    
 resourceList = '''import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/fhirClasses/narrative.dart';
@@ -410,9 +610,6 @@ dynamic ResourceTypes(String type, Map<String, dynamic> json) {
   if(type == 'VisionPrescription') return (new VisionPrescription.fromJson(json));
 }
 '''
-with open(fhirDir + 'resourceList.dart', "w", encoding="utf-8") as f:
-    f.write(resourceList)
-f.close()
 
 classes = '''import 'dart:core';
 
@@ -1102,11 +1299,9 @@ classesSetup() async {
       tableId += 1;
     }
   }
-  Period tempPeriod = await Period.newInstance();
-  print(tempPeriod.id.toString());
 }
 
-Future<String> newEntry(String resource) async {
+Future<String> newId(String resource) async {
   var classesBox = await Hive.openBox<Classes>('ClassesBox');
   var tempResource = classesBox.get(resource);
   tempResource.lastId = (int.parse(tempResource.lastId) + 1).toString().padLeft(4, '0');
@@ -1194,7 +1389,3 @@ Map<String, dynamic> _$ClassesToJson(Classes instance) => <String, dynamic>{
       'lastId': instance.lastId,
     };
 '''
-
-with open(fhirDir + 'classes.dart', "w", encoding="utf-8") as f:
-    f.write(classes)
-f.close()

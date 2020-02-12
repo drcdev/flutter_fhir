@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -39,8 +38,8 @@ class BodyStructure {
 		Element elementDescription,
 		List<Attachment> image,
 		Reference patient}) async {
-	 return BodyStructure(
-			id: await newEntry('BodyStructure'),
+	BodyStructure newBodyStructure = new BodyStructure(
+			id: await newId('BodyStructure'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -60,8 +59,10 @@ class BodyStructure {
 			elementDescription: elementDescription,
 			image: image,
 			patient: patient);
-	}
-
+	var bodyStructureBox = await Hive.openBox<BodyStructure>('BodyStructureBox');
+	bodyStructureBox.add(newBodyStructure);
+	return newBodyStructure;
+}
   @HiveField(0)
   final String resourceType= 'BodyStructure';
   @HiveField(1)

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -67,8 +66,8 @@ class Immunization {
 		CodeableConcept fundingSource,
 		List<Immunization_Reaction> reaction,
 		List<Immunization_ProtocolApplied> protocolApplied}) async {
-	 return Immunization(
-			id: await newEntry('Immunization'),
+	Immunization newImmunization = new Immunization(
+			id: await newId('Immunization'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -115,8 +114,10 @@ class Immunization {
 			fundingSource: fundingSource,
 			reaction: reaction,
 			protocolApplied: protocolApplied);
-	}
-
+	var immunizationBox = await Hive.openBox<Immunization>('ImmunizationBox');
+	immunizationBox.add(newImmunization);
+	return newImmunization;
+}
   @HiveField(0)
   final String resourceType= 'Immunization';
   @HiveField(1)
@@ -277,14 +278,16 @@ class Immunization_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
-	 return Immunization_Performer(
-			id: await newEntry('Immunization_Performer'),
+	Immunization_Performer newImmunization_Performer = new Immunization_Performer(
+			id: await newId('Immunization_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor);
-	}
-
+	var immunization_PerformerBox = await Hive.openBox<Immunization_Performer>('Immunization_PerformerBox');
+	immunization_PerformerBox.add(newImmunization_Performer);
+	return newImmunization_Performer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -318,8 +321,8 @@ class Immunization_Education {
 		Element elementPublicationDate,
 		DateTime presentationDate,
 		Element elementPresentationDate}) async {
-	 return Immunization_Education(
-			id: await newEntry('Immunization_Education'),
+	Immunization_Education newImmunization_Education = new Immunization_Education(
+			id: await newId('Immunization_Education'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			documentType: documentType,
@@ -330,8 +333,10 @@ class Immunization_Education {
 			elementPublicationDate: elementPublicationDate,
 			presentationDate: presentationDate,
 			elementPresentationDate: elementPresentationDate);
-	}
-
+	var immunization_EducationBox = await Hive.openBox<Immunization_Education>('Immunization_EducationBox');
+	immunization_EducationBox.add(newImmunization_Education);
+	return newImmunization_Education;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -374,8 +379,8 @@ class Immunization_Reaction {
 		Reference detail,
 		bool reported,
 		Element elementReported}) async {
-	 return Immunization_Reaction(
-			id: await newEntry('Immunization_Reaction'),
+	Immunization_Reaction newImmunization_Reaction = new Immunization_Reaction(
+			id: await newId('Immunization_Reaction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			date: date,
@@ -383,8 +388,10 @@ class Immunization_Reaction {
 			detail: detail,
 			reported: reported,
 			elementReported: elementReported);
-	}
-
+	var immunization_ReactionBox = await Hive.openBox<Immunization_Reaction>('Immunization_ReactionBox');
+	immunization_ReactionBox.add(newImmunization_Reaction);
+	return newImmunization_Reaction;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -428,8 +435,8 @@ class Immunization_ProtocolApplied {
 		Element elementSeriesDosesPositiveInt,
 		String seriesDosesString,
 		Element elementSeriesDosesString}) async {
-	 return Immunization_ProtocolApplied(
-			id: await newEntry('Immunization_ProtocolApplied'),
+	Immunization_ProtocolApplied newImmunization_ProtocolApplied = new Immunization_ProtocolApplied(
+			id: await newId('Immunization_ProtocolApplied'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			series: series,
@@ -444,8 +451,10 @@ class Immunization_ProtocolApplied {
 			elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString);
-	}
-
+	var immunization_ProtocolAppliedBox = await Hive.openBox<Immunization_ProtocolApplied>('Immunization_ProtocolAppliedBox');
+	immunization_ProtocolAppliedBox.add(newImmunization_ProtocolApplied);
+	return newImmunization_ProtocolApplied;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

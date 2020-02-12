@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
@@ -54,8 +53,8 @@ class NutritionOrder {
 		List<NutritionOrder_Supplement> supplement,
 		NutritionOrder_EnteralFormula enteralFormula,
 		List<Annotation> note}) async {
-	 return NutritionOrder(
-			id: await newEntry('NutritionOrder'),
+	NutritionOrder newNutritionOrder = new NutritionOrder(
+			id: await newId('NutritionOrder'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,8 +86,10 @@ class NutritionOrder {
 			supplement: supplement,
 			enteralFormula: enteralFormula,
 			note: note);
-	}
-
+	var nutritionOrderBox = await Hive.openBox<NutritionOrder>('NutritionOrderBox');
+	nutritionOrderBox.add(newNutritionOrder);
+	return newNutritionOrder;
+}
   @HiveField(0)
   final String resourceType= 'NutritionOrder';
   @HiveField(1)
@@ -209,8 +210,8 @@ class NutritionOrder_OralDiet {
 		List<CodeableConcept> fluidConsistencyType,
 		String instruction,
 		Element elementInstruction}) async {
-	 return NutritionOrder_OralDiet(
-			id: await newEntry('NutritionOrder_OralDiet'),
+	NutritionOrder_OralDiet newNutritionOrder_OralDiet = new NutritionOrder_OralDiet(
+			id: await newId('NutritionOrder_OralDiet'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -220,8 +221,10 @@ class NutritionOrder_OralDiet {
 			fluidConsistencyType: fluidConsistencyType,
 			instruction: instruction,
 			elementInstruction: elementInstruction);
-	}
-
+	var nutritionOrder_OralDietBox = await Hive.openBox<NutritionOrder_OralDiet>('NutritionOrder_OralDietBox');
+	nutritionOrder_OralDietBox.add(newNutritionOrder_OralDiet);
+	return newNutritionOrder_OralDiet;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -259,14 +262,16 @@ class NutritionOrder_Nutrient {
 		List<Extension> modifierExtension,
 		CodeableConcept modifier,
 		Quantity amount}) async {
-	 return NutritionOrder_Nutrient(
-			id: await newEntry('NutritionOrder_Nutrient'),
+	NutritionOrder_Nutrient newNutritionOrder_Nutrient = new NutritionOrder_Nutrient(
+			id: await newId('NutritionOrder_Nutrient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			modifier: modifier,
 			amount: amount);
-	}
-
+	var nutritionOrder_NutrientBox = await Hive.openBox<NutritionOrder_Nutrient>('NutritionOrder_NutrientBox');
+	nutritionOrder_NutrientBox.add(newNutritionOrder_Nutrient);
+	return newNutritionOrder_Nutrient;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -294,14 +299,16 @@ class NutritionOrder_Texture {
 		List<Extension> modifierExtension,
 		CodeableConcept modifier,
 		CodeableConcept foodType}) async {
-	 return NutritionOrder_Texture(
-			id: await newEntry('NutritionOrder_Texture'),
+	NutritionOrder_Texture newNutritionOrder_Texture = new NutritionOrder_Texture(
+			id: await newId('NutritionOrder_Texture'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			modifier: modifier,
 			foodType: foodType);
-	}
-
+	var nutritionOrder_TextureBox = await Hive.openBox<NutritionOrder_Texture>('NutritionOrder_TextureBox');
+	nutritionOrder_TextureBox.add(newNutritionOrder_Texture);
+	return newNutritionOrder_Texture;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -334,8 +341,8 @@ class NutritionOrder_Supplement {
 		Quantity quantity,
 		String instruction,
 		Element elementInstruction}) async {
-	 return NutritionOrder_Supplement(
-			id: await newEntry('NutritionOrder_Supplement'),
+	NutritionOrder_Supplement newNutritionOrder_Supplement = new NutritionOrder_Supplement(
+			id: await newId('NutritionOrder_Supplement'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -345,8 +352,10 @@ class NutritionOrder_Supplement {
 			quantity: quantity,
 			instruction: instruction,
 			elementInstruction: elementInstruction);
-	}
-
+	var nutritionOrder_SupplementBox = await Hive.openBox<NutritionOrder_Supplement>('NutritionOrder_SupplementBox');
+	nutritionOrder_SupplementBox.add(newNutritionOrder_Supplement);
+	return newNutritionOrder_Supplement;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -394,8 +403,8 @@ class NutritionOrder_EnteralFormula {
 		Quantity maxVolumeToDeliver,
 		String administrationInstruction,
 		Element elementAdministrationInstruction}) async {
-	 return NutritionOrder_EnteralFormula(
-			id: await newEntry('NutritionOrder_EnteralFormula'),
+	NutritionOrder_EnteralFormula newNutritionOrder_EnteralFormula = new NutritionOrder_EnteralFormula(
+			id: await newId('NutritionOrder_EnteralFormula'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			baseFormulaType: baseFormulaType,
@@ -410,8 +419,10 @@ class NutritionOrder_EnteralFormula {
 			maxVolumeToDeliver: maxVolumeToDeliver,
 			administrationInstruction: administrationInstruction,
 			elementAdministrationInstruction: elementAdministrationInstruction);
-	}
-
+	var nutritionOrder_EnteralFormulaBox = await Hive.openBox<NutritionOrder_EnteralFormula>('NutritionOrder_EnteralFormulaBox');
+	nutritionOrder_EnteralFormulaBox.add(newNutritionOrder_EnteralFormula);
+	return newNutritionOrder_EnteralFormula;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -461,16 +472,18 @@ class NutritionOrder_Administration {
 		Quantity quantity,
 		Quantity rateQuantity,
 		Ratio rateRatio}) async {
-	 return NutritionOrder_Administration(
-			id: await newEntry('NutritionOrder_Administration'),
+	NutritionOrder_Administration newNutritionOrder_Administration = new NutritionOrder_Administration(
+			id: await newId('NutritionOrder_Administration'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			schedule: schedule,
 			quantity: quantity,
 			rateQuantity: rateQuantity,
 			rateRatio: rateRatio);
-	}
-
+	var nutritionOrder_AdministrationBox = await Hive.openBox<NutritionOrder_Administration>('NutritionOrder_AdministrationBox');
+	nutritionOrder_AdministrationBox.add(newNutritionOrder_Administration);
+	return newNutritionOrder_Administration;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

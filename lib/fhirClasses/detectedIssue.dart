@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -47,8 +46,8 @@ class DetectedIssue {
 		String reference,
 		Element elementReference,
 		List<DetectedIssue_Mitigation> mitigation}) async {
-	 return DetectedIssue(
-			id: await newEntry('DetectedIssue'),
+	DetectedIssue newDetectedIssue = new DetectedIssue(
+			id: await newId('DetectedIssue'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -76,8 +75,10 @@ class DetectedIssue {
 			reference: reference,
 			elementReference: elementReference,
 			mitigation: mitigation);
-	}
-
+	var detectedIssueBox = await Hive.openBox<DetectedIssue>('DetectedIssueBox');
+	detectedIssueBox.add(newDetectedIssue);
+	return newDetectedIssue;
+}
   @HiveField(0)
   final String resourceType= 'DetectedIssue';
   @HiveField(1)
@@ -181,14 +182,16 @@ class DetectedIssue_Evidence {
 		List<Extension> modifierExtension,
 		List<CodeableConcept> code,
 		List<Reference> detail}) async {
-	 return DetectedIssue_Evidence(
-			id: await newEntry('DetectedIssue_Evidence'),
+	DetectedIssue_Evidence newDetectedIssue_Evidence = new DetectedIssue_Evidence(
+			id: await newId('DetectedIssue_Evidence'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			detail: detail);
-	}
-
+	var detectedIssue_EvidenceBox = await Hive.openBox<DetectedIssue_Evidence>('DetectedIssue_EvidenceBox');
+	detectedIssue_EvidenceBox.add(newDetectedIssue_Evidence);
+	return newDetectedIssue_Evidence;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -218,16 +221,18 @@ class DetectedIssue_Mitigation {
 		DateTime date,
 		Element elementDate,
 		Reference author}) async {
-	 return DetectedIssue_Mitigation(
-			id: await newEntry('DetectedIssue_Mitigation'),
+	DetectedIssue_Mitigation newDetectedIssue_Mitigation = new DetectedIssue_Mitigation(
+			id: await newId('DetectedIssue_Mitigation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
 			date: date,
 			elementDate: elementDate,
 			author: author);
-	}
-
+	var detectedIssue_MitigationBox = await Hive.openBox<DetectedIssue_Mitigation>('DetectedIssue_MitigationBox');
+	detectedIssue_MitigationBox.add(newDetectedIssue_Mitigation);
+	return newDetectedIssue_Mitigation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

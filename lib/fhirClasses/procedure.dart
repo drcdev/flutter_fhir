@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -68,8 +67,8 @@ class Procedure {
 		List<Procedure_FocalDevice> focalDevice,
 		List<Reference> usedReference,
 		List<CodeableConcept> usedCode}) async {
-	 return Procedure(
-			id: await newEntry('Procedure'),
+	Procedure newProcedure = new Procedure(
+			id: await newId('Procedure'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -115,8 +114,10 @@ class Procedure {
 			focalDevice: focalDevice,
 			usedReference: usedReference,
 			usedCode: usedCode);
-	}
-
+	var procedureBox = await Hive.openBox<Procedure>('ProcedureBox');
+	procedureBox.add(newProcedure);
+	return newProcedure;
+}
   @HiveField(0)
   final String resourceType= 'Procedure';
   @HiveField(1)
@@ -275,15 +276,17 @@ class Procedure_Performer {
 		CodeableConcept function,
 		Reference actor,
 		Reference onBehalfOf}) async {
-	 return Procedure_Performer(
-			id: await newEntry('Procedure_Performer'),
+	Procedure_Performer newProcedure_Performer = new Procedure_Performer(
+			id: await newId('Procedure_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
 			onBehalfOf: onBehalfOf);
-	}
-
+	var procedure_PerformerBox = await Hive.openBox<Procedure_Performer>('Procedure_PerformerBox');
+	procedure_PerformerBox.add(newProcedure_Performer);
+	return newProcedure_Performer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -313,14 +316,16 @@ class Procedure_FocalDevice {
 		List<Extension> modifierExtension,
 		CodeableConcept action,
 		Reference manipulated}) async {
-	 return Procedure_FocalDevice(
-			id: await newEntry('Procedure_FocalDevice'),
+	Procedure_FocalDevice newProcedure_FocalDevice = new Procedure_FocalDevice(
+			id: await newId('Procedure_FocalDevice'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
 			manipulated: manipulated);
-	}
-
+	var procedure_FocalDeviceBox = await Hive.openBox<Procedure_FocalDevice>('Procedure_FocalDeviceBox');
+	procedure_FocalDeviceBox.add(newProcedure_FocalDevice);
+	return newProcedure_FocalDevice;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

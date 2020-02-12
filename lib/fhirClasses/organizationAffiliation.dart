@@ -41,8 +41,8 @@ class OrganizationAffiliation {
 		List<Reference> healthcareService,
 		List<ContactPoint> telecom,
 		List<Reference> endpoint}) async {
-	 return OrganizationAffiliation(
-			id: await newEntry('OrganizationAffiliation'),
+	OrganizationAffiliation newOrganizationAffiliation = new OrganizationAffiliation(
+			id: await newId('OrganizationAffiliation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -65,8 +65,10 @@ class OrganizationAffiliation {
 			healthcareService: healthcareService,
 			telecom: telecom,
 			endpoint: endpoint);
-	}
-
+	var organizationAffiliationBox = await Hive.openBox<OrganizationAffiliation>('OrganizationAffiliationBox');
+	organizationAffiliationBox.add(newOrganizationAffiliation);
+	return newOrganizationAffiliation;
+}
   @HiveField(0)
   final String resourceType= 'OrganizationAffiliation';
   @HiveField(1)

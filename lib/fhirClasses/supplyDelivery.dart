@@ -44,8 +44,8 @@ class SupplyDelivery {
 		Reference supplier,
 		Reference destination,
 		List<Reference> receiver}) async {
-	 return SupplyDelivery(
-			id: await newEntry('SupplyDelivery'),
+	SupplyDelivery newSupplyDelivery = new SupplyDelivery(
+			id: await newId('SupplyDelivery'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,8 +70,10 @@ class SupplyDelivery {
 			supplier: supplier,
 			destination: destination,
 			receiver: receiver);
-	}
-
+	var supplyDeliveryBox = await Hive.openBox<SupplyDelivery>('SupplyDeliveryBox');
+	supplyDeliveryBox.add(newSupplyDelivery);
+	return newSupplyDelivery;
+}
   @HiveField(0)
   final String resourceType= 'SupplyDelivery';
   @HiveField(1)
@@ -167,15 +169,17 @@ class SupplyDelivery_SuppliedItem {
 		Quantity quantity,
 		CodeableConcept itemCodeableConcept,
 		Reference itemReference}) async {
-	 return SupplyDelivery_SuppliedItem(
-			id: await newEntry('SupplyDelivery_SuppliedItem'),
+	SupplyDelivery_SuppliedItem newSupplyDelivery_SuppliedItem = new SupplyDelivery_SuppliedItem(
+			id: await newId('SupplyDelivery_SuppliedItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			itemCodeableConcept: itemCodeableConcept,
 			itemReference: itemReference);
-	}
-
+	var supplyDelivery_SuppliedItemBox = await Hive.openBox<SupplyDelivery_SuppliedItem>('SupplyDelivery_SuppliedItemBox');
+	supplyDelivery_SuppliedItemBox.add(newSupplyDelivery_SuppliedItem);
+	return newSupplyDelivery_SuppliedItem;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

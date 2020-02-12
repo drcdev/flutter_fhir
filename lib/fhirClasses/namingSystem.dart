@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -50,8 +49,8 @@ class NamingSystem {
 		String usage,
 		Element elementUsage,
 		List<NamingSystem_UniqueId> uniqueId}) async {
-	 return NamingSystem(
-			id: await newEntry('NamingSystem'),
+	NamingSystem newNamingSystem = new NamingSystem(
+			id: await newId('NamingSystem'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -82,8 +81,10 @@ class NamingSystem {
 			usage: usage,
 			elementUsage: elementUsage,
 			uniqueId: uniqueId);
-	}
-
+	var namingSystemBox = await Hive.openBox<NamingSystem>('NamingSystemBox');
+	namingSystemBox.add(newNamingSystem);
+	return newNamingSystem;
+}
   @HiveField(0)
   final String resourceType= 'NamingSystem';
   @HiveField(1)
@@ -203,8 +204,8 @@ class NamingSystem_UniqueId {
 		String comment,
 		Element elementComment,
 		Period period}) async {
-	 return NamingSystem_UniqueId(
-			id: await newEntry('NamingSystem_UniqueId'),
+	NamingSystem_UniqueId newNamingSystem_UniqueId = new NamingSystem_UniqueId(
+			id: await newId('NamingSystem_UniqueId'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -216,8 +217,10 @@ class NamingSystem_UniqueId {
 			comment: comment,
 			elementComment: elementComment,
 			period: period);
-	}
-
+	var namingSystem_UniqueIdBox = await Hive.openBox<NamingSystem_UniqueId>('NamingSystem_UniqueIdBox');
+	namingSystem_UniqueIdBox.add(newNamingSystem_UniqueId);
+	return newNamingSystem_UniqueId;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

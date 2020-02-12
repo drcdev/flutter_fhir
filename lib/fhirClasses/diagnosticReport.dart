@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -53,8 +52,8 @@ class DiagnosticReport {
 		Element elementConclusion,
 		List<CodeableConcept> conclusionCode,
 		List<Attachment> presentedForm}) async {
-	 return DiagnosticReport(
-			id: await newEntry('DiagnosticReport'),
+	DiagnosticReport newDiagnosticReport = new DiagnosticReport(
+			id: await newId('DiagnosticReport'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,8 +86,10 @@ class DiagnosticReport {
 			elementConclusion: elementConclusion,
 			conclusionCode: conclusionCode,
 			presentedForm: presentedForm);
-	}
-
+	var diagnosticReportBox = await Hive.openBox<DiagnosticReport>('DiagnosticReportBox');
+	diagnosticReportBox.add(newDiagnosticReport);
+	return newDiagnosticReport;
+}
   @HiveField(0)
   final String resourceType= 'DiagnosticReport';
   @HiveField(1)
@@ -208,15 +209,17 @@ class DiagnosticReport_Media {
 		String comment,
 		Element elementComment,
 		Reference link}) async {
-	 return DiagnosticReport_Media(
-			id: await newEntry('DiagnosticReport_Media'),
+	DiagnosticReport_Media newDiagnosticReport_Media = new DiagnosticReport_Media(
+			id: await newId('DiagnosticReport_Media'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			comment: comment,
 			elementComment: elementComment,
 			link: link);
-	}
-
+	var diagnosticReport_MediaBox = await Hive.openBox<DiagnosticReport_Media>('DiagnosticReport_MediaBox');
+	diagnosticReport_MediaBox.add(newDiagnosticReport_Media);
+	return newDiagnosticReport_Media;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

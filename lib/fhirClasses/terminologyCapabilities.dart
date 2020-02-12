@@ -64,8 +64,8 @@ class TerminologyCapabilities {
 		TerminologyCapabilities_ValidateCode validateCode,
 		TerminologyCapabilities_Translation translation,
 		TerminologyCapabilities_Closure closure}) async {
-	 return TerminologyCapabilities(
-			id: await newEntry('TerminologyCapabilities'),
+	TerminologyCapabilities newTerminologyCapabilities = new TerminologyCapabilities(
+			id: await newId('TerminologyCapabilities'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -113,8 +113,10 @@ class TerminologyCapabilities {
 			validateCode: validateCode,
 			translation: translation,
 			closure: closure);
-	}
-
+	var terminologyCapabilitiesBox = await Hive.openBox<TerminologyCapabilities>('TerminologyCapabilitiesBox');
+	terminologyCapabilitiesBox.add(newTerminologyCapabilities);
+	return newTerminologyCapabilities;
+}
   @HiveField(0)
   final String resourceType= 'TerminologyCapabilities';
   @HiveField(1)
@@ -280,16 +282,18 @@ class TerminologyCapabilities_Software {
 		Element elementName,
 		String version,
 		Element elementVersion}) async {
-	 return TerminologyCapabilities_Software(
-			id: await newEntry('TerminologyCapabilities_Software'),
+	TerminologyCapabilities_Software newTerminologyCapabilities_Software = new TerminologyCapabilities_Software(
+			id: await newId('TerminologyCapabilities_Software'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			version: version,
 			elementVersion: elementVersion);
-	}
-
+	var terminologyCapabilities_SoftwareBox = await Hive.openBox<TerminologyCapabilities_Software>('TerminologyCapabilities_SoftwareBox');
+	terminologyCapabilities_SoftwareBox.add(newTerminologyCapabilities_Software);
+	return newTerminologyCapabilities_Software;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -323,16 +327,18 @@ class TerminologyCapabilities_Implementation {
 		Element elementDescription,
 		String url,
 		Element elementUrl}) async {
-	 return TerminologyCapabilities_Implementation(
-			id: await newEntry('TerminologyCapabilities_Implementation'),
+	TerminologyCapabilities_Implementation newTerminologyCapabilities_Implementation = new TerminologyCapabilities_Implementation(
+			id: await newId('TerminologyCapabilities_Implementation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
 			elementDescription: elementDescription,
 			url: url,
 			elementUrl: elementUrl);
-	}
-
+	var terminologyCapabilities_ImplementationBox = await Hive.openBox<TerminologyCapabilities_Implementation>('TerminologyCapabilities_ImplementationBox');
+	terminologyCapabilities_ImplementationBox.add(newTerminologyCapabilities_Implementation);
+	return newTerminologyCapabilities_Implementation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -366,16 +372,18 @@ class TerminologyCapabilities_CodeSystem {
 		List<TerminologyCapabilities_Version> version,
 		bool subsumption,
 		Element elementSubsumption}) async {
-	 return TerminologyCapabilities_CodeSystem(
-			id: await newEntry('TerminologyCapabilities_CodeSystem'),
+	TerminologyCapabilities_CodeSystem newTerminologyCapabilities_CodeSystem = new TerminologyCapabilities_CodeSystem(
+			id: await newId('TerminologyCapabilities_CodeSystem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			uri: uri,
 			version: version,
 			subsumption: subsumption,
 			elementSubsumption: elementSubsumption);
-	}
-
+	var terminologyCapabilities_CodeSystemBox = await Hive.openBox<TerminologyCapabilities_CodeSystem>('TerminologyCapabilities_CodeSystemBox');
+	terminologyCapabilities_CodeSystemBox.add(newTerminologyCapabilities_CodeSystem);
+	return newTerminologyCapabilities_CodeSystem;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -416,8 +424,8 @@ class TerminologyCapabilities_Version {
 		List<TerminologyCapabilities_Filter> filter,
 		List<String> property,
 		List<Element> elementProperty}) async {
-	 return TerminologyCapabilities_Version(
-			id: await newEntry('TerminologyCapabilities_Version'),
+	TerminologyCapabilities_Version newTerminologyCapabilities_Version = new TerminologyCapabilities_Version(
+			id: await newId('TerminologyCapabilities_Version'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -431,8 +439,10 @@ class TerminologyCapabilities_Version {
 			filter: filter,
 			property: property,
 			elementProperty: elementProperty);
-	}
-
+	var terminologyCapabilities_VersionBox = await Hive.openBox<TerminologyCapabilities_Version>('TerminologyCapabilities_VersionBox');
+	terminologyCapabilities_VersionBox.add(newTerminologyCapabilities_Version);
+	return newTerminologyCapabilities_Version;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -480,16 +490,18 @@ class TerminologyCapabilities_Filter {
 		Element elementCode,
 		List<String> op,
 		List<Element> elementOp}) async {
-	 return TerminologyCapabilities_Filter(
-			id: await newEntry('TerminologyCapabilities_Filter'),
+	TerminologyCapabilities_Filter newTerminologyCapabilities_Filter = new TerminologyCapabilities_Filter(
+			id: await newId('TerminologyCapabilities_Filter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
 			op: op,
 			elementOp: elementOp);
-	}
-
+	var terminologyCapabilities_FilterBox = await Hive.openBox<TerminologyCapabilities_Filter>('TerminologyCapabilities_FilterBox');
+	terminologyCapabilities_FilterBox.add(newTerminologyCapabilities_Filter);
+	return newTerminologyCapabilities_Filter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -528,8 +540,8 @@ class TerminologyCapabilities_Expansion {
 		List<TerminologyCapabilities_Parameter> parameter,
 		String textFilter,
 		Element elementTextFilter}) async {
-	 return TerminologyCapabilities_Expansion(
-			id: await newEntry('TerminologyCapabilities_Expansion'),
+	TerminologyCapabilities_Expansion newTerminologyCapabilities_Expansion = new TerminologyCapabilities_Expansion(
+			id: await newId('TerminologyCapabilities_Expansion'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			hierarchical: hierarchical,
@@ -541,8 +553,10 @@ class TerminologyCapabilities_Expansion {
 			parameter: parameter,
 			textFilter: textFilter,
 			elementTextFilter: elementTextFilter);
-	}
-
+	var terminologyCapabilities_ExpansionBox = await Hive.openBox<TerminologyCapabilities_Expansion>('TerminologyCapabilities_ExpansionBox');
+	terminologyCapabilities_ExpansionBox.add(newTerminologyCapabilities_Expansion);
+	return newTerminologyCapabilities_Expansion;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -586,16 +600,18 @@ class TerminologyCapabilities_Parameter {
 		Element elementName,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return TerminologyCapabilities_Parameter(
-			id: await newEntry('TerminologyCapabilities_Parameter'),
+	TerminologyCapabilities_Parameter newTerminologyCapabilities_Parameter = new TerminologyCapabilities_Parameter(
+			id: await newId('TerminologyCapabilities_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var terminologyCapabilities_ParameterBox = await Hive.openBox<TerminologyCapabilities_Parameter>('TerminologyCapabilities_ParameterBox');
+	terminologyCapabilities_ParameterBox.add(newTerminologyCapabilities_Parameter);
+	return newTerminologyCapabilities_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -627,14 +643,16 @@ class TerminologyCapabilities_ValidateCode {
 		List<Extension> modifierExtension,
 		bool translations,
 		Element elementTranslations}) async {
-	 return TerminologyCapabilities_ValidateCode(
-			id: await newEntry('TerminologyCapabilities_ValidateCode'),
+	TerminologyCapabilities_ValidateCode newTerminologyCapabilities_ValidateCode = new TerminologyCapabilities_ValidateCode(
+			id: await newId('TerminologyCapabilities_ValidateCode'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			translations: translations,
 			elementTranslations: elementTranslations);
-	}
-
+	var terminologyCapabilities_ValidateCodeBox = await Hive.openBox<TerminologyCapabilities_ValidateCode>('TerminologyCapabilities_ValidateCodeBox');
+	terminologyCapabilities_ValidateCodeBox.add(newTerminologyCapabilities_ValidateCode);
+	return newTerminologyCapabilities_ValidateCode;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -662,14 +680,16 @@ class TerminologyCapabilities_Translation {
 		List<Extension> modifierExtension,
 		bool needsMap,
 		Element elementNeedsMap}) async {
-	 return TerminologyCapabilities_Translation(
-			id: await newEntry('TerminologyCapabilities_Translation'),
+	TerminologyCapabilities_Translation newTerminologyCapabilities_Translation = new TerminologyCapabilities_Translation(
+			id: await newId('TerminologyCapabilities_Translation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			needsMap: needsMap,
 			elementNeedsMap: elementNeedsMap);
-	}
-
+	var terminologyCapabilities_TranslationBox = await Hive.openBox<TerminologyCapabilities_Translation>('TerminologyCapabilities_TranslationBox');
+	terminologyCapabilities_TranslationBox.add(newTerminologyCapabilities_Translation);
+	return newTerminologyCapabilities_Translation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -697,14 +717,16 @@ class TerminologyCapabilities_Closure {
 		List<Extension> modifierExtension,
 		bool translation,
 		Element elementTranslation}) async {
-	 return TerminologyCapabilities_Closure(
-			id: await newEntry('TerminologyCapabilities_Closure'),
+	TerminologyCapabilities_Closure newTerminologyCapabilities_Closure = new TerminologyCapabilities_Closure(
+			id: await newId('TerminologyCapabilities_Closure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			translation: translation,
 			elementTranslation: elementTranslation);
-	}
-
+	var terminologyCapabilities_ClosureBox = await Hive.openBox<TerminologyCapabilities_Closure>('TerminologyCapabilities_ClosureBox');
+	terminologyCapabilities_ClosureBox.add(newTerminologyCapabilities_Closure);
+	return newTerminologyCapabilities_Closure;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

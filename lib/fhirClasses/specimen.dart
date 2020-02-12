@@ -45,8 +45,8 @@ class Specimen {
 		List<Specimen_Container> container,
 		List<CodeableConcept> condition,
 		List<Annotation> note}) async {
-	 return Specimen(
-			id: await newEntry('Specimen'),
+	Specimen newSpecimen = new Specimen(
+			id: await newId('Specimen'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,8 +71,10 @@ class Specimen {
 			container: container,
 			condition: condition,
 			note: note);
-	}
-
+	var specimenBox = await Hive.openBox<Specimen>('SpecimenBox');
+	specimenBox.add(newSpecimen);
+	return newSpecimen;
+}
   @HiveField(0)
   final String resourceType= 'Specimen';
   @HiveField(1)
@@ -175,8 +177,8 @@ class Specimen_Collection {
 		CodeableConcept bodySite,
 		CodeableConcept fastingStatusCodeableConcept,
 		Duration fastingStatusDuration}) async {
-	 return Specimen_Collection(
-			id: await newEntry('Specimen_Collection'),
+	Specimen_Collection newSpecimen_Collection = new Specimen_Collection(
+			id: await newId('Specimen_Collection'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			collector: collector,
@@ -189,8 +191,10 @@ class Specimen_Collection {
 			bodySite: bodySite,
 			fastingStatusCodeableConcept: fastingStatusCodeableConcept,
 			fastingStatusDuration: fastingStatusDuration);
-	}
-
+	var specimen_CollectionBox = await Hive.openBox<Specimen_Collection>('Specimen_CollectionBox');
+	specimen_CollectionBox.add(newSpecimen_Collection);
+	return newSpecimen_Collection;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -239,8 +243,8 @@ class Specimen_Processing {
 		String timeDateTime,
 		Element elementTimeDateTime,
 		Period timePeriod}) async {
-	 return Specimen_Processing(
-			id: await newEntry('Specimen_Processing'),
+	Specimen_Processing newSpecimen_Processing = new Specimen_Processing(
+			id: await newId('Specimen_Processing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -250,8 +254,10 @@ class Specimen_Processing {
 			timeDateTime: timeDateTime,
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod);
-	}
-
+	var specimen_ProcessingBox = await Hive.openBox<Specimen_Processing>('Specimen_ProcessingBox');
+	specimen_ProcessingBox.add(newSpecimen_Processing);
+	return newSpecimen_Processing;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -295,8 +301,8 @@ class Specimen_Container {
 		Quantity specimenQuantity,
 		CodeableConcept additiveCodeableConcept,
 		Reference additiveReference}) async {
-	 return Specimen_Container(
-			id: await newEntry('Specimen_Container'),
+	Specimen_Container newSpecimen_Container = new Specimen_Container(
+			id: await newId('Specimen_Container'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -307,8 +313,10 @@ class Specimen_Container {
 			specimenQuantity: specimenQuantity,
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference);
-	}
-
+	var specimen_ContainerBox = await Hive.openBox<Specimen_Container>('Specimen_ContainerBox');
+	specimen_ContainerBox.add(newSpecimen_Container);
+	return newSpecimen_Container;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -23,16 +22,18 @@ class UsageContext {
 		Quantity valueQuantity,
 		Range valueRange,
 		Reference valueReference}) async {
-	 return UsageContext(
-			id: await newEntry('UsageContext'),
+	UsageContext newUsageContext = new UsageContext(
+			id: await newId('UsageContext'),
 			extension: extension,
 			code: code,
 			valueCodeableConcept: valueCodeableConcept,
 			valueQuantity: valueQuantity,
 			valueRange: valueRange,
 			valueReference: valueReference);
-	}
-
+	var usageContextBox = await Hive.openBox<UsageContext>('UsageContextBox');
+	usageContextBox.add(newUsageContext);
+	return newUsageContext;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

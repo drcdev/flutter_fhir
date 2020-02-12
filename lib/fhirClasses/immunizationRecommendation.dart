@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -34,8 +33,8 @@ class ImmunizationRecommendation {
 		Element elementDate,
 		Reference authority,
 		List<ImmunizationRecommendation_Recommendation> recommendation}) async {
-	 return ImmunizationRecommendation(
-			id: await newEntry('ImmunizationRecommendation'),
+	ImmunizationRecommendation newImmunizationRecommendation = new ImmunizationRecommendation(
+			id: await newId('ImmunizationRecommendation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,8 +50,10 @@ class ImmunizationRecommendation {
 			elementDate: elementDate,
 			authority: authority,
 			recommendation: recommendation);
-	}
-
+	var immunizationRecommendationBox = await Hive.openBox<ImmunizationRecommendation>('ImmunizationRecommendationBox');
+	immunizationRecommendationBox.add(newImmunizationRecommendation);
+	return newImmunizationRecommendation;
+}
   @HiveField(0)
   final String resourceType= 'ImmunizationRecommendation';
   @HiveField(1)
@@ -138,8 +139,8 @@ class ImmunizationRecommendation_Recommendation {
 		Element elementSeriesDosesString,
 		List<Reference> supportingImmunization,
 		List<Reference> supportingPatientInformation}) async {
-	 return ImmunizationRecommendation_Recommendation(
-			id: await newEntry('ImmunizationRecommendation_Recommendation'),
+	ImmunizationRecommendation_Recommendation newImmunizationRecommendation_Recommendation = new ImmunizationRecommendation_Recommendation(
+			id: await newId('ImmunizationRecommendation_Recommendation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			vaccineCode: vaccineCode,
@@ -162,8 +163,10 @@ class ImmunizationRecommendation_Recommendation {
 			elementSeriesDosesString: elementSeriesDosesString,
 			supportingImmunization: supportingImmunization,
 			supportingPatientInformation: supportingPatientInformation);
-	}
-
+	var immunizationRecommendation_RecommendationBox = await Hive.openBox<ImmunizationRecommendation_Recommendation>('ImmunizationRecommendation_RecommendationBox');
+	immunizationRecommendation_RecommendationBox.add(newImmunizationRecommendation_Recommendation);
+	return newImmunizationRecommendation_Recommendation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -228,15 +231,17 @@ class ImmunizationRecommendation_DateCriterion {
 		CodeableConcept code,
 		DateTime value,
 		Element elementValue}) async {
-	 return ImmunizationRecommendation_DateCriterion(
-			id: await newEntry('ImmunizationRecommendation_DateCriterion'),
+	ImmunizationRecommendation_DateCriterion newImmunizationRecommendation_DateCriterion = new ImmunizationRecommendation_DateCriterion(
+			id: await newId('ImmunizationRecommendation_DateCriterion'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var immunizationRecommendation_DateCriterionBox = await Hive.openBox<ImmunizationRecommendation_DateCriterion>('ImmunizationRecommendation_DateCriterionBox');
+	immunizationRecommendation_DateCriterionBox.add(newImmunizationRecommendation_DateCriterion);
+	return newImmunizationRecommendation_DateCriterion;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

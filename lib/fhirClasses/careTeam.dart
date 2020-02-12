@@ -44,8 +44,8 @@ class CareTeam {
 		List<Reference> managingOrganization,
 		List<ContactPoint> telecom,
 		List<Annotation> note}) async {
-	 return CareTeam(
-			id: await newEntry('CareTeam'),
+	CareTeam newCareTeam = new CareTeam(
+			id: await newId('CareTeam'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,8 +70,10 @@ class CareTeam {
 			managingOrganization: managingOrganization,
 			telecom: telecom,
 			note: note);
-	}
-
+	var careTeamBox = await Hive.openBox<CareTeam>('CareTeamBox');
+	careTeamBox.add(newCareTeam);
+	return newCareTeam;
+}
   @HiveField(0)
   final String resourceType= 'CareTeam';
   @HiveField(1)
@@ -168,16 +170,18 @@ class CareTeam_Participant {
 		Reference member,
 		Reference onBehalfOf,
 		Period period}) async {
-	 return CareTeam_Participant(
-			id: await newEntry('CareTeam_Participant'),
+	CareTeam_Participant newCareTeam_Participant = new CareTeam_Participant(
+			id: await newId('CareTeam_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
 			member: member,
 			onBehalfOf: onBehalfOf,
 			period: period);
-	}
-
+	var careTeam_ParticipantBox = await Hive.openBox<CareTeam_Participant>('CareTeam_ParticipantBox');
+	careTeam_ParticipantBox.add(newCareTeam_Participant);
+	return newCareTeam_Participant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

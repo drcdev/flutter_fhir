@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -46,8 +45,8 @@ class Practitioner {
 		List<Attachment> photo,
 		List<Practitioner_Qualification> qualification,
 		List<CodeableConcept> communication}) async {
-	 return Practitioner(
-			id: await newEntry('Practitioner'),
+	Practitioner newPractitioner = new Practitioner(
+			id: await newId('Practitioner'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,8 +69,10 @@ class Practitioner {
 			photo: photo,
 			qualification: qualification,
 			communication: communication);
-	}
-
+	var practitionerBox = await Hive.openBox<Practitioner>('PractitionerBox');
+	practitionerBox.add(newPractitioner);
+	return newPractitioner;
+}
   @HiveField(0)
   final String resourceType= 'Practitioner';
   @HiveField(1)
@@ -162,16 +163,18 @@ class Practitioner_Qualification {
 		CodeableConcept code,
 		Period period,
 		Reference issuer}) async {
-	 return Practitioner_Qualification(
-			id: await newEntry('Practitioner_Qualification'),
+	Practitioner_Qualification newPractitioner_Qualification = new Practitioner_Qualification(
+			id: await newId('Practitioner_Qualification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
 			code: code,
 			period: period,
 			issuer: issuer);
-	}
-
+	var practitioner_QualificationBox = await Hive.openBox<Practitioner_Qualification>('Practitioner_QualificationBox');
+	practitioner_QualificationBox.add(newPractitioner_Qualification);
+	return newPractitioner_Qualification;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

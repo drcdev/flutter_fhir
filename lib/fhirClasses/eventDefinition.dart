@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
@@ -77,8 +76,8 @@ class EventDefinition {
 		List<ContactDetail> endorser,
 		List<RelatedArtifact> relatedArtifact,
 		List<TriggerDefinition> trigger}) async {
-	 return EventDefinition(
-			id: await newEntry('EventDefinition'),
+	EventDefinition newEventDefinition = new EventDefinition(
+			id: await newId('EventDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -132,8 +131,10 @@ class EventDefinition {
 			endorser: endorser,
 			relatedArtifact: relatedArtifact,
 			trigger: trigger);
-	}
-
+	var eventDefinitionBox = await Hive.openBox<EventDefinition>('EventDefinitionBox');
+	eventDefinitionBox.add(newEventDefinition);
+	return newEventDefinition;
+}
   @HiveField(0)
   final String resourceType= 'EventDefinition';
   @HiveField(1)

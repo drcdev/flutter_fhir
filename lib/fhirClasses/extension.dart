@@ -56,7 +56,7 @@ class Extension {
 		Element elementValueDate,
 		String valueDateTime,
 		Element elementValueDateTime,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		String valueId,
 		Element elementValueId,
@@ -113,8 +113,8 @@ class Extension {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
-	 return Extension(
-			id: await newEntry('Extension'),
+	Extension newExtension = new Extension(
+			id: await newId('Extension'),
 			extension: extension,
 			url: url,
 			elementUrl: elementUrl,
@@ -187,8 +187,10 @@ class Extension {
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
-	}
-
+	var extensionBox = await Hive.openBox<Extension>('ExtensionBox');
+	extensionBox.add(newExtension);
+	return newExtension;
+}
   @HiveField(0)
   String id;
   @HiveField(1)
@@ -221,7 +223,7 @@ class Extension {
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   @HiveField(15)
   Element elementValueDateTime;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   @HiveField(17)
   Element elementValueDecimal;
   @HiveField(18)
@@ -688,7 +690,7 @@ Extension _$ExtensionFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementValueDateTime'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

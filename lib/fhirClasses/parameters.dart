@@ -49,16 +49,18 @@ class Parameters {
 		String language,
 		Element elementLanguage,
 		List<Parameters_Parameter> parameter}) async {
-	 return Parameters(
-			id: await newEntry('Parameters'),
+	Parameters newParameters = new Parameters(
+			id: await newId('Parameters'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
 			language: language,
 			elementLanguage: elementLanguage,
 			parameter: parameter);
-	}
-
+	var parametersBox = await Hive.openBox<Parameters>('ParametersBox');
+	parametersBox.add(newParameters);
+	return newParameters;
+}
   @HiveField(0)
   final String resourceType= 'Parameters';
   @HiveField(1)
@@ -111,7 +113,7 @@ class Parameters_Parameter {
 		Element elementValueDate,
 		String valueDateTime,
 		Element elementValueDateTime,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		String valueId,
 		Element elementValueId,
@@ -170,8 +172,8 @@ class Parameters_Parameter {
 		Meta valueMeta,
 		dynamic resource,
 		List<Parameters_Parameter> part}) async {
-	 return Parameters_Parameter(
-			id: await newEntry('Parameters_Parameter'),
+	Parameters_Parameter newParameters_Parameter = new Parameters_Parameter(
+			id: await newId('Parameters_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -247,8 +249,10 @@ class Parameters_Parameter {
 			valueMeta: valueMeta,
 			resource: resource,
 			part: part);
-	}
-
+	var parameters_ParameterBox = await Hive.openBox<Parameters_Parameter>('Parameters_ParameterBox');
+	parameters_ParameterBox.add(newParameters_Parameter);
+	return newParameters_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -266,7 +270,7 @@ class Parameters_Parameter {
   Element elementValueDate;
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementValueDateTime;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
   Element elementValueId;
@@ -539,7 +543,7 @@ Parameters_Parameter _$Parameters_ParameterFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementValueDateTime'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

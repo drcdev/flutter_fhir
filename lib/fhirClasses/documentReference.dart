@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -51,8 +50,8 @@ class DocumentReference {
 		List<CodeableConcept> securityLabel,
 		List<DocumentReference_Content> content,
 		DocumentReference_Context context}) async {
-	 return DocumentReference(
-			id: await newEntry('DocumentReference'),
+	DocumentReference newDocumentReference = new DocumentReference(
+			id: await newId('DocumentReference'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -82,8 +81,10 @@ class DocumentReference {
 			securityLabel: securityLabel,
 			content: content,
 			context: context);
-	}
-
+	var documentReferenceBox = await Hive.openBox<DocumentReference>('DocumentReferenceBox');
+	documentReferenceBox.add(newDocumentReference);
+	return newDocumentReference;
+}
   @HiveField(0)
   final String resourceType= 'DocumentReference';
   @HiveField(1)
@@ -194,15 +195,17 @@ class DocumentReference_RelatesTo {
 		String code,
 		Element elementCode,
 		Reference target}) async {
-	 return DocumentReference_RelatesTo(
-			id: await newEntry('DocumentReference_RelatesTo'),
+	DocumentReference_RelatesTo newDocumentReference_RelatesTo = new DocumentReference_RelatesTo(
+			id: await newId('DocumentReference_RelatesTo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
 			target: target);
-	}
-
+	var documentReference_RelatesToBox = await Hive.openBox<DocumentReference_RelatesTo>('DocumentReference_RelatesToBox');
+	documentReference_RelatesToBox.add(newDocumentReference_RelatesTo);
+	return newDocumentReference_RelatesTo;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -232,14 +235,16 @@ class DocumentReference_Content {
 		List<Extension> modifierExtension,
 		Attachment attachment,
 		Coding format}) async {
-	 return DocumentReference_Content(
-			id: await newEntry('DocumentReference_Content'),
+	DocumentReference_Content newDocumentReference_Content = new DocumentReference_Content(
+			id: await newId('DocumentReference_Content'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			attachment: attachment,
 			format: format);
-	}
-
+	var documentReference_ContentBox = await Hive.openBox<DocumentReference_Content>('DocumentReference_ContentBox');
+	documentReference_ContentBox.add(newDocumentReference_Content);
+	return newDocumentReference_Content;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -272,8 +277,8 @@ class DocumentReference_Context {
 		CodeableConcept practiceSetting,
 		Reference sourcePatientInfo,
 		List<Reference> related}) async {
-	 return DocumentReference_Context(
-			id: await newEntry('DocumentReference_Context'),
+	DocumentReference_Context newDocumentReference_Context = new DocumentReference_Context(
+			id: await newId('DocumentReference_Context'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			encounter: encounter,
@@ -283,8 +288,10 @@ class DocumentReference_Context {
 			practiceSetting: practiceSetting,
 			sourcePatientInfo: sourcePatientInfo,
 			related: related);
-	}
-
+	var documentReference_ContextBox = await Hive.openBox<DocumentReference_Context>('DocumentReference_ContextBox');
+	documentReference_ContextBox.add(newDocumentReference_Context);
+	return newDocumentReference_Context;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -37,8 +37,8 @@ class EnrollmentResponse {
 		Element elementCreated,
 		Reference organization,
 		Reference requestProvider}) async {
-	 return EnrollmentResponse(
-			id: await newEntry('EnrollmentResponse'),
+	EnrollmentResponse newEnrollmentResponse = new EnrollmentResponse(
+			id: await newId('EnrollmentResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -60,8 +60,10 @@ class EnrollmentResponse {
 			elementCreated: elementCreated,
 			organization: organization,
 			requestProvider: requestProvider);
-	}
-
+	var enrollmentResponseBox = await Hive.openBox<EnrollmentResponse>('EnrollmentResponseBox');
+	enrollmentResponseBox.add(newEnrollmentResponse);
+	return newEnrollmentResponse;
+}
   @HiveField(0)
   final String resourceType= 'EnrollmentResponse';
   @HiveField(1)

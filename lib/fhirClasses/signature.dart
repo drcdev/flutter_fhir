@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -27,8 +26,8 @@ class Signature {
 		Element elementSigFormat,
 		String data,
 		Element elementData}) async {
-	 return Signature(
-			id: await newEntry('Signature'),
+	Signature newSignature = new Signature(
+			id: await newId('Signature'),
 			extension: extension,
 			type: type,
 			when: when,
@@ -41,8 +40,10 @@ class Signature {
 			elementSigFormat: elementSigFormat,
 			data: data,
 			elementData: elementData);
-	}
-
+	var signatureBox = await Hive.openBox<Signature>('SignatureBox');
+	signatureBox.add(newSignature);
+	return newSignature;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

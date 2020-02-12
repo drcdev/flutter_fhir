@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -53,8 +52,8 @@ class CoverageEligibilityResponse {
 		Element elementPreAuthRef,
 		CodeableConcept form,
 		List<CoverageEligibilityResponse_Error> error}) async {
-	 return CoverageEligibilityResponse(
-			id: await newEntry('CoverageEligibilityResponse'),
+	CoverageEligibilityResponse newCoverageEligibilityResponse = new CoverageEligibilityResponse(
+			id: await newId('CoverageEligibilityResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,8 +86,10 @@ class CoverageEligibilityResponse {
 			elementPreAuthRef: elementPreAuthRef,
 			form: form,
 			error: error);
-	}
-
+	var coverageEligibilityResponseBox = await Hive.openBox<CoverageEligibilityResponse>('CoverageEligibilityResponseBox');
+	coverageEligibilityResponseBox.add(newCoverageEligibilityResponse);
+	return newCoverageEligibilityResponse;
+}
   @HiveField(0)
   final String resourceType= 'CoverageEligibilityResponse';
   @HiveField(1)
@@ -210,8 +211,8 @@ class CoverageEligibilityResponse_Insurance {
 		Element elementInforce,
 		Period benefitPeriod,
 		List<CoverageEligibilityResponse_Item> item}) async {
-	 return CoverageEligibilityResponse_Insurance(
-			id: await newEntry('CoverageEligibilityResponse_Insurance'),
+	CoverageEligibilityResponse_Insurance newCoverageEligibilityResponse_Insurance = new CoverageEligibilityResponse_Insurance(
+			id: await newId('CoverageEligibilityResponse_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			coverage: coverage,
@@ -219,8 +220,10 @@ class CoverageEligibilityResponse_Insurance {
 			elementInforce: elementInforce,
 			benefitPeriod: benefitPeriod,
 			item: item);
-	}
-
+	var coverageEligibilityResponse_InsuranceBox = await Hive.openBox<CoverageEligibilityResponse_Insurance>('CoverageEligibilityResponse_InsuranceBox');
+	coverageEligibilityResponse_InsuranceBox.add(newCoverageEligibilityResponse_Insurance);
+	return newCoverageEligibilityResponse_Insurance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -271,8 +274,8 @@ class CoverageEligibilityResponse_Item {
 		List<CodeableConcept> authorizationSupporting,
 		String authorizationUrl,
 		Element elementAuthorizationUrl}) async {
-	 return CoverageEligibilityResponse_Item(
-			id: await newEntry('CoverageEligibilityResponse_Item'),
+	CoverageEligibilityResponse_Item newCoverageEligibilityResponse_Item = new CoverageEligibilityResponse_Item(
+			id: await newId('CoverageEligibilityResponse_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -294,8 +297,10 @@ class CoverageEligibilityResponse_Item {
 			authorizationSupporting: authorizationSupporting,
 			authorizationUrl: authorizationUrl,
 			elementAuthorizationUrl: elementAuthorizationUrl);
-	}
-
+	var coverageEligibilityResponse_ItemBox = await Hive.openBox<CoverageEligibilityResponse_Item>('CoverageEligibilityResponse_ItemBox');
+	coverageEligibilityResponse_ItemBox.add(newCoverageEligibilityResponse_Item);
+	return newCoverageEligibilityResponse_Item;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -366,8 +371,8 @@ class CoverageEligibilityResponse_Benefit {
 		String usedString,
 		Element elementUsedString,
 		Money usedMoney}) async {
-	 return CoverageEligibilityResponse_Benefit(
-			id: await newEntry('CoverageEligibilityResponse_Benefit'),
+	CoverageEligibilityResponse_Benefit newCoverageEligibilityResponse_Benefit = new CoverageEligibilityResponse_Benefit(
+			id: await newId('CoverageEligibilityResponse_Benefit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -381,8 +386,10 @@ class CoverageEligibilityResponse_Benefit {
 			usedString: usedString,
 			elementUsedString: elementUsedString,
 			usedMoney: usedMoney);
-	}
-
+	var coverageEligibilityResponse_BenefitBox = await Hive.openBox<CoverageEligibilityResponse_Benefit>('CoverageEligibilityResponse_BenefitBox');
+	coverageEligibilityResponse_BenefitBox.add(newCoverageEligibilityResponse_Benefit);
+	return newCoverageEligibilityResponse_Benefit;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -427,13 +434,15 @@ class CoverageEligibilityResponse_Error {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		CodeableConcept code}) async {
-	 return CoverageEligibilityResponse_Error(
-			id: await newEntry('CoverageEligibilityResponse_Error'),
+	CoverageEligibilityResponse_Error newCoverageEligibilityResponse_Error = new CoverageEligibilityResponse_Error(
+			id: await newId('CoverageEligibilityResponse_Error'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code);
-	}
-
+	var coverageEligibilityResponse_ErrorBox = await Hive.openBox<CoverageEligibilityResponse_Error>('CoverageEligibilityResponse_ErrorBox');
+	coverageEligibilityResponse_ErrorBox.add(newCoverageEligibilityResponse_Error);
+	return newCoverageEligibilityResponse_Error;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

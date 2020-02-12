@@ -68,8 +68,8 @@ class Questionnaire {
 		Period effectivePeriod,
 		List<Coding> code,
 		List<Questionnaire_Item> item}) async {
-	 return Questionnaire(
-			id: await newEntry('Questionnaire'),
+	Questionnaire newQuestionnaire = new Questionnaire(
+			id: await newId('Questionnaire'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -115,8 +115,10 @@ class Questionnaire {
 			effectivePeriod: effectivePeriod,
 			code: code,
 			item: item);
-	}
-
+	var questionnaireBox = await Hive.openBox<Questionnaire>('QuestionnaireBox');
+	questionnaireBox.add(newQuestionnaire);
+	return newQuestionnaire;
+}
   @HiveField(0)
   final String resourceType= 'Questionnaire';
   @HiveField(1)
@@ -298,8 +300,8 @@ class Questionnaire_Item {
 		List<Questionnaire_AnswerOption> answerOption,
 		List<Questionnaire_Initial> initial,
 		List<Questionnaire_Item> item}) async {
-	 return Questionnaire_Item(
-			id: await newEntry('Questionnaire_Item'),
+	Questionnaire_Item newQuestionnaire_Item = new Questionnaire_Item(
+			id: await newId('Questionnaire_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			linkId: linkId,
@@ -328,8 +330,10 @@ class Questionnaire_Item {
 			answerOption: answerOption,
 			initial: initial,
 			item: item);
-	}
-
+	var questionnaire_ItemBox = await Hive.openBox<Questionnaire_Item>('Questionnaire_ItemBox');
+	questionnaire_ItemBox.add(newQuestionnaire_Item);
+	return newQuestionnaire_Item;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -409,7 +413,7 @@ class Questionnaire_EnableWhen {
 		Element elementOperator,
 		bool answerBoolean,
 		Element elementAnswerBoolean,
-		double answerDecimal,
+		int answerDecimal,
 		Element elementAnswerDecimal,
 		int answerInteger,
 		Element elementAnswerInteger,
@@ -424,8 +428,8 @@ class Questionnaire_EnableWhen {
 		Coding answerCoding,
 		Quantity answerQuantity,
 		Reference answerReference}) async {
-	 return Questionnaire_EnableWhen(
-			id: await newEntry('Questionnaire_EnableWhen'),
+	Questionnaire_EnableWhen newQuestionnaire_EnableWhen = new Questionnaire_EnableWhen(
+			id: await newId('Questionnaire_EnableWhen'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			question: question,
@@ -449,8 +453,10 @@ class Questionnaire_EnableWhen {
 			answerCoding: answerCoding,
 			answerQuantity: answerQuantity,
 			answerReference: answerReference);
-	}
-
+	var questionnaire_EnableWhenBox = await Hive.openBox<Questionnaire_EnableWhen>('Questionnaire_EnableWhenBox');
+	questionnaire_EnableWhenBox.add(newQuestionnaire_EnableWhen);
+	return newQuestionnaire_EnableWhen;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -460,7 +466,7 @@ class Questionnaire_EnableWhen {
   Element elementOperator;
   bool answerBoolean; //  pattern: ^true|false$
   Element elementAnswerBoolean;
-  double answerDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int answerDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementAnswerDecimal;
   int answerInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
   Element elementAnswerInteger;
@@ -526,8 +532,8 @@ class Questionnaire_AnswerOption {
 		Reference valueReference,
 		bool initialSelected,
 		Element elementInitialSelected}) async {
-	 return Questionnaire_AnswerOption(
-			id: await newEntry('Questionnaire_AnswerOption'),
+	Questionnaire_AnswerOption newQuestionnaire_AnswerOption = new Questionnaire_AnswerOption(
+			id: await newId('Questionnaire_AnswerOption'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueInteger: valueInteger,
@@ -542,8 +548,10 @@ class Questionnaire_AnswerOption {
 			valueReference: valueReference,
 			initialSelected: initialSelected,
 			elementInitialSelected: elementInitialSelected);
-	}
-
+	var questionnaire_AnswerOptionBox = await Hive.openBox<Questionnaire_AnswerOption>('Questionnaire_AnswerOptionBox');
+	questionnaire_AnswerOptionBox.add(newQuestionnaire_AnswerOption);
+	return newQuestionnaire_AnswerOption;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -591,7 +599,7 @@ class Questionnaire_Initial {
 		List<Extension> modifierExtension,
 		bool valueBoolean,
 		Element elementValueBoolean,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		int valueInteger,
 		Element elementValueInteger,
@@ -609,8 +617,8 @@ class Questionnaire_Initial {
 		Coding valueCoding,
 		Quantity valueQuantity,
 		Reference valueReference}) async {
-	 return Questionnaire_Initial(
-			id: await newEntry('Questionnaire_Initial'),
+	Questionnaire_Initial newQuestionnaire_Initial = new Questionnaire_Initial(
+			id: await newId('Questionnaire_Initial'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueBoolean: valueBoolean,
@@ -633,14 +641,16 @@ class Questionnaire_Initial {
 			valueCoding: valueCoding,
 			valueQuantity: valueQuantity,
 			valueReference: valueReference);
-	}
-
+	var questionnaire_InitialBox = await Hive.openBox<Questionnaire_Initial>('Questionnaire_InitialBox');
+	questionnaire_InitialBox.add(newQuestionnaire_Initial);
+	return newQuestionnaire_Initial;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   bool valueBoolean; //  pattern: ^true|false$
   Element elementValueBoolean;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
   Element elementValueInteger;
@@ -1175,7 +1185,7 @@ Questionnaire_EnableWhen _$Questionnaire_EnableWhenFromJson(
         ? null
         : Element.fromJson(
             json['elementAnswerBoolean'] as Map<String, dynamic>),
-    answerDecimal: (json['answerDecimal'] as num)?.toDouble(),
+    answerDecimal: json['answerDecimal'] as int,
     elementAnswerDecimal: json['elementAnswerDecimal'] == null
         ? null
         : Element.fromJson(
@@ -1323,7 +1333,7 @@ Questionnaire_Initial _$Questionnaire_InitialFromJson(
     elementValueBoolean: json['elementValueBoolean'] == null
         ? null
         : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

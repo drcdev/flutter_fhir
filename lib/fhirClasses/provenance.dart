@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
@@ -43,8 +42,8 @@ class Provenance {
 		List<Provenance_Agent> agent,
 		List<Provenance_Entity> entity,
 		List<Signature> signature}) async {
-	 return Provenance(
-			id: await newEntry('Provenance'),
+	Provenance newProvenance = new Provenance(
+			id: await newId('Provenance'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -68,8 +67,10 @@ class Provenance {
 			agent: agent,
 			entity: entity,
 			signature: signature);
-	}
-
+	var provenanceBox = await Hive.openBox<Provenance>('ProvenanceBox');
+	provenanceBox.add(newProvenance);
+	return newProvenance;
+}
   @HiveField(0)
   final String resourceType= 'Provenance';
   @HiveField(1)
@@ -163,16 +164,18 @@ class Provenance_Agent {
 		List<CodeableConcept> role,
 		Reference who,
 		Reference onBehalfOf}) async {
-	 return Provenance_Agent(
-			id: await newEntry('Provenance_Agent'),
+	Provenance_Agent newProvenance_Agent = new Provenance_Agent(
+			id: await newId('Provenance_Agent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			role: role,
 			who: who,
 			onBehalfOf: onBehalfOf);
-	}
-
+	var provenance_AgentBox = await Hive.openBox<Provenance_Agent>('Provenance_AgentBox');
+	provenance_AgentBox.add(newProvenance_Agent);
+	return newProvenance_Agent;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -206,16 +209,18 @@ class Provenance_Entity {
 		Element elementRole,
 		Reference what,
 		List<Provenance_Agent> agent}) async {
-	 return Provenance_Entity(
-			id: await newEntry('Provenance_Entity'),
+	Provenance_Entity newProvenance_Entity = new Provenance_Entity(
+			id: await newId('Provenance_Entity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
 			elementRole: elementRole,
 			what: what,
 			agent: agent);
-	}
-
+	var provenance_EntityBox = await Hive.openBox<Provenance_Entity>('Provenance_EntityBox');
+	provenance_EntityBox.add(newProvenance_Entity);
+	return newProvenance_Entity;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

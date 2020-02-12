@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -44,8 +43,8 @@ class Slot {
 		Element elementOverbooked,
 		String comment,
 		Element elementComment}) async {
-	 return Slot(
-			id: await newEntry('Slot'),
+	Slot newSlot = new Slot(
+			id: await newId('Slot'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,8 +70,10 @@ class Slot {
 			elementOverbooked: elementOverbooked,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var slotBox = await Hive.openBox<Slot>('SlotBox');
+	slotBox.add(newSlot);
+	return newSlot;
+}
   @HiveField(0)
   final String resourceType= 'Slot';
   @HiveField(1)

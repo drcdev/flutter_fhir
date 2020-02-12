@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -51,8 +50,8 @@ class InsurancePlan {
 		List<Reference> network,
 		List<InsurancePlan_Coverage> coverage,
 		List<InsurancePlan_Plan> plan}) async {
-	 return InsurancePlan(
-			id: await newEntry('InsurancePlan'),
+	InsurancePlan newInsurancePlan = new InsurancePlan(
+			id: await newId('InsurancePlan'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -79,8 +78,10 @@ class InsurancePlan {
 			network: network,
 			coverage: coverage,
 			plan: plan);
-	}
-
+	var insurancePlanBox = await Hive.openBox<InsurancePlan>('InsurancePlanBox');
+	insurancePlanBox.add(newInsurancePlan);
+	return newInsurancePlan;
+}
   @HiveField(0)
   final String resourceType= 'InsurancePlan';
   @HiveField(1)
@@ -183,16 +184,18 @@ class InsurancePlan_Contact {
 		HumanName name,
 		List<ContactPoint> telecom,
 		Address address}) async {
-	 return InsurancePlan_Contact(
-			id: await newEntry('InsurancePlan_Contact'),
+	InsurancePlan_Contact newInsurancePlan_Contact = new InsurancePlan_Contact(
+			id: await newId('InsurancePlan_Contact'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			purpose: purpose,
 			name: name,
 			telecom: telecom,
 			address: address);
-	}
-
+	var insurancePlan_ContactBox = await Hive.openBox<InsurancePlan_Contact>('InsurancePlan_ContactBox');
+	insurancePlan_ContactBox.add(newInsurancePlan_Contact);
+	return newInsurancePlan_Contact;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -225,15 +228,17 @@ class InsurancePlan_Coverage {
 		CodeableConcept type,
 		List<Reference> network,
 		List<InsurancePlan_Benefit> benefit}) async {
-	 return InsurancePlan_Coverage(
-			id: await newEntry('InsurancePlan_Coverage'),
+	InsurancePlan_Coverage newInsurancePlan_Coverage = new InsurancePlan_Coverage(
+			id: await newId('InsurancePlan_Coverage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			network: network,
 			benefit: benefit);
-	}
-
+	var insurancePlan_CoverageBox = await Hive.openBox<InsurancePlan_Coverage>('InsurancePlan_CoverageBox');
+	insurancePlan_CoverageBox.add(newInsurancePlan_Coverage);
+	return newInsurancePlan_Coverage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -265,16 +270,18 @@ class InsurancePlan_Benefit {
 		String requirement,
 		Element elementRequirement,
 		List<InsurancePlan_Limit> limit}) async {
-	 return InsurancePlan_Benefit(
-			id: await newEntry('InsurancePlan_Benefit'),
+	InsurancePlan_Benefit newInsurancePlan_Benefit = new InsurancePlan_Benefit(
+			id: await newId('InsurancePlan_Benefit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			requirement: requirement,
 			elementRequirement: elementRequirement,
 			limit: limit);
-	}
-
+	var insurancePlan_BenefitBox = await Hive.openBox<InsurancePlan_Benefit>('InsurancePlan_BenefitBox');
+	insurancePlan_BenefitBox.add(newInsurancePlan_Benefit);
+	return newInsurancePlan_Benefit;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -306,14 +313,16 @@ class InsurancePlan_Limit {
 		List<Extension> modifierExtension,
 		Quantity value,
 		CodeableConcept code}) async {
-	 return InsurancePlan_Limit(
-			id: await newEntry('InsurancePlan_Limit'),
+	InsurancePlan_Limit newInsurancePlan_Limit = new InsurancePlan_Limit(
+			id: await newId('InsurancePlan_Limit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			value: value,
 			code: code);
-	}
-
+	var insurancePlan_LimitBox = await Hive.openBox<InsurancePlan_Limit>('InsurancePlan_LimitBox');
+	insurancePlan_LimitBox.add(newInsurancePlan_Limit);
+	return newInsurancePlan_Limit;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -345,8 +354,8 @@ class InsurancePlan_Plan {
 		List<Reference> network,
 		List<InsurancePlan_GeneralCost> generalCost,
 		List<InsurancePlan_SpecificCost> specificCost}) async {
-	 return InsurancePlan_Plan(
-			id: await newEntry('InsurancePlan_Plan'),
+	InsurancePlan_Plan newInsurancePlan_Plan = new InsurancePlan_Plan(
+			id: await newId('InsurancePlan_Plan'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -355,8 +364,10 @@ class InsurancePlan_Plan {
 			network: network,
 			generalCost: generalCost,
 			specificCost: specificCost);
-	}
-
+	var insurancePlan_PlanBox = await Hive.openBox<InsurancePlan_Plan>('InsurancePlan_PlanBox');
+	insurancePlan_PlanBox.add(newInsurancePlan_Plan);
+	return newInsurancePlan_Plan;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -396,8 +407,8 @@ class InsurancePlan_GeneralCost {
 		Money cost,
 		String comment,
 		Element elementComment}) async {
-	 return InsurancePlan_GeneralCost(
-			id: await newEntry('InsurancePlan_GeneralCost'),
+	InsurancePlan_GeneralCost newInsurancePlan_GeneralCost = new InsurancePlan_GeneralCost(
+			id: await newId('InsurancePlan_GeneralCost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -406,8 +417,10 @@ class InsurancePlan_GeneralCost {
 			cost: cost,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var insurancePlan_GeneralCostBox = await Hive.openBox<InsurancePlan_GeneralCost>('InsurancePlan_GeneralCostBox');
+	insurancePlan_GeneralCostBox.add(newInsurancePlan_GeneralCost);
+	return newInsurancePlan_GeneralCost;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -443,14 +456,16 @@ class InsurancePlan_SpecificCost {
 		List<Extension> modifierExtension,
 		CodeableConcept category,
 		List<InsurancePlan_Benefit1> benefit}) async {
-	 return InsurancePlan_SpecificCost(
-			id: await newEntry('InsurancePlan_SpecificCost'),
+	InsurancePlan_SpecificCost newInsurancePlan_SpecificCost = new InsurancePlan_SpecificCost(
+			id: await newId('InsurancePlan_SpecificCost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
 			benefit: benefit);
-	}
-
+	var insurancePlan_SpecificCostBox = await Hive.openBox<InsurancePlan_SpecificCost>('InsurancePlan_SpecificCostBox');
+	insurancePlan_SpecificCostBox.add(newInsurancePlan_SpecificCost);
+	return newInsurancePlan_SpecificCost;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -478,14 +493,16 @@ class InsurancePlan_Benefit1 {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<InsurancePlan_Cost> cost}) async {
-	 return InsurancePlan_Benefit1(
-			id: await newEntry('InsurancePlan_Benefit1'),
+	InsurancePlan_Benefit1 newInsurancePlan_Benefit1 = new InsurancePlan_Benefit1(
+			id: await newId('InsurancePlan_Benefit1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			cost: cost);
-	}
-
+	var insurancePlan_Benefit1Box = await Hive.openBox<InsurancePlan_Benefit1>('InsurancePlan_Benefit1Box');
+	insurancePlan_Benefit1Box.add(newInsurancePlan_Benefit1);
+	return newInsurancePlan_Benefit1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -515,16 +532,18 @@ class InsurancePlan_Cost {
 		CodeableConcept applicability,
 		List<CodeableConcept> qualifiers,
 		Quantity value}) async {
-	 return InsurancePlan_Cost(
-			id: await newEntry('InsurancePlan_Cost'),
+	InsurancePlan_Cost newInsurancePlan_Cost = new InsurancePlan_Cost(
+			id: await newId('InsurancePlan_Cost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			applicability: applicability,
 			qualifiers: qualifiers,
 			value: value);
-	}
-
+	var insurancePlan_CostBox = await Hive.openBox<InsurancePlan_Cost>('InsurancePlan_CostBox');
+	insurancePlan_CostBox.add(newInsurancePlan_Cost);
+	return newInsurancePlan_Cost;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -66,8 +65,8 @@ class ClaimResponse {
 		List<Reference> communicationRequest,
 		List<ClaimResponse_Insurance> insurance,
 		List<ClaimResponse_Error> error}) async {
-	 return ClaimResponse(
-			id: await newEntry('ClaimResponse'),
+	ClaimResponse newClaimResponse = new ClaimResponse(
+			id: await newId('ClaimResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -110,8 +109,10 @@ class ClaimResponse {
 			communicationRequest: communicationRequest,
 			insurance: insurance,
 			error: error);
-	}
-
+	var claimResponseBox = await Hive.openBox<ClaimResponse>('ClaimResponseBox');
+	claimResponseBox.add(newClaimResponse);
+	return newClaimResponse;
+}
   @HiveField(0)
   final String resourceType= 'ClaimResponse';
   @HiveField(1)
@@ -264,8 +265,8 @@ class ClaimResponse_Item {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_Detail> detail}) async {
-	 return ClaimResponse_Item(
-			id: await newEntry('ClaimResponse_Item'),
+	ClaimResponse_Item newClaimResponse_Item = new ClaimResponse_Item(
+			id: await newId('ClaimResponse_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -274,8 +275,10 @@ class ClaimResponse_Item {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			detail: detail);
-	}
-
+	var claimResponse_ItemBox = await Hive.openBox<ClaimResponse_Item>('ClaimResponse_ItemBox');
+	claimResponse_ItemBox.add(newClaimResponse_Item);
+	return newClaimResponse_Item;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -314,8 +317,8 @@ class ClaimResponse_Adjudication {
 		Money amount,
 		double value,
 		Element elementValue}) async {
-	 return ClaimResponse_Adjudication(
-			id: await newEntry('ClaimResponse_Adjudication'),
+	ClaimResponse_Adjudication newClaimResponse_Adjudication = new ClaimResponse_Adjudication(
+			id: await newId('ClaimResponse_Adjudication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -323,8 +326,10 @@ class ClaimResponse_Adjudication {
 			amount: amount,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var claimResponse_AdjudicationBox = await Hive.openBox<ClaimResponse_Adjudication>('ClaimResponse_AdjudicationBox');
+	claimResponse_AdjudicationBox.add(newClaimResponse_Adjudication);
+	return newClaimResponse_Adjudication;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -362,8 +367,8 @@ class ClaimResponse_Detail {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_SubDetail> subDetail}) async {
-	 return ClaimResponse_Detail(
-			id: await newEntry('ClaimResponse_Detail'),
+	ClaimResponse_Detail newClaimResponse_Detail = new ClaimResponse_Detail(
+			id: await newId('ClaimResponse_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			detailSequence: detailSequence,
@@ -372,8 +377,10 @@ class ClaimResponse_Detail {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			subDetail: subDetail);
-	}
-
+	var claimResponse_DetailBox = await Hive.openBox<ClaimResponse_Detail>('ClaimResponse_DetailBox');
+	claimResponse_DetailBox.add(newClaimResponse_Detail);
+	return newClaimResponse_Detail;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -412,8 +419,8 @@ class ClaimResponse_SubDetail {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication}) async {
-	 return ClaimResponse_SubDetail(
-			id: await newEntry('ClaimResponse_SubDetail'),
+	ClaimResponse_SubDetail newClaimResponse_SubDetail = new ClaimResponse_SubDetail(
+			id: await newId('ClaimResponse_SubDetail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			subDetailSequence: subDetailSequence,
@@ -421,8 +428,10 @@ class ClaimResponse_SubDetail {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication);
-	}
-
+	var claimResponse_SubDetailBox = await Hive.openBox<ClaimResponse_SubDetail>('ClaimResponse_SubDetailBox');
+	claimResponse_SubDetailBox.add(newClaimResponse_SubDetail);
+	return newClaimResponse_SubDetail;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -481,8 +490,8 @@ class ClaimResponse_AddItem {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_Detail1> detail}) async {
-	 return ClaimResponse_AddItem(
-			id: await newEntry('ClaimResponse_AddItem'),
+	ClaimResponse_AddItem newClaimResponse_AddItem = new ClaimResponse_AddItem(
+			id: await newId('ClaimResponse_AddItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -512,8 +521,10 @@ class ClaimResponse_AddItem {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			detail: detail);
-	}
-
+	var claimResponse_AddItemBox = await Hive.openBox<ClaimResponse_AddItem>('ClaimResponse_AddItemBox');
+	claimResponse_AddItemBox.add(newClaimResponse_AddItem);
+	return newClaimResponse_AddItem;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -600,8 +611,8 @@ class ClaimResponse_Detail1 {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_SubDetail1> subDetail}) async {
-	 return ClaimResponse_Detail1(
-			id: await newEntry('ClaimResponse_Detail1'),
+	ClaimResponse_Detail1 newClaimResponse_Detail1 = new ClaimResponse_Detail1(
+			id: await newId('ClaimResponse_Detail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -615,8 +626,10 @@ class ClaimResponse_Detail1 {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			subDetail: subDetail);
-	}
-
+	var claimResponse_Detail1Box = await Hive.openBox<ClaimResponse_Detail1>('ClaimResponse_Detail1Box');
+	claimResponse_Detail1Box.add(newClaimResponse_Detail1);
+	return newClaimResponse_Detail1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -670,8 +683,8 @@ class ClaimResponse_SubDetail1 {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication}) async {
-	 return ClaimResponse_SubDetail1(
-			id: await newEntry('ClaimResponse_SubDetail1'),
+	ClaimResponse_SubDetail1 newClaimResponse_SubDetail1 = new ClaimResponse_SubDetail1(
+			id: await newId('ClaimResponse_SubDetail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -684,8 +697,10 @@ class ClaimResponse_SubDetail1 {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication);
-	}
-
+	var claimResponse_SubDetail1Box = await Hive.openBox<ClaimResponse_SubDetail1>('ClaimResponse_SubDetail1Box');
+	claimResponse_SubDetail1Box.add(newClaimResponse_SubDetail1);
+	return newClaimResponse_SubDetail1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -729,14 +744,16 @@ class ClaimResponse_Total {
 		List<Extension> modifierExtension,
 		CodeableConcept category,
 		Money amount}) async {
-	 return ClaimResponse_Total(
-			id: await newEntry('ClaimResponse_Total'),
+	ClaimResponse_Total newClaimResponse_Total = new ClaimResponse_Total(
+			id: await newId('ClaimResponse_Total'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
 			amount: amount);
-	}
-
+	var claimResponse_TotalBox = await Hive.openBox<ClaimResponse_Total>('ClaimResponse_TotalBox');
+	claimResponse_TotalBox.add(newClaimResponse_Total);
+	return newClaimResponse_Total;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -769,8 +786,8 @@ class ClaimResponse_Payment {
 		Element elementDate,
 		Money amount,
 		Identifier identifier}) async {
-	 return ClaimResponse_Payment(
-			id: await newEntry('ClaimResponse_Payment'),
+	ClaimResponse_Payment newClaimResponse_Payment = new ClaimResponse_Payment(
+			id: await newId('ClaimResponse_Payment'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -780,8 +797,10 @@ class ClaimResponse_Payment {
 			elementDate: elementDate,
 			amount: amount,
 			identifier: identifier);
-	}
-
+	var claimResponse_PaymentBox = await Hive.openBox<ClaimResponse_Payment>('ClaimResponse_PaymentBox');
+	claimResponse_PaymentBox.add(newClaimResponse_Payment);
+	return newClaimResponse_Payment;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -824,8 +843,8 @@ class ClaimResponse_ProcessNote {
 		String text,
 		Element elementText,
 		CodeableConcept language}) async {
-	 return ClaimResponse_ProcessNote(
-			id: await newEntry('ClaimResponse_ProcessNote'),
+	ClaimResponse_ProcessNote newClaimResponse_ProcessNote = new ClaimResponse_ProcessNote(
+			id: await newId('ClaimResponse_ProcessNote'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -835,8 +854,10 @@ class ClaimResponse_ProcessNote {
 			text: text,
 			elementText: elementText,
 			language: language);
-	}
-
+	var claimResponse_ProcessNoteBox = await Hive.openBox<ClaimResponse_ProcessNote>('ClaimResponse_ProcessNoteBox');
+	claimResponse_ProcessNoteBox.add(newClaimResponse_ProcessNote);
+	return newClaimResponse_ProcessNote;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -880,8 +901,8 @@ class ClaimResponse_Insurance {
 		String businessArrangement,
 		Element elementBusinessArrangement,
 		Reference claimResponse}) async {
-	 return ClaimResponse_Insurance(
-			id: await newEntry('ClaimResponse_Insurance'),
+	ClaimResponse_Insurance newClaimResponse_Insurance = new ClaimResponse_Insurance(
+			id: await newId('ClaimResponse_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -892,8 +913,10 @@ class ClaimResponse_Insurance {
 			businessArrangement: businessArrangement,
 			elementBusinessArrangement: elementBusinessArrangement,
 			claimResponse: claimResponse);
-	}
-
+	var claimResponse_InsuranceBox = await Hive.openBox<ClaimResponse_Insurance>('ClaimResponse_InsuranceBox');
+	claimResponse_InsuranceBox.add(newClaimResponse_Insurance);
+	return newClaimResponse_Insurance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -938,8 +961,8 @@ class ClaimResponse_Error {
 		int subDetailSequence,
 		Element elementSubDetailSequence,
 		CodeableConcept code}) async {
-	 return ClaimResponse_Error(
-			id: await newEntry('ClaimResponse_Error'),
+	ClaimResponse_Error newClaimResponse_Error = new ClaimResponse_Error(
+			id: await newId('ClaimResponse_Error'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -949,8 +972,10 @@ class ClaimResponse_Error {
 			subDetailSequence: subDetailSequence,
 			elementSubDetailSequence: elementSubDetailSequence,
 			code: code);
-	}
-
+	var claimResponse_ErrorBox = await Hive.openBox<ClaimResponse_Error>('ClaimResponse_ErrorBox');
+	claimResponse_ErrorBox.add(newClaimResponse_Error);
+	return newClaimResponse_Error;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

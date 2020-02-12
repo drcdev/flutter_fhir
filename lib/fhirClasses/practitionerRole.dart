@@ -44,8 +44,8 @@ class PractitionerRole {
 		String availabilityExceptions,
 		Element elementAvailabilityExceptions,
 		List<Reference> endpoint}) async {
-	 return PractitionerRole(
-			id: await newEntry('PractitionerRole'),
+	PractitionerRole newPractitionerRole = new PractitionerRole(
+			id: await newId('PractitionerRole'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,8 +71,10 @@ class PractitionerRole {
 			availabilityExceptions: availabilityExceptions,
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint);
-	}
-
+	var practitionerRoleBox = await Hive.openBox<PractitionerRole>('PractitionerRoleBox');
+	practitionerRoleBox.add(newPractitionerRole);
+	return newPractitionerRole;
+}
   @HiveField(0)
   final String resourceType= 'PractitionerRole';
   @HiveField(1)
@@ -176,8 +178,8 @@ class PractitionerRole_AvailableTime {
 		Element elementAvailableStartTime,
 		String availableEndTime,
 		Element elementAvailableEndTime}) async {
-	 return PractitionerRole_AvailableTime(
-			id: await newEntry('PractitionerRole_AvailableTime'),
+	PractitionerRole_AvailableTime newPractitionerRole_AvailableTime = new PractitionerRole_AvailableTime(
+			id: await newId('PractitionerRole_AvailableTime'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			daysOfWeek: daysOfWeek,
@@ -188,8 +190,10 @@ class PractitionerRole_AvailableTime {
 			elementAvailableStartTime: elementAvailableStartTime,
 			availableEndTime: availableEndTime,
 			elementAvailableEndTime: elementAvailableEndTime);
-	}
-
+	var practitionerRole_AvailableTimeBox = await Hive.openBox<PractitionerRole_AvailableTime>('PractitionerRole_AvailableTimeBox');
+	practitionerRole_AvailableTimeBox.add(newPractitionerRole_AvailableTime);
+	return newPractitionerRole_AvailableTime;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -230,15 +234,17 @@ class PractitionerRole_NotAvailable {
 		String description,
 		Element elementDescription,
 		Period during}) async {
-	 return PractitionerRole_NotAvailable(
-			id: await newEntry('PractitionerRole_NotAvailable'),
+	PractitionerRole_NotAvailable newPractitionerRole_NotAvailable = new PractitionerRole_NotAvailable(
+			id: await newId('PractitionerRole_NotAvailable'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
 			elementDescription: elementDescription,
 			during: during);
-	}
-
+	var practitionerRole_NotAvailableBox = await Hive.openBox<PractitionerRole_NotAvailable>('PractitionerRole_NotAvailableBox');
+	practitionerRole_NotAvailableBox.add(newPractitionerRole_NotAvailable);
+	return newPractitionerRole_NotAvailable;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

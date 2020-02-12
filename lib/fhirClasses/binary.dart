@@ -22,8 +22,8 @@ class Binary {
 		Reference securityContext,
 		String data,
 		Element elementData}) async {
-	 return Binary(
-			id: await newEntry('Binary'),
+	Binary newBinary = new Binary(
+			id: await newId('Binary'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -34,8 +34,10 @@ class Binary {
 			securityContext: securityContext,
 			data: data,
 			elementData: elementData);
-	}
-
+	var binaryBox = await Hive.openBox<Binary>('BinaryBox');
+	binaryBox.add(newBinary);
+	return newBinary;
+}
   @HiveField(0)
   final String resourceType= 'Binary';
   @HiveField(1)

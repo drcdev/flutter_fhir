@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -51,8 +50,8 @@ class MedicinalProduct {
 		List<Identifier> crossReference,
 		List<MedicinalProduct_ManufacturingBusinessOperation> manufacturingBusinessOperation,
 		List<MedicinalProduct_SpecialDesignation> specialDesignation}) async {
-	 return MedicinalProduct(
-			id: await newEntry('MedicinalProduct'),
+	MedicinalProduct newMedicinalProduct = new MedicinalProduct(
+			id: await newId('MedicinalProduct'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -83,8 +82,10 @@ class MedicinalProduct {
 			crossReference: crossReference,
 			manufacturingBusinessOperation: manufacturingBusinessOperation,
 			specialDesignation: specialDesignation);
-	}
-
+	var medicinalProductBox = await Hive.openBox<MedicinalProduct>('MedicinalProductBox');
+	medicinalProductBox.add(newMedicinalProduct);
+	return newMedicinalProduct;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProduct';
   @HiveField(1)
@@ -199,16 +200,18 @@ class MedicinalProduct_Name {
 		Element elementProductName,
 		List<MedicinalProduct_NamePart> namePart,
 		List<MedicinalProduct_CountryLanguage> countryLanguage}) async {
-	 return MedicinalProduct_Name(
-			id: await newEntry('MedicinalProduct_Name'),
+	MedicinalProduct_Name newMedicinalProduct_Name = new MedicinalProduct_Name(
+			id: await newId('MedicinalProduct_Name'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productName: productName,
 			elementProductName: elementProductName,
 			namePart: namePart,
 			countryLanguage: countryLanguage);
-	}
-
+	var medicinalProduct_NameBox = await Hive.openBox<MedicinalProduct_Name>('MedicinalProduct_NameBox');
+	medicinalProduct_NameBox.add(newMedicinalProduct_Name);
+	return newMedicinalProduct_Name;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -241,15 +244,17 @@ class MedicinalProduct_NamePart {
 		String part,
 		Element elementPart,
 		Coding type}) async {
-	 return MedicinalProduct_NamePart(
-			id: await newEntry('MedicinalProduct_NamePart'),
+	MedicinalProduct_NamePart newMedicinalProduct_NamePart = new MedicinalProduct_NamePart(
+			id: await newId('MedicinalProduct_NamePart'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			part: part,
 			elementPart: elementPart,
 			type: type);
-	}
-
+	var medicinalProduct_NamePartBox = await Hive.openBox<MedicinalProduct_NamePart>('MedicinalProduct_NamePartBox');
+	medicinalProduct_NamePartBox.add(newMedicinalProduct_NamePart);
+	return newMedicinalProduct_NamePart;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -280,15 +285,17 @@ class MedicinalProduct_CountryLanguage {
 		CodeableConcept country,
 		CodeableConcept jurisdiction,
 		CodeableConcept language}) async {
-	 return MedicinalProduct_CountryLanguage(
-			id: await newEntry('MedicinalProduct_CountryLanguage'),
+	MedicinalProduct_CountryLanguage newMedicinalProduct_CountryLanguage = new MedicinalProduct_CountryLanguage(
+			id: await newId('MedicinalProduct_CountryLanguage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			country: country,
 			jurisdiction: jurisdiction,
 			language: language);
-	}
-
+	var medicinalProduct_CountryLanguageBox = await Hive.openBox<MedicinalProduct_CountryLanguage>('MedicinalProduct_CountryLanguageBox');
+	medicinalProduct_CountryLanguageBox.add(newMedicinalProduct_CountryLanguage);
+	return newMedicinalProduct_CountryLanguage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -323,8 +330,8 @@ class MedicinalProduct_ManufacturingBusinessOperation {
 		CodeableConcept confidentialityIndicator,
 		List<Reference> manufacturer,
 		Reference regulator}) async {
-	 return MedicinalProduct_ManufacturingBusinessOperation(
-			id: await newEntry('MedicinalProduct_ManufacturingBusinessOperation'),
+	MedicinalProduct_ManufacturingBusinessOperation newMedicinalProduct_ManufacturingBusinessOperation = new MedicinalProduct_ManufacturingBusinessOperation(
+			id: await newId('MedicinalProduct_ManufacturingBusinessOperation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operationType: operationType,
@@ -334,8 +341,10 @@ class MedicinalProduct_ManufacturingBusinessOperation {
 			confidentialityIndicator: confidentialityIndicator,
 			manufacturer: manufacturer,
 			regulator: regulator);
-	}
-
+	var medicinalProduct_ManufacturingBusinessOperationBox = await Hive.openBox<MedicinalProduct_ManufacturingBusinessOperation>('MedicinalProduct_ManufacturingBusinessOperationBox');
+	medicinalProduct_ManufacturingBusinessOperationBox.add(newMedicinalProduct_ManufacturingBusinessOperation);
+	return newMedicinalProduct_ManufacturingBusinessOperation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -380,8 +389,8 @@ class MedicinalProduct_SpecialDesignation {
 		DateTime date,
 		Element elementDate,
 		CodeableConcept species}) async {
-	 return MedicinalProduct_SpecialDesignation(
-			id: await newEntry('MedicinalProduct_SpecialDesignation'),
+	MedicinalProduct_SpecialDesignation newMedicinalProduct_SpecialDesignation = new MedicinalProduct_SpecialDesignation(
+			id: await newId('MedicinalProduct_SpecialDesignation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -393,8 +402,10 @@ class MedicinalProduct_SpecialDesignation {
 			date: date,
 			elementDate: elementDate,
 			species: species);
-	}
-
+	var medicinalProduct_SpecialDesignationBox = await Hive.openBox<MedicinalProduct_SpecialDesignation>('MedicinalProduct_SpecialDesignationBox');
+	medicinalProduct_SpecialDesignationBox.add(newMedicinalProduct_SpecialDesignation);
+	return newMedicinalProduct_SpecialDesignation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

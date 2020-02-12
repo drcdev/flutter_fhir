@@ -56,8 +56,8 @@ class Communication {
 		List<Reference> reasonReference,
 		List<Communication_Payload> payload,
 		List<Annotation> note}) async {
-	 return Communication(
-			id: await newEntry('Communication'),
+	Communication newCommunication = new Communication(
+			id: await newId('Communication'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -95,8 +95,10 @@ class Communication {
 			reasonReference: reasonReference,
 			payload: payload,
 			note: note);
-	}
-
+	var communicationBox = await Hive.openBox<Communication>('CommunicationBox');
+	communicationBox.add(newCommunication);
+	return newCommunication;
+}
   @HiveField(0)
   final String resourceType= 'Communication';
   @HiveField(1)
@@ -232,16 +234,18 @@ class Communication_Payload {
 		Element elementContentString,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
-	 return Communication_Payload(
-			id: await newEntry('Communication_Payload'),
+	Communication_Payload newCommunication_Payload = new Communication_Payload(
+			id: await newId('Communication_Payload'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentString: contentString,
 			elementContentString: elementContentString,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
-	}
-
+	var communication_PayloadBox = await Hive.openBox<Communication_Payload>('Communication_PayloadBox');
+	communication_PayloadBox.add(newCommunication_Payload);
+	return newCommunication_Payload;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

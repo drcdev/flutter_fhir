@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -44,8 +43,8 @@ class MeasureReport {
 		CodeableConcept improvementNotation,
 		List<MeasureReport_Group> group,
 		List<Reference> evaluatedResource}) async {
-	 return MeasureReport(
-			id: await newEntry('MeasureReport'),
+	MeasureReport newMeasureReport = new MeasureReport(
+			id: await newId('MeasureReport'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -69,8 +68,10 @@ class MeasureReport {
 			improvementNotation: improvementNotation,
 			group: group,
 			evaluatedResource: evaluatedResource);
-	}
-
+	var measureReportBox = await Hive.openBox<MeasureReport>('MeasureReportBox');
+	measureReportBox.add(newMeasureReport);
+	return newMeasureReport;
+}
   @HiveField(0)
   final String resourceType= 'MeasureReport';
   @HiveField(1)
@@ -164,16 +165,18 @@ class MeasureReport_Group {
 		List<MeasureReport_Population> population,
 		Quantity measureScore,
 		List<MeasureReport_Stratifier> stratifier}) async {
-	 return MeasureReport_Group(
-			id: await newEntry('MeasureReport_Group'),
+	MeasureReport_Group newMeasureReport_Group = new MeasureReport_Group(
+			id: await newId('MeasureReport_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			population: population,
 			measureScore: measureScore,
 			stratifier: stratifier);
-	}
-
+	var measureReport_GroupBox = await Hive.openBox<MeasureReport_Group>('MeasureReport_GroupBox');
+	measureReport_GroupBox.add(newMeasureReport_Group);
+	return newMeasureReport_Group;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -207,16 +210,18 @@ class MeasureReport_Population {
 		int count,
 		Element elementCount,
 		Reference subjectResults}) async {
-	 return MeasureReport_Population(
-			id: await newEntry('MeasureReport_Population'),
+	MeasureReport_Population newMeasureReport_Population = new MeasureReport_Population(
+			id: await newId('MeasureReport_Population'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			count: count,
 			elementCount: elementCount,
 			subjectResults: subjectResults);
-	}
-
+	var measureReport_PopulationBox = await Hive.openBox<MeasureReport_Population>('MeasureReport_PopulationBox');
+	measureReport_PopulationBox.add(newMeasureReport_Population);
+	return newMeasureReport_Population;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -248,14 +253,16 @@ class MeasureReport_Stratifier {
 		List<Extension> modifierExtension,
 		List<CodeableConcept> code,
 		List<MeasureReport_Stratum> stratum}) async {
-	 return MeasureReport_Stratifier(
-			id: await newEntry('MeasureReport_Stratifier'),
+	MeasureReport_Stratifier newMeasureReport_Stratifier = new MeasureReport_Stratifier(
+			id: await newId('MeasureReport_Stratifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			stratum: stratum);
-	}
-
+	var measureReport_StratifierBox = await Hive.openBox<MeasureReport_Stratifier>('MeasureReport_StratifierBox');
+	measureReport_StratifierBox.add(newMeasureReport_Stratifier);
+	return newMeasureReport_Stratifier;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -285,16 +292,18 @@ class MeasureReport_Stratum {
 		List<MeasureReport_Component> component,
 		List<MeasureReport_Population1> population,
 		Quantity measureScore}) async {
-	 return MeasureReport_Stratum(
-			id: await newEntry('MeasureReport_Stratum'),
+	MeasureReport_Stratum newMeasureReport_Stratum = new MeasureReport_Stratum(
+			id: await newId('MeasureReport_Stratum'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			value: value,
 			component: component,
 			population: population,
 			measureScore: measureScore);
-	}
-
+	var measureReport_StratumBox = await Hive.openBox<MeasureReport_Stratum>('MeasureReport_StratumBox');
+	measureReport_StratumBox.add(newMeasureReport_Stratum);
+	return newMeasureReport_Stratum;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -326,14 +335,16 @@ class MeasureReport_Component {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		CodeableConcept value}) async {
-	 return MeasureReport_Component(
-			id: await newEntry('MeasureReport_Component'),
+	MeasureReport_Component newMeasureReport_Component = new MeasureReport_Component(
+			id: await newId('MeasureReport_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			value: value);
-	}
-
+	var measureReport_ComponentBox = await Hive.openBox<MeasureReport_Component>('MeasureReport_ComponentBox');
+	measureReport_ComponentBox.add(newMeasureReport_Component);
+	return newMeasureReport_Component;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -363,16 +374,18 @@ class MeasureReport_Population1 {
 		int count,
 		Element elementCount,
 		Reference subjectResults}) async {
-	 return MeasureReport_Population1(
-			id: await newEntry('MeasureReport_Population1'),
+	MeasureReport_Population1 newMeasureReport_Population1 = new MeasureReport_Population1(
+			id: await newId('MeasureReport_Population1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			count: count,
 			elementCount: elementCount,
 			subjectResults: subjectResults);
-	}
-
+	var measureReport_Population1Box = await Hive.openBox<MeasureReport_Population1>('MeasureReport_Population1Box');
+	measureReport_Population1Box.add(newMeasureReport_Population1);
+	return newMeasureReport_Population1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

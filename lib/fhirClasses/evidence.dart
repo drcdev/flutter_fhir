@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -74,8 +73,8 @@ class Evidence {
 		Reference exposureBackground,
 		List<Reference> exposureVariant,
 		List<Reference> outcome}) async {
-	 return Evidence(
-			id: await newEntry('Evidence'),
+	Evidence newEvidence = new Evidence(
+			id: await newId('Evidence'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -126,8 +125,10 @@ class Evidence {
 			exposureBackground: exposureBackground,
 			exposureVariant: exposureVariant,
 			outcome: outcome);
-	}
-
+	var evidenceBox = await Hive.openBox<Evidence>('EvidenceBox');
+	evidenceBox.add(newEvidence);
+	return newEvidence;
+}
   @HiveField(0)
   final String resourceType= 'Evidence';
   @HiveField(1)

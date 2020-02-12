@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -39,8 +38,8 @@ class Substance {
 		Element elementDescription,
 		List<Substance_Instance> instance,
 		List<Substance_Ingredient> ingredient}) async {
-	 return Substance(
-			id: await newEntry('Substance'),
+	Substance newSubstance = new Substance(
+			id: await newId('Substance'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -59,8 +58,10 @@ class Substance {
 			elementDescription: elementDescription,
 			instance: instance,
 			ingredient: ingredient);
-	}
-
+	var substanceBox = await Hive.openBox<Substance>('SubstanceBox');
+	substanceBox.add(newSubstance);
+	return newSubstance;
+}
   @HiveField(0)
   final String resourceType= 'Substance';
   @HiveField(1)
@@ -139,16 +140,18 @@ class Substance_Instance {
 		DateTime expiry,
 		Element elementExpiry,
 		Quantity quantity}) async {
-	 return Substance_Instance(
-			id: await newEntry('Substance_Instance'),
+	Substance_Instance newSubstance_Instance = new Substance_Instance(
+			id: await newId('Substance_Instance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
 			expiry: expiry,
 			elementExpiry: elementExpiry,
 			quantity: quantity);
-	}
-
+	var substance_InstanceBox = await Hive.openBox<Substance_Instance>('Substance_InstanceBox');
+	substance_InstanceBox.add(newSubstance_Instance);
+	return newSubstance_Instance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -181,15 +184,17 @@ class Substance_Ingredient {
 		Ratio quantity,
 		CodeableConcept substanceCodeableConcept,
 		Reference substanceReference}) async {
-	 return Substance_Ingredient(
-			id: await newEntry('Substance_Ingredient'),
+	Substance_Ingredient newSubstance_Ingredient = new Substance_Ingredient(
+			id: await newId('Substance_Ingredient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			substanceCodeableConcept: substanceCodeableConcept,
 			substanceReference: substanceReference);
-	}
-
+	var substance_IngredientBox = await Hive.openBox<Substance_Ingredient>('Substance_IngredientBox');
+	substance_IngredientBox.add(newSubstance_Ingredient);
+	return newSubstance_Ingredient;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

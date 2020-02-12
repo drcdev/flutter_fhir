@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -46,8 +45,8 @@ class CatalogEntry {
 		List<CodeableConcept> additionalCharacteristic,
 		List<CodeableConcept> additionalClassification,
 		List<CatalogEntry_RelatedEntry> relatedEntry}) async {
-	 return CatalogEntry(
-			id: await newEntry('CatalogEntry'),
+	CatalogEntry newCatalogEntry = new CatalogEntry(
+			id: await newId('CatalogEntry'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -74,8 +73,10 @@ class CatalogEntry {
 			additionalCharacteristic: additionalCharacteristic,
 			additionalClassification: additionalClassification,
 			relatedEntry: relatedEntry);
-	}
-
+	var catalogEntryBox = await Hive.openBox<CatalogEntry>('CatalogEntryBox');
+	catalogEntryBox.add(newCatalogEntry);
+	return newCatalogEntry;
+}
   @HiveField(0)
   final String resourceType= 'CatalogEntry';
   @HiveField(1)
@@ -177,15 +178,17 @@ class CatalogEntry_RelatedEntry {
 		String relationtype,
 		Element elementRelationtype,
 		Reference item}) async {
-	 return CatalogEntry_RelatedEntry(
-			id: await newEntry('CatalogEntry_RelatedEntry'),
+	CatalogEntry_RelatedEntry newCatalogEntry_RelatedEntry = new CatalogEntry_RelatedEntry(
+			id: await newId('CatalogEntry_RelatedEntry'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			relationtype: relationtype,
 			elementRelationtype: elementRelationtype,
 			item: item);
-	}
-
+	var catalogEntry_RelatedEntryBox = await Hive.openBox<CatalogEntry_RelatedEntry>('CatalogEntry_RelatedEntryBox');
+	catalogEntry_RelatedEntryBox.add(newCatalogEntry_RelatedEntry);
+	return newCatalogEntry_RelatedEntry;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

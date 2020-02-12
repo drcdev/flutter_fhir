@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -55,8 +54,8 @@ class Encounter {
 		List<Encounter_Location> location,
 		Reference serviceProvider,
 		Reference partOf}) async {
-	 return Encounter(
-			id: await newEntry('Encounter'),
+	Encounter newEncounter = new Encounter(
+			id: await newId('Encounter'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -90,8 +89,10 @@ class Encounter {
 			location: location,
 			serviceProvider: serviceProvider,
 			partOf: partOf);
-	}
-
+	var encounterBox = await Hive.openBox<Encounter>('EncounterBox');
+	encounterBox.add(newEncounter);
+	return newEncounter;
+}
   @HiveField(0)
   final String resourceType= 'Encounter';
   @HiveField(1)
@@ -214,15 +215,17 @@ class Encounter_StatusHistory {
 		String status,
 		Element elementStatus,
 		Period period}) async {
-	 return Encounter_StatusHistory(
-			id: await newEntry('Encounter_StatusHistory'),
+	Encounter_StatusHistory newEncounter_StatusHistory = new Encounter_StatusHistory(
+			id: await newId('Encounter_StatusHistory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			status: status,
 			elementStatus: elementStatus,
 			period: period);
-	}
-
+	var encounter_StatusHistoryBox = await Hive.openBox<Encounter_StatusHistory>('Encounter_StatusHistoryBox');
+	encounter_StatusHistoryBox.add(newEncounter_StatusHistory);
+	return newEncounter_StatusHistory;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -252,14 +255,16 @@ class Encounter_ClassHistory {
 		List<Extension> modifierExtension,
 		Coding classs,
 		Period period}) async {
-	 return Encounter_ClassHistory(
-			id: await newEntry('Encounter_ClassHistory'),
+	Encounter_ClassHistory newEncounter_ClassHistory = new Encounter_ClassHistory(
+			id: await newId('Encounter_ClassHistory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			classs: classs,
 			period: period);
-	}
-
+	var encounter_ClassHistoryBox = await Hive.openBox<Encounter_ClassHistory>('Encounter_ClassHistoryBox');
+	encounter_ClassHistoryBox.add(newEncounter_ClassHistory);
+	return newEncounter_ClassHistory;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -288,15 +293,17 @@ class Encounter_Participant {
 		List<CodeableConcept> type,
 		Period period,
 		Reference individual}) async {
-	 return Encounter_Participant(
-			id: await newEntry('Encounter_Participant'),
+	Encounter_Participant newEncounter_Participant = new Encounter_Participant(
+			id: await newId('Encounter_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			period: period,
 			individual: individual);
-	}
-
+	var encounter_ParticipantBox = await Hive.openBox<Encounter_Participant>('Encounter_ParticipantBox');
+	encounter_ParticipantBox.add(newEncounter_Participant);
+	return newEncounter_Participant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -328,16 +335,18 @@ class Encounter_Diagnosis {
 		CodeableConcept use,
 		int rank,
 		Element elementRank}) async {
-	 return Encounter_Diagnosis(
-			id: await newEntry('Encounter_Diagnosis'),
+	Encounter_Diagnosis newEncounter_Diagnosis = new Encounter_Diagnosis(
+			id: await newId('Encounter_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			condition: condition,
 			use: use,
 			rank: rank,
 			elementRank: elementRank);
-	}
-
+	var encounter_DiagnosisBox = await Hive.openBox<Encounter_Diagnosis>('Encounter_DiagnosisBox');
+	encounter_DiagnosisBox.add(newEncounter_Diagnosis);
+	return newEncounter_Diagnosis;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -376,8 +385,8 @@ class Encounter_Hospitalization {
 		List<CodeableConcept> specialArrangement,
 		Reference destination,
 		CodeableConcept dischargeDisposition}) async {
-	 return Encounter_Hospitalization(
-			id: await newEntry('Encounter_Hospitalization'),
+	Encounter_Hospitalization newEncounter_Hospitalization = new Encounter_Hospitalization(
+			id: await newId('Encounter_Hospitalization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			preAdmissionIdentifier: preAdmissionIdentifier,
@@ -389,8 +398,10 @@ class Encounter_Hospitalization {
 			specialArrangement: specialArrangement,
 			destination: destination,
 			dischargeDisposition: dischargeDisposition);
-	}
-
+	var encounter_HospitalizationBox = await Hive.openBox<Encounter_Hospitalization>('Encounter_HospitalizationBox');
+	encounter_HospitalizationBox.add(newEncounter_Hospitalization);
+	return newEncounter_Hospitalization;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -435,8 +446,8 @@ class Encounter_Location {
 		Element elementStatus,
 		CodeableConcept physicalType,
 		Period period}) async {
-	 return Encounter_Location(
-			id: await newEntry('Encounter_Location'),
+	Encounter_Location newEncounter_Location = new Encounter_Location(
+			id: await newId('Encounter_Location'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			location: location,
@@ -444,8 +455,10 @@ class Encounter_Location {
 			elementStatus: elementStatus,
 			physicalType: physicalType,
 			period: period);
-	}
-
+	var encounter_LocationBox = await Hive.openBox<Encounter_Location>('Encounter_LocationBox');
+	encounter_LocationBox.add(newEncounter_Location);
+	return newEncounter_Location;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

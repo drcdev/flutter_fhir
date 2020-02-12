@@ -34,8 +34,8 @@ class EnrollmentRequest {
 		Reference provider,
 		Reference candidate,
 		Reference coverage}) async {
-	 return EnrollmentRequest(
-			id: await newEntry('EnrollmentRequest'),
+	EnrollmentRequest newEnrollmentRequest = new EnrollmentRequest(
+			id: await newId('EnrollmentRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -54,8 +54,10 @@ class EnrollmentRequest {
 			provider: provider,
 			candidate: candidate,
 			coverage: coverage);
-	}
-
+	var enrollmentRequestBox = await Hive.openBox<EnrollmentRequest>('EnrollmentRequestBox');
+	enrollmentRequestBox.add(newEnrollmentRequest);
+	return newEnrollmentRequest;
+}
   @HiveField(0)
   final String resourceType= 'EnrollmentRequest';
   @HiveField(1)

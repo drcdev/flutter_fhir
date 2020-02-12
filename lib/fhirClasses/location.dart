@@ -52,8 +52,8 @@ class Location {
 		String availabilityExceptions,
 		Element elementAvailabilityExceptions,
 		List<Reference> endpoint}) async {
-	 return Location(
-			id: await newEntry('Location'),
+	Location newLocation = new Location(
+			id: await newId('Location'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,8 +86,10 @@ class Location {
 			availabilityExceptions: availabilityExceptions,
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint);
-	}
-
+	var locationBox = await Hive.openBox<Location>('LocationBox');
+	locationBox.add(newLocation);
+	return newLocation;
+}
   @HiveField(0)
   final String resourceType= 'Location';
   @HiveField(1)
@@ -210,8 +212,8 @@ class Location_Position {
 		Element elementLatitude,
 		double altitude,
 		Element elementAltitude}) async {
-	 return Location_Position(
-			id: await newEntry('Location_Position'),
+	Location_Position newLocation_Position = new Location_Position(
+			id: await newId('Location_Position'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			longitude: longitude,
@@ -220,8 +222,10 @@ class Location_Position {
 			elementLatitude: elementLatitude,
 			altitude: altitude,
 			elementAltitude: elementAltitude);
-	}
-
+	var location_PositionBox = await Hive.openBox<Location_Position>('Location_PositionBox');
+	location_PositionBox.add(newLocation_Position);
+	return newLocation_Position;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -263,8 +267,8 @@ class Location_HoursOfOperation {
 		Element elementOpeningTime,
 		String closingTime,
 		Element elementClosingTime}) async {
-	 return Location_HoursOfOperation(
-			id: await newEntry('Location_HoursOfOperation'),
+	Location_HoursOfOperation newLocation_HoursOfOperation = new Location_HoursOfOperation(
+			id: await newId('Location_HoursOfOperation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			daysOfWeek: daysOfWeek,
@@ -275,8 +279,10 @@ class Location_HoursOfOperation {
 			elementOpeningTime: elementOpeningTime,
 			closingTime: closingTime,
 			elementClosingTime: elementClosingTime);
-	}
-
+	var location_HoursOfOperationBox = await Hive.openBox<Location_HoursOfOperation>('Location_HoursOfOperationBox');
+	location_HoursOfOperationBox.add(newLocation_HoursOfOperation);
+	return newLocation_HoursOfOperation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

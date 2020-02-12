@@ -33,8 +33,8 @@ class SubstanceNucleicAcid {
 		Element elementAreaOfHybridisation,
 		CodeableConcept oligoNucleotideType,
 		List<SubstanceNucleicAcid_Subunit> subunit}) async {
-	 return SubstanceNucleicAcid(
-			id: await newEntry('SubstanceNucleicAcid'),
+	SubstanceNucleicAcid newSubstanceNucleicAcid = new SubstanceNucleicAcid(
+			id: await newId('SubstanceNucleicAcid'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,8 +51,10 @@ class SubstanceNucleicAcid {
 			elementAreaOfHybridisation: elementAreaOfHybridisation,
 			oligoNucleotideType: oligoNucleotideType,
 			subunit: subunit);
-	}
-
+	var substanceNucleicAcidBox = await Hive.openBox<SubstanceNucleicAcid>('SubstanceNucleicAcidBox');
+	substanceNucleicAcidBox.add(newSubstanceNucleicAcid);
+	return newSubstanceNucleicAcid;
+}
   @HiveField(0)
   final String resourceType= 'SubstanceNucleicAcid';
   @HiveField(1)
@@ -132,8 +134,8 @@ class SubstanceNucleicAcid_Subunit {
 		CodeableConcept threePrime,
 		List<SubstanceNucleicAcid_Linkage> linkage,
 		List<SubstanceNucleicAcid_Sugar> sugar}) async {
-	 return SubstanceNucleicAcid_Subunit(
-			id: await newEntry('SubstanceNucleicAcid_Subunit'),
+	SubstanceNucleicAcid_Subunit newSubstanceNucleicAcid_Subunit = new SubstanceNucleicAcid_Subunit(
+			id: await newId('SubstanceNucleicAcid_Subunit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			subunit: subunit,
@@ -147,8 +149,10 @@ class SubstanceNucleicAcid_Subunit {
 			threePrime: threePrime,
 			linkage: linkage,
 			sugar: sugar);
-	}
-
+	var substanceNucleicAcid_SubunitBox = await Hive.openBox<SubstanceNucleicAcid_Subunit>('SubstanceNucleicAcid_SubunitBox');
+	substanceNucleicAcid_SubunitBox.add(newSubstanceNucleicAcid_Subunit);
+	return newSubstanceNucleicAcid_Subunit;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -199,8 +203,8 @@ class SubstanceNucleicAcid_Linkage {
 		Element elementName,
 		String residueSite,
 		Element elementResidueSite}) async {
-	 return SubstanceNucleicAcid_Linkage(
-			id: await newEntry('SubstanceNucleicAcid_Linkage'),
+	SubstanceNucleicAcid_Linkage newSubstanceNucleicAcid_Linkage = new SubstanceNucleicAcid_Linkage(
+			id: await newId('SubstanceNucleicAcid_Linkage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			connectivity: connectivity,
@@ -210,8 +214,10 @@ class SubstanceNucleicAcid_Linkage {
 			elementName: elementName,
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite);
-	}
-
+	var substanceNucleicAcid_LinkageBox = await Hive.openBox<SubstanceNucleicAcid_Linkage>('SubstanceNucleicAcid_LinkageBox');
+	substanceNucleicAcid_LinkageBox.add(newSubstanceNucleicAcid_Linkage);
+	return newSubstanceNucleicAcid_Linkage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -252,8 +258,8 @@ class SubstanceNucleicAcid_Sugar {
 		Element elementName,
 		String residueSite,
 		Element elementResidueSite}) async {
-	 return SubstanceNucleicAcid_Sugar(
-			id: await newEntry('SubstanceNucleicAcid_Sugar'),
+	SubstanceNucleicAcid_Sugar newSubstanceNucleicAcid_Sugar = new SubstanceNucleicAcid_Sugar(
+			id: await newId('SubstanceNucleicAcid_Sugar'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -261,8 +267,10 @@ class SubstanceNucleicAcid_Sugar {
 			elementName: elementName,
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite);
-	}
-
+	var substanceNucleicAcid_SugarBox = await Hive.openBox<SubstanceNucleicAcid_Sugar>('SubstanceNucleicAcid_SugarBox');
+	substanceNucleicAcid_SugarBox.add(newSubstanceNucleicAcid_Sugar);
+	return newSubstanceNucleicAcid_Sugar;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

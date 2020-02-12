@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -62,8 +61,8 @@ class ImplementationGuide {
 		List<ImplementationGuide_Global> global,
 		ImplementationGuide_Definition definition,
 		ImplementationGuide_Manifest manifest}) async {
-	 return ImplementationGuide(
-			id: await newEntry('ImplementationGuide'),
+	ImplementationGuide newImplementationGuide = new ImplementationGuide(
+			id: await newId('ImplementationGuide'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -106,8 +105,10 @@ class ImplementationGuide {
 			global: global,
 			definition: definition,
 			manifest: manifest);
-	}
-
+	var implementationGuideBox = await Hive.openBox<ImplementationGuide>('ImplementationGuideBox');
+	implementationGuideBox.add(newImplementationGuide);
+	return newImplementationGuide;
+}
   @HiveField(0)
   final String resourceType= 'ImplementationGuide';
   @HiveField(1)
@@ -259,8 +260,8 @@ class ImplementationGuide_DependsOn {
 		Element elementPackageId,
 		String version,
 		Element elementVersion}) async {
-	 return ImplementationGuide_DependsOn(
-			id: await newEntry('ImplementationGuide_DependsOn'),
+	ImplementationGuide_DependsOn newImplementationGuide_DependsOn = new ImplementationGuide_DependsOn(
+			id: await newId('ImplementationGuide_DependsOn'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			uri: uri,
@@ -268,8 +269,10 @@ class ImplementationGuide_DependsOn {
 			elementPackageId: elementPackageId,
 			version: version,
 			elementVersion: elementVersion);
-	}
-
+	var implementationGuide_DependsOnBox = await Hive.openBox<ImplementationGuide_DependsOn>('ImplementationGuide_DependsOnBox');
+	implementationGuide_DependsOnBox.add(newImplementationGuide_DependsOn);
+	return newImplementationGuide_DependsOn;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -304,15 +307,17 @@ class ImplementationGuide_Global {
 		String type,
 		Element elementType,
 		String profile}) async {
-	 return ImplementationGuide_Global(
-			id: await newEntry('ImplementationGuide_Global'),
+	ImplementationGuide_Global newImplementationGuide_Global = new ImplementationGuide_Global(
+			id: await newId('ImplementationGuide_Global'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			profile: profile);
-	}
-
+	var implementationGuide_GlobalBox = await Hive.openBox<ImplementationGuide_Global>('ImplementationGuide_GlobalBox');
+	implementationGuide_GlobalBox.add(newImplementationGuide_Global);
+	return newImplementationGuide_Global;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -345,8 +350,8 @@ class ImplementationGuide_Definition {
 		ImplementationGuide_Page page,
 		List<ImplementationGuide_Parameter> parameter,
 		List<ImplementationGuide_Template> template}) async {
-	 return ImplementationGuide_Definition(
-			id: await newEntry('ImplementationGuide_Definition'),
+	ImplementationGuide_Definition newImplementationGuide_Definition = new ImplementationGuide_Definition(
+			id: await newId('ImplementationGuide_Definition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			grouping: grouping,
@@ -354,8 +359,10 @@ class ImplementationGuide_Definition {
 			page: page,
 			parameter: parameter,
 			template: template);
-	}
-
+	var implementationGuide_DefinitionBox = await Hive.openBox<ImplementationGuide_Definition>('ImplementationGuide_DefinitionBox');
+	implementationGuide_DefinitionBox.add(newImplementationGuide_Definition);
+	return newImplementationGuide_Definition;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -391,16 +398,18 @@ class ImplementationGuide_Grouping {
 		Element elementName,
 		String description,
 		Element elementDescription}) async {
-	 return ImplementationGuide_Grouping(
-			id: await newEntry('ImplementationGuide_Grouping'),
+	ImplementationGuide_Grouping newImplementationGuide_Grouping = new ImplementationGuide_Grouping(
+			id: await newId('ImplementationGuide_Grouping'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var implementationGuide_GroupingBox = await Hive.openBox<ImplementationGuide_Grouping>('ImplementationGuide_GroupingBox');
+	implementationGuide_GroupingBox.add(newImplementationGuide_Grouping);
+	return newImplementationGuide_Grouping;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -443,8 +452,8 @@ class ImplementationGuide_Resource {
 		Element elementExampleCanonical,
 		String groupingId,
 		Element elementGroupingId}) async {
-	 return ImplementationGuide_Resource(
-			id: await newEntry('ImplementationGuide_Resource'),
+	ImplementationGuide_Resource newImplementationGuide_Resource = new ImplementationGuide_Resource(
+			id: await newId('ImplementationGuide_Resource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
@@ -460,8 +469,10 @@ class ImplementationGuide_Resource {
 			elementExampleCanonical: elementExampleCanonical,
 			groupingId: groupingId,
 			elementGroupingId: elementGroupingId);
-	}
-
+	var implementationGuide_ResourceBox = await Hive.openBox<ImplementationGuide_Resource>('ImplementationGuide_ResourceBox');
+	implementationGuide_ResourceBox.add(newImplementationGuide_Resource);
+	return newImplementationGuide_Resource;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -517,8 +528,8 @@ class ImplementationGuide_Page {
 		String generation,
 		Element elementGeneration,
 		List<ImplementationGuide_Page> page}) async {
-	 return ImplementationGuide_Page(
-			id: await newEntry('ImplementationGuide_Page'),
+	ImplementationGuide_Page newImplementationGuide_Page = new ImplementationGuide_Page(
+			id: await newId('ImplementationGuide_Page'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			nameUrl: nameUrl,
@@ -529,8 +540,10 @@ class ImplementationGuide_Page {
 			generation: generation,
 			elementGeneration: elementGeneration,
 			page: page);
-	}
-
+	var implementationGuide_PageBox = await Hive.openBox<ImplementationGuide_Page>('ImplementationGuide_PageBox');
+	implementationGuide_PageBox.add(newImplementationGuide_Page);
+	return newImplementationGuide_Page;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -572,16 +585,18 @@ class ImplementationGuide_Parameter {
 		Element elementCode,
 		String value,
 		Element elementValue}) async {
-	 return ImplementationGuide_Parameter(
-			id: await newEntry('ImplementationGuide_Parameter'),
+	ImplementationGuide_Parameter newImplementationGuide_Parameter = new ImplementationGuide_Parameter(
+			id: await newId('ImplementationGuide_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var implementationGuide_ParameterBox = await Hive.openBox<ImplementationGuide_Parameter>('ImplementationGuide_ParameterBox');
+	implementationGuide_ParameterBox.add(newImplementationGuide_Parameter);
+	return newImplementationGuide_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -617,8 +632,8 @@ class ImplementationGuide_Template {
 		Element elementSource,
 		String scope,
 		Element elementScope}) async {
-	 return ImplementationGuide_Template(
-			id: await newEntry('ImplementationGuide_Template'),
+	ImplementationGuide_Template newImplementationGuide_Template = new ImplementationGuide_Template(
+			id: await newId('ImplementationGuide_Template'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -627,8 +642,10 @@ class ImplementationGuide_Template {
 			elementSource: elementSource,
 			scope: scope,
 			elementScope: elementScope);
-	}
-
+	var implementationGuide_TemplateBox = await Hive.openBox<ImplementationGuide_Template>('ImplementationGuide_TemplateBox');
+	implementationGuide_TemplateBox.add(newImplementationGuide_Template);
+	return newImplementationGuide_Template;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -670,8 +687,8 @@ class ImplementationGuide_Manifest {
 		List<Element> elementImage,
 		List<String> other,
 		List<Element> elementOther}) async {
-	 return ImplementationGuide_Manifest(
-			id: await newEntry('ImplementationGuide_Manifest'),
+	ImplementationGuide_Manifest newImplementationGuide_Manifest = new ImplementationGuide_Manifest(
+			id: await newId('ImplementationGuide_Manifest'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			rendering: rendering,
@@ -682,8 +699,10 @@ class ImplementationGuide_Manifest {
 			elementImage: elementImage,
 			other: other,
 			elementOther: elementOther);
-	}
-
+	var implementationGuide_ManifestBox = await Hive.openBox<ImplementationGuide_Manifest>('ImplementationGuide_ManifestBox');
+	implementationGuide_ManifestBox.add(newImplementationGuide_Manifest);
+	return newImplementationGuide_Manifest;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -728,8 +747,8 @@ class ImplementationGuide_Resource1 {
 		Element elementExampleCanonical,
 		String relativePath,
 		Element elementRelativePath}) async {
-	 return ImplementationGuide_Resource1(
-			id: await newEntry('ImplementationGuide_Resource1'),
+	ImplementationGuide_Resource1 newImplementationGuide_Resource1 = new ImplementationGuide_Resource1(
+			id: await newId('ImplementationGuide_Resource1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
@@ -739,8 +758,10 @@ class ImplementationGuide_Resource1 {
 			elementExampleCanonical: elementExampleCanonical,
 			relativePath: relativePath,
 			elementRelativePath: elementRelativePath);
-	}
-
+	var implementationGuide_Resource1Box = await Hive.openBox<ImplementationGuide_Resource1>('ImplementationGuide_Resource1Box');
+	implementationGuide_Resource1Box.add(newImplementationGuide_Resource1);
+	return newImplementationGuide_Resource1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -782,8 +803,8 @@ class ImplementationGuide_Page1 {
 		Element elementTitle,
 		List<String> anchor,
 		List<Element> elementAnchor}) async {
-	 return ImplementationGuide_Page1(
-			id: await newEntry('ImplementationGuide_Page1'),
+	ImplementationGuide_Page1 newImplementationGuide_Page1 = new ImplementationGuide_Page1(
+			id: await newId('ImplementationGuide_Page1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -792,8 +813,10 @@ class ImplementationGuide_Page1 {
 			elementTitle: elementTitle,
 			anchor: anchor,
 			elementAnchor: elementAnchor);
-	}
-
+	var implementationGuide_Page1Box = await Hive.openBox<ImplementationGuide_Page1>('ImplementationGuide_Page1Box');
+	implementationGuide_Page1Box.add(newImplementationGuide_Page1);
+	return newImplementationGuide_Page1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -24,8 +24,8 @@ class SubstanceAmount {
 		String amountText,
 		Element elementAmountText,
 		SubstanceAmount_ReferenceRange referenceRange}) async {
-	 return SubstanceAmount(
-			id: await newEntry('SubstanceAmount'),
+	SubstanceAmount newSubstanceAmount = new SubstanceAmount(
+			id: await newId('SubstanceAmount'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			amountQuantity: amountQuantity,
@@ -36,8 +36,10 @@ class SubstanceAmount {
 			amountText: amountText,
 			elementAmountText: elementAmountText,
 			referenceRange: referenceRange);
-	}
-
+	var substanceAmountBox = await Hive.openBox<SubstanceAmount>('SubstanceAmountBox');
+	substanceAmountBox.add(newSubstanceAmount);
+	return newSubstanceAmount;
+}
   @HiveField(0)
   String id;
   @HiveField(1)
@@ -88,14 +90,16 @@ class SubstanceAmount_ReferenceRange {
 		List<Extension> modifierExtension,
 		Quantity lowLimit,
 		Quantity highLimit}) async {
-	 return SubstanceAmount_ReferenceRange(
-			id: await newEntry('SubstanceAmount_ReferenceRange'),
+	SubstanceAmount_ReferenceRange newSubstanceAmount_ReferenceRange = new SubstanceAmount_ReferenceRange(
+			id: await newId('SubstanceAmount_ReferenceRange'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			lowLimit: lowLimit,
 			highLimit: highLimit);
-	}
-
+	var substanceAmount_ReferenceRangeBox = await Hive.openBox<SubstanceAmount_ReferenceRange>('SubstanceAmount_ReferenceRangeBox');
+	substanceAmount_ReferenceRangeBox.add(newSubstanceAmount_ReferenceRange);
+	return newSubstanceAmount_ReferenceRange;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

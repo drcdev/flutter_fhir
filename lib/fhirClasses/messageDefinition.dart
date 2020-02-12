@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -69,8 +68,8 @@ class MessageDefinition {
 		Element elementResponseRequired,
 		List<MessageDefinition_AllowedResponse> allowedResponse,
 		List<String> graph}) async {
-	 return MessageDefinition(
-			id: await newEntry('MessageDefinition'),
+	MessageDefinition newMessageDefinition = new MessageDefinition(
+			id: await newId('MessageDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -119,8 +118,10 @@ class MessageDefinition {
 			elementResponseRequired: elementResponseRequired,
 			allowedResponse: allowedResponse,
 			graph: graph);
-	}
-
+	var messageDefinitionBox = await Hive.openBox<MessageDefinition>('MessageDefinitionBox');
+	messageDefinitionBox.add(newMessageDefinition);
+	return newMessageDefinition;
+}
   @HiveField(0)
   final String resourceType= 'MessageDefinition';
   @HiveField(1)
@@ -292,8 +293,8 @@ class MessageDefinition_Focus {
 		Element elementMin,
 		String max,
 		Element elementMax}) async {
-	 return MessageDefinition_Focus(
-			id: await newEntry('MessageDefinition_Focus'),
+	MessageDefinition_Focus newMessageDefinition_Focus = new MessageDefinition_Focus(
+			id: await newId('MessageDefinition_Focus'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -303,8 +304,10 @@ class MessageDefinition_Focus {
 			elementMin: elementMin,
 			max: max,
 			elementMax: elementMax);
-	}
-
+	var messageDefinition_FocusBox = await Hive.openBox<MessageDefinition_Focus>('MessageDefinition_FocusBox');
+	messageDefinition_FocusBox.add(newMessageDefinition_Focus);
+	return newMessageDefinition_Focus;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -343,15 +346,17 @@ class MessageDefinition_AllowedResponse {
 		String message,
 		String situation,
 		Element elementSituation}) async {
-	 return MessageDefinition_AllowedResponse(
-			id: await newEntry('MessageDefinition_AllowedResponse'),
+	MessageDefinition_AllowedResponse newMessageDefinition_AllowedResponse = new MessageDefinition_AllowedResponse(
+			id: await newId('MessageDefinition_AllowedResponse'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			message: message,
 			situation: situation,
 			elementSituation: elementSituation);
-	}
-
+	var messageDefinition_AllowedResponseBox = await Hive.openBox<MessageDefinition_AllowedResponse>('MessageDefinition_AllowedResponseBox');
+	messageDefinition_AllowedResponseBox.add(newMessageDefinition_AllowedResponse);
+	return newMessageDefinition_AllowedResponse;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

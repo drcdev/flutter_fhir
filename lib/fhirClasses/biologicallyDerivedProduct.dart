@@ -41,8 +41,8 @@ class BiologicallyDerivedProduct {
 		List<BiologicallyDerivedProduct_Processing> processing,
 		BiologicallyDerivedProduct_Manipulation manipulation,
 		List<BiologicallyDerivedProduct_Storage> storage}) async {
-	 return BiologicallyDerivedProduct(
-			id: await newEntry('BiologicallyDerivedProduct'),
+	BiologicallyDerivedProduct newBiologicallyDerivedProduct = new BiologicallyDerivedProduct(
+			id: await newId('BiologicallyDerivedProduct'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -66,8 +66,10 @@ class BiologicallyDerivedProduct {
 			processing: processing,
 			manipulation: manipulation,
 			storage: storage);
-	}
-
+	var biologicallyDerivedProductBox = await Hive.openBox<BiologicallyDerivedProduct>('BiologicallyDerivedProductBox');
+	biologicallyDerivedProductBox.add(newBiologicallyDerivedProduct);
+	return newBiologicallyDerivedProduct;
+}
   @HiveField(0)
   final String resourceType= 'BiologicallyDerivedProduct';
   @HiveField(1)
@@ -162,8 +164,8 @@ class BiologicallyDerivedProduct_Collection {
 		String collectedDateTime,
 		Element elementCollectedDateTime,
 		Period collectedPeriod}) async {
-	 return BiologicallyDerivedProduct_Collection(
-			id: await newEntry('BiologicallyDerivedProduct_Collection'),
+	BiologicallyDerivedProduct_Collection newBiologicallyDerivedProduct_Collection = new BiologicallyDerivedProduct_Collection(
+			id: await newId('BiologicallyDerivedProduct_Collection'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			collector: collector,
@@ -171,8 +173,10 @@ class BiologicallyDerivedProduct_Collection {
 			collectedDateTime: collectedDateTime,
 			elementCollectedDateTime: elementCollectedDateTime,
 			collectedPeriod: collectedPeriod);
-	}
-
+	var biologicallyDerivedProduct_CollectionBox = await Hive.openBox<BiologicallyDerivedProduct_Collection>('BiologicallyDerivedProduct_CollectionBox');
+	biologicallyDerivedProduct_CollectionBox.add(newBiologicallyDerivedProduct_Collection);
+	return newBiologicallyDerivedProduct_Collection;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -211,8 +215,8 @@ class BiologicallyDerivedProduct_Processing {
 		String timeDateTime,
 		Element elementTimeDateTime,
 		Period timePeriod}) async {
-	 return BiologicallyDerivedProduct_Processing(
-			id: await newEntry('BiologicallyDerivedProduct_Processing'),
+	BiologicallyDerivedProduct_Processing newBiologicallyDerivedProduct_Processing = new BiologicallyDerivedProduct_Processing(
+			id: await newId('BiologicallyDerivedProduct_Processing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -222,8 +226,10 @@ class BiologicallyDerivedProduct_Processing {
 			timeDateTime: timeDateTime,
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod);
-	}
-
+	var biologicallyDerivedProduct_ProcessingBox = await Hive.openBox<BiologicallyDerivedProduct_Processing>('BiologicallyDerivedProduct_ProcessingBox');
+	biologicallyDerivedProduct_ProcessingBox.add(newBiologicallyDerivedProduct_Processing);
+	return newBiologicallyDerivedProduct_Processing;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -264,8 +270,8 @@ class BiologicallyDerivedProduct_Manipulation {
 		String timeDateTime,
 		Element elementTimeDateTime,
 		Period timePeriod}) async {
-	 return BiologicallyDerivedProduct_Manipulation(
-			id: await newEntry('BiologicallyDerivedProduct_Manipulation'),
+	BiologicallyDerivedProduct_Manipulation newBiologicallyDerivedProduct_Manipulation = new BiologicallyDerivedProduct_Manipulation(
+			id: await newId('BiologicallyDerivedProduct_Manipulation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -273,8 +279,10 @@ class BiologicallyDerivedProduct_Manipulation {
 			timeDateTime: timeDateTime,
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod);
-	}
-
+	var biologicallyDerivedProduct_ManipulationBox = await Hive.openBox<BiologicallyDerivedProduct_Manipulation>('BiologicallyDerivedProduct_ManipulationBox');
+	biologicallyDerivedProduct_ManipulationBox.add(newBiologicallyDerivedProduct_Manipulation);
+	return newBiologicallyDerivedProduct_Manipulation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -313,8 +321,8 @@ class BiologicallyDerivedProduct_Storage {
 		String scale,
 		Element elementScale,
 		Period duration}) async {
-	 return BiologicallyDerivedProduct_Storage(
-			id: await newEntry('BiologicallyDerivedProduct_Storage'),
+	BiologicallyDerivedProduct_Storage newBiologicallyDerivedProduct_Storage = new BiologicallyDerivedProduct_Storage(
+			id: await newId('BiologicallyDerivedProduct_Storage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -324,8 +332,10 @@ class BiologicallyDerivedProduct_Storage {
 			scale: scale,
 			elementScale: elementScale,
 			duration: duration);
-	}
-
+	var biologicallyDerivedProduct_StorageBox = await Hive.openBox<BiologicallyDerivedProduct_Storage>('BiologicallyDerivedProduct_StorageBox');
+	biologicallyDerivedProduct_StorageBox.add(newBiologicallyDerivedProduct_Storage);
+	return newBiologicallyDerivedProduct_Storage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

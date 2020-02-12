@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -52,8 +51,8 @@ class AdverseEvent {
 		List<Reference> subjectMedicalHistory,
 		List<Reference> referenceDocument,
 		List<Reference> study}) async {
-	 return AdverseEvent(
-			id: await newEntry('AdverseEvent'),
+	AdverseEvent newAdverseEvent = new AdverseEvent(
+			id: await newId('AdverseEvent'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,8 +86,10 @@ class AdverseEvent {
 			subjectMedicalHistory: subjectMedicalHistory,
 			referenceDocument: referenceDocument,
 			study: study);
-	}
-
+	var adverseEventBox = await Hive.openBox<AdverseEvent>('AdverseEventBox');
+	adverseEventBox.add(newAdverseEvent);
+	return newAdverseEvent;
+}
   @HiveField(0)
   final String resourceType= 'AdverseEvent';
   @HiveField(1)
@@ -210,14 +211,16 @@ class AdverseEvent_SuspectEntity {
 		List<Extension> modifierExtension,
 		Reference instance,
 		List<AdverseEvent_Causality> causality}) async {
-	 return AdverseEvent_SuspectEntity(
-			id: await newEntry('AdverseEvent_SuspectEntity'),
+	AdverseEvent_SuspectEntity newAdverseEvent_SuspectEntity = new AdverseEvent_SuspectEntity(
+			id: await newId('AdverseEvent_SuspectEntity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			instance: instance,
 			causality: causality);
-	}
-
+	var adverseEvent_SuspectEntityBox = await Hive.openBox<AdverseEvent_SuspectEntity>('AdverseEvent_SuspectEntityBox');
+	adverseEvent_SuspectEntityBox.add(newAdverseEvent_SuspectEntity);
+	return newAdverseEvent_SuspectEntity;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -248,8 +251,8 @@ class AdverseEvent_Causality {
 		Element elementProductRelatedness,
 		Reference author,
 		CodeableConcept method}) async {
-	 return AdverseEvent_Causality(
-			id: await newEntry('AdverseEvent_Causality'),
+	AdverseEvent_Causality newAdverseEvent_Causality = new AdverseEvent_Causality(
+			id: await newId('AdverseEvent_Causality'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			assessment: assessment,
@@ -257,8 +260,10 @@ class AdverseEvent_Causality {
 			elementProductRelatedness: elementProductRelatedness,
 			author: author,
 			method: method);
-	}
-
+	var adverseEvent_CausalityBox = await Hive.openBox<AdverseEvent_Causality>('AdverseEvent_CausalityBox');
+	adverseEvent_CausalityBox.add(newAdverseEvent_Causality);
+	return newAdverseEvent_Causality;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

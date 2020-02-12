@@ -29,8 +29,8 @@ class DataRequirement {
 		int limit,
 		Element elementLimit,
 		List<DataRequirement_Sort> sort}) async {
-	 return DataRequirement(
-			id: await newEntry('DataRequirement'),
+	DataRequirement newDataRequirement = new DataRequirement(
+			id: await newId('DataRequirement'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
@@ -44,8 +44,10 @@ class DataRequirement {
 			limit: limit,
 			elementLimit: elementLimit,
 			sort: sort);
-	}
-
+	var dataRequirementBox = await Hive.openBox<DataRequirement>('DataRequirementBox');
+	dataRequirementBox.add(newDataRequirement);
+	return newDataRequirement;
+}
   @HiveField(0)
   String id;
   @HiveField(1)
@@ -109,8 +111,8 @@ class DataRequirement_CodeFilter {
 		Element elementSearchParam,
 		String valueSet,
 		List<Coding> code}) async {
-	 return DataRequirement_CodeFilter(
-			id: await newEntry('DataRequirement_CodeFilter'),
+	DataRequirement_CodeFilter newDataRequirement_CodeFilter = new DataRequirement_CodeFilter(
+			id: await newId('DataRequirement_CodeFilter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -119,8 +121,10 @@ class DataRequirement_CodeFilter {
 			elementSearchParam: elementSearchParam,
 			valueSet: valueSet,
 			code: code);
-	}
-
+	var dataRequirement_CodeFilterBox = await Hive.openBox<DataRequirement_CodeFilter>('DataRequirement_CodeFilterBox');
+	dataRequirement_CodeFilterBox.add(newDataRequirement_CodeFilter);
+	return newDataRequirement_CodeFilter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -162,8 +166,8 @@ class DataRequirement_DateFilter {
 		Element elementValueDateTime,
 		Period valuePeriod,
 		Duration valueDuration}) async {
-	 return DataRequirement_DateFilter(
-			id: await newEntry('DataRequirement_DateFilter'),
+	DataRequirement_DateFilter newDataRequirement_DateFilter = new DataRequirement_DateFilter(
+			id: await newId('DataRequirement_DateFilter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -174,8 +178,10 @@ class DataRequirement_DateFilter {
 			elementValueDateTime: elementValueDateTime,
 			valuePeriod: valuePeriod,
 			valueDuration: valueDuration);
-	}
-
+	var dataRequirement_DateFilterBox = await Hive.openBox<DataRequirement_DateFilter>('DataRequirement_DateFilterBox');
+	dataRequirement_DateFilterBox.add(newDataRequirement_DateFilter);
+	return newDataRequirement_DateFilter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -217,16 +223,18 @@ class DataRequirement_Sort {
 		Element elementPath,
 		String direction,
 		Element elementDirection}) async {
-	 return DataRequirement_Sort(
-			id: await newEntry('DataRequirement_Sort'),
+	DataRequirement_Sort newDataRequirement_Sort = new DataRequirement_Sort(
+			id: await newId('DataRequirement_Sort'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
 			elementPath: elementPath,
 			direction: direction,
 			elementDirection: elementDirection);
-	}
-
+	var dataRequirement_SortBox = await Hive.openBox<DataRequirement_Sort>('DataRequirement_SortBox');
+	dataRequirement_SortBox.add(newDataRequirement_Sort);
+	return newDataRequirement_Sort;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -18,16 +18,18 @@ class Contributor {
 		String name,
 		Element elementName,
 		List<ContactDetail> contact}) async {
-	 return Contributor(
-			id: await newEntry('Contributor'),
+	Contributor newContributor = new Contributor(
+			id: await newId('Contributor'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
 			name: name,
 			elementName: elementName,
 			contact: contact);
-	}
-
+	var contributorBox = await Hive.openBox<Contributor>('ContributorBox');
+	contributorBox.add(newContributor);
+	return newContributor;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

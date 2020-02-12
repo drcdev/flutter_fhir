@@ -58,8 +58,8 @@ class RequestGroup {
 		List<Reference> reasonReference,
 		List<Annotation> note,
 		List<RequestGroup_Action> action}) async {
-	 return RequestGroup(
-			id: await newEntry('RequestGroup'),
+	RequestGroup newRequestGroup = new RequestGroup(
+			id: await newId('RequestGroup'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -93,8 +93,10 @@ class RequestGroup {
 			reasonReference: reasonReference,
 			note: note,
 			action: action);
-	}
-
+	var requestGroupBox = await Hive.openBox<RequestGroup>('RequestGroupBox');
+	requestGroupBox.add(newRequestGroup);
+	return newRequestGroup;
+}
   @HiveField(0)
   final String resourceType= 'RequestGroup';
   @HiveField(1)
@@ -249,8 +251,8 @@ class RequestGroup_Action {
 		Element elementCardinalityBehavior,
 		Reference resource,
 		List<RequestGroup_Action> action}) async {
-	 return RequestGroup_Action(
-			id: await newEntry('RequestGroup_Action'),
+	RequestGroup_Action newRequestGroup_Action = new RequestGroup_Action(
+			id: await newId('RequestGroup_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			prefix: prefix,
@@ -288,8 +290,10 @@ class RequestGroup_Action {
 			elementCardinalityBehavior: elementCardinalityBehavior,
 			resource: resource,
 			action: action);
-	}
-
+	var requestGroup_ActionBox = await Hive.openBox<RequestGroup_Action>('RequestGroup_ActionBox');
+	requestGroup_ActionBox.add(newRequestGroup_Action);
+	return newRequestGroup_Action;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -384,15 +388,17 @@ class RequestGroup_Condition {
 		String kind,
 		Element elementKind,
 		Expression expression}) async {
-	 return RequestGroup_Condition(
-			id: await newEntry('RequestGroup_Condition'),
+	RequestGroup_Condition newRequestGroup_Condition = new RequestGroup_Condition(
+			id: await newId('RequestGroup_Condition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kind: kind,
 			elementKind: elementKind,
 			expression: expression);
-	}
-
+	var requestGroup_ConditionBox = await Hive.openBox<RequestGroup_Condition>('RequestGroup_ConditionBox');
+	requestGroup_ConditionBox.add(newRequestGroup_Condition);
+	return newRequestGroup_Condition;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -426,8 +432,8 @@ class RequestGroup_RelatedAction {
 		Element elementRelationship,
 		Duration offsetDuration,
 		Range offsetRange}) async {
-	 return RequestGroup_RelatedAction(
-			id: await newEntry('RequestGroup_RelatedAction'),
+	RequestGroup_RelatedAction newRequestGroup_RelatedAction = new RequestGroup_RelatedAction(
+			id: await newId('RequestGroup_RelatedAction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			actionId: actionId,
@@ -436,8 +442,10 @@ class RequestGroup_RelatedAction {
 			elementRelationship: elementRelationship,
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange);
-	}
-
+	var requestGroup_RelatedActionBox = await Hive.openBox<RequestGroup_RelatedAction>('RequestGroup_RelatedActionBox');
+	requestGroup_RelatedActionBox.add(newRequestGroup_RelatedAction);
+	return newRequestGroup_RelatedAction;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

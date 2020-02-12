@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -44,8 +43,8 @@ class AuditEvent {
 		List<AuditEvent_Agent> agent,
 		AuditEvent_Source source,
 		List<AuditEvent_Entity> entity}) async {
-	 return AuditEvent(
-			id: await newEntry('AuditEvent'),
+	AuditEvent newAuditEvent = new AuditEvent(
+			id: await newId('AuditEvent'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,8 +69,10 @@ class AuditEvent {
 			agent: agent,
 			source: source,
 			entity: entity);
-	}
-
+	var auditEventBox = await Hive.openBox<AuditEvent>('AuditEventBox');
+	auditEventBox.add(newAuditEvent);
+	return newAuditEvent;
+}
   @HiveField(0)
   final String resourceType= 'AuditEvent';
   @HiveField(1)
@@ -179,8 +180,8 @@ class AuditEvent_Agent {
 		Coding media,
 		AuditEvent_Network network,
 		List<CodeableConcept> purposeOfUse}) async {
-	 return AuditEvent_Agent(
-			id: await newEntry('AuditEvent_Agent'),
+	AuditEvent_Agent newAuditEvent_Agent = new AuditEvent_Agent(
+			id: await newId('AuditEvent_Agent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -198,8 +199,10 @@ class AuditEvent_Agent {
 			media: media,
 			network: network,
 			purposeOfUse: purposeOfUse);
-	}
-
+	var auditEvent_AgentBox = await Hive.openBox<AuditEvent_Agent>('AuditEvent_AgentBox');
+	auditEvent_AgentBox.add(newAuditEvent_Agent);
+	return newAuditEvent_Agent;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -255,16 +258,18 @@ class AuditEvent_Network {
 		Element elementAddress,
 		String type,
 		Element elementType}) async {
-	 return AuditEvent_Network(
-			id: await newEntry('AuditEvent_Network'),
+	AuditEvent_Network newAuditEvent_Network = new AuditEvent_Network(
+			id: await newId('AuditEvent_Network'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			address: address,
 			elementAddress: elementAddress,
 			type: type,
 			elementType: elementType);
-	}
-
+	var auditEvent_NetworkBox = await Hive.openBox<AuditEvent_Network>('AuditEvent_NetworkBox');
+	auditEvent_NetworkBox.add(newAuditEvent_Network);
+	return newAuditEvent_Network;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -298,16 +303,18 @@ class AuditEvent_Source {
 		Element elementSite,
 		Reference observer,
 		List<Coding> type}) async {
-	 return AuditEvent_Source(
-			id: await newEntry('AuditEvent_Source'),
+	AuditEvent_Source newAuditEvent_Source = new AuditEvent_Source(
+			id: await newId('AuditEvent_Source'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			site: site,
 			elementSite: elementSite,
 			observer: observer,
 			type: type);
-	}
-
+	var auditEvent_SourceBox = await Hive.openBox<AuditEvent_Source>('AuditEvent_SourceBox');
+	auditEvent_SourceBox.add(newAuditEvent_Source);
+	return newAuditEvent_Source;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -349,8 +356,8 @@ class AuditEvent_Entity {
 		String query,
 		Element elementQuery,
 		List<AuditEvent_Detail> detail}) async {
-	 return AuditEvent_Entity(
-			id: await newEntry('AuditEvent_Entity'),
+	AuditEvent_Entity newAuditEvent_Entity = new AuditEvent_Entity(
+			id: await newId('AuditEvent_Entity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			what: what,
@@ -365,8 +372,10 @@ class AuditEvent_Entity {
 			query: query,
 			elementQuery: elementQuery,
 			detail: detail);
-	}
-
+	var auditEvent_EntityBox = await Hive.openBox<AuditEvent_Entity>('AuditEvent_EntityBox');
+	auditEvent_EntityBox.add(newAuditEvent_Entity);
+	return newAuditEvent_Entity;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -418,8 +427,8 @@ class AuditEvent_Detail {
 		Element elementValueString,
 		String valueBase64Binary,
 		Element elementValueBase64Binary}) async {
-	 return AuditEvent_Detail(
-			id: await newEntry('AuditEvent_Detail'),
+	AuditEvent_Detail newAuditEvent_Detail = new AuditEvent_Detail(
+			id: await newId('AuditEvent_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -428,8 +437,10 @@ class AuditEvent_Detail {
 			elementValueString: elementValueString,
 			valueBase64Binary: valueBase64Binary,
 			elementValueBase64Binary: elementValueBase64Binary);
-	}
-
+	var auditEvent_DetailBox = await Hive.openBox<AuditEvent_Detail>('AuditEvent_DetailBox');
+	auditEvent_DetailBox.add(newAuditEvent_Detail);
+	return newAuditEvent_Detail;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

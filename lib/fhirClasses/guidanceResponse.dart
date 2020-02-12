@@ -49,8 +49,8 @@ class GuidanceResponse {
 		Reference outputParameters,
 		Reference result,
 		List<DataRequirement> dataRequirement}) async {
-	 return GuidanceResponse(
-			id: await newEntry('GuidanceResponse'),
+	GuidanceResponse newGuidanceResponse = new GuidanceResponse(
+			id: await newId('GuidanceResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -81,8 +81,10 @@ class GuidanceResponse {
 			outputParameters: outputParameters,
 			result: result,
 			dataRequirement: dataRequirement);
-	}
-
+	var guidanceResponseBox = await Hive.openBox<GuidanceResponse>('GuidanceResponseBox');
+	guidanceResponseBox.add(newGuidanceResponse);
+	return newGuidanceResponse;
+}
   @HiveField(0)
   final String resourceType= 'GuidanceResponse';
   @HiveField(1)

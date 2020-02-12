@@ -71,8 +71,8 @@ class CodeSystem {
 		List<CodeSystem_Filter> filter,
 		List<CodeSystem_Property> property,
 		List<CodeSystem_Concept> concept}) async {
-	 return CodeSystem(
-			id: await newEntry('CodeSystem'),
+	CodeSystem newCodeSystem = new CodeSystem(
+			id: await newId('CodeSystem'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -125,8 +125,10 @@ class CodeSystem {
 			filter: filter,
 			property: property,
 			concept: concept);
-	}
-
+	var codeSystemBox = await Hive.openBox<CodeSystem>('CodeSystemBox');
+	codeSystemBox.add(newCodeSystem);
+	return newCodeSystem;
+}
   @HiveField(0)
   final String resourceType= 'CodeSystem';
   @HiveField(1)
@@ -311,8 +313,8 @@ class CodeSystem_Filter {
 		List<Element> elementOperator,
 		String value,
 		Element elementValue}) async {
-	 return CodeSystem_Filter(
-			id: await newEntry('CodeSystem_Filter'),
+	CodeSystem_Filter newCodeSystem_Filter = new CodeSystem_Filter(
+			id: await newId('CodeSystem_Filter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -323,8 +325,10 @@ class CodeSystem_Filter {
 			elementOperator: elementOperator,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var codeSystem_FilterBox = await Hive.openBox<CodeSystem_Filter>('CodeSystem_FilterBox');
+	codeSystem_FilterBox.add(newCodeSystem_Filter);
+	return newCodeSystem_Filter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -370,8 +374,8 @@ class CodeSystem_Property {
 		Element elementDescription,
 		String type,
 		Element elementType}) async {
-	 return CodeSystem_Property(
-			id: await newEntry('CodeSystem_Property'),
+	CodeSystem_Property newCodeSystem_Property = new CodeSystem_Property(
+			id: await newId('CodeSystem_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -382,8 +386,10 @@ class CodeSystem_Property {
 			elementDescription: elementDescription,
 			type: type,
 			elementType: elementType);
-	}
-
+	var codeSystem_PropertyBox = await Hive.openBox<CodeSystem_Property>('CodeSystem_PropertyBox');
+	codeSystem_PropertyBox.add(newCodeSystem_Property);
+	return newCodeSystem_Property;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -430,8 +436,8 @@ class CodeSystem_Concept {
 		List<CodeSystem_Designation> designation,
 		List<CodeSystem_Property1> property,
 		List<CodeSystem_Concept> concept}) async {
-	 return CodeSystem_Concept(
-			id: await newEntry('CodeSystem_Concept'),
+	CodeSystem_Concept newCodeSystem_Concept = new CodeSystem_Concept(
+			id: await newId('CodeSystem_Concept'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -443,8 +449,10 @@ class CodeSystem_Concept {
 			designation: designation,
 			property: property,
 			concept: concept);
-	}
-
+	var codeSystem_ConceptBox = await Hive.openBox<CodeSystem_Concept>('CodeSystem_ConceptBox');
+	codeSystem_ConceptBox.add(newCodeSystem_Concept);
+	return newCodeSystem_Concept;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -489,8 +497,8 @@ class CodeSystem_Designation {
 		Coding use,
 		String value,
 		Element elementValue}) async {
-	 return CodeSystem_Designation(
-			id: await newEntry('CodeSystem_Designation'),
+	CodeSystem_Designation newCodeSystem_Designation = new CodeSystem_Designation(
+			id: await newId('CodeSystem_Designation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
@@ -498,8 +506,10 @@ class CodeSystem_Designation {
 			use: use,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var codeSystem_DesignationBox = await Hive.openBox<CodeSystem_Designation>('CodeSystem_DesignationBox');
+	codeSystem_DesignationBox.add(newCodeSystem_Designation);
+	return newCodeSystem_Designation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -544,10 +554,10 @@ class CodeSystem_Property1 {
 		Element elementValueBoolean,
 		String valueDateTime,
 		Element elementValueDateTime,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal}) async {
-	 return CodeSystem_Property1(
-			id: await newEntry('CodeSystem_Property1'),
+	CodeSystem_Property1 newCodeSystem_Property1 = new CodeSystem_Property1(
+			id: await newId('CodeSystem_Property1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -565,8 +575,10 @@ class CodeSystem_Property1 {
 			elementValueDateTime: elementValueDateTime,
 			valueDecimal: valueDecimal,
 			elementValueDecimal: elementValueDecimal);
-	}
-
+	var codeSystem_Property1Box = await Hive.openBox<CodeSystem_Property1>('CodeSystem_Property1Box');
+	codeSystem_Property1Box.add(newCodeSystem_Property1);
+	return newCodeSystem_Property1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -583,7 +595,7 @@ class CodeSystem_Property1 {
   Element elementValueBoolean;
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementValueDateTime;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
 
 CodeSystem_Property1(
@@ -1233,7 +1245,7 @@ CodeSystem_Property1 _$CodeSystem_Property1FromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementValueDateTime'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

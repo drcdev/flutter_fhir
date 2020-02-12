@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -38,8 +37,8 @@ class MedicinalProductPharmaceutical {
 		List<Reference> device,
 		List<MedicinalProductPharmaceutical_Characteristics> characteristics,
 		List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration}) async {
-	 return MedicinalProductPharmaceutical(
-			id: await newEntry('MedicinalProductPharmaceutical'),
+	MedicinalProductPharmaceutical newMedicinalProductPharmaceutical = new MedicinalProductPharmaceutical(
+			id: await newId('MedicinalProductPharmaceutical'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -56,8 +55,10 @@ class MedicinalProductPharmaceutical {
 			device: device,
 			characteristics: characteristics,
 			routeOfAdministration: routeOfAdministration);
-	}
-
+	var medicinalProductPharmaceuticalBox = await Hive.openBox<MedicinalProductPharmaceutical>('MedicinalProductPharmaceuticalBox');
+	medicinalProductPharmaceuticalBox.add(newMedicinalProductPharmaceutical);
+	return newMedicinalProductPharmaceutical;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductPharmaceutical';
   @HiveField(1)
@@ -128,14 +129,16 @@ class MedicinalProductPharmaceutical_Characteristics {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		CodeableConcept status}) async {
-	 return MedicinalProductPharmaceutical_Characteristics(
-			id: await newEntry('MedicinalProductPharmaceutical_Characteristics'),
+	MedicinalProductPharmaceutical_Characteristics newMedicinalProductPharmaceutical_Characteristics = new MedicinalProductPharmaceutical_Characteristics(
+			id: await newId('MedicinalProductPharmaceutical_Characteristics'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			status: status);
-	}
-
+	var medicinalProductPharmaceutical_CharacteristicsBox = await Hive.openBox<MedicinalProductPharmaceutical_Characteristics>('MedicinalProductPharmaceutical_CharacteristicsBox');
+	medicinalProductPharmaceutical_CharacteristicsBox.add(newMedicinalProductPharmaceutical_Characteristics);
+	return newMedicinalProductPharmaceutical_Characteristics;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -168,8 +171,8 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
 		Ratio maxDosePerTreatmentPeriod,
 		Duration maxTreatmentPeriod,
 		List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies}) async {
-	 return MedicinalProductPharmaceutical_RouteOfAdministration(
-			id: await newEntry('MedicinalProductPharmaceutical_RouteOfAdministration'),
+	MedicinalProductPharmaceutical_RouteOfAdministration newMedicinalProductPharmaceutical_RouteOfAdministration = new MedicinalProductPharmaceutical_RouteOfAdministration(
+			id: await newId('MedicinalProductPharmaceutical_RouteOfAdministration'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -179,8 +182,10 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
 			maxDosePerTreatmentPeriod: maxDosePerTreatmentPeriod,
 			maxTreatmentPeriod: maxTreatmentPeriod,
 			targetSpecies: targetSpecies);
-	}
-
+	var medicinalProductPharmaceutical_RouteOfAdministrationBox = await Hive.openBox<MedicinalProductPharmaceutical_RouteOfAdministration>('MedicinalProductPharmaceutical_RouteOfAdministrationBox');
+	medicinalProductPharmaceutical_RouteOfAdministrationBox.add(newMedicinalProductPharmaceutical_RouteOfAdministration);
+	return newMedicinalProductPharmaceutical_RouteOfAdministration;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -218,14 +223,16 @@ class MedicinalProductPharmaceutical_TargetSpecies {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod}) async {
-	 return MedicinalProductPharmaceutical_TargetSpecies(
-			id: await newEntry('MedicinalProductPharmaceutical_TargetSpecies'),
+	MedicinalProductPharmaceutical_TargetSpecies newMedicinalProductPharmaceutical_TargetSpecies = new MedicinalProductPharmaceutical_TargetSpecies(
+			id: await newId('MedicinalProductPharmaceutical_TargetSpecies'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			withdrawalPeriod: withdrawalPeriod);
-	}
-
+	var medicinalProductPharmaceutical_TargetSpeciesBox = await Hive.openBox<MedicinalProductPharmaceutical_TargetSpecies>('MedicinalProductPharmaceutical_TargetSpeciesBox');
+	medicinalProductPharmaceutical_TargetSpeciesBox.add(newMedicinalProductPharmaceutical_TargetSpecies);
+	return newMedicinalProductPharmaceutical_TargetSpecies;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -255,16 +262,18 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
 		Quantity value,
 		String supportingInformation,
 		Element elementSupportingInformation}) async {
-	 return MedicinalProductPharmaceutical_WithdrawalPeriod(
-			id: await newEntry('MedicinalProductPharmaceutical_WithdrawalPeriod'),
+	MedicinalProductPharmaceutical_WithdrawalPeriod newMedicinalProductPharmaceutical_WithdrawalPeriod = new MedicinalProductPharmaceutical_WithdrawalPeriod(
+			id: await newId('MedicinalProductPharmaceutical_WithdrawalPeriod'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			tissue: tissue,
 			value: value,
 			supportingInformation: supportingInformation,
 			elementSupportingInformation: elementSupportingInformation);
-	}
-
+	var medicinalProductPharmaceutical_WithdrawalPeriodBox = await Hive.openBox<MedicinalProductPharmaceutical_WithdrawalPeriod>('MedicinalProductPharmaceutical_WithdrawalPeriodBox');
+	medicinalProductPharmaceutical_WithdrawalPeriodBox.add(newMedicinalProductPharmaceutical_WithdrawalPeriod);
+	return newMedicinalProductPharmaceutical_WithdrawalPeriod;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

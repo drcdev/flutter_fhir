@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/population.dart';
@@ -38,8 +37,8 @@ class MedicinalProductIndication {
 		List<MedicinalProductIndication_OtherTherapy> otherTherapy,
 		List<Reference> undesirableEffect,
 		List<Population> population}) async {
-	 return MedicinalProductIndication(
-			id: await newEntry('MedicinalProductIndication'),
+	MedicinalProductIndication newMedicinalProductIndication = new MedicinalProductIndication(
+			id: await newId('MedicinalProductIndication'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -58,8 +57,10 @@ class MedicinalProductIndication {
 			otherTherapy: otherTherapy,
 			undesirableEffect: undesirableEffect,
 			population: population);
-	}
-
+	var medicinalProductIndicationBox = await Hive.openBox<MedicinalProductIndication>('MedicinalProductIndicationBox');
+	medicinalProductIndicationBox.add(newMedicinalProductIndication);
+	return newMedicinalProductIndication;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductIndication';
   @HiveField(1)
@@ -137,15 +138,17 @@ class MedicinalProductIndication_OtherTherapy {
 		CodeableConcept therapyRelationshipType,
 		CodeableConcept medicationCodeableConcept,
 		Reference medicationReference}) async {
-	 return MedicinalProductIndication_OtherTherapy(
-			id: await newEntry('MedicinalProductIndication_OtherTherapy'),
+	MedicinalProductIndication_OtherTherapy newMedicinalProductIndication_OtherTherapy = new MedicinalProductIndication_OtherTherapy(
+			id: await newId('MedicinalProductIndication_OtherTherapy'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			therapyRelationshipType: therapyRelationshipType,
 			medicationCodeableConcept: medicationCodeableConcept,
 			medicationReference: medicationReference);
-	}
-
+	var medicinalProductIndication_OtherTherapyBox = await Hive.openBox<MedicinalProductIndication_OtherTherapy>('MedicinalProductIndication_OtherTherapyBox');
+	medicinalProductIndication_OtherTherapyBox.add(newMedicinalProductIndication_OtherTherapy);
+	return newMedicinalProductIndication_OtherTherapy;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

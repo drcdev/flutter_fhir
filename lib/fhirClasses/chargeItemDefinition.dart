@@ -65,8 +65,8 @@ class ChargeItemDefinition {
 		List<Reference> instance,
 		List<ChargeItemDefinition_Applicability> applicability,
 		List<ChargeItemDefinition_PropertyGroup> propertyGroup}) async {
-	 return ChargeItemDefinition(
-			id: await newEntry('ChargeItemDefinition'),
+	ChargeItemDefinition newChargeItemDefinition = new ChargeItemDefinition(
+			id: await newId('ChargeItemDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -111,8 +111,10 @@ class ChargeItemDefinition {
 			instance: instance,
 			applicability: applicability,
 			propertyGroup: propertyGroup);
-	}
-
+	var chargeItemDefinitionBox = await Hive.openBox<ChargeItemDefinition>('ChargeItemDefinitionBox');
+	chargeItemDefinitionBox.add(newChargeItemDefinition);
+	return newChargeItemDefinition;
+}
   @HiveField(0)
   final String resourceType= 'ChargeItemDefinition';
   @HiveField(1)
@@ -271,8 +273,8 @@ class ChargeItemDefinition_Applicability {
 		Element elementLanguage,
 		String expression,
 		Element elementExpression}) async {
-	 return ChargeItemDefinition_Applicability(
-			id: await newEntry('ChargeItemDefinition_Applicability'),
+	ChargeItemDefinition_Applicability newChargeItemDefinition_Applicability = new ChargeItemDefinition_Applicability(
+			id: await newId('ChargeItemDefinition_Applicability'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -281,8 +283,10 @@ class ChargeItemDefinition_Applicability {
 			elementLanguage: elementLanguage,
 			expression: expression,
 			elementExpression: elementExpression);
-	}
-
+	var chargeItemDefinition_ApplicabilityBox = await Hive.openBox<ChargeItemDefinition_Applicability>('ChargeItemDefinition_ApplicabilityBox');
+	chargeItemDefinition_ApplicabilityBox.add(newChargeItemDefinition_Applicability);
+	return newChargeItemDefinition_Applicability;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -318,14 +322,16 @@ class ChargeItemDefinition_PropertyGroup {
 		List<Extension> modifierExtension,
 		List<ChargeItemDefinition_Applicability> applicability,
 		List<ChargeItemDefinition_PriceComponent> priceComponent}) async {
-	 return ChargeItemDefinition_PropertyGroup(
-			id: await newEntry('ChargeItemDefinition_PropertyGroup'),
+	ChargeItemDefinition_PropertyGroup newChargeItemDefinition_PropertyGroup = new ChargeItemDefinition_PropertyGroup(
+			id: await newId('ChargeItemDefinition_PropertyGroup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			applicability: applicability,
 			priceComponent: priceComponent);
-	}
-
+	var chargeItemDefinition_PropertyGroupBox = await Hive.openBox<ChargeItemDefinition_PropertyGroup>('ChargeItemDefinition_PropertyGroupBox');
+	chargeItemDefinition_PropertyGroupBox.add(newChargeItemDefinition_PropertyGroup);
+	return newChargeItemDefinition_PropertyGroup;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -357,8 +363,8 @@ class ChargeItemDefinition_PriceComponent {
 		double factor,
 		Element elementFactor,
 		Money amount}) async {
-	 return ChargeItemDefinition_PriceComponent(
-			id: await newEntry('ChargeItemDefinition_PriceComponent'),
+	ChargeItemDefinition_PriceComponent newChargeItemDefinition_PriceComponent = new ChargeItemDefinition_PriceComponent(
+			id: await newId('ChargeItemDefinition_PriceComponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -367,8 +373,10 @@ class ChargeItemDefinition_PriceComponent {
 			factor: factor,
 			elementFactor: elementFactor,
 			amount: amount);
-	}
-
+	var chargeItemDefinition_PriceComponentBox = await Hive.openBox<ChargeItemDefinition_PriceComponent>('ChargeItemDefinition_PriceComponentBox');
+	chargeItemDefinition_PriceComponentBox.add(newChargeItemDefinition_PriceComponent);
+	return newChargeItemDefinition_PriceComponent;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

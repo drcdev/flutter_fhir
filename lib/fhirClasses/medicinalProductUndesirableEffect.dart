@@ -31,8 +31,8 @@ class MedicinalProductUndesirableEffect {
 		CodeableConcept classification,
 		CodeableConcept frequencyOfOccurrence,
 		List<Population> population}) async {
-	 return MedicinalProductUndesirableEffect(
-			id: await newEntry('MedicinalProductUndesirableEffect'),
+	MedicinalProductUndesirableEffect newMedicinalProductUndesirableEffect = new MedicinalProductUndesirableEffect(
+			id: await newId('MedicinalProductUndesirableEffect'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -47,8 +47,10 @@ class MedicinalProductUndesirableEffect {
 			classification: classification,
 			frequencyOfOccurrence: frequencyOfOccurrence,
 			population: population);
-	}
-
+	var medicinalProductUndesirableEffectBox = await Hive.openBox<MedicinalProductUndesirableEffect>('MedicinalProductUndesirableEffectBox');
+	medicinalProductUndesirableEffectBox.add(newMedicinalProductUndesirableEffect);
+	return newMedicinalProductUndesirableEffect;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductUndesirableEffect';
   @HiveField(1)

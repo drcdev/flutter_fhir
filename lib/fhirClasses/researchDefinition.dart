@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
@@ -84,8 +83,8 @@ class ResearchDefinition {
 		Reference exposure,
 		Reference exposureAlternative,
 		Reference outcome}) async {
-	 return ResearchDefinition(
-			id: await newEntry('ResearchDefinition'),
+	ResearchDefinition newResearchDefinition = new ResearchDefinition(
+			id: await newId('ResearchDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -147,8 +146,10 @@ class ResearchDefinition {
 			exposure: exposure,
 			exposureAlternative: exposureAlternative,
 			outcome: outcome);
-	}
-
+	var researchDefinitionBox = await Hive.openBox<ResearchDefinition>('ResearchDefinitionBox');
+	researchDefinitionBox.add(newResearchDefinition);
+	return newResearchDefinition;
+}
   @HiveField(0)
   final String resourceType= 'ResearchDefinition';
   @HiveField(1)

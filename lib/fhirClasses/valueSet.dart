@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -60,8 +59,8 @@ class ValueSet {
 		Element elementCopyright,
 		ValueSet_Compose compose,
 		ValueSet_Expansion expansion}) async {
-	 return ValueSet(
-			id: await newEntry('ValueSet'),
+	ValueSet newValueSet = new ValueSet(
+			id: await newId('ValueSet'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -101,8 +100,10 @@ class ValueSet {
 			elementCopyright: elementCopyright,
 			compose: compose,
 			expansion: expansion);
-	}
-
+	var valueSetBox = await Hive.openBox<ValueSet>('ValueSetBox');
+	valueSetBox.add(newValueSet);
+	return newValueSet;
+}
   @HiveField(0)
   final String resourceType= 'ValueSet';
   @HiveField(1)
@@ -246,8 +247,8 @@ class ValueSet_Compose {
 		Element elementInactive,
 		List<ValueSet_Include> include,
 		List<ValueSet_Include> exclude}) async {
-	 return ValueSet_Compose(
-			id: await newEntry('ValueSet_Compose'),
+	ValueSet_Compose newValueSet_Compose = new ValueSet_Compose(
+			id: await newId('ValueSet_Compose'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			lockedDate: lockedDate,
@@ -256,8 +257,10 @@ class ValueSet_Compose {
 			elementInactive: elementInactive,
 			include: include,
 			exclude: exclude);
-	}
-
+	var valueSet_ComposeBox = await Hive.openBox<ValueSet_Compose>('ValueSet_ComposeBox');
+	valueSet_ComposeBox.add(newValueSet_Compose);
+	return newValueSet_Compose;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -298,8 +301,8 @@ class ValueSet_Include {
 		List<ValueSet_Concept> concept,
 		List<ValueSet_Filter> filter,
 		List<String> valueSet}) async {
-	 return ValueSet_Include(
-			id: await newEntry('ValueSet_Include'),
+	ValueSet_Include newValueSet_Include = new ValueSet_Include(
+			id: await newId('ValueSet_Include'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			system: system,
@@ -309,8 +312,10 @@ class ValueSet_Include {
 			concept: concept,
 			filter: filter,
 			valueSet: valueSet);
-	}
-
+	var valueSet_IncludeBox = await Hive.openBox<ValueSet_Include>('ValueSet_IncludeBox');
+	valueSet_IncludeBox.add(newValueSet_Include);
+	return newValueSet_Include;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -351,8 +356,8 @@ class ValueSet_Concept {
 		String display,
 		Element elementDisplay,
 		List<ValueSet_Designation> designation}) async {
-	 return ValueSet_Concept(
-			id: await newEntry('ValueSet_Concept'),
+	ValueSet_Concept newValueSet_Concept = new ValueSet_Concept(
+			id: await newId('ValueSet_Concept'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -360,8 +365,10 @@ class ValueSet_Concept {
 			display: display,
 			elementDisplay: elementDisplay,
 			designation: designation);
-	}
-
+	var valueSet_ConceptBox = await Hive.openBox<ValueSet_Concept>('ValueSet_ConceptBox');
+	valueSet_ConceptBox.add(newValueSet_Concept);
+	return newValueSet_Concept;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -398,8 +405,8 @@ class ValueSet_Designation {
 		Coding use,
 		String value,
 		Element elementValue}) async {
-	 return ValueSet_Designation(
-			id: await newEntry('ValueSet_Designation'),
+	ValueSet_Designation newValueSet_Designation = new ValueSet_Designation(
+			id: await newId('ValueSet_Designation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
@@ -407,8 +414,10 @@ class ValueSet_Designation {
 			use: use,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var valueSet_DesignationBox = await Hive.openBox<ValueSet_Designation>('ValueSet_DesignationBox');
+	valueSet_DesignationBox.add(newValueSet_Designation);
+	return newValueSet_Designation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -446,8 +455,8 @@ class ValueSet_Filter {
 		Element elementOp,
 		String value,
 		Element elementValue}) async {
-	 return ValueSet_Filter(
-			id: await newEntry('ValueSet_Filter'),
+	ValueSet_Filter newValueSet_Filter = new ValueSet_Filter(
+			id: await newId('ValueSet_Filter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			property: property,
@@ -456,8 +465,10 @@ class ValueSet_Filter {
 			elementOp: elementOp,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var valueSet_FilterBox = await Hive.openBox<ValueSet_Filter>('ValueSet_FilterBox');
+	valueSet_FilterBox.add(newValueSet_Filter);
+	return newValueSet_Filter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -501,8 +512,8 @@ class ValueSet_Expansion {
 		Element elementOffset,
 		List<ValueSet_Parameter> parameter,
 		List<ValueSet_Contains> contains}) async {
-	 return ValueSet_Expansion(
-			id: await newEntry('ValueSet_Expansion'),
+	ValueSet_Expansion newValueSet_Expansion = new ValueSet_Expansion(
+			id: await newId('ValueSet_Expansion'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -515,8 +526,10 @@ class ValueSet_Expansion {
 			elementOffset: elementOffset,
 			parameter: parameter,
 			contains: contains);
-	}
-
+	var valueSet_ExpansionBox = await Hive.openBox<ValueSet_Expansion>('ValueSet_ExpansionBox');
+	valueSet_ExpansionBox.add(newValueSet_Expansion);
+	return newValueSet_Expansion;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -566,7 +579,7 @@ class ValueSet_Parameter {
 		Element elementValueBoolean,
 		int valueInteger,
 		Element elementValueInteger,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		String valueUri,
 		Element elementValueUri,
@@ -574,8 +587,8 @@ class ValueSet_Parameter {
 		Element elementValueCode,
 		String valueDateTime,
 		Element elementValueDateTime}) async {
-	 return ValueSet_Parameter(
-			id: await newEntry('ValueSet_Parameter'),
+	ValueSet_Parameter newValueSet_Parameter = new ValueSet_Parameter(
+			id: await newId('ValueSet_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -594,8 +607,10 @@ class ValueSet_Parameter {
 			elementValueCode: elementValueCode,
 			valueDateTime: valueDateTime,
 			elementValueDateTime: elementValueDateTime);
-	}
-
+	var valueSet_ParameterBox = await Hive.openBox<ValueSet_Parameter>('ValueSet_ParameterBox');
+	valueSet_ParameterBox.add(newValueSet_Parameter);
+	return newValueSet_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -607,7 +622,7 @@ class ValueSet_Parameter {
   Element elementValueBoolean;
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
   Element elementValueInteger;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   String valueUri; //  pattern: ^\S*$
   Element elementValueUri;
@@ -663,8 +678,8 @@ class ValueSet_Contains {
 		Element elementDisplay,
 		List<ValueSet_Designation> designation,
 		List<ValueSet_Contains> contains}) async {
-	 return ValueSet_Contains(
-			id: await newEntry('ValueSet_Contains'),
+	ValueSet_Contains newValueSet_Contains = new ValueSet_Contains(
+			id: await newId('ValueSet_Contains'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			system: system,
@@ -681,8 +696,10 @@ class ValueSet_Contains {
 			elementDisplay: elementDisplay,
 			designation: designation,
 			contains: contains);
-	}
-
+	var valueSet_ContainsBox = await Hive.openBox<ValueSet_Contains>('ValueSet_ContainsBox');
+	valueSet_ContainsBox.add(newValueSet_Contains);
+	return newValueSet_Contains;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1328,7 +1345,7 @@ ValueSet_Parameter _$ValueSet_ParameterFromJson(Map<String, dynamic> json) {
     elementValueInteger: json['elementValueInteger'] == null
         ? null
         : Element.fromJson(json['elementValueInteger'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

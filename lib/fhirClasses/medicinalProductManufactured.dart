@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/prodCharacteristic.dart';
@@ -36,8 +35,8 @@ class MedicinalProductManufactured {
 		List<Reference> ingredient,
 		ProdCharacteristic physicalCharacteristics,
 		List<CodeableConcept> otherCharacteristics}) async {
-	 return MedicinalProductManufactured(
-			id: await newEntry('MedicinalProductManufactured'),
+	MedicinalProductManufactured newMedicinalProductManufactured = new MedicinalProductManufactured(
+			id: await newId('MedicinalProductManufactured'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -54,8 +53,10 @@ class MedicinalProductManufactured {
 			ingredient: ingredient,
 			physicalCharacteristics: physicalCharacteristics,
 			otherCharacteristics: otherCharacteristics);
-	}
-
+	var medicinalProductManufacturedBox = await Hive.openBox<MedicinalProductManufactured>('MedicinalProductManufacturedBox');
+	medicinalProductManufacturedBox.add(newMedicinalProductManufactured);
+	return newMedicinalProductManufactured;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductManufactured';
   @HiveField(1)

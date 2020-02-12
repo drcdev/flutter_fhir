@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -49,8 +48,8 @@ class MedicinalProductAuthorization {
 		Reference holder,
 		Reference regulator,
 		MedicinalProductAuthorization_Procedure procedure}) async {
-	 return MedicinalProductAuthorization(
-			id: await newEntry('MedicinalProductAuthorization'),
+	MedicinalProductAuthorization newMedicinalProductAuthorization = new MedicinalProductAuthorization(
+			id: await newId('MedicinalProductAuthorization'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -80,8 +79,10 @@ class MedicinalProductAuthorization {
 			holder: holder,
 			regulator: regulator,
 			procedure: procedure);
-	}
-
+	var medicinalProductAuthorizationBox = await Hive.openBox<MedicinalProductAuthorization>('MedicinalProductAuthorizationBox');
+	medicinalProductAuthorizationBox.add(newMedicinalProductAuthorization);
+	return newMedicinalProductAuthorization;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductAuthorization';
   @HiveField(1)
@@ -194,8 +195,8 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
 		List<CodeableConcept> jurisdiction,
 		CodeableConcept legalStatusOfSupply,
 		Period validityPeriod}) async {
-	 return MedicinalProductAuthorization_JurisdictionalAuthorization(
-			id: await newEntry('MedicinalProductAuthorization_JurisdictionalAuthorization'),
+	MedicinalProductAuthorization_JurisdictionalAuthorization newMedicinalProductAuthorization_JurisdictionalAuthorization = new MedicinalProductAuthorization_JurisdictionalAuthorization(
+			id: await newId('MedicinalProductAuthorization_JurisdictionalAuthorization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -203,8 +204,10 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
 			jurisdiction: jurisdiction,
 			legalStatusOfSupply: legalStatusOfSupply,
 			validityPeriod: validityPeriod);
-	}
-
+	var medicinalProductAuthorization_JurisdictionalAuthorizationBox = await Hive.openBox<MedicinalProductAuthorization_JurisdictionalAuthorization>('MedicinalProductAuthorization_JurisdictionalAuthorizationBox');
+	medicinalProductAuthorization_JurisdictionalAuthorizationBox.add(newMedicinalProductAuthorization_JurisdictionalAuthorization);
+	return newMedicinalProductAuthorization_JurisdictionalAuthorization;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -242,8 +245,8 @@ class MedicinalProductAuthorization_Procedure {
 		String dateDateTime,
 		Element elementDateDateTime,
 		List<MedicinalProductAuthorization_Procedure> application}) async {
-	 return MedicinalProductAuthorization_Procedure(
-			id: await newEntry('MedicinalProductAuthorization_Procedure'),
+	MedicinalProductAuthorization_Procedure newMedicinalProductAuthorization_Procedure = new MedicinalProductAuthorization_Procedure(
+			id: await newId('MedicinalProductAuthorization_Procedure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -252,8 +255,10 @@ class MedicinalProductAuthorization_Procedure {
 			dateDateTime: dateDateTime,
 			elementDateDateTime: elementDateDateTime,
 			application: application);
-	}
-
+	var medicinalProductAuthorization_ProcedureBox = await Hive.openBox<MedicinalProductAuthorization_Procedure>('MedicinalProductAuthorization_ProcedureBox');
+	medicinalProductAuthorization_ProcedureBox.add(newMedicinalProductAuthorization_Procedure);
+	return newMedicinalProductAuthorization_Procedure;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

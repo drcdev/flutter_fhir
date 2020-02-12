@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -45,8 +44,8 @@ class TestReport {
 		TestReport_Setup setup,
 		List<TestReport_Test> test,
 		TestReport_Teardown teardown}) async {
-	 return TestReport(
-			id: await newEntry('TestReport'),
+	TestReport newTestReport = new TestReport(
+			id: await newId('TestReport'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -74,8 +73,10 @@ class TestReport {
 			setup: setup,
 			test: test,
 			teardown: teardown);
-	}
-
+	var testReportBox = await Hive.openBox<TestReport>('TestReportBox');
+	testReportBox.add(newTestReport);
+	return newTestReport;
+}
   @HiveField(0)
   final String resourceType= 'TestReport';
   @HiveField(1)
@@ -183,8 +184,8 @@ class TestReport_Participant {
 		Element elementUri,
 		String display,
 		Element elementDisplay}) async {
-	 return TestReport_Participant(
-			id: await newEntry('TestReport_Participant'),
+	TestReport_Participant newTestReport_Participant = new TestReport_Participant(
+			id: await newId('TestReport_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -193,8 +194,10 @@ class TestReport_Participant {
 			elementUri: elementUri,
 			display: display,
 			elementDisplay: elementDisplay);
-	}
-
+	var testReport_ParticipantBox = await Hive.openBox<TestReport_Participant>('TestReport_ParticipantBox');
+	testReport_ParticipantBox.add(newTestReport_Participant);
+	return newTestReport_Participant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -229,13 +232,15 @@ class TestReport_Setup {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestReport_Action> action}) async {
-	 return TestReport_Setup(
-			id: await newEntry('TestReport_Setup'),
+	TestReport_Setup newTestReport_Setup = new TestReport_Setup(
+			id: await newId('TestReport_Setup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action);
-	}
-
+	var testReport_SetupBox = await Hive.openBox<TestReport_Setup>('TestReport_SetupBox');
+	testReport_SetupBox.add(newTestReport_Setup);
+	return newTestReport_Setup;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -261,14 +266,16 @@ class TestReport_Action {
 		List<Extension> modifierExtension,
 		TestReport_Operation operation,
 		TestReport_Assert asserts}) async {
-	 return TestReport_Action(
-			id: await newEntry('TestReport_Action'),
+	TestReport_Action newTestReport_Action = new TestReport_Action(
+			id: await newId('TestReport_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts);
-	}
-
+	var testReport_ActionBox = await Hive.openBox<TestReport_Action>('TestReport_ActionBox');
+	testReport_ActionBox.add(newTestReport_Action);
+	return newTestReport_Action;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -300,8 +307,8 @@ class TestReport_Operation {
 		Element elementMessage,
 		String detail,
 		Element elementDetail}) async {
-	 return TestReport_Operation(
-			id: await newEntry('TestReport_Operation'),
+	TestReport_Operation newTestReport_Operation = new TestReport_Operation(
+			id: await newId('TestReport_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			result: result,
@@ -310,8 +317,10 @@ class TestReport_Operation {
 			elementMessage: elementMessage,
 			detail: detail,
 			elementDetail: elementDetail);
-	}
-
+	var testReport_OperationBox = await Hive.openBox<TestReport_Operation>('TestReport_OperationBox');
+	testReport_OperationBox.add(newTestReport_Operation);
+	return newTestReport_Operation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -351,8 +360,8 @@ class TestReport_Assert {
 		Element elementMessage,
 		String detail,
 		Element elementDetail}) async {
-	 return TestReport_Assert(
-			id: await newEntry('TestReport_Assert'),
+	TestReport_Assert newTestReport_Assert = new TestReport_Assert(
+			id: await newId('TestReport_Assert'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			result: result,
@@ -361,8 +370,10 @@ class TestReport_Assert {
 			elementMessage: elementMessage,
 			detail: detail,
 			elementDetail: elementDetail);
-	}
-
+	var testReport_AssertBox = await Hive.openBox<TestReport_Assert>('TestReport_AssertBox');
+	testReport_AssertBox.add(newTestReport_Assert);
+	return newTestReport_Assert;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -401,8 +412,8 @@ class TestReport_Test {
 		String description,
 		Element elementDescription,
 		List<TestReport_Action1> action}) async {
-	 return TestReport_Test(
-			id: await newEntry('TestReport_Test'),
+	TestReport_Test newTestReport_Test = new TestReport_Test(
+			id: await newId('TestReport_Test'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -410,8 +421,10 @@ class TestReport_Test {
 			description: description,
 			elementDescription: elementDescription,
 			action: action);
-	}
-
+	var testReport_TestBox = await Hive.openBox<TestReport_Test>('TestReport_TestBox');
+	testReport_TestBox.add(newTestReport_Test);
+	return newTestReport_Test;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -445,14 +458,16 @@ class TestReport_Action1 {
 		List<Extension> modifierExtension,
 		TestReport_Operation operation,
 		TestReport_Assert asserts}) async {
-	 return TestReport_Action1(
-			id: await newEntry('TestReport_Action1'),
+	TestReport_Action1 newTestReport_Action1 = new TestReport_Action1(
+			id: await newId('TestReport_Action1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts);
-	}
-
+	var testReport_Action1Box = await Hive.openBox<TestReport_Action1>('TestReport_Action1Box');
+	testReport_Action1Box.add(newTestReport_Action1);
+	return newTestReport_Action1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -479,13 +494,15 @@ class TestReport_Teardown {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestReport_Action2> action}) async {
-	 return TestReport_Teardown(
-			id: await newEntry('TestReport_Teardown'),
+	TestReport_Teardown newTestReport_Teardown = new TestReport_Teardown(
+			id: await newId('TestReport_Teardown'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action);
-	}
-
+	var testReport_TeardownBox = await Hive.openBox<TestReport_Teardown>('TestReport_TeardownBox');
+	testReport_TeardownBox.add(newTestReport_Teardown);
+	return newTestReport_Teardown;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -510,13 +527,15 @@ class TestReport_Action2 {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		TestReport_Operation operation}) async {
-	 return TestReport_Action2(
-			id: await newEntry('TestReport_Action2'),
+	TestReport_Action2 newTestReport_Action2 = new TestReport_Action2(
+			id: await newId('TestReport_Action2'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation);
-	}
-
+	var testReport_Action2Box = await Hive.openBox<TestReport_Action2>('TestReport_Action2Box');
+	testReport_Action2Box.add(newTestReport_Action2);
+	return newTestReport_Action2;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

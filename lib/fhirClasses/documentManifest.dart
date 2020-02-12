@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -44,8 +43,8 @@ class DocumentManifest {
 		Element elementDescription,
 		List<Reference> content,
 		List<DocumentManifest_Related> related}) async {
-	 return DocumentManifest(
-			id: await newEntry('DocumentManifest'),
+	DocumentManifest newDocumentManifest = new DocumentManifest(
+			id: await newId('DocumentManifest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,8 +70,10 @@ class DocumentManifest {
 			elementDescription: elementDescription,
 			content: content,
 			related: related);
-	}
-
+	var documentManifestBox = await Hive.openBox<DocumentManifest>('DocumentManifestBox');
+	documentManifestBox.add(newDocumentManifest);
+	return newDocumentManifest;
+}
   @HiveField(0)
   final String resourceType= 'DocumentManifest';
   @HiveField(1)
@@ -170,14 +171,16 @@ class DocumentManifest_Related {
 		List<Extension> modifierExtension,
 		Identifier identifier,
 		Reference ref}) async {
-	 return DocumentManifest_Related(
-			id: await newEntry('DocumentManifest_Related'),
+	DocumentManifest_Related newDocumentManifest_Related = new DocumentManifest_Related(
+			id: await newId('DocumentManifest_Related'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
 			ref: ref);
-	}
-
+	var documentManifest_RelatedBox = await Hive.openBox<DocumentManifest_Related>('DocumentManifest_RelatedBox');
+	documentManifest_RelatedBox.add(newDocumentManifest_Related);
+	return newDocumentManifest_Related;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

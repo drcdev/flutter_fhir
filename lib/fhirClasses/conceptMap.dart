@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -64,8 +63,8 @@ class ConceptMap {
 		String targetCanonical,
 		Element elementTargetCanonical,
 		List<ConceptMap_Group> group}) async {
-	 return ConceptMap(
-			id: await newEntry('ConceptMap'),
+	ConceptMap newConceptMap = new ConceptMap(
+			id: await newId('ConceptMap'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -110,8 +109,10 @@ class ConceptMap {
 			targetCanonical: targetCanonical,
 			elementTargetCanonical: elementTargetCanonical,
 			group: group);
-	}
-
+	var conceptMapBox = await Hive.openBox<ConceptMap>('ConceptMapBox');
+	conceptMapBox.add(newConceptMap);
+	return newConceptMap;
+}
   @HiveField(0)
   final String resourceType= 'ConceptMap';
   @HiveField(1)
@@ -274,8 +275,8 @@ class ConceptMap_Group {
 		Element elementTargetVersion,
 		List<ConceptMap_Element> element,
 		ConceptMap_Unmapped unmapped}) async {
-	 return ConceptMap_Group(
-			id: await newEntry('ConceptMap_Group'),
+	ConceptMap_Group newConceptMap_Group = new ConceptMap_Group(
+			id: await newId('ConceptMap_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			source: source,
@@ -288,8 +289,10 @@ class ConceptMap_Group {
 			elementTargetVersion: elementTargetVersion,
 			element: element,
 			unmapped: unmapped);
-	}
-
+	var conceptMap_GroupBox = await Hive.openBox<ConceptMap_Group>('ConceptMap_GroupBox');
+	conceptMap_GroupBox.add(newConceptMap_Group);
+	return newConceptMap_Group;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -336,8 +339,8 @@ class ConceptMap_Element {
 		String display,
 		Element elementDisplay,
 		List<ConceptMap_Target> target}) async {
-	 return ConceptMap_Element(
-			id: await newEntry('ConceptMap_Element'),
+	ConceptMap_Element newConceptMap_Element = new ConceptMap_Element(
+			id: await newId('ConceptMap_Element'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -345,8 +348,10 @@ class ConceptMap_Element {
 			display: display,
 			elementDisplay: elementDisplay,
 			target: target);
-	}
-
+	var conceptMap_ElementBox = await Hive.openBox<ConceptMap_Element>('ConceptMap_ElementBox');
+	conceptMap_ElementBox.add(newConceptMap_Element);
+	return newConceptMap_Element;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -388,8 +393,8 @@ class ConceptMap_Target {
 		Element elementComment,
 		List<ConceptMap_DependsOn> dependsOn,
 		List<ConceptMap_DependsOn> product}) async {
-	 return ConceptMap_Target(
-			id: await newEntry('ConceptMap_Target'),
+	ConceptMap_Target newConceptMap_Target = new ConceptMap_Target(
+			id: await newId('ConceptMap_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -402,8 +407,10 @@ class ConceptMap_Target {
 			elementComment: elementComment,
 			dependsOn: dependsOn,
 			product: product);
-	}
-
+	var conceptMap_TargetBox = await Hive.openBox<ConceptMap_Target>('ConceptMap_TargetBox');
+	conceptMap_TargetBox.add(newConceptMap_Target);
+	return newConceptMap_Target;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -452,8 +459,8 @@ class ConceptMap_DependsOn {
 		Element elementValue,
 		String display,
 		Element elementDisplay}) async {
-	 return ConceptMap_DependsOn(
-			id: await newEntry('ConceptMap_DependsOn'),
+	ConceptMap_DependsOn newConceptMap_DependsOn = new ConceptMap_DependsOn(
+			id: await newId('ConceptMap_DependsOn'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			property: property,
@@ -463,8 +470,10 @@ class ConceptMap_DependsOn {
 			elementValue: elementValue,
 			display: display,
 			elementDisplay: elementDisplay);
-	}
-
+	var conceptMap_DependsOnBox = await Hive.openBox<ConceptMap_DependsOn>('ConceptMap_DependsOnBox');
+	conceptMap_DependsOnBox.add(newConceptMap_DependsOn);
+	return newConceptMap_DependsOn;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -507,8 +516,8 @@ class ConceptMap_Unmapped {
 		String display,
 		Element elementDisplay,
 		String url}) async {
-	 return ConceptMap_Unmapped(
-			id: await newEntry('ConceptMap_Unmapped'),
+	ConceptMap_Unmapped newConceptMap_Unmapped = new ConceptMap_Unmapped(
+			id: await newId('ConceptMap_Unmapped'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -518,8 +527,10 @@ class ConceptMap_Unmapped {
 			display: display,
 			elementDisplay: elementDisplay,
 			url: url);
-	}
-
+	var conceptMap_UnmappedBox = await Hive.openBox<ConceptMap_Unmapped>('ConceptMap_UnmappedBox');
+	conceptMap_UnmappedBox.add(newConceptMap_Unmapped);
+	return newConceptMap_Unmapped;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

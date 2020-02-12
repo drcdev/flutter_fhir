@@ -16,15 +16,17 @@ class Money {
 		Element elementValue,
 		String currency,
 		Element elementCurrency}) async {
-	 return Money(
-			id: await newEntry('Money'),
+	Money newMoney = new Money(
+			id: await newId('Money'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
 			currency: currency,
 			elementCurrency: elementCurrency);
-	}
-
+	var moneyBox = await Hive.openBox<Money>('MoneyBox');
+	moneyBox.add(newMoney);
+	return newMoney;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -69,8 +68,8 @@ class FamilyMemberHistory {
 		List<Reference> reasonReference,
 		List<Annotation> note,
 		List<FamilyMemberHistory_Condition> condition}) async {
-	 return FamilyMemberHistory(
-			id: await newEntry('FamilyMemberHistory'),
+	FamilyMemberHistory newFamilyMemberHistory = new FamilyMemberHistory(
+			id: await newId('FamilyMemberHistory'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -117,8 +116,10 @@ class FamilyMemberHistory {
 			reasonReference: reasonReference,
 			note: note,
 			condition: condition);
-	}
-
+	var familyMemberHistoryBox = await Hive.openBox<FamilyMemberHistory>('FamilyMemberHistoryBox');
+	familyMemberHistoryBox.add(newFamilyMemberHistory);
+	return newFamilyMemberHistory;
+}
   @HiveField(0)
   final String resourceType= 'FamilyMemberHistory';
   @HiveField(1)
@@ -287,8 +288,8 @@ class FamilyMemberHistory_Condition {
 		String onsetString,
 		Element elementOnsetString,
 		List<Annotation> note}) async {
-	 return FamilyMemberHistory_Condition(
-			id: await newEntry('FamilyMemberHistory_Condition'),
+	FamilyMemberHistory_Condition newFamilyMemberHistory_Condition = new FamilyMemberHistory_Condition(
+			id: await newId('FamilyMemberHistory_Condition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -301,8 +302,10 @@ class FamilyMemberHistory_Condition {
 			onsetString: onsetString,
 			elementOnsetString: elementOnsetString,
 			note: note);
-	}
-
+	var familyMemberHistory_ConditionBox = await Hive.openBox<FamilyMemberHistory_Condition>('FamilyMemberHistory_ConditionBox');
+	familyMemberHistory_ConditionBox.add(newFamilyMemberHistory_Condition);
+	return newFamilyMemberHistory_Condition;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

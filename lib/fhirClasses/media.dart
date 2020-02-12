@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -62,8 +61,8 @@ class Media {
 		Element elementDuration,
 		Attachment content,
 		List<Annotation> note}) async {
-	 return Media(
-			id: await newEntry('Media'),
+	Media newMedia = new Media(
+			id: await newId('Media'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -104,8 +103,10 @@ class Media {
 			elementDuration: elementDuration,
 			content: content,
 			note: note);
-	}
-
+	var mediaBox = await Hive.openBox<Media>('MediaBox');
+	mediaBox.add(newMedia);
+	return newMedia;
+}
   @HiveField(0)
   final String resourceType= 'Media';
   @HiveField(1)

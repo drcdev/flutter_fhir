@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/expression.dart';
@@ -87,8 +86,8 @@ class PlanDefinition {
 		List<String> library,
 		List<PlanDefinition_Goal> goal,
 		List<PlanDefinition_Action> action}) async {
-	 return PlanDefinition(
-			id: await newEntry('PlanDefinition'),
+	PlanDefinition newPlanDefinition = new PlanDefinition(
+			id: await newId('PlanDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -145,8 +144,10 @@ class PlanDefinition {
 			library: library,
 			goal: goal,
 			action: action);
-	}
-
+	var planDefinitionBox = await Hive.openBox<PlanDefinition>('PlanDefinitionBox');
+	planDefinitionBox.add(newPlanDefinition);
+	return newPlanDefinition;
+}
   @HiveField(0)
   final String resourceType= 'PlanDefinition';
   @HiveField(1)
@@ -342,8 +343,8 @@ class PlanDefinition_Goal {
 		List<CodeableConcept> addresses,
 		List<RelatedArtifact> documentation,
 		List<PlanDefinition_Target> target}) async {
-	 return PlanDefinition_Goal(
-			id: await newEntry('PlanDefinition_Goal'),
+	PlanDefinition_Goal newPlanDefinition_Goal = new PlanDefinition_Goal(
+			id: await newId('PlanDefinition_Goal'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -353,8 +354,10 @@ class PlanDefinition_Goal {
 			addresses: addresses,
 			documentation: documentation,
 			target: target);
-	}
-
+	var planDefinition_GoalBox = await Hive.openBox<PlanDefinition_Goal>('PlanDefinition_GoalBox');
+	planDefinition_GoalBox.add(newPlanDefinition_Goal);
+	return newPlanDefinition_Goal;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -395,8 +398,8 @@ class PlanDefinition_Target {
 		Range detailRange,
 		CodeableConcept detailCodeableConcept,
 		Duration due}) async {
-	 return PlanDefinition_Target(
-			id: await newEntry('PlanDefinition_Target'),
+	PlanDefinition_Target newPlanDefinition_Target = new PlanDefinition_Target(
+			id: await newId('PlanDefinition_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			measure: measure,
@@ -404,8 +407,10 @@ class PlanDefinition_Target {
 			detailRange: detailRange,
 			detailCodeableConcept: detailCodeableConcept,
 			due: due);
-	}
-
+	var planDefinition_TargetBox = await Hive.openBox<PlanDefinition_Target>('PlanDefinition_TargetBox');
+	planDefinition_TargetBox.add(newPlanDefinition_Target);
+	return newPlanDefinition_Target;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -485,8 +490,8 @@ class PlanDefinition_Action {
 		String transform,
 		List<PlanDefinition_DynamicValue> dynamicValue,
 		List<PlanDefinition_Action> action}) async {
-	 return PlanDefinition_Action(
-			id: await newEntry('PlanDefinition_Action'),
+	PlanDefinition_Action newPlanDefinition_Action = new PlanDefinition_Action(
+			id: await newId('PlanDefinition_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			prefix: prefix,
@@ -537,8 +542,10 @@ class PlanDefinition_Action {
 			transform: transform,
 			dynamicValue: dynamicValue,
 			action: action);
-	}
-
+	var planDefinition_ActionBox = await Hive.openBox<PlanDefinition_Action>('PlanDefinition_ActionBox');
+	planDefinition_ActionBox.add(newPlanDefinition_Action);
+	return newPlanDefinition_Action;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -659,15 +666,17 @@ class PlanDefinition_Condition {
 		String kind,
 		Element elementKind,
 		Expression expression}) async {
-	 return PlanDefinition_Condition(
-			id: await newEntry('PlanDefinition_Condition'),
+	PlanDefinition_Condition newPlanDefinition_Condition = new PlanDefinition_Condition(
+			id: await newId('PlanDefinition_Condition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kind: kind,
 			elementKind: elementKind,
 			expression: expression);
-	}
-
+	var planDefinition_ConditionBox = await Hive.openBox<PlanDefinition_Condition>('PlanDefinition_ConditionBox');
+	planDefinition_ConditionBox.add(newPlanDefinition_Condition);
+	return newPlanDefinition_Condition;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -701,8 +710,8 @@ class PlanDefinition_RelatedAction {
 		Element elementRelationship,
 		Duration offsetDuration,
 		Range offsetRange}) async {
-	 return PlanDefinition_RelatedAction(
-			id: await newEntry('PlanDefinition_RelatedAction'),
+	PlanDefinition_RelatedAction newPlanDefinition_RelatedAction = new PlanDefinition_RelatedAction(
+			id: await newId('PlanDefinition_RelatedAction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			actionId: actionId,
@@ -711,8 +720,10 @@ class PlanDefinition_RelatedAction {
 			elementRelationship: elementRelationship,
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange);
-	}
-
+	var planDefinition_RelatedActionBox = await Hive.openBox<PlanDefinition_RelatedAction>('PlanDefinition_RelatedActionBox');
+	planDefinition_RelatedActionBox.add(newPlanDefinition_RelatedAction);
+	return newPlanDefinition_RelatedAction;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -749,15 +760,17 @@ class PlanDefinition_Participant {
 		String type,
 		Element elementType,
 		CodeableConcept role}) async {
-	 return PlanDefinition_Participant(
-			id: await newEntry('PlanDefinition_Participant'),
+	PlanDefinition_Participant newPlanDefinition_Participant = new PlanDefinition_Participant(
+			id: await newId('PlanDefinition_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			role: role);
-	}
-
+	var planDefinition_ParticipantBox = await Hive.openBox<PlanDefinition_Participant>('PlanDefinition_ParticipantBox');
+	planDefinition_ParticipantBox.add(newPlanDefinition_Participant);
+	return newPlanDefinition_Participant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -788,15 +801,17 @@ class PlanDefinition_DynamicValue {
 		String path,
 		Element elementPath,
 		Expression expression}) async {
-	 return PlanDefinition_DynamicValue(
-			id: await newEntry('PlanDefinition_DynamicValue'),
+	PlanDefinition_DynamicValue newPlanDefinition_DynamicValue = new PlanDefinition_DynamicValue(
+			id: await newId('PlanDefinition_DynamicValue'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
 			elementPath: elementPath,
 			expression: expression);
-	}
-
+	var planDefinition_DynamicValueBox = await Hive.openBox<PlanDefinition_DynamicValue>('PlanDefinition_DynamicValueBox');
+	planDefinition_DynamicValueBox.add(newPlanDefinition_DynamicValue);
+	return newPlanDefinition_DynamicValue;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

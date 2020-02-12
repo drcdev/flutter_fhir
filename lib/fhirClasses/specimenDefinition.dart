@@ -36,8 +36,8 @@ class SpecimenDefinition {
 		Element elementTimeAspect,
 		List<CodeableConcept> collection,
 		List<SpecimenDefinition_TypeTested> typeTested}) async {
-	 return SpecimenDefinition(
-			id: await newEntry('SpecimenDefinition'),
+	SpecimenDefinition newSpecimenDefinition = new SpecimenDefinition(
+			id: await newId('SpecimenDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -54,8 +54,10 @@ class SpecimenDefinition {
 			elementTimeAspect: elementTimeAspect,
 			collection: collection,
 			typeTested: typeTested);
-	}
-
+	var specimenDefinitionBox = await Hive.openBox<SpecimenDefinition>('SpecimenDefinitionBox');
+	specimenDefinitionBox.add(newSpecimenDefinition);
+	return newSpecimenDefinition;
+}
   @HiveField(0)
   final String resourceType= 'SpecimenDefinition';
   @HiveField(1)
@@ -135,8 +137,8 @@ class SpecimenDefinition_TypeTested {
 		Duration retentionTime,
 		List<CodeableConcept> rejectionCriterion,
 		List<SpecimenDefinition_Handling> handling}) async {
-	 return SpecimenDefinition_TypeTested(
-			id: await newEntry('SpecimenDefinition_TypeTested'),
+	SpecimenDefinition_TypeTested newSpecimenDefinition_TypeTested = new SpecimenDefinition_TypeTested(
+			id: await newId('SpecimenDefinition_TypeTested'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			isDerived: isDerived,
@@ -150,8 +152,10 @@ class SpecimenDefinition_TypeTested {
 			retentionTime: retentionTime,
 			rejectionCriterion: rejectionCriterion,
 			handling: handling);
-	}
-
+	var specimenDefinition_TypeTestedBox = await Hive.openBox<SpecimenDefinition_TypeTested>('SpecimenDefinition_TypeTestedBox');
+	specimenDefinition_TypeTestedBox.add(newSpecimenDefinition_TypeTested);
+	return newSpecimenDefinition_TypeTested;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -207,8 +211,8 @@ class SpecimenDefinition_Container {
 		List<SpecimenDefinition_Additive> additive,
 		String preparation,
 		Element elementPreparation}) async {
-	 return SpecimenDefinition_Container(
-			id: await newEntry('SpecimenDefinition_Container'),
+	SpecimenDefinition_Container newSpecimenDefinition_Container = new SpecimenDefinition_Container(
+			id: await newId('SpecimenDefinition_Container'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			material: material,
@@ -223,8 +227,10 @@ class SpecimenDefinition_Container {
 			additive: additive,
 			preparation: preparation,
 			elementPreparation: elementPreparation);
-	}
-
+	var specimenDefinition_ContainerBox = await Hive.openBox<SpecimenDefinition_Container>('SpecimenDefinition_ContainerBox');
+	specimenDefinition_ContainerBox.add(newSpecimenDefinition_Container);
+	return newSpecimenDefinition_Container;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -272,14 +278,16 @@ class SpecimenDefinition_Additive {
 		List<Extension> modifierExtension,
 		CodeableConcept additiveCodeableConcept,
 		Reference additiveReference}) async {
-	 return SpecimenDefinition_Additive(
-			id: await newEntry('SpecimenDefinition_Additive'),
+	SpecimenDefinition_Additive newSpecimenDefinition_Additive = new SpecimenDefinition_Additive(
+			id: await newId('SpecimenDefinition_Additive'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference);
-	}
-
+	var specimenDefinition_AdditiveBox = await Hive.openBox<SpecimenDefinition_Additive>('SpecimenDefinition_AdditiveBox');
+	specimenDefinition_AdditiveBox.add(newSpecimenDefinition_Additive);
+	return newSpecimenDefinition_Additive;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -310,8 +318,8 @@ class SpecimenDefinition_Handling {
 		Duration maxDuration,
 		String instruction,
 		Element elementInstruction}) async {
-	 return SpecimenDefinition_Handling(
-			id: await newEntry('SpecimenDefinition_Handling'),
+	SpecimenDefinition_Handling newSpecimenDefinition_Handling = new SpecimenDefinition_Handling(
+			id: await newId('SpecimenDefinition_Handling'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			temperatureQualifier: temperatureQualifier,
@@ -319,8 +327,10 @@ class SpecimenDefinition_Handling {
 			maxDuration: maxDuration,
 			instruction: instruction,
 			elementInstruction: elementInstruction);
-	}
-
+	var specimenDefinition_HandlingBox = await Hive.openBox<SpecimenDefinition_Handling>('SpecimenDefinition_HandlingBox');
+	specimenDefinition_HandlingBox.add(newSpecimenDefinition_Handling);
+	return newSpecimenDefinition_Handling;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -17,14 +16,16 @@ class Narrative {
 		String status,
 		Element elementStatus,
 		String div}) async {
-	 return Narrative(
-			id: await newEntry('Narrative'),
+	Narrative newNarrative = new Narrative(
+			id: await newId('Narrative'),
 			extension: extension,
 			status: status,
 			elementStatus: elementStatus,
 			div: div);
-	}
-
+	var narrativeBox = await Hive.openBox<Narrative>('NarrativeBox');
+	narrativeBox.add(newNarrative);
+	return newNarrative;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

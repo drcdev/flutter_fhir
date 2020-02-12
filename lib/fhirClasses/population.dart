@@ -19,8 +19,8 @@ class Population {
 		CodeableConcept gender,
 		CodeableConcept race,
 		CodeableConcept physiologicalCondition}) async {
-	 return Population(
-			id: await newEntry('Population'),
+	Population newPopulation = new Population(
+			id: await newId('Population'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			ageRange: ageRange,
@@ -28,8 +28,10 @@ class Population {
 			gender: gender,
 			race: race,
 			physiologicalCondition: physiologicalCondition);
-	}
-
+	var populationBox = await Hive.openBox<Population>('PopulationBox');
+	populationBox.add(newPopulation);
+	return newPopulation;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

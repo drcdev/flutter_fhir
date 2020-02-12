@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -45,8 +44,8 @@ class ObservationDefinition {
 		Reference normalCodedValueSet,
 		Reference abnormalCodedValueSet,
 		Reference criticalCodedValueSet}) async {
-	 return ObservationDefinition(
-			id: await newEntry('ObservationDefinition'),
+	ObservationDefinition newObservationDefinition = new ObservationDefinition(
+			id: await newId('ObservationDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -72,8 +71,10 @@ class ObservationDefinition {
 			normalCodedValueSet: normalCodedValueSet,
 			abnormalCodedValueSet: abnormalCodedValueSet,
 			criticalCodedValueSet: criticalCodedValueSet);
-	}
-
+	var observationDefinitionBox = await Hive.openBox<ObservationDefinition>('ObservationDefinitionBox');
+	observationDefinitionBox.add(newObservationDefinition);
+	return newObservationDefinition;
+}
   @HiveField(0)
   final String resourceType= 'ObservationDefinition';
   @HiveField(1)
@@ -175,8 +176,8 @@ class ObservationDefinition_QuantitativeDetails {
 		Element elementConversionFactor,
 		int decimalPrecision,
 		Element elementDecimalPrecision}) async {
-	 return ObservationDefinition_QuantitativeDetails(
-			id: await newEntry('ObservationDefinition_QuantitativeDetails'),
+	ObservationDefinition_QuantitativeDetails newObservationDefinition_QuantitativeDetails = new ObservationDefinition_QuantitativeDetails(
+			id: await newId('ObservationDefinition_QuantitativeDetails'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			customaryUnit: customaryUnit,
@@ -185,8 +186,10 @@ class ObservationDefinition_QuantitativeDetails {
 			elementConversionFactor: elementConversionFactor,
 			decimalPrecision: decimalPrecision,
 			elementDecimalPrecision: elementDecimalPrecision);
-	}
-
+	var observationDefinition_QuantitativeDetailsBox = await Hive.openBox<ObservationDefinition_QuantitativeDetails>('ObservationDefinition_QuantitativeDetailsBox');
+	observationDefinition_QuantitativeDetailsBox.add(newObservationDefinition_QuantitativeDetails);
+	return newObservationDefinition_QuantitativeDetails;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -231,8 +234,8 @@ class ObservationDefinition_QualifiedInterval {
 		Range gestationalAge,
 		String condition,
 		Element elementCondition}) async {
-	 return ObservationDefinition_QualifiedInterval(
-			id: await newEntry('ObservationDefinition_QualifiedInterval'),
+	ObservationDefinition_QualifiedInterval newObservationDefinition_QualifiedInterval = new ObservationDefinition_QualifiedInterval(
+			id: await newId('ObservationDefinition_QualifiedInterval'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -246,8 +249,10 @@ class ObservationDefinition_QualifiedInterval {
 			gestationalAge: gestationalAge,
 			condition: condition,
 			elementCondition: elementCondition);
-	}
-
+	var observationDefinition_QualifiedIntervalBox = await Hive.openBox<ObservationDefinition_QualifiedInterval>('ObservationDefinition_QualifiedIntervalBox');
+	observationDefinition_QualifiedIntervalBox.add(newObservationDefinition_QualifiedInterval);
+	return newObservationDefinition_QualifiedInterval;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

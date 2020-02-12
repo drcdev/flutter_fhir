@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -84,8 +83,8 @@ class ExplanationOfBenefit {
 		List<ExplanationOfBenefit_ProcessNote> processNote,
 		Period benefitPeriod,
 		List<ExplanationOfBenefit_BenefitBalance> benefitBalance}) async {
-	 return ExplanationOfBenefit(
-			id: await newEntry('ExplanationOfBenefit'),
+	ExplanationOfBenefit newExplanationOfBenefit = new ExplanationOfBenefit(
+			id: await newId('ExplanationOfBenefit'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -145,8 +144,10 @@ class ExplanationOfBenefit {
 			processNote: processNote,
 			benefitPeriod: benefitPeriod,
 			benefitBalance: benefitBalance);
-	}
-
+	var explanationOfBenefitBox = await Hive.openBox<ExplanationOfBenefit>('ExplanationOfBenefitBox');
+	explanationOfBenefitBox.add(newExplanationOfBenefit);
+	return newExplanationOfBenefit;
+}
   @HiveField(0)
   final String resourceType= 'ExplanationOfBenefit';
   @HiveField(1)
@@ -347,15 +348,17 @@ class ExplanationOfBenefit_Related {
 		Reference claim,
 		CodeableConcept relationship,
 		Identifier reference}) async {
-	 return ExplanationOfBenefit_Related(
-			id: await newEntry('ExplanationOfBenefit_Related'),
+	ExplanationOfBenefit_Related newExplanationOfBenefit_Related = new ExplanationOfBenefit_Related(
+			id: await newId('ExplanationOfBenefit_Related'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			claim: claim,
 			relationship: relationship,
 			reference: reference);
-	}
-
+	var explanationOfBenefit_RelatedBox = await Hive.openBox<ExplanationOfBenefit_Related>('ExplanationOfBenefit_RelatedBox');
+	explanationOfBenefit_RelatedBox.add(newExplanationOfBenefit_Related);
+	return newExplanationOfBenefit_Related;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -385,14 +388,16 @@ class ExplanationOfBenefit_Payee {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Reference party}) async {
-	 return ExplanationOfBenefit_Payee(
-			id: await newEntry('ExplanationOfBenefit_Payee'),
+	ExplanationOfBenefit_Payee newExplanationOfBenefit_Payee = new ExplanationOfBenefit_Payee(
+			id: await newId('ExplanationOfBenefit_Payee'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			party: party);
-	}
-
+	var explanationOfBenefit_PayeeBox = await Hive.openBox<ExplanationOfBenefit_Payee>('ExplanationOfBenefit_PayeeBox');
+	explanationOfBenefit_PayeeBox.add(newExplanationOfBenefit_Payee);
+	return newExplanationOfBenefit_Payee;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -425,8 +430,8 @@ class ExplanationOfBenefit_CareTeam {
 		Element elementResponsible,
 		CodeableConcept role,
 		CodeableConcept qualification}) async {
-	 return ExplanationOfBenefit_CareTeam(
-			id: await newEntry('ExplanationOfBenefit_CareTeam'),
+	ExplanationOfBenefit_CareTeam newExplanationOfBenefit_CareTeam = new ExplanationOfBenefit_CareTeam(
+			id: await newId('ExplanationOfBenefit_CareTeam'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -436,8 +441,10 @@ class ExplanationOfBenefit_CareTeam {
 			elementResponsible: elementResponsible,
 			role: role,
 			qualification: qualification);
-	}
-
+	var explanationOfBenefit_CareTeamBox = await Hive.openBox<ExplanationOfBenefit_CareTeam>('ExplanationOfBenefit_CareTeamBox');
+	explanationOfBenefit_CareTeamBox.add(newExplanationOfBenefit_CareTeam);
+	return newExplanationOfBenefit_CareTeam;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -488,8 +495,8 @@ class ExplanationOfBenefit_SupportingInfo {
 		Attachment valueAttachment,
 		Reference valueReference,
 		Coding reason}) async {
-	 return ExplanationOfBenefit_SupportingInfo(
-			id: await newEntry('ExplanationOfBenefit_SupportingInfo'),
+	ExplanationOfBenefit_SupportingInfo newExplanationOfBenefit_SupportingInfo = new ExplanationOfBenefit_SupportingInfo(
+			id: await newId('ExplanationOfBenefit_SupportingInfo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -507,8 +514,10 @@ class ExplanationOfBenefit_SupportingInfo {
 			valueAttachment: valueAttachment,
 			valueReference: valueReference,
 			reason: reason);
-	}
-
+	var explanationOfBenefit_SupportingInfoBox = await Hive.openBox<ExplanationOfBenefit_SupportingInfo>('ExplanationOfBenefit_SupportingInfoBox');
+	explanationOfBenefit_SupportingInfoBox.add(newExplanationOfBenefit_SupportingInfo);
+	return newExplanationOfBenefit_SupportingInfo;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -567,8 +576,8 @@ class ExplanationOfBenefit_Diagnosis {
 		List<CodeableConcept> type,
 		CodeableConcept onAdmission,
 		CodeableConcept packageCode}) async {
-	 return ExplanationOfBenefit_Diagnosis(
-			id: await newEntry('ExplanationOfBenefit_Diagnosis'),
+	ExplanationOfBenefit_Diagnosis newExplanationOfBenefit_Diagnosis = new ExplanationOfBenefit_Diagnosis(
+			id: await newId('ExplanationOfBenefit_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -578,8 +587,10 @@ class ExplanationOfBenefit_Diagnosis {
 			type: type,
 			onAdmission: onAdmission,
 			packageCode: packageCode);
-	}
-
+	var explanationOfBenefit_DiagnosisBox = await Hive.openBox<ExplanationOfBenefit_Diagnosis>('ExplanationOfBenefit_DiagnosisBox');
+	explanationOfBenefit_DiagnosisBox.add(newExplanationOfBenefit_Diagnosis);
+	return newExplanationOfBenefit_Diagnosis;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -623,8 +634,8 @@ class ExplanationOfBenefit_Procedure {
 		CodeableConcept procedureCodeableConcept,
 		Reference procedureReference,
 		List<Reference> udi}) async {
-	 return ExplanationOfBenefit_Procedure(
-			id: await newEntry('ExplanationOfBenefit_Procedure'),
+	ExplanationOfBenefit_Procedure newExplanationOfBenefit_Procedure = new ExplanationOfBenefit_Procedure(
+			id: await newId('ExplanationOfBenefit_Procedure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -635,8 +646,10 @@ class ExplanationOfBenefit_Procedure {
 			procedureCodeableConcept: procedureCodeableConcept,
 			procedureReference: procedureReference,
 			udi: udi);
-	}
-
+	var explanationOfBenefit_ProcedureBox = await Hive.openBox<ExplanationOfBenefit_Procedure>('ExplanationOfBenefit_ProcedureBox');
+	explanationOfBenefit_ProcedureBox.add(newExplanationOfBenefit_Procedure);
+	return newExplanationOfBenefit_Procedure;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -679,8 +692,8 @@ class ExplanationOfBenefit_Insurance {
 		Reference coverage,
 		List<String> preAuthRef,
 		List<Element> elementPreAuthRef}) async {
-	 return ExplanationOfBenefit_Insurance(
-			id: await newEntry('ExplanationOfBenefit_Insurance'),
+	ExplanationOfBenefit_Insurance newExplanationOfBenefit_Insurance = new ExplanationOfBenefit_Insurance(
+			id: await newId('ExplanationOfBenefit_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			focal: focal,
@@ -688,8 +701,10 @@ class ExplanationOfBenefit_Insurance {
 			coverage: coverage,
 			preAuthRef: preAuthRef,
 			elementPreAuthRef: elementPreAuthRef);
-	}
-
+	var explanationOfBenefit_InsuranceBox = await Hive.openBox<ExplanationOfBenefit_Insurance>('ExplanationOfBenefit_InsuranceBox');
+	explanationOfBenefit_InsuranceBox.add(newExplanationOfBenefit_Insurance);
+	return newExplanationOfBenefit_Insurance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -726,8 +741,8 @@ class ExplanationOfBenefit_Accident {
 		CodeableConcept type,
 		Address locationAddress,
 		Reference locationReference}) async {
-	 return ExplanationOfBenefit_Accident(
-			id: await newEntry('ExplanationOfBenefit_Accident'),
+	ExplanationOfBenefit_Accident newExplanationOfBenefit_Accident = new ExplanationOfBenefit_Accident(
+			id: await newId('ExplanationOfBenefit_Accident'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			date: date,
@@ -735,8 +750,10 @@ class ExplanationOfBenefit_Accident {
 			type: type,
 			locationAddress: locationAddress,
 			locationReference: locationReference);
-	}
-
+	var explanationOfBenefit_AccidentBox = await Hive.openBox<ExplanationOfBenefit_Accident>('ExplanationOfBenefit_AccidentBox');
+	explanationOfBenefit_AccidentBox.add(newExplanationOfBenefit_Accident);
+	return newExplanationOfBenefit_Accident;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -802,8 +819,8 @@ class ExplanationOfBenefit_Item {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_Detail> detail}) async {
-	 return ExplanationOfBenefit_Item(
-			id: await newEntry('ExplanationOfBenefit_Item'),
+	ExplanationOfBenefit_Item newExplanationOfBenefit_Item = new ExplanationOfBenefit_Item(
+			id: await newId('ExplanationOfBenefit_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -840,8 +857,10 @@ class ExplanationOfBenefit_Item {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			detail: detail);
-	}
-
+	var explanationOfBenefit_ItemBox = await Hive.openBox<ExplanationOfBenefit_Item>('ExplanationOfBenefit_ItemBox');
+	explanationOfBenefit_ItemBox.add(newExplanationOfBenefit_Item);
+	return newExplanationOfBenefit_Item;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -936,8 +955,8 @@ class ExplanationOfBenefit_Adjudication {
 		Money amount,
 		double value,
 		Element elementValue}) async {
-	 return ExplanationOfBenefit_Adjudication(
-			id: await newEntry('ExplanationOfBenefit_Adjudication'),
+	ExplanationOfBenefit_Adjudication newExplanationOfBenefit_Adjudication = new ExplanationOfBenefit_Adjudication(
+			id: await newId('ExplanationOfBenefit_Adjudication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -945,8 +964,10 @@ class ExplanationOfBenefit_Adjudication {
 			amount: amount,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var explanationOfBenefit_AdjudicationBox = await Hive.openBox<ExplanationOfBenefit_Adjudication>('ExplanationOfBenefit_AdjudicationBox');
+	explanationOfBenefit_AdjudicationBox.add(newExplanationOfBenefit_Adjudication);
+	return newExplanationOfBenefit_Adjudication;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -995,8 +1016,8 @@ class ExplanationOfBenefit_Detail {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_SubDetail> subDetail}) async {
-	 return ExplanationOfBenefit_Detail(
-			id: await newEntry('ExplanationOfBenefit_Detail'),
+	ExplanationOfBenefit_Detail newExplanationOfBenefit_Detail = new ExplanationOfBenefit_Detail(
+			id: await newId('ExplanationOfBenefit_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -1016,8 +1037,10 @@ class ExplanationOfBenefit_Detail {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			subDetail: subDetail);
-	}
-
+	var explanationOfBenefit_DetailBox = await Hive.openBox<ExplanationOfBenefit_Detail>('ExplanationOfBenefit_DetailBox');
+	explanationOfBenefit_DetailBox.add(newExplanationOfBenefit_Detail);
+	return newExplanationOfBenefit_Detail;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1089,8 +1112,8 @@ class ExplanationOfBenefit_SubDetail {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication}) async {
-	 return ExplanationOfBenefit_SubDetail(
-			id: await newEntry('ExplanationOfBenefit_SubDetail'),
+	ExplanationOfBenefit_SubDetail newExplanationOfBenefit_SubDetail = new ExplanationOfBenefit_SubDetail(
+			id: await newId('ExplanationOfBenefit_SubDetail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -1109,8 +1132,10 @@ class ExplanationOfBenefit_SubDetail {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication);
-	}
-
+	var explanationOfBenefit_SubDetailBox = await Hive.openBox<ExplanationOfBenefit_SubDetail>('ExplanationOfBenefit_SubDetailBox');
+	explanationOfBenefit_SubDetailBox.add(newExplanationOfBenefit_SubDetail);
+	return newExplanationOfBenefit_SubDetail;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1191,8 +1216,8 @@ class ExplanationOfBenefit_AddItem {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_Detail1> detail}) async {
-	 return ExplanationOfBenefit_AddItem(
-			id: await newEntry('ExplanationOfBenefit_AddItem'),
+	ExplanationOfBenefit_AddItem newExplanationOfBenefit_AddItem = new ExplanationOfBenefit_AddItem(
+			id: await newId('ExplanationOfBenefit_AddItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -1222,8 +1247,10 @@ class ExplanationOfBenefit_AddItem {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			detail: detail);
-	}
-
+	var explanationOfBenefit_AddItemBox = await Hive.openBox<ExplanationOfBenefit_AddItem>('ExplanationOfBenefit_AddItemBox');
+	explanationOfBenefit_AddItemBox.add(newExplanationOfBenefit_AddItem);
+	return newExplanationOfBenefit_AddItem;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1310,8 +1337,8 @@ class ExplanationOfBenefit_Detail1 {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_SubDetail1> subDetail}) async {
-	 return ExplanationOfBenefit_Detail1(
-			id: await newEntry('ExplanationOfBenefit_Detail1'),
+	ExplanationOfBenefit_Detail1 newExplanationOfBenefit_Detail1 = new ExplanationOfBenefit_Detail1(
+			id: await newId('ExplanationOfBenefit_Detail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -1325,8 +1352,10 @@ class ExplanationOfBenefit_Detail1 {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 			subDetail: subDetail);
-	}
-
+	var explanationOfBenefit_Detail1Box = await Hive.openBox<ExplanationOfBenefit_Detail1>('ExplanationOfBenefit_Detail1Box');
+	explanationOfBenefit_Detail1Box.add(newExplanationOfBenefit_Detail1);
+	return newExplanationOfBenefit_Detail1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1380,8 +1409,8 @@ class ExplanationOfBenefit_SubDetail1 {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication}) async {
-	 return ExplanationOfBenefit_SubDetail1(
-			id: await newEntry('ExplanationOfBenefit_SubDetail1'),
+	ExplanationOfBenefit_SubDetail1 newExplanationOfBenefit_SubDetail1 = new ExplanationOfBenefit_SubDetail1(
+			id: await newId('ExplanationOfBenefit_SubDetail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -1394,8 +1423,10 @@ class ExplanationOfBenefit_SubDetail1 {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication);
-	}
-
+	var explanationOfBenefit_SubDetail1Box = await Hive.openBox<ExplanationOfBenefit_SubDetail1>('ExplanationOfBenefit_SubDetail1Box');
+	explanationOfBenefit_SubDetail1Box.add(newExplanationOfBenefit_SubDetail1);
+	return newExplanationOfBenefit_SubDetail1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1439,14 +1470,16 @@ class ExplanationOfBenefit_Total {
 		List<Extension> modifierExtension,
 		CodeableConcept category,
 		Money amount}) async {
-	 return ExplanationOfBenefit_Total(
-			id: await newEntry('ExplanationOfBenefit_Total'),
+	ExplanationOfBenefit_Total newExplanationOfBenefit_Total = new ExplanationOfBenefit_Total(
+			id: await newId('ExplanationOfBenefit_Total'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
 			amount: amount);
-	}
-
+	var explanationOfBenefit_TotalBox = await Hive.openBox<ExplanationOfBenefit_Total>('ExplanationOfBenefit_TotalBox');
+	explanationOfBenefit_TotalBox.add(newExplanationOfBenefit_Total);
+	return newExplanationOfBenefit_Total;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1479,8 +1512,8 @@ class ExplanationOfBenefit_Payment {
 		Element elementDate,
 		Money amount,
 		Identifier identifier}) async {
-	 return ExplanationOfBenefit_Payment(
-			id: await newEntry('ExplanationOfBenefit_Payment'),
+	ExplanationOfBenefit_Payment newExplanationOfBenefit_Payment = new ExplanationOfBenefit_Payment(
+			id: await newId('ExplanationOfBenefit_Payment'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -1490,8 +1523,10 @@ class ExplanationOfBenefit_Payment {
 			elementDate: elementDate,
 			amount: amount,
 			identifier: identifier);
-	}
-
+	var explanationOfBenefit_PaymentBox = await Hive.openBox<ExplanationOfBenefit_Payment>('ExplanationOfBenefit_PaymentBox');
+	explanationOfBenefit_PaymentBox.add(newExplanationOfBenefit_Payment);
+	return newExplanationOfBenefit_Payment;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1534,8 +1569,8 @@ class ExplanationOfBenefit_ProcessNote {
 		String text,
 		Element elementText,
 		CodeableConcept language}) async {
-	 return ExplanationOfBenefit_ProcessNote(
-			id: await newEntry('ExplanationOfBenefit_ProcessNote'),
+	ExplanationOfBenefit_ProcessNote newExplanationOfBenefit_ProcessNote = new ExplanationOfBenefit_ProcessNote(
+			id: await newId('ExplanationOfBenefit_ProcessNote'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -1545,8 +1580,10 @@ class ExplanationOfBenefit_ProcessNote {
 			text: text,
 			elementText: elementText,
 			language: language);
-	}
-
+	var explanationOfBenefit_ProcessNoteBox = await Hive.openBox<ExplanationOfBenefit_ProcessNote>('ExplanationOfBenefit_ProcessNoteBox');
+	explanationOfBenefit_ProcessNoteBox.add(newExplanationOfBenefit_ProcessNote);
+	return newExplanationOfBenefit_ProcessNote;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1593,8 +1630,8 @@ class ExplanationOfBenefit_BenefitBalance {
 		CodeableConcept unit,
 		CodeableConcept term,
 		List<ExplanationOfBenefit_Financial> financial}) async {
-	 return ExplanationOfBenefit_BenefitBalance(
-			id: await newEntry('ExplanationOfBenefit_BenefitBalance'),
+	ExplanationOfBenefit_BenefitBalance newExplanationOfBenefit_BenefitBalance = new ExplanationOfBenefit_BenefitBalance(
+			id: await newId('ExplanationOfBenefit_BenefitBalance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -1608,8 +1645,10 @@ class ExplanationOfBenefit_BenefitBalance {
 			unit: unit,
 			term: term,
 			financial: financial);
-	}
-
+	var explanationOfBenefit_BenefitBalanceBox = await Hive.openBox<ExplanationOfBenefit_BenefitBalance>('ExplanationOfBenefit_BenefitBalanceBox');
+	explanationOfBenefit_BenefitBalanceBox.add(newExplanationOfBenefit_BenefitBalance);
+	return newExplanationOfBenefit_BenefitBalance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1662,8 +1701,8 @@ class ExplanationOfBenefit_Financial {
 		int usedUnsignedInt,
 		Element elementUsedUnsignedInt,
 		Money usedMoney}) async {
-	 return ExplanationOfBenefit_Financial(
-			id: await newEntry('ExplanationOfBenefit_Financial'),
+	ExplanationOfBenefit_Financial newExplanationOfBenefit_Financial = new ExplanationOfBenefit_Financial(
+			id: await newId('ExplanationOfBenefit_Financial'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -1675,8 +1714,10 @@ class ExplanationOfBenefit_Financial {
 			usedUnsignedInt: usedUnsignedInt,
 			elementUsedUnsignedInt: elementUsedUnsignedInt,
 			usedMoney: usedMoney);
-	}
-
+	var explanationOfBenefit_FinancialBox = await Hive.openBox<ExplanationOfBenefit_Financial>('ExplanationOfBenefit_FinancialBox');
+	explanationOfBenefit_FinancialBox.add(newExplanationOfBenefit_Financial);
+	return newExplanationOfBenefit_Financial;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

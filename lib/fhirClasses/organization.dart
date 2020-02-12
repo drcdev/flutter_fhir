@@ -42,8 +42,8 @@ class Organization {
 		Reference partOf,
 		List<Organization_Contact> contact,
 		List<Reference> endpoint}) async {
-	 return Organization(
-			id: await newEntry('Organization'),
+	Organization newOrganization = new Organization(
+			id: await newId('Organization'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -66,8 +66,10 @@ class Organization {
 			partOf: partOf,
 			contact: contact,
 			endpoint: endpoint);
-	}
-
+	var organizationBox = await Hive.openBox<Organization>('OrganizationBox');
+	organizationBox.add(newOrganization);
+	return newOrganization;
+}
   @HiveField(0)
   final String resourceType= 'Organization';
   @HiveField(1)
@@ -158,16 +160,18 @@ class Organization_Contact {
 		HumanName name,
 		List<ContactPoint> telecom,
 		Address address}) async {
-	 return Organization_Contact(
-			id: await newEntry('Organization_Contact'),
+	Organization_Contact newOrganization_Contact = new Organization_Contact(
+			id: await newId('Organization_Contact'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			purpose: purpose,
 			name: name,
 			telecom: telecom,
 			address: address);
-	}
-
+	var organization_ContactBox = await Hive.openBox<Organization_Contact>('Organization_ContactBox');
+	organization_ContactBox.add(newOrganization_Contact);
+	return newOrganization_Contact;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

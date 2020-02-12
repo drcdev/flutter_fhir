@@ -86,7 +86,7 @@ class ElementDefinition {
 		Element elementDefaultValueDate,
 		String defaultValueDateTime,
 		Element elementDefaultValueDateTime,
-		double defaultValueDecimal,
+		int defaultValueDecimal,
 		Element elementDefaultValueDecimal,
 		String defaultValueId,
 		Element elementDefaultValueId,
@@ -159,7 +159,7 @@ class ElementDefinition {
 		Element elementFixedDate,
 		String fixedDateTime,
 		Element elementFixedDateTime,
-		double fixedDecimal,
+		int fixedDecimal,
 		Element elementFixedDecimal,
 		String fixedId,
 		Element elementFixedId,
@@ -228,7 +228,7 @@ class ElementDefinition {
 		Element elementPatternDate,
 		String patternDateTime,
 		Element elementPatternDateTime,
-		double patternDecimal,
+		int patternDecimal,
 		Element elementPatternDecimal,
 		String patternId,
 		Element elementPatternId,
@@ -294,7 +294,7 @@ class ElementDefinition {
 		Element elementMinValueInstant,
 		String minValueTime,
 		Element elementMinValueTime,
-		double minValueDecimal,
+		int minValueDecimal,
 		Element elementMinValueDecimal,
 		int minValueInteger,
 		Element elementMinValueInteger,
@@ -311,7 +311,7 @@ class ElementDefinition {
 		Element elementMaxValueInstant,
 		String maxValueTime,
 		Element elementMaxValueTime,
-		double maxValueDecimal,
+		int maxValueDecimal,
 		Element elementMaxValueDecimal,
 		int maxValueInteger,
 		Element elementMaxValueInteger,
@@ -335,8 +335,8 @@ class ElementDefinition {
 		Element elementIsSummary,
 		ElementDefinition_Binding binding,
 		List<ElementDefinition_Mapping> mapping}) async {
-	 return ElementDefinition(
-			id: await newEntry('ElementDefinition'),
+	ElementDefinition newElementDefinition = new ElementDefinition(
+			id: await newId('ElementDefinition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -630,8 +630,10 @@ class ElementDefinition {
 			elementIsSummary: elementIsSummary,
 			binding: binding,
 			mapping: mapping);
-	}
-
+	var elementDefinitionBox = await Hive.openBox<ElementDefinition>('ElementDefinitionBox');
+	elementDefinitionBox.add(newElementDefinition);
+	return newElementDefinition;
+}
   @HiveField(0)
   String id;
   @HiveField(1)
@@ -722,7 +724,7 @@ class ElementDefinition {
   String defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   @HiveField(44)
   Element elementDefaultValueDateTime;
-  double defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   @HiveField(46)
   Element elementDefaultValueDecimal;
   @HiveField(47)
@@ -864,7 +866,7 @@ class ElementDefinition {
   String fixedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   @HiveField(117)
   Element elementFixedDateTime;
-  double fixedDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int fixedDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   @HiveField(119)
   Element elementFixedDecimal;
   @HiveField(120)
@@ -998,7 +1000,7 @@ class ElementDefinition {
   String patternDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   @HiveField(186)
   Element elementPatternDateTime;
-  double patternDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int patternDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   @HiveField(188)
   Element elementPatternDecimal;
   @HiveField(189)
@@ -1126,7 +1128,7 @@ class ElementDefinition {
   String minValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
   @HiveField(252)
   Element elementMinValueTime;
-  double minValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int minValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   @HiveField(254)
   Element elementMinValueDecimal;
   int minValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
@@ -1156,7 +1158,7 @@ class ElementDefinition {
   String maxValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
   @HiveField(269)
   Element elementMaxValueTime;
-  double maxValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int maxValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   @HiveField(271)
   Element elementMaxValueDecimal;
   int maxValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
@@ -1516,8 +1518,8 @@ class ElementDefinition_Slicing {
 		Element elementOrdered,
 		String rules,
 		Element elementRules}) async {
-	 return ElementDefinition_Slicing(
-			id: await newEntry('ElementDefinition_Slicing'),
+	ElementDefinition_Slicing newElementDefinition_Slicing = new ElementDefinition_Slicing(
+			id: await newId('ElementDefinition_Slicing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			discriminator: discriminator,
@@ -1527,8 +1529,10 @@ class ElementDefinition_Slicing {
 			elementOrdered: elementOrdered,
 			rules: rules,
 			elementRules: elementRules);
-	}
-
+	var elementDefinition_SlicingBox = await Hive.openBox<ElementDefinition_Slicing>('ElementDefinition_SlicingBox');
+	elementDefinition_SlicingBox.add(newElementDefinition_Slicing);
+	return newElementDefinition_Slicing;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1568,16 +1572,18 @@ class ElementDefinition_Discriminator {
 		Element elementType,
 		String path,
 		Element elementPath}) async {
-	 return ElementDefinition_Discriminator(
-			id: await newEntry('ElementDefinition_Discriminator'),
+	ElementDefinition_Discriminator newElementDefinition_Discriminator = new ElementDefinition_Discriminator(
+			id: await newId('ElementDefinition_Discriminator'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			path: path,
 			elementPath: elementPath);
-	}
-
+	var elementDefinition_DiscriminatorBox = await Hive.openBox<ElementDefinition_Discriminator>('ElementDefinition_DiscriminatorBox');
+	elementDefinition_DiscriminatorBox.add(newElementDefinition_Discriminator);
+	return newElementDefinition_Discriminator;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1613,8 +1619,8 @@ class ElementDefinition_Base {
 		Element elementMin,
 		String max,
 		Element elementMax}) async {
-	 return ElementDefinition_Base(
-			id: await newEntry('ElementDefinition_Base'),
+	ElementDefinition_Base newElementDefinition_Base = new ElementDefinition_Base(
+			id: await newId('ElementDefinition_Base'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -1623,8 +1629,10 @@ class ElementDefinition_Base {
 			elementMin: elementMin,
 			max: max,
 			elementMax: elementMax);
-	}
-
+	var elementDefinition_BaseBox = await Hive.openBox<ElementDefinition_Base>('ElementDefinition_BaseBox');
+	elementDefinition_BaseBox.add(newElementDefinition_Base);
+	return newElementDefinition_Base;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1666,8 +1674,8 @@ class ElementDefinition_Type {
 		List<Element> elementAggregation,
 		String versioning,
 		Element elementVersioning}) async {
-	 return ElementDefinition_Type(
-			id: await newEntry('ElementDefinition_Type'),
+	ElementDefinition_Type newElementDefinition_Type = new ElementDefinition_Type(
+			id: await newId('ElementDefinition_Type'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -1678,8 +1686,10 @@ class ElementDefinition_Type {
 			elementAggregation: elementAggregation,
 			versioning: versioning,
 			elementVersioning: elementVersioning);
-	}
-
+	var elementDefinition_TypeBox = await Hive.openBox<ElementDefinition_Type>('ElementDefinition_TypeBox');
+	elementDefinition_TypeBox.add(newElementDefinition_Type);
+	return newElementDefinition_Type;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1731,7 +1741,7 @@ class ElementDefinition_Example {
 		Element elementValueDate,
 		String valueDateTime,
 		Element elementValueDateTime,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		String valueId,
 		Element elementValueId,
@@ -1788,8 +1798,8 @@ class ElementDefinition_Example {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
-	 return ElementDefinition_Example(
-			id: await newEntry('ElementDefinition_Example'),
+	ElementDefinition_Example newElementDefinition_Example = new ElementDefinition_Example(
+			id: await newId('ElementDefinition_Example'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			label: label,
@@ -1863,8 +1873,10 @@ class ElementDefinition_Example {
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
-	}
-
+	var elementDefinition_ExampleBox = await Hive.openBox<ElementDefinition_Example>('ElementDefinition_ExampleBox');
+	elementDefinition_ExampleBox.add(newElementDefinition_Example);
+	return newElementDefinition_Example;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1882,7 +1894,7 @@ class ElementDefinition_Example {
   Element elementValueDate;
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementValueDateTime;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
   Element elementValueId;
@@ -2041,8 +2053,8 @@ class ElementDefinition_Constraint {
 		String xpath,
 		Element elementXpath,
 		String source}) async {
-	 return ElementDefinition_Constraint(
-			id: await newEntry('ElementDefinition_Constraint'),
+	ElementDefinition_Constraint newElementDefinition_Constraint = new ElementDefinition_Constraint(
+			id: await newId('ElementDefinition_Constraint'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			key: key,
@@ -2058,8 +2070,10 @@ class ElementDefinition_Constraint {
 			xpath: xpath,
 			elementXpath: elementXpath,
 			source: source);
-	}
-
+	var elementDefinition_ConstraintBox = await Hive.openBox<ElementDefinition_Constraint>('ElementDefinition_ConstraintBox');
+	elementDefinition_ConstraintBox.add(newElementDefinition_Constraint);
+	return newElementDefinition_Constraint;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -2112,8 +2126,8 @@ class ElementDefinition_Binding {
 		String description,
 		Element elementDescription,
 		String valueSet}) async {
-	 return ElementDefinition_Binding(
-			id: await newEntry('ElementDefinition_Binding'),
+	ElementDefinition_Binding newElementDefinition_Binding = new ElementDefinition_Binding(
+			id: await newId('ElementDefinition_Binding'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			strength: strength,
@@ -2121,8 +2135,10 @@ class ElementDefinition_Binding {
 			description: description,
 			elementDescription: elementDescription,
 			valueSet: valueSet);
-	}
-
+	var elementDefinition_BindingBox = await Hive.openBox<ElementDefinition_Binding>('ElementDefinition_BindingBox');
+	elementDefinition_BindingBox.add(newElementDefinition_Binding);
+	return newElementDefinition_Binding;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -2162,8 +2178,8 @@ class ElementDefinition_Mapping {
 		Element elementMap,
 		String comment,
 		Element elementComment}) async {
-	 return ElementDefinition_Mapping(
-			id: await newEntry('ElementDefinition_Mapping'),
+	ElementDefinition_Mapping newElementDefinition_Mapping = new ElementDefinition_Mapping(
+			id: await newId('ElementDefinition_Mapping'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identity: identity,
@@ -2174,8 +2190,10 @@ class ElementDefinition_Mapping {
 			elementMap: elementMap,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var elementDefinition_MappingBox = await Hive.openBox<ElementDefinition_Mapping>('ElementDefinition_MappingBox');
+	elementDefinition_MappingBox.add(newElementDefinition_Mapping);
+	return newElementDefinition_Mapping;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -3174,7 +3192,7 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementDefaultValueDateTime'] as Map<String, dynamic>),
-    defaultValueDecimal: (json['defaultValueDecimal'] as num)?.toDouble(),
+    defaultValueDecimal: json['defaultValueDecimal'] as int,
     elementDefaultValueDecimal: json['elementDefaultValueDecimal'] == null
         ? null
         : Element.fromJson(
@@ -3391,7 +3409,7 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementFixedDateTime'] as Map<String, dynamic>),
-    fixedDecimal: (json['fixedDecimal'] as num)?.toDouble(),
+    fixedDecimal: json['fixedDecimal'] as int,
     elementFixedDecimal: json['elementFixedDecimal'] == null
         ? null
         : Element.fromJson(json['elementFixedDecimal'] as Map<String, dynamic>),
@@ -3577,7 +3595,7 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementPatternDateTime'] as Map<String, dynamic>),
-    patternDecimal: (json['patternDecimal'] as num)?.toDouble(),
+    patternDecimal: json['patternDecimal'] as int,
     elementPatternDecimal: json['elementPatternDecimal'] == null
         ? null
         : Element.fromJson(
@@ -3766,7 +3784,7 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
     elementMinValueTime: json['elementMinValueTime'] == null
         ? null
         : Element.fromJson(json['elementMinValueTime'] as Map<String, dynamic>),
-    minValueDecimal: (json['minValueDecimal'] as num)?.toDouble(),
+    minValueDecimal: json['minValueDecimal'] as int,
     elementMinValueDecimal: json['elementMinValueDecimal'] == null
         ? null
         : Element.fromJson(
@@ -3807,7 +3825,7 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
     elementMaxValueTime: json['elementMaxValueTime'] == null
         ? null
         : Element.fromJson(json['elementMaxValueTime'] as Map<String, dynamic>),
-    maxValueDecimal: (json['maxValueDecimal'] as num)?.toDouble(),
+    maxValueDecimal: json['maxValueDecimal'] as int,
     elementMaxValueDecimal: json['elementMaxValueDecimal'] == null
         ? null
         : Element.fromJson(
@@ -4417,7 +4435,7 @@ ElementDefinition_Example _$ElementDefinition_ExampleFromJson(
         ? null
         : Element.fromJson(
             json['elementValueDateTime'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

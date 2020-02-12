@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -50,8 +49,8 @@ class CoverageEligibilityRequest {
 		List<CoverageEligibilityRequest_SupportingInfo> supportingInfo,
 		List<CoverageEligibilityRequest_Insurance> insurance,
 		List<CoverageEligibilityRequest_Item> item}) async {
-	 return CoverageEligibilityRequest(
-			id: await newEntry('CoverageEligibilityRequest'),
+	CoverageEligibilityRequest newCoverageEligibilityRequest = new CoverageEligibilityRequest(
+			id: await newId('CoverageEligibilityRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -80,8 +79,10 @@ class CoverageEligibilityRequest {
 			supportingInfo: supportingInfo,
 			insurance: insurance,
 			item: item);
-	}
-
+	var coverageEligibilityRequestBox = await Hive.openBox<CoverageEligibilityRequest>('CoverageEligibilityRequestBox');
+	coverageEligibilityRequestBox.add(newCoverageEligibilityRequest);
+	return newCoverageEligibilityRequest;
+}
   @HiveField(0)
   final String resourceType= 'CoverageEligibilityRequest';
   @HiveField(1)
@@ -191,8 +192,8 @@ class CoverageEligibilityRequest_SupportingInfo {
 		Reference information,
 		bool appliesToAll,
 		Element elementAppliesToAll}) async {
-	 return CoverageEligibilityRequest_SupportingInfo(
-			id: await newEntry('CoverageEligibilityRequest_SupportingInfo'),
+	CoverageEligibilityRequest_SupportingInfo newCoverageEligibilityRequest_SupportingInfo = new CoverageEligibilityRequest_SupportingInfo(
+			id: await newId('CoverageEligibilityRequest_SupportingInfo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -200,8 +201,10 @@ class CoverageEligibilityRequest_SupportingInfo {
 			information: information,
 			appliesToAll: appliesToAll,
 			elementAppliesToAll: elementAppliesToAll);
-	}
-
+	var coverageEligibilityRequest_SupportingInfoBox = await Hive.openBox<CoverageEligibilityRequest_SupportingInfo>('CoverageEligibilityRequest_SupportingInfoBox');
+	coverageEligibilityRequest_SupportingInfoBox.add(newCoverageEligibilityRequest_SupportingInfo);
+	return newCoverageEligibilityRequest_SupportingInfo;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -238,8 +241,8 @@ class CoverageEligibilityRequest_Insurance {
 		Reference coverage,
 		String businessArrangement,
 		Element elementBusinessArrangement}) async {
-	 return CoverageEligibilityRequest_Insurance(
-			id: await newEntry('CoverageEligibilityRequest_Insurance'),
+	CoverageEligibilityRequest_Insurance newCoverageEligibilityRequest_Insurance = new CoverageEligibilityRequest_Insurance(
+			id: await newId('CoverageEligibilityRequest_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			focal: focal,
@@ -247,8 +250,10 @@ class CoverageEligibilityRequest_Insurance {
 			coverage: coverage,
 			businessArrangement: businessArrangement,
 			elementBusinessArrangement: elementBusinessArrangement);
-	}
-
+	var coverageEligibilityRequest_InsuranceBox = await Hive.openBox<CoverageEligibilityRequest_Insurance>('CoverageEligibilityRequest_InsuranceBox');
+	coverageEligibilityRequest_InsuranceBox.add(newCoverageEligibilityRequest_Insurance);
+	return newCoverageEligibilityRequest_Insurance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -291,8 +296,8 @@ class CoverageEligibilityRequest_Item {
 		Reference facility,
 		List<CoverageEligibilityRequest_Diagnosis> diagnosis,
 		List<Reference> detail}) async {
-	 return CoverageEligibilityRequest_Item(
-			id: await newEntry('CoverageEligibilityRequest_Item'),
+	CoverageEligibilityRequest_Item newCoverageEligibilityRequest_Item = new CoverageEligibilityRequest_Item(
+			id: await newId('CoverageEligibilityRequest_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			supportingInfoSequence: supportingInfoSequence,
@@ -306,8 +311,10 @@ class CoverageEligibilityRequest_Item {
 			facility: facility,
 			diagnosis: diagnosis,
 			detail: detail);
-	}
-
+	var coverageEligibilityRequest_ItemBox = await Hive.openBox<CoverageEligibilityRequest_Item>('CoverageEligibilityRequest_ItemBox');
+	coverageEligibilityRequest_ItemBox.add(newCoverageEligibilityRequest_Item);
+	return newCoverageEligibilityRequest_Item;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -353,14 +360,16 @@ class CoverageEligibilityRequest_Diagnosis {
 		List<Extension> modifierExtension,
 		CodeableConcept diagnosisCodeableConcept,
 		Reference diagnosisReference}) async {
-	 return CoverageEligibilityRequest_Diagnosis(
-			id: await newEntry('CoverageEligibilityRequest_Diagnosis'),
+	CoverageEligibilityRequest_Diagnosis newCoverageEligibilityRequest_Diagnosis = new CoverageEligibilityRequest_Diagnosis(
+			id: await newId('CoverageEligibilityRequest_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			diagnosisCodeableConcept: diagnosisCodeableConcept,
 			diagnosisReference: diagnosisReference);
-	}
-
+	var coverageEligibilityRequest_DiagnosisBox = await Hive.openBox<CoverageEligibilityRequest_Diagnosis>('CoverageEligibilityRequest_DiagnosisBox');
+	coverageEligibilityRequest_DiagnosisBox.add(newCoverageEligibilityRequest_Diagnosis);
+	return newCoverageEligibilityRequest_Diagnosis;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

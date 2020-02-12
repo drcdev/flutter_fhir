@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -61,8 +60,8 @@ class CarePlan {
 		List<Reference> goal,
 		List<CarePlan_Activity> activity,
 		List<Annotation> note}) async {
-	 return CarePlan(
-			id: await newEntry('CarePlan'),
+	CarePlan newCarePlan = new CarePlan(
+			id: await newId('CarePlan'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -101,8 +100,10 @@ class CarePlan {
 			goal: goal,
 			activity: activity,
 			note: note);
-	}
-
+	var carePlanBox = await Hive.openBox<CarePlan>('CarePlanBox');
+	carePlanBox.add(newCarePlan);
+	return newCarePlan;
+}
   @HiveField(0)
   final String resourceType= 'CarePlan';
   @HiveField(1)
@@ -242,8 +243,8 @@ class CarePlan_Activity {
 		List<Annotation> progress,
 		Reference reference,
 		CarePlan_Detail detail}) async {
-	 return CarePlan_Activity(
-			id: await newEntry('CarePlan_Activity'),
+	CarePlan_Activity newCarePlan_Activity = new CarePlan_Activity(
+			id: await newId('CarePlan_Activity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			outcomeCodeableConcept: outcomeCodeableConcept,
@@ -251,8 +252,10 @@ class CarePlan_Activity {
 			progress: progress,
 			reference: reference,
 			detail: detail);
-	}
-
+	var carePlan_ActivityBox = await Hive.openBox<CarePlan_Activity>('CarePlan_ActivityBox');
+	carePlan_ActivityBox.add(newCarePlan_Activity);
+	return newCarePlan_Activity;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -310,8 +313,8 @@ class CarePlan_Detail {
 		Quantity quantity,
 		String description,
 		Element elementDescription}) async {
-	 return CarePlan_Detail(
-			id: await newEntry('CarePlan_Detail'),
+	CarePlan_Detail newCarePlan_Detail = new CarePlan_Detail(
+			id: await newId('CarePlan_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kind: kind,
@@ -340,8 +343,10 @@ class CarePlan_Detail {
 			quantity: quantity,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var carePlan_DetailBox = await Hive.openBox<CarePlan_Detail>('CarePlan_DetailBox');
+	carePlan_DetailBox.add(newCarePlan_Detail);
+	return newCarePlan_Detail;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

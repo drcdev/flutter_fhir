@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -62,8 +61,8 @@ class Condition {
 		List<Condition_Stage> stage,
 		List<Condition_Evidence> evidence,
 		List<Annotation> note}) async {
-	 return Condition(
-			id: await newEntry('Condition'),
+	Condition newCondition = new Condition(
+			id: await newId('Condition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -103,8 +102,10 @@ class Condition {
 			stage: stage,
 			evidence: evidence,
 			note: note);
-	}
-
+	var conditionBox = await Hive.openBox<Condition>('ConditionBox');
+	conditionBox.add(newCondition);
+	return newCondition;
+}
   @HiveField(0)
   final String resourceType= 'Condition';
   @HiveField(1)
@@ -245,15 +246,17 @@ class Condition_Stage {
 		CodeableConcept summary,
 		List<Reference> assessment,
 		CodeableConcept type}) async {
-	 return Condition_Stage(
-			id: await newEntry('Condition_Stage'),
+	Condition_Stage newCondition_Stage = new Condition_Stage(
+			id: await newId('Condition_Stage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			summary: summary,
 			assessment: assessment,
 			type: type);
-	}
-
+	var condition_StageBox = await Hive.openBox<Condition_Stage>('Condition_StageBox');
+	condition_StageBox.add(newCondition_Stage);
+	return newCondition_Stage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -283,14 +286,16 @@ class Condition_Evidence {
 		List<Extension> modifierExtension,
 		List<CodeableConcept> code,
 		List<Reference> detail}) async {
-	 return Condition_Evidence(
-			id: await newEntry('Condition_Evidence'),
+	Condition_Evidence newCondition_Evidence = new Condition_Evidence(
+			id: await newId('Condition_Evidence'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			detail: detail);
-	}
-
+	var condition_EvidenceBox = await Hive.openBox<Condition_Evidence>('Condition_EvidenceBox');
+	condition_EvidenceBox.add(newCondition_Evidence);
+	return newCondition_Evidence;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

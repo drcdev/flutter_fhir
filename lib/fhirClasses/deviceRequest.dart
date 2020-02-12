@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -66,8 +65,8 @@ class DeviceRequest {
 		List<Reference> supportingInfo,
 		List<Annotation> note,
 		List<Reference> relevantHistory}) async {
-	 return DeviceRequest(
-			id: await newEntry('DeviceRequest'),
+	DeviceRequest newDeviceRequest = new DeviceRequest(
+			id: await newId('DeviceRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -110,8 +109,10 @@ class DeviceRequest {
 			supportingInfo: supportingInfo,
 			note: note,
 			relevantHistory: relevantHistory);
-	}
-
+	var deviceRequestBox = await Hive.openBox<DeviceRequest>('DeviceRequestBox');
+	deviceRequestBox.add(newDeviceRequest);
+	return newDeviceRequest;
+}
   @HiveField(0)
   final String resourceType= 'DeviceRequest';
   @HiveField(1)
@@ -264,8 +265,8 @@ class DeviceRequest_Parameter {
 		Range valueRange,
 		bool valueBoolean,
 		Element elementValueBoolean}) async {
-	 return DeviceRequest_Parameter(
-			id: await newEntry('DeviceRequest_Parameter'),
+	DeviceRequest_Parameter newDeviceRequest_Parameter = new DeviceRequest_Parameter(
+			id: await newId('DeviceRequest_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -274,8 +275,10 @@ class DeviceRequest_Parameter {
 			valueRange: valueRange,
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean);
-	}
-
+	var deviceRequest_ParameterBox = await Hive.openBox<DeviceRequest_Parameter>('DeviceRequest_ParameterBox');
+	deviceRequest_ParameterBox.add(newDeviceRequest_Parameter);
+	return newDeviceRequest_Parameter;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

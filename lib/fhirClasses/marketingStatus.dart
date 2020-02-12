@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -23,8 +22,8 @@ class MarketingStatus {
 		Period dateRange,
 		DateTime restoreDate,
 		Element elementRestoreDate}) async {
-	 return MarketingStatus(
-			id: await newEntry('MarketingStatus'),
+	MarketingStatus newMarketingStatus = new MarketingStatus(
+			id: await newId('MarketingStatus'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			country: country,
@@ -33,8 +32,10 @@ class MarketingStatus {
 			dateRange: dateRange,
 			restoreDate: restoreDate,
 			elementRestoreDate: elementRestoreDate);
-	}
-
+	var marketingStatusBox = await Hive.openBox<MarketingStatus>('MarketingStatusBox');
+	marketingStatusBox.add(newMarketingStatus);
+	return newMarketingStatus;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

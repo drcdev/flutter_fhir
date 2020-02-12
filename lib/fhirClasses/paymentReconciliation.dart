@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -50,8 +49,8 @@ class PaymentReconciliation {
 		List<PaymentReconciliation_Detail> detail,
 		CodeableConcept formCode,
 		List<PaymentReconciliation_ProcessNote> processNote}) async {
-	 return PaymentReconciliation(
-			id: await newEntry('PaymentReconciliation'),
+	PaymentReconciliation newPaymentReconciliation = new PaymentReconciliation(
+			id: await newId('PaymentReconciliation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -81,8 +80,10 @@ class PaymentReconciliation {
 			detail: detail,
 			formCode: formCode,
 			processNote: processNote);
-	}
-
+	var paymentReconciliationBox = await Hive.openBox<PaymentReconciliation>('PaymentReconciliationBox');
+	paymentReconciliationBox.add(newPaymentReconciliation);
+	return newPaymentReconciliation;
+}
   @HiveField(0)
   final String resourceType= 'PaymentReconciliation';
   @HiveField(1)
@@ -201,8 +202,8 @@ class PaymentReconciliation_Detail {
 		Reference responsible,
 		Reference payee,
 		Money amount}) async {
-	 return PaymentReconciliation_Detail(
-			id: await newEntry('PaymentReconciliation_Detail'),
+	PaymentReconciliation_Detail newPaymentReconciliation_Detail = new PaymentReconciliation_Detail(
+			id: await newId('PaymentReconciliation_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -216,8 +217,10 @@ class PaymentReconciliation_Detail {
 			responsible: responsible,
 			payee: payee,
 			amount: amount);
-	}
-
+	var paymentReconciliation_DetailBox = await Hive.openBox<PaymentReconciliation_Detail>('PaymentReconciliation_DetailBox');
+	paymentReconciliation_DetailBox.add(newPaymentReconciliation_Detail);
+	return newPaymentReconciliation_Detail;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -265,16 +268,18 @@ class PaymentReconciliation_ProcessNote {
 		Element elementType,
 		String text,
 		Element elementText}) async {
-	 return PaymentReconciliation_ProcessNote(
-			id: await newEntry('PaymentReconciliation_ProcessNote'),
+	PaymentReconciliation_ProcessNote newPaymentReconciliation_ProcessNote = new PaymentReconciliation_ProcessNote(
+			id: await newId('PaymentReconciliation_ProcessNote'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			text: text,
 			elementText: elementText);
-	}
-
+	var paymentReconciliation_ProcessNoteBox = await Hive.openBox<PaymentReconciliation_ProcessNote>('PaymentReconciliation_ProcessNoteBox');
+	paymentReconciliation_ProcessNoteBox.add(newPaymentReconciliation_ProcessNote);
+	return newPaymentReconciliation_ProcessNote;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

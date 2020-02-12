@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -81,8 +80,8 @@ class ServiceRequest {
 		String patientInstruction,
 		Element elementPatientInstruction,
 		List<Reference> relevantHistory}) async {
-	 return ServiceRequest(
-			id: await newEntry('ServiceRequest'),
+	ServiceRequest newServiceRequest = new ServiceRequest(
+			id: await newId('ServiceRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -139,8 +138,10 @@ class ServiceRequest {
 			patientInstruction: patientInstruction,
 			elementPatientInstruction: elementPatientInstruction,
 			relevantHistory: relevantHistory);
-	}
-
+	var serviceRequestBox = await Hive.openBox<ServiceRequest>('ServiceRequestBox');
+	serviceRequestBox.add(newServiceRequest);
+	return newServiceRequest;
+}
   @HiveField(0)
   final String resourceType= 'ServiceRequest';
   @HiveField(1)

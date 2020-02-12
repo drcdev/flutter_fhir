@@ -22,8 +22,8 @@ class Distance {
 		Element elementSystem,
 		String code,
 		Element elementCode}) async {
-	 return Distance(
-			id: await newEntry('Distance'),
+	Distance newDistance = new Distance(
+			id: await newId('Distance'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
@@ -35,8 +35,10 @@ class Distance {
 			elementSystem: elementSystem,
 			code: code,
 			elementCode: elementCode);
-	}
-
+	var distanceBox = await Hive.openBox<Distance>('DistanceBox');
+	distanceBox.add(newDistance);
+	return newDistance;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

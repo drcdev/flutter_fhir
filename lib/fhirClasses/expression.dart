@@ -22,8 +22,8 @@ class Expression {
 		Element elementExpression,
 		String reference,
 		Element elementReference}) async {
-	 return Expression(
-			id: await newEntry('Expression'),
+	Expression newExpression = new Expression(
+			id: await newId('Expression'),
 			extension: extension,
 			description: description,
 			elementDescription: elementDescription,
@@ -35,8 +35,10 @@ class Expression {
 			elementExpression: elementExpression,
 			reference: reference,
 			elementReference: elementReference);
-	}
-
+	var expressionBox = await Hive.openBox<Expression>('ExpressionBox');
+	expressionBox.add(newExpression);
+	return newExpression;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

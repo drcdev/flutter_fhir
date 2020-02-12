@@ -47,8 +47,8 @@ class MolecularSequence {
 		List<MolecularSequence_Repository> repository,
 		List<Reference> pointer,
 		List<MolecularSequence_StructureVariant> structureVariant}) async {
-	 return MolecularSequence(
-			id: await newEntry('MolecularSequence'),
+	MolecularSequence newMolecularSequence = new MolecularSequence(
+			id: await newId('MolecularSequence'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -78,8 +78,10 @@ class MolecularSequence {
 			repository: repository,
 			pointer: pointer,
 			structureVariant: structureVariant);
-	}
-
+	var molecularSequenceBox = await Hive.openBox<MolecularSequence>('MolecularSequenceBox');
+	molecularSequenceBox.add(newMolecularSequence);
+	return newMolecularSequence;
+}
   @HiveField(0)
   final String resourceType= 'MolecularSequence';
   @HiveField(1)
@@ -202,8 +204,8 @@ class MolecularSequence_ReferenceSeq {
 		Element elementWindowStart,
 		int windowEnd,
 		Element elementWindowEnd}) async {
-	 return MolecularSequence_ReferenceSeq(
-			id: await newEntry('MolecularSequence_ReferenceSeq'),
+	MolecularSequence_ReferenceSeq newMolecularSequence_ReferenceSeq = new MolecularSequence_ReferenceSeq(
+			id: await newId('MolecularSequence_ReferenceSeq'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			chromosome: chromosome,
@@ -221,8 +223,10 @@ class MolecularSequence_ReferenceSeq {
 			elementWindowStart: elementWindowStart,
 			windowEnd: windowEnd,
 			elementWindowEnd: elementWindowEnd);
-	}
-
+	var molecularSequence_ReferenceSeqBox = await Hive.openBox<MolecularSequence_ReferenceSeq>('MolecularSequence_ReferenceSeqBox');
+	molecularSequence_ReferenceSeqBox.add(newMolecularSequence_ReferenceSeq);
+	return newMolecularSequence_ReferenceSeq;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -285,8 +289,8 @@ class MolecularSequence_Variant {
 		String cigar,
 		Element elementCigar,
 		Reference variantPointer}) async {
-	 return MolecularSequence_Variant(
-			id: await newEntry('MolecularSequence_Variant'),
+	MolecularSequence_Variant newMolecularSequence_Variant = new MolecularSequence_Variant(
+			id: await newId('MolecularSequence_Variant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			start: start,
@@ -300,8 +304,10 @@ class MolecularSequence_Variant {
 			cigar: cigar,
 			elementCigar: elementCigar,
 			variantPointer: variantPointer);
-	}
-
+	var molecularSequence_VariantBox = await Hive.openBox<MolecularSequence_Variant>('MolecularSequence_VariantBox');
+	molecularSequence_VariantBox.add(newMolecularSequence_Variant);
+	return newMolecularSequence_Variant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -371,8 +377,8 @@ class MolecularSequence_Quality {
 		double fScore,
 		Element elementFScore,
 		MolecularSequence_Roc roc}) async {
-	 return MolecularSequence_Quality(
-			id: await newEntry('MolecularSequence_Quality'),
+	MolecularSequence_Quality newMolecularSequence_Quality = new MolecularSequence_Quality(
+			id: await newId('MolecularSequence_Quality'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -401,8 +407,10 @@ class MolecularSequence_Quality {
 			fScore: fScore,
 			elementFScore: elementFScore,
 			roc: roc);
-	}
-
+	var molecularSequence_QualityBox = await Hive.openBox<MolecularSequence_Quality>('MolecularSequence_QualityBox');
+	molecularSequence_QualityBox.add(newMolecularSequence_Quality);
+	return newMolecularSequence_Quality;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -490,8 +498,8 @@ class MolecularSequence_Roc {
 		List<Element> elementSensitivity,
 		List<double> fMeasure,
 		List<Element> elementFMeasure}) async {
-	 return MolecularSequence_Roc(
-			id: await newEntry('MolecularSequence_Roc'),
+	MolecularSequence_Roc newMolecularSequence_Roc = new MolecularSequence_Roc(
+			id: await newId('MolecularSequence_Roc'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			score: score,
@@ -508,8 +516,10 @@ class MolecularSequence_Roc {
 			elementSensitivity: elementSensitivity,
 			fMeasure: fMeasure,
 			elementFMeasure: elementFMeasure);
-	}
-
+	var molecularSequence_RocBox = await Hive.openBox<MolecularSequence_Roc>('MolecularSequence_RocBox');
+	molecularSequence_RocBox.add(newMolecularSequence_Roc);
+	return newMolecularSequence_Roc;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -571,8 +581,8 @@ class MolecularSequence_Repository {
 		Element elementVariantsetId,
 		String readsetId,
 		Element elementReadsetId}) async {
-	 return MolecularSequence_Repository(
-			id: await newEntry('MolecularSequence_Repository'),
+	MolecularSequence_Repository newMolecularSequence_Repository = new MolecularSequence_Repository(
+			id: await newId('MolecularSequence_Repository'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -587,8 +597,10 @@ class MolecularSequence_Repository {
 			elementVariantsetId: elementVariantsetId,
 			readsetId: readsetId,
 			elementReadsetId: elementReadsetId);
-	}
-
+	var molecularSequence_RepositoryBox = await Hive.openBox<MolecularSequence_Repository>('MolecularSequence_RepositoryBox');
+	molecularSequence_RepositoryBox.add(newMolecularSequence_Repository);
+	return newMolecularSequence_Repository;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -641,8 +653,8 @@ class MolecularSequence_StructureVariant {
 		Element elementLength,
 		MolecularSequence_Outer outer,
 		MolecularSequence_Inner inner}) async {
-	 return MolecularSequence_StructureVariant(
-			id: await newEntry('MolecularSequence_StructureVariant'),
+	MolecularSequence_StructureVariant newMolecularSequence_StructureVariant = new MolecularSequence_StructureVariant(
+			id: await newId('MolecularSequence_StructureVariant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			variantType: variantType,
@@ -652,8 +664,10 @@ class MolecularSequence_StructureVariant {
 			elementLength: elementLength,
 			outer: outer,
 			inner: inner);
-	}
-
+	var molecularSequence_StructureVariantBox = await Hive.openBox<MolecularSequence_StructureVariant>('MolecularSequence_StructureVariantBox');
+	molecularSequence_StructureVariantBox.add(newMolecularSequence_StructureVariant);
+	return newMolecularSequence_StructureVariant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -693,16 +707,18 @@ class MolecularSequence_Outer {
 		Element elementStart,
 		int end,
 		Element elementEnd}) async {
-	 return MolecularSequence_Outer(
-			id: await newEntry('MolecularSequence_Outer'),
+	MolecularSequence_Outer newMolecularSequence_Outer = new MolecularSequence_Outer(
+			id: await newId('MolecularSequence_Outer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			start: start,
 			elementStart: elementStart,
 			end: end,
 			elementEnd: elementEnd);
-	}
-
+	var molecularSequence_OuterBox = await Hive.openBox<MolecularSequence_Outer>('MolecularSequence_OuterBox');
+	molecularSequence_OuterBox.add(newMolecularSequence_Outer);
+	return newMolecularSequence_Outer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -736,16 +752,18 @@ class MolecularSequence_Inner {
 		Element elementStart,
 		int end,
 		Element elementEnd}) async {
-	 return MolecularSequence_Inner(
-			id: await newEntry('MolecularSequence_Inner'),
+	MolecularSequence_Inner newMolecularSequence_Inner = new MolecularSequence_Inner(
+			id: await newId('MolecularSequence_Inner'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			start: start,
 			elementStart: elementStart,
 			end: end,
 			elementEnd: elementEnd);
-	}
-
+	var molecularSequence_InnerBox = await Hive.openBox<MolecularSequence_Inner>('MolecularSequence_InnerBox');
+	molecularSequence_InnerBox.add(newMolecularSequence_Inner);
+	return newMolecularSequence_Inner;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -16,14 +16,16 @@ class CodeableConcept {
 		List<Coding> coding,
 		String text,
 		Element elementText}) async {
-	 return CodeableConcept(
-			id: await newEntry('CodeableConcept'),
+	CodeableConcept newCodeableConcept = new CodeableConcept(
+			id: await newId('CodeableConcept'),
 			extension: extension,
 			coding: coding,
 			text: text,
 			elementText: elementText);
-	}
-
+	var codeableConceptBox = await Hive.openBox<CodeableConcept>('CodeableConceptBox');
+	codeableConceptBox.add(newCodeableConcept);
+	return newCodeableConcept;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

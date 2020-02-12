@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -67,8 +66,8 @@ class Device {
 		List<Annotation> note,
 		List<CodeableConcept> safety,
 		Reference parent}) async {
-	 return Device(
-			id: await newEntry('Device'),
+	Device newDevice = new Device(
+			id: await newId('Device'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -114,8 +113,10 @@ class Device {
 			note: note,
 			safety: safety,
 			parent: parent);
-	}
-
+	var deviceBox = await Hive.openBox<Device>('DeviceBox');
+	deviceBox.add(newDevice);
+	return newDevice;
+}
   @HiveField(0)
   final String resourceType= 'Device';
   @HiveField(1)
@@ -283,8 +284,8 @@ class Device_UdiCarrier {
 		Element elementCarrierHRF,
 		String entryType,
 		Element elementEntryType}) async {
-	 return Device_UdiCarrier(
-			id: await newEntry('Device_UdiCarrier'),
+	Device_UdiCarrier newDevice_UdiCarrier = new Device_UdiCarrier(
+			id: await newId('Device_UdiCarrier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			deviceIdentifier: deviceIdentifier,
@@ -299,8 +300,10 @@ class Device_UdiCarrier {
 			elementCarrierHRF: elementCarrierHRF,
 			entryType: entryType,
 			elementEntryType: elementEntryType);
-	}
-
+	var device_UdiCarrierBox = await Hive.openBox<Device_UdiCarrier>('Device_UdiCarrierBox');
+	device_UdiCarrierBox.add(newDevice_UdiCarrier);
+	return newDevice_UdiCarrier;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -350,16 +353,18 @@ class Device_DeviceName {
 		Element elementName,
 		String type,
 		Element elementType}) async {
-	 return Device_DeviceName(
-			id: await newEntry('Device_DeviceName'),
+	Device_DeviceName newDevice_DeviceName = new Device_DeviceName(
+			id: await newId('Device_DeviceName'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			type: type,
 			elementType: elementType);
-	}
-
+	var device_DeviceNameBox = await Hive.openBox<Device_DeviceName>('Device_DeviceNameBox');
+	device_DeviceNameBox.add(newDevice_DeviceName);
+	return newDevice_DeviceName;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -392,15 +397,17 @@ class Device_Specialization {
 		CodeableConcept systemType,
 		String version,
 		Element elementVersion}) async {
-	 return Device_Specialization(
-			id: await newEntry('Device_Specialization'),
+	Device_Specialization newDevice_Specialization = new Device_Specialization(
+			id: await newId('Device_Specialization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			systemType: systemType,
 			version: version,
 			elementVersion: elementVersion);
-	}
-
+	var device_SpecializationBox = await Hive.openBox<Device_Specialization>('Device_SpecializationBox');
+	device_SpecializationBox.add(newDevice_Specialization);
+	return newDevice_Specialization;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -432,16 +439,18 @@ class Device_Version {
 		Identifier component,
 		String value,
 		Element elementValue}) async {
-	 return Device_Version(
-			id: await newEntry('Device_Version'),
+	Device_Version newDevice_Version = new Device_Version(
+			id: await newId('Device_Version'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			component: component,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var device_VersionBox = await Hive.openBox<Device_Version>('Device_VersionBox');
+	device_VersionBox.add(newDevice_Version);
+	return newDevice_Version;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -474,15 +483,17 @@ class Device_Property {
 		CodeableConcept type,
 		List<Quantity> valueQuantity,
 		List<CodeableConcept> valueCode}) async {
-	 return Device_Property(
-			id: await newEntry('Device_Property'),
+	Device_Property newDevice_Property = new Device_Property(
+			id: await newId('Device_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			valueQuantity: valueQuantity,
 			valueCode: valueCode);
-	}
-
+	var device_PropertyBox = await Hive.openBox<Device_Property>('Device_PropertyBox');
+	device_PropertyBox.add(newDevice_Property);
+	return newDevice_Property;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

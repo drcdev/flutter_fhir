@@ -16,14 +16,16 @@ class ContactDetail {
 		String name,
 		Element elementName,
 		List<ContactPoint> telecom}) async {
-	 return ContactDetail(
-			id: await newEntry('ContactDetail'),
+	ContactDetail newContactDetail = new ContactDetail(
+			id: await newId('ContactDetail'),
 			extension: extension,
 			name: name,
 			elementName: elementName,
 			telecom: telecom);
-	}
-
+	var contactDetailBox = await Hive.openBox<ContactDetail>('ContactDetailBox');
+	contactDetailBox.add(newContactDetail);
+	return newContactDetail;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

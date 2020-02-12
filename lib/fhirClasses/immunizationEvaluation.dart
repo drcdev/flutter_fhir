@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -51,8 +50,8 @@ class ImmunizationEvaluation {
 		Element elementSeriesDosesPositiveInt,
 		String seriesDosesString,
 		Element elementSeriesDosesString}) async {
-	 return ImmunizationEvaluation(
-			id: await newEntry('ImmunizationEvaluation'),
+	ImmunizationEvaluation newImmunizationEvaluation = new ImmunizationEvaluation(
+			id: await newId('ImmunizationEvaluation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -85,8 +84,10 @@ class ImmunizationEvaluation {
 			elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString);
-	}
-
+	var immunizationEvaluationBox = await Hive.openBox<ImmunizationEvaluation>('ImmunizationEvaluationBox');
+	immunizationEvaluationBox.add(newImmunizationEvaluation);
+	return newImmunizationEvaluation;
+}
   @HiveField(0)
   final String resourceType= 'ImmunizationEvaluation';
   @HiveField(1)

@@ -53,8 +53,8 @@ class ExampleScenario {
 		List<ExampleScenario_Instance> instance,
 		List<ExampleScenario_Process> process,
 		List<String> workflow}) async {
-	 return ExampleScenario(
-			id: await newEntry('ExampleScenario'),
+	ExampleScenario newExampleScenario = new ExampleScenario(
+			id: await newId('ExampleScenario'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -90,8 +90,10 @@ class ExampleScenario {
 			instance: instance,
 			process: process,
 			workflow: workflow);
-	}
-
+	var exampleScenarioBox = await Hive.openBox<ExampleScenario>('ExampleScenarioBox');
+	exampleScenarioBox.add(newExampleScenario);
+	return newExampleScenario;
+}
   @HiveField(0)
   final String resourceType= 'ExampleScenario';
   @HiveField(1)
@@ -225,8 +227,8 @@ class ExampleScenario_Actor {
 		Element elementName,
 		String description,
 		Element elementDescription}) async {
-	 return ExampleScenario_Actor(
-			id: await newEntry('ExampleScenario_Actor'),
+	ExampleScenario_Actor newExampleScenario_Actor = new ExampleScenario_Actor(
+			id: await newId('ExampleScenario_Actor'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			actorId: actorId,
@@ -237,8 +239,10 @@ class ExampleScenario_Actor {
 			elementName: elementName,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var exampleScenario_ActorBox = await Hive.openBox<ExampleScenario_Actor>('ExampleScenario_ActorBox');
+	exampleScenario_ActorBox.add(newExampleScenario_Actor);
+	return newExampleScenario_Actor;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -286,8 +290,8 @@ class ExampleScenario_Instance {
 		Element elementDescription,
 		List<ExampleScenario_Version> version,
 		List<ExampleScenario_ContainedInstance> containedInstance}) async {
-	 return ExampleScenario_Instance(
-			id: await newEntry('ExampleScenario_Instance'),
+	ExampleScenario_Instance newExampleScenario_Instance = new ExampleScenario_Instance(
+			id: await newId('ExampleScenario_Instance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			resourceId: resourceId,
@@ -299,8 +303,10 @@ class ExampleScenario_Instance {
 			elementDescription: elementDescription,
 			version: version,
 			containedInstance: containedInstance);
-	}
-
+	var exampleScenario_InstanceBox = await Hive.openBox<ExampleScenario_Instance>('ExampleScenario_InstanceBox');
+	exampleScenario_InstanceBox.add(newExampleScenario_Instance);
+	return newExampleScenario_Instance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -345,16 +351,18 @@ class ExampleScenario_Version {
 		Element elementVersionId,
 		String description,
 		Element elementDescription}) async {
-	 return ExampleScenario_Version(
-			id: await newEntry('ExampleScenario_Version'),
+	ExampleScenario_Version newExampleScenario_Version = new ExampleScenario_Version(
+			id: await newId('ExampleScenario_Version'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			versionId: versionId,
 			elementVersionId: elementVersionId,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var exampleScenario_VersionBox = await Hive.openBox<ExampleScenario_Version>('ExampleScenario_VersionBox');
+	exampleScenario_VersionBox.add(newExampleScenario_Version);
+	return newExampleScenario_Version;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -388,16 +396,18 @@ class ExampleScenario_ContainedInstance {
 		Element elementResourceId,
 		String versionId,
 		Element elementVersionId}) async {
-	 return ExampleScenario_ContainedInstance(
-			id: await newEntry('ExampleScenario_ContainedInstance'),
+	ExampleScenario_ContainedInstance newExampleScenario_ContainedInstance = new ExampleScenario_ContainedInstance(
+			id: await newId('ExampleScenario_ContainedInstance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			resourceId: resourceId,
 			elementResourceId: elementResourceId,
 			versionId: versionId,
 			elementVersionId: elementVersionId);
-	}
-
+	var exampleScenario_ContainedInstanceBox = await Hive.openBox<ExampleScenario_ContainedInstance>('ExampleScenario_ContainedInstanceBox');
+	exampleScenario_ContainedInstanceBox.add(newExampleScenario_ContainedInstance);
+	return newExampleScenario_ContainedInstance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -436,8 +446,8 @@ class ExampleScenario_Process {
 		String postConditions,
 		Element elementPostConditions,
 		List<ExampleScenario_Step> step}) async {
-	 return ExampleScenario_Process(
-			id: await newEntry('ExampleScenario_Process'),
+	ExampleScenario_Process newExampleScenario_Process = new ExampleScenario_Process(
+			id: await newId('ExampleScenario_Process'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			title: title,
@@ -449,8 +459,10 @@ class ExampleScenario_Process {
 			postConditions: postConditions,
 			elementPostConditions: elementPostConditions,
 			step: step);
-	}
-
+	var exampleScenario_ProcessBox = await Hive.openBox<ExampleScenario_Process>('ExampleScenario_ProcessBox');
+	exampleScenario_ProcessBox.add(newExampleScenario_Process);
+	return newExampleScenario_Process;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -495,8 +507,8 @@ class ExampleScenario_Step {
 		Element elementPause,
 		ExampleScenario_Operation operation,
 		List<ExampleScenario_Alternative> alternative}) async {
-	 return ExampleScenario_Step(
-			id: await newEntry('ExampleScenario_Step'),
+	ExampleScenario_Step newExampleScenario_Step = new ExampleScenario_Step(
+			id: await newId('ExampleScenario_Step'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			process: process,
@@ -504,8 +516,10 @@ class ExampleScenario_Step {
 			elementPause: elementPause,
 			operation: operation,
 			alternative: alternative);
-	}
-
+	var exampleScenario_StepBox = await Hive.openBox<ExampleScenario_Step>('ExampleScenario_StepBox');
+	exampleScenario_StepBox.add(newExampleScenario_Step);
+	return newExampleScenario_Step;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -555,8 +569,8 @@ class ExampleScenario_Operation {
 		Element elementReceiverActive,
 		ExampleScenario_ContainedInstance request,
 		ExampleScenario_ContainedInstance response}) async {
-	 return ExampleScenario_Operation(
-			id: await newEntry('ExampleScenario_Operation'),
+	ExampleScenario_Operation newExampleScenario_Operation = new ExampleScenario_Operation(
+			id: await newId('ExampleScenario_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -577,8 +591,10 @@ class ExampleScenario_Operation {
 			elementReceiverActive: elementReceiverActive,
 			request: request,
 			response: response);
-	}
-
+	var exampleScenario_OperationBox = await Hive.openBox<ExampleScenario_Operation>('ExampleScenario_OperationBox');
+	exampleScenario_OperationBox.add(newExampleScenario_Operation);
+	return newExampleScenario_Operation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -641,8 +657,8 @@ class ExampleScenario_Alternative {
 		String description,
 		Element elementDescription,
 		List<ExampleScenario_Step> step}) async {
-	 return ExampleScenario_Alternative(
-			id: await newEntry('ExampleScenario_Alternative'),
+	ExampleScenario_Alternative newExampleScenario_Alternative = new ExampleScenario_Alternative(
+			id: await newId('ExampleScenario_Alternative'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			title: title,
@@ -650,8 +666,10 @@ class ExampleScenario_Alternative {
 			description: description,
 			elementDescription: elementDescription,
 			step: step);
-	}
-
+	var exampleScenario_AlternativeBox = await Hive.openBox<ExampleScenario_Alternative>('ExampleScenario_AlternativeBox');
+	exampleScenario_AlternativeBox.add(newExampleScenario_Alternative);
+	return newExampleScenario_Alternative;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -42,8 +41,8 @@ class DeviceMetric {
 		Element elementCategory,
 		Timing measurementPeriod,
 		List<DeviceMetric_Calibration> calibration}) async {
-	 return DeviceMetric(
-			id: await newEntry('DeviceMetric'),
+	DeviceMetric newDeviceMetric = new DeviceMetric(
+			id: await newId('DeviceMetric'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -66,8 +65,10 @@ class DeviceMetric {
 			elementCategory: elementCategory,
 			measurementPeriod: measurementPeriod,
 			calibration: calibration);
-	}
-
+	var deviceMetricBox = await Hive.openBox<DeviceMetric>('DeviceMetricBox');
+	deviceMetricBox.add(newDeviceMetric);
+	return newDeviceMetric;
+}
   @HiveField(0)
   final String resourceType= 'DeviceMetric';
   @HiveField(1)
@@ -160,8 +161,8 @@ class DeviceMetric_Calibration {
 		Element elementState,
 		DateTime time,
 		Element elementTime}) async {
-	 return DeviceMetric_Calibration(
-			id: await newEntry('DeviceMetric_Calibration'),
+	DeviceMetric_Calibration newDeviceMetric_Calibration = new DeviceMetric_Calibration(
+			id: await newId('DeviceMetric_Calibration'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -170,8 +171,10 @@ class DeviceMetric_Calibration {
 			elementState: elementState,
 			time: time,
 			elementTime: elementTime);
-	}
-
+	var deviceMetric_CalibrationBox = await Hive.openBox<DeviceMetric_Calibration>('DeviceMetric_CalibrationBox');
+	deviceMetric_CalibrationBox.add(newDeviceMetric_Calibration);
+	return newDeviceMetric_Calibration;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

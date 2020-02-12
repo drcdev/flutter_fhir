@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -39,8 +38,8 @@ class Schedule {
 		Period planningHorizon,
 		String comment,
 		Element elementComment}) async {
-	 return Schedule(
-			id: await newEntry('Schedule'),
+	Schedule newSchedule = new Schedule(
+			id: await newId('Schedule'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -60,8 +59,10 @@ class Schedule {
 			planningHorizon: planningHorizon,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var scheduleBox = await Hive.openBox<Schedule>('ScheduleBox');
+	scheduleBox.add(newSchedule);
+	return newSchedule;
+}
   @HiveField(0)
   final String resourceType= 'Schedule';
   @HiveField(1)

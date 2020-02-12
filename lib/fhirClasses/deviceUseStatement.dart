@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -49,8 +48,8 @@ class DeviceUseStatement {
 		List<Reference> reasonReference,
 		CodeableConcept bodySite,
 		List<Annotation> note}) async {
-	 return DeviceUseStatement(
-			id: await newEntry('DeviceUseStatement'),
+	DeviceUseStatement newDeviceUseStatement = new DeviceUseStatement(
+			id: await newId('DeviceUseStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -78,8 +77,10 @@ class DeviceUseStatement {
 			reasonReference: reasonReference,
 			bodySite: bodySite,
 			note: note);
-	}
-
+	var deviceUseStatementBox = await Hive.openBox<DeviceUseStatement>('DeviceUseStatementBox');
+	deviceUseStatementBox.add(newDeviceUseStatement);
+	return newDeviceUseStatement;
+}
   @HiveField(0)
   final String resourceType= 'DeviceUseStatement';
   @HiveField(1)

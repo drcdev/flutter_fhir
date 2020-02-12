@@ -22,8 +22,8 @@ class Meta {
 		List<String> profile,
 		List<Coding> security,
 		List<Coding> tag}) async {
-	 return Meta(
-			id: await newEntry('Meta'),
+	Meta newMeta = new Meta(
+			id: await newId('Meta'),
 			extension: extension,
 			versionId: versionId,
 			elementVersionId: elementVersionId,
@@ -34,8 +34,10 @@ class Meta {
 			profile: profile,
 			security: security,
 			tag: tag);
-	}
-
+	var metaBox = await Hive.openBox<Meta>('MetaBox');
+	metaBox.add(newMeta);
+	return newMeta;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

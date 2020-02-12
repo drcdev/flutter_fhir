@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -46,8 +45,8 @@ class Lists {
 		List<Annotation> note,
 		List<List_Entry> entry,
 		CodeableConcept emptyReason}) async {
-	 return Lists(
-			id: await newEntry('Lists'),
+	Lists newLists = new Lists(
+			id: await newId('List'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -74,8 +73,10 @@ class Lists {
 			note: note,
 			entry: entry,
 			emptyReason: emptyReason);
-	}
-
+	var listsBox = await Hive.openBox<Lists>('ListsBox');
+	listsBox.add(newLists);
+	return newLists;
+}
   @HiveField(0)
   final String resourceType= 'List';
   @HiveField(1)
@@ -180,8 +181,8 @@ class List_Entry {
 		DateTime date,
 		Element elementDate,
 		Reference item}) async {
-	 return List_Entry(
-			id: await newEntry('List_Entry'),
+	List_Entry newList_Entry = new List_Entry(
+			id: await newId('List_Entry'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			flag: flag,
@@ -190,8 +191,10 @@ class List_Entry {
 			date: date,
 			elementDate: elementDate,
 			item: item);
-	}
-
+	var list_EntryBox = await Hive.openBox<List_Entry>('List_EntryBox');
+	list_EntryBox.add(newList_Entry);
+	return newList_Entry;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

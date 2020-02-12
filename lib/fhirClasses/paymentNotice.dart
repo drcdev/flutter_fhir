@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -44,8 +43,8 @@ class PaymentNotice {
 		Reference recipient,
 		Money amount,
 		CodeableConcept paymentStatus}) async {
-	 return PaymentNotice(
-			id: await newEntry('PaymentNotice'),
+	PaymentNotice newPaymentNotice = new PaymentNotice(
+			id: await newId('PaymentNotice'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,8 +69,10 @@ class PaymentNotice {
 			recipient: recipient,
 			amount: amount,
 			paymentStatus: paymentStatus);
-	}
-
+	var paymentNoticeBox = await Hive.openBox<PaymentNotice>('PaymentNoticeBox');
+	paymentNoticeBox.add(newPaymentNotice);
+	return newPaymentNotice;
+}
   @HiveField(0)
   final String resourceType= 'PaymentNotice';
   @HiveField(1)

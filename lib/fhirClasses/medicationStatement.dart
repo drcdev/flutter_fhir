@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
@@ -53,8 +52,8 @@ class MedicationStatement {
 		List<Reference> reasonReference,
 		List<Annotation> note,
 		List<Dosage> dosage}) async {
-	 return MedicationStatement(
-			id: await newEntry('MedicationStatement'),
+	MedicationStatement newMedicationStatement = new MedicationStatement(
+			id: await newId('MedicationStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,8 +85,10 @@ class MedicationStatement {
 			reasonReference: reasonReference,
 			note: note,
 			dosage: dosage);
-	}
-
+	var medicationStatementBox = await Hive.openBox<MedicationStatement>('MedicationStatementBox');
+	medicationStatementBox.add(newMedicationStatement);
+	return newMedicationStatement;
+}
   @HiveField(0)
   final String resourceType= 'MedicationStatement';
   @HiveField(1)

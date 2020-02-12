@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -55,8 +54,8 @@ class ImagingStudy {
 		String description,
 		Element elementDescription,
 		List<ImagingStudy_Series> series}) async {
-	 return ImagingStudy(
-			id: await newEntry('ImagingStudy'),
+	ImagingStudy newImagingStudy = new ImagingStudy(
+			id: await newId('ImagingStudy'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -91,8 +90,10 @@ class ImagingStudy {
 			description: description,
 			elementDescription: elementDescription,
 			series: series);
-	}
-
+	var imagingStudyBox = await Hive.openBox<ImagingStudy>('ImagingStudyBox');
+	imagingStudyBox.add(newImagingStudy);
+	return newImagingStudy;
+}
   @HiveField(0)
   final String resourceType= 'ImagingStudy';
   @HiveField(1)
@@ -232,8 +233,8 @@ class ImagingStudy_Series {
 		Element elementStarted,
 		List<ImagingStudy_Performer> performer,
 		List<ImagingStudy_Instance> instance}) async {
-	 return ImagingStudy_Series(
-			id: await newEntry('ImagingStudy_Series'),
+	ImagingStudy_Series newImagingStudy_Series = new ImagingStudy_Series(
+			id: await newId('ImagingStudy_Series'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			uid: uid,
@@ -253,8 +254,10 @@ class ImagingStudy_Series {
 			elementStarted: elementStarted,
 			performer: performer,
 			instance: instance);
-	}
-
+	var imagingStudy_SeriesBox = await Hive.openBox<ImagingStudy_Series>('ImagingStudy_SeriesBox');
+	imagingStudy_SeriesBox.add(newImagingStudy_Series);
+	return newImagingStudy_Series;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -312,14 +315,16 @@ class ImagingStudy_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
-	 return ImagingStudy_Performer(
-			id: await newEntry('ImagingStudy_Performer'),
+	ImagingStudy_Performer newImagingStudy_Performer = new ImagingStudy_Performer(
+			id: await newId('ImagingStudy_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor);
-	}
-
+	var imagingStudy_PerformerBox = await Hive.openBox<ImagingStudy_Performer>('ImagingStudy_PerformerBox');
+	imagingStudy_PerformerBox.add(newImagingStudy_Performer);
+	return newImagingStudy_Performer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -352,8 +357,8 @@ class ImagingStudy_Instance {
 		Element elementNumber,
 		String title,
 		Element elementTitle}) async {
-	 return ImagingStudy_Instance(
-			id: await newEntry('ImagingStudy_Instance'),
+	ImagingStudy_Instance newImagingStudy_Instance = new ImagingStudy_Instance(
+			id: await newId('ImagingStudy_Instance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			uid: uid,
@@ -363,8 +368,10 @@ class ImagingStudy_Instance {
 			elementNumber: elementNumber,
 			title: title,
 			elementTitle: elementTitle);
-	}
-
+	var imagingStudy_InstanceBox = await Hive.openBox<ImagingStudy_Instance>('ImagingStudy_InstanceBox');
+	imagingStudy_InstanceBox.add(newImagingStudy_Instance);
+	return newImagingStudy_Instance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -47,8 +46,8 @@ class Endpoint {
 		Element elementAddress,
 		List<String> header,
 		List<Element> elementHeader}) async {
-	 return Endpoint(
-			id: await newEntry('Endpoint'),
+	Endpoint newEndpoint = new Endpoint(
+			id: await newId('Endpoint'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -74,8 +73,10 @@ class Endpoint {
 			elementAddress: elementAddress,
 			header: header,
 			elementHeader: elementHeader);
-	}
-
+	var endpointBox = await Hive.openBox<Endpoint>('EndpointBox');
+	endpointBox.add(newEndpoint);
+	return newEndpoint;
+}
   @HiveField(0)
   final String resourceType= 'Endpoint';
   @HiveField(1)

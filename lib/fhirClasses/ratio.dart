@@ -14,13 +14,15 @@ class Ratio {
 		List<Extension> extension,
 		Quantity numerator,
 		Quantity denominator}) async {
-	 return Ratio(
-			id: await newEntry('Ratio'),
+	Ratio newRatio = new Ratio(
+			id: await newId('Ratio'),
 			extension: extension,
 			numerator: numerator,
 			denominator: denominator);
-	}
-
+	var ratioBox = await Hive.openBox<Ratio>('RatioBox');
+	ratioBox.add(newRatio);
+	return newRatio;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

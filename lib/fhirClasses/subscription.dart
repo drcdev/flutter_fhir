@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -38,8 +37,8 @@ class Subscription {
 		String error,
 		Element elementError,
 		Subscription_Channel channel}) async {
-	 return Subscription(
-			id: await newEntry('Subscription'),
+	Subscription newSubscription = new Subscription(
+			id: await newId('Subscription'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -61,8 +60,10 @@ class Subscription {
 			error: error,
 			elementError: elementError,
 			channel: channel);
-	}
-
+	var subscriptionBox = await Hive.openBox<Subscription>('SubscriptionBox');
+	subscriptionBox.add(newSubscription);
+	return newSubscription;
+}
   @HiveField(0)
   final String resourceType= 'Subscription';
   @HiveField(1)
@@ -154,8 +155,8 @@ class Subscription_Channel {
 		Element elementPayload,
 		List<String> header,
 		List<Element> elementHeader}) async {
-	 return Subscription_Channel(
-			id: await newEntry('Subscription_Channel'),
+	Subscription_Channel newSubscription_Channel = new Subscription_Channel(
+			id: await newId('Subscription_Channel'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -166,8 +167,10 @@ class Subscription_Channel {
 			elementPayload: elementPayload,
 			header: header,
 			elementHeader: elementHeader);
-	}
-
+	var subscription_ChannelBox = await Hive.openBox<Subscription_Channel>('Subscription_ChannelBox');
+	subscription_ChannelBox.add(newSubscription_Channel);
+	return newSubscription_Channel;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

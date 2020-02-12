@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -52,8 +51,8 @@ class RiskAssessment {
 		String mitigation,
 		Element elementMitigation,
 		List<Annotation> note}) async {
-	 return RiskAssessment(
-			id: await newEntry('RiskAssessment'),
+	RiskAssessment newRiskAssessment = new RiskAssessment(
+			id: await newId('RiskAssessment'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -84,8 +83,10 @@ class RiskAssessment {
 			mitigation: mitigation,
 			elementMitigation: elementMitigation,
 			note: note);
-	}
-
+	var riskAssessmentBox = await Hive.openBox<RiskAssessment>('RiskAssessmentBox');
+	riskAssessmentBox.add(newRiskAssessment);
+	return newRiskAssessment;
+}
   @HiveField(0)
   final String resourceType= 'RiskAssessment';
   @HiveField(1)
@@ -197,7 +198,7 @@ class RiskAssessment_Prediction {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		CodeableConcept outcome,
-		double probabilityDecimal,
+		int probabilityDecimal,
 		Element elementProbabilityDecimal,
 		Range probabilityRange,
 		CodeableConcept qualitativeRisk,
@@ -207,8 +208,8 @@ class RiskAssessment_Prediction {
 		Range whenRange,
 		String rationale,
 		Element elementRationale}) async {
-	 return RiskAssessment_Prediction(
-			id: await newEntry('RiskAssessment_Prediction'),
+	RiskAssessment_Prediction newRiskAssessment_Prediction = new RiskAssessment_Prediction(
+			id: await newId('RiskAssessment_Prediction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			outcome: outcome,
@@ -222,13 +223,15 @@ class RiskAssessment_Prediction {
 			whenRange: whenRange,
 			rationale: rationale,
 			elementRationale: elementRationale);
-	}
-
+	var riskAssessment_PredictionBox = await Hive.openBox<RiskAssessment_Prediction>('RiskAssessment_PredictionBox');
+	riskAssessment_PredictionBox.add(newRiskAssessment_Prediction);
+	return newRiskAssessment_Prediction;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept outcome;
-  double probabilityDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int probabilityDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementProbabilityDecimal;
   Range probabilityRange;
   CodeableConcept qualitativeRisk;
@@ -537,7 +540,7 @@ RiskAssessment_Prediction _$RiskAssessment_PredictionFromJson(
     outcome: json['outcome'] == null
         ? null
         : CodeableConcept.fromJson(json['outcome'] as Map<String, dynamic>),
-    probabilityDecimal: (json['probabilityDecimal'] as num)?.toDouble(),
+    probabilityDecimal: json['probabilityDecimal'] as int,
     elementProbabilityDecimal: json['elementProbabilityDecimal'] == null
         ? null
         : Element.fromJson(

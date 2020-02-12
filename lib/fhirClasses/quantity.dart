@@ -22,8 +22,8 @@ class Quantity {
 		Element elementSystem,
 		String code,
 		Element elementCode}) async {
-	 return Quantity(
-			id: await newEntry('Quantity'),
+	Quantity newQuantity = new Quantity(
+			id: await newId('Quantity'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
@@ -35,8 +35,10 @@ class Quantity {
 			elementSystem: elementSystem,
 			code: code,
 			elementCode: elementCode);
-	}
-
+	var quantityBox = await Hive.openBox<Quantity>('QuantityBox');
+	quantityBox.add(newQuantity);
+	return newQuantity;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

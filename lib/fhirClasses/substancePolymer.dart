@@ -33,8 +33,8 @@ class SubstancePolymer {
 		List<Element> elementModification,
 		List<SubstancePolymer_MonomerSet> monomerSet,
 		List<SubstancePolymer_Repeat> repeat}) async {
-	 return SubstancePolymer(
-			id: await newEntry('SubstancePolymer'),
+	SubstancePolymer newSubstancePolymer = new SubstancePolymer(
+			id: await newId('SubstancePolymer'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,8 +51,10 @@ class SubstancePolymer {
 			elementModification: elementModification,
 			monomerSet: monomerSet,
 			repeat: repeat);
-	}
-
+	var substancePolymerBox = await Hive.openBox<SubstancePolymer>('SubstancePolymerBox');
+	substancePolymerBox.add(newSubstancePolymer);
+	return newSubstancePolymer;
+}
   @HiveField(0)
   final String resourceType= 'SubstancePolymer';
   @HiveField(1)
@@ -123,14 +125,16 @@ class SubstancePolymer_MonomerSet {
 		List<Extension> modifierExtension,
 		CodeableConcept ratioType,
 		List<SubstancePolymer_StartingMaterial> startingMaterial}) async {
-	 return SubstancePolymer_MonomerSet(
-			id: await newEntry('SubstancePolymer_MonomerSet'),
+	SubstancePolymer_MonomerSet newSubstancePolymer_MonomerSet = new SubstancePolymer_MonomerSet(
+			id: await newId('SubstancePolymer_MonomerSet'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			ratioType: ratioType,
 			startingMaterial: startingMaterial);
-	}
-
+	var substancePolymer_MonomerSetBox = await Hive.openBox<SubstancePolymer_MonomerSet>('SubstancePolymer_MonomerSetBox');
+	substancePolymer_MonomerSetBox.add(newSubstancePolymer_MonomerSet);
+	return newSubstancePolymer_MonomerSet;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -161,8 +165,8 @@ class SubstancePolymer_StartingMaterial {
 		bool isDefining,
 		Element elementIsDefining,
 		SubstanceAmount amount}) async {
-	 return SubstancePolymer_StartingMaterial(
-			id: await newEntry('SubstancePolymer_StartingMaterial'),
+	SubstancePolymer_StartingMaterial newSubstancePolymer_StartingMaterial = new SubstancePolymer_StartingMaterial(
+			id: await newId('SubstancePolymer_StartingMaterial'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			material: material,
@@ -170,8 +174,10 @@ class SubstancePolymer_StartingMaterial {
 			isDefining: isDefining,
 			elementIsDefining: elementIsDefining,
 			amount: amount);
-	}
-
+	var substancePolymer_StartingMaterialBox = await Hive.openBox<SubstancePolymer_StartingMaterial>('SubstancePolymer_StartingMaterialBox');
+	substancePolymer_StartingMaterialBox.add(newSubstancePolymer_StartingMaterial);
+	return newSubstancePolymer_StartingMaterial;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -209,8 +215,8 @@ class SubstancePolymer_Repeat {
 		Element elementAverageMolecularFormula,
 		CodeableConcept repeatUnitAmountType,
 		List<SubstancePolymer_RepeatUnit> repeatUnit}) async {
-	 return SubstancePolymer_Repeat(
-			id: await newEntry('SubstancePolymer_Repeat'),
+	SubstancePolymer_Repeat newSubstancePolymer_Repeat = new SubstancePolymer_Repeat(
+			id: await newId('SubstancePolymer_Repeat'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			numberOfUnits: numberOfUnits,
@@ -219,8 +225,10 @@ class SubstancePolymer_Repeat {
 			elementAverageMolecularFormula: elementAverageMolecularFormula,
 			repeatUnitAmountType: repeatUnitAmountType,
 			repeatUnit: repeatUnit);
-	}
-
+	var substancePolymer_RepeatBox = await Hive.openBox<SubstancePolymer_Repeat>('SubstancePolymer_RepeatBox');
+	substancePolymer_RepeatBox.add(newSubstancePolymer_Repeat);
+	return newSubstancePolymer_Repeat;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -260,8 +268,8 @@ class SubstancePolymer_RepeatUnit {
 		SubstanceAmount amount,
 		List<SubstancePolymer_DegreeOfPolymerisation> degreeOfPolymerisation,
 		List<SubstancePolymer_StructuralRepresentation> structuralRepresentation}) async {
-	 return SubstancePolymer_RepeatUnit(
-			id: await newEntry('SubstancePolymer_RepeatUnit'),
+	SubstancePolymer_RepeatUnit newSubstancePolymer_RepeatUnit = new SubstancePolymer_RepeatUnit(
+			id: await newId('SubstancePolymer_RepeatUnit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			orientationOfPolymerisation: orientationOfPolymerisation,
@@ -270,8 +278,10 @@ class SubstancePolymer_RepeatUnit {
 			amount: amount,
 			degreeOfPolymerisation: degreeOfPolymerisation,
 			structuralRepresentation: structuralRepresentation);
-	}
-
+	var substancePolymer_RepeatUnitBox = await Hive.openBox<SubstancePolymer_RepeatUnit>('SubstancePolymer_RepeatUnitBox');
+	substancePolymer_RepeatUnitBox.add(newSubstancePolymer_RepeatUnit);
+	return newSubstancePolymer_RepeatUnit;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -307,14 +317,16 @@ class SubstancePolymer_DegreeOfPolymerisation {
 		List<Extension> modifierExtension,
 		CodeableConcept degree,
 		SubstanceAmount amount}) async {
-	 return SubstancePolymer_DegreeOfPolymerisation(
-			id: await newEntry('SubstancePolymer_DegreeOfPolymerisation'),
+	SubstancePolymer_DegreeOfPolymerisation newSubstancePolymer_DegreeOfPolymerisation = new SubstancePolymer_DegreeOfPolymerisation(
+			id: await newId('SubstancePolymer_DegreeOfPolymerisation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			degree: degree,
 			amount: amount);
-	}
-
+	var substancePolymer_DegreeOfPolymerisationBox = await Hive.openBox<SubstancePolymer_DegreeOfPolymerisation>('SubstancePolymer_DegreeOfPolymerisationBox');
+	substancePolymer_DegreeOfPolymerisationBox.add(newSubstancePolymer_DegreeOfPolymerisation);
+	return newSubstancePolymer_DegreeOfPolymerisation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -344,16 +356,18 @@ class SubstancePolymer_StructuralRepresentation {
 		String representation,
 		Element elementRepresentation,
 		Attachment attachment}) async {
-	 return SubstancePolymer_StructuralRepresentation(
-			id: await newEntry('SubstancePolymer_StructuralRepresentation'),
+	SubstancePolymer_StructuralRepresentation newSubstancePolymer_StructuralRepresentation = new SubstancePolymer_StructuralRepresentation(
+			id: await newId('SubstancePolymer_StructuralRepresentation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			representation: representation,
 			elementRepresentation: elementRepresentation,
 			attachment: attachment);
-	}
-
+	var substancePolymer_StructuralRepresentationBox = await Hive.openBox<SubstancePolymer_StructuralRepresentation>('SubstancePolymer_StructuralRepresentationBox');
+	substancePolymer_StructuralRepresentationBox.add(newSubstancePolymer_StructuralRepresentation);
+	return newSubstancePolymer_StructuralRepresentation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
@@ -93,8 +92,8 @@ class Task {
 		Task_Restriction restriction,
 		List<Task_Input> input,
 		List<Task_Output> output}) async {
-	 return Task(
-			id: await newEntry('Task'),
+	Task newTask = new Task(
+			id: await newId('Task'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -142,8 +141,10 @@ class Task {
 			restriction: restriction,
 			input: input,
 			output: output);
-	}
-
+	var taskBox = await Hive.openBox<Task>('TaskBox');
+	taskBox.add(newTask);
+	return newTask;
+}
   @HiveField(0)
   final String resourceType= 'Task';
   @HiveField(1)
@@ -309,16 +310,18 @@ class Task_Restriction {
 		Element elementRepetitions,
 		Period period,
 		List<Reference> recipient}) async {
-	 return Task_Restriction(
-			id: await newEntry('Task_Restriction'),
+	Task_Restriction newTask_Restriction = new Task_Restriction(
+			id: await newId('Task_Restriction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			repetitions: repetitions,
 			elementRepetitions: elementRepetitions,
 			period: period,
 			recipient: recipient);
-	}
-
+	var task_RestrictionBox = await Hive.openBox<Task_Restriction>('Task_RestrictionBox');
+	task_RestrictionBox.add(newTask_Restriction);
+	return newTask_Restriction;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -361,7 +364,7 @@ class Task_Input {
 		Element elementValueDate,
 		String valueDateTime,
 		Element elementValueDateTime,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		String valueId,
 		Element elementValueId,
@@ -418,8 +421,8 @@ class Task_Input {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
-	 return Task_Input(
-			id: await newEntry('Task_Input'),
+	Task_Input newTask_Input = new Task_Input(
+			id: await newId('Task_Input'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -492,8 +495,10 @@ class Task_Input {
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
-	}
-
+	var task_InputBox = await Hive.openBox<Task_Input>('Task_InputBox');
+	task_InputBox.add(newTask_Input);
+	return newTask_Input;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -510,7 +515,7 @@ class Task_Input {
   Element elementValueDate;
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementValueDateTime;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
   Element elementValueId;
@@ -668,7 +673,7 @@ class Task_Output {
 		Element elementValueDate,
 		String valueDateTime,
 		Element elementValueDateTime,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		String valueId,
 		Element elementValueId,
@@ -725,8 +730,8 @@ class Task_Output {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
-	 return Task_Output(
-			id: await newEntry('Task_Output'),
+	Task_Output newTask_Output = new Task_Output(
+			id: await newId('Task_Output'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -799,8 +804,10 @@ class Task_Output {
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
-	}
-
+	var task_OutputBox = await Hive.openBox<Task_Output>('Task_OutputBox');
+	task_OutputBox.add(newTask_Output);
+	return newTask_Output;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -817,7 +824,7 @@ class Task_Output {
   Element elementValueDate;
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementValueDateTime;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
   Element elementValueId;
@@ -1413,7 +1420,7 @@ Task_Input _$Task_InputFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementValueDateTime'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),
@@ -1693,7 +1700,7 @@ Task_Output _$Task_OutputFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementValueDateTime'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

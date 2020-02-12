@@ -33,8 +33,8 @@ class MedicinalProductInteraction {
 		CodeableConcept effect,
 		CodeableConcept incidence,
 		CodeableConcept management}) async {
-	 return MedicinalProductInteraction(
-			id: await newEntry('MedicinalProductInteraction'),
+	MedicinalProductInteraction newMedicinalProductInteraction = new MedicinalProductInteraction(
+			id: await newId('MedicinalProductInteraction'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -52,8 +52,10 @@ class MedicinalProductInteraction {
 			effect: effect,
 			incidence: incidence,
 			management: management);
-	}
-
+	var medicinalProductInteractionBox = await Hive.openBox<MedicinalProductInteraction>('MedicinalProductInteractionBox');
+	medicinalProductInteractionBox.add(newMedicinalProductInteraction);
+	return newMedicinalProductInteraction;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductInteraction';
   @HiveField(1)
@@ -127,14 +129,16 @@ class MedicinalProductInteraction_Interactant {
 		List<Extension> modifierExtension,
 		Reference itemReference,
 		CodeableConcept itemCodeableConcept}) async {
-	 return MedicinalProductInteraction_Interactant(
-			id: await newEntry('MedicinalProductInteraction_Interactant'),
+	MedicinalProductInteraction_Interactant newMedicinalProductInteraction_Interactant = new MedicinalProductInteraction_Interactant(
+			id: await newId('MedicinalProductInteraction_Interactant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemReference: itemReference,
 			itemCodeableConcept: itemCodeableConcept);
-	}
-
+	var medicinalProductInteraction_InteractantBox = await Hive.openBox<MedicinalProductInteraction_Interactant>('MedicinalProductInteraction_InteractantBox');
+	medicinalProductInteraction_InteractantBox.add(newMedicinalProductInteraction_Interactant);
+	return newMedicinalProductInteraction_Interactant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -22,8 +22,8 @@ class Duration {
 		Element elementSystem,
 		String code,
 		Element elementCode}) async {
-	 return Duration(
-			id: await newEntry('Duration'),
+	Duration newDuration = new Duration(
+			id: await newId('Duration'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
@@ -35,8 +35,10 @@ class Duration {
 			elementSystem: elementSystem,
 			code: code,
 			elementCode: elementCode);
-	}
-
+	var durationBox = await Hive.openBox<Duration>('DurationBox');
+	durationBox.add(newDuration);
+	return newDuration;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

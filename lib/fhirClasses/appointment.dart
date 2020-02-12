@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -60,8 +59,8 @@ class Appointment {
 		List<Reference> basedOn,
 		List<Appointment_Participant> participant,
 		List<Period> requestedPeriod}) async {
-	 return Appointment(
-			id: await newEntry('Appointment'),
+	Appointment newAppointment = new Appointment(
+			id: await newId('Appointment'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -102,8 +101,10 @@ class Appointment {
 			basedOn: basedOn,
 			participant: participant,
 			requestedPeriod: requestedPeriod);
-	}
-
+	var appointmentBox = await Hive.openBox<Appointment>('AppointmentBox');
+	appointmentBox.add(newAppointment);
+	return newAppointment;
+}
   @HiveField(0)
   final String resourceType= 'Appointment';
   @HiveField(1)
@@ -251,8 +252,8 @@ class Appointment_Participant {
 		String status,
 		Element elementStatus,
 		Period period}) async {
-	 return Appointment_Participant(
-			id: await newEntry('Appointment_Participant'),
+	Appointment_Participant newAppointment_Participant = new Appointment_Participant(
+			id: await newId('Appointment_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -262,8 +263,10 @@ class Appointment_Participant {
 			status: status,
 			elementStatus: elementStatus,
 			period: period);
-	}
-
+	var appointment_ParticipantBox = await Hive.openBox<Appointment_Participant>('Appointment_ParticipantBox');
+	appointment_ParticipantBox.add(newAppointment_Participant);
+	return newAppointment_Participant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

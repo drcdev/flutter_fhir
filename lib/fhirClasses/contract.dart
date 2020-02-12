@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
@@ -80,8 +79,8 @@ class Contract {
 		List<Contract_Rule> rule,
 		Attachment legallyBindingAttachment,
 		Reference legallyBindingReference}) async {
-	 return Contract(
-			id: await newEntry('Contract'),
+	Contract newContract = new Contract(
+			id: await newId('Contract'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -135,8 +134,10 @@ class Contract {
 			rule: rule,
 			legallyBindingAttachment: legallyBindingAttachment,
 			legallyBindingReference: legallyBindingReference);
-	}
-
+	var contractBox = await Hive.openBox<Contract>('ContractBox');
+	contractBox.add(newContract);
+	return newContract;
+}
   @HiveField(0)
   final String resourceType= 'Contract';
   @HiveField(1)
@@ -325,8 +326,8 @@ class Contract_ContentDefinition {
 		Element elementPublicationStatus,
 		String copyright,
 		Element elementCopyright}) async {
-	 return Contract_ContentDefinition(
-			id: await newEntry('Contract_ContentDefinition'),
+	Contract_ContentDefinition newContract_ContentDefinition = new Contract_ContentDefinition(
+			id: await newId('Contract_ContentDefinition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -338,8 +339,10 @@ class Contract_ContentDefinition {
 			elementPublicationStatus: elementPublicationStatus,
 			copyright: copyright,
 			elementCopyright: elementCopyright);
-	}
-
+	var contract_ContentDefinitionBox = await Hive.openBox<Contract_ContentDefinition>('Contract_ContentDefinitionBox');
+	contract_ContentDefinitionBox.add(newContract_ContentDefinition);
+	return newContract_ContentDefinition;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -394,8 +397,8 @@ class Contract_Term {
 		List<Contract_Asset> asset,
 		List<Contract_Action> action,
 		List<Contract_Term> group}) async {
-	 return Contract_Term(
-			id: await newEntry('Contract_Term'),
+	Contract_Term newContract_Term = new Contract_Term(
+			id: await newId('Contract_Term'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -413,8 +416,10 @@ class Contract_Term {
 			asset: asset,
 			action: action,
 			group: group);
-	}
-
+	var contract_TermBox = await Hive.openBox<Contract_Term>('Contract_TermBox');
+	contract_TermBox.add(newContract_Term);
+	return newContract_Term;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -471,8 +476,8 @@ class Contract_SecurityLabel {
 		Coding classification,
 		List<Coding> category,
 		List<Coding> control}) async {
-	 return Contract_SecurityLabel(
-			id: await newEntry('Contract_SecurityLabel'),
+	Contract_SecurityLabel newContract_SecurityLabel = new Contract_SecurityLabel(
+			id: await newId('Contract_SecurityLabel'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -480,8 +485,10 @@ class Contract_SecurityLabel {
 			classification: classification,
 			category: category,
 			control: control);
-	}
-
+	var contract_SecurityLabelBox = await Hive.openBox<Contract_SecurityLabel>('Contract_SecurityLabelBox');
+	contract_SecurityLabelBox.add(newContract_SecurityLabel);
+	return newContract_SecurityLabel;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -526,8 +533,8 @@ class Contract_Offer {
 		List<Element> elementLinkId,
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber}) async {
-	 return Contract_Offer(
-			id: await newEntry('Contract_Offer'),
+	Contract_Offer newContract_Offer = new Contract_Offer(
+			id: await newId('Contract_Offer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -543,8 +550,10 @@ class Contract_Offer {
 			elementLinkId: elementLinkId,
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber);
-	}
-
+	var contract_OfferBox = await Hive.openBox<Contract_Offer>('Contract_OfferBox');
+	contract_OfferBox.add(newContract_Offer);
+	return newContract_Offer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -594,14 +603,16 @@ class Contract_Party {
 		List<Extension> modifierExtension,
 		List<Reference> reference,
 		CodeableConcept role}) async {
-	 return Contract_Party(
-			id: await newEntry('Contract_Party'),
+	Contract_Party newContract_Party = new Contract_Party(
+			id: await newId('Contract_Party'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
 			role: role);
-	}
-
+	var contract_PartyBox = await Hive.openBox<Contract_Party>('Contract_PartyBox');
+	contract_PartyBox.add(newContract_Party);
+	return newContract_Party;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -629,7 +640,7 @@ class Contract_Answer {
 		List<Extension> modifierExtension,
 		bool valueBoolean,
 		Element elementValueBoolean,
-		double valueDecimal,
+		int valueDecimal,
 		Element elementValueDecimal,
 		int valueInteger,
 		Element elementValueInteger,
@@ -647,8 +658,8 @@ class Contract_Answer {
 		Coding valueCoding,
 		Quantity valueQuantity,
 		Reference valueReference}) async {
-	 return Contract_Answer(
-			id: await newEntry('Contract_Answer'),
+	Contract_Answer newContract_Answer = new Contract_Answer(
+			id: await newId('Contract_Answer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueBoolean: valueBoolean,
@@ -671,14 +682,16 @@ class Contract_Answer {
 			valueCoding: valueCoding,
 			valueQuantity: valueQuantity,
 			valueReference: valueReference);
-	}
-
+	var contract_AnswerBox = await Hive.openBox<Contract_Answer>('Contract_AnswerBox');
+	contract_AnswerBox.add(newContract_Answer);
+	return newContract_Answer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   bool valueBoolean; //  pattern: ^true|false$
   Element elementValueBoolean;
-  double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
   Element elementValueDecimal;
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
   Element elementValueInteger;
@@ -753,8 +766,8 @@ class Contract_Asset {
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber,
 		List<Contract_ValuedItem> valuedItem}) async {
-	 return Contract_Asset(
-			id: await newEntry('Contract_Asset'),
+	Contract_Asset newContract_Asset = new Contract_Asset(
+			id: await newId('Contract_Asset'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			scope: scope,
@@ -776,8 +789,10 @@ class Contract_Asset {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 			valuedItem: valuedItem);
-	}
-
+	var contract_AssetBox = await Hive.openBox<Contract_Asset>('Contract_AssetBox');
+	contract_AssetBox.add(newContract_Asset);
+	return newContract_Asset;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -841,16 +856,18 @@ class Contract_Context {
 		List<CodeableConcept> code,
 		String text,
 		Element elementText}) async {
-	 return Contract_Context(
-			id: await newEntry('Contract_Context'),
+	Contract_Context newContract_Context = new Contract_Context(
+			id: await newId('Contract_Context'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
 			code: code,
 			text: text,
 			elementText: elementText);
-	}
-
+	var contract_ContextBox = await Hive.openBox<Contract_Context>('Contract_ContextBox');
+	contract_ContextBox.add(newContract_Context);
+	return newContract_Context;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -902,8 +919,8 @@ class Contract_ValuedItem {
 		List<Element> elementLinkId,
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber}) async {
-	 return Contract_ValuedItem(
-			id: await newEntry('Contract_ValuedItem'),
+	Contract_ValuedItem newContract_ValuedItem = new Contract_ValuedItem(
+			id: await newId('Contract_ValuedItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			entityCodeableConcept: entityCodeableConcept,
@@ -928,8 +945,10 @@ class Contract_ValuedItem {
 			elementLinkId: elementLinkId,
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber);
-	}
-
+	var contract_ValuedItemBox = await Hive.openBox<Contract_ValuedItem>('Contract_ValuedItemBox');
+	contract_ValuedItemBox.add(newContract_ValuedItem);
+	return newContract_ValuedItem;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1027,8 +1046,8 @@ class Contract_Action {
 		List<Annotation> note,
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber}) async {
-	 return Contract_Action(
-			id: await newEntry('Contract_Action'),
+	Contract_Action newContract_Action = new Contract_Action(
+			id: await newId('Contract_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			doNotPerform: doNotPerform,
@@ -1063,8 +1082,10 @@ class Contract_Action {
 			note: note,
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber);
-	}
-
+	var contract_ActionBox = await Hive.openBox<Contract_Action>('Contract_ActionBox');
+	contract_ActionBox.add(newContract_Action);
+	return newContract_Action;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1152,14 +1173,16 @@ class Contract_Subject {
 		List<Extension> modifierExtension,
 		List<Reference> reference,
 		CodeableConcept role}) async {
-	 return Contract_Subject(
-			id: await newEntry('Contract_Subject'),
+	Contract_Subject newContract_Subject = new Contract_Subject(
+			id: await newId('Contract_Subject'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
 			role: role);
-	}
-
+	var contract_SubjectBox = await Hive.openBox<Contract_Subject>('Contract_SubjectBox');
+	contract_SubjectBox.add(newContract_Subject);
+	return newContract_Subject;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1188,15 +1211,17 @@ class Contract_Signer {
 		Coding type,
 		Reference party,
 		List<Signature> signature}) async {
-	 return Contract_Signer(
-			id: await newEntry('Contract_Signer'),
+	Contract_Signer newContract_Signer = new Contract_Signer(
+			id: await newId('Contract_Signer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			party: party,
 			signature: signature);
-	}
-
+	var contract_SignerBox = await Hive.openBox<Contract_Signer>('Contract_SignerBox');
+	contract_SignerBox.add(newContract_Signer);
+	return newContract_Signer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1226,14 +1251,16 @@ class Contract_Friendly {
 		List<Extension> modifierExtension,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
-	 return Contract_Friendly(
-			id: await newEntry('Contract_Friendly'),
+	Contract_Friendly newContract_Friendly = new Contract_Friendly(
+			id: await newId('Contract_Friendly'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
-	}
-
+	var contract_FriendlyBox = await Hive.openBox<Contract_Friendly>('Contract_FriendlyBox');
+	contract_FriendlyBox.add(newContract_Friendly);
+	return newContract_Friendly;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1261,14 +1288,16 @@ class Contract_Legal {
 		List<Extension> modifierExtension,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
-	 return Contract_Legal(
-			id: await newEntry('Contract_Legal'),
+	Contract_Legal newContract_Legal = new Contract_Legal(
+			id: await newId('Contract_Legal'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
-	}
-
+	var contract_LegalBox = await Hive.openBox<Contract_Legal>('Contract_LegalBox');
+	contract_LegalBox.add(newContract_Legal);
+	return newContract_Legal;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1296,14 +1325,16 @@ class Contract_Rule {
 		List<Extension> modifierExtension,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
-	 return Contract_Rule(
-			id: await newEntry('Contract_Rule'),
+	Contract_Rule newContract_Rule = new Contract_Rule(
+			id: await newId('Contract_Rule'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
-	}
-
+	var contract_RuleBox = await Hive.openBox<Contract_Rule>('Contract_RuleBox');
+	contract_RuleBox.add(newContract_Rule);
+	return newContract_Rule;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -2075,7 +2106,7 @@ Contract_Answer _$Contract_AnswerFromJson(Map<String, dynamic> json) {
     elementValueBoolean: json['elementValueBoolean'] == null
         ? null
         : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
-    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    valueDecimal: json['valueDecimal'] as int,
     elementValueDecimal: json['elementValueDecimal'] == null
         ? null
         : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -71,8 +70,8 @@ class CapabilityStatement {
 		List<CapabilityStatement_Rest> rest,
 		List<CapabilityStatement_Messaging> messaging,
 		List<CapabilityStatement_Document> document}) async {
-	 return CapabilityStatement(
-			id: await newEntry('CapabilityStatement'),
+	CapabilityStatement newCapabilityStatement = new CapabilityStatement(
+			id: await newId('CapabilityStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -123,8 +122,10 @@ class CapabilityStatement {
 			rest: rest,
 			messaging: messaging,
 			document: document);
-	}
-
+	var capabilityStatementBox = await Hive.openBox<CapabilityStatement>('CapabilityStatementBox');
+	capabilityStatementBox.add(newCapabilityStatement);
+	return newCapabilityStatement;
+}
   @HiveField(0)
   final String resourceType= 'CapabilityStatement';
   @HiveField(1)
@@ -301,8 +302,8 @@ class CapabilityStatement_Software {
 		Element elementVersion,
 		DateTime releaseDate,
 		Element elementReleaseDate}) async {
-	 return CapabilityStatement_Software(
-			id: await newEntry('CapabilityStatement_Software'),
+	CapabilityStatement_Software newCapabilityStatement_Software = new CapabilityStatement_Software(
+			id: await newId('CapabilityStatement_Software'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -311,8 +312,10 @@ class CapabilityStatement_Software {
 			elementVersion: elementVersion,
 			releaseDate: releaseDate,
 			elementReleaseDate: elementReleaseDate);
-	}
-
+	var capabilityStatement_SoftwareBox = await Hive.openBox<CapabilityStatement_Software>('CapabilityStatement_SoftwareBox');
+	capabilityStatement_SoftwareBox.add(newCapabilityStatement_Software);
+	return newCapabilityStatement_Software;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -351,8 +354,8 @@ class CapabilityStatement_Implementation {
 		String url,
 		Element elementUrl,
 		Reference custodian}) async {
-	 return CapabilityStatement_Implementation(
-			id: await newEntry('CapabilityStatement_Implementation'),
+	CapabilityStatement_Implementation newCapabilityStatement_Implementation = new CapabilityStatement_Implementation(
+			id: await newId('CapabilityStatement_Implementation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -360,8 +363,10 @@ class CapabilityStatement_Implementation {
 			url: url,
 			elementUrl: elementUrl,
 			custodian: custodian);
-	}
-
+	var capabilityStatement_ImplementationBox = await Hive.openBox<CapabilityStatement_Implementation>('CapabilityStatement_ImplementationBox');
+	capabilityStatement_ImplementationBox.add(newCapabilityStatement_Implementation);
+	return newCapabilityStatement_Implementation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -403,8 +408,8 @@ class CapabilityStatement_Rest {
 		List<CapabilityStatement_SearchParam> searchParam,
 		List<CapabilityStatement_Operation> operation,
 		List<String> compartment}) async {
-	 return CapabilityStatement_Rest(
-			id: await newEntry('CapabilityStatement_Rest'),
+	CapabilityStatement_Rest newCapabilityStatement_Rest = new CapabilityStatement_Rest(
+			id: await newId('CapabilityStatement_Rest'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -417,8 +422,10 @@ class CapabilityStatement_Rest {
 			searchParam: searchParam,
 			operation: operation,
 			compartment: compartment);
-	}
-
+	var capabilityStatement_RestBox = await Hive.openBox<CapabilityStatement_Rest>('CapabilityStatement_RestBox');
+	capabilityStatement_RestBox.add(newCapabilityStatement_Rest);
+	return newCapabilityStatement_Rest;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -465,8 +472,8 @@ class CapabilityStatement_Security {
 		List<CodeableConcept> service,
 		String description,
 		Element elementDescription}) async {
-	 return CapabilityStatement_Security(
-			id: await newEntry('CapabilityStatement_Security'),
+	CapabilityStatement_Security newCapabilityStatement_Security = new CapabilityStatement_Security(
+			id: await newId('CapabilityStatement_Security'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			cors: cors,
@@ -474,8 +481,10 @@ class CapabilityStatement_Security {
 			service: service,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var capabilityStatement_SecurityBox = await Hive.openBox<CapabilityStatement_Security>('CapabilityStatement_SecurityBox');
+	capabilityStatement_SecurityBox.add(newCapabilityStatement_Security);
+	return newCapabilityStatement_Security;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -536,8 +545,8 @@ class CapabilityStatement_Resource {
 		List<Element> elementSearchRevInclude,
 		List<CapabilityStatement_SearchParam> searchParam,
 		List<CapabilityStatement_Operation> operation}) async {
-	 return CapabilityStatement_Resource(
-			id: await newEntry('CapabilityStatement_Resource'),
+	CapabilityStatement_Resource newCapabilityStatement_Resource = new CapabilityStatement_Resource(
+			id: await newId('CapabilityStatement_Resource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -569,8 +578,10 @@ class CapabilityStatement_Resource {
 			elementSearchRevInclude: elementSearchRevInclude,
 			searchParam: searchParam,
 			operation: operation);
-	}
-
+	var capabilityStatement_ResourceBox = await Hive.openBox<CapabilityStatement_Resource>('CapabilityStatement_ResourceBox');
+	capabilityStatement_ResourceBox.add(newCapabilityStatement_Resource);
+	return newCapabilityStatement_Resource;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -654,16 +665,18 @@ class CapabilityStatement_Interaction {
 		Element elementCode,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return CapabilityStatement_Interaction(
-			id: await newEntry('CapabilityStatement_Interaction'),
+	CapabilityStatement_Interaction newCapabilityStatement_Interaction = new CapabilityStatement_Interaction(
+			id: await newId('CapabilityStatement_Interaction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var capabilityStatement_InteractionBox = await Hive.openBox<CapabilityStatement_Interaction>('CapabilityStatement_InteractionBox');
+	capabilityStatement_InteractionBox.add(newCapabilityStatement_Interaction);
+	return newCapabilityStatement_Interaction;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -700,8 +713,8 @@ class CapabilityStatement_SearchParam {
 		Element elementType,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return CapabilityStatement_SearchParam(
-			id: await newEntry('CapabilityStatement_SearchParam'),
+	CapabilityStatement_SearchParam newCapabilityStatement_SearchParam = new CapabilityStatement_SearchParam(
+			id: await newId('CapabilityStatement_SearchParam'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -711,8 +724,10 @@ class CapabilityStatement_SearchParam {
 			elementType: elementType,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var capabilityStatement_SearchParamBox = await Hive.openBox<CapabilityStatement_SearchParam>('CapabilityStatement_SearchParamBox');
+	capabilityStatement_SearchParamBox.add(newCapabilityStatement_SearchParam);
+	return newCapabilityStatement_SearchParam;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -753,8 +768,8 @@ class CapabilityStatement_Operation {
 		String definition,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return CapabilityStatement_Operation(
-			id: await newEntry('CapabilityStatement_Operation'),
+	CapabilityStatement_Operation newCapabilityStatement_Operation = new CapabilityStatement_Operation(
+			id: await newId('CapabilityStatement_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -762,8 +777,10 @@ class CapabilityStatement_Operation {
 			definition: definition,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var capabilityStatement_OperationBox = await Hive.openBox<CapabilityStatement_Operation>('CapabilityStatement_OperationBox');
+	capabilityStatement_OperationBox.add(newCapabilityStatement_Operation);
+	return newCapabilityStatement_Operation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -799,16 +816,18 @@ class CapabilityStatement_Interaction1 {
 		Element elementCode,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return CapabilityStatement_Interaction1(
-			id: await newEntry('CapabilityStatement_Interaction1'),
+	CapabilityStatement_Interaction1 newCapabilityStatement_Interaction1 = new CapabilityStatement_Interaction1(
+			id: await newId('CapabilityStatement_Interaction1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var capabilityStatement_Interaction1Box = await Hive.openBox<CapabilityStatement_Interaction1>('CapabilityStatement_Interaction1Box');
+	capabilityStatement_Interaction1Box.add(newCapabilityStatement_Interaction1);
+	return newCapabilityStatement_Interaction1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -844,8 +863,8 @@ class CapabilityStatement_Messaging {
 		String documentation,
 		Element elementDocumentation,
 		List<CapabilityStatement_SupportedMessage> supportedMessage}) async {
-	 return CapabilityStatement_Messaging(
-			id: await newEntry('CapabilityStatement_Messaging'),
+	CapabilityStatement_Messaging newCapabilityStatement_Messaging = new CapabilityStatement_Messaging(
+			id: await newId('CapabilityStatement_Messaging'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			endpoint: endpoint,
@@ -854,8 +873,10 @@ class CapabilityStatement_Messaging {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 			supportedMessage: supportedMessage);
-	}
-
+	var capabilityStatement_MessagingBox = await Hive.openBox<CapabilityStatement_Messaging>('CapabilityStatement_MessagingBox');
+	capabilityStatement_MessagingBox.add(newCapabilityStatement_Messaging);
+	return newCapabilityStatement_Messaging;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -892,15 +913,17 @@ class CapabilityStatement_Endpoint {
 		Coding protocol,
 		String address,
 		Element elementAddress}) async {
-	 return CapabilityStatement_Endpoint(
-			id: await newEntry('CapabilityStatement_Endpoint'),
+	CapabilityStatement_Endpoint newCapabilityStatement_Endpoint = new CapabilityStatement_Endpoint(
+			id: await newId('CapabilityStatement_Endpoint'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			protocol: protocol,
 			address: address,
 			elementAddress: elementAddress);
-	}
-
+	var capabilityStatement_EndpointBox = await Hive.openBox<CapabilityStatement_Endpoint>('CapabilityStatement_EndpointBox');
+	capabilityStatement_EndpointBox.add(newCapabilityStatement_Endpoint);
+	return newCapabilityStatement_Endpoint;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -931,15 +954,17 @@ class CapabilityStatement_SupportedMessage {
 		String mode,
 		Element elementMode,
 		String definition}) async {
-	 return CapabilityStatement_SupportedMessage(
-			id: await newEntry('CapabilityStatement_SupportedMessage'),
+	CapabilityStatement_SupportedMessage newCapabilityStatement_SupportedMessage = new CapabilityStatement_SupportedMessage(
+			id: await newId('CapabilityStatement_SupportedMessage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
 			elementMode: elementMode,
 			definition: definition);
-	}
-
+	var capabilityStatement_SupportedMessageBox = await Hive.openBox<CapabilityStatement_SupportedMessage>('CapabilityStatement_SupportedMessageBox');
+	capabilityStatement_SupportedMessageBox.add(newCapabilityStatement_SupportedMessage);
+	return newCapabilityStatement_SupportedMessage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -972,8 +997,8 @@ class CapabilityStatement_Document {
 		String documentation,
 		Element elementDocumentation,
 		String profile}) async {
-	 return CapabilityStatement_Document(
-			id: await newEntry('CapabilityStatement_Document'),
+	CapabilityStatement_Document newCapabilityStatement_Document = new CapabilityStatement_Document(
+			id: await newId('CapabilityStatement_Document'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -981,8 +1006,10 @@ class CapabilityStatement_Document {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 			profile: profile);
-	}
-
+	var capabilityStatement_DocumentBox = await Hive.openBox<CapabilityStatement_Document>('CapabilityStatement_DocumentBox');
+	capabilityStatement_DocumentBox.add(newCapabilityStatement_Document);
+	return newCapabilityStatement_Document;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

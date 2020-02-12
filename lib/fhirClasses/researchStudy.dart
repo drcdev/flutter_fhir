@@ -57,8 +57,8 @@ class ResearchStudy {
 		List<Annotation> note,
 		List<ResearchStudy_Arm> arm,
 		List<ResearchStudy_Objective> objective}) async {
-	 return ResearchStudy(
-			id: await newEntry('ResearchStudy'),
+	ResearchStudy newResearchStudy = new ResearchStudy(
+			id: await newId('ResearchStudy'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -95,8 +95,10 @@ class ResearchStudy {
 			note: note,
 			arm: arm,
 			objective: objective);
-	}
-
+	var researchStudyBox = await Hive.openBox<ResearchStudy>('ResearchStudyBox');
+	researchStudyBox.add(newResearchStudy);
+	return newResearchStudy;
+}
   @HiveField(0)
   final String resourceType= 'ResearchStudy';
   @HiveField(1)
@@ -230,8 +232,8 @@ class ResearchStudy_Arm {
 		CodeableConcept type,
 		String description,
 		Element elementDescription}) async {
-	 return ResearchStudy_Arm(
-			id: await newEntry('ResearchStudy_Arm'),
+	ResearchStudy_Arm newResearchStudy_Arm = new ResearchStudy_Arm(
+			id: await newId('ResearchStudy_Arm'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -239,8 +241,10 @@ class ResearchStudy_Arm {
 			type: type,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var researchStudy_ArmBox = await Hive.openBox<ResearchStudy_Arm>('ResearchStudy_ArmBox');
+	researchStudy_ArmBox.add(newResearchStudy_Arm);
+	return newResearchStudy_Arm;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -275,15 +279,17 @@ class ResearchStudy_Objective {
 		String name,
 		Element elementName,
 		CodeableConcept type}) async {
-	 return ResearchStudy_Objective(
-			id: await newEntry('ResearchStudy_Objective'),
+	ResearchStudy_Objective newResearchStudy_Objective = new ResearchStudy_Objective(
+			id: await newId('ResearchStudy_Objective'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			type: type);
-	}
-
+	var researchStudy_ObjectiveBox = await Hive.openBox<ResearchStudy_Objective>('ResearchStudy_ObjectiveBox');
+	researchStudy_ObjectiveBox.add(newResearchStudy_Objective);
+	return newResearchStudy_Objective;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

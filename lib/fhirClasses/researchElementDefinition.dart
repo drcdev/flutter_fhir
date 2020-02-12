@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -89,8 +88,8 @@ class ResearchElementDefinition {
 		String variableType,
 		Element elementVariableType,
 		List<ResearchElementDefinition_Characteristic> characteristic}) async {
-	 return ResearchElementDefinition(
-			id: await newEntry('ResearchElementDefinition'),
+	ResearchElementDefinition newResearchElementDefinition = new ResearchElementDefinition(
+			id: await newId('ResearchElementDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -153,8 +152,10 @@ class ResearchElementDefinition {
 			variableType: variableType,
 			elementVariableType: elementVariableType,
 			characteristic: characteristic);
-	}
-
+	var researchElementDefinitionBox = await Hive.openBox<ResearchElementDefinition>('ResearchElementDefinitionBox');
+	researchElementDefinitionBox.add(newResearchElementDefinition);
+	return newResearchElementDefinition;
+}
   @HiveField(0)
   final String resourceType= 'ResearchElementDefinition';
   @HiveField(1)
@@ -390,8 +391,8 @@ class ResearchElementDefinition_Characteristic {
 		Duration participantEffectiveTimeFromStart,
 		String participantEffectiveGroupMeasure,
 		Element elementParticipantEffectiveGroupMeasure}) async {
-	 return ResearchElementDefinition_Characteristic(
-			id: await newEntry('ResearchElementDefinition_Characteristic'),
+	ResearchElementDefinition_Characteristic newResearchElementDefinition_Characteristic = new ResearchElementDefinition_Characteristic(
+			id: await newId('ResearchElementDefinition_Characteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			definitionCodeableConcept: definitionCodeableConcept,
@@ -423,8 +424,10 @@ class ResearchElementDefinition_Characteristic {
 			participantEffectiveTimeFromStart: participantEffectiveTimeFromStart,
 			participantEffectiveGroupMeasure: participantEffectiveGroupMeasure,
 			elementParticipantEffectiveGroupMeasure: elementParticipantEffectiveGroupMeasure);
-	}
-
+	var researchElementDefinition_CharacteristicBox = await Hive.openBox<ResearchElementDefinition_Characteristic>('ResearchElementDefinition_CharacteristicBox');
+	researchElementDefinition_CharacteristicBox.add(newResearchElementDefinition_Characteristic);
+	return newResearchElementDefinition_Characteristic;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

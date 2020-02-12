@@ -32,8 +32,8 @@ class Address {
 		String country,
 		Element elementCountry,
 		Period period}) async {
-	 return Address(
-			id: await newEntry('Address'),
+	Address newAddress = new Address(
+			id: await newId('Address'),
 			extension: extension,
 			use: use,
 			elementUse: elementUse,
@@ -54,8 +54,10 @@ class Address {
 			country: country,
 			elementCountry: elementCountry,
 			period: period);
-	}
-
+	var addressBox = await Hive.openBox<Address>('AddressBox');
+	addressBox.add(newAddress);
+	return newAddress;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

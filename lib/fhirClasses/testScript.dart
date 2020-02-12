@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -65,8 +65,8 @@ class TestScript {
 		TestScript_Setup setup,
 		List<TestScript_Test> test,
 		TestScript_Teardown teardown}) async {
-	 return TestScript(
-			id: await newEntry('TestScript'),
+	TestScript newTestScript = new TestScript(
+			id: await newId('TestScript'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -111,8 +111,10 @@ class TestScript {
 			setup: setup,
 			test: test,
 			teardown: teardown);
-	}
-
+	var testScriptBox = await Hive.openBox<TestScript>('TestScriptBox');
+	testScriptBox.add(newTestScript);
+	return newTestScript;
+}
   @HiveField(0)
   final String resourceType= 'TestScript';
   @HiveField(1)
@@ -268,15 +270,17 @@ class TestScript_Origin {
 		int index,
 		Element elementIndex,
 		Coding profile}) async {
-	 return TestScript_Origin(
-			id: await newEntry('TestScript_Origin'),
+	TestScript_Origin newTestScript_Origin = new TestScript_Origin(
+			id: await newId('TestScript_Origin'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			index: index,
 			elementIndex: elementIndex,
 			profile: profile);
-	}
-
+	var testScript_OriginBox = await Hive.openBox<TestScript_Origin>('TestScript_OriginBox');
+	testScript_OriginBox.add(newTestScript_Origin);
+	return newTestScript_Origin;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -307,15 +311,17 @@ class TestScript_Destination {
 		int index,
 		Element elementIndex,
 		Coding profile}) async {
-	 return TestScript_Destination(
-			id: await newEntry('TestScript_Destination'),
+	TestScript_Destination newTestScript_Destination = new TestScript_Destination(
+			id: await newId('TestScript_Destination'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			index: index,
 			elementIndex: elementIndex,
 			profile: profile);
-	}
-
+	var testScript_DestinationBox = await Hive.openBox<TestScript_Destination>('TestScript_DestinationBox');
+	testScript_DestinationBox.add(newTestScript_Destination);
+	return newTestScript_Destination;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -345,14 +351,16 @@ class TestScript_Metadata {
 		List<Extension> modifierExtension,
 		List<TestScript_Link> link,
 		List<TestScript_Capability> capability}) async {
-	 return TestScript_Metadata(
-			id: await newEntry('TestScript_Metadata'),
+	TestScript_Metadata newTestScript_Metadata = new TestScript_Metadata(
+			id: await newId('TestScript_Metadata'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			link: link,
 			capability: capability);
-	}
-
+	var testScript_MetadataBox = await Hive.openBox<TestScript_Metadata>('TestScript_MetadataBox');
+	testScript_MetadataBox.add(newTestScript_Metadata);
+	return newTestScript_Metadata;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -382,16 +390,18 @@ class TestScript_Link {
 		Element elementUrl,
 		String description,
 		Element elementDescription}) async {
-	 return TestScript_Link(
-			id: await newEntry('TestScript_Link'),
+	TestScript_Link newTestScript_Link = new TestScript_Link(
+			id: await newId('TestScript_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			url: url,
 			elementUrl: elementUrl,
 			description: description,
 			elementDescription: elementDescription);
-	}
-
+	var testScript_LinkBox = await Hive.openBox<TestScript_Link>('TestScript_LinkBox');
+	testScript_LinkBox.add(newTestScript_Link);
+	return newTestScript_Link;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -434,8 +444,8 @@ class TestScript_Capability {
 		List<String> link,
 		List<Element> elementLink,
 		String capabilities}) async {
-	 return TestScript_Capability(
-			id: await newEntry('TestScript_Capability'),
+	TestScript_Capability newTestScript_Capability = new TestScript_Capability(
+			id: await newId('TestScript_Capability'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			require: require,
@@ -451,8 +461,10 @@ class TestScript_Capability {
 			link: link,
 			elementLink: elementLink,
 			capabilities: capabilities);
-	}
-
+	var testScript_CapabilityBox = await Hive.openBox<TestScript_Capability>('TestScript_CapabilityBox');
+	testScript_CapabilityBox.add(newTestScript_Capability);
+	return newTestScript_Capability;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -505,8 +517,8 @@ class TestScript_Fixture {
 		bool autodelete,
 		Element elementAutodelete,
 		Reference resource}) async {
-	 return TestScript_Fixture(
-			id: await newEntry('TestScript_Fixture'),
+	TestScript_Fixture newTestScript_Fixture = new TestScript_Fixture(
+			id: await newId('TestScript_Fixture'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			autocreate: autocreate,
@@ -514,8 +526,10 @@ class TestScript_Fixture {
 			autodelete: autodelete,
 			elementAutodelete: elementAutodelete,
 			resource: resource);
-	}
-
+	var testScript_FixtureBox = await Hive.openBox<TestScript_Fixture>('TestScript_FixtureBox');
+	testScript_FixtureBox.add(newTestScript_Fixture);
+	return newTestScript_Fixture;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -563,8 +577,8 @@ class TestScript_Variable {
 		Element elementPath,
 		String sourceId,
 		Element elementSourceId}) async {
-	 return TestScript_Variable(
-			id: await newEntry('TestScript_Variable'),
+	TestScript_Variable newTestScript_Variable = new TestScript_Variable(
+			id: await newId('TestScript_Variable'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -583,8 +597,10 @@ class TestScript_Variable {
 			elementPath: elementPath,
 			sourceId: sourceId,
 			elementSourceId: elementSourceId);
-	}
-
+	var testScript_VariableBox = await Hive.openBox<TestScript_Variable>('TestScript_VariableBox');
+	testScript_VariableBox.add(newTestScript_Variable);
+	return newTestScript_Variable;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -639,13 +655,15 @@ class TestScript_Setup {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestScript_Action> action}) async {
-	 return TestScript_Setup(
-			id: await newEntry('TestScript_Setup'),
+	TestScript_Setup newTestScript_Setup = new TestScript_Setup(
+			id: await newId('TestScript_Setup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action);
-	}
-
+	var testScript_SetupBox = await Hive.openBox<TestScript_Setup>('TestScript_SetupBox');
+	testScript_SetupBox.add(newTestScript_Setup);
+	return newTestScript_Setup;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -671,14 +689,16 @@ class TestScript_Action {
 		List<Extension> modifierExtension,
 		TestScript_Operation operation,
 		TestScript_Assert asserts}) async {
-	 return TestScript_Action(
-			id: await newEntry('TestScript_Action'),
+	TestScript_Action newTestScript_Action = new TestScript_Action(
+			id: await newId('TestScript_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts);
-	}
-
+	var testScript_ActionBox = await Hive.openBox<TestScript_Action>('TestScript_ActionBox');
+	testScript_ActionBox.add(newTestScript_Action);
+	return newTestScript_Action;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -736,8 +756,8 @@ class TestScript_Operation {
 		Element elementTargetId,
 		String url,
 		Element elementUrl}) async {
-	 return TestScript_Operation(
-			id: await newEntry('TestScript_Operation'),
+	TestScript_Operation newTestScript_Operation = new TestScript_Operation(
+			id: await newId('TestScript_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -772,8 +792,10 @@ class TestScript_Operation {
 			elementTargetId: elementTargetId,
 			url: url,
 			elementUrl: elementUrl);
-	}
-
+	var testScript_OperationBox = await Hive.openBox<TestScript_Operation>('TestScript_OperationBox');
+	testScript_OperationBox.add(newTestScript_Operation);
+	return newTestScript_Operation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -863,16 +885,18 @@ class TestScript_RequestHeader {
 		Element elementField,
 		String value,
 		Element elementValue}) async {
-	 return TestScript_RequestHeader(
-			id: await newEntry('TestScript_RequestHeader'),
+	TestScript_RequestHeader newTestScript_RequestHeader = new TestScript_RequestHeader(
+			id: await newId('TestScript_RequestHeader'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			field: field,
 			elementField: elementField,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var testScript_RequestHeaderBox = await Hive.openBox<TestScript_RequestHeader>('TestScript_RequestHeaderBox');
+	testScript_RequestHeaderBox.add(newTestScript_RequestHeader);
+	return newTestScript_RequestHeader;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -946,8 +970,8 @@ class TestScript_Assert {
 		Element elementValue,
 		bool warningOnly,
 		Element elementWarningOnly}) async {
-	 return TestScript_Assert(
-			id: await newEntry('TestScript_Assert'),
+	TestScript_Assert newTestScript_Assert = new TestScript_Assert(
+			id: await newId('TestScript_Assert'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			label: label,
@@ -994,8 +1018,10 @@ class TestScript_Assert {
 			elementValue: elementValue,
 			warningOnly: warningOnly,
 			elementWarningOnly: elementWarningOnly);
-	}
-
+	var testScript_AssertBox = await Hive.openBox<TestScript_Assert>('TestScript_AssertBox');
+	testScript_AssertBox.add(newTestScript_Assert);
+	return newTestScript_Assert;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1110,8 +1136,8 @@ class TestScript_Test {
 		String description,
 		Element elementDescription,
 		List<TestScript_Action1> action}) async {
-	 return TestScript_Test(
-			id: await newEntry('TestScript_Test'),
+	TestScript_Test newTestScript_Test = new TestScript_Test(
+			id: await newId('TestScript_Test'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -1119,8 +1145,10 @@ class TestScript_Test {
 			description: description,
 			elementDescription: elementDescription,
 			action: action);
-	}
-
+	var testScript_TestBox = await Hive.openBox<TestScript_Test>('TestScript_TestBox');
+	testScript_TestBox.add(newTestScript_Test);
+	return newTestScript_Test;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1154,14 +1182,16 @@ class TestScript_Action1 {
 		List<Extension> modifierExtension,
 		TestScript_Operation operation,
 		TestScript_Assert asserts}) async {
-	 return TestScript_Action1(
-			id: await newEntry('TestScript_Action1'),
+	TestScript_Action1 newTestScript_Action1 = new TestScript_Action1(
+			id: await newId('TestScript_Action1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts);
-	}
-
+	var testScript_Action1Box = await Hive.openBox<TestScript_Action1>('TestScript_Action1Box');
+	testScript_Action1Box.add(newTestScript_Action1);
+	return newTestScript_Action1;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1188,13 +1218,15 @@ class TestScript_Teardown {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestScript_Action2> action}) async {
-	 return TestScript_Teardown(
-			id: await newEntry('TestScript_Teardown'),
+	TestScript_Teardown newTestScript_Teardown = new TestScript_Teardown(
+			id: await newId('TestScript_Teardown'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action);
-	}
-
+	var testScript_TeardownBox = await Hive.openBox<TestScript_Teardown>('TestScript_TeardownBox');
+	testScript_TeardownBox.add(newTestScript_Teardown);
+	return newTestScript_Teardown;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1219,13 +1251,15 @@ class TestScript_Action2 {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		TestScript_Operation operation}) async {
-	 return TestScript_Action2(
-			id: await newEntry('TestScript_Action2'),
+	TestScript_Action2 newTestScript_Action2 = new TestScript_Action2(
+			id: await newId('TestScript_Action2'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation);
-	}
-
+	var testScript_Action2Box = await Hive.openBox<TestScript_Action2>('TestScript_Action2Box');
+	testScript_Action2Box.add(newTestScript_Action2);
+	return newTestScript_Action2;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

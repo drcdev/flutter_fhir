@@ -28,8 +28,8 @@ class Attachment {
 		Element elementTitle,
 		DateTime creation,
 		Element elementCreation}) async {
-	 return Attachment(
-			id: await newEntry('Attachment'),
+	Attachment newAttachment = new Attachment(
+			id: await newId('Attachment'),
 			extension: extension,
 			contentType: contentType,
 			elementContentType: elementContentType,
@@ -47,8 +47,10 @@ class Attachment {
 			elementTitle: elementTitle,
 			creation: creation,
 			elementCreation: elementCreation);
-	}
-
+	var attachmentBox = await Hive.openBox<Attachment>('AttachmentBox');
+	attachmentBox.add(newAttachment);
+	return newAttachment;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

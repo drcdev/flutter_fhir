@@ -50,8 +50,8 @@ class CompartmentDefinition {
 		bool search,
 		Element elementSearch,
 		List<CompartmentDefinition_Resource> resource}) async {
-	 return CompartmentDefinition(
-			id: await newEntry('CompartmentDefinition'),
+	CompartmentDefinition newCompartmentDefinition = new CompartmentDefinition(
+			id: await newId('CompartmentDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,8 +86,10 @@ class CompartmentDefinition {
 			search: search,
 			elementSearch: elementSearch,
 			resource: resource);
-	}
-
+	var compartmentDefinitionBox = await Hive.openBox<CompartmentDefinition>('CompartmentDefinitionBox');
+	compartmentDefinitionBox.add(newCompartmentDefinition);
+	return newCompartmentDefinition;
+}
   @HiveField(0)
   final String resourceType= 'CompartmentDefinition';
   @HiveField(1)
@@ -216,8 +218,8 @@ class CompartmentDefinition_Resource {
 		List<Element> elementParam,
 		String documentation,
 		Element elementDocumentation}) async {
-	 return CompartmentDefinition_Resource(
-			id: await newEntry('CompartmentDefinition_Resource'),
+	CompartmentDefinition_Resource newCompartmentDefinition_Resource = new CompartmentDefinition_Resource(
+			id: await newId('CompartmentDefinition_Resource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -226,8 +228,10 @@ class CompartmentDefinition_Resource {
 			elementParam: elementParam,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
-	}
-
+	var compartmentDefinition_ResourceBox = await Hive.openBox<CompartmentDefinition_Resource>('CompartmentDefinition_ResourceBox');
+	compartmentDefinition_ResourceBox.add(newCompartmentDefinition_Resource);
+	return newCompartmentDefinition_Resource;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

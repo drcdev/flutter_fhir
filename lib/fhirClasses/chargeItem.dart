@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -68,8 +67,8 @@ class ChargeItem {
 		List<Reference> account,
 		List<Annotation> note,
 		List<Reference> supportingInformation}) async {
-	 return ChargeItem(
-			id: await newEntry('ChargeItem'),
+	ChargeItem newChargeItem = new ChargeItem(
+			id: await newId('ChargeItem'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -114,8 +113,10 @@ class ChargeItem {
 			account: account,
 			note: note,
 			supportingInformation: supportingInformation);
-	}
-
+	var chargeItemBox = await Hive.openBox<ChargeItem>('ChargeItemBox');
+	chargeItemBox.add(newChargeItem);
+	return newChargeItem;
+}
   @HiveField(0)
   final String resourceType= 'ChargeItem';
   @HiveField(1)
@@ -270,14 +271,16 @@ class ChargeItem_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
-	 return ChargeItem_Performer(
-			id: await newEntry('ChargeItem_Performer'),
+	ChargeItem_Performer newChargeItem_Performer = new ChargeItem_Performer(
+			id: await newId('ChargeItem_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor);
-	}
-
+	var chargeItem_PerformerBox = await Hive.openBox<ChargeItem_Performer>('ChargeItem_PerformerBox');
+	chargeItem_PerformerBox.add(newChargeItem_Performer);
+	return newChargeItem_Performer;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

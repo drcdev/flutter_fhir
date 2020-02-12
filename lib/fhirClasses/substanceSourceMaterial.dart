@@ -41,8 +41,8 @@ class SubstanceSourceMaterial {
 		List<SubstanceSourceMaterial_FractionDescription> fractionDescription,
 		SubstanceSourceMaterial_Organism organism,
 		List<SubstanceSourceMaterial_PartDescription> partDescription}) async {
-	 return SubstanceSourceMaterial(
-			id: await newEntry('SubstanceSourceMaterial'),
+	SubstanceSourceMaterial newSubstanceSourceMaterial = new SubstanceSourceMaterial(
+			id: await newId('SubstanceSourceMaterial'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -68,8 +68,10 @@ class SubstanceSourceMaterial {
 			fractionDescription: fractionDescription,
 			organism: organism,
 			partDescription: partDescription);
-	}
-
+	var substanceSourceMaterialBox = await Hive.openBox<SubstanceSourceMaterial>('SubstanceSourceMaterialBox');
+	substanceSourceMaterialBox.add(newSubstanceSourceMaterial);
+	return newSubstanceSourceMaterial;
+}
   @HiveField(0)
   final String resourceType= 'SubstanceSourceMaterial';
   @HiveField(1)
@@ -168,15 +170,17 @@ class SubstanceSourceMaterial_FractionDescription {
 		String fraction,
 		Element elementFraction,
 		CodeableConcept materialType}) async {
-	 return SubstanceSourceMaterial_FractionDescription(
-			id: await newEntry('SubstanceSourceMaterial_FractionDescription'),
+	SubstanceSourceMaterial_FractionDescription newSubstanceSourceMaterial_FractionDescription = new SubstanceSourceMaterial_FractionDescription(
+			id: await newId('SubstanceSourceMaterial_FractionDescription'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			fraction: fraction,
 			elementFraction: elementFraction,
 			materialType: materialType);
-	}
-
+	var substanceSourceMaterial_FractionDescriptionBox = await Hive.openBox<SubstanceSourceMaterial_FractionDescription>('SubstanceSourceMaterial_FractionDescriptionBox');
+	substanceSourceMaterial_FractionDescriptionBox.add(newSubstanceSourceMaterial_FractionDescription);
+	return newSubstanceSourceMaterial_FractionDescription;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -213,8 +217,8 @@ class SubstanceSourceMaterial_Organism {
 		List<SubstanceSourceMaterial_Author> author,
 		SubstanceSourceMaterial_Hybrid hybrid,
 		SubstanceSourceMaterial_OrganismGeneral organismGeneral}) async {
-	 return SubstanceSourceMaterial_Organism(
-			id: await newEntry('SubstanceSourceMaterial_Organism'),
+	SubstanceSourceMaterial_Organism newSubstanceSourceMaterial_Organism = new SubstanceSourceMaterial_Organism(
+			id: await newId('SubstanceSourceMaterial_Organism'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			family: family,
@@ -226,8 +230,10 @@ class SubstanceSourceMaterial_Organism {
 			author: author,
 			hybrid: hybrid,
 			organismGeneral: organismGeneral);
-	}
-
+	var substanceSourceMaterial_OrganismBox = await Hive.openBox<SubstanceSourceMaterial_Organism>('SubstanceSourceMaterial_OrganismBox');
+	substanceSourceMaterial_OrganismBox.add(newSubstanceSourceMaterial_Organism);
+	return newSubstanceSourceMaterial_Organism;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -270,15 +276,17 @@ class SubstanceSourceMaterial_Author {
 		CodeableConcept authorType,
 		String authorDescription,
 		Element elementAuthorDescription}) async {
-	 return SubstanceSourceMaterial_Author(
-			id: await newEntry('SubstanceSourceMaterial_Author'),
+	SubstanceSourceMaterial_Author newSubstanceSourceMaterial_Author = new SubstanceSourceMaterial_Author(
+			id: await newId('SubstanceSourceMaterial_Author'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			authorType: authorType,
 			authorDescription: authorDescription,
 			elementAuthorDescription: elementAuthorDescription);
-	}
-
+	var substanceSourceMaterial_AuthorBox = await Hive.openBox<SubstanceSourceMaterial_Author>('SubstanceSourceMaterial_AuthorBox');
+	substanceSourceMaterial_AuthorBox.add(newSubstanceSourceMaterial_Author);
+	return newSubstanceSourceMaterial_Author;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -315,8 +323,8 @@ class SubstanceSourceMaterial_Hybrid {
 		String paternalOrganismName,
 		Element elementPaternalOrganismName,
 		CodeableConcept hybridType}) async {
-	 return SubstanceSourceMaterial_Hybrid(
-			id: await newEntry('SubstanceSourceMaterial_Hybrid'),
+	SubstanceSourceMaterial_Hybrid newSubstanceSourceMaterial_Hybrid = new SubstanceSourceMaterial_Hybrid(
+			id: await newId('SubstanceSourceMaterial_Hybrid'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			maternalOrganismId: maternalOrganismId,
@@ -328,8 +336,10 @@ class SubstanceSourceMaterial_Hybrid {
 			paternalOrganismName: paternalOrganismName,
 			elementPaternalOrganismName: elementPaternalOrganismName,
 			hybridType: hybridType);
-	}
-
+	var substanceSourceMaterial_HybridBox = await Hive.openBox<SubstanceSourceMaterial_Hybrid>('SubstanceSourceMaterial_HybridBox');
+	substanceSourceMaterial_HybridBox.add(newSubstanceSourceMaterial_Hybrid);
+	return newSubstanceSourceMaterial_Hybrid;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -373,16 +383,18 @@ class SubstanceSourceMaterial_OrganismGeneral {
 		CodeableConcept phylum,
 		CodeableConcept classs,
 		CodeableConcept order}) async {
-	 return SubstanceSourceMaterial_OrganismGeneral(
-			id: await newEntry('SubstanceSourceMaterial_OrganismGeneral'),
+	SubstanceSourceMaterial_OrganismGeneral newSubstanceSourceMaterial_OrganismGeneral = new SubstanceSourceMaterial_OrganismGeneral(
+			id: await newId('SubstanceSourceMaterial_OrganismGeneral'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kingdom: kingdom,
 			phylum: phylum,
 			classs: classs,
 			order: order);
-	}
-
+	var substanceSourceMaterial_OrganismGeneralBox = await Hive.openBox<SubstanceSourceMaterial_OrganismGeneral>('SubstanceSourceMaterial_OrganismGeneralBox');
+	substanceSourceMaterial_OrganismGeneralBox.add(newSubstanceSourceMaterial_OrganismGeneral);
+	return newSubstanceSourceMaterial_OrganismGeneral;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -414,14 +426,16 @@ class SubstanceSourceMaterial_PartDescription {
 		List<Extension> modifierExtension,
 		CodeableConcept part,
 		CodeableConcept partLocation}) async {
-	 return SubstanceSourceMaterial_PartDescription(
-			id: await newEntry('SubstanceSourceMaterial_PartDescription'),
+	SubstanceSourceMaterial_PartDescription newSubstanceSourceMaterial_PartDescription = new SubstanceSourceMaterial_PartDescription(
+			id: await newId('SubstanceSourceMaterial_PartDescription'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			part: part,
 			partLocation: partLocation);
-	}
-
+	var substanceSourceMaterial_PartDescriptionBox = await Hive.openBox<SubstanceSourceMaterial_PartDescription>('SubstanceSourceMaterial_PartDescriptionBox');
+	substanceSourceMaterial_PartDescriptionBox.add(newSubstanceSourceMaterial_PartDescription);
+	return newSubstanceSourceMaterial_PartDescription;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -16,15 +16,17 @@ class Period {
 		Element elementStart,
 		DateTime end,
 		Element elementEnd}) async {
-	 return Period(
-			id: await newEntry('Period'),
+	Period newPeriod = new Period(
+			id: await newId('Period'),
 			extension: extension,
 			start: start,
 			elementStart: elementStart,
 			end: end,
 			elementEnd: elementEnd);
-	}
-
+	var periodBox = await Hive.openBox<Period>('PeriodBox');
+	periodBox.add(newPeriod);
+	return newPeriod;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

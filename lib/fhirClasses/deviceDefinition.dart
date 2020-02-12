@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -61,8 +60,8 @@ class DeviceDefinition {
 		Quantity quantity,
 		Reference parentDevice,
 		List<DeviceDefinition_Material> material}) async {
-	 return DeviceDefinition(
-			id: await newEntry('DeviceDefinition'),
+	DeviceDefinition newDeviceDefinition = new DeviceDefinition(
+			id: await newId('DeviceDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -100,8 +99,10 @@ class DeviceDefinition {
 			quantity: quantity,
 			parentDevice: parentDevice,
 			material: material);
-	}
-
+	var deviceDefinitionBox = await Hive.openBox<DeviceDefinition>('DeviceDefinitionBox');
+	deviceDefinitionBox.add(newDeviceDefinition);
+	return newDeviceDefinition;
+}
   @HiveField(0)
   final String resourceType= 'DeviceDefinition';
   @HiveField(1)
@@ -239,8 +240,8 @@ class DeviceDefinition_UdiDeviceIdentifier {
 		Element elementIssuer,
 		String jurisdiction,
 		Element elementJurisdiction}) async {
-	 return DeviceDefinition_UdiDeviceIdentifier(
-			id: await newEntry('DeviceDefinition_UdiDeviceIdentifier'),
+	DeviceDefinition_UdiDeviceIdentifier newDeviceDefinition_UdiDeviceIdentifier = new DeviceDefinition_UdiDeviceIdentifier(
+			id: await newId('DeviceDefinition_UdiDeviceIdentifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			deviceIdentifier: deviceIdentifier,
@@ -249,8 +250,10 @@ class DeviceDefinition_UdiDeviceIdentifier {
 			elementIssuer: elementIssuer,
 			jurisdiction: jurisdiction,
 			elementJurisdiction: elementJurisdiction);
-	}
-
+	var deviceDefinition_UdiDeviceIdentifierBox = await Hive.openBox<DeviceDefinition_UdiDeviceIdentifier>('DeviceDefinition_UdiDeviceIdentifierBox');
+	deviceDefinition_UdiDeviceIdentifierBox.add(newDeviceDefinition_UdiDeviceIdentifier);
+	return newDeviceDefinition_UdiDeviceIdentifier;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -288,16 +291,18 @@ class DeviceDefinition_DeviceName {
 		Element elementName,
 		String type,
 		Element elementType}) async {
-	 return DeviceDefinition_DeviceName(
-			id: await newEntry('DeviceDefinition_DeviceName'),
+	DeviceDefinition_DeviceName newDeviceDefinition_DeviceName = new DeviceDefinition_DeviceName(
+			id: await newId('DeviceDefinition_DeviceName'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			type: type,
 			elementType: elementType);
-	}
-
+	var deviceDefinition_DeviceNameBox = await Hive.openBox<DeviceDefinition_DeviceName>('DeviceDefinition_DeviceNameBox');
+	deviceDefinition_DeviceNameBox.add(newDeviceDefinition_DeviceName);
+	return newDeviceDefinition_DeviceName;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -331,16 +336,18 @@ class DeviceDefinition_Specialization {
 		Element elementSystemType,
 		String version,
 		Element elementVersion}) async {
-	 return DeviceDefinition_Specialization(
-			id: await newEntry('DeviceDefinition_Specialization'),
+	DeviceDefinition_Specialization newDeviceDefinition_Specialization = new DeviceDefinition_Specialization(
+			id: await newId('DeviceDefinition_Specialization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			systemType: systemType,
 			elementSystemType: elementSystemType,
 			version: version,
 			elementVersion: elementVersion);
-	}
-
+	var deviceDefinition_SpecializationBox = await Hive.openBox<DeviceDefinition_Specialization>('DeviceDefinition_SpecializationBox');
+	deviceDefinition_SpecializationBox.add(newDeviceDefinition_Specialization);
+	return newDeviceDefinition_Specialization;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -372,14 +379,16 @@ class DeviceDefinition_Capability {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<CodeableConcept> description}) async {
-	 return DeviceDefinition_Capability(
-			id: await newEntry('DeviceDefinition_Capability'),
+	DeviceDefinition_Capability newDeviceDefinition_Capability = new DeviceDefinition_Capability(
+			id: await newId('DeviceDefinition_Capability'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			description: description);
-	}
-
+	var deviceDefinition_CapabilityBox = await Hive.openBox<DeviceDefinition_Capability>('DeviceDefinition_CapabilityBox');
+	deviceDefinition_CapabilityBox.add(newDeviceDefinition_Capability);
+	return newDeviceDefinition_Capability;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -408,15 +417,17 @@ class DeviceDefinition_Property {
 		CodeableConcept type,
 		List<Quantity> valueQuantity,
 		List<CodeableConcept> valueCode}) async {
-	 return DeviceDefinition_Property(
-			id: await newEntry('DeviceDefinition_Property'),
+	DeviceDefinition_Property newDeviceDefinition_Property = new DeviceDefinition_Property(
+			id: await newId('DeviceDefinition_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			valueQuantity: valueQuantity,
 			valueCode: valueCode);
-	}
-
+	var deviceDefinition_PropertyBox = await Hive.openBox<DeviceDefinition_Property>('DeviceDefinition_PropertyBox');
+	deviceDefinition_PropertyBox.add(newDeviceDefinition_Property);
+	return newDeviceDefinition_Property;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -449,8 +460,8 @@ class DeviceDefinition_Material {
 		Element elementAlternate,
 		bool allergenicIndicator,
 		Element elementAllergenicIndicator}) async {
-	 return DeviceDefinition_Material(
-			id: await newEntry('DeviceDefinition_Material'),
+	DeviceDefinition_Material newDeviceDefinition_Material = new DeviceDefinition_Material(
+			id: await newId('DeviceDefinition_Material'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substance: substance,
@@ -458,8 +469,10 @@ class DeviceDefinition_Material {
 			elementAlternate: elementAlternate,
 			allergenicIndicator: allergenicIndicator,
 			elementAllergenicIndicator: elementAllergenicIndicator);
-	}
-
+	var deviceDefinition_MaterialBox = await Hive.openBox<DeviceDefinition_Material>('DeviceDefinition_MaterialBox');
+	deviceDefinition_MaterialBox.add(newDeviceDefinition_Material);
+	return newDeviceDefinition_Material;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

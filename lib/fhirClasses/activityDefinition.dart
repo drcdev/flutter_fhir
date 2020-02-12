@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/expression.dart';
@@ -112,8 +111,8 @@ class ActivityDefinition {
 		List<Reference> observationResultRequirement,
 		String transform,
 		List<ActivityDefinition_DynamicValue> dynamicValue}) async {
-	 return ActivityDefinition(
-			id: await newEntry('ActivityDefinition'),
+	ActivityDefinition newActivityDefinition = new ActivityDefinition(
+			id: await newId('ActivityDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -196,8 +195,10 @@ class ActivityDefinition {
 			observationResultRequirement: observationResultRequirement,
 			transform: transform,
 			dynamicValue: dynamicValue);
-	}
-
+	var activityDefinitionBox = await Hive.openBox<ActivityDefinition>('ActivityDefinitionBox');
+	activityDefinitionBox.add(newActivityDefinition);
+	return newActivityDefinition;
+}
   @HiveField(0)
   final String resourceType= 'ActivityDefinition';
   @HiveField(1)
@@ -467,15 +468,17 @@ class ActivityDefinition_Participant {
 		String type,
 		Element elementType,
 		CodeableConcept role}) async {
-	 return ActivityDefinition_Participant(
-			id: await newEntry('ActivityDefinition_Participant'),
+	ActivityDefinition_Participant newActivityDefinition_Participant = new ActivityDefinition_Participant(
+			id: await newId('ActivityDefinition_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			role: role);
-	}
-
+	var activityDefinition_ParticipantBox = await Hive.openBox<ActivityDefinition_Participant>('ActivityDefinition_ParticipantBox');
+	activityDefinition_ParticipantBox.add(newActivityDefinition_Participant);
+	return newActivityDefinition_Participant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -506,15 +509,17 @@ class ActivityDefinition_DynamicValue {
 		String path,
 		Element elementPath,
 		Expression expression}) async {
-	 return ActivityDefinition_DynamicValue(
-			id: await newEntry('ActivityDefinition_DynamicValue'),
+	ActivityDefinition_DynamicValue newActivityDefinition_DynamicValue = new ActivityDefinition_DynamicValue(
+			id: await newId('ActivityDefinition_DynamicValue'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
 			elementPath: elementPath,
 			expression: expression);
-	}
-
+	var activityDefinition_DynamicValueBox = await Hive.openBox<ActivityDefinition_DynamicValue>('ActivityDefinition_DynamicValueBox');
+	activityDefinition_DynamicValueBox.add(newActivityDefinition_DynamicValue);
+	return newActivityDefinition_DynamicValue;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

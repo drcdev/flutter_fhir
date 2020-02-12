@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -41,8 +40,8 @@ class VisionPrescription {
 		Element elementDateWritten,
 		Reference prescriber,
 		List<VisionPrescription_LensSpecification> lensSpecification}) async {
-	 return VisionPrescription(
-			id: await newEntry('VisionPrescription'),
+	VisionPrescription newVisionPrescription = new VisionPrescription(
+			id: await newId('VisionPrescription'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -63,8 +62,10 @@ class VisionPrescription {
 			elementDateWritten: elementDateWritten,
 			prescriber: prescriber,
 			lensSpecification: lensSpecification);
-	}
-
+	var visionPrescriptionBox = await Hive.openBox<VisionPrescription>('VisionPrescriptionBox');
+	visionPrescriptionBox.add(newVisionPrescription);
+	return newVisionPrescription;
+}
   @HiveField(0)
   final String resourceType= 'VisionPrescription';
   @HiveField(1)
@@ -169,8 +170,8 @@ class VisionPrescription_LensSpecification {
 		String brand,
 		Element elementBrand,
 		List<Annotation> note}) async {
-	 return VisionPrescription_LensSpecification(
-			id: await newEntry('VisionPrescription_LensSpecification'),
+	VisionPrescription_LensSpecification newVisionPrescription_LensSpecification = new VisionPrescription_LensSpecification(
+			id: await newId('VisionPrescription_LensSpecification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			product: product,
@@ -197,8 +198,10 @@ class VisionPrescription_LensSpecification {
 			brand: brand,
 			elementBrand: elementBrand,
 			note: note);
-	}
-
+	var visionPrescription_LensSpecificationBox = await Hive.openBox<VisionPrescription_LensSpecification>('VisionPrescription_LensSpecificationBox');
+	visionPrescription_LensSpecificationBox.add(newVisionPrescription_LensSpecification);
+	return newVisionPrescription_LensSpecification;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -272,16 +275,18 @@ class VisionPrescription_Prism {
 		Element elementAmount,
 		String base,
 		Element elementBase}) async {
-	 return VisionPrescription_Prism(
-			id: await newEntry('VisionPrescription_Prism'),
+	VisionPrescription_Prism newVisionPrescription_Prism = new VisionPrescription_Prism(
+			id: await newId('VisionPrescription_Prism'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			amount: amount,
 			elementAmount: elementAmount,
 			base: base,
 			elementBase: elementBase);
-	}
-
+	var visionPrescription_PrismBox = await Hive.openBox<VisionPrescription_Prism>('VisionPrescription_PrismBox');
+	visionPrescription_PrismBox.add(newVisionPrescription_Prism);
+	return newVisionPrescription_Prism;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

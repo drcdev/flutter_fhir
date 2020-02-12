@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -75,8 +74,8 @@ class MedicationRequest {
 		Reference priorPrescription,
 		List<Reference> detectedIssue,
 		List<Reference> eventHistory}) async {
-	 return MedicationRequest(
-			id: await newEntry('MedicationRequest'),
+	MedicationRequest newMedicationRequest = new MedicationRequest(
+			id: await newId('MedicationRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -128,8 +127,10 @@ class MedicationRequest {
 			priorPrescription: priorPrescription,
 			detectedIssue: detectedIssue,
 			eventHistory: eventHistory);
-	}
-
+	var medicationRequestBox = await Hive.openBox<MedicationRequest>('MedicationRequestBox');
+	medicationRequestBox.add(newMedicationRequest);
+	return newMedicationRequest;
+}
   @HiveField(0)
   final String resourceType= 'MedicationRequest';
   @HiveField(1)
@@ -311,8 +312,8 @@ class MedicationRequest_DispenseRequest {
 		Quantity quantity,
 		Duration expectedSupplyDuration,
 		Reference performer}) async {
-	 return MedicationRequest_DispenseRequest(
-			id: await newEntry('MedicationRequest_DispenseRequest'),
+	MedicationRequest_DispenseRequest newMedicationRequest_DispenseRequest = new MedicationRequest_DispenseRequest(
+			id: await newId('MedicationRequest_DispenseRequest'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			initialFill: initialFill,
@@ -323,8 +324,10 @@ class MedicationRequest_DispenseRequest {
 			quantity: quantity,
 			expectedSupplyDuration: expectedSupplyDuration,
 			performer: performer);
-	}
-
+	var medicationRequest_DispenseRequestBox = await Hive.openBox<MedicationRequest_DispenseRequest>('MedicationRequest_DispenseRequestBox');
+	medicationRequest_DispenseRequestBox.add(newMedicationRequest_DispenseRequest);
+	return newMedicationRequest_DispenseRequest;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -364,14 +367,16 @@ class MedicationRequest_InitialFill {
 		List<Extension> modifierExtension,
 		Quantity quantity,
 		Duration duration}) async {
-	 return MedicationRequest_InitialFill(
-			id: await newEntry('MedicationRequest_InitialFill'),
+	MedicationRequest_InitialFill newMedicationRequest_InitialFill = new MedicationRequest_InitialFill(
+			id: await newId('MedicationRequest_InitialFill'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			duration: duration);
-	}
-
+	var medicationRequest_InitialFillBox = await Hive.openBox<MedicationRequest_InitialFill>('MedicationRequest_InitialFillBox');
+	medicationRequest_InitialFillBox.add(newMedicationRequest_InitialFill);
+	return newMedicationRequest_InitialFill;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -401,16 +406,18 @@ class MedicationRequest_Substitution {
 		Element elementAllowedBoolean,
 		CodeableConcept allowedCodeableConcept,
 		CodeableConcept reason}) async {
-	 return MedicationRequest_Substitution(
-			id: await newEntry('MedicationRequest_Substitution'),
+	MedicationRequest_Substitution newMedicationRequest_Substitution = new MedicationRequest_Substitution(
+			id: await newId('MedicationRequest_Substitution'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			allowedBoolean: allowedBoolean,
 			elementAllowedBoolean: elementAllowedBoolean,
 			allowedCodeableConcept: allowedCodeableConcept,
 			reason: reason);
-	}
-
+	var medicationRequest_SubstitutionBox = await Hive.openBox<MedicationRequest_Substitution>('MedicationRequest_SubstitutionBox');
+	medicationRequest_SubstitutionBox.add(newMedicationRequest_Substitution);
+	return newMedicationRequest_Substitution;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

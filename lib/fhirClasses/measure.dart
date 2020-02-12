@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/expression.dart';
@@ -97,8 +96,8 @@ class Measure {
 		Element elementGuidance,
 		List<Measure_Group> group,
 		List<Measure_SupplementalData> supplementalData}) async {
-	 return Measure(
-			id: await newEntry('Measure'),
+	Measure newMeasure = new Measure(
+			id: await newId('Measure'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -172,8 +171,10 @@ class Measure {
 			elementGuidance: elementGuidance,
 			group: group,
 			supplementalData: supplementalData);
-	}
-
+	var measureBox = await Hive.openBox<Measure>('MeasureBox');
+	measureBox.add(newMeasure);
+	return newMeasure;
+}
   @HiveField(0)
   final String resourceType= 'Measure';
   @HiveField(1)
@@ -418,8 +419,8 @@ class Measure_Group {
 		Element elementDescription,
 		List<Measure_Population> population,
 		List<Measure_Stratifier> stratifier}) async {
-	 return Measure_Group(
-			id: await newEntry('Measure_Group'),
+	Measure_Group newMeasure_Group = new Measure_Group(
+			id: await newId('Measure_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -427,8 +428,10 @@ class Measure_Group {
 			elementDescription: elementDescription,
 			population: population,
 			stratifier: stratifier);
-	}
-
+	var measure_GroupBox = await Hive.openBox<Measure_Group>('Measure_GroupBox');
+	measure_GroupBox.add(newMeasure_Group);
+	return newMeasure_Group;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -464,16 +467,18 @@ class Measure_Population {
 		String description,
 		Element elementDescription,
 		Expression criteria}) async {
-	 return Measure_Population(
-			id: await newEntry('Measure_Population'),
+	Measure_Population newMeasure_Population = new Measure_Population(
+			id: await newId('Measure_Population'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			description: description,
 			elementDescription: elementDescription,
 			criteria: criteria);
-	}
-
+	var measure_PopulationBox = await Hive.openBox<Measure_Population>('Measure_PopulationBox');
+	measure_PopulationBox.add(newMeasure_Population);
+	return newMeasure_Population;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -508,8 +513,8 @@ class Measure_Stratifier {
 		Element elementDescription,
 		Expression criteria,
 		List<Measure_Component> component}) async {
-	 return Measure_Stratifier(
-			id: await newEntry('Measure_Stratifier'),
+	Measure_Stratifier newMeasure_Stratifier = new Measure_Stratifier(
+			id: await newId('Measure_Stratifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -517,8 +522,10 @@ class Measure_Stratifier {
 			elementDescription: elementDescription,
 			criteria: criteria,
 			component: component);
-	}
-
+	var measure_StratifierBox = await Hive.openBox<Measure_Stratifier>('Measure_StratifierBox');
+	measure_StratifierBox.add(newMeasure_Stratifier);
+	return newMeasure_Stratifier;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -554,16 +561,18 @@ class Measure_Component {
 		String description,
 		Element elementDescription,
 		Expression criteria}) async {
-	 return Measure_Component(
-			id: await newEntry('Measure_Component'),
+	Measure_Component newMeasure_Component = new Measure_Component(
+			id: await newId('Measure_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			description: description,
 			elementDescription: elementDescription,
 			criteria: criteria);
-	}
-
+	var measure_ComponentBox = await Hive.openBox<Measure_Component>('Measure_ComponentBox');
+	measure_ComponentBox.add(newMeasure_Component);
+	return newMeasure_Component;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -598,8 +607,8 @@ class Measure_SupplementalData {
 		String description,
 		Element elementDescription,
 		Expression criteria}) async {
-	 return Measure_SupplementalData(
-			id: await newEntry('Measure_SupplementalData'),
+	Measure_SupplementalData newMeasure_SupplementalData = new Measure_SupplementalData(
+			id: await newId('Measure_SupplementalData'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -607,8 +616,10 @@ class Measure_SupplementalData {
 			description: description,
 			elementDescription: elementDescription,
 			criteria: criteria);
-	}
-
+	var measure_SupplementalDataBox = await Hive.openBox<Measure_SupplementalData>('Measure_SupplementalDataBox');
+	measure_SupplementalDataBox.add(newMeasure_SupplementalData);
+	return newMeasure_SupplementalData;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

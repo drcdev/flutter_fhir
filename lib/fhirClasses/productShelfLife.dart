@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -21,16 +20,18 @@ class ProductShelfLife {
 		CodeableConcept type,
 		Quantity period,
 		List<CodeableConcept> specialPrecautionsForStorage}) async {
-	 return ProductShelfLife(
-			id: await newEntry('ProductShelfLife'),
+	ProductShelfLife newProductShelfLife = new ProductShelfLife(
+			id: await newId('ProductShelfLife'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
 			type: type,
 			period: period,
 			specialPrecautionsForStorage: specialPrecautionsForStorage);
-	}
-
+	var productShelfLifeBox = await Hive.openBox<ProductShelfLife>('ProductShelfLifeBox');
+	productShelfLifeBox.add(newProductShelfLife);
+	return newProductShelfLife;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -54,8 +53,8 @@ class Coverage {
 		bool subrogation,
 		Element elementSubrogation,
 		List<Reference> contract}) async {
-	 return Coverage(
-			id: await newEntry('Coverage'),
+	Coverage newCoverage = new Coverage(
+			id: await newId('Coverage'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -88,8 +87,10 @@ class Coverage {
 			subrogation: subrogation,
 			elementSubrogation: elementSubrogation,
 			contract: contract);
-	}
-
+	var coverageBox = await Hive.openBox<Coverage>('CoverageBox');
+	coverageBox.add(newCoverage);
+	return newCoverage;
+}
   @HiveField(0)
   final String resourceType= 'Coverage';
   @HiveField(1)
@@ -211,8 +212,8 @@ class Coverage_Class {
 		Element elementValue,
 		String name,
 		Element elementName}) async {
-	 return Coverage_Class(
-			id: await newEntry('Coverage_Class'),
+	Coverage_Class newCoverage_Class = new Coverage_Class(
+			id: await newId('Coverage_Class'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -220,8 +221,10 @@ class Coverage_Class {
 			elementValue: elementValue,
 			name: name,
 			elementName: elementName);
-	}
-
+	var coverage_ClassBox = await Hive.openBox<Coverage_Class>('Coverage_ClassBox');
+	coverage_ClassBox.add(newCoverage_Class);
+	return newCoverage_Class;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -257,16 +260,18 @@ class Coverage_CostToBeneficiary {
 		Quantity valueQuantity,
 		Money valueMoney,
 		List<Coverage_Exception> exception}) async {
-	 return Coverage_CostToBeneficiary(
-			id: await newEntry('Coverage_CostToBeneficiary'),
+	Coverage_CostToBeneficiary newCoverage_CostToBeneficiary = new Coverage_CostToBeneficiary(
+			id: await newId('Coverage_CostToBeneficiary'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			valueQuantity: valueQuantity,
 			valueMoney: valueMoney,
 			exception: exception);
-	}
-
+	var coverage_CostToBeneficiaryBox = await Hive.openBox<Coverage_CostToBeneficiary>('Coverage_CostToBeneficiaryBox');
+	coverage_CostToBeneficiaryBox.add(newCoverage_CostToBeneficiary);
+	return newCoverage_CostToBeneficiary;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -298,14 +303,16 @@ class Coverage_Exception {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Period period}) async {
-	 return Coverage_Exception(
-			id: await newEntry('Coverage_Exception'),
+	Coverage_Exception newCoverage_Exception = new Coverage_Exception(
+			id: await newId('Coverage_Exception'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			period: period);
-	}
-
+	var coverage_ExceptionBox = await Hive.openBox<Coverage_Exception>('Coverage_ExceptionBox');
+	coverage_ExceptionBox.add(newCoverage_Exception);
+	return newCoverage_Exception;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

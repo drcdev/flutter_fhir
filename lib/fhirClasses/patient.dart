@@ -1,12 +1,7 @@
-import 'dart:io';
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -62,8 +57,8 @@ class Patient {
 		List<Reference> generalPractitioner,
 		Reference managingOrganization,
 		List<Patient_Link> link}) async {
-	 return Patient(
-			id: await newEntry('Patient'),
+	Patient newPatient = new Patient(
+			id: await newId('Patient'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -98,8 +93,10 @@ class Patient {
 			generalPractitioner: generalPractitioner,
 			managingOrganization: managingOrganization,
 			link: link);
-	}
-
+	var patientBox = await Hive.openBox<Patient>('PatientBox');
+	patientBox.add(newPatient);
+	return newPatient;
+}
   @HiveField(0)
   final String resourceType= 'Patient';
   @HiveField(1)
@@ -210,33 +207,8 @@ Patient(
     this.link
     });
 
-String printName(){
-    return('${(this.name?.first?.family?.toString() ?? '')}'
-        ', '
-        '${(this.name?.first?.given?.first?.toString() ?? '')}'
-    );
-  }
-  
   factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
   Map<String, dynamic> toJson() => _$PatientToJson(this);
-}
-
-Future<Patient> readPatient(String id) async {
-  final directory = await getApplicationDocumentsDirectory(); //get current directory
-  Patient pt = Patient.fromJson(jsonDecode(await File('${directory.path}/' + id + '.txt').readAsString())); //read patient from file
-  return(pt);
-}
-
-Future<List<Patient>> readPtList() async {
-  final directory = await getApplicationDocumentsDirectory(); //get current directory
-  List<String> ptNumbers = (await File('${directory.path}/fhir/patient.txt').readAsString()).split('\n');
-  var ptList = new List<Patient>();
-  for(var i = 0; i < ptNumbers.length; i++){
-    final pt = File('${directory.path}/fhir/patient/' + ptNumbers[i] + '.txt');
-    var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
-    ptList.add(newpt);
-  }
-  return ptList;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -254,8 +226,8 @@ class Patient_Contact {
 		Element elementGender,
 		Reference organization,
 		Period period}) async {
-	 return Patient_Contact(
-			id: await newEntry('Patient_Contact'),
+	Patient_Contact newPatient_Contact = new Patient_Contact(
+			id: await newId('Patient_Contact'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			relationship: relationship,
@@ -266,8 +238,10 @@ class Patient_Contact {
 			elementGender: elementGender,
 			organization: organization,
 			period: period);
-	}
-
+	var patient_ContactBox = await Hive.openBox<Patient_Contact>('Patient_ContactBox');
+	patient_ContactBox.add(newPatient_Contact);
+	return newPatient_Contact;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -308,15 +282,17 @@ class Patient_Communication {
 		CodeableConcept language,
 		bool preferred,
 		Element elementPreferred}) async {
-	 return Patient_Communication(
-			id: await newEntry('Patient_Communication'),
+	Patient_Communication newPatient_Communication = new Patient_Communication(
+			id: await newId('Patient_Communication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
 			preferred: preferred,
 			elementPreferred: elementPreferred);
-	}
-
+	var patient_CommunicationBox = await Hive.openBox<Patient_Communication>('Patient_CommunicationBox');
+	patient_CommunicationBox.add(newPatient_Communication);
+	return newPatient_Communication;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -347,15 +323,17 @@ class Patient_Link {
 		Reference other,
 		String type,
 		Element elementType}) async {
-	 return Patient_Link(
-			id: await newEntry('Patient_Link'),
+	Patient_Link newPatient_Link = new Patient_Link(
+			id: await newId('Patient_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			other: other,
 			type: type,
 			elementType: elementType);
-	}
-
+	var patient_LinkBox = await Hive.openBox<Patient_Link>('Patient_LinkBox');
+	patient_LinkBox.add(newPatient_Link);
+	return newPatient_Link;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

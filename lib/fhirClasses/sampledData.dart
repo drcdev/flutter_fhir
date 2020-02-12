@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -28,8 +27,8 @@ class SampledData {
 		Element elementDimensions,
 		String data,
 		Element elementData}) async {
-	 return SampledData(
-			id: await newEntry('SampledData'),
+	SampledData newSampledData = new SampledData(
+			id: await newId('SampledData'),
 			extension: extension,
 			origin: origin,
 			period: period,
@@ -44,8 +43,10 @@ class SampledData {
 			elementDimensions: elementDimensions,
 			data: data,
 			elementData: elementData);
-	}
-
+	var sampledDataBox = await Hive.openBox<SampledData>('SampledDataBox');
+	sampledDataBox.add(newSampledData);
+	return newSampledData;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

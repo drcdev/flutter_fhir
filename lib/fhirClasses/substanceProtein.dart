@@ -32,8 +32,8 @@ class SubstanceProtein {
 		List<String> disulfideLinkage,
 		List<Element> elementDisulfideLinkage,
 		List<SubstanceProtein_Subunit> subunit}) async {
-	 return SubstanceProtein(
-			id: await newEntry('SubstanceProtein'),
+	SubstanceProtein newSubstanceProtein = new SubstanceProtein(
+			id: await newId('SubstanceProtein'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -49,8 +49,10 @@ class SubstanceProtein {
 			disulfideLinkage: disulfideLinkage,
 			elementDisulfideLinkage: elementDisulfideLinkage,
 			subunit: subunit);
-	}
-
+	var substanceProteinBox = await Hive.openBox<SubstanceProtein>('SubstanceProteinBox');
+	substanceProteinBox.add(newSubstanceProtein);
+	return newSubstanceProtein;
+}
   @HiveField(0)
   final String resourceType= 'SubstanceProtein';
   @HiveField(1)
@@ -129,8 +131,8 @@ class SubstanceProtein_Subunit {
 		Identifier cTerminalModificationId,
 		String cTerminalModification,
 		Element elementCTerminalModification}) async {
-	 return SubstanceProtein_Subunit(
-			id: await newEntry('SubstanceProtein_Subunit'),
+	SubstanceProtein_Subunit newSubstanceProtein_Subunit = new SubstanceProtein_Subunit(
+			id: await newId('SubstanceProtein_Subunit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			subunit: subunit,
@@ -146,8 +148,10 @@ class SubstanceProtein_Subunit {
 			cTerminalModificationId: cTerminalModificationId,
 			cTerminalModification: cTerminalModification,
 			elementCTerminalModification: elementCTerminalModification);
-	}
-
+	var substanceProtein_SubunitBox = await Hive.openBox<SubstanceProtein_Subunit>('SubstanceProtein_SubunitBox');
+	substanceProtein_SubunitBox.add(newSubstanceProtein_Subunit);
+	return newSubstanceProtein_Subunit;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

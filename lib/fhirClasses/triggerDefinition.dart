@@ -28,8 +28,8 @@ class TriggerDefinition {
 		Element elementTimingDateTime,
 		List<DataRequirement> data,
 		Expression condition}) async {
-	 return TriggerDefinition(
-			id: await newEntry('TriggerDefinition'),
+	TriggerDefinition newTriggerDefinition = new TriggerDefinition(
+			id: await newId('TriggerDefinition'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
@@ -43,8 +43,10 @@ class TriggerDefinition {
 			elementTimingDateTime: elementTimingDateTime,
 			data: data,
 			condition: condition);
-	}
-
+	var triggerDefinitionBox = await Hive.openBox<TriggerDefinition>('TriggerDefinitionBox');
+	triggerDefinitionBox.add(newTriggerDefinition);
+	return newTriggerDefinition;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

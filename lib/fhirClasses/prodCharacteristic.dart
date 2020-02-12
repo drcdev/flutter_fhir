@@ -30,8 +30,8 @@ class ProdCharacteristic {
 		List<Element> elementImprint,
 		List<Attachment> image,
 		CodeableConcept scoring}) async {
-	 return ProdCharacteristic(
-			id: await newEntry('ProdCharacteristic'),
+	ProdCharacteristic newProdCharacteristic = new ProdCharacteristic(
+			id: await newId('ProdCharacteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			height: height,
@@ -48,8 +48,10 @@ class ProdCharacteristic {
 			elementImprint: elementImprint,
 			image: image,
 			scoring: scoring);
-	}
-
+	var prodCharacteristicBox = await Hive.openBox<ProdCharacteristic>('ProdCharacteristicBox');
+	prodCharacteristicBox.add(newProdCharacteristic);
+	return newProdCharacteristic;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

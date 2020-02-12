@@ -20,8 +20,8 @@ class Reference {
 		Identifier identifier,
 		String display,
 		Element elementDisplay}) async {
-	 return Reference(
-			id: await newEntry('Reference'),
+	Reference newReference = new Reference(
+			id: await newId('Reference'),
 			extension: extension,
 			reference: reference,
 			elementReference: elementReference,
@@ -30,8 +30,10 @@ class Reference {
 			identifier: identifier,
 			display: display,
 			elementDisplay: elementDisplay);
-	}
-
+	var referenceBox = await Hive.openBox<Reference>('ReferenceBox');
+	referenceBox.add(newReference);
+	return newReference;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

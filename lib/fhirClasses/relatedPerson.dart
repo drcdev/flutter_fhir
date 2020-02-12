@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -48,8 +47,8 @@ class RelatedPerson {
 		List<Attachment> photo,
 		Period period,
 		List<RelatedPerson_Communication> communication}) async {
-	 return RelatedPerson(
-			id: await newEntry('RelatedPerson'),
+	RelatedPerson newRelatedPerson = new RelatedPerson(
+			id: await newId('RelatedPerson'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -74,8 +73,10 @@ class RelatedPerson {
 			photo: photo,
 			period: period,
 			communication: communication);
-	}
-
+	var relatedPersonBox = await Hive.openBox<RelatedPerson>('RelatedPersonBox');
+	relatedPersonBox.add(newRelatedPerson);
+	return newRelatedPerson;
+}
   @HiveField(0)
   final String resourceType= 'RelatedPerson';
   @HiveField(1)
@@ -171,15 +172,17 @@ class RelatedPerson_Communication {
 		CodeableConcept language,
 		bool preferred,
 		Element elementPreferred}) async {
-	 return RelatedPerson_Communication(
-			id: await newEntry('RelatedPerson_Communication'),
+	RelatedPerson_Communication newRelatedPerson_Communication = new RelatedPerson_Communication(
+			id: await newId('RelatedPerson_Communication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
 			preferred: preferred,
 			elementPreferred: elementPreferred);
-	}
-
+	var relatedPerson_CommunicationBox = await Hive.openBox<RelatedPerson_Communication>('RelatedPerson_CommunicationBox');
+	relatedPerson_CommunicationBox.add(newRelatedPerson_Communication);
+	return newRelatedPerson_Communication;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

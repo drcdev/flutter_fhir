@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -46,8 +45,8 @@ class Group {
 		Reference managingEntity,
 		List<Group_Characteristic> characteristic,
 		List<Group_Member> member}) async {
-	 return Group(
-			id: await newEntry('Group'),
+	Group newGroup = new Group(
+			id: await newId('Group'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -72,8 +71,10 @@ class Group {
 			managingEntity: managingEntity,
 			characteristic: characteristic,
 			member: member);
-	}
-
+	var groupBox = await Hive.openBox<Group>('GroupBox');
+	groupBox.add(newGroup);
+	return newGroup;
+}
   @HiveField(0)
   final String resourceType= 'Group';
   @HiveField(1)
@@ -176,8 +177,8 @@ class Group_Characteristic {
 		bool exclude,
 		Element elementExclude,
 		Period period}) async {
-	 return Group_Characteristic(
-			id: await newEntry('Group_Characteristic'),
+	Group_Characteristic newGroup_Characteristic = new Group_Characteristic(
+			id: await newId('Group_Characteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -190,8 +191,10 @@ class Group_Characteristic {
 			exclude: exclude,
 			elementExclude: elementExclude,
 			period: period);
-	}
-
+	var group_CharacteristicBox = await Hive.openBox<Group_Characteristic>('Group_CharacteristicBox');
+	group_CharacteristicBox.add(newGroup_Characteristic);
+	return newGroup_Characteristic;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -237,16 +240,18 @@ class Group_Member {
 		Period period,
 		bool inactive,
 		Element elementInactive}) async {
-	 return Group_Member(
-			id: await newEntry('Group_Member'),
+	Group_Member newGroup_Member = new Group_Member(
+			id: await newId('Group_Member'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			entity: entity,
 			period: period,
 			inactive: inactive,
 			elementInactive: elementInactive);
-	}
-
+	var group_MemberBox = await Hive.openBox<Group_Member>('Group_MemberBox');
+	group_MemberBox.add(newGroup_Member);
+	return newGroup_Member;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

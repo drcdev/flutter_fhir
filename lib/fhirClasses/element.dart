@@ -11,11 +11,13 @@ class Element {
 	static Future<Element> newInstance({
 		String id,
 		List<Extension> extension}) async {
-	 return Element(
-			id: await newEntry('Element'),
+	Element newElement = new Element(
+			id: await newId('Element'),
 			extension: extension);
-	}
-
+	var elementBox = await Hive.openBox<Element>('ElementBox');
+	elementBox.add(newElement);
+	return newElement;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -38,8 +37,8 @@ class Flag {
 		Period period,
 		Reference encounter,
 		Reference author}) async {
-	 return Flag(
-			id: await newEntry('Flag'),
+	Flag newFlag = new Flag(
+			id: await newId('Flag'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -58,8 +57,10 @@ class Flag {
 			period: period,
 			encounter: encounter,
 			author: author);
-	}
-
+	var flagBox = await Hive.openBox<Flag>('FlagBox');
+	flagBox.add(newFlag);
+	return newFlag;
+}
   @HiveField(0)
   final String resourceType= 'Flag';
   @HiveField(1)

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
@@ -36,8 +35,8 @@ class MedicinalProductIngredient {
 		List<Reference> manufacturer,
 		List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance,
 		MedicinalProductIngredient_Substance substance}) async {
-	 return MedicinalProductIngredient(
-			id: await newEntry('MedicinalProductIngredient'),
+	MedicinalProductIngredient newMedicinalProductIngredient = new MedicinalProductIngredient(
+			id: await newId('MedicinalProductIngredient'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -54,8 +53,10 @@ class MedicinalProductIngredient {
 			manufacturer: manufacturer,
 			specifiedSubstance: specifiedSubstance,
 			substance: substance);
-	}
-
+	var medicinalProductIngredientBox = await Hive.openBox<MedicinalProductIngredient>('MedicinalProductIngredientBox');
+	medicinalProductIngredientBox.add(newMedicinalProductIngredient);
+	return newMedicinalProductIngredient;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductIngredient';
   @HiveField(1)
@@ -128,16 +129,18 @@ class MedicinalProductIngredient_SpecifiedSubstance {
 		CodeableConcept group,
 		CodeableConcept confidentiality,
 		List<MedicinalProductIngredient_Strength> strength}) async {
-	 return MedicinalProductIngredient_SpecifiedSubstance(
-			id: await newEntry('MedicinalProductIngredient_SpecifiedSubstance'),
+	MedicinalProductIngredient_SpecifiedSubstance newMedicinalProductIngredient_SpecifiedSubstance = new MedicinalProductIngredient_SpecifiedSubstance(
+			id: await newId('MedicinalProductIngredient_SpecifiedSubstance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			group: group,
 			confidentiality: confidentiality,
 			strength: strength);
-	}
-
+	var medicinalProductIngredient_SpecifiedSubstanceBox = await Hive.openBox<MedicinalProductIngredient_SpecifiedSubstance>('MedicinalProductIngredient_SpecifiedSubstanceBox');
+	medicinalProductIngredient_SpecifiedSubstanceBox.add(newMedicinalProductIngredient_SpecifiedSubstance);
+	return newMedicinalProductIngredient_SpecifiedSubstance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -175,8 +178,8 @@ class MedicinalProductIngredient_Strength {
 		Element elementMeasurementPoint,
 		List<CodeableConcept> country,
 		List<MedicinalProductIngredient_ReferenceStrength> referenceStrength}) async {
-	 return MedicinalProductIngredient_Strength(
-			id: await newEntry('MedicinalProductIngredient_Strength'),
+	MedicinalProductIngredient_Strength newMedicinalProductIngredient_Strength = new MedicinalProductIngredient_Strength(
+			id: await newId('MedicinalProductIngredient_Strength'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			presentation: presentation,
@@ -187,8 +190,10 @@ class MedicinalProductIngredient_Strength {
 			elementMeasurementPoint: elementMeasurementPoint,
 			country: country,
 			referenceStrength: referenceStrength);
-	}
-
+	var medicinalProductIngredient_StrengthBox = await Hive.openBox<MedicinalProductIngredient_Strength>('MedicinalProductIngredient_StrengthBox');
+	medicinalProductIngredient_StrengthBox.add(newMedicinalProductIngredient_Strength);
+	return newMedicinalProductIngredient_Strength;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -232,8 +237,8 @@ class MedicinalProductIngredient_ReferenceStrength {
 		String measurementPoint,
 		Element elementMeasurementPoint,
 		List<CodeableConcept> country}) async {
-	 return MedicinalProductIngredient_ReferenceStrength(
-			id: await newEntry('MedicinalProductIngredient_ReferenceStrength'),
+	MedicinalProductIngredient_ReferenceStrength newMedicinalProductIngredient_ReferenceStrength = new MedicinalProductIngredient_ReferenceStrength(
+			id: await newId('MedicinalProductIngredient_ReferenceStrength'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substance: substance,
@@ -242,8 +247,10 @@ class MedicinalProductIngredient_ReferenceStrength {
 			measurementPoint: measurementPoint,
 			elementMeasurementPoint: elementMeasurementPoint,
 			country: country);
-	}
-
+	var medicinalProductIngredient_ReferenceStrengthBox = await Hive.openBox<MedicinalProductIngredient_ReferenceStrength>('MedicinalProductIngredient_ReferenceStrengthBox');
+	medicinalProductIngredient_ReferenceStrengthBox.add(newMedicinalProductIngredient_ReferenceStrength);
+	return newMedicinalProductIngredient_ReferenceStrength;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -279,14 +286,16 @@ class MedicinalProductIngredient_Substance {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		List<MedicinalProductIngredient_Strength> strength}) async {
-	 return MedicinalProductIngredient_Substance(
-			id: await newEntry('MedicinalProductIngredient_Substance'),
+	MedicinalProductIngredient_Substance newMedicinalProductIngredient_Substance = new MedicinalProductIngredient_Substance(
+			id: await newId('MedicinalProductIngredient_Substance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			strength: strength);
-	}
-
+	var medicinalProductIngredient_SubstanceBox = await Hive.openBox<MedicinalProductIngredient_Substance>('MedicinalProductIngredient_SubstanceBox');
+	medicinalProductIngredient_SubstanceBox.add(newMedicinalProductIngredient_Substance);
+	return newMedicinalProductIngredient_Substance;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

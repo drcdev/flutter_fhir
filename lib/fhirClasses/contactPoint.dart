@@ -22,8 +22,8 @@ class ContactPoint {
 		int rank,
 		Element elementRank,
 		Period period}) async {
-	 return ContactPoint(
-			id: await newEntry('ContactPoint'),
+	ContactPoint newContactPoint = new ContactPoint(
+			id: await newId('ContactPoint'),
 			extension: extension,
 			system: system,
 			elementSystem: elementSystem,
@@ -34,8 +34,10 @@ class ContactPoint {
 			rank: rank,
 			elementRank: elementRank,
 			period: period);
-	}
-
+	var contactPointBox = await Hive.openBox<ContactPoint>('ContactPointBox');
+	contactPointBox.add(newContactPoint);
+	return newContactPoint;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

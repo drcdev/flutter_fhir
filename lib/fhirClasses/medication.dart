@@ -36,8 +36,8 @@ class Medication {
 		Ratio amount,
 		List<Medication_Ingredient> ingredient,
 		Medication_Batch batch}) async {
-	 return Medication(
-			id: await newEntry('Medication'),
+	Medication newMedication = new Medication(
+			id: await newId('Medication'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -56,8 +56,10 @@ class Medication {
 			amount: amount,
 			ingredient: ingredient,
 			batch: batch);
-	}
-
+	var medicationBox = await Hive.openBox<Medication>('MedicationBox');
+	medicationBox.add(newMedication);
+	return newMedication;
+}
   @HiveField(0)
   final String resourceType= 'Medication';
   @HiveField(1)
@@ -137,8 +139,8 @@ class Medication_Ingredient {
 		bool isActive,
 		Element elementIsActive,
 		Ratio strength}) async {
-	 return Medication_Ingredient(
-			id: await newEntry('Medication_Ingredient'),
+	Medication_Ingredient newMedication_Ingredient = new Medication_Ingredient(
+			id: await newId('Medication_Ingredient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemCodeableConcept: itemCodeableConcept,
@@ -146,8 +148,10 @@ class Medication_Ingredient {
 			isActive: isActive,
 			elementIsActive: elementIsActive,
 			strength: strength);
-	}
-
+	var medication_IngredientBox = await Hive.openBox<Medication_Ingredient>('Medication_IngredientBox');
+	medication_IngredientBox.add(newMedication_Ingredient);
+	return newMedication_Ingredient;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -183,16 +187,18 @@ class Medication_Batch {
 		Element elementLotNumber,
 		DateTime expirationDate,
 		Element elementExpirationDate}) async {
-	 return Medication_Batch(
-			id: await newEntry('Medication_Batch'),
+	Medication_Batch newMedication_Batch = new Medication_Batch(
+			id: await newId('Medication_Batch'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			lotNumber: lotNumber,
 			elementLotNumber: elementLotNumber,
 			expirationDate: expirationDate,
 			elementExpirationDate: elementExpirationDate);
-	}
-
+	var medication_BatchBox = await Hive.openBox<Medication_Batch>('Medication_BatchBox');
+	medication_BatchBox.add(newMedication_Batch);
+	return newMedication_Batch;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

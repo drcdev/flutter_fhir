@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -82,8 +81,8 @@ class Library {
 		List<ParameterDefinition> parameter,
 		List<DataRequirement> dataRequirement,
 		List<Attachment> content}) async {
-	 return Library(
-			id: await newEntry('Library'),
+	Library newLibrary = new Library(
+			id: await newId('Library'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -140,8 +139,10 @@ class Library {
 			parameter: parameter,
 			dataRequirement: dataRequirement,
 			content: content);
-	}
-
+	var libraryBox = await Hive.openBox<Library>('LibraryBox');
+	libraryBox.add(newLibrary);
+	return newLibrary;
+}
   @HiveField(0)
   final String resourceType= 'Library';
   @HiveField(1)

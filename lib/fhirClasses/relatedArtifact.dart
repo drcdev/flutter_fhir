@@ -25,8 +25,8 @@ class RelatedArtifact {
 		Element elementUrl,
 		Attachment document,
 		String resource}) async {
-	 return RelatedArtifact(
-			id: await newEntry('RelatedArtifact'),
+	RelatedArtifact newRelatedArtifact = new RelatedArtifact(
+			id: await newId('RelatedArtifact'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
@@ -40,8 +40,10 @@ class RelatedArtifact {
 			elementUrl: elementUrl,
 			document: document,
 			resource: resource);
-	}
-
+	var relatedArtifactBox = await Hive.openBox<RelatedArtifact>('RelatedArtifactBox');
+	relatedArtifactBox.add(newRelatedArtifact);
+	return newRelatedArtifact;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

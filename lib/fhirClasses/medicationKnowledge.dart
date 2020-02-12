@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -57,8 +56,8 @@ class MedicationKnowledge {
 		List<Reference> contraindication,
 		List<MedicationKnowledge_Regulatory> regulatory,
 		List<MedicationKnowledge_Kinetics> kinetics}) async {
-	 return MedicationKnowledge(
-			id: await newEntry('MedicationKnowledge'),
+	MedicationKnowledge newMedicationKnowledge = new MedicationKnowledge(
+			id: await newId('MedicationKnowledge'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -93,8 +92,10 @@ class MedicationKnowledge {
 			contraindication: contraindication,
 			regulatory: regulatory,
 			kinetics: kinetics);
-	}
-
+	var medicationKnowledgeBox = await Hive.openBox<MedicationKnowledge>('MedicationKnowledgeBox');
+	medicationKnowledgeBox.add(newMedicationKnowledge);
+	return newMedicationKnowledge;
+}
   @HiveField(0)
   final String resourceType= 'MedicationKnowledge';
   @HiveField(1)
@@ -219,14 +220,16 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<Reference> reference}) async {
-	 return MedicationKnowledge_RelatedMedicationKnowledge(
-			id: await newEntry('MedicationKnowledge_RelatedMedicationKnowledge'),
+	MedicationKnowledge_RelatedMedicationKnowledge newMedicationKnowledge_RelatedMedicationKnowledge = new MedicationKnowledge_RelatedMedicationKnowledge(
+			id: await newId('MedicationKnowledge_RelatedMedicationKnowledge'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			reference: reference);
-	}
-
+	var medicationKnowledge_RelatedMedicationKnowledgeBox = await Hive.openBox<MedicationKnowledge_RelatedMedicationKnowledge>('MedicationKnowledge_RelatedMedicationKnowledgeBox');
+	medicationKnowledge_RelatedMedicationKnowledgeBox.add(newMedicationKnowledge_RelatedMedicationKnowledge);
+	return newMedicationKnowledge_RelatedMedicationKnowledge;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -254,14 +257,16 @@ class MedicationKnowledge_Monograph {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Reference source}) async {
-	 return MedicationKnowledge_Monograph(
-			id: await newEntry('MedicationKnowledge_Monograph'),
+	MedicationKnowledge_Monograph newMedicationKnowledge_Monograph = new MedicationKnowledge_Monograph(
+			id: await newId('MedicationKnowledge_Monograph'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			source: source);
-	}
-
+	var medicationKnowledge_MonographBox = await Hive.openBox<MedicationKnowledge_Monograph>('MedicationKnowledge_MonographBox');
+	medicationKnowledge_MonographBox.add(newMedicationKnowledge_Monograph);
+	return newMedicationKnowledge_Monograph;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -292,8 +297,8 @@ class MedicationKnowledge_Ingredient {
 		bool isActive,
 		Element elementIsActive,
 		Ratio strength}) async {
-	 return MedicationKnowledge_Ingredient(
-			id: await newEntry('MedicationKnowledge_Ingredient'),
+	MedicationKnowledge_Ingredient newMedicationKnowledge_Ingredient = new MedicationKnowledge_Ingredient(
+			id: await newId('MedicationKnowledge_Ingredient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemCodeableConcept: itemCodeableConcept,
@@ -301,8 +306,10 @@ class MedicationKnowledge_Ingredient {
 			isActive: isActive,
 			elementIsActive: elementIsActive,
 			strength: strength);
-	}
-
+	var medicationKnowledge_IngredientBox = await Hive.openBox<MedicationKnowledge_Ingredient>('MedicationKnowledge_IngredientBox');
+	medicationKnowledge_IngredientBox.add(newMedicationKnowledge_Ingredient);
+	return newMedicationKnowledge_Ingredient;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -338,16 +345,18 @@ class MedicationKnowledge_Cost {
 		String source,
 		Element elementSource,
 		Money cost}) async {
-	 return MedicationKnowledge_Cost(
-			id: await newEntry('MedicationKnowledge_Cost'),
+	MedicationKnowledge_Cost newMedicationKnowledge_Cost = new MedicationKnowledge_Cost(
+			id: await newId('MedicationKnowledge_Cost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			source: source,
 			elementSource: elementSource,
 			cost: cost);
-	}
-
+	var medicationKnowledge_CostBox = await Hive.openBox<MedicationKnowledge_Cost>('MedicationKnowledge_CostBox');
+	medicationKnowledge_CostBox.add(newMedicationKnowledge_Cost);
+	return newMedicationKnowledge_Cost;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -380,15 +389,17 @@ class MedicationKnowledge_MonitoringProgram {
 		CodeableConcept type,
 		String name,
 		Element elementName}) async {
-	 return MedicationKnowledge_MonitoringProgram(
-			id: await newEntry('MedicationKnowledge_MonitoringProgram'),
+	MedicationKnowledge_MonitoringProgram newMedicationKnowledge_MonitoringProgram = new MedicationKnowledge_MonitoringProgram(
+			id: await newId('MedicationKnowledge_MonitoringProgram'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			name: name,
 			elementName: elementName);
-	}
-
+	var medicationKnowledge_MonitoringProgramBox = await Hive.openBox<MedicationKnowledge_MonitoringProgram>('MedicationKnowledge_MonitoringProgramBox');
+	medicationKnowledge_MonitoringProgramBox.add(newMedicationKnowledge_MonitoringProgram);
+	return newMedicationKnowledge_MonitoringProgram;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -420,16 +431,18 @@ class MedicationKnowledge_AdministrationGuidelines {
 		CodeableConcept indicationCodeableConcept,
 		Reference indicationReference,
 		List<MedicationKnowledge_PatientCharacteristics> patientCharacteristics}) async {
-	 return MedicationKnowledge_AdministrationGuidelines(
-			id: await newEntry('MedicationKnowledge_AdministrationGuidelines'),
+	MedicationKnowledge_AdministrationGuidelines newMedicationKnowledge_AdministrationGuidelines = new MedicationKnowledge_AdministrationGuidelines(
+			id: await newId('MedicationKnowledge_AdministrationGuidelines'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			dosage: dosage,
 			indicationCodeableConcept: indicationCodeableConcept,
 			indicationReference: indicationReference,
 			patientCharacteristics: patientCharacteristics);
-	}
-
+	var medicationKnowledge_AdministrationGuidelinesBox = await Hive.openBox<MedicationKnowledge_AdministrationGuidelines>('MedicationKnowledge_AdministrationGuidelinesBox');
+	medicationKnowledge_AdministrationGuidelinesBox.add(newMedicationKnowledge_AdministrationGuidelines);
+	return newMedicationKnowledge_AdministrationGuidelines;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -461,14 +474,16 @@ class MedicationKnowledge_Dosage {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<Dosage> dosage}) async {
-	 return MedicationKnowledge_Dosage(
-			id: await newEntry('MedicationKnowledge_Dosage'),
+	MedicationKnowledge_Dosage newMedicationKnowledge_Dosage = new MedicationKnowledge_Dosage(
+			id: await newId('MedicationKnowledge_Dosage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			dosage: dosage);
-	}
-
+	var medicationKnowledge_DosageBox = await Hive.openBox<MedicationKnowledge_Dosage>('MedicationKnowledge_DosageBox');
+	medicationKnowledge_DosageBox.add(newMedicationKnowledge_Dosage);
+	return newMedicationKnowledge_Dosage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -498,16 +513,18 @@ class MedicationKnowledge_PatientCharacteristics {
 		Quantity characteristicQuantity,
 		List<String> value,
 		List<Element> elementValue}) async {
-	 return MedicationKnowledge_PatientCharacteristics(
-			id: await newEntry('MedicationKnowledge_PatientCharacteristics'),
+	MedicationKnowledge_PatientCharacteristics newMedicationKnowledge_PatientCharacteristics = new MedicationKnowledge_PatientCharacteristics(
+			id: await newId('MedicationKnowledge_PatientCharacteristics'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			characteristicCodeableConcept: characteristicCodeableConcept,
 			characteristicQuantity: characteristicQuantity,
 			value: value,
 			elementValue: elementValue);
-	}
-
+	var medicationKnowledge_PatientCharacteristicsBox = await Hive.openBox<MedicationKnowledge_PatientCharacteristics>('MedicationKnowledge_PatientCharacteristicsBox');
+	medicationKnowledge_PatientCharacteristicsBox.add(newMedicationKnowledge_PatientCharacteristics);
+	return newMedicationKnowledge_PatientCharacteristics;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -539,14 +556,16 @@ class MedicationKnowledge_MedicineClassification {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<CodeableConcept> classification}) async {
-	 return MedicationKnowledge_MedicineClassification(
-			id: await newEntry('MedicationKnowledge_MedicineClassification'),
+	MedicationKnowledge_MedicineClassification newMedicationKnowledge_MedicineClassification = new MedicationKnowledge_MedicineClassification(
+			id: await newId('MedicationKnowledge_MedicineClassification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			classification: classification);
-	}
-
+	var medicationKnowledge_MedicineClassificationBox = await Hive.openBox<MedicationKnowledge_MedicineClassification>('MedicationKnowledge_MedicineClassificationBox');
+	medicationKnowledge_MedicineClassificationBox.add(newMedicationKnowledge_MedicineClassification);
+	return newMedicationKnowledge_MedicineClassification;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -574,14 +593,16 @@ class MedicationKnowledge_Packaging {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Quantity quantity}) async {
-	 return MedicationKnowledge_Packaging(
-			id: await newEntry('MedicationKnowledge_Packaging'),
+	MedicationKnowledge_Packaging newMedicationKnowledge_Packaging = new MedicationKnowledge_Packaging(
+			id: await newId('MedicationKnowledge_Packaging'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			quantity: quantity);
-	}
-
+	var medicationKnowledge_PackagingBox = await Hive.openBox<MedicationKnowledge_Packaging>('MedicationKnowledge_PackagingBox');
+	medicationKnowledge_PackagingBox.add(newMedicationKnowledge_Packaging);
+	return newMedicationKnowledge_Packaging;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -614,8 +635,8 @@ class MedicationKnowledge_DrugCharacteristic {
 		Quantity valueQuantity,
 		String valueBase64Binary,
 		Element elementValueBase64Binary}) async {
-	 return MedicationKnowledge_DrugCharacteristic(
-			id: await newEntry('MedicationKnowledge_DrugCharacteristic'),
+	MedicationKnowledge_DrugCharacteristic newMedicationKnowledge_DrugCharacteristic = new MedicationKnowledge_DrugCharacteristic(
+			id: await newId('MedicationKnowledge_DrugCharacteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -625,8 +646,10 @@ class MedicationKnowledge_DrugCharacteristic {
 			valueQuantity: valueQuantity,
 			valueBase64Binary: valueBase64Binary,
 			elementValueBase64Binary: elementValueBase64Binary);
-	}
-
+	var medicationKnowledge_DrugCharacteristicBox = await Hive.openBox<MedicationKnowledge_DrugCharacteristic>('MedicationKnowledge_DrugCharacteristicBox');
+	medicationKnowledge_DrugCharacteristicBox.add(newMedicationKnowledge_DrugCharacteristic);
+	return newMedicationKnowledge_DrugCharacteristic;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -666,16 +689,18 @@ class MedicationKnowledge_Regulatory {
 		List<MedicationKnowledge_Substitution> substitution,
 		List<MedicationKnowledge_Schedule> schedule,
 		MedicationKnowledge_MaxDispense maxDispense}) async {
-	 return MedicationKnowledge_Regulatory(
-			id: await newEntry('MedicationKnowledge_Regulatory'),
+	MedicationKnowledge_Regulatory newMedicationKnowledge_Regulatory = new MedicationKnowledge_Regulatory(
+			id: await newId('MedicationKnowledge_Regulatory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			regulatoryAuthority: regulatoryAuthority,
 			substitution: substitution,
 			schedule: schedule,
 			maxDispense: maxDispense);
-	}
-
+	var medicationKnowledge_RegulatoryBox = await Hive.openBox<MedicationKnowledge_Regulatory>('MedicationKnowledge_RegulatoryBox');
+	medicationKnowledge_RegulatoryBox.add(newMedicationKnowledge_Regulatory);
+	return newMedicationKnowledge_Regulatory;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -708,15 +733,17 @@ class MedicationKnowledge_Substitution {
 		CodeableConcept type,
 		bool allowed,
 		Element elementAllowed}) async {
-	 return MedicationKnowledge_Substitution(
-			id: await newEntry('MedicationKnowledge_Substitution'),
+	MedicationKnowledge_Substitution newMedicationKnowledge_Substitution = new MedicationKnowledge_Substitution(
+			id: await newId('MedicationKnowledge_Substitution'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			allowed: allowed,
 			elementAllowed: elementAllowed);
-	}
-
+	var medicationKnowledge_SubstitutionBox = await Hive.openBox<MedicationKnowledge_Substitution>('MedicationKnowledge_SubstitutionBox');
+	medicationKnowledge_SubstitutionBox.add(newMedicationKnowledge_Substitution);
+	return newMedicationKnowledge_Substitution;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -745,13 +772,15 @@ class MedicationKnowledge_Schedule {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		CodeableConcept schedule}) async {
-	 return MedicationKnowledge_Schedule(
-			id: await newEntry('MedicationKnowledge_Schedule'),
+	MedicationKnowledge_Schedule newMedicationKnowledge_Schedule = new MedicationKnowledge_Schedule(
+			id: await newId('MedicationKnowledge_Schedule'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			schedule: schedule);
-	}
-
+	var medicationKnowledge_ScheduleBox = await Hive.openBox<MedicationKnowledge_Schedule>('MedicationKnowledge_ScheduleBox');
+	medicationKnowledge_ScheduleBox.add(newMedicationKnowledge_Schedule);
+	return newMedicationKnowledge_Schedule;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -777,14 +806,16 @@ class MedicationKnowledge_MaxDispense {
 		List<Extension> modifierExtension,
 		Quantity quantity,
 		Duration period}) async {
-	 return MedicationKnowledge_MaxDispense(
-			id: await newEntry('MedicationKnowledge_MaxDispense'),
+	MedicationKnowledge_MaxDispense newMedicationKnowledge_MaxDispense = new MedicationKnowledge_MaxDispense(
+			id: await newId('MedicationKnowledge_MaxDispense'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			period: period);
-	}
-
+	var medicationKnowledge_MaxDispenseBox = await Hive.openBox<MedicationKnowledge_MaxDispense>('MedicationKnowledge_MaxDispenseBox');
+	medicationKnowledge_MaxDispenseBox.add(newMedicationKnowledge_MaxDispense);
+	return newMedicationKnowledge_MaxDispense;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -813,15 +844,17 @@ class MedicationKnowledge_Kinetics {
 		List<Quantity> areaUnderCurve,
 		List<Quantity> lethalDose50,
 		Duration halfLifePeriod}) async {
-	 return MedicationKnowledge_Kinetics(
-			id: await newEntry('MedicationKnowledge_Kinetics'),
+	MedicationKnowledge_Kinetics newMedicationKnowledge_Kinetics = new MedicationKnowledge_Kinetics(
+			id: await newId('MedicationKnowledge_Kinetics'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			areaUnderCurve: areaUnderCurve,
 			lethalDose50: lethalDose50,
 			halfLifePeriod: halfLifePeriod);
-	}
-
+	var medicationKnowledge_KineticsBox = await Hive.openBox<MedicationKnowledge_Kinetics>('MedicationKnowledge_KineticsBox');
+	medicationKnowledge_KineticsBox.add(newMedicationKnowledge_Kinetics);
+	return newMedicationKnowledge_Kinetics;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

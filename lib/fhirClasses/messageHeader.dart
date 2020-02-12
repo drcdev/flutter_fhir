@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -42,8 +41,8 @@ class MessageHeader {
 		MessageHeader_Response response,
 		List<Reference> focus,
 		String definition}) async {
-	 return MessageHeader(
-			id: await newEntry('MessageHeader'),
+	MessageHeader newMessageHeader = new MessageHeader(
+			id: await newId('MessageHeader'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -66,8 +65,10 @@ class MessageHeader {
 			response: response,
 			focus: focus,
 			definition: definition);
-	}
-
+	var messageHeaderBox = await Hive.openBox<MessageHeader>('MessageHeaderBox');
+	messageHeaderBox.add(newMessageHeader);
+	return newMessageHeader;
+}
   @HiveField(0)
   final String resourceType= 'MessageHeader';
   @HiveField(1)
@@ -160,8 +161,8 @@ class MessageHeader_Destination {
 		String endpoint,
 		Element elementEndpoint,
 		Reference receiver}) async {
-	 return MessageHeader_Destination(
-			id: await newEntry('MessageHeader_Destination'),
+	MessageHeader_Destination newMessageHeader_Destination = new MessageHeader_Destination(
+			id: await newId('MessageHeader_Destination'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -170,8 +171,10 @@ class MessageHeader_Destination {
 			endpoint: endpoint,
 			elementEndpoint: elementEndpoint,
 			receiver: receiver);
-	}
-
+	var messageHeader_DestinationBox = await Hive.openBox<MessageHeader_Destination>('MessageHeader_DestinationBox');
+	messageHeader_DestinationBox.add(newMessageHeader_Destination);
+	return newMessageHeader_Destination;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -214,8 +217,8 @@ class MessageHeader_Source {
 		ContactPoint contact,
 		String endpoint,
 		Element elementEndpoint}) async {
-	 return MessageHeader_Source(
-			id: await newEntry('MessageHeader_Source'),
+	MessageHeader_Source newMessageHeader_Source = new MessageHeader_Source(
+			id: await newId('MessageHeader_Source'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -227,8 +230,10 @@ class MessageHeader_Source {
 			contact: contact,
 			endpoint: endpoint,
 			elementEndpoint: elementEndpoint);
-	}
-
+	var messageHeader_SourceBox = await Hive.openBox<MessageHeader_Source>('MessageHeader_SourceBox');
+	messageHeader_SourceBox.add(newMessageHeader_Source);
+	return newMessageHeader_Source;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -273,8 +278,8 @@ class MessageHeader_Response {
 		String code,
 		Element elementCode,
 		Reference details}) async {
-	 return MessageHeader_Response(
-			id: await newEntry('MessageHeader_Response'),
+	MessageHeader_Response newMessageHeader_Response = new MessageHeader_Response(
+			id: await newId('MessageHeader_Response'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -282,8 +287,10 @@ class MessageHeader_Response {
 			code: code,
 			elementCode: elementCode,
 			details: details);
-	}
-
+	var messageHeader_ResponseBox = await Hive.openBox<MessageHeader_Response>('MessageHeader_ResponseBox');
+	messageHeader_ResponseBox.add(newMessageHeader_Response);
+	return newMessageHeader_Response;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

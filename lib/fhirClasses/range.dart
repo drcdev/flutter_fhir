@@ -14,13 +14,15 @@ class Range {
 		List<Extension> extension,
 		Quantity low,
 		Quantity high}) async {
-	 return Range(
-			id: await newEntry('Range'),
+	Range newRange = new Range(
+			id: await newId('Range'),
 			extension: extension,
 			low: low,
 			high: high);
-	}
-
+	var rangeBox = await Hive.openBox<Range>('RangeBox');
+	rangeBox.add(newRange);
+	return newRange;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

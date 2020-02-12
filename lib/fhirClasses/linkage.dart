@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -30,8 +29,8 @@ class Linkage {
 		Element elementActive,
 		Reference author,
 		List<Linkage_Item> item}) async {
-	 return Linkage(
-			id: await newEntry('Linkage'),
+	Linkage newLinkage = new Linkage(
+			id: await newId('Linkage'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -45,8 +44,10 @@ class Linkage {
 			elementActive: elementActive,
 			author: author,
 			item: item);
-	}
-
+	var linkageBox = await Hive.openBox<Linkage>('LinkageBox');
+	linkageBox.add(newLinkage);
+	return newLinkage;
+}
   @HiveField(0)
   final String resourceType= 'Linkage';
   @HiveField(1)
@@ -109,15 +110,17 @@ class Linkage_Item {
 		String type,
 		Element elementType,
 		Reference resource}) async {
-	 return Linkage_Item(
-			id: await newEntry('Linkage_Item'),
+	Linkage_Item newLinkage_Item = new Linkage_Item(
+			id: await newId('Linkage_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			resource: resource);
-	}
-
+	var linkage_ItemBox = await Hive.openBox<Linkage_Item>('Linkage_ItemBox');
+	linkage_ItemBox.add(newLinkage_Item);
+	return newLinkage_Item;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

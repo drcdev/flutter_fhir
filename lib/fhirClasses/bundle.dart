@@ -30,8 +30,8 @@ class Bundle {
 		List<Bundle_Link> link,
 		List<Bundle_Entry> entry,
 		Signature signature}) async {
-	 return Bundle(
-			id: await newEntry('Bundle'),
+	Bundle newBundle = new Bundle(
+			id: await newId('Bundle'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -47,8 +47,10 @@ class Bundle {
 			link: link,
 			entry: entry,
 			signature: signature);
-	}
-
+	var bundleBox = await Hive.openBox<Bundle>('BundleBox');
+	bundleBox.add(newBundle);
+	return newBundle;
+}
   @HiveField(0)
   final String resourceType= 'Bundle';
   @HiveField(1)
@@ -118,16 +120,18 @@ class Bundle_Link {
 		Element elementRelation,
 		String url,
 		Element elementUrl}) async {
-	 return Bundle_Link(
-			id: await newEntry('Bundle_Link'),
+	Bundle_Link newBundle_Link = new Bundle_Link(
+			id: await newId('Bundle_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			relation: relation,
 			elementRelation: elementRelation,
 			url: url,
 			elementUrl: elementUrl);
-	}
-
+	var bundle_LinkBox = await Hive.openBox<Bundle_Link>('Bundle_LinkBox');
+	bundle_LinkBox.add(newBundle_Link);
+	return newBundle_Link;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -164,8 +168,8 @@ class Bundle_Entry {
 		Bundle_Search search,
 		Bundle_Request request,
 		Bundle_Response response}) async {
-	 return Bundle_Entry(
-			id: await newEntry('Bundle_Entry'),
+	Bundle_Entry newBundle_Entry = new Bundle_Entry(
+			id: await newId('Bundle_Entry'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			link: link,
@@ -175,8 +179,10 @@ class Bundle_Entry {
 			search: search,
 			request: request,
 			response: response);
-	}
-
+	var bundle_EntryBox = await Hive.openBox<Bundle_Entry>('Bundle_EntryBox');
+	bundle_EntryBox.add(newBundle_Entry);
+	return newBundle_Entry;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -216,16 +222,18 @@ class Bundle_Search {
 		Element elementMode,
 		double score,
 		Element elementScore}) async {
-	 return Bundle_Search(
-			id: await newEntry('Bundle_Search'),
+	Bundle_Search newBundle_Search = new Bundle_Search(
+			id: await newId('Bundle_Search'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
 			elementMode: elementMode,
 			score: score,
 			elementScore: elementScore);
-	}
-
+	var bundle_SearchBox = await Hive.openBox<Bundle_Search>('Bundle_SearchBox');
+	bundle_SearchBox.add(newBundle_Search);
+	return newBundle_Search;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -267,8 +275,8 @@ class Bundle_Request {
 		Element elementIfMatch,
 		String ifNoneExist,
 		Element elementIfNoneExist}) async {
-	 return Bundle_Request(
-			id: await newEntry('Bundle_Request'),
+	Bundle_Request newBundle_Request = new Bundle_Request(
+			id: await newId('Bundle_Request'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			method: method,
@@ -283,8 +291,10 @@ class Bundle_Request {
 			elementIfMatch: elementIfMatch,
 			ifNoneExist: ifNoneExist,
 			elementIfNoneExist: elementIfNoneExist);
-	}
-
+	var bundle_RequestBox = await Hive.openBox<Bundle_Request>('Bundle_RequestBox');
+	bundle_RequestBox.add(newBundle_Request);
+	return newBundle_Request;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -339,8 +349,8 @@ class Bundle_Response {
 		DateTime lastModified,
 		Element elementLastModified,
 		dynamic outcome}) async {
-	 return Bundle_Response(
-			id: await newEntry('Bundle_Response'),
+	Bundle_Response newBundle_Response = new Bundle_Response(
+			id: await newId('Bundle_Response'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			status: status,
@@ -352,8 +362,10 @@ class Bundle_Response {
 			lastModified: lastModified,
 			elementLastModified: elementLastModified,
 			outcome: outcome);
-	}
-
+	var bundle_ResponseBox = await Hive.openBox<Bundle_Response>('Bundle_ResponseBox');
+	bundle_ResponseBox.add(newBundle_Response);
+	return newBundle_Response;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

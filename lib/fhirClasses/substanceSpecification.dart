@@ -51,8 +51,8 @@ class SubstanceSpecification {
 		Reference polymer,
 		Reference protein,
 		Reference sourceMaterial}) async {
-	 return SubstanceSpecification(
-			id: await newEntry('SubstanceSpecification'),
+	SubstanceSpecification newSubstanceSpecification = new SubstanceSpecification(
+			id: await newId('SubstanceSpecification'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -83,8 +83,10 @@ class SubstanceSpecification {
 			polymer: polymer,
 			protein: protein,
 			sourceMaterial: sourceMaterial);
-	}
-
+	var substanceSpecificationBox = await Hive.openBox<SubstanceSpecification>('SubstanceSpecificationBox');
+	substanceSpecificationBox.add(newSubstanceSpecification);
+	return newSubstanceSpecification;
+}
   @HiveField(0)
   final String resourceType= 'SubstanceSpecification';
   @HiveField(1)
@@ -206,8 +208,8 @@ class SubstanceSpecification_Moiety {
 		Quantity amountQuantity,
 		String amountString,
 		Element elementAmountString}) async {
-	 return SubstanceSpecification_Moiety(
-			id: await newEntry('SubstanceSpecification_Moiety'),
+	SubstanceSpecification_Moiety newSubstanceSpecification_Moiety = new SubstanceSpecification_Moiety(
+			id: await newId('SubstanceSpecification_Moiety'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
@@ -221,8 +223,10 @@ class SubstanceSpecification_Moiety {
 			amountQuantity: amountQuantity,
 			amountString: amountString,
 			elementAmountString: elementAmountString);
-	}
-
+	var substanceSpecification_MoietyBox = await Hive.openBox<SubstanceSpecification_Moiety>('SubstanceSpecification_MoietyBox');
+	substanceSpecification_MoietyBox.add(newSubstanceSpecification_Moiety);
+	return newSubstanceSpecification_Moiety;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -275,8 +279,8 @@ class SubstanceSpecification_Property {
 		Quantity amountQuantity,
 		String amountString,
 		Element elementAmountString}) async {
-	 return SubstanceSpecification_Property(
-			id: await newEntry('SubstanceSpecification_Property'),
+	SubstanceSpecification_Property newSubstanceSpecification_Property = new SubstanceSpecification_Property(
+			id: await newId('SubstanceSpecification_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -288,8 +292,10 @@ class SubstanceSpecification_Property {
 			amountQuantity: amountQuantity,
 			amountString: amountString,
 			elementAmountString: elementAmountString);
-	}
-
+	var substanceSpecification_PropertyBox = await Hive.openBox<SubstanceSpecification_Property>('SubstanceSpecification_PropertyBox');
+	substanceSpecification_PropertyBox.add(newSubstanceSpecification_Property);
+	return newSubstanceSpecification_Property;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -339,8 +345,8 @@ class SubstanceSpecification_Structure {
 		SubstanceSpecification_MolecularWeight molecularWeight,
 		List<Reference> source,
 		List<SubstanceSpecification_Representation> representation}) async {
-	 return SubstanceSpecification_Structure(
-			id: await newEntry('SubstanceSpecification_Structure'),
+	SubstanceSpecification_Structure newSubstanceSpecification_Structure = new SubstanceSpecification_Structure(
+			id: await newId('SubstanceSpecification_Structure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			stereochemistry: stereochemistry,
@@ -353,8 +359,10 @@ class SubstanceSpecification_Structure {
 			molecularWeight: molecularWeight,
 			source: source,
 			representation: representation);
-	}
-
+	var substanceSpecification_StructureBox = await Hive.openBox<SubstanceSpecification_Structure>('SubstanceSpecification_StructureBox');
+	substanceSpecification_StructureBox.add(newSubstanceSpecification_Structure);
+	return newSubstanceSpecification_Structure;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -401,8 +409,8 @@ class SubstanceSpecification_Isotope {
 		CodeableConcept substitution,
 		Quantity halfLife,
 		SubstanceSpecification_MolecularWeight molecularWeight}) async {
-	 return SubstanceSpecification_Isotope(
-			id: await newEntry('SubstanceSpecification_Isotope'),
+	SubstanceSpecification_Isotope newSubstanceSpecification_Isotope = new SubstanceSpecification_Isotope(
+			id: await newId('SubstanceSpecification_Isotope'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -410,8 +418,10 @@ class SubstanceSpecification_Isotope {
 			substitution: substitution,
 			halfLife: halfLife,
 			molecularWeight: molecularWeight);
-	}
-
+	var substanceSpecification_IsotopeBox = await Hive.openBox<SubstanceSpecification_Isotope>('SubstanceSpecification_IsotopeBox');
+	substanceSpecification_IsotopeBox.add(newSubstanceSpecification_Isotope);
+	return newSubstanceSpecification_Isotope;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -446,15 +456,17 @@ class SubstanceSpecification_MolecularWeight {
 		CodeableConcept method,
 		CodeableConcept type,
 		Quantity amount}) async {
-	 return SubstanceSpecification_MolecularWeight(
-			id: await newEntry('SubstanceSpecification_MolecularWeight'),
+	SubstanceSpecification_MolecularWeight newSubstanceSpecification_MolecularWeight = new SubstanceSpecification_MolecularWeight(
+			id: await newId('SubstanceSpecification_MolecularWeight'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			method: method,
 			type: type,
 			amount: amount);
-	}
-
+	var substanceSpecification_MolecularWeightBox = await Hive.openBox<SubstanceSpecification_MolecularWeight>('SubstanceSpecification_MolecularWeightBox');
+	substanceSpecification_MolecularWeightBox.add(newSubstanceSpecification_MolecularWeight);
+	return newSubstanceSpecification_MolecularWeight;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -486,16 +498,18 @@ class SubstanceSpecification_Representation {
 		String representation,
 		Element elementRepresentation,
 		Attachment attachment}) async {
-	 return SubstanceSpecification_Representation(
-			id: await newEntry('SubstanceSpecification_Representation'),
+	SubstanceSpecification_Representation newSubstanceSpecification_Representation = new SubstanceSpecification_Representation(
+			id: await newId('SubstanceSpecification_Representation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			representation: representation,
 			elementRepresentation: elementRepresentation,
 			attachment: attachment);
-	}
-
+	var substanceSpecification_RepresentationBox = await Hive.openBox<SubstanceSpecification_Representation>('SubstanceSpecification_RepresentationBox');
+	substanceSpecification_RepresentationBox.add(newSubstanceSpecification_Representation);
+	return newSubstanceSpecification_Representation;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -532,8 +546,8 @@ class SubstanceSpecification_Code {
 		String comment,
 		Element elementComment,
 		List<Reference> source}) async {
-	 return SubstanceSpecification_Code(
-			id: await newEntry('SubstanceSpecification_Code'),
+	SubstanceSpecification_Code newSubstanceSpecification_Code = new SubstanceSpecification_Code(
+			id: await newId('SubstanceSpecification_Code'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -543,8 +557,10 @@ class SubstanceSpecification_Code {
 			comment: comment,
 			elementComment: elementComment,
 			source: source);
-	}
-
+	var substanceSpecification_CodeBox = await Hive.openBox<SubstanceSpecification_Code>('SubstanceSpecification_CodeBox');
+	substanceSpecification_CodeBox.add(newSubstanceSpecification_Code);
+	return newSubstanceSpecification_Code;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -593,8 +609,8 @@ class SubstanceSpecification_Name {
 		List<SubstanceSpecification_Name> translation,
 		List<SubstanceSpecification_Official> official,
 		List<Reference> source}) async {
-	 return SubstanceSpecification_Name(
-			id: await newEntry('SubstanceSpecification_Name'),
+	SubstanceSpecification_Name newSubstanceSpecification_Name = new SubstanceSpecification_Name(
+			id: await newId('SubstanceSpecification_Name'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -610,8 +626,10 @@ class SubstanceSpecification_Name {
 			translation: translation,
 			official: official,
 			source: source);
-	}
-
+	var substanceSpecification_NameBox = await Hive.openBox<SubstanceSpecification_Name>('SubstanceSpecification_NameBox');
+	substanceSpecification_NameBox.add(newSubstanceSpecification_Name);
+	return newSubstanceSpecification_Name;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -663,16 +681,18 @@ class SubstanceSpecification_Official {
 		CodeableConcept status,
 		DateTime date,
 		Element elementDate}) async {
-	 return SubstanceSpecification_Official(
-			id: await newEntry('SubstanceSpecification_Official'),
+	SubstanceSpecification_Official newSubstanceSpecification_Official = new SubstanceSpecification_Official(
+			id: await newId('SubstanceSpecification_Official'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			authority: authority,
 			status: status,
 			date: date,
 			elementDate: elementDate);
-	}
-
+	var substanceSpecification_OfficialBox = await Hive.openBox<SubstanceSpecification_Official>('SubstanceSpecification_OfficialBox');
+	substanceSpecification_OfficialBox.add(newSubstanceSpecification_Official);
+	return newSubstanceSpecification_Official;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -715,8 +735,8 @@ class SubstanceSpecification_Relationship {
 		Ratio amountRatioLowLimit,
 		CodeableConcept amountType,
 		List<Reference> source}) async {
-	 return SubstanceSpecification_Relationship(
-			id: await newEntry('SubstanceSpecification_Relationship'),
+	SubstanceSpecification_Relationship newSubstanceSpecification_Relationship = new SubstanceSpecification_Relationship(
+			id: await newId('SubstanceSpecification_Relationship'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substanceReference: substanceReference,
@@ -732,8 +752,10 @@ class SubstanceSpecification_Relationship {
 			amountRatioLowLimit: amountRatioLowLimit,
 			amountType: amountType,
 			source: source);
-	}
-
+	var substanceSpecification_RelationshipBox = await Hive.openBox<SubstanceSpecification_Relationship>('SubstanceSpecification_RelationshipBox');
+	substanceSpecification_RelationshipBox.add(newSubstanceSpecification_Relationship);
+	return newSubstanceSpecification_Relationship;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

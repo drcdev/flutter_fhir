@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -40,8 +39,8 @@ class AppointmentResponse {
 		Element elementParticipantStatus,
 		String comment,
 		Element elementComment}) async {
-	 return AppointmentResponse(
-			id: await newEntry('AppointmentResponse'),
+	AppointmentResponse newAppointmentResponse = new AppointmentResponse(
+			id: await newId('AppointmentResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -63,8 +62,10 @@ class AppointmentResponse {
 			elementParticipantStatus: elementParticipantStatus,
 			comment: comment,
 			elementComment: elementComment);
-	}
-
+	var appointmentResponseBox = await Hive.openBox<AppointmentResponse>('AppointmentResponseBox');
+	appointmentResponseBox.add(newAppointmentResponse);
+	return newAppointmentResponse;
+}
   @HiveField(0)
   final String resourceType= 'AppointmentResponse';
   @HiveField(1)

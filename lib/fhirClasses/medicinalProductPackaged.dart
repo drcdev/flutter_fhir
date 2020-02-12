@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/productShelfLife.dart';
@@ -42,8 +41,8 @@ class MedicinalProductPackaged {
 		List<Reference> manufacturer,
 		List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier,
 		List<MedicinalProductPackaged_PackageItem> packageItem}) async {
-	 return MedicinalProductPackaged(
-			id: await newEntry('MedicinalProductPackaged'),
+	MedicinalProductPackaged newMedicinalProductPackaged = new MedicinalProductPackaged(
+			id: await newId('MedicinalProductPackaged'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -63,8 +62,10 @@ class MedicinalProductPackaged {
 			manufacturer: manufacturer,
 			batchIdentifier: batchIdentifier,
 			packageItem: packageItem);
-	}
-
+	var medicinalProductPackagedBox = await Hive.openBox<MedicinalProductPackaged>('MedicinalProductPackagedBox');
+	medicinalProductPackagedBox.add(newMedicinalProductPackaged);
+	return newMedicinalProductPackaged;
+}
   @HiveField(0)
   final String resourceType= 'MedicinalProductPackaged';
   @HiveField(1)
@@ -144,14 +145,16 @@ class MedicinalProductPackaged_BatchIdentifier {
 		List<Extension> modifierExtension,
 		Identifier outerPackaging,
 		Identifier immediatePackaging}) async {
-	 return MedicinalProductPackaged_BatchIdentifier(
-			id: await newEntry('MedicinalProductPackaged_BatchIdentifier'),
+	MedicinalProductPackaged_BatchIdentifier newMedicinalProductPackaged_BatchIdentifier = new MedicinalProductPackaged_BatchIdentifier(
+			id: await newId('MedicinalProductPackaged_BatchIdentifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			outerPackaging: outerPackaging,
 			immediatePackaging: immediatePackaging);
-	}
-
+	var medicinalProductPackaged_BatchIdentifierBox = await Hive.openBox<MedicinalProductPackaged_BatchIdentifier>('MedicinalProductPackaged_BatchIdentifierBox');
+	medicinalProductPackaged_BatchIdentifierBox.add(newMedicinalProductPackaged_BatchIdentifier);
+	return newMedicinalProductPackaged_BatchIdentifier;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -189,8 +192,8 @@ class MedicinalProductPackaged_PackageItem {
 		List<CodeableConcept> otherCharacteristics,
 		List<ProductShelfLife> shelfLifeStorage,
 		List<Reference> manufacturer}) async {
-	 return MedicinalProductPackaged_PackageItem(
-			id: await newEntry('MedicinalProductPackaged_PackageItem'),
+	MedicinalProductPackaged_PackageItem newMedicinalProductPackaged_PackageItem = new MedicinalProductPackaged_PackageItem(
+			id: await newId('MedicinalProductPackaged_PackageItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -205,8 +208,10 @@ class MedicinalProductPackaged_PackageItem {
 			otherCharacteristics: otherCharacteristics,
 			shelfLifeStorage: shelfLifeStorage,
 			manufacturer: manufacturer);
-	}
-
+	var medicinalProductPackaged_PackageItemBox = await Hive.openBox<MedicinalProductPackaged_PackageItem>('MedicinalProductPackaged_PackageItemBox');
+	medicinalProductPackaged_PackageItemBox.add(newMedicinalProductPackaged_PackageItem);
+	return newMedicinalProductPackaged_PackageItem;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

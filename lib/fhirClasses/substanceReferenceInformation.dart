@@ -34,8 +34,8 @@ class SubstanceReferenceInformation {
 		List<SubstanceReferenceInformation_GeneElement> geneElement,
 		List<SubstanceReferenceInformation_Classification> classification,
 		List<SubstanceReferenceInformation_Target> target}) async {
-	 return SubstanceReferenceInformation(
-			id: await newEntry('SubstanceReferenceInformation'),
+	SubstanceReferenceInformation newSubstanceReferenceInformation = new SubstanceReferenceInformation(
+			id: await newId('SubstanceReferenceInformation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,8 +51,10 @@ class SubstanceReferenceInformation {
 			geneElement: geneElement,
 			classification: classification,
 			target: target);
-	}
-
+	var substanceReferenceInformationBox = await Hive.openBox<SubstanceReferenceInformation>('SubstanceReferenceInformationBox');
+	substanceReferenceInformationBox.add(newSubstanceReferenceInformation);
+	return newSubstanceReferenceInformation;
+}
   @HiveField(0)
   final String resourceType= 'SubstanceReferenceInformation';
   @HiveField(1)
@@ -121,15 +123,17 @@ class SubstanceReferenceInformation_Gene {
 		CodeableConcept geneSequenceOrigin,
 		CodeableConcept gene,
 		List<Reference> source}) async {
-	 return SubstanceReferenceInformation_Gene(
-			id: await newEntry('SubstanceReferenceInformation_Gene'),
+	SubstanceReferenceInformation_Gene newSubstanceReferenceInformation_Gene = new SubstanceReferenceInformation_Gene(
+			id: await newId('SubstanceReferenceInformation_Gene'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			geneSequenceOrigin: geneSequenceOrigin,
 			gene: gene,
 			source: source);
-	}
-
+	var substanceReferenceInformation_GeneBox = await Hive.openBox<SubstanceReferenceInformation_Gene>('SubstanceReferenceInformation_GeneBox');
+	substanceReferenceInformation_GeneBox.add(newSubstanceReferenceInformation_Gene);
+	return newSubstanceReferenceInformation_Gene;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -160,15 +164,17 @@ class SubstanceReferenceInformation_GeneElement {
 		CodeableConcept type,
 		Identifier element,
 		List<Reference> source}) async {
-	 return SubstanceReferenceInformation_GeneElement(
-			id: await newEntry('SubstanceReferenceInformation_GeneElement'),
+	SubstanceReferenceInformation_GeneElement newSubstanceReferenceInformation_GeneElement = new SubstanceReferenceInformation_GeneElement(
+			id: await newId('SubstanceReferenceInformation_GeneElement'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			element: element,
 			source: source);
-	}
-
+	var substanceReferenceInformation_GeneElementBox = await Hive.openBox<SubstanceReferenceInformation_GeneElement>('SubstanceReferenceInformation_GeneElementBox');
+	substanceReferenceInformation_GeneElementBox.add(newSubstanceReferenceInformation_GeneElement);
+	return newSubstanceReferenceInformation_GeneElement;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -200,16 +206,18 @@ class SubstanceReferenceInformation_Classification {
 		CodeableConcept classification,
 		List<CodeableConcept> subtype,
 		List<Reference> source}) async {
-	 return SubstanceReferenceInformation_Classification(
-			id: await newEntry('SubstanceReferenceInformation_Classification'),
+	SubstanceReferenceInformation_Classification newSubstanceReferenceInformation_Classification = new SubstanceReferenceInformation_Classification(
+			id: await newId('SubstanceReferenceInformation_Classification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			domain: domain,
 			classification: classification,
 			subtype: subtype,
 			source: source);
-	}
-
+	var substanceReferenceInformation_ClassificationBox = await Hive.openBox<SubstanceReferenceInformation_Classification>('SubstanceReferenceInformation_ClassificationBox');
+	substanceReferenceInformation_ClassificationBox.add(newSubstanceReferenceInformation_Classification);
+	return newSubstanceReferenceInformation_Classification;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -250,8 +258,8 @@ class SubstanceReferenceInformation_Target {
 		Element elementAmountString,
 		CodeableConcept amountType,
 		List<Reference> source}) async {
-	 return SubstanceReferenceInformation_Target(
-			id: await newEntry('SubstanceReferenceInformation_Target'),
+	SubstanceReferenceInformation_Target newSubstanceReferenceInformation_Target = new SubstanceReferenceInformation_Target(
+			id: await newId('SubstanceReferenceInformation_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			target: target,
@@ -265,8 +273,10 @@ class SubstanceReferenceInformation_Target {
 			elementAmountString: elementAmountString,
 			amountType: amountType,
 			source: source);
-	}
-
+	var substanceReferenceInformation_TargetBox = await Hive.openBox<SubstanceReferenceInformation_Target>('SubstanceReferenceInformation_TargetBox');
+	substanceReferenceInformation_TargetBox.add(newSubstanceReferenceInformation_Target);
+	return newSubstanceReferenceInformation_Target;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

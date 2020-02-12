@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -50,8 +49,8 @@ class Invoice {
 		String paymentTerms,
 		Element elementPaymentTerms,
 		List<Annotation> note}) async {
-	 return Invoice(
-			id: await newEntry('Invoice'),
+	Invoice newInvoice = new Invoice(
+			id: await newId('Invoice'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -81,8 +80,10 @@ class Invoice {
 			paymentTerms: paymentTerms,
 			elementPaymentTerms: elementPaymentTerms,
 			note: note);
-	}
-
+	var invoiceBox = await Hive.openBox<Invoice>('InvoiceBox');
+	invoiceBox.add(newInvoice);
+	return newInvoice;
+}
   @HiveField(0)
   final String resourceType= 'Invoice';
   @HiveField(1)
@@ -192,14 +193,16 @@ class Invoice_Participant {
 		List<Extension> modifierExtension,
 		CodeableConcept role,
 		Reference actor}) async {
-	 return Invoice_Participant(
-			id: await newEntry('Invoice_Participant'),
+	Invoice_Participant newInvoice_Participant = new Invoice_Participant(
+			id: await newId('Invoice_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
 			actor: actor);
-	}
-
+	var invoice_ParticipantBox = await Hive.openBox<Invoice_Participant>('Invoice_ParticipantBox');
+	invoice_ParticipantBox.add(newInvoice_Participant);
+	return newInvoice_Participant;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -230,8 +233,8 @@ class Invoice_LineItem {
 		Reference chargeItemReference,
 		CodeableConcept chargeItemCodeableConcept,
 		List<Invoice_PriceComponent> priceComponent}) async {
-	 return Invoice_LineItem(
-			id: await newEntry('Invoice_LineItem'),
+	Invoice_LineItem newInvoice_LineItem = new Invoice_LineItem(
+			id: await newId('Invoice_LineItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -239,8 +242,10 @@ class Invoice_LineItem {
 			chargeItemReference: chargeItemReference,
 			chargeItemCodeableConcept: chargeItemCodeableConcept,
 			priceComponent: priceComponent);
-	}
-
+	var invoice_LineItemBox = await Hive.openBox<Invoice_LineItem>('Invoice_LineItemBox');
+	invoice_LineItemBox.add(newInvoice_LineItem);
+	return newInvoice_LineItem;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -278,8 +283,8 @@ class Invoice_PriceComponent {
 		double factor,
 		Element elementFactor,
 		Money amount}) async {
-	 return Invoice_PriceComponent(
-			id: await newEntry('Invoice_PriceComponent'),
+	Invoice_PriceComponent newInvoice_PriceComponent = new Invoice_PriceComponent(
+			id: await newId('Invoice_PriceComponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -288,8 +293,10 @@ class Invoice_PriceComponent {
 			factor: factor,
 			elementFactor: elementFactor,
 			amount: amount);
-	}
-
+	var invoice_PriceComponentBox = await Hive.openBox<Invoice_PriceComponent>('Invoice_PriceComponentBox');
+	invoice_PriceComponentBox.add(newInvoice_PriceComponent);
+	return newInvoice_PriceComponent;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

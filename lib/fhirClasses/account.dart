@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -43,8 +42,8 @@ class Account {
 		Element elementDescription,
 		List<Account_Guarantor> guarantor,
 		Reference partOf}) async {
-	 return Account(
-			id: await newEntry('Account'),
+	Account newAccount = new Account(
+			id: await newId('Account'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -68,8 +67,10 @@ class Account {
 			elementDescription: elementDescription,
 			guarantor: guarantor,
 			partOf: partOf);
-	}
-
+	var accountBox = await Hive.openBox<Account>('AccountBox');
+	accountBox.add(newAccount);
+	return newAccount;
+}
   @HiveField(0)
   final String resourceType= 'Account';
   @HiveField(1)
@@ -162,15 +163,17 @@ class Account_Coverage {
 		Reference coverage,
 		int priority,
 		Element elementPriority}) async {
-	 return Account_Coverage(
-			id: await newEntry('Account_Coverage'),
+	Account_Coverage newAccount_Coverage = new Account_Coverage(
+			id: await newId('Account_Coverage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			coverage: coverage,
 			priority: priority,
 			elementPriority: elementPriority);
-	}
-
+	var account_CoverageBox = await Hive.openBox<Account_Coverage>('Account_CoverageBox');
+	account_CoverageBox.add(newAccount_Coverage);
+	return newAccount_Coverage;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -202,16 +205,18 @@ class Account_Guarantor {
 		bool onHold,
 		Element elementOnHold,
 		Period period}) async {
-	 return Account_Guarantor(
-			id: await newEntry('Account_Guarantor'),
+	Account_Guarantor newAccount_Guarantor = new Account_Guarantor(
+			id: await newId('Account_Guarantor'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			party: party,
 			onHold: onHold,
 			elementOnHold: elementOnHold,
 			period: period);
-	}
-
+	var account_GuarantorBox = await Hive.openBox<Account_Guarantor>('Account_GuarantorBox');
+	account_GuarantorBox.add(newAccount_Guarantor);
+	return newAccount_Guarantor;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

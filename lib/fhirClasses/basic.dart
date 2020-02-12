@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -34,8 +33,8 @@ class Basic {
 		String created,
 		Element elementCreated,
 		Reference author}) async {
-	 return Basic(
-			id: await newEntry('Basic'),
+	Basic newBasic = new Basic(
+			id: await newId('Basic'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,8 +50,10 @@ class Basic {
 			created: created,
 			elementCreated: elementCreated,
 			author: author);
-	}
-
+	var basicBox = await Hive.openBox<Basic>('BasicBox');
+	basicBox.add(newBasic);
+	return newBasic;
+}
   @HiveField(0)
   final String resourceType= 'Basic';
   @HiveField(1)

@@ -22,8 +22,8 @@ class Age {
 		Element elementSystem,
 		String code,
 		Element elementCode}) async {
-	 return Age(
-			id: await newEntry('Age'),
+	Age newAge = new Age(
+			id: await newId('Age'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
@@ -35,8 +35,10 @@ class Age {
 			elementSystem: elementSystem,
 			code: code,
 			elementCode: elementCode);
-	}
-
+	var ageBox = await Hive.openBox<Age>('AgeBox');
+	ageBox.add(newAge);
+	return newAge;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

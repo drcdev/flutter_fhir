@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -81,8 +80,8 @@ class Observation {
 		List<Reference> hasMember,
 		List<Reference> derivedFrom,
 		List<Observation_Component> component}) async {
-	 return Observation(
-			id: await newEntry('Observation'),
+	Observation newObservation = new Observation(
+			id: await newId('Observation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -138,8 +137,10 @@ class Observation {
 			hasMember: hasMember,
 			derivedFrom: derivedFrom,
 			component: component);
-	}
-
+	var observationBox = await Hive.openBox<Observation>('ObservationBox');
+	observationBox.add(newObservation);
+	return newObservation;
+}
   @HiveField(0)
   final String resourceType= 'Observation';
   @HiveField(1)
@@ -331,8 +332,8 @@ class Observation_ReferenceRange {
 		Range age,
 		String text,
 		Element elementText}) async {
-	 return Observation_ReferenceRange(
-			id: await newEntry('Observation_ReferenceRange'),
+	Observation_ReferenceRange newObservation_ReferenceRange = new Observation_ReferenceRange(
+			id: await newId('Observation_ReferenceRange'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			low: low,
@@ -342,8 +343,10 @@ class Observation_ReferenceRange {
 			age: age,
 			text: text,
 			elementText: elementText);
-	}
-
+	var observation_ReferenceRangeBox = await Hive.openBox<Observation_ReferenceRange>('Observation_ReferenceRangeBox');
+	observation_ReferenceRangeBox.add(newObservation_ReferenceRange);
+	return newObservation_ReferenceRange;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -399,8 +402,8 @@ class Observation_Component {
 		CodeableConcept dataAbsentReason,
 		List<CodeableConcept> interpretation,
 		List<Observation_ReferenceRange> referenceRange}) async {
-	 return Observation_Component(
-			id: await newEntry('Observation_Component'),
+	Observation_Component newObservation_Component = new Observation_Component(
+			id: await newId('Observation_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -423,8 +426,10 @@ class Observation_Component {
 			dataAbsentReason: dataAbsentReason,
 			interpretation: interpretation,
 			referenceRange: referenceRange);
-	}
-
+	var observation_ComponentBox = await Hive.openBox<Observation_Component>('Observation_ComponentBox');
+	observation_ComponentBox.add(newObservation_Component);
+	return newObservation_Component;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -27,8 +26,8 @@ class OperationOutcome {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<OperationOutcome_Issue> issue}) async {
-	 return OperationOutcome(
-			id: await newEntry('OperationOutcome'),
+	OperationOutcome newOperationOutcome = new OperationOutcome(
+			id: await newId('OperationOutcome'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -39,8 +38,10 @@ class OperationOutcome {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			issue: issue);
-	}
-
+	var operationOutcomeBox = await Hive.openBox<OperationOutcome>('OperationOutcomeBox');
+	operationOutcomeBox.add(newOperationOutcome);
+	return newOperationOutcome;
+}
   @HiveField(0)
   final String resourceType= 'OperationOutcome';
   @HiveField(1)
@@ -102,8 +103,8 @@ class OperationOutcome_Issue {
 		List<Element> elementLocation,
 		List<String> expression,
 		List<Element> elementExpression}) async {
-	 return OperationOutcome_Issue(
-			id: await newEntry('OperationOutcome_Issue'),
+	OperationOutcome_Issue newOperationOutcome_Issue = new OperationOutcome_Issue(
+			id: await newId('OperationOutcome_Issue'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			severity: severity,
@@ -117,8 +118,10 @@ class OperationOutcome_Issue {
 			elementLocation: elementLocation,
 			expression: expression,
 			elementExpression: elementExpression);
-	}
-
+	var operationOutcome_IssueBox = await Hive.openBox<OperationOutcome_Issue>('OperationOutcome_IssueBox');
+	operationOutcome_IssueBox.add(newOperationOutcome_Issue);
+	return newOperationOutcome_Issue;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

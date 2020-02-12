@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -75,8 +74,8 @@ class SearchParameter {
 		List<String> chain,
 		List<Element> elementChain,
 		List<SearchParameter_Component> component}) async {
-	 return SearchParameter(
-			id: await newEntry('SearchParameter'),
+	SearchParameter newSearchParameter = new SearchParameter(
+			id: await newId('SearchParameter'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -133,8 +132,10 @@ class SearchParameter {
 			chain: chain,
 			elementChain: elementChain,
 			component: component);
-	}
-
+	var searchParameterBox = await Hive.openBox<SearchParameter>('SearchParameterBox');
+	searchParameterBox.add(newSearchParameter);
+	return newSearchParameter;
+}
   @HiveField(0)
   final String resourceType= 'SearchParameter';
   @HiveField(1)
@@ -326,15 +327,17 @@ class SearchParameter_Component {
 		String definition,
 		String expression,
 		Element elementExpression}) async {
-	 return SearchParameter_Component(
-			id: await newEntry('SearchParameter_Component'),
+	SearchParameter_Component newSearchParameter_Component = new SearchParameter_Component(
+			id: await newId('SearchParameter_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			definition: definition,
 			expression: expression,
 			elementExpression: elementExpression);
-	}
-
+	var searchParameter_ComponentBox = await Hive.openBox<SearchParameter_Component>('SearchParameter_ComponentBox');
+	searchParameter_ComponentBox.add(newSearchParameter_Component);
+	return newSearchParameter_Component;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;

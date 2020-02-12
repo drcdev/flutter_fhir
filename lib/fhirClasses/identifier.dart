@@ -24,8 +24,8 @@ class Identifier {
 		Element elementValue,
 		Period period,
 		Reference assigner}) async {
-	 return Identifier(
-			id: await newEntry('Identifier'),
+	Identifier newIdentifier = new Identifier(
+			id: await newId('Identifier'),
 			extension: extension,
 			use: use,
 			elementUse: elementUse,
@@ -36,8 +36,10 @@ class Identifier {
 			elementValue: elementValue,
 			period: period,
 			assigner: assigner);
-	}
-
+	var identifierBox = await Hive.openBox<Identifier>('IdentifierBox');
+	identifierBox.add(newIdentifier);
+	return newIdentifier;
+}
   @HiveField(0)
   String id;
   @HiveField(1)

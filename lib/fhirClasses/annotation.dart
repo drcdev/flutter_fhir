@@ -20,8 +20,8 @@ class Annotation {
 		Element elementTime,
 		String text,
 		Element elementText}) async {
-	 return Annotation(
-			id: await newEntry('Annotation'),
+	Annotation newAnnotation = new Annotation(
+			id: await newId('Annotation'),
 			extension: extension,
 			authorReference: authorReference,
 			authorString: authorString,
@@ -30,8 +30,10 @@ class Annotation {
 			elementTime: elementTime,
 			text: text,
 			elementText: elementText);
-	}
-
+	var annotationBox = await Hive.openBox<Annotation>('AnnotationBox');
+	annotationBox.add(newAnnotation);
+	return newAnnotation;
+}
   @HiveField(0)
   String id;
   @HiveField(1)
