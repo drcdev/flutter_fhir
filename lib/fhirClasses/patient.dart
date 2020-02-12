@@ -1,7 +1,12 @@
-import 'package:hive/hive.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'dart:io';
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:hive/hive.dart';
+import 'package:json_annotation/json_annotation.dart';
+
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -207,8 +212,39 @@ Patient(
     this.link
     });
 
-  factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
+  String printName() {
+    return ('${(this.name?.first?.family?.toString() ?? '')}'
+        ', '
+        '${(this.name?.first?.given?.first?.toString() ?? '')}');
+  }
+
+  factory Patient.fromJson(Map<String, dynamic> json) =>
+      _$PatientFromJson(json);
   Map<String, dynamic> toJson() => _$PatientToJson(this);
+}
+
+Future<Patient> readPatient(String id) async {
+  final directory =
+      await getApplicationDocumentsDirectory(); //get current directory
+  Patient pt = Patient.fromJson(jsonDecode(
+      await File('${directory.path}/' + id + '.txt')
+          .readAsString())); //read patient from file
+  return (pt);
+}
+
+Future<List<Patient>> readPtList() async {
+  final directory =
+      await getApplicationDocumentsDirectory(); //get current directory
+  List<String> ptNumbers =
+      (await File('${directory.path}/fhir/patient.txt').readAsString())
+          .split('\n');
+  var ptList = new List<Patient>();
+  for (var i = 0; i < ptNumbers.length; i++) {
+    final pt = File('${directory.path}/fhir/patient/' + ptNumbers[i] + '.txt');
+    var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
+    ptList.add(newpt);
+  }
+  return ptList;
 }
 
 @JsonSerializable(explicitToJson: true)
