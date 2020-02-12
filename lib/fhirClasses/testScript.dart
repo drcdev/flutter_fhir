@@ -1,7 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -422,7 +421,7 @@ class TestScript_Capability {
 		String id,
 		List<Extension> extension,
 		List<Extension> modifierExtension,
-		bool required,
+		bool require,
 		Element elementRequired,
 		bool validated,
 		Element elementValidated,
@@ -439,7 +438,7 @@ class TestScript_Capability {
 			id: await newEntry('TestScript_Capability'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			required: required,
+			require: require,
 			elementRequired: elementRequired,
 			validated: validated,
 			elementValidated: elementValidated,
@@ -457,7 +456,7 @@ class TestScript_Capability {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  bool required;
+  bool require;
   Element elementRequired;
   bool validated;
   Element elementValidated;
@@ -475,7 +474,7 @@ TestScript_Capability(
   {this.id,
     this.extension,
     this.modifierExtension,
-    this.required,
+    this.require,
     this.elementRequired,
     this.validated,
     this.elementValidated,
@@ -1742,7 +1741,7 @@ TestScript_Capability _$TestScript_CapabilityFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    required: json['required'] as bool,
+    require: json['required'] as bool,
     elementRequired: json['elementRequired'] == null
         ? null
         : Element.fromJson(json['elementRequired'] as Map<String, dynamic>),
@@ -1779,7 +1778,7 @@ Map<String, dynamic> _$TestScript_CapabilityToJson(
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'required': instance.required,
+      'required': instance.require,
       'elementRequired': instance.elementRequired?.toJson(),
       'validated': instance.validated,
       'elementValidated': instance.elementValidated?.toJson(),

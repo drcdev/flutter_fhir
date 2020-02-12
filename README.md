@@ -17,7 +17,8 @@ in another country, but all data was synthesized anew.
 3. I've also added some completely synthesized patients of various ages. If you're following
 along at home and using Aidbox, they have a nice, easy tutorial here for how to do it.
 (https://docs.aidbox.app/basic-concepts/bulk-api-1/synthea-by-bulk-api)
-4. I can't ever remember the command for automatic json code: flutter pub run build_runner build
+4. Code generation for right now is 3 steps. fhirSchemaToDart1.py, then flutter pub run build_runner build
+    then fhirSchematoDart2.py.
 
 # Formatting
 I'm a newbie at coding, but I've tried to keep naming rules consistent (and consistent from FHIR).
@@ -37,6 +38,8 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
     'extend' - 'StructureMap_Group'
     'fore' - 'Task'
     'asserts' - 'TestReport_Action', 'TestReport_Action1', 'TestScript_Action', 'TestScript_Action1'
+    'require' - this isn't a reserved word, but in order to have @required parameters, I had to change
+        required to require in testScript.
 9. I had to add a resourceList class - this is not official.
 10. Named optional parameters are not allowed to start with underscores. ~~I'm going to omit for now.~~
     I changed my mind. I added element in front of every underscore since they're all elements, and
@@ -45,41 +48,21 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
 ToDo: define canonical types\n
 Todo: understand initstate better, learn Future, async, await
 
-# SQLITE
-As this is supposed to be a mobile app, at some point if I'm going to save data on the device, it's
-going to have to make use of sqlite. I've begun to try and design the database with the following
-guidelines:
-1. Each of the fhir datatypes below will be in it's own table except for primitives
-2. Each table will have an id that will be its primary key, except for bridge tables
-3. Each table will begin with lowercase
-4. Primitive fields will have their normal name from Json schema
-5. Fields referencing another table, if it is only one row from that other table (one-to-one
-    relationship), the id (primary key) of the other table will be a foreign key, name will be from
-    Json schema
-6. If a field references multiple rows in another table (one-to-many relationship, except enum) AND
-    that table is only referenced by the first, a new column will be added to the second table. It
-    will take the name of the first table + 'Id'. It will refer to the id of the first table, and
-    will be a foreign key for the second table. The first table will have a boolean with the name of
-    the original Json schema, which will be true if there is at least one row in the second table
-    with a reference to it
-    (Todo: boolean column could just be removed as well)
-7. If a field is a list of enums, a table will be created. It will contain a unique ID as its primary
-    key, a foreign key referring to the first table's id, and then a column containing the enum
-    value. This table will be named originalTable_fieldName_enum. The field in the original table
-    will be a boolean if at least one row in the new table references it.
-8. For all others (many-to-many relationships), even if there are multiple tables referencing
-    multiple rows in a second table, or one table with multiple lists each referencing multiple
-    rows in a second table will all be treated the same. Bridge tables will be created, entitled
-    originalTable_field_secondTable. It will have a unique id field, and two foreign keys called
-    originalTablefieldId and secondTableId.
-9. Work in progress, obviously, so some of this will change as I learn why not to do some things.
-10. 4 primitive tables for lists of same,
-    -uri with canonical and uri columns
-    -numbers with unsignedInt, positiveInt, decimal and integer columns
-    -times with time and dateTime columns
-    -strings with code, string and markdown columns
-    -all primitive tables will have foreignId and foreignTable added as columns to form a composite
-        foreign key
+#Hive
+1. For now, I've decided to go with Hive. It's a relatively easy, straightforward NoSQL DB, and
+    for the very small amount of data I'm collecting, should be fine.
+2. I'm also looking at other options for the future. So if anyone would like to weight in, I'm
+    open to suggestions. These are my thoughts so far.
+    a. SQLite. definitely an option. There are some concerns for speed apparently, although not with
+        my current amount of data. It would also take a lot more legwork to get FHIR to map to it
+        well. Although it may be that it should still be done.
+    b. Moor. This is the Room library for flutter. Apparently makes working with SQLite easier.
+    c. Sembast. another NoSQL DB that has more functionality than Hive. However, it stores everything
+        in one file, and loads it into memory, which seemed system intensive at times.
+    d. MongoDB. This one I'd like to explore more. They haven't fully built out a MongoDB Realm
+        library yet for flutter. But as a DB that stores Json natively, this sounds likea  good
+        option. (And maybe easier integration with something like Asymmetrik
+        https://github.com/Asymmetrik/node-fhir-server-core/wiki).
 
 # FHIR datatypes
 1. Primitives: base64Binary, boolean, canonical, code, date, dateTime, decimal, id
