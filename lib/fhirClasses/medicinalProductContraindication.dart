@@ -7,7 +7,7 @@ import 'package:flutter_fhir/fhirClasses/population.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
-import 'package:flutter_fhir/fhirClasses/resourceList.dart';
+import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';

@@ -17,7 +17,7 @@ import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
-import 'package:flutter_fhir/fhirClasses/resourceList.dart';
+import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
@@ -97,8 +97,6 @@ class Patient {
 			generalPractitioner: generalPractitioner,
 			managingOrganization: managingOrganization,
 			link: link);
-	var patientBox = await Hive.openBox<Patient>('PatientBox');
-	patientBox.put(newPatient.id, newPatient);
 	return newPatient;
 }
   final String resourceType= 'Patient';

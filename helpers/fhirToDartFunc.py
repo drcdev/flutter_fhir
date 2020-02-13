@@ -1134,17 +1134,12 @@ classesSetup() async {
 classes4 = ''.join([classes3, 
                    # '\n\n  Hive.registerAdapter(', 'Adapter());\n  Hive.registerAdapter('.join(resources),
                    '());\n\n']) 
+classes5 = classes4.replace("'Adapter());", "Adapter());")
 
-classes = ''.join([classes4.replace("'Adapter());", "Adapter());"),
-'''  int tableId = 16;
+classes6 = classes5.replace("];());", "];")
 
-  for (String type in types) {
-          type,
-          Classes(type, tableId.toRadixString(16).padLeft(3, '0').toString(),
-              (androidInfo.id.hashCode % 10000).abs().toString(), '0000'));
-      tableId += 1;
-    }
-  }
+classes = ''.join([classes6,
+'''
 }
 
 Future<String> newId(String resource) async {

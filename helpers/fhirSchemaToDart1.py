@@ -18,17 +18,10 @@ importDict = {} #will store which other classes we will import
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 definitions = schema['definitions']
-z = 0
 for objects in definitions:
         #ignore any of those that are in the ResourceList (names, no definitions)
         if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
-            if('_' not in objects):
-                z += 1
-                print('CREATE TABLE ' + objects + '(\n\tid TEXT PRIMARY KEY,\n\tjson_resource TEXT\n);\n\n')
-                print('****', str(z), '****')
-                if(z > 46):
-                    break
-                
+            if('_' not in objects):               
                 dartCode = ''.join([dartCode, 
                                     "part '", 
                                     fhir.lowcc(fhir.lists(objects)), 
@@ -231,6 +224,7 @@ for code in dartCode:
             code = ''.join(["import 'package:flutter/foundation.dart';\n", code])
         code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n", code])
         code = ''.join(["import 'package:hive/hive.dart';\n", code])
+        code = code.replace("import 'package:flutter_fhir/fhirClasses/resourceList.dart';","import 'package:flutter_fhir/util/resourceList.dart';")
         with open(fhirDir + fhir.lowcc(g) + ".dart","w", encoding="utf-8") as f:
             f.write(code)
         f.close()

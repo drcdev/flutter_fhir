@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 
-import 'package:flutter_fhir/fhirClasses/resourceList.dart';
+import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
