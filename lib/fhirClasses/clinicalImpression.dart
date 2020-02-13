@@ -92,9 +92,8 @@ class ClinicalImpression {
 			prognosisCodeableConcept: prognosisCodeableConcept,
 			prognosisReference: prognosisReference,
 			supportingInfo: supportingInfo,
-			note: note);
-	var clinicalImpressionBox = await Hive.openBox<ClinicalImpression>('ClinicalImpressionBox');
-	clinicalImpressionBox.put(newClinicalImpression.id, newClinicalImpression);
+			note: note,
+);
 	return newClinicalImpression;
 }
   final String resourceType= 'ClinicalImpression';
@@ -194,9 +193,8 @@ class ClinicalImpression_Investigation {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
-			item: item);
-	var clinicalImpression_InvestigationBox = await Hive.openBox<ClinicalImpression_Investigation>('ClinicalImpression_InvestigationBox');
-	clinicalImpression_InvestigationBox.put(newClinicalImpression_Investigation.id, newClinicalImpression_Investigation);
+			item: item,
+);
 	return newClinicalImpression_Investigation;
 }
   String id;
@@ -235,9 +233,8 @@ class ClinicalImpression_Finding {
 			itemCodeableConcept: itemCodeableConcept,
 			itemReference: itemReference,
 			basis: basis,
-			elementBasis: elementBasis);
-	var clinicalImpression_FindingBox = await Hive.openBox<ClinicalImpression_Finding>('ClinicalImpression_FindingBox');
-	clinicalImpression_FindingBox.put(newClinicalImpression_Finding.id, newClinicalImpression_Finding);
+			elementBasis: elementBasis,
+);
 	return newClinicalImpression_Finding;
 }
   String id;

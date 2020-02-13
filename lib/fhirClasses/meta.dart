@@ -32,9 +32,8 @@ class Meta {
 			elementSource: elementSource,
 			profile: profile,
 			security: security,
-			tag: tag);
-	var metaBox = await Hive.openBox<Meta>('MetaBox');
-	metaBox.put(newMeta.id, newMeta);
+			tag: tag,
+);
 	return newMeta;
 }
   String id;

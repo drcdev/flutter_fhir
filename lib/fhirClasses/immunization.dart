@@ -112,9 +112,8 @@ class Immunization {
 			programEligibility: programEligibility,
 			fundingSource: fundingSource,
 			reaction: reaction,
-			protocolApplied: protocolApplied);
-	var immunizationBox = await Hive.openBox<Immunization>('ImmunizationBox');
-	immunizationBox.put(newImmunization.id, newImmunization);
+			protocolApplied: protocolApplied,
+);
 	return newImmunization;
 }
   final String resourceType= 'Immunization';
@@ -234,9 +233,8 @@ class Immunization_Performer {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
-			actor: actor);
-	var immunization_PerformerBox = await Hive.openBox<Immunization_Performer>('Immunization_PerformerBox');
-	immunization_PerformerBox.put(newImmunization_Performer.id, newImmunization_Performer);
+			actor: actor,
+);
 	return newImmunization_Performer;
 }
   String id;
@@ -283,9 +281,8 @@ class Immunization_Education {
 			publicationDate: publicationDate,
 			elementPublicationDate: elementPublicationDate,
 			presentationDate: presentationDate,
-			elementPresentationDate: elementPresentationDate);
-	var immunization_EducationBox = await Hive.openBox<Immunization_Education>('Immunization_EducationBox');
-	immunization_EducationBox.put(newImmunization_Education.id, newImmunization_Education);
+			elementPresentationDate: elementPresentationDate,
+);
 	return newImmunization_Education;
 }
   String id;
@@ -338,9 +335,8 @@ class Immunization_Reaction {
 			elementDate: elementDate,
 			detail: detail,
 			reported: reported,
-			elementReported: elementReported);
-	var immunization_ReactionBox = await Hive.openBox<Immunization_Reaction>('Immunization_ReactionBox');
-	immunization_ReactionBox.put(newImmunization_Reaction.id, newImmunization_Reaction);
+			elementReported: elementReported,
+);
 	return newImmunization_Reaction;
 }
   String id;
@@ -401,9 +397,8 @@ class Immunization_ProtocolApplied {
 			seriesDosesPositiveInt: seriesDosesPositiveInt,
 			elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
 			seriesDosesString: seriesDosesString,
-			elementSeriesDosesString: elementSeriesDosesString);
-	var immunization_ProtocolAppliedBox = await Hive.openBox<Immunization_ProtocolApplied>('Immunization_ProtocolAppliedBox');
-	immunization_ProtocolAppliedBox.put(newImmunization_ProtocolApplied.id, newImmunization_ProtocolApplied);
+			elementSeriesDosesString: elementSeriesDosesString,
+);
 	return newImmunization_ProtocolApplied;
 }
   String id;

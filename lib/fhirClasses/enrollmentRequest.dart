@@ -52,9 +52,8 @@ class EnrollmentRequest {
 			insurer: insurer,
 			provider: provider,
 			candidate: candidate,
-			coverage: coverage);
-	var enrollmentRequestBox = await Hive.openBox<EnrollmentRequest>('EnrollmentRequestBox');
-	enrollmentRequestBox.put(newEnrollmentRequest.id, newEnrollmentRequest);
+			coverage: coverage,
+);
 	return newEnrollmentRequest;
 }
   final String resourceType= 'EnrollmentRequest';

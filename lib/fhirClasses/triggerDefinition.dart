@@ -41,9 +41,8 @@ class TriggerDefinition {
 			timingDateTime: timingDateTime,
 			elementTimingDateTime: elementTimingDateTime,
 			data: data,
-			condition: condition);
-	var triggerDefinitionBox = await Hive.openBox<TriggerDefinition>('TriggerDefinitionBox');
-	triggerDefinitionBox.put(newTriggerDefinition.id, newTriggerDefinition);
+			condition: condition,
+);
 	return newTriggerDefinition;
 }
   String id;

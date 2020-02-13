@@ -71,9 +71,8 @@ class TestReport {
 			participant: participant,
 			setup: setup,
 			test: test,
-			teardown: teardown);
-	var testReportBox = await Hive.openBox<TestReport>('TestReportBox');
-	testReportBox.put(newTestReport.id, newTestReport);
+			teardown: teardown,
+);
 	return newTestReport;
 }
   final String resourceType= 'TestReport';
@@ -163,9 +162,8 @@ class TestReport_Participant {
 			uri: uri,
 			elementUri: elementUri,
 			display: display,
-			elementDisplay: elementDisplay);
-	var testReport_ParticipantBox = await Hive.openBox<TestReport_Participant>('TestReport_ParticipantBox');
-	testReport_ParticipantBox.put(newTestReport_Participant.id, newTestReport_Participant);
+			elementDisplay: elementDisplay,
+);
 	return newTestReport_Participant;
 }
   String id;
@@ -206,9 +204,8 @@ class TestReport_Setup {
 			id: await newId('TestReport_Setup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			action: action);
-	var testReport_SetupBox = await Hive.openBox<TestReport_Setup>('TestReport_SetupBox');
-	testReport_SetupBox.put(newTestReport_Setup.id, newTestReport_Setup);
+			action: action,
+);
 	return newTestReport_Setup;
 }
   String id;
@@ -241,9 +238,8 @@ class TestReport_Action {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
-			asserts: asserts);
-	var testReport_ActionBox = await Hive.openBox<TestReport_Action>('TestReport_ActionBox');
-	testReport_ActionBox.put(newTestReport_Action.id, newTestReport_Action);
+			asserts: asserts,
+);
 	return newTestReport_Action;
 }
   String id;
@@ -286,9 +282,8 @@ class TestReport_Operation {
 			message: message,
 			elementMessage: elementMessage,
 			detail: detail,
-			elementDetail: elementDetail);
-	var testReport_OperationBox = await Hive.openBox<TestReport_Operation>('TestReport_OperationBox');
-	testReport_OperationBox.put(newTestReport_Operation.id, newTestReport_Operation);
+			elementDetail: elementDetail,
+);
 	return newTestReport_Operation;
 }
   String id;
@@ -339,9 +334,8 @@ class TestReport_Assert {
 			message: message,
 			elementMessage: elementMessage,
 			detail: detail,
-			elementDetail: elementDetail);
-	var testReport_AssertBox = await Hive.openBox<TestReport_Assert>('TestReport_AssertBox');
-	testReport_AssertBox.put(newTestReport_Assert.id, newTestReport_Assert);
+			elementDetail: elementDetail,
+);
 	return newTestReport_Assert;
 }
   String id;
@@ -390,9 +384,8 @@ class TestReport_Test {
 			elementName: elementName,
 			description: description,
 			elementDescription: elementDescription,
-			action: action);
-	var testReport_TestBox = await Hive.openBox<TestReport_Test>('TestReport_TestBox');
-	testReport_TestBox.put(newTestReport_Test.id, newTestReport_Test);
+			action: action,
+);
 	return newTestReport_Test;
 }
   String id;
@@ -433,9 +426,8 @@ class TestReport_Action1 {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
-			asserts: asserts);
-	var testReport_Action1Box = await Hive.openBox<TestReport_Action1>('TestReport_Action1Box');
-	testReport_Action1Box.put(newTestReport_Action1.id, newTestReport_Action1);
+			asserts: asserts,
+);
 	return newTestReport_Action1;
 }
   String id;
@@ -468,9 +460,8 @@ class TestReport_Teardown {
 			id: await newId('TestReport_Teardown'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			action: action);
-	var testReport_TeardownBox = await Hive.openBox<TestReport_Teardown>('TestReport_TeardownBox');
-	testReport_TeardownBox.put(newTestReport_Teardown.id, newTestReport_Teardown);
+			action: action,
+);
 	return newTestReport_Teardown;
 }
   String id;
@@ -501,9 +492,8 @@ class TestReport_Action2 {
 			id: await newId('TestReport_Action2'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			operation: operation);
-	var testReport_Action2Box = await Hive.openBox<TestReport_Action2>('TestReport_Action2Box');
-	testReport_Action2Box.put(newTestReport_Action2.id, newTestReport_Action2);
+			operation: operation,
+);
 	return newTestReport_Action2;
 }
   String id;

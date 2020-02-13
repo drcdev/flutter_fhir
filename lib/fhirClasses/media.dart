@@ -101,9 +101,8 @@ class Media {
 			duration: duration,
 			elementDuration: elementDuration,
 			content: content,
-			note: note);
-	var mediaBox = await Hive.openBox<Media>('MediaBox');
-	mediaBox.put(newMedia.id, newMedia);
+			note: note,
+);
 	return newMedia;
 }
   final String resourceType= 'Media';

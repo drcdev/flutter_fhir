@@ -88,9 +88,8 @@ class ExampleScenario {
 			actor: actor,
 			instance: instance,
 			process: process,
-			workflow: workflow);
-	var exampleScenarioBox = await Hive.openBox<ExampleScenario>('ExampleScenarioBox');
-	exampleScenarioBox.put(newExampleScenario.id, newExampleScenario);
+			workflow: workflow,
+);
 	return newExampleScenario;
 }
   final String resourceType= 'ExampleScenario';
@@ -200,9 +199,8 @@ class ExampleScenario_Actor {
 			name: name,
 			elementName: elementName,
 			description: description,
-			elementDescription: elementDescription);
-	var exampleScenario_ActorBox = await Hive.openBox<ExampleScenario_Actor>('ExampleScenario_ActorBox');
-	exampleScenario_ActorBox.put(newExampleScenario_Actor.id, newExampleScenario_Actor);
+			elementDescription: elementDescription,
+);
 	return newExampleScenario_Actor;
 }
   String id;
@@ -264,9 +262,8 @@ class ExampleScenario_Instance {
 			description: description,
 			elementDescription: elementDescription,
 			version: version,
-			containedInstance: containedInstance);
-	var exampleScenario_InstanceBox = await Hive.openBox<ExampleScenario_Instance>('ExampleScenario_InstanceBox');
-	exampleScenario_InstanceBox.put(newExampleScenario_Instance.id, newExampleScenario_Instance);
+			containedInstance: containedInstance,
+);
 	return newExampleScenario_Instance;
 }
   String id;
@@ -320,9 +317,8 @@ class ExampleScenario_Version {
 			versionId: versionId,
 			elementVersionId: elementVersionId,
 			description: description,
-			elementDescription: elementDescription);
-	var exampleScenario_VersionBox = await Hive.openBox<ExampleScenario_Version>('ExampleScenario_VersionBox');
-	exampleScenario_VersionBox.put(newExampleScenario_Version.id, newExampleScenario_Version);
+			elementDescription: elementDescription,
+);
 	return newExampleScenario_Version;
 }
   String id;
@@ -365,9 +361,8 @@ class ExampleScenario_ContainedInstance {
 			resourceId: resourceId,
 			elementResourceId: elementResourceId,
 			versionId: versionId,
-			elementVersionId: elementVersionId);
-	var exampleScenario_ContainedInstanceBox = await Hive.openBox<ExampleScenario_ContainedInstance>('ExampleScenario_ContainedInstanceBox');
-	exampleScenario_ContainedInstanceBox.put(newExampleScenario_ContainedInstance.id, newExampleScenario_ContainedInstance);
+			elementVersionId: elementVersionId,
+);
 	return newExampleScenario_ContainedInstance;
 }
   String id;
@@ -420,9 +415,8 @@ class ExampleScenario_Process {
 			elementPreConditions: elementPreConditions,
 			postConditions: postConditions,
 			elementPostConditions: elementPostConditions,
-			step: step);
-	var exampleScenario_ProcessBox = await Hive.openBox<ExampleScenario_Process>('ExampleScenario_ProcessBox');
-	exampleScenario_ProcessBox.put(newExampleScenario_Process.id, newExampleScenario_Process);
+			step: step,
+);
 	return newExampleScenario_Process;
 }
   String id;
@@ -477,9 +471,8 @@ class ExampleScenario_Step {
 			pause: pause,
 			elementPause: elementPause,
 			operation: operation,
-			alternative: alternative);
-	var exampleScenario_StepBox = await Hive.openBox<ExampleScenario_Step>('ExampleScenario_StepBox');
-	exampleScenario_StepBox.put(newExampleScenario_Step.id, newExampleScenario_Step);
+			alternative: alternative,
+);
 	return newExampleScenario_Step;
 }
   String id;
@@ -552,9 +545,8 @@ class ExampleScenario_Operation {
 			receiverActive: receiverActive,
 			elementReceiverActive: elementReceiverActive,
 			request: request,
-			response: response);
-	var exampleScenario_OperationBox = await Hive.openBox<ExampleScenario_Operation>('ExampleScenario_OperationBox');
-	exampleScenario_OperationBox.put(newExampleScenario_Operation.id, newExampleScenario_Operation);
+			response: response,
+);
 	return newExampleScenario_Operation;
 }
   String id;
@@ -627,9 +619,8 @@ class ExampleScenario_Alternative {
 			elementTitle: elementTitle,
 			description: description,
 			elementDescription: elementDescription,
-			step: step);
-	var exampleScenario_AlternativeBox = await Hive.openBox<ExampleScenario_Alternative>('ExampleScenario_AlternativeBox');
-	exampleScenario_AlternativeBox.put(newExampleScenario_Alternative.id, newExampleScenario_Alternative);
+			step: step,
+);
 	return newExampleScenario_Alternative;
 }
   String id;

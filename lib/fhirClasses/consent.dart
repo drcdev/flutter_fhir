@@ -71,9 +71,8 @@ class Consent {
 			policy: policy,
 			policyRule: policyRule,
 			verification: verification,
-			provision: provision);
-	var consentBox = await Hive.openBox<Consent>('ConsentBox');
-	consentBox.put(newConsent.id, newConsent);
+			provision: provision,
+);
 	return newConsent;
 }
   final String resourceType= 'Consent';
@@ -155,9 +154,8 @@ class Consent_Policy {
 			authority: authority,
 			elementAuthority: elementAuthority,
 			uri: uri,
-			elementUri: elementUri);
-	var consent_PolicyBox = await Hive.openBox<Consent_Policy>('Consent_PolicyBox');
-	consent_PolicyBox.put(newConsent_Policy.id, newConsent_Policy);
+			elementUri: elementUri,
+);
 	return newConsent_Policy;
 }
   String id;
@@ -202,9 +200,8 @@ class Consent_Verification {
 			elementVerified: elementVerified,
 			verifiedWith: verifiedWith,
 			verificationDate: verificationDate,
-			elementVerificationDate: elementVerificationDate);
-	var consent_VerificationBox = await Hive.openBox<Consent_Verification>('Consent_VerificationBox');
-	consent_VerificationBox.put(newConsent_Verification.id, newConsent_Verification);
+			elementVerificationDate: elementVerificationDate,
+);
 	return newConsent_Verification;
 }
   String id;
@@ -265,9 +262,8 @@ class Consent_Provision {
 			code: code,
 			dataPeriod: dataPeriod,
 			data: data,
-			provision: provision);
-	var consent_ProvisionBox = await Hive.openBox<Consent_Provision>('Consent_ProvisionBox');
-	consent_ProvisionBox.put(newConsent_Provision.id, newConsent_Provision);
+			provision: provision,
+);
 	return newConsent_Provision;
 }
   String id;
@@ -322,9 +318,8 @@ class Consent_Actor {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
-			reference: reference);
-	var consent_ActorBox = await Hive.openBox<Consent_Actor>('Consent_ActorBox');
-	consent_ActorBox.put(newConsent_Actor.id, newConsent_Actor);
+			reference: reference,
+);
 	return newConsent_Actor;
 }
   String id;
@@ -361,9 +356,8 @@ class Consent_Data {
 			modifierExtension: modifierExtension,
 			meaning: meaning,
 			elementMeaning: elementMeaning,
-			reference: reference);
-	var consent_DataBox = await Hive.openBox<Consent_Data>('Consent_DataBox');
-	consent_DataBox.put(newConsent_Data.id, newConsent_Data);
+			reference: reference,
+);
 	return newConsent_Data;
 }
   String id;

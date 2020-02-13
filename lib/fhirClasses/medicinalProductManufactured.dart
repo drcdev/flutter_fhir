@@ -51,9 +51,8 @@ class MedicinalProductManufactured {
 			manufacturer: manufacturer,
 			ingredient: ingredient,
 			physicalCharacteristics: physicalCharacteristics,
-			otherCharacteristics: otherCharacteristics);
-	var medicinalProductManufacturedBox = await Hive.openBox<MedicinalProductManufactured>('MedicinalProductManufacturedBox');
-	medicinalProductManufacturedBox.put(newMedicinalProductManufactured.id, newMedicinalProductManufactured);
+			otherCharacteristics: otherCharacteristics,
+);
 	return newMedicinalProductManufactured;
 }
   final String resourceType= 'MedicinalProductManufactured';

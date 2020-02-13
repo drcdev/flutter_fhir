@@ -63,9 +63,8 @@ class QuestionnaireResponse {
 			elementAuthored: elementAuthored,
 			author: author,
 			source: source,
-			item: item);
-	var questionnaireResponseBox = await Hive.openBox<QuestionnaireResponse>('QuestionnaireResponseBox');
-	questionnaireResponseBox.put(newQuestionnaireResponse.id, newQuestionnaireResponse);
+			item: item,
+);
 	return newQuestionnaireResponse;
 }
   final String resourceType= 'QuestionnaireResponse';
@@ -149,9 +148,8 @@ class QuestionnaireResponse_Item {
 			text: text,
 			elementText: elementText,
 			answer: answer,
-			item: item);
-	var questionnaireResponse_ItemBox = await Hive.openBox<QuestionnaireResponse_Item>('QuestionnaireResponse_ItemBox');
-	questionnaireResponse_ItemBox.put(newQuestionnaireResponse_Item.id, newQuestionnaireResponse_Item);
+			item: item,
+);
 	return newQuestionnaireResponse_Item;
 }
   String id;
@@ -236,9 +234,8 @@ class QuestionnaireResponse_Answer {
 			valueCoding: valueCoding,
 			valueQuantity: valueQuantity,
 			valueReference: valueReference,
-			item: item);
-	var questionnaireResponse_AnswerBox = await Hive.openBox<QuestionnaireResponse_Answer>('QuestionnaireResponse_AnswerBox');
-	questionnaireResponse_AnswerBox.put(newQuestionnaireResponse_Answer.id, newQuestionnaireResponse_Answer);
+			item: item,
+);
 	return newQuestionnaireResponse_Answer;
 }
   String id;

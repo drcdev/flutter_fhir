@@ -99,9 +99,8 @@ class Appointment {
 			elementPatientInstruction: elementPatientInstruction,
 			basedOn: basedOn,
 			participant: participant,
-			requestedPeriod: requestedPeriod);
-	var appointmentBox = await Hive.openBox<Appointment>('AppointmentBox');
-	appointmentBox.put(newAppointment.id, newAppointment);
+			requestedPeriod: requestedPeriod,
+);
 	return newAppointment;
 }
   final String resourceType= 'Appointment';
@@ -219,9 +218,8 @@ class Appointment_Participant {
 			elementRequired: elementRequired,
 			status: status,
 			elementStatus: elementStatus,
-			period: period);
-	var appointment_ParticipantBox = await Hive.openBox<Appointment_Participant>('Appointment_ParticipantBox');
-	appointment_ParticipantBox.put(newAppointment_Participant.id, newAppointment_Participant);
+			period: period,
+);
 	return newAppointment_Participant;
 }
   String id;

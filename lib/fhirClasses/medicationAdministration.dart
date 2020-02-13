@@ -88,9 +88,8 @@ class MedicationAdministration {
 			device: device,
 			note: note,
 			dosage: dosage,
-			eventHistory: eventHistory);
-	var medicationAdministrationBox = await Hive.openBox<MedicationAdministration>('MedicationAdministrationBox');
-	medicationAdministrationBox.put(newMedicationAdministration.id, newMedicationAdministration);
+			eventHistory: eventHistory,
+);
 	return newMedicationAdministration;
 }
   final String resourceType= 'MedicationAdministration';
@@ -184,9 +183,8 @@ class MedicationAdministration_Performer {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
-			actor: actor);
-	var medicationAdministration_PerformerBox = await Hive.openBox<MedicationAdministration_Performer>('MedicationAdministration_PerformerBox');
-	medicationAdministration_PerformerBox.put(newMedicationAdministration_Performer.id, newMedicationAdministration_Performer);
+			actor: actor,
+);
 	return newMedicationAdministration_Performer;
 }
   String id;
@@ -233,9 +231,8 @@ class MedicationAdministration_Dosage {
 			method: method,
 			dose: dose,
 			rateRatio: rateRatio,
-			rateQuantity: rateQuantity);
-	var medicationAdministration_DosageBox = await Hive.openBox<MedicationAdministration_Dosage>('MedicationAdministration_DosageBox');
-	medicationAdministration_DosageBox.put(newMedicationAdministration_Dosage.id, newMedicationAdministration_Dosage);
+			rateQuantity: rateQuantity,
+);
 	return newMedicationAdministration_Dosage;
 }
   String id;

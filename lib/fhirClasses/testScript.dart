@@ -109,9 +109,8 @@ class TestScript {
 			variable: variable,
 			setup: setup,
 			test: test,
-			teardown: teardown);
-	var testScriptBox = await Hive.openBox<TestScript>('TestScriptBox');
-	testScriptBox.put(newTestScript.id, newTestScript);
+			teardown: teardown,
+);
 	return newTestScript;
 }
   final String resourceType= 'TestScript';
@@ -229,9 +228,8 @@ class TestScript_Origin {
 			modifierExtension: modifierExtension,
 			index: index,
 			elementIndex: elementIndex,
-			profile: profile);
-	var testScript_OriginBox = await Hive.openBox<TestScript_Origin>('TestScript_OriginBox');
-	testScript_OriginBox.put(newTestScript_Origin.id, newTestScript_Origin);
+			profile: profile,
+);
 	return newTestScript_Origin;
 }
   String id;
@@ -270,9 +268,8 @@ class TestScript_Destination {
 			modifierExtension: modifierExtension,
 			index: index,
 			elementIndex: elementIndex,
-			profile: profile);
-	var testScript_DestinationBox = await Hive.openBox<TestScript_Destination>('TestScript_DestinationBox');
-	testScript_DestinationBox.put(newTestScript_Destination.id, newTestScript_Destination);
+			profile: profile,
+);
 	return newTestScript_Destination;
 }
   String id;
@@ -309,9 +306,8 @@ class TestScript_Metadata {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			link: link,
-			capability: capability);
-	var testScript_MetadataBox = await Hive.openBox<TestScript_Metadata>('TestScript_MetadataBox');
-	testScript_MetadataBox.put(newTestScript_Metadata.id, newTestScript_Metadata);
+			capability: capability,
+);
 	return newTestScript_Metadata;
 }
   String id;
@@ -350,9 +346,8 @@ class TestScript_Link {
 			url: url,
 			elementUrl: elementUrl,
 			description: description,
-			elementDescription: elementDescription);
-	var testScript_LinkBox = await Hive.openBox<TestScript_Link>('TestScript_LinkBox');
-	testScript_LinkBox.put(newTestScript_Link.id, newTestScript_Link);
+			elementDescription: elementDescription,
+);
 	return newTestScript_Link;
 }
   String id;
@@ -413,9 +408,8 @@ class TestScript_Capability {
 			elementDestination: elementDestination,
 			link: link,
 			elementLink: elementLink,
-			capabilities: capabilities);
-	var testScript_CapabilityBox = await Hive.openBox<TestScript_Capability>('TestScript_CapabilityBox');
-	testScript_CapabilityBox.put(newTestScript_Capability.id, newTestScript_Capability);
+			capabilities: capabilities,
+);
 	return newTestScript_Capability;
 }
   String id;
@@ -478,9 +472,8 @@ class TestScript_Fixture {
 			elementAutocreate: elementAutocreate,
 			autodelete: autodelete,
 			elementAutodelete: elementAutodelete,
-			resource: resource);
-	var testScript_FixtureBox = await Hive.openBox<TestScript_Fixture>('TestScript_FixtureBox');
-	testScript_FixtureBox.put(newTestScript_Fixture.id, newTestScript_Fixture);
+			resource: resource,
+);
 	return newTestScript_Fixture;
 }
   String id;
@@ -549,9 +542,8 @@ class TestScript_Variable {
 			path: path,
 			elementPath: elementPath,
 			sourceId: sourceId,
-			elementSourceId: elementSourceId);
-	var testScript_VariableBox = await Hive.openBox<TestScript_Variable>('TestScript_VariableBox');
-	testScript_VariableBox.put(newTestScript_Variable.id, newTestScript_Variable);
+			elementSourceId: elementSourceId,
+);
 	return newTestScript_Variable;
 }
   String id;
@@ -612,9 +604,8 @@ class TestScript_Setup {
 			id: await newId('TestScript_Setup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			action: action);
-	var testScript_SetupBox = await Hive.openBox<TestScript_Setup>('TestScript_SetupBox');
-	testScript_SetupBox.put(newTestScript_Setup.id, newTestScript_Setup);
+			action: action,
+);
 	return newTestScript_Setup;
 }
   String id;
@@ -647,9 +638,8 @@ class TestScript_Action {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
-			asserts: asserts);
-	var testScript_ActionBox = await Hive.openBox<TestScript_Action>('TestScript_ActionBox');
-	testScript_ActionBox.put(newTestScript_Action.id, newTestScript_Action);
+			asserts: asserts,
+);
 	return newTestScript_Action;
 }
   String id;
@@ -744,9 +734,8 @@ class TestScript_Operation {
 			targetId: targetId,
 			elementTargetId: elementTargetId,
 			url: url,
-			elementUrl: elementUrl);
-	var testScript_OperationBox = await Hive.openBox<TestScript_Operation>('TestScript_OperationBox');
-	testScript_OperationBox.put(newTestScript_Operation.id, newTestScript_Operation);
+			elementUrl: elementUrl,
+);
 	return newTestScript_Operation;
 }
   String id;
@@ -845,9 +834,8 @@ class TestScript_RequestHeader {
 			field: field,
 			elementField: elementField,
 			value: value,
-			elementValue: elementValue);
-	var testScript_RequestHeaderBox = await Hive.openBox<TestScript_RequestHeader>('TestScript_RequestHeaderBox');
-	testScript_RequestHeaderBox.put(newTestScript_RequestHeader.id, newTestScript_RequestHeader);
+			elementValue: elementValue,
+);
 	return newTestScript_RequestHeader;
 }
   String id;
@@ -970,9 +958,8 @@ class TestScript_Assert {
 			value: value,
 			elementValue: elementValue,
 			warningOnly: warningOnly,
-			elementWarningOnly: elementWarningOnly);
-	var testScript_AssertBox = await Hive.openBox<TestScript_Assert>('TestScript_AssertBox');
-	testScript_AssertBox.put(newTestScript_Assert.id, newTestScript_Assert);
+			elementWarningOnly: elementWarningOnly,
+);
 	return newTestScript_Assert;
 }
   String id;
@@ -1097,9 +1084,8 @@ class TestScript_Test {
 			elementName: elementName,
 			description: description,
 			elementDescription: elementDescription,
-			action: action);
-	var testScript_TestBox = await Hive.openBox<TestScript_Test>('TestScript_TestBox');
-	testScript_TestBox.put(newTestScript_Test.id, newTestScript_Test);
+			action: action,
+);
 	return newTestScript_Test;
 }
   String id;
@@ -1140,9 +1126,8 @@ class TestScript_Action1 {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
-			asserts: asserts);
-	var testScript_Action1Box = await Hive.openBox<TestScript_Action1>('TestScript_Action1Box');
-	testScript_Action1Box.put(newTestScript_Action1.id, newTestScript_Action1);
+			asserts: asserts,
+);
 	return newTestScript_Action1;
 }
   String id;
@@ -1175,9 +1160,8 @@ class TestScript_Teardown {
 			id: await newId('TestScript_Teardown'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			action: action);
-	var testScript_TeardownBox = await Hive.openBox<TestScript_Teardown>('TestScript_TeardownBox');
-	testScript_TeardownBox.put(newTestScript_Teardown.id, newTestScript_Teardown);
+			action: action,
+);
 	return newTestScript_Teardown;
 }
   String id;
@@ -1208,9 +1192,8 @@ class TestScript_Action2 {
 			id: await newId('TestScript_Action2'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			operation: operation);
-	var testScript_Action2Box = await Hive.openBox<TestScript_Action2>('TestScript_Action2Box');
-	testScript_Action2Box.put(newTestScript_Action2.id, newTestScript_Action2);
+			operation: operation,
+);
 	return newTestScript_Action2;
 }
   String id;

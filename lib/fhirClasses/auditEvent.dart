@@ -67,9 +67,8 @@ class AuditEvent {
 			purposeOfEvent: purposeOfEvent,
 			agent: agent,
 			source: source,
-			entity: entity);
-	var auditEventBox = await Hive.openBox<AuditEvent>('AuditEventBox');
-	auditEventBox.put(newAuditEvent.id, newAuditEvent);
+			entity: entity,
+);
 	return newAuditEvent;
 }
   final String resourceType= 'AuditEvent';
@@ -171,9 +170,8 @@ class AuditEvent_Agent {
 			elementPolicy: elementPolicy,
 			media: media,
 			network: network,
-			purposeOfUse: purposeOfUse);
-	var auditEvent_AgentBox = await Hive.openBox<AuditEvent_Agent>('AuditEvent_AgentBox');
-	auditEvent_AgentBox.put(newAuditEvent_Agent.id, newAuditEvent_Agent);
+			purposeOfUse: purposeOfUse,
+);
 	return newAuditEvent_Agent;
 }
   String id;
@@ -238,9 +236,8 @@ class AuditEvent_Network {
 			address: address,
 			elementAddress: elementAddress,
 			type: type,
-			elementType: elementType);
-	var auditEvent_NetworkBox = await Hive.openBox<AuditEvent_Network>('AuditEvent_NetworkBox');
-	auditEvent_NetworkBox.put(newAuditEvent_Network.id, newAuditEvent_Network);
+			elementType: elementType,
+);
 	return newAuditEvent_Network;
 }
   String id;
@@ -283,9 +280,8 @@ class AuditEvent_Source {
 			site: site,
 			elementSite: elementSite,
 			observer: observer,
-			type: type);
-	var auditEvent_SourceBox = await Hive.openBox<AuditEvent_Source>('AuditEvent_SourceBox');
-	auditEvent_SourceBox.put(newAuditEvent_Source.id, newAuditEvent_Source);
+			type: type,
+);
 	return newAuditEvent_Source;
 }
   String id;
@@ -344,9 +340,8 @@ class AuditEvent_Entity {
 			elementDescription: elementDescription,
 			query: query,
 			elementQuery: elementQuery,
-			detail: detail);
-	var auditEvent_EntityBox = await Hive.openBox<AuditEvent_Entity>('AuditEvent_EntityBox');
-	auditEvent_EntityBox.put(newAuditEvent_Entity.id, newAuditEvent_Entity);
+			detail: detail,
+);
 	return newAuditEvent_Entity;
 }
   String id;
@@ -409,9 +404,8 @@ class AuditEvent_Detail {
 			valueString: valueString,
 			elementValueString: elementValueString,
 			valueBase64Binary: valueBase64Binary,
-			elementValueBase64Binary: elementValueBase64Binary);
-	var auditEvent_DetailBox = await Hive.openBox<AuditEvent_Detail>('AuditEvent_DetailBox');
-	auditEvent_DetailBox.put(newAuditEvent_Detail.id, newAuditEvent_Detail);
+			elementValueBase64Binary: elementValueBase64Binary,
+);
 	return newAuditEvent_Detail;
 }
   String id;

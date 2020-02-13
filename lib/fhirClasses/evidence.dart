@@ -123,9 +123,8 @@ class Evidence {
 			relatedArtifact: relatedArtifact,
 			exposureBackground: exposureBackground,
 			exposureVariant: exposureVariant,
-			outcome: outcome);
-	var evidenceBox = await Hive.openBox<Evidence>('EvidenceBox');
-	evidenceBox.put(newEvidence.id, newEvidence);
+			outcome: outcome,
+);
 	return newEvidence;
 }
   final String resourceType= 'Evidence';

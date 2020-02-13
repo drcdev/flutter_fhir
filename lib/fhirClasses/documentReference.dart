@@ -79,9 +79,8 @@ class DocumentReference {
 			elementDescription: elementDescription,
 			securityLabel: securityLabel,
 			content: content,
-			context: context);
-	var documentReferenceBox = await Hive.openBox<DocumentReference>('DocumentReferenceBox');
-	documentReferenceBox.put(newDocumentReference.id, newDocumentReference);
+			context: context,
+);
 	return newDocumentReference;
 }
   final String resourceType= 'DocumentReference';
@@ -169,9 +168,8 @@ class DocumentReference_RelatesTo {
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
-			target: target);
-	var documentReference_RelatesToBox = await Hive.openBox<DocumentReference_RelatesTo>('DocumentReference_RelatesToBox');
-	documentReference_RelatesToBox.put(newDocumentReference_RelatesTo.id, newDocumentReference_RelatesTo);
+			target: target,
+);
 	return newDocumentReference_RelatesTo;
 }
   String id;
@@ -208,9 +206,8 @@ class DocumentReference_Content {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			attachment: attachment,
-			format: format);
-	var documentReference_ContentBox = await Hive.openBox<DocumentReference_Content>('DocumentReference_ContentBox');
-	documentReference_ContentBox.put(newDocumentReference_Content.id, newDocumentReference_Content);
+			format: format,
+);
 	return newDocumentReference_Content;
 }
   String id;
@@ -255,9 +252,8 @@ class DocumentReference_Context {
 			facilityType: facilityType,
 			practiceSetting: practiceSetting,
 			sourcePatientInfo: sourcePatientInfo,
-			related: related);
-	var documentReference_ContextBox = await Hive.openBox<DocumentReference_Context>('DocumentReference_ContextBox');
-	documentReference_ContextBox.put(newDocumentReference_Context.id, newDocumentReference_Context);
+			related: related,
+);
 	return newDocumentReference_Context;
 }
   String id;

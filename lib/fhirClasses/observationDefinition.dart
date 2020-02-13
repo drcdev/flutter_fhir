@@ -69,9 +69,8 @@ class ObservationDefinition {
 			validCodedValueSet: validCodedValueSet,
 			normalCodedValueSet: normalCodedValueSet,
 			abnormalCodedValueSet: abnormalCodedValueSet,
-			criticalCodedValueSet: criticalCodedValueSet);
-	var observationDefinitionBox = await Hive.openBox<ObservationDefinition>('ObservationDefinitionBox');
-	observationDefinitionBox.put(newObservationDefinition.id, newObservationDefinition);
+			criticalCodedValueSet: criticalCodedValueSet,
+);
 	return newObservationDefinition;
 }
   final String resourceType= 'ObservationDefinition';
@@ -157,9 +156,8 @@ class ObservationDefinition_QuantitativeDetails {
 			conversionFactor: conversionFactor,
 			elementConversionFactor: elementConversionFactor,
 			decimalPrecision: decimalPrecision,
-			elementDecimalPrecision: elementDecimalPrecision);
-	var observationDefinition_QuantitativeDetailsBox = await Hive.openBox<ObservationDefinition_QuantitativeDetails>('ObservationDefinition_QuantitativeDetailsBox');
-	observationDefinition_QuantitativeDetailsBox.put(newObservationDefinition_QuantitativeDetails.id, newObservationDefinition_QuantitativeDetails);
+			elementDecimalPrecision: elementDecimalPrecision,
+);
 	return newObservationDefinition_QuantitativeDetails;
 }
   String id;
@@ -220,9 +218,8 @@ class ObservationDefinition_QualifiedInterval {
 			age: age,
 			gestationalAge: gestationalAge,
 			condition: condition,
-			elementCondition: elementCondition);
-	var observationDefinition_QualifiedIntervalBox = await Hive.openBox<ObservationDefinition_QualifiedInterval>('ObservationDefinition_QualifiedIntervalBox');
-	observationDefinition_QualifiedIntervalBox.put(newObservationDefinition_QualifiedInterval.id, newObservationDefinition_QualifiedInterval);
+			elementCondition: elementCondition,
+);
 	return newObservationDefinition_QualifiedInterval;
 }
   String id;

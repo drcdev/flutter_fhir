@@ -128,9 +128,8 @@ class EvidenceVariable {
 			relatedArtifact: relatedArtifact,
 			type: type,
 			elementType: elementType,
-			characteristic: characteristic);
-	var evidenceVariableBox = await Hive.openBox<EvidenceVariable>('EvidenceVariableBox');
-	evidenceVariableBox.put(newEvidenceVariable.id, newEvidenceVariable);
+			characteristic: characteristic,
+);
 	return newEvidenceVariable;
 }
   final String resourceType= 'EvidenceVariable';
@@ -294,9 +293,8 @@ class EvidenceVariable_Characteristic {
 			participantEffectiveTiming: participantEffectiveTiming,
 			timeFromStart: timeFromStart,
 			groupMeasure: groupMeasure,
-			elementGroupMeasure: elementGroupMeasure);
-	var evidenceVariable_CharacteristicBox = await Hive.openBox<EvidenceVariable_Characteristic>('EvidenceVariable_CharacteristicBox');
-	evidenceVariable_CharacteristicBox.put(newEvidenceVariable_Characteristic.id, newEvidenceVariable_Characteristic);
+			elementGroupMeasure: elementGroupMeasure,
+);
 	return newEvidenceVariable_Characteristic;
 }
   String id;

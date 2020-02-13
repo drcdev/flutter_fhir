@@ -20,9 +20,8 @@ class CodeableConcept {
 			extension: extension,
 			coding: coding,
 			text: text,
-			elementText: elementText);
-	var codeableConceptBox = await Hive.openBox<CodeableConcept>('CodeableConceptBox');
-	codeableConceptBox.put(newCodeableConcept.id, newCodeableConcept);
+			elementText: elementText,
+);
 	return newCodeableConcept;
 }
   String id;

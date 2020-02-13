@@ -26,9 +26,8 @@ class Population {
 			ageCodeableConcept: ageCodeableConcept,
 			gender: gender,
 			race: race,
-			physiologicalCondition: physiologicalCondition);
-	var populationBox = await Hive.openBox<Population>('PopulationBox');
-	populationBox.put(newPopulation.id, newPopulation);
+			physiologicalCondition: physiologicalCondition,
+);
 	return newPopulation;
 }
   String id;

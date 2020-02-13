@@ -20,9 +20,8 @@ class Narrative {
 			extension: extension,
 			status: status,
 			elementStatus: elementStatus,
-			div: div);
-	var narrativeBox = await Hive.openBox<Narrative>('NarrativeBox');
-	narrativeBox.put(newNarrative.id, newNarrative);
+			div: div,
+);
 	return newNarrative;
 }
   String id;

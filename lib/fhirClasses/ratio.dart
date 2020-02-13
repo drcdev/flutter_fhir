@@ -17,9 +17,8 @@ class Ratio {
 			id: await newId('Ratio'),
 			extension: extension,
 			numerator: numerator,
-			denominator: denominator);
-	var ratioBox = await Hive.openBox<Ratio>('RatioBox');
-	ratioBox.put(newRatio.id, newRatio);
+			denominator: denominator,
+);
 	return newRatio;
 }
   String id;

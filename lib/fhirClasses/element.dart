@@ -12,9 +12,8 @@ class Element {
 		List<Extension> extension}) async {
 	Element newElement = new Element(
 			id: await newId('Element'),
-			extension: extension);
-	var elementBox = await Hive.openBox<Element>('ElementBox');
-	elementBox.put(newElement.id, newElement);
+			extension: extension,
+);
 	return newElement;
 }
   String id;

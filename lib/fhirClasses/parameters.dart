@@ -55,9 +55,8 @@ class Parameters {
 			elementImplicitRules: elementImplicitRules,
 			language: language,
 			elementLanguage: elementLanguage,
-			parameter: parameter);
-	var parametersBox = await Hive.openBox<Parameters>('ParametersBox');
-	parametersBox.put(newParameters.id, newParameters);
+			parameter: parameter,
+);
 	return newParameters;
 }
   final String resourceType= 'Parameters';
@@ -239,9 +238,8 @@ class Parameters_Parameter {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 			resource: resource,
-			part: part);
-	var parameters_ParameterBox = await Hive.openBox<Parameters_Parameter>('Parameters_ParameterBox');
-	parameters_ParameterBox.put(newParameters_Parameter.id, newParameters_Parameter);
+			part: part,
+);
 	return newParameters_Parameter;
 }
   String id;

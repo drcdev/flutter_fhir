@@ -33,9 +33,8 @@ class Quantity {
 			system: system,
 			elementSystem: elementSystem,
 			code: code,
-			elementCode: elementCode);
-	var quantityBox = await Hive.openBox<Quantity>('QuantityBox');
-	quantityBox.put(newQuantity.id, newQuantity);
+			elementCode: elementCode,
+);
 	return newQuantity;
 }
   String id;

@@ -81,9 +81,8 @@ class RiskAssessment {
 			prediction: prediction,
 			mitigation: mitigation,
 			elementMitigation: elementMitigation,
-			note: note);
-	var riskAssessmentBox = await Hive.openBox<RiskAssessment>('RiskAssessmentBox');
-	riskAssessmentBox.put(newRiskAssessment.id, newRiskAssessment);
+			note: note,
+);
 	return newRiskAssessment;
 }
   final String resourceType= 'RiskAssessment';
@@ -189,9 +188,8 @@ class RiskAssessment_Prediction {
 			whenPeriod: whenPeriod,
 			whenRange: whenRange,
 			rationale: rationale,
-			elementRationale: elementRationale);
-	var riskAssessment_PredictionBox = await Hive.openBox<RiskAssessment_Prediction>('RiskAssessment_PredictionBox');
-	riskAssessment_PredictionBox.put(newRiskAssessment_Prediction.id, newRiskAssessment_Prediction);
+			elementRationale: elementRationale,
+);
 	return newRiskAssessment_Prediction;
 }
   String id;

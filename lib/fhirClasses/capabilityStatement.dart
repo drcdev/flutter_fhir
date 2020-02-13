@@ -120,9 +120,8 @@ class CapabilityStatement {
 			implementationGuide: implementationGuide,
 			rest: rest,
 			messaging: messaging,
-			document: document);
-	var capabilityStatementBox = await Hive.openBox<CapabilityStatement>('CapabilityStatementBox');
-	capabilityStatementBox.put(newCapabilityStatement.id, newCapabilityStatement);
+			document: document,
+);
 	return newCapabilityStatement;
 }
   final String resourceType= 'CapabilityStatement';
@@ -258,9 +257,8 @@ class CapabilityStatement_Software {
 			version: version,
 			elementVersion: elementVersion,
 			releaseDate: releaseDate,
-			elementReleaseDate: elementReleaseDate);
-	var capabilityStatement_SoftwareBox = await Hive.openBox<CapabilityStatement_Software>('CapabilityStatement_SoftwareBox');
-	capabilityStatement_SoftwareBox.put(newCapabilityStatement_Software.id, newCapabilityStatement_Software);
+			elementReleaseDate: elementReleaseDate,
+);
 	return newCapabilityStatement_Software;
 }
   String id;
@@ -309,9 +307,8 @@ class CapabilityStatement_Implementation {
 			elementDescription: elementDescription,
 			url: url,
 			elementUrl: elementUrl,
-			custodian: custodian);
-	var capabilityStatement_ImplementationBox = await Hive.openBox<CapabilityStatement_Implementation>('CapabilityStatement_ImplementationBox');
-	capabilityStatement_ImplementationBox.put(newCapabilityStatement_Implementation.id, newCapabilityStatement_Implementation);
+			custodian: custodian,
+);
 	return newCapabilityStatement_Implementation;
 }
   String id;
@@ -368,9 +365,8 @@ class CapabilityStatement_Rest {
 			interaction: interaction,
 			searchParam: searchParam,
 			operation: operation,
-			compartment: compartment);
-	var capabilityStatement_RestBox = await Hive.openBox<CapabilityStatement_Rest>('CapabilityStatement_RestBox');
-	capabilityStatement_RestBox.put(newCapabilityStatement_Rest.id, newCapabilityStatement_Rest);
+			compartment: compartment,
+);
 	return newCapabilityStatement_Rest;
 }
   String id;
@@ -427,9 +423,8 @@ class CapabilityStatement_Security {
 			elementCors: elementCors,
 			service: service,
 			description: description,
-			elementDescription: elementDescription);
-	var capabilityStatement_SecurityBox = await Hive.openBox<CapabilityStatement_Security>('CapabilityStatement_SecurityBox');
-	capabilityStatement_SecurityBox.put(newCapabilityStatement_Security.id, newCapabilityStatement_Security);
+			elementDescription: elementDescription,
+);
 	return newCapabilityStatement_Security;
 }
   String id;
@@ -524,9 +519,8 @@ class CapabilityStatement_Resource {
 			searchRevInclude: searchRevInclude,
 			elementSearchRevInclude: elementSearchRevInclude,
 			searchParam: searchParam,
-			operation: operation);
-	var capabilityStatement_ResourceBox = await Hive.openBox<CapabilityStatement_Resource>('CapabilityStatement_ResourceBox');
-	capabilityStatement_ResourceBox.put(newCapabilityStatement_Resource.id, newCapabilityStatement_Resource);
+			operation: operation,
+);
 	return newCapabilityStatement_Resource;
 }
   String id;
@@ -619,9 +613,8 @@ class CapabilityStatement_Interaction {
 			code: code,
 			elementCode: elementCode,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var capabilityStatement_InteractionBox = await Hive.openBox<CapabilityStatement_Interaction>('CapabilityStatement_InteractionBox');
-	capabilityStatement_InteractionBox.put(newCapabilityStatement_Interaction.id, newCapabilityStatement_Interaction);
+			elementDocumentation: elementDocumentation,
+);
 	return newCapabilityStatement_Interaction;
 }
   String id;
@@ -670,9 +663,8 @@ class CapabilityStatement_SearchParam {
 			type: type,
 			elementType: elementType,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var capabilityStatement_SearchParamBox = await Hive.openBox<CapabilityStatement_SearchParam>('CapabilityStatement_SearchParamBox');
-	capabilityStatement_SearchParamBox.put(newCapabilityStatement_SearchParam.id, newCapabilityStatement_SearchParam);
+			elementDocumentation: elementDocumentation,
+);
 	return newCapabilityStatement_SearchParam;
 }
   String id;
@@ -723,9 +715,8 @@ class CapabilityStatement_Operation {
 			elementName: elementName,
 			definition: definition,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var capabilityStatement_OperationBox = await Hive.openBox<CapabilityStatement_Operation>('CapabilityStatement_OperationBox');
-	capabilityStatement_OperationBox.put(newCapabilityStatement_Operation.id, newCapabilityStatement_Operation);
+			elementDocumentation: elementDocumentation,
+);
 	return newCapabilityStatement_Operation;
 }
   String id;
@@ -770,9 +761,8 @@ class CapabilityStatement_Interaction1 {
 			code: code,
 			elementCode: elementCode,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var capabilityStatement_Interaction1Box = await Hive.openBox<CapabilityStatement_Interaction1>('CapabilityStatement_Interaction1Box');
-	capabilityStatement_Interaction1Box.put(newCapabilityStatement_Interaction1.id, newCapabilityStatement_Interaction1);
+			elementDocumentation: elementDocumentation,
+);
 	return newCapabilityStatement_Interaction1;
 }
   String id;
@@ -819,9 +809,8 @@ class CapabilityStatement_Messaging {
 			elementReliableCache: elementReliableCache,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
-			supportedMessage: supportedMessage);
-	var capabilityStatement_MessagingBox = await Hive.openBox<CapabilityStatement_Messaging>('CapabilityStatement_MessagingBox');
-	capabilityStatement_MessagingBox.put(newCapabilityStatement_Messaging.id, newCapabilityStatement_Messaging);
+			supportedMessage: supportedMessage,
+);
 	return newCapabilityStatement_Messaging;
 }
   String id;
@@ -866,9 +855,8 @@ class CapabilityStatement_Endpoint {
 			modifierExtension: modifierExtension,
 			protocol: protocol,
 			address: address,
-			elementAddress: elementAddress);
-	var capabilityStatement_EndpointBox = await Hive.openBox<CapabilityStatement_Endpoint>('CapabilityStatement_EndpointBox');
-	capabilityStatement_EndpointBox.put(newCapabilityStatement_Endpoint.id, newCapabilityStatement_Endpoint);
+			elementAddress: elementAddress,
+);
 	return newCapabilityStatement_Endpoint;
 }
   String id;
@@ -907,9 +895,8 @@ class CapabilityStatement_SupportedMessage {
 			modifierExtension: modifierExtension,
 			mode: mode,
 			elementMode: elementMode,
-			definition: definition);
-	var capabilityStatement_SupportedMessageBox = await Hive.openBox<CapabilityStatement_SupportedMessage>('CapabilityStatement_SupportedMessageBox');
-	capabilityStatement_SupportedMessageBox.put(newCapabilityStatement_SupportedMessage.id, newCapabilityStatement_SupportedMessage);
+			definition: definition,
+);
 	return newCapabilityStatement_SupportedMessage;
 }
   String id;
@@ -952,9 +939,8 @@ class CapabilityStatement_Document {
 			elementMode: elementMode,
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
-			profile: profile);
-	var capabilityStatement_DocumentBox = await Hive.openBox<CapabilityStatement_Document>('CapabilityStatement_DocumentBox');
-	capabilityStatement_DocumentBox.put(newCapabilityStatement_Document.id, newCapabilityStatement_Document);
+			profile: profile,
+);
 	return newCapabilityStatement_Document;
 }
   String id;

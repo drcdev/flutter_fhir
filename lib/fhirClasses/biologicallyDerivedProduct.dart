@@ -64,9 +64,8 @@ class BiologicallyDerivedProduct {
 			collection: collection,
 			processing: processing,
 			manipulation: manipulation,
-			storage: storage);
-	var biologicallyDerivedProductBox = await Hive.openBox<BiologicallyDerivedProduct>('BiologicallyDerivedProductBox');
-	biologicallyDerivedProductBox.put(newBiologicallyDerivedProduct.id, newBiologicallyDerivedProduct);
+			storage: storage,
+);
 	return newBiologicallyDerivedProduct;
 }
   final String resourceType= 'BiologicallyDerivedProduct';
@@ -146,9 +145,8 @@ class BiologicallyDerivedProduct_Collection {
 			source: source,
 			collectedDateTime: collectedDateTime,
 			elementCollectedDateTime: elementCollectedDateTime,
-			collectedPeriod: collectedPeriod);
-	var biologicallyDerivedProduct_CollectionBox = await Hive.openBox<BiologicallyDerivedProduct_Collection>('BiologicallyDerivedProduct_CollectionBox');
-	biologicallyDerivedProduct_CollectionBox.put(newBiologicallyDerivedProduct_Collection.id, newBiologicallyDerivedProduct_Collection);
+			collectedPeriod: collectedPeriod,
+);
 	return newBiologicallyDerivedProduct_Collection;
 }
   String id;
@@ -199,9 +197,8 @@ class BiologicallyDerivedProduct_Processing {
 			additive: additive,
 			timeDateTime: timeDateTime,
 			elementTimeDateTime: elementTimeDateTime,
-			timePeriod: timePeriod);
-	var biologicallyDerivedProduct_ProcessingBox = await Hive.openBox<BiologicallyDerivedProduct_Processing>('BiologicallyDerivedProduct_ProcessingBox');
-	biologicallyDerivedProduct_ProcessingBox.put(newBiologicallyDerivedProduct_Processing.id, newBiologicallyDerivedProduct_Processing);
+			timePeriod: timePeriod,
+);
 	return newBiologicallyDerivedProduct_Processing;
 }
   String id;
@@ -252,9 +249,8 @@ class BiologicallyDerivedProduct_Manipulation {
 			elementDescription: elementDescription,
 			timeDateTime: timeDateTime,
 			elementTimeDateTime: elementTimeDateTime,
-			timePeriod: timePeriod);
-	var biologicallyDerivedProduct_ManipulationBox = await Hive.openBox<BiologicallyDerivedProduct_Manipulation>('BiologicallyDerivedProduct_ManipulationBox');
-	biologicallyDerivedProduct_ManipulationBox.put(newBiologicallyDerivedProduct_Manipulation.id, newBiologicallyDerivedProduct_Manipulation);
+			timePeriod: timePeriod,
+);
 	return newBiologicallyDerivedProduct_Manipulation;
 }
   String id;
@@ -305,9 +301,8 @@ class BiologicallyDerivedProduct_Storage {
 			elementTemperature: elementTemperature,
 			scale: scale,
 			elementScale: elementScale,
-			duration: duration);
-	var biologicallyDerivedProduct_StorageBox = await Hive.openBox<BiologicallyDerivedProduct_Storage>('BiologicallyDerivedProduct_StorageBox');
-	biologicallyDerivedProduct_StorageBox.put(newBiologicallyDerivedProduct_Storage.id, newBiologicallyDerivedProduct_Storage);
+			duration: duration,
+);
 	return newBiologicallyDerivedProduct_Storage;
 }
   String id;

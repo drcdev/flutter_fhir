@@ -52,9 +52,8 @@ class Address {
 			elementPostalCode: elementPostalCode,
 			country: country,
 			elementCountry: elementCountry,
-			period: period);
-	var addressBox = await Hive.openBox<Address>('AddressBox');
-	addressBox.put(newAddress.id, newAddress);
+			period: period,
+);
 	return newAddress;
 }
   String id;

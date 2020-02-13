@@ -33,9 +33,8 @@ class Expression {
 			expression: expression,
 			elementExpression: elementExpression,
 			reference: reference,
-			elementReference: elementReference);
-	var expressionBox = await Hive.openBox<Expression>('ExpressionBox');
-	expressionBox.put(newExpression.id, newExpression);
+			elementReference: elementReference,
+);
 	return newExpression;
 }
   String id;

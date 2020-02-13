@@ -63,9 +63,8 @@ class EpisodeOfCare {
 			referralRequest: referralRequest,
 			careManager: careManager,
 			team: team,
-			account: account);
-	var episodeOfCareBox = await Hive.openBox<EpisodeOfCare>('EpisodeOfCareBox');
-	episodeOfCareBox.put(newEpisodeOfCare.id, newEpisodeOfCare);
+			account: account,
+);
 	return newEpisodeOfCare;
 }
   final String resourceType= 'EpisodeOfCare';
@@ -139,9 +138,8 @@ class EpisodeOfCare_StatusHistory {
 			modifierExtension: modifierExtension,
 			status: status,
 			elementStatus: elementStatus,
-			period: period);
-	var episodeOfCare_StatusHistoryBox = await Hive.openBox<EpisodeOfCare_StatusHistory>('EpisodeOfCare_StatusHistoryBox');
-	episodeOfCare_StatusHistoryBox.put(newEpisodeOfCare_StatusHistory.id, newEpisodeOfCare_StatusHistory);
+			period: period,
+);
 	return newEpisodeOfCare_StatusHistory;
 }
   String id;
@@ -182,9 +180,8 @@ class EpisodeOfCare_Diagnosis {
 			condition: condition,
 			role: role,
 			rank: rank,
-			elementRank: elementRank);
-	var episodeOfCare_DiagnosisBox = await Hive.openBox<EpisodeOfCare_Diagnosis>('EpisodeOfCare_DiagnosisBox');
-	episodeOfCare_DiagnosisBox.put(newEpisodeOfCare_Diagnosis.id, newEpisodeOfCare_Diagnosis);
+			elementRank: elementRank,
+);
 	return newEpisodeOfCare_Diagnosis;
 }
   String id;

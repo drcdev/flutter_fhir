@@ -46,9 +46,8 @@ class ProdCharacteristic {
 			imprint: imprint,
 			elementImprint: elementImprint,
 			image: image,
-			scoring: scoring);
-	var prodCharacteristicBox = await Hive.openBox<ProdCharacteristic>('ProdCharacteristicBox');
-	prodCharacteristicBox.put(newProdCharacteristic.id, newProdCharacteristic);
+			scoring: scoring,
+);
 	return newProdCharacteristic;
 }
   String id;

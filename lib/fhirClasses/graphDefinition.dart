@@ -85,9 +85,8 @@ class GraphDefinition {
 			start: start,
 			elementStart: elementStart,
 			profile: profile,
-			link: link);
-	var graphDefinitionBox = await Hive.openBox<GraphDefinition>('GraphDefinitionBox');
-	graphDefinitionBox.put(newGraphDefinition.id, newGraphDefinition);
+			link: link,
+);
 	return newGraphDefinition;
 }
   final String resourceType= 'GraphDefinition';
@@ -201,9 +200,8 @@ class GraphDefinition_Link {
 			elementMax: elementMax,
 			description: description,
 			elementDescription: elementDescription,
-			target: target);
-	var graphDefinition_LinkBox = await Hive.openBox<GraphDefinition_Link>('GraphDefinition_LinkBox');
-	graphDefinition_LinkBox.put(newGraphDefinition_Link.id, newGraphDefinition_Link);
+			target: target,
+);
 	return newGraphDefinition_Link;
 }
   String id;
@@ -266,9 +264,8 @@ class GraphDefinition_Target {
 			elementParams: elementParams,
 			profile: profile,
 			compartment: compartment,
-			link: link);
-	var graphDefinition_TargetBox = await Hive.openBox<GraphDefinition_Target>('GraphDefinition_TargetBox');
-	graphDefinition_TargetBox.put(newGraphDefinition_Target.id, newGraphDefinition_Target);
+			link: link,
+);
 	return newGraphDefinition_Target;
 }
   String id;
@@ -329,9 +326,8 @@ class GraphDefinition_Compartment {
 			expression: expression,
 			elementExpression: elementExpression,
 			description: description,
-			elementDescription: elementDescription);
-	var graphDefinition_CompartmentBox = await Hive.openBox<GraphDefinition_Compartment>('GraphDefinition_CompartmentBox');
-	graphDefinition_CompartmentBox.put(newGraphDefinition_Compartment.id, newGraphDefinition_Compartment);
+			elementDescription: elementDescription,
+);
 	return newGraphDefinition_Compartment;
 }
   String id;

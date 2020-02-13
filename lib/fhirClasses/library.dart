@@ -137,9 +137,8 @@ class Library {
 			relatedArtifact: relatedArtifact,
 			parameter: parameter,
 			dataRequirement: dataRequirement,
-			content: content);
-	var libraryBox = await Hive.openBox<Library>('LibraryBox');
-	libraryBox.put(newLibrary.id, newLibrary);
+			content: content,
+);
 	return newLibrary;
 }
   final String resourceType= 'Library';

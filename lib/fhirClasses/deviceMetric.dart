@@ -63,9 +63,8 @@ class DeviceMetric {
 			category: category,
 			elementCategory: elementCategory,
 			measurementPeriod: measurementPeriod,
-			calibration: calibration);
-	var deviceMetricBox = await Hive.openBox<DeviceMetric>('DeviceMetricBox');
-	deviceMetricBox.put(newDeviceMetric.id, newDeviceMetric);
+			calibration: calibration,
+);
 	return newDeviceMetric;
 }
   final String resourceType= 'DeviceMetric';
@@ -145,9 +144,8 @@ class DeviceMetric_Calibration {
 			state: state,
 			elementState: elementState,
 			time: time,
-			elementTime: elementTime);
-	var deviceMetric_CalibrationBox = await Hive.openBox<DeviceMetric_Calibration>('DeviceMetric_CalibrationBox');
-	deviceMetric_CalibrationBox.put(newDeviceMetric_Calibration.id, newDeviceMetric_Calibration);
+			elementTime: elementTime,
+);
 	return newDeviceMetric_Calibration;
 }
   String id;

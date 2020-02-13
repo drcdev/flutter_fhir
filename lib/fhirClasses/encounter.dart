@@ -87,9 +87,8 @@ class Encounter {
 			hospitalization: hospitalization,
 			location: location,
 			serviceProvider: serviceProvider,
-			partOf: partOf);
-	var encounterBox = await Hive.openBox<Encounter>('EncounterBox');
-	encounterBox.put(newEncounter.id, newEncounter);
+			partOf: partOf,
+);
 	return newEncounter;
 }
   final String resourceType= 'Encounter';
@@ -185,9 +184,8 @@ class Encounter_StatusHistory {
 			modifierExtension: modifierExtension,
 			status: status,
 			elementStatus: elementStatus,
-			period: period);
-	var encounter_StatusHistoryBox = await Hive.openBox<Encounter_StatusHistory>('Encounter_StatusHistoryBox');
-	encounter_StatusHistoryBox.put(newEncounter_StatusHistory.id, newEncounter_StatusHistory);
+			period: period,
+);
 	return newEncounter_StatusHistory;
 }
   String id;
@@ -224,9 +222,8 @@ class Encounter_ClassHistory {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			classs: classs,
-			period: period);
-	var encounter_ClassHistoryBox = await Hive.openBox<Encounter_ClassHistory>('Encounter_ClassHistoryBox');
-	encounter_ClassHistoryBox.put(newEncounter_ClassHistory.id, newEncounter_ClassHistory);
+			period: period,
+);
 	return newEncounter_ClassHistory;
 }
   String id;
@@ -263,9 +260,8 @@ class Encounter_Participant {
 			modifierExtension: modifierExtension,
 			type: type,
 			period: period,
-			individual: individual);
-	var encounter_ParticipantBox = await Hive.openBox<Encounter_Participant>('Encounter_ParticipantBox');
-	encounter_ParticipantBox.put(newEncounter_Participant.id, newEncounter_Participant);
+			individual: individual,
+);
 	return newEncounter_Participant;
 }
   String id;
@@ -306,9 +302,8 @@ class Encounter_Diagnosis {
 			condition: condition,
 			use: use,
 			rank: rank,
-			elementRank: elementRank);
-	var encounter_DiagnosisBox = await Hive.openBox<Encounter_Diagnosis>('Encounter_DiagnosisBox');
-	encounter_DiagnosisBox.put(newEncounter_Diagnosis.id, newEncounter_Diagnosis);
+			elementRank: elementRank,
+);
 	return newEncounter_Diagnosis;
 }
   String id;
@@ -361,9 +356,8 @@ class Encounter_Hospitalization {
 			specialCourtesy: specialCourtesy,
 			specialArrangement: specialArrangement,
 			destination: destination,
-			dischargeDisposition: dischargeDisposition);
-	var encounter_HospitalizationBox = await Hive.openBox<Encounter_Hospitalization>('Encounter_HospitalizationBox');
-	encounter_HospitalizationBox.put(newEncounter_Hospitalization.id, newEncounter_Hospitalization);
+			dischargeDisposition: dischargeDisposition,
+);
 	return newEncounter_Hospitalization;
 }
   String id;
@@ -418,9 +412,8 @@ class Encounter_Location {
 			status: status,
 			elementStatus: elementStatus,
 			physicalType: physicalType,
-			period: period);
-	var encounter_LocationBox = await Hive.openBox<Encounter_Location>('Encounter_LocationBox');
-	encounter_LocationBox.put(newEncounter_Location.id, newEncounter_Location);
+			period: period,
+);
 	return newEncounter_Location;
 }
   String id;

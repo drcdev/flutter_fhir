@@ -68,9 +68,8 @@ class DocumentManifest {
 			description: description,
 			elementDescription: elementDescription,
 			content: content,
-			related: related);
-	var documentManifestBox = await Hive.openBox<DocumentManifest>('DocumentManifestBox');
-	documentManifestBox.put(newDocumentManifest.id, newDocumentManifest);
+			related: related,
+);
 	return newDocumentManifest;
 }
   final String resourceType= 'DocumentManifest';
@@ -148,9 +147,8 @@ class DocumentManifest_Related {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
-			ref: ref);
-	var documentManifest_RelatedBox = await Hive.openBox<DocumentManifest_Related>('DocumentManifest_RelatedBox');
-	documentManifest_RelatedBox.put(newDocumentManifest_Related.id, newDocumentManifest_Related);
+			ref: ref,
+);
 	return newDocumentManifest_Related;
 }
   String id;

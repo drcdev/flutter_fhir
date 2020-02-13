@@ -125,9 +125,8 @@ class RiskEvidenceSynthesis {
 			outcome: outcome,
 			sampleSize: sampleSize,
 			riskEstimate: riskEstimate,
-			certainty: certainty);
-	var riskEvidenceSynthesisBox = await Hive.openBox<RiskEvidenceSynthesis>('RiskEvidenceSynthesisBox');
-	riskEvidenceSynthesisBox.put(newRiskEvidenceSynthesis.id, newRiskEvidenceSynthesis);
+			certainty: certainty,
+);
 	return newRiskEvidenceSynthesis;
 }
   final String resourceType= 'RiskEvidenceSynthesis';
@@ -265,9 +264,8 @@ class RiskEvidenceSynthesis_SampleSize {
 			numberOfStudies: numberOfStudies,
 			elementNumberOfStudies: elementNumberOfStudies,
 			numberOfParticipants: numberOfParticipants,
-			elementNumberOfParticipants: elementNumberOfParticipants);
-	var riskEvidenceSynthesis_SampleSizeBox = await Hive.openBox<RiskEvidenceSynthesis_SampleSize>('RiskEvidenceSynthesis_SampleSizeBox');
-	riskEvidenceSynthesis_SampleSizeBox.put(newRiskEvidenceSynthesis_SampleSize.id, newRiskEvidenceSynthesis_SampleSize);
+			elementNumberOfParticipants: elementNumberOfParticipants,
+);
 	return newRiskEvidenceSynthesis_SampleSize;
 }
   String id;
@@ -328,9 +326,8 @@ class RiskEvidenceSynthesis_RiskEstimate {
 			elementDenominatorCount: elementDenominatorCount,
 			numeratorCount: numeratorCount,
 			elementNumeratorCount: elementNumeratorCount,
-			precisionEstimate: precisionEstimate);
-	var riskEvidenceSynthesis_RiskEstimateBox = await Hive.openBox<RiskEvidenceSynthesis_RiskEstimate>('RiskEvidenceSynthesis_RiskEstimateBox');
-	riskEvidenceSynthesis_RiskEstimateBox.put(newRiskEvidenceSynthesis_RiskEstimate.id, newRiskEvidenceSynthesis_RiskEstimate);
+			precisionEstimate: precisionEstimate,
+);
 	return newRiskEvidenceSynthesis_RiskEstimate;
 }
   String id;
@@ -393,9 +390,8 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
 			from: from,
 			elementFrom: elementFrom,
 			to: to,
-			elementTo: elementTo);
-	var riskEvidenceSynthesis_PrecisionEstimateBox = await Hive.openBox<RiskEvidenceSynthesis_PrecisionEstimate>('RiskEvidenceSynthesis_PrecisionEstimateBox');
-	riskEvidenceSynthesis_PrecisionEstimateBox.put(newRiskEvidenceSynthesis_PrecisionEstimate.id, newRiskEvidenceSynthesis_PrecisionEstimate);
+			elementTo: elementTo,
+);
 	return newRiskEvidenceSynthesis_PrecisionEstimate;
 }
   String id;
@@ -442,9 +438,8 @@ class RiskEvidenceSynthesis_Certainty {
 			modifierExtension: modifierExtension,
 			rating: rating,
 			note: note,
-			certaintySubcomponent: certaintySubcomponent);
-	var riskEvidenceSynthesis_CertaintyBox = await Hive.openBox<RiskEvidenceSynthesis_Certainty>('RiskEvidenceSynthesis_CertaintyBox');
-	riskEvidenceSynthesis_CertaintyBox.put(newRiskEvidenceSynthesis_Certainty.id, newRiskEvidenceSynthesis_Certainty);
+			certaintySubcomponent: certaintySubcomponent,
+);
 	return newRiskEvidenceSynthesis_Certainty;
 }
   String id;
@@ -483,9 +478,8 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
 			modifierExtension: modifierExtension,
 			type: type,
 			rating: rating,
-			note: note);
-	var riskEvidenceSynthesis_CertaintySubcomponentBox = await Hive.openBox<RiskEvidenceSynthesis_CertaintySubcomponent>('RiskEvidenceSynthesis_CertaintySubcomponentBox');
-	riskEvidenceSynthesis_CertaintySubcomponentBox.put(newRiskEvidenceSynthesis_CertaintySubcomponent.id, newRiskEvidenceSynthesis_CertaintySubcomponent);
+			note: note,
+);
 	return newRiskEvidenceSynthesis_CertaintySubcomponent;
 }
   String id;

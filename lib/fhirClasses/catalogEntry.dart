@@ -71,9 +71,8 @@ class CatalogEntry {
 			elementLastUpdated: elementLastUpdated,
 			additionalCharacteristic: additionalCharacteristic,
 			additionalClassification: additionalClassification,
-			relatedEntry: relatedEntry);
-	var catalogEntryBox = await Hive.openBox<CatalogEntry>('CatalogEntryBox');
-	catalogEntryBox.put(newCatalogEntry.id, newCatalogEntry);
+			relatedEntry: relatedEntry,
+);
 	return newCatalogEntry;
 }
   final String resourceType= 'CatalogEntry';
@@ -155,9 +154,8 @@ class CatalogEntry_RelatedEntry {
 			modifierExtension: modifierExtension,
 			relationtype: relationtype,
 			elementRelationtype: elementRelationtype,
-			item: item);
-	var catalogEntry_RelatedEntryBox = await Hive.openBox<CatalogEntry_RelatedEntry>('CatalogEntry_RelatedEntryBox');
-	catalogEntry_RelatedEntryBox.put(newCatalogEntry_RelatedEntry.id, newCatalogEntry_RelatedEntry);
+			item: item,
+);
 	return newCatalogEntry_RelatedEntry;
 }
   String id;

@@ -107,9 +107,8 @@ class ConceptMap {
 			elementTargetUri: elementTargetUri,
 			targetCanonical: targetCanonical,
 			elementTargetCanonical: elementTargetCanonical,
-			group: group);
-	var conceptMapBox = await Hive.openBox<ConceptMap>('ConceptMapBox');
-	conceptMapBox.put(newConceptMap.id, newConceptMap);
+			group: group,
+);
 	return newConceptMap;
 }
   final String resourceType= 'ConceptMap';
@@ -241,9 +240,8 @@ class ConceptMap_Group {
 			targetVersion: targetVersion,
 			elementTargetVersion: elementTargetVersion,
 			element: element,
-			unmapped: unmapped);
-	var conceptMap_GroupBox = await Hive.openBox<ConceptMap_Group>('ConceptMap_GroupBox');
-	conceptMap_GroupBox.put(newConceptMap_Group.id, newConceptMap_Group);
+			unmapped: unmapped,
+);
 	return newConceptMap_Group;
 }
   String id;
@@ -300,9 +298,8 @@ class ConceptMap_Element {
 			elementCode: elementCode,
 			display: display,
 			elementDisplay: elementDisplay,
-			target: target);
-	var conceptMap_ElementBox = await Hive.openBox<ConceptMap_Element>('ConceptMap_ElementBox');
-	conceptMap_ElementBox.put(newConceptMap_Element.id, newConceptMap_Element);
+			target: target,
+);
 	return newConceptMap_Element;
 }
   String id;
@@ -359,9 +356,8 @@ class ConceptMap_Target {
 			comment: comment,
 			elementComment: elementComment,
 			dependsOn: dependsOn,
-			product: product);
-	var conceptMap_TargetBox = await Hive.openBox<ConceptMap_Target>('ConceptMap_TargetBox');
-	conceptMap_TargetBox.put(newConceptMap_Target.id, newConceptMap_Target);
+			product: product,
+);
 	return newConceptMap_Target;
 }
   String id;
@@ -422,9 +418,8 @@ class ConceptMap_DependsOn {
 			value: value,
 			elementValue: elementValue,
 			display: display,
-			elementDisplay: elementDisplay);
-	var conceptMap_DependsOnBox = await Hive.openBox<ConceptMap_DependsOn>('ConceptMap_DependsOnBox');
-	conceptMap_DependsOnBox.put(newConceptMap_DependsOn.id, newConceptMap_DependsOn);
+			elementDisplay: elementDisplay,
+);
 	return newConceptMap_DependsOn;
 }
   String id;
@@ -479,9 +474,8 @@ class ConceptMap_Unmapped {
 			elementCode: elementCode,
 			display: display,
 			elementDisplay: elementDisplay,
-			url: url);
-	var conceptMap_UnmappedBox = await Hive.openBox<ConceptMap_Unmapped>('ConceptMap_UnmappedBox');
-	conceptMap_UnmappedBox.put(newConceptMap_Unmapped.id, newConceptMap_Unmapped);
+			url: url,
+);
 	return newConceptMap_Unmapped;
 }
   String id;

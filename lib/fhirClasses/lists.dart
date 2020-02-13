@@ -71,9 +71,8 @@ class Lists {
 			orderedBy: orderedBy,
 			note: note,
 			entry: entry,
-			emptyReason: emptyReason);
-	var listsBox = await Hive.openBox<Lists>('ListsBox');
-	listsBox.put(newLists.id, newLists);
+			emptyReason: emptyReason,
+);
 	return newLists;
 }
   final String resourceType= 'List';
@@ -161,9 +160,8 @@ class List_Entry {
 			elementDeleted: elementDeleted,
 			date: date,
 			elementDate: elementDate,
-			item: item);
-	var list_EntryBox = await Hive.openBox<List_Entry>('List_EntryBox');
-	list_EntryBox.put(newList_Entry.id, newList_Entry);
+			item: item,
+);
 	return newList_Entry;
 }
   String id;

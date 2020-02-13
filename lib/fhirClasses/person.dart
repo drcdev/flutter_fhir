@@ -65,9 +65,8 @@ class Person {
 			managingOrganization: managingOrganization,
 			active: active,
 			elementActive: elementActive,
-			link: link);
-	var personBox = await Hive.openBox<Person>('PersonBox');
-	personBox.put(newPerson.id, newPerson);
+			link: link,
+);
 	return newPerson;
 }
   final String resourceType= 'Person';
@@ -141,9 +140,8 @@ class Person_Link {
 			modifierExtension: modifierExtension,
 			target: target,
 			assurance: assurance,
-			elementAssurance: elementAssurance);
-	var person_LinkBox = await Hive.openBox<Person_Link>('Person_LinkBox');
-	person_LinkBox.put(newPerson_Link.id, newPerson_Link);
+			elementAssurance: elementAssurance,
+);
 	return newPerson_Link;
 }
   String id;

@@ -38,9 +38,8 @@ class Signature {
 			sigFormat: sigFormat,
 			elementSigFormat: elementSigFormat,
 			data: data,
-			elementData: elementData);
-	var signatureBox = await Hive.openBox<Signature>('SignatureBox');
-	signatureBox.put(newSignature.id, newSignature);
+			elementData: elementData,
+);
 	return newSignature;
 }
   String id;

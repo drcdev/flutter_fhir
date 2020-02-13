@@ -33,9 +33,8 @@ class Count {
 			system: system,
 			elementSystem: elementSystem,
 			code: code,
-			elementCode: elementCode);
-	var countBox = await Hive.openBox<Count>('CountBox');
-	countBox.put(newCount.id, newCount);
+			elementCode: elementCode,
+);
 	return newCount;
 }
   String id;

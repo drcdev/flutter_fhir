@@ -49,9 +49,8 @@ class SubstancePolymer {
 			modification: modification,
 			elementModification: elementModification,
 			monomerSet: monomerSet,
-			repeat: repeat);
-	var substancePolymerBox = await Hive.openBox<SubstancePolymer>('SubstancePolymerBox');
-	substancePolymerBox.put(newSubstancePolymer.id, newSubstancePolymer);
+			repeat: repeat,
+);
 	return newSubstancePolymer;
 }
   final String resourceType= 'SubstancePolymer';
@@ -111,9 +110,8 @@ class SubstancePolymer_MonomerSet {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			ratioType: ratioType,
-			startingMaterial: startingMaterial);
-	var substancePolymer_MonomerSetBox = await Hive.openBox<SubstancePolymer_MonomerSet>('SubstancePolymer_MonomerSetBox');
-	substancePolymer_MonomerSetBox.put(newSubstancePolymer_MonomerSet.id, newSubstancePolymer_MonomerSet);
+			startingMaterial: startingMaterial,
+);
 	return newSubstancePolymer_MonomerSet;
 }
   String id;
@@ -154,9 +152,8 @@ class SubstancePolymer_StartingMaterial {
 			type: type,
 			isDefining: isDefining,
 			elementIsDefining: elementIsDefining,
-			amount: amount);
-	var substancePolymer_StartingMaterialBox = await Hive.openBox<SubstancePolymer_StartingMaterial>('SubstancePolymer_StartingMaterialBox');
-	substancePolymer_StartingMaterialBox.put(newSubstancePolymer_StartingMaterial.id, newSubstancePolymer_StartingMaterial);
+			amount: amount,
+);
 	return newSubstancePolymer_StartingMaterial;
 }
   String id;
@@ -205,9 +202,8 @@ class SubstancePolymer_Repeat {
 			averageMolecularFormula: averageMolecularFormula,
 			elementAverageMolecularFormula: elementAverageMolecularFormula,
 			repeatUnitAmountType: repeatUnitAmountType,
-			repeatUnit: repeatUnit);
-	var substancePolymer_RepeatBox = await Hive.openBox<SubstancePolymer_Repeat>('SubstancePolymer_RepeatBox');
-	substancePolymer_RepeatBox.put(newSubstancePolymer_Repeat.id, newSubstancePolymer_Repeat);
+			repeatUnit: repeatUnit,
+);
 	return newSubstancePolymer_Repeat;
 }
   String id;
@@ -258,9 +254,8 @@ class SubstancePolymer_RepeatUnit {
 			elementRepeatUnit: elementRepeatUnit,
 			amount: amount,
 			degreeOfPolymerisation: degreeOfPolymerisation,
-			structuralRepresentation: structuralRepresentation);
-	var substancePolymer_RepeatUnitBox = await Hive.openBox<SubstancePolymer_RepeatUnit>('SubstancePolymer_RepeatUnitBox');
-	substancePolymer_RepeatUnitBox.put(newSubstancePolymer_RepeatUnit.id, newSubstancePolymer_RepeatUnit);
+			structuralRepresentation: structuralRepresentation,
+);
 	return newSubstancePolymer_RepeatUnit;
 }
   String id;
@@ -303,9 +298,8 @@ class SubstancePolymer_DegreeOfPolymerisation {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			degree: degree,
-			amount: amount);
-	var substancePolymer_DegreeOfPolymerisationBox = await Hive.openBox<SubstancePolymer_DegreeOfPolymerisation>('SubstancePolymer_DegreeOfPolymerisationBox');
-	substancePolymer_DegreeOfPolymerisationBox.put(newSubstancePolymer_DegreeOfPolymerisation.id, newSubstancePolymer_DegreeOfPolymerisation);
+			amount: amount,
+);
 	return newSubstancePolymer_DegreeOfPolymerisation;
 }
   String id;
@@ -344,9 +338,8 @@ class SubstancePolymer_StructuralRepresentation {
 			type: type,
 			representation: representation,
 			elementRepresentation: elementRepresentation,
-			attachment: attachment);
-	var substancePolymer_StructuralRepresentationBox = await Hive.openBox<SubstancePolymer_StructuralRepresentation>('SubstancePolymer_StructuralRepresentationBox');
-	substancePolymer_StructuralRepresentationBox.put(newSubstancePolymer_StructuralRepresentation.id, newSubstancePolymer_StructuralRepresentation);
+			attachment: attachment,
+);
 	return newSubstancePolymer_StructuralRepresentation;
 }
   String id;

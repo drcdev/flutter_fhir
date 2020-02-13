@@ -107,9 +107,8 @@ class ClaimResponse {
 			processNote: processNote,
 			communicationRequest: communicationRequest,
 			insurance: insurance,
-			error: error);
-	var claimResponseBox = await Hive.openBox<ClaimResponse>('ClaimResponseBox');
-	claimResponseBox.put(newClaimResponse.id, newClaimResponse);
+			error: error,
+);
 	return newClaimResponse;
 }
   final String resourceType= 'ClaimResponse';
@@ -229,9 +228,8 @@ class ClaimResponse_Item {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
-			detail: detail);
-	var claimResponse_ItemBox = await Hive.openBox<ClaimResponse_Item>('ClaimResponse_ItemBox');
-	claimResponse_ItemBox.put(newClaimResponse_Item.id, newClaimResponse_Item);
+			detail: detail,
+);
 	return newClaimResponse_Item;
 }
   String id;
@@ -280,9 +278,8 @@ class ClaimResponse_Adjudication {
 			reason: reason,
 			amount: amount,
 			value: value,
-			elementValue: elementValue);
-	var claimResponse_AdjudicationBox = await Hive.openBox<ClaimResponse_Adjudication>('ClaimResponse_AdjudicationBox');
-	claimResponse_AdjudicationBox.put(newClaimResponse_Adjudication.id, newClaimResponse_Adjudication);
+			elementValue: elementValue,
+);
 	return newClaimResponse_Adjudication;
 }
   String id;
@@ -331,9 +328,8 @@ class ClaimResponse_Detail {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
-			subDetail: subDetail);
-	var claimResponse_DetailBox = await Hive.openBox<ClaimResponse_Detail>('ClaimResponse_DetailBox');
-	claimResponse_DetailBox.put(newClaimResponse_Detail.id, newClaimResponse_Detail);
+			subDetail: subDetail,
+);
 	return newClaimResponse_Detail;
 }
   String id;
@@ -382,9 +378,8 @@ class ClaimResponse_SubDetail {
 			elementSubDetailSequence: elementSubDetailSequence,
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
-			adjudication: adjudication);
-	var claimResponse_SubDetailBox = await Hive.openBox<ClaimResponse_SubDetail>('ClaimResponse_SubDetailBox');
-	claimResponse_SubDetailBox.put(newClaimResponse_SubDetail.id, newClaimResponse_SubDetail);
+			adjudication: adjudication,
+);
 	return newClaimResponse_SubDetail;
 }
   String id;
@@ -475,9 +470,8 @@ class ClaimResponse_AddItem {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
-			detail: detail);
-	var claimResponse_AddItemBox = await Hive.openBox<ClaimResponse_AddItem>('ClaimResponse_AddItemBox');
-	claimResponse_AddItemBox.put(newClaimResponse_AddItem.id, newClaimResponse_AddItem);
+			detail: detail,
+);
 	return newClaimResponse_AddItem;
 }
   String id;
@@ -580,9 +574,8 @@ class ClaimResponse_Detail1 {
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
-			subDetail: subDetail);
-	var claimResponse_Detail1Box = await Hive.openBox<ClaimResponse_Detail1>('ClaimResponse_Detail1Box');
-	claimResponse_Detail1Box.put(newClaimResponse_Detail1.id, newClaimResponse_Detail1);
+			subDetail: subDetail,
+);
 	return newClaimResponse_Detail1;
 }
   String id;
@@ -651,9 +644,8 @@ class ClaimResponse_SubDetail1 {
 			net: net,
 			noteNumber: noteNumber,
 			elementNoteNumber: elementNoteNumber,
-			adjudication: adjudication);
-	var claimResponse_SubDetail1Box = await Hive.openBox<ClaimResponse_SubDetail1>('ClaimResponse_SubDetail1Box');
-	claimResponse_SubDetail1Box.put(newClaimResponse_SubDetail1.id, newClaimResponse_SubDetail1);
+			adjudication: adjudication,
+);
 	return newClaimResponse_SubDetail1;
 }
   String id;
@@ -704,9 +696,8 @@ class ClaimResponse_Total {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
-			amount: amount);
-	var claimResponse_TotalBox = await Hive.openBox<ClaimResponse_Total>('ClaimResponse_TotalBox');
-	claimResponse_TotalBox.put(newClaimResponse_Total.id, newClaimResponse_Total);
+			amount: amount,
+);
 	return newClaimResponse_Total;
 }
   String id;
@@ -751,9 +742,8 @@ class ClaimResponse_Payment {
 			date: date,
 			elementDate: elementDate,
 			amount: amount,
-			identifier: identifier);
-	var claimResponse_PaymentBox = await Hive.openBox<ClaimResponse_Payment>('ClaimResponse_PaymentBox');
-	claimResponse_PaymentBox.put(newClaimResponse_Payment.id, newClaimResponse_Payment);
+			identifier: identifier,
+);
 	return newClaimResponse_Payment;
 }
   String id;
@@ -808,9 +798,8 @@ class ClaimResponse_ProcessNote {
 			elementType: elementType,
 			text: text,
 			elementText: elementText,
-			language: language);
-	var claimResponse_ProcessNoteBox = await Hive.openBox<ClaimResponse_ProcessNote>('ClaimResponse_ProcessNoteBox');
-	claimResponse_ProcessNoteBox.put(newClaimResponse_ProcessNote.id, newClaimResponse_ProcessNote);
+			language: language,
+);
 	return newClaimResponse_ProcessNote;
 }
   String id;
@@ -867,9 +856,8 @@ class ClaimResponse_Insurance {
 			coverage: coverage,
 			businessArrangement: businessArrangement,
 			elementBusinessArrangement: elementBusinessArrangement,
-			claimResponse: claimResponse);
-	var claimResponse_InsuranceBox = await Hive.openBox<ClaimResponse_Insurance>('ClaimResponse_InsuranceBox');
-	claimResponse_InsuranceBox.put(newClaimResponse_Insurance.id, newClaimResponse_Insurance);
+			claimResponse: claimResponse,
+);
 	return newClaimResponse_Insurance;
 }
   String id;
@@ -926,9 +914,8 @@ class ClaimResponse_Error {
 			elementDetailSequence: elementDetailSequence,
 			subDetailSequence: subDetailSequence,
 			elementSubDetailSequence: elementSubDetailSequence,
-			code: code);
-	var claimResponse_ErrorBox = await Hive.openBox<ClaimResponse_Error>('ClaimResponse_ErrorBox');
-	claimResponse_ErrorBox.put(newClaimResponse_Error.id, newClaimResponse_Error);
+			code: code,
+);
 	return newClaimResponse_Error;
 }
   String id;

@@ -39,9 +39,8 @@ class ParameterDefinition {
 			elementDocumentation: elementDocumentation,
 			type: type,
 			elementType: elementType,
-			profile: profile);
-	var parameterDefinitionBox = await Hive.openBox<ParameterDefinition>('ParameterDefinitionBox');
-	parameterDefinitionBox.put(newParameterDefinition.id, newParameterDefinition);
+			profile: profile,
+);
 	return newParameterDefinition;
 }
   String id;

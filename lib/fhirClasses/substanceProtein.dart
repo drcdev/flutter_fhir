@@ -47,9 +47,8 @@ class SubstanceProtein {
 			elementNumberOfSubunits: elementNumberOfSubunits,
 			disulfideLinkage: disulfideLinkage,
 			elementDisulfideLinkage: elementDisulfideLinkage,
-			subunit: subunit);
-	var substanceProteinBox = await Hive.openBox<SubstanceProtein>('SubstanceProteinBox');
-	substanceProteinBox.put(newSubstanceProtein.id, newSubstanceProtein);
+			subunit: subunit,
+);
 	return newSubstanceProtein;
 }
   final String resourceType= 'SubstanceProtein';
@@ -129,9 +128,8 @@ class SubstanceProtein_Subunit {
 			elementNTerminalModification: elementNTerminalModification,
 			cTerminalModificationId: cTerminalModificationId,
 			cTerminalModification: cTerminalModification,
-			elementCTerminalModification: elementCTerminalModification);
-	var substanceProtein_SubunitBox = await Hive.openBox<SubstanceProtein_Subunit>('SubstanceProtein_SubunitBox');
-	substanceProtein_SubunitBox.put(newSubstanceProtein_Subunit.id, newSubstanceProtein_Subunit);
+			elementCTerminalModification: elementCTerminalModification,
+);
 	return newSubstanceProtein_Subunit;
 }
   String id;

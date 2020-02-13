@@ -45,9 +45,8 @@ class MedicinalProductUndesirableEffect {
 			symptomConditionEffect: symptomConditionEffect,
 			classification: classification,
 			frequencyOfOccurrence: frequencyOfOccurrence,
-			population: population);
-	var medicinalProductUndesirableEffectBox = await Hive.openBox<MedicinalProductUndesirableEffect>('MedicinalProductUndesirableEffectBox');
-	medicinalProductUndesirableEffectBox.put(newMedicinalProductUndesirableEffect.id, newMedicinalProductUndesirableEffect);
+			population: population,
+);
 	return newMedicinalProductUndesirableEffect;
 }
   final String resourceType= 'MedicinalProductUndesirableEffect';

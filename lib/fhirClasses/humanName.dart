@@ -40,9 +40,8 @@ class HumanName {
 			elementPrefix: elementPrefix,
 			suffix: suffix,
 			elementSuffix: elementSuffix,
-			period: period);
-	var humanNameBox = await Hive.openBox<HumanName>('HumanNameBox');
-	humanNameBox.put(newHumanName.id, newHumanName);
+			period: period,
+);
 	return newHumanName;
 }
   String id;

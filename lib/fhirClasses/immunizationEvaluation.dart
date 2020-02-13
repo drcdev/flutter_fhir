@@ -82,9 +82,8 @@ class ImmunizationEvaluation {
 			seriesDosesPositiveInt: seriesDosesPositiveInt,
 			elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
 			seriesDosesString: seriesDosesString,
-			elementSeriesDosesString: elementSeriesDosesString);
-	var immunizationEvaluationBox = await Hive.openBox<ImmunizationEvaluation>('ImmunizationEvaluationBox');
-	immunizationEvaluationBox.put(newImmunizationEvaluation.id, newImmunizationEvaluation);
+			elementSeriesDosesString: elementSeriesDosesString,
+);
 	return newImmunizationEvaluation;
 }
   final String resourceType= 'ImmunizationEvaluation';

@@ -96,7 +96,8 @@ class Patient {
 			communication: communication,
 			generalPractitioner: generalPractitioner,
 			managingOrganization: managingOrganization,
-			link: link);
+			link: link,
+);
 	return newPatient;
 }
   final String resourceType= 'Patient';
@@ -235,9 +236,8 @@ class Patient_Contact {
 			gender: gender,
 			elementGender: elementGender,
 			organization: organization,
-			period: period);
-	var patient_ContactBox = await Hive.openBox<Patient_Contact>('Patient_ContactBox');
-	patient_ContactBox.put(newPatient_Contact.id, newPatient_Contact);
+			period: period,
+);
 	return newPatient_Contact;
 }
   String id;
@@ -286,9 +286,8 @@ class Patient_Communication {
 			modifierExtension: modifierExtension,
 			language: language,
 			preferred: preferred,
-			elementPreferred: elementPreferred);
-	var patient_CommunicationBox = await Hive.openBox<Patient_Communication>('Patient_CommunicationBox');
-	patient_CommunicationBox.put(newPatient_Communication.id, newPatient_Communication);
+			elementPreferred: elementPreferred,
+);
 	return newPatient_Communication;
 }
   String id;
@@ -327,9 +326,8 @@ class Patient_Link {
 			modifierExtension: modifierExtension,
 			other: other,
 			type: type,
-			elementType: elementType);
-	var patient_LinkBox = await Hive.openBox<Patient_Link>('Patient_LinkBox');
-	patient_LinkBox.put(newPatient_Link.id, newPatient_Link);
+			elementType: elementType,
+);
 	return newPatient_Link;
 }
   String id;

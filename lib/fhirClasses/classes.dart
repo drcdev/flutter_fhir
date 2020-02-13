@@ -851,22 +851,23 @@ classesSetup() async {
 	'VisionPrescription',
 	'VisionPrescription_LensSpecification',
 	'VisionPrescription_Prism'];
+
+
 }
 
 Future<String> newId(String resource) async {
   return '001';
 }
 
-@JsonSerializable(explicitToJson: true)
 class Classes {
 
-  String resourceType;
+  final String resourceType;
 
 
-  String id;
+  final String id;
 
 
-  String deviceId;
+  final String deviceId;
 
 
   String lastId;

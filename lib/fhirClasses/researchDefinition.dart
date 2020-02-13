@@ -144,9 +144,8 @@ class ResearchDefinition {
 			population: population,
 			exposure: exposure,
 			exposureAlternative: exposureAlternative,
-			outcome: outcome);
-	var researchDefinitionBox = await Hive.openBox<ResearchDefinition>('ResearchDefinitionBox');
-	researchDefinitionBox.put(newResearchDefinition.id, newResearchDefinition);
+			outcome: outcome,
+);
 	return newResearchDefinition;
 }
   final String resourceType= 'ResearchDefinition';

@@ -100,9 +100,8 @@ class Condition {
 			asserter: asserter,
 			stage: stage,
 			evidence: evidence,
-			note: note);
-	var conditionBox = await Hive.openBox<Condition>('ConditionBox');
-	conditionBox.put(newCondition.id, newCondition);
+			note: note,
+);
 	return newCondition;
 }
   final String resourceType= 'Condition';
@@ -210,9 +209,8 @@ class Condition_Stage {
 			modifierExtension: modifierExtension,
 			summary: summary,
 			assessment: assessment,
-			type: type);
-	var condition_StageBox = await Hive.openBox<Condition_Stage>('Condition_StageBox');
-	condition_StageBox.put(newCondition_Stage.id, newCondition_Stage);
+			type: type,
+);
 	return newCondition_Stage;
 }
   String id;
@@ -249,9 +247,8 @@ class Condition_Evidence {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
-			detail: detail);
-	var condition_EvidenceBox = await Hive.openBox<Condition_Evidence>('Condition_EvidenceBox');
-	condition_EvidenceBox.put(newCondition_Evidence.id, newCondition_Evidence);
+			detail: detail,
+);
 	return newCondition_Evidence;
 }
   String id;

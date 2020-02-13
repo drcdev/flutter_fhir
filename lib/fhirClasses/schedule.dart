@@ -57,9 +57,8 @@ class Schedule {
 			actor: actor,
 			planningHorizon: planningHorizon,
 			comment: comment,
-			elementComment: elementComment);
-	var scheduleBox = await Hive.openBox<Schedule>('ScheduleBox');
-	scheduleBox.put(newSchedule.id, newSchedule);
+			elementComment: elementComment,
+);
 	return newSchedule;
 }
   final String resourceType= 'Schedule';

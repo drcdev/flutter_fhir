@@ -68,9 +68,8 @@ class Slot {
 			overbooked: overbooked,
 			elementOverbooked: elementOverbooked,
 			comment: comment,
-			elementComment: elementComment);
-	var slotBox = await Hive.openBox<Slot>('SlotBox');
-	slotBox.put(newSlot.id, newSlot);
+			elementComment: elementComment,
+);
 	return newSlot;
 }
   final String resourceType= 'Slot';

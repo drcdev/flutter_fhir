@@ -84,9 +84,8 @@ class DiagnosticReport {
 			conclusion: conclusion,
 			elementConclusion: elementConclusion,
 			conclusionCode: conclusionCode,
-			presentedForm: presentedForm);
-	var diagnosticReportBox = await Hive.openBox<DiagnosticReport>('DiagnosticReportBox');
-	diagnosticReportBox.put(newDiagnosticReport.id, newDiagnosticReport);
+			presentedForm: presentedForm,
+);
 	return newDiagnosticReport;
 }
   final String resourceType= 'DiagnosticReport';
@@ -180,9 +179,8 @@ class DiagnosticReport_Media {
 			modifierExtension: modifierExtension,
 			comment: comment,
 			elementComment: elementComment,
-			link: link);
-	var diagnosticReport_MediaBox = await Hive.openBox<DiagnosticReport_Media>('DiagnosticReport_MediaBox');
-	diagnosticReport_MediaBox.put(newDiagnosticReport_Media.id, newDiagnosticReport_Media);
+			link: link,
+);
 	return newDiagnosticReport_Media;
 }
   String id;

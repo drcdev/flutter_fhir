@@ -50,9 +50,8 @@ class MedicinalProductInteraction {
 			type: type,
 			effect: effect,
 			incidence: incidence,
-			management: management);
-	var medicinalProductInteractionBox = await Hive.openBox<MedicinalProductInteraction>('MedicinalProductInteractionBox');
-	medicinalProductInteractionBox.put(newMedicinalProductInteraction.id, newMedicinalProductInteraction);
+			management: management,
+);
 	return newMedicinalProductInteraction;
 }
   final String resourceType= 'MedicinalProductInteraction';
@@ -114,9 +113,8 @@ class MedicinalProductInteraction_Interactant {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemReference: itemReference,
-			itemCodeableConcept: itemCodeableConcept);
-	var medicinalProductInteraction_InteractantBox = await Hive.openBox<MedicinalProductInteraction_Interactant>('MedicinalProductInteraction_InteractantBox');
-	medicinalProductInteraction_InteractantBox.put(newMedicinalProductInteraction_Interactant.id, newMedicinalProductInteraction_Interactant);
+			itemCodeableConcept: itemCodeableConcept,
+);
 	return newMedicinalProductInteraction_Interactant;
 }
   String id;

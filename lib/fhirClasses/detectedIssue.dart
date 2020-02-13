@@ -73,9 +73,8 @@ class DetectedIssue {
 			elementDetail: elementDetail,
 			reference: reference,
 			elementReference: elementReference,
-			mitigation: mitigation);
-	var detectedIssueBox = await Hive.openBox<DetectedIssue>('DetectedIssueBox');
-	detectedIssueBox.put(newDetectedIssue.id, newDetectedIssue);
+			mitigation: mitigation,
+);
 	return newDetectedIssue;
 }
   final String resourceType= 'DetectedIssue';
@@ -157,9 +156,8 @@ class DetectedIssue_Evidence {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
-			detail: detail);
-	var detectedIssue_EvidenceBox = await Hive.openBox<DetectedIssue_Evidence>('DetectedIssue_EvidenceBox');
-	detectedIssue_EvidenceBox.put(newDetectedIssue_Evidence.id, newDetectedIssue_Evidence);
+			detail: detail,
+);
 	return newDetectedIssue_Evidence;
 }
   String id;
@@ -198,9 +196,8 @@ class DetectedIssue_Mitigation {
 			action: action,
 			date: date,
 			elementDate: elementDate,
-			author: author);
-	var detectedIssue_MitigationBox = await Hive.openBox<DetectedIssue_Mitigation>('DetectedIssue_MitigationBox');
-	detectedIssue_MitigationBox.put(newDetectedIssue_Mitigation.id, newDetectedIssue_Mitigation);
+			author: author,
+);
 	return newDetectedIssue_Mitigation;
 }
   String id;

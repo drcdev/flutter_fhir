@@ -75,9 +75,8 @@ class DeviceUseStatement {
 			reasonCode: reasonCode,
 			reasonReference: reasonReference,
 			bodySite: bodySite,
-			note: note);
-	var deviceUseStatementBox = await Hive.openBox<DeviceUseStatement>('DeviceUseStatementBox');
-	deviceUseStatementBox.put(newDeviceUseStatement.id, newDeviceUseStatement);
+			note: note,
+);
 	return newDeviceUseStatement;
 }
   final String resourceType= 'DeviceUseStatement';

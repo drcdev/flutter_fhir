@@ -42,9 +42,8 @@ class DataRequirement {
 			dateFilter: dateFilter,
 			limit: limit,
 			elementLimit: elementLimit,
-			sort: sort);
-	var dataRequirementBox = await Hive.openBox<DataRequirement>('DataRequirementBox');
-	dataRequirementBox.put(newDataRequirement.id, newDataRequirement);
+			sort: sort,
+);
 	return newDataRequirement;
 }
   String id;
@@ -105,9 +104,8 @@ class DataRequirement_CodeFilter {
 			searchParam: searchParam,
 			elementSearchParam: elementSearchParam,
 			valueSet: valueSet,
-			code: code);
-	var dataRequirement_CodeFilterBox = await Hive.openBox<DataRequirement_CodeFilter>('DataRequirement_CodeFilterBox');
-	dataRequirement_CodeFilterBox.put(newDataRequirement_CodeFilter.id, newDataRequirement_CodeFilter);
+			code: code,
+);
 	return newDataRequirement_CodeFilter;
 }
   String id;
@@ -162,9 +160,8 @@ class DataRequirement_DateFilter {
 			valueDateTime: valueDateTime,
 			elementValueDateTime: elementValueDateTime,
 			valuePeriod: valuePeriod,
-			valueDuration: valueDuration);
-	var dataRequirement_DateFilterBox = await Hive.openBox<DataRequirement_DateFilter>('DataRequirement_DateFilterBox');
-	dataRequirement_DateFilterBox.put(newDataRequirement_DateFilter.id, newDataRequirement_DateFilter);
+			valueDuration: valueDuration,
+);
 	return newDataRequirement_DateFilter;
 }
   String id;
@@ -215,9 +212,8 @@ class DataRequirement_Sort {
 			path: path,
 			elementPath: elementPath,
 			direction: direction,
-			elementDirection: elementDirection);
-	var dataRequirement_SortBox = await Hive.openBox<DataRequirement_Sort>('DataRequirement_SortBox');
-	dataRequirement_SortBox.put(newDataRequirement_Sort.id, newDataRequirement_Sort);
+			elementDirection: elementDirection,
+);
 	return newDataRequirement_Sort;
 }
   String id;

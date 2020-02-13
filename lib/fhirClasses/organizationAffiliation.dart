@@ -63,9 +63,8 @@ class OrganizationAffiliation {
 			location: location,
 			healthcareService: healthcareService,
 			telecom: telecom,
-			endpoint: endpoint);
-	var organizationAffiliationBox = await Hive.openBox<OrganizationAffiliation>('OrganizationAffiliationBox');
-	organizationAffiliationBox.put(newOrganizationAffiliation.id, newOrganizationAffiliation);
+			endpoint: endpoint,
+);
 	return newOrganizationAffiliation;
 }
   final String resourceType= 'OrganizationAffiliation';

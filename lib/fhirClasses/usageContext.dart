@@ -28,9 +28,8 @@ class UsageContext {
 			valueCodeableConcept: valueCodeableConcept,
 			valueQuantity: valueQuantity,
 			valueRange: valueRange,
-			valueReference: valueReference);
-	var usageContextBox = await Hive.openBox<UsageContext>('UsageContextBox');
-	usageContextBox.put(newUsageContext.id, newUsageContext);
+			valueReference: valueReference,
+);
 	return newUsageContext;
 }
   String id;

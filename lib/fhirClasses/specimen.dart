@@ -69,9 +69,8 @@ class Specimen {
 			processing: processing,
 			container: container,
 			condition: condition,
-			note: note);
-	var specimenBox = await Hive.openBox<Specimen>('SpecimenBox');
-	specimenBox.put(newSpecimen.id, newSpecimen);
+			note: note,
+);
 	return newSpecimen;
 }
   final String resourceType= 'Specimen';
@@ -163,9 +162,8 @@ class Specimen_Collection {
 			method: method,
 			bodySite: bodySite,
 			fastingStatusCodeableConcept: fastingStatusCodeableConcept,
-			fastingStatusDuration: fastingStatusDuration);
-	var specimen_CollectionBox = await Hive.openBox<Specimen_Collection>('Specimen_CollectionBox');
-	specimen_CollectionBox.put(newSpecimen_Collection.id, newSpecimen_Collection);
+			fastingStatusDuration: fastingStatusDuration,
+);
 	return newSpecimen_Collection;
 }
   String id;
@@ -226,9 +224,8 @@ class Specimen_Processing {
 			additive: additive,
 			timeDateTime: timeDateTime,
 			elementTimeDateTime: elementTimeDateTime,
-			timePeriod: timePeriod);
-	var specimen_ProcessingBox = await Hive.openBox<Specimen_Processing>('Specimen_ProcessingBox');
-	specimen_ProcessingBox.put(newSpecimen_Processing.id, newSpecimen_Processing);
+			timePeriod: timePeriod,
+);
 	return newSpecimen_Processing;
 }
   String id;
@@ -285,9 +282,8 @@ class Specimen_Container {
 			capacity: capacity,
 			specimenQuantity: specimenQuantity,
 			additiveCodeableConcept: additiveCodeableConcept,
-			additiveReference: additiveReference);
-	var specimen_ContainerBox = await Hive.openBox<Specimen_Container>('Specimen_ContainerBox');
-	specimen_ContainerBox.put(newSpecimen_Container.id, newSpecimen_Container);
+			additiveReference: additiveReference,
+);
 	return newSpecimen_Container;
 }
   String id;

@@ -91,9 +91,8 @@ class RequestGroup {
 			reasonCode: reasonCode,
 			reasonReference: reasonReference,
 			note: note,
-			action: action);
-	var requestGroupBox = await Hive.openBox<RequestGroup>('RequestGroupBox');
-	requestGroupBox.put(newRequestGroup.id, newRequestGroup);
+			action: action,
+);
 	return newRequestGroup;
 }
   final String resourceType= 'RequestGroup';
@@ -253,9 +252,8 @@ class RequestGroup_Action {
 			cardinalityBehavior: cardinalityBehavior,
 			elementCardinalityBehavior: elementCardinalityBehavior,
 			resource: resource,
-			action: action);
-	var requestGroup_ActionBox = await Hive.openBox<RequestGroup_Action>('RequestGroup_ActionBox');
-	requestGroup_ActionBox.put(newRequestGroup_Action.id, newRequestGroup_Action);
+			action: action,
+);
 	return newRequestGroup_Action;
 }
   String id;
@@ -358,9 +356,8 @@ class RequestGroup_Condition {
 			modifierExtension: modifierExtension,
 			kind: kind,
 			elementKind: elementKind,
-			expression: expression);
-	var requestGroup_ConditionBox = await Hive.openBox<RequestGroup_Condition>('RequestGroup_ConditionBox');
-	requestGroup_ConditionBox.put(newRequestGroup_Condition.id, newRequestGroup_Condition);
+			expression: expression,
+);
 	return newRequestGroup_Condition;
 }
   String id;
@@ -405,9 +402,8 @@ class RequestGroup_RelatedAction {
 			relationship: relationship,
 			elementRelationship: elementRelationship,
 			offsetDuration: offsetDuration,
-			offsetRange: offsetRange);
-	var requestGroup_RelatedActionBox = await Hive.openBox<RequestGroup_RelatedAction>('RequestGroup_RelatedActionBox');
-	requestGroup_RelatedActionBox.put(newRequestGroup_RelatedAction.id, newRequestGroup_RelatedAction);
+			offsetRange: offsetRange,
+);
 	return newRequestGroup_RelatedAction;
 }
   String id;

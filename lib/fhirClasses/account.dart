@@ -65,9 +65,8 @@ class Account {
 			description: description,
 			elementDescription: elementDescription,
 			guarantor: guarantor,
-			partOf: partOf);
-	var accountBox = await Hive.openBox<Account>('AccountBox');
-	accountBox.put(newAccount.id, newAccount);
+			partOf: partOf,
+);
 	return newAccount;
 }
   final String resourceType= 'Account';
@@ -143,9 +142,8 @@ class Account_Coverage {
 			modifierExtension: modifierExtension,
 			coverage: coverage,
 			priority: priority,
-			elementPriority: elementPriority);
-	var account_CoverageBox = await Hive.openBox<Account_Coverage>('Account_CoverageBox');
-	account_CoverageBox.put(newAccount_Coverage.id, newAccount_Coverage);
+			elementPriority: elementPriority,
+);
 	return newAccount_Coverage;
 }
   String id;
@@ -186,9 +184,8 @@ class Account_Guarantor {
 			party: party,
 			onHold: onHold,
 			elementOnHold: elementOnHold,
-			period: period);
-	var account_GuarantorBox = await Hive.openBox<Account_Guarantor>('Account_GuarantorBox');
-	account_GuarantorBox.put(newAccount_Guarantor.id, newAccount_Guarantor);
+			period: period,
+);
 	return newAccount_Guarantor;
 }
   String id;

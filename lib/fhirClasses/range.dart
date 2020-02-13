@@ -17,9 +17,8 @@ class Range {
 			id: await newId('Range'),
 			extension: extension,
 			low: low,
-			high: high);
-	var rangeBox = await Hive.openBox<Range>('RangeBox');
-	rangeBox.put(newRange.id, newRange);
+			high: high,
+);
 	return newRange;
 }
   String id;

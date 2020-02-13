@@ -50,9 +50,8 @@ class MedicinalProductContraindication {
 			comorbidity: comorbidity,
 			therapeuticIndication: therapeuticIndication,
 			otherTherapy: otherTherapy,
-			population: population);
-	var medicinalProductContraindicationBox = await Hive.openBox<MedicinalProductContraindication>('MedicinalProductContraindicationBox');
-	medicinalProductContraindicationBox.put(newMedicinalProductContraindication.id, newMedicinalProductContraindication);
+			population: population,
+);
 	return newMedicinalProductContraindication;
 }
   final String resourceType= 'MedicinalProductContraindication';
@@ -114,9 +113,8 @@ class MedicinalProductContraindication_OtherTherapy {
 			modifierExtension: modifierExtension,
 			therapyRelationshipType: therapyRelationshipType,
 			medicationCodeableConcept: medicationCodeableConcept,
-			medicationReference: medicationReference);
-	var medicinalProductContraindication_OtherTherapyBox = await Hive.openBox<MedicinalProductContraindication_OtherTherapy>('MedicinalProductContraindication_OtherTherapyBox');
-	medicinalProductContraindication_OtherTherapyBox.put(newMedicinalProductContraindication_OtherTherapy.id, newMedicinalProductContraindication_OtherTherapy);
+			medicationReference: medicationReference,
+);
 	return newMedicinalProductContraindication_OtherTherapy;
 }
   String id;

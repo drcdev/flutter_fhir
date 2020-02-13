@@ -114,9 +114,8 @@ class FamilyMemberHistory {
 			reasonCode: reasonCode,
 			reasonReference: reasonReference,
 			note: note,
-			condition: condition);
-	var familyMemberHistoryBox = await Hive.openBox<FamilyMemberHistory>('FamilyMemberHistoryBox');
-	familyMemberHistoryBox.put(newFamilyMemberHistory.id, newFamilyMemberHistory);
+			condition: condition,
+);
 	return newFamilyMemberHistory;
 }
   final String resourceType= 'FamilyMemberHistory';
@@ -252,9 +251,8 @@ class FamilyMemberHistory_Condition {
 			onsetPeriod: onsetPeriod,
 			onsetString: onsetString,
 			elementOnsetString: elementOnsetString,
-			note: note);
-	var familyMemberHistory_ConditionBox = await Hive.openBox<FamilyMemberHistory_Condition>('FamilyMemberHistory_ConditionBox');
-	familyMemberHistory_ConditionBox.put(newFamilyMemberHistory_Condition.id, newFamilyMemberHistory_Condition);
+			note: note,
+);
 	return newFamilyMemberHistory_Condition;
 }
   String id;

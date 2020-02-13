@@ -69,9 +69,8 @@ class PractitionerRole {
 			notAvailable: notAvailable,
 			availabilityExceptions: availabilityExceptions,
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
-			endpoint: endpoint);
-	var practitionerRoleBox = await Hive.openBox<PractitionerRole>('PractitionerRoleBox');
-	practitionerRoleBox.put(newPractitionerRole.id, newPractitionerRole);
+			endpoint: endpoint,
+);
 	return newPractitionerRole;
 }
   final String resourceType= 'PractitionerRole';
@@ -161,9 +160,8 @@ class PractitionerRole_AvailableTime {
 			availableStartTime: availableStartTime,
 			elementAvailableStartTime: elementAvailableStartTime,
 			availableEndTime: availableEndTime,
-			elementAvailableEndTime: elementAvailableEndTime);
-	var practitionerRole_AvailableTimeBox = await Hive.openBox<PractitionerRole_AvailableTime>('PractitionerRole_AvailableTimeBox');
-	practitionerRole_AvailableTimeBox.put(newPractitionerRole_AvailableTime.id, newPractitionerRole_AvailableTime);
+			elementAvailableEndTime: elementAvailableEndTime,
+);
 	return newPractitionerRole_AvailableTime;
 }
   String id;
@@ -212,9 +210,8 @@ class PractitionerRole_NotAvailable {
 			modifierExtension: modifierExtension,
 			description: description,
 			elementDescription: elementDescription,
-			during: during);
-	var practitionerRole_NotAvailableBox = await Hive.openBox<PractitionerRole_NotAvailable>('PractitionerRole_NotAvailableBox');
-	practitionerRole_NotAvailableBox.put(newPractitionerRole_NotAvailable.id, newPractitionerRole_NotAvailable);
+			during: during,
+);
 	return newPractitionerRole_NotAvailable;
 }
   String id;

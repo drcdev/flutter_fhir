@@ -33,9 +33,8 @@ class Age {
 			system: system,
 			elementSystem: elementSystem,
 			code: code,
-			elementCode: elementCode);
-	var ageBox = await Hive.openBox<Age>('AgeBox');
-	ageBox.put(newAge.id, newAge);
+			elementCode: elementCode,
+);
 	return newAge;
 }
   String id;

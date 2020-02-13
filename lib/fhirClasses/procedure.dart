@@ -112,9 +112,8 @@ class Procedure {
 			note: note,
 			focalDevice: focalDevice,
 			usedReference: usedReference,
-			usedCode: usedCode);
-	var procedureBox = await Hive.openBox<Procedure>('ProcedureBox');
-	procedureBox.put(newProcedure.id, newProcedure);
+			usedCode: usedCode,
+);
 	return newProcedure;
 }
   final String resourceType= 'Procedure';
@@ -234,9 +233,8 @@ class Procedure_Performer {
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
-			onBehalfOf: onBehalfOf);
-	var procedure_PerformerBox = await Hive.openBox<Procedure_Performer>('Procedure_PerformerBox');
-	procedure_PerformerBox.put(newProcedure_Performer.id, newProcedure_Performer);
+			onBehalfOf: onBehalfOf,
+);
 	return newProcedure_Performer;
 }
   String id;
@@ -273,9 +271,8 @@ class Procedure_FocalDevice {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
-			manipulated: manipulated);
-	var procedure_FocalDeviceBox = await Hive.openBox<Procedure_FocalDevice>('Procedure_FocalDeviceBox');
-	procedure_FocalDeviceBox.put(newProcedure_FocalDevice.id, newProcedure_FocalDevice);
+			manipulated: manipulated,
+);
 	return newProcedure_FocalDevice;
 }
   String id;

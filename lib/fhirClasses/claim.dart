@@ -101,9 +101,8 @@ class Claim {
 			insurance: insurance,
 			accident: accident,
 			item: item,
-			total: total);
-	var claimBox = await Hive.openBox<Claim>('ClaimBox');
-	claimBox.put(newClaim.id, newClaim);
+			total: total,
+);
 	return newClaim;
 }
   final String resourceType= 'Claim';
@@ -211,9 +210,8 @@ class Claim_Related {
 			modifierExtension: modifierExtension,
 			claim: claim,
 			relationship: relationship,
-			reference: reference);
-	var claim_RelatedBox = await Hive.openBox<Claim_Related>('Claim_RelatedBox');
-	claim_RelatedBox.put(newClaim_Related.id, newClaim_Related);
+			reference: reference,
+);
 	return newClaim_Related;
 }
   String id;
@@ -250,9 +248,8 @@ class Claim_Payee {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
-			party: party);
-	var claim_PayeeBox = await Hive.openBox<Claim_Payee>('Claim_PayeeBox');
-	claim_PayeeBox.put(newClaim_Payee.id, newClaim_Payee);
+			party: party,
+);
 	return newClaim_Payee;
 }
   String id;
@@ -297,9 +294,8 @@ class Claim_CareTeam {
 			responsible: responsible,
 			elementResponsible: elementResponsible,
 			role: role,
-			qualification: qualification);
-	var claim_CareTeamBox = await Hive.openBox<Claim_CareTeam>('Claim_CareTeamBox');
-	claim_CareTeamBox.put(newClaim_CareTeam.id, newClaim_CareTeam);
+			qualification: qualification,
+);
 	return newClaim_CareTeam;
 }
   String id;
@@ -370,9 +366,8 @@ class Claim_SupportingInfo {
 			valueQuantity: valueQuantity,
 			valueAttachment: valueAttachment,
 			valueReference: valueReference,
-			reason: reason);
-	var claim_SupportingInfoBox = await Hive.openBox<Claim_SupportingInfo>('Claim_SupportingInfoBox');
-	claim_SupportingInfoBox.put(newClaim_SupportingInfo.id, newClaim_SupportingInfo);
+			reason: reason,
+);
 	return newClaim_SupportingInfo;
 }
   String id;
@@ -443,9 +438,8 @@ class Claim_Diagnosis {
 			diagnosisReference: diagnosisReference,
 			type: type,
 			onAdmission: onAdmission,
-			packageCode: packageCode);
-	var claim_DiagnosisBox = await Hive.openBox<Claim_Diagnosis>('Claim_DiagnosisBox');
-	claim_DiagnosisBox.put(newClaim_Diagnosis.id, newClaim_Diagnosis);
+			packageCode: packageCode,
+);
 	return newClaim_Diagnosis;
 }
   String id;
@@ -502,9 +496,8 @@ class Claim_Procedure {
 			elementDate: elementDate,
 			procedureCodeableConcept: procedureCodeableConcept,
 			procedureReference: procedureReference,
-			udi: udi);
-	var claim_ProcedureBox = await Hive.openBox<Claim_Procedure>('Claim_ProcedureBox');
-	claim_ProcedureBox.put(newClaim_Procedure.id, newClaim_Procedure);
+			udi: udi,
+);
 	return newClaim_Procedure;
 }
   String id;
@@ -569,9 +562,8 @@ class Claim_Insurance {
 			elementBusinessArrangement: elementBusinessArrangement,
 			preAuthRef: preAuthRef,
 			elementPreAuthRef: elementPreAuthRef,
-			claimResponse: claimResponse);
-	var claim_InsuranceBox = await Hive.openBox<Claim_Insurance>('Claim_InsuranceBox');
-	claim_InsuranceBox.put(newClaim_Insurance.id, newClaim_Insurance);
+			claimResponse: claimResponse,
+);
 	return newClaim_Insurance;
 }
   String id;
@@ -630,9 +622,8 @@ class Claim_Accident {
 			elementDate: elementDate,
 			type: type,
 			locationAddress: locationAddress,
-			locationReference: locationReference);
-	var claim_AccidentBox = await Hive.openBox<Claim_Accident>('Claim_AccidentBox');
-	claim_AccidentBox.put(newClaim_Accident.id, newClaim_Accident);
+			locationReference: locationReference,
+);
 	return newClaim_Accident;
 }
   String id;
@@ -731,9 +722,8 @@ class Claim_Item {
 			bodySite: bodySite,
 			subSite: subSite,
 			encounter: encounter,
-			detail: detail);
-	var claim_ItemBox = await Hive.openBox<Claim_Item>('Claim_ItemBox');
-	claim_ItemBox.put(newClaim_Item.id, newClaim_Item);
+			detail: detail,
+);
 	return newClaim_Item;
 }
   String id;
@@ -850,9 +840,8 @@ class Claim_Detail {
 			elementFactor: elementFactor,
 			net: net,
 			udi: udi,
-			subDetail: subDetail);
-	var claim_DetailBox = await Hive.openBox<Claim_Detail>('Claim_DetailBox');
-	claim_DetailBox.put(newClaim_Detail.id, newClaim_Detail);
+			subDetail: subDetail,
+);
 	return newClaim_Detail;
 }
   String id;
@@ -933,9 +922,8 @@ class Claim_SubDetail {
 			factor: factor,
 			elementFactor: elementFactor,
 			net: net,
-			udi: udi);
-	var claim_SubDetailBox = await Hive.openBox<Claim_SubDetail>('Claim_SubDetailBox');
-	claim_SubDetailBox.put(newClaim_SubDetail.id, newClaim_SubDetail);
+			udi: udi,
+);
 	return newClaim_SubDetail;
 }
   String id;

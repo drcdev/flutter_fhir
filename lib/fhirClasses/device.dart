@@ -111,9 +111,8 @@ class Device {
 			elementUrl: elementUrl,
 			note: note,
 			safety: safety,
-			parent: parent);
-	var deviceBox = await Hive.openBox<Device>('DeviceBox');
-	deviceBox.put(newDevice.id, newDevice);
+			parent: parent,
+);
 	return newDevice;
 }
   final String resourceType= 'Device';
@@ -251,9 +250,8 @@ class Device_UdiCarrier {
 			carrierHRF: carrierHRF,
 			elementCarrierHRF: elementCarrierHRF,
 			entryType: entryType,
-			elementEntryType: elementEntryType);
-	var device_UdiCarrierBox = await Hive.openBox<Device_UdiCarrier>('Device_UdiCarrierBox');
-	device_UdiCarrierBox.put(newDevice_UdiCarrier.id, newDevice_UdiCarrier);
+			elementEntryType: elementEntryType,
+);
 	return newDevice_UdiCarrier;
 }
   String id;
@@ -312,9 +310,8 @@ class Device_DeviceName {
 			name: name,
 			elementName: elementName,
 			type: type,
-			elementType: elementType);
-	var device_DeviceNameBox = await Hive.openBox<Device_DeviceName>('Device_DeviceNameBox');
-	device_DeviceNameBox.put(newDevice_DeviceName.id, newDevice_DeviceName);
+			elementType: elementType,
+);
 	return newDevice_DeviceName;
 }
   String id;
@@ -355,9 +352,8 @@ class Device_Specialization {
 			modifierExtension: modifierExtension,
 			systemType: systemType,
 			version: version,
-			elementVersion: elementVersion);
-	var device_SpecializationBox = await Hive.openBox<Device_Specialization>('Device_SpecializationBox');
-	device_SpecializationBox.put(newDevice_Specialization.id, newDevice_Specialization);
+			elementVersion: elementVersion,
+);
 	return newDevice_Specialization;
 }
   String id;
@@ -398,9 +394,8 @@ class Device_Version {
 			type: type,
 			component: component,
 			value: value,
-			elementValue: elementValue);
-	var device_VersionBox = await Hive.openBox<Device_Version>('Device_VersionBox');
-	device_VersionBox.put(newDevice_Version.id, newDevice_Version);
+			elementValue: elementValue,
+);
 	return newDevice_Version;
 }
   String id;
@@ -441,9 +436,8 @@ class Device_Property {
 			modifierExtension: modifierExtension,
 			type: type,
 			valueQuantity: valueQuantity,
-			valueCode: valueCode);
-	var device_PropertyBox = await Hive.openBox<Device_Property>('Device_PropertyBox');
-	device_PropertyBox.put(newDevice_Property.id, newDevice_Property);
+			valueCode: valueCode,
+);
 	return newDevice_Property;
 }
   String id;

@@ -109,9 +109,8 @@ class ChargeItemDefinition {
 			code: code,
 			instance: instance,
 			applicability: applicability,
-			propertyGroup: propertyGroup);
-	var chargeItemDefinitionBox = await Hive.openBox<ChargeItemDefinition>('ChargeItemDefinitionBox');
-	chargeItemDefinitionBox.put(newChargeItemDefinition.id, newChargeItemDefinition);
+			propertyGroup: propertyGroup,
+);
 	return newChargeItemDefinition;
 }
   final String resourceType= 'ChargeItemDefinition';
@@ -235,9 +234,8 @@ class ChargeItemDefinition_Applicability {
 			language: language,
 			elementLanguage: elementLanguage,
 			expression: expression,
-			elementExpression: elementExpression);
-	var chargeItemDefinition_ApplicabilityBox = await Hive.openBox<ChargeItemDefinition_Applicability>('ChargeItemDefinition_ApplicabilityBox');
-	chargeItemDefinition_ApplicabilityBox.put(newChargeItemDefinition_Applicability.id, newChargeItemDefinition_Applicability);
+			elementExpression: elementExpression,
+);
 	return newChargeItemDefinition_Applicability;
 }
   String id;
@@ -280,9 +278,8 @@ class ChargeItemDefinition_PropertyGroup {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			applicability: applicability,
-			priceComponent: priceComponent);
-	var chargeItemDefinition_PropertyGroupBox = await Hive.openBox<ChargeItemDefinition_PropertyGroup>('ChargeItemDefinition_PropertyGroupBox');
-	chargeItemDefinition_PropertyGroupBox.put(newChargeItemDefinition_PropertyGroup.id, newChargeItemDefinition_PropertyGroup);
+			priceComponent: priceComponent,
+);
 	return newChargeItemDefinition_PropertyGroup;
 }
   String id;
@@ -325,9 +322,8 @@ class ChargeItemDefinition_PriceComponent {
 			code: code,
 			factor: factor,
 			elementFactor: elementFactor,
-			amount: amount);
-	var chargeItemDefinition_PriceComponentBox = await Hive.openBox<ChargeItemDefinition_PriceComponent>('ChargeItemDefinition_PriceComponentBox');
-	chargeItemDefinition_PriceComponentBox.put(newChargeItemDefinition_PriceComponent.id, newChargeItemDefinition_PriceComponent);
+			amount: amount,
+);
 	return newChargeItemDefinition_PriceComponent;
 }
   String id;

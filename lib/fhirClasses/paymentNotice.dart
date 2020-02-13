@@ -67,9 +67,8 @@ class PaymentNotice {
 			payee: payee,
 			recipient: recipient,
 			amount: amount,
-			paymentStatus: paymentStatus);
-	var paymentNoticeBox = await Hive.openBox<PaymentNotice>('PaymentNoticeBox');
-	paymentNoticeBox.put(newPaymentNotice.id, newPaymentNotice);
+			paymentStatus: paymentStatus,
+);
 	return newPaymentNotice;
 }
   final String resourceType= 'PaymentNotice';

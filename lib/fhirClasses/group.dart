@@ -69,9 +69,8 @@ class Group {
 			elementQuantity: elementQuantity,
 			managingEntity: managingEntity,
 			characteristic: characteristic,
-			member: member);
-	var groupBox = await Hive.openBox<Group>('GroupBox');
-	groupBox.put(newGroup.id, newGroup);
+			member: member,
+);
 	return newGroup;
 }
   final String resourceType= 'Group';
@@ -163,9 +162,8 @@ class Group_Characteristic {
 			valueReference: valueReference,
 			exclude: exclude,
 			elementExclude: elementExclude,
-			period: period);
-	var group_CharacteristicBox = await Hive.openBox<Group_Characteristic>('Group_CharacteristicBox');
-	group_CharacteristicBox.put(newGroup_Characteristic.id, newGroup_Characteristic);
+			period: period,
+);
 	return newGroup_Characteristic;
 }
   String id;
@@ -220,9 +218,8 @@ class Group_Member {
 			entity: entity,
 			period: period,
 			inactive: inactive,
-			elementInactive: elementInactive);
-	var group_MemberBox = await Hive.openBox<Group_Member>('Group_MemberBox');
-	group_MemberBox.put(newGroup_Member.id, newGroup_Member);
+			elementInactive: elementInactive,
+);
 	return newGroup_Member;
 }
   String id;

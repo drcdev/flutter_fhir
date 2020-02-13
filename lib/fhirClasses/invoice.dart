@@ -78,9 +78,8 @@ class Invoice {
 			totalGross: totalGross,
 			paymentTerms: paymentTerms,
 			elementPaymentTerms: elementPaymentTerms,
-			note: note);
-	var invoiceBox = await Hive.openBox<Invoice>('InvoiceBox');
-	invoiceBox.put(newInvoice.id, newInvoice);
+			note: note,
+);
 	return newInvoice;
 }
   final String resourceType= 'Invoice';
@@ -166,9 +165,8 @@ class Invoice_Participant {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
-			actor: actor);
-	var invoice_ParticipantBox = await Hive.openBox<Invoice_Participant>('Invoice_ParticipantBox');
-	invoice_ParticipantBox.put(newInvoice_Participant.id, newInvoice_Participant);
+			actor: actor,
+);
 	return newInvoice_Participant;
 }
   String id;
@@ -209,9 +207,8 @@ class Invoice_LineItem {
 			elementSequence: elementSequence,
 			chargeItemReference: chargeItemReference,
 			chargeItemCodeableConcept: chargeItemCodeableConcept,
-			priceComponent: priceComponent);
-	var invoice_LineItemBox = await Hive.openBox<Invoice_LineItem>('Invoice_LineItemBox');
-	invoice_LineItemBox.put(newInvoice_LineItem.id, newInvoice_LineItem);
+			priceComponent: priceComponent,
+);
 	return newInvoice_LineItem;
 }
   String id;
@@ -260,9 +257,8 @@ class Invoice_PriceComponent {
 			code: code,
 			factor: factor,
 			elementFactor: elementFactor,
-			amount: amount);
-	var invoice_PriceComponentBox = await Hive.openBox<Invoice_PriceComponent>('Invoice_PriceComponentBox');
-	invoice_PriceComponentBox.put(newInvoice_PriceComponent.id, newInvoice_PriceComponent);
+			amount: amount,
+);
 	return newInvoice_PriceComponent;
 }
   String id;

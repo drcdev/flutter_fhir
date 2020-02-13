@@ -121,9 +121,8 @@ class StructureMap {
 			elementCopyright: elementCopyright,
 			structure: structure,
 			import: import,
-			group: group);
-	var structureMapBox = await Hive.openBox<StructureMap>('StructureMapBox');
-	structureMapBox.put(newStructureMap.id, newStructureMap);
+			group: group,
+);
 	return newStructureMap;
 }
   final String resourceType= 'StructureMap';
@@ -237,9 +236,8 @@ class StructureMap_Structure {
 			alias: alias,
 			elementAlias: elementAlias,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var structureMap_StructureBox = await Hive.openBox<StructureMap_Structure>('StructureMap_StructureBox');
-	structureMap_StructureBox.put(newStructureMap_Structure.id, newStructureMap_Structure);
+			elementDocumentation: elementDocumentation,
+);
 	return newStructureMap_Structure;
 }
   String id;
@@ -300,9 +298,8 @@ class StructureMap_Group {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 			input: input,
-			rule: rule);
-	var structureMap_GroupBox = await Hive.openBox<StructureMap_Group>('StructureMap_GroupBox');
-	structureMap_GroupBox.put(newStructureMap_Group.id, newStructureMap_Group);
+			rule: rule,
+);
 	return newStructureMap_Group;
 }
   String id;
@@ -365,9 +362,8 @@ class StructureMap_Input {
 			mode: mode,
 			elementMode: elementMode,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var structureMap_InputBox = await Hive.openBox<StructureMap_Input>('StructureMap_InputBox');
-	structureMap_InputBox.put(newStructureMap_Input.id, newStructureMap_Input);
+			elementDocumentation: elementDocumentation,
+);
 	return newStructureMap_Input;
 }
   String id;
@@ -426,9 +422,8 @@ class StructureMap_Rule {
 			rule: rule,
 			dependent: dependent,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var structureMap_RuleBox = await Hive.openBox<StructureMap_Rule>('StructureMap_RuleBox');
-	structureMap_RuleBox.put(newStructureMap_Rule.id, newStructureMap_Rule);
+			elementDocumentation: elementDocumentation,
+);
 	return newStructureMap_Rule;
 }
   String id;
@@ -649,9 +644,8 @@ class StructureMap_Source {
 			check: check,
 			elementCheck: elementCheck,
 			logMessage: logMessage,
-			elementLogMessage: elementLogMessage);
-	var structureMap_SourceBox = await Hive.openBox<StructureMap_Source>('StructureMap_SourceBox');
-	structureMap_SourceBox.put(newStructureMap_Source.id, newStructureMap_Source);
+			elementLogMessage: elementLogMessage,
+);
 	return newStructureMap_Source;
 }
   String id;
@@ -886,9 +880,8 @@ class StructureMap_Target {
 			elementListRuleId: elementListRuleId,
 			transform: transform,
 			elementTransform: elementTransform,
-			parameter: parameter);
-	var structureMap_TargetBox = await Hive.openBox<StructureMap_Target>('StructureMap_TargetBox');
-	structureMap_TargetBox.put(newStructureMap_Target.id, newStructureMap_Target);
+			parameter: parameter,
+);
 	return newStructureMap_Target;
 }
   String id;
@@ -965,9 +958,8 @@ class StructureMap_Parameter {
 			valueInteger: valueInteger,
 			elementValueInteger: elementValueInteger,
 			valueDecimal: valueDecimal,
-			elementValueDecimal: elementValueDecimal);
-	var structureMap_ParameterBox = await Hive.openBox<StructureMap_Parameter>('StructureMap_ParameterBox');
-	structureMap_ParameterBox.put(newStructureMap_Parameter.id, newStructureMap_Parameter);
+			elementValueDecimal: elementValueDecimal,
+);
 	return newStructureMap_Parameter;
 }
   String id;
@@ -1022,9 +1014,8 @@ class StructureMap_Dependent {
 			name: name,
 			elementName: elementName,
 			variable: variable,
-			elementVariable: elementVariable);
-	var structureMap_DependentBox = await Hive.openBox<StructureMap_Dependent>('StructureMap_DependentBox');
-	structureMap_DependentBox.put(newStructureMap_Dependent.id, newStructureMap_Dependent);
+			elementVariable: elementVariable,
+);
 	return newStructureMap_Dependent;
 }
   String id;

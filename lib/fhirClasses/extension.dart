@@ -185,9 +185,8 @@ class Extension {
 			valueTriggerDefinition: valueTriggerDefinition,
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
-			valueMeta: valueMeta);
-	var extensionBox = await Hive.openBox<Extension>('ExtensionBox');
-	extensionBox.put(newExtension.id, newExtension);
+			valueMeta: valueMeta,
+);
 	return newExtension;
 }
   String id;

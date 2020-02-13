@@ -33,9 +33,8 @@ class Duration {
 			system: system,
 			elementSystem: elementSystem,
 			code: code,
-			elementCode: elementCode);
-	var durationBox = await Hive.openBox<Duration>('DurationBox');
-	durationBox.put(newDuration.id, newDuration);
+			elementCode: elementCode,
+);
 	return newDuration;
 }
   String id;

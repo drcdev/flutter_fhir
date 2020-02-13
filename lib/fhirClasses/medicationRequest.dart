@@ -125,9 +125,8 @@ class MedicationRequest {
 			substitution: substitution,
 			priorPrescription: priorPrescription,
 			detectedIssue: detectedIssue,
-			eventHistory: eventHistory);
-	var medicationRequestBox = await Hive.openBox<MedicationRequest>('MedicationRequestBox');
-	medicationRequestBox.put(newMedicationRequest.id, newMedicationRequest);
+			eventHistory: eventHistory,
+);
 	return newMedicationRequest;
 }
   final String resourceType= 'MedicationRequest';
@@ -269,9 +268,8 @@ class MedicationRequest_DispenseRequest {
 			elementNumberOfRepeatsAllowed: elementNumberOfRepeatsAllowed,
 			quantity: quantity,
 			expectedSupplyDuration: expectedSupplyDuration,
-			performer: performer);
-	var medicationRequest_DispenseRequestBox = await Hive.openBox<MedicationRequest_DispenseRequest>('MedicationRequest_DispenseRequestBox');
-	medicationRequest_DispenseRequestBox.put(newMedicationRequest_DispenseRequest.id, newMedicationRequest_DispenseRequest);
+			performer: performer,
+);
 	return newMedicationRequest_DispenseRequest;
 }
   String id;
@@ -318,9 +316,8 @@ class MedicationRequest_InitialFill {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
-			duration: duration);
-	var medicationRequest_InitialFillBox = await Hive.openBox<MedicationRequest_InitialFill>('MedicationRequest_InitialFillBox');
-	medicationRequest_InitialFillBox.put(newMedicationRequest_InitialFill.id, newMedicationRequest_InitialFill);
+			duration: duration,
+);
 	return newMedicationRequest_InitialFill;
 }
   String id;
@@ -359,9 +356,8 @@ class MedicationRequest_Substitution {
 			allowedBoolean: allowedBoolean,
 			elementAllowedBoolean: elementAllowedBoolean,
 			allowedCodeableConcept: allowedCodeableConcept,
-			reason: reason);
-	var medicationRequest_SubstitutionBox = await Hive.openBox<MedicationRequest_Substitution>('MedicationRequest_SubstitutionBox');
-	medicationRequest_SubstitutionBox.put(newMedicationRequest_Substitution.id, newMedicationRequest_Substitution);
+			reason: reason,
+);
 	return newMedicationRequest_Substitution;
 }
   String id;

@@ -65,9 +65,8 @@ class Provenance {
 			activity: activity,
 			agent: agent,
 			entity: entity,
-			signature: signature);
-	var provenanceBox = await Hive.openBox<Provenance>('ProvenanceBox');
-	provenanceBox.put(newProvenance.id, newProvenance);
+			signature: signature,
+);
 	return newProvenance;
 }
   final String resourceType= 'Provenance';
@@ -145,9 +144,8 @@ class Provenance_Agent {
 			type: type,
 			role: role,
 			who: who,
-			onBehalfOf: onBehalfOf);
-	var provenance_AgentBox = await Hive.openBox<Provenance_Agent>('Provenance_AgentBox');
-	provenance_AgentBox.put(newProvenance_Agent.id, newProvenance_Agent);
+			onBehalfOf: onBehalfOf,
+);
 	return newProvenance_Agent;
 }
   String id;
@@ -190,9 +188,8 @@ class Provenance_Entity {
 			role: role,
 			elementRole: elementRole,
 			what: what,
-			agent: agent);
-	var provenance_EntityBox = await Hive.openBox<Provenance_Entity>('Provenance_EntityBox');
-	provenance_EntityBox.put(newProvenance_Entity.id, newProvenance_Entity);
+			agent: agent,
+);
 	return newProvenance_Entity;
 }
   String id;

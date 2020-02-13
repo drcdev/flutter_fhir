@@ -71,9 +71,8 @@ class Endpoint {
 			address: address,
 			elementAddress: elementAddress,
 			header: header,
-			elementHeader: elementHeader);
-	var endpointBox = await Hive.openBox<Endpoint>('EndpointBox');
-	endpointBox.put(newEndpoint.id, newEndpoint);
+			elementHeader: elementHeader,
+);
 	return newEndpoint;
 }
   final String resourceType= 'Endpoint';

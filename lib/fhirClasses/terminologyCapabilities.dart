@@ -111,9 +111,8 @@ class TerminologyCapabilities {
 			elementCodeSearch: elementCodeSearch,
 			validateCode: validateCode,
 			translation: translation,
-			closure: closure);
-	var terminologyCapabilitiesBox = await Hive.openBox<TerminologyCapabilities>('TerminologyCapabilitiesBox');
-	terminologyCapabilitiesBox.put(newTerminologyCapabilities.id, newTerminologyCapabilities);
+			closure: closure,
+);
 	return newTerminologyCapabilities;
 }
   final String resourceType= 'TerminologyCapabilities';
@@ -239,9 +238,8 @@ class TerminologyCapabilities_Software {
 			name: name,
 			elementName: elementName,
 			version: version,
-			elementVersion: elementVersion);
-	var terminologyCapabilities_SoftwareBox = await Hive.openBox<TerminologyCapabilities_Software>('TerminologyCapabilities_SoftwareBox');
-	terminologyCapabilities_SoftwareBox.put(newTerminologyCapabilities_Software.id, newTerminologyCapabilities_Software);
+			elementVersion: elementVersion,
+);
 	return newTerminologyCapabilities_Software;
 }
   String id;
@@ -284,9 +282,8 @@ class TerminologyCapabilities_Implementation {
 			description: description,
 			elementDescription: elementDescription,
 			url: url,
-			elementUrl: elementUrl);
-	var terminologyCapabilities_ImplementationBox = await Hive.openBox<TerminologyCapabilities_Implementation>('TerminologyCapabilities_ImplementationBox');
-	terminologyCapabilities_ImplementationBox.put(newTerminologyCapabilities_Implementation.id, newTerminologyCapabilities_Implementation);
+			elementUrl: elementUrl,
+);
 	return newTerminologyCapabilities_Implementation;
 }
   String id;
@@ -329,9 +326,8 @@ class TerminologyCapabilities_CodeSystem {
 			uri: uri,
 			version: version,
 			subsumption: subsumption,
-			elementSubsumption: elementSubsumption);
-	var terminologyCapabilities_CodeSystemBox = await Hive.openBox<TerminologyCapabilities_CodeSystem>('TerminologyCapabilities_CodeSystemBox');
-	terminologyCapabilities_CodeSystemBox.put(newTerminologyCapabilities_CodeSystem.id, newTerminologyCapabilities_CodeSystem);
+			elementSubsumption: elementSubsumption,
+);
 	return newTerminologyCapabilities_CodeSystem;
 }
   String id;
@@ -388,9 +384,8 @@ class TerminologyCapabilities_Version {
 			elementLanguage: elementLanguage,
 			filter: filter,
 			property: property,
-			elementProperty: elementProperty);
-	var terminologyCapabilities_VersionBox = await Hive.openBox<TerminologyCapabilities_Version>('TerminologyCapabilities_VersionBox');
-	terminologyCapabilities_VersionBox.put(newTerminologyCapabilities_Version.id, newTerminologyCapabilities_Version);
+			elementProperty: elementProperty,
+);
 	return newTerminologyCapabilities_Version;
 }
   String id;
@@ -447,9 +442,8 @@ class TerminologyCapabilities_Filter {
 			code: code,
 			elementCode: elementCode,
 			op: op,
-			elementOp: elementOp);
-	var terminologyCapabilities_FilterBox = await Hive.openBox<TerminologyCapabilities_Filter>('TerminologyCapabilities_FilterBox');
-	terminologyCapabilities_FilterBox.put(newTerminologyCapabilities_Filter.id, newTerminologyCapabilities_Filter);
+			elementOp: elementOp,
+);
 	return newTerminologyCapabilities_Filter;
 }
   String id;
@@ -502,9 +496,8 @@ class TerminologyCapabilities_Expansion {
 			elementIncomplete: elementIncomplete,
 			parameter: parameter,
 			textFilter: textFilter,
-			elementTextFilter: elementTextFilter);
-	var terminologyCapabilities_ExpansionBox = await Hive.openBox<TerminologyCapabilities_Expansion>('TerminologyCapabilities_ExpansionBox');
-	terminologyCapabilities_ExpansionBox.put(newTerminologyCapabilities_Expansion.id, newTerminologyCapabilities_Expansion);
+			elementTextFilter: elementTextFilter,
+);
 	return newTerminologyCapabilities_Expansion;
 }
   String id;
@@ -557,9 +550,8 @@ class TerminologyCapabilities_Parameter {
 			name: name,
 			elementName: elementName,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var terminologyCapabilities_ParameterBox = await Hive.openBox<TerminologyCapabilities_Parameter>('TerminologyCapabilities_ParameterBox');
-	terminologyCapabilities_ParameterBox.put(newTerminologyCapabilities_Parameter.id, newTerminologyCapabilities_Parameter);
+			elementDocumentation: elementDocumentation,
+);
 	return newTerminologyCapabilities_Parameter;
 }
   String id;
@@ -598,9 +590,8 @@ class TerminologyCapabilities_ValidateCode {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			translations: translations,
-			elementTranslations: elementTranslations);
-	var terminologyCapabilities_ValidateCodeBox = await Hive.openBox<TerminologyCapabilities_ValidateCode>('TerminologyCapabilities_ValidateCodeBox');
-	terminologyCapabilities_ValidateCodeBox.put(newTerminologyCapabilities_ValidateCode.id, newTerminologyCapabilities_ValidateCode);
+			elementTranslations: elementTranslations,
+);
 	return newTerminologyCapabilities_ValidateCode;
 }
   String id;
@@ -635,9 +626,8 @@ class TerminologyCapabilities_Translation {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			needsMap: needsMap,
-			elementNeedsMap: elementNeedsMap);
-	var terminologyCapabilities_TranslationBox = await Hive.openBox<TerminologyCapabilities_Translation>('TerminologyCapabilities_TranslationBox');
-	terminologyCapabilities_TranslationBox.put(newTerminologyCapabilities_Translation.id, newTerminologyCapabilities_Translation);
+			elementNeedsMap: elementNeedsMap,
+);
 	return newTerminologyCapabilities_Translation;
 }
   String id;
@@ -672,9 +662,8 @@ class TerminologyCapabilities_Closure {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			translation: translation,
-			elementTranslation: elementTranslation);
-	var terminologyCapabilities_ClosureBox = await Hive.openBox<TerminologyCapabilities_Closure>('TerminologyCapabilities_ClosureBox');
-	terminologyCapabilities_ClosureBox.put(newTerminologyCapabilities_Closure.id, newTerminologyCapabilities_Closure);
+			elementTranslation: elementTranslation,
+);
 	return newTerminologyCapabilities_Closure;
 }
   String id;

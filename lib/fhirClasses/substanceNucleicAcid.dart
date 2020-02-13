@@ -49,9 +49,8 @@ class SubstanceNucleicAcid {
 			areaOfHybridisation: areaOfHybridisation,
 			elementAreaOfHybridisation: elementAreaOfHybridisation,
 			oligoNucleotideType: oligoNucleotideType,
-			subunit: subunit);
-	var substanceNucleicAcidBox = await Hive.openBox<SubstanceNucleicAcid>('SubstanceNucleicAcidBox');
-	substanceNucleicAcidBox.put(newSubstanceNucleicAcid.id, newSubstanceNucleicAcid);
+			subunit: subunit,
+);
 	return newSubstanceNucleicAcid;
 }
   final String resourceType= 'SubstanceNucleicAcid';
@@ -129,9 +128,8 @@ class SubstanceNucleicAcid_Subunit {
 			fivePrime: fivePrime,
 			threePrime: threePrime,
 			linkage: linkage,
-			sugar: sugar);
-	var substanceNucleicAcid_SubunitBox = await Hive.openBox<SubstanceNucleicAcid_Subunit>('SubstanceNucleicAcid_SubunitBox');
-	substanceNucleicAcid_SubunitBox.put(newSubstanceNucleicAcid_Subunit.id, newSubstanceNucleicAcid_Subunit);
+			sugar: sugar,
+);
 	return newSubstanceNucleicAcid_Subunit;
 }
   String id;
@@ -194,9 +192,8 @@ class SubstanceNucleicAcid_Linkage {
 			name: name,
 			elementName: elementName,
 			residueSite: residueSite,
-			elementResidueSite: elementResidueSite);
-	var substanceNucleicAcid_LinkageBox = await Hive.openBox<SubstanceNucleicAcid_Linkage>('SubstanceNucleicAcid_LinkageBox');
-	substanceNucleicAcid_LinkageBox.put(newSubstanceNucleicAcid_Linkage.id, newSubstanceNucleicAcid_Linkage);
+			elementResidueSite: elementResidueSite,
+);
 	return newSubstanceNucleicAcid_Linkage;
 }
   String id;
@@ -247,9 +244,8 @@ class SubstanceNucleicAcid_Sugar {
 			name: name,
 			elementName: elementName,
 			residueSite: residueSite,
-			elementResidueSite: elementResidueSite);
-	var substanceNucleicAcid_SugarBox = await Hive.openBox<SubstanceNucleicAcid_Sugar>('SubstanceNucleicAcid_SugarBox');
-	substanceNucleicAcid_SugarBox.put(newSubstanceNucleicAcid_Sugar.id, newSubstanceNucleicAcid_Sugar);
+			elementResidueSite: elementResidueSite,
+);
 	return newSubstanceNucleicAcid_Sugar;
 }
   String id;

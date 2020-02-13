@@ -68,9 +68,8 @@ class CareTeam {
 			reasonReference: reasonReference,
 			managingOrganization: managingOrganization,
 			telecom: telecom,
-			note: note);
-	var careTeamBox = await Hive.openBox<CareTeam>('CareTeamBox');
-	careTeamBox.put(newCareTeam.id, newCareTeam);
+			note: note,
+);
 	return newCareTeam;
 }
   final String resourceType= 'CareTeam';
@@ -150,9 +149,8 @@ class CareTeam_Participant {
 			role: role,
 			member: member,
 			onBehalfOf: onBehalfOf,
-			period: period);
-	var careTeam_ParticipantBox = await Hive.openBox<CareTeam_Participant>('CareTeam_ParticipantBox');
-	careTeam_ParticipantBox.put(newCareTeam_Participant.id, newCareTeam_Participant);
+			period: period,
+);
 	return newCareTeam_Participant;
 }
   String id;

@@ -63,9 +63,8 @@ class MessageHeader {
 			reason: reason,
 			response: response,
 			focus: focus,
-			definition: definition);
-	var messageHeaderBox = await Hive.openBox<MessageHeader>('MessageHeaderBox');
-	messageHeaderBox.put(newMessageHeader.id, newMessageHeader);
+			definition: definition,
+);
 	return newMessageHeader;
 }
   final String resourceType= 'MessageHeader';
@@ -145,9 +144,8 @@ class MessageHeader_Destination {
 			target: target,
 			endpoint: endpoint,
 			elementEndpoint: elementEndpoint,
-			receiver: receiver);
-	var messageHeader_DestinationBox = await Hive.openBox<MessageHeader_Destination>('MessageHeader_DestinationBox');
-	messageHeader_DestinationBox.put(newMessageHeader_Destination.id, newMessageHeader_Destination);
+			receiver: receiver,
+);
 	return newMessageHeader_Destination;
 }
   String id;
@@ -204,9 +202,8 @@ class MessageHeader_Source {
 			elementVersion: elementVersion,
 			contact: contact,
 			endpoint: endpoint,
-			elementEndpoint: elementEndpoint);
-	var messageHeader_SourceBox = await Hive.openBox<MessageHeader_Source>('MessageHeader_SourceBox');
-	messageHeader_SourceBox.put(newMessageHeader_Source.id, newMessageHeader_Source);
+			elementEndpoint: elementEndpoint,
+);
 	return newMessageHeader_Source;
 }
   String id;
@@ -261,9 +258,8 @@ class MessageHeader_Response {
 			elementIdentifier: elementIdentifier,
 			code: code,
 			elementCode: elementCode,
-			details: details);
-	var messageHeader_ResponseBox = await Hive.openBox<MessageHeader_Response>('MessageHeader_ResponseBox');
-	messageHeader_ResponseBox.put(newMessageHeader_Response.id, newMessageHeader_Response);
+			details: details,
+);
 	return newMessageHeader_Response;
 }
   String id;

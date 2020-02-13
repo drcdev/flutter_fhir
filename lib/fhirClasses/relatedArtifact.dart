@@ -38,9 +38,8 @@ class RelatedArtifact {
 			url: url,
 			elementUrl: elementUrl,
 			document: document,
-			resource: resource);
-	var relatedArtifactBox = await Hive.openBox<RelatedArtifact>('RelatedArtifactBox');
-	relatedArtifactBox.put(newRelatedArtifact.id, newRelatedArtifact);
+			resource: resource,
+);
 	return newRelatedArtifact;
 }
   String id;

@@ -21,9 +21,8 @@ class Period {
 			start: start,
 			elementStart: elementStart,
 			end: end,
-			elementEnd: elementEnd);
-	var periodBox = await Hive.openBox<Period>('PeriodBox');
-	periodBox.put(newPeriod.id, newPeriod);
+			elementEnd: elementEnd,
+);
 	return newPeriod;
 }
   String id;

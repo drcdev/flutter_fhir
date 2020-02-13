@@ -28,9 +28,8 @@ class Annotation {
 			time: time,
 			elementTime: elementTime,
 			text: text,
-			elementText: elementText);
-	var annotationBox = await Hive.openBox<Annotation>('AnnotationBox');
-	annotationBox.put(newAnnotation.id, newAnnotation);
+			elementText: elementText,
+);
 	return newAnnotation;
 }
   String id;

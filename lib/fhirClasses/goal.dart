@@ -83,9 +83,8 @@ class Goal {
 			addresses: addresses,
 			note: note,
 			outcomeCode: outcomeCode,
-			outcomeReference: outcomeReference);
-	var goalBox = await Hive.openBox<Goal>('GoalBox');
-	goalBox.put(newGoal.id, newGoal);
+			outcomeReference: outcomeReference,
+);
 	return newGoal;
 }
   final String resourceType= 'Goal';
@@ -197,9 +196,8 @@ class Goal_Target {
 			detailRatio: detailRatio,
 			dueDate: dueDate,
 			elementDueDate: elementDueDate,
-			dueDuration: dueDuration);
-	var goal_TargetBox = await Hive.openBox<Goal_Target>('Goal_TargetBox');
-	goal_TargetBox.put(newGoal_Target.id, newGoal_Target);
+			dueDuration: dueDuration,
+);
 	return newGoal_Target;
 }
   String id;

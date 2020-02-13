@@ -628,9 +628,8 @@ class ElementDefinition {
 			isSummary: isSummary,
 			elementIsSummary: elementIsSummary,
 			binding: binding,
-			mapping: mapping);
-	var elementDefinitionBox = await Hive.openBox<ElementDefinition>('ElementDefinitionBox');
-	elementDefinitionBox.put(newElementDefinition.id, newElementDefinition);
+			mapping: mapping,
+);
 	return newElementDefinition;
 }
   String id;
@@ -1253,9 +1252,8 @@ class ElementDefinition_Slicing {
 			ordered: ordered,
 			elementOrdered: elementOrdered,
 			rules: rules,
-			elementRules: elementRules);
-	var elementDefinition_SlicingBox = await Hive.openBox<ElementDefinition_Slicing>('ElementDefinition_SlicingBox');
-	elementDefinition_SlicingBox.put(newElementDefinition_Slicing.id, newElementDefinition_Slicing);
+			elementRules: elementRules,
+);
 	return newElementDefinition_Slicing;
 }
   String id;
@@ -1304,9 +1302,8 @@ class ElementDefinition_Discriminator {
 			type: type,
 			elementType: elementType,
 			path: path,
-			elementPath: elementPath);
-	var elementDefinition_DiscriminatorBox = await Hive.openBox<ElementDefinition_Discriminator>('ElementDefinition_DiscriminatorBox');
-	elementDefinition_DiscriminatorBox.put(newElementDefinition_Discriminator.id, newElementDefinition_Discriminator);
+			elementPath: elementPath,
+);
 	return newElementDefinition_Discriminator;
 }
   String id;
@@ -1353,9 +1350,8 @@ class ElementDefinition_Base {
 			min: min,
 			elementMin: elementMin,
 			max: max,
-			elementMax: elementMax);
-	var elementDefinition_BaseBox = await Hive.openBox<ElementDefinition_Base>('ElementDefinition_BaseBox');
-	elementDefinition_BaseBox.put(newElementDefinition_Base.id, newElementDefinition_Base);
+			elementMax: elementMax,
+);
 	return newElementDefinition_Base;
 }
   String id;
@@ -1410,9 +1406,8 @@ class ElementDefinition_Type {
 			aggregation: aggregation,
 			elementAggregation: elementAggregation,
 			versioning: versioning,
-			elementVersioning: elementVersioning);
-	var elementDefinition_TypeBox = await Hive.openBox<ElementDefinition_Type>('ElementDefinition_TypeBox');
-	elementDefinition_TypeBox.put(newElementDefinition_Type.id, newElementDefinition_Type);
+			elementVersioning: elementVersioning,
+);
 	return newElementDefinition_Type;
 }
   String id;
@@ -1597,9 +1592,8 @@ class ElementDefinition_Example {
 			valueTriggerDefinition: valueTriggerDefinition,
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
-			valueMeta: valueMeta);
-	var elementDefinition_ExampleBox = await Hive.openBox<ElementDefinition_Example>('ElementDefinition_ExampleBox');
-	elementDefinition_ExampleBox.put(newElementDefinition_Example.id, newElementDefinition_Example);
+			valueMeta: valueMeta,
+);
 	return newElementDefinition_Example;
 }
   String id;
@@ -1794,9 +1788,8 @@ class ElementDefinition_Constraint {
 			elementExpression: elementExpression,
 			xpath: xpath,
 			elementXpath: elementXpath,
-			source: source);
-	var elementDefinition_ConstraintBox = await Hive.openBox<ElementDefinition_Constraint>('ElementDefinition_ConstraintBox');
-	elementDefinition_ConstraintBox.put(newElementDefinition_Constraint.id, newElementDefinition_Constraint);
+			source: source,
+);
 	return newElementDefinition_Constraint;
 }
   String id;
@@ -1859,9 +1852,8 @@ class ElementDefinition_Binding {
 			elementStrength: elementStrength,
 			description: description,
 			elementDescription: elementDescription,
-			valueSet: valueSet);
-	var elementDefinition_BindingBox = await Hive.openBox<ElementDefinition_Binding>('ElementDefinition_BindingBox');
-	elementDefinition_BindingBox.put(newElementDefinition_Binding.id, newElementDefinition_Binding);
+			valueSet: valueSet,
+);
 	return newElementDefinition_Binding;
 }
   String id;
@@ -1914,9 +1906,8 @@ class ElementDefinition_Mapping {
 			map: map,
 			elementMap: elementMap,
 			comment: comment,
-			elementComment: elementComment);
-	var elementDefinition_MappingBox = await Hive.openBox<ElementDefinition_Mapping>('ElementDefinition_MappingBox');
-	elementDefinition_MappingBox.put(newElementDefinition_Mapping.id, newElementDefinition_Mapping);
+			elementComment: elementComment,
+);
 	return newElementDefinition_Mapping;
 }
   String id;

@@ -129,9 +129,8 @@ class EventDefinition {
 			reviewer: reviewer,
 			endorser: endorser,
 			relatedArtifact: relatedArtifact,
-			trigger: trigger);
-	var eventDefinitionBox = await Hive.openBox<EventDefinition>('EventDefinitionBox');
-	eventDefinitionBox.put(newEventDefinition.id, newEventDefinition);
+			trigger: trigger,
+);
 	return newEventDefinition;
 }
   final String resourceType= 'EventDefinition';

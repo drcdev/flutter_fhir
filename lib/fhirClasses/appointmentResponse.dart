@@ -60,9 +60,8 @@ class AppointmentResponse {
 			participantStatus: participantStatus,
 			elementParticipantStatus: elementParticipantStatus,
 			comment: comment,
-			elementComment: elementComment);
-	var appointmentResponseBox = await Hive.openBox<AppointmentResponse>('AppointmentResponseBox');
-	appointmentResponseBox.put(newAppointmentResponse.id, newAppointmentResponse);
+			elementComment: elementComment,
+);
 	return newAppointmentResponse;
 }
   final String resourceType= 'AppointmentResponse';

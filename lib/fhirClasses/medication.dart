@@ -54,9 +54,8 @@ class Medication {
 			form: form,
 			amount: amount,
 			ingredient: ingredient,
-			batch: batch);
-	var medicationBox = await Hive.openBox<Medication>('MedicationBox');
-	medicationBox.put(newMedication.id, newMedication);
+			batch: batch,
+);
 	return newMedication;
 }
   final String resourceType= 'Medication';
@@ -126,9 +125,8 @@ class Medication_Ingredient {
 			itemReference: itemReference,
 			isActive: isActive,
 			elementIsActive: elementIsActive,
-			strength: strength);
-	var medication_IngredientBox = await Hive.openBox<Medication_Ingredient>('Medication_IngredientBox');
-	medication_IngredientBox.put(newMedication_Ingredient.id, newMedication_Ingredient);
+			strength: strength,
+);
 	return newMedication_Ingredient;
 }
   String id;
@@ -173,9 +171,8 @@ class Medication_Batch {
 			lotNumber: lotNumber,
 			elementLotNumber: elementLotNumber,
 			expirationDate: expirationDate,
-			elementExpirationDate: elementExpirationDate);
-	var medication_BatchBox = await Hive.openBox<Medication_Batch>('Medication_BatchBox');
-	medication_BatchBox.put(newMedication_Batch.id, newMedication_Batch);
+			elementExpirationDate: elementExpirationDate,
+);
 	return newMedication_Batch;
 }
   String id;

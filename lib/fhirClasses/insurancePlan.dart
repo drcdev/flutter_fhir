@@ -76,9 +76,8 @@ class InsurancePlan {
 			endpoint: endpoint,
 			network: network,
 			coverage: coverage,
-			plan: plan);
-	var insurancePlanBox = await Hive.openBox<InsurancePlan>('InsurancePlanBox');
-	insurancePlanBox.put(newInsurancePlan.id, newInsurancePlan);
+			plan: plan,
+);
 	return newInsurancePlan;
 }
   final String resourceType= 'InsurancePlan';
@@ -162,9 +161,8 @@ class InsurancePlan_Contact {
 			purpose: purpose,
 			name: name,
 			telecom: telecom,
-			address: address);
-	var insurancePlan_ContactBox = await Hive.openBox<InsurancePlan_Contact>('InsurancePlan_ContactBox');
-	insurancePlan_ContactBox.put(newInsurancePlan_Contact.id, newInsurancePlan_Contact);
+			address: address,
+);
 	return newInsurancePlan_Contact;
 }
   String id;
@@ -205,9 +203,8 @@ class InsurancePlan_Coverage {
 			modifierExtension: modifierExtension,
 			type: type,
 			network: network,
-			benefit: benefit);
-	var insurancePlan_CoverageBox = await Hive.openBox<InsurancePlan_Coverage>('InsurancePlan_CoverageBox');
-	insurancePlan_CoverageBox.put(newInsurancePlan_Coverage.id, newInsurancePlan_Coverage);
+			benefit: benefit,
+);
 	return newInsurancePlan_Coverage;
 }
   String id;
@@ -248,9 +245,8 @@ class InsurancePlan_Benefit {
 			type: type,
 			requirement: requirement,
 			elementRequirement: elementRequirement,
-			limit: limit);
-	var insurancePlan_BenefitBox = await Hive.openBox<InsurancePlan_Benefit>('InsurancePlan_BenefitBox');
-	insurancePlan_BenefitBox.put(newInsurancePlan_Benefit.id, newInsurancePlan_Benefit);
+			limit: limit,
+);
 	return newInsurancePlan_Benefit;
 }
   String id;
@@ -289,9 +285,8 @@ class InsurancePlan_Limit {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			value: value,
-			code: code);
-	var insurancePlan_LimitBox = await Hive.openBox<InsurancePlan_Limit>('InsurancePlan_LimitBox');
-	insurancePlan_LimitBox.put(newInsurancePlan_Limit.id, newInsurancePlan_Limit);
+			code: code,
+);
 	return newInsurancePlan_Limit;
 }
   String id;
@@ -334,9 +329,8 @@ class InsurancePlan_Plan {
 			coverageArea: coverageArea,
 			network: network,
 			generalCost: generalCost,
-			specificCost: specificCost);
-	var insurancePlan_PlanBox = await Hive.openBox<InsurancePlan_Plan>('InsurancePlan_PlanBox');
-	insurancePlan_PlanBox.put(newInsurancePlan_Plan.id, newInsurancePlan_Plan);
+			specificCost: specificCost,
+);
 	return newInsurancePlan_Plan;
 }
   String id;
@@ -387,9 +381,8 @@ class InsurancePlan_GeneralCost {
 			elementGroupSize: elementGroupSize,
 			cost: cost,
 			comment: comment,
-			elementComment: elementComment);
-	var insurancePlan_GeneralCostBox = await Hive.openBox<InsurancePlan_GeneralCost>('InsurancePlan_GeneralCostBox');
-	insurancePlan_GeneralCostBox.put(newInsurancePlan_GeneralCost.id, newInsurancePlan_GeneralCost);
+			elementComment: elementComment,
+);
 	return newInsurancePlan_GeneralCost;
 }
   String id;
@@ -432,9 +425,8 @@ class InsurancePlan_SpecificCost {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
-			benefit: benefit);
-	var insurancePlan_SpecificCostBox = await Hive.openBox<InsurancePlan_SpecificCost>('InsurancePlan_SpecificCostBox');
-	insurancePlan_SpecificCostBox.put(newInsurancePlan_SpecificCost.id, newInsurancePlan_SpecificCost);
+			benefit: benefit,
+);
 	return newInsurancePlan_SpecificCost;
 }
   String id;
@@ -469,9 +461,8 @@ class InsurancePlan_Benefit1 {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
-			cost: cost);
-	var insurancePlan_Benefit1Box = await Hive.openBox<InsurancePlan_Benefit1>('InsurancePlan_Benefit1Box');
-	insurancePlan_Benefit1Box.put(newInsurancePlan_Benefit1.id, newInsurancePlan_Benefit1);
+			cost: cost,
+);
 	return newInsurancePlan_Benefit1;
 }
   String id;
@@ -510,9 +501,8 @@ class InsurancePlan_Cost {
 			type: type,
 			applicability: applicability,
 			qualifiers: qualifiers,
-			value: value);
-	var insurancePlan_CostBox = await Hive.openBox<InsurancePlan_Cost>('InsurancePlan_CostBox');
-	insurancePlan_CostBox.put(newInsurancePlan_Cost.id, newInsurancePlan_Cost);
+			value: value,
+);
 	return newInsurancePlan_Cost;
 }
   String id;

@@ -64,9 +64,8 @@ class Organization {
 			address: address,
 			partOf: partOf,
 			contact: contact,
-			endpoint: endpoint);
-	var organizationBox = await Hive.openBox<Organization>('OrganizationBox');
-	organizationBox.put(newOrganization.id, newOrganization);
+			endpoint: endpoint,
+);
 	return newOrganization;
 }
   final String resourceType= 'Organization';
@@ -142,9 +141,8 @@ class Organization_Contact {
 			purpose: purpose,
 			name: name,
 			telecom: telecom,
-			address: address);
-	var organization_ContactBox = await Hive.openBox<Organization_Contact>('Organization_ContactBox');
-	organization_ContactBox.put(newOrganization_Contact.id, newOrganization_Contact);
+			address: address,
+);
 	return newOrganization_Contact;
 }
   String id;

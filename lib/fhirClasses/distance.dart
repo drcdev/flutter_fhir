@@ -33,9 +33,8 @@ class Distance {
 			system: system,
 			elementSystem: elementSystem,
 			code: code,
-			elementCode: elementCode);
-	var distanceBox = await Hive.openBox<Distance>('DistanceBox');
-	distanceBox.put(newDistance.id, newDistance);
+			elementCode: elementCode,
+);
 	return newDistance;
 }
   String id;

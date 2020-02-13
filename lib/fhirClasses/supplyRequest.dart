@@ -84,9 +84,8 @@ class SupplyRequest {
 			reasonCode: reasonCode,
 			reasonReference: reasonReference,
 			deliverFrom: deliverFrom,
-			deliverTo: deliverTo);
-	var supplyRequestBox = await Hive.openBox<SupplyRequest>('SupplyRequestBox');
-	supplyRequestBox.put(newSupplyRequest.id, newSupplyRequest);
+			deliverTo: deliverTo,
+);
 	return newSupplyRequest;
 }
   final String resourceType= 'SupplyRequest';
@@ -184,9 +183,8 @@ class SupplyRequest_Parameter {
 			valueQuantity: valueQuantity,
 			valueRange: valueRange,
 			valueBoolean: valueBoolean,
-			elementValueBoolean: elementValueBoolean);
-	var supplyRequest_ParameterBox = await Hive.openBox<SupplyRequest_Parameter>('SupplyRequest_ParameterBox');
-	supplyRequest_ParameterBox.put(newSupplyRequest_Parameter.id, newSupplyRequest_Parameter);
+			elementValueBoolean: elementValueBoolean,
+);
 	return newSupplyRequest_Parameter;
 }
   String id;

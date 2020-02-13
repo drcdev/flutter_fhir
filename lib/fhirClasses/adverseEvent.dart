@@ -84,9 +84,8 @@ class AdverseEvent {
 			suspectEntity: suspectEntity,
 			subjectMedicalHistory: subjectMedicalHistory,
 			referenceDocument: referenceDocument,
-			study: study);
-	var adverseEventBox = await Hive.openBox<AdverseEvent>('AdverseEventBox');
-	adverseEventBox.put(newAdverseEvent.id, newAdverseEvent);
+			study: study,
+);
 	return newAdverseEvent;
 }
   final String resourceType= 'AdverseEvent';
@@ -180,9 +179,8 @@ class AdverseEvent_SuspectEntity {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			instance: instance,
-			causality: causality);
-	var adverseEvent_SuspectEntityBox = await Hive.openBox<AdverseEvent_SuspectEntity>('AdverseEvent_SuspectEntityBox');
-	adverseEvent_SuspectEntityBox.put(newAdverseEvent_SuspectEntity.id, newAdverseEvent_SuspectEntity);
+			causality: causality,
+);
 	return newAdverseEvent_SuspectEntity;
 }
   String id;
@@ -223,9 +221,8 @@ class AdverseEvent_Causality {
 			productRelatedness: productRelatedness,
 			elementProductRelatedness: elementProductRelatedness,
 			author: author,
-			method: method);
-	var adverseEvent_CausalityBox = await Hive.openBox<AdverseEvent_Causality>('AdverseEvent_CausalityBox');
-	adverseEvent_CausalityBox.put(newAdverseEvent_Causality.id, newAdverseEvent_Causality);
+			method: method,
+);
 	return newAdverseEvent_Causality;
 }
   String id;

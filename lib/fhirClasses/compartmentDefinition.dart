@@ -84,9 +84,8 @@ class CompartmentDefinition {
 			elementCode: elementCode,
 			search: search,
 			elementSearch: elementSearch,
-			resource: resource);
-	var compartmentDefinitionBox = await Hive.openBox<CompartmentDefinition>('CompartmentDefinitionBox');
-	compartmentDefinitionBox.put(newCompartmentDefinition.id, newCompartmentDefinition);
+			resource: resource,
+);
 	return newCompartmentDefinition;
 }
   final String resourceType= 'CompartmentDefinition';
@@ -190,9 +189,8 @@ class CompartmentDefinition_Resource {
 			param: param,
 			elementParam: elementParam,
 			documentation: documentation,
-			elementDocumentation: elementDocumentation);
-	var compartmentDefinition_ResourceBox = await Hive.openBox<CompartmentDefinition_Resource>('CompartmentDefinition_ResourceBox');
-	compartmentDefinition_ResourceBox.put(newCompartmentDefinition_Resource.id, newCompartmentDefinition_Resource);
+			elementDocumentation: elementDocumentation,
+);
 	return newCompartmentDefinition_Resource;
 }
   String id;

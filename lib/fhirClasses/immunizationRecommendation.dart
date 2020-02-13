@@ -48,9 +48,8 @@ class ImmunizationRecommendation {
 			date: date,
 			elementDate: elementDate,
 			authority: authority,
-			recommendation: recommendation);
-	var immunizationRecommendationBox = await Hive.openBox<ImmunizationRecommendation>('ImmunizationRecommendationBox');
-	immunizationRecommendationBox.put(newImmunizationRecommendation.id, newImmunizationRecommendation);
+			recommendation: recommendation,
+);
 	return newImmunizationRecommendation;
 }
   final String resourceType= 'ImmunizationRecommendation';
@@ -144,9 +143,8 @@ class ImmunizationRecommendation_Recommendation {
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString,
 			supportingImmunization: supportingImmunization,
-			supportingPatientInformation: supportingPatientInformation);
-	var immunizationRecommendation_RecommendationBox = await Hive.openBox<ImmunizationRecommendation_Recommendation>('ImmunizationRecommendation_RecommendationBox');
-	immunizationRecommendation_RecommendationBox.put(newImmunizationRecommendation_Recommendation.id, newImmunizationRecommendation_Recommendation);
+			supportingPatientInformation: supportingPatientInformation,
+);
 	return newImmunizationRecommendation_Recommendation;
 }
   String id;
@@ -219,9 +217,8 @@ class ImmunizationRecommendation_DateCriterion {
 			modifierExtension: modifierExtension,
 			code: code,
 			value: value,
-			elementValue: elementValue);
-	var immunizationRecommendation_DateCriterionBox = await Hive.openBox<ImmunizationRecommendation_DateCriterion>('ImmunizationRecommendation_DateCriterionBox');
-	immunizationRecommendation_DateCriterionBox.put(newImmunizationRecommendation_DateCriterion.id, newImmunizationRecommendation_DateCriterion);
+			elementValue: elementValue,
+);
 	return newImmunizationRecommendation_DateCriterion;
 }
   String id;

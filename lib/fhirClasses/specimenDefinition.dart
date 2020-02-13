@@ -52,9 +52,8 @@ class SpecimenDefinition {
 			timeAspect: timeAspect,
 			elementTimeAspect: elementTimeAspect,
 			collection: collection,
-			typeTested: typeTested);
-	var specimenDefinitionBox = await Hive.openBox<SpecimenDefinition>('SpecimenDefinitionBox');
-	specimenDefinitionBox.put(newSpecimenDefinition.id, newSpecimenDefinition);
+			typeTested: typeTested,
+);
 	return newSpecimenDefinition;
 }
   final String resourceType= 'SpecimenDefinition';
@@ -132,9 +131,8 @@ class SpecimenDefinition_TypeTested {
 			elementRequirement: elementRequirement,
 			retentionTime: retentionTime,
 			rejectionCriterion: rejectionCriterion,
-			handling: handling);
-	var specimenDefinition_TypeTestedBox = await Hive.openBox<SpecimenDefinition_TypeTested>('SpecimenDefinition_TypeTestedBox');
-	specimenDefinition_TypeTestedBox.put(newSpecimenDefinition_TypeTested.id, newSpecimenDefinition_TypeTested);
+			handling: handling,
+);
 	return newSpecimenDefinition_TypeTested;
 }
   String id;
@@ -207,9 +205,8 @@ class SpecimenDefinition_Container {
 			elementMinimumVolumeString: elementMinimumVolumeString,
 			additive: additive,
 			preparation: preparation,
-			elementPreparation: elementPreparation);
-	var specimenDefinition_ContainerBox = await Hive.openBox<SpecimenDefinition_Container>('SpecimenDefinition_ContainerBox');
-	specimenDefinition_ContainerBox.put(newSpecimenDefinition_Container.id, newSpecimenDefinition_Container);
+			elementPreparation: elementPreparation,
+);
 	return newSpecimenDefinition_Container;
 }
   String id;
@@ -264,9 +261,8 @@ class SpecimenDefinition_Additive {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			additiveCodeableConcept: additiveCodeableConcept,
-			additiveReference: additiveReference);
-	var specimenDefinition_AdditiveBox = await Hive.openBox<SpecimenDefinition_Additive>('SpecimenDefinition_AdditiveBox');
-	specimenDefinition_AdditiveBox.put(newSpecimenDefinition_Additive.id, newSpecimenDefinition_Additive);
+			additiveReference: additiveReference,
+);
 	return newSpecimenDefinition_Additive;
 }
   String id;
@@ -307,9 +303,8 @@ class SpecimenDefinition_Handling {
 			temperatureRange: temperatureRange,
 			maxDuration: maxDuration,
 			instruction: instruction,
-			elementInstruction: elementInstruction);
-	var specimenDefinition_HandlingBox = await Hive.openBox<SpecimenDefinition_Handling>('SpecimenDefinition_HandlingBox');
-	specimenDefinition_HandlingBox.put(newSpecimenDefinition_Handling.id, newSpecimenDefinition_Handling);
+			elementInstruction: elementInstruction,
+);
 	return newSpecimenDefinition_Handling;
 }
   String id;

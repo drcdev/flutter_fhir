@@ -20,9 +20,8 @@ class ContactDetail {
 			extension: extension,
 			name: name,
 			elementName: elementName,
-			telecom: telecom);
-	var contactDetailBox = await Hive.openBox<ContactDetail>('ContactDetailBox');
-	contactDetailBox.put(newContactDetail.id, newContactDetail);
+			telecom: telecom,
+);
 	return newContactDetail;
 }
   String id;

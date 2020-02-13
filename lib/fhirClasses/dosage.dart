@@ -56,9 +56,8 @@ class Dosage {
 			doseAndRate: doseAndRate,
 			maxDosePerPeriod: maxDosePerPeriod,
 			maxDosePerAdministration: maxDosePerAdministration,
-			maxDosePerLifetime: maxDosePerLifetime);
-	var dosageBox = await Hive.openBox<Dosage>('DosageBox');
-	dosageBox.put(newDosage.id, newDosage);
+			maxDosePerLifetime: maxDosePerLifetime,
+);
 	return newDosage;
 }
   String id;
@@ -133,9 +132,8 @@ class Dosage_DoseAndRate {
 			doseQuantity: doseQuantity,
 			rateRatio: rateRatio,
 			rateRange: rateRange,
-			rateQuantity: rateQuantity);
-	var dosage_DoseAndRateBox = await Hive.openBox<Dosage_DoseAndRate>('Dosage_DoseAndRateBox');
-	dosage_DoseAndRateBox.put(newDosage_DoseAndRate.id, newDosage_DoseAndRate);
+			rateQuantity: rateQuantity,
+);
 	return newDosage_DoseAndRate;
 }
   String id;

@@ -94,9 +94,8 @@ class AllergyIntolerance {
 			lastOccurrence: lastOccurrence,
 			elementLastOccurrence: elementLastOccurrence,
 			note: note,
-			reaction: reaction);
-	var allergyIntoleranceBox = await Hive.openBox<AllergyIntolerance>('AllergyIntoleranceBox');
-	allergyIntoleranceBox.put(newAllergyIntolerance.id, newAllergyIntolerance);
+			reaction: reaction,
+);
 	return newAllergyIntolerance;
 }
   final String resourceType= 'AllergyIntolerance';
@@ -212,9 +211,8 @@ class AllergyIntolerance_Reaction {
 			severity: severity,
 			elementSeverity: elementSeverity,
 			exposureRoute: exposureRoute,
-			note: note);
-	var allergyIntolerance_ReactionBox = await Hive.openBox<AllergyIntolerance_Reaction>('AllergyIntolerance_ReactionBox');
-	allergyIntolerance_ReactionBox.put(newAllergyIntolerance_Reaction.id, newAllergyIntolerance_Reaction);
+			note: note,
+);
 	return newAllergyIntolerance_Reaction;
 }
   String id;

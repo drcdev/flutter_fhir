@@ -55,9 +55,8 @@ class MedicinalProductIndication {
 			duration: duration,
 			otherTherapy: otherTherapy,
 			undesirableEffect: undesirableEffect,
-			population: population);
-	var medicinalProductIndicationBox = await Hive.openBox<MedicinalProductIndication>('MedicinalProductIndicationBox');
-	medicinalProductIndicationBox.put(newMedicinalProductIndication.id, newMedicinalProductIndication);
+			population: population,
+);
 	return newMedicinalProductIndication;
 }
   final String resourceType= 'MedicinalProductIndication';
@@ -123,9 +122,8 @@ class MedicinalProductIndication_OtherTherapy {
 			modifierExtension: modifierExtension,
 			therapyRelationshipType: therapyRelationshipType,
 			medicationCodeableConcept: medicationCodeableConcept,
-			medicationReference: medicationReference);
-	var medicinalProductIndication_OtherTherapyBox = await Hive.openBox<MedicinalProductIndication_OtherTherapy>('MedicinalProductIndication_OtherTherapyBox');
-	medicinalProductIndication_OtherTherapyBox.put(newMedicinalProductIndication_OtherTherapy.id, newMedicinalProductIndication_OtherTherapy);
+			medicationReference: medicationReference,
+);
 	return newMedicinalProductIndication_OtherTherapy;
 }
   String id;

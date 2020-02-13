@@ -57,9 +57,8 @@ class BodyStructure {
 			description: description,
 			elementDescription: elementDescription,
 			image: image,
-			patient: patient);
-	var bodyStructureBox = await Hive.openBox<BodyStructure>('BodyStructureBox');
-	bodyStructureBox.put(newBodyStructure.id, newBodyStructure);
+			patient: patient,
+);
 	return newBodyStructure;
 }
   final String resourceType= 'BodyStructure';

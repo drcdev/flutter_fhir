@@ -41,9 +41,8 @@ class SampledData {
 			dimensions: dimensions,
 			elementDimensions: elementDimensions,
 			data: data,
-			elementData: elementData);
-	var sampledDataBox = await Hive.openBox<SampledData>('SampledDataBox');
-	sampledDataBox.put(newSampledData.id, newSampledData);
+			elementData: elementData,
+);
 	return newSampledData;
 }
   String id;

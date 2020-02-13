@@ -71,9 +71,8 @@ class RelatedPerson {
 			address: address,
 			photo: photo,
 			period: period,
-			communication: communication);
-	var relatedPersonBox = await Hive.openBox<RelatedPerson>('RelatedPersonBox');
-	relatedPersonBox.put(newRelatedPerson.id, newRelatedPerson);
+			communication: communication,
+);
 	return newRelatedPerson;
 }
   final String resourceType= 'RelatedPerson';
@@ -151,9 +150,8 @@ class RelatedPerson_Communication {
 			modifierExtension: modifierExtension,
 			language: language,
 			preferred: preferred,
-			elementPreferred: elementPreferred);
-	var relatedPerson_CommunicationBox = await Hive.openBox<RelatedPerson_Communication>('RelatedPerson_CommunicationBox');
-	relatedPerson_CommunicationBox.put(newRelatedPerson_Communication.id, newRelatedPerson_Communication);
+			elementPreferred: elementPreferred,
+);
 	return newRelatedPerson_Communication;
 }
   String id;

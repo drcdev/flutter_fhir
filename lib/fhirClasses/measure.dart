@@ -169,9 +169,8 @@ class Measure {
 			guidance: guidance,
 			elementGuidance: elementGuidance,
 			group: group,
-			supplementalData: supplementalData);
-	var measureBox = await Hive.openBox<Measure>('MeasureBox');
-	measureBox.put(newMeasure.id, newMeasure);
+			supplementalData: supplementalData,
+);
 	return newMeasure;
 }
   final String resourceType= 'Measure';
@@ -351,9 +350,8 @@ class Measure_Group {
 			description: description,
 			elementDescription: elementDescription,
 			population: population,
-			stratifier: stratifier);
-	var measure_GroupBox = await Hive.openBox<Measure_Group>('Measure_GroupBox');
-	measure_GroupBox.put(newMeasure_Group.id, newMeasure_Group);
+			stratifier: stratifier,
+);
 	return newMeasure_Group;
 }
   String id;
@@ -398,9 +396,8 @@ class Measure_Population {
 			code: code,
 			description: description,
 			elementDescription: elementDescription,
-			criteria: criteria);
-	var measure_PopulationBox = await Hive.openBox<Measure_Population>('Measure_PopulationBox');
-	measure_PopulationBox.put(newMeasure_Population.id, newMeasure_Population);
+			criteria: criteria,
+);
 	return newMeasure_Population;
 }
   String id;
@@ -445,9 +442,8 @@ class Measure_Stratifier {
 			description: description,
 			elementDescription: elementDescription,
 			criteria: criteria,
-			component: component);
-	var measure_StratifierBox = await Hive.openBox<Measure_Stratifier>('Measure_StratifierBox');
-	measure_StratifierBox.put(newMeasure_Stratifier.id, newMeasure_Stratifier);
+			component: component,
+);
 	return newMeasure_Stratifier;
 }
   String id;
@@ -492,9 +488,8 @@ class Measure_Component {
 			code: code,
 			description: description,
 			elementDescription: elementDescription,
-			criteria: criteria);
-	var measure_ComponentBox = await Hive.openBox<Measure_Component>('Measure_ComponentBox');
-	measure_ComponentBox.put(newMeasure_Component.id, newMeasure_Component);
+			criteria: criteria,
+);
 	return newMeasure_Component;
 }
   String id;
@@ -539,9 +534,8 @@ class Measure_SupplementalData {
 			usage: usage,
 			description: description,
 			elementDescription: elementDescription,
-			criteria: criteria);
-	var measure_SupplementalDataBox = await Hive.openBox<Measure_SupplementalData>('Measure_SupplementalDataBox');
-	measure_SupplementalDataBox.put(newMeasure_SupplementalData.id, newMeasure_SupplementalData);
+			criteria: criteria,
+);
 	return newMeasure_SupplementalData;
 }
   String id;

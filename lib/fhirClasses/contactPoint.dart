@@ -32,9 +32,8 @@ class ContactPoint {
 			elementUse: elementUse,
 			rank: rank,
 			elementRank: elementRank,
-			period: period);
-	var contactPointBox = await Hive.openBox<ContactPoint>('ContactPointBox');
-	contactPointBox.put(newContactPoint.id, newContactPoint);
+			period: period,
+);
 	return newContactPoint;
 }
   String id;

@@ -9,14 +9,13 @@ import fhirToDartFunc as fhir
 with open('./helpers/fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
 
-# os.remove('./lib/fhirClasses/classes.dart')
+os.remove('./lib/fhirClasses/classes.dart')
 
 dartCode = '' #where we will store our code
 importDict = {} #will store which other classes we will import
 
 dbStart = ''
 
-id = 15
 # ****************************************************************************
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
@@ -25,22 +24,6 @@ for objects in definitions:
         #ignore any of those that are in the ResourceList (names, no definitions)
         if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
             if('_' not in objects):      
-                id += 1
-                hid = str(hex(id)) if len(str(hex(id))) == 3 else '0' + str(hex(id))
-                dbStart = ''.join([dbStart,
-                                   'CREATE TABLE ',
-                                   objects,
-                                   '(\n\t',
-                                   'id TEXT PRIMARY KEY,\n\t',
-                                   'json_resource TEXT\n',
-                                   '); \n',
-                                   'INSERT INTO Classes (resourceType, id, deviceId, lastId, total)',
-                                   "  VALUES('", objects, "','", hid, "${deviceId},'0000',0);\n\n"])
-with open('./lib/util/dbTemp.dart',"w", encoding="utf-8") as f:
-    f.write(dbStart)
-    f.close()
-
-
                 
                 dartCode = ''.join([dartCode, 
                                     "part '", 

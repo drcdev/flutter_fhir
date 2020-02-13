@@ -58,9 +58,8 @@ class ResearchSubject {
 			elementAssignedArm: elementAssignedArm,
 			actualArm: actualArm,
 			elementActualArm: elementActualArm,
-			consent: consent);
-	var researchSubjectBox = await Hive.openBox<ResearchSubject>('ResearchSubjectBox');
-	researchSubjectBox.put(newResearchSubject.id, newResearchSubject);
+			consent: consent,
+);
 	return newResearchSubject;
 }
   final String resourceType= 'ResearchSubject';

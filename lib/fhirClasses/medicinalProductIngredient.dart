@@ -51,9 +51,8 @@ class MedicinalProductIngredient {
 			elementAllergenicIndicator: elementAllergenicIndicator,
 			manufacturer: manufacturer,
 			specifiedSubstance: specifiedSubstance,
-			substance: substance);
-	var medicinalProductIngredientBox = await Hive.openBox<MedicinalProductIngredient>('MedicinalProductIngredientBox');
-	medicinalProductIngredientBox.put(newMedicinalProductIngredient.id, newMedicinalProductIngredient);
+			substance: substance,
+);
 	return newMedicinalProductIngredient;
 }
   final String resourceType= 'MedicinalProductIngredient';
@@ -117,9 +116,8 @@ class MedicinalProductIngredient_SpecifiedSubstance {
 			code: code,
 			group: group,
 			confidentiality: confidentiality,
-			strength: strength);
-	var medicinalProductIngredient_SpecifiedSubstanceBox = await Hive.openBox<MedicinalProductIngredient_SpecifiedSubstance>('MedicinalProductIngredient_SpecifiedSubstanceBox');
-	medicinalProductIngredient_SpecifiedSubstanceBox.put(newMedicinalProductIngredient_SpecifiedSubstance.id, newMedicinalProductIngredient_SpecifiedSubstance);
+			strength: strength,
+);
 	return newMedicinalProductIngredient_SpecifiedSubstance;
 }
   String id;
@@ -170,9 +168,8 @@ class MedicinalProductIngredient_Strength {
 			measurementPoint: measurementPoint,
 			elementMeasurementPoint: elementMeasurementPoint,
 			country: country,
-			referenceStrength: referenceStrength);
-	var medicinalProductIngredient_StrengthBox = await Hive.openBox<MedicinalProductIngredient_Strength>('MedicinalProductIngredient_StrengthBox');
-	medicinalProductIngredient_StrengthBox.put(newMedicinalProductIngredient_Strength.id, newMedicinalProductIngredient_Strength);
+			referenceStrength: referenceStrength,
+);
 	return newMedicinalProductIngredient_Strength;
 }
   String id;
@@ -227,9 +224,8 @@ class MedicinalProductIngredient_ReferenceStrength {
 			strengthLowLimit: strengthLowLimit,
 			measurementPoint: measurementPoint,
 			elementMeasurementPoint: elementMeasurementPoint,
-			country: country);
-	var medicinalProductIngredient_ReferenceStrengthBox = await Hive.openBox<MedicinalProductIngredient_ReferenceStrength>('MedicinalProductIngredient_ReferenceStrengthBox');
-	medicinalProductIngredient_ReferenceStrengthBox.put(newMedicinalProductIngredient_ReferenceStrength.id, newMedicinalProductIngredient_ReferenceStrength);
+			country: country,
+);
 	return newMedicinalProductIngredient_ReferenceStrength;
 }
   String id;
@@ -272,9 +268,8 @@ class MedicinalProductIngredient_Substance {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
-			strength: strength);
-	var medicinalProductIngredient_SubstanceBox = await Hive.openBox<MedicinalProductIngredient_Substance>('MedicinalProductIngredient_SubstanceBox');
-	medicinalProductIngredient_SubstanceBox.put(newMedicinalProductIngredient_Substance.id, newMedicinalProductIngredient_Substance);
+			strength: strength,
+);
 	return newMedicinalProductIngredient_Substance;
 }
   String id;

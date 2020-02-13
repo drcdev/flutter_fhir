@@ -113,9 +113,8 @@ class Questionnaire {
 			elementLastReviewDate: elementLastReviewDate,
 			effectivePeriod: effectivePeriod,
 			code: code,
-			item: item);
-	var questionnaireBox = await Hive.openBox<Questionnaire>('QuestionnaireBox');
-	questionnaireBox.put(newQuestionnaire.id, newQuestionnaire);
+			item: item,
+);
 	return newQuestionnaire;
 }
   final String resourceType= 'Questionnaire';
@@ -281,9 +280,8 @@ class Questionnaire_Item {
 			answerValueSet: answerValueSet,
 			answerOption: answerOption,
 			initial: initial,
-			item: item);
-	var questionnaire_ItemBox = await Hive.openBox<Questionnaire_Item>('Questionnaire_ItemBox');
-	questionnaire_ItemBox.put(newQuestionnaire_Item.id, newQuestionnaire_Item);
+			item: item,
+);
 	return newQuestionnaire_Item;
 }
   String id;
@@ -404,9 +402,8 @@ class Questionnaire_EnableWhen {
 			elementAnswerString: elementAnswerString,
 			answerCoding: answerCoding,
 			answerQuantity: answerQuantity,
-			answerReference: answerReference);
-	var questionnaire_EnableWhenBox = await Hive.openBox<Questionnaire_EnableWhen>('Questionnaire_EnableWhenBox');
-	questionnaire_EnableWhenBox.put(newQuestionnaire_EnableWhen.id, newQuestionnaire_EnableWhen);
+			answerReference: answerReference,
+);
 	return newQuestionnaire_EnableWhen;
 }
   String id;
@@ -499,9 +496,8 @@ class Questionnaire_AnswerOption {
 			valueCoding: valueCoding,
 			valueReference: valueReference,
 			initialSelected: initialSelected,
-			elementInitialSelected: elementInitialSelected);
-	var questionnaire_AnswerOptionBox = await Hive.openBox<Questionnaire_AnswerOption>('Questionnaire_AnswerOptionBox');
-	questionnaire_AnswerOptionBox.put(newQuestionnaire_AnswerOption.id, newQuestionnaire_AnswerOption);
+			elementInitialSelected: elementInitialSelected,
+);
 	return newQuestionnaire_AnswerOption;
 }
   String id;
@@ -592,9 +588,8 @@ class Questionnaire_Initial {
 			valueAttachment: valueAttachment,
 			valueCoding: valueCoding,
 			valueQuantity: valueQuantity,
-			valueReference: valueReference);
-	var questionnaire_InitialBox = await Hive.openBox<Questionnaire_Initial>('Questionnaire_InitialBox');
-	questionnaire_InitialBox.put(newQuestionnaire_Initial.id, newQuestionnaire_Initial);
+			valueReference: valueReference,
+);
 	return newQuestionnaire_Initial;
 }
   String id;

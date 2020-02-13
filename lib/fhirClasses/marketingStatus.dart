@@ -30,9 +30,8 @@ class MarketingStatus {
 			status: status,
 			dateRange: dateRange,
 			restoreDate: restoreDate,
-			elementRestoreDate: elementRestoreDate);
-	var marketingStatusBox = await Hive.openBox<MarketingStatus>('MarketingStatusBox');
-	marketingStatusBox.put(newMarketingStatus.id, newMarketingStatus);
+			elementRestoreDate: elementRestoreDate,
+);
 	return newMarketingStatus;
 }
   String id;

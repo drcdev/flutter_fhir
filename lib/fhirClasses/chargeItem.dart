@@ -111,9 +111,8 @@ class ChargeItem {
 			productCodeableConcept: productCodeableConcept,
 			account: account,
 			note: note,
-			supportingInformation: supportingInformation);
-	var chargeItemBox = await Hive.openBox<ChargeItem>('ChargeItemBox');
-	chargeItemBox.put(newChargeItem.id, newChargeItem);
+			supportingInformation: supportingInformation,
+);
 	return newChargeItem;
 }
   final String resourceType= 'ChargeItem';
@@ -229,9 +228,8 @@ class ChargeItem_Performer {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
-			actor: actor);
-	var chargeItem_PerformerBox = await Hive.openBox<ChargeItem_Performer>('ChargeItem_PerformerBox');
-	chargeItem_PerformerBox.put(newChargeItem_Performer.id, newChargeItem_Performer);
+			actor: actor,
+);
 	return newChargeItem_Performer;
 }
   String id;

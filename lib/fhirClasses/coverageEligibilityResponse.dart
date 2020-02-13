@@ -84,9 +84,8 @@ class CoverageEligibilityResponse {
 			preAuthRef: preAuthRef,
 			elementPreAuthRef: elementPreAuthRef,
 			form: form,
-			error: error);
-	var coverageEligibilityResponseBox = await Hive.openBox<CoverageEligibilityResponse>('CoverageEligibilityResponseBox');
-	coverageEligibilityResponseBox.put(newCoverageEligibilityResponse.id, newCoverageEligibilityResponse);
+			error: error,
+);
 	return newCoverageEligibilityResponse;
 }
   final String resourceType= 'CoverageEligibilityResponse';
@@ -184,9 +183,8 @@ class CoverageEligibilityResponse_Insurance {
 			inforce: inforce,
 			elementInforce: elementInforce,
 			benefitPeriod: benefitPeriod,
-			item: item);
-	var coverageEligibilityResponse_InsuranceBox = await Hive.openBox<CoverageEligibilityResponse_Insurance>('CoverageEligibilityResponse_InsuranceBox');
-	coverageEligibilityResponse_InsuranceBox.put(newCoverageEligibilityResponse_Insurance.id, newCoverageEligibilityResponse_Insurance);
+			item: item,
+);
 	return newCoverageEligibilityResponse_Insurance;
 }
   String id;
@@ -261,9 +259,8 @@ class CoverageEligibilityResponse_Item {
 			elementAuthorizationRequired: elementAuthorizationRequired,
 			authorizationSupporting: authorizationSupporting,
 			authorizationUrl: authorizationUrl,
-			elementAuthorizationUrl: elementAuthorizationUrl);
-	var coverageEligibilityResponse_ItemBox = await Hive.openBox<CoverageEligibilityResponse_Item>('CoverageEligibilityResponse_ItemBox');
-	coverageEligibilityResponse_ItemBox.put(newCoverageEligibilityResponse_Item.id, newCoverageEligibilityResponse_Item);
+			elementAuthorizationUrl: elementAuthorizationUrl,
+);
 	return newCoverageEligibilityResponse_Item;
 }
   String id;
@@ -350,9 +347,8 @@ class CoverageEligibilityResponse_Benefit {
 			elementUsedUnsignedInt: elementUsedUnsignedInt,
 			usedString: usedString,
 			elementUsedString: elementUsedString,
-			usedMoney: usedMoney);
-	var coverageEligibilityResponse_BenefitBox = await Hive.openBox<CoverageEligibilityResponse_Benefit>('CoverageEligibilityResponse_BenefitBox');
-	coverageEligibilityResponse_BenefitBox.put(newCoverageEligibilityResponse_Benefit.id, newCoverageEligibilityResponse_Benefit);
+			usedMoney: usedMoney,
+);
 	return newCoverageEligibilityResponse_Benefit;
 }
   String id;
@@ -403,9 +399,8 @@ class CoverageEligibilityResponse_Error {
 			id: await newId('CoverageEligibilityResponse_Error'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			code: code);
-	var coverageEligibilityResponse_ErrorBox = await Hive.openBox<CoverageEligibilityResponse_Error>('CoverageEligibilityResponse_ErrorBox');
-	coverageEligibilityResponse_ErrorBox.put(newCoverageEligibilityResponse_Error.id, newCoverageEligibilityResponse_Error);
+			code: code,
+);
 	return newCoverageEligibilityResponse_Error;
 }
   String id;

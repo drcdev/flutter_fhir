@@ -48,9 +48,8 @@ class Basic {
 			subject: subject,
 			created: created,
 			elementCreated: elementCreated,
-			author: author);
-	var basicBox = await Hive.openBox<Basic>('BasicBox');
-	basicBox.put(newBasic.id, newBasic);
+			author: author,
+);
 	return newBasic;
 }
   final String resourceType= 'Basic';

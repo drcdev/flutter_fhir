@@ -67,9 +67,8 @@ class Practitioner {
 			elementBirthDate: elementBirthDate,
 			photo: photo,
 			qualification: qualification,
-			communication: communication);
-	var practitionerBox = await Hive.openBox<Practitioner>('PractitionerBox');
-	practitionerBox.put(newPractitioner.id, newPractitioner);
+			communication: communication,
+);
 	return newPractitioner;
 }
   final String resourceType= 'Practitioner';
@@ -145,9 +144,8 @@ class Practitioner_Qualification {
 			identifier: identifier,
 			code: code,
 			period: period,
-			issuer: issuer);
-	var practitioner_QualificationBox = await Hive.openBox<Practitioner_Qualification>('Practitioner_QualificationBox');
-	practitioner_QualificationBox.put(newPractitioner_Qualification.id, newPractitioner_Qualification);
+			issuer: issuer,
+);
 	return newPractitioner_Qualification;
 }
   String id;

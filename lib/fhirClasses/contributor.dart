@@ -24,9 +24,8 @@ class Contributor {
 			elementType: elementType,
 			name: name,
 			elementName: elementName,
-			contact: contact);
-	var contributorBox = await Hive.openBox<Contributor>('ContributorBox');
-	contributorBox.put(newContributor.id, newContributor);
+			contact: contact,
+);
 	return newContributor;
 }
   String id;

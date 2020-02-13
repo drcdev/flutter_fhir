@@ -58,9 +58,8 @@ class Subscription {
 			elementCriteria: elementCriteria,
 			error: error,
 			elementError: elementError,
-			channel: channel);
-	var subscriptionBox = await Hive.openBox<Subscription>('SubscriptionBox');
-	subscriptionBox.put(newSubscription.id, newSubscription);
+			channel: channel,
+);
 	return newSubscription;
 }
   final String resourceType= 'Subscription';
@@ -142,9 +141,8 @@ class Subscription_Channel {
 			payload: payload,
 			elementPayload: elementPayload,
 			header: header,
-			elementHeader: elementHeader);
-	var subscription_ChannelBox = await Hive.openBox<Subscription_Channel>('Subscription_ChannelBox');
-	subscription_ChannelBox.put(newSubscription_Channel.id, newSubscription_Channel);
+			elementHeader: elementHeader,
+);
 	return newSubscription_Channel;
 }
   String id;

@@ -123,9 +123,8 @@ class CodeSystem {
 			elementCount: elementCount,
 			filter: filter,
 			property: property,
-			concept: concept);
-	var codeSystemBox = await Hive.openBox<CodeSystem>('CodeSystemBox');
-	codeSystemBox.put(newCodeSystem.id, newCodeSystem);
+			concept: concept,
+);
 	return newCodeSystem;
 }
   final String resourceType= 'CodeSystem';
@@ -269,9 +268,8 @@ class CodeSystem_Filter {
 			operator: operator,
 			elementOperator: elementOperator,
 			value: value,
-			elementValue: elementValue);
-	var codeSystem_FilterBox = await Hive.openBox<CodeSystem_Filter>('CodeSystem_FilterBox');
-	codeSystem_FilterBox.put(newCodeSystem_Filter.id, newCodeSystem_Filter);
+			elementValue: elementValue,
+);
 	return newCodeSystem_Filter;
 }
   String id;
@@ -330,9 +328,8 @@ class CodeSystem_Property {
 			description: description,
 			elementDescription: elementDescription,
 			type: type,
-			elementType: elementType);
-	var codeSystem_PropertyBox = await Hive.openBox<CodeSystem_Property>('CodeSystem_PropertyBox');
-	codeSystem_PropertyBox.put(newCodeSystem_Property.id, newCodeSystem_Property);
+			elementType: elementType,
+);
 	return newCodeSystem_Property;
 }
   String id;
@@ -393,9 +390,8 @@ class CodeSystem_Concept {
 			elementDefinition: elementDefinition,
 			designation: designation,
 			property: property,
-			concept: concept);
-	var codeSystem_ConceptBox = await Hive.openBox<CodeSystem_Concept>('CodeSystem_ConceptBox');
-	codeSystem_ConceptBox.put(newCodeSystem_Concept.id, newCodeSystem_Concept);
+			concept: concept,
+);
 	return newCodeSystem_Concept;
 }
   String id;
@@ -450,9 +446,8 @@ class CodeSystem_Designation {
 			elementLanguage: elementLanguage,
 			use: use,
 			value: value,
-			elementValue: elementValue);
-	var codeSystem_DesignationBox = await Hive.openBox<CodeSystem_Designation>('CodeSystem_DesignationBox');
-	codeSystem_DesignationBox.put(newCodeSystem_Designation.id, newCodeSystem_Designation);
+			elementValue: elementValue,
+);
 	return newCodeSystem_Designation;
 }
   String id;
@@ -519,9 +514,8 @@ class CodeSystem_Property1 {
 			valueDateTime: valueDateTime,
 			elementValueDateTime: elementValueDateTime,
 			valueDecimal: valueDecimal,
-			elementValueDecimal: elementValueDecimal);
-	var codeSystem_Property1Box = await Hive.openBox<CodeSystem_Property1>('CodeSystem_Property1Box');
-	codeSystem_Property1Box.put(newCodeSystem_Property1.id, newCodeSystem_Property1);
+			elementValueDecimal: elementValueDecimal,
+);
 	return newCodeSystem_Property1;
 }
   String id;

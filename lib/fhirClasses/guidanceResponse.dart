@@ -79,9 +79,8 @@ class GuidanceResponse {
 			evaluationMessage: evaluationMessage,
 			outputParameters: outputParameters,
 			result: result,
-			dataRequirement: dataRequirement);
-	var guidanceResponseBox = await Hive.openBox<GuidanceResponse>('GuidanceResponseBox');
-	guidanceResponseBox.put(newGuidanceResponse.id, newGuidanceResponse);
+			dataRequirement: dataRequirement,
+);
 	return newGuidanceResponse;
 }
   final String resourceType= 'GuidanceResponse';

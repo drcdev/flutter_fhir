@@ -139,9 +139,8 @@ class Task {
 			relevantHistory: relevantHistory,
 			restriction: restriction,
 			input: input,
-			output: output);
-	var taskBox = await Hive.openBox<Task>('TaskBox');
-	taskBox.put(newTask.id, newTask);
+			output: output,
+);
 	return newTask;
 }
   final String resourceType= 'Task';
@@ -267,9 +266,8 @@ class Task_Restriction {
 			repetitions: repetitions,
 			elementRepetitions: elementRepetitions,
 			period: period,
-			recipient: recipient);
-	var task_RestrictionBox = await Hive.openBox<Task_Restriction>('Task_RestrictionBox');
-	task_RestrictionBox.put(newTask_Restriction.id, newTask_Restriction);
+			recipient: recipient,
+);
 	return newTask_Restriction;
 }
   String id;
@@ -444,9 +442,8 @@ class Task_Input {
 			valueTriggerDefinition: valueTriggerDefinition,
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
-			valueMeta: valueMeta);
-	var task_InputBox = await Hive.openBox<Task_Input>('Task_InputBox');
-	task_InputBox.put(newTask_Input.id, newTask_Input);
+			valueMeta: valueMeta,
+);
 	return newTask_Input;
 }
   String id;
@@ -753,9 +750,8 @@ class Task_Output {
 			valueTriggerDefinition: valueTriggerDefinition,
 			valueUsageContext: valueUsageContext,
 			valueDosage: valueDosage,
-			valueMeta: valueMeta);
-	var task_OutputBox = await Hive.openBox<Task_Output>('Task_OutputBox');
-	task_OutputBox.put(newTask_Output.id, newTask_Output);
+			valueMeta: valueMeta,
+);
 	return newTask_Output;
 }
   String id;

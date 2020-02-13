@@ -98,9 +98,8 @@ class CarePlan {
 			supportingInfo: supportingInfo,
 			goal: goal,
 			activity: activity,
-			note: note);
-	var carePlanBox = await Hive.openBox<CarePlan>('CarePlanBox');
-	carePlanBox.put(newCarePlan.id, newCarePlan);
+			note: note,
+);
 	return newCarePlan;
 }
   final String resourceType= 'CarePlan';
@@ -210,9 +209,8 @@ class CarePlan_Activity {
 			outcomeReference: outcomeReference,
 			progress: progress,
 			reference: reference,
-			detail: detail);
-	var carePlan_ActivityBox = await Hive.openBox<CarePlan_Activity>('CarePlan_ActivityBox');
-	carePlan_ActivityBox.put(newCarePlan_Activity.id, newCarePlan_Activity);
+			detail: detail,
+);
 	return newCarePlan_Activity;
 }
   String id;
@@ -301,9 +299,8 @@ class CarePlan_Detail {
 			dailyAmount: dailyAmount,
 			quantity: quantity,
 			description: description,
-			elementDescription: elementDescription);
-	var carePlan_DetailBox = await Hive.openBox<CarePlan_Detail>('CarePlan_DetailBox');
-	carePlan_DetailBox.put(newCarePlan_Detail.id, newCarePlan_Detail);
+			elementDescription: elementDescription,
+);
 	return newCarePlan_Detail;
 }
   String id;

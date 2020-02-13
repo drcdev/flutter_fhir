@@ -90,9 +90,8 @@ class MedicationKnowledge {
 			drugCharacteristic: drugCharacteristic,
 			contraindication: contraindication,
 			regulatory: regulatory,
-			kinetics: kinetics);
-	var medicationKnowledgeBox = await Hive.openBox<MedicationKnowledge>('MedicationKnowledgeBox');
-	medicationKnowledgeBox.put(newMedicationKnowledge.id, newMedicationKnowledge);
+			kinetics: kinetics,
+);
 	return newMedicationKnowledge;
 }
   final String resourceType= 'MedicationKnowledge';
@@ -188,9 +187,8 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
-			reference: reference);
-	var medicationKnowledge_RelatedMedicationKnowledgeBox = await Hive.openBox<MedicationKnowledge_RelatedMedicationKnowledge>('MedicationKnowledge_RelatedMedicationKnowledgeBox');
-	medicationKnowledge_RelatedMedicationKnowledgeBox.put(newMedicationKnowledge_RelatedMedicationKnowledge.id, newMedicationKnowledge_RelatedMedicationKnowledge);
+			reference: reference,
+);
 	return newMedicationKnowledge_RelatedMedicationKnowledge;
 }
   String id;
@@ -225,9 +223,8 @@ class MedicationKnowledge_Monograph {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
-			source: source);
-	var medicationKnowledge_MonographBox = await Hive.openBox<MedicationKnowledge_Monograph>('MedicationKnowledge_MonographBox');
-	medicationKnowledge_MonographBox.put(newMedicationKnowledge_Monograph.id, newMedicationKnowledge_Monograph);
+			source: source,
+);
 	return newMedicationKnowledge_Monograph;
 }
   String id;
@@ -268,9 +265,8 @@ class MedicationKnowledge_Ingredient {
 			itemReference: itemReference,
 			isActive: isActive,
 			elementIsActive: elementIsActive,
-			strength: strength);
-	var medicationKnowledge_IngredientBox = await Hive.openBox<MedicationKnowledge_Ingredient>('MedicationKnowledge_IngredientBox');
-	medicationKnowledge_IngredientBox.put(newMedicationKnowledge_Ingredient.id, newMedicationKnowledge_Ingredient);
+			strength: strength,
+);
 	return newMedicationKnowledge_Ingredient;
 }
   String id;
@@ -315,9 +311,8 @@ class MedicationKnowledge_Cost {
 			type: type,
 			source: source,
 			elementSource: elementSource,
-			cost: cost);
-	var medicationKnowledge_CostBox = await Hive.openBox<MedicationKnowledge_Cost>('MedicationKnowledge_CostBox');
-	medicationKnowledge_CostBox.put(newMedicationKnowledge_Cost.id, newMedicationKnowledge_Cost);
+			cost: cost,
+);
 	return newMedicationKnowledge_Cost;
 }
   String id;
@@ -358,9 +353,8 @@ class MedicationKnowledge_MonitoringProgram {
 			modifierExtension: modifierExtension,
 			type: type,
 			name: name,
-			elementName: elementName);
-	var medicationKnowledge_MonitoringProgramBox = await Hive.openBox<MedicationKnowledge_MonitoringProgram>('MedicationKnowledge_MonitoringProgramBox');
-	medicationKnowledge_MonitoringProgramBox.put(newMedicationKnowledge_MonitoringProgram.id, newMedicationKnowledge_MonitoringProgram);
+			elementName: elementName,
+);
 	return newMedicationKnowledge_MonitoringProgram;
 }
   String id;
@@ -401,9 +395,8 @@ class MedicationKnowledge_AdministrationGuidelines {
 			dosage: dosage,
 			indicationCodeableConcept: indicationCodeableConcept,
 			indicationReference: indicationReference,
-			patientCharacteristics: patientCharacteristics);
-	var medicationKnowledge_AdministrationGuidelinesBox = await Hive.openBox<MedicationKnowledge_AdministrationGuidelines>('MedicationKnowledge_AdministrationGuidelinesBox');
-	medicationKnowledge_AdministrationGuidelinesBox.put(newMedicationKnowledge_AdministrationGuidelines.id, newMedicationKnowledge_AdministrationGuidelines);
+			patientCharacteristics: patientCharacteristics,
+);
 	return newMedicationKnowledge_AdministrationGuidelines;
 }
   String id;
@@ -442,9 +435,8 @@ class MedicationKnowledge_Dosage {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
-			dosage: dosage);
-	var medicationKnowledge_DosageBox = await Hive.openBox<MedicationKnowledge_Dosage>('MedicationKnowledge_DosageBox');
-	medicationKnowledge_DosageBox.put(newMedicationKnowledge_Dosage.id, newMedicationKnowledge_Dosage);
+			dosage: dosage,
+);
 	return newMedicationKnowledge_Dosage;
 }
   String id;
@@ -483,9 +475,8 @@ class MedicationKnowledge_PatientCharacteristics {
 			characteristicCodeableConcept: characteristicCodeableConcept,
 			characteristicQuantity: characteristicQuantity,
 			value: value,
-			elementValue: elementValue);
-	var medicationKnowledge_PatientCharacteristicsBox = await Hive.openBox<MedicationKnowledge_PatientCharacteristics>('MedicationKnowledge_PatientCharacteristicsBox');
-	medicationKnowledge_PatientCharacteristicsBox.put(newMedicationKnowledge_PatientCharacteristics.id, newMedicationKnowledge_PatientCharacteristics);
+			elementValue: elementValue,
+);
 	return newMedicationKnowledge_PatientCharacteristics;
 }
   String id;
@@ -524,9 +515,8 @@ class MedicationKnowledge_MedicineClassification {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
-			classification: classification);
-	var medicationKnowledge_MedicineClassificationBox = await Hive.openBox<MedicationKnowledge_MedicineClassification>('MedicationKnowledge_MedicineClassificationBox');
-	medicationKnowledge_MedicineClassificationBox.put(newMedicationKnowledge_MedicineClassification.id, newMedicationKnowledge_MedicineClassification);
+			classification: classification,
+);
 	return newMedicationKnowledge_MedicineClassification;
 }
   String id;
@@ -561,9 +551,8 @@ class MedicationKnowledge_Packaging {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
-			quantity: quantity);
-	var medicationKnowledge_PackagingBox = await Hive.openBox<MedicationKnowledge_Packaging>('MedicationKnowledge_PackagingBox');
-	medicationKnowledge_PackagingBox.put(newMedicationKnowledge_Packaging.id, newMedicationKnowledge_Packaging);
+			quantity: quantity,
+);
 	return newMedicationKnowledge_Packaging;
 }
   String id;
@@ -608,9 +597,8 @@ class MedicationKnowledge_DrugCharacteristic {
 			elementValueString: elementValueString,
 			valueQuantity: valueQuantity,
 			valueBase64Binary: valueBase64Binary,
-			elementValueBase64Binary: elementValueBase64Binary);
-	var medicationKnowledge_DrugCharacteristicBox = await Hive.openBox<MedicationKnowledge_DrugCharacteristic>('MedicationKnowledge_DrugCharacteristicBox');
-	medicationKnowledge_DrugCharacteristicBox.put(newMedicationKnowledge_DrugCharacteristic.id, newMedicationKnowledge_DrugCharacteristic);
+			elementValueBase64Binary: elementValueBase64Binary,
+);
 	return newMedicationKnowledge_DrugCharacteristic;
 }
   String id;
@@ -659,9 +647,8 @@ class MedicationKnowledge_Regulatory {
 			regulatoryAuthority: regulatoryAuthority,
 			substitution: substitution,
 			schedule: schedule,
-			maxDispense: maxDispense);
-	var medicationKnowledge_RegulatoryBox = await Hive.openBox<MedicationKnowledge_Regulatory>('MedicationKnowledge_RegulatoryBox');
-	medicationKnowledge_RegulatoryBox.put(newMedicationKnowledge_Regulatory.id, newMedicationKnowledge_Regulatory);
+			maxDispense: maxDispense,
+);
 	return newMedicationKnowledge_Regulatory;
 }
   String id;
@@ -702,9 +689,8 @@ class MedicationKnowledge_Substitution {
 			modifierExtension: modifierExtension,
 			type: type,
 			allowed: allowed,
-			elementAllowed: elementAllowed);
-	var medicationKnowledge_SubstitutionBox = await Hive.openBox<MedicationKnowledge_Substitution>('MedicationKnowledge_SubstitutionBox');
-	medicationKnowledge_SubstitutionBox.put(newMedicationKnowledge_Substitution.id, newMedicationKnowledge_Substitution);
+			elementAllowed: elementAllowed,
+);
 	return newMedicationKnowledge_Substitution;
 }
   String id;
@@ -739,9 +725,8 @@ class MedicationKnowledge_Schedule {
 			id: await newId('MedicationKnowledge_Schedule'),
 			extension: extension,
 			modifierExtension: modifierExtension,
-			schedule: schedule);
-	var medicationKnowledge_ScheduleBox = await Hive.openBox<MedicationKnowledge_Schedule>('MedicationKnowledge_ScheduleBox');
-	medicationKnowledge_ScheduleBox.put(newMedicationKnowledge_Schedule.id, newMedicationKnowledge_Schedule);
+			schedule: schedule,
+);
 	return newMedicationKnowledge_Schedule;
 }
   String id;
@@ -774,9 +759,8 @@ class MedicationKnowledge_MaxDispense {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
-			period: period);
-	var medicationKnowledge_MaxDispenseBox = await Hive.openBox<MedicationKnowledge_MaxDispense>('MedicationKnowledge_MaxDispenseBox');
-	medicationKnowledge_MaxDispenseBox.put(newMedicationKnowledge_MaxDispense.id, newMedicationKnowledge_MaxDispense);
+			period: period,
+);
 	return newMedicationKnowledge_MaxDispense;
 }
   String id;
@@ -813,9 +797,8 @@ class MedicationKnowledge_Kinetics {
 			modifierExtension: modifierExtension,
 			areaUnderCurve: areaUnderCurve,
 			lethalDose50: lethalDose50,
-			halfLifePeriod: halfLifePeriod);
-	var medicationKnowledge_KineticsBox = await Hive.openBox<MedicationKnowledge_Kinetics>('MedicationKnowledge_KineticsBox');
-	medicationKnowledge_KineticsBox.put(newMedicationKnowledge_Kinetics.id, newMedicationKnowledge_Kinetics);
+			halfLifePeriod: halfLifePeriod,
+);
 	return newMedicationKnowledge_Kinetics;
 }
   String id;

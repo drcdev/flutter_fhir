@@ -136,9 +136,8 @@ class ServiceRequest {
 			note: note,
 			patientInstruction: patientInstruction,
 			elementPatientInstruction: elementPatientInstruction,
-			relevantHistory: relevantHistory);
-	var serviceRequestBox = await Hive.openBox<ServiceRequest>('ServiceRequestBox');
-	serviceRequestBox.put(newServiceRequest.id, newServiceRequest);
+			relevantHistory: relevantHistory,
+);
 	return newServiceRequest;
 }
   final String resourceType= 'ServiceRequest';

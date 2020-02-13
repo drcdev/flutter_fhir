@@ -28,9 +28,8 @@ class Reference {
 			elementType: elementType,
 			identifier: identifier,
 			display: display,
-			elementDisplay: elementDisplay);
-	var referenceBox = await Hive.openBox<Reference>('ReferenceBox');
-	referenceBox.put(newReference.id, newReference);
+			elementDisplay: elementDisplay,
+);
 	return newReference;
 }
   String id;

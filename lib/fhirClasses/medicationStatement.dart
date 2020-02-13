@@ -83,9 +83,8 @@ class MedicationStatement {
 			reasonCode: reasonCode,
 			reasonReference: reasonReference,
 			note: note,
-			dosage: dosage);
-	var medicationStatementBox = await Hive.openBox<MedicationStatement>('MedicationStatementBox');
-	medicationStatementBox.put(newMedicationStatement.id, newMedicationStatement);
+			dosage: dosage,
+);
 	return newMedicationStatement;
 }
   final String resourceType= 'MedicationStatement';

@@ -124,9 +124,8 @@ class OperationDefinition {
 			inputProfile: inputProfile,
 			outputProfile: outputProfile,
 			parameter: parameter,
-			overload: overload);
-	var operationDefinitionBox = await Hive.openBox<OperationDefinition>('OperationDefinitionBox');
-	operationDefinitionBox.put(newOperationDefinition.id, newOperationDefinition);
+			overload: overload,
+);
 	return newOperationDefinition;
 }
   final String resourceType= 'OperationDefinition';
@@ -292,9 +291,8 @@ class OperationDefinition_Parameter {
 			elementSearchType: elementSearchType,
 			binding: binding,
 			referencedFrom: referencedFrom,
-			part: part);
-	var operationDefinition_ParameterBox = await Hive.openBox<OperationDefinition_Parameter>('OperationDefinition_ParameterBox');
-	operationDefinition_ParameterBox.put(newOperationDefinition_Parameter.id, newOperationDefinition_Parameter);
+			part: part,
+);
 	return newOperationDefinition_Parameter;
 }
   String id;
@@ -363,9 +361,8 @@ class OperationDefinition_Binding {
 			modifierExtension: modifierExtension,
 			strength: strength,
 			elementStrength: elementStrength,
-			valueSet: valueSet);
-	var operationDefinition_BindingBox = await Hive.openBox<OperationDefinition_Binding>('OperationDefinition_BindingBox');
-	operationDefinition_BindingBox.put(newOperationDefinition_Binding.id, newOperationDefinition_Binding);
+			valueSet: valueSet,
+);
 	return newOperationDefinition_Binding;
 }
   String id;
@@ -406,9 +403,8 @@ class OperationDefinition_ReferencedFrom {
 			source: source,
 			elementSource: elementSource,
 			sourceId: sourceId,
-			elementSourceId: elementSourceId);
-	var operationDefinition_ReferencedFromBox = await Hive.openBox<OperationDefinition_ReferencedFrom>('OperationDefinition_ReferencedFromBox');
-	operationDefinition_ReferencedFromBox.put(newOperationDefinition_ReferencedFrom.id, newOperationDefinition_ReferencedFrom);
+			elementSourceId: elementSourceId,
+);
 	return newOperationDefinition_ReferencedFrom;
 }
   String id;
@@ -451,9 +447,8 @@ class OperationDefinition_Overload {
 			parameterName: parameterName,
 			elementParameterName: elementParameterName,
 			comment: comment,
-			elementComment: elementComment);
-	var operationDefinition_OverloadBox = await Hive.openBox<OperationDefinition_Overload>('OperationDefinition_OverloadBox');
-	operationDefinition_OverloadBox.put(newOperationDefinition_Overload.id, newOperationDefinition_Overload);
+			elementComment: elementComment,
+);
 	return newOperationDefinition_Overload;
 }
   String id;

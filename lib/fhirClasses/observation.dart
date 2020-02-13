@@ -135,9 +135,8 @@ class Observation {
 			referenceRange: referenceRange,
 			hasMember: hasMember,
 			derivedFrom: derivedFrom,
-			component: component);
-	var observationBox = await Hive.openBox<Observation>('ObservationBox');
-	observationBox.put(newObservation.id, newObservation);
+			component: component,
+);
 	return newObservation;
 }
   final String resourceType= 'Observation';
@@ -285,9 +284,8 @@ class Observation_ReferenceRange {
 			appliesTo: appliesTo,
 			age: age,
 			text: text,
-			elementText: elementText);
-	var observation_ReferenceRangeBox = await Hive.openBox<Observation_ReferenceRange>('Observation_ReferenceRangeBox');
-	observation_ReferenceRangeBox.put(newObservation_ReferenceRange.id, newObservation_ReferenceRange);
+			elementText: elementText,
+);
 	return newObservation_ReferenceRange;
 }
   String id;
@@ -368,9 +366,8 @@ class Observation_Component {
 			valuePeriod: valuePeriod,
 			dataAbsentReason: dataAbsentReason,
 			interpretation: interpretation,
-			referenceRange: referenceRange);
-	var observation_ComponentBox = await Hive.openBox<Observation_Component>('Observation_ComponentBox');
-	observation_ComponentBox.put(newObservation_Component.id, newObservation_Component);
+			referenceRange: referenceRange,
+);
 	return newObservation_Component;
 }
   String id;

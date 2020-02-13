@@ -79,9 +79,8 @@ class NamingSystem {
 			jurisdiction: jurisdiction,
 			usage: usage,
 			elementUsage: elementUsage,
-			uniqueId: uniqueId);
-	var namingSystemBox = await Hive.openBox<NamingSystem>('NamingSystemBox');
-	namingSystemBox.put(newNamingSystem.id, newNamingSystem);
+			uniqueId: uniqueId,
+);
 	return newNamingSystem;
 }
   final String resourceType= 'NamingSystem';
@@ -183,9 +182,8 @@ class NamingSystem_UniqueId {
 			elementPreferred: elementPreferred,
 			comment: comment,
 			elementComment: elementComment,
-			period: period);
-	var namingSystem_UniqueIdBox = await Hive.openBox<NamingSystem_UniqueId>('NamingSystem_UniqueIdBox');
-	namingSystem_UniqueIdBox.put(newNamingSystem_UniqueId.id, newNamingSystem_UniqueId);
+			period: period,
+);
 	return newNamingSystem_UniqueId;
 }
   String id;

@@ -36,9 +36,8 @@ class OperationOutcome {
 			contained: contained,
 			extension: extension,
 			modifierExtension: modifierExtension,
-			issue: issue);
-	var operationOutcomeBox = await Hive.openBox<OperationOutcome>('OperationOutcomeBox');
-	operationOutcomeBox.put(newOperationOutcome.id, newOperationOutcome);
+			issue: issue,
+);
 	return newOperationOutcome;
 }
   final String resourceType= 'OperationOutcome';
@@ -104,9 +103,8 @@ class OperationOutcome_Issue {
 			location: location,
 			elementLocation: elementLocation,
 			expression: expression,
-			elementExpression: elementExpression);
-	var operationOutcome_IssueBox = await Hive.openBox<OperationOutcome_Issue>('OperationOutcome_IssueBox');
-	operationOutcome_IssueBox.put(newOperationOutcome_Issue.id, newOperationOutcome_Issue);
+			elementExpression: elementExpression,
+);
 	return newOperationOutcome_Issue;
 }
   String id;

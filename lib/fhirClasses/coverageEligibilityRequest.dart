@@ -77,9 +77,8 @@ class CoverageEligibilityRequest {
 			facility: facility,
 			supportingInfo: supportingInfo,
 			insurance: insurance,
-			item: item);
-	var coverageEligibilityRequestBox = await Hive.openBox<CoverageEligibilityRequest>('CoverageEligibilityRequestBox');
-	coverageEligibilityRequestBox.put(newCoverageEligibilityRequest.id, newCoverageEligibilityRequest);
+			item: item,
+);
 	return newCoverageEligibilityRequest;
 }
   final String resourceType= 'CoverageEligibilityRequest';
@@ -169,9 +168,8 @@ class CoverageEligibilityRequest_SupportingInfo {
 			elementSequence: elementSequence,
 			information: information,
 			appliesToAll: appliesToAll,
-			elementAppliesToAll: elementAppliesToAll);
-	var coverageEligibilityRequest_SupportingInfoBox = await Hive.openBox<CoverageEligibilityRequest_SupportingInfo>('CoverageEligibilityRequest_SupportingInfoBox');
-	coverageEligibilityRequest_SupportingInfoBox.put(newCoverageEligibilityRequest_SupportingInfo.id, newCoverageEligibilityRequest_SupportingInfo);
+			elementAppliesToAll: elementAppliesToAll,
+);
 	return newCoverageEligibilityRequest_SupportingInfo;
 }
   String id;
@@ -218,9 +216,8 @@ class CoverageEligibilityRequest_Insurance {
 			elementFocal: elementFocal,
 			coverage: coverage,
 			businessArrangement: businessArrangement,
-			elementBusinessArrangement: elementBusinessArrangement);
-	var coverageEligibilityRequest_InsuranceBox = await Hive.openBox<CoverageEligibilityRequest_Insurance>('CoverageEligibilityRequest_InsuranceBox');
-	coverageEligibilityRequest_InsuranceBox.put(newCoverageEligibilityRequest_Insurance.id, newCoverageEligibilityRequest_Insurance);
+			elementBusinessArrangement: elementBusinessArrangement,
+);
 	return newCoverageEligibilityRequest_Insurance;
 }
   String id;
@@ -279,9 +276,8 @@ class CoverageEligibilityRequest_Item {
 			unitPrice: unitPrice,
 			facility: facility,
 			diagnosis: diagnosis,
-			detail: detail);
-	var coverageEligibilityRequest_ItemBox = await Hive.openBox<CoverageEligibilityRequest_Item>('CoverageEligibilityRequest_ItemBox');
-	coverageEligibilityRequest_ItemBox.put(newCoverageEligibilityRequest_Item.id, newCoverageEligibilityRequest_Item);
+			detail: detail,
+);
 	return newCoverageEligibilityRequest_Item;
 }
   String id;
@@ -334,9 +330,8 @@ class CoverageEligibilityRequest_Diagnosis {
 			extension: extension,
 			modifierExtension: modifierExtension,
 			diagnosisCodeableConcept: diagnosisCodeableConcept,
-			diagnosisReference: diagnosisReference);
-	var coverageEligibilityRequest_DiagnosisBox = await Hive.openBox<CoverageEligibilityRequest_Diagnosis>('CoverageEligibilityRequest_DiagnosisBox');
-	coverageEligibilityRequest_DiagnosisBox.put(newCoverageEligibilityRequest_Diagnosis.id, newCoverageEligibilityRequest_Diagnosis);
+			diagnosisReference: diagnosisReference,
+);
 	return newCoverageEligibilityRequest_Diagnosis;
 }
   String id;

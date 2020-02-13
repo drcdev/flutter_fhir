@@ -68,9 +68,8 @@ class SupplyDelivery {
 			occurrenceTiming: occurrenceTiming,
 			supplier: supplier,
 			destination: destination,
-			receiver: receiver);
-	var supplyDeliveryBox = await Hive.openBox<SupplyDelivery>('SupplyDeliveryBox');
-	supplyDeliveryBox.put(newSupplyDelivery.id, newSupplyDelivery);
+			receiver: receiver,
+);
 	return newSupplyDelivery;
 }
   final String resourceType= 'SupplyDelivery';
@@ -148,9 +147,8 @@ class SupplyDelivery_SuppliedItem {
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			itemCodeableConcept: itemCodeableConcept,
-			itemReference: itemReference);
-	var supplyDelivery_SuppliedItemBox = await Hive.openBox<SupplyDelivery_SuppliedItem>('SupplyDelivery_SuppliedItemBox');
-	supplyDelivery_SuppliedItemBox.put(newSupplyDelivery_SuppliedItem.id, newSupplyDelivery_SuppliedItem);
+			itemReference: itemReference,
+);
 	return newSupplyDelivery_SuppliedItem;
 }
   String id;

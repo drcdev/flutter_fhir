@@ -58,9 +58,8 @@ class EnrollmentResponse {
 			created: created,
 			elementCreated: elementCreated,
 			organization: organization,
-			requestProvider: requestProvider);
-	var enrollmentResponseBox = await Hive.openBox<EnrollmentResponse>('EnrollmentResponseBox');
-	enrollmentResponseBox.put(newEnrollmentResponse.id, newEnrollmentResponse);
+			requestProvider: requestProvider,
+);
 	return newEnrollmentResponse;
 }
   final String resourceType= 'EnrollmentResponse';

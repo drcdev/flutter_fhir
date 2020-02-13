@@ -32,9 +32,8 @@ class Binary {
 			elementContentType: elementContentType,
 			securityContext: securityContext,
 			data: data,
-			elementData: elementData);
-	var binaryBox = await Hive.openBox<Binary>('BinaryBox');
-	binaryBox.put(newBinary.id, newBinary);
+			elementData: elementData,
+);
 	return newBinary;
 }
   final String resourceType= 'Binary';

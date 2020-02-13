@@ -26,9 +26,8 @@ class ProductShelfLife {
 			identifier: identifier,
 			type: type,
 			period: period,
-			specialPrecautionsForStorage: specialPrecautionsForStorage);
-	var productShelfLifeBox = await Hive.openBox<ProductShelfLife>('ProductShelfLifeBox');
-	productShelfLifeBox.put(newProductShelfLife.id, newProductShelfLife);
+			specialPrecautionsForStorage: specialPrecautionsForStorage,
+);
 	return newProductShelfLife;
 }
   String id;

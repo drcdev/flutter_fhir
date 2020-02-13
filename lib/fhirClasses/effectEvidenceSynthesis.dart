@@ -129,9 +129,8 @@ class EffectEvidenceSynthesis {
 			sampleSize: sampleSize,
 			resultsByExposure: resultsByExposure,
 			effectEstimate: effectEstimate,
-			certainty: certainty);
-	var effectEvidenceSynthesisBox = await Hive.openBox<EffectEvidenceSynthesis>('EffectEvidenceSynthesisBox');
-	effectEvidenceSynthesisBox.put(newEffectEvidenceSynthesis.id, newEffectEvidenceSynthesis);
+			certainty: certainty,
+);
 	return newEffectEvidenceSynthesis;
 }
   final String resourceType= 'EffectEvidenceSynthesis';
@@ -273,9 +272,8 @@ class EffectEvidenceSynthesis_SampleSize {
 			numberOfStudies: numberOfStudies,
 			elementNumberOfStudies: elementNumberOfStudies,
 			numberOfParticipants: numberOfParticipants,
-			elementNumberOfParticipants: elementNumberOfParticipants);
-	var effectEvidenceSynthesis_SampleSizeBox = await Hive.openBox<EffectEvidenceSynthesis_SampleSize>('EffectEvidenceSynthesis_SampleSizeBox');
-	effectEvidenceSynthesis_SampleSizeBox.put(newEffectEvidenceSynthesis_SampleSize.id, newEffectEvidenceSynthesis_SampleSize);
+			elementNumberOfParticipants: elementNumberOfParticipants,
+);
 	return newEffectEvidenceSynthesis_SampleSize;
 }
   String id;
@@ -326,9 +324,8 @@ class EffectEvidenceSynthesis_ResultsByExposure {
 			exposureState: exposureState,
 			elementExposureState: elementExposureState,
 			variantState: variantState,
-			riskEvidenceSynthesis: riskEvidenceSynthesis);
-	var effectEvidenceSynthesis_ResultsByExposureBox = await Hive.openBox<EffectEvidenceSynthesis_ResultsByExposure>('EffectEvidenceSynthesis_ResultsByExposureBox');
-	effectEvidenceSynthesis_ResultsByExposureBox.put(newEffectEvidenceSynthesis_ResultsByExposure.id, newEffectEvidenceSynthesis_ResultsByExposure);
+			riskEvidenceSynthesis: riskEvidenceSynthesis,
+);
 	return newEffectEvidenceSynthesis_ResultsByExposure;
 }
   String id;
@@ -383,9 +380,8 @@ class EffectEvidenceSynthesis_EffectEstimate {
 			value: value,
 			elementValue: elementValue,
 			unitOfMeasure: unitOfMeasure,
-			precisionEstimate: precisionEstimate);
-	var effectEvidenceSynthesis_EffectEstimateBox = await Hive.openBox<EffectEvidenceSynthesis_EffectEstimate>('EffectEvidenceSynthesis_EffectEstimateBox');
-	effectEvidenceSynthesis_EffectEstimateBox.put(newEffectEvidenceSynthesis_EffectEstimate.id, newEffectEvidenceSynthesis_EffectEstimate);
+			precisionEstimate: precisionEstimate,
+);
 	return newEffectEvidenceSynthesis_EffectEstimate;
 }
   String id;
@@ -442,9 +438,8 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
 			from: from,
 			elementFrom: elementFrom,
 			to: to,
-			elementTo: elementTo);
-	var effectEvidenceSynthesis_PrecisionEstimateBox = await Hive.openBox<EffectEvidenceSynthesis_PrecisionEstimate>('EffectEvidenceSynthesis_PrecisionEstimateBox');
-	effectEvidenceSynthesis_PrecisionEstimateBox.put(newEffectEvidenceSynthesis_PrecisionEstimate.id, newEffectEvidenceSynthesis_PrecisionEstimate);
+			elementTo: elementTo,
+);
 	return newEffectEvidenceSynthesis_PrecisionEstimate;
 }
   String id;
@@ -491,9 +486,8 @@ class EffectEvidenceSynthesis_Certainty {
 			modifierExtension: modifierExtension,
 			rating: rating,
 			note: note,
-			certaintySubcomponent: certaintySubcomponent);
-	var effectEvidenceSynthesis_CertaintyBox = await Hive.openBox<EffectEvidenceSynthesis_Certainty>('EffectEvidenceSynthesis_CertaintyBox');
-	effectEvidenceSynthesis_CertaintyBox.put(newEffectEvidenceSynthesis_Certainty.id, newEffectEvidenceSynthesis_Certainty);
+			certaintySubcomponent: certaintySubcomponent,
+);
 	return newEffectEvidenceSynthesis_Certainty;
 }
   String id;
@@ -532,9 +526,8 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
 			modifierExtension: modifierExtension,
 			type: type,
 			rating: rating,
-			note: note);
-	var effectEvidenceSynthesis_CertaintySubcomponentBox = await Hive.openBox<EffectEvidenceSynthesis_CertaintySubcomponent>('EffectEvidenceSynthesis_CertaintySubcomponentBox');
-	effectEvidenceSynthesis_CertaintySubcomponentBox.put(newEffectEvidenceSynthesis_CertaintySubcomponent.id, newEffectEvidenceSynthesis_CertaintySubcomponent);
+			note: note,
+);
 	return newEffectEvidenceSynthesis_CertaintySubcomponent;
 }
   String id;

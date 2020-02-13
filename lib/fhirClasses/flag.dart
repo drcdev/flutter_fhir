@@ -55,9 +55,8 @@ class Flag {
 			subject: subject,
 			period: period,
 			encounter: encounter,
-			author: author);
-	var flagBox = await Hive.openBox<Flag>('FlagBox');
-	flagBox.put(newFlag.id, newFlag);
+			author: author,
+);
 	return newFlag;
 }
   final String resourceType= 'Flag';
