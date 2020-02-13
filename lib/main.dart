@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_fhir/db.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:flutter_fhir/util/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sqflite/sqflite.dart';
 
 void main() async {
+
+  var fhirDb = createDatabase();
   runApp(MaterialApp(
       home: _Main(),
       supportedLocales: [Locale('en', 'US'), Locale('es', 'AR')],

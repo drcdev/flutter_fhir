@@ -9,7 +9,7 @@ import fhirToDartFunc as fhir
 with open('./helpers/fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
 
-os.remove('./lib/fhirClasses/classes.dart')
+# os.remove('./lib/fhirClasses/classes.dart')
 
 dartCode = '' #where we will store our code
 importDict = {} #will store which other classes we will import
@@ -18,11 +18,17 @@ importDict = {} #will store which other classes we will import
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 definitions = schema['definitions']
-
+z = 0
 for objects in definitions:
         #ignore any of those that are in the ResourceList (names, no definitions)
         if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
             if('_' not in objects):
+                z += 1
+                print('CREATE TABLE ' + objects + '(\n\tid TEXT PRIMARY KEY,\n\tjson_resource TEXT\n);\n\n')
+                print('****', str(z), '****')
+                if(z > 46):
+                    break
+                
                 dartCode = ''.join([dartCode, 
                                     "part '", 
                                     fhir.lowcc(fhir.lists(objects)), 
