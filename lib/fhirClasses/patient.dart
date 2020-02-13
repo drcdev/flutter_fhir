@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -61,6 +62,7 @@ class Patient {
 		List<Reference> generalPractitioner,
 		Reference managingOrganization,
 		List<Patient_Link> link}) async {
+  var fhirDb = new DatabaseHelper();
 	Patient newPatient = new Patient(
 			id: await newId('Patient'),
 			meta: meta,

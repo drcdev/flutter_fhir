@@ -39,4 +39,3 @@ flutter:
     - assets/images/
     - assets/prefix.json
     - assets/lang/
-    - assets/smallSqlite.txt

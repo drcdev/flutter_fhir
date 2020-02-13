@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_fhir/fhirClasses/classes.dart';
@@ -8,21 +10,19 @@ import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:device_info/device_info.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();
 
-
+  print(await fhirDb.newResourceId('Patient'));
   List<Map<String, dynamic>> temper = await fhirDb.getResource('Classes');
-
-  for(int i = 0; i < temper.length; i += 1) {
-    print(Classes.fromJson(temper[i]).resourceType);
-    int temp = await fhirDb.deleteResource(Classes.fromJson(temper[i]));
-  }
-
-//    "VALUES ('classes', '000',${(androidInfo.id.hashCode % 10000).abs().toString()}, '0000')");
+//  for (int i = 0; i < temper.length; i += 1) {
+//    print(temper[i]);
+//  }
 
   runApp(MaterialApp(
       home: _Main(),
@@ -100,7 +100,7 @@ class _MainState extends State<_Main> {
         obscureText: true,
         style: whiteText,
         decoration: inputDecoration(
-          AppLocalizations.of(context).translate("password")));
+            AppLocalizations.of(context).translate("password")));
 
     final loginButon = Material(
         elevation: 5.0,
@@ -109,12 +109,11 @@ class _MainState extends State<_Main> {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
-
 //            if (userName.text != 'drgrey' || password.text != 'chopchop') {
 //              setState(() => incorrect = true);
 //            } else {
-//              Navigator.push(
-//                  context, MaterialPageRoute(builder: (context) => MainMenu()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MainMenu()));
 //            }
           },
           child: Text("Login", textAlign: TextAlign.center, style: whiteText),
@@ -140,7 +139,8 @@ class _MainState extends State<_Main> {
             Expanded(flex: 1, child: SizedBox(height: 3.0)),
             Visibility(
                 visible: incorrect,
-                child: Text(AppLocalizations.of(context).translate('incorrectPw'),
+                child: Text(
+                    AppLocalizations.of(context).translate('incorrectPw'),
                     style: TextStyle(color: Colors.red))),
             Expanded(flex: 1, child: SizedBox(height: 35.0)),
             loginButon,

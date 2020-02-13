@@ -70,8 +70,8 @@ deleteFiles() async {
       .list(recursive: true, followLinks: true)
       .listen((FileSystemEntity entity) {
     print(entity.path);
-    if (entity.path.contains('.txt')) {
-      File f = File(entity.path + '');
+    if (entity.path.contains('.txt') || entity.path.contains('.db')) {
+      File f = File(entity.path);
       f.delete();
     }
   });

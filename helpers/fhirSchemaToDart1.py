@@ -9,12 +9,13 @@ import fhirToDartFunc as fhir
 with open('./helpers/fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
 
-os.remove('./lib/fhirClasses/classes.dart')
+# os.remove('./lib/fhirClasses/classes.dart')
 
 dartCode = '' #where we will store our code
 importDict = {} #will store which other classes we will import
 
 dbStart = ''
+hexNum = 15
 
 # ****************************************************************************
 #iterates through the different entities in fhir.schema.json
@@ -23,6 +24,21 @@ definitions = schema['definitions']
 for objects in definitions:
         #ignore any of those that are in the ResourceList (names, no definitions)
         if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
+            
+            
+#             hexNum +=1
+#             curNum = str(hex(hexNum)[2:])
+#             dbStart = ''.join([dbStart,
+#                                "('", 
+#                                objects,
+#                                "','",
+#                                curNum if len(curNum) == 3 else '0' + curNum,
+#                                "','{$deviceId}','0000',0),\n\t\t"])
+# with open('temp.dart',"w", encoding="utf-8") as f:
+#     f.write(dbStart)
+#     f.close()
+
+            
             if('_' not in objects):      
                 
                 dartCode = ''.join([dartCode, 
