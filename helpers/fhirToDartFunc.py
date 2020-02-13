@@ -174,18 +174,6 @@ def HiveCode(properties, objects):
             else:
                 hiveCode = ''.join([hiveCode, '\t\t\t', rem_(field), ': ', rem_(field), ',\n'])
     hiveCode = ''.join([hiveCode, 
-                        ');\n\tvar ', 
-                        lowcc(lists(objects)), 
-                        'Box = await Hive.openBox<',
-                        lists(objects),
-                        ">('",
-                        lists(objects),
-                        "Box');\n\t",
-                        lowcc(lists(objects)),
-                        'Box.put(new',
-                        lists(objects),
-                        '.id, new',
-                        lists(objects),
                         ');\n\treturn new',
                         lists(objects),
                         ';\n}'])    

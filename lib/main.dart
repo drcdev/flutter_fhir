@@ -13,8 +13,7 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();
-  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+
 
   List<Map<String, dynamic>> temper = await fhirDb.getResource('Classes');
 
