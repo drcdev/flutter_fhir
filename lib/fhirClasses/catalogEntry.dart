@@ -46,7 +46,7 @@ class CatalogEntry {
 		List<CatalogEntry_RelatedEntry> relatedEntry}) async {
 	var fhirDb = new DatabaseHelper();
 	CatalogEntry newCatalogEntry = new CatalogEntry(
-			resourceType: resourceType,
+			resourceType: 'CatalogEntry',
 			id: await fhirDb.newResourceId('CatalogEntry'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -75,13 +75,13 @@ class CatalogEntry {
 			additionalClassification: additionalClassification,
 			relatedEntry: relatedEntry,
 );
-	int saved = await fhirDb.saveResource(newCatalogEntry);
+	int saved = await fhirDb.newResource(newCatalogEntry);
 	return newCatalogEntry;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CatalogEntry';
   String id;

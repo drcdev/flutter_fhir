@@ -46,7 +46,7 @@ class Lists {
 		CodeableConcept emptyReason}) async {
 	var fhirDb = new DatabaseHelper();
 	Lists newLists = new Lists(
-			resourceType: resourceType,
+			resourceType: 'List',
 			id: await fhirDb.newResourceId('List'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -75,13 +75,13 @@ class Lists {
 			entry: entry,
 			emptyReason: emptyReason,
 );
-	int saved = await fhirDb.saveResource(newLists);
+	int saved = await fhirDb.newResource(newLists);
 	return newLists;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'List';
   String id;

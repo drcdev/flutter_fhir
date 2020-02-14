@@ -67,7 +67,7 @@ class ChargeItemDefinition {
 		List<ChargeItemDefinition_PropertyGroup> propertyGroup}) async {
 	var fhirDb = new DatabaseHelper();
 	ChargeItemDefinition newChargeItemDefinition = new ChargeItemDefinition(
-			resourceType: resourceType,
+			resourceType: 'ChargeItemDefinition',
 			id: await fhirDb.newResourceId('ChargeItemDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -114,13 +114,13 @@ class ChargeItemDefinition {
 			applicability: applicability,
 			propertyGroup: propertyGroup,
 );
-	int saved = await fhirDb.saveResource(newChargeItemDefinition);
+	int saved = await fhirDb.newResource(newChargeItemDefinition);
 	return newChargeItemDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ChargeItemDefinition';
   String id;

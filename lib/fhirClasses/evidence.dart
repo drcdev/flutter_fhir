@@ -74,7 +74,7 @@ class Evidence {
 		List<Reference> outcome}) async {
 	var fhirDb = new DatabaseHelper();
 	Evidence newEvidence = new Evidence(
-			resourceType: resourceType,
+			resourceType: 'Evidence',
 			id: await fhirDb.newResourceId('Evidence'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -127,13 +127,13 @@ class Evidence {
 			exposureVariant: exposureVariant,
 			outcome: outcome,
 );
-	int saved = await fhirDb.saveResource(newEvidence);
+	int saved = await fhirDb.newResource(newEvidence);
 	return newEvidence;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Evidence';
   String id;

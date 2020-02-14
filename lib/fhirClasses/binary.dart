@@ -24,7 +24,7 @@ class Binary {
 		Element elementData}) async {
 	var fhirDb = new DatabaseHelper();
 	Binary newBinary = new Binary(
-			resourceType: resourceType,
+			resourceType: 'Binary',
 			id: await fhirDb.newResourceId('Binary'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -37,13 +37,13 @@ class Binary {
 			data: data,
 			elementData: elementData,
 );
-	int saved = await fhirDb.saveResource(newBinary);
+	int saved = await fhirDb.newResource(newBinary);
 	return newBinary;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Binary';
   String id;

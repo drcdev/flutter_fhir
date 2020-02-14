@@ -57,7 +57,7 @@ class MedicationKnowledge {
 		List<MedicationKnowledge_Kinetics> kinetics}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge newMedicationKnowledge = new MedicationKnowledge(
-			resourceType: resourceType,
+			resourceType: 'MedicationKnowledge',
 			id: await fhirDb.newResourceId('MedicationKnowledge'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -94,13 +94,13 @@ class MedicationKnowledge {
 			regulatory: regulatory,
 			kinetics: kinetics,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge);
+	int saved = await fhirDb.newResource(newMedicationKnowledge);
 	return newMedicationKnowledge;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicationKnowledge';
   String id;

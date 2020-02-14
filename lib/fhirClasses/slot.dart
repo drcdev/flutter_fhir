@@ -44,7 +44,7 @@ class Slot {
 		Element elementComment}) async {
 	var fhirDb = new DatabaseHelper();
 	Slot newSlot = new Slot(
-			resourceType: resourceType,
+			resourceType: 'Slot',
 			id: await fhirDb.newResourceId('Slot'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -72,13 +72,13 @@ class Slot {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newSlot);
+	int saved = await fhirDb.newResource(newSlot);
 	return newSlot;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Slot';
   String id;

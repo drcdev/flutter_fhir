@@ -39,7 +39,7 @@ class ResearchSubject {
 		Reference consent}) async {
 	var fhirDb = new DatabaseHelper();
 	ResearchSubject newResearchSubject = new ResearchSubject(
-			resourceType: resourceType,
+			resourceType: 'ResearchSubject',
 			id: await fhirDb.newResourceId('ResearchSubject'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -62,13 +62,13 @@ class ResearchSubject {
 			elementActualArm: elementActualArm,
 			consent: consent,
 );
-	int saved = await fhirDb.saveResource(newResearchSubject);
+	int saved = await fhirDb.newResource(newResearchSubject);
 	return newResearchSubject;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ResearchSubject';
   String id;

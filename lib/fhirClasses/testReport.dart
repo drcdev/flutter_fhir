@@ -45,7 +45,7 @@ class TestReport {
 		TestReport_Teardown teardown}) async {
 	var fhirDb = new DatabaseHelper();
 	TestReport newTestReport = new TestReport(
-			resourceType: resourceType,
+			resourceType: 'TestReport',
 			id: await fhirDb.newResourceId('TestReport'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -75,13 +75,13 @@ class TestReport {
 			test: test,
 			teardown: teardown,
 );
-	int saved = await fhirDb.saveResource(newTestReport);
+	int saved = await fhirDb.newResource(newTestReport);
 	return newTestReport;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'TestReport';
   String id;

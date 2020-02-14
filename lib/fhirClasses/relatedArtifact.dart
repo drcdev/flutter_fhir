@@ -40,13 +40,13 @@ class RelatedArtifact {
 			document: document,
 			resource: resource,
 );
-	int saved = await fhirDb.saveResource(newRelatedArtifact);
+	int saved = await fhirDb.newResource(newRelatedArtifact);
 	return newRelatedArtifact;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

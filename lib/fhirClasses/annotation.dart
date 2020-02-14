@@ -30,13 +30,13 @@ class Annotation {
 			text: text,
 			elementText: elementText,
 );
-	int saved = await fhirDb.saveResource(newAnnotation);
+	int saved = await fhirDb.newResource(newAnnotation);
 	return newAnnotation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

@@ -93,7 +93,7 @@ class Task {
 		List<Task_Output> output}) async {
 	var fhirDb = new DatabaseHelper();
 	Task newTask = new Task(
-			resourceType: resourceType,
+			resourceType: 'Task',
 			id: await fhirDb.newResourceId('Task'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -143,13 +143,13 @@ class Task {
 			input: input,
 			output: output,
 );
-	int saved = await fhirDb.saveResource(newTask);
+	int saved = await fhirDb.newResource(newTask);
 	return newTask;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Task';
   String id;

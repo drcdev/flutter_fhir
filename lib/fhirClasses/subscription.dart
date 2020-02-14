@@ -38,7 +38,7 @@ class Subscription {
 		Subscription_Channel channel}) async {
 	var fhirDb = new DatabaseHelper();
 	Subscription newSubscription = new Subscription(
-			resourceType: resourceType,
+			resourceType: 'Subscription',
 			id: await fhirDb.newResourceId('Subscription'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -62,13 +62,13 @@ class Subscription {
 			elementError: elementError,
 			channel: channel,
 );
-	int saved = await fhirDb.saveResource(newSubscription);
+	int saved = await fhirDb.newResource(newSubscription);
 	return newSubscription;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Subscription';
   String id;

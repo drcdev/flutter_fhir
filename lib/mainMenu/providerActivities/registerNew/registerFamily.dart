@@ -4,9 +4,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
-import 'package:flutter_fhir/mainMenu/testingSettings/objects.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
-import 'package:flutter_fhir/util/db.dart';
 
 class RegisterFamily extends StatelessWidget {
   Patient pt;
@@ -66,19 +64,10 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = await addFamily(pt, relation2);
               pt = await addFamily(pt, relation3);
               pt.save();
-              var fhirDb = new DatabaseHelper();
-              var temp = await fhirDb.getResource('Patient');
-              for(int i = 0; i < temp.length; i++) {
-                if(Patient.fromJson(temp[i]).contact[0] != null) {
-                  print(Patient
-                      .fromJson(temp[i])
-                      .contact[0].toString());
-                }
-              }
-//              Navigator.push(
-//                context,
-//                MaterialPageRoute(builder: (context) => Register()),
-//              );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Register()),
+              );
             },
             child: Text('Register Another Patient'),
           ),
@@ -87,7 +76,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = await addFamily(pt, relation1);
               pt = await addFamily(pt, relation2);
               pt = await addFamily(pt, relation3);
-              Write(pt);
+              pt.save();
 
               Navigator.push(
                 context,

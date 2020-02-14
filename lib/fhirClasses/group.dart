@@ -46,7 +46,7 @@ class Group {
 		List<Group_Member> member}) async {
 	var fhirDb = new DatabaseHelper();
 	Group newGroup = new Group(
-			resourceType: resourceType,
+			resourceType: 'Group',
 			id: await fhirDb.newResourceId('Group'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -73,13 +73,13 @@ class Group {
 			characteristic: characteristic,
 			member: member,
 );
-	int saved = await fhirDb.saveResource(newGroup);
+	int saved = await fhirDb.newResource(newGroup);
 	return newGroup;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Group';
   String id;

@@ -47,13 +47,13 @@ class Attachment {
 			creation: creation,
 			elementCreation: elementCreation,
 );
-	int saved = await fhirDb.saveResource(newAttachment);
+	int saved = await fhirDb.newResource(newAttachment);
 	return newAttachment;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

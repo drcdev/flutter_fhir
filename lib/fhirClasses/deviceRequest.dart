@@ -66,7 +66,7 @@ class DeviceRequest {
 		List<Reference> relevantHistory}) async {
 	var fhirDb = new DatabaseHelper();
 	DeviceRequest newDeviceRequest = new DeviceRequest(
-			resourceType: resourceType,
+			resourceType: 'DeviceRequest',
 			id: await fhirDb.newResourceId('DeviceRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -111,13 +111,13 @@ class DeviceRequest {
 			note: note,
 			relevantHistory: relevantHistory,
 );
-	int saved = await fhirDb.saveResource(newDeviceRequest);
+	int saved = await fhirDb.newResource(newDeviceRequest);
 	return newDeviceRequest;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DeviceRequest';
   String id;

@@ -44,7 +44,7 @@ class PaymentNotice {
 		CodeableConcept paymentStatus}) async {
 	var fhirDb = new DatabaseHelper();
 	PaymentNotice newPaymentNotice = new PaymentNotice(
-			resourceType: resourceType,
+			resourceType: 'PaymentNotice',
 			id: await fhirDb.newResourceId('PaymentNotice'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -71,13 +71,13 @@ class PaymentNotice {
 			amount: amount,
 			paymentStatus: paymentStatus,
 );
-	int saved = await fhirDb.saveResource(newPaymentNotice);
+	int saved = await fhirDb.newResource(newPaymentNotice);
 	return newPaymentNotice;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'PaymentNotice';
   String id;

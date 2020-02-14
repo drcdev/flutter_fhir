@@ -69,7 +69,7 @@ class MessageDefinition {
 		List<String> graph}) async {
 	var fhirDb = new DatabaseHelper();
 	MessageDefinition newMessageDefinition = new MessageDefinition(
-			resourceType: resourceType,
+			resourceType: 'MessageDefinition',
 			id: await fhirDb.newResourceId('MessageDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -120,13 +120,13 @@ class MessageDefinition {
 			allowedResponse: allowedResponse,
 			graph: graph,
 );
-	int saved = await fhirDb.saveResource(newMessageDefinition);
+	int saved = await fhirDb.newResource(newMessageDefinition);
 	return newMessageDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MessageDefinition';
   String id;

@@ -54,7 +54,7 @@ class NutritionOrder {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	NutritionOrder newNutritionOrder = new NutritionOrder(
-			resourceType: resourceType,
+			resourceType: 'NutritionOrder',
 			id: await fhirDb.newResourceId('NutritionOrder'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -88,13 +88,13 @@ class NutritionOrder {
 			enteralFormula: enteralFormula,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newNutritionOrder);
+	int saved = await fhirDb.newResource(newNutritionOrder);
 	return newNutritionOrder;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'NutritionOrder';
   String id;

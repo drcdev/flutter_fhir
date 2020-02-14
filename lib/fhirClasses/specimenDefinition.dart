@@ -38,7 +38,7 @@ class SpecimenDefinition {
 		List<SpecimenDefinition_TypeTested> typeTested}) async {
 	var fhirDb = new DatabaseHelper();
 	SpecimenDefinition newSpecimenDefinition = new SpecimenDefinition(
-			resourceType: resourceType,
+			resourceType: 'SpecimenDefinition',
 			id: await fhirDb.newResourceId('SpecimenDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -57,13 +57,13 @@ class SpecimenDefinition {
 			collection: collection,
 			typeTested: typeTested,
 );
-	int saved = await fhirDb.saveResource(newSpecimenDefinition);
+	int saved = await fhirDb.newResource(newSpecimenDefinition);
 	return newSpecimenDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SpecimenDefinition';
   String id;

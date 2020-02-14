@@ -41,7 +41,7 @@ class VisionPrescription {
 		List<VisionPrescription_LensSpecification> lensSpecification}) async {
 	var fhirDb = new DatabaseHelper();
 	VisionPrescription newVisionPrescription = new VisionPrescription(
-			resourceType: resourceType,
+			resourceType: 'VisionPrescription',
 			id: await fhirDb.newResourceId('VisionPrescription'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -64,13 +64,13 @@ class VisionPrescription {
 			prescriber: prescriber,
 			lensSpecification: lensSpecification,
 );
-	int saved = await fhirDb.saveResource(newVisionPrescription);
+	int saved = await fhirDb.newResource(newVisionPrescription);
 	return newVisionPrescription;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'VisionPrescription';
   String id;

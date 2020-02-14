@@ -63,7 +63,7 @@ class Claim {
 		Money total}) async {
 	var fhirDb = new DatabaseHelper();
 	Claim newClaim = new Claim(
-			resourceType: resourceType,
+			resourceType: 'Claim',
 			id: await fhirDb.newResourceId('Claim'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -105,13 +105,13 @@ class Claim {
 			item: item,
 			total: total,
 );
-	int saved = await fhirDb.saveResource(newClaim);
+	int saved = await fhirDb.newResource(newClaim);
 	return newClaim;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Claim';
   String id;

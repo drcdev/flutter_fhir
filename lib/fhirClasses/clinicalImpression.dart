@@ -57,7 +57,7 @@ class ClinicalImpression {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	ClinicalImpression newClinicalImpression = new ClinicalImpression(
-			resourceType: resourceType,
+			resourceType: 'ClinicalImpression',
 			id: await fhirDb.newResourceId('ClinicalImpression'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -96,13 +96,13 @@ class ClinicalImpression {
 			supportingInfo: supportingInfo,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newClinicalImpression);
+	int saved = await fhirDb.newResource(newClinicalImpression);
 	return newClinicalImpression;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ClinicalImpression';
   String id;

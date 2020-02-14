@@ -84,7 +84,7 @@ class ExplanationOfBenefit {
 		List<ExplanationOfBenefit_BenefitBalance> benefitBalance}) async {
 	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit newExplanationOfBenefit = new ExplanationOfBenefit(
-			resourceType: resourceType,
+			resourceType: 'ExplanationOfBenefit',
 			id: await fhirDb.newResourceId('ExplanationOfBenefit'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -146,13 +146,13 @@ class ExplanationOfBenefit {
 			benefitPeriod: benefitPeriod,
 			benefitBalance: benefitBalance,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit);
+	int saved = await fhirDb.newResource(newExplanationOfBenefit);
 	return newExplanationOfBenefit;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ExplanationOfBenefit';
   String id;

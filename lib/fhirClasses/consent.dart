@@ -47,7 +47,7 @@ class Consent {
 		Consent_Provision provision}) async {
 	var fhirDb = new DatabaseHelper();
 	Consent newConsent = new Consent(
-			resourceType: resourceType,
+			resourceType: 'Consent',
 			id: await fhirDb.newResourceId('Consent'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -75,13 +75,13 @@ class Consent {
 			verification: verification,
 			provision: provision,
 );
-	int saved = await fhirDb.saveResource(newConsent);
+	int saved = await fhirDb.newResource(newConsent);
 	return newConsent;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Consent';
   String id;

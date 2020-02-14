@@ -22,13 +22,13 @@ class ContactDetail {
 			elementName: elementName,
 			telecom: telecom,
 );
-	int saved = await fhirDb.saveResource(newContactDetail);
+	int saved = await fhirDb.newResource(newContactDetail);
 	return newContactDetail;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

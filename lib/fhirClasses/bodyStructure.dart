@@ -39,7 +39,7 @@ class BodyStructure {
 		Reference patient}) async {
 	var fhirDb = new DatabaseHelper();
 	BodyStructure newBodyStructure = new BodyStructure(
-			resourceType: resourceType,
+			resourceType: 'BodyStructure',
 			id: await fhirDb.newResourceId('BodyStructure'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -61,13 +61,13 @@ class BodyStructure {
 			image: image,
 			patient: patient,
 );
-	int saved = await fhirDb.saveResource(newBodyStructure);
+	int saved = await fhirDb.newResource(newBodyStructure);
 	return newBodyStructure;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'BodyStructure';
   String id;

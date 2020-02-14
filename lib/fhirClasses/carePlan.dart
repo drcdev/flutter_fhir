@@ -61,7 +61,7 @@ class CarePlan {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	CarePlan newCarePlan = new CarePlan(
-			resourceType: resourceType,
+			resourceType: 'CarePlan',
 			id: await fhirDb.newResourceId('CarePlan'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -102,13 +102,13 @@ class CarePlan {
 			activity: activity,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newCarePlan);
+	int saved = await fhirDb.newResource(newCarePlan);
 	return newCarePlan;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CarePlan';
   String id;

@@ -34,13 +34,13 @@ class Meta {
 			security: security,
 			tag: tag,
 );
-	int saved = await fhirDb.saveResource(newMeta);
+	int saved = await fhirDb.newResource(newMeta);
 	return newMeta;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

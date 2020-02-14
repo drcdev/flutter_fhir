@@ -53,7 +53,7 @@ class SubstanceSpecification {
 		Reference sourceMaterial}) async {
 	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification newSubstanceSpecification = new SubstanceSpecification(
-			resourceType: resourceType,
+			resourceType: 'SubstanceSpecification',
 			id: await fhirDb.newResourceId('SubstanceSpecification'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -86,13 +86,13 @@ class SubstanceSpecification {
 			protein: protein,
 			sourceMaterial: sourceMaterial,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification);
+	int saved = await fhirDb.newResource(newSubstanceSpecification);
 	return newSubstanceSpecification;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SubstanceSpecification';
   String id;

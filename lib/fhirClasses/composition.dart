@@ -48,7 +48,7 @@ class Composition {
 		List<Composition_Section> section}) async {
 	var fhirDb = new DatabaseHelper();
 	Composition newComposition = new Composition(
-			resourceType: resourceType,
+			resourceType: 'Composition',
 			id: await fhirDb.newResourceId('Composition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -79,13 +79,13 @@ class Composition {
 			event: event,
 			section: section,
 );
-	int saved = await fhirDb.saveResource(newComposition);
+	int saved = await fhirDb.newResource(newComposition);
 	return newComposition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Composition';
   String id;

@@ -77,7 +77,7 @@ class EffectEvidenceSynthesis {
 		List<EffectEvidenceSynthesis_Certainty> certainty}) async {
 	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis newEffectEvidenceSynthesis = new EffectEvidenceSynthesis(
-			resourceType: resourceType,
+			resourceType: 'EffectEvidenceSynthesis',
 			id: await fhirDb.newResourceId('EffectEvidenceSynthesis'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -133,13 +133,13 @@ class EffectEvidenceSynthesis {
 			effectEstimate: effectEstimate,
 			certainty: certainty,
 );
-	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis);
+	int saved = await fhirDb.newResource(newEffectEvidenceSynthesis);
 	return newEffectEvidenceSynthesis;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'EffectEvidenceSynthesis';
   String id;

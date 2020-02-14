@@ -48,13 +48,13 @@ class ProdCharacteristic {
 			image: image,
 			scoring: scoring,
 );
-	int saved = await fhirDb.saveResource(newProdCharacteristic);
+	int saved = await fhirDb.newResource(newProdCharacteristic);
 	return newProdCharacteristic;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

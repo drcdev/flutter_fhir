@@ -34,13 +34,13 @@ class ContactPoint {
 			elementRank: elementRank,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newContactPoint);
+	int saved = await fhirDb.newResource(newContactPoint);
 	return newContactPoint;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

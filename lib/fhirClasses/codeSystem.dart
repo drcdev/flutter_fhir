@@ -73,7 +73,7 @@ class CodeSystem {
 		List<CodeSystem_Concept> concept}) async {
 	var fhirDb = new DatabaseHelper();
 	CodeSystem newCodeSystem = new CodeSystem(
-			resourceType: resourceType,
+			resourceType: 'CodeSystem',
 			id: await fhirDb.newResourceId('CodeSystem'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -128,13 +128,13 @@ class CodeSystem {
 			property: property,
 			concept: concept,
 );
-	int saved = await fhirDb.saveResource(newCodeSystem);
+	int saved = await fhirDb.newResource(newCodeSystem);
 	return newCodeSystem;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CodeSystem';
   String id;

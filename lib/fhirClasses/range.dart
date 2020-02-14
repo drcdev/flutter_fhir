@@ -19,13 +19,13 @@ class Range {
 			low: low,
 			high: high,
 );
-	int saved = await fhirDb.saveResource(newRange);
+	int saved = await fhirDb.newResource(newRange);
 	return newRange;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

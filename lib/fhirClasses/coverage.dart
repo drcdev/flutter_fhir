@@ -54,7 +54,7 @@ class Coverage {
 		List<Reference> contract}) async {
 	var fhirDb = new DatabaseHelper();
 	Coverage newCoverage = new Coverage(
-			resourceType: resourceType,
+			resourceType: 'Coverage',
 			id: await fhirDb.newResourceId('Coverage'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -89,13 +89,13 @@ class Coverage {
 			elementSubrogation: elementSubrogation,
 			contract: contract,
 );
-	int saved = await fhirDb.saveResource(newCoverage);
+	int saved = await fhirDb.newResource(newCoverage);
 	return newCoverage;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Coverage';
   String id;

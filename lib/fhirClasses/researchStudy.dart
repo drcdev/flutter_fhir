@@ -59,7 +59,7 @@ class ResearchStudy {
 		List<ResearchStudy_Objective> objective}) async {
 	var fhirDb = new DatabaseHelper();
 	ResearchStudy newResearchStudy = new ResearchStudy(
-			resourceType: resourceType,
+			resourceType: 'ResearchStudy',
 			id: await fhirDb.newResourceId('ResearchStudy'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -98,13 +98,13 @@ class ResearchStudy {
 			arm: arm,
 			objective: objective,
 );
-	int saved = await fhirDb.saveResource(newResearchStudy);
+	int saved = await fhirDb.newResource(newResearchStudy);
 	return newResearchStudy;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ResearchStudy';
   String id;

@@ -55,7 +55,7 @@ class ImagingStudy {
 		List<ImagingStudy_Series> series}) async {
 	var fhirDb = new DatabaseHelper();
 	ImagingStudy newImagingStudy = new ImagingStudy(
-			resourceType: resourceType,
+			resourceType: 'ImagingStudy',
 			id: await fhirDb.newResourceId('ImagingStudy'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -92,13 +92,13 @@ class ImagingStudy {
 			elementDescription: elementDescription,
 			series: series,
 );
-	int saved = await fhirDb.saveResource(newImagingStudy);
+	int saved = await fhirDb.newResource(newImagingStudy);
 	return newImagingStudy;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ImagingStudy';
   String id;

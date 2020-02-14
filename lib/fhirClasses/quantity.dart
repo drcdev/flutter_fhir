@@ -35,13 +35,13 @@ class Quantity {
 			code: code,
 			elementCode: elementCode,
 );
-	int saved = await fhirDb.saveResource(newQuantity);
+	int saved = await fhirDb.newResource(newQuantity);
 	return newQuantity;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

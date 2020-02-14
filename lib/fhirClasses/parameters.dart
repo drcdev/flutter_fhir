@@ -51,7 +51,7 @@ class Parameters {
 		List<Parameters_Parameter> parameter}) async {
 	var fhirDb = new DatabaseHelper();
 	Parameters newParameters = new Parameters(
-			resourceType: resourceType,
+			resourceType: 'Parameters',
 			id: await fhirDb.newResourceId('Parameters'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -60,13 +60,13 @@ class Parameters {
 			elementLanguage: elementLanguage,
 			parameter: parameter,
 );
-	int saved = await fhirDb.saveResource(newParameters);
+	int saved = await fhirDb.newResource(newParameters);
 	return newParameters;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Parameters';
   String id;

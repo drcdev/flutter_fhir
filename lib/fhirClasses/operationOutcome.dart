@@ -27,7 +27,7 @@ class OperationOutcome {
 		List<OperationOutcome_Issue> issue}) async {
 	var fhirDb = new DatabaseHelper();
 	OperationOutcome newOperationOutcome = new OperationOutcome(
-			resourceType: resourceType,
+			resourceType: 'OperationOutcome',
 			id: await fhirDb.newResourceId('OperationOutcome'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -40,13 +40,13 @@ class OperationOutcome {
 			modifierExtension: modifierExtension,
 			issue: issue,
 );
-	int saved = await fhirDb.saveResource(newOperationOutcome);
+	int saved = await fhirDb.newResource(newOperationOutcome);
 	return newOperationOutcome;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'OperationOutcome';
   String id;

@@ -43,7 +43,7 @@ class BiologicallyDerivedProduct {
 		List<BiologicallyDerivedProduct_Storage> storage}) async {
 	var fhirDb = new DatabaseHelper();
 	BiologicallyDerivedProduct newBiologicallyDerivedProduct = new BiologicallyDerivedProduct(
-			resourceType: resourceType,
+			resourceType: 'BiologicallyDerivedProduct',
 			id: await fhirDb.newResourceId('BiologicallyDerivedProduct'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -69,13 +69,13 @@ class BiologicallyDerivedProduct {
 			manipulation: manipulation,
 			storage: storage,
 );
-	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct);
+	int saved = await fhirDb.newResource(newBiologicallyDerivedProduct);
 	return newBiologicallyDerivedProduct;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'BiologicallyDerivedProduct';
   String id;

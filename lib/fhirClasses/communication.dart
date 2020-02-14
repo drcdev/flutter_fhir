@@ -58,7 +58,7 @@ class Communication {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	Communication newCommunication = new Communication(
-			resourceType: resourceType,
+			resourceType: 'Communication',
 			id: await fhirDb.newResourceId('Communication'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -98,13 +98,13 @@ class Communication {
 			payload: payload,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newCommunication);
+	int saved = await fhirDb.newResource(newCommunication);
 	return newCommunication;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Communication';
   String id;

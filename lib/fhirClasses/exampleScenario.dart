@@ -55,7 +55,7 @@ class ExampleScenario {
 		List<String> workflow}) async {
 	var fhirDb = new DatabaseHelper();
 	ExampleScenario newExampleScenario = new ExampleScenario(
-			resourceType: resourceType,
+			resourceType: 'ExampleScenario',
 			id: await fhirDb.newResourceId('ExampleScenario'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -93,13 +93,13 @@ class ExampleScenario {
 			process: process,
 			workflow: workflow,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario);
+	int saved = await fhirDb.newResource(newExampleScenario);
 	return newExampleScenario;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ExampleScenario';
   String id;
@@ -270,7 +270,7 @@ class ExampleScenario_Instance {
 			modifierExtension: modifierExtension,
 			resourceId: resourceId,
 			elementResourceId: elementResourceId,
-			resourceType: resourceType,
+			resourceType: 'ExampleScenario_Instance',
 			elementResourceType: elementResourceType,
 			name: name,
 			elementName: elementName,

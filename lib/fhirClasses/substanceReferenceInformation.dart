@@ -36,7 +36,7 @@ class SubstanceReferenceInformation {
 		List<SubstanceReferenceInformation_Target> target}) async {
 	var fhirDb = new DatabaseHelper();
 	SubstanceReferenceInformation newSubstanceReferenceInformation = new SubstanceReferenceInformation(
-			resourceType: resourceType,
+			resourceType: 'SubstanceReferenceInformation',
 			id: await fhirDb.newResourceId('SubstanceReferenceInformation'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -54,13 +54,13 @@ class SubstanceReferenceInformation {
 			classification: classification,
 			target: target,
 );
-	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation);
+	int saved = await fhirDb.newResource(newSubstanceReferenceInformation);
 	return newSubstanceReferenceInformation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SubstanceReferenceInformation';
   String id;

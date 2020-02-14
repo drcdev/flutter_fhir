@@ -55,7 +55,7 @@ class Encounter {
 		Reference partOf}) async {
 	var fhirDb = new DatabaseHelper();
 	Encounter newEncounter = new Encounter(
-			resourceType: resourceType,
+			resourceType: 'Encounter',
 			id: await fhirDb.newResourceId('Encounter'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -91,13 +91,13 @@ class Encounter {
 			serviceProvider: serviceProvider,
 			partOf: partOf,
 );
-	int saved = await fhirDb.saveResource(newEncounter);
+	int saved = await fhirDb.newResource(newEncounter);
 	return newEncounter;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Encounter';
   String id;

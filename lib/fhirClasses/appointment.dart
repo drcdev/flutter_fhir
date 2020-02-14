@@ -60,7 +60,7 @@ class Appointment {
 		List<Period> requestedPeriod}) async {
 	var fhirDb = new DatabaseHelper();
 	Appointment newAppointment = new Appointment(
-			resourceType: resourceType,
+			resourceType: 'Appointment',
 			id: await fhirDb.newResourceId('Appointment'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -103,13 +103,13 @@ class Appointment {
 			participant: participant,
 			requestedPeriod: requestedPeriod,
 );
-	int saved = await fhirDb.saveResource(newAppointment);
+	int saved = await fhirDb.newResource(newAppointment);
 	return newAppointment;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Appointment';
   String id;

@@ -61,7 +61,7 @@ class HealthcareService {
 		List<Reference> endpoint}) async {
 	var fhirDb = new DatabaseHelper();
 	HealthcareService newHealthcareService = new HealthcareService(
-			resourceType: resourceType,
+			resourceType: 'HealthcareService',
 			id: await fhirDb.newResourceId('HealthcareService'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -103,13 +103,13 @@ class HealthcareService {
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint,
 );
-	int saved = await fhirDb.saveResource(newHealthcareService);
+	int saved = await fhirDb.newResource(newHealthcareService);
 	return newHealthcareService;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'HealthcareService';
   String id;

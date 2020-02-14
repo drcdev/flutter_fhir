@@ -52,7 +52,7 @@ class AdverseEvent {
 		List<Reference> study}) async {
 	var fhirDb = new DatabaseHelper();
 	AdverseEvent newAdverseEvent = new AdverseEvent(
-			resourceType: resourceType,
+			resourceType: 'AdverseEvent',
 			id: await fhirDb.newResourceId('AdverseEvent'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -88,13 +88,13 @@ class AdverseEvent {
 			referenceDocument: referenceDocument,
 			study: study,
 );
-	int saved = await fhirDb.saveResource(newAdverseEvent);
+	int saved = await fhirDb.newResource(newAdverseEvent);
 	return newAdverseEvent;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'AdverseEvent';
   String id;

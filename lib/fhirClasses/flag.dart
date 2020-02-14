@@ -38,7 +38,7 @@ class Flag {
 		Reference author}) async {
 	var fhirDb = new DatabaseHelper();
 	Flag newFlag = new Flag(
-			resourceType: resourceType,
+			resourceType: 'Flag',
 			id: await fhirDb.newResourceId('Flag'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -59,13 +59,13 @@ class Flag {
 			encounter: encounter,
 			author: author,
 );
-	int saved = await fhirDb.saveResource(newFlag);
+	int saved = await fhirDb.newResource(newFlag);
 	return newFlag;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Flag';
   String id;

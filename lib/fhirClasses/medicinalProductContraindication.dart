@@ -35,7 +35,7 @@ class MedicinalProductContraindication {
 		List<Population> population}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductContraindication newMedicinalProductContraindication = new MedicinalProductContraindication(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductContraindication',
 			id: await fhirDb.newResourceId('MedicinalProductContraindication'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -54,13 +54,13 @@ class MedicinalProductContraindication {
 			otherTherapy: otherTherapy,
 			population: population,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductContraindication);
+	int saved = await fhirDb.newResource(newMedicinalProductContraindication);
 	return newMedicinalProductContraindication;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductContraindication';
   String id;

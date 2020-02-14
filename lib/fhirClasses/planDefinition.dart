@@ -87,7 +87,7 @@ class PlanDefinition {
 		List<PlanDefinition_Action> action}) async {
 	var fhirDb = new DatabaseHelper();
 	PlanDefinition newPlanDefinition = new PlanDefinition(
-			resourceType: resourceType,
+			resourceType: 'PlanDefinition',
 			id: await fhirDb.newResourceId('PlanDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -146,13 +146,13 @@ class PlanDefinition {
 			goal: goal,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition);
+	int saved = await fhirDb.newResource(newPlanDefinition);
 	return newPlanDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'PlanDefinition';
   String id;

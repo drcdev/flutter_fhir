@@ -34,7 +34,7 @@ class ImmunizationRecommendation {
 		List<ImmunizationRecommendation_Recommendation> recommendation}) async {
 	var fhirDb = new DatabaseHelper();
 	ImmunizationRecommendation newImmunizationRecommendation = new ImmunizationRecommendation(
-			resourceType: resourceType,
+			resourceType: 'ImmunizationRecommendation',
 			id: await fhirDb.newResourceId('ImmunizationRecommendation'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -52,13 +52,13 @@ class ImmunizationRecommendation {
 			authority: authority,
 			recommendation: recommendation,
 );
-	int saved = await fhirDb.saveResource(newImmunizationRecommendation);
+	int saved = await fhirDb.newResource(newImmunizationRecommendation);
 	return newImmunizationRecommendation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ImmunizationRecommendation';
   String id;

@@ -50,7 +50,7 @@ class Invoice {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	Invoice newInvoice = new Invoice(
-			resourceType: resourceType,
+			resourceType: 'Invoice',
 			id: await fhirDb.newResourceId('Invoice'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -82,13 +82,13 @@ class Invoice {
 			elementPaymentTerms: elementPaymentTerms,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newInvoice);
+	int saved = await fhirDb.newResource(newInvoice);
 	return newInvoice;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Invoice';
   String id;

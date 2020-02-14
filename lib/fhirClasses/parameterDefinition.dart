@@ -41,13 +41,13 @@ class ParameterDefinition {
 			elementType: elementType,
 			profile: profile,
 );
-	int saved = await fhirDb.saveResource(newParameterDefinition);
+	int saved = await fhirDb.newResource(newParameterDefinition);
 	return newParameterDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

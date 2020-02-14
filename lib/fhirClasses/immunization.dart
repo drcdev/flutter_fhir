@@ -67,7 +67,7 @@ class Immunization {
 		List<Immunization_ProtocolApplied> protocolApplied}) async {
 	var fhirDb = new DatabaseHelper();
 	Immunization newImmunization = new Immunization(
-			resourceType: resourceType,
+			resourceType: 'Immunization',
 			id: await fhirDb.newResourceId('Immunization'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -116,13 +116,13 @@ class Immunization {
 			reaction: reaction,
 			protocolApplied: protocolApplied,
 );
-	int saved = await fhirDb.saveResource(newImmunization);
+	int saved = await fhirDb.newResource(newImmunization);
 	return newImmunization;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Immunization';
   String id;

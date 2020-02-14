@@ -72,7 +72,7 @@ class OperationDefinition {
 		List<OperationDefinition_Overload> overload}) async {
 	var fhirDb = new DatabaseHelper();
 	OperationDefinition newOperationDefinition = new OperationDefinition(
-			resourceType: resourceType,
+			resourceType: 'OperationDefinition',
 			id: await fhirDb.newResourceId('OperationDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -128,13 +128,13 @@ class OperationDefinition {
 			parameter: parameter,
 			overload: overload,
 );
-	int saved = await fhirDb.saveResource(newOperationDefinition);
+	int saved = await fhirDb.newResource(newOperationDefinition);
 	return newOperationDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'OperationDefinition';
   String id;

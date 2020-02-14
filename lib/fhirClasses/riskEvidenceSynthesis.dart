@@ -75,7 +75,7 @@ class RiskEvidenceSynthesis {
 		List<RiskEvidenceSynthesis_Certainty> certainty}) async {
 	var fhirDb = new DatabaseHelper();
 	RiskEvidenceSynthesis newRiskEvidenceSynthesis = new RiskEvidenceSynthesis(
-			resourceType: resourceType,
+			resourceType: 'RiskEvidenceSynthesis',
 			id: await fhirDb.newResourceId('RiskEvidenceSynthesis'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -129,13 +129,13 @@ class RiskEvidenceSynthesis {
 			riskEstimate: riskEstimate,
 			certainty: certainty,
 );
-	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis);
+	int saved = await fhirDb.newResource(newRiskEvidenceSynthesis);
 	return newRiskEvidenceSynthesis;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'RiskEvidenceSynthesis';
   String id;

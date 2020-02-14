@@ -42,13 +42,13 @@ class HumanName {
 			elementSuffix: elementSuffix,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newHumanName);
+	int saved = await fhirDb.newResource(newHumanName);
 	return newHumanName;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

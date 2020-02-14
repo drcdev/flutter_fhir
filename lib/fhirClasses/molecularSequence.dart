@@ -49,7 +49,7 @@ class MolecularSequence {
 		List<MolecularSequence_StructureVariant> structureVariant}) async {
 	var fhirDb = new DatabaseHelper();
 	MolecularSequence newMolecularSequence = new MolecularSequence(
-			resourceType: resourceType,
+			resourceType: 'MolecularSequence',
 			id: await fhirDb.newResourceId('MolecularSequence'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -81,13 +81,13 @@ class MolecularSequence {
 			pointer: pointer,
 			structureVariant: structureVariant,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence);
+	int saved = await fhirDb.newResource(newMolecularSequence);
 	return newMolecularSequence;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MolecularSequence';
   String id;

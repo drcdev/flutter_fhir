@@ -61,7 +61,7 @@ class DeviceDefinition {
 		List<DeviceDefinition_Material> material}) async {
 	var fhirDb = new DatabaseHelper();
 	DeviceDefinition newDeviceDefinition = new DeviceDefinition(
-			resourceType: resourceType,
+			resourceType: 'DeviceDefinition',
 			id: await fhirDb.newResourceId('DeviceDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -101,13 +101,13 @@ class DeviceDefinition {
 			parentDevice: parentDevice,
 			material: material,
 );
-	int saved = await fhirDb.saveResource(newDeviceDefinition);
+	int saved = await fhirDb.newResource(newDeviceDefinition);
 	return newDeviceDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DeviceDefinition';
   String id;

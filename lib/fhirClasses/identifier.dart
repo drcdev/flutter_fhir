@@ -36,13 +36,13 @@ class Identifier {
 			period: period,
 			assigner: assigner,
 );
-	int saved = await fhirDb.saveResource(newIdentifier);
+	int saved = await fhirDb.newResource(newIdentifier);
 	return newIdentifier;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

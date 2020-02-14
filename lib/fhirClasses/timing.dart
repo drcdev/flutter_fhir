@@ -29,13 +29,13 @@ class Timing {
 			repeat: repeat,
 			code: code,
 );
-	int saved = await fhirDb.saveResource(newTiming);
+	int saved = await fhirDb.newResource(newTiming);
 	return newTiming;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

@@ -59,7 +59,7 @@ class AllergyIntolerance {
 		List<AllergyIntolerance_Reaction> reaction}) async {
 	var fhirDb = new DatabaseHelper();
 	AllergyIntolerance newAllergyIntolerance = new AllergyIntolerance(
-			resourceType: resourceType,
+			resourceType: 'AllergyIntolerance',
 			id: await fhirDb.newResourceId('AllergyIntolerance'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -98,13 +98,13 @@ class AllergyIntolerance {
 			note: note,
 			reaction: reaction,
 );
-	int saved = await fhirDb.saveResource(newAllergyIntolerance);
+	int saved = await fhirDb.newResource(newAllergyIntolerance);
 	return newAllergyIntolerance;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'AllergyIntolerance';
   String id;

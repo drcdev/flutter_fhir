@@ -75,7 +75,7 @@ class SearchParameter {
 		List<SearchParameter_Component> component}) async {
 	var fhirDb = new DatabaseHelper();
 	SearchParameter newSearchParameter = new SearchParameter(
-			resourceType: resourceType,
+			resourceType: 'SearchParameter',
 			id: await fhirDb.newResourceId('SearchParameter'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -134,13 +134,13 @@ class SearchParameter {
 			elementChain: elementChain,
 			component: component,
 );
-	int saved = await fhirDb.saveResource(newSearchParameter);
+	int saved = await fhirDb.newResource(newSearchParameter);
 	return newSearchParameter;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SearchParameter';
   String id;

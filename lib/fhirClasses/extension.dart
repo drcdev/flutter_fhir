@@ -187,13 +187,13 @@ class Extension {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
-	int saved = await fhirDb.saveResource(newExtension);
+	int saved = await fhirDb.newResource(newExtension);
 	return newExtension;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

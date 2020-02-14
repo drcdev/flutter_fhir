@@ -97,7 +97,7 @@ class Measure {
 		List<Measure_SupplementalData> supplementalData}) async {
 	var fhirDb = new DatabaseHelper();
 	Measure newMeasure = new Measure(
-			resourceType: resourceType,
+			resourceType: 'Measure',
 			id: await fhirDb.newResourceId('Measure'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -173,13 +173,13 @@ class Measure {
 			group: group,
 			supplementalData: supplementalData,
 );
-	int saved = await fhirDb.saveResource(newMeasure);
+	int saved = await fhirDb.newResource(newMeasure);
 	return newMeasure;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Measure';
   String id;

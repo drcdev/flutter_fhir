@@ -67,7 +67,7 @@ class Device {
 		Reference parent}) async {
 	var fhirDb = new DatabaseHelper();
 	Device newDevice = new Device(
-			resourceType: resourceType,
+			resourceType: 'Device',
 			id: await fhirDb.newResourceId('Device'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -115,13 +115,13 @@ class Device {
 			safety: safety,
 			parent: parent,
 );
-	int saved = await fhirDb.saveResource(newDevice);
+	int saved = await fhirDb.newResource(newDevice);
 	return newDevice;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Device';
   String id;

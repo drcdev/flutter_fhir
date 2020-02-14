@@ -71,7 +71,7 @@ class CapabilityStatement {
 		List<CapabilityStatement_Document> document}) async {
 	var fhirDb = new DatabaseHelper();
 	CapabilityStatement newCapabilityStatement = new CapabilityStatement(
-			resourceType: resourceType,
+			resourceType: 'CapabilityStatement',
 			id: await fhirDb.newResourceId('CapabilityStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -124,13 +124,13 @@ class CapabilityStatement {
 			messaging: messaging,
 			document: document,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement);
+	int saved = await fhirDb.newResource(newCapabilityStatement);
 	return newCapabilityStatement;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CapabilityStatement';
   String id;

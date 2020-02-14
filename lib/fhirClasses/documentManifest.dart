@@ -44,7 +44,7 @@ class DocumentManifest {
 		List<DocumentManifest_Related> related}) async {
 	var fhirDb = new DatabaseHelper();
 	DocumentManifest newDocumentManifest = new DocumentManifest(
-			resourceType: resourceType,
+			resourceType: 'DocumentManifest',
 			id: await fhirDb.newResourceId('DocumentManifest'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -72,13 +72,13 @@ class DocumentManifest {
 			content: content,
 			related: related,
 );
-	int saved = await fhirDb.saveResource(newDocumentManifest);
+	int saved = await fhirDb.newResource(newDocumentManifest);
 	return newDocumentManifest;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DocumentManifest';
   String id;

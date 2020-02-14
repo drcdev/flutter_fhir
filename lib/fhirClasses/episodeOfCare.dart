@@ -42,7 +42,7 @@ class EpisodeOfCare {
 		List<Reference> account}) async {
 	var fhirDb = new DatabaseHelper();
 	EpisodeOfCare newEpisodeOfCare = new EpisodeOfCare(
-			resourceType: resourceType,
+			resourceType: 'EpisodeOfCare',
 			id: await fhirDb.newResourceId('EpisodeOfCare'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -67,13 +67,13 @@ class EpisodeOfCare {
 			team: team,
 			account: account,
 );
-	int saved = await fhirDb.saveResource(newEpisodeOfCare);
+	int saved = await fhirDb.newResource(newEpisodeOfCare);
 	return newEpisodeOfCare;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'EpisodeOfCare';
   String id;

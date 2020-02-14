@@ -22,13 +22,13 @@ class Narrative {
 			elementStatus: elementStatus,
 			div: div,
 );
-	int saved = await fhirDb.saveResource(newNarrative);
+	int saved = await fhirDb.newResource(newNarrative);
 	return newNarrative;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

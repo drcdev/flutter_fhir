@@ -52,7 +52,7 @@ class CompartmentDefinition {
 		List<CompartmentDefinition_Resource> resource}) async {
 	var fhirDb = new DatabaseHelper();
 	CompartmentDefinition newCompartmentDefinition = new CompartmentDefinition(
-			resourceType: resourceType,
+			resourceType: 'CompartmentDefinition',
 			id: await fhirDb.newResourceId('CompartmentDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -89,13 +89,13 @@ class CompartmentDefinition {
 			elementSearch: elementSearch,
 			resource: resource,
 );
-	int saved = await fhirDb.saveResource(newCompartmentDefinition);
+	int saved = await fhirDb.newResource(newCompartmentDefinition);
 	return newCompartmentDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CompartmentDefinition';
   String id;

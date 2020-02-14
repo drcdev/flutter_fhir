@@ -34,7 +34,7 @@ class Basic {
 		Reference author}) async {
 	var fhirDb = new DatabaseHelper();
 	Basic newBasic = new Basic(
-			resourceType: resourceType,
+			resourceType: 'Basic',
 			id: await fhirDb.newResourceId('Basic'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -52,13 +52,13 @@ class Basic {
 			elementCreated: elementCreated,
 			author: author,
 );
-	int saved = await fhirDb.saveResource(newBasic);
+	int saved = await fhirDb.newResource(newBasic);
 	return newBasic;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Basic';
   String id;

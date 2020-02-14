@@ -50,7 +50,7 @@ class NamingSystem {
 		List<NamingSystem_UniqueId> uniqueId}) async {
 	var fhirDb = new DatabaseHelper();
 	NamingSystem newNamingSystem = new NamingSystem(
-			resourceType: resourceType,
+			resourceType: 'NamingSystem',
 			id: await fhirDb.newResourceId('NamingSystem'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -83,13 +83,13 @@ class NamingSystem {
 			elementUsage: elementUsage,
 			uniqueId: uniqueId,
 );
-	int saved = await fhirDb.saveResource(newNamingSystem);
+	int saved = await fhirDb.newResource(newNamingSystem);
 	return newNamingSystem;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'NamingSystem';
   String id;

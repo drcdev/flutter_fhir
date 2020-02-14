@@ -42,7 +42,7 @@ class MessageHeader {
 		String definition}) async {
 	var fhirDb = new DatabaseHelper();
 	MessageHeader newMessageHeader = new MessageHeader(
-			resourceType: resourceType,
+			resourceType: 'MessageHeader',
 			id: await fhirDb.newResourceId('MessageHeader'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -67,13 +67,13 @@ class MessageHeader {
 			focus: focus,
 			definition: definition,
 );
-	int saved = await fhirDb.saveResource(newMessageHeader);
+	int saved = await fhirDb.newResource(newMessageHeader);
 	return newMessageHeader;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MessageHeader';
   String id;

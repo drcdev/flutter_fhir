@@ -22,13 +22,13 @@ class CodeableConcept {
 			text: text,
 			elementText: elementText,
 );
-	int saved = await fhirDb.saveResource(newCodeableConcept);
+	int saved = await fhirDb.newResource(newCodeableConcept);
 	return newCodeableConcept;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

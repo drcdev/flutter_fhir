@@ -45,7 +45,7 @@ class ObservationDefinition {
 		Reference criticalCodedValueSet}) async {
 	var fhirDb = new DatabaseHelper();
 	ObservationDefinition newObservationDefinition = new ObservationDefinition(
-			resourceType: resourceType,
+			resourceType: 'ObservationDefinition',
 			id: await fhirDb.newResourceId('ObservationDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -73,13 +73,13 @@ class ObservationDefinition {
 			abnormalCodedValueSet: abnormalCodedValueSet,
 			criticalCodedValueSet: criticalCodedValueSet,
 );
-	int saved = await fhirDb.saveResource(newObservationDefinition);
+	int saved = await fhirDb.newResource(newObservationDefinition);
 	return newObservationDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ObservationDefinition';
   String id;

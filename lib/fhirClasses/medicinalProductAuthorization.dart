@@ -49,7 +49,7 @@ class MedicinalProductAuthorization {
 		MedicinalProductAuthorization_Procedure procedure}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductAuthorization newMedicinalProductAuthorization = new MedicinalProductAuthorization(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductAuthorization',
 			id: await fhirDb.newResourceId('MedicinalProductAuthorization'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -81,13 +81,13 @@ class MedicinalProductAuthorization {
 			regulator: regulator,
 			procedure: procedure,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization);
+	int saved = await fhirDb.newResource(newMedicinalProductAuthorization);
 	return newMedicinalProductAuthorization;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductAuthorization';
   String id;

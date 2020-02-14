@@ -53,7 +53,7 @@ class CoverageEligibilityResponse {
 		List<CoverageEligibilityResponse_Error> error}) async {
 	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityResponse newCoverageEligibilityResponse = new CoverageEligibilityResponse(
-			resourceType: resourceType,
+			resourceType: 'CoverageEligibilityResponse',
 			id: await fhirDb.newResourceId('CoverageEligibilityResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -88,13 +88,13 @@ class CoverageEligibilityResponse {
 			form: form,
 			error: error,
 );
-	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse);
+	int saved = await fhirDb.newResource(newCoverageEligibilityResponse);
 	return newCoverageEligibilityResponse;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CoverageEligibilityResponse';
   String id;

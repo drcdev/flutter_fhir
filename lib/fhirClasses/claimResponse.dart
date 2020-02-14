@@ -66,7 +66,7 @@ class ClaimResponse {
 		List<ClaimResponse_Error> error}) async {
 	var fhirDb = new DatabaseHelper();
 	ClaimResponse newClaimResponse = new ClaimResponse(
-			resourceType: resourceType,
+			resourceType: 'ClaimResponse',
 			id: await fhirDb.newResourceId('ClaimResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -111,13 +111,13 @@ class ClaimResponse {
 			insurance: insurance,
 			error: error,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse);
+	int saved = await fhirDb.newResource(newClaimResponse);
 	return newClaimResponse;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ClaimResponse';
   String id;

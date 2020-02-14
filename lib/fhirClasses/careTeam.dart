@@ -46,7 +46,7 @@ class CareTeam {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	CareTeam newCareTeam = new CareTeam(
-			resourceType: resourceType,
+			resourceType: 'CareTeam',
 			id: await fhirDb.newResourceId('CareTeam'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -73,13 +73,13 @@ class CareTeam {
 			telecom: telecom,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newCareTeam);
+	int saved = await fhirDb.newResource(newCareTeam);
 	return newCareTeam;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CareTeam';
   String id;

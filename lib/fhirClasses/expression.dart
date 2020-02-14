@@ -35,13 +35,13 @@ class Expression {
 			reference: reference,
 			elementReference: elementReference,
 );
-	int saved = await fhirDb.saveResource(newExpression);
+	int saved = await fhirDb.newResource(newExpression);
 	return newExpression;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

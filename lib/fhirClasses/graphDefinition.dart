@@ -53,7 +53,7 @@ class GraphDefinition {
 		List<GraphDefinition_Link> link}) async {
 	var fhirDb = new DatabaseHelper();
 	GraphDefinition newGraphDefinition = new GraphDefinition(
-			resourceType: resourceType,
+			resourceType: 'GraphDefinition',
 			id: await fhirDb.newResourceId('GraphDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -90,13 +90,13 @@ class GraphDefinition {
 			profile: profile,
 			link: link,
 );
-	int saved = await fhirDb.saveResource(newGraphDefinition);
+	int saved = await fhirDb.newResource(newGraphDefinition);
 	return newGraphDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'GraphDefinition';
   String id;

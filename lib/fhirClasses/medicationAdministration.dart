@@ -56,7 +56,7 @@ class MedicationAdministration {
 		List<Reference> eventHistory}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicationAdministration newMedicationAdministration = new MedicationAdministration(
-			resourceType: resourceType,
+			resourceType: 'MedicationAdministration',
 			id: await fhirDb.newResourceId('MedicationAdministration'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -92,13 +92,13 @@ class MedicationAdministration {
 			dosage: dosage,
 			eventHistory: eventHistory,
 );
-	int saved = await fhirDb.saveResource(newMedicationAdministration);
+	int saved = await fhirDb.newResource(newMedicationAdministration);
 	return newMedicationAdministration;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicationAdministration';
   String id;

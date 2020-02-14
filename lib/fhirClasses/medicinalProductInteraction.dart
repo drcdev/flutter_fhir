@@ -35,7 +35,7 @@ class MedicinalProductInteraction {
 		CodeableConcept management}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductInteraction newMedicinalProductInteraction = new MedicinalProductInteraction(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductInteraction',
 			id: await fhirDb.newResourceId('MedicinalProductInteraction'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -55,13 +55,13 @@ class MedicinalProductInteraction {
 			incidence: incidence,
 			management: management,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductInteraction);
+	int saved = await fhirDb.newResource(newMedicinalProductInteraction);
 	return newMedicinalProductInteraction;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductInteraction';
   String id;

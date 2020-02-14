@@ -51,7 +51,7 @@ class GuidanceResponse {
 		List<DataRequirement> dataRequirement}) async {
 	var fhirDb = new DatabaseHelper();
 	GuidanceResponse newGuidanceResponse = new GuidanceResponse(
-			resourceType: resourceType,
+			resourceType: 'GuidanceResponse',
 			id: await fhirDb.newResourceId('GuidanceResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -84,13 +84,13 @@ class GuidanceResponse {
 			result: result,
 			dataRequirement: dataRequirement,
 );
-	int saved = await fhirDb.saveResource(newGuidanceResponse);
+	int saved = await fhirDb.newResource(newGuidanceResponse);
 	return newGuidanceResponse;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'GuidanceResponse';
   String id;

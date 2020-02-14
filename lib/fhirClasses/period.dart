@@ -23,13 +23,13 @@ class Period {
 			end: end,
 			elementEnd: elementEnd,
 );
-	int saved = await fhirDb.saveResource(newPeriod);
+	int saved = await fhirDb.newResource(newPeriod);
 	return newPeriod;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

@@ -60,7 +60,7 @@ class ValueSet {
 		ValueSet_Expansion expansion}) async {
 	var fhirDb = new DatabaseHelper();
 	ValueSet newValueSet = new ValueSet(
-			resourceType: resourceType,
+			resourceType: 'ValueSet',
 			id: await fhirDb.newResourceId('ValueSet'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -102,13 +102,13 @@ class ValueSet {
 			compose: compose,
 			expansion: expansion,
 );
-	int saved = await fhirDb.saveResource(newValueSet);
+	int saved = await fhirDb.newResource(newValueSet);
 	return newValueSet;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ValueSet';
   String id;

@@ -82,7 +82,7 @@ class Library {
 		List<Attachment> content}) async {
 	var fhirDb = new DatabaseHelper();
 	Library newLibrary = new Library(
-			resourceType: resourceType,
+			resourceType: 'Library',
 			id: await fhirDb.newResourceId('Library'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -141,13 +141,13 @@ class Library {
 			dataRequirement: dataRequirement,
 			content: content,
 );
-	int saved = await fhirDb.saveResource(newLibrary);
+	int saved = await fhirDb.newResource(newLibrary);
 	return newLibrary;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Library';
   String id;

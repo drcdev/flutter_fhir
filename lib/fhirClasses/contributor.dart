@@ -26,13 +26,13 @@ class Contributor {
 			elementName: elementName,
 			contact: contact,
 );
-	int saved = await fhirDb.saveResource(newContributor);
+	int saved = await fhirDb.newResource(newContributor);
 	return newContributor;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

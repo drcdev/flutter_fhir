@@ -30,7 +30,7 @@ class Linkage {
 		List<Linkage_Item> item}) async {
 	var fhirDb = new DatabaseHelper();
 	Linkage newLinkage = new Linkage(
-			resourceType: resourceType,
+			resourceType: 'Linkage',
 			id: await fhirDb.newResourceId('Linkage'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -46,13 +46,13 @@ class Linkage {
 			author: author,
 			item: item,
 );
-	int saved = await fhirDb.saveResource(newLinkage);
+	int saved = await fhirDb.newResource(newLinkage);
 	return newLinkage;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Linkage';
   String id;

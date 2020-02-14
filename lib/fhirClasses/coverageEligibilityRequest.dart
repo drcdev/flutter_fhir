@@ -50,7 +50,7 @@ class CoverageEligibilityRequest {
 		List<CoverageEligibilityRequest_Item> item}) async {
 	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityRequest newCoverageEligibilityRequest = new CoverageEligibilityRequest(
-			resourceType: resourceType,
+			resourceType: 'CoverageEligibilityRequest',
 			id: await fhirDb.newResourceId('CoverageEligibilityRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -81,13 +81,13 @@ class CoverageEligibilityRequest {
 			insurance: insurance,
 			item: item,
 );
-	int saved = await fhirDb.saveResource(newCoverageEligibilityRequest);
+	int saved = await fhirDb.newResource(newCoverageEligibilityRequest);
 	return newCoverageEligibilityRequest;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CoverageEligibilityRequest';
   String id;

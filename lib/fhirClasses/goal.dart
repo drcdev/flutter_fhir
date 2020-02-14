@@ -54,7 +54,7 @@ class Goal {
 		List<Reference> outcomeReference}) async {
 	var fhirDb = new DatabaseHelper();
 	Goal newGoal = new Goal(
-			resourceType: resourceType,
+			resourceType: 'Goal',
 			id: await fhirDb.newResourceId('Goal'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -87,13 +87,13 @@ class Goal {
 			outcomeCode: outcomeCode,
 			outcomeReference: outcomeReference,
 );
-	int saved = await fhirDb.saveResource(newGoal);
+	int saved = await fhirDb.newResource(newGoal);
 	return newGoal;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Goal';
   String id;

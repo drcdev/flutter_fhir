@@ -81,7 +81,7 @@ class Observation {
 		List<Observation_Component> component}) async {
 	var fhirDb = new DatabaseHelper();
 	Observation newObservation = new Observation(
-			resourceType: resourceType,
+			resourceType: 'Observation',
 			id: await fhirDb.newResourceId('Observation'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -139,13 +139,13 @@ class Observation {
 			derivedFrom: derivedFrom,
 			component: component,
 );
-	int saved = await fhirDb.saveResource(newObservation);
+	int saved = await fhirDb.newResource(newObservation);
 	return newObservation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Observation';
   String id;

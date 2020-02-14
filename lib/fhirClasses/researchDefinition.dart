@@ -84,7 +84,7 @@ class ResearchDefinition {
 		Reference outcome}) async {
 	var fhirDb = new DatabaseHelper();
 	ResearchDefinition newResearchDefinition = new ResearchDefinition(
-			resourceType: resourceType,
+			resourceType: 'ResearchDefinition',
 			id: await fhirDb.newResourceId('ResearchDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -148,13 +148,13 @@ class ResearchDefinition {
 			exposureAlternative: exposureAlternative,
 			outcome: outcome,
 );
-	int saved = await fhirDb.saveResource(newResearchDefinition);
+	int saved = await fhirDb.newResource(newResearchDefinition);
 	return newResearchDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ResearchDefinition';
   String id;

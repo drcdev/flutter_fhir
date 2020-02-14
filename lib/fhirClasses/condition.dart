@@ -62,7 +62,7 @@ class Condition {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	Condition newCondition = new Condition(
-			resourceType: resourceType,
+			resourceType: 'Condition',
 			id: await fhirDb.newResourceId('Condition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -104,13 +104,13 @@ class Condition {
 			evidence: evidence,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newCondition);
+	int saved = await fhirDb.newResource(newCondition);
 	return newCondition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Condition';
   String id;

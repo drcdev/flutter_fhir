@@ -43,7 +43,7 @@ class OrganizationAffiliation {
 		List<Reference> endpoint}) async {
 	var fhirDb = new DatabaseHelper();
 	OrganizationAffiliation newOrganizationAffiliation = new OrganizationAffiliation(
-			resourceType: resourceType,
+			resourceType: 'OrganizationAffiliation',
 			id: await fhirDb.newResourceId('OrganizationAffiliation'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -68,13 +68,13 @@ class OrganizationAffiliation {
 			telecom: telecom,
 			endpoint: endpoint,
 );
-	int saved = await fhirDb.saveResource(newOrganizationAffiliation);
+	int saved = await fhirDb.newResource(newOrganizationAffiliation);
 	return newOrganizationAffiliation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'OrganizationAffiliation';
   String id;

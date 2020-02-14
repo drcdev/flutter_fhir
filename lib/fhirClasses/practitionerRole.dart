@@ -46,7 +46,7 @@ class PractitionerRole {
 		List<Reference> endpoint}) async {
 	var fhirDb = new DatabaseHelper();
 	PractitionerRole newPractitionerRole = new PractitionerRole(
-			resourceType: resourceType,
+			resourceType: 'PractitionerRole',
 			id: await fhirDb.newResourceId('PractitionerRole'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -74,13 +74,13 @@ class PractitionerRole {
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint,
 );
-	int saved = await fhirDb.saveResource(newPractitionerRole);
+	int saved = await fhirDb.newResource(newPractitionerRole);
 	return newPractitionerRole;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'PractitionerRole';
   String id;

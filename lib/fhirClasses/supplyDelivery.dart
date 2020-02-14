@@ -46,7 +46,7 @@ class SupplyDelivery {
 		List<Reference> receiver}) async {
 	var fhirDb = new DatabaseHelper();
 	SupplyDelivery newSupplyDelivery = new SupplyDelivery(
-			resourceType: resourceType,
+			resourceType: 'SupplyDelivery',
 			id: await fhirDb.newResourceId('SupplyDelivery'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -73,13 +73,13 @@ class SupplyDelivery {
 			destination: destination,
 			receiver: receiver,
 );
-	int saved = await fhirDb.saveResource(newSupplyDelivery);
+	int saved = await fhirDb.newResource(newSupplyDelivery);
 	return newSupplyDelivery;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SupplyDelivery';
   String id;

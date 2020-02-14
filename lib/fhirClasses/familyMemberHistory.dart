@@ -69,7 +69,7 @@ class FamilyMemberHistory {
 		List<FamilyMemberHistory_Condition> condition}) async {
 	var fhirDb = new DatabaseHelper();
 	FamilyMemberHistory newFamilyMemberHistory = new FamilyMemberHistory(
-			resourceType: resourceType,
+			resourceType: 'FamilyMemberHistory',
 			id: await fhirDb.newResourceId('FamilyMemberHistory'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -118,13 +118,13 @@ class FamilyMemberHistory {
 			note: note,
 			condition: condition,
 );
-	int saved = await fhirDb.saveResource(newFamilyMemberHistory);
+	int saved = await fhirDb.newResource(newFamilyMemberHistory);
 	return newFamilyMemberHistory;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'FamilyMemberHistory';
   String id;

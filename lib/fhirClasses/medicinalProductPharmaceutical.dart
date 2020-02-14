@@ -38,7 +38,7 @@ class MedicinalProductPharmaceutical {
 		List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductPharmaceutical newMedicinalProductPharmaceutical = new MedicinalProductPharmaceutical(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductPharmaceutical',
 			id: await fhirDb.newResourceId('MedicinalProductPharmaceutical'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -57,13 +57,13 @@ class MedicinalProductPharmaceutical {
 			characteristics: characteristics,
 			routeOfAdministration: routeOfAdministration,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical);
+	int saved = await fhirDb.newResource(newMedicinalProductPharmaceutical);
 	return newMedicinalProductPharmaceutical;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductPharmaceutical';
   String id;

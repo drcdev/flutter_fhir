@@ -39,7 +39,7 @@ class Schedule {
 		Element elementComment}) async {
 	var fhirDb = new DatabaseHelper();
 	Schedule newSchedule = new Schedule(
-			resourceType: resourceType,
+			resourceType: 'Schedule',
 			id: await fhirDb.newResourceId('Schedule'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -61,13 +61,13 @@ class Schedule {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newSchedule);
+	int saved = await fhirDb.newResource(newSchedule);
 	return newSchedule;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Schedule';
   String id;

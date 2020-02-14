@@ -34,7 +34,7 @@ class SubstanceProtein {
 		List<SubstanceProtein_Subunit> subunit}) async {
 	var fhirDb = new DatabaseHelper();
 	SubstanceProtein newSubstanceProtein = new SubstanceProtein(
-			resourceType: resourceType,
+			resourceType: 'SubstanceProtein',
 			id: await fhirDb.newResourceId('SubstanceProtein'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -52,13 +52,13 @@ class SubstanceProtein {
 			elementDisulfideLinkage: elementDisulfideLinkage,
 			subunit: subunit,
 );
-	int saved = await fhirDb.saveResource(newSubstanceProtein);
+	int saved = await fhirDb.newResource(newSubstanceProtein);
 	return newSubstanceProtein;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SubstanceProtein';
   String id;

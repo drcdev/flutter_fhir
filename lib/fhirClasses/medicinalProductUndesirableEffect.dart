@@ -33,7 +33,7 @@ class MedicinalProductUndesirableEffect {
 		List<Population> population}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductUndesirableEffect newMedicinalProductUndesirableEffect = new MedicinalProductUndesirableEffect(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductUndesirableEffect',
 			id: await fhirDb.newResourceId('MedicinalProductUndesirableEffect'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -50,13 +50,13 @@ class MedicinalProductUndesirableEffect {
 			frequencyOfOccurrence: frequencyOfOccurrence,
 			population: population,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductUndesirableEffect);
+	int saved = await fhirDb.newResource(newMedicinalProductUndesirableEffect);
 	return newMedicinalProductUndesirableEffect;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductUndesirableEffect';
   String id;

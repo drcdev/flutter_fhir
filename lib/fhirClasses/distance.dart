@@ -35,13 +35,13 @@ class Distance {
 			code: code,
 			elementCode: elementCode,
 );
-	int saved = await fhirDb.saveResource(newDistance);
+	int saved = await fhirDb.newResource(newDistance);
 	return newDistance;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

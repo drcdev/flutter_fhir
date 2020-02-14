@@ -44,13 +44,13 @@ class DataRequirement {
 			elementLimit: elementLimit,
 			sort: sort,
 );
-	int saved = await fhirDb.saveResource(newDataRequirement);
+	int saved = await fhirDb.newResource(newDataRequirement);
 	return newDataRequirement;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

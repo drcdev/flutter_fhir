@@ -53,7 +53,7 @@ class DiagnosticReport {
 		List<Attachment> presentedForm}) async {
 	var fhirDb = new DatabaseHelper();
 	DiagnosticReport newDiagnosticReport = new DiagnosticReport(
-			resourceType: resourceType,
+			resourceType: 'DiagnosticReport',
 			id: await fhirDb.newResourceId('DiagnosticReport'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -88,13 +88,13 @@ class DiagnosticReport {
 			conclusionCode: conclusionCode,
 			presentedForm: presentedForm,
 );
-	int saved = await fhirDb.saveResource(newDiagnosticReport);
+	int saved = await fhirDb.newResource(newDiagnosticReport);
 	return newDiagnosticReport;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DiagnosticReport';
   String id;

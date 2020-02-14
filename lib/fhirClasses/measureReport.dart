@@ -44,7 +44,7 @@ class MeasureReport {
 		List<Reference> evaluatedResource}) async {
 	var fhirDb = new DatabaseHelper();
 	MeasureReport newMeasureReport = new MeasureReport(
-			resourceType: resourceType,
+			resourceType: 'MeasureReport',
 			id: await fhirDb.newResourceId('MeasureReport'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -70,13 +70,13 @@ class MeasureReport {
 			group: group,
 			evaluatedResource: evaluatedResource,
 );
-	int saved = await fhirDb.saveResource(newMeasureReport);
+	int saved = await fhirDb.newResource(newMeasureReport);
 	return newMeasureReport;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MeasureReport';
   String id;

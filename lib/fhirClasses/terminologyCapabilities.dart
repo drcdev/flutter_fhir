@@ -66,7 +66,7 @@ class TerminologyCapabilities {
 		TerminologyCapabilities_Closure closure}) async {
 	var fhirDb = new DatabaseHelper();
 	TerminologyCapabilities newTerminologyCapabilities = new TerminologyCapabilities(
-			resourceType: resourceType,
+			resourceType: 'TerminologyCapabilities',
 			id: await fhirDb.newResourceId('TerminologyCapabilities'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -116,13 +116,13 @@ class TerminologyCapabilities {
 			translation: translation,
 			closure: closure,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities);
+	int saved = await fhirDb.newResource(newTerminologyCapabilities);
 	return newTerminologyCapabilities;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'TerminologyCapabilities';
   String id;

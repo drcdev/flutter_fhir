@@ -175,17 +175,19 @@ def HiveCode(properties, objects):
                                 "\t\t\tid: await fhirDb.newResourceId('", 
                                 objects,
                                 "'),\n"])
+        elif(field == 'resourceType'):
+            hiveCode = ''.join([hiveCode, "\t\t\tresourceType: '", objects, "',\n"])
         else:
             hiveCode = ''.join([hiveCode, '\t\t\t', rem_(field), ': ', rem_(field), ',\n'])
     if('_' not in objects):
         hiveCode = ''.join([hiveCode, 
-                            ');\n\tint saved = await fhirDb.saveResource(new',
+                            ');\n\tint saved = await fhirDb.newResource(new',
                             lists(objects),
                             ');\n\treturn new', 
                             lists(objects), 
                             ';\n}\n\n',
                             'save () async {\n\tvar fhirDb = new DatabaseHelper();\n',
-                            '\tint saved = await fhirDb.save(this);\n}'])
+                            '\tint saved = await fhirDb.saveResource(this);\n}'])
     else:
         hiveCode = ''.join([hiveCode, ');\n\treturn new', lists(objects), ';\n}'])    
     hiveCode = hiveCode.replace(',\n}) ', '}) ')

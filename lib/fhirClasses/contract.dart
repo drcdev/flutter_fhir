@@ -80,7 +80,7 @@ class Contract {
 		Reference legallyBindingReference}) async {
 	var fhirDb = new DatabaseHelper();
 	Contract newContract = new Contract(
-			resourceType: resourceType,
+			resourceType: 'Contract',
 			id: await fhirDb.newResourceId('Contract'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -136,13 +136,13 @@ class Contract {
 			legallyBindingAttachment: legallyBindingAttachment,
 			legallyBindingReference: legallyBindingReference,
 );
-	int saved = await fhirDb.saveResource(newContract);
+	int saved = await fhirDb.newResource(newContract);
 	return newContract;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Contract';
   String id;

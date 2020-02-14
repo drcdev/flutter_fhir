@@ -44,7 +44,7 @@ class Person {
 		List<Person_Link> link}) async {
 	var fhirDb = new DatabaseHelper();
 	Person newPerson = new Person(
-			resourceType: resourceType,
+			resourceType: 'Person',
 			id: await fhirDb.newResourceId('Person'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -69,13 +69,13 @@ class Person {
 			elementActive: elementActive,
 			link: link,
 );
-	int saved = await fhirDb.saveResource(newPerson);
+	int saved = await fhirDb.newResource(newPerson);
 	return newPerson;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Person';
   String id;

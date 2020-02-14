@@ -52,7 +52,7 @@ class RiskAssessment {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	RiskAssessment newRiskAssessment = new RiskAssessment(
-			resourceType: resourceType,
+			resourceType: 'RiskAssessment',
 			id: await fhirDb.newResourceId('RiskAssessment'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -85,13 +85,13 @@ class RiskAssessment {
 			elementMitigation: elementMitigation,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newRiskAssessment);
+	int saved = await fhirDb.newResource(newRiskAssessment);
 	return newRiskAssessment;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'RiskAssessment';
   String id;

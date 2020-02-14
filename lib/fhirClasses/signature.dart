@@ -40,13 +40,13 @@ class Signature {
 			data: data,
 			elementData: elementData,
 );
-	int saved = await fhirDb.saveResource(newSignature);
+	int saved = await fhirDb.newResource(newSignature);
 	return newSignature;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

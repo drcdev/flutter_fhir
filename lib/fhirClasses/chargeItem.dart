@@ -68,7 +68,7 @@ class ChargeItem {
 		List<Reference> supportingInformation}) async {
 	var fhirDb = new DatabaseHelper();
 	ChargeItem newChargeItem = new ChargeItem(
-			resourceType: resourceType,
+			resourceType: 'ChargeItem',
 			id: await fhirDb.newResourceId('ChargeItem'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -115,13 +115,13 @@ class ChargeItem {
 			note: note,
 			supportingInformation: supportingInformation,
 );
-	int saved = await fhirDb.saveResource(newChargeItem);
+	int saved = await fhirDb.newResource(newChargeItem);
 	return newChargeItem;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ChargeItem';
   String id;

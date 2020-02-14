@@ -79,7 +79,7 @@ class EvidenceVariable {
 		List<EvidenceVariable_Characteristic> characteristic}) async {
 	var fhirDb = new DatabaseHelper();
 	EvidenceVariable newEvidenceVariable = new EvidenceVariable(
-			resourceType: resourceType,
+			resourceType: 'EvidenceVariable',
 			id: await fhirDb.newResourceId('EvidenceVariable'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -132,13 +132,13 @@ class EvidenceVariable {
 			elementType: elementType,
 			characteristic: characteristic,
 );
-	int saved = await fhirDb.saveResource(newEvidenceVariable);
+	int saved = await fhirDb.newResource(newEvidenceVariable);
 	return newEvidenceVariable;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'EvidenceVariable';
   String id;

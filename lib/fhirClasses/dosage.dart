@@ -58,13 +58,13 @@ class Dosage {
 			maxDosePerAdministration: maxDosePerAdministration,
 			maxDosePerLifetime: maxDosePerLifetime,
 );
-	int saved = await fhirDb.saveResource(newDosage);
+	int saved = await fhirDb.newResource(newDosage);
 	return newDosage;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

@@ -42,7 +42,7 @@ class DeviceMetric {
 		List<DeviceMetric_Calibration> calibration}) async {
 	var fhirDb = new DatabaseHelper();
 	DeviceMetric newDeviceMetric = new DeviceMetric(
-			resourceType: resourceType,
+			resourceType: 'DeviceMetric',
 			id: await fhirDb.newResourceId('DeviceMetric'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -67,13 +67,13 @@ class DeviceMetric {
 			measurementPeriod: measurementPeriod,
 			calibration: calibration,
 );
-	int saved = await fhirDb.saveResource(newDeviceMetric);
+	int saved = await fhirDb.newResource(newDeviceMetric);
 	return newDeviceMetric;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DeviceMetric';
   String id;

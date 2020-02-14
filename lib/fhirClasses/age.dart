@@ -35,13 +35,13 @@ class Age {
 			code: code,
 			elementCode: elementCode,
 );
-	int saved = await fhirDb.saveResource(newAge);
+	int saved = await fhirDb.newResource(newAge);
 	return newAge;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

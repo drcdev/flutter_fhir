@@ -42,7 +42,7 @@ class MedicinalProductPackaged {
 		List<MedicinalProductPackaged_PackageItem> packageItem}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductPackaged newMedicinalProductPackaged = new MedicinalProductPackaged(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductPackaged',
 			id: await fhirDb.newResourceId('MedicinalProductPackaged'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -64,13 +64,13 @@ class MedicinalProductPackaged {
 			batchIdentifier: batchIdentifier,
 			packageItem: packageItem,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPackaged);
+	int saved = await fhirDb.newResource(newMedicinalProductPackaged);
 	return newMedicinalProductPackaged;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductPackaged';
   String id;

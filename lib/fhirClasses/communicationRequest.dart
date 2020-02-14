@@ -59,7 +59,7 @@ class CommunicationRequest {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	CommunicationRequest newCommunicationRequest = new CommunicationRequest(
-			resourceType: resourceType,
+			resourceType: 'CommunicationRequest',
 			id: await fhirDb.newResourceId('CommunicationRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -99,13 +99,13 @@ class CommunicationRequest {
 			reasonReference: reasonReference,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newCommunicationRequest);
+	int saved = await fhirDb.newResource(newCommunicationRequest);
 	return newCommunicationRequest;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'CommunicationRequest';
   String id;

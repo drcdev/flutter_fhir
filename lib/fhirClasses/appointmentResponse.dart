@@ -40,7 +40,7 @@ class AppointmentResponse {
 		Element elementComment}) async {
 	var fhirDb = new DatabaseHelper();
 	AppointmentResponse newAppointmentResponse = new AppointmentResponse(
-			resourceType: resourceType,
+			resourceType: 'AppointmentResponse',
 			id: await fhirDb.newResourceId('AppointmentResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -64,13 +64,13 @@ class AppointmentResponse {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newAppointmentResponse);
+	int saved = await fhirDb.newResource(newAppointmentResponse);
 	return newAppointmentResponse;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'AppointmentResponse';
   String id;

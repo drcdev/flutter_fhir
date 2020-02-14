@@ -47,7 +47,7 @@ class Endpoint {
 		List<Element> elementHeader}) async {
 	var fhirDb = new DatabaseHelper();
 	Endpoint newEndpoint = new Endpoint(
-			resourceType: resourceType,
+			resourceType: 'Endpoint',
 			id: await fhirDb.newResourceId('Endpoint'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -75,13 +75,13 @@ class Endpoint {
 			header: header,
 			elementHeader: elementHeader,
 );
-	int saved = await fhirDb.saveResource(newEndpoint);
+	int saved = await fhirDb.newResource(newEndpoint);
 	return newEndpoint;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Endpoint';
   String id;

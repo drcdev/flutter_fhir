@@ -36,7 +36,7 @@ class MedicinalProductManufactured {
 		List<CodeableConcept> otherCharacteristics}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductManufactured newMedicinalProductManufactured = new MedicinalProductManufactured(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductManufactured',
 			id: await fhirDb.newResourceId('MedicinalProductManufactured'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -55,13 +55,13 @@ class MedicinalProductManufactured {
 			physicalCharacteristics: physicalCharacteristics,
 			otherCharacteristics: otherCharacteristics,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductManufactured);
+	int saved = await fhirDb.newResource(newMedicinalProductManufactured);
 	return newMedicinalProductManufactured;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductManufactured';
   String id;

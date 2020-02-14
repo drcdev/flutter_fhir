@@ -47,7 +47,7 @@ class Specimen {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	Specimen newSpecimen = new Specimen(
-			resourceType: resourceType,
+			resourceType: 'Specimen',
 			id: await fhirDb.newResourceId('Specimen'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -74,13 +74,13 @@ class Specimen {
 			condition: condition,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newSpecimen);
+	int saved = await fhirDb.newResource(newSpecimen);
 	return newSpecimen;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Specimen';
   String id;

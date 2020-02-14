@@ -64,7 +64,7 @@ class ConceptMap {
 		List<ConceptMap_Group> group}) async {
 	var fhirDb = new DatabaseHelper();
 	ConceptMap newConceptMap = new ConceptMap(
-			resourceType: resourceType,
+			resourceType: 'ConceptMap',
 			id: await fhirDb.newResourceId('ConceptMap'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -111,13 +111,13 @@ class ConceptMap {
 			elementTargetCanonical: elementTargetCanonical,
 			group: group,
 );
-	int saved = await fhirDb.saveResource(newConceptMap);
+	int saved = await fhirDb.newResource(newConceptMap);
 	return newConceptMap;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ConceptMap';
   String id;

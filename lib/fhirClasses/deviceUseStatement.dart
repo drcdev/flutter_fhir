@@ -49,7 +49,7 @@ class DeviceUseStatement {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	DeviceUseStatement newDeviceUseStatement = new DeviceUseStatement(
-			resourceType: resourceType,
+			resourceType: 'DeviceUseStatement',
 			id: await fhirDb.newResourceId('DeviceUseStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -79,13 +79,13 @@ class DeviceUseStatement {
 			bodySite: bodySite,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newDeviceUseStatement);
+	int saved = await fhirDb.newResource(newDeviceUseStatement);
 	return newDeviceUseStatement;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DeviceUseStatement';
   String id;

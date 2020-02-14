@@ -43,7 +43,7 @@ class Account {
 		Reference partOf}) async {
 	var fhirDb = new DatabaseHelper();
 	Account newAccount = new Account(
-			resourceType: resourceType,
+			resourceType: 'Account',
 			id: await fhirDb.newResourceId('Account'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -69,13 +69,13 @@ class Account {
 			guarantor: guarantor,
 			partOf: partOf,
 );
-	int saved = await fhirDb.saveResource(newAccount);
+	int saved = await fhirDb.newResource(newAccount);
 	return newAccount;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Account';
   String id;

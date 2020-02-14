@@ -43,7 +43,7 @@ class QuestionnaireResponse {
 		List<QuestionnaireResponse_Item> item}) async {
 	var fhirDb = new DatabaseHelper();
 	QuestionnaireResponse newQuestionnaireResponse = new QuestionnaireResponse(
-			resourceType: resourceType,
+			resourceType: 'QuestionnaireResponse',
 			id: await fhirDb.newResourceId('QuestionnaireResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -68,13 +68,13 @@ class QuestionnaireResponse {
 			source: source,
 			item: item,
 );
-	int saved = await fhirDb.saveResource(newQuestionnaireResponse);
+	int saved = await fhirDb.newResource(newQuestionnaireResponse);
 	return newQuestionnaireResponse;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'QuestionnaireResponse';
   String id;

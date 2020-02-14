@@ -30,13 +30,13 @@ class Reference {
 			display: display,
 			elementDisplay: elementDisplay,
 );
-	int saved = await fhirDb.saveResource(newReference);
+	int saved = await fhirDb.newResource(newReference);
 	return newReference;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

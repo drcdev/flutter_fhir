@@ -48,7 +48,7 @@ class RelatedPerson {
 		List<RelatedPerson_Communication> communication}) async {
 	var fhirDb = new DatabaseHelper();
 	RelatedPerson newRelatedPerson = new RelatedPerson(
-			resourceType: resourceType,
+			resourceType: 'RelatedPerson',
 			id: await fhirDb.newResourceId('RelatedPerson'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -75,13 +75,13 @@ class RelatedPerson {
 			period: period,
 			communication: communication,
 );
-	int saved = await fhirDb.saveResource(newRelatedPerson);
+	int saved = await fhirDb.newResource(newRelatedPerson);
 	return newRelatedPerson;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'RelatedPerson';
   String id;

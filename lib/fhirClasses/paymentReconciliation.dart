@@ -50,7 +50,7 @@ class PaymentReconciliation {
 		List<PaymentReconciliation_ProcessNote> processNote}) async {
 	var fhirDb = new DatabaseHelper();
 	PaymentReconciliation newPaymentReconciliation = new PaymentReconciliation(
-			resourceType: resourceType,
+			resourceType: 'PaymentReconciliation',
 			id: await fhirDb.newResourceId('PaymentReconciliation'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -82,13 +82,13 @@ class PaymentReconciliation {
 			formCode: formCode,
 			processNote: processNote,
 );
-	int saved = await fhirDb.saveResource(newPaymentReconciliation);
+	int saved = await fhirDb.newResource(newPaymentReconciliation);
 	return newPaymentReconciliation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'PaymentReconciliation';
   String id;

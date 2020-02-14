@@ -35,13 +35,13 @@ class Count {
 			code: code,
 			elementCode: elementCode,
 );
-	int saved = await fhirDb.saveResource(newCount);
+	int saved = await fhirDb.newResource(newCount);
 	return newCount;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

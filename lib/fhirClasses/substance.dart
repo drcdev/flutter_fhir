@@ -39,7 +39,7 @@ class Substance {
 		List<Substance_Ingredient> ingredient}) async {
 	var fhirDb = new DatabaseHelper();
 	Substance newSubstance = new Substance(
-			resourceType: resourceType,
+			resourceType: 'Substance',
 			id: await fhirDb.newResourceId('Substance'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -60,13 +60,13 @@ class Substance {
 			instance: instance,
 			ingredient: ingredient,
 );
-	int saved = await fhirDb.saveResource(newSubstance);
+	int saved = await fhirDb.newResource(newSubstance);
 	return newSubstance;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Substance';
   String id;

@@ -81,7 +81,7 @@ class ServiceRequest {
 		List<Reference> relevantHistory}) async {
 	var fhirDb = new DatabaseHelper();
 	ServiceRequest newServiceRequest = new ServiceRequest(
-			resourceType: resourceType,
+			resourceType: 'ServiceRequest',
 			id: await fhirDb.newResourceId('ServiceRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -140,13 +140,13 @@ class ServiceRequest {
 			elementPatientInstruction: elementPatientInstruction,
 			relevantHistory: relevantHistory,
 );
-	int saved = await fhirDb.saveResource(newServiceRequest);
+	int saved = await fhirDb.newResource(newServiceRequest);
 	return newServiceRequest;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ServiceRequest';
   String id;

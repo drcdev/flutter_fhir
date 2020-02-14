@@ -32,7 +32,7 @@ class Bundle {
 		Signature signature}) async {
 	var fhirDb = new DatabaseHelper();
 	Bundle newBundle = new Bundle(
-			resourceType: resourceType,
+			resourceType: 'Bundle',
 			id: await fhirDb.newResourceId('Bundle'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -50,13 +50,13 @@ class Bundle {
 			entry: entry,
 			signature: signature,
 );
-	int saved = await fhirDb.saveResource(newBundle);
+	int saved = await fhirDb.newResource(newBundle);
 	return newBundle;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Bundle';
   String id;

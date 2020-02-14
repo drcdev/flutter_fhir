@@ -32,13 +32,13 @@ class MarketingStatus {
 			restoreDate: restoreDate,
 			elementRestoreDate: elementRestoreDate,
 );
-	int saved = await fhirDb.saveResource(newMarketingStatus);
+	int saved = await fhirDb.newResource(newMarketingStatus);
 	return newMarketingStatus;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

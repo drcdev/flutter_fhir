@@ -43,7 +43,7 @@ class Provenance {
 		List<Signature> signature}) async {
 	var fhirDb = new DatabaseHelper();
 	Provenance newProvenance = new Provenance(
-			resourceType: resourceType,
+			resourceType: 'Provenance',
 			id: await fhirDb.newResourceId('Provenance'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -69,13 +69,13 @@ class Provenance {
 			entity: entity,
 			signature: signature,
 );
-	int saved = await fhirDb.saveResource(newProvenance);
+	int saved = await fhirDb.newResource(newProvenance);
 	return newProvenance;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Provenance';
   String id;

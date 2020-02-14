@@ -66,7 +66,7 @@ class TestScript {
 		TestScript_Teardown teardown}) async {
 	var fhirDb = new DatabaseHelper();
 	TestScript newTestScript = new TestScript(
-			resourceType: resourceType,
+			resourceType: 'TestScript',
 			id: await fhirDb.newResourceId('TestScript'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -113,13 +113,13 @@ class TestScript {
 			test: test,
 			teardown: teardown,
 );
-	int saved = await fhirDb.saveResource(newTestScript);
+	int saved = await fhirDb.newResource(newTestScript);
 	return newTestScript;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'TestScript';
   String id;

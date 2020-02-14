@@ -28,13 +28,13 @@ class ProductShelfLife {
 			period: period,
 			specialPrecautionsForStorage: specialPrecautionsForStorage,
 );
-	int saved = await fhirDb.saveResource(newProductShelfLife);
+	int saved = await fhirDb.newResource(newProductShelfLife);
 	return newProductShelfLife;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

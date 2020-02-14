@@ -51,7 +51,7 @@ class MedicinalProduct {
 		List<MedicinalProduct_SpecialDesignation> specialDesignation}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProduct newMedicinalProduct = new MedicinalProduct(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProduct',
 			id: await fhirDb.newResourceId('MedicinalProduct'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -84,13 +84,13 @@ class MedicinalProduct {
 			manufacturingBusinessOperation: manufacturingBusinessOperation,
 			specialDesignation: specialDesignation,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProduct);
+	int saved = await fhirDb.newResource(newMedicinalProduct);
 	return newMedicinalProduct;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProduct';
   String id;

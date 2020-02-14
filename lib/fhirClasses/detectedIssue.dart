@@ -47,7 +47,7 @@ class DetectedIssue {
 		List<DetectedIssue_Mitigation> mitigation}) async {
 	var fhirDb = new DatabaseHelper();
 	DetectedIssue newDetectedIssue = new DetectedIssue(
-			resourceType: resourceType,
+			resourceType: 'DetectedIssue',
 			id: await fhirDb.newResourceId('DetectedIssue'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -77,13 +77,13 @@ class DetectedIssue {
 			elementReference: elementReference,
 			mitigation: mitigation,
 );
-	int saved = await fhirDb.saveResource(newDetectedIssue);
+	int saved = await fhirDb.newResource(newDetectedIssue);
 	return newDetectedIssue;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DetectedIssue';
   String id;

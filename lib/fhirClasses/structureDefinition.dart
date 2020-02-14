@@ -75,7 +75,7 @@ class StructureDefinition {
 		StructureDefinition_Differential differential}) async {
 	var fhirDb = new DatabaseHelper();
 	StructureDefinition newStructureDefinition = new StructureDefinition(
-			resourceType: resourceType,
+			resourceType: 'StructureDefinition',
 			id: await fhirDb.newResourceId('StructureDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -131,13 +131,13 @@ class StructureDefinition {
 			snapshot: snapshot,
 			differential: differential,
 );
-	int saved = await fhirDb.saveResource(newStructureDefinition);
+	int saved = await fhirDb.newResource(newStructureDefinition);
 	return newStructureDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'StructureDefinition';
   String id;

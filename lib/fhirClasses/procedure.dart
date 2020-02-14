@@ -68,7 +68,7 @@ class Procedure {
 		List<CodeableConcept> usedCode}) async {
 	var fhirDb = new DatabaseHelper();
 	Procedure newProcedure = new Procedure(
-			resourceType: resourceType,
+			resourceType: 'Procedure',
 			id: await fhirDb.newResourceId('Procedure'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -116,13 +116,13 @@ class Procedure {
 			usedReference: usedReference,
 			usedCode: usedCode,
 );
-	int saved = await fhirDb.saveResource(newProcedure);
+	int saved = await fhirDb.newResource(newProcedure);
 	return newProcedure;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Procedure';
   String id;

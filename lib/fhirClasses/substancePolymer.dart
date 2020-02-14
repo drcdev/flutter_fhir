@@ -35,7 +35,7 @@ class SubstancePolymer {
 		List<SubstancePolymer_Repeat> repeat}) async {
 	var fhirDb = new DatabaseHelper();
 	SubstancePolymer newSubstancePolymer = new SubstancePolymer(
-			resourceType: resourceType,
+			resourceType: 'SubstancePolymer',
 			id: await fhirDb.newResourceId('SubstancePolymer'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -54,13 +54,13 @@ class SubstancePolymer {
 			monomerSet: monomerSet,
 			repeat: repeat,
 );
-	int saved = await fhirDb.saveResource(newSubstancePolymer);
+	int saved = await fhirDb.newResource(newSubstancePolymer);
 	return newSubstancePolymer;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SubstancePolymer';
   String id;

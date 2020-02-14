@@ -43,13 +43,13 @@ class SampledData {
 			data: data,
 			elementData: elementData,
 );
-	int saved = await fhirDb.saveResource(newSampledData);
+	int saved = await fhirDb.newResource(newSampledData);
 	return newSampledData;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

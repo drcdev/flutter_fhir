@@ -62,7 +62,7 @@ class ImplementationGuide {
 		ImplementationGuide_Manifest manifest}) async {
 	var fhirDb = new DatabaseHelper();
 	ImplementationGuide newImplementationGuide = new ImplementationGuide(
-			resourceType: resourceType,
+			resourceType: 'ImplementationGuide',
 			id: await fhirDb.newResourceId('ImplementationGuide'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -107,13 +107,13 @@ class ImplementationGuide {
 			definition: definition,
 			manifest: manifest,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide);
+	int saved = await fhirDb.newResource(newImplementationGuide);
 	return newImplementationGuide;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ImplementationGuide';
   String id;

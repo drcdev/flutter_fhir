@@ -35,7 +35,7 @@ class SubstanceNucleicAcid {
 		List<SubstanceNucleicAcid_Subunit> subunit}) async {
 	var fhirDb = new DatabaseHelper();
 	SubstanceNucleicAcid newSubstanceNucleicAcid = new SubstanceNucleicAcid(
-			resourceType: resourceType,
+			resourceType: 'SubstanceNucleicAcid',
 			id: await fhirDb.newResourceId('SubstanceNucleicAcid'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -54,13 +54,13 @@ class SubstanceNucleicAcid {
 			oligoNucleotideType: oligoNucleotideType,
 			subunit: subunit,
 );
-	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid);
+	int saved = await fhirDb.newResource(newSubstanceNucleicAcid);
 	return newSubstanceNucleicAcid;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SubstanceNucleicAcid';
   String id;

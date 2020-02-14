@@ -36,7 +36,7 @@ class MedicinalProductIngredient {
 		MedicinalProductIngredient_Substance substance}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicinalProductIngredient newMedicinalProductIngredient = new MedicinalProductIngredient(
-			resourceType: resourceType,
+			resourceType: 'MedicinalProductIngredient',
 			id: await fhirDb.newResourceId('MedicinalProductIngredient'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -55,13 +55,13 @@ class MedicinalProductIngredient {
 			specifiedSubstance: specifiedSubstance,
 			substance: substance,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductIngredient);
+	int saved = await fhirDb.newResource(newMedicinalProductIngredient);
 	return newMedicinalProductIngredient;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicinalProductIngredient';
   String id;

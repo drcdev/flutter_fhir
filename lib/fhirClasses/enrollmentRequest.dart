@@ -36,7 +36,7 @@ class EnrollmentRequest {
 		Reference coverage}) async {
 	var fhirDb = new DatabaseHelper();
 	EnrollmentRequest newEnrollmentRequest = new EnrollmentRequest(
-			resourceType: resourceType,
+			resourceType: 'EnrollmentRequest',
 			id: await fhirDb.newResourceId('EnrollmentRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -57,13 +57,13 @@ class EnrollmentRequest {
 			candidate: candidate,
 			coverage: coverage,
 );
-	int saved = await fhirDb.saveResource(newEnrollmentRequest);
+	int saved = await fhirDb.newResource(newEnrollmentRequest);
 	return newEnrollmentRequest;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'EnrollmentRequest';
   String id;

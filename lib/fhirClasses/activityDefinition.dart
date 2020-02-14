@@ -112,7 +112,7 @@ class ActivityDefinition {
 		List<ActivityDefinition_DynamicValue> dynamicValue}) async {
 	var fhirDb = new DatabaseHelper();
 	ActivityDefinition newActivityDefinition = new ActivityDefinition(
-			resourceType: resourceType,
+			resourceType: 'ActivityDefinition',
 			id: await fhirDb.newResourceId('ActivityDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -197,13 +197,13 @@ class ActivityDefinition {
 			transform: transform,
 			dynamicValue: dynamicValue,
 );
-	int saved = await fhirDb.saveResource(newActivityDefinition);
+	int saved = await fhirDb.newResource(newActivityDefinition);
 	return newActivityDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ActivityDefinition';
   String id;

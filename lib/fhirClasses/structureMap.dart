@@ -84,7 +84,7 @@ class StructureMap {
 		List<StructureMap_Group> group}) async {
 	var fhirDb = new DatabaseHelper();
 	StructureMap newStructureMap = new StructureMap(
-			resourceType: resourceType,
+			resourceType: 'StructureMap',
 			id: await fhirDb.newResourceId('StructureMap'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -125,13 +125,13 @@ class StructureMap {
 			import: import,
 			group: group,
 );
-	int saved = await fhirDb.saveResource(newStructureMap);
+	int saved = await fhirDb.newResource(newStructureMap);
 	return newStructureMap;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'StructureMap';
   String id;

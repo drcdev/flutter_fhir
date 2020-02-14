@@ -54,7 +54,7 @@ class SupplyRequest {
 		Reference deliverTo}) async {
 	var fhirDb = new DatabaseHelper();
 	SupplyRequest newSupplyRequest = new SupplyRequest(
-			resourceType: resourceType,
+			resourceType: 'SupplyRequest',
 			id: await fhirDb.newResourceId('SupplyRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -88,13 +88,13 @@ class SupplyRequest {
 			deliverFrom: deliverFrom,
 			deliverTo: deliverTo,
 );
-	int saved = await fhirDb.saveResource(newSupplyRequest);
+	int saved = await fhirDb.newResource(newSupplyRequest);
 	return newSupplyRequest;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SupplyRequest';
   String id;

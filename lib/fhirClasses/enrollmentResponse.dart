@@ -39,7 +39,7 @@ class EnrollmentResponse {
 		Reference requestProvider}) async {
 	var fhirDb = new DatabaseHelper();
 	EnrollmentResponse newEnrollmentResponse = new EnrollmentResponse(
-			resourceType: resourceType,
+			resourceType: 'EnrollmentResponse',
 			id: await fhirDb.newResourceId('EnrollmentResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -63,13 +63,13 @@ class EnrollmentResponse {
 			organization: organization,
 			requestProvider: requestProvider,
 );
-	int saved = await fhirDb.saveResource(newEnrollmentResponse);
+	int saved = await fhirDb.newResource(newEnrollmentResponse);
 	return newEnrollmentResponse;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'EnrollmentResponse';
   String id;

@@ -62,7 +62,7 @@ class Media {
 		List<Annotation> note}) async {
 	var fhirDb = new DatabaseHelper();
 	Media newMedia = new Media(
-			resourceType: resourceType,
+			resourceType: 'Media',
 			id: await fhirDb.newResourceId('Media'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -105,13 +105,13 @@ class Media {
 			content: content,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newMedia);
+	int saved = await fhirDb.newResource(newMedia);
 	return newMedia;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Media';
   String id;

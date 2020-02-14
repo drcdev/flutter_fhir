@@ -35,13 +35,13 @@ class Coding {
 			userSelected: userSelected,
 			elementUserSelected: elementUserSelected,
 );
-	int saved = await fhirDb.saveResource(newCoding);
+	int saved = await fhirDb.newResource(newCoding);
 	return newCoding;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

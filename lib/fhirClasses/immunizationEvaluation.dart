@@ -51,7 +51,7 @@ class ImmunizationEvaluation {
 		Element elementSeriesDosesString}) async {
 	var fhirDb = new DatabaseHelper();
 	ImmunizationEvaluation newImmunizationEvaluation = new ImmunizationEvaluation(
-			resourceType: resourceType,
+			resourceType: 'ImmunizationEvaluation',
 			id: await fhirDb.newResourceId('ImmunizationEvaluation'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -86,13 +86,13 @@ class ImmunizationEvaluation {
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString,
 );
-	int saved = await fhirDb.saveResource(newImmunizationEvaluation);
+	int saved = await fhirDb.newResource(newImmunizationEvaluation);
 	return newImmunizationEvaluation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ImmunizationEvaluation';
   String id;

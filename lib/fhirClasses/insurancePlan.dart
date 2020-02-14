@@ -51,7 +51,7 @@ class InsurancePlan {
 		List<InsurancePlan_Plan> plan}) async {
 	var fhirDb = new DatabaseHelper();
 	InsurancePlan newInsurancePlan = new InsurancePlan(
-			resourceType: resourceType,
+			resourceType: 'InsurancePlan',
 			id: await fhirDb.newResourceId('InsurancePlan'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -80,13 +80,13 @@ class InsurancePlan {
 			coverage: coverage,
 			plan: plan,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan);
+	int saved = await fhirDb.newResource(newInsurancePlan);
 	return newInsurancePlan;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'InsurancePlan';
   String id;

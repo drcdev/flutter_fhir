@@ -38,7 +38,7 @@ class Medication {
 		Medication_Batch batch}) async {
 	var fhirDb = new DatabaseHelper();
 	Medication newMedication = new Medication(
-			resourceType: resourceType,
+			resourceType: 'Medication',
 			id: await fhirDb.newResourceId('Medication'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -59,13 +59,13 @@ class Medication {
 			ingredient: ingredient,
 			batch: batch,
 );
-	int saved = await fhirDb.saveResource(newMedication);
+	int saved = await fhirDb.newResource(newMedication);
 	return newMedication;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Medication';
   String id;

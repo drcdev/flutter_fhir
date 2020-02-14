@@ -44,7 +44,7 @@ class AuditEvent {
 		List<AuditEvent_Entity> entity}) async {
 	var fhirDb = new DatabaseHelper();
 	AuditEvent newAuditEvent = new AuditEvent(
-			resourceType: resourceType,
+			resourceType: 'AuditEvent',
 			id: await fhirDb.newResourceId('AuditEvent'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -71,13 +71,13 @@ class AuditEvent {
 			source: source,
 			entity: entity,
 );
-	int saved = await fhirDb.saveResource(newAuditEvent);
+	int saved = await fhirDb.newResource(newAuditEvent);
 	return newAuditEvent;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'AuditEvent';
   String id;

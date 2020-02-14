@@ -89,7 +89,7 @@ class ResearchElementDefinition {
 		List<ResearchElementDefinition_Characteristic> characteristic}) async {
 	var fhirDb = new DatabaseHelper();
 	ResearchElementDefinition newResearchElementDefinition = new ResearchElementDefinition(
-			resourceType: resourceType,
+			resourceType: 'ResearchElementDefinition',
 			id: await fhirDb.newResourceId('ResearchElementDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -154,13 +154,13 @@ class ResearchElementDefinition {
 			elementVariableType: elementVariableType,
 			characteristic: characteristic,
 );
-	int saved = await fhirDb.saveResource(newResearchElementDefinition);
+	int saved = await fhirDb.newResource(newResearchElementDefinition);
 	return newResearchElementDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'ResearchElementDefinition';
   String id;

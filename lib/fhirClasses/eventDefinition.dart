@@ -77,7 +77,7 @@ class EventDefinition {
 		List<TriggerDefinition> trigger}) async {
 	var fhirDb = new DatabaseHelper();
 	EventDefinition newEventDefinition = new EventDefinition(
-			resourceType: resourceType,
+			resourceType: 'EventDefinition',
 			id: await fhirDb.newResourceId('EventDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -133,13 +133,13 @@ class EventDefinition {
 			relatedArtifact: relatedArtifact,
 			trigger: trigger,
 );
-	int saved = await fhirDb.saveResource(newEventDefinition);
+	int saved = await fhirDb.newResource(newEventDefinition);
 	return newEventDefinition;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'EventDefinition';
   String id;

@@ -48,7 +48,7 @@ class VerificationResult {
 		List<VerificationResult_Validator> validator}) async {
 	var fhirDb = new DatabaseHelper();
 	VerificationResult newVerificationResult = new VerificationResult(
-			resourceType: resourceType,
+			resourceType: 'VerificationResult',
 			id: await fhirDb.newResourceId('VerificationResult'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -79,13 +79,13 @@ class VerificationResult {
 			attestation: attestation,
 			validator: validator,
 );
-	int saved = await fhirDb.saveResource(newVerificationResult);
+	int saved = await fhirDb.newResource(newVerificationResult);
 	return newVerificationResult;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'VerificationResult';
   String id;

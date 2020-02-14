@@ -28,13 +28,13 @@ class Population {
 			race: race,
 			physiologicalCondition: physiologicalCondition,
 );
-	int saved = await fhirDb.saveResource(newPopulation);
+	int saved = await fhirDb.newResource(newPopulation);
 	return newPopulation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String id;
   List<Extension> extension;

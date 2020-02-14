@@ -53,7 +53,7 @@ class MedicationStatement {
 		List<Dosage> dosage}) async {
 	var fhirDb = new DatabaseHelper();
 	MedicationStatement newMedicationStatement = new MedicationStatement(
-			resourceType: resourceType,
+			resourceType: 'MedicationStatement',
 			id: await fhirDb.newResourceId('MedicationStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -87,13 +87,13 @@ class MedicationStatement {
 			note: note,
 			dosage: dosage,
 );
-	int saved = await fhirDb.saveResource(newMedicationStatement);
+	int saved = await fhirDb.newResource(newMedicationStatement);
 	return newMedicationStatement;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'MedicationStatement';
   String id;

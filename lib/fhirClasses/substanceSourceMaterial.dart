@@ -43,7 +43,7 @@ class SubstanceSourceMaterial {
 		List<SubstanceSourceMaterial_PartDescription> partDescription}) async {
 	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial newSubstanceSourceMaterial = new SubstanceSourceMaterial(
-			resourceType: resourceType,
+			resourceType: 'SubstanceSourceMaterial',
 			id: await fhirDb.newResourceId('SubstanceSourceMaterial'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -71,13 +71,13 @@ class SubstanceSourceMaterial {
 			organism: organism,
 			partDescription: partDescription,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial);
+	int saved = await fhirDb.newResource(newSubstanceSourceMaterial);
 	return newSubstanceSourceMaterial;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'SubstanceSourceMaterial';
   String id;

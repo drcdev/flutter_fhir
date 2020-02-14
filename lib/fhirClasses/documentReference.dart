@@ -51,7 +51,7 @@ class DocumentReference {
 		DocumentReference_Context context}) async {
 	var fhirDb = new DatabaseHelper();
 	DocumentReference newDocumentReference = new DocumentReference(
-			resourceType: resourceType,
+			resourceType: 'DocumentReference',
 			id: await fhirDb.newResourceId('DocumentReference'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -83,13 +83,13 @@ class DocumentReference {
 			content: content,
 			context: context,
 );
-	int saved = await fhirDb.saveResource(newDocumentReference);
+	int saved = await fhirDb.newResource(newDocumentReference);
 	return newDocumentReference;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'DocumentReference';
   String id;

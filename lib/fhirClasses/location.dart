@@ -54,7 +54,7 @@ class Location {
 		List<Reference> endpoint}) async {
 	var fhirDb = new DatabaseHelper();
 	Location newLocation = new Location(
-			resourceType: resourceType,
+			resourceType: 'Location',
 			id: await fhirDb.newResourceId('Location'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -89,13 +89,13 @@ class Location {
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint,
 );
-	int saved = await fhirDb.saveResource(newLocation);
+	int saved = await fhirDb.newResource(newLocation);
 	return newLocation;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Location';
   String id;

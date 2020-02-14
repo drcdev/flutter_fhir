@@ -46,7 +46,7 @@ class Practitioner {
 		List<CodeableConcept> communication}) async {
 	var fhirDb = new DatabaseHelper();
 	Practitioner newPractitioner = new Practitioner(
-			resourceType: resourceType,
+			resourceType: 'Practitioner',
 			id: await fhirDb.newResourceId('Practitioner'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -71,13 +71,13 @@ class Practitioner {
 			qualification: qualification,
 			communication: communication,
 );
-	int saved = await fhirDb.saveResource(newPractitioner);
+	int saved = await fhirDb.newResource(newPractitioner);
 	return newPractitioner;
 }
 
 save () async {
 	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.save(this);
+	int saved = await fhirDb.saveResource(this);
 }
   String resourceType= 'Practitioner';
   String id;
