@@ -157,6 +157,7 @@ def HiveCode(properties, objects):
 
     hiveCode = ''.join([hiveCode, 
                         '}) async {\n\t',
+                        'var fhirDb = new DatabaseHelper();\n\t',
                         lists(objects),
                         ' new',
                         lists(objects),
@@ -168,12 +169,14 @@ def HiveCode(properties, objects):
         if(rem_(field) != 'resourceType'):
             if(field == 'id'):
                 hiveCode = ''.join([hiveCode, 
-                                    "\t\t\tid: await newId('", 
+                                    "\t\t\tid: await fhirDb.newResourceId('", 
                                     objects,
                                     "'),\n"])
             else:
                 hiveCode = ''.join([hiveCode, '\t\t\t', rem_(field), ': ', rem_(field), ',\n'])
     hiveCode = ''.join([hiveCode, 
+                        ');\n\tint result = await fhirDb.saveResource(new',
+                        lists(objects),
                         ');\n\treturn new',
                         lists(objects),
                         ';\n}'])    
@@ -220,18 +223,14 @@ Future<List<Patient>> readPtList() async {
   return ptList;
 }'''
     
-patientReplace1 ='''import 'package:hive/hive.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';'''
+patientReplace1 ='''import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';'''
 
 patientReplace2 = '''import 'dart:io';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 '''
 
@@ -1120,7 +1119,6 @@ classesSetup() async {
                         
     
 classes4 = ''.join([classes3, 
-                   # '\n\n  Hive.registerAdapter(', 'Adapter());\n  Hive.registerAdapter('.join(resources),
                    '());\n\n']) 
 classes5 = classes4.replace("'Adapter());", "Adapter());")
 

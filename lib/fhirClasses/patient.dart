@@ -64,7 +64,7 @@ class Patient {
 		List<Patient_Link> link}) async {
   var fhirDb = new DatabaseHelper();
 	Patient newPatient = new Patient(
-			id: await newId('Patient'),
+			id: await fhirDb.newResourceId('Patient'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -100,8 +100,15 @@ class Patient {
 			managingOrganization: managingOrganization,
 			link: link,
 );
+	int result = await fhirDb.saveResource(newPatient);
 	return newPatient;
 }
+
+  Future<int> save() async {
+    var fhirDb = new DatabaseHelper();
+    return await fhirDb.saveResource(this);
+  }
+
   final String resourceType= 'Patient';
   String id;
   Meta meta;

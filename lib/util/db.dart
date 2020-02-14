@@ -67,6 +67,13 @@ class DatabaseHelper {
         classInfo[0]['lastId']);
   }
 
+  Future<int> saveResource(dynamic resource) async {
+    var dbClient = await db;
+    int res = await dbClient.insert(
+        resource.runtimeType.toString(), resource.toJson());
+    return res;
+  }
+
   Future<bool> update(dynamic resource) async {
     var dbClient = await db;
     int res = await dbClient.update(
@@ -75,24 +82,9 @@ class DatabaseHelper {
     return res > 0 ? true : false;
   }
 
-  Future<int> saveResource(dynamic resource) async {
-    var dbClient = await db;
-    int res = await dbClient.insert(
-        resource.runtimeType.toString(), resource.toJson());
-    return res;
-  }
-
   Future<List<Map<String, dynamic>>> getResource(String table) async {
     var dbClient = await db;
     List<Map> list = await dbClient.rawQuery('SELECT * FROM ' + table);
-//    List<dynamic> employees = new List();
-//    for (int i = 0; i < list.length; i++) {
-//      var user =
-//      new User(list[i]["firstname"], list[i]["lastname"], list[i]["dob"]);
-//      user.setUserId(list[i]["id"]);
-//      employees.add(user);
-//    }
-//    print(employees.length);
     return list;
   }
 

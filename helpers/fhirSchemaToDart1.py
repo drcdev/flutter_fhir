@@ -238,11 +238,9 @@ for code in dartCode:
                 code = ''.join(["import 'package:flutter_fhir/fhirClasses/",
                                 fhir.lowcc(l), ".dart';\n", code])
         code = code.replace(',\n    });', '\n    });')
-        code = ''.join(["import 'package:flutter_fhir/fhirClasses/classes.dart';\n\n", code])
         if('@required' in code):
             code = ''.join(["import 'package:flutter/foundation.dart';\n", code])
         code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n", code])
-        code = ''.join(["import 'package:hive/hive.dart';\n", code])
         code = code.replace("import 'package:flutter_fhir/fhirClasses/resourceList.dart';","import 'package:flutter_fhir/util/resourceList.dart';")
         with open(fhirDir + fhir.lowcc(g) + ".dart","w", encoding="utf-8") as f:
             f.write(code)
