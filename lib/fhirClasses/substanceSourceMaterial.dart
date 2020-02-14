@@ -12,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial {
 
+
 	static Future<SubstanceSourceMaterial> newInstance({
 		String  resourceType,
 		String id,
@@ -72,6 +73,11 @@ class SubstanceSourceMaterial {
 );
 	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial);
 	return newSubstanceSourceMaterial;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SubstanceSourceMaterial';
   String id;
@@ -138,6 +144,7 @@ SubstanceSourceMaterial(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_FractionDescription {
 
+
 	static Future<SubstanceSourceMaterial_FractionDescription> newInstance({
 		String id,
 		List<Extension> extension,
@@ -154,7 +161,6 @@ class SubstanceSourceMaterial_FractionDescription {
 			elementFraction: elementFraction,
 			materialType: materialType,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_FractionDescription);
 	return newSubstanceSourceMaterial_FractionDescription;
 }
   String id;
@@ -179,6 +185,7 @@ SubstanceSourceMaterial_FractionDescription(
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Organism {
+
 
 	static Future<SubstanceSourceMaterial_Organism> newInstance({
 		String id,
@@ -208,7 +215,6 @@ class SubstanceSourceMaterial_Organism {
 			hybrid: hybrid,
 			organismGeneral: organismGeneral,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_Organism);
 	return newSubstanceSourceMaterial_Organism;
 }
   String id;
@@ -246,6 +252,7 @@ SubstanceSourceMaterial_Organism(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Author {
 
+
 	static Future<SubstanceSourceMaterial_Author> newInstance({
 		String id,
 		List<Extension> extension,
@@ -262,7 +269,6 @@ class SubstanceSourceMaterial_Author {
 			authorDescription: authorDescription,
 			elementAuthorDescription: elementAuthorDescription,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_Author);
 	return newSubstanceSourceMaterial_Author;
 }
   String id;
@@ -287,6 +293,7 @@ SubstanceSourceMaterial_Author(
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Hybrid {
+
 
 	static Future<SubstanceSourceMaterial_Hybrid> newInstance({
 		String id,
@@ -316,7 +323,6 @@ class SubstanceSourceMaterial_Hybrid {
 			elementPaternalOrganismName: elementPaternalOrganismName,
 			hybridType: hybridType,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_Hybrid);
 	return newSubstanceSourceMaterial_Hybrid;
 }
   String id;
@@ -354,6 +360,7 @@ SubstanceSourceMaterial_Hybrid(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_OrganismGeneral {
 
+
 	static Future<SubstanceSourceMaterial_OrganismGeneral> newInstance({
 		String id,
 		List<Extension> extension,
@@ -372,7 +379,6 @@ class SubstanceSourceMaterial_OrganismGeneral {
 			classs: classs,
 			order: order,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_OrganismGeneral);
 	return newSubstanceSourceMaterial_OrganismGeneral;
 }
   String id;
@@ -400,6 +406,7 @@ SubstanceSourceMaterial_OrganismGeneral(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_PartDescription {
 
+
 	static Future<SubstanceSourceMaterial_PartDescription> newInstance({
 		String id,
 		List<Extension> extension,
@@ -414,7 +421,6 @@ class SubstanceSourceMaterial_PartDescription {
 			part: part,
 			partLocation: partLocation,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_PartDescription);
 	return newSubstanceSourceMaterial_PartDescription;
 }
   String id;

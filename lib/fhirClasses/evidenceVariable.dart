@@ -23,6 +23,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class EvidenceVariable {
 
+
 	static Future<EvidenceVariable> newInstance({
 		String  resourceType,
 		String id,
@@ -133,6 +134,11 @@ class EvidenceVariable {
 );
 	int saved = await fhirDb.saveResource(newEvidenceVariable);
 	return newEvidenceVariable;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'EvidenceVariable';
   String id;
@@ -249,6 +255,7 @@ EvidenceVariable(
 @JsonSerializable(explicitToJson: true)
 class EvidenceVariable_Characteristic {
 
+
 	static Future<EvidenceVariable_Characteristic> newInstance({
 		String id,
 		List<Extension> extension,
@@ -299,7 +306,6 @@ class EvidenceVariable_Characteristic {
 			groupMeasure: groupMeasure,
 			elementGroupMeasure: elementGroupMeasure,
 );
-	int saved = await fhirDb.saveResource(newEvidenceVariable_Characteristic);
 	return newEvidenceVariable_Characteristic;
 }
   String id;

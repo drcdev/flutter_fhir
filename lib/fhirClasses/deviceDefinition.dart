@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition {
 
+
 	static Future<DeviceDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -102,6 +103,11 @@ class DeviceDefinition {
 );
 	int saved = await fhirDb.saveResource(newDeviceDefinition);
 	return newDeviceDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'DeviceDefinition';
   String id;
@@ -192,6 +198,7 @@ DeviceDefinition(
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_UdiDeviceIdentifier {
 
+
 	static Future<DeviceDefinition_UdiDeviceIdentifier> newInstance({
 		String id,
 		List<Extension> extension,
@@ -214,7 +221,6 @@ class DeviceDefinition_UdiDeviceIdentifier {
 			jurisdiction: jurisdiction,
 			elementJurisdiction: elementJurisdiction,
 );
-	int saved = await fhirDb.saveResource(newDeviceDefinition_UdiDeviceIdentifier);
 	return newDeviceDefinition_UdiDeviceIdentifier;
 }
   String id;
@@ -246,6 +252,7 @@ DeviceDefinition_UdiDeviceIdentifier(
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_DeviceName {
 
+
 	static Future<DeviceDefinition_DeviceName> newInstance({
 		String id,
 		List<Extension> extension,
@@ -264,7 +271,6 @@ class DeviceDefinition_DeviceName {
 			type: type,
 			elementType: elementType,
 );
-	int saved = await fhirDb.saveResource(newDeviceDefinition_DeviceName);
 	return newDeviceDefinition_DeviceName;
 }
   String id;
@@ -292,6 +298,7 @@ DeviceDefinition_DeviceName(
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Specialization {
 
+
 	static Future<DeviceDefinition_Specialization> newInstance({
 		String id,
 		List<Extension> extension,
@@ -310,7 +317,6 @@ class DeviceDefinition_Specialization {
 			version: version,
 			elementVersion: elementVersion,
 );
-	int saved = await fhirDb.saveResource(newDeviceDefinition_Specialization);
 	return newDeviceDefinition_Specialization;
 }
   String id;
@@ -338,6 +344,7 @@ DeviceDefinition_Specialization(
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Capability {
 
+
 	static Future<DeviceDefinition_Capability> newInstance({
 		String id,
 		List<Extension> extension,
@@ -352,7 +359,6 @@ class DeviceDefinition_Capability {
 			type: type,
 			description: description,
 );
-	int saved = await fhirDb.saveResource(newDeviceDefinition_Capability);
 	return newDeviceDefinition_Capability;
 }
   String id;
@@ -376,6 +382,7 @@ DeviceDefinition_Capability(
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Property {
 
+
 	static Future<DeviceDefinition_Property> newInstance({
 		String id,
 		List<Extension> extension,
@@ -392,7 +399,6 @@ class DeviceDefinition_Property {
 			valueQuantity: valueQuantity,
 			valueCode: valueCode,
 );
-	int saved = await fhirDb.saveResource(newDeviceDefinition_Property);
 	return newDeviceDefinition_Property;
 }
   String id;
@@ -418,6 +424,7 @@ DeviceDefinition_Property(
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Material {
 
+
 	static Future<DeviceDefinition_Material> newInstance({
 		String id,
 		List<Extension> extension,
@@ -438,7 +445,6 @@ class DeviceDefinition_Material {
 			allergenicIndicator: allergenicIndicator,
 			elementAllergenicIndicator: elementAllergenicIndicator,
 );
-	int saved = await fhirDb.saveResource(newDeviceDefinition_Material);
 	return newDeviceDefinition_Material;
 }
   String id;

@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class EventDefinition {
 
+
 	static Future<EventDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -134,6 +135,11 @@ class EventDefinition {
 );
 	int saved = await fhirDb.saveResource(newEventDefinition);
 	return newEventDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'EventDefinition';
   String id;

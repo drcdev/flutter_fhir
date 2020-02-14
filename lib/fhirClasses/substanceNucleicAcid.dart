@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid {
 
+
 	static Future<SubstanceNucleicAcid> newInstance({
 		String  resourceType,
 		String id,
@@ -55,6 +56,11 @@ class SubstanceNucleicAcid {
 );
 	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid);
 	return newSubstanceNucleicAcid;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SubstanceNucleicAcid';
   String id;
@@ -103,6 +109,7 @@ SubstanceNucleicAcid(
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid_Subunit {
 
+
 	static Future<SubstanceNucleicAcid_Subunit> newInstance({
 		String id,
 		List<Extension> extension,
@@ -135,7 +142,6 @@ class SubstanceNucleicAcid_Subunit {
 			linkage: linkage,
 			sugar: sugar,
 );
-	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid_Subunit);
 	return newSubstanceNucleicAcid_Subunit;
 }
   String id;
@@ -177,6 +183,7 @@ SubstanceNucleicAcid_Subunit(
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid_Linkage {
 
+
 	static Future<SubstanceNucleicAcid_Linkage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -201,7 +208,6 @@ class SubstanceNucleicAcid_Linkage {
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite,
 );
-	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid_Linkage);
 	return newSubstanceNucleicAcid_Linkage;
 }
   String id;
@@ -235,6 +241,7 @@ SubstanceNucleicAcid_Linkage(
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid_Sugar {
 
+
 	static Future<SubstanceNucleicAcid_Sugar> newInstance({
 		String id,
 		List<Extension> extension,
@@ -255,7 +262,6 @@ class SubstanceNucleicAcid_Sugar {
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite,
 );
-	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid_Sugar);
 	return newSubstanceNucleicAcid_Sugar;
 }
   String id;

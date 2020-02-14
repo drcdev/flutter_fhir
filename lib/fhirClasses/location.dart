@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Location {
 
+
 	static Future<Location> newInstance({
 		String  resourceType,
 		String id,
@@ -90,6 +91,11 @@ class Location {
 );
 	int saved = await fhirDb.saveResource(newLocation);
 	return newLocation;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Location';
   String id;
@@ -170,6 +176,7 @@ Location(
 @JsonSerializable(explicitToJson: true)
 class Location_Position {
 
+
 	static Future<Location_Position> newInstance({
 		String id,
 		List<Extension> extension,
@@ -192,7 +199,6 @@ class Location_Position {
 			altitude: altitude,
 			elementAltitude: elementAltitude,
 );
-	int saved = await fhirDb.saveResource(newLocation_Position);
 	return newLocation_Position;
 }
   String id;
@@ -224,6 +230,7 @@ Location_Position(
 @JsonSerializable(explicitToJson: true)
 class Location_HoursOfOperation {
 
+
 	static Future<Location_HoursOfOperation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -250,7 +257,6 @@ class Location_HoursOfOperation {
 			closingTime: closingTime,
 			elementClosingTime: elementClosingTime,
 );
-	int saved = await fhirDb.saveResource(newLocation_HoursOfOperation);
 	return newLocation_HoursOfOperation;
 }
   String id;

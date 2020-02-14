@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ConceptMap {
 
+
 	static Future<ConceptMap> newInstance({
 		String  resourceType,
 		String id,
@@ -112,6 +113,11 @@ class ConceptMap {
 );
 	int saved = await fhirDb.saveResource(newConceptMap);
 	return newConceptMap;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ConceptMap';
   String id;
@@ -216,6 +222,7 @@ ConceptMap(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Group {
 
+
 	static Future<ConceptMap_Group> newInstance({
 		String id,
 		List<Extension> extension,
@@ -246,7 +253,6 @@ class ConceptMap_Group {
 			element: element,
 			unmapped: unmapped,
 );
-	int saved = await fhirDb.saveResource(newConceptMap_Group);
 	return newConceptMap_Group;
 }
   String id;
@@ -286,6 +292,7 @@ ConceptMap_Group(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Element {
 
+
 	static Future<ConceptMap_Element> newInstance({
 		String id,
 		List<Extension> extension,
@@ -306,7 +313,6 @@ class ConceptMap_Element {
 			elementDisplay: elementDisplay,
 			target: target,
 );
-	int saved = await fhirDb.saveResource(newConceptMap_Element);
 	return newConceptMap_Element;
 }
   String id;
@@ -335,6 +341,7 @@ ConceptMap_Element(
 
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Target {
+
 
 	static Future<ConceptMap_Target> newInstance({
 		String id,
@@ -366,7 +373,6 @@ class ConceptMap_Target {
 			dependsOn: dependsOn,
 			product: product,
 );
-	int saved = await fhirDb.saveResource(newConceptMap_Target);
 	return newConceptMap_Target;
 }
   String id;
@@ -406,6 +412,7 @@ ConceptMap_Target(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_DependsOn {
 
+
 	static Future<ConceptMap_DependsOn> newInstance({
 		String id,
 		List<Extension> extension,
@@ -430,7 +437,6 @@ class ConceptMap_DependsOn {
 			display: display,
 			elementDisplay: elementDisplay,
 );
-	int saved = await fhirDb.saveResource(newConceptMap_DependsOn);
 	return newConceptMap_DependsOn;
 }
   String id;
@@ -464,6 +470,7 @@ ConceptMap_DependsOn(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Unmapped {
 
+
 	static Future<ConceptMap_Unmapped> newInstance({
 		String id,
 		List<Extension> extension,
@@ -488,7 +495,6 @@ class ConceptMap_Unmapped {
 			elementDisplay: elementDisplay,
 			url: url,
 );
-	int saved = await fhirDb.saveResource(newConceptMap_Unmapped);
 	return newConceptMap_Unmapped;
 }
   String id;

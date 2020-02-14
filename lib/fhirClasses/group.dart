@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Group {
 
+
 	static Future<Group> newInstance({
 		String  resourceType,
 		String id,
@@ -74,6 +75,11 @@ class Group {
 );
 	int saved = await fhirDb.saveResource(newGroup);
 	return newGroup;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Group';
   String id;
@@ -138,6 +144,7 @@ Group(
 @JsonSerializable(explicitToJson: true)
 class Group_Characteristic {
 
+
 	static Future<Group_Characteristic> newInstance({
 		String id,
 		List<Extension> extension,
@@ -168,7 +175,6 @@ class Group_Characteristic {
 			elementExclude: elementExclude,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newGroup_Characteristic);
 	return newGroup_Characteristic;
 }
   String id;
@@ -208,6 +214,7 @@ Group_Characteristic(
 @JsonSerializable(explicitToJson: true)
 class Group_Member {
 
+
 	static Future<Group_Member> newInstance({
 		String id,
 		List<Extension> extension,
@@ -226,7 +233,6 @@ class Group_Member {
 			inactive: inactive,
 			elementInactive: elementInactive,
 );
-	int saved = await fhirDb.saveResource(newGroup_Member);
 	return newGroup_Member;
 }
   String id;

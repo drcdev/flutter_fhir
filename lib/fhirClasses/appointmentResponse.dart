@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class AppointmentResponse {
 
+
 	static Future<AppointmentResponse> newInstance({
 		String  resourceType,
 		String id,
@@ -65,6 +66,11 @@ class AppointmentResponse {
 );
 	int saved = await fhirDb.saveResource(newAppointmentResponse);
 	return newAppointmentResponse;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'AppointmentResponse';
   String id;

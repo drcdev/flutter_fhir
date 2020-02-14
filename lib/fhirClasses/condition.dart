@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Condition {
 
+
 	static Future<Condition> newInstance({
 		String  resourceType,
 		String id,
@@ -105,6 +106,11 @@ class Condition {
 );
 	int saved = await fhirDb.saveResource(newCondition);
 	return newCondition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Condition';
   String id;
@@ -199,6 +205,7 @@ Condition(
 @JsonSerializable(explicitToJson: true)
 class Condition_Stage {
 
+
 	static Future<Condition_Stage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -215,7 +222,6 @@ class Condition_Stage {
 			assessment: assessment,
 			type: type,
 );
-	int saved = await fhirDb.saveResource(newCondition_Stage);
 	return newCondition_Stage;
 }
   String id;
@@ -241,6 +247,7 @@ Condition_Stage(
 @JsonSerializable(explicitToJson: true)
 class Condition_Evidence {
 
+
 	static Future<Condition_Evidence> newInstance({
 		String id,
 		List<Extension> extension,
@@ -255,7 +262,6 @@ class Condition_Evidence {
 			code: code,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newCondition_Evidence);
 	return newCondition_Evidence;
 }
   String id;

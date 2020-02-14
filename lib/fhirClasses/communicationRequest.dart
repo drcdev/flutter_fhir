@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class CommunicationRequest {
 
+
 	static Future<CommunicationRequest> newInstance({
 		String  resourceType,
 		String id,
@@ -100,6 +101,11 @@ class CommunicationRequest {
 );
 	int saved = await fhirDb.saveResource(newCommunicationRequest);
 	return newCommunicationRequest;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'CommunicationRequest';
   String id;
@@ -190,6 +196,7 @@ CommunicationRequest(
 @JsonSerializable(explicitToJson: true)
 class CommunicationRequest_Payload {
 
+
 	static Future<CommunicationRequest_Payload> newInstance({
 		String id,
 		List<Extension> extension,
@@ -208,7 +215,6 @@ class CommunicationRequest_Payload {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
-	int saved = await fhirDb.saveResource(newCommunicationRequest_Payload);
 	return newCommunicationRequest_Payload;
 }
   String id;

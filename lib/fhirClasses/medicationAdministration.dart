@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicationAdministration {
 
+
 	static Future<MedicationAdministration> newInstance({
 		String  resourceType,
 		String id,
@@ -93,6 +94,11 @@ class MedicationAdministration {
 );
 	int saved = await fhirDb.saveResource(newMedicationAdministration);
 	return newMedicationAdministration;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicationAdministration';
   String id;
@@ -175,6 +181,7 @@ MedicationAdministration(
 @JsonSerializable(explicitToJson: true)
 class MedicationAdministration_Performer {
 
+
 	static Future<MedicationAdministration_Performer> newInstance({
 		String id,
 		List<Extension> extension,
@@ -189,7 +196,6 @@ class MedicationAdministration_Performer {
 			function: function,
 			actor: actor,
 );
-	int saved = await fhirDb.saveResource(newMedicationAdministration_Performer);
 	return newMedicationAdministration_Performer;
 }
   String id;
@@ -212,6 +218,7 @@ MedicationAdministration_Performer(
 
 @JsonSerializable(explicitToJson: true)
 class MedicationAdministration_Dosage {
+
 
 	static Future<MedicationAdministration_Dosage> newInstance({
 		String id,
@@ -239,7 +246,6 @@ class MedicationAdministration_Dosage {
 			rateRatio: rateRatio,
 			rateQuantity: rateQuantity,
 );
-	int saved = await fhirDb.saveResource(newMedicationAdministration_Dosage);
 	return newMedicationAdministration_Dosage;
 }
   String id;

@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class DocumentReference {
 
+
 	static Future<DocumentReference> newInstance({
 		String  resourceType,
 		String id,
@@ -84,6 +85,11 @@ class DocumentReference {
 );
 	int saved = await fhirDb.saveResource(newDocumentReference);
 	return newDocumentReference;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'DocumentReference';
   String id;
@@ -158,6 +164,7 @@ DocumentReference(
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_RelatesTo {
 
+
 	static Future<DocumentReference_RelatesTo> newInstance({
 		String id,
 		List<Extension> extension,
@@ -174,7 +181,6 @@ class DocumentReference_RelatesTo {
 			elementCode: elementCode,
 			target: target,
 );
-	int saved = await fhirDb.saveResource(newDocumentReference_RelatesTo);
 	return newDocumentReference_RelatesTo;
 }
   String id;
@@ -200,6 +206,7 @@ DocumentReference_RelatesTo(
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_Content {
 
+
 	static Future<DocumentReference_Content> newInstance({
 		String id,
 		List<Extension> extension,
@@ -214,7 +221,6 @@ class DocumentReference_Content {
 			attachment: attachment,
 			format: format,
 );
-	int saved = await fhirDb.saveResource(newDocumentReference_Content);
 	return newDocumentReference_Content;
 }
   String id;
@@ -237,6 +243,7 @@ DocumentReference_Content(
 
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_Context {
+
 
 	static Future<DocumentReference_Context> newInstance({
 		String id,
@@ -262,7 +269,6 @@ class DocumentReference_Context {
 			sourcePatientInfo: sourcePatientInfo,
 			related: related,
 );
-	int saved = await fhirDb.saveResource(newDocumentReference_Context);
 	return newDocumentReference_Context;
 }
   String id;

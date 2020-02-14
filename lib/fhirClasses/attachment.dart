@@ -6,6 +6,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Attachment {
 
+
 	static Future<Attachment> newInstance({
 		String id,
 		List<Extension> extension,
@@ -48,6 +49,11 @@ class Attachment {
 );
 	int saved = await fhirDb.saveResource(newAttachment);
 	return newAttachment;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

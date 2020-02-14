@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class VisionPrescription {
 
+
 	static Future<VisionPrescription> newInstance({
 		String  resourceType,
 		String id,
@@ -65,6 +66,11 @@ class VisionPrescription {
 );
 	int saved = await fhirDb.saveResource(newVisionPrescription);
 	return newVisionPrescription;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'VisionPrescription';
   String id;
@@ -120,6 +126,7 @@ VisionPrescription(
 
 @JsonSerializable(explicitToJson: true)
 class VisionPrescription_LensSpecification {
+
 
 	static Future<VisionPrescription_LensSpecification> newInstance({
 		String id,
@@ -179,7 +186,6 @@ class VisionPrescription_LensSpecification {
 			elementBrand: elementBrand,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newVisionPrescription_LensSpecification);
 	return newVisionPrescription_LensSpecification;
 }
   String id;
@@ -247,6 +253,7 @@ VisionPrescription_LensSpecification(
 @JsonSerializable(explicitToJson: true)
 class VisionPrescription_Prism {
 
+
 	static Future<VisionPrescription_Prism> newInstance({
 		String id,
 		List<Extension> extension,
@@ -265,7 +272,6 @@ class VisionPrescription_Prism {
 			base: base,
 			elementBase: elementBase,
 );
-	int saved = await fhirDb.saveResource(newVisionPrescription_Prism);
 	return newVisionPrescription_Prism;
 }
   String id;

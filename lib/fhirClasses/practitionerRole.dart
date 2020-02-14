@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class PractitionerRole {
 
+
 	static Future<PractitionerRole> newInstance({
 		String  resourceType,
 		String id,
@@ -75,6 +76,11 @@ class PractitionerRole {
 );
 	int saved = await fhirDb.saveResource(newPractitionerRole);
 	return newPractitionerRole;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'PractitionerRole';
   String id;
@@ -141,6 +147,7 @@ PractitionerRole(
 @JsonSerializable(explicitToJson: true)
 class PractitionerRole_AvailableTime {
 
+
 	static Future<PractitionerRole_AvailableTime> newInstance({
 		String id,
 		List<Extension> extension,
@@ -167,7 +174,6 @@ class PractitionerRole_AvailableTime {
 			availableEndTime: availableEndTime,
 			elementAvailableEndTime: elementAvailableEndTime,
 );
-	int saved = await fhirDb.saveResource(newPractitionerRole_AvailableTime);
 	return newPractitionerRole_AvailableTime;
 }
   String id;
@@ -203,6 +209,7 @@ PractitionerRole_AvailableTime(
 @JsonSerializable(explicitToJson: true)
 class PractitionerRole_NotAvailable {
 
+
 	static Future<PractitionerRole_NotAvailable> newInstance({
 		String id,
 		List<Extension> extension,
@@ -219,7 +226,6 @@ class PractitionerRole_NotAvailable {
 			elementDescription: elementDescription,
 			during: during,
 );
-	int saved = await fhirDb.saveResource(newPractitionerRole_NotAvailable);
 	return newPractitionerRole_NotAvailable;
 }
   String id;

@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SearchParameter {
 
+
 	static Future<SearchParameter> newInstance({
 		String  resourceType,
 		String id,
@@ -135,6 +136,11 @@ class SearchParameter {
 );
 	int saved = await fhirDb.saveResource(newSearchParameter);
 	return newSearchParameter;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SearchParameter';
   String id;
@@ -263,6 +269,7 @@ SearchParameter(
 @JsonSerializable(explicitToJson: true)
 class SearchParameter_Component {
 
+
 	static Future<SearchParameter_Component> newInstance({
 		String id,
 		List<Extension> extension,
@@ -279,7 +286,6 @@ class SearchParameter_Component {
 			expression: expression,
 			elementExpression: elementExpression,
 );
-	int saved = await fhirDb.saveResource(newSearchParameter_Component);
 	return newSearchParameter_Component;
 }
   String id;

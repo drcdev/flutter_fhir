@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse {
 
+
 	static Future<CoverageEligibilityResponse> newInstance({
 		String  resourceType,
 		String id,
@@ -89,6 +90,11 @@ class CoverageEligibilityResponse {
 );
 	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse);
 	return newCoverageEligibilityResponse;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'CoverageEligibilityResponse';
   String id;
@@ -169,6 +175,7 @@ CoverageEligibilityResponse(
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Insurance {
 
+
 	static Future<CoverageEligibilityResponse_Insurance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -189,7 +196,6 @@ class CoverageEligibilityResponse_Insurance {
 			benefitPeriod: benefitPeriod,
 			item: item,
 );
-	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Insurance);
 	return newCoverageEligibilityResponse_Insurance;
 }
   String id;
@@ -218,6 +224,7 @@ CoverageEligibilityResponse_Insurance(
 
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Item {
+
 
 	static Future<CoverageEligibilityResponse_Item> newInstance({
 		String id,
@@ -267,7 +274,6 @@ class CoverageEligibilityResponse_Item {
 			authorizationUrl: authorizationUrl,
 			elementAuthorizationUrl: elementAuthorizationUrl,
 );
-	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Item);
 	return newCoverageEligibilityResponse_Item;
 }
   String id;
@@ -325,6 +331,7 @@ CoverageEligibilityResponse_Item(
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Benefit {
 
+
 	static Future<CoverageEligibilityResponse_Benefit> newInstance({
 		String id,
 		List<Extension> extension,
@@ -357,7 +364,6 @@ class CoverageEligibilityResponse_Benefit {
 			elementUsedString: elementUsedString,
 			usedMoney: usedMoney,
 );
-	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Benefit);
 	return newCoverageEligibilityResponse_Benefit;
 }
   String id;
@@ -399,6 +405,7 @@ CoverageEligibilityResponse_Benefit(
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Error {
 
+
 	static Future<CoverageEligibilityResponse_Error> newInstance({
 		String id,
 		List<Extension> extension,
@@ -411,7 +418,6 @@ class CoverageEligibilityResponse_Error {
 			modifierExtension: modifierExtension,
 			code: code,
 );
-	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Error);
 	return newCoverageEligibilityResponse_Error;
 }
   String id;

@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SupplyRequest {
 
+
 	static Future<SupplyRequest> newInstance({
 		String  resourceType,
 		String id,
@@ -89,6 +90,11 @@ class SupplyRequest {
 );
 	int saved = await fhirDb.saveResource(newSupplyRequest);
 	return newSupplyRequest;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SupplyRequest';
   String id;
@@ -167,6 +173,7 @@ SupplyRequest(
 @JsonSerializable(explicitToJson: true)
 class SupplyRequest_Parameter {
 
+
 	static Future<SupplyRequest_Parameter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -189,7 +196,6 @@ class SupplyRequest_Parameter {
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean,
 );
-	int saved = await fhirDb.saveResource(newSupplyRequest_Parameter);
 	return newSupplyRequest_Parameter;
 }
   String id;

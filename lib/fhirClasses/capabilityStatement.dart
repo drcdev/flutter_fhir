@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement {
 
+
 	static Future<CapabilityStatement> newInstance({
 		String  resourceType,
 		String id,
@@ -125,6 +126,11 @@ class CapabilityStatement {
 );
 	int saved = await fhirDb.saveResource(newCapabilityStatement);
 	return newCapabilityStatement;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'CapabilityStatement';
   String id;
@@ -241,6 +247,7 @@ CapabilityStatement(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Software {
 
+
 	static Future<CapabilityStatement_Software> newInstance({
 		String id,
 		List<Extension> extension,
@@ -263,7 +270,6 @@ class CapabilityStatement_Software {
 			releaseDate: releaseDate,
 			elementReleaseDate: elementReleaseDate,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Software);
 	return newCapabilityStatement_Software;
 }
   String id;
@@ -295,6 +301,7 @@ CapabilityStatement_Software(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Implementation {
 
+
 	static Future<CapabilityStatement_Implementation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -315,7 +322,6 @@ class CapabilityStatement_Implementation {
 			elementUrl: elementUrl,
 			custodian: custodian,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Implementation);
 	return newCapabilityStatement_Implementation;
 }
   String id;
@@ -344,6 +350,7 @@ CapabilityStatement_Implementation(
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Rest {
+
 
 	static Future<CapabilityStatement_Rest> newInstance({
 		String id,
@@ -375,7 +382,6 @@ class CapabilityStatement_Rest {
 			operation: operation,
 			compartment: compartment,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Rest);
 	return newCapabilityStatement_Rest;
 }
   String id;
@@ -415,6 +421,7 @@ CapabilityStatement_Rest(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Security {
 
+
 	static Future<CapabilityStatement_Security> newInstance({
 		String id,
 		List<Extension> extension,
@@ -435,7 +442,6 @@ class CapabilityStatement_Security {
 			description: description,
 			elementDescription: elementDescription,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Security);
 	return newCapabilityStatement_Security;
 }
   String id;
@@ -464,6 +470,7 @@ CapabilityStatement_Security(
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Resource {
+
 
 	static Future<CapabilityStatement_Resource> newInstance({
 		String id,
@@ -533,7 +540,6 @@ class CapabilityStatement_Resource {
 			searchParam: searchParam,
 			operation: operation,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Resource);
 	return newCapabilityStatement_Resource;
 }
   String id;
@@ -611,6 +617,7 @@ CapabilityStatement_Resource(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction {
 
+
 	static Future<CapabilityStatement_Interaction> newInstance({
 		String id,
 		List<Extension> extension,
@@ -629,7 +636,6 @@ class CapabilityStatement_Interaction {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Interaction);
 	return newCapabilityStatement_Interaction;
 }
   String id;
@@ -657,6 +663,7 @@ CapabilityStatement_Interaction(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SearchParam {
 
+
 	static Future<CapabilityStatement_SearchParam> newInstance({
 		String id,
 		List<Extension> extension,
@@ -681,7 +688,6 @@ class CapabilityStatement_SearchParam {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_SearchParam);
 	return newCapabilityStatement_SearchParam;
 }
   String id;
@@ -715,6 +721,7 @@ CapabilityStatement_SearchParam(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Operation {
 
+
 	static Future<CapabilityStatement_Operation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -735,7 +742,6 @@ class CapabilityStatement_Operation {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Operation);
 	return newCapabilityStatement_Operation;
 }
   String id;
@@ -765,6 +771,7 @@ CapabilityStatement_Operation(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction1 {
 
+
 	static Future<CapabilityStatement_Interaction1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -783,7 +790,6 @@ class CapabilityStatement_Interaction1 {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Interaction1);
 	return newCapabilityStatement_Interaction1;
 }
   String id;
@@ -811,6 +817,7 @@ CapabilityStatement_Interaction1(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Messaging {
 
+
 	static Future<CapabilityStatement_Messaging> newInstance({
 		String id,
 		List<Extension> extension,
@@ -833,7 +840,6 @@ class CapabilityStatement_Messaging {
 			elementDocumentation: elementDocumentation,
 			supportedMessage: supportedMessage,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Messaging);
 	return newCapabilityStatement_Messaging;
 }
   String id;
@@ -865,6 +871,7 @@ CapabilityStatement_Messaging(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Endpoint {
 
+
 	static Future<CapabilityStatement_Endpoint> newInstance({
 		String id,
 		List<Extension> extension,
@@ -881,7 +888,6 @@ class CapabilityStatement_Endpoint {
 			address: address,
 			elementAddress: elementAddress,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Endpoint);
 	return newCapabilityStatement_Endpoint;
 }
   String id;
@@ -907,6 +913,7 @@ CapabilityStatement_Endpoint(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SupportedMessage {
 
+
 	static Future<CapabilityStatement_SupportedMessage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -923,7 +930,6 @@ class CapabilityStatement_SupportedMessage {
 			elementMode: elementMode,
 			definition: definition,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_SupportedMessage);
 	return newCapabilityStatement_SupportedMessage;
 }
   String id;
@@ -949,6 +955,7 @@ CapabilityStatement_SupportedMessage(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Document {
 
+
 	static Future<CapabilityStatement_Document> newInstance({
 		String id,
 		List<Extension> extension,
@@ -969,7 +976,6 @@ class CapabilityStatement_Document {
 			elementDocumentation: elementDocumentation,
 			profile: profile,
 );
-	int saved = await fhirDb.saveResource(newCapabilityStatement_Document);
 	return newCapabilityStatement_Document;
 }
   String id;

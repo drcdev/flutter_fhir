@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis {
 
+
 	static Future<EffectEvidenceSynthesis> newInstance({
 		String  resourceType,
 		String id,
@@ -134,6 +135,11 @@ class EffectEvidenceSynthesis {
 );
 	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis);
 	return newEffectEvidenceSynthesis;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'EffectEvidenceSynthesis';
   String id;
@@ -256,6 +262,7 @@ EffectEvidenceSynthesis(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_SampleSize {
 
+
 	static Future<EffectEvidenceSynthesis_SampleSize> newInstance({
 		String id,
 		List<Extension> extension,
@@ -278,7 +285,6 @@ class EffectEvidenceSynthesis_SampleSize {
 			numberOfParticipants: numberOfParticipants,
 			elementNumberOfParticipants: elementNumberOfParticipants,
 );
-	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_SampleSize);
 	return newEffectEvidenceSynthesis_SampleSize;
 }
   String id;
@@ -310,6 +316,7 @@ EffectEvidenceSynthesis_SampleSize(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_ResultsByExposure {
 
+
 	static Future<EffectEvidenceSynthesis_ResultsByExposure> newInstance({
 		String id,
 		List<Extension> extension,
@@ -332,7 +339,6 @@ class EffectEvidenceSynthesis_ResultsByExposure {
 			variantState: variantState,
 			riskEvidenceSynthesis: riskEvidenceSynthesis,
 );
-	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_ResultsByExposure);
 	return newEffectEvidenceSynthesis_ResultsByExposure;
 }
   String id;
@@ -364,6 +370,7 @@ EffectEvidenceSynthesis_ResultsByExposure(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_EffectEstimate {
 
+
 	static Future<EffectEvidenceSynthesis_EffectEstimate> newInstance({
 		String id,
 		List<Extension> extension,
@@ -390,7 +397,6 @@ class EffectEvidenceSynthesis_EffectEstimate {
 			unitOfMeasure: unitOfMeasure,
 			precisionEstimate: precisionEstimate,
 );
-	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_EffectEstimate);
 	return newEffectEvidenceSynthesis_EffectEstimate;
 }
   String id;
@@ -426,6 +432,7 @@ EffectEvidenceSynthesis_EffectEstimate(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_PrecisionEstimate {
 
+
 	static Future<EffectEvidenceSynthesis_PrecisionEstimate> newInstance({
 		String id,
 		List<Extension> extension,
@@ -450,7 +457,6 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
 			to: to,
 			elementTo: elementTo,
 );
-	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_PrecisionEstimate);
 	return newEffectEvidenceSynthesis_PrecisionEstimate;
 }
   String id;
@@ -484,6 +490,7 @@ EffectEvidenceSynthesis_PrecisionEstimate(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_Certainty {
 
+
 	static Future<EffectEvidenceSynthesis_Certainty> newInstance({
 		String id,
 		List<Extension> extension,
@@ -500,7 +507,6 @@ class EffectEvidenceSynthesis_Certainty {
 			note: note,
 			certaintySubcomponent: certaintySubcomponent,
 );
-	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_Certainty);
 	return newEffectEvidenceSynthesis_Certainty;
 }
   String id;
@@ -526,6 +532,7 @@ EffectEvidenceSynthesis_Certainty(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_CertaintySubcomponent {
 
+
 	static Future<EffectEvidenceSynthesis_CertaintySubcomponent> newInstance({
 		String id,
 		List<Extension> extension,
@@ -542,7 +549,6 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
 			rating: rating,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_CertaintySubcomponent);
 	return newEffectEvidenceSynthesis_CertaintySubcomponent;
 }
   String id;

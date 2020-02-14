@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ResearchStudy {
 
+
 	static Future<ResearchStudy> newInstance({
 		String  resourceType,
 		String id,
@@ -99,6 +100,11 @@ class ResearchStudy {
 );
 	int saved = await fhirDb.saveResource(newResearchStudy);
 	return newResearchStudy;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ResearchStudy';
   String id;
@@ -187,6 +193,7 @@ ResearchStudy(
 @JsonSerializable(explicitToJson: true)
 class ResearchStudy_Arm {
 
+
 	static Future<ResearchStudy_Arm> newInstance({
 		String id,
 		List<Extension> extension,
@@ -207,7 +214,6 @@ class ResearchStudy_Arm {
 			description: description,
 			elementDescription: elementDescription,
 );
-	int saved = await fhirDb.saveResource(newResearchStudy_Arm);
 	return newResearchStudy_Arm;
 }
   String id;
@@ -237,6 +243,7 @@ ResearchStudy_Arm(
 @JsonSerializable(explicitToJson: true)
 class ResearchStudy_Objective {
 
+
 	static Future<ResearchStudy_Objective> newInstance({
 		String id,
 		List<Extension> extension,
@@ -253,7 +260,6 @@ class ResearchStudy_Objective {
 			elementName: elementName,
 			type: type,
 );
-	int saved = await fhirDb.saveResource(newResearchStudy_Objective);
 	return newResearchStudy_Objective;
 }
   String id;

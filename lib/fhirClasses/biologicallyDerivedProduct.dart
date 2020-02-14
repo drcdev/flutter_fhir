@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct {
 
+
 	static Future<BiologicallyDerivedProduct> newInstance({
 		String  resourceType,
 		String id,
@@ -70,6 +71,11 @@ class BiologicallyDerivedProduct {
 );
 	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct);
 	return newBiologicallyDerivedProduct;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'BiologicallyDerivedProduct';
   String id;
@@ -132,6 +138,7 @@ BiologicallyDerivedProduct(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Collection {
 
+
 	static Future<BiologicallyDerivedProduct_Collection> newInstance({
 		String id,
 		List<Extension> extension,
@@ -152,7 +159,6 @@ class BiologicallyDerivedProduct_Collection {
 			elementCollectedDateTime: elementCollectedDateTime,
 			collectedPeriod: collectedPeriod,
 );
-	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Collection);
 	return newBiologicallyDerivedProduct_Collection;
 }
   String id;
@@ -182,6 +188,7 @@ BiologicallyDerivedProduct_Collection(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Processing {
 
+
 	static Future<BiologicallyDerivedProduct_Processing> newInstance({
 		String id,
 		List<Extension> extension,
@@ -206,7 +213,6 @@ class BiologicallyDerivedProduct_Processing {
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod,
 );
-	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Processing);
 	return newBiologicallyDerivedProduct_Processing;
 }
   String id;
@@ -240,6 +246,7 @@ BiologicallyDerivedProduct_Processing(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Manipulation {
 
+
 	static Future<BiologicallyDerivedProduct_Manipulation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -260,7 +267,6 @@ class BiologicallyDerivedProduct_Manipulation {
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod,
 );
-	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Manipulation);
 	return newBiologicallyDerivedProduct_Manipulation;
 }
   String id;
@@ -290,6 +296,7 @@ BiologicallyDerivedProduct_Manipulation(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Storage {
 
+
 	static Future<BiologicallyDerivedProduct_Storage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -314,7 +321,6 @@ class BiologicallyDerivedProduct_Storage {
 			elementScale: elementScale,
 			duration: duration,
 );
-	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Storage);
 	return newBiologicallyDerivedProduct_Storage;
 }
   String id;

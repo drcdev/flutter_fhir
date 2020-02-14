@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class DeviceRequest {
 
+
 	static Future<DeviceRequest> newInstance({
 		String  resourceType,
 		String id,
@@ -112,6 +113,11 @@ class DeviceRequest {
 );
 	int saved = await fhirDb.saveResource(newDeviceRequest);
 	return newDeviceRequest;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'DeviceRequest';
   String id;
@@ -212,6 +218,7 @@ DeviceRequest(
 @JsonSerializable(explicitToJson: true)
 class DeviceRequest_Parameter {
 
+
 	static Future<DeviceRequest_Parameter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -234,7 +241,6 @@ class DeviceRequest_Parameter {
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean,
 );
-	int saved = await fhirDb.saveResource(newDeviceRequest_Parameter);
 	return newDeviceRequest_Parameter;
 }
   String id;

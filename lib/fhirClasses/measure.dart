@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Measure {
 
+
 	static Future<Measure> newInstance({
 		String  resourceType,
 		String id,
@@ -174,6 +175,11 @@ class Measure {
 );
 	int saved = await fhirDb.saveResource(newMeasure);
 	return newMeasure;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Measure';
   String id;
@@ -336,6 +342,7 @@ Measure(
 @JsonSerializable(explicitToJson: true)
 class Measure_Group {
 
+
 	static Future<Measure_Group> newInstance({
 		String id,
 		List<Extension> extension,
@@ -356,7 +363,6 @@ class Measure_Group {
 			population: population,
 			stratifier: stratifier,
 );
-	int saved = await fhirDb.saveResource(newMeasure_Group);
 	return newMeasure_Group;
 }
   String id;
@@ -386,6 +392,7 @@ Measure_Group(
 @JsonSerializable(explicitToJson: true)
 class Measure_Population {
 
+
 	static Future<Measure_Population> newInstance({
 		String id,
 		List<Extension> extension,
@@ -404,7 +411,6 @@ class Measure_Population {
 			elementDescription: elementDescription,
 			criteria: criteria,
 );
-	int saved = await fhirDb.saveResource(newMeasure_Population);
 	return newMeasure_Population;
 }
   String id;
@@ -432,6 +438,7 @@ Measure_Population(
 @JsonSerializable(explicitToJson: true)
 class Measure_Stratifier {
 
+
 	static Future<Measure_Stratifier> newInstance({
 		String id,
 		List<Extension> extension,
@@ -452,7 +459,6 @@ class Measure_Stratifier {
 			criteria: criteria,
 			component: component,
 );
-	int saved = await fhirDb.saveResource(newMeasure_Stratifier);
 	return newMeasure_Stratifier;
 }
   String id;
@@ -482,6 +488,7 @@ Measure_Stratifier(
 @JsonSerializable(explicitToJson: true)
 class Measure_Component {
 
+
 	static Future<Measure_Component> newInstance({
 		String id,
 		List<Extension> extension,
@@ -500,7 +507,6 @@ class Measure_Component {
 			elementDescription: elementDescription,
 			criteria: criteria,
 );
-	int saved = await fhirDb.saveResource(newMeasure_Component);
 	return newMeasure_Component;
 }
   String id;
@@ -528,6 +534,7 @@ Measure_Component(
 @JsonSerializable(explicitToJson: true)
 class Measure_SupplementalData {
 
+
 	static Future<Measure_SupplementalData> newInstance({
 		String id,
 		List<Extension> extension,
@@ -548,7 +555,6 @@ class Measure_SupplementalData {
 			elementDescription: elementDescription,
 			criteria: criteria,
 );
-	int saved = await fhirDb.saveResource(newMeasure_SupplementalData);
 	return newMeasure_SupplementalData;
 }
   String id;

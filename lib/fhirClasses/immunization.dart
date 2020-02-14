@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Immunization {
 
+
 	static Future<Immunization> newInstance({
 		String  resourceType,
 		String id,
@@ -117,6 +118,11 @@ class Immunization {
 );
 	int saved = await fhirDb.saveResource(newImmunization);
 	return newImmunization;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Immunization';
   String id;
@@ -225,6 +231,7 @@ Immunization(
 @JsonSerializable(explicitToJson: true)
 class Immunization_Performer {
 
+
 	static Future<Immunization_Performer> newInstance({
 		String id,
 		List<Extension> extension,
@@ -239,7 +246,6 @@ class Immunization_Performer {
 			function: function,
 			actor: actor,
 );
-	int saved = await fhirDb.saveResource(newImmunization_Performer);
 	return newImmunization_Performer;
 }
   String id;
@@ -262,6 +268,7 @@ Immunization_Performer(
 
 @JsonSerializable(explicitToJson: true)
 class Immunization_Education {
+
 
 	static Future<Immunization_Education> newInstance({
 		String id,
@@ -289,7 +296,6 @@ class Immunization_Education {
 			presentationDate: presentationDate,
 			elementPresentationDate: elementPresentationDate,
 );
-	int saved = await fhirDb.saveResource(newImmunization_Education);
 	return newImmunization_Education;
 }
   String id;
@@ -325,6 +331,7 @@ Immunization_Education(
 @JsonSerializable(explicitToJson: true)
 class Immunization_Reaction {
 
+
 	static Future<Immunization_Reaction> newInstance({
 		String id,
 		List<Extension> extension,
@@ -345,7 +352,6 @@ class Immunization_Reaction {
 			reported: reported,
 			elementReported: elementReported,
 );
-	int saved = await fhirDb.saveResource(newImmunization_Reaction);
 	return newImmunization_Reaction;
 }
   String id;
@@ -374,6 +380,7 @@ Immunization_Reaction(
 
 @JsonSerializable(explicitToJson: true)
 class Immunization_ProtocolApplied {
+
 
 	static Future<Immunization_ProtocolApplied> newInstance({
 		String id,
@@ -409,7 +416,6 @@ class Immunization_ProtocolApplied {
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString,
 );
-	int saved = await fhirDb.saveResource(newImmunization_ProtocolApplied);
 	return newImmunization_ProtocolApplied;
 }
   String id;

@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ImagingStudy {
 
+
 	static Future<ImagingStudy> newInstance({
 		String  resourceType,
 		String id,
@@ -93,6 +94,11 @@ class ImagingStudy {
 );
 	int saved = await fhirDb.saveResource(newImagingStudy);
 	return newImagingStudy;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ImagingStudy';
   String id;
@@ -177,6 +183,7 @@ ImagingStudy(
 @JsonSerializable(explicitToJson: true)
 class ImagingStudy_Series {
 
+
 	static Future<ImagingStudy_Series> newInstance({
 		String id,
 		List<Extension> extension,
@@ -221,7 +228,6 @@ class ImagingStudy_Series {
 			performer: performer,
 			instance: instance,
 );
-	int saved = await fhirDb.saveResource(newImagingStudy_Series);
 	return newImagingStudy_Series;
 }
   String id;
@@ -275,6 +281,7 @@ ImagingStudy_Series(
 @JsonSerializable(explicitToJson: true)
 class ImagingStudy_Performer {
 
+
 	static Future<ImagingStudy_Performer> newInstance({
 		String id,
 		List<Extension> extension,
@@ -289,7 +296,6 @@ class ImagingStudy_Performer {
 			function: function,
 			actor: actor,
 );
-	int saved = await fhirDb.saveResource(newImagingStudy_Performer);
 	return newImagingStudy_Performer;
 }
   String id;
@@ -312,6 +318,7 @@ ImagingStudy_Performer(
 
 @JsonSerializable(explicitToJson: true)
 class ImagingStudy_Instance {
+
 
 	static Future<ImagingStudy_Instance> newInstance({
 		String id,
@@ -337,7 +344,6 @@ class ImagingStudy_Instance {
 			title: title,
 			elementTitle: elementTitle,
 );
-	int saved = await fhirDb.saveResource(newImagingStudy_Instance);
 	return newImagingStudy_Instance;
 }
   String id;

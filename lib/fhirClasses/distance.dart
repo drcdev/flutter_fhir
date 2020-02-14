@@ -6,6 +6,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Distance {
 
+
 	static Future<Distance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -36,6 +37,11 @@ class Distance {
 );
 	int saved = await fhirDb.saveResource(newDistance);
 	return newDistance;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

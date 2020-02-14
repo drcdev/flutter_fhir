@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Coverage {
 
+
 	static Future<Coverage> newInstance({
 		String  resourceType,
 		String id,
@@ -90,6 +91,11 @@ class Coverage {
 );
 	int saved = await fhirDb.saveResource(newCoverage);
 	return newCoverage;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Coverage';
   String id;
@@ -170,6 +176,7 @@ Coverage(
 @JsonSerializable(explicitToJson: true)
 class Coverage_Class {
 
+
 	static Future<Coverage_Class> newInstance({
 		String id,
 		List<Extension> extension,
@@ -190,7 +197,6 @@ class Coverage_Class {
 			name: name,
 			elementName: elementName,
 );
-	int saved = await fhirDb.saveResource(newCoverage_Class);
 	return newCoverage_Class;
 }
   String id;
@@ -220,6 +226,7 @@ Coverage_Class(
 @JsonSerializable(explicitToJson: true)
 class Coverage_CostToBeneficiary {
 
+
 	static Future<Coverage_CostToBeneficiary> newInstance({
 		String id,
 		List<Extension> extension,
@@ -238,7 +245,6 @@ class Coverage_CostToBeneficiary {
 			valueMoney: valueMoney,
 			exception: exception,
 );
-	int saved = await fhirDb.saveResource(newCoverage_CostToBeneficiary);
 	return newCoverage_CostToBeneficiary;
 }
   String id;
@@ -266,6 +272,7 @@ Coverage_CostToBeneficiary(
 @JsonSerializable(explicitToJson: true)
 class Coverage_Exception {
 
+
 	static Future<Coverage_Exception> newInstance({
 		String id,
 		List<Extension> extension,
@@ -280,7 +287,6 @@ class Coverage_Exception {
 			type: type,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newCoverage_Exception);
 	return newCoverage_Exception;
 }
   String id;

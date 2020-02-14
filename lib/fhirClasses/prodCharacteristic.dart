@@ -9,6 +9,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class ProdCharacteristic {
 
+
 	static Future<ProdCharacteristic> newInstance({
 		String id,
 		List<Extension> extension,
@@ -49,6 +50,11 @@ class ProdCharacteristic {
 );
 	int saved = await fhirDb.saveResource(newProdCharacteristic);
 	return newProdCharacteristic;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

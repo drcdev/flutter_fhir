@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class FamilyMemberHistory {
 
+
 	static Future<FamilyMemberHistory> newInstance({
 		String  resourceType,
 		String id,
@@ -119,6 +120,11 @@ class FamilyMemberHistory {
 );
 	int saved = await fhirDb.saveResource(newFamilyMemberHistory);
 	return newFamilyMemberHistory;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'FamilyMemberHistory';
   String id;
@@ -227,6 +233,7 @@ FamilyMemberHistory(
 @JsonSerializable(explicitToJson: true)
 class FamilyMemberHistory_Condition {
 
+
 	static Future<FamilyMemberHistory_Condition> newInstance({
 		String id,
 		List<Extension> extension,
@@ -257,7 +264,6 @@ class FamilyMemberHistory_Condition {
 			elementOnsetString: elementOnsetString,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newFamilyMemberHistory_Condition);
 	return newFamilyMemberHistory_Condition;
 }
   String id;

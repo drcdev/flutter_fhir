@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ImmunizationRecommendation {
 
+
 	static Future<ImmunizationRecommendation> newInstance({
 		String  resourceType,
 		String id,
@@ -53,6 +54,11 @@ class ImmunizationRecommendation {
 );
 	int saved = await fhirDb.saveResource(newImmunizationRecommendation);
 	return newImmunizationRecommendation;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ImmunizationRecommendation';
   String id;
@@ -98,6 +104,7 @@ ImmunizationRecommendation(
 
 @JsonSerializable(explicitToJson: true)
 class ImmunizationRecommendation_Recommendation {
+
 
 	static Future<ImmunizationRecommendation_Recommendation> newInstance({
 		String id,
@@ -149,7 +156,6 @@ class ImmunizationRecommendation_Recommendation {
 			supportingImmunization: supportingImmunization,
 			supportingPatientInformation: supportingPatientInformation,
 );
-	int saved = await fhirDb.saveResource(newImmunizationRecommendation_Recommendation);
 	return newImmunizationRecommendation_Recommendation;
 }
   String id;
@@ -209,6 +215,7 @@ ImmunizationRecommendation_Recommendation(
 @JsonSerializable(explicitToJson: true)
 class ImmunizationRecommendation_DateCriterion {
 
+
 	static Future<ImmunizationRecommendation_DateCriterion> newInstance({
 		String id,
 		List<Extension> extension,
@@ -225,7 +232,6 @@ class ImmunizationRecommendation_DateCriterion {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newImmunizationRecommendation_DateCriterion);
 	return newImmunizationRecommendation_DateCriterion;
 }
   String id;

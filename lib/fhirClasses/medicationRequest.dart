@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicationRequest {
 
+
 	static Future<MedicationRequest> newInstance({
 		String  resourceType,
 		String id,
@@ -130,6 +131,11 @@ class MedicationRequest {
 );
 	int saved = await fhirDb.saveResource(newMedicationRequest);
 	return newMedicationRequest;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicationRequest';
   String id;
@@ -248,6 +254,7 @@ MedicationRequest(
 @JsonSerializable(explicitToJson: true)
 class MedicationRequest_DispenseRequest {
 
+
 	static Future<MedicationRequest_DispenseRequest> newInstance({
 		String id,
 		List<Extension> extension,
@@ -274,7 +281,6 @@ class MedicationRequest_DispenseRequest {
 			expectedSupplyDuration: expectedSupplyDuration,
 			performer: performer,
 );
-	int saved = await fhirDb.saveResource(newMedicationRequest_DispenseRequest);
 	return newMedicationRequest_DispenseRequest;
 }
   String id;
@@ -310,6 +316,7 @@ MedicationRequest_DispenseRequest(
 @JsonSerializable(explicitToJson: true)
 class MedicationRequest_InitialFill {
 
+
 	static Future<MedicationRequest_InitialFill> newInstance({
 		String id,
 		List<Extension> extension,
@@ -324,7 +331,6 @@ class MedicationRequest_InitialFill {
 			quantity: quantity,
 			duration: duration,
 );
-	int saved = await fhirDb.saveResource(newMedicationRequest_InitialFill);
 	return newMedicationRequest_InitialFill;
 }
   String id;
@@ -348,6 +354,7 @@ MedicationRequest_InitialFill(
 @JsonSerializable(explicitToJson: true)
 class MedicationRequest_Substitution {
 
+
 	static Future<MedicationRequest_Substitution> newInstance({
 		String id,
 		List<Extension> extension,
@@ -366,7 +373,6 @@ class MedicationRequest_Substitution {
 			allowedCodeableConcept: allowedCodeableConcept,
 			reason: reason,
 );
-	int saved = await fhirDb.saveResource(newMedicationRequest_Substitution);
 	return newMedicationRequest_Substitution;
 }
   String id;

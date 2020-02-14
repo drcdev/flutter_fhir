@@ -21,6 +21,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Contract {
 
+
 	static Future<Contract> newInstance({
 		String  resourceType,
 		String id,
@@ -137,6 +138,11 @@ class Contract {
 );
 	int saved = await fhirDb.saveResource(newContract);
 	return newContract;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Contract';
   String id;
@@ -259,6 +265,7 @@ Contract(
 @JsonSerializable(explicitToJson: true)
 class Contract_ContentDefinition {
 
+
 	static Future<Contract_ContentDefinition> newInstance({
 		String id,
 		List<Extension> extension,
@@ -287,7 +294,6 @@ class Contract_ContentDefinition {
 			copyright: copyright,
 			elementCopyright: elementCopyright,
 );
-	int saved = await fhirDb.saveResource(newContract_ContentDefinition);
 	return newContract_ContentDefinition;
 }
   String id;
@@ -324,6 +330,7 @@ Contract_ContentDefinition(
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Term {
+
 
 	static Future<Contract_Term> newInstance({
 		String id,
@@ -365,7 +372,6 @@ class Contract_Term {
 			action: action,
 			group: group,
 );
-	int saved = await fhirDb.saveResource(newContract_Term);
 	return newContract_Term;
 }
   String id;
@@ -415,6 +421,7 @@ Contract_Term(
 @JsonSerializable(explicitToJson: true)
 class Contract_SecurityLabel {
 
+
 	static Future<Contract_SecurityLabel> newInstance({
 		String id,
 		List<Extension> extension,
@@ -435,7 +442,6 @@ class Contract_SecurityLabel {
 			category: category,
 			control: control,
 );
-	int saved = await fhirDb.saveResource(newContract_SecurityLabel);
 	return newContract_SecurityLabel;
 }
   String id;
@@ -464,6 +470,7 @@ Contract_SecurityLabel(
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Offer {
+
 
 	static Future<Contract_Offer> newInstance({
 		String id,
@@ -501,7 +508,6 @@ class Contract_Offer {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 );
-	int saved = await fhirDb.saveResource(newContract_Offer);
 	return newContract_Offer;
 }
   String id;
@@ -547,6 +553,7 @@ Contract_Offer(
 @JsonSerializable(explicitToJson: true)
 class Contract_Party {
 
+
 	static Future<Contract_Party> newInstance({
 		String id,
 		List<Extension> extension,
@@ -561,7 +568,6 @@ class Contract_Party {
 			reference: reference,
 			role: role,
 );
-	int saved = await fhirDb.saveResource(newContract_Party);
 	return newContract_Party;
 }
   String id;
@@ -584,6 +590,7 @@ Contract_Party(
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Answer {
+
 
 	static Future<Contract_Answer> newInstance({
 		String id,
@@ -635,7 +642,6 @@ class Contract_Answer {
 			valueQuantity: valueQuantity,
 			valueReference: valueReference,
 );
-	int saved = await fhirDb.saveResource(newContract_Answer);
 	return newContract_Answer;
 }
   String id;
@@ -695,6 +701,7 @@ Contract_Answer(
 @JsonSerializable(explicitToJson: true)
 class Contract_Asset {
 
+
 	static Future<Contract_Asset> newInstance({
 		String id,
 		List<Extension> extension,
@@ -743,7 +750,6 @@ class Contract_Asset {
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 			valuedItem: valuedItem,
 );
-	int saved = await fhirDb.saveResource(newContract_Asset);
 	return newContract_Asset;
 }
   String id;
@@ -801,6 +807,7 @@ Contract_Asset(
 @JsonSerializable(explicitToJson: true)
 class Contract_Context {
 
+
 	static Future<Contract_Context> newInstance({
 		String id,
 		List<Extension> extension,
@@ -819,7 +826,6 @@ class Contract_Context {
 			text: text,
 			elementText: elementText,
 );
-	int saved = await fhirDb.saveResource(newContract_Context);
 	return newContract_Context;
 }
   String id;
@@ -846,6 +852,7 @@ Contract_Context(
 
 @JsonSerializable(explicitToJson: true)
 class Contract_ValuedItem {
+
 
 	static Future<Contract_ValuedItem> newInstance({
 		String id,
@@ -901,7 +908,6 @@ class Contract_ValuedItem {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 );
-	int saved = await fhirDb.saveResource(newContract_ValuedItem);
 	return newContract_ValuedItem;
 }
   String id;
@@ -964,6 +970,7 @@ Contract_ValuedItem(
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Action {
+
 
 	static Future<Contract_Action> newInstance({
 		String id,
@@ -1039,7 +1046,6 @@ class Contract_Action {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 );
-	int saved = await fhirDb.saveResource(newContract_Action);
 	return newContract_Action;
 }
   String id;
@@ -1123,6 +1129,7 @@ Contract_Action(
 @JsonSerializable(explicitToJson: true)
 class Contract_Subject {
 
+
 	static Future<Contract_Subject> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1137,7 +1144,6 @@ class Contract_Subject {
 			reference: reference,
 			role: role,
 );
-	int saved = await fhirDb.saveResource(newContract_Subject);
 	return newContract_Subject;
 }
   String id;
@@ -1161,6 +1167,7 @@ Contract_Subject(
 @JsonSerializable(explicitToJson: true)
 class Contract_Signer {
 
+
 	static Future<Contract_Signer> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1177,7 +1184,6 @@ class Contract_Signer {
 			party: party,
 			signature: signature,
 );
-	int saved = await fhirDb.saveResource(newContract_Signer);
 	return newContract_Signer;
 }
   String id;
@@ -1203,6 +1209,7 @@ Contract_Signer(
 @JsonSerializable(explicitToJson: true)
 class Contract_Friendly {
 
+
 	static Future<Contract_Friendly> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1217,7 +1224,6 @@ class Contract_Friendly {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
-	int saved = await fhirDb.saveResource(newContract_Friendly);
 	return newContract_Friendly;
 }
   String id;
@@ -1241,6 +1247,7 @@ Contract_Friendly(
 @JsonSerializable(explicitToJson: true)
 class Contract_Legal {
 
+
 	static Future<Contract_Legal> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1255,7 +1262,6 @@ class Contract_Legal {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
-	int saved = await fhirDb.saveResource(newContract_Legal);
 	return newContract_Legal;
 }
   String id;
@@ -1279,6 +1285,7 @@ Contract_Legal(
 @JsonSerializable(explicitToJson: true)
 class Contract_Rule {
 
+
 	static Future<Contract_Rule> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1293,7 +1300,6 @@ class Contract_Rule {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
-	int saved = await fhirDb.saveResource(newContract_Rule);
 	return newContract_Rule;
 }
   String id;

@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition {
 
+
 	static Future<StructureDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -132,6 +133,11 @@ class StructureDefinition {
 );
 	int saved = await fhirDb.saveResource(newStructureDefinition);
 	return newStructureDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'StructureDefinition';
   String id;
@@ -254,6 +260,7 @@ StructureDefinition(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Mapping {
 
+
 	static Future<StructureDefinition_Mapping> newInstance({
 		String id,
 		List<Extension> extension,
@@ -280,7 +287,6 @@ class StructureDefinition_Mapping {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newStructureDefinition_Mapping);
 	return newStructureDefinition_Mapping;
 }
   String id;
@@ -316,6 +322,7 @@ StructureDefinition_Mapping(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Context {
 
+
 	static Future<StructureDefinition_Context> newInstance({
 		String id,
 		List<Extension> extension,
@@ -334,7 +341,6 @@ class StructureDefinition_Context {
 			expression: expression,
 			elementExpression: elementExpression,
 );
-	int saved = await fhirDb.saveResource(newStructureDefinition_Context);
 	return newStructureDefinition_Context;
 }
   String id;
@@ -362,6 +368,7 @@ StructureDefinition_Context(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Snapshot {
 
+
 	static Future<StructureDefinition_Snapshot> newInstance({
 		String id,
 		List<Extension> extension,
@@ -374,7 +381,6 @@ class StructureDefinition_Snapshot {
 			modifierExtension: modifierExtension,
 			element: element,
 );
-	int saved = await fhirDb.saveResource(newStructureDefinition_Snapshot);
 	return newStructureDefinition_Snapshot;
 }
   String id;
@@ -396,6 +402,7 @@ StructureDefinition_Snapshot(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Differential {
 
+
 	static Future<StructureDefinition_Differential> newInstance({
 		String id,
 		List<Extension> extension,
@@ -408,7 +415,6 @@ class StructureDefinition_Differential {
 			modifierExtension: modifierExtension,
 			element: element,
 );
-	int saved = await fhirDb.saveResource(newStructureDefinition_Differential);
 	return newStructureDefinition_Differential;
 }
   String id;

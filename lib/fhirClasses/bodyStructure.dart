@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class BodyStructure {
 
+
 	static Future<BodyStructure> newInstance({
 		String  resourceType,
 		String id,
@@ -62,6 +63,11 @@ class BodyStructure {
 );
 	int saved = await fhirDb.saveResource(newBodyStructure);
 	return newBodyStructure;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'BodyStructure';
   String id;

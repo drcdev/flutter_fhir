@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Slot {
 
+
 	static Future<Slot> newInstance({
 		String  resourceType,
 		String id,
@@ -73,6 +74,11 @@ class Slot {
 );
 	int saved = await fhirDb.saveResource(newSlot);
 	return newSlot;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Slot';
   String id;

@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class CodeSystem {
 
+
 	static Future<CodeSystem> newInstance({
 		String  resourceType,
 		String id,
@@ -129,6 +130,11 @@ class CodeSystem {
 );
 	int saved = await fhirDb.saveResource(newCodeSystem);
 	return newCodeSystem;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'CodeSystem';
   String id;
@@ -249,6 +255,7 @@ CodeSystem(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Filter {
 
+
 	static Future<CodeSystem_Filter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -275,7 +282,6 @@ class CodeSystem_Filter {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newCodeSystem_Filter);
 	return newCodeSystem_Filter;
 }
   String id;
@@ -311,6 +317,7 @@ CodeSystem_Filter(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Property {
 
+
 	static Future<CodeSystem_Property> newInstance({
 		String id,
 		List<Extension> extension,
@@ -337,7 +344,6 @@ class CodeSystem_Property {
 			type: type,
 			elementType: elementType,
 );
-	int saved = await fhirDb.saveResource(newCodeSystem_Property);
 	return newCodeSystem_Property;
 }
   String id;
@@ -373,6 +379,7 @@ CodeSystem_Property(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Concept {
 
+
 	static Future<CodeSystem_Concept> newInstance({
 		String id,
 		List<Extension> extension,
@@ -401,7 +408,6 @@ class CodeSystem_Concept {
 			property: property,
 			concept: concept,
 );
-	int saved = await fhirDb.saveResource(newCodeSystem_Concept);
 	return newCodeSystem_Concept;
 }
   String id;
@@ -439,6 +445,7 @@ CodeSystem_Concept(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Designation {
 
+
 	static Future<CodeSystem_Designation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -459,7 +466,6 @@ class CodeSystem_Designation {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newCodeSystem_Designation);
 	return newCodeSystem_Designation;
 }
   String id;
@@ -488,6 +494,7 @@ CodeSystem_Designation(
 
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Property1 {
+
 
 	static Future<CodeSystem_Property1> newInstance({
 		String id,
@@ -529,7 +536,6 @@ class CodeSystem_Property1 {
 			valueDecimal: valueDecimal,
 			elementValueDecimal: elementValueDecimal,
 );
-	int saved = await fhirDb.saveResource(newCodeSystem_Property1);
 	return newCodeSystem_Property1;
 }
   String id;

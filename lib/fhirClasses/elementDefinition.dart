@@ -37,6 +37,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition {
 
+
 	static Future<ElementDefinition> newInstance({
 		String id,
 		List<Extension> extension,
@@ -631,6 +632,11 @@ class ElementDefinition {
 );
 	int saved = await fhirDb.saveResource(newElementDefinition);
 	return newElementDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;
@@ -1231,6 +1237,7 @@ ElementDefinition(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Slicing {
 
+
 	static Future<ElementDefinition_Slicing> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1255,7 +1262,6 @@ class ElementDefinition_Slicing {
 			rules: rules,
 			elementRules: elementRules,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Slicing);
 	return newElementDefinition_Slicing;
 }
   String id;
@@ -1289,6 +1295,7 @@ ElementDefinition_Slicing(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Discriminator {
 
+
 	static Future<ElementDefinition_Discriminator> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1307,7 +1314,6 @@ class ElementDefinition_Discriminator {
 			path: path,
 			elementPath: elementPath,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Discriminator);
 	return newElementDefinition_Discriminator;
 }
   String id;
@@ -1335,6 +1341,7 @@ ElementDefinition_Discriminator(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Base {
 
+
 	static Future<ElementDefinition_Base> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1357,7 +1364,6 @@ class ElementDefinition_Base {
 			max: max,
 			elementMax: elementMax,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Base);
 	return newElementDefinition_Base;
 }
   String id;
@@ -1389,6 +1395,7 @@ ElementDefinition_Base(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Type {
 
+
 	static Future<ElementDefinition_Type> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1415,7 +1422,6 @@ class ElementDefinition_Type {
 			versioning: versioning,
 			elementVersioning: elementVersioning,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Type);
 	return newElementDefinition_Type;
 }
   String id;
@@ -1450,6 +1456,7 @@ ElementDefinition_Type(
 
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Example {
+
 
 	static Future<ElementDefinition_Example> newInstance({
 		String id,
@@ -1603,7 +1610,6 @@ class ElementDefinition_Example {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Example);
 	return newElementDefinition_Example;
 }
   String id;
@@ -1765,6 +1771,7 @@ ElementDefinition_Example(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Constraint {
 
+
 	static Future<ElementDefinition_Constraint> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1801,7 +1808,6 @@ class ElementDefinition_Constraint {
 			elementXpath: elementXpath,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Constraint);
 	return newElementDefinition_Constraint;
 }
   String id;
@@ -1847,6 +1853,7 @@ ElementDefinition_Constraint(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Binding {
 
+
 	static Future<ElementDefinition_Binding> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1867,7 +1874,6 @@ class ElementDefinition_Binding {
 			elementDescription: elementDescription,
 			valueSet: valueSet,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Binding);
 	return newElementDefinition_Binding;
 }
   String id;
@@ -1897,6 +1903,7 @@ ElementDefinition_Binding(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Mapping {
 
+
 	static Future<ElementDefinition_Mapping> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1923,7 +1930,6 @@ class ElementDefinition_Mapping {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newElementDefinition_Mapping);
 	return newElementDefinition_Mapping;
 }
   String id;

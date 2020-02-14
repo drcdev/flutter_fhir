@@ -22,92 +22,93 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Patient {
-  static Future<Patient> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      bool active,
-      Element elementActive,
-      List<HumanName> name,
-      List<ContactPoint> telecom,
-      String gender,
-      Element elementGender,
-      String birthDate,
-      Element elementBirthDate,
-      bool deceasedBoolean,
-      Element elementDeceasedBoolean,
-      String deceasedDateTime,
-      Element elementDeceasedDateTime,
-      List<Address> address,
-      CodeableConcept maritalStatus,
-      bool multipleBirthBoolean,
-      Element elementMultipleBirthBoolean,
-      int multipleBirthInteger,
-      Element elementMultipleBirthInteger,
-      List<Attachment> photo,
-      List<Patient_Contact> contact,
-      List<Patient_Communication> communication,
-      List<Reference> generalPractitioner,
-      Reference managingOrganization,
-      List<Patient_Link> link}) async {
-    var fhirDb = new DatabaseHelper();
-    Patient newPatient = new Patient(
-      resourceType: resourceType,
-      id: await fhirDb.newResourceId('Patient'),
-      meta: meta,
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      active: active,
-      elementActive: elementActive,
-      name: name,
-      telecom: telecom,
-      gender: gender,
-      elementGender: elementGender,
-      birthDate: birthDate,
-      elementBirthDate: elementBirthDate,
-      deceasedBoolean: deceasedBoolean,
-      elementDeceasedBoolean: elementDeceasedBoolean,
-      deceasedDateTime: deceasedDateTime,
-      elementDeceasedDateTime: elementDeceasedDateTime,
-      address: address,
-      maritalStatus: maritalStatus,
-      multipleBirthBoolean: multipleBirthBoolean,
-      elementMultipleBirthBoolean: elementMultipleBirthBoolean,
-      multipleBirthInteger: multipleBirthInteger,
-      elementMultipleBirthInteger: elementMultipleBirthInteger,
-      photo: photo,
-      contact: contact,
-      communication: communication,
-      generalPractitioner: generalPractitioner,
-      managingOrganization: managingOrganization,
-      link: link,
-    );
-    int saved = await fhirDb.saveResource(newPatient);
-    return newPatient;
-  }
 
-  save () async {
-    var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.save(this);
-  }
 
-  String resourceType = 'Patient';
+	static Future<Patient> newInstance({
+		String  resourceType,
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		bool active,
+		Element elementActive,
+		List<HumanName> name,
+		List<ContactPoint> telecom,
+		String gender,
+		Element elementGender,
+		String birthDate,
+		Element elementBirthDate,
+		bool deceasedBoolean,
+		Element elementDeceasedBoolean,
+		String deceasedDateTime,
+		Element elementDeceasedDateTime,
+		List<Address> address,
+		CodeableConcept maritalStatus,
+		bool multipleBirthBoolean,
+		Element elementMultipleBirthBoolean,
+		int multipleBirthInteger,
+		Element elementMultipleBirthInteger,
+		List<Attachment> photo,
+		List<Patient_Contact> contact,
+		List<Patient_Communication> communication,
+		List<Reference> generalPractitioner,
+		Reference managingOrganization,
+		List<Patient_Link> link}) async {
+	var fhirDb = new DatabaseHelper();
+	Patient newPatient = new Patient(
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Patient'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			active: active,
+			elementActive: elementActive,
+			name: name,
+			telecom: telecom,
+			gender: gender,
+			elementGender: elementGender,
+			birthDate: birthDate,
+			elementBirthDate: elementBirthDate,
+			deceasedBoolean: deceasedBoolean,
+			elementDeceasedBoolean: elementDeceasedBoolean,
+			deceasedDateTime: deceasedDateTime,
+			elementDeceasedDateTime: elementDeceasedDateTime,
+			address: address,
+			maritalStatus: maritalStatus,
+			multipleBirthBoolean: multipleBirthBoolean,
+			elementMultipleBirthBoolean: elementMultipleBirthBoolean,
+			multipleBirthInteger: multipleBirthInteger,
+			elementMultipleBirthInteger: elementMultipleBirthInteger,
+			photo: photo,
+			contact: contact,
+			communication: communication,
+			generalPractitioner: generalPractitioner,
+			managingOrganization: managingOrganization,
+			link: link,
+);
+	int saved = await fhirDb.saveResource(newPatient);
+	return newPatient;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
+}
+  String resourceType= 'Patient';
   String id;
   Meta meta;
   String implicitRules;
@@ -129,8 +130,7 @@ class Patient {
   Element elementBirthDate;
   bool deceasedBoolean; //  pattern: ^true|false$
   Element elementDeceasedBoolean;
-  String
-      deceasedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String deceasedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementDeceasedDateTime;
   List<Address> address;
   CodeableConcept maritalStatus;
@@ -145,43 +145,44 @@ class Patient {
   Reference managingOrganization;
   List<Patient_Link> link;
 
-  Patient(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.active,
-      this.elementActive,
-      this.name,
-      this.telecom,
-      this.gender,
-      this.elementGender,
-      this.birthDate,
-      this.elementBirthDate,
-      this.deceasedBoolean,
-      this.elementDeceasedBoolean,
-      this.deceasedDateTime,
-      this.elementDeceasedDateTime,
-      this.address,
-      this.maritalStatus,
-      this.multipleBirthBoolean,
-      this.elementMultipleBirthBoolean,
-      this.multipleBirthInteger,
-      this.elementMultipleBirthInteger,
-      this.photo,
-      this.contact,
-      this.communication,
-      this.generalPractitioner,
-      this.managingOrganization,
-      this.link});
+Patient(
+  {@required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    this.name,
+    this.telecom,
+    this.gender,
+    this.elementGender,
+    this.birthDate,
+    this.elementBirthDate,
+    this.deceasedBoolean,
+    this.elementDeceasedBoolean,
+    this.deceasedDateTime,
+    this.elementDeceasedDateTime,
+    this.address,
+    this.maritalStatus,
+    this.multipleBirthBoolean,
+    this.elementMultipleBirthBoolean,
+    this.multipleBirthInteger,
+    this.elementMultipleBirthInteger,
+    this.photo,
+    this.contact,
+    this.communication,
+    this.generalPractitioner,
+    this.managingOrganization,
+    this.link
+    });
 
   String printName() {
     return ('${(this.name?.first?.family?.toString() ?? '')}'
@@ -220,36 +221,36 @@ Future<List<Patient>> readPtList() async {
 
 @JsonSerializable(explicitToJson: true)
 class Patient_Contact {
-  static Future<Patient_Contact> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CodeableConcept> relationship,
-      HumanName name,
-      List<ContactPoint> telecom,
-      Address address,
-      String gender,
-      Element elementGender,
-      Reference organization,
-      Period period}) async {
-    var fhirDb = new DatabaseHelper();
-    Patient_Contact newPatient_Contact = new Patient_Contact(
-      id: await fhirDb.newResourceId('Patient_Contact'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      relationship: relationship,
-      name: name,
-      telecom: telecom,
-      address: address,
-      gender: gender,
-      elementGender: elementGender,
-      organization: organization,
-      period: period,
-    );
-    int saved = await fhirDb.saveResource(newPatient_Contact);
-    return newPatient_Contact;
-  }
 
+
+	static Future<Patient_Contact> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<CodeableConcept> relationship,
+		HumanName name,
+		List<ContactPoint> telecom,
+		Address address,
+		String gender,
+		Element elementGender,
+		Reference organization,
+		Period period}) async {
+	var fhirDb = new DatabaseHelper();
+	Patient_Contact newPatient_Contact = new Patient_Contact(
+			id: await fhirDb.newResourceId('Patient_Contact'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			relationship: relationship,
+			name: name,
+			telecom: telecom,
+			address: address,
+			gender: gender,
+			elementGender: elementGender,
+			organization: organization,
+			period: period,
+);
+	return newPatient_Contact;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -262,46 +263,46 @@ class Patient_Contact {
   Reference organization;
   Period period;
 
-  Patient_Contact(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.relationship,
-      this.name,
-      this.telecom,
-      this.address,
-      this.gender,
-      this.elementGender,
-      this.organization,
-      this.period});
+Patient_Contact(
+  {this.id,
+    this.extension,
+    this.modifierExtension,
+    this.relationship,
+    this.name,
+    this.telecom,
+    this.address,
+    this.gender,
+    this.elementGender,
+    this.organization,
+    this.period
+    });
 
-  factory Patient_Contact.fromJson(Map<String, dynamic> json) =>
-      _$Patient_ContactFromJson(json);
+  factory Patient_Contact.fromJson(Map<String, dynamic> json) => _$Patient_ContactFromJson(json);
   Map<String, dynamic> toJson() => _$Patient_ContactToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Patient_Communication {
-  static Future<Patient_Communication> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept language,
-      bool preferred,
-      Element elementPreferred}) async {
-    var fhirDb = new DatabaseHelper();
-    Patient_Communication newPatient_Communication = new Patient_Communication(
-      id: await fhirDb.newResourceId('Patient_Communication'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      language: language,
-      preferred: preferred,
-      elementPreferred: elementPreferred,
-    );
-    int saved = await fhirDb.saveResource(newPatient_Communication);
-    return newPatient_Communication;
-  }
 
+
+	static Future<Patient_Communication> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept language,
+		bool preferred,
+		Element elementPreferred}) async {
+	var fhirDb = new DatabaseHelper();
+	Patient_Communication newPatient_Communication = new Patient_Communication(
+			id: await fhirDb.newResourceId('Patient_Communication'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			language: language,
+			preferred: preferred,
+			elementPreferred: elementPreferred,
+);
+	return newPatient_Communication;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -309,41 +310,41 @@ class Patient_Communication {
   bool preferred;
   Element elementPreferred;
 
-  Patient_Communication(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.language,
-      this.preferred,
-      this.elementPreferred});
+Patient_Communication(
+  {this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.language,
+    this.preferred,
+    this.elementPreferred
+    });
 
-  factory Patient_Communication.fromJson(Map<String, dynamic> json) =>
-      _$Patient_CommunicationFromJson(json);
+  factory Patient_Communication.fromJson(Map<String, dynamic> json) => _$Patient_CommunicationFromJson(json);
   Map<String, dynamic> toJson() => _$Patient_CommunicationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Patient_Link {
-  static Future<Patient_Link> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference other,
-      String type,
-      Element elementType}) async {
-    var fhirDb = new DatabaseHelper();
-    Patient_Link newPatient_Link = new Patient_Link(
-      id: await fhirDb.newResourceId('Patient_Link'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      other: other,
-      type: type,
-      elementType: elementType,
-    );
-    int saved = await fhirDb.saveResource(newPatient_Link);
-    return newPatient_Link;
-  }
 
+
+	static Future<Patient_Link> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference other,
+		String type,
+		Element elementType}) async {
+	var fhirDb = new DatabaseHelper();
+	Patient_Link newPatient_Link = new Patient_Link(
+			id: await fhirDb.newResourceId('Patient_Link'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			other: other,
+			type: type,
+			elementType: elementType,
+);
+	return newPatient_Link;
+}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -351,18 +352,19 @@ class Patient_Link {
   String type; // <code> enum: replaced-by/replaces/refer/seealso;
   Element elementType;
 
-  Patient_Link(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.other,
-      this.type,
-      this.elementType});
+Patient_Link(
+  {this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.other,
+    this.type,
+    this.elementType
+    });
 
-  factory Patient_Link.fromJson(Map<String, dynamic> json) =>
-      _$Patient_LinkFromJson(json);
+  factory Patient_Link.fromJson(Map<String, dynamic> json) => _$Patient_LinkFromJson(json);
   Map<String, dynamic> toJson() => _$Patient_LinkToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -389,9 +391,8 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

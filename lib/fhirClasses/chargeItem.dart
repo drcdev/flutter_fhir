@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ChargeItem {
 
+
 	static Future<ChargeItem> newInstance({
 		String  resourceType,
 		String id,
@@ -116,6 +117,11 @@ class ChargeItem {
 );
 	int saved = await fhirDb.saveResource(newChargeItem);
 	return newChargeItem;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ChargeItem';
   String id;
@@ -220,6 +226,7 @@ ChargeItem(
 @JsonSerializable(explicitToJson: true)
 class ChargeItem_Performer {
 
+
 	static Future<ChargeItem_Performer> newInstance({
 		String id,
 		List<Extension> extension,
@@ -234,7 +241,6 @@ class ChargeItem_Performer {
 			function: function,
 			actor: actor,
 );
-	int saved = await fhirDb.saveResource(newChargeItem_Performer);
 	return newChargeItem_Performer;
 }
   String id;

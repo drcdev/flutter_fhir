@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ValueSet {
 
+
 	static Future<ValueSet> newInstance({
 		String  resourceType,
 		String id,
@@ -103,6 +104,11 @@ class ValueSet {
 );
 	int saved = await fhirDb.saveResource(newValueSet);
 	return newValueSet;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ValueSet';
   String id;
@@ -197,6 +203,7 @@ ValueSet(
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Compose {
 
+
 	static Future<ValueSet_Compose> newInstance({
 		String id,
 		List<Extension> extension,
@@ -219,7 +226,6 @@ class ValueSet_Compose {
 			include: include,
 			exclude: exclude,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Compose);
 	return newValueSet_Compose;
 }
   String id;
@@ -251,6 +257,7 @@ ValueSet_Compose(
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Include {
 
+
 	static Future<ValueSet_Include> newInstance({
 		String id,
 		List<Extension> extension,
@@ -275,7 +282,6 @@ class ValueSet_Include {
 			filter: filter,
 			valueSet: valueSet,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Include);
 	return newValueSet_Include;
 }
   String id;
@@ -309,6 +315,7 @@ ValueSet_Include(
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Concept {
 
+
 	static Future<ValueSet_Concept> newInstance({
 		String id,
 		List<Extension> extension,
@@ -329,7 +336,6 @@ class ValueSet_Concept {
 			elementDisplay: elementDisplay,
 			designation: designation,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Concept);
 	return newValueSet_Concept;
 }
   String id;
@@ -359,6 +365,7 @@ ValueSet_Concept(
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Designation {
 
+
 	static Future<ValueSet_Designation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -379,7 +386,6 @@ class ValueSet_Designation {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Designation);
 	return newValueSet_Designation;
 }
   String id;
@@ -409,6 +415,7 @@ ValueSet_Designation(
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Filter {
 
+
 	static Future<ValueSet_Filter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -431,7 +438,6 @@ class ValueSet_Filter {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Filter);
 	return newValueSet_Filter;
 }
   String id;
@@ -463,6 +469,7 @@ ValueSet_Filter(
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Expansion {
 
+
 	static Future<ValueSet_Expansion> newInstance({
 		String id,
 		List<Extension> extension,
@@ -493,7 +500,6 @@ class ValueSet_Expansion {
 			parameter: parameter,
 			contains: contains,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Expansion);
 	return newValueSet_Expansion;
 }
   String id;
@@ -532,6 +538,7 @@ ValueSet_Expansion(
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Parameter {
+
 
 	static Future<ValueSet_Parameter> newInstance({
 		String id,
@@ -575,7 +582,6 @@ class ValueSet_Parameter {
 			valueDateTime: valueDateTime,
 			elementValueDateTime: elementValueDateTime,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Parameter);
 	return newValueSet_Parameter;
 }
   String id;
@@ -627,6 +633,7 @@ ValueSet_Parameter(
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Contains {
 
+
 	static Future<ValueSet_Contains> newInstance({
 		String id,
 		List<Extension> extension,
@@ -665,7 +672,6 @@ class ValueSet_Contains {
 			designation: designation,
 			contains: contains,
 );
-	int saved = await fhirDb.saveResource(newValueSet_Contains);
 	return newValueSet_Contains;
 }
   String id;

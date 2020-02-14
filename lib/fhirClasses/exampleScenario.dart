@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario {
 
+
 	static Future<ExampleScenario> newInstance({
 		String  resourceType,
 		String id,
@@ -94,6 +95,11 @@ class ExampleScenario {
 );
 	int saved = await fhirDb.saveResource(newExampleScenario);
 	return newExampleScenario;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ExampleScenario';
   String id;
@@ -180,6 +186,7 @@ ExampleScenario(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Actor {
 
+
 	static Future<ExampleScenario_Actor> newInstance({
 		String id,
 		List<Extension> extension,
@@ -206,7 +213,6 @@ class ExampleScenario_Actor {
 			description: description,
 			elementDescription: elementDescription,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_Actor);
 	return newExampleScenario_Actor;
 }
   String id;
@@ -242,6 +248,7 @@ ExampleScenario_Actor(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Instance {
 
+
 	static Future<ExampleScenario_Instance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -272,7 +279,6 @@ class ExampleScenario_Instance {
 			version: version,
 			containedInstance: containedInstance,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_Instance);
 	return newExampleScenario_Instance;
 }
   String id;
@@ -312,6 +318,7 @@ ExampleScenario_Instance(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Version {
 
+
 	static Future<ExampleScenario_Version> newInstance({
 		String id,
 		List<Extension> extension,
@@ -330,7 +337,6 @@ class ExampleScenario_Version {
 			description: description,
 			elementDescription: elementDescription,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_Version);
 	return newExampleScenario_Version;
 }
   String id;
@@ -358,6 +364,7 @@ ExampleScenario_Version(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_ContainedInstance {
 
+
 	static Future<ExampleScenario_ContainedInstance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -376,7 +383,6 @@ class ExampleScenario_ContainedInstance {
 			versionId: versionId,
 			elementVersionId: elementVersionId,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_ContainedInstance);
 	return newExampleScenario_ContainedInstance;
 }
   String id;
@@ -403,6 +409,7 @@ ExampleScenario_ContainedInstance(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Process {
+
 
 	static Future<ExampleScenario_Process> newInstance({
 		String id,
@@ -432,7 +439,6 @@ class ExampleScenario_Process {
 			elementPostConditions: elementPostConditions,
 			step: step,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_Process);
 	return newExampleScenario_Process;
 }
   String id;
@@ -470,6 +476,7 @@ ExampleScenario_Process(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Step {
 
+
 	static Future<ExampleScenario_Step> newInstance({
 		String id,
 		List<Extension> extension,
@@ -490,7 +497,6 @@ class ExampleScenario_Step {
 			operation: operation,
 			alternative: alternative,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_Step);
 	return newExampleScenario_Step;
 }
   String id;
@@ -519,6 +525,7 @@ ExampleScenario_Step(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Operation {
+
 
 	static Future<ExampleScenario_Operation> newInstance({
 		String id,
@@ -566,7 +573,6 @@ class ExampleScenario_Operation {
 			request: request,
 			response: response,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_Operation);
 	return newExampleScenario_Operation;
 }
   String id;
@@ -622,6 +628,7 @@ ExampleScenario_Operation(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Alternative {
 
+
 	static Future<ExampleScenario_Alternative> newInstance({
 		String id,
 		List<Extension> extension,
@@ -642,7 +649,6 @@ class ExampleScenario_Alternative {
 			elementDescription: elementDescription,
 			step: step,
 );
-	int saved = await fhirDb.saveResource(newExampleScenario_Alternative);
 	return newExampleScenario_Alternative;
 }
   String id;

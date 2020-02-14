@@ -25,6 +25,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition {
 
+
 	static Future<PlanDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -147,6 +148,11 @@ class PlanDefinition {
 );
 	int saved = await fhirDb.saveResource(newPlanDefinition);
 	return newPlanDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'PlanDefinition';
   String id;
@@ -275,6 +281,7 @@ PlanDefinition(
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Goal {
 
+
 	static Future<PlanDefinition_Goal> newInstance({
 		String id,
 		List<Extension> extension,
@@ -299,7 +306,6 @@ class PlanDefinition_Goal {
 			documentation: documentation,
 			target: target,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition_Goal);
 	return newPlanDefinition_Goal;
 }
   String id;
@@ -333,6 +339,7 @@ PlanDefinition_Goal(
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Target {
 
+
 	static Future<PlanDefinition_Target> newInstance({
 		String id,
 		List<Extension> extension,
@@ -353,7 +360,6 @@ class PlanDefinition_Target {
 			detailCodeableConcept: detailCodeableConcept,
 			due: due,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition_Target);
 	return newPlanDefinition_Target;
 }
   String id;
@@ -382,6 +388,7 @@ PlanDefinition_Target(
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Action {
+
 
 	static Future<PlanDefinition_Action> newInstance({
 		String id,
@@ -489,7 +496,6 @@ class PlanDefinition_Action {
 			dynamicValue: dynamicValue,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition_Action);
 	return newPlanDefinition_Action;
 }
   String id;
@@ -605,6 +611,7 @@ PlanDefinition_Action(
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Condition {
 
+
 	static Future<PlanDefinition_Condition> newInstance({
 		String id,
 		List<Extension> extension,
@@ -621,7 +628,6 @@ class PlanDefinition_Condition {
 			elementKind: elementKind,
 			expression: expression,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition_Condition);
 	return newPlanDefinition_Condition;
 }
   String id;
@@ -647,6 +653,7 @@ PlanDefinition_Condition(
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_RelatedAction {
 
+
 	static Future<PlanDefinition_RelatedAction> newInstance({
 		String id,
 		List<Extension> extension,
@@ -669,7 +676,6 @@ class PlanDefinition_RelatedAction {
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition_RelatedAction);
 	return newPlanDefinition_RelatedAction;
 }
   String id;
@@ -701,6 +707,7 @@ PlanDefinition_RelatedAction(
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Participant {
 
+
 	static Future<PlanDefinition_Participant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -717,7 +724,6 @@ class PlanDefinition_Participant {
 			elementType: elementType,
 			role: role,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition_Participant);
 	return newPlanDefinition_Participant;
 }
   String id;
@@ -743,6 +749,7 @@ PlanDefinition_Participant(
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_DynamicValue {
 
+
 	static Future<PlanDefinition_DynamicValue> newInstance({
 		String id,
 		List<Extension> extension,
@@ -759,7 +766,6 @@ class PlanDefinition_DynamicValue {
 			elementPath: elementPath,
 			expression: expression,
 );
-	int saved = await fhirDb.saveResource(newPlanDefinition_DynamicValue);
 	return newPlanDefinition_DynamicValue;
 }
   String id;

@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Invoice {
 
+
 	static Future<Invoice> newInstance({
 		String  resourceType,
 		String id,
@@ -83,6 +84,11 @@ class Invoice {
 );
 	int saved = await fhirDb.saveResource(newInvoice);
 	return newInvoice;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Invoice';
   String id;
@@ -157,6 +163,7 @@ Invoice(
 @JsonSerializable(explicitToJson: true)
 class Invoice_Participant {
 
+
 	static Future<Invoice_Participant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -171,7 +178,6 @@ class Invoice_Participant {
 			role: role,
 			actor: actor,
 );
-	int saved = await fhirDb.saveResource(newInvoice_Participant);
 	return newInvoice_Participant;
 }
   String id;
@@ -195,6 +201,7 @@ Invoice_Participant(
 @JsonSerializable(explicitToJson: true)
 class Invoice_LineItem {
 
+
 	static Future<Invoice_LineItem> newInstance({
 		String id,
 		List<Extension> extension,
@@ -215,7 +222,6 @@ class Invoice_LineItem {
 			chargeItemCodeableConcept: chargeItemCodeableConcept,
 			priceComponent: priceComponent,
 );
-	int saved = await fhirDb.saveResource(newInvoice_LineItem);
 	return newInvoice_LineItem;
 }
   String id;
@@ -245,6 +251,7 @@ Invoice_LineItem(
 @JsonSerializable(explicitToJson: true)
 class Invoice_PriceComponent {
 
+
 	static Future<Invoice_PriceComponent> newInstance({
 		String id,
 		List<Extension> extension,
@@ -267,7 +274,6 @@ class Invoice_PriceComponent {
 			elementFactor: elementFactor,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newInvoice_PriceComponent);
 	return newInvoice_PriceComponent;
 }
   String id;

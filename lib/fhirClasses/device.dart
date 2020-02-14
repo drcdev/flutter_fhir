@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Device {
 
+
 	static Future<Device> newInstance({
 		String  resourceType,
 		String id,
@@ -116,6 +117,11 @@ class Device {
 );
 	int saved = await fhirDb.saveResource(newDevice);
 	return newDevice;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Device';
   String id;
@@ -222,6 +228,7 @@ Device(
 @JsonSerializable(explicitToJson: true)
 class Device_UdiCarrier {
 
+
 	static Future<Device_UdiCarrier> newInstance({
 		String id,
 		List<Extension> extension,
@@ -256,7 +263,6 @@ class Device_UdiCarrier {
 			entryType: entryType,
 			elementEntryType: elementEntryType,
 );
-	int saved = await fhirDb.saveResource(newDevice_UdiCarrier);
 	return newDevice_UdiCarrier;
 }
   String id;
@@ -300,6 +306,7 @@ Device_UdiCarrier(
 @JsonSerializable(explicitToJson: true)
 class Device_DeviceName {
 
+
 	static Future<Device_DeviceName> newInstance({
 		String id,
 		List<Extension> extension,
@@ -318,7 +325,6 @@ class Device_DeviceName {
 			type: type,
 			elementType: elementType,
 );
-	int saved = await fhirDb.saveResource(newDevice_DeviceName);
 	return newDevice_DeviceName;
 }
   String id;
@@ -346,6 +352,7 @@ Device_DeviceName(
 @JsonSerializable(explicitToJson: true)
 class Device_Specialization {
 
+
 	static Future<Device_Specialization> newInstance({
 		String id,
 		List<Extension> extension,
@@ -362,7 +369,6 @@ class Device_Specialization {
 			version: version,
 			elementVersion: elementVersion,
 );
-	int saved = await fhirDb.saveResource(newDevice_Specialization);
 	return newDevice_Specialization;
 }
   String id;
@@ -388,6 +394,7 @@ Device_Specialization(
 @JsonSerializable(explicitToJson: true)
 class Device_Version {
 
+
 	static Future<Device_Version> newInstance({
 		String id,
 		List<Extension> extension,
@@ -406,7 +413,6 @@ class Device_Version {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newDevice_Version);
 	return newDevice_Version;
 }
   String id;
@@ -434,6 +440,7 @@ Device_Version(
 @JsonSerializable(explicitToJson: true)
 class Device_Property {
 
+
 	static Future<Device_Property> newInstance({
 		String id,
 		List<Extension> extension,
@@ -450,7 +457,6 @@ class Device_Property {
 			valueQuantity: valueQuantity,
 			valueCode: valueCode,
 );
-	int saved = await fhirDb.saveResource(newDevice_Property);
 	return newDevice_Property;
 }
   String id;

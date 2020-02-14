@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductContraindication {
 
+
 	static Future<MedicinalProductContraindication> newInstance({
 		String  resourceType,
 		String id,
@@ -55,6 +56,11 @@ class MedicinalProductContraindication {
 );
 	int saved = await fhirDb.saveResource(newMedicinalProductContraindication);
 	return newMedicinalProductContraindication;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicinalProductContraindication';
   String id;
@@ -103,6 +109,7 @@ MedicinalProductContraindication(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductContraindication_OtherTherapy {
 
+
 	static Future<MedicinalProductContraindication_OtherTherapy> newInstance({
 		String id,
 		List<Extension> extension,
@@ -119,7 +126,6 @@ class MedicinalProductContraindication_OtherTherapy {
 			medicationCodeableConcept: medicationCodeableConcept,
 			medicationReference: medicationReference,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductContraindication_OtherTherapy);
 	return newMedicinalProductContraindication_OtherTherapy;
 }
   String id;

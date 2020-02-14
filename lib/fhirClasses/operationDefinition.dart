@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition {
 
+
 	static Future<OperationDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -129,6 +130,11 @@ class OperationDefinition {
 );
 	int saved = await fhirDb.saveResource(newOperationDefinition);
 	return newOperationDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'OperationDefinition';
   String id;
@@ -251,6 +257,7 @@ OperationDefinition(
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_Parameter {
 
+
 	static Future<OperationDefinition_Parameter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -297,7 +304,6 @@ class OperationDefinition_Parameter {
 			referencedFrom: referencedFrom,
 			part: part,
 );
-	int saved = await fhirDb.saveResource(newOperationDefinition_Parameter);
 	return newOperationDefinition_Parameter;
 }
   String id;
@@ -353,6 +359,7 @@ OperationDefinition_Parameter(
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_Binding {
 
+
 	static Future<OperationDefinition_Binding> newInstance({
 		String id,
 		List<Extension> extension,
@@ -369,7 +376,6 @@ class OperationDefinition_Binding {
 			elementStrength: elementStrength,
 			valueSet: valueSet,
 );
-	int saved = await fhirDb.saveResource(newOperationDefinition_Binding);
 	return newOperationDefinition_Binding;
 }
   String id;
@@ -395,6 +401,7 @@ OperationDefinition_Binding(
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_ReferencedFrom {
 
+
 	static Future<OperationDefinition_ReferencedFrom> newInstance({
 		String id,
 		List<Extension> extension,
@@ -413,7 +420,6 @@ class OperationDefinition_ReferencedFrom {
 			sourceId: sourceId,
 			elementSourceId: elementSourceId,
 );
-	int saved = await fhirDb.saveResource(newOperationDefinition_ReferencedFrom);
 	return newOperationDefinition_ReferencedFrom;
 }
   String id;
@@ -441,6 +447,7 @@ OperationDefinition_ReferencedFrom(
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_Overload {
 
+
 	static Future<OperationDefinition_Overload> newInstance({
 		String id,
 		List<Extension> extension,
@@ -459,7 +466,6 @@ class OperationDefinition_Overload {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newOperationDefinition_Overload);
 	return newOperationDefinition_Overload;
 }
   String id;

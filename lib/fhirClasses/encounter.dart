@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Encounter {
 
+
 	static Future<Encounter> newInstance({
 		String  resourceType,
 		String id,
@@ -92,6 +93,11 @@ class Encounter {
 );
 	int saved = await fhirDb.saveResource(newEncounter);
 	return newEncounter;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Encounter';
   String id;
@@ -174,6 +180,7 @@ Encounter(
 @JsonSerializable(explicitToJson: true)
 class Encounter_StatusHistory {
 
+
 	static Future<Encounter_StatusHistory> newInstance({
 		String id,
 		List<Extension> extension,
@@ -190,7 +197,6 @@ class Encounter_StatusHistory {
 			elementStatus: elementStatus,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newEncounter_StatusHistory);
 	return newEncounter_StatusHistory;
 }
   String id;
@@ -216,6 +222,7 @@ Encounter_StatusHistory(
 @JsonSerializable(explicitToJson: true)
 class Encounter_ClassHistory {
 
+
 	static Future<Encounter_ClassHistory> newInstance({
 		String id,
 		List<Extension> extension,
@@ -230,7 +237,6 @@ class Encounter_ClassHistory {
 			classs: classs,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newEncounter_ClassHistory);
 	return newEncounter_ClassHistory;
 }
   String id;
@@ -254,6 +260,7 @@ Encounter_ClassHistory(
 @JsonSerializable(explicitToJson: true)
 class Encounter_Participant {
 
+
 	static Future<Encounter_Participant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -270,7 +277,6 @@ class Encounter_Participant {
 			period: period,
 			individual: individual,
 );
-	int saved = await fhirDb.saveResource(newEncounter_Participant);
 	return newEncounter_Participant;
 }
   String id;
@@ -296,6 +302,7 @@ Encounter_Participant(
 @JsonSerializable(explicitToJson: true)
 class Encounter_Diagnosis {
 
+
 	static Future<Encounter_Diagnosis> newInstance({
 		String id,
 		List<Extension> extension,
@@ -314,7 +321,6 @@ class Encounter_Diagnosis {
 			rank: rank,
 			elementRank: elementRank,
 );
-	int saved = await fhirDb.saveResource(newEncounter_Diagnosis);
 	return newEncounter_Diagnosis;
 }
   String id;
@@ -341,6 +347,7 @@ Encounter_Diagnosis(
 
 @JsonSerializable(explicitToJson: true)
 class Encounter_Hospitalization {
+
 
 	static Future<Encounter_Hospitalization> newInstance({
 		String id,
@@ -370,7 +377,6 @@ class Encounter_Hospitalization {
 			destination: destination,
 			dischargeDisposition: dischargeDisposition,
 );
-	int saved = await fhirDb.saveResource(newEncounter_Hospitalization);
 	return newEncounter_Hospitalization;
 }
   String id;
@@ -408,6 +414,7 @@ Encounter_Hospitalization(
 @JsonSerializable(explicitToJson: true)
 class Encounter_Location {
 
+
 	static Future<Encounter_Location> newInstance({
 		String id,
 		List<Extension> extension,
@@ -428,7 +435,6 @@ class Encounter_Location {
 			physicalType: physicalType,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newEncounter_Location);
 	return newEncounter_Location;
 }
   String id;

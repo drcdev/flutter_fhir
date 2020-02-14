@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Media {
 
+
 	static Future<Media> newInstance({
 		String  resourceType,
 		String id,
@@ -106,6 +107,11 @@ class Media {
 );
 	int saved = await fhirDb.saveResource(newMedia);
 	return newMedia;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Media';
   String id;

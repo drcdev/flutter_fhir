@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class TestScript {
 
+
 	static Future<TestScript> newInstance({
 		String  resourceType,
 		String id,
@@ -114,6 +115,11 @@ class TestScript {
 );
 	int saved = await fhirDb.saveResource(newTestScript);
 	return newTestScript;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'TestScript';
   String id;
@@ -218,6 +224,7 @@ TestScript(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Origin {
 
+
 	static Future<TestScript_Origin> newInstance({
 		String id,
 		List<Extension> extension,
@@ -234,7 +241,6 @@ class TestScript_Origin {
 			elementIndex: elementIndex,
 			profile: profile,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Origin);
 	return newTestScript_Origin;
 }
   String id;
@@ -260,6 +266,7 @@ TestScript_Origin(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Destination {
 
+
 	static Future<TestScript_Destination> newInstance({
 		String id,
 		List<Extension> extension,
@@ -276,7 +283,6 @@ class TestScript_Destination {
 			elementIndex: elementIndex,
 			profile: profile,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Destination);
 	return newTestScript_Destination;
 }
   String id;
@@ -302,6 +308,7 @@ TestScript_Destination(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Metadata {
 
+
 	static Future<TestScript_Metadata> newInstance({
 		String id,
 		List<Extension> extension,
@@ -316,7 +323,6 @@ class TestScript_Metadata {
 			link: link,
 			capability: capability,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Metadata);
 	return newTestScript_Metadata;
 }
   String id;
@@ -340,6 +346,7 @@ TestScript_Metadata(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Link {
 
+
 	static Future<TestScript_Link> newInstance({
 		String id,
 		List<Extension> extension,
@@ -358,7 +365,6 @@ class TestScript_Link {
 			description: description,
 			elementDescription: elementDescription,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Link);
 	return newTestScript_Link;
 }
   String id;
@@ -385,6 +391,7 @@ TestScript_Link(
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Capability {
+
 
 	static Future<TestScript_Capability> newInstance({
 		String id,
@@ -422,7 +429,6 @@ class TestScript_Capability {
 			elementLink: elementLink,
 			capabilities: capabilities,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Capability);
 	return newTestScript_Capability;
 }
   String id;
@@ -468,6 +474,7 @@ TestScript_Capability(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Fixture {
 
+
 	static Future<TestScript_Fixture> newInstance({
 		String id,
 		List<Extension> extension,
@@ -488,7 +495,6 @@ class TestScript_Fixture {
 			elementAutodelete: elementAutodelete,
 			resource: resource,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Fixture);
 	return newTestScript_Fixture;
 }
   String id;
@@ -517,6 +523,7 @@ TestScript_Fixture(
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Variable {
+
 
 	static Future<TestScript_Variable> newInstance({
 		String id,
@@ -560,7 +567,6 @@ class TestScript_Variable {
 			sourceId: sourceId,
 			elementSourceId: elementSourceId,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Variable);
 	return newTestScript_Variable;
 }
   String id;
@@ -612,6 +618,7 @@ TestScript_Variable(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Setup {
 
+
 	static Future<TestScript_Setup> newInstance({
 		String id,
 		List<Extension> extension,
@@ -624,7 +631,6 @@ class TestScript_Setup {
 			modifierExtension: modifierExtension,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Setup);
 	return newTestScript_Setup;
 }
   String id;
@@ -646,6 +652,7 @@ TestScript_Setup(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action {
 
+
 	static Future<TestScript_Action> newInstance({
 		String id,
 		List<Extension> extension,
@@ -660,7 +667,6 @@ class TestScript_Action {
 			operation: operation,
 			asserts: asserts,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Action);
 	return newTestScript_Action;
 }
   String id;
@@ -683,6 +689,7 @@ TestScript_Action(
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Operation {
+
 
 	static Future<TestScript_Operation> newInstance({
 		String id,
@@ -758,7 +765,6 @@ class TestScript_Operation {
 			url: url,
 			elementUrl: elementUrl,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Operation);
 	return newTestScript_Operation;
 }
   String id;
@@ -842,6 +848,7 @@ TestScript_Operation(
 @JsonSerializable(explicitToJson: true)
 class TestScript_RequestHeader {
 
+
 	static Future<TestScript_RequestHeader> newInstance({
 		String id,
 		List<Extension> extension,
@@ -860,7 +867,6 @@ class TestScript_RequestHeader {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newTestScript_RequestHeader);
 	return newTestScript_RequestHeader;
 }
   String id;
@@ -887,6 +893,7 @@ TestScript_RequestHeader(
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Assert {
+
 
 	static Future<TestScript_Assert> newInstance({
 		String id,
@@ -986,7 +993,6 @@ class TestScript_Assert {
 			warningOnly: warningOnly,
 			elementWarningOnly: elementWarningOnly,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Assert);
 	return newTestScript_Assert;
 }
   String id;
@@ -1094,6 +1100,7 @@ TestScript_Assert(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Test {
 
+
 	static Future<TestScript_Test> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1114,7 +1121,6 @@ class TestScript_Test {
 			elementDescription: elementDescription,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Test);
 	return newTestScript_Test;
 }
   String id;
@@ -1144,6 +1150,7 @@ TestScript_Test(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action1 {
 
+
 	static Future<TestScript_Action1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1158,7 +1165,6 @@ class TestScript_Action1 {
 			operation: operation,
 			asserts: asserts,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Action1);
 	return newTestScript_Action1;
 }
   String id;
@@ -1182,6 +1188,7 @@ TestScript_Action1(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Teardown {
 
+
 	static Future<TestScript_Teardown> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1194,7 +1201,6 @@ class TestScript_Teardown {
 			modifierExtension: modifierExtension,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Teardown);
 	return newTestScript_Teardown;
 }
   String id;
@@ -1216,6 +1222,7 @@ TestScript_Teardown(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action2 {
 
+
 	static Future<TestScript_Action2> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1228,7 +1235,6 @@ class TestScript_Action2 {
 			modifierExtension: modifierExtension,
 			operation: operation,
 );
-	int saved = await fhirDb.saveResource(newTestScript_Action2);
 	return newTestScript_Action2;
 }
   String id;

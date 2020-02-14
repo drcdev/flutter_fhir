@@ -11,6 +11,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class UsageContext {
 
+
 	static Future<UsageContext> newInstance({
 		String id,
 		List<Extension> extension,
@@ -31,6 +32,11 @@ class UsageContext {
 );
 	int saved = await fhirDb.saveResource(newUsageContext);
 	return newUsageContext;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

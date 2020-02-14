@@ -12,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class CompartmentDefinition {
 
+
 	static Future<CompartmentDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -90,6 +91,11 @@ class CompartmentDefinition {
 );
 	int saved = await fhirDb.saveResource(newCompartmentDefinition);
 	return newCompartmentDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'CompartmentDefinition';
   String id;
@@ -174,6 +180,7 @@ CompartmentDefinition(
 @JsonSerializable(explicitToJson: true)
 class CompartmentDefinition_Resource {
 
+
 	static Future<CompartmentDefinition_Resource> newInstance({
 		String id,
 		List<Extension> extension,
@@ -196,7 +203,6 @@ class CompartmentDefinition_Resource {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newCompartmentDefinition_Resource);
 	return newCompartmentDefinition_Resource;
 }
   String id;

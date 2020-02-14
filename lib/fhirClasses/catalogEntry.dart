@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class CatalogEntry {
 
+
 	static Future<CatalogEntry> newInstance({
 		String  resourceType,
 		String id,
@@ -76,6 +77,11 @@ class CatalogEntry {
 );
 	int saved = await fhirDb.saveResource(newCatalogEntry);
 	return newCatalogEntry;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'CatalogEntry';
   String id;
@@ -144,6 +150,7 @@ CatalogEntry(
 @JsonSerializable(explicitToJson: true)
 class CatalogEntry_RelatedEntry {
 
+
 	static Future<CatalogEntry_RelatedEntry> newInstance({
 		String id,
 		List<Extension> extension,
@@ -160,7 +167,6 @@ class CatalogEntry_RelatedEntry {
 			elementRelationtype: elementRelationtype,
 			item: item,
 );
-	int saved = await fhirDb.saveResource(newCatalogEntry_RelatedEntry);
 	return newCatalogEntry_RelatedEntry;
 }
   String id;

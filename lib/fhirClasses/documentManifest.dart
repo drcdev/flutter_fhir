@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class DocumentManifest {
 
+
 	static Future<DocumentManifest> newInstance({
 		String  resourceType,
 		String id,
@@ -73,6 +74,11 @@ class DocumentManifest {
 );
 	int saved = await fhirDb.saveResource(newDocumentManifest);
 	return newDocumentManifest;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'DocumentManifest';
   String id;
@@ -139,6 +145,7 @@ DocumentManifest(
 @JsonSerializable(explicitToJson: true)
 class DocumentManifest_Related {
 
+
 	static Future<DocumentManifest_Related> newInstance({
 		String id,
 		List<Extension> extension,
@@ -153,7 +160,6 @@ class DocumentManifest_Related {
 			identifier: identifier,
 			ref: ref,
 );
-	int saved = await fhirDb.saveResource(newDocumentManifest_Related);
 	return newDocumentManifest_Related;
 }
   String id;

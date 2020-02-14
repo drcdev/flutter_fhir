@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class PaymentReconciliation {
 
+
 	static Future<PaymentReconciliation> newInstance({
 		String  resourceType,
 		String id,
@@ -83,6 +84,11 @@ class PaymentReconciliation {
 );
 	int saved = await fhirDb.saveResource(newPaymentReconciliation);
 	return newPaymentReconciliation;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'PaymentReconciliation';
   String id;
@@ -157,6 +163,7 @@ PaymentReconciliation(
 @JsonSerializable(explicitToJson: true)
 class PaymentReconciliation_Detail {
 
+
 	static Future<PaymentReconciliation_Detail> newInstance({
 		String id,
 		List<Extension> extension,
@@ -189,7 +196,6 @@ class PaymentReconciliation_Detail {
 			payee: payee,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newPaymentReconciliation_Detail);
 	return newPaymentReconciliation_Detail;
 }
   String id;
@@ -231,6 +237,7 @@ PaymentReconciliation_Detail(
 @JsonSerializable(explicitToJson: true)
 class PaymentReconciliation_ProcessNote {
 
+
 	static Future<PaymentReconciliation_ProcessNote> newInstance({
 		String id,
 		List<Extension> extension,
@@ -249,7 +256,6 @@ class PaymentReconciliation_ProcessNote {
 			text: text,
 			elementText: elementText,
 );
-	int saved = await fhirDb.saveResource(newPaymentReconciliation_ProcessNote);
 	return newPaymentReconciliation_ProcessNote;
 }
   String id;

@@ -21,6 +21,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ResearchElementDefinition {
 
+
 	static Future<ResearchElementDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -155,6 +156,11 @@ class ResearchElementDefinition {
 );
 	int saved = await fhirDb.saveResource(newResearchElementDefinition);
 	return newResearchElementDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ResearchElementDefinition';
   String id;
@@ -295,6 +301,7 @@ ResearchElementDefinition(
 @JsonSerializable(explicitToJson: true)
 class ResearchElementDefinition_Characteristic {
 
+
 	static Future<ResearchElementDefinition_Characteristic> newInstance({
 		String id,
 		List<Extension> extension,
@@ -363,7 +370,6 @@ class ResearchElementDefinition_Characteristic {
 			participantEffectiveGroupMeasure: participantEffectiveGroupMeasure,
 			elementParticipantEffectiveGroupMeasure: elementParticipantEffectiveGroupMeasure,
 );
-	int saved = await fhirDb.saveResource(newResearchElementDefinition_Characteristic);
 	return newResearchElementDefinition_Characteristic;
 }
   String id;

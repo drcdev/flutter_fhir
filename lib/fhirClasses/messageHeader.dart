@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MessageHeader {
 
+
 	static Future<MessageHeader> newInstance({
 		String  resourceType,
 		String id,
@@ -68,6 +69,11 @@ class MessageHeader {
 );
 	int saved = await fhirDb.saveResource(newMessageHeader);
 	return newMessageHeader;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MessageHeader';
   String id;
@@ -128,6 +134,7 @@ MessageHeader(
 @JsonSerializable(explicitToJson: true)
 class MessageHeader_Destination {
 
+
 	static Future<MessageHeader_Destination> newInstance({
 		String id,
 		List<Extension> extension,
@@ -150,7 +157,6 @@ class MessageHeader_Destination {
 			elementEndpoint: elementEndpoint,
 			receiver: receiver,
 );
-	int saved = await fhirDb.saveResource(newMessageHeader_Destination);
 	return newMessageHeader_Destination;
 }
   String id;
@@ -182,6 +188,7 @@ MessageHeader_Destination(
 @JsonSerializable(explicitToJson: true)
 class MessageHeader_Source {
 
+
 	static Future<MessageHeader_Source> newInstance({
 		String id,
 		List<Extension> extension,
@@ -210,7 +217,6 @@ class MessageHeader_Source {
 			endpoint: endpoint,
 			elementEndpoint: elementEndpoint,
 );
-	int saved = await fhirDb.saveResource(newMessageHeader_Source);
 	return newMessageHeader_Source;
 }
   String id;
@@ -248,6 +254,7 @@ MessageHeader_Source(
 @JsonSerializable(explicitToJson: true)
 class MessageHeader_Response {
 
+
 	static Future<MessageHeader_Response> newInstance({
 		String id,
 		List<Extension> extension,
@@ -268,7 +275,6 @@ class MessageHeader_Response {
 			elementCode: elementCode,
 			details: details,
 );
-	int saved = await fhirDb.saveResource(newMessageHeader_Response);
 	return newMessageHeader_Response;
 }
   String id;

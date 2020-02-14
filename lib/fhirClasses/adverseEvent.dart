@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class AdverseEvent {
 
+
 	static Future<AdverseEvent> newInstance({
 		String  resourceType,
 		String id,
@@ -89,6 +90,11 @@ class AdverseEvent {
 );
 	int saved = await fhirDb.saveResource(newAdverseEvent);
 	return newAdverseEvent;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'AdverseEvent';
   String id;
@@ -171,6 +177,7 @@ AdverseEvent(
 @JsonSerializable(explicitToJson: true)
 class AdverseEvent_SuspectEntity {
 
+
 	static Future<AdverseEvent_SuspectEntity> newInstance({
 		String id,
 		List<Extension> extension,
@@ -185,7 +192,6 @@ class AdverseEvent_SuspectEntity {
 			instance: instance,
 			causality: causality,
 );
-	int saved = await fhirDb.saveResource(newAdverseEvent_SuspectEntity);
 	return newAdverseEvent_SuspectEntity;
 }
   String id;
@@ -209,6 +215,7 @@ AdverseEvent_SuspectEntity(
 @JsonSerializable(explicitToJson: true)
 class AdverseEvent_Causality {
 
+
 	static Future<AdverseEvent_Causality> newInstance({
 		String id,
 		List<Extension> extension,
@@ -229,7 +236,6 @@ class AdverseEvent_Causality {
 			author: author,
 			method: method,
 );
-	int saved = await fhirDb.saveResource(newAdverseEvent_Causality);
 	return newAdverseEvent_Causality;
 }
   String id;

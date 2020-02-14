@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification {
 
+
 	static Future<SubstanceSpecification> newInstance({
 		String  resourceType,
 		String id,
@@ -87,6 +88,11 @@ class SubstanceSpecification {
 );
 	int saved = await fhirDb.saveResource(newSubstanceSpecification);
 	return newSubstanceSpecification;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SubstanceSpecification';
   String id;
@@ -163,6 +169,7 @@ SubstanceSpecification(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Moiety {
 
+
 	static Future<SubstanceSpecification_Moiety> newInstance({
 		String id,
 		List<Extension> extension,
@@ -195,7 +202,6 @@ class SubstanceSpecification_Moiety {
 			amountString: amountString,
 			elementAmountString: elementAmountString,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Moiety);
 	return newSubstanceSpecification_Moiety;
 }
   String id;
@@ -237,6 +243,7 @@ SubstanceSpecification_Moiety(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Property {
 
+
 	static Future<SubstanceSpecification_Property> newInstance({
 		String id,
 		List<Extension> extension,
@@ -265,7 +272,6 @@ class SubstanceSpecification_Property {
 			amountString: amountString,
 			elementAmountString: elementAmountString,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Property);
 	return newSubstanceSpecification_Property;
 }
   String id;
@@ -303,6 +309,7 @@ SubstanceSpecification_Property(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Structure {
 
+
 	static Future<SubstanceSpecification_Structure> newInstance({
 		String id,
 		List<Extension> extension,
@@ -333,7 +340,6 @@ class SubstanceSpecification_Structure {
 			source: source,
 			representation: representation,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Structure);
 	return newSubstanceSpecification_Structure;
 }
   String id;
@@ -373,6 +379,7 @@ SubstanceSpecification_Structure(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Isotope {
 
+
 	static Future<SubstanceSpecification_Isotope> newInstance({
 		String id,
 		List<Extension> extension,
@@ -393,7 +400,6 @@ class SubstanceSpecification_Isotope {
 			halfLife: halfLife,
 			molecularWeight: molecularWeight,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Isotope);
 	return newSubstanceSpecification_Isotope;
 }
   String id;
@@ -423,6 +429,7 @@ SubstanceSpecification_Isotope(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_MolecularWeight {
 
+
 	static Future<SubstanceSpecification_MolecularWeight> newInstance({
 		String id,
 		List<Extension> extension,
@@ -439,7 +446,6 @@ class SubstanceSpecification_MolecularWeight {
 			type: type,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_MolecularWeight);
 	return newSubstanceSpecification_MolecularWeight;
 }
   String id;
@@ -465,6 +471,7 @@ SubstanceSpecification_MolecularWeight(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Representation {
 
+
 	static Future<SubstanceSpecification_Representation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -483,7 +490,6 @@ class SubstanceSpecification_Representation {
 			elementRepresentation: elementRepresentation,
 			attachment: attachment,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Representation);
 	return newSubstanceSpecification_Representation;
 }
   String id;
@@ -511,6 +517,7 @@ SubstanceSpecification_Representation(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Code {
 
+
 	static Future<SubstanceSpecification_Code> newInstance({
 		String id,
 		List<Extension> extension,
@@ -535,7 +542,6 @@ class SubstanceSpecification_Code {
 			elementComment: elementComment,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Code);
 	return newSubstanceSpecification_Code;
 }
   String id;
@@ -568,6 +574,7 @@ SubstanceSpecification_Code(
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Name {
+
 
 	static Future<SubstanceSpecification_Name> newInstance({
 		String id,
@@ -605,7 +612,6 @@ class SubstanceSpecification_Name {
 			official: official,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Name);
 	return newSubstanceSpecification_Name;
 }
   String id;
@@ -651,6 +657,7 @@ SubstanceSpecification_Name(
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Official {
 
+
 	static Future<SubstanceSpecification_Official> newInstance({
 		String id,
 		List<Extension> extension,
@@ -669,7 +676,6 @@ class SubstanceSpecification_Official {
 			date: date,
 			elementDate: elementDate,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Official);
 	return newSubstanceSpecification_Official;
 }
   String id;
@@ -696,6 +702,7 @@ SubstanceSpecification_Official(
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Relationship {
+
 
 	static Future<SubstanceSpecification_Relationship> newInstance({
 		String id,
@@ -733,7 +740,6 @@ class SubstanceSpecification_Relationship {
 			amountType: amountType,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newSubstanceSpecification_Relationship);
 	return newSubstanceSpecification_Relationship;
 }
   String id;

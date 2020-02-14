@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Procedure {
 
+
 	static Future<Procedure> newInstance({
 		String  resourceType,
 		String id,
@@ -117,6 +118,11 @@ class Procedure {
 );
 	int saved = await fhirDb.saveResource(newProcedure);
 	return newProcedure;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Procedure';
   String id;
@@ -223,6 +229,7 @@ Procedure(
 @JsonSerializable(explicitToJson: true)
 class Procedure_Performer {
 
+
 	static Future<Procedure_Performer> newInstance({
 		String id,
 		List<Extension> extension,
@@ -239,7 +246,6 @@ class Procedure_Performer {
 			actor: actor,
 			onBehalfOf: onBehalfOf,
 );
-	int saved = await fhirDb.saveResource(newProcedure_Performer);
 	return newProcedure_Performer;
 }
   String id;
@@ -265,6 +271,7 @@ Procedure_Performer(
 @JsonSerializable(explicitToJson: true)
 class Procedure_FocalDevice {
 
+
 	static Future<Procedure_FocalDevice> newInstance({
 		String id,
 		List<Extension> extension,
@@ -279,7 +286,6 @@ class Procedure_FocalDevice {
 			action: action,
 			manipulated: manipulated,
 );
-	int saved = await fhirDb.saveResource(newProcedure_FocalDevice);
 	return newProcedure_FocalDevice;
 }
   String id;

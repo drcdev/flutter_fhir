@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge {
 
+
 	static Future<MedicationKnowledge> newInstance({
 		String  resourceType,
 		String id,
@@ -95,6 +96,11 @@ class MedicationKnowledge {
 );
 	int saved = await fhirDb.saveResource(newMedicationKnowledge);
 	return newMedicationKnowledge;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicationKnowledge';
   String id;
@@ -179,6 +185,7 @@ MedicationKnowledge(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_RelatedMedicationKnowledge {
 
+
 	static Future<MedicationKnowledge_RelatedMedicationKnowledge> newInstance({
 		String id,
 		List<Extension> extension,
@@ -193,7 +200,6 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
 			type: type,
 			reference: reference,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_RelatedMedicationKnowledge);
 	return newMedicationKnowledge_RelatedMedicationKnowledge;
 }
   String id;
@@ -217,6 +223,7 @@ MedicationKnowledge_RelatedMedicationKnowledge(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Monograph {
 
+
 	static Future<MedicationKnowledge_Monograph> newInstance({
 		String id,
 		List<Extension> extension,
@@ -231,7 +238,6 @@ class MedicationKnowledge_Monograph {
 			type: type,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Monograph);
 	return newMedicationKnowledge_Monograph;
 }
   String id;
@@ -255,6 +261,7 @@ MedicationKnowledge_Monograph(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Ingredient {
 
+
 	static Future<MedicationKnowledge_Ingredient> newInstance({
 		String id,
 		List<Extension> extension,
@@ -275,7 +282,6 @@ class MedicationKnowledge_Ingredient {
 			elementIsActive: elementIsActive,
 			strength: strength,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Ingredient);
 	return newMedicationKnowledge_Ingredient;
 }
   String id;
@@ -305,6 +311,7 @@ MedicationKnowledge_Ingredient(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Cost {
 
+
 	static Future<MedicationKnowledge_Cost> newInstance({
 		String id,
 		List<Extension> extension,
@@ -323,7 +330,6 @@ class MedicationKnowledge_Cost {
 			elementSource: elementSource,
 			cost: cost,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Cost);
 	return newMedicationKnowledge_Cost;
 }
   String id;
@@ -351,6 +357,7 @@ MedicationKnowledge_Cost(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MonitoringProgram {
 
+
 	static Future<MedicationKnowledge_MonitoringProgram> newInstance({
 		String id,
 		List<Extension> extension,
@@ -367,7 +374,6 @@ class MedicationKnowledge_MonitoringProgram {
 			name: name,
 			elementName: elementName,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_MonitoringProgram);
 	return newMedicationKnowledge_MonitoringProgram;
 }
   String id;
@@ -393,6 +399,7 @@ MedicationKnowledge_MonitoringProgram(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_AdministrationGuidelines {
 
+
 	static Future<MedicationKnowledge_AdministrationGuidelines> newInstance({
 		String id,
 		List<Extension> extension,
@@ -411,7 +418,6 @@ class MedicationKnowledge_AdministrationGuidelines {
 			indicationReference: indicationReference,
 			patientCharacteristics: patientCharacteristics,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_AdministrationGuidelines);
 	return newMedicationKnowledge_AdministrationGuidelines;
 }
   String id;
@@ -439,6 +445,7 @@ MedicationKnowledge_AdministrationGuidelines(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Dosage {
 
+
 	static Future<MedicationKnowledge_Dosage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -453,7 +460,6 @@ class MedicationKnowledge_Dosage {
 			type: type,
 			dosage: dosage,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Dosage);
 	return newMedicationKnowledge_Dosage;
 }
   String id;
@@ -477,6 +483,7 @@ MedicationKnowledge_Dosage(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_PatientCharacteristics {
 
+
 	static Future<MedicationKnowledge_PatientCharacteristics> newInstance({
 		String id,
 		List<Extension> extension,
@@ -495,7 +502,6 @@ class MedicationKnowledge_PatientCharacteristics {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_PatientCharacteristics);
 	return newMedicationKnowledge_PatientCharacteristics;
 }
   String id;
@@ -523,6 +529,7 @@ MedicationKnowledge_PatientCharacteristics(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MedicineClassification {
 
+
 	static Future<MedicationKnowledge_MedicineClassification> newInstance({
 		String id,
 		List<Extension> extension,
@@ -537,7 +544,6 @@ class MedicationKnowledge_MedicineClassification {
 			type: type,
 			classification: classification,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_MedicineClassification);
 	return newMedicationKnowledge_MedicineClassification;
 }
   String id;
@@ -561,6 +567,7 @@ MedicationKnowledge_MedicineClassification(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Packaging {
 
+
 	static Future<MedicationKnowledge_Packaging> newInstance({
 		String id,
 		List<Extension> extension,
@@ -575,7 +582,6 @@ class MedicationKnowledge_Packaging {
 			type: type,
 			quantity: quantity,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Packaging);
 	return newMedicationKnowledge_Packaging;
 }
   String id;
@@ -598,6 +604,7 @@ MedicationKnowledge_Packaging(
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_DrugCharacteristic {
+
 
 	static Future<MedicationKnowledge_DrugCharacteristic> newInstance({
 		String id,
@@ -623,7 +630,6 @@ class MedicationKnowledge_DrugCharacteristic {
 			valueBase64Binary: valueBase64Binary,
 			elementValueBase64Binary: elementValueBase64Binary,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_DrugCharacteristic);
 	return newMedicationKnowledge_DrugCharacteristic;
 }
   String id;
@@ -657,6 +663,7 @@ MedicationKnowledge_DrugCharacteristic(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Regulatory {
 
+
 	static Future<MedicationKnowledge_Regulatory> newInstance({
 		String id,
 		List<Extension> extension,
@@ -675,7 +682,6 @@ class MedicationKnowledge_Regulatory {
 			schedule: schedule,
 			maxDispense: maxDispense,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Regulatory);
 	return newMedicationKnowledge_Regulatory;
 }
   String id;
@@ -703,6 +709,7 @@ MedicationKnowledge_Regulatory(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Substitution {
 
+
 	static Future<MedicationKnowledge_Substitution> newInstance({
 		String id,
 		List<Extension> extension,
@@ -719,7 +726,6 @@ class MedicationKnowledge_Substitution {
 			allowed: allowed,
 			elementAllowed: elementAllowed,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Substitution);
 	return newMedicationKnowledge_Substitution;
 }
   String id;
@@ -745,6 +751,7 @@ MedicationKnowledge_Substitution(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Schedule {
 
+
 	static Future<MedicationKnowledge_Schedule> newInstance({
 		String id,
 		List<Extension> extension,
@@ -757,7 +764,6 @@ class MedicationKnowledge_Schedule {
 			modifierExtension: modifierExtension,
 			schedule: schedule,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Schedule);
 	return newMedicationKnowledge_Schedule;
 }
   String id;
@@ -779,6 +785,7 @@ MedicationKnowledge_Schedule(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MaxDispense {
 
+
 	static Future<MedicationKnowledge_MaxDispense> newInstance({
 		String id,
 		List<Extension> extension,
@@ -793,7 +800,6 @@ class MedicationKnowledge_MaxDispense {
 			quantity: quantity,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_MaxDispense);
 	return newMedicationKnowledge_MaxDispense;
 }
   String id;
@@ -817,6 +823,7 @@ MedicationKnowledge_MaxDispense(
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Kinetics {
 
+
 	static Future<MedicationKnowledge_Kinetics> newInstance({
 		String id,
 		List<Extension> extension,
@@ -833,7 +840,6 @@ class MedicationKnowledge_Kinetics {
 			lethalDose50: lethalDose50,
 			halfLifePeriod: halfLifePeriod,
 );
-	int saved = await fhirDb.saveResource(newMedicationKnowledge_Kinetics);
 	return newMedicationKnowledge_Kinetics;
 }
   String id;

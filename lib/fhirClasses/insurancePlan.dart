@@ -19,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan {
 
+
 	static Future<InsurancePlan> newInstance({
 		String  resourceType,
 		String id,
@@ -81,6 +82,11 @@ class InsurancePlan {
 );
 	int saved = await fhirDb.saveResource(newInsurancePlan);
 	return newInsurancePlan;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'InsurancePlan';
   String id;
@@ -149,6 +155,7 @@ InsurancePlan(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Contact {
 
+
 	static Future<InsurancePlan_Contact> newInstance({
 		String id,
 		List<Extension> extension,
@@ -167,7 +174,6 @@ class InsurancePlan_Contact {
 			telecom: telecom,
 			address: address,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_Contact);
 	return newInsurancePlan_Contact;
 }
   String id;
@@ -195,6 +201,7 @@ InsurancePlan_Contact(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Coverage {
 
+
 	static Future<InsurancePlan_Coverage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -211,7 +218,6 @@ class InsurancePlan_Coverage {
 			network: network,
 			benefit: benefit,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_Coverage);
 	return newInsurancePlan_Coverage;
 }
   String id;
@@ -237,6 +243,7 @@ InsurancePlan_Coverage(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit {
 
+
 	static Future<InsurancePlan_Benefit> newInstance({
 		String id,
 		List<Extension> extension,
@@ -255,7 +262,6 @@ class InsurancePlan_Benefit {
 			elementRequirement: elementRequirement,
 			limit: limit,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_Benefit);
 	return newInsurancePlan_Benefit;
 }
   String id;
@@ -283,6 +289,7 @@ InsurancePlan_Benefit(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Limit {
 
+
 	static Future<InsurancePlan_Limit> newInstance({
 		String id,
 		List<Extension> extension,
@@ -297,7 +304,6 @@ class InsurancePlan_Limit {
 			value: value,
 			code: code,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_Limit);
 	return newInsurancePlan_Limit;
 }
   String id;
@@ -321,6 +327,7 @@ InsurancePlan_Limit(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Plan {
 
+
 	static Future<InsurancePlan_Plan> newInstance({
 		String id,
 		List<Extension> extension,
@@ -343,7 +350,6 @@ class InsurancePlan_Plan {
 			generalCost: generalCost,
 			specificCost: specificCost,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_Plan);
 	return newInsurancePlan_Plan;
 }
   String id;
@@ -375,6 +381,7 @@ InsurancePlan_Plan(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_GeneralCost {
 
+
 	static Future<InsurancePlan_GeneralCost> newInstance({
 		String id,
 		List<Extension> extension,
@@ -397,7 +404,6 @@ class InsurancePlan_GeneralCost {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_GeneralCost);
 	return newInsurancePlan_GeneralCost;
 }
   String id;
@@ -429,6 +435,7 @@ InsurancePlan_GeneralCost(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_SpecificCost {
 
+
 	static Future<InsurancePlan_SpecificCost> newInstance({
 		String id,
 		List<Extension> extension,
@@ -443,7 +450,6 @@ class InsurancePlan_SpecificCost {
 			category: category,
 			benefit: benefit,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_SpecificCost);
 	return newInsurancePlan_SpecificCost;
 }
   String id;
@@ -467,6 +473,7 @@ InsurancePlan_SpecificCost(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit1 {
 
+
 	static Future<InsurancePlan_Benefit1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -481,7 +488,6 @@ class InsurancePlan_Benefit1 {
 			type: type,
 			cost: cost,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_Benefit1);
 	return newInsurancePlan_Benefit1;
 }
   String id;
@@ -505,6 +511,7 @@ InsurancePlan_Benefit1(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Cost {
 
+
 	static Future<InsurancePlan_Cost> newInstance({
 		String id,
 		List<Extension> extension,
@@ -523,7 +530,6 @@ class InsurancePlan_Cost {
 			qualifiers: qualifiers,
 			value: value,
 );
-	int saved = await fhirDb.saveResource(newInsurancePlan_Cost);
 	return newInsurancePlan_Cost;
 }
   String id;

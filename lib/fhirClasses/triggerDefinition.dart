@@ -10,6 +10,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class TriggerDefinition {
 
+
 	static Future<TriggerDefinition> newInstance({
 		String id,
 		List<Extension> extension,
@@ -44,6 +45,11 @@ class TriggerDefinition {
 );
 	int saved = await fhirDb.saveResource(newTriggerDefinition);
 	return newTriggerDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

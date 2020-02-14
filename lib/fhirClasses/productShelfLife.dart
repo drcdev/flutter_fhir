@@ -9,6 +9,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class ProductShelfLife {
 
+
 	static Future<ProductShelfLife> newInstance({
 		String id,
 		List<Extension> extension,
@@ -29,6 +30,11 @@ class ProductShelfLife {
 );
 	int saved = await fhirDb.saveResource(newProductShelfLife);
 	return newProductShelfLife;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

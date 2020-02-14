@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Schedule {
 
+
 	static Future<Schedule> newInstance({
 		String  resourceType,
 		String id,
@@ -62,6 +63,11 @@ class Schedule {
 );
 	int saved = await fhirDb.saveResource(newSchedule);
 	return newSchedule;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Schedule';
   String id;

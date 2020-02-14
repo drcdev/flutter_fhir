@@ -20,6 +20,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Observation {
 
+
 	static Future<Observation> newInstance({
 		String  resourceType,
 		String id,
@@ -140,6 +141,11 @@ class Observation {
 );
 	int saved = await fhirDb.saveResource(newObservation);
 	return newObservation;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Observation';
   String id;
@@ -266,6 +272,7 @@ Observation(
 @JsonSerializable(explicitToJson: true)
 class Observation_ReferenceRange {
 
+
 	static Future<Observation_ReferenceRange> newInstance({
 		String id,
 		List<Extension> extension,
@@ -290,7 +297,6 @@ class Observation_ReferenceRange {
 			text: text,
 			elementText: elementText,
 );
-	int saved = await fhirDb.saveResource(newObservation_ReferenceRange);
 	return newObservation_ReferenceRange;
 }
   String id;
@@ -323,6 +329,7 @@ Observation_ReferenceRange(
 
 @JsonSerializable(explicitToJson: true)
 class Observation_Component {
+
 
 	static Future<Observation_Component> newInstance({
 		String id,
@@ -374,7 +381,6 @@ class Observation_Component {
 			interpretation: interpretation,
 			referenceRange: referenceRange,
 );
-	int saved = await fhirDb.saveResource(newObservation_Component);
 	return newObservation_Component;
 }
   String id;

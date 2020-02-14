@@ -7,6 +7,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Annotation {
 
+
 	static Future<Annotation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -31,6 +32,11 @@ class Annotation {
 );
 	int saved = await fhirDb.saveResource(newAnnotation);
 	return newAnnotation;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

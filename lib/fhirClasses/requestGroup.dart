@@ -21,6 +21,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class RequestGroup {
 
+
 	static Future<RequestGroup> newInstance({
 		String  resourceType,
 		String id,
@@ -97,6 +98,11 @@ class RequestGroup {
 );
 	int saved = await fhirDb.saveResource(newRequestGroup);
 	return newRequestGroup;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'RequestGroup';
   String id;
@@ -179,6 +185,7 @@ RequestGroup(
 @JsonSerializable(explicitToJson: true)
 class RequestGroup_Action {
 
+
 	static Future<RequestGroup_Action> newInstance({
 		String id,
 		List<Extension> extension,
@@ -259,7 +266,6 @@ class RequestGroup_Action {
 			resource: resource,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newRequestGroup_Action);
 	return newRequestGroup_Action;
 }
   String id;
@@ -349,6 +355,7 @@ RequestGroup_Action(
 @JsonSerializable(explicitToJson: true)
 class RequestGroup_Condition {
 
+
 	static Future<RequestGroup_Condition> newInstance({
 		String id,
 		List<Extension> extension,
@@ -365,7 +372,6 @@ class RequestGroup_Condition {
 			elementKind: elementKind,
 			expression: expression,
 );
-	int saved = await fhirDb.saveResource(newRequestGroup_Condition);
 	return newRequestGroup_Condition;
 }
   String id;
@@ -391,6 +397,7 @@ RequestGroup_Condition(
 @JsonSerializable(explicitToJson: true)
 class RequestGroup_RelatedAction {
 
+
 	static Future<RequestGroup_RelatedAction> newInstance({
 		String id,
 		List<Extension> extension,
@@ -413,7 +420,6 @@ class RequestGroup_RelatedAction {
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange,
 );
-	int saved = await fhirDb.saveResource(newRequestGroup_RelatedAction);
 	return newRequestGroup_RelatedAction;
 }
   String id;

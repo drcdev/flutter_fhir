@@ -39,6 +39,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Parameters {
 
+
 	static Future<Parameters> newInstance({
 		String  resourceType,
 		String id,
@@ -61,6 +62,11 @@ class Parameters {
 );
 	int saved = await fhirDb.saveResource(newParameters);
 	return newParameters;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Parameters';
   String id;
@@ -88,6 +94,7 @@ Parameters(
 
 @JsonSerializable(explicitToJson: true)
 class Parameters_Parameter {
+
 
 	static Future<Parameters_Parameter> newInstance({
 		String id,
@@ -245,7 +252,6 @@ class Parameters_Parameter {
 			resource: resource,
 			part: part,
 );
-	int saved = await fhirDb.saveResource(newParameters_Parameter);
 	return newParameters_Parameter;
 }
   String id;

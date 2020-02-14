@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient {
 
+
 	static Future<MedicinalProductIngredient> newInstance({
 		String  resourceType,
 		String id,
@@ -56,6 +57,11 @@ class MedicinalProductIngredient {
 );
 	int saved = await fhirDb.saveResource(newMedicinalProductIngredient);
 	return newMedicinalProductIngredient;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicinalProductIngredient';
   String id;
@@ -104,6 +110,7 @@ MedicinalProductIngredient(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_SpecifiedSubstance {
 
+
 	static Future<MedicinalProductIngredient_SpecifiedSubstance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -122,7 +129,6 @@ class MedicinalProductIngredient_SpecifiedSubstance {
 			confidentiality: confidentiality,
 			strength: strength,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_SpecifiedSubstance);
 	return newMedicinalProductIngredient_SpecifiedSubstance;
 }
   String id;
@@ -150,6 +156,7 @@ MedicinalProductIngredient_SpecifiedSubstance(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_Strength {
 
+
 	static Future<MedicinalProductIngredient_Strength> newInstance({
 		String id,
 		List<Extension> extension,
@@ -176,7 +183,6 @@ class MedicinalProductIngredient_Strength {
 			country: country,
 			referenceStrength: referenceStrength,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_Strength);
 	return newMedicinalProductIngredient_Strength;
 }
   String id;
@@ -212,6 +218,7 @@ MedicinalProductIngredient_Strength(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_ReferenceStrength {
 
+
 	static Future<MedicinalProductIngredient_ReferenceStrength> newInstance({
 		String id,
 		List<Extension> extension,
@@ -234,7 +241,6 @@ class MedicinalProductIngredient_ReferenceStrength {
 			elementMeasurementPoint: elementMeasurementPoint,
 			country: country,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_ReferenceStrength);
 	return newMedicinalProductIngredient_ReferenceStrength;
 }
   String id;
@@ -266,6 +272,7 @@ MedicinalProductIngredient_ReferenceStrength(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_Substance {
 
+
 	static Future<MedicinalProductIngredient_Substance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -280,7 +287,6 @@ class MedicinalProductIngredient_Substance {
 			code: code,
 			strength: strength,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_Substance);
 	return newMedicinalProductIngredient_Substance;
 }
   String id;

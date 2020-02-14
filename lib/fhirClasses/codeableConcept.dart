@@ -7,6 +7,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class CodeableConcept {
 
+
 	static Future<CodeableConcept> newInstance({
 		String id,
 		List<Extension> extension,
@@ -23,6 +24,11 @@ class CodeableConcept {
 );
 	int saved = await fhirDb.saveResource(newCodeableConcept);
 	return newCodeableConcept;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

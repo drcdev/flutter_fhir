@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class DeviceUseStatement {
 
+
 	static Future<DeviceUseStatement> newInstance({
 		String  resourceType,
 		String id,
@@ -80,6 +81,11 @@ class DeviceUseStatement {
 );
 	int saved = await fhirDb.saveResource(newDeviceUseStatement);
 	return newDeviceUseStatement;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'DeviceUseStatement';
   String id;

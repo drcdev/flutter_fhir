@@ -6,6 +6,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Ratio {
 
+
 	static Future<Ratio> newInstance({
 		String id,
 		List<Extension> extension,
@@ -20,6 +21,11 @@ class Ratio {
 );
 	int saved = await fhirDb.saveResource(newRatio);
 	return newRatio;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

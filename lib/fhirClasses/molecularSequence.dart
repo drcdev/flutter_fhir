@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence {
 
+
 	static Future<MolecularSequence> newInstance({
 		String  resourceType,
 		String id,
@@ -82,6 +83,11 @@ class MolecularSequence {
 );
 	int saved = await fhirDb.saveResource(newMolecularSequence);
 	return newMolecularSequence;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MolecularSequence';
   String id;
@@ -156,6 +162,7 @@ MolecularSequence(
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_ReferenceSeq {
 
+
 	static Future<MolecularSequence_ReferenceSeq> newInstance({
 		String id,
 		List<Extension> extension,
@@ -196,7 +203,6 @@ class MolecularSequence_ReferenceSeq {
 			windowEnd: windowEnd,
 			elementWindowEnd: elementWindowEnd,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_ReferenceSeq);
 	return newMolecularSequence_ReferenceSeq;
 }
   String id;
@@ -246,6 +252,7 @@ MolecularSequence_ReferenceSeq(
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Variant {
 
+
 	static Future<MolecularSequence_Variant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -278,7 +285,6 @@ class MolecularSequence_Variant {
 			elementCigar: elementCigar,
 			variantPointer: variantPointer,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_Variant);
 	return newMolecularSequence_Variant;
 }
   String id;
@@ -319,6 +325,7 @@ MolecularSequence_Variant(
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Quality {
+
 
 	static Future<MolecularSequence_Quality> newInstance({
 		String id,
@@ -382,7 +389,6 @@ class MolecularSequence_Quality {
 			elementFScore: elementFScore,
 			roc: roc,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_Quality);
 	return newMolecularSequence_Quality;
 }
   String id;
@@ -454,6 +460,7 @@ MolecularSequence_Quality(
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Roc {
 
+
 	static Future<MolecularSequence_Roc> newInstance({
 		String id,
 		List<Extension> extension,
@@ -492,7 +499,6 @@ class MolecularSequence_Roc {
 			fMeasure: fMeasure,
 			elementFMeasure: elementFMeasure,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_Roc);
 	return newMolecularSequence_Roc;
 }
   String id;
@@ -540,6 +546,7 @@ MolecularSequence_Roc(
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Repository {
 
+
 	static Future<MolecularSequence_Repository> newInstance({
 		String id,
 		List<Extension> extension,
@@ -574,7 +581,6 @@ class MolecularSequence_Repository {
 			readsetId: readsetId,
 			elementReadsetId: elementReadsetId,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_Repository);
 	return newMolecularSequence_Repository;
 }
   String id;
@@ -618,6 +624,7 @@ MolecularSequence_Repository(
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_StructureVariant {
 
+
 	static Future<MolecularSequence_StructureVariant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -642,7 +649,6 @@ class MolecularSequence_StructureVariant {
 			outer: outer,
 			inner: inner,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_StructureVariant);
 	return newMolecularSequence_StructureVariant;
 }
   String id;
@@ -676,6 +682,7 @@ MolecularSequence_StructureVariant(
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Outer {
 
+
 	static Future<MolecularSequence_Outer> newInstance({
 		String id,
 		List<Extension> extension,
@@ -694,7 +701,6 @@ class MolecularSequence_Outer {
 			end: end,
 			elementEnd: elementEnd,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_Outer);
 	return newMolecularSequence_Outer;
 }
   String id;
@@ -722,6 +728,7 @@ MolecularSequence_Outer(
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Inner {
 
+
 	static Future<MolecularSequence_Inner> newInstance({
 		String id,
 		List<Extension> extension,
@@ -740,7 +747,6 @@ class MolecularSequence_Inner {
 			end: end,
 			elementEnd: elementEnd,
 );
-	int saved = await fhirDb.saveResource(newMolecularSequence_Inner);
 	return newMolecularSequence_Inner;
 }
   String id;

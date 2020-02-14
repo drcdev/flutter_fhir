@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged {
 
+
 	static Future<MedicinalProductPackaged> newInstance({
 		String  resourceType,
 		String id,
@@ -65,6 +66,11 @@ class MedicinalProductPackaged {
 );
 	int saved = await fhirDb.saveResource(newMedicinalProductPackaged);
 	return newMedicinalProductPackaged;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicinalProductPackaged';
   String id;
@@ -119,6 +125,7 @@ MedicinalProductPackaged(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged_BatchIdentifier {
 
+
 	static Future<MedicinalProductPackaged_BatchIdentifier> newInstance({
 		String id,
 		List<Extension> extension,
@@ -133,7 +140,6 @@ class MedicinalProductPackaged_BatchIdentifier {
 			outerPackaging: outerPackaging,
 			immediatePackaging: immediatePackaging,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPackaged_BatchIdentifier);
 	return newMedicinalProductPackaged_BatchIdentifier;
 }
   String id;
@@ -156,6 +162,7 @@ MedicinalProductPackaged_BatchIdentifier(
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged_PackageItem {
+
 
 	static Future<MedicinalProductPackaged_PackageItem> newInstance({
 		String id,
@@ -191,7 +198,6 @@ class MedicinalProductPackaged_PackageItem {
 			shelfLifeStorage: shelfLifeStorage,
 			manufacturer: manufacturer,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPackaged_PackageItem);
 	return newMedicinalProductPackaged_PackageItem;
 }
   String id;

@@ -24,6 +24,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition {
 
+
 	static Future<ActivityDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -198,6 +199,11 @@ class ActivityDefinition {
 );
 	int saved = await fhirDb.saveResource(newActivityDefinition);
 	return newActivityDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ActivityDefinition';
   String id;
@@ -378,6 +384,7 @@ ActivityDefinition(
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition_Participant {
 
+
 	static Future<ActivityDefinition_Participant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -394,7 +401,6 @@ class ActivityDefinition_Participant {
 			elementType: elementType,
 			role: role,
 );
-	int saved = await fhirDb.saveResource(newActivityDefinition_Participant);
 	return newActivityDefinition_Participant;
 }
   String id;
@@ -420,6 +426,7 @@ ActivityDefinition_Participant(
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition_DynamicValue {
 
+
 	static Future<ActivityDefinition_DynamicValue> newInstance({
 		String id,
 		List<Extension> extension,
@@ -436,7 +443,6 @@ class ActivityDefinition_DynamicValue {
 			elementPath: elementPath,
 			expression: expression,
 );
-	int saved = await fhirDb.saveResource(newActivityDefinition_DynamicValue);
 	return newActivityDefinition_DynamicValue;
 }
   String id;

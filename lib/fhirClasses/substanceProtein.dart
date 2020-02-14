@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SubstanceProtein {
 
+
 	static Future<SubstanceProtein> newInstance({
 		String  resourceType,
 		String id,
@@ -53,6 +54,11 @@ class SubstanceProtein {
 );
 	int saved = await fhirDb.saveResource(newSubstanceProtein);
 	return newSubstanceProtein;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SubstanceProtein';
   String id;
@@ -99,6 +105,7 @@ SubstanceProtein(
 @JsonSerializable(explicitToJson: true)
 class SubstanceProtein_Subunit {
 
+
 	static Future<SubstanceProtein_Subunit> newInstance({
 		String id,
 		List<Extension> extension,
@@ -135,7 +142,6 @@ class SubstanceProtein_Subunit {
 			cTerminalModification: cTerminalModification,
 			elementCTerminalModification: elementCTerminalModification,
 );
-	int saved = await fhirDb.saveResource(newSubstanceProtein_Subunit);
 	return newSubstanceProtein_Subunit;
 }
   String id;

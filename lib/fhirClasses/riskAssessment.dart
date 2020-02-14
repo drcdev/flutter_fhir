@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class RiskAssessment {
 
+
 	static Future<RiskAssessment> newInstance({
 		String  resourceType,
 		String id,
@@ -86,6 +87,11 @@ class RiskAssessment {
 );
 	int saved = await fhirDb.saveResource(newRiskAssessment);
 	return newRiskAssessment;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'RiskAssessment';
   String id;
@@ -162,6 +168,7 @@ RiskAssessment(
 @JsonSerializable(explicitToJson: true)
 class RiskAssessment_Prediction {
 
+
 	static Future<RiskAssessment_Prediction> newInstance({
 		String id,
 		List<Extension> extension,
@@ -194,7 +201,6 @@ class RiskAssessment_Prediction {
 			rationale: rationale,
 			elementRationale: elementRationale,
 );
-	int saved = await fhirDb.saveResource(newRiskAssessment_Prediction);
 	return newRiskAssessment_Prediction;
 }
   String id;

@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MeasureReport {
 
+
 	static Future<MeasureReport> newInstance({
 		String  resourceType,
 		String id,
@@ -71,6 +72,11 @@ class MeasureReport {
 );
 	int saved = await fhirDb.saveResource(newMeasureReport);
 	return newMeasureReport;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MeasureReport';
   String id;
@@ -133,6 +139,7 @@ MeasureReport(
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Group {
 
+
 	static Future<MeasureReport_Group> newInstance({
 		String id,
 		List<Extension> extension,
@@ -151,7 +158,6 @@ class MeasureReport_Group {
 			measureScore: measureScore,
 			stratifier: stratifier,
 );
-	int saved = await fhirDb.saveResource(newMeasureReport_Group);
 	return newMeasureReport_Group;
 }
   String id;
@@ -179,6 +185,7 @@ MeasureReport_Group(
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Population {
 
+
 	static Future<MeasureReport_Population> newInstance({
 		String id,
 		List<Extension> extension,
@@ -197,7 +204,6 @@ class MeasureReport_Population {
 			elementCount: elementCount,
 			subjectResults: subjectResults,
 );
-	int saved = await fhirDb.saveResource(newMeasureReport_Population);
 	return newMeasureReport_Population;
 }
   String id;
@@ -225,6 +231,7 @@ MeasureReport_Population(
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Stratifier {
 
+
 	static Future<MeasureReport_Stratifier> newInstance({
 		String id,
 		List<Extension> extension,
@@ -239,7 +246,6 @@ class MeasureReport_Stratifier {
 			code: code,
 			stratum: stratum,
 );
-	int saved = await fhirDb.saveResource(newMeasureReport_Stratifier);
 	return newMeasureReport_Stratifier;
 }
   String id;
@@ -263,6 +269,7 @@ MeasureReport_Stratifier(
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Stratum {
 
+
 	static Future<MeasureReport_Stratum> newInstance({
 		String id,
 		List<Extension> extension,
@@ -281,7 +288,6 @@ class MeasureReport_Stratum {
 			population: population,
 			measureScore: measureScore,
 );
-	int saved = await fhirDb.saveResource(newMeasureReport_Stratum);
 	return newMeasureReport_Stratum;
 }
   String id;
@@ -309,6 +315,7 @@ MeasureReport_Stratum(
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Component {
 
+
 	static Future<MeasureReport_Component> newInstance({
 		String id,
 		List<Extension> extension,
@@ -323,7 +330,6 @@ class MeasureReport_Component {
 			code: code,
 			value: value,
 );
-	int saved = await fhirDb.saveResource(newMeasureReport_Component);
 	return newMeasureReport_Component;
 }
   String id;
@@ -347,6 +353,7 @@ MeasureReport_Component(
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Population1 {
 
+
 	static Future<MeasureReport_Population1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -365,7 +372,6 @@ class MeasureReport_Population1 {
 			elementCount: elementCount,
 			subjectResults: subjectResults,
 );
-	int saved = await fhirDb.saveResource(newMeasureReport_Population1);
 	return newMeasureReport_Population1;
 }
   String id;

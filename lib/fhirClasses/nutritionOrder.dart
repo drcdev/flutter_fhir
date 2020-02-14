@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder {
 
+
 	static Future<NutritionOrder> newInstance({
 		String  resourceType,
 		String id,
@@ -89,6 +90,11 @@ class NutritionOrder {
 );
 	int saved = await fhirDb.saveResource(newNutritionOrder);
 	return newNutritionOrder;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'NutritionOrder';
   String id;
@@ -167,6 +173,7 @@ NutritionOrder(
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_OralDiet {
 
+
 	static Future<NutritionOrder_OralDiet> newInstance({
 		String id,
 		List<Extension> extension,
@@ -191,7 +198,6 @@ class NutritionOrder_OralDiet {
 			instruction: instruction,
 			elementInstruction: elementInstruction,
 );
-	int saved = await fhirDb.saveResource(newNutritionOrder_OralDiet);
 	return newNutritionOrder_OralDiet;
 }
   String id;
@@ -225,6 +231,7 @@ NutritionOrder_OralDiet(
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Nutrient {
 
+
 	static Future<NutritionOrder_Nutrient> newInstance({
 		String id,
 		List<Extension> extension,
@@ -239,7 +246,6 @@ class NutritionOrder_Nutrient {
 			modifier: modifier,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newNutritionOrder_Nutrient);
 	return newNutritionOrder_Nutrient;
 }
   String id;
@@ -263,6 +269,7 @@ NutritionOrder_Nutrient(
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Texture {
 
+
 	static Future<NutritionOrder_Texture> newInstance({
 		String id,
 		List<Extension> extension,
@@ -277,7 +284,6 @@ class NutritionOrder_Texture {
 			modifier: modifier,
 			foodType: foodType,
 );
-	int saved = await fhirDb.saveResource(newNutritionOrder_Texture);
 	return newNutritionOrder_Texture;
 }
   String id;
@@ -300,6 +306,7 @@ NutritionOrder_Texture(
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Supplement {
+
 
 	static Future<NutritionOrder_Supplement> newInstance({
 		String id,
@@ -325,7 +332,6 @@ class NutritionOrder_Supplement {
 			instruction: instruction,
 			elementInstruction: elementInstruction,
 );
-	int saved = await fhirDb.saveResource(newNutritionOrder_Supplement);
 	return newNutritionOrder_Supplement;
 }
   String id;
@@ -358,6 +364,7 @@ NutritionOrder_Supplement(
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_EnteralFormula {
+
 
 	static Future<NutritionOrder_EnteralFormula> newInstance({
 		String id,
@@ -393,7 +400,6 @@ class NutritionOrder_EnteralFormula {
 			administrationInstruction: administrationInstruction,
 			elementAdministrationInstruction: elementAdministrationInstruction,
 );
-	int saved = await fhirDb.saveResource(newNutritionOrder_EnteralFormula);
 	return newNutritionOrder_EnteralFormula;
 }
   String id;
@@ -437,6 +443,7 @@ NutritionOrder_EnteralFormula(
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Administration {
 
+
 	static Future<NutritionOrder_Administration> newInstance({
 		String id,
 		List<Extension> extension,
@@ -455,7 +462,6 @@ class NutritionOrder_Administration {
 			rateQuantity: rateQuantity,
 			rateRatio: rateRatio,
 );
-	int saved = await fhirDb.saveResource(newNutritionOrder_Administration);
 	return newNutritionOrder_Administration;
 }
   String id;

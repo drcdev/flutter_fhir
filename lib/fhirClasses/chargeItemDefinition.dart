@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition {
 
+
 	static Future<ChargeItemDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -115,6 +116,11 @@ class ChargeItemDefinition {
 );
 	int saved = await fhirDb.saveResource(newChargeItemDefinition);
 	return newChargeItemDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ChargeItemDefinition';
   String id;
@@ -219,6 +225,7 @@ ChargeItemDefinition(
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_Applicability {
 
+
 	static Future<ChargeItemDefinition_Applicability> newInstance({
 		String id,
 		List<Extension> extension,
@@ -241,7 +248,6 @@ class ChargeItemDefinition_Applicability {
 			expression: expression,
 			elementExpression: elementExpression,
 );
-	int saved = await fhirDb.saveResource(newChargeItemDefinition_Applicability);
 	return newChargeItemDefinition_Applicability;
 }
   String id;
@@ -273,6 +279,7 @@ ChargeItemDefinition_Applicability(
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_PropertyGroup {
 
+
 	static Future<ChargeItemDefinition_PropertyGroup> newInstance({
 		String id,
 		List<Extension> extension,
@@ -287,7 +294,6 @@ class ChargeItemDefinition_PropertyGroup {
 			applicability: applicability,
 			priceComponent: priceComponent,
 );
-	int saved = await fhirDb.saveResource(newChargeItemDefinition_PropertyGroup);
 	return newChargeItemDefinition_PropertyGroup;
 }
   String id;
@@ -311,6 +317,7 @@ ChargeItemDefinition_PropertyGroup(
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_PriceComponent {
 
+
 	static Future<ChargeItemDefinition_PriceComponent> newInstance({
 		String id,
 		List<Extension> extension,
@@ -333,7 +340,6 @@ class ChargeItemDefinition_PriceComponent {
 			elementFactor: elementFactor,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newChargeItemDefinition_PriceComponent);
 	return newChargeItemDefinition_PriceComponent;
 }
   String id;

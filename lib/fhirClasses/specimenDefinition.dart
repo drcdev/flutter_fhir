@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition {
 
+
 	static Future<SpecimenDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -58,6 +59,11 @@ class SpecimenDefinition {
 );
 	int saved = await fhirDb.saveResource(newSpecimenDefinition);
 	return newSpecimenDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SpecimenDefinition';
   String id;
@@ -106,6 +112,7 @@ SpecimenDefinition(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_TypeTested {
 
+
 	static Future<SpecimenDefinition_TypeTested> newInstance({
 		String id,
 		List<Extension> extension,
@@ -138,7 +145,6 @@ class SpecimenDefinition_TypeTested {
 			rejectionCriterion: rejectionCriterion,
 			handling: handling,
 );
-	int saved = await fhirDb.saveResource(newSpecimenDefinition_TypeTested);
 	return newSpecimenDefinition_TypeTested;
 }
   String id;
@@ -180,6 +186,7 @@ SpecimenDefinition_TypeTested(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Container {
 
+
 	static Future<SpecimenDefinition_Container> newInstance({
 		String id,
 		List<Extension> extension,
@@ -214,7 +221,6 @@ class SpecimenDefinition_Container {
 			preparation: preparation,
 			elementPreparation: elementPreparation,
 );
-	int saved = await fhirDb.saveResource(newSpecimenDefinition_Container);
 	return newSpecimenDefinition_Container;
 }
   String id;
@@ -258,6 +264,7 @@ SpecimenDefinition_Container(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Additive {
 
+
 	static Future<SpecimenDefinition_Additive> newInstance({
 		String id,
 		List<Extension> extension,
@@ -272,7 +279,6 @@ class SpecimenDefinition_Additive {
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference,
 );
-	int saved = await fhirDb.saveResource(newSpecimenDefinition_Additive);
 	return newSpecimenDefinition_Additive;
 }
   String id;
@@ -296,6 +302,7 @@ SpecimenDefinition_Additive(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Handling {
 
+
 	static Future<SpecimenDefinition_Handling> newInstance({
 		String id,
 		List<Extension> extension,
@@ -316,7 +323,6 @@ class SpecimenDefinition_Handling {
 			instruction: instruction,
 			elementInstruction: elementInstruction,
 );
-	int saved = await fhirDb.saveResource(newSpecimenDefinition_Handling);
 	return newSpecimenDefinition_Handling;
 }
   String id;

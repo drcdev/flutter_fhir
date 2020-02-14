@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class GraphDefinition {
 
+
 	static Future<GraphDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -91,6 +92,11 @@ class GraphDefinition {
 );
 	int saved = await fhirDb.saveResource(newGraphDefinition);
 	return newGraphDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'GraphDefinition';
   String id;
@@ -175,6 +181,7 @@ GraphDefinition(
 @JsonSerializable(explicitToJson: true)
 class GraphDefinition_Link {
 
+
 	static Future<GraphDefinition_Link> newInstance({
 		String id,
 		List<Extension> extension,
@@ -207,7 +214,6 @@ class GraphDefinition_Link {
 			elementDescription: elementDescription,
 			target: target,
 );
-	int saved = await fhirDb.saveResource(newGraphDefinition_Link);
 	return newGraphDefinition_Link;
 }
   String id;
@@ -249,6 +255,7 @@ GraphDefinition_Link(
 @JsonSerializable(explicitToJson: true)
 class GraphDefinition_Target {
 
+
 	static Future<GraphDefinition_Target> newInstance({
 		String id,
 		List<Extension> extension,
@@ -273,7 +280,6 @@ class GraphDefinition_Target {
 			compartment: compartment,
 			link: link,
 );
-	int saved = await fhirDb.saveResource(newGraphDefinition_Target);
 	return newGraphDefinition_Target;
 }
   String id;
@@ -307,6 +313,7 @@ GraphDefinition_Target(
 @JsonSerializable(explicitToJson: true)
 class GraphDefinition_Compartment {
 
+
 	static Future<GraphDefinition_Compartment> newInstance({
 		String id,
 		List<Extension> extension,
@@ -337,7 +344,6 @@ class GraphDefinition_Compartment {
 			description: description,
 			elementDescription: elementDescription,
 );
-	int saved = await fhirDb.saveResource(newGraphDefinition_Compartment);
 	return newGraphDefinition_Compartment;
 }
   String id;

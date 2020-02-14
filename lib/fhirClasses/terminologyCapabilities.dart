@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities {
 
+
 	static Future<TerminologyCapabilities> newInstance({
 		String  resourceType,
 		String id,
@@ -117,6 +118,11 @@ class TerminologyCapabilities {
 );
 	int saved = await fhirDb.saveResource(newTerminologyCapabilities);
 	return newTerminologyCapabilities;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'TerminologyCapabilities';
   String id;
@@ -227,6 +233,7 @@ TerminologyCapabilities(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Software {
 
+
 	static Future<TerminologyCapabilities_Software> newInstance({
 		String id,
 		List<Extension> extension,
@@ -245,7 +252,6 @@ class TerminologyCapabilities_Software {
 			version: version,
 			elementVersion: elementVersion,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Software);
 	return newTerminologyCapabilities_Software;
 }
   String id;
@@ -273,6 +279,7 @@ TerminologyCapabilities_Software(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Implementation {
 
+
 	static Future<TerminologyCapabilities_Implementation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -291,7 +298,6 @@ class TerminologyCapabilities_Implementation {
 			url: url,
 			elementUrl: elementUrl,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Implementation);
 	return newTerminologyCapabilities_Implementation;
 }
   String id;
@@ -319,6 +325,7 @@ TerminologyCapabilities_Implementation(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_CodeSystem {
 
+
 	static Future<TerminologyCapabilities_CodeSystem> newInstance({
 		String id,
 		List<Extension> extension,
@@ -337,7 +344,6 @@ class TerminologyCapabilities_CodeSystem {
 			subsumption: subsumption,
 			elementSubsumption: elementSubsumption,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_CodeSystem);
 	return newTerminologyCapabilities_CodeSystem;
 }
   String id;
@@ -364,6 +370,7 @@ TerminologyCapabilities_CodeSystem(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Version {
+
 
 	static Future<TerminologyCapabilities_Version> newInstance({
 		String id,
@@ -397,7 +404,6 @@ class TerminologyCapabilities_Version {
 			property: property,
 			elementProperty: elementProperty,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Version);
 	return newTerminologyCapabilities_Version;
 }
   String id;
@@ -439,6 +445,7 @@ TerminologyCapabilities_Version(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Filter {
 
+
 	static Future<TerminologyCapabilities_Filter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -457,7 +464,6 @@ class TerminologyCapabilities_Filter {
 			op: op,
 			elementOp: elementOp,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Filter);
 	return newTerminologyCapabilities_Filter;
 }
   String id;
@@ -484,6 +490,7 @@ TerminologyCapabilities_Filter(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Expansion {
+
 
 	static Future<TerminologyCapabilities_Expansion> newInstance({
 		String id,
@@ -513,7 +520,6 @@ class TerminologyCapabilities_Expansion {
 			textFilter: textFilter,
 			elementTextFilter: elementTextFilter,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Expansion);
 	return newTerminologyCapabilities_Expansion;
 }
   String id;
@@ -551,6 +557,7 @@ TerminologyCapabilities_Expansion(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Parameter {
 
+
 	static Future<TerminologyCapabilities_Parameter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -569,7 +576,6 @@ class TerminologyCapabilities_Parameter {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Parameter);
 	return newTerminologyCapabilities_Parameter;
 }
   String id;
@@ -597,6 +603,7 @@ TerminologyCapabilities_Parameter(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_ValidateCode {
 
+
 	static Future<TerminologyCapabilities_ValidateCode> newInstance({
 		String id,
 		List<Extension> extension,
@@ -611,7 +618,6 @@ class TerminologyCapabilities_ValidateCode {
 			translations: translations,
 			elementTranslations: elementTranslations,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_ValidateCode);
 	return newTerminologyCapabilities_ValidateCode;
 }
   String id;
@@ -635,6 +641,7 @@ TerminologyCapabilities_ValidateCode(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Translation {
 
+
 	static Future<TerminologyCapabilities_Translation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -649,7 +656,6 @@ class TerminologyCapabilities_Translation {
 			needsMap: needsMap,
 			elementNeedsMap: elementNeedsMap,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Translation);
 	return newTerminologyCapabilities_Translation;
 }
   String id;
@@ -673,6 +679,7 @@ TerminologyCapabilities_Translation(
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Closure {
 
+
 	static Future<TerminologyCapabilities_Closure> newInstance({
 		String id,
 		List<Extension> extension,
@@ -687,7 +694,6 @@ class TerminologyCapabilities_Closure {
 			translation: translation,
 			elementTranslation: elementTranslation,
 );
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities_Closure);
 	return newTerminologyCapabilities_Closure;
 }
   String id;

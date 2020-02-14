@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class HealthcareService {
 
+
 	static Future<HealthcareService> newInstance({
 		String  resourceType,
 		String id,
@@ -104,6 +105,11 @@ class HealthcareService {
 );
 	int saved = await fhirDb.saveResource(newHealthcareService);
 	return newHealthcareService;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'HealthcareService';
   String id;
@@ -198,6 +204,7 @@ HealthcareService(
 @JsonSerializable(explicitToJson: true)
 class HealthcareService_Eligibility {
 
+
 	static Future<HealthcareService_Eligibility> newInstance({
 		String id,
 		List<Extension> extension,
@@ -214,7 +221,6 @@ class HealthcareService_Eligibility {
 			comment: comment,
 			elementComment: elementComment,
 );
-	int saved = await fhirDb.saveResource(newHealthcareService_Eligibility);
 	return newHealthcareService_Eligibility;
 }
   String id;
@@ -239,6 +245,7 @@ HealthcareService_Eligibility(
 
 @JsonSerializable(explicitToJson: true)
 class HealthcareService_AvailableTime {
+
 
 	static Future<HealthcareService_AvailableTime> newInstance({
 		String id,
@@ -266,7 +273,6 @@ class HealthcareService_AvailableTime {
 			availableEndTime: availableEndTime,
 			elementAvailableEndTime: elementAvailableEndTime,
 );
-	int saved = await fhirDb.saveResource(newHealthcareService_AvailableTime);
 	return newHealthcareService_AvailableTime;
 }
   String id;
@@ -302,6 +308,7 @@ HealthcareService_AvailableTime(
 @JsonSerializable(explicitToJson: true)
 class HealthcareService_NotAvailable {
 
+
 	static Future<HealthcareService_NotAvailable> newInstance({
 		String id,
 		List<Extension> extension,
@@ -318,7 +325,6 @@ class HealthcareService_NotAvailable {
 			elementDescription: elementDescription,
 			during: during,
 );
-	int saved = await fhirDb.saveResource(newHealthcareService_NotAvailable);
 	return newHealthcareService_NotAvailable;
 }
   String id;

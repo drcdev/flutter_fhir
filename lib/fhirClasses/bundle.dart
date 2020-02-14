@@ -11,6 +11,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Bundle {
 
+
 	static Future<Bundle> newInstance({
 		String  resourceType,
 		String id,
@@ -51,6 +52,11 @@ class Bundle {
 );
 	int saved = await fhirDb.saveResource(newBundle);
 	return newBundle;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Bundle';
   String id;
@@ -97,6 +103,7 @@ Bundle(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Link {
 
+
 	static Future<Bundle_Link> newInstance({
 		String id,
 		List<Extension> extension,
@@ -115,7 +122,6 @@ class Bundle_Link {
 			url: url,
 			elementUrl: elementUrl,
 );
-	int saved = await fhirDb.saveResource(newBundle_Link);
 	return newBundle_Link;
 }
   String id;
@@ -143,6 +149,7 @@ Bundle_Link(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Entry {
 
+
 	static Future<Bundle_Entry> newInstance({
 		String id,
 		List<Extension> extension,
@@ -167,7 +174,6 @@ class Bundle_Entry {
 			request: request,
 			response: response,
 );
-	int saved = await fhirDb.saveResource(newBundle_Entry);
 	return newBundle_Entry;
 }
   String id;
@@ -201,6 +207,7 @@ Bundle_Entry(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Search {
 
+
 	static Future<Bundle_Search> newInstance({
 		String id,
 		List<Extension> extension,
@@ -219,7 +226,6 @@ class Bundle_Search {
 			score: score,
 			elementScore: elementScore,
 );
-	int saved = await fhirDb.saveResource(newBundle_Search);
 	return newBundle_Search;
 }
   String id;
@@ -246,6 +252,7 @@ Bundle_Search(
 
 @JsonSerializable(explicitToJson: true)
 class Bundle_Request {
+
 
 	static Future<Bundle_Request> newInstance({
 		String id,
@@ -281,7 +288,6 @@ class Bundle_Request {
 			ifNoneExist: ifNoneExist,
 			elementIfNoneExist: elementIfNoneExist,
 );
-	int saved = await fhirDb.saveResource(newBundle_Request);
 	return newBundle_Request;
 }
   String id;
@@ -325,6 +331,7 @@ Bundle_Request(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Response {
 
+
 	static Future<Bundle_Response> newInstance({
 		String id,
 		List<Extension> extension,
@@ -353,7 +360,6 @@ class Bundle_Response {
 			elementLastModified: elementLastModified,
 			outcome: outcome,
 );
-	int saved = await fhirDb.saveResource(newBundle_Response);
 	return newBundle_Response;
 }
   String id;

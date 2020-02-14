@@ -12,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class TestReport {
 
+
 	static Future<TestReport> newInstance({
 		String  resourceType,
 		String id,
@@ -76,6 +77,11 @@ class TestReport {
 );
 	int saved = await fhirDb.saveResource(newTestReport);
 	return newTestReport;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'TestReport';
   String id;
@@ -146,6 +152,7 @@ TestReport(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Participant {
 
+
 	static Future<TestReport_Participant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -168,7 +175,6 @@ class TestReport_Participant {
 			display: display,
 			elementDisplay: elementDisplay,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Participant);
 	return newTestReport_Participant;
 }
   String id;
@@ -200,6 +206,7 @@ TestReport_Participant(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Setup {
 
+
 	static Future<TestReport_Setup> newInstance({
 		String id,
 		List<Extension> extension,
@@ -212,7 +219,6 @@ class TestReport_Setup {
 			modifierExtension: modifierExtension,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Setup);
 	return newTestReport_Setup;
 }
   String id;
@@ -234,6 +240,7 @@ TestReport_Setup(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Action {
 
+
 	static Future<TestReport_Action> newInstance({
 		String id,
 		List<Extension> extension,
@@ -248,7 +255,6 @@ class TestReport_Action {
 			operation: operation,
 			asserts: asserts,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Action);
 	return newTestReport_Action;
 }
   String id;
@@ -272,6 +278,7 @@ TestReport_Action(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Operation {
 
+
 	static Future<TestReport_Operation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -294,7 +301,6 @@ class TestReport_Operation {
 			detail: detail,
 			elementDetail: elementDetail,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Operation);
 	return newTestReport_Operation;
 }
   String id;
@@ -326,6 +332,7 @@ TestReport_Operation(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Assert {
 
+
 	static Future<TestReport_Assert> newInstance({
 		String id,
 		List<Extension> extension,
@@ -348,7 +355,6 @@ class TestReport_Assert {
 			detail: detail,
 			elementDetail: elementDetail,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Assert);
 	return newTestReport_Assert;
 }
   String id;
@@ -380,6 +386,7 @@ TestReport_Assert(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Test {
 
+
 	static Future<TestReport_Test> newInstance({
 		String id,
 		List<Extension> extension,
@@ -400,7 +407,6 @@ class TestReport_Test {
 			elementDescription: elementDescription,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Test);
 	return newTestReport_Test;
 }
   String id;
@@ -430,6 +436,7 @@ TestReport_Test(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Action1 {
 
+
 	static Future<TestReport_Action1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -444,7 +451,6 @@ class TestReport_Action1 {
 			operation: operation,
 			asserts: asserts,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Action1);
 	return newTestReport_Action1;
 }
   String id;
@@ -468,6 +474,7 @@ TestReport_Action1(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Teardown {
 
+
 	static Future<TestReport_Teardown> newInstance({
 		String id,
 		List<Extension> extension,
@@ -480,7 +487,6 @@ class TestReport_Teardown {
 			modifierExtension: modifierExtension,
 			action: action,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Teardown);
 	return newTestReport_Teardown;
 }
   String id;
@@ -502,6 +508,7 @@ TestReport_Teardown(
 @JsonSerializable(explicitToJson: true)
 class TestReport_Action2 {
 
+
 	static Future<TestReport_Action2> newInstance({
 		String id,
 		List<Extension> extension,
@@ -514,7 +521,6 @@ class TestReport_Action2 {
 			modifierExtension: modifierExtension,
 			operation: operation,
 );
-	int saved = await fhirDb.saveResource(newTestReport_Action2);
 	return newTestReport_Action2;
 }
   String id;

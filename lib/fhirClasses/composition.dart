@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Composition {
 
+
 	static Future<Composition> newInstance({
 		String  resourceType,
 		String id,
@@ -80,6 +81,11 @@ class Composition {
 );
 	int saved = await fhirDb.saveResource(newComposition);
 	return newComposition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Composition';
   String id;
@@ -152,6 +158,7 @@ Composition(
 @JsonSerializable(explicitToJson: true)
 class Composition_Attester {
 
+
 	static Future<Composition_Attester> newInstance({
 		String id,
 		List<Extension> extension,
@@ -172,7 +179,6 @@ class Composition_Attester {
 			elementTime: elementTime,
 			party: party,
 );
-	int saved = await fhirDb.saveResource(newComposition_Attester);
 	return newComposition_Attester;
 }
   String id;
@@ -202,6 +208,7 @@ Composition_Attester(
 @JsonSerializable(explicitToJson: true)
 class Composition_RelatesTo {
 
+
 	static Future<Composition_RelatesTo> newInstance({
 		String id,
 		List<Extension> extension,
@@ -220,7 +227,6 @@ class Composition_RelatesTo {
 			targetIdentifier: targetIdentifier,
 			targetReference: targetReference,
 );
-	int saved = await fhirDb.saveResource(newComposition_RelatesTo);
 	return newComposition_RelatesTo;
 }
   String id;
@@ -248,6 +254,7 @@ Composition_RelatesTo(
 @JsonSerializable(explicitToJson: true)
 class Composition_Event {
 
+
 	static Future<Composition_Event> newInstance({
 		String id,
 		List<Extension> extension,
@@ -264,7 +271,6 @@ class Composition_Event {
 			period: period,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newComposition_Event);
 	return newComposition_Event;
 }
   String id;
@@ -289,6 +295,7 @@ Composition_Event(
 
 @JsonSerializable(explicitToJson: true)
 class Composition_Section {
+
 
 	static Future<Composition_Section> newInstance({
 		String id,
@@ -324,7 +331,6 @@ class Composition_Section {
 			emptyReason: emptyReason,
 			section: section,
 );
-	int saved = await fhirDb.saveResource(newComposition_Section);
 	return newComposition_Section;
 }
   String id;

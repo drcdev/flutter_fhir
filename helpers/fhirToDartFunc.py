@@ -177,14 +177,14 @@ def HiveCode(properties, objects):
                                 "'),\n"])
         else:
             hiveCode = ''.join([hiveCode, '\t\t\t', rem_(field), ': ', rem_(field), ',\n'])
-    if('_' not in field):
+    if('_' not in objects):
         hiveCode = ''.join([hiveCode, 
                             ');\n\tint saved = await fhirDb.saveResource(new',
                             lists(objects),
                             ');\n\treturn new', 
                             lists(objects), 
                             ';\n}\n\n',
-                            'save () async {\n\tvar firDb = new DatabaseHelper();\n',
+                            'save () async {\n\tvar fhirDb = new DatabaseHelper();\n',
                             '\tint saved = await fhirDb.save(this);\n}'])
     else:
         hiveCode = ''.join([hiveCode, ');\n\treturn new', lists(objects), ';\n}'])    

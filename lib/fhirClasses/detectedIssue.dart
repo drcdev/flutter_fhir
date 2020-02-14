@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class DetectedIssue {
 
+
 	static Future<DetectedIssue> newInstance({
 		String  resourceType,
 		String id,
@@ -78,6 +79,11 @@ class DetectedIssue {
 );
 	int saved = await fhirDb.saveResource(newDetectedIssue);
 	return newDetectedIssue;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'DetectedIssue';
   String id;
@@ -148,6 +154,7 @@ DetectedIssue(
 @JsonSerializable(explicitToJson: true)
 class DetectedIssue_Evidence {
 
+
 	static Future<DetectedIssue_Evidence> newInstance({
 		String id,
 		List<Extension> extension,
@@ -162,7 +169,6 @@ class DetectedIssue_Evidence {
 			code: code,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newDetectedIssue_Evidence);
 	return newDetectedIssue_Evidence;
 }
   String id;
@@ -186,6 +192,7 @@ DetectedIssue_Evidence(
 @JsonSerializable(explicitToJson: true)
 class DetectedIssue_Mitigation {
 
+
 	static Future<DetectedIssue_Mitigation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -204,7 +211,6 @@ class DetectedIssue_Mitigation {
 			elementDate: elementDate,
 			author: author,
 );
-	int saved = await fhirDb.saveResource(newDetectedIssue_Mitigation);
 	return newDetectedIssue_Mitigation;
 }
   String id;

@@ -12,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductInteraction {
 
+
 	static Future<MedicinalProductInteraction> newInstance({
 		String  resourceType,
 		String id,
@@ -56,6 +57,11 @@ class MedicinalProductInteraction {
 );
 	int saved = await fhirDb.saveResource(newMedicinalProductInteraction);
 	return newMedicinalProductInteraction;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicinalProductInteraction';
   String id;
@@ -106,6 +112,7 @@ MedicinalProductInteraction(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductInteraction_Interactant {
 
+
 	static Future<MedicinalProductInteraction_Interactant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -120,7 +127,6 @@ class MedicinalProductInteraction_Interactant {
 			itemReference: itemReference,
 			itemCodeableConcept: itemCodeableConcept,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductInteraction_Interactant);
 	return newMedicinalProductInteraction_Interactant;
 }
   String id;

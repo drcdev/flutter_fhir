@@ -7,6 +7,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Reference {
 
+
 	static Future<Reference> newInstance({
 		String id,
 		List<Extension> extension,
@@ -31,6 +32,11 @@ class Reference {
 );
 	int saved = await fhirDb.saveResource(newReference);
 	return newReference;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

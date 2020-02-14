@@ -19,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit {
 
+
 	static Future<ExplanationOfBenefit> newInstance({
 		String  resourceType,
 		String id,
@@ -147,6 +148,11 @@ class ExplanationOfBenefit {
 );
 	int saved = await fhirDb.saveResource(newExplanationOfBenefit);
 	return newExplanationOfBenefit;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ExplanationOfBenefit';
   String id;
@@ -281,6 +287,7 @@ ExplanationOfBenefit(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Related {
 
+
 	static Future<ExplanationOfBenefit_Related> newInstance({
 		String id,
 		List<Extension> extension,
@@ -297,7 +304,6 @@ class ExplanationOfBenefit_Related {
 			relationship: relationship,
 			reference: reference,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Related);
 	return newExplanationOfBenefit_Related;
 }
   String id;
@@ -323,6 +329,7 @@ ExplanationOfBenefit_Related(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Payee {
 
+
 	static Future<ExplanationOfBenefit_Payee> newInstance({
 		String id,
 		List<Extension> extension,
@@ -337,7 +344,6 @@ class ExplanationOfBenefit_Payee {
 			type: type,
 			party: party,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Payee);
 	return newExplanationOfBenefit_Payee;
 }
   String id;
@@ -360,6 +366,7 @@ ExplanationOfBenefit_Payee(
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_CareTeam {
+
 
 	static Future<ExplanationOfBenefit_CareTeam> newInstance({
 		String id,
@@ -385,7 +392,6 @@ class ExplanationOfBenefit_CareTeam {
 			role: role,
 			qualification: qualification,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_CareTeam);
 	return newExplanationOfBenefit_CareTeam;
 }
   String id;
@@ -418,6 +424,7 @@ ExplanationOfBenefit_CareTeam(
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SupportingInfo {
+
 
 	static Future<ExplanationOfBenefit_SupportingInfo> newInstance({
 		String id,
@@ -459,7 +466,6 @@ class ExplanationOfBenefit_SupportingInfo {
 			valueReference: valueReference,
 			reason: reason,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_SupportingInfo);
 	return newExplanationOfBenefit_SupportingInfo;
 }
   String id;
@@ -509,6 +515,7 @@ ExplanationOfBenefit_SupportingInfo(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Diagnosis {
 
+
 	static Future<ExplanationOfBenefit_Diagnosis> newInstance({
 		String id,
 		List<Extension> extension,
@@ -533,7 +540,6 @@ class ExplanationOfBenefit_Diagnosis {
 			onAdmission: onAdmission,
 			packageCode: packageCode,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Diagnosis);
 	return newExplanationOfBenefit_Diagnosis;
 }
   String id;
@@ -567,6 +573,7 @@ ExplanationOfBenefit_Diagnosis(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Procedure {
 
+
 	static Future<ExplanationOfBenefit_Procedure> newInstance({
 		String id,
 		List<Extension> extension,
@@ -593,7 +600,6 @@ class ExplanationOfBenefit_Procedure {
 			procedureReference: procedureReference,
 			udi: udi,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Procedure);
 	return newExplanationOfBenefit_Procedure;
 }
   String id;
@@ -629,6 +635,7 @@ ExplanationOfBenefit_Procedure(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Insurance {
 
+
 	static Future<ExplanationOfBenefit_Insurance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -649,7 +656,6 @@ class ExplanationOfBenefit_Insurance {
 			preAuthRef: preAuthRef,
 			elementPreAuthRef: elementPreAuthRef,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Insurance);
 	return newExplanationOfBenefit_Insurance;
 }
   String id;
@@ -679,6 +685,7 @@ ExplanationOfBenefit_Insurance(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Accident {
 
+
 	static Future<ExplanationOfBenefit_Accident> newInstance({
 		String id,
 		List<Extension> extension,
@@ -699,7 +706,6 @@ class ExplanationOfBenefit_Accident {
 			locationAddress: locationAddress,
 			locationReference: locationReference,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Accident);
 	return newExplanationOfBenefit_Accident;
 }
   String id;
@@ -728,6 +734,7 @@ ExplanationOfBenefit_Accident(
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Item {
+
 
 	static Future<ExplanationOfBenefit_Item> newInstance({
 		String id,
@@ -807,7 +814,6 @@ class ExplanationOfBenefit_Item {
 			adjudication: adjudication,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Item);
 	return newExplanationOfBenefit_Item;
 }
   String id;
@@ -895,6 +901,7 @@ ExplanationOfBenefit_Item(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Adjudication {
 
+
 	static Future<ExplanationOfBenefit_Adjudication> newInstance({
 		String id,
 		List<Extension> extension,
@@ -915,7 +922,6 @@ class ExplanationOfBenefit_Adjudication {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Adjudication);
 	return newExplanationOfBenefit_Adjudication;
 }
   String id;
@@ -944,6 +950,7 @@ ExplanationOfBenefit_Adjudication(
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Detail {
+
 
 	static Future<ExplanationOfBenefit_Detail> newInstance({
 		String id,
@@ -989,7 +996,6 @@ class ExplanationOfBenefit_Detail {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Detail);
 	return newExplanationOfBenefit_Detail;
 }
   String id;
@@ -1043,6 +1049,7 @@ ExplanationOfBenefit_Detail(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SubDetail {
 
+
 	static Future<ExplanationOfBenefit_SubDetail> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1085,7 +1092,6 @@ class ExplanationOfBenefit_SubDetail {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_SubDetail);
 	return newExplanationOfBenefit_SubDetail;
 }
   String id;
@@ -1136,6 +1142,7 @@ ExplanationOfBenefit_SubDetail(
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_AddItem {
+
 
 	static Future<ExplanationOfBenefit_AddItem> newInstance({
 		String id,
@@ -1201,7 +1208,6 @@ class ExplanationOfBenefit_AddItem {
 			adjudication: adjudication,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_AddItem);
 	return newExplanationOfBenefit_AddItem;
 }
   String id;
@@ -1275,6 +1281,7 @@ ExplanationOfBenefit_AddItem(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Detail1 {
 
+
 	static Future<ExplanationOfBenefit_Detail1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1307,7 +1314,6 @@ class ExplanationOfBenefit_Detail1 {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Detail1);
 	return newExplanationOfBenefit_Detail1;
 }
   String id;
@@ -1349,6 +1355,7 @@ ExplanationOfBenefit_Detail1(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SubDetail1 {
 
+
 	static Future<ExplanationOfBenefit_SubDetail1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1379,7 +1386,6 @@ class ExplanationOfBenefit_SubDetail1 {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_SubDetail1);
 	return newExplanationOfBenefit_SubDetail1;
 }
   String id;
@@ -1419,6 +1425,7 @@ ExplanationOfBenefit_SubDetail1(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Total {
 
+
 	static Future<ExplanationOfBenefit_Total> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1433,7 +1440,6 @@ class ExplanationOfBenefit_Total {
 			category: category,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Total);
 	return newExplanationOfBenefit_Total;
 }
   String id;
@@ -1456,6 +1462,7 @@ ExplanationOfBenefit_Total(
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Payment {
+
 
 	static Future<ExplanationOfBenefit_Payment> newInstance({
 		String id,
@@ -1481,7 +1488,6 @@ class ExplanationOfBenefit_Payment {
 			amount: amount,
 			identifier: identifier,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Payment);
 	return newExplanationOfBenefit_Payment;
 }
   String id;
@@ -1515,6 +1521,7 @@ ExplanationOfBenefit_Payment(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_ProcessNote {
 
+
 	static Future<ExplanationOfBenefit_ProcessNote> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1539,7 +1546,6 @@ class ExplanationOfBenefit_ProcessNote {
 			elementText: elementText,
 			language: language,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_ProcessNote);
 	return newExplanationOfBenefit_ProcessNote;
 }
   String id;
@@ -1573,6 +1579,7 @@ ExplanationOfBenefit_ProcessNote(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_BenefitBalance {
 
+
 	static Future<ExplanationOfBenefit_BenefitBalance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1605,7 +1612,6 @@ class ExplanationOfBenefit_BenefitBalance {
 			term: term,
 			financial: financial,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_BenefitBalance);
 	return newExplanationOfBenefit_BenefitBalance;
 }
   String id;
@@ -1647,6 +1653,7 @@ ExplanationOfBenefit_BenefitBalance(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Financial {
 
+
 	static Future<ExplanationOfBenefit_Financial> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1675,7 +1682,6 @@ class ExplanationOfBenefit_Financial {
 			elementUsedUnsignedInt: elementUsedUnsignedInt,
 			usedMoney: usedMoney,
 );
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Financial);
 	return newExplanationOfBenefit_Financial;
 }
   String id;

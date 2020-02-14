@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class AllergyIntolerance {
 
+
 	static Future<AllergyIntolerance> newInstance({
 		String  resourceType,
 		String id,
@@ -99,6 +100,11 @@ class AllergyIntolerance {
 );
 	int saved = await fhirDb.saveResource(newAllergyIntolerance);
 	return newAllergyIntolerance;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'AllergyIntolerance';
   String id;
@@ -187,6 +193,7 @@ AllergyIntolerance(
 @JsonSerializable(explicitToJson: true)
 class AllergyIntolerance_Reaction {
 
+
 	static Future<AllergyIntolerance_Reaction> newInstance({
 		String id,
 		List<Extension> extension,
@@ -217,7 +224,6 @@ class AllergyIntolerance_Reaction {
 			exposureRoute: exposureRoute,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newAllergyIntolerance_Reaction);
 	return newAllergyIntolerance_Reaction;
 }
   String id;

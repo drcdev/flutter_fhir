@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct {
 
+
 	static Future<MedicinalProduct> newInstance({
 		String  resourceType,
 		String id,
@@ -85,6 +86,11 @@ class MedicinalProduct {
 );
 	int saved = await fhirDb.saveResource(newMedicinalProduct);
 	return newMedicinalProduct;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicinalProduct';
   String id;
@@ -161,6 +167,7 @@ MedicinalProduct(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_Name {
 
+
 	static Future<MedicinalProduct_Name> newInstance({
 		String id,
 		List<Extension> extension,
@@ -179,7 +186,6 @@ class MedicinalProduct_Name {
 			namePart: namePart,
 			countryLanguage: countryLanguage,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProduct_Name);
 	return newMedicinalProduct_Name;
 }
   String id;
@@ -207,6 +213,7 @@ MedicinalProduct_Name(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_NamePart {
 
+
 	static Future<MedicinalProduct_NamePart> newInstance({
 		String id,
 		List<Extension> extension,
@@ -223,7 +230,6 @@ class MedicinalProduct_NamePart {
 			elementPart: elementPart,
 			type: type,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProduct_NamePart);
 	return newMedicinalProduct_NamePart;
 }
   String id;
@@ -249,6 +255,7 @@ MedicinalProduct_NamePart(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_CountryLanguage {
 
+
 	static Future<MedicinalProduct_CountryLanguage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -265,7 +272,6 @@ class MedicinalProduct_CountryLanguage {
 			jurisdiction: jurisdiction,
 			language: language,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProduct_CountryLanguage);
 	return newMedicinalProduct_CountryLanguage;
 }
   String id;
@@ -291,6 +297,7 @@ MedicinalProduct_CountryLanguage(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_ManufacturingBusinessOperation {
 
+
 	static Future<MedicinalProduct_ManufacturingBusinessOperation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -315,7 +322,6 @@ class MedicinalProduct_ManufacturingBusinessOperation {
 			manufacturer: manufacturer,
 			regulator: regulator,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProduct_ManufacturingBusinessOperation);
 	return newMedicinalProduct_ManufacturingBusinessOperation;
 }
   String id;
@@ -349,6 +355,7 @@ MedicinalProduct_ManufacturingBusinessOperation(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_SpecialDesignation {
 
+
 	static Future<MedicinalProduct_SpecialDesignation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -377,7 +384,6 @@ class MedicinalProduct_SpecialDesignation {
 			elementDate: elementDate,
 			species: species,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProduct_SpecialDesignation);
 	return newMedicinalProduct_SpecialDesignation;
 }
   String id;

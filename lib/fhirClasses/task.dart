@@ -40,6 +40,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Task {
 
+
 	static Future<Task> newInstance({
 		String  resourceType,
 		String id,
@@ -144,6 +145,11 @@ class Task {
 );
 	int saved = await fhirDb.saveResource(newTask);
 	return newTask;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Task';
   String id;
@@ -254,6 +260,7 @@ Task(
 @JsonSerializable(explicitToJson: true)
 class Task_Restriction {
 
+
 	static Future<Task_Restriction> newInstance({
 		String id,
 		List<Extension> extension,
@@ -272,7 +279,6 @@ class Task_Restriction {
 			period: period,
 			recipient: recipient,
 );
-	int saved = await fhirDb.saveResource(newTask_Restriction);
 	return newTask_Restriction;
 }
   String id;
@@ -299,6 +305,7 @@ Task_Restriction(
 
 @JsonSerializable(explicitToJson: true)
 class Task_Input {
+
 
 	static Future<Task_Input> newInstance({
 		String id,
@@ -450,7 +457,6 @@ class Task_Input {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
-	int saved = await fhirDb.saveResource(newTask_Input);
 	return newTask_Input;
 }
   String id;
@@ -610,6 +616,7 @@ Task_Input(
 @JsonSerializable(explicitToJson: true)
 class Task_Output {
 
+
 	static Future<Task_Output> newInstance({
 		String id,
 		List<Extension> extension,
@@ -760,7 +767,6 @@ class Task_Output {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
-	int saved = await fhirDb.saveResource(newTask_Output);
 	return newTask_Output;
 }
   String id;

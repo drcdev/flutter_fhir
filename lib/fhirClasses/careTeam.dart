@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class CareTeam {
 
+
 	static Future<CareTeam> newInstance({
 		String  resourceType,
 		String id,
@@ -74,6 +75,11 @@ class CareTeam {
 );
 	int saved = await fhirDb.saveResource(newCareTeam);
 	return newCareTeam;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'CareTeam';
   String id;
@@ -138,6 +144,7 @@ CareTeam(
 @JsonSerializable(explicitToJson: true)
 class CareTeam_Participant {
 
+
 	static Future<CareTeam_Participant> newInstance({
 		String id,
 		List<Extension> extension,
@@ -156,7 +163,6 @@ class CareTeam_Participant {
 			onBehalfOf: onBehalfOf,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newCareTeam_Participant);
 	return newCareTeam_Participant;
 }
   String id;

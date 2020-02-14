@@ -11,6 +11,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Dosage {
 
+
 	static Future<Dosage> newInstance({
 		String id,
 		List<Extension> extension,
@@ -59,6 +60,11 @@ class Dosage {
 );
 	int saved = await fhirDb.saveResource(newDosage);
 	return newDosage;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;
@@ -113,6 +119,7 @@ Dosage(
 @JsonSerializable(explicitToJson: true)
 class Dosage_DoseAndRate {
 
+
 	static Future<Dosage_DoseAndRate> newInstance({
 		String id,
 		List<Extension> extension,
@@ -135,7 +142,6 @@ class Dosage_DoseAndRate {
 			rateRange: rateRange,
 			rateQuantity: rateQuantity,
 );
-	int saved = await fhirDb.saveResource(newDosage_DoseAndRate);
 	return newDosage_DoseAndRate;
 }
   String id;

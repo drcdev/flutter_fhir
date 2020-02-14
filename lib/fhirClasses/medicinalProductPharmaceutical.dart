@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical {
 
+
 	static Future<MedicinalProductPharmaceutical> newInstance({
 		String  resourceType,
 		String id,
@@ -58,6 +59,11 @@ class MedicinalProductPharmaceutical {
 );
 	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical);
 	return newMedicinalProductPharmaceutical;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicinalProductPharmaceutical';
   String id;
@@ -106,6 +112,7 @@ MedicinalProductPharmaceutical(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_Characteristics {
 
+
 	static Future<MedicinalProductPharmaceutical_Characteristics> newInstance({
 		String id,
 		List<Extension> extension,
@@ -120,7 +127,6 @@ class MedicinalProductPharmaceutical_Characteristics {
 			code: code,
 			status: status,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_Characteristics);
 	return newMedicinalProductPharmaceutical_Characteristics;
 }
   String id;
@@ -143,6 +149,7 @@ MedicinalProductPharmaceutical_Characteristics(
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_RouteOfAdministration {
+
 
 	static Future<MedicinalProductPharmaceutical_RouteOfAdministration> newInstance({
 		String id,
@@ -168,7 +175,6 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
 			maxTreatmentPeriod: maxTreatmentPeriod,
 			targetSpecies: targetSpecies,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_RouteOfAdministration);
 	return newMedicinalProductPharmaceutical_RouteOfAdministration;
 }
   String id;
@@ -202,6 +208,7 @@ MedicinalProductPharmaceutical_RouteOfAdministration(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_TargetSpecies {
 
+
 	static Future<MedicinalProductPharmaceutical_TargetSpecies> newInstance({
 		String id,
 		List<Extension> extension,
@@ -216,7 +223,6 @@ class MedicinalProductPharmaceutical_TargetSpecies {
 			code: code,
 			withdrawalPeriod: withdrawalPeriod,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_TargetSpecies);
 	return newMedicinalProductPharmaceutical_TargetSpecies;
 }
   String id;
@@ -240,6 +246,7 @@ MedicinalProductPharmaceutical_TargetSpecies(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_WithdrawalPeriod {
 
+
 	static Future<MedicinalProductPharmaceutical_WithdrawalPeriod> newInstance({
 		String id,
 		List<Extension> extension,
@@ -258,7 +265,6 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
 			supportingInformation: supportingInformation,
 			elementSupportingInformation: elementSupportingInformation,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_WithdrawalPeriod);
 	return newMedicinalProductPharmaceutical_WithdrawalPeriod;
 }
   String id;

@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide {
 
+
 	static Future<ImplementationGuide> newInstance({
 		String  resourceType,
 		String id,
@@ -108,6 +109,11 @@ class ImplementationGuide {
 );
 	int saved = await fhirDb.saveResource(newImplementationGuide);
 	return newImplementationGuide;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ImplementationGuide';
   String id;
@@ -208,6 +214,7 @@ ImplementationGuide(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_DependsOn {
 
+
 	static Future<ImplementationGuide_DependsOn> newInstance({
 		String id,
 		List<Extension> extension,
@@ -228,7 +235,6 @@ class ImplementationGuide_DependsOn {
 			version: version,
 			elementVersion: elementVersion,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_DependsOn);
 	return newImplementationGuide_DependsOn;
 }
   String id;
@@ -258,6 +264,7 @@ ImplementationGuide_DependsOn(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Global {
 
+
 	static Future<ImplementationGuide_Global> newInstance({
 		String id,
 		List<Extension> extension,
@@ -274,7 +281,6 @@ class ImplementationGuide_Global {
 			elementType: elementType,
 			profile: profile,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Global);
 	return newImplementationGuide_Global;
 }
   String id;
@@ -300,6 +306,7 @@ ImplementationGuide_Global(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Definition {
 
+
 	static Future<ImplementationGuide_Definition> newInstance({
 		String id,
 		List<Extension> extension,
@@ -320,7 +327,6 @@ class ImplementationGuide_Definition {
 			parameter: parameter,
 			template: template,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Definition);
 	return newImplementationGuide_Definition;
 }
   String id;
@@ -350,6 +356,7 @@ ImplementationGuide_Definition(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Grouping {
 
+
 	static Future<ImplementationGuide_Grouping> newInstance({
 		String id,
 		List<Extension> extension,
@@ -368,7 +375,6 @@ class ImplementationGuide_Grouping {
 			description: description,
 			elementDescription: elementDescription,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Grouping);
 	return newImplementationGuide_Grouping;
 }
   String id;
@@ -395,6 +401,7 @@ ImplementationGuide_Grouping(
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Resource {
+
 
 	static Future<ImplementationGuide_Resource> newInstance({
 		String id,
@@ -432,7 +439,6 @@ class ImplementationGuide_Resource {
 			groupingId: groupingId,
 			elementGroupingId: elementGroupingId,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Resource);
 	return newImplementationGuide_Resource;
 }
   String id;
@@ -478,6 +484,7 @@ ImplementationGuide_Resource(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Page {
 
+
 	static Future<ImplementationGuide_Page> newInstance({
 		String id,
 		List<Extension> extension,
@@ -504,7 +511,6 @@ class ImplementationGuide_Page {
 			elementGeneration: elementGeneration,
 			page: page,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Page);
 	return newImplementationGuide_Page;
 }
   String id;
@@ -540,6 +546,7 @@ ImplementationGuide_Page(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Parameter {
 
+
 	static Future<ImplementationGuide_Parameter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -558,7 +565,6 @@ class ImplementationGuide_Parameter {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Parameter);
 	return newImplementationGuide_Parameter;
 }
   String id;
@@ -586,6 +592,7 @@ ImplementationGuide_Parameter(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Template {
 
+
 	static Future<ImplementationGuide_Template> newInstance({
 		String id,
 		List<Extension> extension,
@@ -608,7 +615,6 @@ class ImplementationGuide_Template {
 			scope: scope,
 			elementScope: elementScope,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Template);
 	return newImplementationGuide_Template;
 }
   String id;
@@ -640,6 +646,7 @@ ImplementationGuide_Template(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Manifest {
 
+
 	static Future<ImplementationGuide_Manifest> newInstance({
 		String id,
 		List<Extension> extension,
@@ -666,7 +673,6 @@ class ImplementationGuide_Manifest {
 			other: other,
 			elementOther: elementOther,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Manifest);
 	return newImplementationGuide_Manifest;
 }
   String id;
@@ -702,6 +708,7 @@ ImplementationGuide_Manifest(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Resource1 {
 
+
 	static Future<ImplementationGuide_Resource1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -726,7 +733,6 @@ class ImplementationGuide_Resource1 {
 			relativePath: relativePath,
 			elementRelativePath: elementRelativePath,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Resource1);
 	return newImplementationGuide_Resource1;
 }
   String id;
@@ -760,6 +766,7 @@ ImplementationGuide_Resource1(
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Page1 {
 
+
 	static Future<ImplementationGuide_Page1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -782,7 +789,6 @@ class ImplementationGuide_Page1 {
 			anchor: anchor,
 			elementAnchor: elementAnchor,
 );
-	int saved = await fhirDb.saveResource(newImplementationGuide_Page1);
 	return newImplementationGuide_Page1;
 }
   String id;

@@ -10,6 +10,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Timing {
 
+
 	static Future<Timing> newInstance({
 		String id,
 		List<Extension> extension,
@@ -30,6 +31,11 @@ class Timing {
 );
 	int saved = await fhirDb.saveResource(newTiming);
 	return newTiming;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;
@@ -55,6 +61,7 @@ Timing(
 
 @JsonSerializable(explicitToJson: true)
 class Timing_Repeat {
+
 
 	static Future<Timing_Repeat> newInstance({
 		String id,
@@ -128,7 +135,6 @@ class Timing_Repeat {
 			offset: offset,
 			elementOffset: elementOffset,
 );
-	int saved = await fhirDb.saveResource(newTiming_Repeat);
 	return newTiming_Repeat;
 }
   String id;

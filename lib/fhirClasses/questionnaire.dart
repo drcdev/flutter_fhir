@@ -19,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Questionnaire {
 
+
 	static Future<Questionnaire> newInstance({
 		String  resourceType,
 		String id,
@@ -119,6 +120,11 @@ class Questionnaire {
 );
 	int saved = await fhirDb.saveResource(newQuestionnaire);
 	return newQuestionnaire;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Questionnaire';
   String id;
@@ -225,6 +231,7 @@ Questionnaire(
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_Item {
 
+
 	static Future<Questionnaire_Item> newInstance({
 		String id,
 		List<Extension> extension,
@@ -287,7 +294,6 @@ class Questionnaire_Item {
 			initial: initial,
 			item: item,
 );
-	int saved = await fhirDb.saveResource(newQuestionnaire_Item);
 	return newQuestionnaire_Item;
 }
   String id;
@@ -359,6 +365,7 @@ Questionnaire_Item(
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_EnableWhen {
 
+
 	static Future<Questionnaire_EnableWhen> newInstance({
 		String id,
 		List<Extension> extension,
@@ -411,7 +418,6 @@ class Questionnaire_EnableWhen {
 			answerQuantity: answerQuantity,
 			answerReference: answerReference,
 );
-	int saved = await fhirDb.saveResource(newQuestionnaire_EnableWhen);
 	return newQuestionnaire_EnableWhen;
 }
   String id;
@@ -473,6 +479,7 @@ Questionnaire_EnableWhen(
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_AnswerOption {
 
+
 	static Future<Questionnaire_AnswerOption> newInstance({
 		String id,
 		List<Extension> extension,
@@ -507,7 +514,6 @@ class Questionnaire_AnswerOption {
 			initialSelected: initialSelected,
 			elementInitialSelected: elementInitialSelected,
 );
-	int saved = await fhirDb.saveResource(newQuestionnaire_AnswerOption);
 	return newQuestionnaire_AnswerOption;
 }
   String id;
@@ -550,6 +556,7 @@ Questionnaire_AnswerOption(
 
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_Initial {
+
 
 	static Future<Questionnaire_Initial> newInstance({
 		String id,
@@ -601,7 +608,6 @@ class Questionnaire_Initial {
 			valueQuantity: valueQuantity,
 			valueReference: valueReference,
 );
-	int saved = await fhirDb.saveResource(newQuestionnaire_Initial);
 	return newQuestionnaire_Initial;
 }
   String id;

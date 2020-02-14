@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse {
 
+
 	static Future<ClaimResponse> newInstance({
 		String  resourceType,
 		String id,
@@ -112,6 +113,11 @@ class ClaimResponse {
 );
 	int saved = await fhirDb.saveResource(newClaimResponse);
 	return newClaimResponse;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ClaimResponse';
   String id;
@@ -212,6 +218,7 @@ ClaimResponse(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Item {
 
+
 	static Future<ClaimResponse_Item> newInstance({
 		String id,
 		List<Extension> extension,
@@ -234,7 +241,6 @@ class ClaimResponse_Item {
 			adjudication: adjudication,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Item);
 	return newClaimResponse_Item;
 }
   String id;
@@ -266,6 +272,7 @@ ClaimResponse_Item(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Adjudication {
 
+
 	static Future<ClaimResponse_Adjudication> newInstance({
 		String id,
 		List<Extension> extension,
@@ -286,7 +293,6 @@ class ClaimResponse_Adjudication {
 			value: value,
 			elementValue: elementValue,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Adjudication);
 	return newClaimResponse_Adjudication;
 }
   String id;
@@ -316,6 +322,7 @@ ClaimResponse_Adjudication(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Detail {
 
+
 	static Future<ClaimResponse_Detail> newInstance({
 		String id,
 		List<Extension> extension,
@@ -338,7 +345,6 @@ class ClaimResponse_Detail {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Detail);
 	return newClaimResponse_Detail;
 }
   String id;
@@ -370,6 +376,7 @@ ClaimResponse_Detail(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_SubDetail {
 
+
 	static Future<ClaimResponse_SubDetail> newInstance({
 		String id,
 		List<Extension> extension,
@@ -390,7 +397,6 @@ class ClaimResponse_SubDetail {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_SubDetail);
 	return newClaimResponse_SubDetail;
 }
   String id;
@@ -419,6 +425,7 @@ ClaimResponse_SubDetail(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_AddItem {
+
 
 	static Future<ClaimResponse_AddItem> newInstance({
 		String id,
@@ -484,7 +491,6 @@ class ClaimResponse_AddItem {
 			adjudication: adjudication,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_AddItem);
 	return newClaimResponse_AddItem;
 }
   String id;
@@ -558,6 +564,7 @@ ClaimResponse_AddItem(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Detail1 {
 
+
 	static Future<ClaimResponse_Detail1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -590,7 +597,6 @@ class ClaimResponse_Detail1 {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Detail1);
 	return newClaimResponse_Detail1;
 }
   String id;
@@ -632,6 +638,7 @@ ClaimResponse_Detail1(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_SubDetail1 {
 
+
 	static Future<ClaimResponse_SubDetail1> newInstance({
 		String id,
 		List<Extension> extension,
@@ -662,7 +669,6 @@ class ClaimResponse_SubDetail1 {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_SubDetail1);
 	return newClaimResponse_SubDetail1;
 }
   String id;
@@ -702,6 +708,7 @@ ClaimResponse_SubDetail1(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Total {
 
+
 	static Future<ClaimResponse_Total> newInstance({
 		String id,
 		List<Extension> extension,
@@ -716,7 +723,6 @@ class ClaimResponse_Total {
 			category: category,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Total);
 	return newClaimResponse_Total;
 }
   String id;
@@ -739,6 +745,7 @@ ClaimResponse_Total(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Payment {
+
 
 	static Future<ClaimResponse_Payment> newInstance({
 		String id,
@@ -764,7 +771,6 @@ class ClaimResponse_Payment {
 			amount: amount,
 			identifier: identifier,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Payment);
 	return newClaimResponse_Payment;
 }
   String id;
@@ -798,6 +804,7 @@ ClaimResponse_Payment(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_ProcessNote {
 
+
 	static Future<ClaimResponse_ProcessNote> newInstance({
 		String id,
 		List<Extension> extension,
@@ -822,7 +829,6 @@ class ClaimResponse_ProcessNote {
 			elementText: elementText,
 			language: language,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_ProcessNote);
 	return newClaimResponse_ProcessNote;
 }
   String id;
@@ -856,6 +862,7 @@ ClaimResponse_ProcessNote(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Insurance {
 
+
 	static Future<ClaimResponse_Insurance> newInstance({
 		String id,
 		List<Extension> extension,
@@ -882,7 +889,6 @@ class ClaimResponse_Insurance {
 			elementBusinessArrangement: elementBusinessArrangement,
 			claimResponse: claimResponse,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Insurance);
 	return newClaimResponse_Insurance;
 }
   String id;
@@ -918,6 +924,7 @@ ClaimResponse_Insurance(
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Error {
 
+
 	static Future<ClaimResponse_Error> newInstance({
 		String id,
 		List<Extension> extension,
@@ -942,7 +949,6 @@ class ClaimResponse_Error {
 			elementSubDetailSequence: elementSubDetailSequence,
 			code: code,
 );
-	int saved = await fhirDb.saveResource(newClaimResponse_Error);
 	return newClaimResponse_Error;
 }
   String id;

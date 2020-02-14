@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class VerificationResult {
 
+
 	static Future<VerificationResult> newInstance({
 		String  resourceType,
 		String id,
@@ -80,6 +81,11 @@ class VerificationResult {
 );
 	int saved = await fhirDb.saveResource(newVerificationResult);
 	return newVerificationResult;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'VerificationResult';
   String id;
@@ -152,6 +158,7 @@ VerificationResult(
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_PrimarySource {
 
+
 	static Future<VerificationResult_PrimarySource> newInstance({
 		String id,
 		List<Extension> extension,
@@ -178,7 +185,6 @@ class VerificationResult_PrimarySource {
 			canPushUpdates: canPushUpdates,
 			pushTypeAvailable: pushTypeAvailable,
 );
-	int saved = await fhirDb.saveResource(newVerificationResult_PrimarySource);
 	return newVerificationResult_PrimarySource;
 }
   String id;
@@ -214,6 +220,7 @@ VerificationResult_PrimarySource(
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Attestation {
 
+
 	static Future<VerificationResult_Attestation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -246,7 +253,6 @@ class VerificationResult_Attestation {
 			proxySignature: proxySignature,
 			sourceSignature: sourceSignature,
 );
-	int saved = await fhirDb.saveResource(newVerificationResult_Attestation);
 	return newVerificationResult_Attestation;
 }
   String id;
@@ -288,6 +294,7 @@ VerificationResult_Attestation(
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Validator {
 
+
 	static Future<VerificationResult_Validator> newInstance({
 		String id,
 		List<Extension> extension,
@@ -306,7 +313,6 @@ class VerificationResult_Validator {
 			elementIdentityCertificate: elementIdentityCertificate,
 			attestationSignature: attestationSignature,
 );
-	int saved = await fhirDb.saveResource(newVerificationResult_Validator);
 	return newVerificationResult_Validator;
 }
   String id;

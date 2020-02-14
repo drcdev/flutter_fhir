@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ObservationDefinition {
 
+
 	static Future<ObservationDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -74,6 +75,11 @@ class ObservationDefinition {
 );
 	int saved = await fhirDb.saveResource(newObservationDefinition);
 	return newObservationDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ObservationDefinition';
   String id;
@@ -140,6 +146,7 @@ ObservationDefinition(
 @JsonSerializable(explicitToJson: true)
 class ObservationDefinition_QuantitativeDetails {
 
+
 	static Future<ObservationDefinition_QuantitativeDetails> newInstance({
 		String id,
 		List<Extension> extension,
@@ -162,7 +169,6 @@ class ObservationDefinition_QuantitativeDetails {
 			decimalPrecision: decimalPrecision,
 			elementDecimalPrecision: elementDecimalPrecision,
 );
-	int saved = await fhirDb.saveResource(newObservationDefinition_QuantitativeDetails);
 	return newObservationDefinition_QuantitativeDetails;
 }
   String id;
@@ -193,6 +199,7 @@ ObservationDefinition_QuantitativeDetails(
 
 @JsonSerializable(explicitToJson: true)
 class ObservationDefinition_QualifiedInterval {
+
 
 	static Future<ObservationDefinition_QualifiedInterval> newInstance({
 		String id,
@@ -226,7 +233,6 @@ class ObservationDefinition_QualifiedInterval {
 			condition: condition,
 			elementCondition: elementCondition,
 );
-	int saved = await fhirDb.saveResource(newObservationDefinition_QualifiedInterval);
 	return newObservationDefinition_QualifiedInterval;
 }
   String id;

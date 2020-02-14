@@ -40,6 +40,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class StructureMap {
 
+
 	static Future<StructureMap> newInstance({
 		String  resourceType,
 		String id,
@@ -126,6 +127,11 @@ class StructureMap {
 );
 	int saved = await fhirDb.saveResource(newStructureMap);
 	return newStructureMap;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'StructureMap';
   String id;
@@ -218,6 +224,7 @@ StructureMap(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Structure {
 
+
 	static Future<StructureMap_Structure> newInstance({
 		String id,
 		List<Extension> extension,
@@ -242,7 +249,6 @@ class StructureMap_Structure {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Structure);
 	return newStructureMap_Structure;
 }
   String id;
@@ -276,6 +282,7 @@ StructureMap_Structure(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Group {
 
+
 	static Future<StructureMap_Group> newInstance({
 		String id,
 		List<Extension> extension,
@@ -306,7 +313,6 @@ class StructureMap_Group {
 			input: input,
 			rule: rule,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Group);
 	return newStructureMap_Group;
 }
   String id;
@@ -346,6 +352,7 @@ StructureMap_Group(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Input {
 
+
 	static Future<StructureMap_Input> newInstance({
 		String id,
 		List<Extension> extension,
@@ -372,7 +379,6 @@ class StructureMap_Input {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Input);
 	return newStructureMap_Input;
 }
   String id;
@@ -408,6 +414,7 @@ StructureMap_Input(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Rule {
 
+
 	static Future<StructureMap_Rule> newInstance({
 		String id,
 		List<Extension> extension,
@@ -434,7 +441,6 @@ class StructureMap_Rule {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Rule);
 	return newStructureMap_Rule;
 }
   String id;
@@ -469,6 +475,7 @@ StructureMap_Rule(
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Source {
+
 
 	static Future<StructureMap_Source> newInstance({
 		String id,
@@ -658,7 +665,6 @@ class StructureMap_Source {
 			logMessage: logMessage,
 			elementLogMessage: elementLogMessage,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Source);
 	return newStructureMap_Source;
 }
   String id;
@@ -856,6 +862,7 @@ StructureMap_Source(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Target {
 
+
 	static Future<StructureMap_Target> newInstance({
 		String id,
 		List<Extension> extension,
@@ -896,7 +903,6 @@ class StructureMap_Target {
 			elementTransform: elementTransform,
 			parameter: parameter,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Target);
 	return newStructureMap_Target;
 }
   String id;
@@ -946,6 +952,7 @@ StructureMap_Target(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Parameter {
 
+
 	static Future<StructureMap_Parameter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -976,7 +983,6 @@ class StructureMap_Parameter {
 			valueDecimal: valueDecimal,
 			elementValueDecimal: elementValueDecimal,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Parameter);
 	return newStructureMap_Parameter;
 }
   String id;
@@ -1016,6 +1022,7 @@ StructureMap_Parameter(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Dependent {
 
+
 	static Future<StructureMap_Dependent> newInstance({
 		String id,
 		List<Extension> extension,
@@ -1034,7 +1041,6 @@ class StructureMap_Dependent {
 			variable: variable,
 			elementVariable: elementVariable,
 );
-	int saved = await fhirDb.saveResource(newStructureMap_Dependent);
 	return newStructureMap_Dependent;
 }
   String id;

@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Flag {
 
+
 	static Future<Flag> newInstance({
 		String  resourceType,
 		String id,
@@ -60,6 +61,11 @@ class Flag {
 );
 	int saved = await fhirDb.saveResource(newFlag);
 	return newFlag;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Flag';
   String id;

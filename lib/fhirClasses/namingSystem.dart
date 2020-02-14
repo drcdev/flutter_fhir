@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class NamingSystem {
 
+
 	static Future<NamingSystem> newInstance({
 		String  resourceType,
 		String id,
@@ -84,6 +85,11 @@ class NamingSystem {
 );
 	int saved = await fhirDb.saveResource(newNamingSystem);
 	return newNamingSystem;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'NamingSystem';
   String id;
@@ -160,6 +166,7 @@ NamingSystem(
 @JsonSerializable(explicitToJson: true)
 class NamingSystem_UniqueId {
 
+
 	static Future<NamingSystem_UniqueId> newInstance({
 		String id,
 		List<Extension> extension,
@@ -188,7 +195,6 @@ class NamingSystem_UniqueId {
 			elementComment: elementComment,
 			period: period,
 );
-	int saved = await fhirDb.saveResource(newNamingSystem_UniqueId);
 	return newNamingSystem_UniqueId;
 }
   String id;

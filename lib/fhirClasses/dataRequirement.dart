@@ -11,6 +11,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class DataRequirement {
 
+
 	static Future<DataRequirement> newInstance({
 		String id,
 		List<Extension> extension,
@@ -45,6 +46,11 @@ class DataRequirement {
 );
 	int saved = await fhirDb.saveResource(newDataRequirement);
 	return newDataRequirement;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;
@@ -85,6 +91,7 @@ DataRequirement(
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_CodeFilter {
 
+
 	static Future<DataRequirement_CodeFilter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -107,7 +114,6 @@ class DataRequirement_CodeFilter {
 			valueSet: valueSet,
 			code: code,
 );
-	int saved = await fhirDb.saveResource(newDataRequirement_CodeFilter);
 	return newDataRequirement_CodeFilter;
 }
   String id;
@@ -139,6 +145,7 @@ DataRequirement_CodeFilter(
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_DateFilter {
 
+
 	static Future<DataRequirement_DateFilter> newInstance({
 		String id,
 		List<Extension> extension,
@@ -165,7 +172,6 @@ class DataRequirement_DateFilter {
 			valuePeriod: valuePeriod,
 			valueDuration: valueDuration,
 );
-	int saved = await fhirDb.saveResource(newDataRequirement_DateFilter);
 	return newDataRequirement_DateFilter;
 }
   String id;
@@ -201,6 +207,7 @@ DataRequirement_DateFilter(
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_Sort {
 
+
 	static Future<DataRequirement_Sort> newInstance({
 		String id,
 		List<Extension> extension,
@@ -219,7 +226,6 @@ class DataRequirement_Sort {
 			direction: direction,
 			elementDirection: elementDirection,
 );
-	int saved = await fhirDb.saveResource(newDataRequirement_Sort);
 	return newDataRequirement_Sort;
 }
   String id;

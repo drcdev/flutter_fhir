@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MessageDefinition {
 
+
 	static Future<MessageDefinition> newInstance({
 		String  resourceType,
 		String id,
@@ -121,6 +122,11 @@ class MessageDefinition {
 );
 	int saved = await fhirDb.saveResource(newMessageDefinition);
 	return newMessageDefinition;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MessageDefinition';
   String id;
@@ -233,6 +239,7 @@ MessageDefinition(
 @JsonSerializable(explicitToJson: true)
 class MessageDefinition_Focus {
 
+
 	static Future<MessageDefinition_Focus> newInstance({
 		String id,
 		List<Extension> extension,
@@ -257,7 +264,6 @@ class MessageDefinition_Focus {
 			max: max,
 			elementMax: elementMax,
 );
-	int saved = await fhirDb.saveResource(newMessageDefinition_Focus);
 	return newMessageDefinition_Focus;
 }
   String id;
@@ -291,6 +297,7 @@ MessageDefinition_Focus(
 @JsonSerializable(explicitToJson: true)
 class MessageDefinition_AllowedResponse {
 
+
 	static Future<MessageDefinition_AllowedResponse> newInstance({
 		String id,
 		List<Extension> extension,
@@ -307,7 +314,6 @@ class MessageDefinition_AllowedResponse {
 			situation: situation,
 			elementSituation: elementSituation,
 );
-	int saved = await fhirDb.saveResource(newMessageDefinition_AllowedResponse);
 	return newMessageDefinition_AllowedResponse;
 }
   String id;

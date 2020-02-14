@@ -11,6 +11,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Subscription {
 
+
 	static Future<Subscription> newInstance({
 		String  resourceType,
 		String id,
@@ -63,6 +64,11 @@ class Subscription {
 );
 	int saved = await fhirDb.saveResource(newSubscription);
 	return newSubscription;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Subscription';
   String id;
@@ -121,6 +127,7 @@ Subscription(
 @JsonSerializable(explicitToJson: true)
 class Subscription_Channel {
 
+
 	static Future<Subscription_Channel> newInstance({
 		String id,
 		List<Extension> extension,
@@ -147,7 +154,6 @@ class Subscription_Channel {
 			header: header,
 			elementHeader: elementHeader,
 );
-	int saved = await fhirDb.saveResource(newSubscription_Channel);
 	return newSubscription_Channel;
 }
   String id;

@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Consent {
 
+
 	static Future<Consent> newInstance({
 		String  resourceType,
 		String id,
@@ -76,6 +77,11 @@ class Consent {
 );
 	int saved = await fhirDb.saveResource(newConsent);
 	return newConsent;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Consent';
   String id;
@@ -142,6 +148,7 @@ Consent(
 @JsonSerializable(explicitToJson: true)
 class Consent_Policy {
 
+
 	static Future<Consent_Policy> newInstance({
 		String id,
 		List<Extension> extension,
@@ -160,7 +167,6 @@ class Consent_Policy {
 			uri: uri,
 			elementUri: elementUri,
 );
-	int saved = await fhirDb.saveResource(newConsent_Policy);
 	return newConsent_Policy;
 }
   String id;
@@ -188,6 +194,7 @@ Consent_Policy(
 @JsonSerializable(explicitToJson: true)
 class Consent_Verification {
 
+
 	static Future<Consent_Verification> newInstance({
 		String id,
 		List<Extension> extension,
@@ -208,7 +215,6 @@ class Consent_Verification {
 			verificationDate: verificationDate,
 			elementVerificationDate: elementVerificationDate,
 );
-	int saved = await fhirDb.saveResource(newConsent_Verification);
 	return newConsent_Verification;
 }
   String id;
@@ -237,6 +243,7 @@ Consent_Verification(
 
 @JsonSerializable(explicitToJson: true)
 class Consent_Provision {
+
 
 	static Future<Consent_Provision> newInstance({
 		String id,
@@ -272,7 +279,6 @@ class Consent_Provision {
 			data: data,
 			provision: provision,
 );
-	int saved = await fhirDb.saveResource(newConsent_Provision);
 	return newConsent_Provision;
 }
   String id;
@@ -316,6 +322,7 @@ Consent_Provision(
 @JsonSerializable(explicitToJson: true)
 class Consent_Actor {
 
+
 	static Future<Consent_Actor> newInstance({
 		String id,
 		List<Extension> extension,
@@ -330,7 +337,6 @@ class Consent_Actor {
 			role: role,
 			reference: reference,
 );
-	int saved = await fhirDb.saveResource(newConsent_Actor);
 	return newConsent_Actor;
 }
   String id;
@@ -354,6 +360,7 @@ Consent_Actor(
 @JsonSerializable(explicitToJson: true)
 class Consent_Data {
 
+
 	static Future<Consent_Data> newInstance({
 		String id,
 		List<Extension> extension,
@@ -370,7 +377,6 @@ class Consent_Data {
 			elementMeaning: elementMeaning,
 			reference: reference,
 );
-	int saved = await fhirDb.saveResource(newConsent_Data);
 	return newConsent_Data;
 }
   String id;

@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class DeviceMetric {
 
+
 	static Future<DeviceMetric> newInstance({
 		String  resourceType,
 		String id,
@@ -68,6 +69,11 @@ class DeviceMetric {
 );
 	int saved = await fhirDb.saveResource(newDeviceMetric);
 	return newDeviceMetric;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'DeviceMetric';
   String id;
@@ -128,6 +134,7 @@ DeviceMetric(
 @JsonSerializable(explicitToJson: true)
 class DeviceMetric_Calibration {
 
+
 	static Future<DeviceMetric_Calibration> newInstance({
 		String id,
 		List<Extension> extension,
@@ -150,7 +157,6 @@ class DeviceMetric_Calibration {
 			time: time,
 			elementTime: elementTime,
 );
-	int saved = await fhirDb.saveResource(newDeviceMetric_Calibration);
 	return newDeviceMetric_Calibration;
 }
   String id;

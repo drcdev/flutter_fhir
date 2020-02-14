@@ -17,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Specimen {
 
+
 	static Future<Specimen> newInstance({
 		String  resourceType,
 		String id,
@@ -75,6 +76,11 @@ class Specimen {
 );
 	int saved = await fhirDb.saveResource(newSpecimen);
 	return newSpecimen;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Specimen';
   String id;
@@ -139,6 +145,7 @@ Specimen(
 @JsonSerializable(explicitToJson: true)
 class Specimen_Collection {
 
+
 	static Future<Specimen_Collection> newInstance({
 		String id,
 		List<Extension> extension,
@@ -169,7 +176,6 @@ class Specimen_Collection {
 			fastingStatusCodeableConcept: fastingStatusCodeableConcept,
 			fastingStatusDuration: fastingStatusDuration,
 );
-	int saved = await fhirDb.saveResource(newSpecimen_Collection);
 	return newSpecimen_Collection;
 }
   String id;
@@ -209,6 +215,7 @@ Specimen_Collection(
 @JsonSerializable(explicitToJson: true)
 class Specimen_Processing {
 
+
 	static Future<Specimen_Processing> newInstance({
 		String id,
 		List<Extension> extension,
@@ -233,7 +240,6 @@ class Specimen_Processing {
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod,
 );
-	int saved = await fhirDb.saveResource(newSpecimen_Processing);
 	return newSpecimen_Processing;
 }
   String id;
@@ -267,6 +273,7 @@ Specimen_Processing(
 @JsonSerializable(explicitToJson: true)
 class Specimen_Container {
 
+
 	static Future<Specimen_Container> newInstance({
 		String id,
 		List<Extension> extension,
@@ -293,7 +300,6 @@ class Specimen_Container {
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference,
 );
-	int saved = await fhirDb.saveResource(newSpecimen_Container);
 	return newSpecimen_Container;
 }
   String id;

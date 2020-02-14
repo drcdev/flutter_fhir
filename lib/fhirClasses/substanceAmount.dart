@@ -9,6 +9,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class SubstanceAmount {
 
+
 	static Future<SubstanceAmount> newInstance({
 		String id,
 		List<Extension> extension,
@@ -37,6 +38,11 @@ class SubstanceAmount {
 );
 	int saved = await fhirDb.saveResource(newSubstanceAmount);
 	return newSubstanceAmount;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;
@@ -71,6 +77,7 @@ SubstanceAmount(
 @JsonSerializable(explicitToJson: true)
 class SubstanceAmount_ReferenceRange {
 
+
 	static Future<SubstanceAmount_ReferenceRange> newInstance({
 		String id,
 		List<Extension> extension,
@@ -85,7 +92,6 @@ class SubstanceAmount_ReferenceRange {
 			lowLimit: lowLimit,
 			highLimit: highLimit,
 );
-	int saved = await fhirDb.saveResource(newSubstanceAmount_ReferenceRange);
 	return newSubstanceAmount_ReferenceRange;
 }
   String id;

@@ -20,6 +20,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Library {
 
+
 	static Future<Library> newInstance({
 		String  resourceType,
 		String id,
@@ -142,6 +143,11 @@ class Library {
 );
 	int saved = await fhirDb.saveResource(newLibrary);
 	return newLibrary;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Library';
   String id;

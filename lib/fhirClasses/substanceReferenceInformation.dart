@@ -15,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation {
 
+
 	static Future<SubstanceReferenceInformation> newInstance({
 		String  resourceType,
 		String id,
@@ -55,6 +56,11 @@ class SubstanceReferenceInformation {
 );
 	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation);
 	return newSubstanceReferenceInformation;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SubstanceReferenceInformation';
   String id;
@@ -101,6 +107,7 @@ SubstanceReferenceInformation(
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Gene {
 
+
 	static Future<SubstanceReferenceInformation_Gene> newInstance({
 		String id,
 		List<Extension> extension,
@@ -117,7 +124,6 @@ class SubstanceReferenceInformation_Gene {
 			gene: gene,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_Gene);
 	return newSubstanceReferenceInformation_Gene;
 }
   String id;
@@ -143,6 +149,7 @@ SubstanceReferenceInformation_Gene(
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_GeneElement {
 
+
 	static Future<SubstanceReferenceInformation_GeneElement> newInstance({
 		String id,
 		List<Extension> extension,
@@ -159,7 +166,6 @@ class SubstanceReferenceInformation_GeneElement {
 			element: element,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_GeneElement);
 	return newSubstanceReferenceInformation_GeneElement;
 }
   String id;
@@ -185,6 +191,7 @@ SubstanceReferenceInformation_GeneElement(
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Classification {
 
+
 	static Future<SubstanceReferenceInformation_Classification> newInstance({
 		String id,
 		List<Extension> extension,
@@ -203,7 +210,6 @@ class SubstanceReferenceInformation_Classification {
 			subtype: subtype,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_Classification);
 	return newSubstanceReferenceInformation_Classification;
 }
   String id;
@@ -230,6 +236,7 @@ SubstanceReferenceInformation_Classification(
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Target {
+
 
 	static Future<SubstanceReferenceInformation_Target> newInstance({
 		String id,
@@ -263,7 +270,6 @@ class SubstanceReferenceInformation_Target {
 			amountType: amountType,
 			source: source,
 );
-	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_Target);
 	return newSubstanceReferenceInformation_Target;
 }
   String id;

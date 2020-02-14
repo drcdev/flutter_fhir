@@ -19,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class ServiceRequest {
 
+
 	static Future<ServiceRequest> newInstance({
 		String  resourceType,
 		String id,
@@ -141,6 +142,11 @@ class ServiceRequest {
 );
 	int saved = await fhirDb.saveResource(newServiceRequest);
 	return newServiceRequest;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'ServiceRequest';
   String id;

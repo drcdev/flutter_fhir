@@ -11,6 +11,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Linkage {
 
+
 	static Future<Linkage> newInstance({
 		String  resourceType,
 		String id,
@@ -47,6 +48,11 @@ class Linkage {
 );
 	int saved = await fhirDb.saveResource(newLinkage);
 	return newLinkage;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Linkage';
   String id;
@@ -89,6 +95,7 @@ Linkage(
 @JsonSerializable(explicitToJson: true)
 class Linkage_Item {
 
+
 	static Future<Linkage_Item> newInstance({
 		String id,
 		List<Extension> extension,
@@ -105,7 +112,6 @@ class Linkage_Item {
 			elementType: elementType,
 			resource: resource,
 );
-	int saved = await fhirDb.saveResource(newLinkage_Item);
 	return newLinkage_Item;
 }
   String id;

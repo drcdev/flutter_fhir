@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Provenance {
 
+
 	static Future<Provenance> newInstance({
 		String  resourceType,
 		String id,
@@ -70,6 +71,11 @@ class Provenance {
 );
 	int saved = await fhirDb.saveResource(newProvenance);
 	return newProvenance;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Provenance';
   String id;
@@ -132,6 +138,7 @@ Provenance(
 @JsonSerializable(explicitToJson: true)
 class Provenance_Agent {
 
+
 	static Future<Provenance_Agent> newInstance({
 		String id,
 		List<Extension> extension,
@@ -150,7 +157,6 @@ class Provenance_Agent {
 			who: who,
 			onBehalfOf: onBehalfOf,
 );
-	int saved = await fhirDb.saveResource(newProvenance_Agent);
 	return newProvenance_Agent;
 }
   String id;
@@ -178,6 +184,7 @@ Provenance_Agent(
 @JsonSerializable(explicitToJson: true)
 class Provenance_Entity {
 
+
 	static Future<Provenance_Entity> newInstance({
 		String id,
 		List<Extension> extension,
@@ -196,7 +203,6 @@ class Provenance_Entity {
 			what: what,
 			agent: agent,
 );
-	int saved = await fhirDb.saveResource(newProvenance_Entity);
 	return newProvenance_Entity;
 }
   String id;

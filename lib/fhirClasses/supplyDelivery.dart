@@ -16,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SupplyDelivery {
 
+
 	static Future<SupplyDelivery> newInstance({
 		String  resourceType,
 		String id,
@@ -74,6 +75,11 @@ class SupplyDelivery {
 );
 	int saved = await fhirDb.saveResource(newSupplyDelivery);
 	return newSupplyDelivery;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SupplyDelivery';
   String id;
@@ -138,6 +144,7 @@ SupplyDelivery(
 @JsonSerializable(explicitToJson: true)
 class SupplyDelivery_SuppliedItem {
 
+
 	static Future<SupplyDelivery_SuppliedItem> newInstance({
 		String id,
 		List<Extension> extension,
@@ -154,7 +161,6 @@ class SupplyDelivery_SuppliedItem {
 			itemCodeableConcept: itemCodeableConcept,
 			itemReference: itemReference,
 );
-	int saved = await fhirDb.saveResource(newSupplyDelivery_SuppliedItem);
 	return newSupplyDelivery_SuppliedItem;
 }
   String id;

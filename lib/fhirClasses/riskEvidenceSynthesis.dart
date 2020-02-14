@@ -18,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis {
 
+
 	static Future<RiskEvidenceSynthesis> newInstance({
 		String  resourceType,
 		String id,
@@ -130,6 +131,11 @@ class RiskEvidenceSynthesis {
 );
 	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis);
 	return newRiskEvidenceSynthesis;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'RiskEvidenceSynthesis';
   String id;
@@ -248,6 +254,7 @@ RiskEvidenceSynthesis(
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_SampleSize {
 
+
 	static Future<RiskEvidenceSynthesis_SampleSize> newInstance({
 		String id,
 		List<Extension> extension,
@@ -270,7 +277,6 @@ class RiskEvidenceSynthesis_SampleSize {
 			numberOfParticipants: numberOfParticipants,
 			elementNumberOfParticipants: elementNumberOfParticipants,
 );
-	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_SampleSize);
 	return newRiskEvidenceSynthesis_SampleSize;
 }
   String id;
@@ -301,6 +307,7 @@ RiskEvidenceSynthesis_SampleSize(
 
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_RiskEstimate {
+
 
 	static Future<RiskEvidenceSynthesis_RiskEstimate> newInstance({
 		String id,
@@ -334,7 +341,6 @@ class RiskEvidenceSynthesis_RiskEstimate {
 			elementNumeratorCount: elementNumeratorCount,
 			precisionEstimate: precisionEstimate,
 );
-	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_RiskEstimate);
 	return newRiskEvidenceSynthesis_RiskEstimate;
 }
   String id;
@@ -376,6 +382,7 @@ RiskEvidenceSynthesis_RiskEstimate(
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_PrecisionEstimate {
 
+
 	static Future<RiskEvidenceSynthesis_PrecisionEstimate> newInstance({
 		String id,
 		List<Extension> extension,
@@ -400,7 +407,6 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
 			to: to,
 			elementTo: elementTo,
 );
-	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_PrecisionEstimate);
 	return newRiskEvidenceSynthesis_PrecisionEstimate;
 }
   String id;
@@ -434,6 +440,7 @@ RiskEvidenceSynthesis_PrecisionEstimate(
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_Certainty {
 
+
 	static Future<RiskEvidenceSynthesis_Certainty> newInstance({
 		String id,
 		List<Extension> extension,
@@ -450,7 +457,6 @@ class RiskEvidenceSynthesis_Certainty {
 			note: note,
 			certaintySubcomponent: certaintySubcomponent,
 );
-	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_Certainty);
 	return newRiskEvidenceSynthesis_Certainty;
 }
   String id;
@@ -476,6 +482,7 @@ RiskEvidenceSynthesis_Certainty(
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_CertaintySubcomponent {
 
+
 	static Future<RiskEvidenceSynthesis_CertaintySubcomponent> newInstance({
 		String id,
 		List<Extension> extension,
@@ -492,7 +499,6 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
 			rating: rating,
 			note: note,
 );
-	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_CertaintySubcomponent);
 	return newRiskEvidenceSynthesis_CertaintySubcomponent;
 }
   String id;

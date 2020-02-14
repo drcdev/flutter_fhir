@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductAuthorization {
 
+
 	static Future<MedicinalProductAuthorization> newInstance({
 		String  resourceType,
 		String id,
@@ -82,6 +83,11 @@ class MedicinalProductAuthorization {
 );
 	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization);
 	return newMedicinalProductAuthorization;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'MedicinalProductAuthorization';
   String id;
@@ -156,6 +162,7 @@ MedicinalProductAuthorization(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductAuthorization_JurisdictionalAuthorization {
 
+
 	static Future<MedicinalProductAuthorization_JurisdictionalAuthorization> newInstance({
 		String id,
 		List<Extension> extension,
@@ -176,7 +183,6 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
 			legalStatusOfSupply: legalStatusOfSupply,
 			validityPeriod: validityPeriod,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization_JurisdictionalAuthorization);
 	return newMedicinalProductAuthorization_JurisdictionalAuthorization;
 }
   String id;
@@ -206,6 +212,7 @@ MedicinalProductAuthorization_JurisdictionalAuthorization(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductAuthorization_Procedure {
 
+
 	static Future<MedicinalProductAuthorization_Procedure> newInstance({
 		String id,
 		List<Extension> extension,
@@ -228,7 +235,6 @@ class MedicinalProductAuthorization_Procedure {
 			elementDateDateTime: elementDateDateTime,
 			application: application,
 );
-	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization_Procedure);
 	return newMedicinalProductAuthorization_Procedure;
 }
   String id;

@@ -9,6 +9,7 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @JsonSerializable(explicitToJson: true)
 class Signature {
 
+
 	static Future<Signature> newInstance({
 		String id,
 		List<Extension> extension,
@@ -41,6 +42,11 @@ class Signature {
 );
 	int saved = await fhirDb.saveResource(newSignature);
 	return newSignature;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String id;
   List<Extension> extension;

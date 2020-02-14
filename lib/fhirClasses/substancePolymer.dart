@@ -13,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class SubstancePolymer {
 
+
 	static Future<SubstancePolymer> newInstance({
 		String  resourceType,
 		String id,
@@ -55,6 +56,11 @@ class SubstancePolymer {
 );
 	int saved = await fhirDb.saveResource(newSubstancePolymer);
 	return newSubstancePolymer;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'SubstancePolymer';
   String id;
@@ -103,6 +109,7 @@ SubstancePolymer(
 @JsonSerializable(explicitToJson: true)
 class SubstancePolymer_MonomerSet {
 
+
 	static Future<SubstancePolymer_MonomerSet> newInstance({
 		String id,
 		List<Extension> extension,
@@ -117,7 +124,6 @@ class SubstancePolymer_MonomerSet {
 			ratioType: ratioType,
 			startingMaterial: startingMaterial,
 );
-	int saved = await fhirDb.saveResource(newSubstancePolymer_MonomerSet);
 	return newSubstancePolymer_MonomerSet;
 }
   String id;
@@ -141,6 +147,7 @@ SubstancePolymer_MonomerSet(
 @JsonSerializable(explicitToJson: true)
 class SubstancePolymer_StartingMaterial {
 
+
 	static Future<SubstancePolymer_StartingMaterial> newInstance({
 		String id,
 		List<Extension> extension,
@@ -161,7 +168,6 @@ class SubstancePolymer_StartingMaterial {
 			elementIsDefining: elementIsDefining,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newSubstancePolymer_StartingMaterial);
 	return newSubstancePolymer_StartingMaterial;
 }
   String id;
@@ -191,6 +197,7 @@ SubstancePolymer_StartingMaterial(
 @JsonSerializable(explicitToJson: true)
 class SubstancePolymer_Repeat {
 
+
 	static Future<SubstancePolymer_Repeat> newInstance({
 		String id,
 		List<Extension> extension,
@@ -213,7 +220,6 @@ class SubstancePolymer_Repeat {
 			repeatUnitAmountType: repeatUnitAmountType,
 			repeatUnit: repeatUnit,
 );
-	int saved = await fhirDb.saveResource(newSubstancePolymer_Repeat);
 	return newSubstancePolymer_Repeat;
 }
   String id;
@@ -245,6 +251,7 @@ SubstancePolymer_Repeat(
 @JsonSerializable(explicitToJson: true)
 class SubstancePolymer_RepeatUnit {
 
+
 	static Future<SubstancePolymer_RepeatUnit> newInstance({
 		String id,
 		List<Extension> extension,
@@ -267,7 +274,6 @@ class SubstancePolymer_RepeatUnit {
 			degreeOfPolymerisation: degreeOfPolymerisation,
 			structuralRepresentation: structuralRepresentation,
 );
-	int saved = await fhirDb.saveResource(newSubstancePolymer_RepeatUnit);
 	return newSubstancePolymer_RepeatUnit;
 }
   String id;
@@ -299,6 +305,7 @@ SubstancePolymer_RepeatUnit(
 @JsonSerializable(explicitToJson: true)
 class SubstancePolymer_DegreeOfPolymerisation {
 
+
 	static Future<SubstancePolymer_DegreeOfPolymerisation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -313,7 +320,6 @@ class SubstancePolymer_DegreeOfPolymerisation {
 			degree: degree,
 			amount: amount,
 );
-	int saved = await fhirDb.saveResource(newSubstancePolymer_DegreeOfPolymerisation);
 	return newSubstancePolymer_DegreeOfPolymerisation;
 }
   String id;
@@ -337,6 +343,7 @@ SubstancePolymer_DegreeOfPolymerisation(
 @JsonSerializable(explicitToJson: true)
 class SubstancePolymer_StructuralRepresentation {
 
+
 	static Future<SubstancePolymer_StructuralRepresentation> newInstance({
 		String id,
 		List<Extension> extension,
@@ -355,7 +362,6 @@ class SubstancePolymer_StructuralRepresentation {
 			elementRepresentation: elementRepresentation,
 			attachment: attachment,
 );
-	int saved = await fhirDb.saveResource(newSubstancePolymer_StructuralRepresentation);
 	return newSubstancePolymer_StructuralRepresentation;
 }
   String id;

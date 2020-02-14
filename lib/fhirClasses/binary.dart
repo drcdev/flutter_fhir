@@ -8,6 +8,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class Binary {
 
+
 	static Future<Binary> newInstance({
 		String  resourceType,
 		String id,
@@ -38,6 +39,11 @@ class Binary {
 );
 	int saved = await fhirDb.saveResource(newBinary);
 	return newBinary;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'Binary';
   String id;

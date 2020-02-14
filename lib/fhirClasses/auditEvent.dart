@@ -14,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @JsonSerializable(explicitToJson: true)
 class AuditEvent {
 
+
 	static Future<AuditEvent> newInstance({
 		String  resourceType,
 		String id,
@@ -72,6 +73,11 @@ class AuditEvent {
 );
 	int saved = await fhirDb.saveResource(newAuditEvent);
 	return newAuditEvent;
+}
+
+save () async {
+	var fhirDb = new DatabaseHelper();
+	int saved = await fhirDb.save(this);
 }
   String resourceType= 'AuditEvent';
   String id;
@@ -136,6 +142,7 @@ AuditEvent(
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Agent {
 
+
 	static Future<AuditEvent_Agent> newInstance({
 		String id,
 		List<Extension> extension,
@@ -176,7 +183,6 @@ class AuditEvent_Agent {
 			network: network,
 			purposeOfUse: purposeOfUse,
 );
-	int saved = await fhirDb.saveResource(newAuditEvent_Agent);
 	return newAuditEvent_Agent;
 }
   String id;
@@ -226,6 +232,7 @@ AuditEvent_Agent(
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Network {
 
+
 	static Future<AuditEvent_Network> newInstance({
 		String id,
 		List<Extension> extension,
@@ -244,7 +251,6 @@ class AuditEvent_Network {
 			type: type,
 			elementType: elementType,
 );
-	int saved = await fhirDb.saveResource(newAuditEvent_Network);
 	return newAuditEvent_Network;
 }
   String id;
@@ -272,6 +278,7 @@ AuditEvent_Network(
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Source {
 
+
 	static Future<AuditEvent_Source> newInstance({
 		String id,
 		List<Extension> extension,
@@ -290,7 +297,6 @@ class AuditEvent_Source {
 			observer: observer,
 			type: type,
 );
-	int saved = await fhirDb.saveResource(newAuditEvent_Source);
 	return newAuditEvent_Source;
 }
   String id;
@@ -317,6 +323,7 @@ AuditEvent_Source(
 
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Entity {
+
 
 	static Future<AuditEvent_Entity> newInstance({
 		String id,
@@ -352,7 +359,6 @@ class AuditEvent_Entity {
 			elementQuery: elementQuery,
 			detail: detail,
 );
-	int saved = await fhirDb.saveResource(newAuditEvent_Entity);
 	return newAuditEvent_Entity;
 }
   String id;
@@ -396,6 +402,7 @@ AuditEvent_Entity(
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Detail {
 
+
 	static Future<AuditEvent_Detail> newInstance({
 		String id,
 		List<Extension> extension,
@@ -418,7 +425,6 @@ class AuditEvent_Detail {
 			valueBase64Binary: valueBase64Binary,
 			elementValueBase64Binary: elementValueBase64Binary,
 );
-	int saved = await fhirDb.saveResource(newAuditEvent_Detail);
 	return newAuditEvent_Detail;
 }
   String id;
