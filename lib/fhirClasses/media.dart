@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Media {
 
 	static Future<Media> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -60,8 +59,10 @@ class Media {
 		Element elementDuration,
 		Attachment content,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	Media newMedia = new Media(
-			id: await newId('Media'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Media'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -103,9 +104,10 @@ class Media {
 			content: content,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newMedia);
 	return newMedia;
 }
-  final String resourceType= 'Media';
+  String resourceType= 'Media';
   String id;
   Meta meta;
   String implicitRules;
@@ -149,7 +151,8 @@ class Media {
   List<Annotation> note;
 
 Media(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -204,6 +207,7 @@ Media(
 
 Media _$MediaFromJson(Map<String, dynamic> json) {
   return Media(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -322,6 +326,7 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -25,8 +23,9 @@ class Signature {
 		Element elementSigFormat,
 		String data,
 		Element elementData}) async {
+	var fhirDb = new DatabaseHelper();
 	Signature newSignature = new Signature(
-			id: await newId('Signature'),
+			id: await fhirDb.newResourceId('Signature'),
 			extension: extension,
 			type: type,
 			when: when,
@@ -40,6 +39,7 @@ class Signature {
 			data: data,
 			elementData: elementData,
 );
+	int saved = await fhirDb.saveResource(newSignature);
 	return newSignature;
 }
   String id;

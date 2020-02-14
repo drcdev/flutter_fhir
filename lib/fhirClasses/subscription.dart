@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
@@ -14,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Subscription {
 
 	static Future<Subscription> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -36,8 +35,10 @@ class Subscription {
 		String error,
 		Element elementError,
 		Subscription_Channel channel}) async {
+	var fhirDb = new DatabaseHelper();
 	Subscription newSubscription = new Subscription(
-			id: await newId('Subscription'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Subscription'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -60,9 +61,10 @@ class Subscription {
 			elementError: elementError,
 			channel: channel,
 );
+	int saved = await fhirDb.saveResource(newSubscription);
 	return newSubscription;
 }
-  final String resourceType= 'Subscription';
+  String resourceType= 'Subscription';
   String id;
   Meta meta;
   String implicitRules;
@@ -87,7 +89,8 @@ class Subscription {
   Subscription_Channel channel;
 
 Subscription(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -130,8 +133,9 @@ class Subscription_Channel {
 		Element elementPayload,
 		List<String> header,
 		List<Element> elementHeader}) async {
+	var fhirDb = new DatabaseHelper();
 	Subscription_Channel newSubscription_Channel = new Subscription_Channel(
-			id: await newId('Subscription_Channel'),
+			id: await fhirDb.newResourceId('Subscription_Channel'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -143,6 +147,7 @@ class Subscription_Channel {
 			header: header,
 			elementHeader: elementHeader,
 );
+	int saved = await fhirDb.saveResource(newSubscription_Channel);
 	return newSubscription_Channel;
 }
   String id;
@@ -183,6 +188,7 @@ Subscription_Channel(
 
 Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
   return Subscription(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -244,6 +250,7 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

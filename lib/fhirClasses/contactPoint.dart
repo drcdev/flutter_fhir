@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -21,8 +19,9 @@ class ContactPoint {
 		int rank,
 		Element elementRank,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	ContactPoint newContactPoint = new ContactPoint(
-			id: await newId('ContactPoint'),
+			id: await fhirDb.newResourceId('ContactPoint'),
 			extension: extension,
 			system: system,
 			elementSystem: elementSystem,
@@ -34,6 +33,7 @@ class ContactPoint {
 			elementRank: elementRank,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newContactPoint);
 	return newContactPoint;
 }
   String id;

@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -15,14 +13,16 @@ class Money {
 		Element elementValue,
 		String currency,
 		Element elementCurrency}) async {
+	var fhirDb = new DatabaseHelper();
 	Money newMoney = new Money(
-			id: await newId('Money'),
+			id: await fhirDb.newResourceId('Money'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
 			currency: currency,
 			elementCurrency: elementCurrency,
 );
+	int saved = await fhirDb.saveResource(newMoney);
 	return newMoney;
 }
   String id;

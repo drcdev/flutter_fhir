@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -21,8 +19,9 @@ class Age {
 		Element elementSystem,
 		String code,
 		Element elementCode}) async {
+	var fhirDb = new DatabaseHelper();
 	Age newAge = new Age(
-			id: await newId('Age'),
+			id: await fhirDb.newResourceId('Age'),
 			extension: extension,
 			value: value,
 			elementValue: elementValue,
@@ -35,6 +34,7 @@ class Age {
 			code: code,
 			elementCode: elementCode,
 );
+	int saved = await fhirDb.saveResource(newAge);
 	return newAge;
 }
   String id;

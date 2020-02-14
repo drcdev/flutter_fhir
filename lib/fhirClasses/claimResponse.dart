@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ClaimResponse {
 
 	static Future<ClaimResponse> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -64,8 +63,10 @@ class ClaimResponse {
 		List<Reference> communicationRequest,
 		List<ClaimResponse_Insurance> insurance,
 		List<ClaimResponse_Error> error}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse newClaimResponse = new ClaimResponse(
-			id: await newId('ClaimResponse'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ClaimResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -109,9 +110,10 @@ class ClaimResponse {
 			insurance: insurance,
 			error: error,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse);
 	return newClaimResponse;
 }
-  final String resourceType= 'ClaimResponse';
+  String resourceType= 'ClaimResponse';
   String id;
   Meta meta;
   String implicitRules;
@@ -157,7 +159,8 @@ class ClaimResponse {
   List<ClaimResponse_Error> error;
 
 ClaimResponse(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -219,8 +222,9 @@ class ClaimResponse_Item {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_Detail> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Item newClaimResponse_Item = new ClaimResponse_Item(
-			id: await newId('ClaimResponse_Item'),
+			id: await fhirDb.newResourceId('ClaimResponse_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -230,6 +234,7 @@ class ClaimResponse_Item {
 			adjudication: adjudication,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Item);
 	return newClaimResponse_Item;
 }
   String id;
@@ -270,8 +275,9 @@ class ClaimResponse_Adjudication {
 		Money amount,
 		double value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Adjudication newClaimResponse_Adjudication = new ClaimResponse_Adjudication(
-			id: await newId('ClaimResponse_Adjudication'),
+			id: await fhirDb.newResourceId('ClaimResponse_Adjudication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -280,6 +286,7 @@ class ClaimResponse_Adjudication {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Adjudication);
 	return newClaimResponse_Adjudication;
 }
   String id;
@@ -319,8 +326,9 @@ class ClaimResponse_Detail {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_SubDetail> subDetail}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Detail newClaimResponse_Detail = new ClaimResponse_Detail(
-			id: await newId('ClaimResponse_Detail'),
+			id: await fhirDb.newResourceId('ClaimResponse_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			detailSequence: detailSequence,
@@ -330,6 +338,7 @@ class ClaimResponse_Detail {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Detail);
 	return newClaimResponse_Detail;
 }
   String id;
@@ -370,8 +379,9 @@ class ClaimResponse_SubDetail {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_SubDetail newClaimResponse_SubDetail = new ClaimResponse_SubDetail(
-			id: await newId('ClaimResponse_SubDetail'),
+			id: await fhirDb.newResourceId('ClaimResponse_SubDetail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			subDetailSequence: subDetailSequence,
@@ -380,6 +390,7 @@ class ClaimResponse_SubDetail {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_SubDetail);
 	return newClaimResponse_SubDetail;
 }
   String id;
@@ -440,8 +451,9 @@ class ClaimResponse_AddItem {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_Detail1> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_AddItem newClaimResponse_AddItem = new ClaimResponse_AddItem(
-			id: await newId('ClaimResponse_AddItem'),
+			id: await fhirDb.newResourceId('ClaimResponse_AddItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -472,6 +484,7 @@ class ClaimResponse_AddItem {
 			adjudication: adjudication,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_AddItem);
 	return newClaimResponse_AddItem;
 }
   String id;
@@ -560,8 +573,9 @@ class ClaimResponse_Detail1 {
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication,
 		List<ClaimResponse_SubDetail1> subDetail}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Detail1 newClaimResponse_Detail1 = new ClaimResponse_Detail1(
-			id: await newId('ClaimResponse_Detail1'),
+			id: await fhirDb.newResourceId('ClaimResponse_Detail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -576,6 +590,7 @@ class ClaimResponse_Detail1 {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Detail1);
 	return newClaimResponse_Detail1;
 }
   String id;
@@ -631,8 +646,9 @@ class ClaimResponse_SubDetail1 {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ClaimResponse_Adjudication> adjudication}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_SubDetail1 newClaimResponse_SubDetail1 = new ClaimResponse_SubDetail1(
-			id: await newId('ClaimResponse_SubDetail1'),
+			id: await fhirDb.newResourceId('ClaimResponse_SubDetail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -646,6 +662,7 @@ class ClaimResponse_SubDetail1 {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_SubDetail1);
 	return newClaimResponse_SubDetail1;
 }
   String id;
@@ -691,13 +708,15 @@ class ClaimResponse_Total {
 		List<Extension> modifierExtension,
 		CodeableConcept category,
 		Money amount}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Total newClaimResponse_Total = new ClaimResponse_Total(
-			id: await newId('ClaimResponse_Total'),
+			id: await fhirDb.newResourceId('ClaimResponse_Total'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Total);
 	return newClaimResponse_Total;
 }
   String id;
@@ -732,8 +751,9 @@ class ClaimResponse_Payment {
 		Element elementDate,
 		Money amount,
 		Identifier identifier}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Payment newClaimResponse_Payment = new ClaimResponse_Payment(
-			id: await newId('ClaimResponse_Payment'),
+			id: await fhirDb.newResourceId('ClaimResponse_Payment'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -744,6 +764,7 @@ class ClaimResponse_Payment {
 			amount: amount,
 			identifier: identifier,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Payment);
 	return newClaimResponse_Payment;
 }
   String id;
@@ -788,8 +809,9 @@ class ClaimResponse_ProcessNote {
 		String text,
 		Element elementText,
 		CodeableConcept language}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_ProcessNote newClaimResponse_ProcessNote = new ClaimResponse_ProcessNote(
-			id: await newId('ClaimResponse_ProcessNote'),
+			id: await fhirDb.newResourceId('ClaimResponse_ProcessNote'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -800,6 +822,7 @@ class ClaimResponse_ProcessNote {
 			elementText: elementText,
 			language: language,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_ProcessNote);
 	return newClaimResponse_ProcessNote;
 }
   String id;
@@ -845,8 +868,9 @@ class ClaimResponse_Insurance {
 		String businessArrangement,
 		Element elementBusinessArrangement,
 		Reference claimResponse}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Insurance newClaimResponse_Insurance = new ClaimResponse_Insurance(
-			id: await newId('ClaimResponse_Insurance'),
+			id: await fhirDb.newResourceId('ClaimResponse_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -858,6 +882,7 @@ class ClaimResponse_Insurance {
 			elementBusinessArrangement: elementBusinessArrangement,
 			claimResponse: claimResponse,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Insurance);
 	return newClaimResponse_Insurance;
 }
   String id;
@@ -904,8 +929,9 @@ class ClaimResponse_Error {
 		int subDetailSequence,
 		Element elementSubDetailSequence,
 		CodeableConcept code}) async {
+	var fhirDb = new DatabaseHelper();
 	ClaimResponse_Error newClaimResponse_Error = new ClaimResponse_Error(
-			id: await newId('ClaimResponse_Error'),
+			id: await fhirDb.newResourceId('ClaimResponse_Error'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -916,6 +942,7 @@ class ClaimResponse_Error {
 			elementSubDetailSequence: elementSubDetailSequence,
 			code: code,
 );
+	int saved = await fhirDb.saveResource(newClaimResponse_Error);
 	return newClaimResponse_Error;
 }
   String id;
@@ -954,6 +981,7 @@ ClaimResponse_Error(
 
 ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
   return ClaimResponse(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1094,6 +1122,7 @@ ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ClaimResponseToJson(ClaimResponse instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

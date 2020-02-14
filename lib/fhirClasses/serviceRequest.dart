@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -22,6 +20,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ServiceRequest {
 
 	static Future<ServiceRequest> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -79,8 +78,10 @@ class ServiceRequest {
 		String patientInstruction,
 		Element elementPatientInstruction,
 		List<Reference> relevantHistory}) async {
+	var fhirDb = new DatabaseHelper();
 	ServiceRequest newServiceRequest = new ServiceRequest(
-			id: await newId('ServiceRequest'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ServiceRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -138,9 +139,10 @@ class ServiceRequest {
 			elementPatientInstruction: elementPatientInstruction,
 			relevantHistory: relevantHistory,
 );
+	int saved = await fhirDb.saveResource(newServiceRequest);
 	return newServiceRequest;
 }
-  final String resourceType= 'ServiceRequest';
+  String resourceType= 'ServiceRequest';
   String id;
   Meta meta;
   String implicitRules;
@@ -200,7 +202,8 @@ class ServiceRequest {
   List<Reference> relevantHistory;
 
 ServiceRequest(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -271,6 +274,7 @@ ServiceRequest(
 
 ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
   return ServiceRequest(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -457,6 +461,7 @@ ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ServiceRequestToJson(ServiceRequest instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

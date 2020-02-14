@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MeasureReport {
 
 	static Future<MeasureReport> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -42,8 +41,10 @@ class MeasureReport {
 		CodeableConcept improvementNotation,
 		List<MeasureReport_Group> group,
 		List<Reference> evaluatedResource}) async {
+	var fhirDb = new DatabaseHelper();
 	MeasureReport newMeasureReport = new MeasureReport(
-			id: await newId('MeasureReport'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MeasureReport'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -68,9 +69,10 @@ class MeasureReport {
 			group: group,
 			evaluatedResource: evaluatedResource,
 );
+	int saved = await fhirDb.saveResource(newMeasureReport);
 	return newMeasureReport;
 }
-  final String resourceType= 'MeasureReport';
+  String resourceType= 'MeasureReport';
   String id;
   Meta meta;
   String implicitRules;
@@ -97,7 +99,8 @@ class MeasureReport {
   List<Reference> evaluatedResource;
 
 MeasureReport(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -138,8 +141,9 @@ class MeasureReport_Group {
 		List<MeasureReport_Population> population,
 		Quantity measureScore,
 		List<MeasureReport_Stratifier> stratifier}) async {
+	var fhirDb = new DatabaseHelper();
 	MeasureReport_Group newMeasureReport_Group = new MeasureReport_Group(
-			id: await newId('MeasureReport_Group'),
+			id: await fhirDb.newResourceId('MeasureReport_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -147,6 +151,7 @@ class MeasureReport_Group {
 			measureScore: measureScore,
 			stratifier: stratifier,
 );
+	int saved = await fhirDb.saveResource(newMeasureReport_Group);
 	return newMeasureReport_Group;
 }
   String id;
@@ -182,8 +187,9 @@ class MeasureReport_Population {
 		int count,
 		Element elementCount,
 		Reference subjectResults}) async {
+	var fhirDb = new DatabaseHelper();
 	MeasureReport_Population newMeasureReport_Population = new MeasureReport_Population(
-			id: await newId('MeasureReport_Population'),
+			id: await fhirDb.newResourceId('MeasureReport_Population'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -191,6 +197,7 @@ class MeasureReport_Population {
 			elementCount: elementCount,
 			subjectResults: subjectResults,
 );
+	int saved = await fhirDb.saveResource(newMeasureReport_Population);
 	return newMeasureReport_Population;
 }
   String id;
@@ -224,13 +231,15 @@ class MeasureReport_Stratifier {
 		List<Extension> modifierExtension,
 		List<CodeableConcept> code,
 		List<MeasureReport_Stratum> stratum}) async {
+	var fhirDb = new DatabaseHelper();
 	MeasureReport_Stratifier newMeasureReport_Stratifier = new MeasureReport_Stratifier(
-			id: await newId('MeasureReport_Stratifier'),
+			id: await fhirDb.newResourceId('MeasureReport_Stratifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			stratum: stratum,
 );
+	int saved = await fhirDb.saveResource(newMeasureReport_Stratifier);
 	return newMeasureReport_Stratifier;
 }
   String id;
@@ -262,8 +271,9 @@ class MeasureReport_Stratum {
 		List<MeasureReport_Component> component,
 		List<MeasureReport_Population1> population,
 		Quantity measureScore}) async {
+	var fhirDb = new DatabaseHelper();
 	MeasureReport_Stratum newMeasureReport_Stratum = new MeasureReport_Stratum(
-			id: await newId('MeasureReport_Stratum'),
+			id: await fhirDb.newResourceId('MeasureReport_Stratum'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			value: value,
@@ -271,6 +281,7 @@ class MeasureReport_Stratum {
 			population: population,
 			measureScore: measureScore,
 );
+	int saved = await fhirDb.saveResource(newMeasureReport_Stratum);
 	return newMeasureReport_Stratum;
 }
   String id;
@@ -304,13 +315,15 @@ class MeasureReport_Component {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		CodeableConcept value}) async {
+	var fhirDb = new DatabaseHelper();
 	MeasureReport_Component newMeasureReport_Component = new MeasureReport_Component(
-			id: await newId('MeasureReport_Component'),
+			id: await fhirDb.newResourceId('MeasureReport_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			value: value,
 );
+	int saved = await fhirDb.saveResource(newMeasureReport_Component);
 	return newMeasureReport_Component;
 }
   String id;
@@ -342,8 +355,9 @@ class MeasureReport_Population1 {
 		int count,
 		Element elementCount,
 		Reference subjectResults}) async {
+	var fhirDb = new DatabaseHelper();
 	MeasureReport_Population1 newMeasureReport_Population1 = new MeasureReport_Population1(
-			id: await newId('MeasureReport_Population1'),
+			id: await fhirDb.newResourceId('MeasureReport_Population1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -351,6 +365,7 @@ class MeasureReport_Population1 {
 			elementCount: elementCount,
 			subjectResults: subjectResults,
 );
+	int saved = await fhirDb.saveResource(newMeasureReport_Population1);
 	return newMeasureReport_Population1;
 }
   String id;
@@ -383,6 +398,7 @@ MeasureReport_Population1(
 
 MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
   return MeasureReport(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -455,6 +471,7 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

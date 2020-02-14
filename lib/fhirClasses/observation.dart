@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/sampledData.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
@@ -23,6 +21,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Observation {
 
 	static Future<Observation> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -79,8 +78,10 @@ class Observation {
 		List<Reference> hasMember,
 		List<Reference> derivedFrom,
 		List<Observation_Component> component}) async {
+	var fhirDb = new DatabaseHelper();
 	Observation newObservation = new Observation(
-			id: await newId('Observation'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Observation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -137,9 +138,10 @@ class Observation {
 			derivedFrom: derivedFrom,
 			component: component,
 );
+	int saved = await fhirDb.saveResource(newObservation);
 	return newObservation;
 }
-  final String resourceType= 'Observation';
+  String resourceType= 'Observation';
   String id;
   Meta meta;
   String implicitRules;
@@ -198,7 +200,8 @@ class Observation {
   List<Observation_Component> component;
 
 Observation(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -274,8 +277,9 @@ class Observation_ReferenceRange {
 		Range age,
 		String text,
 		Element elementText}) async {
+	var fhirDb = new DatabaseHelper();
 	Observation_ReferenceRange newObservation_ReferenceRange = new Observation_ReferenceRange(
-			id: await newId('Observation_ReferenceRange'),
+			id: await fhirDb.newResourceId('Observation_ReferenceRange'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			low: low,
@@ -286,6 +290,7 @@ class Observation_ReferenceRange {
 			text: text,
 			elementText: elementText,
 );
+	int saved = await fhirDb.saveResource(newObservation_ReferenceRange);
 	return newObservation_ReferenceRange;
 }
   String id;
@@ -343,8 +348,9 @@ class Observation_Component {
 		CodeableConcept dataAbsentReason,
 		List<CodeableConcept> interpretation,
 		List<Observation_ReferenceRange> referenceRange}) async {
+	var fhirDb = new DatabaseHelper();
 	Observation_Component newObservation_Component = new Observation_Component(
-			id: await newId('Observation_Component'),
+			id: await fhirDb.newResourceId('Observation_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -368,6 +374,7 @@ class Observation_Component {
 			interpretation: interpretation,
 			referenceRange: referenceRange,
 );
+	int saved = await fhirDb.saveResource(newObservation_Component);
 	return newObservation_Component;
 }
   String id;
@@ -432,6 +439,7 @@ Observation_Component(
 
 Observation _$ObservationFromJson(Map<String, dynamic> json) {
   return Observation(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -609,6 +617,7 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ObservationToJson(Observation instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

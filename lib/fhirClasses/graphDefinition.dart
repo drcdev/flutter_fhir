@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class GraphDefinition {
 
 	static Future<GraphDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -50,8 +50,10 @@ class GraphDefinition {
 		Element elementStart,
 		String profile,
 		List<GraphDefinition_Link> link}) async {
+	var fhirDb = new DatabaseHelper();
 	GraphDefinition newGraphDefinition = new GraphDefinition(
-			id: await newId('GraphDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('GraphDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,9 +89,10 @@ class GraphDefinition {
 			profile: profile,
 			link: link,
 );
+	int saved = await fhirDb.saveResource(newGraphDefinition);
 	return newGraphDefinition;
 }
-  final String resourceType= 'GraphDefinition';
+  String resourceType= 'GraphDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -127,7 +130,8 @@ class GraphDefinition {
   List<GraphDefinition_Link> link;
 
 GraphDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -186,8 +190,9 @@ class GraphDefinition_Link {
 		String description,
 		Element elementDescription,
 		List<GraphDefinition_Target> target}) async {
+	var fhirDb = new DatabaseHelper();
 	GraphDefinition_Link newGraphDefinition_Link = new GraphDefinition_Link(
-			id: await newId('GraphDefinition_Link'),
+			id: await fhirDb.newResourceId('GraphDefinition_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -202,6 +207,7 @@ class GraphDefinition_Link {
 			elementDescription: elementDescription,
 			target: target,
 );
+	int saved = await fhirDb.saveResource(newGraphDefinition_Link);
 	return newGraphDefinition_Link;
 }
   String id;
@@ -254,8 +260,9 @@ class GraphDefinition_Target {
 		String profile,
 		List<GraphDefinition_Compartment> compartment,
 		List<GraphDefinition_Link> link}) async {
+	var fhirDb = new DatabaseHelper();
 	GraphDefinition_Target newGraphDefinition_Target = new GraphDefinition_Target(
-			id: await newId('GraphDefinition_Target'),
+			id: await fhirDb.newResourceId('GraphDefinition_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -266,6 +273,7 @@ class GraphDefinition_Target {
 			compartment: compartment,
 			link: link,
 );
+	int saved = await fhirDb.saveResource(newGraphDefinition_Target);
 	return newGraphDefinition_Target;
 }
   String id;
@@ -313,8 +321,9 @@ class GraphDefinition_Compartment {
 		Element elementExpression,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	GraphDefinition_Compartment newGraphDefinition_Compartment = new GraphDefinition_Compartment(
-			id: await newId('GraphDefinition_Compartment'),
+			id: await fhirDb.newResourceId('GraphDefinition_Compartment'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			use: use,
@@ -328,6 +337,7 @@ class GraphDefinition_Compartment {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newGraphDefinition_Compartment);
 	return newGraphDefinition_Compartment;
 }
   String id;
@@ -372,6 +382,7 @@ GraphDefinition_Compartment(
 
 GraphDefinition _$GraphDefinitionFromJson(Map<String, dynamic> json) {
   return GraphDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -465,6 +476,7 @@ GraphDefinition _$GraphDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$GraphDefinitionToJson(GraphDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

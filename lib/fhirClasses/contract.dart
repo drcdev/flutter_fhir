@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -24,6 +22,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Contract {
 
 	static Future<Contract> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -78,8 +77,10 @@ class Contract {
 		List<Contract_Rule> rule,
 		Attachment legallyBindingAttachment,
 		Reference legallyBindingReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract newContract = new Contract(
-			id: await newId('Contract'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Contract'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -134,9 +135,10 @@ class Contract {
 			legallyBindingAttachment: legallyBindingAttachment,
 			legallyBindingReference: legallyBindingReference,
 );
+	int saved = await fhirDb.saveResource(newContract);
 	return newContract;
 }
-  final String resourceType= 'Contract';
+  String resourceType= 'Contract';
   String id;
   Meta meta;
   String implicitRules;
@@ -193,7 +195,8 @@ class Contract {
   Reference legallyBindingReference;
 
 Contract(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -269,8 +272,9 @@ class Contract_ContentDefinition {
 		Element elementPublicationStatus,
 		String copyright,
 		Element elementCopyright}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_ContentDefinition newContract_ContentDefinition = new Contract_ContentDefinition(
-			id: await newId('Contract_ContentDefinition'),
+			id: await fhirDb.newResourceId('Contract_ContentDefinition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -283,6 +287,7 @@ class Contract_ContentDefinition {
 			copyright: copyright,
 			elementCopyright: elementCopyright,
 );
+	int saved = await fhirDb.saveResource(newContract_ContentDefinition);
 	return newContract_ContentDefinition;
 }
   String id;
@@ -339,8 +344,9 @@ class Contract_Term {
 		List<Contract_Asset> asset,
 		List<Contract_Action> action,
 		List<Contract_Term> group}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Term newContract_Term = new Contract_Term(
-			id: await newId('Contract_Term'),
+			id: await fhirDb.newResourceId('Contract_Term'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -359,6 +365,7 @@ class Contract_Term {
 			action: action,
 			group: group,
 );
+	int saved = await fhirDb.saveResource(newContract_Term);
 	return newContract_Term;
 }
   String id;
@@ -417,8 +424,9 @@ class Contract_SecurityLabel {
 		Coding classification,
 		List<Coding> category,
 		List<Coding> control}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_SecurityLabel newContract_SecurityLabel = new Contract_SecurityLabel(
-			id: await newId('Contract_SecurityLabel'),
+			id: await fhirDb.newResourceId('Contract_SecurityLabel'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -427,6 +435,7 @@ class Contract_SecurityLabel {
 			category: category,
 			control: control,
 );
+	int saved = await fhirDb.saveResource(newContract_SecurityLabel);
 	return newContract_SecurityLabel;
 }
   String id;
@@ -473,8 +482,9 @@ class Contract_Offer {
 		List<Element> elementLinkId,
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Offer newContract_Offer = new Contract_Offer(
-			id: await newId('Contract_Offer'),
+			id: await fhirDb.newResourceId('Contract_Offer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -491,6 +501,7 @@ class Contract_Offer {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 );
+	int saved = await fhirDb.saveResource(newContract_Offer);
 	return newContract_Offer;
 }
   String id;
@@ -542,13 +553,15 @@ class Contract_Party {
 		List<Extension> modifierExtension,
 		List<Reference> reference,
 		CodeableConcept role}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Party newContract_Party = new Contract_Party(
-			id: await newId('Contract_Party'),
+			id: await fhirDb.newResourceId('Contract_Party'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
 			role: role,
 );
+	int saved = await fhirDb.saveResource(newContract_Party);
 	return newContract_Party;
 }
   String id;
@@ -596,8 +609,9 @@ class Contract_Answer {
 		Coding valueCoding,
 		Quantity valueQuantity,
 		Reference valueReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Answer newContract_Answer = new Contract_Answer(
-			id: await newId('Contract_Answer'),
+			id: await fhirDb.newResourceId('Contract_Answer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueBoolean: valueBoolean,
@@ -621,6 +635,7 @@ class Contract_Answer {
 			valueQuantity: valueQuantity,
 			valueReference: valueReference,
 );
+	int saved = await fhirDb.saveResource(newContract_Answer);
 	return newContract_Answer;
 }
   String id;
@@ -703,8 +718,9 @@ class Contract_Asset {
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber,
 		List<Contract_ValuedItem> valuedItem}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Asset newContract_Asset = new Contract_Asset(
-			id: await newId('Contract_Asset'),
+			id: await fhirDb.newResourceId('Contract_Asset'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			scope: scope,
@@ -727,6 +743,7 @@ class Contract_Asset {
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 			valuedItem: valuedItem,
 );
+	int saved = await fhirDb.saveResource(newContract_Asset);
 	return newContract_Asset;
 }
   String id;
@@ -792,8 +809,9 @@ class Contract_Context {
 		List<CodeableConcept> code,
 		String text,
 		Element elementText}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Context newContract_Context = new Contract_Context(
-			id: await newId('Contract_Context'),
+			id: await fhirDb.newResourceId('Contract_Context'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
@@ -801,6 +819,7 @@ class Contract_Context {
 			text: text,
 			elementText: elementText,
 );
+	int saved = await fhirDb.saveResource(newContract_Context);
 	return newContract_Context;
 }
   String id;
@@ -854,8 +873,9 @@ class Contract_ValuedItem {
 		List<Element> elementLinkId,
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_ValuedItem newContract_ValuedItem = new Contract_ValuedItem(
-			id: await newId('Contract_ValuedItem'),
+			id: await fhirDb.newResourceId('Contract_ValuedItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			entityCodeableConcept: entityCodeableConcept,
@@ -881,6 +901,7 @@ class Contract_ValuedItem {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 );
+	int saved = await fhirDb.saveResource(newContract_ValuedItem);
 	return newContract_ValuedItem;
 }
   String id;
@@ -980,8 +1001,9 @@ class Contract_Action {
 		List<Annotation> note,
 		List<int> securityLabelNumber,
 		List<Element> elementSecurityLabelNumber}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Action newContract_Action = new Contract_Action(
-			id: await newId('Contract_Action'),
+			id: await fhirDb.newResourceId('Contract_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			doNotPerform: doNotPerform,
@@ -1017,6 +1039,7 @@ class Contract_Action {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 );
+	int saved = await fhirDb.saveResource(newContract_Action);
 	return newContract_Action;
 }
   String id;
@@ -1106,13 +1129,15 @@ class Contract_Subject {
 		List<Extension> modifierExtension,
 		List<Reference> reference,
 		CodeableConcept role}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Subject newContract_Subject = new Contract_Subject(
-			id: await newId('Contract_Subject'),
+			id: await fhirDb.newResourceId('Contract_Subject'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
 			role: role,
 );
+	int saved = await fhirDb.saveResource(newContract_Subject);
 	return newContract_Subject;
 }
   String id;
@@ -1143,14 +1168,16 @@ class Contract_Signer {
 		Coding type,
 		Reference party,
 		List<Signature> signature}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Signer newContract_Signer = new Contract_Signer(
-			id: await newId('Contract_Signer'),
+			id: await fhirDb.newResourceId('Contract_Signer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			party: party,
 			signature: signature,
 );
+	int saved = await fhirDb.saveResource(newContract_Signer);
 	return newContract_Signer;
 }
   String id;
@@ -1182,13 +1209,15 @@ class Contract_Friendly {
 		List<Extension> modifierExtension,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Friendly newContract_Friendly = new Contract_Friendly(
-			id: await newId('Contract_Friendly'),
+			id: await fhirDb.newResourceId('Contract_Friendly'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
+	int saved = await fhirDb.saveResource(newContract_Friendly);
 	return newContract_Friendly;
 }
   String id;
@@ -1218,13 +1247,15 @@ class Contract_Legal {
 		List<Extension> modifierExtension,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Legal newContract_Legal = new Contract_Legal(
-			id: await newId('Contract_Legal'),
+			id: await fhirDb.newResourceId('Contract_Legal'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
+	int saved = await fhirDb.saveResource(newContract_Legal);
 	return newContract_Legal;
 }
   String id;
@@ -1254,13 +1285,15 @@ class Contract_Rule {
 		List<Extension> modifierExtension,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Contract_Rule newContract_Rule = new Contract_Rule(
-			id: await newId('Contract_Rule'),
+			id: await fhirDb.newResourceId('Contract_Rule'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
+	int saved = await fhirDb.saveResource(newContract_Rule);
 	return newContract_Rule;
 }
   String id;
@@ -1289,6 +1322,7 @@ Contract_Rule(
 
 Contract _$ContractFromJson(Map<String, dynamic> json) {
   return Contract(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1465,6 +1499,7 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ContractToJson(Contract instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

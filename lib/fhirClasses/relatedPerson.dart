@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class RelatedPerson {
 
 	static Future<RelatedPerson> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -46,8 +45,10 @@ class RelatedPerson {
 		List<Attachment> photo,
 		Period period,
 		List<RelatedPerson_Communication> communication}) async {
+	var fhirDb = new DatabaseHelper();
 	RelatedPerson newRelatedPerson = new RelatedPerson(
-			id: await newId('RelatedPerson'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('RelatedPerson'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -73,9 +74,10 @@ class RelatedPerson {
 			period: period,
 			communication: communication,
 );
+	int saved = await fhirDb.saveResource(newRelatedPerson);
 	return newRelatedPerson;
 }
-  final String resourceType= 'RelatedPerson';
+  String resourceType= 'RelatedPerson';
   String id;
   Meta meta;
   String implicitRules;
@@ -103,7 +105,8 @@ class RelatedPerson {
   List<RelatedPerson_Communication> communication;
 
 RelatedPerson(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -144,14 +147,16 @@ class RelatedPerson_Communication {
 		CodeableConcept language,
 		bool preferred,
 		Element elementPreferred}) async {
+	var fhirDb = new DatabaseHelper();
 	RelatedPerson_Communication newRelatedPerson_Communication = new RelatedPerson_Communication(
-			id: await newId('RelatedPerson_Communication'),
+			id: await fhirDb.newResourceId('RelatedPerson_Communication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
 			preferred: preferred,
 			elementPreferred: elementPreferred,
 );
+	int saved = await fhirDb.saveResource(newRelatedPerson_Communication);
 	return newRelatedPerson_Communication;
 }
   String id;
@@ -182,6 +187,7 @@ RelatedPerson_Communication(
 
 RelatedPerson _$RelatedPersonFromJson(Map<String, dynamic> json) {
   return RelatedPerson(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -263,6 +269,7 @@ RelatedPerson _$RelatedPersonFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RelatedPersonToJson(RelatedPerson instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

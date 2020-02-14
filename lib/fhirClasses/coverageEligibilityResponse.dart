@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CoverageEligibilityResponse {
 
 	static Future<CoverageEligibilityResponse> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -51,8 +50,10 @@ class CoverageEligibilityResponse {
 		Element elementPreAuthRef,
 		CodeableConcept form,
 		List<CoverageEligibilityResponse_Error> error}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityResponse newCoverageEligibilityResponse = new CoverageEligibilityResponse(
-			id: await newId('CoverageEligibilityResponse'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CoverageEligibilityResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,9 +87,10 @@ class CoverageEligibilityResponse {
 			form: form,
 			error: error,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse);
 	return newCoverageEligibilityResponse;
 }
-  final String resourceType= 'CoverageEligibilityResponse';
+  String resourceType= 'CoverageEligibilityResponse';
   String id;
   Meta meta;
   String implicitRules;
@@ -124,7 +126,8 @@ class CoverageEligibilityResponse {
   List<CoverageEligibilityResponse_Error> error;
 
 CoverageEligibilityResponse(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -175,8 +178,9 @@ class CoverageEligibilityResponse_Insurance {
 		Element elementInforce,
 		Period benefitPeriod,
 		List<CoverageEligibilityResponse_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityResponse_Insurance newCoverageEligibilityResponse_Insurance = new CoverageEligibilityResponse_Insurance(
-			id: await newId('CoverageEligibilityResponse_Insurance'),
+			id: await fhirDb.newResourceId('CoverageEligibilityResponse_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			coverage: coverage,
@@ -185,6 +189,7 @@ class CoverageEligibilityResponse_Insurance {
 			benefitPeriod: benefitPeriod,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Insurance);
 	return newCoverageEligibilityResponse_Insurance;
 }
   String id;
@@ -237,8 +242,9 @@ class CoverageEligibilityResponse_Item {
 		List<CodeableConcept> authorizationSupporting,
 		String authorizationUrl,
 		Element elementAuthorizationUrl}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityResponse_Item newCoverageEligibilityResponse_Item = new CoverageEligibilityResponse_Item(
-			id: await newId('CoverageEligibilityResponse_Item'),
+			id: await fhirDb.newResourceId('CoverageEligibilityResponse_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -261,6 +267,7 @@ class CoverageEligibilityResponse_Item {
 			authorizationUrl: authorizationUrl,
 			elementAuthorizationUrl: elementAuthorizationUrl,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Item);
 	return newCoverageEligibilityResponse_Item;
 }
   String id;
@@ -333,8 +340,9 @@ class CoverageEligibilityResponse_Benefit {
 		String usedString,
 		Element elementUsedString,
 		Money usedMoney}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityResponse_Benefit newCoverageEligibilityResponse_Benefit = new CoverageEligibilityResponse_Benefit(
-			id: await newId('CoverageEligibilityResponse_Benefit'),
+			id: await fhirDb.newResourceId('CoverageEligibilityResponse_Benefit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -349,6 +357,7 @@ class CoverageEligibilityResponse_Benefit {
 			elementUsedString: elementUsedString,
 			usedMoney: usedMoney,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Benefit);
 	return newCoverageEligibilityResponse_Benefit;
 }
   String id;
@@ -395,12 +404,14 @@ class CoverageEligibilityResponse_Error {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		CodeableConcept code}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityResponse_Error newCoverageEligibilityResponse_Error = new CoverageEligibilityResponse_Error(
-			id: await newId('CoverageEligibilityResponse_Error'),
+			id: await fhirDb.newResourceId('CoverageEligibilityResponse_Error'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse_Error);
 	return newCoverageEligibilityResponse_Error;
 }
   String id;
@@ -428,6 +439,7 @@ CoverageEligibilityResponse_Error(
 CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     Map<String, dynamic> json) {
   return CoverageEligibilityResponse(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -527,6 +539,7 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
 Map<String, dynamic> _$CoverageEligibilityResponseToJson(
         CoverageEligibilityResponse instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

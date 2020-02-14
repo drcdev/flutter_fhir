@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/population.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductContraindication {
 
 	static Future<MedicinalProductContraindication> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -33,8 +32,10 @@ class MedicinalProductContraindication {
 		List<Reference> therapeuticIndication,
 		List<MedicinalProductContraindication_OtherTherapy> otherTherapy,
 		List<Population> population}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductContraindication newMedicinalProductContraindication = new MedicinalProductContraindication(
-			id: await newId('MedicinalProductContraindication'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductContraindication'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -52,9 +53,10 @@ class MedicinalProductContraindication {
 			otherTherapy: otherTherapy,
 			population: population,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductContraindication);
 	return newMedicinalProductContraindication;
 }
-  final String resourceType= 'MedicinalProductContraindication';
+  String resourceType= 'MedicinalProductContraindication';
   String id;
   Meta meta;
   String implicitRules;
@@ -74,7 +76,8 @@ class MedicinalProductContraindication {
   List<Population> population;
 
 MedicinalProductContraindication(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -107,14 +110,16 @@ class MedicinalProductContraindication_OtherTherapy {
 		CodeableConcept therapyRelationshipType,
 		CodeableConcept medicationCodeableConcept,
 		Reference medicationReference}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductContraindication_OtherTherapy newMedicinalProductContraindication_OtherTherapy = new MedicinalProductContraindication_OtherTherapy(
-			id: await newId('MedicinalProductContraindication_OtherTherapy'),
+			id: await fhirDb.newResourceId('MedicinalProductContraindication_OtherTherapy'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			therapyRelationshipType: therapyRelationshipType,
 			medicationCodeableConcept: medicationCodeableConcept,
 			medicationReference: medicationReference,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductContraindication_OtherTherapy);
 	return newMedicinalProductContraindication_OtherTherapy;
 }
   String id;
@@ -146,6 +151,7 @@ MedicinalProductContraindication_OtherTherapy(
 MedicinalProductContraindication _$MedicinalProductContraindicationFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductContraindication(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -210,6 +216,7 @@ MedicinalProductContraindication _$MedicinalProductContraindicationFromJson(
 Map<String, dynamic> _$MedicinalProductContraindicationToJson(
         MedicinalProductContraindication instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

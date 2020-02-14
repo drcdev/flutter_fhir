@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -15,14 +13,16 @@ class Period {
 		Element elementStart,
 		DateTime end,
 		Element elementEnd}) async {
+	var fhirDb = new DatabaseHelper();
 	Period newPeriod = new Period(
-			id: await newId('Period'),
+			id: await fhirDb.newResourceId('Period'),
 			extension: extension,
 			start: start,
 			elementStart: elementStart,
 			end: end,
 			elementEnd: elementEnd,
 );
+	int saved = await fhirDb.saveResource(newPeriod);
 	return newPeriod;
 }
   String id;

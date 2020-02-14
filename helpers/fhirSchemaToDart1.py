@@ -2,14 +2,14 @@
 
 import json
 import re
-import os
+#import os
 import fhirToDartFunc as fhir
 
 #open fhir json schema
 with open('./helpers/fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
 
-# os.remove('./lib/fhirClasses/classes.dart')
+#os.remove('./lib/fhirClasses/classes.dart')
 
 dartCode = '' #where we will store our code
 importDict = {} #will store which other classes we will import
@@ -99,7 +99,7 @@ for objects in definitions:
                                     
                         value = properties[field]['const']
                         if(field == 'resourceType'):
-                            value2 = 'final String'
+                            value2 = 'String'
                         else:
                             value2 = value
                             
@@ -190,15 +190,15 @@ for objects in definitions:
             arguments = ''
             for fielded in schema['definitions'][objects]['properties']:
                 
-                #resourceType isn't a passable argument
-                if(fielded != 'resourceType'):
+                # #resourceType isn't a passable argument
+                # if(fielded != 'resourceType'):
                     
-                    #separate the optional and required constructor parameters
-                    arguments = ''.join([arguments, 
-                                         'this.' if ('required' not in schema['definitions'][objects] or
-                                                     fielded not in schema['definitions'][objects]['required']) else 
-                                         '@required this.',
-                                         fhir.rem_(fielded), ',\n    '])
+                #separate the optional and required constructor parameters
+                arguments = ''.join([arguments, 
+                                     'this.' if ('required' not in schema['definitions'][objects] or
+                                                 fielded not in schema['definitions'][objects]['required']) else 
+                                     '@required this.',
+                                     fhir.rem_(fielded), ',\n    '])
                         
             #create the factory
             dartCode = ''.join([dartCode, 
@@ -238,6 +238,7 @@ for code in dartCode:
                 code = ''.join(["import 'package:flutter_fhir/fhirClasses/",
                                 fhir.lowcc(l), ".dart';\n", code])
         code = code.replace(',\n    });', '\n    });')
+        code = ''.join(["import 'package:flutter_fhir/util/db.dart';\n", code]) 
         if('@required' in code):
             code = ''.join(["import 'package:flutter/foundation.dart';\n", code])
         code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n", code])

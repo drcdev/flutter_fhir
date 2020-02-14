@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/dataRequirement.dart';
 import 'package:flutter_fhir/fhirClasses/parameterDefinition.dart';
@@ -23,6 +21,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Library {
 
 	static Future<Library> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -80,8 +79,10 @@ class Library {
 		List<ParameterDefinition> parameter,
 		List<DataRequirement> dataRequirement,
 		List<Attachment> content}) async {
+	var fhirDb = new DatabaseHelper();
 	Library newLibrary = new Library(
-			id: await newId('Library'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Library'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -139,9 +140,10 @@ class Library {
 			dataRequirement: dataRequirement,
 			content: content,
 );
+	int saved = await fhirDb.saveResource(newLibrary);
 	return newLibrary;
 }
-  final String resourceType= 'Library';
+  String resourceType= 'Library';
   String id;
   Meta meta;
   String implicitRules;
@@ -201,7 +203,8 @@ class Library {
   List<Attachment> content;
 
 Library(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -272,6 +275,7 @@ Library(
 
 Library _$LibraryFromJson(Map<String, dynamic> json) {
   return Library(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -440,6 +444,7 @@ Library _$LibraryFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$LibraryToJson(Library instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

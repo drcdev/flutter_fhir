@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Account {
 
 	static Future<Account> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -41,8 +40,10 @@ class Account {
 		Element elementDescription,
 		List<Account_Guarantor> guarantor,
 		Reference partOf}) async {
+	var fhirDb = new DatabaseHelper();
 	Account newAccount = new Account(
-			id: await newId('Account'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Account'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -67,9 +68,10 @@ class Account {
 			guarantor: guarantor,
 			partOf: partOf,
 );
+	int saved = await fhirDb.saveResource(newAccount);
 	return newAccount;
 }
-  final String resourceType= 'Account';
+  String resourceType= 'Account';
   String id;
   Meta meta;
   String implicitRules;
@@ -96,7 +98,8 @@ class Account {
   Reference partOf;
 
 Account(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -136,14 +139,16 @@ class Account_Coverage {
 		Reference coverage,
 		int priority,
 		Element elementPriority}) async {
+	var fhirDb = new DatabaseHelper();
 	Account_Coverage newAccount_Coverage = new Account_Coverage(
-			id: await newId('Account_Coverage'),
+			id: await fhirDb.newResourceId('Account_Coverage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			coverage: coverage,
 			priority: priority,
 			elementPriority: elementPriority,
 );
+	int saved = await fhirDb.saveResource(newAccount_Coverage);
 	return newAccount_Coverage;
 }
   String id;
@@ -177,8 +182,9 @@ class Account_Guarantor {
 		bool onHold,
 		Element elementOnHold,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Account_Guarantor newAccount_Guarantor = new Account_Guarantor(
-			id: await newId('Account_Guarantor'),
+			id: await fhirDb.newResourceId('Account_Guarantor'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			party: party,
@@ -186,6 +192,7 @@ class Account_Guarantor {
 			elementOnHold: elementOnHold,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newAccount_Guarantor);
 	return newAccount_Guarantor;
 }
   String id;
@@ -218,6 +225,7 @@ Account_Guarantor(
 
 Account _$AccountFromJson(Map<String, dynamic> json) {
   return Account(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -292,6 +300,7 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

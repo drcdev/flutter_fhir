@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class PractitionerRole {
 
 	static Future<PractitionerRole> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -43,8 +43,10 @@ class PractitionerRole {
 		String availabilityExceptions,
 		Element elementAvailabilityExceptions,
 		List<Reference> endpoint}) async {
+	var fhirDb = new DatabaseHelper();
 	PractitionerRole newPractitionerRole = new PractitionerRole(
-			id: await newId('PractitionerRole'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('PractitionerRole'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,9 +73,10 @@ class PractitionerRole {
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint,
 );
+	int saved = await fhirDb.saveResource(newPractitionerRole);
 	return newPractitionerRole;
 }
-  final String resourceType= 'PractitionerRole';
+  String resourceType= 'PractitionerRole';
   String id;
   Meta meta;
   String implicitRules;
@@ -102,7 +105,8 @@ class PractitionerRole {
   List<Reference> endpoint;
 
 PractitionerRole(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -149,8 +153,9 @@ class PractitionerRole_AvailableTime {
 		Element elementAvailableStartTime,
 		String availableEndTime,
 		Element elementAvailableEndTime}) async {
+	var fhirDb = new DatabaseHelper();
 	PractitionerRole_AvailableTime newPractitionerRole_AvailableTime = new PractitionerRole_AvailableTime(
-			id: await newId('PractitionerRole_AvailableTime'),
+			id: await fhirDb.newResourceId('PractitionerRole_AvailableTime'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			daysOfWeek: daysOfWeek,
@@ -162,6 +167,7 @@ class PractitionerRole_AvailableTime {
 			availableEndTime: availableEndTime,
 			elementAvailableEndTime: elementAvailableEndTime,
 );
+	int saved = await fhirDb.saveResource(newPractitionerRole_AvailableTime);
 	return newPractitionerRole_AvailableTime;
 }
   String id;
@@ -204,14 +210,16 @@ class PractitionerRole_NotAvailable {
 		String description,
 		Element elementDescription,
 		Period during}) async {
+	var fhirDb = new DatabaseHelper();
 	PractitionerRole_NotAvailable newPractitionerRole_NotAvailable = new PractitionerRole_NotAvailable(
-			id: await newId('PractitionerRole_NotAvailable'),
+			id: await fhirDb.newResourceId('PractitionerRole_NotAvailable'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
 			elementDescription: elementDescription,
 			during: during,
 );
+	int saved = await fhirDb.saveResource(newPractitionerRole_NotAvailable);
 	return newPractitionerRole_NotAvailable;
 }
   String id;
@@ -242,6 +250,7 @@ PractitionerRole_NotAvailable(
 
 PractitionerRole _$PractitionerRoleFromJson(Map<String, dynamic> json) {
   return PractitionerRole(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -334,6 +343,7 @@ PractitionerRole _$PractitionerRoleFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PractitionerRoleToJson(PractitionerRole instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

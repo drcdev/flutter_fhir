@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -18,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Organization {
 
 	static Future<Organization> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -41,8 +41,10 @@ class Organization {
 		Reference partOf,
 		List<Organization_Contact> contact,
 		List<Reference> endpoint}) async {
+	var fhirDb = new DatabaseHelper();
 	Organization newOrganization = new Organization(
-			id: await newId('Organization'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Organization'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -66,9 +68,10 @@ class Organization {
 			contact: contact,
 			endpoint: endpoint,
 );
+	int saved = await fhirDb.saveResource(newOrganization);
 	return newOrganization;
 }
-  final String resourceType= 'Organization';
+  String resourceType= 'Organization';
   String id;
   Meta meta;
   String implicitRules;
@@ -94,7 +97,8 @@ class Organization {
   List<Reference> endpoint;
 
 Organization(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -134,8 +138,9 @@ class Organization_Contact {
 		HumanName name,
 		List<ContactPoint> telecom,
 		Address address}) async {
+	var fhirDb = new DatabaseHelper();
 	Organization_Contact newOrganization_Contact = new Organization_Contact(
-			id: await newId('Organization_Contact'),
+			id: await fhirDb.newResourceId('Organization_Contact'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			purpose: purpose,
@@ -143,6 +148,7 @@ class Organization_Contact {
 			telecom: telecom,
 			address: address,
 );
+	int saved = await fhirDb.saveResource(newOrganization_Contact);
 	return newOrganization_Contact;
 }
   String id;
@@ -175,6 +181,7 @@ Organization_Contact(
 
 Organization _$OrganizationFromJson(Map<String, dynamic> json) {
   return Organization(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -250,6 +257,7 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

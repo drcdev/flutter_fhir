@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicationAdministration {
 
 	static Future<MedicationAdministration> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -54,8 +53,10 @@ class MedicationAdministration {
 		List<Annotation> note,
 		MedicationAdministration_Dosage dosage,
 		List<Reference> eventHistory}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationAdministration newMedicationAdministration = new MedicationAdministration(
-			id: await newId('MedicationAdministration'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicationAdministration'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -90,9 +91,10 @@ class MedicationAdministration {
 			dosage: dosage,
 			eventHistory: eventHistory,
 );
+	int saved = await fhirDb.saveResource(newMedicationAdministration);
 	return newMedicationAdministration;
 }
-  final String resourceType= 'MedicationAdministration';
+  String resourceType= 'MedicationAdministration';
   String id;
   Meta meta;
   String implicitRules;
@@ -129,7 +131,8 @@ class MedicationAdministration {
   List<Reference> eventHistory;
 
 MedicationAdministration(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -178,13 +181,15 @@ class MedicationAdministration_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationAdministration_Performer newMedicationAdministration_Performer = new MedicationAdministration_Performer(
-			id: await newId('MedicationAdministration_Performer'),
+			id: await fhirDb.newResourceId('MedicationAdministration_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
 );
+	int saved = await fhirDb.saveResource(newMedicationAdministration_Performer);
 	return newMedicationAdministration_Performer;
 }
   String id;
@@ -220,8 +225,9 @@ class MedicationAdministration_Dosage {
 		Quantity dose,
 		Ratio rateRatio,
 		Quantity rateQuantity}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationAdministration_Dosage newMedicationAdministration_Dosage = new MedicationAdministration_Dosage(
-			id: await newId('MedicationAdministration_Dosage'),
+			id: await fhirDb.newResourceId('MedicationAdministration_Dosage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			text: text,
@@ -233,6 +239,7 @@ class MedicationAdministration_Dosage {
 			rateRatio: rateRatio,
 			rateQuantity: rateQuantity,
 );
+	int saved = await fhirDb.saveResource(newMedicationAdministration_Dosage);
 	return newMedicationAdministration_Dosage;
 }
   String id;
@@ -274,6 +281,7 @@ MedicationAdministration_Dosage(
 MedicationAdministration _$MedicationAdministrationFromJson(
     Map<String, dynamic> json) {
   return MedicationAdministration(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -394,6 +402,7 @@ MedicationAdministration _$MedicationAdministrationFromJson(
 Map<String, dynamic> _$MedicationAdministrationToJson(
         MedicationAdministration instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

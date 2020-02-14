@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductPharmaceutical {
 
 	static Future<MedicinalProductPharmaceutical> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -36,8 +35,10 @@ class MedicinalProductPharmaceutical {
 		List<Reference> device,
 		List<MedicinalProductPharmaceutical_Characteristics> characteristics,
 		List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPharmaceutical newMedicinalProductPharmaceutical = new MedicinalProductPharmaceutical(
-			id: await newId('MedicinalProductPharmaceutical'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductPharmaceutical'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -55,9 +56,10 @@ class MedicinalProductPharmaceutical {
 			characteristics: characteristics,
 			routeOfAdministration: routeOfAdministration,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical);
 	return newMedicinalProductPharmaceutical;
 }
-  final String resourceType= 'MedicinalProductPharmaceutical';
+  String resourceType= 'MedicinalProductPharmaceutical';
   String id;
   Meta meta;
   String implicitRules;
@@ -77,7 +79,8 @@ class MedicinalProductPharmaceutical {
   List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration;
 
 MedicinalProductPharmaceutical(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -109,13 +112,15 @@ class MedicinalProductPharmaceutical_Characteristics {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		CodeableConcept status}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPharmaceutical_Characteristics newMedicinalProductPharmaceutical_Characteristics = new MedicinalProductPharmaceutical_Characteristics(
-			id: await newId('MedicinalProductPharmaceutical_Characteristics'),
+			id: await fhirDb.newResourceId('MedicinalProductPharmaceutical_Characteristics'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			status: status,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_Characteristics);
 	return newMedicinalProductPharmaceutical_Characteristics;
 }
   String id;
@@ -150,8 +155,9 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
 		Ratio maxDosePerTreatmentPeriod,
 		Duration maxTreatmentPeriod,
 		List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPharmaceutical_RouteOfAdministration newMedicinalProductPharmaceutical_RouteOfAdministration = new MedicinalProductPharmaceutical_RouteOfAdministration(
-			id: await newId('MedicinalProductPharmaceutical_RouteOfAdministration'),
+			id: await fhirDb.newResourceId('MedicinalProductPharmaceutical_RouteOfAdministration'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -162,6 +168,7 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
 			maxTreatmentPeriod: maxTreatmentPeriod,
 			targetSpecies: targetSpecies,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_RouteOfAdministration);
 	return newMedicinalProductPharmaceutical_RouteOfAdministration;
 }
   String id;
@@ -201,13 +208,15 @@ class MedicinalProductPharmaceutical_TargetSpecies {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPharmaceutical_TargetSpecies newMedicinalProductPharmaceutical_TargetSpecies = new MedicinalProductPharmaceutical_TargetSpecies(
-			id: await newId('MedicinalProductPharmaceutical_TargetSpecies'),
+			id: await fhirDb.newResourceId('MedicinalProductPharmaceutical_TargetSpecies'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			withdrawalPeriod: withdrawalPeriod,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_TargetSpecies);
 	return newMedicinalProductPharmaceutical_TargetSpecies;
 }
   String id;
@@ -239,8 +248,9 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
 		Quantity value,
 		String supportingInformation,
 		Element elementSupportingInformation}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPharmaceutical_WithdrawalPeriod newMedicinalProductPharmaceutical_WithdrawalPeriod = new MedicinalProductPharmaceutical_WithdrawalPeriod(
-			id: await newId('MedicinalProductPharmaceutical_WithdrawalPeriod'),
+			id: await fhirDb.newResourceId('MedicinalProductPharmaceutical_WithdrawalPeriod'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			tissue: tissue,
@@ -248,6 +258,7 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
 			supportingInformation: supportingInformation,
 			elementSupportingInformation: elementSupportingInformation,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical_WithdrawalPeriod);
 	return newMedicinalProductPharmaceutical_WithdrawalPeriod;
 }
   String id;
@@ -281,6 +292,7 @@ MedicinalProductPharmaceutical_WithdrawalPeriod(
 MedicinalProductPharmaceutical _$MedicinalProductPharmaceuticalFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductPharmaceutical(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -347,6 +359,7 @@ MedicinalProductPharmaceutical _$MedicinalProductPharmaceuticalFromJson(
 Map<String, dynamic> _$MedicinalProductPharmaceuticalToJson(
         MedicinalProductPharmaceutical instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

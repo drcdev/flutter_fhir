@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ImagingStudy {
 
 	static Future<ImagingStudy> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -53,8 +52,10 @@ class ImagingStudy {
 		String description,
 		Element elementDescription,
 		List<ImagingStudy_Series> series}) async {
+	var fhirDb = new DatabaseHelper();
 	ImagingStudy newImagingStudy = new ImagingStudy(
-			id: await newId('ImagingStudy'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ImagingStudy'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -90,9 +91,10 @@ class ImagingStudy {
 			elementDescription: elementDescription,
 			series: series,
 );
+	int saved = await fhirDb.saveResource(newImagingStudy);
 	return newImagingStudy;
 }
-  final String resourceType= 'ImagingStudy';
+  String resourceType= 'ImagingStudy';
   String id;
   Meta meta;
   String implicitRules;
@@ -130,7 +132,8 @@ class ImagingStudy {
   List<ImagingStudy_Series> series;
 
 ImagingStudy(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -195,8 +198,9 @@ class ImagingStudy_Series {
 		Element elementStarted,
 		List<ImagingStudy_Performer> performer,
 		List<ImagingStudy_Instance> instance}) async {
+	var fhirDb = new DatabaseHelper();
 	ImagingStudy_Series newImagingStudy_Series = new ImagingStudy_Series(
-			id: await newId('ImagingStudy_Series'),
+			id: await fhirDb.newResourceId('ImagingStudy_Series'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			uid: uid,
@@ -217,6 +221,7 @@ class ImagingStudy_Series {
 			performer: performer,
 			instance: instance,
 );
+	int saved = await fhirDb.saveResource(newImagingStudy_Series);
 	return newImagingStudy_Series;
 }
   String id;
@@ -276,13 +281,15 @@ class ImagingStudy_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
+	var fhirDb = new DatabaseHelper();
 	ImagingStudy_Performer newImagingStudy_Performer = new ImagingStudy_Performer(
-			id: await newId('ImagingStudy_Performer'),
+			id: await fhirDb.newResourceId('ImagingStudy_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
 );
+	int saved = await fhirDb.saveResource(newImagingStudy_Performer);
 	return newImagingStudy_Performer;
 }
   String id;
@@ -317,8 +324,9 @@ class ImagingStudy_Instance {
 		Element elementNumber,
 		String title,
 		Element elementTitle}) async {
+	var fhirDb = new DatabaseHelper();
 	ImagingStudy_Instance newImagingStudy_Instance = new ImagingStudy_Instance(
-			id: await newId('ImagingStudy_Instance'),
+			id: await fhirDb.newResourceId('ImagingStudy_Instance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			uid: uid,
@@ -329,6 +337,7 @@ class ImagingStudy_Instance {
 			title: title,
 			elementTitle: elementTitle,
 );
+	int saved = await fhirDb.saveResource(newImagingStudy_Instance);
 	return newImagingStudy_Instance;
 }
   String id;
@@ -367,6 +376,7 @@ ImagingStudy_Instance(
 
 ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
   return ImagingStudy(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -483,6 +493,7 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

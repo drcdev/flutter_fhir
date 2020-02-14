@@ -15,13 +15,21 @@ class PageButton extends StatelessWidget {
     return FlatButton(
         child: Column(
           children: <Widget>[
-            ClipRRect(child: Image.asset(imageDir, height: 150, width: 150),),
-            Text(buttonText, style: TextStyle(color: Colors.white),),
+            ClipRRect(
+              child: Image.asset(imageDir, height: 150, width: 150),
+            ),
+            Text(
+              buttonText,
+              style: TextStyle(color: Colors.white),
+            ),
           ],
         ),
-        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => link),);
-        }
-    );
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => link),
+          );
+        });
   }
 }
 
@@ -42,8 +50,13 @@ class ActionButton extends StatelessWidget {
       },
       child: Column(
         children: <Widget>[
-          ClipRRect(child: Image.asset(imageDir, height: 150, width: 150),),
-          Text(buttonText, style: TextStyle(color: Colors.white),),
+          ClipRRect(
+            child: Image.asset(imageDir, height: 150, width: 150),
+          ),
+          Text(
+            buttonText,
+            style: TextStyle(color: Colors.white),
+          ),
         ],
       ),
     );
@@ -64,30 +77,36 @@ class ActionPageButton extends StatelessWidget {
     return FlatButton(
         child: Column(
           children: <Widget>[
-            ClipRRect(child: Image.asset(imageDir, height: 150, width: 150),),
-            Text(buttonText, style: TextStyle(color: Colors.white),),
+            ClipRRect(
+              child: Image.asset(imageDir, height: 150, width: 150),
+            ),
+            Text(
+              buttonText,
+              style: TextStyle(color: Colors.white),
+            ),
           ],
         ),
         onPressed: () {
-          pt == null ?
-          showDialog(
-              context: context,
-              builder: (BuildContext context){
-                return AlertDialog(
-                  title: Text("Please select a patient first"),
-                  actions:[
-                    FlatButton(
-                      child: Text("OK"),
-                      onPressed: (){
-                        Navigator.of(context).pop();
-                      },
-                    )
-                  ],
+          pt == null
+              ? showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Please select a patient first"),
+                      actions: [
+                        FlatButton(
+                          child: Text("OK"),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        )
+                      ],
+                    );
+                  })
+              : Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => link),
                 );
-              }
-          ) :
-          Navigator.push(context, MaterialPageRoute(builder: (context) => link),);
-        }
-    );
+        });
   }
 }

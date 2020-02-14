@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -19,8 +17,9 @@ class Annotation {
 		Element elementTime,
 		String text,
 		Element elementText}) async {
+	var fhirDb = new DatabaseHelper();
 	Annotation newAnnotation = new Annotation(
-			id: await newId('Annotation'),
+			id: await fhirDb.newResourceId('Annotation'),
 			extension: extension,
 			authorReference: authorReference,
 			authorString: authorString,
@@ -30,6 +29,7 @@ class Annotation {
 			text: text,
 			elementText: elementText,
 );
+	int saved = await fhirDb.saveResource(newAnnotation);
 	return newAnnotation;
 }
   String id;

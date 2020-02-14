@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
@@ -14,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class OperationOutcome {
 
 	static Future<OperationOutcome> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -25,8 +24,10 @@ class OperationOutcome {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<OperationOutcome_Issue> issue}) async {
+	var fhirDb = new DatabaseHelper();
 	OperationOutcome newOperationOutcome = new OperationOutcome(
-			id: await newId('OperationOutcome'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('OperationOutcome'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -38,9 +39,10 @@ class OperationOutcome {
 			modifierExtension: modifierExtension,
 			issue: issue,
 );
+	int saved = await fhirDb.saveResource(newOperationOutcome);
 	return newOperationOutcome;
 }
-  final String resourceType= 'OperationOutcome';
+  String resourceType= 'OperationOutcome';
   String id;
   Meta meta;
   String implicitRules;
@@ -54,7 +56,8 @@ class OperationOutcome {
   List<OperationOutcome_Issue> issue;
 
 OperationOutcome(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -89,8 +92,9 @@ class OperationOutcome_Issue {
 		List<Element> elementLocation,
 		List<String> expression,
 		List<Element> elementExpression}) async {
+	var fhirDb = new DatabaseHelper();
 	OperationOutcome_Issue newOperationOutcome_Issue = new OperationOutcome_Issue(
-			id: await newId('OperationOutcome_Issue'),
+			id: await fhirDb.newResourceId('OperationOutcome_Issue'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			severity: severity,
@@ -105,6 +109,7 @@ class OperationOutcome_Issue {
 			expression: expression,
 			elementExpression: elementExpression,
 );
+	int saved = await fhirDb.saveResource(newOperationOutcome_Issue);
 	return newOperationOutcome_Issue;
 }
   String id;
@@ -151,6 +156,7 @@ OperationOutcome_Issue(
 
 OperationOutcome _$OperationOutcomeFromJson(Map<String, dynamic> json) {
   return OperationOutcome(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -189,6 +195,7 @@ OperationOutcome _$OperationOutcomeFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$OperationOutcomeToJson(OperationOutcome instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

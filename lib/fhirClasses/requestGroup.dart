@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -23,6 +22,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class RequestGroup {
 
 	static Future<RequestGroup> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -57,8 +57,10 @@ class RequestGroup {
 		List<Reference> reasonReference,
 		List<Annotation> note,
 		List<RequestGroup_Action> action}) async {
+	var fhirDb = new DatabaseHelper();
 	RequestGroup newRequestGroup = new RequestGroup(
-			id: await newId('RequestGroup'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('RequestGroup'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -93,9 +95,10 @@ class RequestGroup {
 			note: note,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newRequestGroup);
 	return newRequestGroup;
 }
-  final String resourceType= 'RequestGroup';
+  String resourceType= 'RequestGroup';
   String id;
   Meta meta;
   String implicitRules;
@@ -132,7 +135,8 @@ class RequestGroup {
   List<RequestGroup_Action> action;
 
 RequestGroup(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -214,8 +218,9 @@ class RequestGroup_Action {
 		Element elementCardinalityBehavior,
 		Reference resource,
 		List<RequestGroup_Action> action}) async {
+	var fhirDb = new DatabaseHelper();
 	RequestGroup_Action newRequestGroup_Action = new RequestGroup_Action(
-			id: await newId('RequestGroup_Action'),
+			id: await fhirDb.newResourceId('RequestGroup_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			prefix: prefix,
@@ -254,6 +259,7 @@ class RequestGroup_Action {
 			resource: resource,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newRequestGroup_Action);
 	return newRequestGroup_Action;
 }
   String id;
@@ -350,14 +356,16 @@ class RequestGroup_Condition {
 		String kind,
 		Element elementKind,
 		Expression expression}) async {
+	var fhirDb = new DatabaseHelper();
 	RequestGroup_Condition newRequestGroup_Condition = new RequestGroup_Condition(
-			id: await newId('RequestGroup_Condition'),
+			id: await fhirDb.newResourceId('RequestGroup_Condition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kind: kind,
 			elementKind: elementKind,
 			expression: expression,
 );
+	int saved = await fhirDb.saveResource(newRequestGroup_Condition);
 	return newRequestGroup_Condition;
 }
   String id;
@@ -393,8 +401,9 @@ class RequestGroup_RelatedAction {
 		Element elementRelationship,
 		Duration offsetDuration,
 		Range offsetRange}) async {
+	var fhirDb = new DatabaseHelper();
 	RequestGroup_RelatedAction newRequestGroup_RelatedAction = new RequestGroup_RelatedAction(
-			id: await newId('RequestGroup_RelatedAction'),
+			id: await fhirDb.newResourceId('RequestGroup_RelatedAction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			actionId: actionId,
@@ -404,6 +413,7 @@ class RequestGroup_RelatedAction {
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange,
 );
+	int saved = await fhirDb.saveResource(newRequestGroup_RelatedAction);
 	return newRequestGroup_RelatedAction;
 }
   String id;
@@ -440,6 +450,7 @@ RequestGroup_RelatedAction(
 
 RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
   return RequestGroup(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -549,6 +560,7 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CapabilityStatement {
 
 	static Future<CapabilityStatement> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -69,8 +68,10 @@ class CapabilityStatement {
 		List<CapabilityStatement_Rest> rest,
 		List<CapabilityStatement_Messaging> messaging,
 		List<CapabilityStatement_Document> document}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement newCapabilityStatement = new CapabilityStatement(
-			id: await newId('CapabilityStatement'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CapabilityStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -122,9 +123,10 @@ class CapabilityStatement {
 			messaging: messaging,
 			document: document,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement);
 	return newCapabilityStatement;
 }
-  final String resourceType= 'CapabilityStatement';
+  String resourceType= 'CapabilityStatement';
   String id;
   Meta meta;
   String implicitRules;
@@ -178,7 +180,8 @@ class CapabilityStatement {
   List<CapabilityStatement_Document> document;
 
 CapabilityStatement(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -248,8 +251,9 @@ class CapabilityStatement_Software {
 		Element elementVersion,
 		DateTime releaseDate,
 		Element elementReleaseDate}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Software newCapabilityStatement_Software = new CapabilityStatement_Software(
-			id: await newId('CapabilityStatement_Software'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Software'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -259,6 +263,7 @@ class CapabilityStatement_Software {
 			releaseDate: releaseDate,
 			elementReleaseDate: elementReleaseDate,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Software);
 	return newCapabilityStatement_Software;
 }
   String id;
@@ -299,8 +304,9 @@ class CapabilityStatement_Implementation {
 		String url,
 		Element elementUrl,
 		Reference custodian}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Implementation newCapabilityStatement_Implementation = new CapabilityStatement_Implementation(
-			id: await newId('CapabilityStatement_Implementation'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Implementation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -309,6 +315,7 @@ class CapabilityStatement_Implementation {
 			elementUrl: elementUrl,
 			custodian: custodian,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Implementation);
 	return newCapabilityStatement_Implementation;
 }
   String id;
@@ -352,8 +359,9 @@ class CapabilityStatement_Rest {
 		List<CapabilityStatement_SearchParam> searchParam,
 		List<CapabilityStatement_Operation> operation,
 		List<String> compartment}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Rest newCapabilityStatement_Rest = new CapabilityStatement_Rest(
-			id: await newId('CapabilityStatement_Rest'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Rest'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -367,6 +375,7 @@ class CapabilityStatement_Rest {
 			operation: operation,
 			compartment: compartment,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Rest);
 	return newCapabilityStatement_Rest;
 }
   String id;
@@ -415,8 +424,9 @@ class CapabilityStatement_Security {
 		List<CodeableConcept> service,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Security newCapabilityStatement_Security = new CapabilityStatement_Security(
-			id: await newId('CapabilityStatement_Security'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Security'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			cors: cors,
@@ -425,6 +435,7 @@ class CapabilityStatement_Security {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Security);
 	return newCapabilityStatement_Security;
 }
   String id;
@@ -487,8 +498,9 @@ class CapabilityStatement_Resource {
 		List<Element> elementSearchRevInclude,
 		List<CapabilityStatement_SearchParam> searchParam,
 		List<CapabilityStatement_Operation> operation}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Resource newCapabilityStatement_Resource = new CapabilityStatement_Resource(
-			id: await newId('CapabilityStatement_Resource'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Resource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -521,6 +533,7 @@ class CapabilityStatement_Resource {
 			searchParam: searchParam,
 			operation: operation,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Resource);
 	return newCapabilityStatement_Resource;
 }
   String id;
@@ -606,8 +619,9 @@ class CapabilityStatement_Interaction {
 		Element elementCode,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Interaction newCapabilityStatement_Interaction = new CapabilityStatement_Interaction(
-			id: await newId('CapabilityStatement_Interaction'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Interaction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -615,6 +629,7 @@ class CapabilityStatement_Interaction {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Interaction);
 	return newCapabilityStatement_Interaction;
 }
   String id;
@@ -653,8 +668,9 @@ class CapabilityStatement_SearchParam {
 		Element elementType,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_SearchParam newCapabilityStatement_SearchParam = new CapabilityStatement_SearchParam(
-			id: await newId('CapabilityStatement_SearchParam'),
+			id: await fhirDb.newResourceId('CapabilityStatement_SearchParam'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -665,6 +681,7 @@ class CapabilityStatement_SearchParam {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_SearchParam);
 	return newCapabilityStatement_SearchParam;
 }
   String id;
@@ -707,8 +724,9 @@ class CapabilityStatement_Operation {
 		String definition,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Operation newCapabilityStatement_Operation = new CapabilityStatement_Operation(
-			id: await newId('CapabilityStatement_Operation'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -717,6 +735,7 @@ class CapabilityStatement_Operation {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Operation);
 	return newCapabilityStatement_Operation;
 }
   String id;
@@ -754,8 +773,9 @@ class CapabilityStatement_Interaction1 {
 		Element elementCode,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Interaction1 newCapabilityStatement_Interaction1 = new CapabilityStatement_Interaction1(
-			id: await newId('CapabilityStatement_Interaction1'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Interaction1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -763,6 +783,7 @@ class CapabilityStatement_Interaction1 {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Interaction1);
 	return newCapabilityStatement_Interaction1;
 }
   String id;
@@ -800,8 +821,9 @@ class CapabilityStatement_Messaging {
 		String documentation,
 		Element elementDocumentation,
 		List<CapabilityStatement_SupportedMessage> supportedMessage}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Messaging newCapabilityStatement_Messaging = new CapabilityStatement_Messaging(
-			id: await newId('CapabilityStatement_Messaging'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Messaging'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			endpoint: endpoint,
@@ -811,6 +833,7 @@ class CapabilityStatement_Messaging {
 			elementDocumentation: elementDocumentation,
 			supportedMessage: supportedMessage,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Messaging);
 	return newCapabilityStatement_Messaging;
 }
   String id;
@@ -849,14 +872,16 @@ class CapabilityStatement_Endpoint {
 		Coding protocol,
 		String address,
 		Element elementAddress}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Endpoint newCapabilityStatement_Endpoint = new CapabilityStatement_Endpoint(
-			id: await newId('CapabilityStatement_Endpoint'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Endpoint'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			protocol: protocol,
 			address: address,
 			elementAddress: elementAddress,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Endpoint);
 	return newCapabilityStatement_Endpoint;
 }
   String id;
@@ -889,14 +914,16 @@ class CapabilityStatement_SupportedMessage {
 		String mode,
 		Element elementMode,
 		String definition}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_SupportedMessage newCapabilityStatement_SupportedMessage = new CapabilityStatement_SupportedMessage(
-			id: await newId('CapabilityStatement_SupportedMessage'),
+			id: await fhirDb.newResourceId('CapabilityStatement_SupportedMessage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
 			elementMode: elementMode,
 			definition: definition,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_SupportedMessage);
 	return newCapabilityStatement_SupportedMessage;
 }
   String id;
@@ -931,8 +958,9 @@ class CapabilityStatement_Document {
 		String documentation,
 		Element elementDocumentation,
 		String profile}) async {
+	var fhirDb = new DatabaseHelper();
 	CapabilityStatement_Document newCapabilityStatement_Document = new CapabilityStatement_Document(
-			id: await newId('CapabilityStatement_Document'),
+			id: await fhirDb.newResourceId('CapabilityStatement_Document'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -941,6 +969,7 @@ class CapabilityStatement_Document {
 			elementDocumentation: elementDocumentation,
 			profile: profile,
 );
+	int saved = await fhirDb.saveResource(newCapabilityStatement_Document);
 	return newCapabilityStatement_Document;
 }
   String id;
@@ -975,6 +1004,7 @@ CapabilityStatement_Document(
 
 CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
   return CapabilityStatement(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1115,6 +1145,7 @@ CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$CapabilityStatementToJson(
         CapabilityStatement instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

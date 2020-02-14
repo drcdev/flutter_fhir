@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -25,8 +23,9 @@ class HumanName {
 		List<String> suffix,
 		List<Element> elementSuffix,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	HumanName newHumanName = new HumanName(
-			id: await newId('HumanName'),
+			id: await fhirDb.newResourceId('HumanName'),
 			extension: extension,
 			use: use,
 			elementUse: elementUse,
@@ -42,6 +41,7 @@ class HumanName {
 			elementSuffix: elementSuffix,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newHumanName);
 	return newHumanName;
 }
   String id;

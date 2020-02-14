@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ValueSet {
 
 	static Future<ValueSet> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -58,8 +57,10 @@ class ValueSet {
 		Element elementCopyright,
 		ValueSet_Compose compose,
 		ValueSet_Expansion expansion}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet newValueSet = new ValueSet(
-			id: await newId('ValueSet'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ValueSet'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -100,9 +101,10 @@ class ValueSet {
 			compose: compose,
 			expansion: expansion,
 );
+	int saved = await fhirDb.saveResource(newValueSet);
 	return newValueSet;
 }
-  final String resourceType= 'ValueSet';
+  String resourceType= 'ValueSet';
   String id;
   Meta meta;
   String implicitRules;
@@ -145,7 +147,8 @@ class ValueSet {
   ValueSet_Expansion expansion;
 
 ValueSet(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -204,8 +207,9 @@ class ValueSet_Compose {
 		Element elementInactive,
 		List<ValueSet_Include> include,
 		List<ValueSet_Include> exclude}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Compose newValueSet_Compose = new ValueSet_Compose(
-			id: await newId('ValueSet_Compose'),
+			id: await fhirDb.newResourceId('ValueSet_Compose'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			lockedDate: lockedDate,
@@ -215,6 +219,7 @@ class ValueSet_Compose {
 			include: include,
 			exclude: exclude,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Compose);
 	return newValueSet_Compose;
 }
   String id;
@@ -257,8 +262,9 @@ class ValueSet_Include {
 		List<ValueSet_Concept> concept,
 		List<ValueSet_Filter> filter,
 		List<String> valueSet}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Include newValueSet_Include = new ValueSet_Include(
-			id: await newId('ValueSet_Include'),
+			id: await fhirDb.newResourceId('ValueSet_Include'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			system: system,
@@ -269,6 +275,7 @@ class ValueSet_Include {
 			filter: filter,
 			valueSet: valueSet,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Include);
 	return newValueSet_Include;
 }
   String id;
@@ -311,8 +318,9 @@ class ValueSet_Concept {
 		String display,
 		Element elementDisplay,
 		List<ValueSet_Designation> designation}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Concept newValueSet_Concept = new ValueSet_Concept(
-			id: await newId('ValueSet_Concept'),
+			id: await fhirDb.newResourceId('ValueSet_Concept'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -321,6 +329,7 @@ class ValueSet_Concept {
 			elementDisplay: elementDisplay,
 			designation: designation,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Concept);
 	return newValueSet_Concept;
 }
   String id;
@@ -359,8 +368,9 @@ class ValueSet_Designation {
 		Coding use,
 		String value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Designation newValueSet_Designation = new ValueSet_Designation(
-			id: await newId('ValueSet_Designation'),
+			id: await fhirDb.newResourceId('ValueSet_Designation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
@@ -369,6 +379,7 @@ class ValueSet_Designation {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Designation);
 	return newValueSet_Designation;
 }
   String id;
@@ -408,8 +419,9 @@ class ValueSet_Filter {
 		Element elementOp,
 		String value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Filter newValueSet_Filter = new ValueSet_Filter(
-			id: await newId('ValueSet_Filter'),
+			id: await fhirDb.newResourceId('ValueSet_Filter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			property: property,
@@ -419,6 +431,7 @@ class ValueSet_Filter {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Filter);
 	return newValueSet_Filter;
 }
   String id;
@@ -464,8 +477,9 @@ class ValueSet_Expansion {
 		Element elementOffset,
 		List<ValueSet_Parameter> parameter,
 		List<ValueSet_Contains> contains}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Expansion newValueSet_Expansion = new ValueSet_Expansion(
-			id: await newId('ValueSet_Expansion'),
+			id: await fhirDb.newResourceId('ValueSet_Expansion'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -479,6 +493,7 @@ class ValueSet_Expansion {
 			parameter: parameter,
 			contains: contains,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Expansion);
 	return newValueSet_Expansion;
 }
   String id;
@@ -538,8 +553,9 @@ class ValueSet_Parameter {
 		Element elementValueCode,
 		String valueDateTime,
 		Element elementValueDateTime}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Parameter newValueSet_Parameter = new ValueSet_Parameter(
-			id: await newId('ValueSet_Parameter'),
+			id: await fhirDb.newResourceId('ValueSet_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -559,6 +575,7 @@ class ValueSet_Parameter {
 			valueDateTime: valueDateTime,
 			elementValueDateTime: elementValueDateTime,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Parameter);
 	return newValueSet_Parameter;
 }
   String id;
@@ -628,8 +645,9 @@ class ValueSet_Contains {
 		Element elementDisplay,
 		List<ValueSet_Designation> designation,
 		List<ValueSet_Contains> contains}) async {
+	var fhirDb = new DatabaseHelper();
 	ValueSet_Contains newValueSet_Contains = new ValueSet_Contains(
-			id: await newId('ValueSet_Contains'),
+			id: await fhirDb.newResourceId('ValueSet_Contains'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			system: system,
@@ -647,6 +665,7 @@ class ValueSet_Contains {
 			designation: designation,
 			contains: contains,
 );
+	int saved = await fhirDb.saveResource(newValueSet_Contains);
 	return newValueSet_Contains;
 }
   String id;
@@ -699,6 +718,7 @@ ValueSet_Contains(
 
 ValueSet _$ValueSetFromJson(Map<String, dynamic> json) {
   return ValueSet(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -804,6 +824,7 @@ ValueSet _$ValueSetFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ValueSetToJson(ValueSet instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

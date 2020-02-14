@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -334,8 +332,9 @@ class ElementDefinition {
 		Element elementIsSummary,
 		ElementDefinition_Binding binding,
 		List<ElementDefinition_Mapping> mapping}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition newElementDefinition = new ElementDefinition(
-			id: await newId('ElementDefinition'),
+			id: await fhirDb.newResourceId('ElementDefinition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -630,6 +629,7 @@ class ElementDefinition {
 			binding: binding,
 			mapping: mapping,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition);
 	return newElementDefinition;
 }
   String id;
@@ -1242,8 +1242,9 @@ class ElementDefinition_Slicing {
 		Element elementOrdered,
 		String rules,
 		Element elementRules}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Slicing newElementDefinition_Slicing = new ElementDefinition_Slicing(
-			id: await newId('ElementDefinition_Slicing'),
+			id: await fhirDb.newResourceId('ElementDefinition_Slicing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			discriminator: discriminator,
@@ -1254,6 +1255,7 @@ class ElementDefinition_Slicing {
 			rules: rules,
 			elementRules: elementRules,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Slicing);
 	return newElementDefinition_Slicing;
 }
   String id;
@@ -1295,8 +1297,9 @@ class ElementDefinition_Discriminator {
 		Element elementType,
 		String path,
 		Element elementPath}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Discriminator newElementDefinition_Discriminator = new ElementDefinition_Discriminator(
-			id: await newId('ElementDefinition_Discriminator'),
+			id: await fhirDb.newResourceId('ElementDefinition_Discriminator'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -1304,6 +1307,7 @@ class ElementDefinition_Discriminator {
 			path: path,
 			elementPath: elementPath,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Discriminator);
 	return newElementDefinition_Discriminator;
 }
   String id;
@@ -1341,8 +1345,9 @@ class ElementDefinition_Base {
 		Element elementMin,
 		String max,
 		Element elementMax}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Base newElementDefinition_Base = new ElementDefinition_Base(
-			id: await newId('ElementDefinition_Base'),
+			id: await fhirDb.newResourceId('ElementDefinition_Base'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -1352,6 +1357,7 @@ class ElementDefinition_Base {
 			max: max,
 			elementMax: elementMax,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Base);
 	return newElementDefinition_Base;
 }
   String id;
@@ -1395,8 +1401,9 @@ class ElementDefinition_Type {
 		List<Element> elementAggregation,
 		String versioning,
 		Element elementVersioning}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Type newElementDefinition_Type = new ElementDefinition_Type(
-			id: await newId('ElementDefinition_Type'),
+			id: await fhirDb.newResourceId('ElementDefinition_Type'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -1408,6 +1415,7 @@ class ElementDefinition_Type {
 			versioning: versioning,
 			elementVersioning: elementVersioning,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Type);
 	return newElementDefinition_Type;
 }
   String id;
@@ -1518,8 +1526,9 @@ class ElementDefinition_Example {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Example newElementDefinition_Example = new ElementDefinition_Example(
-			id: await newId('ElementDefinition_Example'),
+			id: await fhirDb.newResourceId('ElementDefinition_Example'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			label: label,
@@ -1594,6 +1603,7 @@ class ElementDefinition_Example {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Example);
 	return newElementDefinition_Example;
 }
   String id;
@@ -1772,8 +1782,9 @@ class ElementDefinition_Constraint {
 		String xpath,
 		Element elementXpath,
 		String source}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Constraint newElementDefinition_Constraint = new ElementDefinition_Constraint(
-			id: await newId('ElementDefinition_Constraint'),
+			id: await fhirDb.newResourceId('ElementDefinition_Constraint'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			key: key,
@@ -1790,6 +1801,7 @@ class ElementDefinition_Constraint {
 			elementXpath: elementXpath,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Constraint);
 	return newElementDefinition_Constraint;
 }
   String id;
@@ -1844,8 +1856,9 @@ class ElementDefinition_Binding {
 		String description,
 		Element elementDescription,
 		String valueSet}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Binding newElementDefinition_Binding = new ElementDefinition_Binding(
-			id: await newId('ElementDefinition_Binding'),
+			id: await fhirDb.newResourceId('ElementDefinition_Binding'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			strength: strength,
@@ -1854,6 +1867,7 @@ class ElementDefinition_Binding {
 			elementDescription: elementDescription,
 			valueSet: valueSet,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Binding);
 	return newElementDefinition_Binding;
 }
   String id;
@@ -1895,8 +1909,9 @@ class ElementDefinition_Mapping {
 		Element elementMap,
 		String comment,
 		Element elementComment}) async {
+	var fhirDb = new DatabaseHelper();
 	ElementDefinition_Mapping newElementDefinition_Mapping = new ElementDefinition_Mapping(
-			id: await newId('ElementDefinition_Mapping'),
+			id: await fhirDb.newResourceId('ElementDefinition_Mapping'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identity: identity,
@@ -1908,6 +1923,7 @@ class ElementDefinition_Mapping {
 			comment: comment,
 			elementComment: elementComment,
 );
+	int saved = await fhirDb.saveResource(newElementDefinition_Mapping);
 	return newElementDefinition_Mapping;
 }
   String id;

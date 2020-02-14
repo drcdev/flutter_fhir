@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
@@ -43,6 +41,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Task {
 
 	static Future<Task> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -91,8 +90,10 @@ class Task {
 		Task_Restriction restriction,
 		List<Task_Input> input,
 		List<Task_Output> output}) async {
+	var fhirDb = new DatabaseHelper();
 	Task newTask = new Task(
-			id: await newId('Task'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Task'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -141,9 +142,10 @@ class Task {
 			input: input,
 			output: output,
 );
+	int saved = await fhirDb.saveResource(newTask);
 	return newTask;
 }
-  final String resourceType= 'Task';
+  String resourceType= 'Task';
   String id;
   Meta meta;
   String implicitRules;
@@ -194,7 +196,8 @@ class Task {
   List<Task_Output> output;
 
 Task(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -259,8 +262,9 @@ class Task_Restriction {
 		Element elementRepetitions,
 		Period period,
 		List<Reference> recipient}) async {
+	var fhirDb = new DatabaseHelper();
 	Task_Restriction newTask_Restriction = new Task_Restriction(
-			id: await newId('Task_Restriction'),
+			id: await fhirDb.newResourceId('Task_Restriction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			repetitions: repetitions,
@@ -268,6 +272,7 @@ class Task_Restriction {
 			period: period,
 			recipient: recipient,
 );
+	int saved = await fhirDb.saveResource(newTask_Restriction);
 	return newTask_Restriction;
 }
   String id;
@@ -369,8 +374,9 @@ class Task_Input {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
+	var fhirDb = new DatabaseHelper();
 	Task_Input newTask_Input = new Task_Input(
-			id: await newId('Task_Input'),
+			id: await fhirDb.newResourceId('Task_Input'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -444,6 +450,7 @@ class Task_Input {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
+	int saved = await fhirDb.saveResource(newTask_Input);
 	return newTask_Input;
 }
   String id;
@@ -677,8 +684,9 @@ class Task_Output {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
+	var fhirDb = new DatabaseHelper();
 	Task_Output newTask_Output = new Task_Output(
-			id: await newId('Task_Output'),
+			id: await fhirDb.newResourceId('Task_Output'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -752,6 +760,7 @@ class Task_Output {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
+	int saved = await fhirDb.saveResource(newTask_Output);
 	return newTask_Output;
 }
   String id;
@@ -916,6 +925,7 @@ Task_Output(
 
 Task _$TaskFromJson(Map<String, dynamic> json) {
   return Task(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1064,6 +1074,7 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

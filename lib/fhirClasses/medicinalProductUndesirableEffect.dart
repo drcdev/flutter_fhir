@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/population.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductUndesirableEffect {
 
 	static Future<MedicinalProductUndesirableEffect> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -30,8 +30,10 @@ class MedicinalProductUndesirableEffect {
 		CodeableConcept classification,
 		CodeableConcept frequencyOfOccurrence,
 		List<Population> population}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductUndesirableEffect newMedicinalProductUndesirableEffect = new MedicinalProductUndesirableEffect(
-			id: await newId('MedicinalProductUndesirableEffect'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductUndesirableEffect'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -47,9 +49,10 @@ class MedicinalProductUndesirableEffect {
 			frequencyOfOccurrence: frequencyOfOccurrence,
 			population: population,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductUndesirableEffect);
 	return newMedicinalProductUndesirableEffect;
 }
-  final String resourceType= 'MedicinalProductUndesirableEffect';
+  String resourceType= 'MedicinalProductUndesirableEffect';
   String id;
   Meta meta;
   String implicitRules;
@@ -67,7 +70,8 @@ class MedicinalProductUndesirableEffect {
   List<Population> population;
 
 MedicinalProductUndesirableEffect(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -97,6 +101,7 @@ MedicinalProductUndesirableEffect(
 MedicinalProductUndesirableEffect _$MedicinalProductUndesirableEffectFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductUndesirableEffect(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -151,6 +156,7 @@ MedicinalProductUndesirableEffect _$MedicinalProductUndesirableEffectFromJson(
 Map<String, dynamic> _$MedicinalProductUndesirableEffectToJson(
         MedicinalProductUndesirableEffect instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

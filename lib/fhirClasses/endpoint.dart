@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Endpoint {
 
 	static Future<Endpoint> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -45,8 +44,10 @@ class Endpoint {
 		Element elementAddress,
 		List<String> header,
 		List<Element> elementHeader}) async {
+	var fhirDb = new DatabaseHelper();
 	Endpoint newEndpoint = new Endpoint(
-			id: await newId('Endpoint'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Endpoint'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -73,9 +74,10 @@ class Endpoint {
 			header: header,
 			elementHeader: elementHeader,
 );
+	int saved = await fhirDb.saveResource(newEndpoint);
 	return newEndpoint;
 }
-  final String resourceType= 'Endpoint';
+  String resourceType= 'Endpoint';
   String id;
   Meta meta;
   String implicitRules;
@@ -104,7 +106,8 @@ class Endpoint {
   List<Element> elementHeader;
 
 Endpoint(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -144,6 +147,7 @@ Endpoint(
 
 Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
   return Endpoint(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -222,6 +226,7 @@ Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$EndpointToJson(Endpoint instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Measure {
 
 	static Future<Measure> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -95,8 +94,10 @@ class Measure {
 		Element elementGuidance,
 		List<Measure_Group> group,
 		List<Measure_SupplementalData> supplementalData}) async {
+	var fhirDb = new DatabaseHelper();
 	Measure newMeasure = new Measure(
-			id: await newId('Measure'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Measure'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -171,9 +172,10 @@ class Measure {
 			group: group,
 			supplementalData: supplementalData,
 );
+	int saved = await fhirDb.saveResource(newMeasure);
 	return newMeasure;
 }
-  final String resourceType= 'Measure';
+  String resourceType= 'Measure';
   String id;
   Meta meta;
   String implicitRules;
@@ -250,7 +252,8 @@ class Measure {
   List<Measure_SupplementalData> supplementalData;
 
 Measure(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -342,8 +345,9 @@ class Measure_Group {
 		Element elementDescription,
 		List<Measure_Population> population,
 		List<Measure_Stratifier> stratifier}) async {
+	var fhirDb = new DatabaseHelper();
 	Measure_Group newMeasure_Group = new Measure_Group(
-			id: await newId('Measure_Group'),
+			id: await fhirDb.newResourceId('Measure_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -352,6 +356,7 @@ class Measure_Group {
 			population: population,
 			stratifier: stratifier,
 );
+	int saved = await fhirDb.saveResource(newMeasure_Group);
 	return newMeasure_Group;
 }
   String id;
@@ -389,8 +394,9 @@ class Measure_Population {
 		String description,
 		Element elementDescription,
 		Expression criteria}) async {
+	var fhirDb = new DatabaseHelper();
 	Measure_Population newMeasure_Population = new Measure_Population(
-			id: await newId('Measure_Population'),
+			id: await fhirDb.newResourceId('Measure_Population'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -398,6 +404,7 @@ class Measure_Population {
 			elementDescription: elementDescription,
 			criteria: criteria,
 );
+	int saved = await fhirDb.saveResource(newMeasure_Population);
 	return newMeasure_Population;
 }
   String id;
@@ -434,8 +441,9 @@ class Measure_Stratifier {
 		Element elementDescription,
 		Expression criteria,
 		List<Measure_Component> component}) async {
+	var fhirDb = new DatabaseHelper();
 	Measure_Stratifier newMeasure_Stratifier = new Measure_Stratifier(
-			id: await newId('Measure_Stratifier'),
+			id: await fhirDb.newResourceId('Measure_Stratifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -444,6 +452,7 @@ class Measure_Stratifier {
 			criteria: criteria,
 			component: component,
 );
+	int saved = await fhirDb.saveResource(newMeasure_Stratifier);
 	return newMeasure_Stratifier;
 }
   String id;
@@ -481,8 +490,9 @@ class Measure_Component {
 		String description,
 		Element elementDescription,
 		Expression criteria}) async {
+	var fhirDb = new DatabaseHelper();
 	Measure_Component newMeasure_Component = new Measure_Component(
-			id: await newId('Measure_Component'),
+			id: await fhirDb.newResourceId('Measure_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -490,6 +500,7 @@ class Measure_Component {
 			elementDescription: elementDescription,
 			criteria: criteria,
 );
+	int saved = await fhirDb.saveResource(newMeasure_Component);
 	return newMeasure_Component;
 }
   String id;
@@ -526,8 +537,9 @@ class Measure_SupplementalData {
 		String description,
 		Element elementDescription,
 		Expression criteria}) async {
+	var fhirDb = new DatabaseHelper();
 	Measure_SupplementalData newMeasure_SupplementalData = new Measure_SupplementalData(
-			id: await newId('Measure_SupplementalData'),
+			id: await fhirDb.newResourceId('Measure_SupplementalData'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -536,6 +548,7 @@ class Measure_SupplementalData {
 			elementDescription: elementDescription,
 			criteria: criteria,
 );
+	int saved = await fhirDb.saveResource(newMeasure_SupplementalData);
 	return newMeasure_SupplementalData;
 }
   String id;
@@ -570,6 +583,7 @@ Measure_SupplementalData(
 
 Measure _$MeasureFromJson(Map<String, dynamic> json) {
   return Measure(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -782,6 +796,7 @@ Measure _$MeasureFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$MeasureToJson(Measure instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

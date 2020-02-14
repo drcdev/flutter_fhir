@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/dataRequirement.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -27,8 +25,9 @@ class TriggerDefinition {
 		Element elementTimingDateTime,
 		List<DataRequirement> data,
 		Expression condition}) async {
+	var fhirDb = new DatabaseHelper();
 	TriggerDefinition newTriggerDefinition = new TriggerDefinition(
-			id: await newId('TriggerDefinition'),
+			id: await fhirDb.newResourceId('TriggerDefinition'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
@@ -43,6 +42,7 @@ class TriggerDefinition {
 			data: data,
 			condition: condition,
 );
+	int saved = await fhirDb.saveResource(newTriggerDefinition);
 	return newTriggerDefinition;
 }
   String id;

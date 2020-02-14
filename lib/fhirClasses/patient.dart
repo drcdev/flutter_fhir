@@ -2,13 +2,10 @@ import 'dart:io';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-import 'package:flutter_fhir/util/db.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -27,6 +24,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Patient {
 
 	static Future<Patient> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -62,8 +60,9 @@ class Patient {
 		List<Reference> generalPractitioner,
 		Reference managingOrganization,
 		List<Patient_Link> link}) async {
-  var fhirDb = new DatabaseHelper();
+	var fhirDb = new DatabaseHelper();
 	Patient newPatient = new Patient(
+			resourceType: resourceType,
 			id: await fhirDb.newResourceId('Patient'),
 			meta: meta,
 			implicitRules: implicitRules,
@@ -100,16 +99,10 @@ class Patient {
 			managingOrganization: managingOrganization,
 			link: link,
 );
-	int result = await fhirDb.saveResource(newPatient);
+	int saved = await fhirDb.saveResource(newPatient);
 	return newPatient;
 }
-
-  Future<int> save() async {
-    var fhirDb = new DatabaseHelper();
-    return await fhirDb.saveResource(this);
-  }
-
-  final String resourceType= 'Patient';
+  String resourceType= 'Patient';
   String id;
   Meta meta;
   String implicitRules;
@@ -147,7 +140,8 @@ class Patient {
   List<Patient_Link> link;
 
 Patient(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -234,8 +228,9 @@ class Patient_Contact {
 		Element elementGender,
 		Reference organization,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Patient_Contact newPatient_Contact = new Patient_Contact(
-			id: await newId('Patient_Contact'),
+			id: await fhirDb.newResourceId('Patient_Contact'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			relationship: relationship,
@@ -247,6 +242,7 @@ class Patient_Contact {
 			organization: organization,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newPatient_Contact);
 	return newPatient_Contact;
 }
   String id;
@@ -289,14 +285,16 @@ class Patient_Communication {
 		CodeableConcept language,
 		bool preferred,
 		Element elementPreferred}) async {
+	var fhirDb = new DatabaseHelper();
 	Patient_Communication newPatient_Communication = new Patient_Communication(
-			id: await newId('Patient_Communication'),
+			id: await fhirDb.newResourceId('Patient_Communication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
 			preferred: preferred,
 			elementPreferred: elementPreferred,
 );
+	int saved = await fhirDb.saveResource(newPatient_Communication);
 	return newPatient_Communication;
 }
   String id;
@@ -329,14 +327,16 @@ class Patient_Link {
 		Reference other,
 		String type,
 		Element elementType}) async {
+	var fhirDb = new DatabaseHelper();
 	Patient_Link newPatient_Link = new Patient_Link(
-			id: await newId('Patient_Link'),
+			id: await fhirDb.newResourceId('Patient_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			other: other,
 			type: type,
 			elementType: elementType,
 );
+	int saved = await fhirDb.saveResource(newPatient_Link);
 	return newPatient_Link;
 }
   String id;
@@ -367,6 +367,7 @@ Patient_Link(
 
 Patient _$PatientFromJson(Map<String, dynamic> json) {
   return Patient(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -477,6 +478,7 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

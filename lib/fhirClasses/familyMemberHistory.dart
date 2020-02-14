@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/age.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class FamilyMemberHistory {
 
 	static Future<FamilyMemberHistory> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -67,8 +66,10 @@ class FamilyMemberHistory {
 		List<Reference> reasonReference,
 		List<Annotation> note,
 		List<FamilyMemberHistory_Condition> condition}) async {
+	var fhirDb = new DatabaseHelper();
 	FamilyMemberHistory newFamilyMemberHistory = new FamilyMemberHistory(
-			id: await newId('FamilyMemberHistory'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('FamilyMemberHistory'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -116,9 +117,10 @@ class FamilyMemberHistory {
 			note: note,
 			condition: condition,
 );
+	int saved = await fhirDb.saveResource(newFamilyMemberHistory);
 	return newFamilyMemberHistory;
 }
-  final String resourceType= 'FamilyMemberHistory';
+  String resourceType= 'FamilyMemberHistory';
   String id;
   Meta meta;
   String implicitRules;
@@ -168,7 +170,8 @@ class FamilyMemberHistory {
   List<FamilyMemberHistory_Condition> condition;
 
 FamilyMemberHistory(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -238,8 +241,9 @@ class FamilyMemberHistory_Condition {
 		String onsetString,
 		Element elementOnsetString,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	FamilyMemberHistory_Condition newFamilyMemberHistory_Condition = new FamilyMemberHistory_Condition(
-			id: await newId('FamilyMemberHistory_Condition'),
+			id: await fhirDb.newResourceId('FamilyMemberHistory_Condition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -253,6 +257,7 @@ class FamilyMemberHistory_Condition {
 			elementOnsetString: elementOnsetString,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newFamilyMemberHistory_Condition);
 	return newFamilyMemberHistory_Condition;
 }
   String id;
@@ -297,6 +302,7 @@ FamilyMemberHistory_Condition(
 
 FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
   return FamilyMemberHistory(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -433,6 +439,7 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$FamilyMemberHistoryToJson(
         FamilyMemberHistory instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

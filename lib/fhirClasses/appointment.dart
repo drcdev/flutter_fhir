@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Appointment {
 
 	static Future<Appointment> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -58,8 +57,10 @@ class Appointment {
 		List<Reference> basedOn,
 		List<Appointment_Participant> participant,
 		List<Period> requestedPeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	Appointment newAppointment = new Appointment(
-			id: await newId('Appointment'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Appointment'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -101,9 +102,10 @@ class Appointment {
 			participant: participant,
 			requestedPeriod: requestedPeriod,
 );
+	int saved = await fhirDb.saveResource(newAppointment);
 	return newAppointment;
 }
-  final String resourceType= 'Appointment';
+  String resourceType= 'Appointment';
   String id;
   Meta meta;
   String implicitRules;
@@ -147,7 +149,8 @@ class Appointment {
   List<Period> requestedPeriod;
 
 Appointment(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -208,8 +211,9 @@ class Appointment_Participant {
 		String status,
 		Element elementStatus,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Appointment_Participant newAppointment_Participant = new Appointment_Participant(
-			id: await newId('Appointment_Participant'),
+			id: await fhirDb.newResourceId('Appointment_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -220,6 +224,7 @@ class Appointment_Participant {
 			elementStatus: elementStatus,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newAppointment_Participant);
 	return newAppointment_Participant;
 }
   String id;
@@ -258,6 +263,7 @@ Appointment_Participant(
 
 Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
   return Appointment(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -389,6 +395,7 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

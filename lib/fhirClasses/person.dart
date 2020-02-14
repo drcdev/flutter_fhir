@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Person {
 
 	static Future<Person> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -42,8 +41,10 @@ class Person {
 		bool active,
 		Element elementActive,
 		List<Person_Link> link}) async {
+	var fhirDb = new DatabaseHelper();
 	Person newPerson = new Person(
-			id: await newId('Person'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Person'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -67,9 +68,10 @@ class Person {
 			elementActive: elementActive,
 			link: link,
 );
+	int saved = await fhirDb.saveResource(newPerson);
 	return newPerson;
 }
-  final String resourceType= 'Person';
+  String resourceType= 'Person';
   String id;
   Meta meta;
   String implicitRules;
@@ -95,7 +97,8 @@ class Person {
   List<Person_Link> link;
 
 Person(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -134,14 +137,16 @@ class Person_Link {
 		Reference target,
 		String assurance,
 		Element elementAssurance}) async {
+	var fhirDb = new DatabaseHelper();
 	Person_Link newPerson_Link = new Person_Link(
-			id: await newId('Person_Link'),
+			id: await fhirDb.newResourceId('Person_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			target: target,
 			assurance: assurance,
 			elementAssurance: elementAssurance,
 );
+	int saved = await fhirDb.saveResource(newPerson_Link);
 	return newPerson_Link;
 }
   String id;
@@ -172,6 +177,7 @@ Person_Link(
 
 Person _$PersonFromJson(Map<String, dynamic> json) {
   return Person(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -243,6 +249,7 @@ Person _$PersonFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

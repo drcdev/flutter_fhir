@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class EventDefinition {
 
 	static Future<EventDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -75,8 +74,10 @@ class EventDefinition {
 		List<ContactDetail> endorser,
 		List<RelatedArtifact> relatedArtifact,
 		List<TriggerDefinition> trigger}) async {
+	var fhirDb = new DatabaseHelper();
 	EventDefinition newEventDefinition = new EventDefinition(
-			id: await newId('EventDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('EventDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -131,9 +132,10 @@ class EventDefinition {
 			relatedArtifact: relatedArtifact,
 			trigger: trigger,
 );
+	int saved = await fhirDb.saveResource(newEventDefinition);
 	return newEventDefinition;
 }
-  final String resourceType= 'EventDefinition';
+  String resourceType= 'EventDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -190,7 +192,8 @@ class EventDefinition {
   List<TriggerDefinition> trigger;
 
 EventDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -258,6 +261,7 @@ EventDefinition(
 
 EventDefinition _$EventDefinitionFromJson(Map<String, dynamic> json) {
   return EventDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -415,6 +419,7 @@ EventDefinition _$EventDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$EventDefinitionToJson(EventDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class DeviceRequest {
 
 	static Future<DeviceRequest> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -64,8 +63,10 @@ class DeviceRequest {
 		List<Reference> supportingInfo,
 		List<Annotation> note,
 		List<Reference> relevantHistory}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceRequest newDeviceRequest = new DeviceRequest(
-			id: await newId('DeviceRequest'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('DeviceRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -109,9 +110,10 @@ class DeviceRequest {
 			note: note,
 			relevantHistory: relevantHistory,
 );
+	int saved = await fhirDb.saveResource(newDeviceRequest);
 	return newDeviceRequest;
 }
-  final String resourceType= 'DeviceRequest';
+  String resourceType= 'DeviceRequest';
   String id;
   Meta meta;
   String implicitRules;
@@ -157,7 +159,8 @@ class DeviceRequest {
   List<Reference> relevantHistory;
 
 DeviceRequest(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -219,8 +222,9 @@ class DeviceRequest_Parameter {
 		Range valueRange,
 		bool valueBoolean,
 		Element elementValueBoolean}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceRequest_Parameter newDeviceRequest_Parameter = new DeviceRequest_Parameter(
-			id: await newId('DeviceRequest_Parameter'),
+			id: await fhirDb.newResourceId('DeviceRequest_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -230,6 +234,7 @@ class DeviceRequest_Parameter {
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean,
 );
+	int saved = await fhirDb.saveResource(newDeviceRequest_Parameter);
 	return newDeviceRequest_Parameter;
 }
   String id;
@@ -266,6 +271,7 @@ DeviceRequest_Parameter(
 
 DeviceRequest _$DeviceRequestFromJson(Map<String, dynamic> json) {
   return DeviceRequest(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -405,6 +411,7 @@ DeviceRequest _$DeviceRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DeviceRequestToJson(DeviceRequest instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

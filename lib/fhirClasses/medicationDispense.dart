@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicationDispense {
 
 	static Future<MedicationDispense> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -58,8 +57,10 @@ class MedicationDispense {
 		MedicationDispense_Substitution substitution,
 		List<Reference> detectedIssue,
 		List<Reference> eventHistory}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationDispense newMedicationDispense = new MedicationDispense(
-			id: await newId('MedicationDispense'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicationDispense'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -99,9 +100,10 @@ class MedicationDispense {
 			detectedIssue: detectedIssue,
 			eventHistory: eventHistory,
 );
+	int saved = await fhirDb.saveResource(newMedicationDispense);
 	return newMedicationDispense;
 }
-  final String resourceType= 'MedicationDispense';
+  String resourceType= 'MedicationDispense';
   String id;
   Meta meta;
   String implicitRules;
@@ -143,7 +145,8 @@ class MedicationDispense {
   List<Reference> eventHistory;
 
 MedicationDispense(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -197,13 +200,15 @@ class MedicationDispense_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationDispense_Performer newMedicationDispense_Performer = new MedicationDispense_Performer(
-			id: await newId('MedicationDispense_Performer'),
+			id: await fhirDb.newResourceId('MedicationDispense_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
 );
+	int saved = await fhirDb.saveResource(newMedicationDispense_Performer);
 	return newMedicationDispense_Performer;
 }
   String id;
@@ -236,8 +241,9 @@ class MedicationDispense_Substitution {
 		CodeableConcept type,
 		List<CodeableConcept> reason,
 		List<Reference> responsibleParty}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationDispense_Substitution newMedicationDispense_Substitution = new MedicationDispense_Substitution(
-			id: await newId('MedicationDispense_Substitution'),
+			id: await fhirDb.newResourceId('MedicationDispense_Substitution'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			wasSubstituted: wasSubstituted,
@@ -246,6 +252,7 @@ class MedicationDispense_Substitution {
 			reason: reason,
 			responsibleParty: responsibleParty,
 );
+	int saved = await fhirDb.saveResource(newMedicationDispense_Substitution);
 	return newMedicationDispense_Substitution;
 }
   String id;
@@ -280,6 +287,7 @@ MedicationDispense_Substitution(
 
 MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
   return MedicationDispense(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -415,6 +423,7 @@ MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

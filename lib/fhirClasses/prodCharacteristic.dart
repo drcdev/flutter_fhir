@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -29,8 +27,9 @@ class ProdCharacteristic {
 		List<Element> elementImprint,
 		List<Attachment> image,
 		CodeableConcept scoring}) async {
+	var fhirDb = new DatabaseHelper();
 	ProdCharacteristic newProdCharacteristic = new ProdCharacteristic(
-			id: await newId('ProdCharacteristic'),
+			id: await fhirDb.newResourceId('ProdCharacteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			height: height,
@@ -48,6 +47,7 @@ class ProdCharacteristic {
 			image: image,
 			scoring: scoring,
 );
+	int saved = await fhirDb.saveResource(newProdCharacteristic);
 	return newProdCharacteristic;
 }
   String id;

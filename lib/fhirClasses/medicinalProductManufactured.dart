@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/prodCharacteristic.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductManufactured {
 
 	static Future<MedicinalProductManufactured> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -34,8 +33,10 @@ class MedicinalProductManufactured {
 		List<Reference> ingredient,
 		ProdCharacteristic physicalCharacteristics,
 		List<CodeableConcept> otherCharacteristics}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductManufactured newMedicinalProductManufactured = new MedicinalProductManufactured(
-			id: await newId('MedicinalProductManufactured'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductManufactured'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -53,9 +54,10 @@ class MedicinalProductManufactured {
 			physicalCharacteristics: physicalCharacteristics,
 			otherCharacteristics: otherCharacteristics,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductManufactured);
 	return newMedicinalProductManufactured;
 }
-  final String resourceType= 'MedicinalProductManufactured';
+  String resourceType= 'MedicinalProductManufactured';
   String id;
   Meta meta;
   String implicitRules;
@@ -75,7 +77,8 @@ class MedicinalProductManufactured {
   List<CodeableConcept> otherCharacteristics;
 
 MedicinalProductManufactured(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -107,6 +110,7 @@ MedicinalProductManufactured(
 MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductManufactured(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -169,6 +173,7 @@ MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
 Map<String, dynamic> _$MedicinalProductManufacturedToJson(
         MedicinalProductManufactured instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

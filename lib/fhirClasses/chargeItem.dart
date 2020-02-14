@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ChargeItem {
 
 	static Future<ChargeItem> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -66,8 +65,10 @@ class ChargeItem {
 		List<Reference> account,
 		List<Annotation> note,
 		List<Reference> supportingInformation}) async {
+	var fhirDb = new DatabaseHelper();
 	ChargeItem newChargeItem = new ChargeItem(
-			id: await newId('ChargeItem'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ChargeItem'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -113,9 +114,10 @@ class ChargeItem {
 			note: note,
 			supportingInformation: supportingInformation,
 );
+	int saved = await fhirDb.saveResource(newChargeItem);
 	return newChargeItem;
 }
-  final String resourceType= 'ChargeItem';
+  String resourceType= 'ChargeItem';
   String id;
   Meta meta;
   String implicitRules;
@@ -163,7 +165,8 @@ class ChargeItem {
   List<Reference> supportingInformation;
 
 ChargeItem(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -223,13 +226,15 @@ class ChargeItem_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
+	var fhirDb = new DatabaseHelper();
 	ChargeItem_Performer newChargeItem_Performer = new ChargeItem_Performer(
-			id: await newId('ChargeItem_Performer'),
+			id: await fhirDb.newResourceId('ChargeItem_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
 );
+	int saved = await fhirDb.saveResource(newChargeItem_Performer);
 	return newChargeItem_Performer;
 }
   String id;
@@ -258,6 +263,7 @@ ChargeItem_Performer(
 
 ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
   return ChargeItem(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -406,6 +412,7 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

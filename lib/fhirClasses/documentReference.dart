@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class DocumentReference {
 
 	static Future<DocumentReference> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -49,8 +48,10 @@ class DocumentReference {
 		List<CodeableConcept> securityLabel,
 		List<DocumentReference_Content> content,
 		DocumentReference_Context context}) async {
+	var fhirDb = new DatabaseHelper();
 	DocumentReference newDocumentReference = new DocumentReference(
-			id: await newId('DocumentReference'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('DocumentReference'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -81,9 +82,10 @@ class DocumentReference {
 			content: content,
 			context: context,
 );
+	int saved = await fhirDb.saveResource(newDocumentReference);
 	return newDocumentReference;
 }
-  final String resourceType= 'DocumentReference';
+  String resourceType= 'DocumentReference';
   String id;
   Meta meta;
   String implicitRules;
@@ -116,7 +118,8 @@ class DocumentReference {
   DocumentReference_Context context;
 
 DocumentReference(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -162,14 +165,16 @@ class DocumentReference_RelatesTo {
 		String code,
 		Element elementCode,
 		Reference target}) async {
+	var fhirDb = new DatabaseHelper();
 	DocumentReference_RelatesTo newDocumentReference_RelatesTo = new DocumentReference_RelatesTo(
-			id: await newId('DocumentReference_RelatesTo'),
+			id: await fhirDb.newResourceId('DocumentReference_RelatesTo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			elementCode: elementCode,
 			target: target,
 );
+	int saved = await fhirDb.saveResource(newDocumentReference_RelatesTo);
 	return newDocumentReference_RelatesTo;
 }
   String id;
@@ -201,13 +206,15 @@ class DocumentReference_Content {
 		List<Extension> modifierExtension,
 		Attachment attachment,
 		Coding format}) async {
+	var fhirDb = new DatabaseHelper();
 	DocumentReference_Content newDocumentReference_Content = new DocumentReference_Content(
-			id: await newId('DocumentReference_Content'),
+			id: await fhirDb.newResourceId('DocumentReference_Content'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			attachment: attachment,
 			format: format,
 );
+	int saved = await fhirDb.saveResource(newDocumentReference_Content);
 	return newDocumentReference_Content;
 }
   String id;
@@ -242,8 +249,9 @@ class DocumentReference_Context {
 		CodeableConcept practiceSetting,
 		Reference sourcePatientInfo,
 		List<Reference> related}) async {
+	var fhirDb = new DatabaseHelper();
 	DocumentReference_Context newDocumentReference_Context = new DocumentReference_Context(
-			id: await newId('DocumentReference_Context'),
+			id: await fhirDb.newResourceId('DocumentReference_Context'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			encounter: encounter,
@@ -254,6 +262,7 @@ class DocumentReference_Context {
 			sourcePatientInfo: sourcePatientInfo,
 			related: related,
 );
+	int saved = await fhirDb.saveResource(newDocumentReference_Context);
 	return newDocumentReference_Context;
 }
   String id;
@@ -292,6 +301,7 @@ DocumentReference_Context(
 
 DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
   return DocumentReference(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -388,6 +398,7 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

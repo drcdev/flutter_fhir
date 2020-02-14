@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ResearchDefinition {
 
 	static Future<ResearchDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -82,8 +81,10 @@ class ResearchDefinition {
 		Reference exposure,
 		Reference exposureAlternative,
 		Reference outcome}) async {
+	var fhirDb = new DatabaseHelper();
 	ResearchDefinition newResearchDefinition = new ResearchDefinition(
-			id: await newId('ResearchDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ResearchDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -146,9 +147,10 @@ class ResearchDefinition {
 			exposureAlternative: exposureAlternative,
 			outcome: outcome,
 );
+	int saved = await fhirDb.saveResource(newResearchDefinition);
 	return newResearchDefinition;
 }
-  final String resourceType= 'ResearchDefinition';
+  String resourceType= 'ResearchDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -213,7 +215,8 @@ class ResearchDefinition {
   Reference outcome;
 
 ResearchDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -289,6 +292,7 @@ ResearchDefinition(
 
 ResearchDefinition _$ResearchDefinitionFromJson(Map<String, dynamic> json) {
   return ResearchDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -464,6 +468,7 @@ ResearchDefinition _$ResearchDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ResearchDefinitionToJson(ResearchDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

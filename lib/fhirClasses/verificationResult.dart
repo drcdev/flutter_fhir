@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class VerificationResult {
 
 	static Future<VerificationResult> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -46,8 +45,10 @@ class VerificationResult {
 		List<VerificationResult_PrimarySource> primarySource,
 		VerificationResult_Attestation attestation,
 		List<VerificationResult_Validator> validator}) async {
+	var fhirDb = new DatabaseHelper();
 	VerificationResult newVerificationResult = new VerificationResult(
-			id: await newId('VerificationResult'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('VerificationResult'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -77,9 +78,10 @@ class VerificationResult {
 			attestation: attestation,
 			validator: validator,
 );
+	int saved = await fhirDb.saveResource(newVerificationResult);
 	return newVerificationResult;
 }
-  final String resourceType= 'VerificationResult';
+  String resourceType= 'VerificationResult';
   String id;
   Meta meta;
   String implicitRules;
@@ -111,7 +113,8 @@ class VerificationResult {
   List<VerificationResult_Validator> validator;
 
 VerificationResult(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -161,8 +164,9 @@ class VerificationResult_PrimarySource {
 		Element elementValidationDate,
 		CodeableConcept canPushUpdates,
 		List<CodeableConcept> pushTypeAvailable}) async {
+	var fhirDb = new DatabaseHelper();
 	VerificationResult_PrimarySource newVerificationResult_PrimarySource = new VerificationResult_PrimarySource(
-			id: await newId('VerificationResult_PrimarySource'),
+			id: await fhirDb.newResourceId('VerificationResult_PrimarySource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			who: who,
@@ -174,6 +178,7 @@ class VerificationResult_PrimarySource {
 			canPushUpdates: canPushUpdates,
 			pushTypeAvailable: pushTypeAvailable,
 );
+	int saved = await fhirDb.saveResource(newVerificationResult_PrimarySource);
 	return newVerificationResult_PrimarySource;
 }
   String id;
@@ -224,8 +229,9 @@ class VerificationResult_Attestation {
 		Element elementProxyIdentityCertificate,
 		Signature proxySignature,
 		Signature sourceSignature}) async {
+	var fhirDb = new DatabaseHelper();
 	VerificationResult_Attestation newVerificationResult_Attestation = new VerificationResult_Attestation(
-			id: await newId('VerificationResult_Attestation'),
+			id: await fhirDb.newResourceId('VerificationResult_Attestation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			who: who,
@@ -240,6 +246,7 @@ class VerificationResult_Attestation {
 			proxySignature: proxySignature,
 			sourceSignature: sourceSignature,
 );
+	int saved = await fhirDb.saveResource(newVerificationResult_Attestation);
 	return newVerificationResult_Attestation;
 }
   String id;
@@ -289,8 +296,9 @@ class VerificationResult_Validator {
 		String identityCertificate,
 		Element elementIdentityCertificate,
 		Signature attestationSignature}) async {
+	var fhirDb = new DatabaseHelper();
 	VerificationResult_Validator newVerificationResult_Validator = new VerificationResult_Validator(
-			id: await newId('VerificationResult_Validator'),
+			id: await fhirDb.newResourceId('VerificationResult_Validator'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			organization: organization,
@@ -298,6 +306,7 @@ class VerificationResult_Validator {
 			elementIdentityCertificate: elementIdentityCertificate,
 			attestationSignature: attestationSignature,
 );
+	int saved = await fhirDb.saveResource(newVerificationResult_Validator);
 	return newVerificationResult_Validator;
 }
   String id;
@@ -330,6 +339,7 @@ VerificationResult_Validator(
 
 VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
   return VerificationResult(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -429,6 +439,7 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$VerificationResultToJson(VerificationResult instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

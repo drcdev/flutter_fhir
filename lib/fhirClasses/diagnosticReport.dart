@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class DiagnosticReport {
 
 	static Future<DiagnosticReport> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -51,8 +50,10 @@ class DiagnosticReport {
 		Element elementConclusion,
 		List<CodeableConcept> conclusionCode,
 		List<Attachment> presentedForm}) async {
+	var fhirDb = new DatabaseHelper();
 	DiagnosticReport newDiagnosticReport = new DiagnosticReport(
-			id: await newId('DiagnosticReport'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('DiagnosticReport'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,9 +87,10 @@ class DiagnosticReport {
 			conclusionCode: conclusionCode,
 			presentedForm: presentedForm,
 );
+	int saved = await fhirDb.saveResource(newDiagnosticReport);
 	return newDiagnosticReport;
 }
-  final String resourceType= 'DiagnosticReport';
+  String resourceType= 'DiagnosticReport';
   String id;
   Meta meta;
   String implicitRules;
@@ -124,7 +126,8 @@ class DiagnosticReport {
   List<Attachment> presentedForm;
 
 DiagnosticReport(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -173,14 +176,16 @@ class DiagnosticReport_Media {
 		String comment,
 		Element elementComment,
 		Reference link}) async {
+	var fhirDb = new DatabaseHelper();
 	DiagnosticReport_Media newDiagnosticReport_Media = new DiagnosticReport_Media(
-			id: await newId('DiagnosticReport_Media'),
+			id: await fhirDb.newResourceId('DiagnosticReport_Media'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			comment: comment,
 			elementComment: elementComment,
 			link: link,
 );
+	int saved = await fhirDb.saveResource(newDiagnosticReport_Media);
 	return newDiagnosticReport_Media;
 }
   String id;
@@ -211,6 +216,7 @@ DiagnosticReport_Media(
 
 DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
   return DiagnosticReport(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -322,6 +328,7 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

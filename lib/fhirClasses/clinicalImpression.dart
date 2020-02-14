@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ClinicalImpression {
 
 	static Future<ClinicalImpression> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -55,8 +54,10 @@ class ClinicalImpression {
 		List<Reference> prognosisReference,
 		List<Reference> supportingInfo,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	ClinicalImpression newClinicalImpression = new ClinicalImpression(
-			id: await newId('ClinicalImpression'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ClinicalImpression'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -94,9 +95,10 @@ class ClinicalImpression {
 			supportingInfo: supportingInfo,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newClinicalImpression);
 	return newClinicalImpression;
 }
-  final String resourceType= 'ClinicalImpression';
+  String resourceType= 'ClinicalImpression';
   String id;
   Meta meta;
   String implicitRules;
@@ -136,7 +138,8 @@ class ClinicalImpression {
   List<Annotation> note;
 
 ClinicalImpression(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -188,13 +191,15 @@ class ClinicalImpression_Investigation {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		List<Reference> item}) async {
+	var fhirDb = new DatabaseHelper();
 	ClinicalImpression_Investigation newClinicalImpression_Investigation = new ClinicalImpression_Investigation(
-			id: await newId('ClinicalImpression_Investigation'),
+			id: await fhirDb.newResourceId('ClinicalImpression_Investigation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newClinicalImpression_Investigation);
 	return newClinicalImpression_Investigation;
 }
   String id;
@@ -226,8 +231,9 @@ class ClinicalImpression_Finding {
 		Reference itemReference,
 		String basis,
 		Element elementBasis}) async {
+	var fhirDb = new DatabaseHelper();
 	ClinicalImpression_Finding newClinicalImpression_Finding = new ClinicalImpression_Finding(
-			id: await newId('ClinicalImpression_Finding'),
+			id: await fhirDb.newResourceId('ClinicalImpression_Finding'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemCodeableConcept: itemCodeableConcept,
@@ -235,6 +241,7 @@ class ClinicalImpression_Finding {
 			basis: basis,
 			elementBasis: elementBasis,
 );
+	int saved = await fhirDb.saveResource(newClinicalImpression_Finding);
 	return newClinicalImpression_Finding;
 }
   String id;
@@ -267,6 +274,7 @@ ClinicalImpression_Finding(
 
 ClinicalImpression _$ClinicalImpressionFromJson(Map<String, dynamic> json) {
   return ClinicalImpression(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -384,6 +392,7 @@ ClinicalImpression _$ClinicalImpressionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ClinicalImpressionToJson(ClinicalImpression instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

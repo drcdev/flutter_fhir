@@ -7,7 +7,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 
 Write(var object) async {
-
   String objectType = object.runtimeType.toString();
   //get current working directory
   final directory = await getApplicationDocumentsDirectory();
@@ -26,8 +25,7 @@ Write(var object) async {
   print(file);
 }
 
-Future <String> ObjectId(String objectType) async {
-
+Future<String> ObjectId(String objectType) async {
   //the id of the object
   String id;
 
@@ -42,7 +40,7 @@ Future <String> ObjectId(String objectType) async {
 
   //if the file doesn't exist, create it, add the id
   if (!await file.exists()) {
-    Map ids =  json.decode(await rootBundle.loadString('assets/prefix.json'));
+    Map ids = json.decode(await rootBundle.loadString('assets/prefix.json'));
     id = (ids[objectType] + '-0001').toString();
     file.writeAsString(id);
 
@@ -53,14 +51,22 @@ Future <String> ObjectId(String objectType) async {
     dec += 1;
     var num = dec.toRadixString(16);
     id = objects.split('-').first + ('-');
-    switch(num.length) {
-      case 1: id += '000' + num.toString().toUpperCase(); break;
-      case 2: id += '00' + num.toString().toUpperCase(); break;
-      case 3: id += '00' + num.toString().toUpperCase(); break;
-      case 4: id += num.toString().toUpperCase(); break;
+    switch (num.length) {
+      case 1:
+        id += '000' + num.toString().toUpperCase();
+        break;
+      case 2:
+        id += '00' + num.toString().toUpperCase();
+        break;
+      case 3:
+        id += '00' + num.toString().toUpperCase();
+        break;
+      case 4:
+        id += num.toString().toUpperCase();
+        break;
     }
     objects += '\n' + id;
     file.writeAsString(objects);
   }
-  return(id);
+  return (id);
 }

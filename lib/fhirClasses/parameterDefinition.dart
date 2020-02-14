@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -24,8 +22,9 @@ class ParameterDefinition {
 		String type,
 		Element elementType,
 		String profile}) async {
+	var fhirDb = new DatabaseHelper();
 	ParameterDefinition newParameterDefinition = new ParameterDefinition(
-			id: await newId('ParameterDefinition'),
+			id: await fhirDb.newResourceId('ParameterDefinition'),
 			extension: extension,
 			name: name,
 			elementName: elementName,
@@ -41,6 +40,7 @@ class ParameterDefinition {
 			elementType: elementType,
 			profile: profile,
 );
+	int saved = await fhirDb.saveResource(newParameterDefinition);
 	return newParameterDefinition;
 }
   String id;

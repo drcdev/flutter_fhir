@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SearchParameter {
 
 	static Future<SearchParameter> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -73,8 +72,10 @@ class SearchParameter {
 		List<String> chain,
 		List<Element> elementChain,
 		List<SearchParameter_Component> component}) async {
+	var fhirDb = new DatabaseHelper();
 	SearchParameter newSearchParameter = new SearchParameter(
-			id: await newId('SearchParameter'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SearchParameter'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -132,9 +133,10 @@ class SearchParameter {
 			elementChain: elementChain,
 			component: component,
 );
+	int saved = await fhirDb.saveResource(newSearchParameter);
 	return newSearchParameter;
 }
-  final String resourceType= 'SearchParameter';
+  String resourceType= 'SearchParameter';
   String id;
   Meta meta;
   String implicitRules;
@@ -194,7 +196,8 @@ class SearchParameter {
   List<SearchParameter_Component> component;
 
 SearchParameter(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -267,14 +270,16 @@ class SearchParameter_Component {
 		String definition,
 		String expression,
 		Element elementExpression}) async {
+	var fhirDb = new DatabaseHelper();
 	SearchParameter_Component newSearchParameter_Component = new SearchParameter_Component(
-			id: await newId('SearchParameter_Component'),
+			id: await fhirDb.newResourceId('SearchParameter_Component'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			definition: definition,
 			expression: expression,
 			elementExpression: elementExpression,
 );
+	int saved = await fhirDb.saveResource(newSearchParameter_Component);
 	return newSearchParameter_Component;
 }
   String id;
@@ -305,6 +310,7 @@ SearchParameter_Component(
 
 SearchParameter _$SearchParameterFromJson(Map<String, dynamic> json) {
   return SearchParameter(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -447,6 +453,7 @@ SearchParameter _$SearchParameterFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SearchParameterToJson(SearchParameter instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

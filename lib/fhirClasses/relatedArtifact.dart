@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -24,8 +22,9 @@ class RelatedArtifact {
 		Element elementUrl,
 		Attachment document,
 		String resource}) async {
+	var fhirDb = new DatabaseHelper();
 	RelatedArtifact newRelatedArtifact = new RelatedArtifact(
-			id: await newId('RelatedArtifact'),
+			id: await fhirDb.newResourceId('RelatedArtifact'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
@@ -40,6 +39,7 @@ class RelatedArtifact {
 			document: document,
 			resource: resource,
 );
+	int saved = await fhirDb.saveResource(newRelatedArtifact);
 	return newRelatedArtifact;
 }
   String id;

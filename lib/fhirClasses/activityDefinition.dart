@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -27,6 +25,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ActivityDefinition {
 
 	static Future<ActivityDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -110,8 +109,10 @@ class ActivityDefinition {
 		List<Reference> observationResultRequirement,
 		String transform,
 		List<ActivityDefinition_DynamicValue> dynamicValue}) async {
+	var fhirDb = new DatabaseHelper();
 	ActivityDefinition newActivityDefinition = new ActivityDefinition(
-			id: await newId('ActivityDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ActivityDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -195,9 +196,10 @@ class ActivityDefinition {
 			transform: transform,
 			dynamicValue: dynamicValue,
 );
+	int saved = await fhirDb.saveResource(newActivityDefinition);
 	return newActivityDefinition;
 }
-  final String resourceType= 'ActivityDefinition';
+  String resourceType= 'ActivityDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -283,7 +285,8 @@ class ActivityDefinition {
   List<ActivityDefinition_DynamicValue> dynamicValue;
 
 ActivityDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -382,14 +385,16 @@ class ActivityDefinition_Participant {
 		String type,
 		Element elementType,
 		CodeableConcept role}) async {
+	var fhirDb = new DatabaseHelper();
 	ActivityDefinition_Participant newActivityDefinition_Participant = new ActivityDefinition_Participant(
-			id: await newId('ActivityDefinition_Participant'),
+			id: await fhirDb.newResourceId('ActivityDefinition_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			role: role,
 );
+	int saved = await fhirDb.saveResource(newActivityDefinition_Participant);
 	return newActivityDefinition_Participant;
 }
   String id;
@@ -422,14 +427,16 @@ class ActivityDefinition_DynamicValue {
 		String path,
 		Element elementPath,
 		Expression expression}) async {
+	var fhirDb = new DatabaseHelper();
 	ActivityDefinition_DynamicValue newActivityDefinition_DynamicValue = new ActivityDefinition_DynamicValue(
-			id: await newId('ActivityDefinition_DynamicValue'),
+			id: await fhirDb.newResourceId('ActivityDefinition_DynamicValue'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
 			elementPath: elementPath,
 			expression: expression,
 );
+	int saved = await fhirDb.saveResource(newActivityDefinition_DynamicValue);
 	return newActivityDefinition_DynamicValue;
 }
   String id;
@@ -460,6 +467,7 @@ ActivityDefinition_DynamicValue(
 
 ActivityDefinition _$ActivityDefinitionFromJson(Map<String, dynamic> json) {
   return ActivityDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -700,6 +708,7 @@ ActivityDefinition _$ActivityDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ActivityDefinitionToJson(ActivityDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

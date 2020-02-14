@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
@@ -14,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Linkage {
 
 	static Future<Linkage> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -28,8 +27,10 @@ class Linkage {
 		Element elementActive,
 		Reference author,
 		List<Linkage_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	Linkage newLinkage = new Linkage(
-			id: await newId('Linkage'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Linkage'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -44,9 +45,10 @@ class Linkage {
 			author: author,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newLinkage);
 	return newLinkage;
 }
-  final String resourceType= 'Linkage';
+  String resourceType= 'Linkage';
   String id;
   Meta meta;
   String implicitRules;
@@ -63,7 +65,8 @@ class Linkage {
   List<Linkage_Item> item;
 
 Linkage(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -93,14 +96,16 @@ class Linkage_Item {
 		String type,
 		Element elementType,
 		Reference resource}) async {
+	var fhirDb = new DatabaseHelper();
 	Linkage_Item newLinkage_Item = new Linkage_Item(
-			id: await newId('Linkage_Item'),
+			id: await fhirDb.newResourceId('Linkage_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			resource: resource,
 );
+	int saved = await fhirDb.saveResource(newLinkage_Item);
 	return newLinkage_Item;
 }
   String id;
@@ -131,6 +136,7 @@ Linkage_Item(
 
 Linkage _$LinkageFromJson(Map<String, dynamic> json) {
   return Linkage(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -174,6 +180,7 @@ Linkage _$LinkageFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$LinkageToJson(Linkage instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

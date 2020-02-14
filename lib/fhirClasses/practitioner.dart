@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Practitioner {
 
 	static Future<Practitioner> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -44,8 +43,10 @@ class Practitioner {
 		List<Attachment> photo,
 		List<Practitioner_Qualification> qualification,
 		List<CodeableConcept> communication}) async {
+	var fhirDb = new DatabaseHelper();
 	Practitioner newPractitioner = new Practitioner(
-			id: await newId('Practitioner'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Practitioner'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -69,9 +70,10 @@ class Practitioner {
 			qualification: qualification,
 			communication: communication,
 );
+	int saved = await fhirDb.saveResource(newPractitioner);
 	return newPractitioner;
 }
-  final String resourceType= 'Practitioner';
+  String resourceType= 'Practitioner';
   String id;
   Meta meta;
   String implicitRules;
@@ -97,7 +99,8 @@ class Practitioner {
   List<CodeableConcept> communication;
 
 Practitioner(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -137,8 +140,9 @@ class Practitioner_Qualification {
 		CodeableConcept code,
 		Period period,
 		Reference issuer}) async {
+	var fhirDb = new DatabaseHelper();
 	Practitioner_Qualification newPractitioner_Qualification = new Practitioner_Qualification(
-			id: await newId('Practitioner_Qualification'),
+			id: await fhirDb.newResourceId('Practitioner_Qualification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -146,6 +150,7 @@ class Practitioner_Qualification {
 			period: period,
 			issuer: issuer,
 );
+	int saved = await fhirDb.saveResource(newPractitioner_Qualification);
 	return newPractitioner_Qualification;
 }
   String id;
@@ -178,6 +183,7 @@ Practitioner_Qualification(
 
 Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
   return Practitioner(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -253,6 +259,7 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

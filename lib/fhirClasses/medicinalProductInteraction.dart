@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -14,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductInteraction {
 
 	static Future<MedicinalProductInteraction> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -32,8 +32,10 @@ class MedicinalProductInteraction {
 		CodeableConcept effect,
 		CodeableConcept incidence,
 		CodeableConcept management}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductInteraction newMedicinalProductInteraction = new MedicinalProductInteraction(
-			id: await newId('MedicinalProductInteraction'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductInteraction'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -52,9 +54,10 @@ class MedicinalProductInteraction {
 			incidence: incidence,
 			management: management,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductInteraction);
 	return newMedicinalProductInteraction;
 }
-  final String resourceType= 'MedicinalProductInteraction';
+  String resourceType= 'MedicinalProductInteraction';
   String id;
   Meta meta;
   String implicitRules;
@@ -75,7 +78,8 @@ class MedicinalProductInteraction {
   CodeableConcept management;
 
 MedicinalProductInteraction(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -108,13 +112,15 @@ class MedicinalProductInteraction_Interactant {
 		List<Extension> modifierExtension,
 		Reference itemReference,
 		CodeableConcept itemCodeableConcept}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductInteraction_Interactant newMedicinalProductInteraction_Interactant = new MedicinalProductInteraction_Interactant(
-			id: await newId('MedicinalProductInteraction_Interactant'),
+			id: await fhirDb.newResourceId('MedicinalProductInteraction_Interactant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemReference: itemReference,
 			itemCodeableConcept: itemCodeableConcept,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductInteraction_Interactant);
 	return newMedicinalProductInteraction_Interactant;
 }
   String id;
@@ -144,6 +150,7 @@ MedicinalProductInteraction_Interactant(
 MedicinalProductInteraction _$MedicinalProductInteractionFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductInteraction(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -204,6 +211,7 @@ MedicinalProductInteraction _$MedicinalProductInteractionFromJson(
 Map<String, dynamic> _$MedicinalProductInteractionToJson(
         MedicinalProductInteraction instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

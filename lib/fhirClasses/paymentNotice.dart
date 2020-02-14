@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class PaymentNotice {
 
 	static Future<PaymentNotice> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -42,8 +41,10 @@ class PaymentNotice {
 		Reference recipient,
 		Money amount,
 		CodeableConcept paymentStatus}) async {
+	var fhirDb = new DatabaseHelper();
 	PaymentNotice newPaymentNotice = new PaymentNotice(
-			id: await newId('PaymentNotice'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('PaymentNotice'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -69,9 +70,10 @@ class PaymentNotice {
 			amount: amount,
 			paymentStatus: paymentStatus,
 );
+	int saved = await fhirDb.saveResource(newPaymentNotice);
 	return newPaymentNotice;
 }
-  final String resourceType= 'PaymentNotice';
+  String resourceType= 'PaymentNotice';
   String id;
   Meta meta;
   String implicitRules;
@@ -99,7 +101,8 @@ class PaymentNotice {
   CodeableConcept paymentStatus;
 
 PaymentNotice(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -138,6 +141,7 @@ PaymentNotice(
 
 PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
   return PaymentNotice(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -214,6 +218,7 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PaymentNoticeToJson(PaymentNotice instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

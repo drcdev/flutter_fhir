@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Composition {
 
 	static Future<Composition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -46,8 +45,10 @@ class Composition {
 		List<Composition_RelatesTo> relatesTo,
 		List<Composition_Event> event,
 		List<Composition_Section> section}) async {
+	var fhirDb = new DatabaseHelper();
 	Composition newComposition = new Composition(
-			id: await newId('Composition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Composition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -77,9 +78,10 @@ class Composition {
 			event: event,
 			section: section,
 );
+	int saved = await fhirDb.saveResource(newComposition);
 	return newComposition;
 }
-  final String resourceType= 'Composition';
+  String resourceType= 'Composition';
   String id;
   Meta meta;
   String implicitRules;
@@ -111,7 +113,8 @@ class Composition {
   List<Composition_Section> section;
 
 Composition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -158,8 +161,9 @@ class Composition_Attester {
 		DateTime time,
 		Element elementTime,
 		Reference party}) async {
+	var fhirDb = new DatabaseHelper();
 	Composition_Attester newComposition_Attester = new Composition_Attester(
-			id: await newId('Composition_Attester'),
+			id: await fhirDb.newResourceId('Composition_Attester'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -168,6 +172,7 @@ class Composition_Attester {
 			elementTime: elementTime,
 			party: party,
 );
+	int saved = await fhirDb.saveResource(newComposition_Attester);
 	return newComposition_Attester;
 }
   String id;
@@ -205,8 +210,9 @@ class Composition_RelatesTo {
 		Element elementCode,
 		Identifier targetIdentifier,
 		Reference targetReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Composition_RelatesTo newComposition_RelatesTo = new Composition_RelatesTo(
-			id: await newId('Composition_RelatesTo'),
+			id: await fhirDb.newResourceId('Composition_RelatesTo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -214,6 +220,7 @@ class Composition_RelatesTo {
 			targetIdentifier: targetIdentifier,
 			targetReference: targetReference,
 );
+	int saved = await fhirDb.saveResource(newComposition_RelatesTo);
 	return newComposition_RelatesTo;
 }
   String id;
@@ -248,14 +255,16 @@ class Composition_Event {
 		List<CodeableConcept> code,
 		Period period,
 		List<Reference> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	Composition_Event newComposition_Event = new Composition_Event(
-			id: await newId('Composition_Event'),
+			id: await fhirDb.newResourceId('Composition_Event'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			period: period,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newComposition_Event);
 	return newComposition_Event;
 }
   String id;
@@ -297,8 +306,9 @@ class Composition_Section {
 		List<Reference> entry,
 		CodeableConcept emptyReason,
 		List<Composition_Section> section}) async {
+	var fhirDb = new DatabaseHelper();
 	Composition_Section newComposition_Section = new Composition_Section(
-			id: await newId('Composition_Section'),
+			id: await fhirDb.newResourceId('Composition_Section'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			title: title,
@@ -314,6 +324,7 @@ class Composition_Section {
 			emptyReason: emptyReason,
 			section: section,
 );
+	int saved = await fhirDb.saveResource(newComposition_Section);
 	return newComposition_Section;
 }
   String id;
@@ -362,6 +373,7 @@ Composition_Section(
 
 Composition _$CompositionFromJson(Map<String, dynamic> json) {
   return Composition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -456,6 +468,7 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CompositionToJson(Composition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

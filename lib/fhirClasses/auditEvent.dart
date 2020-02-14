@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class AuditEvent {
 
 	static Future<AuditEvent> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -42,8 +41,10 @@ class AuditEvent {
 		List<AuditEvent_Agent> agent,
 		AuditEvent_Source source,
 		List<AuditEvent_Entity> entity}) async {
+	var fhirDb = new DatabaseHelper();
 	AuditEvent newAuditEvent = new AuditEvent(
-			id: await newId('AuditEvent'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('AuditEvent'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -69,9 +70,10 @@ class AuditEvent {
 			source: source,
 			entity: entity,
 );
+	int saved = await fhirDb.saveResource(newAuditEvent);
 	return newAuditEvent;
 }
-  final String resourceType= 'AuditEvent';
+  String resourceType= 'AuditEvent';
   String id;
   Meta meta;
   String implicitRules;
@@ -99,7 +101,8 @@ class AuditEvent {
   List<AuditEvent_Entity> entity;
 
 AuditEvent(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -152,8 +155,9 @@ class AuditEvent_Agent {
 		Coding media,
 		AuditEvent_Network network,
 		List<CodeableConcept> purposeOfUse}) async {
+	var fhirDb = new DatabaseHelper();
 	AuditEvent_Agent newAuditEvent_Agent = new AuditEvent_Agent(
-			id: await newId('AuditEvent_Agent'),
+			id: await fhirDb.newResourceId('AuditEvent_Agent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -172,6 +176,7 @@ class AuditEvent_Agent {
 			network: network,
 			purposeOfUse: purposeOfUse,
 );
+	int saved = await fhirDb.saveResource(newAuditEvent_Agent);
 	return newAuditEvent_Agent;
 }
   String id;
@@ -229,8 +234,9 @@ class AuditEvent_Network {
 		Element elementAddress,
 		String type,
 		Element elementType}) async {
+	var fhirDb = new DatabaseHelper();
 	AuditEvent_Network newAuditEvent_Network = new AuditEvent_Network(
-			id: await newId('AuditEvent_Network'),
+			id: await fhirDb.newResourceId('AuditEvent_Network'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			address: address,
@@ -238,6 +244,7 @@ class AuditEvent_Network {
 			type: type,
 			elementType: elementType,
 );
+	int saved = await fhirDb.saveResource(newAuditEvent_Network);
 	return newAuditEvent_Network;
 }
   String id;
@@ -273,8 +280,9 @@ class AuditEvent_Source {
 		Element elementSite,
 		Reference observer,
 		List<Coding> type}) async {
+	var fhirDb = new DatabaseHelper();
 	AuditEvent_Source newAuditEvent_Source = new AuditEvent_Source(
-			id: await newId('AuditEvent_Source'),
+			id: await fhirDb.newResourceId('AuditEvent_Source'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			site: site,
@@ -282,6 +290,7 @@ class AuditEvent_Source {
 			observer: observer,
 			type: type,
 );
+	int saved = await fhirDb.saveResource(newAuditEvent_Source);
 	return newAuditEvent_Source;
 }
   String id;
@@ -325,8 +334,9 @@ class AuditEvent_Entity {
 		String query,
 		Element elementQuery,
 		List<AuditEvent_Detail> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	AuditEvent_Entity newAuditEvent_Entity = new AuditEvent_Entity(
-			id: await newId('AuditEvent_Entity'),
+			id: await fhirDb.newResourceId('AuditEvent_Entity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			what: what,
@@ -342,6 +352,7 @@ class AuditEvent_Entity {
 			elementQuery: elementQuery,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newAuditEvent_Entity);
 	return newAuditEvent_Entity;
 }
   String id;
@@ -395,8 +406,9 @@ class AuditEvent_Detail {
 		Element elementValueString,
 		String valueBase64Binary,
 		Element elementValueBase64Binary}) async {
+	var fhirDb = new DatabaseHelper();
 	AuditEvent_Detail newAuditEvent_Detail = new AuditEvent_Detail(
-			id: await newId('AuditEvent_Detail'),
+			id: await fhirDb.newResourceId('AuditEvent_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -406,6 +418,7 @@ class AuditEvent_Detail {
 			valueBase64Binary: valueBase64Binary,
 			elementValueBase64Binary: elementValueBase64Binary,
 );
+	int saved = await fhirDb.saveResource(newAuditEvent_Detail);
 	return newAuditEvent_Detail;
 }
   String id;
@@ -442,6 +455,7 @@ AuditEvent_Detail(
 
 AuditEvent _$AuditEventFromJson(Map<String, dynamic> json) {
   return AuditEvent(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -521,6 +535,7 @@ AuditEvent _$AuditEventFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AuditEventToJson(AuditEvent instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

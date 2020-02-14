@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class OrganizationAffiliation {
 
 	static Future<OrganizationAffiliation> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +40,10 @@ class OrganizationAffiliation {
 		List<Reference> healthcareService,
 		List<ContactPoint> telecom,
 		List<Reference> endpoint}) async {
+	var fhirDb = new DatabaseHelper();
 	OrganizationAffiliation newOrganizationAffiliation = new OrganizationAffiliation(
-			id: await newId('OrganizationAffiliation'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('OrganizationAffiliation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -65,9 +67,10 @@ class OrganizationAffiliation {
 			telecom: telecom,
 			endpoint: endpoint,
 );
+	int saved = await fhirDb.saveResource(newOrganizationAffiliation);
 	return newOrganizationAffiliation;
 }
-  final String resourceType= 'OrganizationAffiliation';
+  String resourceType= 'OrganizationAffiliation';
   String id;
   Meta meta;
   String implicitRules;
@@ -93,7 +96,8 @@ class OrganizationAffiliation {
   List<Reference> endpoint;
 
 OrganizationAffiliation(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -131,6 +135,7 @@ OrganizationAffiliation(
 OrganizationAffiliation _$OrganizationAffiliationFromJson(
     Map<String, dynamic> json) {
   return OrganizationAffiliation(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -213,6 +218,7 @@ OrganizationAffiliation _$OrganizationAffiliationFromJson(
 Map<String, dynamic> _$OrganizationAffiliationToJson(
         OrganizationAffiliation instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

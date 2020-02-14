@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SupplyRequest {
 
 	static Future<SupplyRequest> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -52,8 +51,10 @@ class SupplyRequest {
 		List<Reference> reasonReference,
 		Reference deliverFrom,
 		Reference deliverTo}) async {
+	var fhirDb = new DatabaseHelper();
 	SupplyRequest newSupplyRequest = new SupplyRequest(
-			id: await newId('SupplyRequest'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SupplyRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,9 +87,10 @@ class SupplyRequest {
 			deliverFrom: deliverFrom,
 			deliverTo: deliverTo,
 );
+	int saved = await fhirDb.saveResource(newSupplyRequest);
 	return newSupplyRequest;
 }
-  final String resourceType= 'SupplyRequest';
+  String resourceType= 'SupplyRequest';
   String id;
   Meta meta;
   String implicitRules;
@@ -123,7 +125,8 @@ class SupplyRequest {
   Reference deliverTo;
 
 SupplyRequest(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -174,8 +177,9 @@ class SupplyRequest_Parameter {
 		Range valueRange,
 		bool valueBoolean,
 		Element elementValueBoolean}) async {
+	var fhirDb = new DatabaseHelper();
 	SupplyRequest_Parameter newSupplyRequest_Parameter = new SupplyRequest_Parameter(
-			id: await newId('SupplyRequest_Parameter'),
+			id: await fhirDb.newResourceId('SupplyRequest_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -185,6 +189,7 @@ class SupplyRequest_Parameter {
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean,
 );
+	int saved = await fhirDb.saveResource(newSupplyRequest_Parameter);
 	return newSupplyRequest_Parameter;
 }
   String id;
@@ -221,6 +226,7 @@ SupplyRequest_Parameter(
 
 SupplyRequest _$SupplyRequestFromJson(Map<String, dynamic> json) {
   return SupplyRequest(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -323,6 +329,7 @@ SupplyRequest _$SupplyRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SupplyRequestToJson(SupplyRequest instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

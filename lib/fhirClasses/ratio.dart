@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -13,12 +11,14 @@ class Ratio {
 		List<Extension> extension,
 		Quantity numerator,
 		Quantity denominator}) async {
+	var fhirDb = new DatabaseHelper();
 	Ratio newRatio = new Ratio(
-			id: await newId('Ratio'),
+			id: await fhirDb.newResourceId('Ratio'),
 			extension: extension,
 			numerator: numerator,
 			denominator: denominator,
 );
+	int saved = await fhirDb.saveResource(newRatio);
 	return newRatio;
 }
   String id;

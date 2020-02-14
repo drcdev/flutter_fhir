@@ -38,23 +38,18 @@ class _MainMenuState extends State<_MainMenu> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             //calls MenuButton class for each one, passes image, text, and class to call
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                PageButton('assets/images/activities.png',
-                    'Provider Activities', ProviderActivities()),
-                ActionButton('assets/images/sync.png', 'Sync with server',
-                    syncServer, 'get'),
-                ]
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                PageButton('assets/images/testing.png', 'Testing/Settings', Testing()),
-                ActionButton(
-                    'assets/images/trash.png', 'Delete Files', deleteFiles),
-              ]
-            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              PageButton('assets/images/activities.png', 'Provider Activities',
+                  ProviderActivities()),
+              ActionButton('assets/images/sync.png', 'Sync with server',
+                  syncServer, 'get'),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              PageButton(
+                  'assets/images/testing.png', 'Testing/Settings', Testing()),
+              ActionButton(
+                  'assets/images/trash.png', 'Delete Files', deleteFiles),
+            ]),
           ],
         ),
       ),
@@ -70,6 +65,7 @@ deleteFiles() async {
       .list(recursive: true, followLinks: true)
       .listen((FileSystemEntity entity) {
     print(entity.path);
+
     if (entity.path.contains('.txt') || entity.path.contains('.db')) {
       File f = File(entity.path);
       f.delete();

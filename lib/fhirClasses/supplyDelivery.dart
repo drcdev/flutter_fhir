@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -18,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SupplyDelivery {
 
 	static Future<SupplyDelivery> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -43,8 +43,10 @@ class SupplyDelivery {
 		Reference supplier,
 		Reference destination,
 		List<Reference> receiver}) async {
+	var fhirDb = new DatabaseHelper();
 	SupplyDelivery newSupplyDelivery = new SupplyDelivery(
-			id: await newId('SupplyDelivery'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SupplyDelivery'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,9 +72,10 @@ class SupplyDelivery {
 			destination: destination,
 			receiver: receiver,
 );
+	int saved = await fhirDb.saveResource(newSupplyDelivery);
 	return newSupplyDelivery;
 }
-  final String resourceType= 'SupplyDelivery';
+  String resourceType= 'SupplyDelivery';
   String id;
   Meta meta;
   String implicitRules;
@@ -100,7 +103,8 @@ class SupplyDelivery {
   List<Reference> receiver;
 
 SupplyDelivery(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -141,14 +145,16 @@ class SupplyDelivery_SuppliedItem {
 		Quantity quantity,
 		CodeableConcept itemCodeableConcept,
 		Reference itemReference}) async {
+	var fhirDb = new DatabaseHelper();
 	SupplyDelivery_SuppliedItem newSupplyDelivery_SuppliedItem = new SupplyDelivery_SuppliedItem(
-			id: await newId('SupplyDelivery_SuppliedItem'),
+			id: await fhirDb.newResourceId('SupplyDelivery_SuppliedItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			itemCodeableConcept: itemCodeableConcept,
 			itemReference: itemReference,
 );
+	int saved = await fhirDb.saveResource(newSupplyDelivery_SuppliedItem);
 	return newSupplyDelivery_SuppliedItem;
 }
   String id;
@@ -179,6 +185,7 @@ SupplyDelivery_SuppliedItem(
 
 SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
   return SupplyDelivery(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -259,6 +266,7 @@ SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SupplyDeliveryToJson(SupplyDelivery instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

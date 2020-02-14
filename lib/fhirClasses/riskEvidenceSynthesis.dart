@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class RiskEvidenceSynthesis {
 
 	static Future<RiskEvidenceSynthesis> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -73,8 +72,10 @@ class RiskEvidenceSynthesis {
 		RiskEvidenceSynthesis_SampleSize sampleSize,
 		RiskEvidenceSynthesis_RiskEstimate riskEstimate,
 		List<RiskEvidenceSynthesis_Certainty> certainty}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskEvidenceSynthesis newRiskEvidenceSynthesis = new RiskEvidenceSynthesis(
-			id: await newId('RiskEvidenceSynthesis'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('RiskEvidenceSynthesis'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -127,9 +128,10 @@ class RiskEvidenceSynthesis {
 			riskEstimate: riskEstimate,
 			certainty: certainty,
 );
+	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis);
 	return newRiskEvidenceSynthesis;
 }
-  final String resourceType= 'RiskEvidenceSynthesis';
+  String resourceType= 'RiskEvidenceSynthesis';
   String id;
   Meta meta;
   String implicitRules;
@@ -184,7 +186,8 @@ class RiskEvidenceSynthesis {
   List<RiskEvidenceSynthesis_Certainty> certainty;
 
 RiskEvidenceSynthesis(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -255,8 +258,9 @@ class RiskEvidenceSynthesis_SampleSize {
 		Element elementNumberOfStudies,
 		int numberOfParticipants,
 		Element elementNumberOfParticipants}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskEvidenceSynthesis_SampleSize newRiskEvidenceSynthesis_SampleSize = new RiskEvidenceSynthesis_SampleSize(
-			id: await newId('RiskEvidenceSynthesis_SampleSize'),
+			id: await fhirDb.newResourceId('RiskEvidenceSynthesis_SampleSize'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -266,6 +270,7 @@ class RiskEvidenceSynthesis_SampleSize {
 			numberOfParticipants: numberOfParticipants,
 			elementNumberOfParticipants: elementNumberOfParticipants,
 );
+	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_SampleSize);
 	return newRiskEvidenceSynthesis_SampleSize;
 }
   String id;
@@ -312,8 +317,9 @@ class RiskEvidenceSynthesis_RiskEstimate {
 		int numeratorCount,
 		Element elementNumeratorCount,
 		List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskEvidenceSynthesis_RiskEstimate newRiskEvidenceSynthesis_RiskEstimate = new RiskEvidenceSynthesis_RiskEstimate(
-			id: await newId('RiskEvidenceSynthesis_RiskEstimate'),
+			id: await fhirDb.newResourceId('RiskEvidenceSynthesis_RiskEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -328,6 +334,7 @@ class RiskEvidenceSynthesis_RiskEstimate {
 			elementNumeratorCount: elementNumeratorCount,
 			precisionEstimate: precisionEstimate,
 );
+	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_RiskEstimate);
 	return newRiskEvidenceSynthesis_RiskEstimate;
 }
   String id;
@@ -380,8 +387,9 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
 		Element elementFrom,
 		double to,
 		Element elementTo}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskEvidenceSynthesis_PrecisionEstimate newRiskEvidenceSynthesis_PrecisionEstimate = new RiskEvidenceSynthesis_PrecisionEstimate(
-			id: await newId('RiskEvidenceSynthesis_PrecisionEstimate'),
+			id: await fhirDb.newResourceId('RiskEvidenceSynthesis_PrecisionEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -392,6 +400,7 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
 			to: to,
 			elementTo: elementTo,
 );
+	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_PrecisionEstimate);
 	return newRiskEvidenceSynthesis_PrecisionEstimate;
 }
   String id;
@@ -432,14 +441,16 @@ class RiskEvidenceSynthesis_Certainty {
 		List<CodeableConcept> rating,
 		List<Annotation> note,
 		List<RiskEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskEvidenceSynthesis_Certainty newRiskEvidenceSynthesis_Certainty = new RiskEvidenceSynthesis_Certainty(
-			id: await newId('RiskEvidenceSynthesis_Certainty'),
+			id: await fhirDb.newResourceId('RiskEvidenceSynthesis_Certainty'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			rating: rating,
 			note: note,
 			certaintySubcomponent: certaintySubcomponent,
 );
+	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_Certainty);
 	return newRiskEvidenceSynthesis_Certainty;
 }
   String id;
@@ -472,14 +483,16 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
 		CodeableConcept type,
 		List<CodeableConcept> rating,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskEvidenceSynthesis_CertaintySubcomponent newRiskEvidenceSynthesis_CertaintySubcomponent = new RiskEvidenceSynthesis_CertaintySubcomponent(
-			id: await newId('RiskEvidenceSynthesis_CertaintySubcomponent'),
+			id: await fhirDb.newResourceId('RiskEvidenceSynthesis_CertaintySubcomponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			rating: rating,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis_CertaintySubcomponent);
 	return newRiskEvidenceSynthesis_CertaintySubcomponent;
 }
   String id;
@@ -511,6 +524,7 @@ RiskEvidenceSynthesis_CertaintySubcomponent(
 RiskEvidenceSynthesis _$RiskEvidenceSynthesisFromJson(
     Map<String, dynamic> json) {
   return RiskEvidenceSynthesis(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -675,6 +689,7 @@ RiskEvidenceSynthesis _$RiskEvidenceSynthesisFromJson(
 Map<String, dynamic> _$RiskEvidenceSynthesisToJson(
         RiskEvidenceSynthesis instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

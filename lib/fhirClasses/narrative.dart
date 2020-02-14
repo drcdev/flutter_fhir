@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -15,13 +13,15 @@ class Narrative {
 		String status,
 		Element elementStatus,
 		String div}) async {
+	var fhirDb = new DatabaseHelper();
 	Narrative newNarrative = new Narrative(
-			id: await newId('Narrative'),
+			id: await fhirDb.newResourceId('Narrative'),
 			extension: extension,
 			status: status,
 			elementStatus: elementStatus,
 			div: div,
 );
+	int saved = await fhirDb.saveResource(newNarrative);
 	return newNarrative;
 }
   String id;

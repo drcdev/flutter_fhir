@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Basic {
 
 	static Future<Basic> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -32,8 +31,10 @@ class Basic {
 		String created,
 		Element elementCreated,
 		Reference author}) async {
+	var fhirDb = new DatabaseHelper();
 	Basic newBasic = new Basic(
-			id: await newId('Basic'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Basic'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -50,9 +51,10 @@ class Basic {
 			elementCreated: elementCreated,
 			author: author,
 );
+	int saved = await fhirDb.saveResource(newBasic);
 	return newBasic;
 }
-  final String resourceType= 'Basic';
+  String resourceType= 'Basic';
   String id;
   Meta meta;
   String implicitRules;
@@ -71,7 +73,8 @@ class Basic {
   Reference author;
 
 Basic(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -101,6 +104,7 @@ Basic(
 
 Basic _$BasicFromJson(Map<String, dynamic> json) {
   return Basic(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -150,6 +154,7 @@ Basic _$BasicFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$BasicToJson(Basic instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

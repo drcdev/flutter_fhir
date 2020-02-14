@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MessageDefinition {
 
 	static Future<MessageDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -67,8 +66,10 @@ class MessageDefinition {
 		Element elementResponseRequired,
 		List<MessageDefinition_AllowedResponse> allowedResponse,
 		List<String> graph}) async {
+	var fhirDb = new DatabaseHelper();
 	MessageDefinition newMessageDefinition = new MessageDefinition(
-			id: await newId('MessageDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MessageDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -118,9 +119,10 @@ class MessageDefinition {
 			allowedResponse: allowedResponse,
 			graph: graph,
 );
+	int saved = await fhirDb.saveResource(newMessageDefinition);
 	return newMessageDefinition;
 }
-  final String resourceType= 'MessageDefinition';
+  String resourceType= 'MessageDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -172,7 +174,8 @@ class MessageDefinition {
   List<String> graph;
 
 MessageDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -241,8 +244,9 @@ class MessageDefinition_Focus {
 		Element elementMin,
 		String max,
 		Element elementMax}) async {
+	var fhirDb = new DatabaseHelper();
 	MessageDefinition_Focus newMessageDefinition_Focus = new MessageDefinition_Focus(
-			id: await newId('MessageDefinition_Focus'),
+			id: await fhirDb.newResourceId('MessageDefinition_Focus'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -253,6 +257,7 @@ class MessageDefinition_Focus {
 			max: max,
 			elementMax: elementMax,
 );
+	int saved = await fhirDb.saveResource(newMessageDefinition_Focus);
 	return newMessageDefinition_Focus;
 }
   String id;
@@ -293,14 +298,16 @@ class MessageDefinition_AllowedResponse {
 		String message,
 		String situation,
 		Element elementSituation}) async {
+	var fhirDb = new DatabaseHelper();
 	MessageDefinition_AllowedResponse newMessageDefinition_AllowedResponse = new MessageDefinition_AllowedResponse(
-			id: await newId('MessageDefinition_AllowedResponse'),
+			id: await fhirDb.newResourceId('MessageDefinition_AllowedResponse'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			message: message,
 			situation: situation,
 			elementSituation: elementSituation,
 );
+	int saved = await fhirDb.saveResource(newMessageDefinition_AllowedResponse);
 	return newMessageDefinition_AllowedResponse;
 }
   String id;
@@ -331,6 +338,7 @@ MessageDefinition_AllowedResponse(
 
 MessageDefinition _$MessageDefinitionFromJson(Map<String, dynamic> json) {
   return MessageDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -457,6 +465,7 @@ MessageDefinition _$MessageDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MessageDefinitionToJson(MessageDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

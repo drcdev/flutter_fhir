@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -18,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SpecimenDefinition {
 
 	static Future<SpecimenDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -35,8 +35,10 @@ class SpecimenDefinition {
 		Element elementTimeAspect,
 		List<CodeableConcept> collection,
 		List<SpecimenDefinition_TypeTested> typeTested}) async {
+	var fhirDb = new DatabaseHelper();
 	SpecimenDefinition newSpecimenDefinition = new SpecimenDefinition(
-			id: await newId('SpecimenDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SpecimenDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -54,9 +56,10 @@ class SpecimenDefinition {
 			collection: collection,
 			typeTested: typeTested,
 );
+	int saved = await fhirDb.saveResource(newSpecimenDefinition);
 	return newSpecimenDefinition;
 }
-  final String resourceType= 'SpecimenDefinition';
+  String resourceType= 'SpecimenDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -76,7 +79,8 @@ class SpecimenDefinition {
   List<SpecimenDefinition_TypeTested> typeTested;
 
 SpecimenDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -117,8 +121,9 @@ class SpecimenDefinition_TypeTested {
 		Duration retentionTime,
 		List<CodeableConcept> rejectionCriterion,
 		List<SpecimenDefinition_Handling> handling}) async {
+	var fhirDb = new DatabaseHelper();
 	SpecimenDefinition_TypeTested newSpecimenDefinition_TypeTested = new SpecimenDefinition_TypeTested(
-			id: await newId('SpecimenDefinition_TypeTested'),
+			id: await fhirDb.newResourceId('SpecimenDefinition_TypeTested'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			isDerived: isDerived,
@@ -133,6 +138,7 @@ class SpecimenDefinition_TypeTested {
 			rejectionCriterion: rejectionCriterion,
 			handling: handling,
 );
+	int saved = await fhirDb.saveResource(newSpecimenDefinition_TypeTested);
 	return newSpecimenDefinition_TypeTested;
 }
   String id;
@@ -190,8 +196,9 @@ class SpecimenDefinition_Container {
 		List<SpecimenDefinition_Additive> additive,
 		String preparation,
 		Element elementPreparation}) async {
+	var fhirDb = new DatabaseHelper();
 	SpecimenDefinition_Container newSpecimenDefinition_Container = new SpecimenDefinition_Container(
-			id: await newId('SpecimenDefinition_Container'),
+			id: await fhirDb.newResourceId('SpecimenDefinition_Container'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			material: material,
@@ -207,6 +214,7 @@ class SpecimenDefinition_Container {
 			preparation: preparation,
 			elementPreparation: elementPreparation,
 );
+	int saved = await fhirDb.saveResource(newSpecimenDefinition_Container);
 	return newSpecimenDefinition_Container;
 }
   String id;
@@ -256,13 +264,15 @@ class SpecimenDefinition_Additive {
 		List<Extension> modifierExtension,
 		CodeableConcept additiveCodeableConcept,
 		Reference additiveReference}) async {
+	var fhirDb = new DatabaseHelper();
 	SpecimenDefinition_Additive newSpecimenDefinition_Additive = new SpecimenDefinition_Additive(
-			id: await newId('SpecimenDefinition_Additive'),
+			id: await fhirDb.newResourceId('SpecimenDefinition_Additive'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference,
 );
+	int saved = await fhirDb.saveResource(newSpecimenDefinition_Additive);
 	return newSpecimenDefinition_Additive;
 }
   String id;
@@ -295,8 +305,9 @@ class SpecimenDefinition_Handling {
 		Duration maxDuration,
 		String instruction,
 		Element elementInstruction}) async {
+	var fhirDb = new DatabaseHelper();
 	SpecimenDefinition_Handling newSpecimenDefinition_Handling = new SpecimenDefinition_Handling(
-			id: await newId('SpecimenDefinition_Handling'),
+			id: await fhirDb.newResourceId('SpecimenDefinition_Handling'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			temperatureQualifier: temperatureQualifier,
@@ -305,6 +316,7 @@ class SpecimenDefinition_Handling {
 			instruction: instruction,
 			elementInstruction: elementInstruction,
 );
+	int saved = await fhirDb.saveResource(newSpecimenDefinition_Handling);
 	return newSpecimenDefinition_Handling;
 }
   String id;
@@ -339,6 +351,7 @@ SpecimenDefinition_Handling(
 
 SpecimenDefinition _$SpecimenDefinitionFromJson(Map<String, dynamic> json) {
   return SpecimenDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -398,6 +411,7 @@ SpecimenDefinition _$SpecimenDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SpecimenDefinitionToJson(SpecimenDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

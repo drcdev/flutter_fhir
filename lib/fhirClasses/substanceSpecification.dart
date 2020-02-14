@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -19,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SubstanceSpecification {
 
 	static Future<SubstanceSpecification> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -50,8 +50,10 @@ class SubstanceSpecification {
 		Reference polymer,
 		Reference protein,
 		Reference sourceMaterial}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification newSubstanceSpecification = new SubstanceSpecification(
-			id: await newId('SubstanceSpecification'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SubstanceSpecification'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -83,9 +85,10 @@ class SubstanceSpecification {
 			protein: protein,
 			sourceMaterial: sourceMaterial,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification);
 	return newSubstanceSpecification;
 }
-  final String resourceType= 'SubstanceSpecification';
+  String resourceType= 'SubstanceSpecification';
   String id;
   Meta meta;
   String implicitRules;
@@ -119,7 +122,8 @@ class SubstanceSpecification {
   Reference sourceMaterial;
 
 SubstanceSpecification(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -174,8 +178,9 @@ class SubstanceSpecification_Moiety {
 		Quantity amountQuantity,
 		String amountString,
 		Element elementAmountString}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Moiety newSubstanceSpecification_Moiety = new SubstanceSpecification_Moiety(
-			id: await newId('SubstanceSpecification_Moiety'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Moiety'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
@@ -190,6 +195,7 @@ class SubstanceSpecification_Moiety {
 			amountString: amountString,
 			elementAmountString: elementAmountString,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Moiety);
 	return newSubstanceSpecification_Moiety;
 }
   String id;
@@ -244,8 +250,9 @@ class SubstanceSpecification_Property {
 		Quantity amountQuantity,
 		String amountString,
 		Element elementAmountString}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Property newSubstanceSpecification_Property = new SubstanceSpecification_Property(
-			id: await newId('SubstanceSpecification_Property'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -258,6 +265,7 @@ class SubstanceSpecification_Property {
 			amountString: amountString,
 			elementAmountString: elementAmountString,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Property);
 	return newSubstanceSpecification_Property;
 }
   String id;
@@ -309,8 +317,9 @@ class SubstanceSpecification_Structure {
 		SubstanceSpecification_MolecularWeight molecularWeight,
 		List<Reference> source,
 		List<SubstanceSpecification_Representation> representation}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Structure newSubstanceSpecification_Structure = new SubstanceSpecification_Structure(
-			id: await newId('SubstanceSpecification_Structure'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Structure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			stereochemistry: stereochemistry,
@@ -324,6 +333,7 @@ class SubstanceSpecification_Structure {
 			source: source,
 			representation: representation,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Structure);
 	return newSubstanceSpecification_Structure;
 }
   String id;
@@ -372,8 +382,9 @@ class SubstanceSpecification_Isotope {
 		CodeableConcept substitution,
 		Quantity halfLife,
 		SubstanceSpecification_MolecularWeight molecularWeight}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Isotope newSubstanceSpecification_Isotope = new SubstanceSpecification_Isotope(
-			id: await newId('SubstanceSpecification_Isotope'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Isotope'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -382,6 +393,7 @@ class SubstanceSpecification_Isotope {
 			halfLife: halfLife,
 			molecularWeight: molecularWeight,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Isotope);
 	return newSubstanceSpecification_Isotope;
 }
   String id;
@@ -418,14 +430,16 @@ class SubstanceSpecification_MolecularWeight {
 		CodeableConcept method,
 		CodeableConcept type,
 		Quantity amount}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_MolecularWeight newSubstanceSpecification_MolecularWeight = new SubstanceSpecification_MolecularWeight(
-			id: await newId('SubstanceSpecification_MolecularWeight'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_MolecularWeight'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			method: method,
 			type: type,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_MolecularWeight);
 	return newSubstanceSpecification_MolecularWeight;
 }
   String id;
@@ -459,8 +473,9 @@ class SubstanceSpecification_Representation {
 		String representation,
 		Element elementRepresentation,
 		Attachment attachment}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Representation newSubstanceSpecification_Representation = new SubstanceSpecification_Representation(
-			id: await newId('SubstanceSpecification_Representation'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Representation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -468,6 +483,7 @@ class SubstanceSpecification_Representation {
 			elementRepresentation: elementRepresentation,
 			attachment: attachment,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Representation);
 	return newSubstanceSpecification_Representation;
 }
   String id;
@@ -506,8 +522,9 @@ class SubstanceSpecification_Code {
 		String comment,
 		Element elementComment,
 		List<Reference> source}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Code newSubstanceSpecification_Code = new SubstanceSpecification_Code(
-			id: await newId('SubstanceSpecification_Code'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Code'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -518,6 +535,7 @@ class SubstanceSpecification_Code {
 			elementComment: elementComment,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Code);
 	return newSubstanceSpecification_Code;
 }
   String id;
@@ -568,8 +586,9 @@ class SubstanceSpecification_Name {
 		List<SubstanceSpecification_Name> translation,
 		List<SubstanceSpecification_Official> official,
 		List<Reference> source}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Name newSubstanceSpecification_Name = new SubstanceSpecification_Name(
-			id: await newId('SubstanceSpecification_Name'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Name'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -586,6 +605,7 @@ class SubstanceSpecification_Name {
 			official: official,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Name);
 	return newSubstanceSpecification_Name;
 }
   String id;
@@ -639,8 +659,9 @@ class SubstanceSpecification_Official {
 		CodeableConcept status,
 		DateTime date,
 		Element elementDate}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Official newSubstanceSpecification_Official = new SubstanceSpecification_Official(
-			id: await newId('SubstanceSpecification_Official'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Official'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			authority: authority,
@@ -648,6 +669,7 @@ class SubstanceSpecification_Official {
 			date: date,
 			elementDate: elementDate,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Official);
 	return newSubstanceSpecification_Official;
 }
   String id;
@@ -692,8 +714,9 @@ class SubstanceSpecification_Relationship {
 		Ratio amountRatioLowLimit,
 		CodeableConcept amountType,
 		List<Reference> source}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSpecification_Relationship newSubstanceSpecification_Relationship = new SubstanceSpecification_Relationship(
-			id: await newId('SubstanceSpecification_Relationship'),
+			id: await fhirDb.newResourceId('SubstanceSpecification_Relationship'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substanceReference: substanceReference,
@@ -710,6 +733,7 @@ class SubstanceSpecification_Relationship {
 			amountType: amountType,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSpecification_Relationship);
 	return newSubstanceSpecification_Relationship;
 }
   String id;
@@ -761,6 +785,7 @@ SubstanceSpecification_Relationship(
 SubstanceSpecification _$SubstanceSpecificationFromJson(
     Map<String, dynamic> json) {
   return SubstanceSpecification(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -872,6 +897,7 @@ SubstanceSpecification _$SubstanceSpecificationFromJson(
 Map<String, dynamic> _$SubstanceSpecificationToJson(
         SubstanceSpecification instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

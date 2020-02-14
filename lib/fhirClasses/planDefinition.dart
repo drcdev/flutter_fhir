@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/age.dart';
@@ -28,6 +26,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class PlanDefinition {
 
 	static Future<PlanDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -85,8 +84,10 @@ class PlanDefinition {
 		List<String> library,
 		List<PlanDefinition_Goal> goal,
 		List<PlanDefinition_Action> action}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition newPlanDefinition = new PlanDefinition(
-			id: await newId('PlanDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('PlanDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -144,9 +145,10 @@ class PlanDefinition {
 			goal: goal,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition);
 	return newPlanDefinition;
 }
-  final String resourceType= 'PlanDefinition';
+  String resourceType= 'PlanDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -206,7 +208,8 @@ class PlanDefinition {
   List<PlanDefinition_Action> action;
 
 PlanDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -283,8 +286,9 @@ class PlanDefinition_Goal {
 		List<CodeableConcept> addresses,
 		List<RelatedArtifact> documentation,
 		List<PlanDefinition_Target> target}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition_Goal newPlanDefinition_Goal = new PlanDefinition_Goal(
-			id: await newId('PlanDefinition_Goal'),
+			id: await fhirDb.newResourceId('PlanDefinition_Goal'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -295,6 +299,7 @@ class PlanDefinition_Goal {
 			documentation: documentation,
 			target: target,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition_Goal);
 	return newPlanDefinition_Goal;
 }
   String id;
@@ -337,8 +342,9 @@ class PlanDefinition_Target {
 		Range detailRange,
 		CodeableConcept detailCodeableConcept,
 		Duration due}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition_Target newPlanDefinition_Target = new PlanDefinition_Target(
-			id: await newId('PlanDefinition_Target'),
+			id: await fhirDb.newResourceId('PlanDefinition_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			measure: measure,
@@ -347,6 +353,7 @@ class PlanDefinition_Target {
 			detailCodeableConcept: detailCodeableConcept,
 			due: due,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition_Target);
 	return newPlanDefinition_Target;
 }
   String id;
@@ -428,8 +435,9 @@ class PlanDefinition_Action {
 		String transform,
 		List<PlanDefinition_DynamicValue> dynamicValue,
 		List<PlanDefinition_Action> action}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition_Action newPlanDefinition_Action = new PlanDefinition_Action(
-			id: await newId('PlanDefinition_Action'),
+			id: await fhirDb.newResourceId('PlanDefinition_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			prefix: prefix,
@@ -481,6 +489,7 @@ class PlanDefinition_Action {
 			dynamicValue: dynamicValue,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition_Action);
 	return newPlanDefinition_Action;
 }
   String id;
@@ -603,14 +612,16 @@ class PlanDefinition_Condition {
 		String kind,
 		Element elementKind,
 		Expression expression}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition_Condition newPlanDefinition_Condition = new PlanDefinition_Condition(
-			id: await newId('PlanDefinition_Condition'),
+			id: await fhirDb.newResourceId('PlanDefinition_Condition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kind: kind,
 			elementKind: elementKind,
 			expression: expression,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition_Condition);
 	return newPlanDefinition_Condition;
 }
   String id;
@@ -646,8 +657,9 @@ class PlanDefinition_RelatedAction {
 		Element elementRelationship,
 		Duration offsetDuration,
 		Range offsetRange}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition_RelatedAction newPlanDefinition_RelatedAction = new PlanDefinition_RelatedAction(
-			id: await newId('PlanDefinition_RelatedAction'),
+			id: await fhirDb.newResourceId('PlanDefinition_RelatedAction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			actionId: actionId,
@@ -657,6 +669,7 @@ class PlanDefinition_RelatedAction {
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition_RelatedAction);
 	return newPlanDefinition_RelatedAction;
 }
   String id;
@@ -695,14 +708,16 @@ class PlanDefinition_Participant {
 		String type,
 		Element elementType,
 		CodeableConcept role}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition_Participant newPlanDefinition_Participant = new PlanDefinition_Participant(
-			id: await newId('PlanDefinition_Participant'),
+			id: await fhirDb.newResourceId('PlanDefinition_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			role: role,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition_Participant);
 	return newPlanDefinition_Participant;
 }
   String id;
@@ -735,14 +750,16 @@ class PlanDefinition_DynamicValue {
 		String path,
 		Element elementPath,
 		Expression expression}) async {
+	var fhirDb = new DatabaseHelper();
 	PlanDefinition_DynamicValue newPlanDefinition_DynamicValue = new PlanDefinition_DynamicValue(
-			id: await newId('PlanDefinition_DynamicValue'),
+			id: await fhirDb.newResourceId('PlanDefinition_DynamicValue'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
 			elementPath: elementPath,
 			expression: expression,
 );
+	int saved = await fhirDb.saveResource(newPlanDefinition_DynamicValue);
 	return newPlanDefinition_DynamicValue;
 }
   String id;
@@ -773,6 +790,7 @@ PlanDefinition_DynamicValue(
 
 PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
   return PlanDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -939,6 +957,7 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PlanDefinitionToJson(PlanDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

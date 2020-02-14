@@ -25,7 +25,6 @@ class _Settings extends State<Setting> {
       ),
       body: Column(
         children: [
-
           RaisedButton(
             onPressed: () {
               Navigator.push(

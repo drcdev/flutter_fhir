@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -16,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class BiologicallyDerivedProduct {
 
 	static Future<BiologicallyDerivedProduct> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +40,10 @@ class BiologicallyDerivedProduct {
 		List<BiologicallyDerivedProduct_Processing> processing,
 		BiologicallyDerivedProduct_Manipulation manipulation,
 		List<BiologicallyDerivedProduct_Storage> storage}) async {
+	var fhirDb = new DatabaseHelper();
 	BiologicallyDerivedProduct newBiologicallyDerivedProduct = new BiologicallyDerivedProduct(
-			id: await newId('BiologicallyDerivedProduct'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('BiologicallyDerivedProduct'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -66,9 +68,10 @@ class BiologicallyDerivedProduct {
 			manipulation: manipulation,
 			storage: storage,
 );
+	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct);
 	return newBiologicallyDerivedProduct;
 }
-  final String resourceType= 'BiologicallyDerivedProduct';
+  String resourceType= 'BiologicallyDerivedProduct';
   String id;
   Meta meta;
   String implicitRules;
@@ -95,7 +98,8 @@ class BiologicallyDerivedProduct {
   List<BiologicallyDerivedProduct_Storage> storage;
 
 BiologicallyDerivedProduct(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -137,8 +141,9 @@ class BiologicallyDerivedProduct_Collection {
 		String collectedDateTime,
 		Element elementCollectedDateTime,
 		Period collectedPeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	BiologicallyDerivedProduct_Collection newBiologicallyDerivedProduct_Collection = new BiologicallyDerivedProduct_Collection(
-			id: await newId('BiologicallyDerivedProduct_Collection'),
+			id: await fhirDb.newResourceId('BiologicallyDerivedProduct_Collection'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			collector: collector,
@@ -147,6 +152,7 @@ class BiologicallyDerivedProduct_Collection {
 			elementCollectedDateTime: elementCollectedDateTime,
 			collectedPeriod: collectedPeriod,
 );
+	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Collection);
 	return newBiologicallyDerivedProduct_Collection;
 }
   String id;
@@ -187,8 +193,9 @@ class BiologicallyDerivedProduct_Processing {
 		String timeDateTime,
 		Element elementTimeDateTime,
 		Period timePeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	BiologicallyDerivedProduct_Processing newBiologicallyDerivedProduct_Processing = new BiologicallyDerivedProduct_Processing(
-			id: await newId('BiologicallyDerivedProduct_Processing'),
+			id: await fhirDb.newResourceId('BiologicallyDerivedProduct_Processing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -199,6 +206,7 @@ class BiologicallyDerivedProduct_Processing {
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod,
 );
+	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Processing);
 	return newBiologicallyDerivedProduct_Processing;
 }
   String id;
@@ -241,8 +249,9 @@ class BiologicallyDerivedProduct_Manipulation {
 		String timeDateTime,
 		Element elementTimeDateTime,
 		Period timePeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	BiologicallyDerivedProduct_Manipulation newBiologicallyDerivedProduct_Manipulation = new BiologicallyDerivedProduct_Manipulation(
-			id: await newId('BiologicallyDerivedProduct_Manipulation'),
+			id: await fhirDb.newResourceId('BiologicallyDerivedProduct_Manipulation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -251,6 +260,7 @@ class BiologicallyDerivedProduct_Manipulation {
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod,
 );
+	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Manipulation);
 	return newBiologicallyDerivedProduct_Manipulation;
 }
   String id;
@@ -291,8 +301,9 @@ class BiologicallyDerivedProduct_Storage {
 		String scale,
 		Element elementScale,
 		Period duration}) async {
+	var fhirDb = new DatabaseHelper();
 	BiologicallyDerivedProduct_Storage newBiologicallyDerivedProduct_Storage = new BiologicallyDerivedProduct_Storage(
-			id: await newId('BiologicallyDerivedProduct_Storage'),
+			id: await fhirDb.newResourceId('BiologicallyDerivedProduct_Storage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -303,6 +314,7 @@ class BiologicallyDerivedProduct_Storage {
 			elementScale: elementScale,
 			duration: duration,
 );
+	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct_Storage);
 	return newBiologicallyDerivedProduct_Storage;
 }
   String id;
@@ -342,6 +354,7 @@ BiologicallyDerivedProduct_Storage(
 BiologicallyDerivedProduct _$BiologicallyDerivedProductFromJson(
     Map<String, dynamic> json) {
   return BiologicallyDerivedProduct(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -424,6 +437,7 @@ BiologicallyDerivedProduct _$BiologicallyDerivedProductFromJson(
 Map<String, dynamic> _$BiologicallyDerivedProductToJson(
         BiologicallyDerivedProduct instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

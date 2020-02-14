@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
@@ -43,6 +41,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class StructureMap {
 
 	static Future<StructureMap> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -82,8 +81,10 @@ class StructureMap {
 		List<StructureMap_Structure> structure,
 		List<String> import,
 		List<StructureMap_Group> group}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap newStructureMap = new StructureMap(
-			id: await newId('StructureMap'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('StructureMap'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -123,9 +124,10 @@ class StructureMap {
 			import: import,
 			group: group,
 );
+	int saved = await fhirDb.saveResource(newStructureMap);
 	return newStructureMap;
 }
-  final String resourceType= 'StructureMap';
+  String resourceType= 'StructureMap';
   String id;
   Meta meta;
   String implicitRules;
@@ -167,7 +169,8 @@ class StructureMap {
   List<StructureMap_Group> group;
 
 StructureMap(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -226,8 +229,9 @@ class StructureMap_Structure {
 		Element elementAlias,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Structure newStructureMap_Structure = new StructureMap_Structure(
-			id: await newId('StructureMap_Structure'),
+			id: await fhirDb.newResourceId('StructureMap_Structure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			url: url,
@@ -238,6 +242,7 @@ class StructureMap_Structure {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Structure);
 	return newStructureMap_Structure;
 }
   String id;
@@ -285,8 +290,9 @@ class StructureMap_Group {
 		Element elementDocumentation,
 		List<StructureMap_Input> input,
 		List<StructureMap_Rule> rule}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Group newStructureMap_Group = new StructureMap_Group(
-			id: await newId('StructureMap_Group'),
+			id: await fhirDb.newResourceId('StructureMap_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -300,6 +306,7 @@ class StructureMap_Group {
 			input: input,
 			rule: rule,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Group);
 	return newStructureMap_Group;
 }
   String id;
@@ -351,8 +358,9 @@ class StructureMap_Input {
 		Element elementMode,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Input newStructureMap_Input = new StructureMap_Input(
-			id: await newId('StructureMap_Input'),
+			id: await fhirDb.newResourceId('StructureMap_Input'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -364,6 +372,7 @@ class StructureMap_Input {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Input);
 	return newStructureMap_Input;
 }
   String id;
@@ -411,8 +420,9 @@ class StructureMap_Rule {
 		List<StructureMap_Dependent> dependent,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Rule newStructureMap_Rule = new StructureMap_Rule(
-			id: await newId('StructureMap_Rule'),
+			id: await fhirDb.newResourceId('StructureMap_Rule'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -424,6 +434,7 @@ class StructureMap_Rule {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Rule);
 	return newStructureMap_Rule;
 }
   String id;
@@ -552,8 +563,9 @@ class StructureMap_Source {
 		Element elementCheck,
 		String logMessage,
 		Element elementLogMessage}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Source newStructureMap_Source = new StructureMap_Source(
-			id: await newId('StructureMap_Source'),
+			id: await fhirDb.newResourceId('StructureMap_Source'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			context: context,
@@ -646,6 +658,7 @@ class StructureMap_Source {
 			logMessage: logMessage,
 			elementLogMessage: elementLogMessage,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Source);
 	return newStructureMap_Source;
 }
   String id;
@@ -862,8 +875,9 @@ class StructureMap_Target {
 		String transform,
 		Element elementTransform,
 		List<StructureMap_Parameter> parameter}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Target newStructureMap_Target = new StructureMap_Target(
-			id: await newId('StructureMap_Target'),
+			id: await fhirDb.newResourceId('StructureMap_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			context: context,
@@ -882,6 +896,7 @@ class StructureMap_Target {
 			elementTransform: elementTransform,
 			parameter: parameter,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Target);
 	return newStructureMap_Target;
 }
   String id;
@@ -945,8 +960,9 @@ class StructureMap_Parameter {
 		Element elementValueInteger,
 		int valueDecimal,
 		Element elementValueDecimal}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Parameter newStructureMap_Parameter = new StructureMap_Parameter(
-			id: await newId('StructureMap_Parameter'),
+			id: await fhirDb.newResourceId('StructureMap_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueId: valueId,
@@ -960,6 +976,7 @@ class StructureMap_Parameter {
 			valueDecimal: valueDecimal,
 			elementValueDecimal: elementValueDecimal,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Parameter);
 	return newStructureMap_Parameter;
 }
   String id;
@@ -1007,8 +1024,9 @@ class StructureMap_Dependent {
 		Element elementName,
 		List<String> variable,
 		List<Element> elementVariable}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureMap_Dependent newStructureMap_Dependent = new StructureMap_Dependent(
-			id: await newId('StructureMap_Dependent'),
+			id: await fhirDb.newResourceId('StructureMap_Dependent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -1016,6 +1034,7 @@ class StructureMap_Dependent {
 			variable: variable,
 			elementVariable: elementVariable,
 );
+	int saved = await fhirDb.saveResource(newStructureMap_Dependent);
 	return newStructureMap_Dependent;
 }
   String id;
@@ -1048,6 +1067,7 @@ StructureMap_Dependent(
 
 StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
   return StructureMap(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1154,6 +1174,7 @@ StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$StructureMapToJson(StructureMap instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Slot {
 
 	static Future<Slot> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -42,8 +41,10 @@ class Slot {
 		Element elementOverbooked,
 		String comment,
 		Element elementComment}) async {
+	var fhirDb = new DatabaseHelper();
 	Slot newSlot = new Slot(
-			id: await newId('Slot'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Slot'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,9 +71,10 @@ class Slot {
 			comment: comment,
 			elementComment: elementComment,
 );
+	int saved = await fhirDb.saveResource(newSlot);
 	return newSlot;
 }
-  final String resourceType= 'Slot';
+  String resourceType= 'Slot';
   String id;
   Meta meta;
   String implicitRules;
@@ -101,7 +103,8 @@ class Slot {
   Element elementComment;
 
 Slot(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -141,6 +144,7 @@ Slot(
 
 Slot _$SlotFromJson(Map<String, dynamic> json) {
   return Slot(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -220,6 +224,7 @@ Slot _$SlotFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SlotToJson(Slot instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

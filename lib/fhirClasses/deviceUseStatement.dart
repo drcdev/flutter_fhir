@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class DeviceUseStatement {
 
 	static Future<DeviceUseStatement> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -47,8 +46,10 @@ class DeviceUseStatement {
 		List<Reference> reasonReference,
 		CodeableConcept bodySite,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceUseStatement newDeviceUseStatement = new DeviceUseStatement(
-			id: await newId('DeviceUseStatement'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('DeviceUseStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -77,9 +78,10 @@ class DeviceUseStatement {
 			bodySite: bodySite,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newDeviceUseStatement);
 	return newDeviceUseStatement;
 }
-  final String resourceType= 'DeviceUseStatement';
+  String resourceType= 'DeviceUseStatement';
   String id;
   Meta meta;
   String implicitRules;
@@ -110,7 +112,8 @@ class DeviceUseStatement {
   List<Annotation> note;
 
 DeviceUseStatement(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -152,6 +155,7 @@ DeviceUseStatement(
 
 DeviceUseStatement _$DeviceUseStatementFromJson(Map<String, dynamic> json) {
   return DeviceUseStatement(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -243,6 +247,7 @@ DeviceUseStatement _$DeviceUseStatementFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DeviceUseStatementToJson(DeviceUseStatement instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

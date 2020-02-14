@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Consent {
 
 	static Future<Consent> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -45,8 +44,10 @@ class Consent {
 		CodeableConcept policyRule,
 		List<Consent_Verification> verification,
 		Consent_Provision provision}) async {
+	var fhirDb = new DatabaseHelper();
 	Consent newConsent = new Consent(
-			id: await newId('Consent'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Consent'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -73,9 +74,10 @@ class Consent {
 			verification: verification,
 			provision: provision,
 );
+	int saved = await fhirDb.saveResource(newConsent);
 	return newConsent;
 }
-  final String resourceType= 'Consent';
+  String resourceType= 'Consent';
   String id;
   Meta meta;
   String implicitRules;
@@ -104,7 +106,8 @@ class Consent {
   Consent_Provision provision;
 
 Consent(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -147,8 +150,9 @@ class Consent_Policy {
 		Element elementAuthority,
 		String uri,
 		Element elementUri}) async {
+	var fhirDb = new DatabaseHelper();
 	Consent_Policy newConsent_Policy = new Consent_Policy(
-			id: await newId('Consent_Policy'),
+			id: await fhirDb.newResourceId('Consent_Policy'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			authority: authority,
@@ -156,6 +160,7 @@ class Consent_Policy {
 			uri: uri,
 			elementUri: elementUri,
 );
+	int saved = await fhirDb.saveResource(newConsent_Policy);
 	return newConsent_Policy;
 }
   String id;
@@ -192,8 +197,9 @@ class Consent_Verification {
 		Reference verifiedWith,
 		DateTime verificationDate,
 		Element elementVerificationDate}) async {
+	var fhirDb = new DatabaseHelper();
 	Consent_Verification newConsent_Verification = new Consent_Verification(
-			id: await newId('Consent_Verification'),
+			id: await fhirDb.newResourceId('Consent_Verification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			verified: verified,
@@ -202,6 +208,7 @@ class Consent_Verification {
 			verificationDate: verificationDate,
 			elementVerificationDate: elementVerificationDate,
 );
+	int saved = await fhirDb.saveResource(newConsent_Verification);
 	return newConsent_Verification;
 }
   String id;
@@ -247,8 +254,9 @@ class Consent_Provision {
 		Period dataPeriod,
 		List<Consent_Data> data,
 		List<Consent_Provision> provision}) async {
+	var fhirDb = new DatabaseHelper();
 	Consent_Provision newConsent_Provision = new Consent_Provision(
-			id: await newId('Consent_Provision'),
+			id: await fhirDb.newResourceId('Consent_Provision'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -264,6 +272,7 @@ class Consent_Provision {
 			data: data,
 			provision: provision,
 );
+	int saved = await fhirDb.saveResource(newConsent_Provision);
 	return newConsent_Provision;
 }
   String id;
@@ -313,13 +322,15 @@ class Consent_Actor {
 		List<Extension> modifierExtension,
 		CodeableConcept role,
 		Reference reference}) async {
+	var fhirDb = new DatabaseHelper();
 	Consent_Actor newConsent_Actor = new Consent_Actor(
-			id: await newId('Consent_Actor'),
+			id: await fhirDb.newResourceId('Consent_Actor'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
 			reference: reference,
 );
+	int saved = await fhirDb.saveResource(newConsent_Actor);
 	return newConsent_Actor;
 }
   String id;
@@ -350,14 +361,16 @@ class Consent_Data {
 		String meaning,
 		Element elementMeaning,
 		Reference reference}) async {
+	var fhirDb = new DatabaseHelper();
 	Consent_Data newConsent_Data = new Consent_Data(
-			id: await newId('Consent_Data'),
+			id: await fhirDb.newResourceId('Consent_Data'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			meaning: meaning,
 			elementMeaning: elementMeaning,
 			reference: reference,
 );
+	int saved = await fhirDb.saveResource(newConsent_Data);
 	return newConsent_Data;
 }
   String id;
@@ -388,6 +401,7 @@ Consent_Data(
 
 Consent _$ConsentFromJson(Map<String, dynamic> json) {
   return Consent(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -475,6 +489,7 @@ Consent _$ConsentFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ConsentToJson(Consent instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

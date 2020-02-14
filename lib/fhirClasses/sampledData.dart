@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -26,8 +24,9 @@ class SampledData {
 		Element elementDimensions,
 		String data,
 		Element elementData}) async {
+	var fhirDb = new DatabaseHelper();
 	SampledData newSampledData = new SampledData(
-			id: await newId('SampledData'),
+			id: await fhirDb.newResourceId('SampledData'),
 			extension: extension,
 			origin: origin,
 			period: period,
@@ -43,6 +42,7 @@ class SampledData {
 			data: data,
 			elementData: elementData,
 );
+	int saved = await fhirDb.saveResource(newSampledData);
 	return newSampledData;
 }
   String id;

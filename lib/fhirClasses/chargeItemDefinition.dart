@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ChargeItemDefinition {
 
 	static Future<ChargeItemDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -64,8 +64,10 @@ class ChargeItemDefinition {
 		List<Reference> instance,
 		List<ChargeItemDefinition_Applicability> applicability,
 		List<ChargeItemDefinition_PropertyGroup> propertyGroup}) async {
+	var fhirDb = new DatabaseHelper();
 	ChargeItemDefinition newChargeItemDefinition = new ChargeItemDefinition(
-			id: await newId('ChargeItemDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ChargeItemDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -111,9 +113,10 @@ class ChargeItemDefinition {
 			applicability: applicability,
 			propertyGroup: propertyGroup,
 );
+	int saved = await fhirDb.saveResource(newChargeItemDefinition);
 	return newChargeItemDefinition;
 }
-  final String resourceType= 'ChargeItemDefinition';
+  String resourceType= 'ChargeItemDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -161,7 +164,8 @@ class ChargeItemDefinition {
   List<ChargeItemDefinition_PropertyGroup> propertyGroup;
 
 ChargeItemDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -225,8 +229,9 @@ class ChargeItemDefinition_Applicability {
 		Element elementLanguage,
 		String expression,
 		Element elementExpression}) async {
+	var fhirDb = new DatabaseHelper();
 	ChargeItemDefinition_Applicability newChargeItemDefinition_Applicability = new ChargeItemDefinition_Applicability(
-			id: await newId('ChargeItemDefinition_Applicability'),
+			id: await fhirDb.newResourceId('ChargeItemDefinition_Applicability'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -236,6 +241,7 @@ class ChargeItemDefinition_Applicability {
 			expression: expression,
 			elementExpression: elementExpression,
 );
+	int saved = await fhirDb.saveResource(newChargeItemDefinition_Applicability);
 	return newChargeItemDefinition_Applicability;
 }
   String id;
@@ -273,13 +279,15 @@ class ChargeItemDefinition_PropertyGroup {
 		List<Extension> modifierExtension,
 		List<ChargeItemDefinition_Applicability> applicability,
 		List<ChargeItemDefinition_PriceComponent> priceComponent}) async {
+	var fhirDb = new DatabaseHelper();
 	ChargeItemDefinition_PropertyGroup newChargeItemDefinition_PropertyGroup = new ChargeItemDefinition_PropertyGroup(
-			id: await newId('ChargeItemDefinition_PropertyGroup'),
+			id: await fhirDb.newResourceId('ChargeItemDefinition_PropertyGroup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			applicability: applicability,
 			priceComponent: priceComponent,
 );
+	int saved = await fhirDb.saveResource(newChargeItemDefinition_PropertyGroup);
 	return newChargeItemDefinition_PropertyGroup;
 }
   String id;
@@ -313,8 +321,9 @@ class ChargeItemDefinition_PriceComponent {
 		double factor,
 		Element elementFactor,
 		Money amount}) async {
+	var fhirDb = new DatabaseHelper();
 	ChargeItemDefinition_PriceComponent newChargeItemDefinition_PriceComponent = new ChargeItemDefinition_PriceComponent(
-			id: await newId('ChargeItemDefinition_PriceComponent'),
+			id: await fhirDb.newResourceId('ChargeItemDefinition_PriceComponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -324,6 +333,7 @@ class ChargeItemDefinition_PriceComponent {
 			elementFactor: elementFactor,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newChargeItemDefinition_PriceComponent);
 	return newChargeItemDefinition_PriceComponent;
 }
   String id;
@@ -360,6 +370,7 @@ ChargeItemDefinition_PriceComponent(
 
 ChargeItemDefinition _$ChargeItemDefinitionFromJson(Map<String, dynamic> json) {
   return ChargeItemDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -487,6 +498,7 @@ ChargeItemDefinition _$ChargeItemDefinitionFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ChargeItemDefinitionToJson(
         ChargeItemDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

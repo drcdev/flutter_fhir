@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/dataRequirement.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class GuidanceResponse {
 
 	static Future<GuidanceResponse> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -48,8 +48,10 @@ class GuidanceResponse {
 		Reference outputParameters,
 		Reference result,
 		List<DataRequirement> dataRequirement}) async {
+	var fhirDb = new DatabaseHelper();
 	GuidanceResponse newGuidanceResponse = new GuidanceResponse(
-			id: await newId('GuidanceResponse'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('GuidanceResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -81,9 +83,10 @@ class GuidanceResponse {
 			result: result,
 			dataRequirement: dataRequirement,
 );
+	int saved = await fhirDb.saveResource(newGuidanceResponse);
 	return newGuidanceResponse;
 }
-  final String resourceType= 'GuidanceResponse';
+  String resourceType= 'GuidanceResponse';
   String id;
   Meta meta;
   String implicitRules;
@@ -117,7 +120,8 @@ class GuidanceResponse {
   List<DataRequirement> dataRequirement;
 
 GuidanceResponse(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -162,6 +166,7 @@ GuidanceResponse(
 
 GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
   return GuidanceResponse(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -264,6 +269,7 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

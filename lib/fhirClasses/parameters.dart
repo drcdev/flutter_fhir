@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -41,6 +40,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Parameters {
 
 	static Future<Parameters> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -48,8 +48,10 @@ class Parameters {
 		String language,
 		Element elementLanguage,
 		List<Parameters_Parameter> parameter}) async {
+	var fhirDb = new DatabaseHelper();
 	Parameters newParameters = new Parameters(
-			id: await newId('Parameters'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Parameters'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -57,9 +59,10 @@ class Parameters {
 			elementLanguage: elementLanguage,
 			parameter: parameter,
 );
+	int saved = await fhirDb.saveResource(newParameters);
 	return newParameters;
 }
-  final String resourceType= 'Parameters';
+  String resourceType= 'Parameters';
   String id;
   Meta meta;
   String implicitRules;
@@ -69,7 +72,8 @@ class Parameters {
   List<Parameters_Parameter> parameter;
 
 Parameters(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -162,8 +166,9 @@ class Parameters_Parameter {
 		Meta valueMeta,
 		dynamic resource,
 		List<Parameters_Parameter> part}) async {
+	var fhirDb = new DatabaseHelper();
 	Parameters_Parameter newParameters_Parameter = new Parameters_Parameter(
-			id: await newId('Parameters_Parameter'),
+			id: await fhirDb.newResourceId('Parameters_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -240,6 +245,7 @@ class Parameters_Parameter {
 			resource: resource,
 			part: part,
 );
+	int saved = await fhirDb.saveResource(newParameters_Parameter);
 	return newParameters_Parameter;
 }
   String id;
@@ -410,6 +416,7 @@ Parameters_Parameter(
 
 Parameters _$ParametersFromJson(Map<String, dynamic> json) {
   return Parameters(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -433,6 +440,7 @@ Parameters _$ParametersFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ParametersToJson(Parameters instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

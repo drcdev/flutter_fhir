@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Coverage {
 
 	static Future<Coverage> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -52,8 +51,10 @@ class Coverage {
 		bool subrogation,
 		Element elementSubrogation,
 		List<Reference> contract}) async {
+	var fhirDb = new DatabaseHelper();
 	Coverage newCoverage = new Coverage(
-			id: await newId('Coverage'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Coverage'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -87,9 +88,10 @@ class Coverage {
 			elementSubrogation: elementSubrogation,
 			contract: contract,
 );
+	int saved = await fhirDb.saveResource(newCoverage);
 	return newCoverage;
 }
-  final String resourceType= 'Coverage';
+  String resourceType= 'Coverage';
   String id;
   Meta meta;
   String implicitRules;
@@ -125,7 +127,8 @@ class Coverage {
   List<Reference> contract;
 
 Coverage(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -176,8 +179,9 @@ class Coverage_Class {
 		Element elementValue,
 		String name,
 		Element elementName}) async {
+	var fhirDb = new DatabaseHelper();
 	Coverage_Class newCoverage_Class = new Coverage_Class(
-			id: await newId('Coverage_Class'),
+			id: await fhirDb.newResourceId('Coverage_Class'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -186,6 +190,7 @@ class Coverage_Class {
 			name: name,
 			elementName: elementName,
 );
+	int saved = await fhirDb.saveResource(newCoverage_Class);
 	return newCoverage_Class;
 }
   String id;
@@ -223,8 +228,9 @@ class Coverage_CostToBeneficiary {
 		Quantity valueQuantity,
 		Money valueMoney,
 		List<Coverage_Exception> exception}) async {
+	var fhirDb = new DatabaseHelper();
 	Coverage_CostToBeneficiary newCoverage_CostToBeneficiary = new Coverage_CostToBeneficiary(
-			id: await newId('Coverage_CostToBeneficiary'),
+			id: await fhirDb.newResourceId('Coverage_CostToBeneficiary'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -232,6 +238,7 @@ class Coverage_CostToBeneficiary {
 			valueMoney: valueMoney,
 			exception: exception,
 );
+	int saved = await fhirDb.saveResource(newCoverage_CostToBeneficiary);
 	return newCoverage_CostToBeneficiary;
 }
   String id;
@@ -265,13 +272,15 @@ class Coverage_Exception {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Coverage_Exception newCoverage_Exception = new Coverage_Exception(
-			id: await newId('Coverage_Exception'),
+			id: await fhirDb.newResourceId('Coverage_Exception'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newCoverage_Exception);
 	return newCoverage_Exception;
 }
   String id;
@@ -300,6 +309,7 @@ Coverage_Exception(
 
 Coverage _$CoverageFromJson(Map<String, dynamic> json) {
   return Coverage(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -397,6 +407,7 @@ Coverage _$CoverageFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CoverageToJson(Coverage instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

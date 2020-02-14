@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ResearchSubject {
 
 	static Future<ResearchSubject> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -37,8 +36,10 @@ class ResearchSubject {
 		String actualArm,
 		Element elementActualArm,
 		Reference consent}) async {
+	var fhirDb = new DatabaseHelper();
 	ResearchSubject newResearchSubject = new ResearchSubject(
-			id: await newId('ResearchSubject'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ResearchSubject'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -60,9 +61,10 @@ class ResearchSubject {
 			elementActualArm: elementActualArm,
 			consent: consent,
 );
+	int saved = await fhirDb.saveResource(newResearchSubject);
 	return newResearchSubject;
 }
-  final String resourceType= 'ResearchSubject';
+  String resourceType= 'ResearchSubject';
   String id;
   Meta meta;
   String implicitRules;
@@ -86,7 +88,8 @@ class ResearchSubject {
   Reference consent;
 
 ResearchSubject(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -121,6 +124,7 @@ ResearchSubject(
 
 ResearchSubject _$ResearchSubjectFromJson(Map<String, dynamic> json) {
   return ResearchSubject(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -182,6 +186,7 @@ ResearchSubject _$ResearchSubjectFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ResearchSubjectToJson(ResearchSubject instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

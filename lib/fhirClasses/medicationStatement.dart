@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicationStatement {
 
 	static Future<MedicationStatement> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -51,8 +50,10 @@ class MedicationStatement {
 		List<Reference> reasonReference,
 		List<Annotation> note,
 		List<Dosage> dosage}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationStatement newMedicationStatement = new MedicationStatement(
-			id: await newId('MedicationStatement'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicationStatement'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -85,9 +86,10 @@ class MedicationStatement {
 			note: note,
 			dosage: dosage,
 );
+	int saved = await fhirDb.saveResource(newMedicationStatement);
 	return newMedicationStatement;
 }
-  final String resourceType= 'MedicationStatement';
+  String resourceType= 'MedicationStatement';
   String id;
   Meta meta;
   String implicitRules;
@@ -122,7 +124,8 @@ class MedicationStatement {
   List<Dosage> dosage;
 
 MedicationStatement(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -168,6 +171,7 @@ MedicationStatement(
 
 MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
   return MedicationStatement(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -278,6 +282,7 @@ MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$MedicationStatementToJson(
         MedicationStatement instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

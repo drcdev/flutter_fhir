@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Invoice {
 
 	static Future<Invoice> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -48,8 +47,10 @@ class Invoice {
 		String paymentTerms,
 		Element elementPaymentTerms,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	Invoice newInvoice = new Invoice(
-			id: await newId('Invoice'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Invoice'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -80,9 +81,10 @@ class Invoice {
 			elementPaymentTerms: elementPaymentTerms,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newInvoice);
 	return newInvoice;
 }
-  final String resourceType= 'Invoice';
+  String resourceType= 'Invoice';
   String id;
   Meta meta;
   String implicitRules;
@@ -115,7 +117,8 @@ class Invoice {
   List<Annotation> note;
 
 Invoice(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -160,13 +163,15 @@ class Invoice_Participant {
 		List<Extension> modifierExtension,
 		CodeableConcept role,
 		Reference actor}) async {
+	var fhirDb = new DatabaseHelper();
 	Invoice_Participant newInvoice_Participant = new Invoice_Participant(
-			id: await newId('Invoice_Participant'),
+			id: await fhirDb.newResourceId('Invoice_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
 			actor: actor,
 );
+	int saved = await fhirDb.saveResource(newInvoice_Participant);
 	return newInvoice_Participant;
 }
   String id;
@@ -199,8 +204,9 @@ class Invoice_LineItem {
 		Reference chargeItemReference,
 		CodeableConcept chargeItemCodeableConcept,
 		List<Invoice_PriceComponent> priceComponent}) async {
+	var fhirDb = new DatabaseHelper();
 	Invoice_LineItem newInvoice_LineItem = new Invoice_LineItem(
-			id: await newId('Invoice_LineItem'),
+			id: await fhirDb.newResourceId('Invoice_LineItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -209,6 +215,7 @@ class Invoice_LineItem {
 			chargeItemCodeableConcept: chargeItemCodeableConcept,
 			priceComponent: priceComponent,
 );
+	int saved = await fhirDb.saveResource(newInvoice_LineItem);
 	return newInvoice_LineItem;
 }
   String id;
@@ -248,8 +255,9 @@ class Invoice_PriceComponent {
 		double factor,
 		Element elementFactor,
 		Money amount}) async {
+	var fhirDb = new DatabaseHelper();
 	Invoice_PriceComponent newInvoice_PriceComponent = new Invoice_PriceComponent(
-			id: await newId('Invoice_PriceComponent'),
+			id: await fhirDb.newResourceId('Invoice_PriceComponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -259,6 +267,7 @@ class Invoice_PriceComponent {
 			elementFactor: elementFactor,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newInvoice_PriceComponent);
 	return newInvoice_PriceComponent;
 }
   String id;
@@ -295,6 +304,7 @@ Invoice_PriceComponent(
 
 Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
   return Invoice(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -388,6 +398,7 @@ Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$InvoiceToJson(Invoice instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

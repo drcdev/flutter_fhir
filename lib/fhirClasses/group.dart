@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Group {
 
 	static Future<Group> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -44,8 +43,10 @@ class Group {
 		Reference managingEntity,
 		List<Group_Characteristic> characteristic,
 		List<Group_Member> member}) async {
+	var fhirDb = new DatabaseHelper();
 	Group newGroup = new Group(
-			id: await newId('Group'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Group'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,9 +72,10 @@ class Group {
 			characteristic: characteristic,
 			member: member,
 );
+	int saved = await fhirDb.saveResource(newGroup);
 	return newGroup;
 }
-  final String resourceType= 'Group';
+  String resourceType= 'Group';
   String id;
   Meta meta;
   String implicitRules;
@@ -101,7 +103,8 @@ class Group {
   List<Group_Member> member;
 
 Group(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -149,8 +152,9 @@ class Group_Characteristic {
 		bool exclude,
 		Element elementExclude,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Group_Characteristic newGroup_Characteristic = new Group_Characteristic(
-			id: await newId('Group_Characteristic'),
+			id: await fhirDb.newResourceId('Group_Characteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -164,6 +168,7 @@ class Group_Characteristic {
 			elementExclude: elementExclude,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newGroup_Characteristic);
 	return newGroup_Characteristic;
 }
   String id;
@@ -211,8 +216,9 @@ class Group_Member {
 		Period period,
 		bool inactive,
 		Element elementInactive}) async {
+	var fhirDb = new DatabaseHelper();
 	Group_Member newGroup_Member = new Group_Member(
-			id: await newId('Group_Member'),
+			id: await fhirDb.newResourceId('Group_Member'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			entity: entity,
@@ -220,6 +226,7 @@ class Group_Member {
 			inactive: inactive,
 			elementInactive: elementInactive,
 );
+	int saved = await fhirDb.saveResource(newGroup_Member);
 	return newGroup_Member;
 }
   String id;
@@ -252,6 +259,7 @@ Group_Member(
 
 Group _$GroupFromJson(Map<String, dynamic> json) {
   return Group(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -323,6 +331,7 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

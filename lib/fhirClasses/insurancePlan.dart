@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -22,6 +20,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class InsurancePlan {
 
 	static Future<InsurancePlan> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -49,8 +48,10 @@ class InsurancePlan {
 		List<Reference> network,
 		List<InsurancePlan_Coverage> coverage,
 		List<InsurancePlan_Plan> plan}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan newInsurancePlan = new InsurancePlan(
-			id: await newId('InsurancePlan'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('InsurancePlan'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -78,9 +79,10 @@ class InsurancePlan {
 			coverage: coverage,
 			plan: plan,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan);
 	return newInsurancePlan;
 }
-  final String resourceType= 'InsurancePlan';
+  String resourceType= 'InsurancePlan';
   String id;
   Meta meta;
   String implicitRules;
@@ -110,7 +112,8 @@ class InsurancePlan {
   List<InsurancePlan_Plan> plan;
 
 InsurancePlan(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -154,8 +157,9 @@ class InsurancePlan_Contact {
 		HumanName name,
 		List<ContactPoint> telecom,
 		Address address}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_Contact newInsurancePlan_Contact = new InsurancePlan_Contact(
-			id: await newId('InsurancePlan_Contact'),
+			id: await fhirDb.newResourceId('InsurancePlan_Contact'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			purpose: purpose,
@@ -163,6 +167,7 @@ class InsurancePlan_Contact {
 			telecom: telecom,
 			address: address,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_Contact);
 	return newInsurancePlan_Contact;
 }
   String id;
@@ -197,14 +202,16 @@ class InsurancePlan_Coverage {
 		CodeableConcept type,
 		List<Reference> network,
 		List<InsurancePlan_Benefit> benefit}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_Coverage newInsurancePlan_Coverage = new InsurancePlan_Coverage(
-			id: await newId('InsurancePlan_Coverage'),
+			id: await fhirDb.newResourceId('InsurancePlan_Coverage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			network: network,
 			benefit: benefit,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_Coverage);
 	return newInsurancePlan_Coverage;
 }
   String id;
@@ -238,8 +245,9 @@ class InsurancePlan_Benefit {
 		String requirement,
 		Element elementRequirement,
 		List<InsurancePlan_Limit> limit}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_Benefit newInsurancePlan_Benefit = new InsurancePlan_Benefit(
-			id: await newId('InsurancePlan_Benefit'),
+			id: await fhirDb.newResourceId('InsurancePlan_Benefit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -247,6 +255,7 @@ class InsurancePlan_Benefit {
 			elementRequirement: elementRequirement,
 			limit: limit,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_Benefit);
 	return newInsurancePlan_Benefit;
 }
   String id;
@@ -280,13 +289,15 @@ class InsurancePlan_Limit {
 		List<Extension> modifierExtension,
 		Quantity value,
 		CodeableConcept code}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_Limit newInsurancePlan_Limit = new InsurancePlan_Limit(
-			id: await newId('InsurancePlan_Limit'),
+			id: await fhirDb.newResourceId('InsurancePlan_Limit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			value: value,
 			code: code,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_Limit);
 	return newInsurancePlan_Limit;
 }
   String id;
@@ -320,8 +331,9 @@ class InsurancePlan_Plan {
 		List<Reference> network,
 		List<InsurancePlan_GeneralCost> generalCost,
 		List<InsurancePlan_SpecificCost> specificCost}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_Plan newInsurancePlan_Plan = new InsurancePlan_Plan(
-			id: await newId('InsurancePlan_Plan'),
+			id: await fhirDb.newResourceId('InsurancePlan_Plan'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -331,6 +343,7 @@ class InsurancePlan_Plan {
 			generalCost: generalCost,
 			specificCost: specificCost,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_Plan);
 	return newInsurancePlan_Plan;
 }
   String id;
@@ -372,8 +385,9 @@ class InsurancePlan_GeneralCost {
 		Money cost,
 		String comment,
 		Element elementComment}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_GeneralCost newInsurancePlan_GeneralCost = new InsurancePlan_GeneralCost(
-			id: await newId('InsurancePlan_GeneralCost'),
+			id: await fhirDb.newResourceId('InsurancePlan_GeneralCost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -383,6 +397,7 @@ class InsurancePlan_GeneralCost {
 			comment: comment,
 			elementComment: elementComment,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_GeneralCost);
 	return newInsurancePlan_GeneralCost;
 }
   String id;
@@ -420,13 +435,15 @@ class InsurancePlan_SpecificCost {
 		List<Extension> modifierExtension,
 		CodeableConcept category,
 		List<InsurancePlan_Benefit1> benefit}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_SpecificCost newInsurancePlan_SpecificCost = new InsurancePlan_SpecificCost(
-			id: await newId('InsurancePlan_SpecificCost'),
+			id: await fhirDb.newResourceId('InsurancePlan_SpecificCost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
 			benefit: benefit,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_SpecificCost);
 	return newInsurancePlan_SpecificCost;
 }
   String id;
@@ -456,13 +473,15 @@ class InsurancePlan_Benefit1 {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<InsurancePlan_Cost> cost}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_Benefit1 newInsurancePlan_Benefit1 = new InsurancePlan_Benefit1(
-			id: await newId('InsurancePlan_Benefit1'),
+			id: await fhirDb.newResourceId('InsurancePlan_Benefit1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			cost: cost,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_Benefit1);
 	return newInsurancePlan_Benefit1;
 }
   String id;
@@ -494,8 +513,9 @@ class InsurancePlan_Cost {
 		CodeableConcept applicability,
 		List<CodeableConcept> qualifiers,
 		Quantity value}) async {
+	var fhirDb = new DatabaseHelper();
 	InsurancePlan_Cost newInsurancePlan_Cost = new InsurancePlan_Cost(
-			id: await newId('InsurancePlan_Cost'),
+			id: await fhirDb.newResourceId('InsurancePlan_Cost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -503,6 +523,7 @@ class InsurancePlan_Cost {
 			qualifiers: qualifiers,
 			value: value,
 );
+	int saved = await fhirDb.saveResource(newInsurancePlan_Cost);
 	return newInsurancePlan_Cost;
 }
   String id;
@@ -535,6 +556,7 @@ InsurancePlan_Cost(
 
 InsurancePlan _$InsurancePlanFromJson(Map<String, dynamic> json) {
   return InsurancePlan(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -626,6 +648,7 @@ InsurancePlan _$InsurancePlanFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$InsurancePlanToJson(InsurancePlan instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

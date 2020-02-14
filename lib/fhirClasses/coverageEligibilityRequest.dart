@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CoverageEligibilityRequest {
 
 	static Future<CoverageEligibilityRequest> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -48,8 +47,10 @@ class CoverageEligibilityRequest {
 		List<CoverageEligibilityRequest_SupportingInfo> supportingInfo,
 		List<CoverageEligibilityRequest_Insurance> insurance,
 		List<CoverageEligibilityRequest_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityRequest newCoverageEligibilityRequest = new CoverageEligibilityRequest(
-			id: await newId('CoverageEligibilityRequest'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CoverageEligibilityRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -79,9 +80,10 @@ class CoverageEligibilityRequest {
 			insurance: insurance,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityRequest);
 	return newCoverageEligibilityRequest;
 }
-  final String resourceType= 'CoverageEligibilityRequest';
+  String resourceType= 'CoverageEligibilityRequest';
   String id;
   Meta meta;
   String implicitRules;
@@ -113,7 +115,8 @@ class CoverageEligibilityRequest {
   List<CoverageEligibilityRequest_Item> item;
 
 CoverageEligibilityRequest(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -160,8 +163,9 @@ class CoverageEligibilityRequest_SupportingInfo {
 		Reference information,
 		bool appliesToAll,
 		Element elementAppliesToAll}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityRequest_SupportingInfo newCoverageEligibilityRequest_SupportingInfo = new CoverageEligibilityRequest_SupportingInfo(
-			id: await newId('CoverageEligibilityRequest_SupportingInfo'),
+			id: await fhirDb.newResourceId('CoverageEligibilityRequest_SupportingInfo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -170,6 +174,7 @@ class CoverageEligibilityRequest_SupportingInfo {
 			appliesToAll: appliesToAll,
 			elementAppliesToAll: elementAppliesToAll,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityRequest_SupportingInfo);
 	return newCoverageEligibilityRequest_SupportingInfo;
 }
   String id;
@@ -208,8 +213,9 @@ class CoverageEligibilityRequest_Insurance {
 		Reference coverage,
 		String businessArrangement,
 		Element elementBusinessArrangement}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityRequest_Insurance newCoverageEligibilityRequest_Insurance = new CoverageEligibilityRequest_Insurance(
-			id: await newId('CoverageEligibilityRequest_Insurance'),
+			id: await fhirDb.newResourceId('CoverageEligibilityRequest_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			focal: focal,
@@ -218,6 +224,7 @@ class CoverageEligibilityRequest_Insurance {
 			businessArrangement: businessArrangement,
 			elementBusinessArrangement: elementBusinessArrangement,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityRequest_Insurance);
 	return newCoverageEligibilityRequest_Insurance;
 }
   String id;
@@ -262,8 +269,9 @@ class CoverageEligibilityRequest_Item {
 		Reference facility,
 		List<CoverageEligibilityRequest_Diagnosis> diagnosis,
 		List<Reference> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityRequest_Item newCoverageEligibilityRequest_Item = new CoverageEligibilityRequest_Item(
-			id: await newId('CoverageEligibilityRequest_Item'),
+			id: await fhirDb.newResourceId('CoverageEligibilityRequest_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			supportingInfoSequence: supportingInfoSequence,
@@ -278,6 +286,7 @@ class CoverageEligibilityRequest_Item {
 			diagnosis: diagnosis,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityRequest_Item);
 	return newCoverageEligibilityRequest_Item;
 }
   String id;
@@ -325,13 +334,15 @@ class CoverageEligibilityRequest_Diagnosis {
 		List<Extension> modifierExtension,
 		CodeableConcept diagnosisCodeableConcept,
 		Reference diagnosisReference}) async {
+	var fhirDb = new DatabaseHelper();
 	CoverageEligibilityRequest_Diagnosis newCoverageEligibilityRequest_Diagnosis = new CoverageEligibilityRequest_Diagnosis(
-			id: await newId('CoverageEligibilityRequest_Diagnosis'),
+			id: await fhirDb.newResourceId('CoverageEligibilityRequest_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			diagnosisCodeableConcept: diagnosisCodeableConcept,
 			diagnosisReference: diagnosisReference,
 );
+	int saved = await fhirDb.saveResource(newCoverageEligibilityRequest_Diagnosis);
 	return newCoverageEligibilityRequest_Diagnosis;
 }
   String id;
@@ -361,6 +372,7 @@ CoverageEligibilityRequest_Diagnosis(
 CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
     Map<String, dynamic> json) {
   return CoverageEligibilityRequest(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -457,6 +469,7 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
 Map<String, dynamic> _$CoverageEligibilityRequestToJson(
         CoverageEligibilityRequest instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

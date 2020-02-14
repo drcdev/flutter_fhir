@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Device {
 
 	static Future<Device> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -65,8 +64,10 @@ class Device {
 		List<Annotation> note,
 		List<CodeableConcept> safety,
 		Reference parent}) async {
+	var fhirDb = new DatabaseHelper();
 	Device newDevice = new Device(
-			id: await newId('Device'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Device'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -113,9 +114,10 @@ class Device {
 			safety: safety,
 			parent: parent,
 );
+	int saved = await fhirDb.saveResource(newDevice);
 	return newDevice;
 }
-  final String resourceType= 'Device';
+  String resourceType= 'Device';
   String id;
   Meta meta;
   String implicitRules;
@@ -164,7 +166,8 @@ class Device {
   Reference parent;
 
 Device(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -235,8 +238,9 @@ class Device_UdiCarrier {
 		Element elementCarrierHRF,
 		String entryType,
 		Element elementEntryType}) async {
+	var fhirDb = new DatabaseHelper();
 	Device_UdiCarrier newDevice_UdiCarrier = new Device_UdiCarrier(
-			id: await newId('Device_UdiCarrier'),
+			id: await fhirDb.newResourceId('Device_UdiCarrier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			deviceIdentifier: deviceIdentifier,
@@ -252,6 +256,7 @@ class Device_UdiCarrier {
 			entryType: entryType,
 			elementEntryType: elementEntryType,
 );
+	int saved = await fhirDb.saveResource(newDevice_UdiCarrier);
 	return newDevice_UdiCarrier;
 }
   String id;
@@ -303,8 +308,9 @@ class Device_DeviceName {
 		Element elementName,
 		String type,
 		Element elementType}) async {
+	var fhirDb = new DatabaseHelper();
 	Device_DeviceName newDevice_DeviceName = new Device_DeviceName(
-			id: await newId('Device_DeviceName'),
+			id: await fhirDb.newResourceId('Device_DeviceName'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -312,6 +318,7 @@ class Device_DeviceName {
 			type: type,
 			elementType: elementType,
 );
+	int saved = await fhirDb.saveResource(newDevice_DeviceName);
 	return newDevice_DeviceName;
 }
   String id;
@@ -346,14 +353,16 @@ class Device_Specialization {
 		CodeableConcept systemType,
 		String version,
 		Element elementVersion}) async {
+	var fhirDb = new DatabaseHelper();
 	Device_Specialization newDevice_Specialization = new Device_Specialization(
-			id: await newId('Device_Specialization'),
+			id: await fhirDb.newResourceId('Device_Specialization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			systemType: systemType,
 			version: version,
 			elementVersion: elementVersion,
 );
+	int saved = await fhirDb.saveResource(newDevice_Specialization);
 	return newDevice_Specialization;
 }
   String id;
@@ -387,8 +396,9 @@ class Device_Version {
 		Identifier component,
 		String value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	Device_Version newDevice_Version = new Device_Version(
-			id: await newId('Device_Version'),
+			id: await fhirDb.newResourceId('Device_Version'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -396,6 +406,7 @@ class Device_Version {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newDevice_Version);
 	return newDevice_Version;
 }
   String id;
@@ -430,14 +441,16 @@ class Device_Property {
 		CodeableConcept type,
 		List<Quantity> valueQuantity,
 		List<CodeableConcept> valueCode}) async {
+	var fhirDb = new DatabaseHelper();
 	Device_Property newDevice_Property = new Device_Property(
-			id: await newId('Device_Property'),
+			id: await fhirDb.newResourceId('Device_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			valueQuantity: valueQuantity,
 			valueCode: valueCode,
 );
+	int saved = await fhirDb.saveResource(newDevice_Property);
 	return newDevice_Property;
 }
   String id;
@@ -468,6 +481,7 @@ Device_Property(
 
 Device _$DeviceFromJson(Map<String, dynamic> json) {
   return Device(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -612,6 +626,7 @@ Device _$DeviceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$DeviceToJson(Device instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

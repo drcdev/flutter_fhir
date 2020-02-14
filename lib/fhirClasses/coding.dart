@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -21,8 +19,9 @@ class Coding {
 		Element elementDisplay,
 		bool userSelected,
 		Element elementUserSelected}) async {
+	var fhirDb = new DatabaseHelper();
 	Coding newCoding = new Coding(
-			id: await newId('Coding'),
+			id: await fhirDb.newResourceId('Coding'),
 			extension: extension,
 			system: system,
 			elementSystem: elementSystem,
@@ -35,6 +34,7 @@ class Coding {
 			userSelected: userSelected,
 			elementUserSelected: elementUserSelected,
 );
+	int saved = await fhirDb.saveResource(newCoding);
 	return newCoding;
 }
   String id;

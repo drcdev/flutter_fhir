@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Immunization {
 
 	static Future<Immunization> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -65,8 +64,10 @@ class Immunization {
 		CodeableConcept fundingSource,
 		List<Immunization_Reaction> reaction,
 		List<Immunization_ProtocolApplied> protocolApplied}) async {
+	var fhirDb = new DatabaseHelper();
 	Immunization newImmunization = new Immunization(
-			id: await newId('Immunization'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Immunization'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -114,9 +115,10 @@ class Immunization {
 			reaction: reaction,
 			protocolApplied: protocolApplied,
 );
+	int saved = await fhirDb.saveResource(newImmunization);
 	return newImmunization;
 }
-  final String resourceType= 'Immunization';
+  String resourceType= 'Immunization';
   String id;
   Meta meta;
   String implicitRules;
@@ -166,7 +168,8 @@ class Immunization {
   List<Immunization_ProtocolApplied> protocolApplied;
 
 Immunization(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -228,13 +231,15 @@ class Immunization_Performer {
 		List<Extension> modifierExtension,
 		CodeableConcept function,
 		Reference actor}) async {
+	var fhirDb = new DatabaseHelper();
 	Immunization_Performer newImmunization_Performer = new Immunization_Performer(
-			id: await newId('Immunization_Performer'),
+			id: await fhirDb.newResourceId('Immunization_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
 );
+	int saved = await fhirDb.saveResource(newImmunization_Performer);
 	return newImmunization_Performer;
 }
   String id;
@@ -270,8 +275,9 @@ class Immunization_Education {
 		Element elementPublicationDate,
 		DateTime presentationDate,
 		Element elementPresentationDate}) async {
+	var fhirDb = new DatabaseHelper();
 	Immunization_Education newImmunization_Education = new Immunization_Education(
-			id: await newId('Immunization_Education'),
+			id: await fhirDb.newResourceId('Immunization_Education'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			documentType: documentType,
@@ -283,6 +289,7 @@ class Immunization_Education {
 			presentationDate: presentationDate,
 			elementPresentationDate: elementPresentationDate,
 );
+	int saved = await fhirDb.saveResource(newImmunization_Education);
 	return newImmunization_Education;
 }
   String id;
@@ -327,8 +334,9 @@ class Immunization_Reaction {
 		Reference detail,
 		bool reported,
 		Element elementReported}) async {
+	var fhirDb = new DatabaseHelper();
 	Immunization_Reaction newImmunization_Reaction = new Immunization_Reaction(
-			id: await newId('Immunization_Reaction'),
+			id: await fhirDb.newResourceId('Immunization_Reaction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			date: date,
@@ -337,6 +345,7 @@ class Immunization_Reaction {
 			reported: reported,
 			elementReported: elementReported,
 );
+	int saved = await fhirDb.saveResource(newImmunization_Reaction);
 	return newImmunization_Reaction;
 }
   String id;
@@ -382,8 +391,9 @@ class Immunization_ProtocolApplied {
 		Element elementSeriesDosesPositiveInt,
 		String seriesDosesString,
 		Element elementSeriesDosesString}) async {
+	var fhirDb = new DatabaseHelper();
 	Immunization_ProtocolApplied newImmunization_ProtocolApplied = new Immunization_ProtocolApplied(
-			id: await newId('Immunization_ProtocolApplied'),
+			id: await fhirDb.newResourceId('Immunization_ProtocolApplied'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			series: series,
@@ -399,6 +409,7 @@ class Immunization_ProtocolApplied {
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString,
 );
+	int saved = await fhirDb.saveResource(newImmunization_ProtocolApplied);
 	return newImmunization_ProtocolApplied;
 }
   String id;
@@ -447,6 +458,7 @@ Immunization_ProtocolApplied(
 
 Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
   return Immunization(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -601,6 +613,7 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

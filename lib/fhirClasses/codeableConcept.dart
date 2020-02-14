@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -15,13 +13,15 @@ class CodeableConcept {
 		List<Coding> coding,
 		String text,
 		Element elementText}) async {
+	var fhirDb = new DatabaseHelper();
 	CodeableConcept newCodeableConcept = new CodeableConcept(
-			id: await newId('CodeableConcept'),
+			id: await fhirDb.newResourceId('CodeableConcept'),
 			extension: extension,
 			coding: coding,
 			text: text,
 			elementText: elementText,
 );
+	int saved = await fhirDb.saveResource(newCodeableConcept);
 	return newCodeableConcept;
 }
   String id;

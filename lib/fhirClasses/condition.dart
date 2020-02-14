@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Condition {
 
 	static Future<Condition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -60,8 +59,10 @@ class Condition {
 		List<Condition_Stage> stage,
 		List<Condition_Evidence> evidence,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	Condition newCondition = new Condition(
-			id: await newId('Condition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Condition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -102,9 +103,10 @@ class Condition {
 			evidence: evidence,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newCondition);
 	return newCondition;
 }
-  final String resourceType= 'Condition';
+  String resourceType= 'Condition';
   String id;
   Meta meta;
   String implicitRules;
@@ -147,7 +149,8 @@ class Condition {
   List<Annotation> note;
 
 Condition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -203,14 +206,16 @@ class Condition_Stage {
 		CodeableConcept summary,
 		List<Reference> assessment,
 		CodeableConcept type}) async {
+	var fhirDb = new DatabaseHelper();
 	Condition_Stage newCondition_Stage = new Condition_Stage(
-			id: await newId('Condition_Stage'),
+			id: await fhirDb.newResourceId('Condition_Stage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			summary: summary,
 			assessment: assessment,
 			type: type,
 );
+	int saved = await fhirDb.saveResource(newCondition_Stage);
 	return newCondition_Stage;
 }
   String id;
@@ -242,13 +247,15 @@ class Condition_Evidence {
 		List<Extension> modifierExtension,
 		List<CodeableConcept> code,
 		List<Reference> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	Condition_Evidence newCondition_Evidence = new Condition_Evidence(
-			id: await newId('Condition_Evidence'),
+			id: await fhirDb.newResourceId('Condition_Evidence'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newCondition_Evidence);
 	return newCondition_Evidence;
 }
   String id;
@@ -277,6 +284,7 @@ Condition_Evidence(
 
 Condition _$ConditionFromJson(Map<String, dynamic> json) {
   return Condition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -406,6 +414,7 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

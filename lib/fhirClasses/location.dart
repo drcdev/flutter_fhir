@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -18,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Location {
 
 	static Future<Location> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -51,8 +51,10 @@ class Location {
 		String availabilityExceptions,
 		Element elementAvailabilityExceptions,
 		List<Reference> endpoint}) async {
+	var fhirDb = new DatabaseHelper();
 	Location newLocation = new Location(
-			id: await newId('Location'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Location'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,9 +88,10 @@ class Location {
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint,
 );
+	int saved = await fhirDb.saveResource(newLocation);
 	return newLocation;
 }
-  final String resourceType= 'Location';
+  String resourceType= 'Location';
   String id;
   Meta meta;
   String implicitRules;
@@ -124,7 +127,8 @@ class Location {
   List<Reference> endpoint;
 
 Location(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -176,8 +180,9 @@ class Location_Position {
 		Element elementLatitude,
 		double altitude,
 		Element elementAltitude}) async {
+	var fhirDb = new DatabaseHelper();
 	Location_Position newLocation_Position = new Location_Position(
-			id: await newId('Location_Position'),
+			id: await fhirDb.newResourceId('Location_Position'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			longitude: longitude,
@@ -187,6 +192,7 @@ class Location_Position {
 			altitude: altitude,
 			elementAltitude: elementAltitude,
 );
+	int saved = await fhirDb.saveResource(newLocation_Position);
 	return newLocation_Position;
 }
   String id;
@@ -230,8 +236,9 @@ class Location_HoursOfOperation {
 		Element elementOpeningTime,
 		String closingTime,
 		Element elementClosingTime}) async {
+	var fhirDb = new DatabaseHelper();
 	Location_HoursOfOperation newLocation_HoursOfOperation = new Location_HoursOfOperation(
-			id: await newId('Location_HoursOfOperation'),
+			id: await fhirDb.newResourceId('Location_HoursOfOperation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			daysOfWeek: daysOfWeek,
@@ -243,6 +250,7 @@ class Location_HoursOfOperation {
 			closingTime: closingTime,
 			elementClosingTime: elementClosingTime,
 );
+	int saved = await fhirDb.saveResource(newLocation_HoursOfOperation);
 	return newLocation_HoursOfOperation;
 }
   String id;
@@ -283,6 +291,7 @@ Location_HoursOfOperation(
 
 Location _$LocationFromJson(Map<String, dynamic> json) {
   return Location(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -383,6 +392,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

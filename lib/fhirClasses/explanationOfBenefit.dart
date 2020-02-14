@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -22,6 +20,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ExplanationOfBenefit {
 
 	static Future<ExplanationOfBenefit> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -82,8 +81,10 @@ class ExplanationOfBenefit {
 		List<ExplanationOfBenefit_ProcessNote> processNote,
 		Period benefitPeriod,
 		List<ExplanationOfBenefit_BenefitBalance> benefitBalance}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit newExplanationOfBenefit = new ExplanationOfBenefit(
-			id: await newId('ExplanationOfBenefit'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ExplanationOfBenefit'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -144,9 +145,10 @@ class ExplanationOfBenefit {
 			benefitPeriod: benefitPeriod,
 			benefitBalance: benefitBalance,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit);
 	return newExplanationOfBenefit;
 }
-  final String resourceType= 'ExplanationOfBenefit';
+  String resourceType= 'ExplanationOfBenefit';
   String id;
   Meta meta;
   String implicitRules;
@@ -209,7 +211,8 @@ class ExplanationOfBenefit {
   List<ExplanationOfBenefit_BenefitBalance> benefitBalance;
 
 ExplanationOfBenefit(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -285,14 +288,16 @@ class ExplanationOfBenefit_Related {
 		Reference claim,
 		CodeableConcept relationship,
 		Identifier reference}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Related newExplanationOfBenefit_Related = new ExplanationOfBenefit_Related(
-			id: await newId('ExplanationOfBenefit_Related'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Related'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			claim: claim,
 			relationship: relationship,
 			reference: reference,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Related);
 	return newExplanationOfBenefit_Related;
 }
   String id;
@@ -324,13 +329,15 @@ class ExplanationOfBenefit_Payee {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Reference party}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Payee newExplanationOfBenefit_Payee = new ExplanationOfBenefit_Payee(
-			id: await newId('ExplanationOfBenefit_Payee'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Payee'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			party: party,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Payee);
 	return newExplanationOfBenefit_Payee;
 }
   String id;
@@ -365,8 +372,9 @@ class ExplanationOfBenefit_CareTeam {
 		Element elementResponsible,
 		CodeableConcept role,
 		CodeableConcept qualification}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_CareTeam newExplanationOfBenefit_CareTeam = new ExplanationOfBenefit_CareTeam(
-			id: await newId('ExplanationOfBenefit_CareTeam'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_CareTeam'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -377,6 +385,7 @@ class ExplanationOfBenefit_CareTeam {
 			role: role,
 			qualification: qualification,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_CareTeam);
 	return newExplanationOfBenefit_CareTeam;
 }
   String id;
@@ -429,8 +438,9 @@ class ExplanationOfBenefit_SupportingInfo {
 		Attachment valueAttachment,
 		Reference valueReference,
 		Coding reason}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_SupportingInfo newExplanationOfBenefit_SupportingInfo = new ExplanationOfBenefit_SupportingInfo(
-			id: await newId('ExplanationOfBenefit_SupportingInfo'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_SupportingInfo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -449,6 +459,7 @@ class ExplanationOfBenefit_SupportingInfo {
 			valueReference: valueReference,
 			reason: reason,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_SupportingInfo);
 	return newExplanationOfBenefit_SupportingInfo;
 }
   String id;
@@ -509,8 +520,9 @@ class ExplanationOfBenefit_Diagnosis {
 		List<CodeableConcept> type,
 		CodeableConcept onAdmission,
 		CodeableConcept packageCode}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Diagnosis newExplanationOfBenefit_Diagnosis = new ExplanationOfBenefit_Diagnosis(
-			id: await newId('ExplanationOfBenefit_Diagnosis'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -521,6 +533,7 @@ class ExplanationOfBenefit_Diagnosis {
 			onAdmission: onAdmission,
 			packageCode: packageCode,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Diagnosis);
 	return newExplanationOfBenefit_Diagnosis;
 }
   String id;
@@ -566,8 +579,9 @@ class ExplanationOfBenefit_Procedure {
 		CodeableConcept procedureCodeableConcept,
 		Reference procedureReference,
 		List<Reference> udi}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Procedure newExplanationOfBenefit_Procedure = new ExplanationOfBenefit_Procedure(
-			id: await newId('ExplanationOfBenefit_Procedure'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Procedure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -579,6 +593,7 @@ class ExplanationOfBenefit_Procedure {
 			procedureReference: procedureReference,
 			udi: udi,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Procedure);
 	return newExplanationOfBenefit_Procedure;
 }
   String id;
@@ -623,8 +638,9 @@ class ExplanationOfBenefit_Insurance {
 		Reference coverage,
 		List<String> preAuthRef,
 		List<Element> elementPreAuthRef}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Insurance newExplanationOfBenefit_Insurance = new ExplanationOfBenefit_Insurance(
-			id: await newId('ExplanationOfBenefit_Insurance'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			focal: focal,
@@ -633,6 +649,7 @@ class ExplanationOfBenefit_Insurance {
 			preAuthRef: preAuthRef,
 			elementPreAuthRef: elementPreAuthRef,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Insurance);
 	return newExplanationOfBenefit_Insurance;
 }
   String id;
@@ -671,8 +688,9 @@ class ExplanationOfBenefit_Accident {
 		CodeableConcept type,
 		Address locationAddress,
 		Reference locationReference}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Accident newExplanationOfBenefit_Accident = new ExplanationOfBenefit_Accident(
-			id: await newId('ExplanationOfBenefit_Accident'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Accident'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			date: date,
@@ -681,6 +699,7 @@ class ExplanationOfBenefit_Accident {
 			locationAddress: locationAddress,
 			locationReference: locationReference,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Accident);
 	return newExplanationOfBenefit_Accident;
 }
   String id;
@@ -748,8 +767,9 @@ class ExplanationOfBenefit_Item {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_Detail> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Item newExplanationOfBenefit_Item = new ExplanationOfBenefit_Item(
-			id: await newId('ExplanationOfBenefit_Item'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -787,6 +807,7 @@ class ExplanationOfBenefit_Item {
 			adjudication: adjudication,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Item);
 	return newExplanationOfBenefit_Item;
 }
   String id;
@@ -883,8 +904,9 @@ class ExplanationOfBenefit_Adjudication {
 		Money amount,
 		double value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Adjudication newExplanationOfBenefit_Adjudication = new ExplanationOfBenefit_Adjudication(
-			id: await newId('ExplanationOfBenefit_Adjudication'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Adjudication'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -893,6 +915,7 @@ class ExplanationOfBenefit_Adjudication {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Adjudication);
 	return newExplanationOfBenefit_Adjudication;
 }
   String id;
@@ -943,8 +966,9 @@ class ExplanationOfBenefit_Detail {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_SubDetail> subDetail}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Detail newExplanationOfBenefit_Detail = new ExplanationOfBenefit_Detail(
-			id: await newId('ExplanationOfBenefit_Detail'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -965,6 +989,7 @@ class ExplanationOfBenefit_Detail {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Detail);
 	return newExplanationOfBenefit_Detail;
 }
   String id;
@@ -1038,8 +1063,9 @@ class ExplanationOfBenefit_SubDetail {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_SubDetail newExplanationOfBenefit_SubDetail = new ExplanationOfBenefit_SubDetail(
-			id: await newId('ExplanationOfBenefit_SubDetail'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -1059,6 +1085,7 @@ class ExplanationOfBenefit_SubDetail {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_SubDetail);
 	return newExplanationOfBenefit_SubDetail;
 }
   String id;
@@ -1141,8 +1168,9 @@ class ExplanationOfBenefit_AddItem {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_Detail1> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_AddItem newExplanationOfBenefit_AddItem = new ExplanationOfBenefit_AddItem(
-			id: await newId('ExplanationOfBenefit_AddItem'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_AddItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemSequence: itemSequence,
@@ -1173,6 +1201,7 @@ class ExplanationOfBenefit_AddItem {
 			adjudication: adjudication,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_AddItem);
 	return newExplanationOfBenefit_AddItem;
 }
   String id;
@@ -1261,8 +1290,9 @@ class ExplanationOfBenefit_Detail1 {
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication,
 		List<ExplanationOfBenefit_SubDetail1> subDetail}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Detail1 newExplanationOfBenefit_Detail1 = new ExplanationOfBenefit_Detail1(
-			id: await newId('ExplanationOfBenefit_Detail1'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Detail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -1277,6 +1307,7 @@ class ExplanationOfBenefit_Detail1 {
 			adjudication: adjudication,
 			subDetail: subDetail,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Detail1);
 	return newExplanationOfBenefit_Detail1;
 }
   String id;
@@ -1332,8 +1363,9 @@ class ExplanationOfBenefit_SubDetail1 {
 		List<int> noteNumber,
 		List<Element> elementNoteNumber,
 		List<ExplanationOfBenefit_Adjudication> adjudication}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_SubDetail1 newExplanationOfBenefit_SubDetail1 = new ExplanationOfBenefit_SubDetail1(
-			id: await newId('ExplanationOfBenefit_SubDetail1'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			productOrService: productOrService,
@@ -1347,6 +1379,7 @@ class ExplanationOfBenefit_SubDetail1 {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_SubDetail1);
 	return newExplanationOfBenefit_SubDetail1;
 }
   String id;
@@ -1392,13 +1425,15 @@ class ExplanationOfBenefit_Total {
 		List<Extension> modifierExtension,
 		CodeableConcept category,
 		Money amount}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Total newExplanationOfBenefit_Total = new ExplanationOfBenefit_Total(
-			id: await newId('ExplanationOfBenefit_Total'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Total'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Total);
 	return newExplanationOfBenefit_Total;
 }
   String id;
@@ -1433,8 +1468,9 @@ class ExplanationOfBenefit_Payment {
 		Element elementDate,
 		Money amount,
 		Identifier identifier}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Payment newExplanationOfBenefit_Payment = new ExplanationOfBenefit_Payment(
-			id: await newId('ExplanationOfBenefit_Payment'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Payment'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -1445,6 +1481,7 @@ class ExplanationOfBenefit_Payment {
 			amount: amount,
 			identifier: identifier,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Payment);
 	return newExplanationOfBenefit_Payment;
 }
   String id;
@@ -1489,8 +1526,9 @@ class ExplanationOfBenefit_ProcessNote {
 		String text,
 		Element elementText,
 		CodeableConcept language}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_ProcessNote newExplanationOfBenefit_ProcessNote = new ExplanationOfBenefit_ProcessNote(
-			id: await newId('ExplanationOfBenefit_ProcessNote'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_ProcessNote'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -1501,6 +1539,7 @@ class ExplanationOfBenefit_ProcessNote {
 			elementText: elementText,
 			language: language,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_ProcessNote);
 	return newExplanationOfBenefit_ProcessNote;
 }
   String id;
@@ -1549,8 +1588,9 @@ class ExplanationOfBenefit_BenefitBalance {
 		CodeableConcept unit,
 		CodeableConcept term,
 		List<ExplanationOfBenefit_Financial> financial}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_BenefitBalance newExplanationOfBenefit_BenefitBalance = new ExplanationOfBenefit_BenefitBalance(
-			id: await newId('ExplanationOfBenefit_BenefitBalance'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_BenefitBalance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -1565,6 +1605,7 @@ class ExplanationOfBenefit_BenefitBalance {
 			term: term,
 			financial: financial,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_BenefitBalance);
 	return newExplanationOfBenefit_BenefitBalance;
 }
   String id;
@@ -1619,8 +1660,9 @@ class ExplanationOfBenefit_Financial {
 		int usedUnsignedInt,
 		Element elementUsedUnsignedInt,
 		Money usedMoney}) async {
+	var fhirDb = new DatabaseHelper();
 	ExplanationOfBenefit_Financial newExplanationOfBenefit_Financial = new ExplanationOfBenefit_Financial(
-			id: await newId('ExplanationOfBenefit_Financial'),
+			id: await fhirDb.newResourceId('ExplanationOfBenefit_Financial'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -1633,6 +1675,7 @@ class ExplanationOfBenefit_Financial {
 			elementUsedUnsignedInt: elementUsedUnsignedInt,
 			usedMoney: usedMoney,
 );
+	int saved = await fhirDb.saveResource(newExplanationOfBenefit_Financial);
 	return newExplanationOfBenefit_Financial;
 }
   String id;
@@ -1675,6 +1718,7 @@ ExplanationOfBenefit_Financial(
 
 ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
   return ExplanationOfBenefit(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1887,6 +1931,7 @@ ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ExplanationOfBenefitToJson(
         ExplanationOfBenefit instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

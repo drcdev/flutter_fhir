@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class NutritionOrder {
 
 	static Future<NutritionOrder> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -52,8 +51,10 @@ class NutritionOrder {
 		List<NutritionOrder_Supplement> supplement,
 		NutritionOrder_EnteralFormula enteralFormula,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	NutritionOrder newNutritionOrder = new NutritionOrder(
-			id: await newId('NutritionOrder'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('NutritionOrder'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,9 +87,10 @@ class NutritionOrder {
 			enteralFormula: enteralFormula,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newNutritionOrder);
 	return newNutritionOrder;
 }
-  final String resourceType= 'NutritionOrder';
+  String resourceType= 'NutritionOrder';
   String id;
   Meta meta;
   String implicitRules;
@@ -123,7 +125,8 @@ class NutritionOrder {
   List<Annotation> note;
 
 NutritionOrder(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -175,8 +178,9 @@ class NutritionOrder_OralDiet {
 		List<CodeableConcept> fluidConsistencyType,
 		String instruction,
 		Element elementInstruction}) async {
+	var fhirDb = new DatabaseHelper();
 	NutritionOrder_OralDiet newNutritionOrder_OralDiet = new NutritionOrder_OralDiet(
-			id: await newId('NutritionOrder_OralDiet'),
+			id: await fhirDb.newResourceId('NutritionOrder_OralDiet'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -187,6 +191,7 @@ class NutritionOrder_OralDiet {
 			instruction: instruction,
 			elementInstruction: elementInstruction,
 );
+	int saved = await fhirDb.saveResource(newNutritionOrder_OralDiet);
 	return newNutritionOrder_OralDiet;
 }
   String id;
@@ -226,13 +231,15 @@ class NutritionOrder_Nutrient {
 		List<Extension> modifierExtension,
 		CodeableConcept modifier,
 		Quantity amount}) async {
+	var fhirDb = new DatabaseHelper();
 	NutritionOrder_Nutrient newNutritionOrder_Nutrient = new NutritionOrder_Nutrient(
-			id: await newId('NutritionOrder_Nutrient'),
+			id: await fhirDb.newResourceId('NutritionOrder_Nutrient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			modifier: modifier,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newNutritionOrder_Nutrient);
 	return newNutritionOrder_Nutrient;
 }
   String id;
@@ -262,13 +269,15 @@ class NutritionOrder_Texture {
 		List<Extension> modifierExtension,
 		CodeableConcept modifier,
 		CodeableConcept foodType}) async {
+	var fhirDb = new DatabaseHelper();
 	NutritionOrder_Texture newNutritionOrder_Texture = new NutritionOrder_Texture(
-			id: await newId('NutritionOrder_Texture'),
+			id: await fhirDb.newResourceId('NutritionOrder_Texture'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			modifier: modifier,
 			foodType: foodType,
 );
+	int saved = await fhirDb.saveResource(newNutritionOrder_Texture);
 	return newNutritionOrder_Texture;
 }
   String id;
@@ -303,8 +312,9 @@ class NutritionOrder_Supplement {
 		Quantity quantity,
 		String instruction,
 		Element elementInstruction}) async {
+	var fhirDb = new DatabaseHelper();
 	NutritionOrder_Supplement newNutritionOrder_Supplement = new NutritionOrder_Supplement(
-			id: await newId('NutritionOrder_Supplement'),
+			id: await fhirDb.newResourceId('NutritionOrder_Supplement'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -315,6 +325,7 @@ class NutritionOrder_Supplement {
 			instruction: instruction,
 			elementInstruction: elementInstruction,
 );
+	int saved = await fhirDb.saveResource(newNutritionOrder_Supplement);
 	return newNutritionOrder_Supplement;
 }
   String id;
@@ -364,8 +375,9 @@ class NutritionOrder_EnteralFormula {
 		Quantity maxVolumeToDeliver,
 		String administrationInstruction,
 		Element elementAdministrationInstruction}) async {
+	var fhirDb = new DatabaseHelper();
 	NutritionOrder_EnteralFormula newNutritionOrder_EnteralFormula = new NutritionOrder_EnteralFormula(
-			id: await newId('NutritionOrder_EnteralFormula'),
+			id: await fhirDb.newResourceId('NutritionOrder_EnteralFormula'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			baseFormulaType: baseFormulaType,
@@ -381,6 +393,7 @@ class NutritionOrder_EnteralFormula {
 			administrationInstruction: administrationInstruction,
 			elementAdministrationInstruction: elementAdministrationInstruction,
 );
+	int saved = await fhirDb.saveResource(newNutritionOrder_EnteralFormula);
 	return newNutritionOrder_EnteralFormula;
 }
   String id;
@@ -432,8 +445,9 @@ class NutritionOrder_Administration {
 		Quantity quantity,
 		Quantity rateQuantity,
 		Ratio rateRatio}) async {
+	var fhirDb = new DatabaseHelper();
 	NutritionOrder_Administration newNutritionOrder_Administration = new NutritionOrder_Administration(
-			id: await newId('NutritionOrder_Administration'),
+			id: await fhirDb.newResourceId('NutritionOrder_Administration'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			schedule: schedule,
@@ -441,6 +455,7 @@ class NutritionOrder_Administration {
 			rateQuantity: rateQuantity,
 			rateRatio: rateRatio,
 );
+	int saved = await fhirDb.saveResource(newNutritionOrder_Administration);
 	return newNutritionOrder_Administration;
 }
   String id;
@@ -473,6 +488,7 @@ NutritionOrder_Administration(
 
 NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
   return NutritionOrder(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -579,6 +595,7 @@ NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$NutritionOrderToJson(NutritionOrder instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

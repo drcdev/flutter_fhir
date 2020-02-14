@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -21,8 +19,9 @@ class UsageContext {
 		Quantity valueQuantity,
 		Range valueRange,
 		Reference valueReference}) async {
+	var fhirDb = new DatabaseHelper();
 	UsageContext newUsageContext = new UsageContext(
-			id: await newId('UsageContext'),
+			id: await fhirDb.newResourceId('UsageContext'),
 			extension: extension,
 			code: code,
 			valueCodeableConcept: valueCodeableConcept,
@@ -30,6 +29,7 @@ class UsageContext {
 			valueRange: valueRange,
 			valueReference: valueReference,
 );
+	int saved = await fhirDb.saveResource(newUsageContext);
 	return newUsageContext;
 }
   String id;

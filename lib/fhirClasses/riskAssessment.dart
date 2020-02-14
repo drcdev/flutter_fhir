@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class RiskAssessment {
 
 	static Future<RiskAssessment> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -50,8 +49,10 @@ class RiskAssessment {
 		String mitigation,
 		Element elementMitigation,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskAssessment newRiskAssessment = new RiskAssessment(
-			id: await newId('RiskAssessment'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('RiskAssessment'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -83,9 +84,10 @@ class RiskAssessment {
 			elementMitigation: elementMitigation,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newRiskAssessment);
 	return newRiskAssessment;
 }
-  final String resourceType= 'RiskAssessment';
+  String resourceType= 'RiskAssessment';
   String id;
   Meta meta;
   String implicitRules;
@@ -119,7 +121,8 @@ class RiskAssessment {
   List<Annotation> note;
 
 RiskAssessment(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -174,8 +177,9 @@ class RiskAssessment_Prediction {
 		Range whenRange,
 		String rationale,
 		Element elementRationale}) async {
+	var fhirDb = new DatabaseHelper();
 	RiskAssessment_Prediction newRiskAssessment_Prediction = new RiskAssessment_Prediction(
-			id: await newId('RiskAssessment_Prediction'),
+			id: await fhirDb.newResourceId('RiskAssessment_Prediction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			outcome: outcome,
@@ -190,6 +194,7 @@ class RiskAssessment_Prediction {
 			rationale: rationale,
 			elementRationale: elementRationale,
 );
+	int saved = await fhirDb.saveResource(newRiskAssessment_Prediction);
 	return newRiskAssessment_Prediction;
 }
   String id;
@@ -236,6 +241,7 @@ RiskAssessment_Prediction(
 
 RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
   return RiskAssessment(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -335,6 +341,7 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RiskAssessmentToJson(RiskAssessment instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

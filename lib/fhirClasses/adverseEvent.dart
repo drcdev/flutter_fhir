@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class AdverseEvent {
 
 	static Future<AdverseEvent> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -50,8 +49,10 @@ class AdverseEvent {
 		List<Reference> subjectMedicalHistory,
 		List<Reference> referenceDocument,
 		List<Reference> study}) async {
+	var fhirDb = new DatabaseHelper();
 	AdverseEvent newAdverseEvent = new AdverseEvent(
-			id: await newId('AdverseEvent'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('AdverseEvent'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,9 +87,10 @@ class AdverseEvent {
 			referenceDocument: referenceDocument,
 			study: study,
 );
+	int saved = await fhirDb.saveResource(newAdverseEvent);
 	return newAdverseEvent;
 }
-  final String resourceType= 'AdverseEvent';
+  String resourceType= 'AdverseEvent';
   String id;
   Meta meta;
   String implicitRules;
@@ -125,7 +127,8 @@ class AdverseEvent {
   List<Reference> study;
 
 AdverseEvent(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -174,13 +177,15 @@ class AdverseEvent_SuspectEntity {
 		List<Extension> modifierExtension,
 		Reference instance,
 		List<AdverseEvent_Causality> causality}) async {
+	var fhirDb = new DatabaseHelper();
 	AdverseEvent_SuspectEntity newAdverseEvent_SuspectEntity = new AdverseEvent_SuspectEntity(
-			id: await newId('AdverseEvent_SuspectEntity'),
+			id: await fhirDb.newResourceId('AdverseEvent_SuspectEntity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			instance: instance,
 			causality: causality,
 );
+	int saved = await fhirDb.saveResource(newAdverseEvent_SuspectEntity);
 	return newAdverseEvent_SuspectEntity;
 }
   String id;
@@ -213,8 +218,9 @@ class AdverseEvent_Causality {
 		Element elementProductRelatedness,
 		Reference author,
 		CodeableConcept method}) async {
+	var fhirDb = new DatabaseHelper();
 	AdverseEvent_Causality newAdverseEvent_Causality = new AdverseEvent_Causality(
-			id: await newId('AdverseEvent_Causality'),
+			id: await fhirDb.newResourceId('AdverseEvent_Causality'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			assessment: assessment,
@@ -223,6 +229,7 @@ class AdverseEvent_Causality {
 			author: author,
 			method: method,
 );
+	int saved = await fhirDb.saveResource(newAdverseEvent_Causality);
 	return newAdverseEvent_Causality;
 }
   String id;
@@ -257,6 +264,7 @@ AdverseEvent_Causality(
 
 AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
   return AdverseEvent(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -367,6 +375,7 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AdverseEventToJson(AdverseEvent instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

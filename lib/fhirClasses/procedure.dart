@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/age.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Procedure {
 
 	static Future<Procedure> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -66,8 +65,10 @@ class Procedure {
 		List<Procedure_FocalDevice> focalDevice,
 		List<Reference> usedReference,
 		List<CodeableConcept> usedCode}) async {
+	var fhirDb = new DatabaseHelper();
 	Procedure newProcedure = new Procedure(
-			id: await newId('Procedure'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Procedure'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -114,9 +115,10 @@ class Procedure {
 			usedReference: usedReference,
 			usedCode: usedCode,
 );
+	int saved = await fhirDb.saveResource(newProcedure);
 	return newProcedure;
 }
-  final String resourceType= 'Procedure';
+  String resourceType= 'Procedure';
   String id;
   Meta meta;
   String implicitRules;
@@ -165,7 +167,8 @@ class Procedure {
   List<CodeableConcept> usedCode;
 
 Procedure(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -227,14 +230,16 @@ class Procedure_Performer {
 		CodeableConcept function,
 		Reference actor,
 		Reference onBehalfOf}) async {
+	var fhirDb = new DatabaseHelper();
 	Procedure_Performer newProcedure_Performer = new Procedure_Performer(
-			id: await newId('Procedure_Performer'),
+			id: await fhirDb.newResourceId('Procedure_Performer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			function: function,
 			actor: actor,
 			onBehalfOf: onBehalfOf,
 );
+	int saved = await fhirDb.saveResource(newProcedure_Performer);
 	return newProcedure_Performer;
 }
   String id;
@@ -266,13 +271,15 @@ class Procedure_FocalDevice {
 		List<Extension> modifierExtension,
 		CodeableConcept action,
 		Reference manipulated}) async {
+	var fhirDb = new DatabaseHelper();
 	Procedure_FocalDevice newProcedure_FocalDevice = new Procedure_FocalDevice(
-			id: await newId('Procedure_FocalDevice'),
+			id: await fhirDb.newResourceId('Procedure_FocalDevice'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
 			manipulated: manipulated,
 );
+	int saved = await fhirDb.saveResource(newProcedure_FocalDevice);
 	return newProcedure_FocalDevice;
 }
   String id;
@@ -301,6 +308,7 @@ Procedure_FocalDevice(
 
 Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
   return Procedure(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -460,6 +468,7 @@ Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ProcedureToJson(Procedure instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

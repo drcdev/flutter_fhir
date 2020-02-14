@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Binary {
 
 	static Future<Binary> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -21,8 +21,10 @@ class Binary {
 		Reference securityContext,
 		String data,
 		Element elementData}) async {
+	var fhirDb = new DatabaseHelper();
 	Binary newBinary = new Binary(
-			id: await newId('Binary'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Binary'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -34,9 +36,10 @@ class Binary {
 			data: data,
 			elementData: elementData,
 );
+	int saved = await fhirDb.saveResource(newBinary);
 	return newBinary;
 }
-  final String resourceType= 'Binary';
+  String resourceType= 'Binary';
   String id;
   Meta meta;
   String implicitRules;
@@ -50,7 +53,8 @@ class Binary {
   Element elementData;
 
 Binary(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -75,6 +79,7 @@ Binary(
 
 Binary _$BinaryFromJson(Map<String, dynamic> json) {
   return Binary(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -103,6 +108,7 @@ Binary _$BinaryFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$BinaryToJson(Binary instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

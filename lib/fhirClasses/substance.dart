@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Substance {
 
 	static Future<Substance> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -37,8 +36,10 @@ class Substance {
 		Element elementDescription,
 		List<Substance_Instance> instance,
 		List<Substance_Ingredient> ingredient}) async {
+	var fhirDb = new DatabaseHelper();
 	Substance newSubstance = new Substance(
-			id: await newId('Substance'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Substance'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -58,9 +59,10 @@ class Substance {
 			instance: instance,
 			ingredient: ingredient,
 );
+	int saved = await fhirDb.saveResource(newSubstance);
 	return newSubstance;
 }
-  final String resourceType= 'Substance';
+  String resourceType= 'Substance';
   String id;
   Meta meta;
   String implicitRules;
@@ -82,7 +84,8 @@ class Substance {
   List<Substance_Ingredient> ingredient;
 
 Substance(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -118,8 +121,9 @@ class Substance_Instance {
 		DateTime expiry,
 		Element elementExpiry,
 		Quantity quantity}) async {
+	var fhirDb = new DatabaseHelper();
 	Substance_Instance newSubstance_Instance = new Substance_Instance(
-			id: await newId('Substance_Instance'),
+			id: await fhirDb.newResourceId('Substance_Instance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -127,6 +131,7 @@ class Substance_Instance {
 			elementExpiry: elementExpiry,
 			quantity: quantity,
 );
+	int saved = await fhirDb.saveResource(newSubstance_Instance);
 	return newSubstance_Instance;
 }
   String id;
@@ -161,14 +166,16 @@ class Substance_Ingredient {
 		Ratio quantity,
 		CodeableConcept substanceCodeableConcept,
 		Reference substanceReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Substance_Ingredient newSubstance_Ingredient = new Substance_Ingredient(
-			id: await newId('Substance_Ingredient'),
+			id: await fhirDb.newResourceId('Substance_Ingredient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			substanceCodeableConcept: substanceCodeableConcept,
 			substanceReference: substanceReference,
 );
+	int saved = await fhirDb.saveResource(newSubstance_Ingredient);
 	return newSubstance_Ingredient;
 }
   String id;
@@ -199,6 +206,7 @@ Substance_Ingredient(
 
 Substance _$SubstanceFromJson(Map<String, dynamic> json) {
   return Substance(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -261,6 +269,7 @@ Substance _$SubstanceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SubstanceToJson(Substance instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

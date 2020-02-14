@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CarePlan {
 
 	static Future<CarePlan> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -59,8 +58,10 @@ class CarePlan {
 		List<Reference> goal,
 		List<CarePlan_Activity> activity,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	CarePlan newCarePlan = new CarePlan(
-			id: await newId('CarePlan'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CarePlan'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -100,9 +101,10 @@ class CarePlan {
 			activity: activity,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newCarePlan);
 	return newCarePlan;
 }
-  final String resourceType= 'CarePlan';
+  String resourceType= 'CarePlan';
   String id;
   Meta meta;
   String implicitRules;
@@ -144,7 +146,8 @@ class CarePlan {
   List<Annotation> note;
 
 CarePlan(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -201,8 +204,9 @@ class CarePlan_Activity {
 		List<Annotation> progress,
 		Reference reference,
 		CarePlan_Detail detail}) async {
+	var fhirDb = new DatabaseHelper();
 	CarePlan_Activity newCarePlan_Activity = new CarePlan_Activity(
-			id: await newId('CarePlan_Activity'),
+			id: await fhirDb.newResourceId('CarePlan_Activity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			outcomeCodeableConcept: outcomeCodeableConcept,
@@ -211,6 +215,7 @@ class CarePlan_Activity {
 			reference: reference,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newCarePlan_Activity);
 	return newCarePlan_Activity;
 }
   String id;
@@ -270,8 +275,9 @@ class CarePlan_Detail {
 		Quantity quantity,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	CarePlan_Detail newCarePlan_Detail = new CarePlan_Detail(
-			id: await newId('CarePlan_Detail'),
+			id: await fhirDb.newResourceId('CarePlan_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kind: kind,
@@ -301,6 +307,7 @@ class CarePlan_Detail {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newCarePlan_Detail);
 	return newCarePlan_Detail;
 }
   String id;
@@ -377,6 +384,7 @@ CarePlan_Detail(
 
 CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
   return CarePlan(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -502,6 +510,7 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CarePlanToJson(CarePlan instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

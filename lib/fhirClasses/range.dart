@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -13,12 +11,14 @@ class Range {
 		List<Extension> extension,
 		Quantity low,
 		Quantity high}) async {
+	var fhirDb = new DatabaseHelper();
 	Range newRange = new Range(
-			id: await newId('Range'),
+			id: await fhirDb.newResourceId('Range'),
 			extension: extension,
 			low: low,
 			high: high,
 );
+	int saved = await fhirDb.saveResource(newRange);
 	return newRange;
 }
   String id;

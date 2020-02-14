@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/substanceAmount.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SubstancePolymer {
 
 	static Future<SubstancePolymer> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -32,8 +32,10 @@ class SubstancePolymer {
 		List<Element> elementModification,
 		List<SubstancePolymer_MonomerSet> monomerSet,
 		List<SubstancePolymer_Repeat> repeat}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstancePolymer newSubstancePolymer = new SubstancePolymer(
-			id: await newId('SubstancePolymer'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SubstancePolymer'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,9 +53,10 @@ class SubstancePolymer {
 			monomerSet: monomerSet,
 			repeat: repeat,
 );
+	int saved = await fhirDb.saveResource(newSubstancePolymer);
 	return newSubstancePolymer;
 }
-  final String resourceType= 'SubstancePolymer';
+  String resourceType= 'SubstancePolymer';
   String id;
   Meta meta;
   String implicitRules;
@@ -73,7 +76,8 @@ class SubstancePolymer {
   List<SubstancePolymer_Repeat> repeat;
 
 SubstancePolymer(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -105,13 +109,15 @@ class SubstancePolymer_MonomerSet {
 		List<Extension> modifierExtension,
 		CodeableConcept ratioType,
 		List<SubstancePolymer_StartingMaterial> startingMaterial}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstancePolymer_MonomerSet newSubstancePolymer_MonomerSet = new SubstancePolymer_MonomerSet(
-			id: await newId('SubstancePolymer_MonomerSet'),
+			id: await fhirDb.newResourceId('SubstancePolymer_MonomerSet'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			ratioType: ratioType,
 			startingMaterial: startingMaterial,
 );
+	int saved = await fhirDb.saveResource(newSubstancePolymer_MonomerSet);
 	return newSubstancePolymer_MonomerSet;
 }
   String id;
@@ -144,8 +150,9 @@ class SubstancePolymer_StartingMaterial {
 		bool isDefining,
 		Element elementIsDefining,
 		SubstanceAmount amount}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstancePolymer_StartingMaterial newSubstancePolymer_StartingMaterial = new SubstancePolymer_StartingMaterial(
-			id: await newId('SubstancePolymer_StartingMaterial'),
+			id: await fhirDb.newResourceId('SubstancePolymer_StartingMaterial'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			material: material,
@@ -154,6 +161,7 @@ class SubstancePolymer_StartingMaterial {
 			elementIsDefining: elementIsDefining,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newSubstancePolymer_StartingMaterial);
 	return newSubstancePolymer_StartingMaterial;
 }
   String id;
@@ -193,8 +201,9 @@ class SubstancePolymer_Repeat {
 		Element elementAverageMolecularFormula,
 		CodeableConcept repeatUnitAmountType,
 		List<SubstancePolymer_RepeatUnit> repeatUnit}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstancePolymer_Repeat newSubstancePolymer_Repeat = new SubstancePolymer_Repeat(
-			id: await newId('SubstancePolymer_Repeat'),
+			id: await fhirDb.newResourceId('SubstancePolymer_Repeat'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			numberOfUnits: numberOfUnits,
@@ -204,6 +213,7 @@ class SubstancePolymer_Repeat {
 			repeatUnitAmountType: repeatUnitAmountType,
 			repeatUnit: repeatUnit,
 );
+	int saved = await fhirDb.saveResource(newSubstancePolymer_Repeat);
 	return newSubstancePolymer_Repeat;
 }
   String id;
@@ -245,8 +255,9 @@ class SubstancePolymer_RepeatUnit {
 		SubstanceAmount amount,
 		List<SubstancePolymer_DegreeOfPolymerisation> degreeOfPolymerisation,
 		List<SubstancePolymer_StructuralRepresentation> structuralRepresentation}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstancePolymer_RepeatUnit newSubstancePolymer_RepeatUnit = new SubstancePolymer_RepeatUnit(
-			id: await newId('SubstancePolymer_RepeatUnit'),
+			id: await fhirDb.newResourceId('SubstancePolymer_RepeatUnit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			orientationOfPolymerisation: orientationOfPolymerisation,
@@ -256,6 +267,7 @@ class SubstancePolymer_RepeatUnit {
 			degreeOfPolymerisation: degreeOfPolymerisation,
 			structuralRepresentation: structuralRepresentation,
 );
+	int saved = await fhirDb.saveResource(newSubstancePolymer_RepeatUnit);
 	return newSubstancePolymer_RepeatUnit;
 }
   String id;
@@ -293,13 +305,15 @@ class SubstancePolymer_DegreeOfPolymerisation {
 		List<Extension> modifierExtension,
 		CodeableConcept degree,
 		SubstanceAmount amount}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstancePolymer_DegreeOfPolymerisation newSubstancePolymer_DegreeOfPolymerisation = new SubstancePolymer_DegreeOfPolymerisation(
-			id: await newId('SubstancePolymer_DegreeOfPolymerisation'),
+			id: await fhirDb.newResourceId('SubstancePolymer_DegreeOfPolymerisation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			degree: degree,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newSubstancePolymer_DegreeOfPolymerisation);
 	return newSubstancePolymer_DegreeOfPolymerisation;
 }
   String id;
@@ -331,8 +345,9 @@ class SubstancePolymer_StructuralRepresentation {
 		String representation,
 		Element elementRepresentation,
 		Attachment attachment}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstancePolymer_StructuralRepresentation newSubstancePolymer_StructuralRepresentation = new SubstancePolymer_StructuralRepresentation(
-			id: await newId('SubstancePolymer_StructuralRepresentation'),
+			id: await fhirDb.newResourceId('SubstancePolymer_StructuralRepresentation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -340,6 +355,7 @@ class SubstancePolymer_StructuralRepresentation {
 			elementRepresentation: elementRepresentation,
 			attachment: attachment,
 );
+	int saved = await fhirDb.saveResource(newSubstancePolymer_StructuralRepresentation);
 	return newSubstancePolymer_StructuralRepresentation;
 }
   String id;
@@ -372,6 +388,7 @@ SubstancePolymer_StructuralRepresentation(
 
 SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
   return SubstancePolymer(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -432,6 +449,7 @@ SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SubstancePolymerToJson(SubstancePolymer instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class OperationDefinition {
 
 	static Future<OperationDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -70,8 +69,10 @@ class OperationDefinition {
 		String outputProfile,
 		List<OperationDefinition_Parameter> parameter,
 		List<OperationDefinition_Overload> overload}) async {
+	var fhirDb = new DatabaseHelper();
 	OperationDefinition newOperationDefinition = new OperationDefinition(
-			id: await newId('OperationDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('OperationDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -126,9 +127,10 @@ class OperationDefinition {
 			parameter: parameter,
 			overload: overload,
 );
+	int saved = await fhirDb.saveResource(newOperationDefinition);
 	return newOperationDefinition;
 }
-  final String resourceType= 'OperationDefinition';
+  String resourceType= 'OperationDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -185,7 +187,8 @@ class OperationDefinition {
   List<OperationDefinition_Overload> overload;
 
 OperationDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -270,8 +273,9 @@ class OperationDefinition_Parameter {
 		OperationDefinition_Binding binding,
 		List<OperationDefinition_ReferencedFrom> referencedFrom,
 		List<OperationDefinition_Parameter> part}) async {
+	var fhirDb = new DatabaseHelper();
 	OperationDefinition_Parameter newOperationDefinition_Parameter = new OperationDefinition_Parameter(
-			id: await newId('OperationDefinition_Parameter'),
+			id: await fhirDb.newResourceId('OperationDefinition_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -293,6 +297,7 @@ class OperationDefinition_Parameter {
 			referencedFrom: referencedFrom,
 			part: part,
 );
+	int saved = await fhirDb.saveResource(newOperationDefinition_Parameter);
 	return newOperationDefinition_Parameter;
 }
   String id;
@@ -355,14 +360,16 @@ class OperationDefinition_Binding {
 		String strength,
 		Element elementStrength,
 		String valueSet}) async {
+	var fhirDb = new DatabaseHelper();
 	OperationDefinition_Binding newOperationDefinition_Binding = new OperationDefinition_Binding(
-			id: await newId('OperationDefinition_Binding'),
+			id: await fhirDb.newResourceId('OperationDefinition_Binding'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			strength: strength,
 			elementStrength: elementStrength,
 			valueSet: valueSet,
 );
+	int saved = await fhirDb.saveResource(newOperationDefinition_Binding);
 	return newOperationDefinition_Binding;
 }
   String id;
@@ -396,8 +403,9 @@ class OperationDefinition_ReferencedFrom {
 		Element elementSource,
 		String sourceId,
 		Element elementSourceId}) async {
+	var fhirDb = new DatabaseHelper();
 	OperationDefinition_ReferencedFrom newOperationDefinition_ReferencedFrom = new OperationDefinition_ReferencedFrom(
-			id: await newId('OperationDefinition_ReferencedFrom'),
+			id: await fhirDb.newResourceId('OperationDefinition_ReferencedFrom'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			source: source,
@@ -405,6 +413,7 @@ class OperationDefinition_ReferencedFrom {
 			sourceId: sourceId,
 			elementSourceId: elementSourceId,
 );
+	int saved = await fhirDb.saveResource(newOperationDefinition_ReferencedFrom);
 	return newOperationDefinition_ReferencedFrom;
 }
   String id;
@@ -440,8 +449,9 @@ class OperationDefinition_Overload {
 		List<Element> elementParameterName,
 		String comment,
 		Element elementComment}) async {
+	var fhirDb = new DatabaseHelper();
 	OperationDefinition_Overload newOperationDefinition_Overload = new OperationDefinition_Overload(
-			id: await newId('OperationDefinition_Overload'),
+			id: await fhirDb.newResourceId('OperationDefinition_Overload'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			parameterName: parameterName,
@@ -449,6 +459,7 @@ class OperationDefinition_Overload {
 			comment: comment,
 			elementComment: elementComment,
 );
+	int saved = await fhirDb.saveResource(newOperationDefinition_Overload);
 	return newOperationDefinition_Overload;
 }
   String id;
@@ -481,6 +492,7 @@ OperationDefinition_Overload(
 
 OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
   return OperationDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -615,6 +627,7 @@ OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$OperationDefinitionToJson(
         OperationDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

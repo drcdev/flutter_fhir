@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SubstanceProtein {
 
 	static Future<SubstanceProtein> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -31,8 +31,10 @@ class SubstanceProtein {
 		List<String> disulfideLinkage,
 		List<Element> elementDisulfideLinkage,
 		List<SubstanceProtein_Subunit> subunit}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceProtein newSubstanceProtein = new SubstanceProtein(
-			id: await newId('SubstanceProtein'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SubstanceProtein'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -49,9 +51,10 @@ class SubstanceProtein {
 			elementDisulfideLinkage: elementDisulfideLinkage,
 			subunit: subunit,
 );
+	int saved = await fhirDb.saveResource(newSubstanceProtein);
 	return newSubstanceProtein;
 }
-  final String resourceType= 'SubstanceProtein';
+  String resourceType= 'SubstanceProtein';
   String id;
   Meta meta;
   String implicitRules;
@@ -70,7 +73,8 @@ class SubstanceProtein {
   List<SubstanceProtein_Subunit> subunit;
 
 SubstanceProtein(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -112,8 +116,9 @@ class SubstanceProtein_Subunit {
 		Identifier cTerminalModificationId,
 		String cTerminalModification,
 		Element elementCTerminalModification}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceProtein_Subunit newSubstanceProtein_Subunit = new SubstanceProtein_Subunit(
-			id: await newId('SubstanceProtein_Subunit'),
+			id: await fhirDb.newResourceId('SubstanceProtein_Subunit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			subunit: subunit,
@@ -130,6 +135,7 @@ class SubstanceProtein_Subunit {
 			cTerminalModification: cTerminalModification,
 			elementCTerminalModification: elementCTerminalModification,
 );
+	int saved = await fhirDb.saveResource(newSubstanceProtein_Subunit);
 	return newSubstanceProtein_Subunit;
 }
   String id;
@@ -180,6 +186,7 @@ SubstanceProtein_Subunit(
 
 SubstanceProtein _$SubstanceProteinFromJson(Map<String, dynamic> json) {
   return SubstanceProtein(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -233,6 +240,7 @@ SubstanceProtein _$SubstanceProteinFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SubstanceProteinToJson(SubstanceProtein instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

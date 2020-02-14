@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -18,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CareTeam {
 
 	static Future<CareTeam> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -43,8 +43,10 @@ class CareTeam {
 		List<Reference> managingOrganization,
 		List<ContactPoint> telecom,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	CareTeam newCareTeam = new CareTeam(
-			id: await newId('CareTeam'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CareTeam'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -70,9 +72,10 @@ class CareTeam {
 			telecom: telecom,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newCareTeam);
 	return newCareTeam;
 }
-  final String resourceType= 'CareTeam';
+  String resourceType= 'CareTeam';
   String id;
   Meta meta;
   String implicitRules;
@@ -100,7 +103,8 @@ class CareTeam {
   List<Annotation> note;
 
 CareTeam(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -142,8 +146,9 @@ class CareTeam_Participant {
 		Reference member,
 		Reference onBehalfOf,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	CareTeam_Participant newCareTeam_Participant = new CareTeam_Participant(
-			id: await newId('CareTeam_Participant'),
+			id: await fhirDb.newResourceId('CareTeam_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
@@ -151,6 +156,7 @@ class CareTeam_Participant {
 			onBehalfOf: onBehalfOf,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newCareTeam_Participant);
 	return newCareTeam_Participant;
 }
   String id;
@@ -183,6 +189,7 @@ CareTeam_Participant(
 
 CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
   return CareTeam(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -267,6 +274,7 @@ CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CareTeamToJson(CareTeam instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

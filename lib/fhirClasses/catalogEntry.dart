@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CatalogEntry {
 
 	static Future<CatalogEntry> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -44,8 +43,10 @@ class CatalogEntry {
 		List<CodeableConcept> additionalCharacteristic,
 		List<CodeableConcept> additionalClassification,
 		List<CatalogEntry_RelatedEntry> relatedEntry}) async {
+	var fhirDb = new DatabaseHelper();
 	CatalogEntry newCatalogEntry = new CatalogEntry(
-			id: await newId('CatalogEntry'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CatalogEntry'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -73,9 +74,10 @@ class CatalogEntry {
 			additionalClassification: additionalClassification,
 			relatedEntry: relatedEntry,
 );
+	int saved = await fhirDb.saveResource(newCatalogEntry);
 	return newCatalogEntry;
 }
-  final String resourceType= 'CatalogEntry';
+  String resourceType= 'CatalogEntry';
   String id;
   Meta meta;
   String implicitRules;
@@ -105,7 +107,8 @@ class CatalogEntry {
   List<CatalogEntry_RelatedEntry> relatedEntry;
 
 CatalogEntry(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -148,14 +151,16 @@ class CatalogEntry_RelatedEntry {
 		String relationtype,
 		Element elementRelationtype,
 		Reference item}) async {
+	var fhirDb = new DatabaseHelper();
 	CatalogEntry_RelatedEntry newCatalogEntry_RelatedEntry = new CatalogEntry_RelatedEntry(
-			id: await newId('CatalogEntry_RelatedEntry'),
+			id: await fhirDb.newResourceId('CatalogEntry_RelatedEntry'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			relationtype: relationtype,
 			elementRelationtype: elementRelationtype,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newCatalogEntry_RelatedEntry);
 	return newCatalogEntry_RelatedEntry;
 }
   String id;
@@ -186,6 +191,7 @@ CatalogEntry_RelatedEntry(
 
 CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
   return CatalogEntry(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -276,6 +282,7 @@ CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class DeviceDefinition {
 
 	static Future<DeviceDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -59,8 +58,10 @@ class DeviceDefinition {
 		Quantity quantity,
 		Reference parentDevice,
 		List<DeviceDefinition_Material> material}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceDefinition newDeviceDefinition = new DeviceDefinition(
-			id: await newId('DeviceDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('DeviceDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -99,9 +100,10 @@ class DeviceDefinition {
 			parentDevice: parentDevice,
 			material: material,
 );
+	int saved = await fhirDb.saveResource(newDeviceDefinition);
 	return newDeviceDefinition;
 }
-  final String resourceType= 'DeviceDefinition';
+  String resourceType= 'DeviceDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -142,7 +144,8 @@ class DeviceDefinition {
   List<DeviceDefinition_Material> material;
 
 DeviceDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -199,8 +202,9 @@ class DeviceDefinition_UdiDeviceIdentifier {
 		Element elementIssuer,
 		String jurisdiction,
 		Element elementJurisdiction}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceDefinition_UdiDeviceIdentifier newDeviceDefinition_UdiDeviceIdentifier = new DeviceDefinition_UdiDeviceIdentifier(
-			id: await newId('DeviceDefinition_UdiDeviceIdentifier'),
+			id: await fhirDb.newResourceId('DeviceDefinition_UdiDeviceIdentifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			deviceIdentifier: deviceIdentifier,
@@ -210,6 +214,7 @@ class DeviceDefinition_UdiDeviceIdentifier {
 			jurisdiction: jurisdiction,
 			elementJurisdiction: elementJurisdiction,
 );
+	int saved = await fhirDb.saveResource(newDeviceDefinition_UdiDeviceIdentifier);
 	return newDeviceDefinition_UdiDeviceIdentifier;
 }
   String id;
@@ -249,8 +254,9 @@ class DeviceDefinition_DeviceName {
 		Element elementName,
 		String type,
 		Element elementType}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceDefinition_DeviceName newDeviceDefinition_DeviceName = new DeviceDefinition_DeviceName(
-			id: await newId('DeviceDefinition_DeviceName'),
+			id: await fhirDb.newResourceId('DeviceDefinition_DeviceName'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -258,6 +264,7 @@ class DeviceDefinition_DeviceName {
 			type: type,
 			elementType: elementType,
 );
+	int saved = await fhirDb.saveResource(newDeviceDefinition_DeviceName);
 	return newDeviceDefinition_DeviceName;
 }
   String id;
@@ -293,8 +300,9 @@ class DeviceDefinition_Specialization {
 		Element elementSystemType,
 		String version,
 		Element elementVersion}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceDefinition_Specialization newDeviceDefinition_Specialization = new DeviceDefinition_Specialization(
-			id: await newId('DeviceDefinition_Specialization'),
+			id: await fhirDb.newResourceId('DeviceDefinition_Specialization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			systemType: systemType,
@@ -302,6 +310,7 @@ class DeviceDefinition_Specialization {
 			version: version,
 			elementVersion: elementVersion,
 );
+	int saved = await fhirDb.saveResource(newDeviceDefinition_Specialization);
 	return newDeviceDefinition_Specialization;
 }
   String id;
@@ -335,13 +344,15 @@ class DeviceDefinition_Capability {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<CodeableConcept> description}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceDefinition_Capability newDeviceDefinition_Capability = new DeviceDefinition_Capability(
-			id: await newId('DeviceDefinition_Capability'),
+			id: await fhirDb.newResourceId('DeviceDefinition_Capability'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			description: description,
 );
+	int saved = await fhirDb.saveResource(newDeviceDefinition_Capability);
 	return newDeviceDefinition_Capability;
 }
   String id;
@@ -372,14 +383,16 @@ class DeviceDefinition_Property {
 		CodeableConcept type,
 		List<Quantity> valueQuantity,
 		List<CodeableConcept> valueCode}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceDefinition_Property newDeviceDefinition_Property = new DeviceDefinition_Property(
-			id: await newId('DeviceDefinition_Property'),
+			id: await fhirDb.newResourceId('DeviceDefinition_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			valueQuantity: valueQuantity,
 			valueCode: valueCode,
 );
+	int saved = await fhirDb.saveResource(newDeviceDefinition_Property);
 	return newDeviceDefinition_Property;
 }
   String id;
@@ -414,8 +427,9 @@ class DeviceDefinition_Material {
 		Element elementAlternate,
 		bool allergenicIndicator,
 		Element elementAllergenicIndicator}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceDefinition_Material newDeviceDefinition_Material = new DeviceDefinition_Material(
-			id: await newId('DeviceDefinition_Material'),
+			id: await fhirDb.newResourceId('DeviceDefinition_Material'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substance: substance,
@@ -424,6 +438,7 @@ class DeviceDefinition_Material {
 			allergenicIndicator: allergenicIndicator,
 			elementAllergenicIndicator: elementAllergenicIndicator,
 );
+	int saved = await fhirDb.saveResource(newDeviceDefinition_Material);
 	return newDeviceDefinition_Material;
 }
   String id;
@@ -458,6 +473,7 @@ DeviceDefinition_Material(
 
 DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
   return DeviceDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -593,6 +609,7 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DeviceDefinitionToJson(DeviceDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

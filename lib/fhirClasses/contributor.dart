@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -17,8 +15,9 @@ class Contributor {
 		String name,
 		Element elementName,
 		List<ContactDetail> contact}) async {
+	var fhirDb = new DatabaseHelper();
 	Contributor newContributor = new Contributor(
-			id: await newId('Contributor'),
+			id: await fhirDb.newResourceId('Contributor'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
@@ -26,6 +25,7 @@ class Contributor {
 			elementName: elementName,
 			contact: contact,
 );
+	int saved = await fhirDb.saveResource(newContributor);
 	return newContributor;
 }
   String id;

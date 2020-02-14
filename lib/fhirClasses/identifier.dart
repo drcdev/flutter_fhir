@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -23,8 +21,9 @@ class Identifier {
 		Element elementValue,
 		Period period,
 		Reference assigner}) async {
+	var fhirDb = new DatabaseHelper();
 	Identifier newIdentifier = new Identifier(
-			id: await newId('Identifier'),
+			id: await fhirDb.newResourceId('Identifier'),
 			extension: extension,
 			use: use,
 			elementUse: elementUse,
@@ -36,6 +35,7 @@ class Identifier {
 			period: period,
 			assigner: assigner,
 );
+	int saved = await fhirDb.saveResource(newIdentifier);
 	return newIdentifier;
 }
   String id;

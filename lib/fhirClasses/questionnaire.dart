@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -21,6 +20,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Questionnaire {
 
 	static Future<Questionnaire> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -67,8 +67,10 @@ class Questionnaire {
 		Period effectivePeriod,
 		List<Coding> code,
 		List<Questionnaire_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	Questionnaire newQuestionnaire = new Questionnaire(
-			id: await newId('Questionnaire'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Questionnaire'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -115,9 +117,10 @@ class Questionnaire {
 			code: code,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaire);
 	return newQuestionnaire;
 }
-  final String resourceType= 'Questionnaire';
+  String resourceType= 'Questionnaire';
   String id;
   Meta meta;
   String implicitRules;
@@ -166,7 +169,8 @@ class Questionnaire {
   List<Questionnaire_Item> item;
 
 Questionnaire(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -251,8 +255,9 @@ class Questionnaire_Item {
 		List<Questionnaire_AnswerOption> answerOption,
 		List<Questionnaire_Initial> initial,
 		List<Questionnaire_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	Questionnaire_Item newQuestionnaire_Item = new Questionnaire_Item(
-			id: await newId('Questionnaire_Item'),
+			id: await fhirDb.newResourceId('Questionnaire_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			linkId: linkId,
@@ -282,6 +287,7 @@ class Questionnaire_Item {
 			initial: initial,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaire_Item);
 	return newQuestionnaire_Item;
 }
   String id;
@@ -378,8 +384,9 @@ class Questionnaire_EnableWhen {
 		Coding answerCoding,
 		Quantity answerQuantity,
 		Reference answerReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Questionnaire_EnableWhen newQuestionnaire_EnableWhen = new Questionnaire_EnableWhen(
-			id: await newId('Questionnaire_EnableWhen'),
+			id: await fhirDb.newResourceId('Questionnaire_EnableWhen'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			question: question,
@@ -404,6 +411,7 @@ class Questionnaire_EnableWhen {
 			answerQuantity: answerQuantity,
 			answerReference: answerReference,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaire_EnableWhen);
 	return newQuestionnaire_EnableWhen;
 }
   String id;
@@ -481,8 +489,9 @@ class Questionnaire_AnswerOption {
 		Reference valueReference,
 		bool initialSelected,
 		Element elementInitialSelected}) async {
+	var fhirDb = new DatabaseHelper();
 	Questionnaire_AnswerOption newQuestionnaire_AnswerOption = new Questionnaire_AnswerOption(
-			id: await newId('Questionnaire_AnswerOption'),
+			id: await fhirDb.newResourceId('Questionnaire_AnswerOption'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueInteger: valueInteger,
@@ -498,6 +507,7 @@ class Questionnaire_AnswerOption {
 			initialSelected: initialSelected,
 			elementInitialSelected: elementInitialSelected,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaire_AnswerOption);
 	return newQuestionnaire_AnswerOption;
 }
   String id;
@@ -565,8 +575,9 @@ class Questionnaire_Initial {
 		Coding valueCoding,
 		Quantity valueQuantity,
 		Reference valueReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Questionnaire_Initial newQuestionnaire_Initial = new Questionnaire_Initial(
-			id: await newId('Questionnaire_Initial'),
+			id: await fhirDb.newResourceId('Questionnaire_Initial'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueBoolean: valueBoolean,
@@ -590,6 +601,7 @@ class Questionnaire_Initial {
 			valueQuantity: valueQuantity,
 			valueReference: valueReference,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaire_Initial);
 	return newQuestionnaire_Initial;
 }
   String id;
@@ -654,6 +666,7 @@ Questionnaire_Initial(
 
 Questionnaire _$QuestionnaireFromJson(Map<String, dynamic> json) {
   return Questionnaire(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -778,6 +791,7 @@ Questionnaire _$QuestionnaireFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$QuestionnaireToJson(Questionnaire instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

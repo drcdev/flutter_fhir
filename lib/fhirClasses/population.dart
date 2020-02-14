@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -18,8 +16,9 @@ class Population {
 		CodeableConcept gender,
 		CodeableConcept race,
 		CodeableConcept physiologicalCondition}) async {
+	var fhirDb = new DatabaseHelper();
 	Population newPopulation = new Population(
-			id: await newId('Population'),
+			id: await fhirDb.newResourceId('Population'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			ageRange: ageRange,
@@ -28,6 +27,7 @@ class Population {
 			race: race,
 			physiologicalCondition: physiologicalCondition,
 );
+	int saved = await fhirDb.saveResource(newPopulation);
 	return newPopulation;
 }
   String id;

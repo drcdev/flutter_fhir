@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -21,8 +19,9 @@ class MarketingStatus {
 		Period dateRange,
 		DateTime restoreDate,
 		Element elementRestoreDate}) async {
+	var fhirDb = new DatabaseHelper();
 	MarketingStatus newMarketingStatus = new MarketingStatus(
-			id: await newId('MarketingStatus'),
+			id: await fhirDb.newResourceId('MarketingStatus'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			country: country,
@@ -32,6 +31,7 @@ class MarketingStatus {
 			restoreDate: restoreDate,
 			elementRestoreDate: elementRestoreDate,
 );
+	int saved = await fhirDb.saveResource(newMarketingStatus);
 	return newMarketingStatus;
 }
   String id;

@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class QuestionnaireResponse {
 
 	static Future<QuestionnaireResponse> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +40,10 @@ class QuestionnaireResponse {
 		Reference author,
 		Reference source,
 		List<QuestionnaireResponse_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	QuestionnaireResponse newQuestionnaireResponse = new QuestionnaireResponse(
-			id: await newId('QuestionnaireResponse'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('QuestionnaireResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -65,9 +67,10 @@ class QuestionnaireResponse {
 			source: source,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaireResponse);
 	return newQuestionnaireResponse;
 }
-  final String resourceType= 'QuestionnaireResponse';
+  String resourceType= 'QuestionnaireResponse';
   String id;
   Meta meta;
   String implicitRules;
@@ -93,7 +96,8 @@ class QuestionnaireResponse {
   List<QuestionnaireResponse_Item> item;
 
 QuestionnaireResponse(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -137,8 +141,9 @@ class QuestionnaireResponse_Item {
 		Element elementText,
 		List<QuestionnaireResponse_Answer> answer,
 		List<QuestionnaireResponse_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	QuestionnaireResponse_Item newQuestionnaireResponse_Item = new QuestionnaireResponse_Item(
-			id: await newId('QuestionnaireResponse_Item'),
+			id: await fhirDb.newResourceId('QuestionnaireResponse_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			linkId: linkId,
@@ -150,6 +155,7 @@ class QuestionnaireResponse_Item {
 			answer: answer,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaireResponse_Item);
 	return newQuestionnaireResponse_Item;
 }
   String id;
@@ -210,8 +216,9 @@ class QuestionnaireResponse_Answer {
 		Quantity valueQuantity,
 		Reference valueReference,
 		List<QuestionnaireResponse_Item> item}) async {
+	var fhirDb = new DatabaseHelper();
 	QuestionnaireResponse_Answer newQuestionnaireResponse_Answer = new QuestionnaireResponse_Answer(
-			id: await newId('QuestionnaireResponse_Answer'),
+			id: await fhirDb.newResourceId('QuestionnaireResponse_Answer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			valueBoolean: valueBoolean,
@@ -236,6 +243,7 @@ class QuestionnaireResponse_Answer {
 			valueReference: valueReference,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newQuestionnaireResponse_Answer);
 	return newQuestionnaireResponse_Answer;
 }
   String id;
@@ -303,6 +311,7 @@ QuestionnaireResponse_Answer(
 QuestionnaireResponse _$QuestionnaireResponseFromJson(
     Map<String, dynamic> json) {
   return QuestionnaireResponse(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -376,6 +385,7 @@ QuestionnaireResponse _$QuestionnaireResponseFromJson(
 Map<String, dynamic> _$QuestionnaireResponseToJson(
         QuestionnaireResponse instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

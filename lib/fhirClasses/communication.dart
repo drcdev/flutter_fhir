@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Communication {
 
 	static Future<Communication> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -55,8 +55,10 @@ class Communication {
 		List<Reference> reasonReference,
 		List<Communication_Payload> payload,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	Communication newCommunication = new Communication(
-			id: await newId('Communication'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Communication'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -95,9 +97,10 @@ class Communication {
 			payload: payload,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newCommunication);
 	return newCommunication;
 }
-  final String resourceType= 'Communication';
+  String resourceType= 'Communication';
   String id;
   Meta meta;
   String implicitRules;
@@ -138,7 +141,8 @@ class Communication {
   List<Annotation> note;
 
 Communication(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -193,8 +197,9 @@ class Communication_Payload {
 		Element elementContentString,
 		Attachment contentAttachment,
 		Reference contentReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Communication_Payload newCommunication_Payload = new Communication_Payload(
-			id: await newId('Communication_Payload'),
+			id: await fhirDb.newResourceId('Communication_Payload'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			contentString: contentString,
@@ -202,6 +207,7 @@ class Communication_Payload {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference,
 );
+	int saved = await fhirDb.saveResource(newCommunication_Payload);
 	return newCommunication_Payload;
 }
   String id;
@@ -234,6 +240,7 @@ Communication_Payload(
 
 Communication _$CommunicationFromJson(Map<String, dynamic> json) {
   return Communication(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -362,6 +369,7 @@ Communication _$CommunicationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CommunicationToJson(Communication instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

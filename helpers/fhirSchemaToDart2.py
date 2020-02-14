@@ -41,6 +41,6 @@ for filename in os.listdir(fhirDir):
 # f.close()
 
 
-with open(fhirDir + 'classes.dart', "w", encoding="utf-8") as f:
-    f.write(fhir.classes)
-f.close()
+# with open(fhirDir + 'classes.dart', "w", encoding="utf-8") as f:
+#     f.write(fhir.classes)
+# f.close()

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ImmunizationRecommendation {
 
 	static Future<ImmunizationRecommendation> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -32,8 +31,10 @@ class ImmunizationRecommendation {
 		Element elementDate,
 		Reference authority,
 		List<ImmunizationRecommendation_Recommendation> recommendation}) async {
+	var fhirDb = new DatabaseHelper();
 	ImmunizationRecommendation newImmunizationRecommendation = new ImmunizationRecommendation(
-			id: await newId('ImmunizationRecommendation'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ImmunizationRecommendation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -50,9 +51,10 @@ class ImmunizationRecommendation {
 			authority: authority,
 			recommendation: recommendation,
 );
+	int saved = await fhirDb.saveResource(newImmunizationRecommendation);
 	return newImmunizationRecommendation;
 }
-  final String resourceType= 'ImmunizationRecommendation';
+  String resourceType= 'ImmunizationRecommendation';
   String id;
   Meta meta;
   String implicitRules;
@@ -71,7 +73,8 @@ class ImmunizationRecommendation {
   List<ImmunizationRecommendation_Recommendation> recommendation;
 
 ImmunizationRecommendation(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -120,8 +123,9 @@ class ImmunizationRecommendation_Recommendation {
 		Element elementSeriesDosesString,
 		List<Reference> supportingImmunization,
 		List<Reference> supportingPatientInformation}) async {
+	var fhirDb = new DatabaseHelper();
 	ImmunizationRecommendation_Recommendation newImmunizationRecommendation_Recommendation = new ImmunizationRecommendation_Recommendation(
-			id: await newId('ImmunizationRecommendation_Recommendation'),
+			id: await fhirDb.newResourceId('ImmunizationRecommendation_Recommendation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			vaccineCode: vaccineCode,
@@ -145,6 +149,7 @@ class ImmunizationRecommendation_Recommendation {
 			supportingImmunization: supportingImmunization,
 			supportingPatientInformation: supportingPatientInformation,
 );
+	int saved = await fhirDb.saveResource(newImmunizationRecommendation_Recommendation);
 	return newImmunizationRecommendation_Recommendation;
 }
   String id;
@@ -211,14 +216,16 @@ class ImmunizationRecommendation_DateCriterion {
 		CodeableConcept code,
 		DateTime value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	ImmunizationRecommendation_DateCriterion newImmunizationRecommendation_DateCriterion = new ImmunizationRecommendation_DateCriterion(
-			id: await newId('ImmunizationRecommendation_DateCriterion'),
+			id: await fhirDb.newResourceId('ImmunizationRecommendation_DateCriterion'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newImmunizationRecommendation_DateCriterion);
 	return newImmunizationRecommendation_DateCriterion;
 }
   String id;
@@ -250,6 +257,7 @@ ImmunizationRecommendation_DateCriterion(
 ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
     Map<String, dynamic> json) {
   return ImmunizationRecommendation(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -304,6 +312,7 @@ ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
 Map<String, dynamic> _$ImmunizationRecommendationToJson(
         ImmunizationRecommendation instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -21,8 +19,9 @@ class Expression {
 		Element elementExpression,
 		String reference,
 		Element elementReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Expression newExpression = new Expression(
-			id: await newId('Expression'),
+			id: await fhirDb.newResourceId('Expression'),
 			extension: extension,
 			description: description,
 			elementDescription: elementDescription,
@@ -35,6 +34,7 @@ class Expression {
 			reference: reference,
 			elementReference: elementReference,
 );
+	int saved = await fhirDb.saveResource(newExpression);
 	return newExpression;
 }
   String id;

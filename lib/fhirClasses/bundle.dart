@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
@@ -13,6 +12,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Bundle {
 
 	static Future<Bundle> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -29,8 +29,10 @@ class Bundle {
 		List<Bundle_Link> link,
 		List<Bundle_Entry> entry,
 		Signature signature}) async {
+	var fhirDb = new DatabaseHelper();
 	Bundle newBundle = new Bundle(
-			id: await newId('Bundle'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Bundle'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -47,9 +49,10 @@ class Bundle {
 			entry: entry,
 			signature: signature,
 );
+	int saved = await fhirDb.saveResource(newBundle);
 	return newBundle;
 }
-  final String resourceType= 'Bundle';
+  String resourceType= 'Bundle';
   String id;
   Meta meta;
   String implicitRules;
@@ -68,7 +71,8 @@ class Bundle {
   Signature signature;
 
 Bundle(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -101,8 +105,9 @@ class Bundle_Link {
 		Element elementRelation,
 		String url,
 		Element elementUrl}) async {
+	var fhirDb = new DatabaseHelper();
 	Bundle_Link newBundle_Link = new Bundle_Link(
-			id: await newId('Bundle_Link'),
+			id: await fhirDb.newResourceId('Bundle_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			relation: relation,
@@ -110,6 +115,7 @@ class Bundle_Link {
 			url: url,
 			elementUrl: elementUrl,
 );
+	int saved = await fhirDb.saveResource(newBundle_Link);
 	return newBundle_Link;
 }
   String id;
@@ -148,8 +154,9 @@ class Bundle_Entry {
 		Bundle_Search search,
 		Bundle_Request request,
 		Bundle_Response response}) async {
+	var fhirDb = new DatabaseHelper();
 	Bundle_Entry newBundle_Entry = new Bundle_Entry(
-			id: await newId('Bundle_Entry'),
+			id: await fhirDb.newResourceId('Bundle_Entry'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			link: link,
@@ -160,6 +167,7 @@ class Bundle_Entry {
 			request: request,
 			response: response,
 );
+	int saved = await fhirDb.saveResource(newBundle_Entry);
 	return newBundle_Entry;
 }
   String id;
@@ -201,8 +209,9 @@ class Bundle_Search {
 		Element elementMode,
 		double score,
 		Element elementScore}) async {
+	var fhirDb = new DatabaseHelper();
 	Bundle_Search newBundle_Search = new Bundle_Search(
-			id: await newId('Bundle_Search'),
+			id: await fhirDb.newResourceId('Bundle_Search'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -210,6 +219,7 @@ class Bundle_Search {
 			score: score,
 			elementScore: elementScore,
 );
+	int saved = await fhirDb.saveResource(newBundle_Search);
 	return newBundle_Search;
 }
   String id;
@@ -253,8 +263,9 @@ class Bundle_Request {
 		Element elementIfMatch,
 		String ifNoneExist,
 		Element elementIfNoneExist}) async {
+	var fhirDb = new DatabaseHelper();
 	Bundle_Request newBundle_Request = new Bundle_Request(
-			id: await newId('Bundle_Request'),
+			id: await fhirDb.newResourceId('Bundle_Request'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			method: method,
@@ -270,6 +281,7 @@ class Bundle_Request {
 			ifNoneExist: ifNoneExist,
 			elementIfNoneExist: elementIfNoneExist,
 );
+	int saved = await fhirDb.saveResource(newBundle_Request);
 	return newBundle_Request;
 }
   String id;
@@ -326,8 +338,9 @@ class Bundle_Response {
 		DateTime lastModified,
 		Element elementLastModified,
 		dynamic outcome}) async {
+	var fhirDb = new DatabaseHelper();
 	Bundle_Response newBundle_Response = new Bundle_Response(
-			id: await newId('Bundle_Response'),
+			id: await fhirDb.newResourceId('Bundle_Response'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			status: status,
@@ -340,6 +353,7 @@ class Bundle_Response {
 			elementLastModified: elementLastModified,
 			outcome: outcome,
 );
+	int saved = await fhirDb.saveResource(newBundle_Response);
 	return newBundle_Response;
 }
   String id;
@@ -382,6 +396,7 @@ Bundle_Response(
 
 Bundle _$BundleFromJson(Map<String, dynamic> json) {
   return Bundle(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -427,6 +442,7 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

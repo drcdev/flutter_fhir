@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -14,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class EnrollmentRequest {
 
 	static Future<EnrollmentRequest> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -33,8 +33,10 @@ class EnrollmentRequest {
 		Reference provider,
 		Reference candidate,
 		Reference coverage}) async {
+	var fhirDb = new DatabaseHelper();
 	EnrollmentRequest newEnrollmentRequest = new EnrollmentRequest(
-			id: await newId('EnrollmentRequest'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('EnrollmentRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -54,9 +56,10 @@ class EnrollmentRequest {
 			candidate: candidate,
 			coverage: coverage,
 );
+	int saved = await fhirDb.saveResource(newEnrollmentRequest);
 	return newEnrollmentRequest;
 }
-  final String resourceType= 'EnrollmentRequest';
+  String resourceType= 'EnrollmentRequest';
   String id;
   Meta meta;
   String implicitRules;
@@ -78,7 +81,8 @@ class EnrollmentRequest {
   Reference coverage;
 
 EnrollmentRequest(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -111,6 +115,7 @@ EnrollmentRequest(
 
 EnrollmentRequest _$EnrollmentRequestFromJson(Map<String, dynamic> json) {
   return EnrollmentRequest(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -170,6 +175,7 @@ EnrollmentRequest _$EnrollmentRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$EnrollmentRequestToJson(EnrollmentRequest instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

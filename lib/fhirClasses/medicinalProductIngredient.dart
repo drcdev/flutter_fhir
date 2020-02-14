@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductIngredient {
 
 	static Future<MedicinalProductIngredient> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -34,8 +33,10 @@ class MedicinalProductIngredient {
 		List<Reference> manufacturer,
 		List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance,
 		MedicinalProductIngredient_Substance substance}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductIngredient newMedicinalProductIngredient = new MedicinalProductIngredient(
-			id: await newId('MedicinalProductIngredient'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductIngredient'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -53,9 +54,10 @@ class MedicinalProductIngredient {
 			specifiedSubstance: specifiedSubstance,
 			substance: substance,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductIngredient);
 	return newMedicinalProductIngredient;
 }
-  final String resourceType= 'MedicinalProductIngredient';
+  String resourceType= 'MedicinalProductIngredient';
   String id;
   Meta meta;
   String implicitRules;
@@ -75,7 +77,8 @@ class MedicinalProductIngredient {
   MedicinalProductIngredient_Substance substance;
 
 MedicinalProductIngredient(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -109,8 +112,9 @@ class MedicinalProductIngredient_SpecifiedSubstance {
 		CodeableConcept group,
 		CodeableConcept confidentiality,
 		List<MedicinalProductIngredient_Strength> strength}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductIngredient_SpecifiedSubstance newMedicinalProductIngredient_SpecifiedSubstance = new MedicinalProductIngredient_SpecifiedSubstance(
-			id: await newId('MedicinalProductIngredient_SpecifiedSubstance'),
+			id: await fhirDb.newResourceId('MedicinalProductIngredient_SpecifiedSubstance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -118,6 +122,7 @@ class MedicinalProductIngredient_SpecifiedSubstance {
 			confidentiality: confidentiality,
 			strength: strength,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_SpecifiedSubstance);
 	return newMedicinalProductIngredient_SpecifiedSubstance;
 }
   String id;
@@ -157,8 +162,9 @@ class MedicinalProductIngredient_Strength {
 		Element elementMeasurementPoint,
 		List<CodeableConcept> country,
 		List<MedicinalProductIngredient_ReferenceStrength> referenceStrength}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductIngredient_Strength newMedicinalProductIngredient_Strength = new MedicinalProductIngredient_Strength(
-			id: await newId('MedicinalProductIngredient_Strength'),
+			id: await fhirDb.newResourceId('MedicinalProductIngredient_Strength'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			presentation: presentation,
@@ -170,6 +176,7 @@ class MedicinalProductIngredient_Strength {
 			country: country,
 			referenceStrength: referenceStrength,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_Strength);
 	return newMedicinalProductIngredient_Strength;
 }
   String id;
@@ -215,8 +222,9 @@ class MedicinalProductIngredient_ReferenceStrength {
 		String measurementPoint,
 		Element elementMeasurementPoint,
 		List<CodeableConcept> country}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductIngredient_ReferenceStrength newMedicinalProductIngredient_ReferenceStrength = new MedicinalProductIngredient_ReferenceStrength(
-			id: await newId('MedicinalProductIngredient_ReferenceStrength'),
+			id: await fhirDb.newResourceId('MedicinalProductIngredient_ReferenceStrength'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substance: substance,
@@ -226,6 +234,7 @@ class MedicinalProductIngredient_ReferenceStrength {
 			elementMeasurementPoint: elementMeasurementPoint,
 			country: country,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_ReferenceStrength);
 	return newMedicinalProductIngredient_ReferenceStrength;
 }
   String id;
@@ -263,13 +272,15 @@ class MedicinalProductIngredient_Substance {
 		List<Extension> modifierExtension,
 		CodeableConcept code,
 		List<MedicinalProductIngredient_Strength> strength}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductIngredient_Substance newMedicinalProductIngredient_Substance = new MedicinalProductIngredient_Substance(
-			id: await newId('MedicinalProductIngredient_Substance'),
+			id: await fhirDb.newResourceId('MedicinalProductIngredient_Substance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			strength: strength,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductIngredient_Substance);
 	return newMedicinalProductIngredient_Substance;
 }
   String id;
@@ -299,6 +310,7 @@ MedicinalProductIngredient_Substance(
 MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductIngredient(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -358,6 +370,7 @@ MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
 Map<String, dynamic> _$MedicinalProductIngredientToJson(
         MedicinalProductIngredient instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/productShelfLife.dart';
 import 'package:flutter_fhir/fhirClasses/prodCharacteristic.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductPackaged {
 
 	static Future<MedicinalProductPackaged> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +39,10 @@ class MedicinalProductPackaged {
 		List<Reference> manufacturer,
 		List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier,
 		List<MedicinalProductPackaged_PackageItem> packageItem}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPackaged newMedicinalProductPackaged = new MedicinalProductPackaged(
-			id: await newId('MedicinalProductPackaged'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductPackaged'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -62,9 +63,10 @@ class MedicinalProductPackaged {
 			batchIdentifier: batchIdentifier,
 			packageItem: packageItem,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPackaged);
 	return newMedicinalProductPackaged;
 }
-  final String resourceType= 'MedicinalProductPackaged';
+  String resourceType= 'MedicinalProductPackaged';
   String id;
   Meta meta;
   String implicitRules;
@@ -87,7 +89,8 @@ class MedicinalProductPackaged {
   List<MedicinalProductPackaged_PackageItem> packageItem;
 
 MedicinalProductPackaged(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -122,13 +125,15 @@ class MedicinalProductPackaged_BatchIdentifier {
 		List<Extension> modifierExtension,
 		Identifier outerPackaging,
 		Identifier immediatePackaging}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPackaged_BatchIdentifier newMedicinalProductPackaged_BatchIdentifier = new MedicinalProductPackaged_BatchIdentifier(
-			id: await newId('MedicinalProductPackaged_BatchIdentifier'),
+			id: await fhirDb.newResourceId('MedicinalProductPackaged_BatchIdentifier'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			outerPackaging: outerPackaging,
 			immediatePackaging: immediatePackaging,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPackaged_BatchIdentifier);
 	return newMedicinalProductPackaged_BatchIdentifier;
 }
   String id;
@@ -168,8 +173,9 @@ class MedicinalProductPackaged_PackageItem {
 		List<CodeableConcept> otherCharacteristics,
 		List<ProductShelfLife> shelfLifeStorage,
 		List<Reference> manufacturer}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductPackaged_PackageItem newMedicinalProductPackaged_PackageItem = new MedicinalProductPackaged_PackageItem(
-			id: await newId('MedicinalProductPackaged_PackageItem'),
+			id: await fhirDb.newResourceId('MedicinalProductPackaged_PackageItem'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -185,6 +191,7 @@ class MedicinalProductPackaged_PackageItem {
 			shelfLifeStorage: shelfLifeStorage,
 			manufacturer: manufacturer,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductPackaged_PackageItem);
 	return newMedicinalProductPackaged_PackageItem;
 }
   String id;
@@ -234,6 +241,7 @@ MedicinalProductPackaged_PackageItem(
 MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductPackaged(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -309,6 +317,7 @@ MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
 Map<String, dynamic> _$MedicinalProductPackagedToJson(
         MedicinalProductPackaged instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

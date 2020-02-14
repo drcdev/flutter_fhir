@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class AppointmentResponse {
 
 	static Future<AppointmentResponse> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -38,8 +37,10 @@ class AppointmentResponse {
 		Element elementParticipantStatus,
 		String comment,
 		Element elementComment}) async {
+	var fhirDb = new DatabaseHelper();
 	AppointmentResponse newAppointmentResponse = new AppointmentResponse(
-			id: await newId('AppointmentResponse'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('AppointmentResponse'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -62,9 +63,10 @@ class AppointmentResponse {
 			comment: comment,
 			elementComment: elementComment,
 );
+	int saved = await fhirDb.saveResource(newAppointmentResponse);
 	return newAppointmentResponse;
 }
-  final String resourceType= 'AppointmentResponse';
+  String resourceType= 'AppointmentResponse';
   String id;
   Meta meta;
   String implicitRules;
@@ -89,7 +91,8 @@ class AppointmentResponse {
   Element elementComment;
 
 AppointmentResponse(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -125,6 +128,7 @@ AppointmentResponse(
 
 AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
   return AppointmentResponse(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -192,6 +196,7 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$AppointmentResponseToJson(
         AppointmentResponse instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

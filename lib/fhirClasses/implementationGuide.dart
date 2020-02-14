@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ImplementationGuide {
 
 	static Future<ImplementationGuide> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -60,8 +59,10 @@ class ImplementationGuide {
 		List<ImplementationGuide_Global> global,
 		ImplementationGuide_Definition definition,
 		ImplementationGuide_Manifest manifest}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide newImplementationGuide = new ImplementationGuide(
-			id: await newId('ImplementationGuide'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ImplementationGuide'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -105,9 +106,10 @@ class ImplementationGuide {
 			definition: definition,
 			manifest: manifest,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide);
 	return newImplementationGuide;
 }
-  final String resourceType= 'ImplementationGuide';
+  String resourceType= 'ImplementationGuide';
   String id;
   Meta meta;
   String implicitRules;
@@ -153,7 +155,8 @@ class ImplementationGuide {
   ImplementationGuide_Manifest manifest;
 
 ImplementationGuide(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -214,8 +217,9 @@ class ImplementationGuide_DependsOn {
 		Element elementPackageId,
 		String version,
 		Element elementVersion}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_DependsOn newImplementationGuide_DependsOn = new ImplementationGuide_DependsOn(
-			id: await newId('ImplementationGuide_DependsOn'),
+			id: await fhirDb.newResourceId('ImplementationGuide_DependsOn'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			uri: uri,
@@ -224,6 +228,7 @@ class ImplementationGuide_DependsOn {
 			version: version,
 			elementVersion: elementVersion,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_DependsOn);
 	return newImplementationGuide_DependsOn;
 }
   String id;
@@ -260,14 +265,16 @@ class ImplementationGuide_Global {
 		String type,
 		Element elementType,
 		String profile}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Global newImplementationGuide_Global = new ImplementationGuide_Global(
-			id: await newId('ImplementationGuide_Global'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Global'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			elementType: elementType,
 			profile: profile,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Global);
 	return newImplementationGuide_Global;
 }
   String id;
@@ -302,8 +309,9 @@ class ImplementationGuide_Definition {
 		ImplementationGuide_Page page,
 		List<ImplementationGuide_Parameter> parameter,
 		List<ImplementationGuide_Template> template}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Definition newImplementationGuide_Definition = new ImplementationGuide_Definition(
-			id: await newId('ImplementationGuide_Definition'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Definition'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			grouping: grouping,
@@ -312,6 +320,7 @@ class ImplementationGuide_Definition {
 			parameter: parameter,
 			template: template,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Definition);
 	return newImplementationGuide_Definition;
 }
   String id;
@@ -349,8 +358,9 @@ class ImplementationGuide_Grouping {
 		Element elementName,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Grouping newImplementationGuide_Grouping = new ImplementationGuide_Grouping(
-			id: await newId('ImplementationGuide_Grouping'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Grouping'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -358,6 +368,7 @@ class ImplementationGuide_Grouping {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Grouping);
 	return newImplementationGuide_Grouping;
 }
   String id;
@@ -402,8 +413,9 @@ class ImplementationGuide_Resource {
 		Element elementExampleCanonical,
 		String groupingId,
 		Element elementGroupingId}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Resource newImplementationGuide_Resource = new ImplementationGuide_Resource(
-			id: await newId('ImplementationGuide_Resource'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Resource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
@@ -420,6 +432,7 @@ class ImplementationGuide_Resource {
 			groupingId: groupingId,
 			elementGroupingId: elementGroupingId,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Resource);
 	return newImplementationGuide_Resource;
 }
   String id;
@@ -477,8 +490,9 @@ class ImplementationGuide_Page {
 		String generation,
 		Element elementGeneration,
 		List<ImplementationGuide_Page> page}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Page newImplementationGuide_Page = new ImplementationGuide_Page(
-			id: await newId('ImplementationGuide_Page'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Page'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			nameUrl: nameUrl,
@@ -490,6 +504,7 @@ class ImplementationGuide_Page {
 			elementGeneration: elementGeneration,
 			page: page,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Page);
 	return newImplementationGuide_Page;
 }
   String id;
@@ -533,8 +548,9 @@ class ImplementationGuide_Parameter {
 		Element elementCode,
 		String value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Parameter newImplementationGuide_Parameter = new ImplementationGuide_Parameter(
-			id: await newId('ImplementationGuide_Parameter'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Parameter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -542,6 +558,7 @@ class ImplementationGuide_Parameter {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Parameter);
 	return newImplementationGuide_Parameter;
 }
   String id;
@@ -579,8 +596,9 @@ class ImplementationGuide_Template {
 		Element elementSource,
 		String scope,
 		Element elementScope}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Template newImplementationGuide_Template = new ImplementationGuide_Template(
-			id: await newId('ImplementationGuide_Template'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Template'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -590,6 +608,7 @@ class ImplementationGuide_Template {
 			scope: scope,
 			elementScope: elementScope,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Template);
 	return newImplementationGuide_Template;
 }
   String id;
@@ -633,8 +652,9 @@ class ImplementationGuide_Manifest {
 		List<Element> elementImage,
 		List<String> other,
 		List<Element> elementOther}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Manifest newImplementationGuide_Manifest = new ImplementationGuide_Manifest(
-			id: await newId('ImplementationGuide_Manifest'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Manifest'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			rendering: rendering,
@@ -646,6 +666,7 @@ class ImplementationGuide_Manifest {
 			other: other,
 			elementOther: elementOther,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Manifest);
 	return newImplementationGuide_Manifest;
 }
   String id;
@@ -692,8 +713,9 @@ class ImplementationGuide_Resource1 {
 		Element elementExampleCanonical,
 		String relativePath,
 		Element elementRelativePath}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Resource1 newImplementationGuide_Resource1 = new ImplementationGuide_Resource1(
-			id: await newId('ImplementationGuide_Resource1'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Resource1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			reference: reference,
@@ -704,6 +726,7 @@ class ImplementationGuide_Resource1 {
 			relativePath: relativePath,
 			elementRelativePath: elementRelativePath,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Resource1);
 	return newImplementationGuide_Resource1;
 }
   String id;
@@ -747,8 +770,9 @@ class ImplementationGuide_Page1 {
 		Element elementTitle,
 		List<String> anchor,
 		List<Element> elementAnchor}) async {
+	var fhirDb = new DatabaseHelper();
 	ImplementationGuide_Page1 newImplementationGuide_Page1 = new ImplementationGuide_Page1(
-			id: await newId('ImplementationGuide_Page1'),
+			id: await fhirDb.newResourceId('ImplementationGuide_Page1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -758,6 +782,7 @@ class ImplementationGuide_Page1 {
 			anchor: anchor,
 			elementAnchor: elementAnchor,
 );
+	int saved = await fhirDb.saveResource(newImplementationGuide_Page1);
 	return newImplementationGuide_Page1;
 }
   String id;
@@ -794,6 +819,7 @@ ImplementationGuide_Page1(
 
 ImplementationGuide _$ImplementationGuideFromJson(Map<String, dynamic> json) {
   return ImplementationGuide(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -914,6 +940,7 @@ ImplementationGuide _$ImplementationGuideFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ImplementationGuideToJson(
         ImplementationGuide instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

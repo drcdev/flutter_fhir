@@ -1,29 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:device_info/device_info.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();
-
-  print(await fhirDb.newResourceId('Patient'));
-  List<Map<String, dynamic>> temper = await fhirDb.getResource('Classes');
-//  for (int i = 0; i < temper.length; i += 1) {
-//    print(temper[i]);
-//  }
-
+  var temp = await fhirDb.getResource('Patient');
   runApp(MaterialApp(
       home: _Main(),
       supportedLocales: [Locale('en', 'US'), Locale('es', 'AR')],
@@ -112,8 +99,8 @@ class _MainState extends State<_Main> {
 //            if (userName.text != 'drgrey' || password.text != 'chopchop') {
 //              setState(() => incorrect = true);
 //            } else {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MainMenu()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MainMenu()));
 //            }
           },
           child: Text("Login", textAlign: TextAlign.center, style: whiteText),

@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -27,8 +25,9 @@ class Attachment {
 		Element elementTitle,
 		DateTime creation,
 		Element elementCreation}) async {
+	var fhirDb = new DatabaseHelper();
 	Attachment newAttachment = new Attachment(
-			id: await newId('Attachment'),
+			id: await fhirDb.newResourceId('Attachment'),
 			extension: extension,
 			contentType: contentType,
 			elementContentType: elementContentType,
@@ -47,6 +46,7 @@ class Attachment {
 			creation: creation,
 			elementCreation: elementCreation,
 );
+	int saved = await fhirDb.saveResource(newAttachment);
 	return newAttachment;
 }
   String id;

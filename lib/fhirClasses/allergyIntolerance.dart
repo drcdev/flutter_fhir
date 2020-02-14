@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class AllergyIntolerance {
 
 	static Future<AllergyIntolerance> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -57,8 +56,10 @@ class AllergyIntolerance {
 		Element elementLastOccurrence,
 		List<Annotation> note,
 		List<AllergyIntolerance_Reaction> reaction}) async {
+	var fhirDb = new DatabaseHelper();
 	AllergyIntolerance newAllergyIntolerance = new AllergyIntolerance(
-			id: await newId('AllergyIntolerance'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('AllergyIntolerance'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -96,9 +97,10 @@ class AllergyIntolerance {
 			note: note,
 			reaction: reaction,
 );
+	int saved = await fhirDb.saveResource(newAllergyIntolerance);
 	return newAllergyIntolerance;
 }
-  final String resourceType= 'AllergyIntolerance';
+  String resourceType= 'AllergyIntolerance';
   String id;
   Meta meta;
   String implicitRules;
@@ -138,7 +140,8 @@ class AllergyIntolerance {
   List<AllergyIntolerance_Reaction> reaction;
 
 AllergyIntolerance(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -198,8 +201,9 @@ class AllergyIntolerance_Reaction {
 		Element elementSeverity,
 		CodeableConcept exposureRoute,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	AllergyIntolerance_Reaction newAllergyIntolerance_Reaction = new AllergyIntolerance_Reaction(
-			id: await newId('AllergyIntolerance_Reaction'),
+			id: await fhirDb.newResourceId('AllergyIntolerance_Reaction'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			substance: substance,
@@ -213,6 +217,7 @@ class AllergyIntolerance_Reaction {
 			exposureRoute: exposureRoute,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newAllergyIntolerance_Reaction);
 	return newAllergyIntolerance_Reaction;
 }
   String id;
@@ -257,6 +262,7 @@ AllergyIntolerance_Reaction(
 
 AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
   return AllergyIntolerance(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -370,6 +376,7 @@ AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AllergyIntoleranceToJson(AllergyIntolerance instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

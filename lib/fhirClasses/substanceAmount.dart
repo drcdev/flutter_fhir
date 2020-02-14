@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -23,8 +21,9 @@ class SubstanceAmount {
 		String amountText,
 		Element elementAmountText,
 		SubstanceAmount_ReferenceRange referenceRange}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceAmount newSubstanceAmount = new SubstanceAmount(
-			id: await newId('SubstanceAmount'),
+			id: await fhirDb.newResourceId('SubstanceAmount'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			amountQuantity: amountQuantity,
@@ -36,6 +35,7 @@ class SubstanceAmount {
 			elementAmountText: elementAmountText,
 			referenceRange: referenceRange,
 );
+	int saved = await fhirDb.saveResource(newSubstanceAmount);
 	return newSubstanceAmount;
 }
   String id;
@@ -77,13 +77,15 @@ class SubstanceAmount_ReferenceRange {
 		List<Extension> modifierExtension,
 		Quantity lowLimit,
 		Quantity highLimit}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceAmount_ReferenceRange newSubstanceAmount_ReferenceRange = new SubstanceAmount_ReferenceRange(
-			id: await newId('SubstanceAmount_ReferenceRange'),
+			id: await fhirDb.newResourceId('SubstanceAmount_ReferenceRange'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			lowLimit: lowLimit,
 			highLimit: highLimit,
 );
+	int saved = await fhirDb.saveResource(newSubstanceAmount_ReferenceRange);
 	return newSubstanceAmount_ReferenceRange;
 }
   String id;

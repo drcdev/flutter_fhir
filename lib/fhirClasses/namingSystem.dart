@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class NamingSystem {
 
 	static Future<NamingSystem> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -48,8 +47,10 @@ class NamingSystem {
 		String usage,
 		Element elementUsage,
 		List<NamingSystem_UniqueId> uniqueId}) async {
+	var fhirDb = new DatabaseHelper();
 	NamingSystem newNamingSystem = new NamingSystem(
-			id: await newId('NamingSystem'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('NamingSystem'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -81,9 +82,10 @@ class NamingSystem {
 			elementUsage: elementUsage,
 			uniqueId: uniqueId,
 );
+	int saved = await fhirDb.saveResource(newNamingSystem);
 	return newNamingSystem;
 }
-  final String resourceType= 'NamingSystem';
+  String resourceType= 'NamingSystem';
   String id;
   Meta meta;
   String implicitRules;
@@ -117,7 +119,8 @@ class NamingSystem {
   List<NamingSystem_UniqueId> uniqueId;
 
 NamingSystem(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -170,8 +173,9 @@ class NamingSystem_UniqueId {
 		String comment,
 		Element elementComment,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	NamingSystem_UniqueId newNamingSystem_UniqueId = new NamingSystem_UniqueId(
-			id: await newId('NamingSystem_UniqueId'),
+			id: await fhirDb.newResourceId('NamingSystem_UniqueId'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -184,6 +188,7 @@ class NamingSystem_UniqueId {
 			elementComment: elementComment,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newNamingSystem_UniqueId);
 	return newNamingSystem_UniqueId;
 }
   String id;
@@ -226,6 +231,7 @@ NamingSystem_UniqueId(
 
 NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
   return NamingSystem(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -313,6 +319,7 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$NamingSystemToJson(NamingSystem instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ObservationDefinition {
 
 	static Future<ObservationDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -43,8 +42,10 @@ class ObservationDefinition {
 		Reference normalCodedValueSet,
 		Reference abnormalCodedValueSet,
 		Reference criticalCodedValueSet}) async {
+	var fhirDb = new DatabaseHelper();
 	ObservationDefinition newObservationDefinition = new ObservationDefinition(
-			id: await newId('ObservationDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ObservationDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,9 +72,10 @@ class ObservationDefinition {
 			abnormalCodedValueSet: abnormalCodedValueSet,
 			criticalCodedValueSet: criticalCodedValueSet,
 );
+	int saved = await fhirDb.saveResource(newObservationDefinition);
 	return newObservationDefinition;
 }
-  final String resourceType= 'ObservationDefinition';
+  String resourceType= 'ObservationDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -102,7 +104,8 @@ class ObservationDefinition {
   Reference criticalCodedValueSet;
 
 ObservationDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -147,8 +150,9 @@ class ObservationDefinition_QuantitativeDetails {
 		Element elementConversionFactor,
 		int decimalPrecision,
 		Element elementDecimalPrecision}) async {
+	var fhirDb = new DatabaseHelper();
 	ObservationDefinition_QuantitativeDetails newObservationDefinition_QuantitativeDetails = new ObservationDefinition_QuantitativeDetails(
-			id: await newId('ObservationDefinition_QuantitativeDetails'),
+			id: await fhirDb.newResourceId('ObservationDefinition_QuantitativeDetails'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			customaryUnit: customaryUnit,
@@ -158,6 +162,7 @@ class ObservationDefinition_QuantitativeDetails {
 			decimalPrecision: decimalPrecision,
 			elementDecimalPrecision: elementDecimalPrecision,
 );
+	int saved = await fhirDb.saveResource(newObservationDefinition_QuantitativeDetails);
 	return newObservationDefinition_QuantitativeDetails;
 }
   String id;
@@ -204,8 +209,9 @@ class ObservationDefinition_QualifiedInterval {
 		Range gestationalAge,
 		String condition,
 		Element elementCondition}) async {
+	var fhirDb = new DatabaseHelper();
 	ObservationDefinition_QualifiedInterval newObservationDefinition_QualifiedInterval = new ObservationDefinition_QualifiedInterval(
-			id: await newId('ObservationDefinition_QualifiedInterval'),
+			id: await fhirDb.newResourceId('ObservationDefinition_QualifiedInterval'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			category: category,
@@ -220,6 +226,7 @@ class ObservationDefinition_QualifiedInterval {
 			condition: condition,
 			elementCondition: elementCondition,
 );
+	int saved = await fhirDb.saveResource(newObservationDefinition_QualifiedInterval);
 	return newObservationDefinition_QualifiedInterval;
 }
   String id;
@@ -267,6 +274,7 @@ ObservationDefinition_QualifiedInterval(
 ObservationDefinition _$ObservationDefinitionFromJson(
     Map<String, dynamic> json) {
   return ObservationDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -358,6 +366,7 @@ ObservationDefinition _$ObservationDefinitionFromJson(
 Map<String, dynamic> _$ObservationDefinitionToJson(
         ObservationDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

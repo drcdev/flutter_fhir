@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Goal {
 
 	static Future<Goal> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -52,8 +51,10 @@ class Goal {
 		List<Annotation> note,
 		List<CodeableConcept> outcomeCode,
 		List<Reference> outcomeReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Goal newGoal = new Goal(
-			id: await newId('Goal'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Goal'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -85,9 +86,10 @@ class Goal {
 			outcomeCode: outcomeCode,
 			outcomeReference: outcomeReference,
 );
+	int saved = await fhirDb.saveResource(newGoal);
 	return newGoal;
 }
-  final String resourceType= 'Goal';
+  String resourceType= 'Goal';
   String id;
   Meta meta;
   String implicitRules;
@@ -121,7 +123,8 @@ class Goal {
   List<Reference> outcomeReference;
 
 Goal(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -179,8 +182,9 @@ class Goal_Target {
 		String dueDate,
 		Element elementDueDate,
 		Duration dueDuration}) async {
+	var fhirDb = new DatabaseHelper();
 	Goal_Target newGoal_Target = new Goal_Target(
-			id: await newId('Goal_Target'),
+			id: await fhirDb.newResourceId('Goal_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			measure: measure,
@@ -198,6 +202,7 @@ class Goal_Target {
 			elementDueDate: elementDueDate,
 			dueDuration: dueDuration,
 );
+	int saved = await fhirDb.saveResource(newGoal_Target);
 	return newGoal_Target;
 }
   String id;
@@ -250,6 +255,7 @@ Goal_Target(
 
 Goal _$GoalFromJson(Map<String, dynamic> json) {
   return Goal(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -349,6 +355,7 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$GoalToJson(Goal instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

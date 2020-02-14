@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CodeSystem {
 
 	static Future<CodeSystem> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -70,8 +70,10 @@ class CodeSystem {
 		List<CodeSystem_Filter> filter,
 		List<CodeSystem_Property> property,
 		List<CodeSystem_Concept> concept}) async {
+	var fhirDb = new DatabaseHelper();
 	CodeSystem newCodeSystem = new CodeSystem(
-			id: await newId('CodeSystem'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CodeSystem'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -125,9 +127,10 @@ class CodeSystem {
 			property: property,
 			concept: concept,
 );
+	int saved = await fhirDb.saveResource(newCodeSystem);
 	return newCodeSystem;
 }
-  final String resourceType= 'CodeSystem';
+  String resourceType= 'CodeSystem';
   String id;
   Meta meta;
   String implicitRules;
@@ -183,7 +186,8 @@ class CodeSystem {
   List<CodeSystem_Concept> concept;
 
 CodeSystem(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -257,8 +261,9 @@ class CodeSystem_Filter {
 		List<Element> elementOperator,
 		String value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	CodeSystem_Filter newCodeSystem_Filter = new CodeSystem_Filter(
-			id: await newId('CodeSystem_Filter'),
+			id: await fhirDb.newResourceId('CodeSystem_Filter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -270,6 +275,7 @@ class CodeSystem_Filter {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newCodeSystem_Filter);
 	return newCodeSystem_Filter;
 }
   String id;
@@ -317,8 +323,9 @@ class CodeSystem_Property {
 		Element elementDescription,
 		String type,
 		Element elementType}) async {
+	var fhirDb = new DatabaseHelper();
 	CodeSystem_Property newCodeSystem_Property = new CodeSystem_Property(
-			id: await newId('CodeSystem_Property'),
+			id: await fhirDb.newResourceId('CodeSystem_Property'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -330,6 +337,7 @@ class CodeSystem_Property {
 			type: type,
 			elementType: elementType,
 );
+	int saved = await fhirDb.saveResource(newCodeSystem_Property);
 	return newCodeSystem_Property;
 }
   String id;
@@ -378,8 +386,9 @@ class CodeSystem_Concept {
 		List<CodeSystem_Designation> designation,
 		List<CodeSystem_Property1> property,
 		List<CodeSystem_Concept> concept}) async {
+	var fhirDb = new DatabaseHelper();
 	CodeSystem_Concept newCodeSystem_Concept = new CodeSystem_Concept(
-			id: await newId('CodeSystem_Concept'),
+			id: await fhirDb.newResourceId('CodeSystem_Concept'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -392,6 +401,7 @@ class CodeSystem_Concept {
 			property: property,
 			concept: concept,
 );
+	int saved = await fhirDb.saveResource(newCodeSystem_Concept);
 	return newCodeSystem_Concept;
 }
   String id;
@@ -438,8 +448,9 @@ class CodeSystem_Designation {
 		Coding use,
 		String value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	CodeSystem_Designation newCodeSystem_Designation = new CodeSystem_Designation(
-			id: await newId('CodeSystem_Designation'),
+			id: await fhirDb.newResourceId('CodeSystem_Designation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			language: language,
@@ -448,6 +459,7 @@ class CodeSystem_Designation {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newCodeSystem_Designation);
 	return newCodeSystem_Designation;
 }
   String id;
@@ -496,8 +508,9 @@ class CodeSystem_Property1 {
 		Element elementValueDateTime,
 		int valueDecimal,
 		Element elementValueDecimal}) async {
+	var fhirDb = new DatabaseHelper();
 	CodeSystem_Property1 newCodeSystem_Property1 = new CodeSystem_Property1(
-			id: await newId('CodeSystem_Property1'),
+			id: await fhirDb.newResourceId('CodeSystem_Property1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -516,6 +529,7 @@ class CodeSystem_Property1 {
 			valueDecimal: valueDecimal,
 			elementValueDecimal: elementValueDecimal,
 );
+	int saved = await fhirDb.saveResource(newCodeSystem_Property1);
 	return newCodeSystem_Property1;
 }
   String id;
@@ -570,6 +584,7 @@ CodeSystem_Property1(
 
 CodeSystem _$CodeSystemFromJson(Map<String, dynamic> json) {
   return CodeSystem(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -710,6 +725,7 @@ CodeSystem _$CodeSystemFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CodeSystemToJson(CodeSystem instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

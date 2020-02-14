@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/elementDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class StructureDefinition {
 
 	static Future<StructureDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -73,8 +72,10 @@ class StructureDefinition {
 		Element elementDerivation,
 		StructureDefinition_Snapshot snapshot,
 		StructureDefinition_Differential differential}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureDefinition newStructureDefinition = new StructureDefinition(
-			id: await newId('StructureDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('StructureDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -129,9 +130,10 @@ class StructureDefinition {
 			snapshot: snapshot,
 			differential: differential,
 );
+	int saved = await fhirDb.saveResource(newStructureDefinition);
 	return newStructureDefinition;
 }
-  final String resourceType= 'StructureDefinition';
+  String resourceType= 'StructureDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -188,7 +190,8 @@ class StructureDefinition {
   StructureDefinition_Differential differential;
 
 StructureDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -263,8 +266,9 @@ class StructureDefinition_Mapping {
 		Element elementName,
 		String comment,
 		Element elementComment}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureDefinition_Mapping newStructureDefinition_Mapping = new StructureDefinition_Mapping(
-			id: await newId('StructureDefinition_Mapping'),
+			id: await fhirDb.newResourceId('StructureDefinition_Mapping'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identity: identity,
@@ -276,6 +280,7 @@ class StructureDefinition_Mapping {
 			comment: comment,
 			elementComment: elementComment,
 );
+	int saved = await fhirDb.saveResource(newStructureDefinition_Mapping);
 	return newStructureDefinition_Mapping;
 }
   String id;
@@ -319,8 +324,9 @@ class StructureDefinition_Context {
 		Element elementType,
 		String expression,
 		Element elementExpression}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureDefinition_Context newStructureDefinition_Context = new StructureDefinition_Context(
-			id: await newId('StructureDefinition_Context'),
+			id: await fhirDb.newResourceId('StructureDefinition_Context'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -328,6 +334,7 @@ class StructureDefinition_Context {
 			expression: expression,
 			elementExpression: elementExpression,
 );
+	int saved = await fhirDb.saveResource(newStructureDefinition_Context);
 	return newStructureDefinition_Context;
 }
   String id;
@@ -360,12 +367,14 @@ class StructureDefinition_Snapshot {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<ElementDefinition> element}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureDefinition_Snapshot newStructureDefinition_Snapshot = new StructureDefinition_Snapshot(
-			id: await newId('StructureDefinition_Snapshot'),
+			id: await fhirDb.newResourceId('StructureDefinition_Snapshot'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			element: element,
 );
+	int saved = await fhirDb.saveResource(newStructureDefinition_Snapshot);
 	return newStructureDefinition_Snapshot;
 }
   String id;
@@ -392,12 +401,14 @@ class StructureDefinition_Differential {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<ElementDefinition> element}) async {
+	var fhirDb = new DatabaseHelper();
 	StructureDefinition_Differential newStructureDefinition_Differential = new StructureDefinition_Differential(
-			id: await newId('StructureDefinition_Differential'),
+			id: await fhirDb.newResourceId('StructureDefinition_Differential'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			element: element,
 );
+	int saved = await fhirDb.saveResource(newStructureDefinition_Differential);
 	return newStructureDefinition_Differential;
 }
   String id;
@@ -424,6 +435,7 @@ StructureDefinition_Differential(
 
 StructureDefinition _$StructureDefinitionFromJson(Map<String, dynamic> json) {
   return StructureDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -569,6 +581,7 @@ StructureDefinition _$StructureDefinitionFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$StructureDefinitionToJson(
         StructureDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

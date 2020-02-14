@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class DeviceMetric {
 
 	static Future<DeviceMetric> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +39,10 @@ class DeviceMetric {
 		Element elementCategory,
 		Timing measurementPeriod,
 		List<DeviceMetric_Calibration> calibration}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceMetric newDeviceMetric = new DeviceMetric(
-			id: await newId('DeviceMetric'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('DeviceMetric'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -65,9 +66,10 @@ class DeviceMetric {
 			measurementPeriod: measurementPeriod,
 			calibration: calibration,
 );
+	int saved = await fhirDb.saveResource(newDeviceMetric);
 	return newDeviceMetric;
 }
-  final String resourceType= 'DeviceMetric';
+  String resourceType= 'DeviceMetric';
   String id;
   Meta meta;
   String implicitRules;
@@ -93,7 +95,8 @@ class DeviceMetric {
   List<DeviceMetric_Calibration> calibration;
 
 DeviceMetric(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -135,8 +138,9 @@ class DeviceMetric_Calibration {
 		Element elementState,
 		DateTime time,
 		Element elementTime}) async {
+	var fhirDb = new DatabaseHelper();
 	DeviceMetric_Calibration newDeviceMetric_Calibration = new DeviceMetric_Calibration(
-			id: await newId('DeviceMetric_Calibration'),
+			id: await fhirDb.newResourceId('DeviceMetric_Calibration'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -146,6 +150,7 @@ class DeviceMetric_Calibration {
 			time: time,
 			elementTime: elementTime,
 );
+	int saved = await fhirDb.saveResource(newDeviceMetric_Calibration);
 	return newDeviceMetric_Calibration;
 }
   String id;
@@ -182,6 +187,7 @@ DeviceMetric_Calibration(
 
 DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
   return DeviceMetric(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -252,6 +258,7 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

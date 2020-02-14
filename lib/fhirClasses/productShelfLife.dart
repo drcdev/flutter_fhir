@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -19,8 +17,9 @@ class ProductShelfLife {
 		CodeableConcept type,
 		Quantity period,
 		List<CodeableConcept> specialPrecautionsForStorage}) async {
+	var fhirDb = new DatabaseHelper();
 	ProductShelfLife newProductShelfLife = new ProductShelfLife(
-			id: await newId('ProductShelfLife'),
+			id: await fhirDb.newResourceId('ProductShelfLife'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -28,6 +27,7 @@ class ProductShelfLife {
 			period: period,
 			specialPrecautionsForStorage: specialPrecautionsForStorage,
 );
+	int saved = await fhirDb.saveResource(newProductShelfLife);
 	return newProductShelfLife;
 }
   String id;

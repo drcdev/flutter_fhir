@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -15,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class TestReport {
 
 	static Future<TestReport> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -43,8 +42,10 @@ class TestReport {
 		TestReport_Setup setup,
 		List<TestReport_Test> test,
 		TestReport_Teardown teardown}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport newTestReport = new TestReport(
-			id: await newId('TestReport'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('TestReport'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -73,9 +74,10 @@ class TestReport {
 			test: test,
 			teardown: teardown,
 );
+	int saved = await fhirDb.saveResource(newTestReport);
 	return newTestReport;
 }
-  final String resourceType= 'TestReport';
+  String resourceType= 'TestReport';
   String id;
   Meta meta;
   String implicitRules;
@@ -106,7 +108,8 @@ class TestReport {
   TestReport_Teardown teardown;
 
 TestReport(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -153,8 +156,9 @@ class TestReport_Participant {
 		Element elementUri,
 		String display,
 		Element elementDisplay}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Participant newTestReport_Participant = new TestReport_Participant(
-			id: await newId('TestReport_Participant'),
+			id: await fhirDb.newResourceId('TestReport_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -164,6 +168,7 @@ class TestReport_Participant {
 			display: display,
 			elementDisplay: elementDisplay,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Participant);
 	return newTestReport_Participant;
 }
   String id;
@@ -200,12 +205,14 @@ class TestReport_Setup {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestReport_Action> action}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Setup newTestReport_Setup = new TestReport_Setup(
-			id: await newId('TestReport_Setup'),
+			id: await fhirDb.newResourceId('TestReport_Setup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Setup);
 	return newTestReport_Setup;
 }
   String id;
@@ -233,13 +240,15 @@ class TestReport_Action {
 		List<Extension> modifierExtension,
 		TestReport_Operation operation,
 		TestReport_Assert asserts}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Action newTestReport_Action = new TestReport_Action(
-			id: await newId('TestReport_Action'),
+			id: await fhirDb.newResourceId('TestReport_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Action);
 	return newTestReport_Action;
 }
   String id;
@@ -273,8 +282,9 @@ class TestReport_Operation {
 		Element elementMessage,
 		String detail,
 		Element elementDetail}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Operation newTestReport_Operation = new TestReport_Operation(
-			id: await newId('TestReport_Operation'),
+			id: await fhirDb.newResourceId('TestReport_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			result: result,
@@ -284,6 +294,7 @@ class TestReport_Operation {
 			detail: detail,
 			elementDetail: elementDetail,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Operation);
 	return newTestReport_Operation;
 }
   String id;
@@ -325,8 +336,9 @@ class TestReport_Assert {
 		Element elementMessage,
 		String detail,
 		Element elementDetail}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Assert newTestReport_Assert = new TestReport_Assert(
-			id: await newId('TestReport_Assert'),
+			id: await fhirDb.newResourceId('TestReport_Assert'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			result: result,
@@ -336,6 +348,7 @@ class TestReport_Assert {
 			detail: detail,
 			elementDetail: elementDetail,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Assert);
 	return newTestReport_Assert;
 }
   String id;
@@ -376,8 +389,9 @@ class TestReport_Test {
 		String description,
 		Element elementDescription,
 		List<TestReport_Action1> action}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Test newTestReport_Test = new TestReport_Test(
-			id: await newId('TestReport_Test'),
+			id: await fhirDb.newResourceId('TestReport_Test'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -386,6 +400,7 @@ class TestReport_Test {
 			elementDescription: elementDescription,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Test);
 	return newTestReport_Test;
 }
   String id;
@@ -421,13 +436,15 @@ class TestReport_Action1 {
 		List<Extension> modifierExtension,
 		TestReport_Operation operation,
 		TestReport_Assert asserts}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Action1 newTestReport_Action1 = new TestReport_Action1(
-			id: await newId('TestReport_Action1'),
+			id: await fhirDb.newResourceId('TestReport_Action1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Action1);
 	return newTestReport_Action1;
 }
   String id;
@@ -456,12 +473,14 @@ class TestReport_Teardown {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestReport_Action2> action}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Teardown newTestReport_Teardown = new TestReport_Teardown(
-			id: await newId('TestReport_Teardown'),
+			id: await fhirDb.newResourceId('TestReport_Teardown'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Teardown);
 	return newTestReport_Teardown;
 }
   String id;
@@ -488,12 +507,14 @@ class TestReport_Action2 {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		TestReport_Operation operation}) async {
+	var fhirDb = new DatabaseHelper();
 	TestReport_Action2 newTestReport_Action2 = new TestReport_Action2(
-			id: await newId('TestReport_Action2'),
+			id: await fhirDb.newResourceId('TestReport_Action2'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 );
+	int saved = await fhirDb.saveResource(newTestReport_Action2);
 	return newTestReport_Action2;
 }
   String id;
@@ -520,6 +541,7 @@ TestReport_Action2(
 
 TestReport _$TestReportFromJson(Map<String, dynamic> json) {
   return TestReport(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -602,6 +624,7 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$TestReportToJson(TestReport instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

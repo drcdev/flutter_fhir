@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -19,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Specimen {
 
 	static Future<Specimen> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -44,8 +44,10 @@ class Specimen {
 		List<Specimen_Container> container,
 		List<CodeableConcept> condition,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	Specimen newSpecimen = new Specimen(
-			id: await newId('Specimen'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Specimen'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -71,9 +73,10 @@ class Specimen {
 			condition: condition,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newSpecimen);
 	return newSpecimen;
 }
-  final String resourceType= 'Specimen';
+  String resourceType= 'Specimen';
   String id;
   Meta meta;
   String implicitRules;
@@ -101,7 +104,8 @@ class Specimen {
   List<Annotation> note;
 
 Specimen(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -149,8 +153,9 @@ class Specimen_Collection {
 		CodeableConcept bodySite,
 		CodeableConcept fastingStatusCodeableConcept,
 		Duration fastingStatusDuration}) async {
+	var fhirDb = new DatabaseHelper();
 	Specimen_Collection newSpecimen_Collection = new Specimen_Collection(
-			id: await newId('Specimen_Collection'),
+			id: await fhirDb.newResourceId('Specimen_Collection'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			collector: collector,
@@ -164,6 +169,7 @@ class Specimen_Collection {
 			fastingStatusCodeableConcept: fastingStatusCodeableConcept,
 			fastingStatusDuration: fastingStatusDuration,
 );
+	int saved = await fhirDb.saveResource(newSpecimen_Collection);
 	return newSpecimen_Collection;
 }
   String id;
@@ -214,8 +220,9 @@ class Specimen_Processing {
 		String timeDateTime,
 		Element elementTimeDateTime,
 		Period timePeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	Specimen_Processing newSpecimen_Processing = new Specimen_Processing(
-			id: await newId('Specimen_Processing'),
+			id: await fhirDb.newResourceId('Specimen_Processing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -226,6 +233,7 @@ class Specimen_Processing {
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod,
 );
+	int saved = await fhirDb.saveResource(newSpecimen_Processing);
 	return newSpecimen_Processing;
 }
   String id;
@@ -271,8 +279,9 @@ class Specimen_Container {
 		Quantity specimenQuantity,
 		CodeableConcept additiveCodeableConcept,
 		Reference additiveReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Specimen_Container newSpecimen_Container = new Specimen_Container(
-			id: await newId('Specimen_Container'),
+			id: await fhirDb.newResourceId('Specimen_Container'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -284,6 +293,7 @@ class Specimen_Container {
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference,
 );
+	int saved = await fhirDb.saveResource(newSpecimen_Container);
 	return newSpecimen_Container;
 }
   String id;
@@ -324,6 +334,7 @@ Specimen_Container(
 
 Specimen _$SpecimenFromJson(Map<String, dynamic> json) {
   return Specimen(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -411,6 +422,7 @@ Specimen _$SpecimenFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SpecimenToJson(Specimen instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

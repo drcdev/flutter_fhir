@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -112,8 +110,9 @@ class Extension {
 		UsageContext valueUsageContext,
 		Dosage valueDosage,
 		Meta valueMeta}) async {
+	var fhirDb = new DatabaseHelper();
 	Extension newExtension = new Extension(
-			id: await newId('Extension'),
+			id: await fhirDb.newResourceId('Extension'),
 			extension: extension,
 			url: url,
 			elementUrl: elementUrl,
@@ -187,6 +186,7 @@ class Extension {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta,
 );
+	int saved = await fhirDb.saveResource(newExtension);
 	return newExtension;
 }
   String id;

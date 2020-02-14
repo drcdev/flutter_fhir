@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class BodyStructure {
 
 	static Future<BodyStructure> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -37,8 +36,10 @@ class BodyStructure {
 		Element elementDescription,
 		List<Attachment> image,
 		Reference patient}) async {
+	var fhirDb = new DatabaseHelper();
 	BodyStructure newBodyStructure = new BodyStructure(
-			id: await newId('BodyStructure'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('BodyStructure'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -59,9 +60,10 @@ class BodyStructure {
 			image: image,
 			patient: patient,
 );
+	int saved = await fhirDb.saveResource(newBodyStructure);
 	return newBodyStructure;
 }
-  final String resourceType= 'BodyStructure';
+  String resourceType= 'BodyStructure';
   String id;
   Meta meta;
   String implicitRules;
@@ -84,7 +86,8 @@ class BodyStructure {
   Reference patient;
 
 BodyStructure(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -118,6 +121,7 @@ BodyStructure(
 
 BodyStructure _$BodyStructureFromJson(Map<String, dynamic> json) {
   return BodyStructure(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -181,6 +185,7 @@ BodyStructure _$BodyStructureFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$BodyStructureToJson(BodyStructure instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

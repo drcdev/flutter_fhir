@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
@@ -19,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ResearchStudy {
 
 	static Future<ResearchStudy> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -56,8 +56,10 @@ class ResearchStudy {
 		List<Annotation> note,
 		List<ResearchStudy_Arm> arm,
 		List<ResearchStudy_Objective> objective}) async {
+	var fhirDb = new DatabaseHelper();
 	ResearchStudy newResearchStudy = new ResearchStudy(
-			id: await newId('ResearchStudy'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ResearchStudy'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -95,9 +97,10 @@ class ResearchStudy {
 			arm: arm,
 			objective: objective,
 );
+	int saved = await fhirDb.saveResource(newResearchStudy);
 	return newResearchStudy;
 }
-  final String resourceType= 'ResearchStudy';
+  String resourceType= 'ResearchStudy';
   String id;
   Meta meta;
   String implicitRules;
@@ -137,7 +140,8 @@ class ResearchStudy {
   List<ResearchStudy_Objective> objective;
 
 ResearchStudy(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -192,8 +196,9 @@ class ResearchStudy_Arm {
 		CodeableConcept type,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	ResearchStudy_Arm newResearchStudy_Arm = new ResearchStudy_Arm(
-			id: await newId('ResearchStudy_Arm'),
+			id: await fhirDb.newResourceId('ResearchStudy_Arm'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -202,6 +207,7 @@ class ResearchStudy_Arm {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newResearchStudy_Arm);
 	return newResearchStudy_Arm;
 }
   String id;
@@ -238,14 +244,16 @@ class ResearchStudy_Objective {
 		String name,
 		Element elementName,
 		CodeableConcept type}) async {
+	var fhirDb = new DatabaseHelper();
 	ResearchStudy_Objective newResearchStudy_Objective = new ResearchStudy_Objective(
-			id: await newId('ResearchStudy_Objective'),
+			id: await fhirDb.newResourceId('ResearchStudy_Objective'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
 			elementName: elementName,
 			type: type,
 );
+	int saved = await fhirDb.saveResource(newResearchStudy_Objective);
 	return newResearchStudy_Objective;
 }
   String id;
@@ -276,6 +284,7 @@ ResearchStudy_Objective(
 
 ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
   return ResearchStudy(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -411,6 +420,7 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ResearchStudyToJson(ResearchStudy instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

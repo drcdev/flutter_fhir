@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class DetectedIssue {
 
 	static Future<DetectedIssue> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -45,8 +44,10 @@ class DetectedIssue {
 		String reference,
 		Element elementReference,
 		List<DetectedIssue_Mitigation> mitigation}) async {
+	var fhirDb = new DatabaseHelper();
 	DetectedIssue newDetectedIssue = new DetectedIssue(
-			id: await newId('DetectedIssue'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('DetectedIssue'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -75,9 +76,10 @@ class DetectedIssue {
 			elementReference: elementReference,
 			mitigation: mitigation,
 );
+	int saved = await fhirDb.saveResource(newDetectedIssue);
 	return newDetectedIssue;
 }
-  final String resourceType= 'DetectedIssue';
+  String resourceType= 'DetectedIssue';
   String id;
   Meta meta;
   String implicitRules;
@@ -108,7 +110,8 @@ class DetectedIssue {
   List<DetectedIssue_Mitigation> mitigation;
 
 DetectedIssue(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -151,13 +154,15 @@ class DetectedIssue_Evidence {
 		List<Extension> modifierExtension,
 		List<CodeableConcept> code,
 		List<Reference> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	DetectedIssue_Evidence newDetectedIssue_Evidence = new DetectedIssue_Evidence(
-			id: await newId('DetectedIssue_Evidence'),
+			id: await fhirDb.newResourceId('DetectedIssue_Evidence'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newDetectedIssue_Evidence);
 	return newDetectedIssue_Evidence;
 }
   String id;
@@ -189,8 +194,9 @@ class DetectedIssue_Mitigation {
 		DateTime date,
 		Element elementDate,
 		Reference author}) async {
+	var fhirDb = new DatabaseHelper();
 	DetectedIssue_Mitigation newDetectedIssue_Mitigation = new DetectedIssue_Mitigation(
-			id: await newId('DetectedIssue_Mitigation'),
+			id: await fhirDb.newResourceId('DetectedIssue_Mitigation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
@@ -198,6 +204,7 @@ class DetectedIssue_Mitigation {
 			elementDate: elementDate,
 			author: author,
 );
+	int saved = await fhirDb.saveResource(newDetectedIssue_Mitigation);
 	return newDetectedIssue_Mitigation;
 }
   String id;
@@ -230,6 +237,7 @@ DetectedIssue_Mitigation(
 
 DetectedIssue _$DetectedIssueFromJson(Map<String, dynamic> json) {
   return DetectedIssue(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -314,6 +322,7 @@ DetectedIssue _$DetectedIssueFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DetectedIssueToJson(DetectedIssue instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

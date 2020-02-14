@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -16,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ImmunizationEvaluation {
 
 	static Future<ImmunizationEvaluation> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -49,8 +48,10 @@ class ImmunizationEvaluation {
 		Element elementSeriesDosesPositiveInt,
 		String seriesDosesString,
 		Element elementSeriesDosesString}) async {
+	var fhirDb = new DatabaseHelper();
 	ImmunizationEvaluation newImmunizationEvaluation = new ImmunizationEvaluation(
-			id: await newId('ImmunizationEvaluation'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ImmunizationEvaluation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -84,9 +85,10 @@ class ImmunizationEvaluation {
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString,
 );
+	int saved = await fhirDb.saveResource(newImmunizationEvaluation);
 	return newImmunizationEvaluation;
 }
-  final String resourceType= 'ImmunizationEvaluation';
+  String resourceType= 'ImmunizationEvaluation';
   String id;
   Meta meta;
   String implicitRules;
@@ -122,7 +124,8 @@ class ImmunizationEvaluation {
   Element elementSeriesDosesString;
 
 ImmunizationEvaluation(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -170,6 +173,7 @@ ImmunizationEvaluation(
 ImmunizationEvaluation _$ImmunizationEvaluationFromJson(
     Map<String, dynamic> json) {
   return ImmunizationEvaluation(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -265,6 +269,7 @@ ImmunizationEvaluation _$ImmunizationEvaluationFromJson(
 Map<String, dynamic> _$ImmunizationEvaluationToJson(
         ImmunizationEvaluation instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class TestScript {
 
 	static Future<TestScript> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -64,8 +63,10 @@ class TestScript {
 		TestScript_Setup setup,
 		List<TestScript_Test> test,
 		TestScript_Teardown teardown}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript newTestScript = new TestScript(
-			id: await newId('TestScript'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('TestScript'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -111,9 +112,10 @@ class TestScript {
 			test: test,
 			teardown: teardown,
 );
+	int saved = await fhirDb.saveResource(newTestScript);
 	return newTestScript;
 }
-  final String resourceType= 'TestScript';
+  String resourceType= 'TestScript';
   String id;
   Meta meta;
   String implicitRules;
@@ -161,7 +163,8 @@ class TestScript {
   TestScript_Teardown teardown;
 
 TestScript(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -222,14 +225,16 @@ class TestScript_Origin {
 		int index,
 		Element elementIndex,
 		Coding profile}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Origin newTestScript_Origin = new TestScript_Origin(
-			id: await newId('TestScript_Origin'),
+			id: await fhirDb.newResourceId('TestScript_Origin'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			index: index,
 			elementIndex: elementIndex,
 			profile: profile,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Origin);
 	return newTestScript_Origin;
 }
   String id;
@@ -262,14 +267,16 @@ class TestScript_Destination {
 		int index,
 		Element elementIndex,
 		Coding profile}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Destination newTestScript_Destination = new TestScript_Destination(
-			id: await newId('TestScript_Destination'),
+			id: await fhirDb.newResourceId('TestScript_Destination'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			index: index,
 			elementIndex: elementIndex,
 			profile: profile,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Destination);
 	return newTestScript_Destination;
 }
   String id;
@@ -301,13 +308,15 @@ class TestScript_Metadata {
 		List<Extension> modifierExtension,
 		List<TestScript_Link> link,
 		List<TestScript_Capability> capability}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Metadata newTestScript_Metadata = new TestScript_Metadata(
-			id: await newId('TestScript_Metadata'),
+			id: await fhirDb.newResourceId('TestScript_Metadata'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			link: link,
 			capability: capability,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Metadata);
 	return newTestScript_Metadata;
 }
   String id;
@@ -339,8 +348,9 @@ class TestScript_Link {
 		Element elementUrl,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Link newTestScript_Link = new TestScript_Link(
-			id: await newId('TestScript_Link'),
+			id: await fhirDb.newResourceId('TestScript_Link'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			url: url,
@@ -348,6 +358,7 @@ class TestScript_Link {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Link);
 	return newTestScript_Link;
 }
   String id;
@@ -392,8 +403,9 @@ class TestScript_Capability {
 		List<String> link,
 		List<Element> elementLink,
 		String capabilities}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Capability newTestScript_Capability = new TestScript_Capability(
-			id: await newId('TestScript_Capability'),
+			id: await fhirDb.newResourceId('TestScript_Capability'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			require: require,
@@ -410,6 +422,7 @@ class TestScript_Capability {
 			elementLink: elementLink,
 			capabilities: capabilities,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Capability);
 	return newTestScript_Capability;
 }
   String id;
@@ -464,8 +477,9 @@ class TestScript_Fixture {
 		bool autodelete,
 		Element elementAutodelete,
 		Reference resource}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Fixture newTestScript_Fixture = new TestScript_Fixture(
-			id: await newId('TestScript_Fixture'),
+			id: await fhirDb.newResourceId('TestScript_Fixture'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			autocreate: autocreate,
@@ -474,6 +488,7 @@ class TestScript_Fixture {
 			elementAutodelete: elementAutodelete,
 			resource: resource,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Fixture);
 	return newTestScript_Fixture;
 }
   String id;
@@ -523,8 +538,9 @@ class TestScript_Variable {
 		Element elementPath,
 		String sourceId,
 		Element elementSourceId}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Variable newTestScript_Variable = new TestScript_Variable(
-			id: await newId('TestScript_Variable'),
+			id: await fhirDb.newResourceId('TestScript_Variable'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -544,6 +560,7 @@ class TestScript_Variable {
 			sourceId: sourceId,
 			elementSourceId: elementSourceId,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Variable);
 	return newTestScript_Variable;
 }
   String id;
@@ -600,12 +617,14 @@ class TestScript_Setup {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestScript_Action> action}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Setup newTestScript_Setup = new TestScript_Setup(
-			id: await newId('TestScript_Setup'),
+			id: await fhirDb.newResourceId('TestScript_Setup'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Setup);
 	return newTestScript_Setup;
 }
   String id;
@@ -633,13 +652,15 @@ class TestScript_Action {
 		List<Extension> modifierExtension,
 		TestScript_Operation operation,
 		TestScript_Assert asserts}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Action newTestScript_Action = new TestScript_Action(
-			id: await newId('TestScript_Action'),
+			id: await fhirDb.newResourceId('TestScript_Action'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Action);
 	return newTestScript_Action;
 }
   String id;
@@ -699,8 +720,9 @@ class TestScript_Operation {
 		Element elementTargetId,
 		String url,
 		Element elementUrl}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Operation newTestScript_Operation = new TestScript_Operation(
-			id: await newId('TestScript_Operation'),
+			id: await fhirDb.newResourceId('TestScript_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -736,6 +758,7 @@ class TestScript_Operation {
 			url: url,
 			elementUrl: elementUrl,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Operation);
 	return newTestScript_Operation;
 }
   String id;
@@ -827,8 +850,9 @@ class TestScript_RequestHeader {
 		Element elementField,
 		String value,
 		Element elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_RequestHeader newTestScript_RequestHeader = new TestScript_RequestHeader(
-			id: await newId('TestScript_RequestHeader'),
+			id: await fhirDb.newResourceId('TestScript_RequestHeader'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			field: field,
@@ -836,6 +860,7 @@ class TestScript_RequestHeader {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newTestScript_RequestHeader);
 	return newTestScript_RequestHeader;
 }
   String id;
@@ -911,8 +936,9 @@ class TestScript_Assert {
 		Element elementValue,
 		bool warningOnly,
 		Element elementWarningOnly}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Assert newTestScript_Assert = new TestScript_Assert(
-			id: await newId('TestScript_Assert'),
+			id: await fhirDb.newResourceId('TestScript_Assert'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			label: label,
@@ -960,6 +986,7 @@ class TestScript_Assert {
 			warningOnly: warningOnly,
 			elementWarningOnly: elementWarningOnly,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Assert);
 	return newTestScript_Assert;
 }
   String id;
@@ -1076,8 +1103,9 @@ class TestScript_Test {
 		String description,
 		Element elementDescription,
 		List<TestScript_Action1> action}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Test newTestScript_Test = new TestScript_Test(
-			id: await newId('TestScript_Test'),
+			id: await fhirDb.newResourceId('TestScript_Test'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -1086,6 +1114,7 @@ class TestScript_Test {
 			elementDescription: elementDescription,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Test);
 	return newTestScript_Test;
 }
   String id;
@@ -1121,13 +1150,15 @@ class TestScript_Action1 {
 		List<Extension> modifierExtension,
 		TestScript_Operation operation,
 		TestScript_Assert asserts}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Action1 newTestScript_Action1 = new TestScript_Action1(
-			id: await newId('TestScript_Action1'),
+			id: await fhirDb.newResourceId('TestScript_Action1'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 			asserts: asserts,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Action1);
 	return newTestScript_Action1;
 }
   String id;
@@ -1156,12 +1187,14 @@ class TestScript_Teardown {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		List<TestScript_Action2> action}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Teardown newTestScript_Teardown = new TestScript_Teardown(
-			id: await newId('TestScript_Teardown'),
+			id: await fhirDb.newResourceId('TestScript_Teardown'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			action: action,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Teardown);
 	return newTestScript_Teardown;
 }
   String id;
@@ -1188,12 +1221,14 @@ class TestScript_Action2 {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		TestScript_Operation operation}) async {
+	var fhirDb = new DatabaseHelper();
 	TestScript_Action2 newTestScript_Action2 = new TestScript_Action2(
-			id: await newId('TestScript_Action2'),
+			id: await fhirDb.newResourceId('TestScript_Action2'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			operation: operation,
 );
+	int saved = await fhirDb.saveResource(newTestScript_Action2);
 	return newTestScript_Action2;
 }
   String id;
@@ -1220,6 +1255,7 @@ TestScript_Action2(
 
 TestScript _$TestScriptFromJson(Map<String, dynamic> json) {
   return TestScript(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1354,6 +1390,7 @@ TestScript _$TestScriptFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$TestScriptToJson(TestScript instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

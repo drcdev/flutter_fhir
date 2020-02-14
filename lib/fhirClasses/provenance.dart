@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Provenance {
 
 	static Future<Provenance> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -41,8 +40,10 @@ class Provenance {
 		List<Provenance_Agent> agent,
 		List<Provenance_Entity> entity,
 		List<Signature> signature}) async {
+	var fhirDb = new DatabaseHelper();
 	Provenance newProvenance = new Provenance(
-			id: await newId('Provenance'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Provenance'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -67,9 +68,10 @@ class Provenance {
 			entity: entity,
 			signature: signature,
 );
+	int saved = await fhirDb.saveResource(newProvenance);
 	return newProvenance;
 }
-  final String resourceType= 'Provenance';
+  String resourceType= 'Provenance';
   String id;
   Meta meta;
   String implicitRules;
@@ -96,7 +98,8 @@ class Provenance {
   List<Signature> signature;
 
 Provenance(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -137,8 +140,9 @@ class Provenance_Agent {
 		List<CodeableConcept> role,
 		Reference who,
 		Reference onBehalfOf}) async {
+	var fhirDb = new DatabaseHelper();
 	Provenance_Agent newProvenance_Agent = new Provenance_Agent(
-			id: await newId('Provenance_Agent'),
+			id: await fhirDb.newResourceId('Provenance_Agent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -146,6 +150,7 @@ class Provenance_Agent {
 			who: who,
 			onBehalfOf: onBehalfOf,
 );
+	int saved = await fhirDb.saveResource(newProvenance_Agent);
 	return newProvenance_Agent;
 }
   String id;
@@ -181,8 +186,9 @@ class Provenance_Entity {
 		Element elementRole,
 		Reference what,
 		List<Provenance_Agent> agent}) async {
+	var fhirDb = new DatabaseHelper();
 	Provenance_Entity newProvenance_Entity = new Provenance_Entity(
-			id: await newId('Provenance_Entity'),
+			id: await fhirDb.newResourceId('Provenance_Entity'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			role: role,
@@ -190,6 +196,7 @@ class Provenance_Entity {
 			what: what,
 			agent: agent,
 );
+	int saved = await fhirDb.saveResource(newProvenance_Entity);
 	return newProvenance_Entity;
 }
   String id;
@@ -222,6 +229,7 @@ Provenance_Entity(
 
 Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
   return Provenance(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -303,6 +311,7 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ProvenanceToJson(Provenance instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

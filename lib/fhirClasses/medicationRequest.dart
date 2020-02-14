@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicationRequest {
 
 	static Future<MedicationRequest> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -73,8 +72,10 @@ class MedicationRequest {
 		Reference priorPrescription,
 		List<Reference> detectedIssue,
 		List<Reference> eventHistory}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationRequest newMedicationRequest = new MedicationRequest(
-			id: await newId('MedicationRequest'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicationRequest'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -127,9 +128,10 @@ class MedicationRequest {
 			detectedIssue: detectedIssue,
 			eventHistory: eventHistory,
 );
+	int saved = await fhirDb.saveResource(newMedicationRequest);
 	return newMedicationRequest;
 }
-  final String resourceType= 'MedicationRequest';
+  String resourceType= 'MedicationRequest';
   String id;
   Meta meta;
   String implicitRules;
@@ -184,7 +186,8 @@ class MedicationRequest {
   List<Reference> eventHistory;
 
 MedicationRequest(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -257,8 +260,9 @@ class MedicationRequest_DispenseRequest {
 		Quantity quantity,
 		Duration expectedSupplyDuration,
 		Reference performer}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationRequest_DispenseRequest newMedicationRequest_DispenseRequest = new MedicationRequest_DispenseRequest(
-			id: await newId('MedicationRequest_DispenseRequest'),
+			id: await fhirDb.newResourceId('MedicationRequest_DispenseRequest'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			initialFill: initialFill,
@@ -270,6 +274,7 @@ class MedicationRequest_DispenseRequest {
 			expectedSupplyDuration: expectedSupplyDuration,
 			performer: performer,
 );
+	int saved = await fhirDb.saveResource(newMedicationRequest_DispenseRequest);
 	return newMedicationRequest_DispenseRequest;
 }
   String id;
@@ -311,13 +316,15 @@ class MedicationRequest_InitialFill {
 		List<Extension> modifierExtension,
 		Quantity quantity,
 		Duration duration}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationRequest_InitialFill newMedicationRequest_InitialFill = new MedicationRequest_InitialFill(
-			id: await newId('MedicationRequest_InitialFill'),
+			id: await fhirDb.newResourceId('MedicationRequest_InitialFill'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			duration: duration,
 );
+	int saved = await fhirDb.saveResource(newMedicationRequest_InitialFill);
 	return newMedicationRequest_InitialFill;
 }
   String id;
@@ -349,8 +356,9 @@ class MedicationRequest_Substitution {
 		Element elementAllowedBoolean,
 		CodeableConcept allowedCodeableConcept,
 		CodeableConcept reason}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationRequest_Substitution newMedicationRequest_Substitution = new MedicationRequest_Substitution(
-			id: await newId('MedicationRequest_Substitution'),
+			id: await fhirDb.newResourceId('MedicationRequest_Substitution'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			allowedBoolean: allowedBoolean,
@@ -358,6 +366,7 @@ class MedicationRequest_Substitution {
 			allowedCodeableConcept: allowedCodeableConcept,
 			reason: reason,
 );
+	int saved = await fhirDb.saveResource(newMedicationRequest_Substitution);
 	return newMedicationRequest_Substitution;
 }
   String id;
@@ -390,6 +399,7 @@ MedicationRequest_Substitution(
 
 MedicationRequest _$MedicationRequestFromJson(Map<String, dynamic> json) {
   return MedicationRequest(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -561,6 +571,7 @@ MedicationRequest _$MedicationRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MedicationRequestToJson(MedicationRequest instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

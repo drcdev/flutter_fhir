@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class PaymentReconciliation {
 
 	static Future<PaymentReconciliation> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -48,8 +47,10 @@ class PaymentReconciliation {
 		List<PaymentReconciliation_Detail> detail,
 		CodeableConcept formCode,
 		List<PaymentReconciliation_ProcessNote> processNote}) async {
+	var fhirDb = new DatabaseHelper();
 	PaymentReconciliation newPaymentReconciliation = new PaymentReconciliation(
-			id: await newId('PaymentReconciliation'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('PaymentReconciliation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -80,9 +81,10 @@ class PaymentReconciliation {
 			formCode: formCode,
 			processNote: processNote,
 );
+	int saved = await fhirDb.saveResource(newPaymentReconciliation);
 	return newPaymentReconciliation;
 }
-  final String resourceType= 'PaymentReconciliation';
+  String resourceType= 'PaymentReconciliation';
   String id;
   Meta meta;
   String implicitRules;
@@ -115,7 +117,8 @@ class PaymentReconciliation {
   List<PaymentReconciliation_ProcessNote> processNote;
 
 PaymentReconciliation(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -169,8 +172,9 @@ class PaymentReconciliation_Detail {
 		Reference responsible,
 		Reference payee,
 		Money amount}) async {
+	var fhirDb = new DatabaseHelper();
 	PaymentReconciliation_Detail newPaymentReconciliation_Detail = new PaymentReconciliation_Detail(
-			id: await newId('PaymentReconciliation_Detail'),
+			id: await fhirDb.newResourceId('PaymentReconciliation_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -185,6 +189,7 @@ class PaymentReconciliation_Detail {
 			payee: payee,
 			amount: amount,
 );
+	int saved = await fhirDb.saveResource(newPaymentReconciliation_Detail);
 	return newPaymentReconciliation_Detail;
 }
   String id;
@@ -234,8 +239,9 @@ class PaymentReconciliation_ProcessNote {
 		Element elementType,
 		String text,
 		Element elementText}) async {
+	var fhirDb = new DatabaseHelper();
 	PaymentReconciliation_ProcessNote newPaymentReconciliation_ProcessNote = new PaymentReconciliation_ProcessNote(
-			id: await newId('PaymentReconciliation_ProcessNote'),
+			id: await fhirDb.newResourceId('PaymentReconciliation_ProcessNote'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -243,6 +249,7 @@ class PaymentReconciliation_ProcessNote {
 			text: text,
 			elementText: elementText,
 );
+	int saved = await fhirDb.saveResource(newPaymentReconciliation_ProcessNote);
 	return newPaymentReconciliation_ProcessNote;
 }
   String id;
@@ -276,6 +283,7 @@ PaymentReconciliation_ProcessNote(
 PaymentReconciliation _$PaymentReconciliationFromJson(
     Map<String, dynamic> json) {
   return PaymentReconciliation(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -369,6 +377,7 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
 Map<String, dynamic> _$PaymentReconciliationToJson(
         PaymentReconciliation instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

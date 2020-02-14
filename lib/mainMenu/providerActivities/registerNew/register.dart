@@ -172,13 +172,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         given: [givenNameController.text],
                         family: familyNameController.text)
                   ], birthDate: _birthDate.toString());
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RegisterFamily(
-                              pt: pt,
-                            )),
-                  );
+                  print(pt.id);
+//                  Navigator.push(
+//                    context,
+//                    MaterialPageRoute(
+//                        builder: (context) => RegisterFamily(
+//                              pt: pt,
+//                            )),
+//                  );
                 },
                 child: Text('Press to Create Patient'),
               ),

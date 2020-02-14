@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Schedule {
 
 	static Future<Schedule> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -37,8 +36,10 @@ class Schedule {
 		Period planningHorizon,
 		String comment,
 		Element elementComment}) async {
+	var fhirDb = new DatabaseHelper();
 	Schedule newSchedule = new Schedule(
-			id: await newId('Schedule'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Schedule'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -59,9 +60,10 @@ class Schedule {
 			comment: comment,
 			elementComment: elementComment,
 );
+	int saved = await fhirDb.saveResource(newSchedule);
 	return newSchedule;
 }
-  final String resourceType= 'Schedule';
+  String resourceType= 'Schedule';
   String id;
   Meta meta;
   String implicitRules;
@@ -84,7 +86,8 @@ class Schedule {
   Element elementComment;
 
 Schedule(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -118,6 +121,7 @@ Schedule(
 
 Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
   return Schedule(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -184,6 +188,7 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

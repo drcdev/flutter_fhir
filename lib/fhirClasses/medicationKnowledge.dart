@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -20,6 +18,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicationKnowledge {
 
 	static Future<MedicationKnowledge> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -55,8 +54,10 @@ class MedicationKnowledge {
 		List<Reference> contraindication,
 		List<MedicationKnowledge_Regulatory> regulatory,
 		List<MedicationKnowledge_Kinetics> kinetics}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge newMedicationKnowledge = new MedicationKnowledge(
-			id: await newId('MedicationKnowledge'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicationKnowledge'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -92,9 +93,10 @@ class MedicationKnowledge {
 			regulatory: regulatory,
 			kinetics: kinetics,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge);
 	return newMedicationKnowledge;
 }
-  final String resourceType= 'MedicationKnowledge';
+  String resourceType= 'MedicationKnowledge';
   String id;
   Meta meta;
   String implicitRules;
@@ -132,7 +134,8 @@ class MedicationKnowledge {
   List<MedicationKnowledge_Kinetics> kinetics;
 
 MedicationKnowledge(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -182,13 +185,15 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<Reference> reference}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_RelatedMedicationKnowledge newMedicationKnowledge_RelatedMedicationKnowledge = new MedicationKnowledge_RelatedMedicationKnowledge(
-			id: await newId('MedicationKnowledge_RelatedMedicationKnowledge'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_RelatedMedicationKnowledge'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			reference: reference,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_RelatedMedicationKnowledge);
 	return newMedicationKnowledge_RelatedMedicationKnowledge;
 }
   String id;
@@ -218,13 +223,15 @@ class MedicationKnowledge_Monograph {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Reference source}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Monograph newMedicationKnowledge_Monograph = new MedicationKnowledge_Monograph(
-			id: await newId('MedicationKnowledge_Monograph'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Monograph'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Monograph);
 	return newMedicationKnowledge_Monograph;
 }
   String id;
@@ -257,8 +264,9 @@ class MedicationKnowledge_Ingredient {
 		bool isActive,
 		Element elementIsActive,
 		Ratio strength}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Ingredient newMedicationKnowledge_Ingredient = new MedicationKnowledge_Ingredient(
-			id: await newId('MedicationKnowledge_Ingredient'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Ingredient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemCodeableConcept: itemCodeableConcept,
@@ -267,6 +275,7 @@ class MedicationKnowledge_Ingredient {
 			elementIsActive: elementIsActive,
 			strength: strength,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Ingredient);
 	return newMedicationKnowledge_Ingredient;
 }
   String id;
@@ -304,8 +313,9 @@ class MedicationKnowledge_Cost {
 		String source,
 		Element elementSource,
 		Money cost}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Cost newMedicationKnowledge_Cost = new MedicationKnowledge_Cost(
-			id: await newId('MedicationKnowledge_Cost'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Cost'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -313,6 +323,7 @@ class MedicationKnowledge_Cost {
 			elementSource: elementSource,
 			cost: cost,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Cost);
 	return newMedicationKnowledge_Cost;
 }
   String id;
@@ -347,14 +358,16 @@ class MedicationKnowledge_MonitoringProgram {
 		CodeableConcept type,
 		String name,
 		Element elementName}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_MonitoringProgram newMedicationKnowledge_MonitoringProgram = new MedicationKnowledge_MonitoringProgram(
-			id: await newId('MedicationKnowledge_MonitoringProgram'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_MonitoringProgram'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			name: name,
 			elementName: elementName,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_MonitoringProgram);
 	return newMedicationKnowledge_MonitoringProgram;
 }
   String id;
@@ -388,8 +401,9 @@ class MedicationKnowledge_AdministrationGuidelines {
 		CodeableConcept indicationCodeableConcept,
 		Reference indicationReference,
 		List<MedicationKnowledge_PatientCharacteristics> patientCharacteristics}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_AdministrationGuidelines newMedicationKnowledge_AdministrationGuidelines = new MedicationKnowledge_AdministrationGuidelines(
-			id: await newId('MedicationKnowledge_AdministrationGuidelines'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_AdministrationGuidelines'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			dosage: dosage,
@@ -397,6 +411,7 @@ class MedicationKnowledge_AdministrationGuidelines {
 			indicationReference: indicationReference,
 			patientCharacteristics: patientCharacteristics,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_AdministrationGuidelines);
 	return newMedicationKnowledge_AdministrationGuidelines;
 }
   String id;
@@ -430,13 +445,15 @@ class MedicationKnowledge_Dosage {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<Dosage> dosage}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Dosage newMedicationKnowledge_Dosage = new MedicationKnowledge_Dosage(
-			id: await newId('MedicationKnowledge_Dosage'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Dosage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			dosage: dosage,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Dosage);
 	return newMedicationKnowledge_Dosage;
 }
   String id;
@@ -468,8 +485,9 @@ class MedicationKnowledge_PatientCharacteristics {
 		Quantity characteristicQuantity,
 		List<String> value,
 		List<Element> elementValue}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_PatientCharacteristics newMedicationKnowledge_PatientCharacteristics = new MedicationKnowledge_PatientCharacteristics(
-			id: await newId('MedicationKnowledge_PatientCharacteristics'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_PatientCharacteristics'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			characteristicCodeableConcept: characteristicCodeableConcept,
@@ -477,6 +495,7 @@ class MedicationKnowledge_PatientCharacteristics {
 			value: value,
 			elementValue: elementValue,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_PatientCharacteristics);
 	return newMedicationKnowledge_PatientCharacteristics;
 }
   String id;
@@ -510,13 +529,15 @@ class MedicationKnowledge_MedicineClassification {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		List<CodeableConcept> classification}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_MedicineClassification newMedicationKnowledge_MedicineClassification = new MedicationKnowledge_MedicineClassification(
-			id: await newId('MedicationKnowledge_MedicineClassification'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_MedicineClassification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			classification: classification,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_MedicineClassification);
 	return newMedicationKnowledge_MedicineClassification;
 }
   String id;
@@ -546,13 +567,15 @@ class MedicationKnowledge_Packaging {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Quantity quantity}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Packaging newMedicationKnowledge_Packaging = new MedicationKnowledge_Packaging(
-			id: await newId('MedicationKnowledge_Packaging'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Packaging'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			quantity: quantity,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Packaging);
 	return newMedicationKnowledge_Packaging;
 }
   String id;
@@ -587,8 +610,9 @@ class MedicationKnowledge_DrugCharacteristic {
 		Quantity valueQuantity,
 		String valueBase64Binary,
 		Element elementValueBase64Binary}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_DrugCharacteristic newMedicationKnowledge_DrugCharacteristic = new MedicationKnowledge_DrugCharacteristic(
-			id: await newId('MedicationKnowledge_DrugCharacteristic'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_DrugCharacteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -599,6 +623,7 @@ class MedicationKnowledge_DrugCharacteristic {
 			valueBase64Binary: valueBase64Binary,
 			elementValueBase64Binary: elementValueBase64Binary,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_DrugCharacteristic);
 	return newMedicationKnowledge_DrugCharacteristic;
 }
   String id;
@@ -640,8 +665,9 @@ class MedicationKnowledge_Regulatory {
 		List<MedicationKnowledge_Substitution> substitution,
 		List<MedicationKnowledge_Schedule> schedule,
 		MedicationKnowledge_MaxDispense maxDispense}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Regulatory newMedicationKnowledge_Regulatory = new MedicationKnowledge_Regulatory(
-			id: await newId('MedicationKnowledge_Regulatory'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Regulatory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			regulatoryAuthority: regulatoryAuthority,
@@ -649,6 +675,7 @@ class MedicationKnowledge_Regulatory {
 			schedule: schedule,
 			maxDispense: maxDispense,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Regulatory);
 	return newMedicationKnowledge_Regulatory;
 }
   String id;
@@ -683,14 +710,16 @@ class MedicationKnowledge_Substitution {
 		CodeableConcept type,
 		bool allowed,
 		Element elementAllowed}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Substitution newMedicationKnowledge_Substitution = new MedicationKnowledge_Substitution(
-			id: await newId('MedicationKnowledge_Substitution'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Substitution'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			allowed: allowed,
 			elementAllowed: elementAllowed,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Substitution);
 	return newMedicationKnowledge_Substitution;
 }
   String id;
@@ -721,12 +750,14 @@ class MedicationKnowledge_Schedule {
 		List<Extension> extension,
 		List<Extension> modifierExtension,
 		CodeableConcept schedule}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Schedule newMedicationKnowledge_Schedule = new MedicationKnowledge_Schedule(
-			id: await newId('MedicationKnowledge_Schedule'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Schedule'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			schedule: schedule,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Schedule);
 	return newMedicationKnowledge_Schedule;
 }
   String id;
@@ -754,13 +785,15 @@ class MedicationKnowledge_MaxDispense {
 		List<Extension> modifierExtension,
 		Quantity quantity,
 		Duration period}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_MaxDispense newMedicationKnowledge_MaxDispense = new MedicationKnowledge_MaxDispense(
-			id: await newId('MedicationKnowledge_MaxDispense'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_MaxDispense'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			quantity: quantity,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_MaxDispense);
 	return newMedicationKnowledge_MaxDispense;
 }
   String id;
@@ -791,14 +824,16 @@ class MedicationKnowledge_Kinetics {
 		List<Quantity> areaUnderCurve,
 		List<Quantity> lethalDose50,
 		Duration halfLifePeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicationKnowledge_Kinetics newMedicationKnowledge_Kinetics = new MedicationKnowledge_Kinetics(
-			id: await newId('MedicationKnowledge_Kinetics'),
+			id: await fhirDb.newResourceId('MedicationKnowledge_Kinetics'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			areaUnderCurve: areaUnderCurve,
 			lethalDose50: lethalDose50,
 			halfLifePeriod: halfLifePeriod,
 );
+	int saved = await fhirDb.saveResource(newMedicationKnowledge_Kinetics);
 	return newMedicationKnowledge_Kinetics;
 }
   String id;
@@ -829,6 +864,7 @@ MedicationKnowledge_Kinetics(
 
 MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
   return MedicationKnowledge(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -968,6 +1004,7 @@ MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$MedicationKnowledgeToJson(
         MedicationKnowledge instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

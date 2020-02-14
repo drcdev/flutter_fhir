@@ -30,9 +30,12 @@ class _RegisterFamily extends StatefulWidget {
 class _RegisterFamilyState extends State<_RegisterFamily> {
   Patient pt;
   _RegisterFamilyState(this.pt);
-  var relation1 = RelationPicker(TextEditingController(), TextEditingController(), null);
-  var relation2 = RelationPicker(TextEditingController(), TextEditingController(), null);
-  var relation3 = RelationPicker(TextEditingController(), TextEditingController(), null);
+  var relation1 =
+      RelationPicker(TextEditingController(), TextEditingController(), null);
+  var relation2 =
+      RelationPicker(TextEditingController(), TextEditingController(), null);
+  var relation3 =
+      RelationPicker(TextEditingController(), TextEditingController(), null);
 
   @override
   void dispose() {
@@ -57,17 +60,21 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
           relation1,
           relation2,
           relation3,
-
           RaisedButton(
             onPressed: () async {
-              var contacts = await Hive.openBox<Patient_Contact>('Patient_ContactBox');
+              var contacts =
+                  await Hive.openBox<Patient_Contact>('Patient_ContactBox');
               var link = await Hive.openBox<Patient_Link>('Patient_LinkBox');
               Patient_Link links = await Patient_Link.newInstance();
-              Patient_Contact ptContact1 = await Patient_Contact.newInstance(relationship: [CodeableConcept(text: relation1.relation)],
-                  name: HumanName(given: [relation1.given.text],
+              Patient_Contact ptContact1 = await Patient_Contact.newInstance(
+                  relationship: [CodeableConcept(text: relation1.relation)],
+                  name: HumanName(
+                      given: [relation1.given.text],
                       family: relation1.family.text));
-              Patient_Contact ptContact2 = await Patient_Contact.newInstance(relationship: [CodeableConcept(text: relation2.relation)],
-                  name: HumanName(given: [relation2.given.text],
+              Patient_Contact ptContact2 = await Patient_Contact.newInstance(
+                  relationship: [CodeableConcept(text: relation2.relation)],
+                  name: HumanName(
+                      given: [relation2.given.text],
                       family: relation1.family.text));
               contacts.put(ptContact1.id, ptContact1);
               contacts.put(ptContact2.id, ptContact2);
@@ -76,7 +83,11 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 //              pt = addFamily(pt, relation3);
               var patientBox = await Hive.openBox<Patient>('PatientBox');
               patientBox.put(pt.id, pt);
-              print(patientBox.getAt(patientBox.length-1).contact[0].toJson().toString());
+              print(patientBox
+                  .getAt(patientBox.length - 1)
+                  .contact[0]
+                  .toJson()
+                  .toString());
 //              Navigator.push(
 //                context,
 //                MaterialPageRoute(builder: (context) => Register()),
@@ -84,7 +95,6 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
             },
             child: Text('Register Another Patient'),
           ),
-
           RaisedButton(
             onPressed: () {
               pt = addFamily(pt, relation1);
@@ -93,8 +103,9 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               Write(pt);
 
               Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProviderActivities(pt: pt)),
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ProviderActivities(pt: pt)),
               );
             },
             child: Text('Complete Registration'),
@@ -116,69 +127,67 @@ class RelationPicker extends StatefulWidget {
   _RelationPickerState createState() => _RelationPickerState();
 }
 
-class _RelationPickerState extends State <RelationPicker> {
-
+class _RelationPickerState extends State<RelationPicker> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        DropdownButton<String>(
-          items: <String>[
-            'mother',
-            'grandmother',
-            'aunt',
-            'sister',
-            'father',
-            'grandfather',
-            'uncle',
-            'brother'
-          ].map<DropdownMenuItem<String>> ((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: new Text(value),
-            );
-          }).toList(),
-          hint: Text('Relationship'),
-          value: widget.relation,
-          onChanged: (String newVal) {
-            setState(() {
-              widget.relation = newVal;
-            });
-          },
-        ),
-
-        TextField(
-          decoration: new InputDecoration(
-              hintText: 'Given Names'),
-          controller: widget.given,
-        ),
-
-        TextField(
-          decoration: new InputDecoration(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          DropdownButton<String>(
+            items: <String>[
+              'mother',
+              'grandmother',
+              'aunt',
+              'sister',
+              'father',
+              'grandfather',
+              'uncle',
+              'brother'
+            ].map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: new Text(value),
+              );
+            }).toList(),
+            hint: Text('Relationship'),
+            value: widget.relation,
+            onChanged: (String newVal) {
+              setState(() {
+                widget.relation = newVal;
+              });
+            },
+          ),
+          TextField(
+            decoration: new InputDecoration(hintText: 'Given Names'),
+            controller: widget.given,
+          ),
+          TextField(
+            decoration: new InputDecoration(
               hintText: 'Family Name',
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(width: 8.0),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(width: 8.0),
+              ),
             ),
-            ),
-          controller: widget.family,
-        ),
-
-      ]
-    );
+            controller: widget.family,
+          ),
+        ]);
   }
 }
 
 Patient addFamily(Patient pt, RelationPicker relation) {
-  if ((relation.given.text != '' || relation.family.text != '') && relation != null) {
+  if ((relation.given.text != '' || relation.family.text != '') &&
+      relation != null) {
     final Patient_Contact ct = new Patient_Contact(
-        relationship: [ CodeableConcept(text: relation.relation)],
-        name: HumanName(given: [relation.given.text],
-            family: relation.family.text)
-    );
-    if(pt.contact == null) { pt.contact = new List<Patient_Contact>(); };
+        relationship: [CodeableConcept(text: relation.relation)],
+        name: HumanName(
+            given: [relation.given.text], family: relation.family.text));
+    if (pt.contact == null) {
+      pt.contact = new List<Patient_Contact>();
+    }
+    ;
     pt.contact.add(ct);
-  };
+  }
+  ;
   return pt;
 }

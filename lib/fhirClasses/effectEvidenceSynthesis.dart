@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class EffectEvidenceSynthesis {
 
 	static Future<EffectEvidenceSynthesis> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -75,8 +74,10 @@ class EffectEvidenceSynthesis {
 		List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure,
 		List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate,
 		List<EffectEvidenceSynthesis_Certainty> certainty}) async {
+	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis newEffectEvidenceSynthesis = new EffectEvidenceSynthesis(
-			id: await newId('EffectEvidenceSynthesis'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('EffectEvidenceSynthesis'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -131,9 +132,10 @@ class EffectEvidenceSynthesis {
 			effectEstimate: effectEstimate,
 			certainty: certainty,
 );
+	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis);
 	return newEffectEvidenceSynthesis;
 }
-  final String resourceType= 'EffectEvidenceSynthesis';
+  String resourceType= 'EffectEvidenceSynthesis';
   String id;
   Meta meta;
   String implicitRules;
@@ -190,7 +192,8 @@ class EffectEvidenceSynthesis {
   List<EffectEvidenceSynthesis_Certainty> certainty;
 
 EffectEvidenceSynthesis(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -263,8 +266,9 @@ class EffectEvidenceSynthesis_SampleSize {
 		Element elementNumberOfStudies,
 		int numberOfParticipants,
 		Element elementNumberOfParticipants}) async {
+	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis_SampleSize newEffectEvidenceSynthesis_SampleSize = new EffectEvidenceSynthesis_SampleSize(
-			id: await newId('EffectEvidenceSynthesis_SampleSize'),
+			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_SampleSize'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -274,6 +278,7 @@ class EffectEvidenceSynthesis_SampleSize {
 			numberOfParticipants: numberOfParticipants,
 			elementNumberOfParticipants: elementNumberOfParticipants,
 );
+	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_SampleSize);
 	return newEffectEvidenceSynthesis_SampleSize;
 }
   String id;
@@ -315,8 +320,9 @@ class EffectEvidenceSynthesis_ResultsByExposure {
 		Element elementExposureState,
 		CodeableConcept variantState,
 		Reference riskEvidenceSynthesis}) async {
+	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis_ResultsByExposure newEffectEvidenceSynthesis_ResultsByExposure = new EffectEvidenceSynthesis_ResultsByExposure(
-			id: await newId('EffectEvidenceSynthesis_ResultsByExposure'),
+			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_ResultsByExposure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -326,6 +332,7 @@ class EffectEvidenceSynthesis_ResultsByExposure {
 			variantState: variantState,
 			riskEvidenceSynthesis: riskEvidenceSynthesis,
 );
+	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_ResultsByExposure);
 	return newEffectEvidenceSynthesis_ResultsByExposure;
 }
   String id;
@@ -369,8 +376,9 @@ class EffectEvidenceSynthesis_EffectEstimate {
 		Element elementValue,
 		CodeableConcept unitOfMeasure,
 		List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate}) async {
+	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis_EffectEstimate newEffectEvidenceSynthesis_EffectEstimate = new EffectEvidenceSynthesis_EffectEstimate(
-			id: await newId('EffectEvidenceSynthesis_EffectEstimate'),
+			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_EffectEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -382,6 +390,7 @@ class EffectEvidenceSynthesis_EffectEstimate {
 			unitOfMeasure: unitOfMeasure,
 			precisionEstimate: precisionEstimate,
 );
+	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_EffectEstimate);
 	return newEffectEvidenceSynthesis_EffectEstimate;
 }
   String id;
@@ -428,8 +437,9 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
 		Element elementFrom,
 		double to,
 		Element elementTo}) async {
+	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis_PrecisionEstimate newEffectEvidenceSynthesis_PrecisionEstimate = new EffectEvidenceSynthesis_PrecisionEstimate(
-			id: await newId('EffectEvidenceSynthesis_PrecisionEstimate'),
+			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_PrecisionEstimate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -440,6 +450,7 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
 			to: to,
 			elementTo: elementTo,
 );
+	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_PrecisionEstimate);
 	return newEffectEvidenceSynthesis_PrecisionEstimate;
 }
   String id;
@@ -480,14 +491,16 @@ class EffectEvidenceSynthesis_Certainty {
 		List<CodeableConcept> rating,
 		List<Annotation> note,
 		List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent}) async {
+	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis_Certainty newEffectEvidenceSynthesis_Certainty = new EffectEvidenceSynthesis_Certainty(
-			id: await newId('EffectEvidenceSynthesis_Certainty'),
+			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_Certainty'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			rating: rating,
 			note: note,
 			certaintySubcomponent: certaintySubcomponent,
 );
+	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_Certainty);
 	return newEffectEvidenceSynthesis_Certainty;
 }
   String id;
@@ -520,14 +533,16 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
 		CodeableConcept type,
 		List<CodeableConcept> rating,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	EffectEvidenceSynthesis_CertaintySubcomponent newEffectEvidenceSynthesis_CertaintySubcomponent = new EffectEvidenceSynthesis_CertaintySubcomponent(
-			id: await newId('EffectEvidenceSynthesis_CertaintySubcomponent'),
+			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_CertaintySubcomponent'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			rating: rating,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newEffectEvidenceSynthesis_CertaintySubcomponent);
 	return newEffectEvidenceSynthesis_CertaintySubcomponent;
 }
   String id;
@@ -559,6 +574,7 @@ EffectEvidenceSynthesis_CertaintySubcomponent(
 EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
     Map<String, dynamic> json) {
   return EffectEvidenceSynthesis(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -735,6 +751,7 @@ EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
 Map<String, dynamic> _$EffectEvidenceSynthesisToJson(
         EffectEvidenceSynthesis instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

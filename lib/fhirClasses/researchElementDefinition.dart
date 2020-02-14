@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/dataRequirement.dart';
@@ -24,6 +22,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ResearchElementDefinition {
 
 	static Future<ResearchElementDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -87,8 +86,10 @@ class ResearchElementDefinition {
 		String variableType,
 		Element elementVariableType,
 		List<ResearchElementDefinition_Characteristic> characteristic}) async {
+	var fhirDb = new DatabaseHelper();
 	ResearchElementDefinition newResearchElementDefinition = new ResearchElementDefinition(
-			id: await newId('ResearchElementDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ResearchElementDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -152,9 +153,10 @@ class ResearchElementDefinition {
 			elementVariableType: elementVariableType,
 			characteristic: characteristic,
 );
+	int saved = await fhirDb.saveResource(newResearchElementDefinition);
 	return newResearchElementDefinition;
 }
-  final String resourceType= 'ResearchElementDefinition';
+  String resourceType= 'ResearchElementDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -220,7 +222,8 @@ class ResearchElementDefinition {
   List<ResearchElementDefinition_Characteristic> characteristic;
 
 ResearchElementDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -325,8 +328,9 @@ class ResearchElementDefinition_Characteristic {
 		Duration participantEffectiveTimeFromStart,
 		String participantEffectiveGroupMeasure,
 		Element elementParticipantEffectiveGroupMeasure}) async {
+	var fhirDb = new DatabaseHelper();
 	ResearchElementDefinition_Characteristic newResearchElementDefinition_Characteristic = new ResearchElementDefinition_Characteristic(
-			id: await newId('ResearchElementDefinition_Characteristic'),
+			id: await fhirDb.newResourceId('ResearchElementDefinition_Characteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			definitionCodeableConcept: definitionCodeableConcept,
@@ -359,6 +363,7 @@ class ResearchElementDefinition_Characteristic {
 			participantEffectiveGroupMeasure: participantEffectiveGroupMeasure,
 			elementParticipantEffectiveGroupMeasure: elementParticipantEffectiveGroupMeasure,
 );
+	int saved = await fhirDb.saveResource(newResearchElementDefinition_Characteristic);
 	return newResearchElementDefinition_Characteristic;
 }
   String id;
@@ -442,6 +447,7 @@ ResearchElementDefinition_Characteristic(
 ResearchElementDefinition _$ResearchElementDefinitionFromJson(
     Map<String, dynamic> json) {
   return ResearchElementDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -619,6 +625,7 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
 Map<String, dynamic> _$ResearchElementDefinitionToJson(
         ResearchElementDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

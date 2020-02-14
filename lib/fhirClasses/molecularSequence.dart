@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -16,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MolecularSequence {
 
 	static Future<MolecularSequence> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -46,8 +46,10 @@ class MolecularSequence {
 		List<MolecularSequence_Repository> repository,
 		List<Reference> pointer,
 		List<MolecularSequence_StructureVariant> structureVariant}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence newMolecularSequence = new MolecularSequence(
-			id: await newId('MolecularSequence'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MolecularSequence'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -78,9 +80,10 @@ class MolecularSequence {
 			pointer: pointer,
 			structureVariant: structureVariant,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence);
 	return newMolecularSequence;
 }
-  final String resourceType= 'MolecularSequence';
+  String resourceType= 'MolecularSequence';
   String id;
   Meta meta;
   String implicitRules;
@@ -113,7 +116,8 @@ class MolecularSequence {
   List<MolecularSequence_StructureVariant> structureVariant;
 
 MolecularSequence(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -171,8 +175,9 @@ class MolecularSequence_ReferenceSeq {
 		Element elementWindowStart,
 		int windowEnd,
 		Element elementWindowEnd}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_ReferenceSeq newMolecularSequence_ReferenceSeq = new MolecularSequence_ReferenceSeq(
-			id: await newId('MolecularSequence_ReferenceSeq'),
+			id: await fhirDb.newResourceId('MolecularSequence_ReferenceSeq'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			chromosome: chromosome,
@@ -191,6 +196,7 @@ class MolecularSequence_ReferenceSeq {
 			windowEnd: windowEnd,
 			elementWindowEnd: elementWindowEnd,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_ReferenceSeq);
 	return newMolecularSequence_ReferenceSeq;
 }
   String id;
@@ -255,8 +261,9 @@ class MolecularSequence_Variant {
 		String cigar,
 		Element elementCigar,
 		Reference variantPointer}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_Variant newMolecularSequence_Variant = new MolecularSequence_Variant(
-			id: await newId('MolecularSequence_Variant'),
+			id: await fhirDb.newResourceId('MolecularSequence_Variant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			start: start,
@@ -271,6 +278,7 @@ class MolecularSequence_Variant {
 			elementCigar: elementCigar,
 			variantPointer: variantPointer,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_Variant);
 	return newMolecularSequence_Variant;
 }
   String id;
@@ -342,8 +350,9 @@ class MolecularSequence_Quality {
 		double fScore,
 		Element elementFScore,
 		MolecularSequence_Roc roc}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_Quality newMolecularSequence_Quality = new MolecularSequence_Quality(
-			id: await newId('MolecularSequence_Quality'),
+			id: await fhirDb.newResourceId('MolecularSequence_Quality'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -373,6 +382,7 @@ class MolecularSequence_Quality {
 			elementFScore: elementFScore,
 			roc: roc,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_Quality);
 	return newMolecularSequence_Quality;
 }
   String id;
@@ -462,8 +472,9 @@ class MolecularSequence_Roc {
 		List<Element> elementSensitivity,
 		List<double> fMeasure,
 		List<Element> elementFMeasure}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_Roc newMolecularSequence_Roc = new MolecularSequence_Roc(
-			id: await newId('MolecularSequence_Roc'),
+			id: await fhirDb.newResourceId('MolecularSequence_Roc'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			score: score,
@@ -481,6 +492,7 @@ class MolecularSequence_Roc {
 			fMeasure: fMeasure,
 			elementFMeasure: elementFMeasure,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_Roc);
 	return newMolecularSequence_Roc;
 }
   String id;
@@ -544,8 +556,9 @@ class MolecularSequence_Repository {
 		Element elementVariantsetId,
 		String readsetId,
 		Element elementReadsetId}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_Repository newMolecularSequence_Repository = new MolecularSequence_Repository(
-			id: await newId('MolecularSequence_Repository'),
+			id: await fhirDb.newResourceId('MolecularSequence_Repository'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -561,6 +574,7 @@ class MolecularSequence_Repository {
 			readsetId: readsetId,
 			elementReadsetId: elementReadsetId,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_Repository);
 	return newMolecularSequence_Repository;
 }
   String id;
@@ -615,8 +629,9 @@ class MolecularSequence_StructureVariant {
 		Element elementLength,
 		MolecularSequence_Outer outer,
 		MolecularSequence_Inner inner}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_StructureVariant newMolecularSequence_StructureVariant = new MolecularSequence_StructureVariant(
-			id: await newId('MolecularSequence_StructureVariant'),
+			id: await fhirDb.newResourceId('MolecularSequence_StructureVariant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			variantType: variantType,
@@ -627,6 +642,7 @@ class MolecularSequence_StructureVariant {
 			outer: outer,
 			inner: inner,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_StructureVariant);
 	return newMolecularSequence_StructureVariant;
 }
   String id;
@@ -668,8 +684,9 @@ class MolecularSequence_Outer {
 		Element elementStart,
 		int end,
 		Element elementEnd}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_Outer newMolecularSequence_Outer = new MolecularSequence_Outer(
-			id: await newId('MolecularSequence_Outer'),
+			id: await fhirDb.newResourceId('MolecularSequence_Outer'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			start: start,
@@ -677,6 +694,7 @@ class MolecularSequence_Outer {
 			end: end,
 			elementEnd: elementEnd,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_Outer);
 	return newMolecularSequence_Outer;
 }
   String id;
@@ -712,8 +730,9 @@ class MolecularSequence_Inner {
 		Element elementStart,
 		int end,
 		Element elementEnd}) async {
+	var fhirDb = new DatabaseHelper();
 	MolecularSequence_Inner newMolecularSequence_Inner = new MolecularSequence_Inner(
-			id: await newId('MolecularSequence_Inner'),
+			id: await fhirDb.newResourceId('MolecularSequence_Inner'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			start: start,
@@ -721,6 +740,7 @@ class MolecularSequence_Inner {
 			end: end,
 			elementEnd: elementEnd,
 );
+	int saved = await fhirDb.saveResource(newMolecularSequence_Inner);
 	return newMolecularSequence_Inner;
 }
   String id;
@@ -753,6 +773,7 @@ MolecularSequence_Inner(
 
 MolecularSequence _$MolecularSequenceFromJson(Map<String, dynamic> json) {
   return MolecularSequence(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -851,6 +872,7 @@ MolecularSequence _$MolecularSequenceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MolecularSequenceToJson(MolecularSequence instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

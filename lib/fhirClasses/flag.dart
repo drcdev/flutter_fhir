@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Flag {
 
 	static Future<Flag> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -36,8 +35,10 @@ class Flag {
 		Period period,
 		Reference encounter,
 		Reference author}) async {
+	var fhirDb = new DatabaseHelper();
 	Flag newFlag = new Flag(
-			id: await newId('Flag'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Flag'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -57,9 +58,10 @@ class Flag {
 			encounter: encounter,
 			author: author,
 );
+	int saved = await fhirDb.saveResource(newFlag);
 	return newFlag;
 }
-  final String resourceType= 'Flag';
+  String resourceType= 'Flag';
   String id;
   Meta meta;
   String implicitRules;
@@ -81,7 +83,8 @@ class Flag {
   Reference author;
 
 Flag(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -114,6 +117,7 @@ Flag(
 
 Flag _$FlagFromJson(Map<String, dynamic> json) {
   return Flag(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -174,6 +178,7 @@ Flag _$FlagFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$FlagToJson(Flag instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

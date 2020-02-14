@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -21,6 +19,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Claim {
 
 	static Future<Claim> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -61,8 +60,10 @@ class Claim {
 		Claim_Accident accident,
 		List<Claim_Item> item,
 		Money total}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim newClaim = new Claim(
-			id: await newId('Claim'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Claim'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -103,9 +104,10 @@ class Claim {
 			item: item,
 			total: total,
 );
+	int saved = await fhirDb.saveResource(newClaim);
 	return newClaim;
 }
-  final String resourceType= 'Claim';
+  String resourceType= 'Claim';
   String id;
   Meta meta;
   String implicitRules;
@@ -148,7 +150,8 @@ class Claim {
   Money total;
 
 Claim(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -204,14 +207,16 @@ class Claim_Related {
 		Reference claim,
 		CodeableConcept relationship,
 		Identifier reference}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Related newClaim_Related = new Claim_Related(
-			id: await newId('Claim_Related'),
+			id: await fhirDb.newResourceId('Claim_Related'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			claim: claim,
 			relationship: relationship,
 			reference: reference,
 );
+	int saved = await fhirDb.saveResource(newClaim_Related);
 	return newClaim_Related;
 }
   String id;
@@ -243,13 +248,15 @@ class Claim_Payee {
 		List<Extension> modifierExtension,
 		CodeableConcept type,
 		Reference party}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Payee newClaim_Payee = new Claim_Payee(
-			id: await newId('Claim_Payee'),
+			id: await fhirDb.newResourceId('Claim_Payee'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			party: party,
 );
+	int saved = await fhirDb.saveResource(newClaim_Payee);
 	return newClaim_Payee;
 }
   String id;
@@ -284,8 +291,9 @@ class Claim_CareTeam {
 		Element elementResponsible,
 		CodeableConcept role,
 		CodeableConcept qualification}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_CareTeam newClaim_CareTeam = new Claim_CareTeam(
-			id: await newId('Claim_CareTeam'),
+			id: await fhirDb.newResourceId('Claim_CareTeam'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -296,6 +304,7 @@ class Claim_CareTeam {
 			role: role,
 			qualification: qualification,
 );
+	int saved = await fhirDb.saveResource(newClaim_CareTeam);
 	return newClaim_CareTeam;
 }
   String id;
@@ -348,8 +357,9 @@ class Claim_SupportingInfo {
 		Attachment valueAttachment,
 		Reference valueReference,
 		CodeableConcept reason}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_SupportingInfo newClaim_SupportingInfo = new Claim_SupportingInfo(
-			id: await newId('Claim_SupportingInfo'),
+			id: await fhirDb.newResourceId('Claim_SupportingInfo'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -368,6 +378,7 @@ class Claim_SupportingInfo {
 			valueReference: valueReference,
 			reason: reason,
 );
+	int saved = await fhirDb.saveResource(newClaim_SupportingInfo);
 	return newClaim_SupportingInfo;
 }
   String id;
@@ -428,8 +439,9 @@ class Claim_Diagnosis {
 		List<CodeableConcept> type,
 		CodeableConcept onAdmission,
 		CodeableConcept packageCode}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Diagnosis newClaim_Diagnosis = new Claim_Diagnosis(
-			id: await newId('Claim_Diagnosis'),
+			id: await fhirDb.newResourceId('Claim_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -440,6 +452,7 @@ class Claim_Diagnosis {
 			onAdmission: onAdmission,
 			packageCode: packageCode,
 );
+	int saved = await fhirDb.saveResource(newClaim_Diagnosis);
 	return newClaim_Diagnosis;
 }
   String id;
@@ -485,8 +498,9 @@ class Claim_Procedure {
 		CodeableConcept procedureCodeableConcept,
 		Reference procedureReference,
 		List<Reference> udi}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Procedure newClaim_Procedure = new Claim_Procedure(
-			id: await newId('Claim_Procedure'),
+			id: await fhirDb.newResourceId('Claim_Procedure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -498,6 +512,7 @@ class Claim_Procedure {
 			procedureReference: procedureReference,
 			udi: udi,
 );
+	int saved = await fhirDb.saveResource(newClaim_Procedure);
 	return newClaim_Procedure;
 }
   String id;
@@ -548,8 +563,9 @@ class Claim_Insurance {
 		List<String> preAuthRef,
 		List<Element> elementPreAuthRef,
 		Reference claimResponse}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Insurance newClaim_Insurance = new Claim_Insurance(
-			id: await newId('Claim_Insurance'),
+			id: await fhirDb.newResourceId('Claim_Insurance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -564,6 +580,7 @@ class Claim_Insurance {
 			elementPreAuthRef: elementPreAuthRef,
 			claimResponse: claimResponse,
 );
+	int saved = await fhirDb.saveResource(newClaim_Insurance);
 	return newClaim_Insurance;
 }
   String id;
@@ -614,8 +631,9 @@ class Claim_Accident {
 		CodeableConcept type,
 		Address locationAddress,
 		Reference locationReference}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Accident newClaim_Accident = new Claim_Accident(
-			id: await newId('Claim_Accident'),
+			id: await fhirDb.newResourceId('Claim_Accident'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			date: date,
@@ -624,6 +642,7 @@ class Claim_Accident {
 			locationAddress: locationAddress,
 			locationReference: locationReference,
 );
+	int saved = await fhirDb.saveResource(newClaim_Accident);
 	return newClaim_Accident;
 }
   String id;
@@ -688,8 +707,9 @@ class Claim_Item {
 		List<CodeableConcept> subSite,
 		List<Reference> encounter,
 		List<Claim_Detail> detail}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Item newClaim_Item = new Claim_Item(
-			id: await newId('Claim_Item'),
+			id: await fhirDb.newResourceId('Claim_Item'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -724,6 +744,7 @@ class Claim_Item {
 			encounter: encounter,
 			detail: detail,
 );
+	int saved = await fhirDb.saveResource(newClaim_Item);
 	return newClaim_Item;
 }
   String id;
@@ -823,8 +844,9 @@ class Claim_Detail {
 		Money net,
 		List<Reference> udi,
 		List<Claim_SubDetail> subDetail}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_Detail newClaim_Detail = new Claim_Detail(
-			id: await newId('Claim_Detail'),
+			id: await fhirDb.newResourceId('Claim_Detail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -842,6 +864,7 @@ class Claim_Detail {
 			udi: udi,
 			subDetail: subDetail,
 );
+	int saved = await fhirDb.saveResource(newClaim_Detail);
 	return newClaim_Detail;
 }
   String id;
@@ -906,8 +929,9 @@ class Claim_SubDetail {
 		Element elementFactor,
 		Money net,
 		List<Reference> udi}) async {
+	var fhirDb = new DatabaseHelper();
 	Claim_SubDetail newClaim_SubDetail = new Claim_SubDetail(
-			id: await newId('Claim_SubDetail'),
+			id: await fhirDb.newResourceId('Claim_SubDetail'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -924,6 +948,7 @@ class Claim_SubDetail {
 			net: net,
 			udi: udi,
 );
+	int saved = await fhirDb.saveResource(newClaim_SubDetail);
 	return newClaim_SubDetail;
 }
   String id;
@@ -974,6 +999,7 @@ Claim_SubDetail(
 
 Claim _$ClaimFromJson(Map<String, dynamic> json) {
   return Claim(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1108,6 +1134,7 @@ Claim _$ClaimFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ClaimToJson(Claim instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

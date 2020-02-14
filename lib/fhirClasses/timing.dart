@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -20,8 +18,9 @@ class Timing {
 		List<Element> elementEvent,
 		Timing_Repeat repeat,
 		CodeableConcept code}) async {
+	var fhirDb = new DatabaseHelper();
 	Timing newTiming = new Timing(
-			id: await newId('Timing'),
+			id: await fhirDb.newResourceId('Timing'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			event: event,
@@ -29,6 +28,7 @@ class Timing {
 			repeat: repeat,
 			code: code,
 );
+	int saved = await fhirDb.saveResource(newTiming);
 	return newTiming;
 }
   String id;
@@ -91,8 +91,9 @@ class Timing_Repeat {
 		List<Element> elementWhen,
 		int offset,
 		Element elementOffset}) async {
+	var fhirDb = new DatabaseHelper();
 	Timing_Repeat newTiming_Repeat = new Timing_Repeat(
-			id: await newId('Timing_Repeat'),
+			id: await fhirDb.newResourceId('Timing_Repeat'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			boundsDuration: boundsDuration,
@@ -127,6 +128,7 @@ class Timing_Repeat {
 			offset: offset,
 			elementOffset: elementOffset,
 );
+	int saved = await fhirDb.saveResource(newTiming_Repeat);
 	return newTiming_Repeat;
 }
   String id;

@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -10,10 +8,12 @@ class Element {
 	static Future<Element> newInstance({
 		String id,
 		List<Extension> extension}) async {
+	var fhirDb = new DatabaseHelper();
 	Element newElement = new Element(
-			id: await newId('Element'),
+			id: await fhirDb.newResourceId('Element'),
 			extension: extension,
 );
+	int saved = await fhirDb.saveResource(newElement);
 	return newElement;
 }
   String id;

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ConceptMap {
 
 	static Future<ConceptMap> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -62,8 +61,10 @@ class ConceptMap {
 		String targetCanonical,
 		Element elementTargetCanonical,
 		List<ConceptMap_Group> group}) async {
+	var fhirDb = new DatabaseHelper();
 	ConceptMap newConceptMap = new ConceptMap(
-			id: await newId('ConceptMap'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ConceptMap'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -109,9 +110,10 @@ class ConceptMap {
 			elementTargetCanonical: elementTargetCanonical,
 			group: group,
 );
+	int saved = await fhirDb.saveResource(newConceptMap);
 	return newConceptMap;
 }
-  final String resourceType= 'ConceptMap';
+  String resourceType= 'ConceptMap';
   String id;
   Meta meta;
   String implicitRules;
@@ -159,7 +161,8 @@ class ConceptMap {
   List<ConceptMap_Group> group;
 
 ConceptMap(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -227,8 +230,9 @@ class ConceptMap_Group {
 		Element elementTargetVersion,
 		List<ConceptMap_Element> element,
 		ConceptMap_Unmapped unmapped}) async {
+	var fhirDb = new DatabaseHelper();
 	ConceptMap_Group newConceptMap_Group = new ConceptMap_Group(
-			id: await newId('ConceptMap_Group'),
+			id: await fhirDb.newResourceId('ConceptMap_Group'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			source: source,
@@ -242,6 +246,7 @@ class ConceptMap_Group {
 			element: element,
 			unmapped: unmapped,
 );
+	int saved = await fhirDb.saveResource(newConceptMap_Group);
 	return newConceptMap_Group;
 }
   String id;
@@ -290,8 +295,9 @@ class ConceptMap_Element {
 		String display,
 		Element elementDisplay,
 		List<ConceptMap_Target> target}) async {
+	var fhirDb = new DatabaseHelper();
 	ConceptMap_Element newConceptMap_Element = new ConceptMap_Element(
-			id: await newId('ConceptMap_Element'),
+			id: await fhirDb.newResourceId('ConceptMap_Element'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -300,6 +306,7 @@ class ConceptMap_Element {
 			elementDisplay: elementDisplay,
 			target: target,
 );
+	int saved = await fhirDb.saveResource(newConceptMap_Element);
 	return newConceptMap_Element;
 }
   String id;
@@ -343,8 +350,9 @@ class ConceptMap_Target {
 		Element elementComment,
 		List<ConceptMap_DependsOn> dependsOn,
 		List<ConceptMap_DependsOn> product}) async {
+	var fhirDb = new DatabaseHelper();
 	ConceptMap_Target newConceptMap_Target = new ConceptMap_Target(
-			id: await newId('ConceptMap_Target'),
+			id: await fhirDb.newResourceId('ConceptMap_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -358,6 +366,7 @@ class ConceptMap_Target {
 			dependsOn: dependsOn,
 			product: product,
 );
+	int saved = await fhirDb.saveResource(newConceptMap_Target);
 	return newConceptMap_Target;
 }
   String id;
@@ -408,8 +417,9 @@ class ConceptMap_DependsOn {
 		Element elementValue,
 		String display,
 		Element elementDisplay}) async {
+	var fhirDb = new DatabaseHelper();
 	ConceptMap_DependsOn newConceptMap_DependsOn = new ConceptMap_DependsOn(
-			id: await newId('ConceptMap_DependsOn'),
+			id: await fhirDb.newResourceId('ConceptMap_DependsOn'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			property: property,
@@ -420,6 +430,7 @@ class ConceptMap_DependsOn {
 			display: display,
 			elementDisplay: elementDisplay,
 );
+	int saved = await fhirDb.saveResource(newConceptMap_DependsOn);
 	return newConceptMap_DependsOn;
 }
   String id;
@@ -464,8 +475,9 @@ class ConceptMap_Unmapped {
 		String display,
 		Element elementDisplay,
 		String url}) async {
+	var fhirDb = new DatabaseHelper();
 	ConceptMap_Unmapped newConceptMap_Unmapped = new ConceptMap_Unmapped(
-			id: await newId('ConceptMap_Unmapped'),
+			id: await fhirDb.newResourceId('ConceptMap_Unmapped'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			mode: mode,
@@ -476,6 +488,7 @@ class ConceptMap_Unmapped {
 			elementDisplay: elementDisplay,
 			url: url,
 );
+	int saved = await fhirDb.saveResource(newConceptMap_Unmapped);
 	return newConceptMap_Unmapped;
 }
   String id;
@@ -514,6 +527,7 @@ ConceptMap_Unmapped(
 
 ConceptMap _$ConceptMapFromJson(Map<String, dynamic> json) {
   return ConceptMap(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -631,6 +645,7 @@ ConceptMap _$ConceptMapFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

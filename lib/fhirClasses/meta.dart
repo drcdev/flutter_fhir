@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -21,8 +19,9 @@ class Meta {
 		List<String> profile,
 		List<Coding> security,
 		List<Coding> tag}) async {
+	var fhirDb = new DatabaseHelper();
 	Meta newMeta = new Meta(
-			id: await newId('Meta'),
+			id: await fhirDb.newResourceId('Meta'),
 			extension: extension,
 			versionId: versionId,
 			elementVersionId: elementVersionId,
@@ -34,6 +33,7 @@ class Meta {
 			security: security,
 			tag: tag,
 );
+	int saved = await fhirDb.saveResource(newMeta);
 	return newMeta;
 }
   String id;

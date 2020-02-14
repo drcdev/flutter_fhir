@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -28,8 +26,9 @@ class DataRequirement {
 		int limit,
 		Element elementLimit,
 		List<DataRequirement_Sort> sort}) async {
+	var fhirDb = new DatabaseHelper();
 	DataRequirement newDataRequirement = new DataRequirement(
-			id: await newId('DataRequirement'),
+			id: await fhirDb.newResourceId('DataRequirement'),
 			extension: extension,
 			type: type,
 			elementType: elementType,
@@ -44,6 +43,7 @@ class DataRequirement {
 			elementLimit: elementLimit,
 			sort: sort,
 );
+	int saved = await fhirDb.saveResource(newDataRequirement);
 	return newDataRequirement;
 }
   String id;
@@ -95,8 +95,9 @@ class DataRequirement_CodeFilter {
 		Element elementSearchParam,
 		String valueSet,
 		List<Coding> code}) async {
+	var fhirDb = new DatabaseHelper();
 	DataRequirement_CodeFilter newDataRequirement_CodeFilter = new DataRequirement_CodeFilter(
-			id: await newId('DataRequirement_CodeFilter'),
+			id: await fhirDb.newResourceId('DataRequirement_CodeFilter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -106,6 +107,7 @@ class DataRequirement_CodeFilter {
 			valueSet: valueSet,
 			code: code,
 );
+	int saved = await fhirDb.saveResource(newDataRequirement_CodeFilter);
 	return newDataRequirement_CodeFilter;
 }
   String id;
@@ -149,8 +151,9 @@ class DataRequirement_DateFilter {
 		Element elementValueDateTime,
 		Period valuePeriod,
 		Duration valueDuration}) async {
+	var fhirDb = new DatabaseHelper();
 	DataRequirement_DateFilter newDataRequirement_DateFilter = new DataRequirement_DateFilter(
-			id: await newId('DataRequirement_DateFilter'),
+			id: await fhirDb.newResourceId('DataRequirement_DateFilter'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -162,6 +165,7 @@ class DataRequirement_DateFilter {
 			valuePeriod: valuePeriod,
 			valueDuration: valueDuration,
 );
+	int saved = await fhirDb.saveResource(newDataRequirement_DateFilter);
 	return newDataRequirement_DateFilter;
 }
   String id;
@@ -205,8 +209,9 @@ class DataRequirement_Sort {
 		Element elementPath,
 		String direction,
 		Element elementDirection}) async {
+	var fhirDb = new DatabaseHelper();
 	DataRequirement_Sort newDataRequirement_Sort = new DataRequirement_Sort(
-			id: await newId('DataRequirement_Sort'),
+			id: await fhirDb.newResourceId('DataRequirement_Sort'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			path: path,
@@ -214,6 +219,7 @@ class DataRequirement_Sort {
 			direction: direction,
 			elementDirection: elementDirection,
 );
+	int saved = await fhirDb.saveResource(newDataRequirement_Sort);
 	return newDataRequirement_Sort;
 }
   String id;

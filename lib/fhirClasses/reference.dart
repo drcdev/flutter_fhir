@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -19,8 +17,9 @@ class Reference {
 		Identifier identifier,
 		String display,
 		Element elementDisplay}) async {
+	var fhirDb = new DatabaseHelper();
 	Reference newReference = new Reference(
-			id: await newId('Reference'),
+			id: await fhirDb.newResourceId('Reference'),
 			extension: extension,
 			reference: reference,
 			elementReference: elementReference,
@@ -30,6 +29,7 @@ class Reference {
 			display: display,
 			elementDisplay: elementDisplay,
 );
+	int saved = await fhirDb.saveResource(newReference);
 	return newReference;
 }
   String id;

@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -15,13 +13,15 @@ class ContactDetail {
 		String name,
 		Element elementName,
 		List<ContactPoint> telecom}) async {
+	var fhirDb = new DatabaseHelper();
 	ContactDetail newContactDetail = new ContactDetail(
-			id: await newId('ContactDetail'),
+			id: await fhirDb.newResourceId('ContactDetail'),
 			extension: extension,
 			name: name,
 			elementName: elementName,
 			telecom: telecom,
 );
+	int saved = await fhirDb.saveResource(newContactDetail);
 	return newContactDetail;
 }
   String id;

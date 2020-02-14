@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -14,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class CompartmentDefinition {
 
 	static Future<CompartmentDefinition> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -49,8 +49,10 @@ class CompartmentDefinition {
 		bool search,
 		Element elementSearch,
 		List<CompartmentDefinition_Resource> resource}) async {
+	var fhirDb = new DatabaseHelper();
 	CompartmentDefinition newCompartmentDefinition = new CompartmentDefinition(
-			id: await newId('CompartmentDefinition'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('CompartmentDefinition'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -86,9 +88,10 @@ class CompartmentDefinition {
 			elementSearch: elementSearch,
 			resource: resource,
 );
+	int saved = await fhirDb.saveResource(newCompartmentDefinition);
 	return newCompartmentDefinition;
 }
-  final String resourceType= 'CompartmentDefinition';
+  String resourceType= 'CompartmentDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -126,7 +129,8 @@ class CompartmentDefinition {
   List<CompartmentDefinition_Resource> resource;
 
 CompartmentDefinition(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -180,8 +184,9 @@ class CompartmentDefinition_Resource {
 		List<Element> elementParam,
 		String documentation,
 		Element elementDocumentation}) async {
+	var fhirDb = new DatabaseHelper();
 	CompartmentDefinition_Resource newCompartmentDefinition_Resource = new CompartmentDefinition_Resource(
-			id: await newId('CompartmentDefinition_Resource'),
+			id: await fhirDb.newResourceId('CompartmentDefinition_Resource'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			code: code,
@@ -191,6 +196,7 @@ class CompartmentDefinition_Resource {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation,
 );
+	int saved = await fhirDb.saveResource(newCompartmentDefinition_Resource);
 	return newCompartmentDefinition_Resource;
 }
   String id;
@@ -228,6 +234,7 @@ CompartmentDefinition_Resource(
 CompartmentDefinition _$CompartmentDefinitionFromJson(
     Map<String, dynamic> json) {
   return CompartmentDefinition(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -321,6 +328,7 @@ CompartmentDefinition _$CompartmentDefinitionFromJson(
 Map<String, dynamic> _$CompartmentDefinitionToJson(
         CompartmentDefinition instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

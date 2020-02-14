@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -16,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Medication {
 
 	static Future<Medication> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -35,8 +35,10 @@ class Medication {
 		Ratio amount,
 		List<Medication_Ingredient> ingredient,
 		Medication_Batch batch}) async {
+	var fhirDb = new DatabaseHelper();
 	Medication newMedication = new Medication(
-			id: await newId('Medication'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Medication'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -56,9 +58,10 @@ class Medication {
 			ingredient: ingredient,
 			batch: batch,
 );
+	int saved = await fhirDb.saveResource(newMedication);
 	return newMedication;
 }
-  final String resourceType= 'Medication';
+  String resourceType= 'Medication';
   String id;
   Meta meta;
   String implicitRules;
@@ -80,7 +83,8 @@ class Medication {
   Medication_Batch batch;
 
 Medication(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -117,8 +121,9 @@ class Medication_Ingredient {
 		bool isActive,
 		Element elementIsActive,
 		Ratio strength}) async {
+	var fhirDb = new DatabaseHelper();
 	Medication_Ingredient newMedication_Ingredient = new Medication_Ingredient(
-			id: await newId('Medication_Ingredient'),
+			id: await fhirDb.newResourceId('Medication_Ingredient'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			itemCodeableConcept: itemCodeableConcept,
@@ -127,6 +132,7 @@ class Medication_Ingredient {
 			elementIsActive: elementIsActive,
 			strength: strength,
 );
+	int saved = await fhirDb.saveResource(newMedication_Ingredient);
 	return newMedication_Ingredient;
 }
   String id;
@@ -164,8 +170,9 @@ class Medication_Batch {
 		Element elementLotNumber,
 		DateTime expirationDate,
 		Element elementExpirationDate}) async {
+	var fhirDb = new DatabaseHelper();
 	Medication_Batch newMedication_Batch = new Medication_Batch(
-			id: await newId('Medication_Batch'),
+			id: await fhirDb.newResourceId('Medication_Batch'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			lotNumber: lotNumber,
@@ -173,6 +180,7 @@ class Medication_Batch {
 			expirationDate: expirationDate,
 			elementExpirationDate: elementExpirationDate,
 );
+	int saved = await fhirDb.saveResource(newMedication_Batch);
 	return newMedication_Batch;
 }
   String id;
@@ -205,6 +213,7 @@ Medication_Batch(
 
 Medication _$MedicationFromJson(Map<String, dynamic> json) {
   return Medication(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -266,6 +275,7 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MedicationToJson(Medication instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -19,6 +17,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Encounter {
 
 	static Future<Encounter> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -53,8 +52,10 @@ class Encounter {
 		List<Encounter_Location> location,
 		Reference serviceProvider,
 		Reference partOf}) async {
+	var fhirDb = new DatabaseHelper();
 	Encounter newEncounter = new Encounter(
-			id: await newId('Encounter'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('Encounter'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -89,9 +90,10 @@ class Encounter {
 			serviceProvider: serviceProvider,
 			partOf: partOf,
 );
+	int saved = await fhirDb.saveResource(newEncounter);
 	return newEncounter;
 }
-  final String resourceType= 'Encounter';
+  String resourceType= 'Encounter';
   String id;
   Meta meta;
   String implicitRules;
@@ -128,7 +130,8 @@ class Encounter {
   Reference partOf;
 
 Encounter(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -178,14 +181,16 @@ class Encounter_StatusHistory {
 		String status,
 		Element elementStatus,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Encounter_StatusHistory newEncounter_StatusHistory = new Encounter_StatusHistory(
-			id: await newId('Encounter_StatusHistory'),
+			id: await fhirDb.newResourceId('Encounter_StatusHistory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			status: status,
 			elementStatus: elementStatus,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newEncounter_StatusHistory);
 	return newEncounter_StatusHistory;
 }
   String id;
@@ -217,13 +222,15 @@ class Encounter_ClassHistory {
 		List<Extension> modifierExtension,
 		Coding classs,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Encounter_ClassHistory newEncounter_ClassHistory = new Encounter_ClassHistory(
-			id: await newId('Encounter_ClassHistory'),
+			id: await fhirDb.newResourceId('Encounter_ClassHistory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			classs: classs,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newEncounter_ClassHistory);
 	return newEncounter_ClassHistory;
 }
   String id;
@@ -254,14 +261,16 @@ class Encounter_Participant {
 		List<CodeableConcept> type,
 		Period period,
 		Reference individual}) async {
+	var fhirDb = new DatabaseHelper();
 	Encounter_Participant newEncounter_Participant = new Encounter_Participant(
-			id: await newId('Encounter_Participant'),
+			id: await fhirDb.newResourceId('Encounter_Participant'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			period: period,
 			individual: individual,
 );
+	int saved = await fhirDb.saveResource(newEncounter_Participant);
 	return newEncounter_Participant;
 }
   String id;
@@ -295,8 +304,9 @@ class Encounter_Diagnosis {
 		CodeableConcept use,
 		int rank,
 		Element elementRank}) async {
+	var fhirDb = new DatabaseHelper();
 	Encounter_Diagnosis newEncounter_Diagnosis = new Encounter_Diagnosis(
-			id: await newId('Encounter_Diagnosis'),
+			id: await fhirDb.newResourceId('Encounter_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			condition: condition,
@@ -304,6 +314,7 @@ class Encounter_Diagnosis {
 			rank: rank,
 			elementRank: elementRank,
 );
+	int saved = await fhirDb.saveResource(newEncounter_Diagnosis);
 	return newEncounter_Diagnosis;
 }
   String id;
@@ -344,8 +355,9 @@ class Encounter_Hospitalization {
 		List<CodeableConcept> specialArrangement,
 		Reference destination,
 		CodeableConcept dischargeDisposition}) async {
+	var fhirDb = new DatabaseHelper();
 	Encounter_Hospitalization newEncounter_Hospitalization = new Encounter_Hospitalization(
-			id: await newId('Encounter_Hospitalization'),
+			id: await fhirDb.newResourceId('Encounter_Hospitalization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			preAdmissionIdentifier: preAdmissionIdentifier,
@@ -358,6 +370,7 @@ class Encounter_Hospitalization {
 			destination: destination,
 			dischargeDisposition: dischargeDisposition,
 );
+	int saved = await fhirDb.saveResource(newEncounter_Hospitalization);
 	return newEncounter_Hospitalization;
 }
   String id;
@@ -404,8 +417,9 @@ class Encounter_Location {
 		Element elementStatus,
 		CodeableConcept physicalType,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Encounter_Location newEncounter_Location = new Encounter_Location(
-			id: await newId('Encounter_Location'),
+			id: await fhirDb.newResourceId('Encounter_Location'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			location: location,
@@ -414,6 +428,7 @@ class Encounter_Location {
 			physicalType: physicalType,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newEncounter_Location);
 	return newEncounter_Location;
 }
   String id;
@@ -448,6 +463,7 @@ Encounter_Location(
 
 Encounter _$EncounterFromJson(Map<String, dynamic> json) {
   return Encounter(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -571,6 +587,7 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

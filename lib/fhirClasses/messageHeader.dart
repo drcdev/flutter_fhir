@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MessageHeader {
 
 	static Future<MessageHeader> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +39,10 @@ class MessageHeader {
 		MessageHeader_Response response,
 		List<Reference> focus,
 		String definition}) async {
+	var fhirDb = new DatabaseHelper();
 	MessageHeader newMessageHeader = new MessageHeader(
-			id: await newId('MessageHeader'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MessageHeader'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -65,9 +66,10 @@ class MessageHeader {
 			focus: focus,
 			definition: definition,
 );
+	int saved = await fhirDb.saveResource(newMessageHeader);
 	return newMessageHeader;
 }
-  final String resourceType= 'MessageHeader';
+  String resourceType= 'MessageHeader';
   String id;
   Meta meta;
   String implicitRules;
@@ -93,7 +95,8 @@ class MessageHeader {
   String definition;
 
 MessageHeader(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -135,8 +138,9 @@ class MessageHeader_Destination {
 		String endpoint,
 		Element elementEndpoint,
 		Reference receiver}) async {
+	var fhirDb = new DatabaseHelper();
 	MessageHeader_Destination newMessageHeader_Destination = new MessageHeader_Destination(
-			id: await newId('MessageHeader_Destination'),
+			id: await fhirDb.newResourceId('MessageHeader_Destination'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -146,6 +150,7 @@ class MessageHeader_Destination {
 			elementEndpoint: elementEndpoint,
 			receiver: receiver,
 );
+	int saved = await fhirDb.saveResource(newMessageHeader_Destination);
 	return newMessageHeader_Destination;
 }
   String id;
@@ -190,8 +195,9 @@ class MessageHeader_Source {
 		ContactPoint contact,
 		String endpoint,
 		Element elementEndpoint}) async {
+	var fhirDb = new DatabaseHelper();
 	MessageHeader_Source newMessageHeader_Source = new MessageHeader_Source(
-			id: await newId('MessageHeader_Source'),
+			id: await fhirDb.newResourceId('MessageHeader_Source'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			name: name,
@@ -204,6 +210,7 @@ class MessageHeader_Source {
 			endpoint: endpoint,
 			elementEndpoint: elementEndpoint,
 );
+	int saved = await fhirDb.saveResource(newMessageHeader_Source);
 	return newMessageHeader_Source;
 }
   String id;
@@ -250,8 +257,9 @@ class MessageHeader_Response {
 		String code,
 		Element elementCode,
 		Reference details}) async {
+	var fhirDb = new DatabaseHelper();
 	MessageHeader_Response newMessageHeader_Response = new MessageHeader_Response(
-			id: await newId('MessageHeader_Response'),
+			id: await fhirDb.newResourceId('MessageHeader_Response'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -260,6 +268,7 @@ class MessageHeader_Response {
 			elementCode: elementCode,
 			details: details,
 );
+	int saved = await fhirDb.saveResource(newMessageHeader_Response);
 	return newMessageHeader_Response;
 }
   String id;
@@ -294,6 +303,7 @@ MessageHeader_Response(
 
 MessageHeader _$MessageHeaderFromJson(Map<String, dynamic> json) {
   return MessageHeader(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -366,6 +376,7 @@ MessageHeader _$MessageHeaderFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MessageHeaderToJson(MessageHeader instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SubstanceReferenceInformation {
 
 	static Future<SubstanceReferenceInformation> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -33,8 +33,10 @@ class SubstanceReferenceInformation {
 		List<SubstanceReferenceInformation_GeneElement> geneElement,
 		List<SubstanceReferenceInformation_Classification> classification,
 		List<SubstanceReferenceInformation_Target> target}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceReferenceInformation newSubstanceReferenceInformation = new SubstanceReferenceInformation(
-			id: await newId('SubstanceReferenceInformation'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SubstanceReferenceInformation'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,9 +53,10 @@ class SubstanceReferenceInformation {
 			classification: classification,
 			target: target,
 );
+	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation);
 	return newSubstanceReferenceInformation;
 }
-  final String resourceType= 'SubstanceReferenceInformation';
+  String resourceType= 'SubstanceReferenceInformation';
   String id;
   Meta meta;
   String implicitRules;
@@ -72,7 +75,8 @@ class SubstanceReferenceInformation {
   List<SubstanceReferenceInformation_Target> target;
 
 SubstanceReferenceInformation(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -104,14 +108,16 @@ class SubstanceReferenceInformation_Gene {
 		CodeableConcept geneSequenceOrigin,
 		CodeableConcept gene,
 		List<Reference> source}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceReferenceInformation_Gene newSubstanceReferenceInformation_Gene = new SubstanceReferenceInformation_Gene(
-			id: await newId('SubstanceReferenceInformation_Gene'),
+			id: await fhirDb.newResourceId('SubstanceReferenceInformation_Gene'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			geneSequenceOrigin: geneSequenceOrigin,
 			gene: gene,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_Gene);
 	return newSubstanceReferenceInformation_Gene;
 }
   String id;
@@ -144,14 +150,16 @@ class SubstanceReferenceInformation_GeneElement {
 		CodeableConcept type,
 		Identifier element,
 		List<Reference> source}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceReferenceInformation_GeneElement newSubstanceReferenceInformation_GeneElement = new SubstanceReferenceInformation_GeneElement(
-			id: await newId('SubstanceReferenceInformation_GeneElement'),
+			id: await fhirDb.newResourceId('SubstanceReferenceInformation_GeneElement'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
 			element: element,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_GeneElement);
 	return newSubstanceReferenceInformation_GeneElement;
 }
   String id;
@@ -185,8 +193,9 @@ class SubstanceReferenceInformation_Classification {
 		CodeableConcept classification,
 		List<CodeableConcept> subtype,
 		List<Reference> source}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceReferenceInformation_Classification newSubstanceReferenceInformation_Classification = new SubstanceReferenceInformation_Classification(
-			id: await newId('SubstanceReferenceInformation_Classification'),
+			id: await fhirDb.newResourceId('SubstanceReferenceInformation_Classification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			domain: domain,
@@ -194,6 +203,7 @@ class SubstanceReferenceInformation_Classification {
 			subtype: subtype,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_Classification);
 	return newSubstanceReferenceInformation_Classification;
 }
   String id;
@@ -236,8 +246,9 @@ class SubstanceReferenceInformation_Target {
 		Element elementAmountString,
 		CodeableConcept amountType,
 		List<Reference> source}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceReferenceInformation_Target newSubstanceReferenceInformation_Target = new SubstanceReferenceInformation_Target(
-			id: await newId('SubstanceReferenceInformation_Target'),
+			id: await fhirDb.newResourceId('SubstanceReferenceInformation_Target'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			target: target,
@@ -252,6 +263,7 @@ class SubstanceReferenceInformation_Target {
 			amountType: amountType,
 			source: source,
 );
+	int saved = await fhirDb.saveResource(newSubstanceReferenceInformation_Target);
 	return newSubstanceReferenceInformation_Target;
 }
   String id;
@@ -299,6 +311,7 @@ SubstanceReferenceInformation_Target(
 SubstanceReferenceInformation _$SubstanceReferenceInformationFromJson(
     Map<String, dynamic> json) {
   return SubstanceReferenceInformation(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -361,6 +374,7 @@ SubstanceReferenceInformation _$SubstanceReferenceInformationFromJson(
 Map<String, dynamic> _$SubstanceReferenceInformationToJson(
         SubstanceReferenceInformation instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

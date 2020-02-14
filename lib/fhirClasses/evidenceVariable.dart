@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
@@ -26,6 +24,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class EvidenceVariable {
 
 	static Future<EvidenceVariable> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -77,8 +76,10 @@ class EvidenceVariable {
 		String type,
 		Element elementType,
 		List<EvidenceVariable_Characteristic> characteristic}) async {
+	var fhirDb = new DatabaseHelper();
 	EvidenceVariable newEvidenceVariable = new EvidenceVariable(
-			id: await newId('EvidenceVariable'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('EvidenceVariable'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -130,9 +131,10 @@ class EvidenceVariable {
 			elementType: elementType,
 			characteristic: characteristic,
 );
+	int saved = await fhirDb.saveResource(newEvidenceVariable);
 	return newEvidenceVariable;
 }
-  final String resourceType= 'EvidenceVariable';
+  String resourceType= 'EvidenceVariable';
   String id;
   Meta meta;
   String implicitRules;
@@ -186,7 +188,8 @@ class EvidenceVariable {
   List<EvidenceVariable_Characteristic> characteristic;
 
 EvidenceVariable(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -270,8 +273,9 @@ class EvidenceVariable_Characteristic {
 		Duration timeFromStart,
 		String groupMeasure,
 		Element elementGroupMeasure}) async {
+	var fhirDb = new DatabaseHelper();
 	EvidenceVariable_Characteristic newEvidenceVariable_Characteristic = new EvidenceVariable_Characteristic(
-			id: await newId('EvidenceVariable_Characteristic'),
+			id: await fhirDb.newResourceId('EvidenceVariable_Characteristic'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			description: description,
@@ -295,6 +299,7 @@ class EvidenceVariable_Characteristic {
 			groupMeasure: groupMeasure,
 			elementGroupMeasure: elementGroupMeasure,
 );
+	int saved = await fhirDb.saveResource(newEvidenceVariable_Characteristic);
 	return newEvidenceVariable_Characteristic;
 }
   String id;
@@ -359,6 +364,7 @@ EvidenceVariable_Characteristic(
 
 EvidenceVariable _$EvidenceVariableFromJson(Map<String, dynamic> json) {
   return EvidenceVariable(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -510,6 +516,7 @@ EvidenceVariable _$EvidenceVariableFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$EvidenceVariableToJson(EvidenceVariable instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

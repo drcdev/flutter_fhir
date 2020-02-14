@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -16,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class ExampleScenario {
 
 	static Future<ExampleScenario> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -52,8 +52,10 @@ class ExampleScenario {
 		List<ExampleScenario_Instance> instance,
 		List<ExampleScenario_Process> process,
 		List<String> workflow}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario newExampleScenario = new ExampleScenario(
-			id: await newId('ExampleScenario'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('ExampleScenario'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -90,9 +92,10 @@ class ExampleScenario {
 			process: process,
 			workflow: workflow,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario);
 	return newExampleScenario;
 }
-  final String resourceType= 'ExampleScenario';
+  String resourceType= 'ExampleScenario';
   String id;
   Meta meta;
   String implicitRules;
@@ -131,7 +134,8 @@ class ExampleScenario {
   List<String> workflow;
 
 ExampleScenario(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -188,8 +192,9 @@ class ExampleScenario_Actor {
 		Element elementName,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_Actor newExampleScenario_Actor = new ExampleScenario_Actor(
-			id: await newId('ExampleScenario_Actor'),
+			id: await fhirDb.newResourceId('ExampleScenario_Actor'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			actorId: actorId,
@@ -201,6 +206,7 @@ class ExampleScenario_Actor {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_Actor);
 	return newExampleScenario_Actor;
 }
   String id;
@@ -250,12 +256,14 @@ class ExampleScenario_Instance {
 		Element elementDescription,
 		List<ExampleScenario_Version> version,
 		List<ExampleScenario_ContainedInstance> containedInstance}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_Instance newExampleScenario_Instance = new ExampleScenario_Instance(
-			id: await newId('ExampleScenario_Instance'),
+			id: await fhirDb.newResourceId('ExampleScenario_Instance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			resourceId: resourceId,
 			elementResourceId: elementResourceId,
+			resourceType: resourceType,
 			elementResourceType: elementResourceType,
 			name: name,
 			elementName: elementName,
@@ -264,6 +272,7 @@ class ExampleScenario_Instance {
 			version: version,
 			containedInstance: containedInstance,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_Instance);
 	return newExampleScenario_Instance;
 }
   String id;
@@ -286,6 +295,7 @@ ExampleScenario_Instance(
     this.modifierExtension,
     this.resourceId,
     this.elementResourceId,
+    this.resourceType,
     this.elementResourceType,
     this.name,
     this.elementName,
@@ -310,8 +320,9 @@ class ExampleScenario_Version {
 		Element elementVersionId,
 		String description,
 		Element elementDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_Version newExampleScenario_Version = new ExampleScenario_Version(
-			id: await newId('ExampleScenario_Version'),
+			id: await fhirDb.newResourceId('ExampleScenario_Version'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			versionId: versionId,
@@ -319,6 +330,7 @@ class ExampleScenario_Version {
 			description: description,
 			elementDescription: elementDescription,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_Version);
 	return newExampleScenario_Version;
 }
   String id;
@@ -354,8 +366,9 @@ class ExampleScenario_ContainedInstance {
 		Element elementResourceId,
 		String versionId,
 		Element elementVersionId}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_ContainedInstance newExampleScenario_ContainedInstance = new ExampleScenario_ContainedInstance(
-			id: await newId('ExampleScenario_ContainedInstance'),
+			id: await fhirDb.newResourceId('ExampleScenario_ContainedInstance'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			resourceId: resourceId,
@@ -363,6 +376,7 @@ class ExampleScenario_ContainedInstance {
 			versionId: versionId,
 			elementVersionId: elementVersionId,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_ContainedInstance);
 	return newExampleScenario_ContainedInstance;
 }
   String id;
@@ -403,8 +417,9 @@ class ExampleScenario_Process {
 		String postConditions,
 		Element elementPostConditions,
 		List<ExampleScenario_Step> step}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_Process newExampleScenario_Process = new ExampleScenario_Process(
-			id: await newId('ExampleScenario_Process'),
+			id: await fhirDb.newResourceId('ExampleScenario_Process'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			title: title,
@@ -417,6 +432,7 @@ class ExampleScenario_Process {
 			elementPostConditions: elementPostConditions,
 			step: step,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_Process);
 	return newExampleScenario_Process;
 }
   String id;
@@ -463,8 +479,9 @@ class ExampleScenario_Step {
 		Element elementPause,
 		ExampleScenario_Operation operation,
 		List<ExampleScenario_Alternative> alternative}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_Step newExampleScenario_Step = new ExampleScenario_Step(
-			id: await newId('ExampleScenario_Step'),
+			id: await fhirDb.newResourceId('ExampleScenario_Step'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			process: process,
@@ -473,6 +490,7 @@ class ExampleScenario_Step {
 			operation: operation,
 			alternative: alternative,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_Step);
 	return newExampleScenario_Step;
 }
   String id;
@@ -524,8 +542,9 @@ class ExampleScenario_Operation {
 		Element elementReceiverActive,
 		ExampleScenario_ContainedInstance request,
 		ExampleScenario_ContainedInstance response}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_Operation newExampleScenario_Operation = new ExampleScenario_Operation(
-			id: await newId('ExampleScenario_Operation'),
+			id: await fhirDb.newResourceId('ExampleScenario_Operation'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			number: number,
@@ -547,6 +566,7 @@ class ExampleScenario_Operation {
 			request: request,
 			response: response,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_Operation);
 	return newExampleScenario_Operation;
 }
   String id;
@@ -611,8 +631,9 @@ class ExampleScenario_Alternative {
 		String description,
 		Element elementDescription,
 		List<ExampleScenario_Step> step}) async {
+	var fhirDb = new DatabaseHelper();
 	ExampleScenario_Alternative newExampleScenario_Alternative = new ExampleScenario_Alternative(
-			id: await newId('ExampleScenario_Alternative'),
+			id: await fhirDb.newResourceId('ExampleScenario_Alternative'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			title: title,
@@ -621,6 +642,7 @@ class ExampleScenario_Alternative {
 			elementDescription: elementDescription,
 			step: step,
 );
+	int saved = await fhirDb.saveResource(newExampleScenario_Alternative);
 	return newExampleScenario_Alternative;
 }
   String id;
@@ -655,6 +677,7 @@ ExampleScenario_Alternative(
 
 ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
   return ExampleScenario(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -758,6 +781,7 @@ ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ExampleScenarioToJson(ExampleScenario instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -861,6 +885,7 @@ ExampleScenario_Instance _$ExampleScenario_InstanceFromJson(
     elementResourceId: json['elementResourceId'] == null
         ? null
         : Element.fromJson(json['elementResourceId'] as Map<String, dynamic>),
+    resourceType: json['resourceType'] as String,
     elementResourceType: json['elementResourceType'] == null
         ? null
         : Element.fromJson(json['elementResourceType'] as Map<String, dynamic>),
@@ -883,7 +908,7 @@ ExampleScenario_Instance _$ExampleScenario_InstanceFromJson(
             : ExampleScenario_ContainedInstance.fromJson(
                 e as Map<String, dynamic>))
         ?.toList(),
-  )..resourceType = json['resourceType'] as String;
+  );
 }
 
 Map<String, dynamic> _$ExampleScenario_InstanceToJson(

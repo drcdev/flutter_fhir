@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -18,6 +16,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class VisionPrescription {
 
 	static Future<VisionPrescription> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -39,8 +38,10 @@ class VisionPrescription {
 		Element elementDateWritten,
 		Reference prescriber,
 		List<VisionPrescription_LensSpecification> lensSpecification}) async {
+	var fhirDb = new DatabaseHelper();
 	VisionPrescription newVisionPrescription = new VisionPrescription(
-			id: await newId('VisionPrescription'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('VisionPrescription'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -62,9 +63,10 @@ class VisionPrescription {
 			prescriber: prescriber,
 			lensSpecification: lensSpecification,
 );
+	int saved = await fhirDb.saveResource(newVisionPrescription);
 	return newVisionPrescription;
 }
-  final String resourceType= 'VisionPrescription';
+  String resourceType= 'VisionPrescription';
   String id;
   Meta meta;
   String implicitRules;
@@ -88,7 +90,8 @@ class VisionPrescription {
   List<VisionPrescription_LensSpecification> lensSpecification;
 
 VisionPrescription(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -146,8 +149,9 @@ class VisionPrescription_LensSpecification {
 		String brand,
 		Element elementBrand,
 		List<Annotation> note}) async {
+	var fhirDb = new DatabaseHelper();
 	VisionPrescription_LensSpecification newVisionPrescription_LensSpecification = new VisionPrescription_LensSpecification(
-			id: await newId('VisionPrescription_LensSpecification'),
+			id: await fhirDb.newResourceId('VisionPrescription_LensSpecification'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			product: product,
@@ -175,6 +179,7 @@ class VisionPrescription_LensSpecification {
 			elementBrand: elementBrand,
 			note: note,
 );
+	int saved = await fhirDb.saveResource(newVisionPrescription_LensSpecification);
 	return newVisionPrescription_LensSpecification;
 }
   String id;
@@ -250,8 +255,9 @@ class VisionPrescription_Prism {
 		Element elementAmount,
 		String base,
 		Element elementBase}) async {
+	var fhirDb = new DatabaseHelper();
 	VisionPrescription_Prism newVisionPrescription_Prism = new VisionPrescription_Prism(
-			id: await newId('VisionPrescription_Prism'),
+			id: await fhirDb.newResourceId('VisionPrescription_Prism'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			amount: amount,
@@ -259,6 +265,7 @@ class VisionPrescription_Prism {
 			base: base,
 			elementBase: elementBase,
 );
+	int saved = await fhirDb.saveResource(newVisionPrescription_Prism);
 	return newVisionPrescription_Prism;
 }
   String id;
@@ -291,6 +298,7 @@ VisionPrescription_Prism(
 
 VisionPrescription _$VisionPrescriptionFromJson(Map<String, dynamic> json) {
   return VisionPrescription(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -359,6 +367,7 @@ VisionPrescription _$VisionPrescriptionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$VisionPrescriptionToJson(VisionPrescription instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -31,8 +29,9 @@ class Address {
 		String country,
 		Element elementCountry,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	Address newAddress = new Address(
-			id: await newId('Address'),
+			id: await fhirDb.newResourceId('Address'),
 			extension: extension,
 			use: use,
 			elementUse: elementUse,
@@ -54,6 +53,7 @@ class Address {
 			elementCountry: elementCountry,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newAddress);
 	return newAddress;
 }
   String id;

@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class Lists {
 
 	static Future<Lists> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -44,8 +43,10 @@ class Lists {
 		List<Annotation> note,
 		List<List_Entry> entry,
 		CodeableConcept emptyReason}) async {
+	var fhirDb = new DatabaseHelper();
 	Lists newLists = new Lists(
-			id: await newId('List'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('List'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -73,9 +74,10 @@ class Lists {
 			entry: entry,
 			emptyReason: emptyReason,
 );
+	int saved = await fhirDb.saveResource(newLists);
 	return newLists;
 }
-  final String resourceType= 'List';
+  String resourceType= 'List';
   String id;
   Meta meta;
   String implicitRules;
@@ -105,7 +107,8 @@ class Lists {
   CodeableConcept emptyReason;
 
 Lists(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -151,8 +154,9 @@ class List_Entry {
 		DateTime date,
 		Element elementDate,
 		Reference item}) async {
+	var fhirDb = new DatabaseHelper();
 	List_Entry newList_Entry = new List_Entry(
-			id: await newId('List_Entry'),
+			id: await fhirDb.newResourceId('List_Entry'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			flag: flag,
@@ -162,6 +166,7 @@ class List_Entry {
 			elementDate: elementDate,
 			item: item,
 );
+	int saved = await fhirDb.saveResource(newList_Entry);
 	return newList_Entry;
 }
   String id;
@@ -198,6 +203,7 @@ List_Entry(
 
 Lists _$ListsFromJson(Map<String, dynamic> json) {
   return Lists(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -276,6 +282,7 @@ Lists _$ListsFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ListsToJson(Lists instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

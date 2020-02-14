@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class EpisodeOfCare {
 
 	static Future<EpisodeOfCare> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +39,10 @@ class EpisodeOfCare {
 		Reference careManager,
 		List<Reference> team,
 		List<Reference> account}) async {
+	var fhirDb = new DatabaseHelper();
 	EpisodeOfCare newEpisodeOfCare = new EpisodeOfCare(
-			id: await newId('EpisodeOfCare'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('EpisodeOfCare'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -65,9 +66,10 @@ class EpisodeOfCare {
 			team: team,
 			account: account,
 );
+	int saved = await fhirDb.saveResource(newEpisodeOfCare);
 	return newEpisodeOfCare;
 }
-  final String resourceType= 'EpisodeOfCare';
+  String resourceType= 'EpisodeOfCare';
   String id;
   Meta meta;
   String implicitRules;
@@ -93,7 +95,8 @@ class EpisodeOfCare {
   List<Reference> account;
 
 EpisodeOfCare(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -132,14 +135,16 @@ class EpisodeOfCare_StatusHistory {
 		String status,
 		Element elementStatus,
 		Period period}) async {
+	var fhirDb = new DatabaseHelper();
 	EpisodeOfCare_StatusHistory newEpisodeOfCare_StatusHistory = new EpisodeOfCare_StatusHistory(
-			id: await newId('EpisodeOfCare_StatusHistory'),
+			id: await fhirDb.newResourceId('EpisodeOfCare_StatusHistory'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			status: status,
 			elementStatus: elementStatus,
 			period: period,
 );
+	int saved = await fhirDb.saveResource(newEpisodeOfCare_StatusHistory);
 	return newEpisodeOfCare_StatusHistory;
 }
   String id;
@@ -173,8 +178,9 @@ class EpisodeOfCare_Diagnosis {
 		CodeableConcept role,
 		int rank,
 		Element elementRank}) async {
+	var fhirDb = new DatabaseHelper();
 	EpisodeOfCare_Diagnosis newEpisodeOfCare_Diagnosis = new EpisodeOfCare_Diagnosis(
-			id: await newId('EpisodeOfCare_Diagnosis'),
+			id: await fhirDb.newResourceId('EpisodeOfCare_Diagnosis'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			condition: condition,
@@ -182,6 +188,7 @@ class EpisodeOfCare_Diagnosis {
 			rank: rank,
 			elementRank: elementRank,
 );
+	int saved = await fhirDb.saveResource(newEpisodeOfCare_Diagnosis);
 	return newEpisodeOfCare_Diagnosis;
 }
   String id;
@@ -214,6 +221,7 @@ EpisodeOfCare_Diagnosis(
 
 EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
   return EpisodeOfCare(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -295,6 +303,7 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

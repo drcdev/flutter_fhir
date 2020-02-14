@@ -1,8 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class MedicinalProductAuthorization {
 
 	static Future<MedicinalProductAuthorization> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -47,8 +46,10 @@ class MedicinalProductAuthorization {
 		Reference holder,
 		Reference regulator,
 		MedicinalProductAuthorization_Procedure procedure}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductAuthorization newMedicinalProductAuthorization = new MedicinalProductAuthorization(
-			id: await newId('MedicinalProductAuthorization'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('MedicinalProductAuthorization'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -79,9 +80,10 @@ class MedicinalProductAuthorization {
 			regulator: regulator,
 			procedure: procedure,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization);
 	return newMedicinalProductAuthorization;
 }
-  final String resourceType= 'MedicinalProductAuthorization';
+  String resourceType= 'MedicinalProductAuthorization';
   String id;
   Meta meta;
   String implicitRules;
@@ -114,7 +116,8 @@ class MedicinalProductAuthorization {
   MedicinalProductAuthorization_Procedure procedure;
 
 MedicinalProductAuthorization(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -162,8 +165,9 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
 		List<CodeableConcept> jurisdiction,
 		CodeableConcept legalStatusOfSupply,
 		Period validityPeriod}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductAuthorization_JurisdictionalAuthorization newMedicinalProductAuthorization_JurisdictionalAuthorization = new MedicinalProductAuthorization_JurisdictionalAuthorization(
-			id: await newId('MedicinalProductAuthorization_JurisdictionalAuthorization'),
+			id: await fhirDb.newResourceId('MedicinalProductAuthorization_JurisdictionalAuthorization'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -172,6 +176,7 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
 			legalStatusOfSupply: legalStatusOfSupply,
 			validityPeriod: validityPeriod,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization_JurisdictionalAuthorization);
 	return newMedicinalProductAuthorization_JurisdictionalAuthorization;
 }
   String id;
@@ -211,8 +216,9 @@ class MedicinalProductAuthorization_Procedure {
 		String dateDateTime,
 		Element elementDateDateTime,
 		List<MedicinalProductAuthorization_Procedure> application}) async {
+	var fhirDb = new DatabaseHelper();
 	MedicinalProductAuthorization_Procedure newMedicinalProductAuthorization_Procedure = new MedicinalProductAuthorization_Procedure(
-			id: await newId('MedicinalProductAuthorization_Procedure'),
+			id: await fhirDb.newResourceId('MedicinalProductAuthorization_Procedure'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -222,6 +228,7 @@ class MedicinalProductAuthorization_Procedure {
 			elementDateDateTime: elementDateDateTime,
 			application: application,
 );
+	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization_Procedure);
 	return newMedicinalProductAuthorization_Procedure;
 }
   String id;
@@ -259,6 +266,7 @@ MedicinalProductAuthorization_Procedure(
 MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductAuthorization(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -366,6 +374,7 @@ MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
 Map<String, dynamic> _$MedicinalProductAuthorizationToJson(
         MedicinalProductAuthorization instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

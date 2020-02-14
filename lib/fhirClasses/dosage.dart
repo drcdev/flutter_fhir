@@ -1,7 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
@@ -35,8 +33,9 @@ class Dosage {
 		Ratio maxDosePerPeriod,
 		Quantity maxDosePerAdministration,
 		Quantity maxDosePerLifetime}) async {
+	var fhirDb = new DatabaseHelper();
 	Dosage newDosage = new Dosage(
-			id: await newId('Dosage'),
+			id: await fhirDb.newResourceId('Dosage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			sequence: sequence,
@@ -58,6 +57,7 @@ class Dosage {
 			maxDosePerAdministration: maxDosePerAdministration,
 			maxDosePerLifetime: maxDosePerLifetime,
 );
+	int saved = await fhirDb.saveResource(newDosage);
 	return newDosage;
 }
   String id;
@@ -123,8 +123,9 @@ class Dosage_DoseAndRate {
 		Ratio rateRatio,
 		Range rateRange,
 		Quantity rateQuantity}) async {
+	var fhirDb = new DatabaseHelper();
 	Dosage_DoseAndRate newDosage_DoseAndRate = new Dosage_DoseAndRate(
-			id: await newId('Dosage_DoseAndRate'),
+			id: await fhirDb.newResourceId('Dosage_DoseAndRate'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			type: type,
@@ -134,6 +135,7 @@ class Dosage_DoseAndRate {
 			rateRange: rateRange,
 			rateQuantity: rateQuantity,
 );
+	int saved = await fhirDb.saveResource(newDosage_DoseAndRate);
 	return newDosage_DoseAndRate;
 }
   String id;

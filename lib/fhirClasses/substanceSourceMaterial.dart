@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -14,6 +13,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SubstanceSourceMaterial {
 
 	static Future<SubstanceSourceMaterial> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -40,8 +40,10 @@ class SubstanceSourceMaterial {
 		List<SubstanceSourceMaterial_FractionDescription> fractionDescription,
 		SubstanceSourceMaterial_Organism organism,
 		List<SubstanceSourceMaterial_PartDescription> partDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial newSubstanceSourceMaterial = new SubstanceSourceMaterial(
-			id: await newId('SubstanceSourceMaterial'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SubstanceSourceMaterial'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -68,9 +70,10 @@ class SubstanceSourceMaterial {
 			organism: organism,
 			partDescription: partDescription,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial);
 	return newSubstanceSourceMaterial;
 }
-  final String resourceType= 'SubstanceSourceMaterial';
+  String resourceType= 'SubstanceSourceMaterial';
   String id;
   Meta meta;
   String implicitRules;
@@ -99,7 +102,8 @@ class SubstanceSourceMaterial {
   List<SubstanceSourceMaterial_PartDescription> partDescription;
 
 SubstanceSourceMaterial(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -141,14 +145,16 @@ class SubstanceSourceMaterial_FractionDescription {
 		String fraction,
 		Element elementFraction,
 		CodeableConcept materialType}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial_FractionDescription newSubstanceSourceMaterial_FractionDescription = new SubstanceSourceMaterial_FractionDescription(
-			id: await newId('SubstanceSourceMaterial_FractionDescription'),
+			id: await fhirDb.newResourceId('SubstanceSourceMaterial_FractionDescription'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			fraction: fraction,
 			elementFraction: elementFraction,
 			materialType: materialType,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_FractionDescription);
 	return newSubstanceSourceMaterial_FractionDescription;
 }
   String id;
@@ -187,8 +193,9 @@ class SubstanceSourceMaterial_Organism {
 		List<SubstanceSourceMaterial_Author> author,
 		SubstanceSourceMaterial_Hybrid hybrid,
 		SubstanceSourceMaterial_OrganismGeneral organismGeneral}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial_Organism newSubstanceSourceMaterial_Organism = new SubstanceSourceMaterial_Organism(
-			id: await newId('SubstanceSourceMaterial_Organism'),
+			id: await fhirDb.newResourceId('SubstanceSourceMaterial_Organism'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			family: family,
@@ -201,6 +208,7 @@ class SubstanceSourceMaterial_Organism {
 			hybrid: hybrid,
 			organismGeneral: organismGeneral,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_Organism);
 	return newSubstanceSourceMaterial_Organism;
 }
   String id;
@@ -245,14 +253,16 @@ class SubstanceSourceMaterial_Author {
 		CodeableConcept authorType,
 		String authorDescription,
 		Element elementAuthorDescription}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial_Author newSubstanceSourceMaterial_Author = new SubstanceSourceMaterial_Author(
-			id: await newId('SubstanceSourceMaterial_Author'),
+			id: await fhirDb.newResourceId('SubstanceSourceMaterial_Author'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			authorType: authorType,
 			authorDescription: authorDescription,
 			elementAuthorDescription: elementAuthorDescription,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_Author);
 	return newSubstanceSourceMaterial_Author;
 }
   String id;
@@ -291,8 +301,9 @@ class SubstanceSourceMaterial_Hybrid {
 		String paternalOrganismName,
 		Element elementPaternalOrganismName,
 		CodeableConcept hybridType}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial_Hybrid newSubstanceSourceMaterial_Hybrid = new SubstanceSourceMaterial_Hybrid(
-			id: await newId('SubstanceSourceMaterial_Hybrid'),
+			id: await fhirDb.newResourceId('SubstanceSourceMaterial_Hybrid'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			maternalOrganismId: maternalOrganismId,
@@ -305,6 +316,7 @@ class SubstanceSourceMaterial_Hybrid {
 			elementPaternalOrganismName: elementPaternalOrganismName,
 			hybridType: hybridType,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_Hybrid);
 	return newSubstanceSourceMaterial_Hybrid;
 }
   String id;
@@ -350,8 +362,9 @@ class SubstanceSourceMaterial_OrganismGeneral {
 		CodeableConcept phylum,
 		CodeableConcept classs,
 		CodeableConcept order}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial_OrganismGeneral newSubstanceSourceMaterial_OrganismGeneral = new SubstanceSourceMaterial_OrganismGeneral(
-			id: await newId('SubstanceSourceMaterial_OrganismGeneral'),
+			id: await fhirDb.newResourceId('SubstanceSourceMaterial_OrganismGeneral'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			kingdom: kingdom,
@@ -359,6 +372,7 @@ class SubstanceSourceMaterial_OrganismGeneral {
 			classs: classs,
 			order: order,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_OrganismGeneral);
 	return newSubstanceSourceMaterial_OrganismGeneral;
 }
   String id;
@@ -392,13 +406,15 @@ class SubstanceSourceMaterial_PartDescription {
 		List<Extension> modifierExtension,
 		CodeableConcept part,
 		CodeableConcept partLocation}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceSourceMaterial_PartDescription newSubstanceSourceMaterial_PartDescription = new SubstanceSourceMaterial_PartDescription(
-			id: await newId('SubstanceSourceMaterial_PartDescription'),
+			id: await fhirDb.newResourceId('SubstanceSourceMaterial_PartDescription'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			part: part,
 			partLocation: partLocation,
 );
+	int saved = await fhirDb.saveResource(newSubstanceSourceMaterial_PartDescription);
 	return newSubstanceSourceMaterial_PartDescription;
 }
   String id;
@@ -428,6 +444,7 @@ SubstanceSourceMaterial_PartDescription(
 SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
     Map<String, dynamic> json) {
   return SubstanceSourceMaterial(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -524,6 +541,7 @@ SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
 Map<String, dynamic> _$SubstanceSourceMaterialToJson(
         SubstanceSourceMaterial instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

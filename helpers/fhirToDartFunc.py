@@ -118,6 +118,10 @@ def HiveCode(properties, objects):
                     hiveCode = ''.join([hiveCode, '\t\t',
                                     hiveProperties((properties[field]['$ref']).split('/definitions/')[1],
                                                   ' ', field)])
+                else:
+                    hiveCode = ''.join([hiveCode, '\t\t',
+                                        hiveProperties('String ',
+                                                       ' ', field)])
                 
             elif('pattern' in properties[field]):  
                 value = properties[field]
@@ -166,16 +170,15 @@ def HiveCode(properties, objects):
                         '(\n'])
 
     for field in properties:
-        if(rem_(field) != 'resourceType'):
-            if(field == 'id'):
-                hiveCode = ''.join([hiveCode, 
-                                    "\t\t\tid: await fhirDb.newResourceId('", 
-                                    objects,
-                                    "'),\n"])
-            else:
-                hiveCode = ''.join([hiveCode, '\t\t\t', rem_(field), ': ', rem_(field), ',\n'])
+        if(field == 'id'):
+            hiveCode = ''.join([hiveCode, 
+                                "\t\t\tid: await fhirDb.newResourceId('", 
+                                objects,
+                                "'),\n"])
+        else:
+            hiveCode = ''.join([hiveCode, '\t\t\t', rem_(field), ': ', rem_(field), ',\n'])
     hiveCode = ''.join([hiveCode, 
-                        ');\n\tint result = await fhirDb.saveResource(new',
+                        ');\n\tint saved = await fhirDb.saveResource(new',
                         lists(objects),
                         ');\n\treturn new',
                         lists(objects),

@@ -1,7 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_fhir/fhirClasses/classes.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 class SubstanceNucleicAcid {
 
 	static Future<SubstanceNucleicAcid> newInstance({
+		String  resourceType,
 		String id,
 		Meta meta,
 		String implicitRules,
@@ -32,8 +32,10 @@ class SubstanceNucleicAcid {
 		Element elementAreaOfHybridisation,
 		CodeableConcept oligoNucleotideType,
 		List<SubstanceNucleicAcid_Subunit> subunit}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceNucleicAcid newSubstanceNucleicAcid = new SubstanceNucleicAcid(
-			id: await newId('SubstanceNucleicAcid'),
+			resourceType: resourceType,
+			id: await fhirDb.newResourceId('SubstanceNucleicAcid'),
 			meta: meta,
 			implicitRules: implicitRules,
 			elementImplicitRules: elementImplicitRules,
@@ -51,9 +53,10 @@ class SubstanceNucleicAcid {
 			oligoNucleotideType: oligoNucleotideType,
 			subunit: subunit,
 );
+	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid);
 	return newSubstanceNucleicAcid;
 }
-  final String resourceType= 'SubstanceNucleicAcid';
+  String resourceType= 'SubstanceNucleicAcid';
   String id;
   Meta meta;
   String implicitRules;
@@ -73,7 +76,8 @@ class SubstanceNucleicAcid {
   List<SubstanceNucleicAcid_Subunit> subunit;
 
 SubstanceNucleicAcid(
-  {this.id,
+  {@required this.resourceType,
+    this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -114,8 +118,9 @@ class SubstanceNucleicAcid_Subunit {
 		CodeableConcept threePrime,
 		List<SubstanceNucleicAcid_Linkage> linkage,
 		List<SubstanceNucleicAcid_Sugar> sugar}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceNucleicAcid_Subunit newSubstanceNucleicAcid_Subunit = new SubstanceNucleicAcid_Subunit(
-			id: await newId('SubstanceNucleicAcid_Subunit'),
+			id: await fhirDb.newResourceId('SubstanceNucleicAcid_Subunit'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			subunit: subunit,
@@ -130,6 +135,7 @@ class SubstanceNucleicAcid_Subunit {
 			linkage: linkage,
 			sugar: sugar,
 );
+	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid_Subunit);
 	return newSubstanceNucleicAcid_Subunit;
 }
   String id;
@@ -182,8 +188,9 @@ class SubstanceNucleicAcid_Linkage {
 		Element elementName,
 		String residueSite,
 		Element elementResidueSite}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceNucleicAcid_Linkage newSubstanceNucleicAcid_Linkage = new SubstanceNucleicAcid_Linkage(
-			id: await newId('SubstanceNucleicAcid_Linkage'),
+			id: await fhirDb.newResourceId('SubstanceNucleicAcid_Linkage'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			connectivity: connectivity,
@@ -194,6 +201,7 @@ class SubstanceNucleicAcid_Linkage {
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite,
 );
+	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid_Linkage);
 	return newSubstanceNucleicAcid_Linkage;
 }
   String id;
@@ -236,8 +244,9 @@ class SubstanceNucleicAcid_Sugar {
 		Element elementName,
 		String residueSite,
 		Element elementResidueSite}) async {
+	var fhirDb = new DatabaseHelper();
 	SubstanceNucleicAcid_Sugar newSubstanceNucleicAcid_Sugar = new SubstanceNucleicAcid_Sugar(
-			id: await newId('SubstanceNucleicAcid_Sugar'),
+			id: await fhirDb.newResourceId('SubstanceNucleicAcid_Sugar'),
 			extension: extension,
 			modifierExtension: modifierExtension,
 			identifier: identifier,
@@ -246,6 +255,7 @@ class SubstanceNucleicAcid_Sugar {
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite,
 );
+	int saved = await fhirDb.saveResource(newSubstanceNucleicAcid_Sugar);
 	return newSubstanceNucleicAcid_Sugar;
 }
   String id;
@@ -280,6 +290,7 @@ SubstanceNucleicAcid_Sugar(
 
 SubstanceNucleicAcid _$SubstanceNucleicAcidFromJson(Map<String, dynamic> json) {
   return SubstanceNucleicAcid(
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -337,6 +348,7 @@ SubstanceNucleicAcid _$SubstanceNucleicAcidFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$SubstanceNucleicAcidToJson(
         SubstanceNucleicAcid instance) =>
     <String, dynamic>{
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
