@@ -56,9 +56,7 @@ for objects in definitions:
                                 '@JsonSerializable(explicitToJson: true)\n', 
                                 'class ',
                                 fhir.lists(objects), 
-                                ' {\n'])
-            
-
+                                ' {\n\n'])
             
             #Modifier description includes '\n\n' need to change it to a comment
             dartCode = dartCode.replace('\n\nModifier', '\n// Modifier')

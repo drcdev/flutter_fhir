@@ -10,7 +10,6 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();
-  var temp = await fhirDb.getResource('Patient');
   runApp(MaterialApp(
       home: _Main(),
       supportedLocales: [Locale('en', 'US'), Locale('es', 'AR')],

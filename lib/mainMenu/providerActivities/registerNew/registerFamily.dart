@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
 import 'package:flutter_fhir/mainMenu/testingSettings/objects.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
-import 'package:hive/hive.dart';
+import 'package:flutter_fhir/util/db.dart';
 
 class RegisterFamily extends StatelessWidget {
   Patient pt;
@@ -62,32 +62,19 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
           relation3,
           RaisedButton(
             onPressed: () async {
-              var contacts =
-                  await Hive.openBox<Patient_Contact>('Patient_ContactBox');
-              var link = await Hive.openBox<Patient_Link>('Patient_LinkBox');
-              Patient_Link links = await Patient_Link.newInstance();
-              Patient_Contact ptContact1 = await Patient_Contact.newInstance(
-                  relationship: [CodeableConcept(text: relation1.relation)],
-                  name: HumanName(
-                      given: [relation1.given.text],
-                      family: relation1.family.text));
-              Patient_Contact ptContact2 = await Patient_Contact.newInstance(
-                  relationship: [CodeableConcept(text: relation2.relation)],
-                  name: HumanName(
-                      given: [relation2.given.text],
-                      family: relation1.family.text));
-              contacts.put(ptContact1.id, ptContact1);
-              contacts.put(ptContact2.id, ptContact2);
-              pt = addFamily(pt, relation1);
-              pt = addFamily(pt, relation2);
-//              pt = addFamily(pt, relation3);
-              var patientBox = await Hive.openBox<Patient>('PatientBox');
-              patientBox.put(pt.id, pt);
-              print(patientBox
-                  .getAt(patientBox.length - 1)
-                  .contact[0]
-                  .toJson()
-                  .toString());
+              pt = await addFamily(pt, relation1);
+              pt = await addFamily(pt, relation2);
+              pt = await addFamily(pt, relation3);
+              pt.save();
+              var fhirDb = new DatabaseHelper();
+              var temp = await fhirDb.getResource('Patient');
+              for(int i = 0; i < temp.length; i++) {
+                if(Patient.fromJson(temp[i]).contact[0] != null) {
+                  print(Patient
+                      .fromJson(temp[i])
+                      .contact[0].toString());
+                }
+              }
 //              Navigator.push(
 //                context,
 //                MaterialPageRoute(builder: (context) => Register()),
@@ -96,10 +83,10 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
             child: Text('Register Another Patient'),
           ),
           RaisedButton(
-            onPressed: () {
-              pt = addFamily(pt, relation1);
-              pt = addFamily(pt, relation2);
-              pt = addFamily(pt, relation3);
+            onPressed: () async {
+              pt = await addFamily(pt, relation1);
+              pt = await addFamily(pt, relation2);
+              pt = await addFamily(pt, relation3);
               Write(pt);
 
               Navigator.push(
@@ -175,10 +162,10 @@ class _RelationPickerState extends State<RelationPicker> {
   }
 }
 
-Patient addFamily(Patient pt, RelationPicker relation) {
+Future<Patient> addFamily(Patient pt, RelationPicker relation) async {
   if ((relation.given.text != '' || relation.family.text != '') &&
       relation != null) {
-    final Patient_Contact ct = new Patient_Contact(
+    final Patient_Contact ct = await Patient_Contact.newInstance(
         relationship: [CodeableConcept(text: relation.relation)],
         name: HumanName(
             given: [relation.given.text], family: relation.family.text));

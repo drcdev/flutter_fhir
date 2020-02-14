@@ -1,9 +1,9 @@
-import 'dart:io' as io;
-
-import 'package:device_info/device_info.dart';
+import 'dart:io';
+import 'dart:core';
 import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:device_info/device_info.dart';
 
 class DatabaseHelper {
 	static final DatabaseHelper _instance = new DatabaseHelper.internal();
@@ -20,7 +20,7 @@ class DatabaseHelper {
 	DatabaseHelper.internal();
 
 	initDb() async {
-		io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
+		Directory documentsDirectory = await getApplicationDocumentsDirectory();
 		String path = join(documentsDirectory.path, "fhir.db");
 		var theDb = await openDatabase(path, version: 1, onCreate: _onCreate);
 		return theDb;
@@ -52,10 +52,30 @@ class DatabaseHelper {
 
 	Future<int> saveResource(dynamic resource) async {
 		var dbClient = await db;
-		int res = await dbClient.rawInsert(
-				'''INSERT INTO ${resource.runtimeType.toString()} (id, json_resource)
-      VALUES ('${resource.id}', '${resource.toJson().toString()}')''');
-		return res;
+		var row = {
+			'id' : resource.id,
+			'json_resource' : resource.toJson().toString()
+		};
+
+		return await dbClient.insert(resource.runtimeType.toString(), row);
+//		return await dbClient.rawInsert(
+//				'''INSERT INTO ${resource.runtimeType.toString()} (id, json_resource)
+//      VALUES ('${resource.id}', '${resource.toJson().toString()}')''');
+	}
+
+	Future<int> save(dynamic resource) async {
+		var dbClient = await db;
+		var row = {
+			'id': resource.id,
+			'json_resource': resource.toJson().toString()
+		};
+
+		return await dbClient.update(
+				'${resource.runtimeType.toString()}',
+				row,
+				where: 'id = ?',
+				whereArgs: [resource.id]
+		);
 	}
 
 	Future<bool> update(dynamic resource) async {
