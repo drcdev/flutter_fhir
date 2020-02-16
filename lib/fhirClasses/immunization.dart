@@ -14,117 +14,119 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Immunization {
+  static Future<Immunization> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      String status,
+      Element elementStatus,
+      CodeableConcept statusReason,
+      CodeableConcept vaccineCode,
+      Reference patient,
+      Reference encounter,
+      String occurrenceDateTime,
+      Element elementOccurrenceDateTime,
+      String occurrenceString,
+      Element elementOccurrenceString,
+      DateTime recorded,
+      Element elementRecorded,
+      bool primarySource,
+      Element elementPrimarySource,
+      CodeableConcept reportOrigin,
+      Reference location,
+      Reference manufacturer,
+      String lotNumber,
+      Element elementLotNumber,
+      String expirationDate,
+      Element elementExpirationDate,
+      CodeableConcept site,
+      CodeableConcept route,
+      Quantity doseQuantity,
+      List<Immunization_Performer> performer,
+      List<Annotation> note,
+      List<CodeableConcept> reasonCode,
+      List<Reference> reasonReference,
+      bool isSubpotent,
+      Element elementIsSubpotent,
+      List<CodeableConcept> subpotentReason,
+      List<Immunization_Education> education,
+      List<CodeableConcept> programEligibility,
+      CodeableConcept fundingSource,
+      List<Immunization_Reaction> reaction,
+      List<Immunization_ProtocolApplied> protocolApplied}) async {
+    var fhirDb = new DatabaseHelper();
+    Immunization newImmunization = new Immunization(
+      resourceType: 'Immunization',
+      id: await fhirDb.newResourceId('Immunization'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      statusReason: statusReason,
+      vaccineCode: vaccineCode,
+      patient: patient,
+      encounter: encounter,
+      occurrenceDateTime: occurrenceDateTime,
+      elementOccurrenceDateTime: elementOccurrenceDateTime,
+      occurrenceString: occurrenceString,
+      elementOccurrenceString: elementOccurrenceString,
+      recorded: recorded,
+      elementRecorded: elementRecorded,
+      primarySource: primarySource,
+      elementPrimarySource: elementPrimarySource,
+      reportOrigin: reportOrigin,
+      location: location,
+      manufacturer: manufacturer,
+      lotNumber: lotNumber,
+      elementLotNumber: elementLotNumber,
+      expirationDate: expirationDate,
+      elementExpirationDate: elementExpirationDate,
+      site: site,
+      route: route,
+      doseQuantity: doseQuantity,
+      performer: performer,
+      note: note,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      isSubpotent: isSubpotent,
+      elementIsSubpotent: elementIsSubpotent,
+      subpotentReason: subpotentReason,
+      education: education,
+      programEligibility: programEligibility,
+      fundingSource: fundingSource,
+      reaction: reaction,
+      protocolApplied: protocolApplied,
+    );
+    newImmunization.meta.createdAt = DateTime.now();
+    newImmunization.meta.lastUpdated = newImmunization.meta.createdAt;
+    int saved = await fhirDb.newResource(newImmunization);
+    return newImmunization;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Immunization> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		String status,
-		Element elementStatus,
-		CodeableConcept statusReason,
-		CodeableConcept vaccineCode,
-		Reference patient,
-		Reference encounter,
-		String occurrenceDateTime,
-		Element elementOccurrenceDateTime,
-		String occurrenceString,
-		Element elementOccurrenceString,
-		DateTime recorded,
-		Element elementRecorded,
-		bool primarySource,
-		Element elementPrimarySource,
-		CodeableConcept reportOrigin,
-		Reference location,
-		Reference manufacturer,
-		String lotNumber,
-		Element elementLotNumber,
-		String expirationDate,
-		Element elementExpirationDate,
-		CodeableConcept site,
-		CodeableConcept route,
-		Quantity doseQuantity,
-		List<Immunization_Performer> performer,
-		List<Annotation> note,
-		List<CodeableConcept> reasonCode,
-		List<Reference> reasonReference,
-		bool isSubpotent,
-		Element elementIsSubpotent,
-		List<CodeableConcept> subpotentReason,
-		List<Immunization_Education> education,
-		List<CodeableConcept> programEligibility,
-		CodeableConcept fundingSource,
-		List<Immunization_Reaction> reaction,
-		List<Immunization_ProtocolApplied> protocolApplied}) async {
-	var fhirDb = new DatabaseHelper();
-	Immunization newImmunization = new Immunization(
-			resourceType: 'Immunization',
-			id: await fhirDb.newResourceId('Immunization'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			status: status,
-			elementStatus: elementStatus,
-			statusReason: statusReason,
-			vaccineCode: vaccineCode,
-			patient: patient,
-			encounter: encounter,
-			occurrenceDateTime: occurrenceDateTime,
-			elementOccurrenceDateTime: elementOccurrenceDateTime,
-			occurrenceString: occurrenceString,
-			elementOccurrenceString: elementOccurrenceString,
-			recorded: recorded,
-			elementRecorded: elementRecorded,
-			primarySource: primarySource,
-			elementPrimarySource: elementPrimarySource,
-			reportOrigin: reportOrigin,
-			location: location,
-			manufacturer: manufacturer,
-			lotNumber: lotNumber,
-			elementLotNumber: elementLotNumber,
-			expirationDate: expirationDate,
-			elementExpirationDate: elementExpirationDate,
-			site: site,
-			route: route,
-			doseQuantity: doseQuantity,
-			performer: performer,
-			note: note,
-			reasonCode: reasonCode,
-			reasonReference: reasonReference,
-			isSubpotent: isSubpotent,
-			elementIsSubpotent: elementIsSubpotent,
-			subpotentReason: subpotentReason,
-			education: education,
-			programEligibility: programEligibility,
-			fundingSource: fundingSource,
-			reaction: reaction,
-			protocolApplied: protocolApplied,
-);
-	int saved = await fhirDb.newResource(newImmunization);
-	return newImmunization;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'Immunization';
+  String resourceType = 'Immunization';
   String id;
   Meta meta;
   String implicitRules;
@@ -142,7 +144,8 @@ save () async {
   CodeableConcept vaccineCode;
   Reference patient;
   Reference encounter;
-  String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementOccurrenceDateTime;
   String occurrenceString; //  pattern: ^[ \r\n\t\S]+$
   Element elementOccurrenceString;
@@ -173,131 +176,131 @@ save () async {
   List<Immunization_Reaction> reaction;
   List<Immunization_ProtocolApplied> protocolApplied;
 
-Immunization(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.statusReason,
-    @required this.vaccineCode,
-    @required this.patient,
-    this.encounter,
-    this.occurrenceDateTime,
-    this.elementOccurrenceDateTime,
-    this.occurrenceString,
-    this.elementOccurrenceString,
-    this.recorded,
-    this.elementRecorded,
-    this.primarySource,
-    this.elementPrimarySource,
-    this.reportOrigin,
-    this.location,
-    this.manufacturer,
-    this.lotNumber,
-    this.elementLotNumber,
-    this.expirationDate,
-    this.elementExpirationDate,
-    this.site,
-    this.route,
-    this.doseQuantity,
-    this.performer,
-    this.note,
-    this.reasonCode,
-    this.reasonReference,
-    this.isSubpotent,
-    this.elementIsSubpotent,
-    this.subpotentReason,
-    this.education,
-    this.programEligibility,
-    this.fundingSource,
-    this.reaction,
-    this.protocolApplied
-    });
+  Immunization(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.status,
+      this.elementStatus,
+      this.statusReason,
+      @required this.vaccineCode,
+      @required this.patient,
+      this.encounter,
+      this.occurrenceDateTime,
+      this.elementOccurrenceDateTime,
+      this.occurrenceString,
+      this.elementOccurrenceString,
+      this.recorded,
+      this.elementRecorded,
+      this.primarySource,
+      this.elementPrimarySource,
+      this.reportOrigin,
+      this.location,
+      this.manufacturer,
+      this.lotNumber,
+      this.elementLotNumber,
+      this.expirationDate,
+      this.elementExpirationDate,
+      this.site,
+      this.route,
+      this.doseQuantity,
+      this.performer,
+      this.note,
+      this.reasonCode,
+      this.reasonReference,
+      this.isSubpotent,
+      this.elementIsSubpotent,
+      this.subpotentReason,
+      this.education,
+      this.programEligibility,
+      this.fundingSource,
+      this.reaction,
+      this.protocolApplied});
 
-  factory Immunization.fromJson(Map<String, dynamic> json) => _$ImmunizationFromJson(json);
+  factory Immunization.fromJson(Map<String, dynamic> json) =>
+      _$ImmunizationFromJson(json);
   Map<String, dynamic> toJson() => _$ImmunizationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Immunization_Performer {
+  static Future<Immunization_Performer> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept function,
+      Reference actor}) async {
+    var fhirDb = new DatabaseHelper();
+    Immunization_Performer newImmunization_Performer =
+        new Immunization_Performer(
+      id: await fhirDb.newResourceId('Immunization_Performer'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      function: function,
+      actor: actor,
+    );
+    return newImmunization_Performer;
+  }
 
-
-	static Future<Immunization_Performer> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept function,
-		Reference actor}) async {
-	var fhirDb = new DatabaseHelper();
-	Immunization_Performer newImmunization_Performer = new Immunization_Performer(
-			id: await fhirDb.newResourceId('Immunization_Performer'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			function: function,
-			actor: actor,
-);
-	return newImmunization_Performer;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept function;
   Reference actor;
 
-Immunization_Performer(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.function,
-    @required this.actor
-    });
+  Immunization_Performer(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.function,
+      @required this.actor});
 
-  factory Immunization_Performer.fromJson(Map<String, dynamic> json) => _$Immunization_PerformerFromJson(json);
+  factory Immunization_Performer.fromJson(Map<String, dynamic> json) =>
+      _$Immunization_PerformerFromJson(json);
   Map<String, dynamic> toJson() => _$Immunization_PerformerToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Immunization_Education {
+  static Future<Immunization_Education> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String documentType,
+      Element elementDocumentType,
+      String reference,
+      Element elementReference,
+      DateTime publicationDate,
+      Element elementPublicationDate,
+      DateTime presentationDate,
+      Element elementPresentationDate}) async {
+    var fhirDb = new DatabaseHelper();
+    Immunization_Education newImmunization_Education =
+        new Immunization_Education(
+      id: await fhirDb.newResourceId('Immunization_Education'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      documentType: documentType,
+      elementDocumentType: elementDocumentType,
+      reference: reference,
+      elementReference: elementReference,
+      publicationDate: publicationDate,
+      elementPublicationDate: elementPublicationDate,
+      presentationDate: presentationDate,
+      elementPresentationDate: elementPresentationDate,
+    );
+    return newImmunization_Education;
+  }
 
-
-	static Future<Immunization_Education> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String documentType,
-		Element elementDocumentType,
-		String reference,
-		Element elementReference,
-		DateTime publicationDate,
-		Element elementPublicationDate,
-		DateTime presentationDate,
-		Element elementPresentationDate}) async {
-	var fhirDb = new DatabaseHelper();
-	Immunization_Education newImmunization_Education = new Immunization_Education(
-			id: await fhirDb.newResourceId('Immunization_Education'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			documentType: documentType,
-			elementDocumentType: elementDocumentType,
-			reference: reference,
-			elementReference: elementReference,
-			publicationDate: publicationDate,
-			elementPublicationDate: elementPublicationDate,
-			presentationDate: presentationDate,
-			elementPresentationDate: elementPresentationDate,
-);
-	return newImmunization_Education;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -310,50 +313,49 @@ class Immunization_Education {
   DateTime presentationDate;
   Element elementPresentationDate;
 
-Immunization_Education(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.documentType,
-    this.elementDocumentType,
-    this.reference,
-    this.elementReference,
-    this.publicationDate,
-    this.elementPublicationDate,
-    this.presentationDate,
-    this.elementPresentationDate
-    });
+  Immunization_Education(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.documentType,
+      this.elementDocumentType,
+      this.reference,
+      this.elementReference,
+      this.publicationDate,
+      this.elementPublicationDate,
+      this.presentationDate,
+      this.elementPresentationDate});
 
-  factory Immunization_Education.fromJson(Map<String, dynamic> json) => _$Immunization_EducationFromJson(json);
+  factory Immunization_Education.fromJson(Map<String, dynamic> json) =>
+      _$Immunization_EducationFromJson(json);
   Map<String, dynamic> toJson() => _$Immunization_EducationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Immunization_Reaction {
+  static Future<Immunization_Reaction> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      DateTime date,
+      Element elementDate,
+      Reference detail,
+      bool reported,
+      Element elementReported}) async {
+    var fhirDb = new DatabaseHelper();
+    Immunization_Reaction newImmunization_Reaction = new Immunization_Reaction(
+      id: await fhirDb.newResourceId('Immunization_Reaction'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      date: date,
+      elementDate: elementDate,
+      detail: detail,
+      reported: reported,
+      elementReported: elementReported,
+    );
+    return newImmunization_Reaction;
+  }
 
-
-	static Future<Immunization_Reaction> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		DateTime date,
-		Element elementDate,
-		Reference detail,
-		bool reported,
-		Element elementReported}) async {
-	var fhirDb = new DatabaseHelper();
-	Immunization_Reaction newImmunization_Reaction = new Immunization_Reaction(
-			id: await fhirDb.newResourceId('Immunization_Reaction'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			date: date,
-			elementDate: elementDate,
-			detail: detail,
-			reported: reported,
-			elementReported: elementReported,
-);
-	return newImmunization_Reaction;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -363,61 +365,61 @@ class Immunization_Reaction {
   bool reported;
   Element elementReported;
 
-Immunization_Reaction(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.date,
-    this.elementDate,
-    this.detail,
-    this.reported,
-    this.elementReported
-    });
+  Immunization_Reaction(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.date,
+      this.elementDate,
+      this.detail,
+      this.reported,
+      this.elementReported});
 
-  factory Immunization_Reaction.fromJson(Map<String, dynamic> json) => _$Immunization_ReactionFromJson(json);
+  factory Immunization_Reaction.fromJson(Map<String, dynamic> json) =>
+      _$Immunization_ReactionFromJson(json);
   Map<String, dynamic> toJson() => _$Immunization_ReactionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Immunization_ProtocolApplied {
+  static Future<Immunization_ProtocolApplied> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String series,
+      Element elementSeries,
+      Reference authority,
+      List<CodeableConcept> targetDisease,
+      int doseNumberPositiveInt,
+      Element elementDoseNumberPositiveInt,
+      String doseNumberString,
+      Element elementDoseNumberString,
+      int seriesDosesPositiveInt,
+      Element elementSeriesDosesPositiveInt,
+      String seriesDosesString,
+      Element elementSeriesDosesString}) async {
+    var fhirDb = new DatabaseHelper();
+    Immunization_ProtocolApplied newImmunization_ProtocolApplied =
+        new Immunization_ProtocolApplied(
+      id: await fhirDb.newResourceId('Immunization_ProtocolApplied'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      series: series,
+      elementSeries: elementSeries,
+      authority: authority,
+      targetDisease: targetDisease,
+      doseNumberPositiveInt: doseNumberPositiveInt,
+      elementDoseNumberPositiveInt: elementDoseNumberPositiveInt,
+      doseNumberString: doseNumberString,
+      elementDoseNumberString: elementDoseNumberString,
+      seriesDosesPositiveInt: seriesDosesPositiveInt,
+      elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
+      seriesDosesString: seriesDosesString,
+      elementSeriesDosesString: elementSeriesDosesString,
+    );
+    return newImmunization_ProtocolApplied;
+  }
 
-
-	static Future<Immunization_ProtocolApplied> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String series,
-		Element elementSeries,
-		Reference authority,
-		List<CodeableConcept> targetDisease,
-		int doseNumberPositiveInt,
-		Element elementDoseNumberPositiveInt,
-		String doseNumberString,
-		Element elementDoseNumberString,
-		int seriesDosesPositiveInt,
-		Element elementSeriesDosesPositiveInt,
-		String seriesDosesString,
-		Element elementSeriesDosesString}) async {
-	var fhirDb = new DatabaseHelper();
-	Immunization_ProtocolApplied newImmunization_ProtocolApplied = new Immunization_ProtocolApplied(
-			id: await fhirDb.newResourceId('Immunization_ProtocolApplied'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			series: series,
-			elementSeries: elementSeries,
-			authority: authority,
-			targetDisease: targetDisease,
-			doseNumberPositiveInt: doseNumberPositiveInt,
-			elementDoseNumberPositiveInt: elementDoseNumberPositiveInt,
-			doseNumberString: doseNumberString,
-			elementDoseNumberString: elementDoseNumberString,
-			seriesDosesPositiveInt: seriesDosesPositiveInt,
-			elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
-			seriesDosesString: seriesDosesString,
-			elementSeriesDosesString: elementSeriesDosesString,
-);
-	return newImmunization_ProtocolApplied;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -434,28 +436,27 @@ class Immunization_ProtocolApplied {
   String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
   Element elementSeriesDosesString;
 
-Immunization_ProtocolApplied(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.series,
-    this.elementSeries,
-    this.authority,
-    this.targetDisease,
-    this.doseNumberPositiveInt,
-    this.elementDoseNumberPositiveInt,
-    this.doseNumberString,
-    this.elementDoseNumberString,
-    this.seriesDosesPositiveInt,
-    this.elementSeriesDosesPositiveInt,
-    this.seriesDosesString,
-    this.elementSeriesDosesString
-    });
+  Immunization_ProtocolApplied(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.series,
+      this.elementSeries,
+      this.authority,
+      this.targetDisease,
+      this.doseNumberPositiveInt,
+      this.elementDoseNumberPositiveInt,
+      this.doseNumberString,
+      this.elementDoseNumberString,
+      this.seriesDosesPositiveInt,
+      this.elementSeriesDosesPositiveInt,
+      this.seriesDosesString,
+      this.elementSeriesDosesString});
 
-  factory Immunization_ProtocolApplied.fromJson(Map<String, dynamic> json) => _$Immunization_ProtocolAppliedFromJson(json);
+  factory Immunization_ProtocolApplied.fromJson(Map<String, dynamic> json) =>
+      _$Immunization_ProtocolAppliedFromJson(json);
   Map<String, dynamic> toJson() => _$Immunization_ProtocolAppliedToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -482,8 +483,9 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

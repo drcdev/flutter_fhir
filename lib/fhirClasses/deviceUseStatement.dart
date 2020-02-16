@@ -15,79 +15,82 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DeviceUseStatement {
+  static Future<DeviceUseStatement> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      List<Reference> basedOn,
+      String status,
+      Element elementStatus,
+      Reference subject,
+      List<Reference> derivedFrom,
+      Timing timingTiming,
+      Period timingPeriod,
+      String timingDateTime,
+      Element elementTimingDateTime,
+      DateTime recordedOn,
+      Element elementRecordedOn,
+      Reference source,
+      Reference device,
+      List<CodeableConcept> reasonCode,
+      List<Reference> reasonReference,
+      CodeableConcept bodySite,
+      List<Annotation> note}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceUseStatement newDeviceUseStatement = new DeviceUseStatement(
+      resourceType: 'DeviceUseStatement',
+      id: await fhirDb.newResourceId('DeviceUseStatement'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      basedOn: basedOn,
+      status: status,
+      elementStatus: elementStatus,
+      subject: subject,
+      derivedFrom: derivedFrom,
+      timingTiming: timingTiming,
+      timingPeriod: timingPeriod,
+      timingDateTime: timingDateTime,
+      elementTimingDateTime: elementTimingDateTime,
+      recordedOn: recordedOn,
+      elementRecordedOn: elementRecordedOn,
+      source: source,
+      device: device,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      bodySite: bodySite,
+      note: note,
+    );
+    newDeviceUseStatement.meta.createdAt = DateTime.now();
+    newDeviceUseStatement.meta.lastUpdated =
+        newDeviceUseStatement.meta.createdAt;
+    int saved = await fhirDb.newResource(newDeviceUseStatement);
+    return newDeviceUseStatement;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<DeviceUseStatement> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		List<Reference> basedOn,
-		String status,
-		Element elementStatus,
-		Reference subject,
-		List<Reference> derivedFrom,
-		Timing timingTiming,
-		Period timingPeriod,
-		String timingDateTime,
-		Element elementTimingDateTime,
-		DateTime recordedOn,
-		Element elementRecordedOn,
-		Reference source,
-		Reference device,
-		List<CodeableConcept> reasonCode,
-		List<Reference> reasonReference,
-		CodeableConcept bodySite,
-		List<Annotation> note}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceUseStatement newDeviceUseStatement = new DeviceUseStatement(
-			resourceType: 'DeviceUseStatement',
-			id: await fhirDb.newResourceId('DeviceUseStatement'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			basedOn: basedOn,
-			status: status,
-			elementStatus: elementStatus,
-			subject: subject,
-			derivedFrom: derivedFrom,
-			timingTiming: timingTiming,
-			timingPeriod: timingPeriod,
-			timingDateTime: timingDateTime,
-			elementTimingDateTime: elementTimingDateTime,
-			recordedOn: recordedOn,
-			elementRecordedOn: elementRecordedOn,
-			source: source,
-			device: device,
-			reasonCode: reasonCode,
-			reasonReference: reasonReference,
-			bodySite: bodySite,
-			note: note,
-);
-	int saved = await fhirDb.newResource(newDeviceUseStatement);
-	return newDeviceUseStatement;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'DeviceUseStatement';
+  String resourceType = 'DeviceUseStatement';
   String id;
   Meta meta;
   String implicitRules;
@@ -100,13 +103,15 @@ save () async {
   List<Extension> modifierExtension;
   List<Identifier> identifier;
   List<Reference> basedOn;
-  String status; // <code> enum: active/completed/entered-in-error/intended/stopped/on-hold;
+  String
+      status; // <code> enum: active/completed/entered-in-error/intended/stopped/on-hold;
   Element elementStatus;
   Reference subject;
   List<Reference> derivedFrom;
   Timing timingTiming;
   Period timingPeriod;
-  String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementTimingDateTime;
   DateTime recordedOn;
   Element elementRecordedOn;
@@ -117,42 +122,41 @@ save () async {
   CodeableConcept bodySite;
   List<Annotation> note;
 
-DeviceUseStatement(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.basedOn,
-    this.status,
-    this.elementStatus,
-    @required this.subject,
-    this.derivedFrom,
-    this.timingTiming,
-    this.timingPeriod,
-    this.timingDateTime,
-    this.elementTimingDateTime,
-    this.recordedOn,
-    this.elementRecordedOn,
-    this.source,
-    @required this.device,
-    this.reasonCode,
-    this.reasonReference,
-    this.bodySite,
-    this.note
-    });
+  DeviceUseStatement(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.basedOn,
+      this.status,
+      this.elementStatus,
+      @required this.subject,
+      this.derivedFrom,
+      this.timingTiming,
+      this.timingPeriod,
+      this.timingDateTime,
+      this.elementTimingDateTime,
+      this.recordedOn,
+      this.elementRecordedOn,
+      this.source,
+      @required this.device,
+      this.reasonCode,
+      this.reasonReference,
+      this.bodySite,
+      this.note});
 
-  factory DeviceUseStatement.fromJson(Map<String, dynamic> json) => _$DeviceUseStatementFromJson(json);
+  factory DeviceUseStatement.fromJson(Map<String, dynamic> json) =>
+      _$DeviceUseStatementFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceUseStatementToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -179,8 +183,9 @@ DeviceUseStatement _$DeviceUseStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

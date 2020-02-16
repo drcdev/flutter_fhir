@@ -8,34 +8,27 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ProductShelfLife {
+  static Future<ProductShelfLife> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Identifier identifier,
+      CodeableConcept type,
+      Quantity period,
+      List<CodeableConcept> specialPrecautionsForStorage}) async {
+    var fhirDb = new DatabaseHelper();
+    ProductShelfLife newProductShelfLife = new ProductShelfLife(
+      id: await fhirDb.newResourceId('ProductShelfLife'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      type: type,
+      period: period,
+      specialPrecautionsForStorage: specialPrecautionsForStorage,
+    );
+    return newProductShelfLife;
+  }
 
-
-	static Future<ProductShelfLife> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Identifier identifier,
-		CodeableConcept type,
-		Quantity period,
-		List<CodeableConcept> specialPrecautionsForStorage}) async {
-	var fhirDb = new DatabaseHelper();
-	ProductShelfLife newProductShelfLife = new ProductShelfLife(
-			id: await fhirDb.newResourceId('ProductShelfLife'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			type: type,
-			period: period,
-			specialPrecautionsForStorage: specialPrecautionsForStorage,
-);
-	int saved = await fhirDb.newResource(newProductShelfLife);
-	return newProductShelfLife;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -44,20 +37,19 @@ save () async {
   Quantity period;
   List<CodeableConcept> specialPrecautionsForStorage;
 
-ProductShelfLife(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    @required this.type,
-    @required this.period,
-    this.specialPrecautionsForStorage
-    });
+  ProductShelfLife(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      @required this.type,
+      @required this.period,
+      this.specialPrecautionsForStorage});
 
-  factory ProductShelfLife.fromJson(Map<String, dynamic> json) => _$ProductShelfLifeFromJson(json);
+  factory ProductShelfLife.fromJson(Map<String, dynamic> json) =>
+      _$ProductShelfLifeFromJson(json);
   Map<String, dynamic> toJson() => _$ProductShelfLifeToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

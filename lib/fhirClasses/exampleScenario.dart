@@ -13,95 +13,97 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario {
+  static Future<ExampleScenario> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      List<Identifier> identifier,
+      String version,
+      Element elementVersion,
+      String name,
+      Element elementName,
+      String status,
+      Element elementStatus,
+      bool experimental,
+      Element elementExperimental,
+      DateTime date,
+      Element elementDate,
+      String publisher,
+      Element elementPublisher,
+      List<ContactDetail> contact,
+      List<UsageContext> useContext,
+      List<CodeableConcept> jurisdiction,
+      String copyright,
+      Element elementCopyright,
+      String purpose,
+      Element elementPurpose,
+      List<ExampleScenario_Actor> actor,
+      List<ExampleScenario_Instance> instance,
+      List<ExampleScenario_Process> process,
+      List<String> workflow}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario newExampleScenario = new ExampleScenario(
+      resourceType: 'ExampleScenario',
+      id: await fhirDb.newResourceId('ExampleScenario'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      actor: actor,
+      instance: instance,
+      process: process,
+      workflow: workflow,
+    );
+    newExampleScenario.meta.createdAt = DateTime.now();
+    newExampleScenario.meta.lastUpdated = newExampleScenario.meta.createdAt;
+    int saved = await fhirDb.newResource(newExampleScenario);
+    return newExampleScenario;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ExampleScenario> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		List<Identifier> identifier,
-		String version,
-		Element elementVersion,
-		String name,
-		Element elementName,
-		String status,
-		Element elementStatus,
-		bool experimental,
-		Element elementExperimental,
-		DateTime date,
-		Element elementDate,
-		String publisher,
-		Element elementPublisher,
-		List<ContactDetail> contact,
-		List<UsageContext> useContext,
-		List<CodeableConcept> jurisdiction,
-		String copyright,
-		Element elementCopyright,
-		String purpose,
-		Element elementPurpose,
-		List<ExampleScenario_Actor> actor,
-		List<ExampleScenario_Instance> instance,
-		List<ExampleScenario_Process> process,
-		List<String> workflow}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario newExampleScenario = new ExampleScenario(
-			resourceType: 'ExampleScenario',
-			id: await fhirDb.newResourceId('ExampleScenario'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			identifier: identifier,
-			version: version,
-			elementVersion: elementVersion,
-			name: name,
-			elementName: elementName,
-			status: status,
-			elementStatus: elementStatus,
-			experimental: experimental,
-			elementExperimental: elementExperimental,
-			date: date,
-			elementDate: elementDate,
-			publisher: publisher,
-			elementPublisher: elementPublisher,
-			contact: contact,
-			useContext: useContext,
-			jurisdiction: jurisdiction,
-			copyright: copyright,
-			elementCopyright: elementCopyright,
-			purpose: purpose,
-			elementPurpose: elementPurpose,
-			actor: actor,
-			instance: instance,
-			process: process,
-			workflow: workflow,
-);
-	int saved = await fhirDb.newResource(newExampleScenario);
-	return newExampleScenario;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'ExampleScenario';
+  String resourceType = 'ExampleScenario';
   String id;
   Meta meta;
   String implicitRules;
@@ -139,82 +141,81 @@ save () async {
   List<ExampleScenario_Process> process;
   List<String> workflow;
 
-ExampleScenario(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.useContext,
-    this.jurisdiction,
-    this.copyright,
-    this.elementCopyright,
-    this.purpose,
-    this.elementPurpose,
-    this.actor,
-    this.instance,
-    this.process,
-    this.workflow
-    });
+  ExampleScenario(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.identifier,
+      this.version,
+      this.elementVersion,
+      this.name,
+      this.elementName,
+      this.status,
+      this.elementStatus,
+      this.experimental,
+      this.elementExperimental,
+      this.date,
+      this.elementDate,
+      this.publisher,
+      this.elementPublisher,
+      this.contact,
+      this.useContext,
+      this.jurisdiction,
+      this.copyright,
+      this.elementCopyright,
+      this.purpose,
+      this.elementPurpose,
+      this.actor,
+      this.instance,
+      this.process,
+      this.workflow});
 
-  factory ExampleScenario.fromJson(Map<String, dynamic> json) => _$ExampleScenarioFromJson(json);
+  factory ExampleScenario.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenarioFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenarioToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Actor {
+  static Future<ExampleScenario_Actor> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String actorId,
+      Element elementActorId,
+      String type,
+      Element elementType,
+      String name,
+      Element elementName,
+      String description,
+      Element elementDescription}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_Actor newExampleScenario_Actor = new ExampleScenario_Actor(
+      id: await fhirDb.newResourceId('ExampleScenario_Actor'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      actorId: actorId,
+      elementActorId: elementActorId,
+      type: type,
+      elementType: elementType,
+      name: name,
+      elementName: elementName,
+      description: description,
+      elementDescription: elementDescription,
+    );
+    return newExampleScenario_Actor;
+  }
 
-
-	static Future<ExampleScenario_Actor> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String actorId,
-		Element elementActorId,
-		String type,
-		Element elementType,
-		String name,
-		Element elementName,
-		String description,
-		Element elementDescription}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_Actor newExampleScenario_Actor = new ExampleScenario_Actor(
-			id: await fhirDb.newResourceId('ExampleScenario_Actor'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			actorId: actorId,
-			elementActorId: elementActorId,
-			type: type,
-			elementType: elementType,
-			name: name,
-			elementName: elementName,
-			description: description,
-			elementDescription: elementDescription,
-);
-	return newExampleScenario_Actor;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -227,60 +228,60 @@ class ExampleScenario_Actor {
   String description;
   Element elementDescription;
 
-ExampleScenario_Actor(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.actorId,
-    this.elementActorId,
-    this.type,
-    this.elementType,
-    this.name,
-    this.elementName,
-    this.description,
-    this.elementDescription
-    });
+  ExampleScenario_Actor(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.actorId,
+      this.elementActorId,
+      this.type,
+      this.elementType,
+      this.name,
+      this.elementName,
+      this.description,
+      this.elementDescription});
 
-  factory ExampleScenario_Actor.fromJson(Map<String, dynamic> json) => _$ExampleScenario_ActorFromJson(json);
+  factory ExampleScenario_Actor.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenario_ActorFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenario_ActorToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Instance {
+  static Future<ExampleScenario_Instance> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String resourceId,
+      Element elementResourceId,
+      String resourceType,
+      Element elementResourceType,
+      String name,
+      Element elementName,
+      String description,
+      Element elementDescription,
+      List<ExampleScenario_Version> version,
+      List<ExampleScenario_ContainedInstance> containedInstance}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_Instance newExampleScenario_Instance =
+        new ExampleScenario_Instance(
+      id: await fhirDb.newResourceId('ExampleScenario_Instance'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      resourceId: resourceId,
+      elementResourceId: elementResourceId,
+      resourceType: 'ExampleScenario_Instance',
+      elementResourceType: elementResourceType,
+      name: name,
+      elementName: elementName,
+      description: description,
+      elementDescription: elementDescription,
+      version: version,
+      containedInstance: containedInstance,
+    );
+    return newExampleScenario_Instance;
+  }
 
-
-	static Future<ExampleScenario_Instance> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String resourceId,
-		Element elementResourceId,
-		String resourceType,
-		Element elementResourceType,
-		String name,
-		Element elementName,
-		String description,
-		Element elementDescription,
-		List<ExampleScenario_Version> version,
-		List<ExampleScenario_ContainedInstance> containedInstance}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_Instance newExampleScenario_Instance = new ExampleScenario_Instance(
-			id: await fhirDb.newResourceId('ExampleScenario_Instance'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			resourceId: resourceId,
-			elementResourceId: elementResourceId,
-			resourceType: 'ExampleScenario_Instance',
-			elementResourceType: elementResourceType,
-			name: name,
-			elementName: elementName,
-			description: description,
-			elementDescription: elementDescription,
-			version: version,
-			containedInstance: containedInstance,
-);
-	return newExampleScenario_Instance;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -295,50 +296,50 @@ class ExampleScenario_Instance {
   List<ExampleScenario_Version> version;
   List<ExampleScenario_ContainedInstance> containedInstance;
 
-ExampleScenario_Instance(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.resourceId,
-    this.elementResourceId,
-    this.resourceType,
-    this.elementResourceType,
-    this.name,
-    this.elementName,
-    this.description,
-    this.elementDescription,
-    this.version,
-    this.containedInstance
-    });
+  ExampleScenario_Instance(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.resourceId,
+      this.elementResourceId,
+      this.resourceType,
+      this.elementResourceType,
+      this.name,
+      this.elementName,
+      this.description,
+      this.elementDescription,
+      this.version,
+      this.containedInstance});
 
-  factory ExampleScenario_Instance.fromJson(Map<String, dynamic> json) => _$ExampleScenario_InstanceFromJson(json);
+  factory ExampleScenario_Instance.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenario_InstanceFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenario_InstanceToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Version {
+  static Future<ExampleScenario_Version> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String versionId,
+      Element elementVersionId,
+      String description,
+      Element elementDescription}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_Version newExampleScenario_Version =
+        new ExampleScenario_Version(
+      id: await fhirDb.newResourceId('ExampleScenario_Version'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      versionId: versionId,
+      elementVersionId: elementVersionId,
+      description: description,
+      elementDescription: elementDescription,
+    );
+    return newExampleScenario_Version;
+  }
 
-
-	static Future<ExampleScenario_Version> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String versionId,
-		Element elementVersionId,
-		String description,
-		Element elementDescription}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_Version newExampleScenario_Version = new ExampleScenario_Version(
-			id: await fhirDb.newResourceId('ExampleScenario_Version'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			versionId: versionId,
-			elementVersionId: elementVersionId,
-			description: description,
-			elementDescription: elementDescription,
-);
-	return newExampleScenario_Version;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -347,44 +348,44 @@ class ExampleScenario_Version {
   String description;
   Element elementDescription;
 
-ExampleScenario_Version(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.versionId,
-    this.elementVersionId,
-    this.description,
-    this.elementDescription
-    });
+  ExampleScenario_Version(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.versionId,
+      this.elementVersionId,
+      this.description,
+      this.elementDescription});
 
-  factory ExampleScenario_Version.fromJson(Map<String, dynamic> json) => _$ExampleScenario_VersionFromJson(json);
+  factory ExampleScenario_Version.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenario_VersionFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenario_VersionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_ContainedInstance {
+  static Future<ExampleScenario_ContainedInstance> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String resourceId,
+      Element elementResourceId,
+      String versionId,
+      Element elementVersionId}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_ContainedInstance newExampleScenario_ContainedInstance =
+        new ExampleScenario_ContainedInstance(
+      id: await fhirDb.newResourceId('ExampleScenario_ContainedInstance'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      resourceId: resourceId,
+      elementResourceId: elementResourceId,
+      versionId: versionId,
+      elementVersionId: elementVersionId,
+    );
+    return newExampleScenario_ContainedInstance;
+  }
 
-
-	static Future<ExampleScenario_ContainedInstance> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String resourceId,
-		Element elementResourceId,
-		String versionId,
-		Element elementVersionId}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_ContainedInstance newExampleScenario_ContainedInstance = new ExampleScenario_ContainedInstance(
-			id: await fhirDb.newResourceId('ExampleScenario_ContainedInstance'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			resourceId: resourceId,
-			elementResourceId: elementResourceId,
-			versionId: versionId,
-			elementVersionId: elementVersionId,
-);
-	return newExampleScenario_ContainedInstance;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -393,54 +394,56 @@ class ExampleScenario_ContainedInstance {
   String versionId;
   Element elementVersionId;
 
-ExampleScenario_ContainedInstance(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.resourceId,
-    this.elementResourceId,
-    this.versionId,
-    this.elementVersionId
-    });
+  ExampleScenario_ContainedInstance(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.resourceId,
+      this.elementResourceId,
+      this.versionId,
+      this.elementVersionId});
 
-  factory ExampleScenario_ContainedInstance.fromJson(Map<String, dynamic> json) => _$ExampleScenario_ContainedInstanceFromJson(json);
-  Map<String, dynamic> toJson() => _$ExampleScenario_ContainedInstanceToJson(this);
+  factory ExampleScenario_ContainedInstance.fromJson(
+          Map<String, dynamic> json) =>
+      _$ExampleScenario_ContainedInstanceFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ExampleScenario_ContainedInstanceToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Process {
+  static Future<ExampleScenario_Process> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String title,
+      Element elementTitle,
+      String description,
+      Element elementDescription,
+      String preConditions,
+      Element elementPreConditions,
+      String postConditions,
+      Element elementPostConditions,
+      List<ExampleScenario_Step> step}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_Process newExampleScenario_Process =
+        new ExampleScenario_Process(
+      id: await fhirDb.newResourceId('ExampleScenario_Process'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      title: title,
+      elementTitle: elementTitle,
+      description: description,
+      elementDescription: elementDescription,
+      preConditions: preConditions,
+      elementPreConditions: elementPreConditions,
+      postConditions: postConditions,
+      elementPostConditions: elementPostConditions,
+      step: step,
+    );
+    return newExampleScenario_Process;
+  }
 
-
-	static Future<ExampleScenario_Process> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String title,
-		Element elementTitle,
-		String description,
-		Element elementDescription,
-		String preConditions,
-		Element elementPreConditions,
-		String postConditions,
-		Element elementPostConditions,
-		List<ExampleScenario_Step> step}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_Process newExampleScenario_Process = new ExampleScenario_Process(
-			id: await fhirDb.newResourceId('ExampleScenario_Process'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			title: title,
-			elementTitle: elementTitle,
-			description: description,
-			elementDescription: elementDescription,
-			preConditions: preConditions,
-			elementPreConditions: elementPreConditions,
-			postConditions: postConditions,
-			elementPostConditions: elementPostConditions,
-			step: step,
-);
-	return newExampleScenario_Process;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -454,51 +457,50 @@ class ExampleScenario_Process {
   Element elementPostConditions;
   List<ExampleScenario_Step> step;
 
-ExampleScenario_Process(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.title,
-    this.elementTitle,
-    this.description,
-    this.elementDescription,
-    this.preConditions,
-    this.elementPreConditions,
-    this.postConditions,
-    this.elementPostConditions,
-    this.step
-    });
+  ExampleScenario_Process(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.title,
+      this.elementTitle,
+      this.description,
+      this.elementDescription,
+      this.preConditions,
+      this.elementPreConditions,
+      this.postConditions,
+      this.elementPostConditions,
+      this.step});
 
-  factory ExampleScenario_Process.fromJson(Map<String, dynamic> json) => _$ExampleScenario_ProcessFromJson(json);
+  factory ExampleScenario_Process.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenario_ProcessFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenario_ProcessToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Step {
+  static Future<ExampleScenario_Step> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<ExampleScenario_Process> process,
+      bool pause,
+      Element elementPause,
+      ExampleScenario_Operation operation,
+      List<ExampleScenario_Alternative> alternative}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_Step newExampleScenario_Step = new ExampleScenario_Step(
+      id: await fhirDb.newResourceId('ExampleScenario_Step'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      process: process,
+      pause: pause,
+      elementPause: elementPause,
+      operation: operation,
+      alternative: alternative,
+    );
+    return newExampleScenario_Step;
+  }
 
-
-	static Future<ExampleScenario_Step> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<ExampleScenario_Process> process,
-		bool pause,
-		Element elementPause,
-		ExampleScenario_Operation operation,
-		List<ExampleScenario_Alternative> alternative}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_Step newExampleScenario_Step = new ExampleScenario_Step(
-			id: await fhirDb.newResourceId('ExampleScenario_Step'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			process: process,
-			pause: pause,
-			elementPause: elementPause,
-			operation: operation,
-			alternative: alternative,
-);
-	return newExampleScenario_Step;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -508,73 +510,73 @@ class ExampleScenario_Step {
   ExampleScenario_Operation operation;
   List<ExampleScenario_Alternative> alternative;
 
-ExampleScenario_Step(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.process,
-    this.pause,
-    this.elementPause,
-    this.operation,
-    this.alternative
-    });
+  ExampleScenario_Step(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.process,
+      this.pause,
+      this.elementPause,
+      this.operation,
+      this.alternative});
 
-  factory ExampleScenario_Step.fromJson(Map<String, dynamic> json) => _$ExampleScenario_StepFromJson(json);
+  factory ExampleScenario_Step.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenario_StepFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenario_StepToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Operation {
+  static Future<ExampleScenario_Operation> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String number,
+      Element elementNumber,
+      String type,
+      Element elementType,
+      String name,
+      Element elementName,
+      String initiator,
+      Element elementInitiator,
+      String receiver,
+      Element elementReceiver,
+      String description,
+      Element elementDescription,
+      bool initiatorActive,
+      Element elementInitiatorActive,
+      bool receiverActive,
+      Element elementReceiverActive,
+      ExampleScenario_ContainedInstance request,
+      ExampleScenario_ContainedInstance response}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_Operation newExampleScenario_Operation =
+        new ExampleScenario_Operation(
+      id: await fhirDb.newResourceId('ExampleScenario_Operation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      number: number,
+      elementNumber: elementNumber,
+      type: type,
+      elementType: elementType,
+      name: name,
+      elementName: elementName,
+      initiator: initiator,
+      elementInitiator: elementInitiator,
+      receiver: receiver,
+      elementReceiver: elementReceiver,
+      description: description,
+      elementDescription: elementDescription,
+      initiatorActive: initiatorActive,
+      elementInitiatorActive: elementInitiatorActive,
+      receiverActive: receiverActive,
+      elementReceiverActive: elementReceiverActive,
+      request: request,
+      response: response,
+    );
+    return newExampleScenario_Operation;
+  }
 
-
-	static Future<ExampleScenario_Operation> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String number,
-		Element elementNumber,
-		String type,
-		Element elementType,
-		String name,
-		Element elementName,
-		String initiator,
-		Element elementInitiator,
-		String receiver,
-		Element elementReceiver,
-		String description,
-		Element elementDescription,
-		bool initiatorActive,
-		Element elementInitiatorActive,
-		bool receiverActive,
-		Element elementReceiverActive,
-		ExampleScenario_ContainedInstance request,
-		ExampleScenario_ContainedInstance response}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_Operation newExampleScenario_Operation = new ExampleScenario_Operation(
-			id: await fhirDb.newResourceId('ExampleScenario_Operation'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			number: number,
-			elementNumber: elementNumber,
-			type: type,
-			elementType: elementType,
-			name: name,
-			elementName: elementName,
-			initiator: initiator,
-			elementInitiator: elementInitiator,
-			receiver: receiver,
-			elementReceiver: elementReceiver,
-			description: description,
-			elementDescription: elementDescription,
-			initiatorActive: initiatorActive,
-			elementInitiatorActive: elementInitiatorActive,
-			receiverActive: receiverActive,
-			elementReceiverActive: elementReceiverActive,
-			request: request,
-			response: response,
-);
-	return newExampleScenario_Operation;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -597,60 +599,60 @@ class ExampleScenario_Operation {
   ExampleScenario_ContainedInstance request;
   ExampleScenario_ContainedInstance response;
 
-ExampleScenario_Operation(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.number,
-    this.elementNumber,
-    this.type,
-    this.elementType,
-    this.name,
-    this.elementName,
-    this.initiator,
-    this.elementInitiator,
-    this.receiver,
-    this.elementReceiver,
-    this.description,
-    this.elementDescription,
-    this.initiatorActive,
-    this.elementInitiatorActive,
-    this.receiverActive,
-    this.elementReceiverActive,
-    this.request,
-    this.response
-    });
+  ExampleScenario_Operation(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.number,
+      this.elementNumber,
+      this.type,
+      this.elementType,
+      this.name,
+      this.elementName,
+      this.initiator,
+      this.elementInitiator,
+      this.receiver,
+      this.elementReceiver,
+      this.description,
+      this.elementDescription,
+      this.initiatorActive,
+      this.elementInitiatorActive,
+      this.receiverActive,
+      this.elementReceiverActive,
+      this.request,
+      this.response});
 
-  factory ExampleScenario_Operation.fromJson(Map<String, dynamic> json) => _$ExampleScenario_OperationFromJson(json);
+  factory ExampleScenario_Operation.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenario_OperationFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenario_OperationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Alternative {
+  static Future<ExampleScenario_Alternative> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String title,
+      Element elementTitle,
+      String description,
+      Element elementDescription,
+      List<ExampleScenario_Step> step}) async {
+    var fhirDb = new DatabaseHelper();
+    ExampleScenario_Alternative newExampleScenario_Alternative =
+        new ExampleScenario_Alternative(
+      id: await fhirDb.newResourceId('ExampleScenario_Alternative'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      title: title,
+      elementTitle: elementTitle,
+      description: description,
+      elementDescription: elementDescription,
+      step: step,
+    );
+    return newExampleScenario_Alternative;
+  }
 
-
-	static Future<ExampleScenario_Alternative> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String title,
-		Element elementTitle,
-		String description,
-		Element elementDescription,
-		List<ExampleScenario_Step> step}) async {
-	var fhirDb = new DatabaseHelper();
-	ExampleScenario_Alternative newExampleScenario_Alternative = new ExampleScenario_Alternative(
-			id: await fhirDb.newResourceId('ExampleScenario_Alternative'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			title: title,
-			elementTitle: elementTitle,
-			description: description,
-			elementDescription: elementDescription,
-			step: step,
-);
-	return newExampleScenario_Alternative;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -660,21 +662,20 @@ class ExampleScenario_Alternative {
   Element elementDescription;
   List<ExampleScenario_Step> step;
 
-ExampleScenario_Alternative(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.title,
-    this.elementTitle,
-    this.description,
-    this.elementDescription,
-    this.step
-    });
+  ExampleScenario_Alternative(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.title,
+      this.elementTitle,
+      this.description,
+      this.elementDescription,
+      this.step});
 
-  factory ExampleScenario_Alternative.fromJson(Map<String, dynamic> json) => _$ExampleScenario_AlternativeFromJson(json);
+  factory ExampleScenario_Alternative.fromJson(Map<String, dynamic> json) =>
+      _$ExampleScenario_AlternativeFromJson(json);
   Map<String, dynamic> toJson() => _$ExampleScenario_AlternativeToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -701,8 +702,9 @@ ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

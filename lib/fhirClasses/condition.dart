@@ -16,103 +16,105 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Condition {
+  static Future<Condition> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      CodeableConcept clinicalStatus,
+      CodeableConcept verificationStatus,
+      List<CodeableConcept> category,
+      CodeableConcept severity,
+      CodeableConcept code,
+      List<CodeableConcept> bodySite,
+      Reference subject,
+      Reference encounter,
+      String onsetDateTime,
+      Element elementOnsetDateTime,
+      Age onsetAge,
+      Period onsetPeriod,
+      Range onsetRange,
+      String onsetString,
+      Element elementOnsetString,
+      String abatementDateTime,
+      Element elementAbatementDateTime,
+      Age abatementAge,
+      Period abatementPeriod,
+      Range abatementRange,
+      String abatementString,
+      Element elementAbatementString,
+      DateTime recordedDate,
+      Element elementRecordedDate,
+      Reference recorder,
+      Reference asserter,
+      List<Condition_Stage> stage,
+      List<Condition_Evidence> evidence,
+      List<Annotation> note}) async {
+    var fhirDb = new DatabaseHelper();
+    Condition newCondition = new Condition(
+      resourceType: 'Condition',
+      id: await fhirDb.newResourceId('Condition'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      clinicalStatus: clinicalStatus,
+      verificationStatus: verificationStatus,
+      category: category,
+      severity: severity,
+      code: code,
+      bodySite: bodySite,
+      subject: subject,
+      encounter: encounter,
+      onsetDateTime: onsetDateTime,
+      elementOnsetDateTime: elementOnsetDateTime,
+      onsetAge: onsetAge,
+      onsetPeriod: onsetPeriod,
+      onsetRange: onsetRange,
+      onsetString: onsetString,
+      elementOnsetString: elementOnsetString,
+      abatementDateTime: abatementDateTime,
+      elementAbatementDateTime: elementAbatementDateTime,
+      abatementAge: abatementAge,
+      abatementPeriod: abatementPeriod,
+      abatementRange: abatementRange,
+      abatementString: abatementString,
+      elementAbatementString: elementAbatementString,
+      recordedDate: recordedDate,
+      elementRecordedDate: elementRecordedDate,
+      recorder: recorder,
+      asserter: asserter,
+      stage: stage,
+      evidence: evidence,
+      note: note,
+    );
+    newCondition.meta.createdAt = DateTime.now();
+    newCondition.meta.lastUpdated = newCondition.meta.createdAt;
+    int saved = await fhirDb.newResource(newCondition);
+    return newCondition;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Condition> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		CodeableConcept clinicalStatus,
-		CodeableConcept verificationStatus,
-		List<CodeableConcept> category,
-		CodeableConcept severity,
-		CodeableConcept code,
-		List<CodeableConcept> bodySite,
-		Reference subject,
-		Reference encounter,
-		String onsetDateTime,
-		Element elementOnsetDateTime,
-		Age onsetAge,
-		Period onsetPeriod,
-		Range onsetRange,
-		String onsetString,
-		Element elementOnsetString,
-		String abatementDateTime,
-		Element elementAbatementDateTime,
-		Age abatementAge,
-		Period abatementPeriod,
-		Range abatementRange,
-		String abatementString,
-		Element elementAbatementString,
-		DateTime recordedDate,
-		Element elementRecordedDate,
-		Reference recorder,
-		Reference asserter,
-		List<Condition_Stage> stage,
-		List<Condition_Evidence> evidence,
-		List<Annotation> note}) async {
-	var fhirDb = new DatabaseHelper();
-	Condition newCondition = new Condition(
-			resourceType: 'Condition',
-			id: await fhirDb.newResourceId('Condition'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			clinicalStatus: clinicalStatus,
-			verificationStatus: verificationStatus,
-			category: category,
-			severity: severity,
-			code: code,
-			bodySite: bodySite,
-			subject: subject,
-			encounter: encounter,
-			onsetDateTime: onsetDateTime,
-			elementOnsetDateTime: elementOnsetDateTime,
-			onsetAge: onsetAge,
-			onsetPeriod: onsetPeriod,
-			onsetRange: onsetRange,
-			onsetString: onsetString,
-			elementOnsetString: elementOnsetString,
-			abatementDateTime: abatementDateTime,
-			elementAbatementDateTime: elementAbatementDateTime,
-			abatementAge: abatementAge,
-			abatementPeriod: abatementPeriod,
-			abatementRange: abatementRange,
-			abatementString: abatementString,
-			elementAbatementString: elementAbatementString,
-			recordedDate: recordedDate,
-			elementRecordedDate: elementRecordedDate,
-			recorder: recorder,
-			asserter: asserter,
-			stage: stage,
-			evidence: evidence,
-			note: note,
-);
-	int saved = await fhirDb.newResource(newCondition);
-	return newCondition;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'Condition';
+  String resourceType = 'Condition';
   String id;
   Meta meta;
   String implicitRules;
@@ -132,14 +134,16 @@ save () async {
   List<CodeableConcept> bodySite;
   Reference subject;
   Reference encounter;
-  String onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementOnsetDateTime;
   Age onsetAge;
   Period onsetPeriod;
   Range onsetRange;
   String onsetString; //  pattern: ^[ \r\n\t\S]+$
   Element elementOnsetString;
-  String abatementDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      abatementDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementAbatementDateTime;
   Age abatementAge;
   Period abatementPeriod;
@@ -154,76 +158,75 @@ save () async {
   List<Condition_Evidence> evidence;
   List<Annotation> note;
 
-Condition(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.clinicalStatus,
-    this.verificationStatus,
-    this.category,
-    this.severity,
-    this.code,
-    this.bodySite,
-    @required this.subject,
-    this.encounter,
-    this.onsetDateTime,
-    this.elementOnsetDateTime,
-    this.onsetAge,
-    this.onsetPeriod,
-    this.onsetRange,
-    this.onsetString,
-    this.elementOnsetString,
-    this.abatementDateTime,
-    this.elementAbatementDateTime,
-    this.abatementAge,
-    this.abatementPeriod,
-    this.abatementRange,
-    this.abatementString,
-    this.elementAbatementString,
-    this.recordedDate,
-    this.elementRecordedDate,
-    this.recorder,
-    this.asserter,
-    this.stage,
-    this.evidence,
-    this.note
-    });
+  Condition(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.clinicalStatus,
+      this.verificationStatus,
+      this.category,
+      this.severity,
+      this.code,
+      this.bodySite,
+      @required this.subject,
+      this.encounter,
+      this.onsetDateTime,
+      this.elementOnsetDateTime,
+      this.onsetAge,
+      this.onsetPeriod,
+      this.onsetRange,
+      this.onsetString,
+      this.elementOnsetString,
+      this.abatementDateTime,
+      this.elementAbatementDateTime,
+      this.abatementAge,
+      this.abatementPeriod,
+      this.abatementRange,
+      this.abatementString,
+      this.elementAbatementString,
+      this.recordedDate,
+      this.elementRecordedDate,
+      this.recorder,
+      this.asserter,
+      this.stage,
+      this.evidence,
+      this.note});
 
-  factory Condition.fromJson(Map<String, dynamic> json) => _$ConditionFromJson(json);
+  factory Condition.fromJson(Map<String, dynamic> json) =>
+      _$ConditionFromJson(json);
   Map<String, dynamic> toJson() => _$ConditionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Condition_Stage {
+  static Future<Condition_Stage> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept summary,
+      List<Reference> assessment,
+      CodeableConcept type}) async {
+    var fhirDb = new DatabaseHelper();
+    Condition_Stage newCondition_Stage = new Condition_Stage(
+      id: await fhirDb.newResourceId('Condition_Stage'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      summary: summary,
+      assessment: assessment,
+      type: type,
+    );
+    return newCondition_Stage;
+  }
 
-
-	static Future<Condition_Stage> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept summary,
-		List<Reference> assessment,
-		CodeableConcept type}) async {
-	var fhirDb = new DatabaseHelper();
-	Condition_Stage newCondition_Stage = new Condition_Stage(
-			id: await fhirDb.newResourceId('Condition_Stage'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			summary: summary,
-			assessment: assessment,
-			type: type,
-);
-	return newCondition_Stage;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -231,57 +234,55 @@ class Condition_Stage {
   List<Reference> assessment;
   CodeableConcept type;
 
-Condition_Stage(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.summary,
-    this.assessment,
-    this.type
-    });
+  Condition_Stage(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.summary,
+      this.assessment,
+      this.type});
 
-  factory Condition_Stage.fromJson(Map<String, dynamic> json) => _$Condition_StageFromJson(json);
+  factory Condition_Stage.fromJson(Map<String, dynamic> json) =>
+      _$Condition_StageFromJson(json);
   Map<String, dynamic> toJson() => _$Condition_StageToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Condition_Evidence {
+  static Future<Condition_Evidence> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<CodeableConcept> code,
+      List<Reference> detail}) async {
+    var fhirDb = new DatabaseHelper();
+    Condition_Evidence newCondition_Evidence = new Condition_Evidence(
+      id: await fhirDb.newResourceId('Condition_Evidence'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      detail: detail,
+    );
+    return newCondition_Evidence;
+  }
 
-
-	static Future<Condition_Evidence> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<CodeableConcept> code,
-		List<Reference> detail}) async {
-	var fhirDb = new DatabaseHelper();
-	Condition_Evidence newCondition_Evidence = new Condition_Evidence(
-			id: await fhirDb.newResourceId('Condition_Evidence'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			detail: detail,
-);
-	return newCondition_Evidence;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<CodeableConcept> code;
   List<Reference> detail;
 
-Condition_Evidence(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.detail
-    });
+  Condition_Evidence(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.detail});
 
-  factory Condition_Evidence.fromJson(Map<String, dynamic> json) => _$Condition_EvidenceFromJson(json);
+  factory Condition_Evidence.fromJson(Map<String, dynamic> json) =>
+      _$Condition_EvidenceFromJson(json);
   Map<String, dynamic> toJson() => _$Condition_EvidenceToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -308,8 +309,9 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

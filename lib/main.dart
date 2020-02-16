@@ -7,9 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();
+
   runApp(MaterialApp(
       home: _Main(),
       supportedLocales: [Locale('en', 'US'), Locale('es', 'AR')],

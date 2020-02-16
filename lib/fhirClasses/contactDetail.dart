@@ -6,48 +6,36 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ContactDetail {
+  static Future<ContactDetail> newInstance(
+      {String id,
+      List<Extension> extension,
+      String name,
+      Element elementName,
+      List<ContactPoint> telecom}) async {
+    var fhirDb = new DatabaseHelper();
+    ContactDetail newContactDetail = new ContactDetail(
+      id: await fhirDb.newResourceId('ContactDetail'),
+      extension: extension,
+      name: name,
+      elementName: elementName,
+      telecom: telecom,
+    );
+    return newContactDetail;
+  }
 
-
-	static Future<ContactDetail> newInstance({
-		String id,
-		List<Extension> extension,
-		String name,
-		Element elementName,
-		List<ContactPoint> telecom}) async {
-	var fhirDb = new DatabaseHelper();
-	ContactDetail newContactDetail = new ContactDetail(
-			id: await fhirDb.newResourceId('ContactDetail'),
-			extension: extension,
-			name: name,
-			elementName: elementName,
-			telecom: telecom,
-);
-	int saved = await fhirDb.newResource(newContactDetail);
-	return newContactDetail;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   String name;
   Element elementName;
   List<ContactPoint> telecom;
 
-ContactDetail(
-  {this.id,
-    this.extension,
-    this.name,
-    this.elementName,
-    this.telecom
-    });
+  ContactDetail(
+      {this.id, this.extension, this.name, this.elementName, this.telecom});
 
-  factory ContactDetail.fromJson(Map<String, dynamic> json) => _$ContactDetailFromJson(json);
+  factory ContactDetail.fromJson(Map<String, dynamic> json) =>
+      _$ContactDetailFromJson(json);
   Map<String, dynamic> toJson() => _$ContactDetailToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

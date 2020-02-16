@@ -11,75 +11,79 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial {
+  static Future<SubstanceSourceMaterial> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept sourceMaterialClass,
+      CodeableConcept sourceMaterialType,
+      CodeableConcept sourceMaterialState,
+      Identifier organismId,
+      String organismName,
+      Element elementOrganismName,
+      List<Identifier> parentSubstanceId,
+      List<String> parentSubstanceName,
+      List<Element> elementParentSubstanceName,
+      List<CodeableConcept> countryOfOrigin,
+      List<String> geographicalLocation,
+      List<Element> elementGeographicalLocation,
+      CodeableConcept developmentStage,
+      List<SubstanceSourceMaterial_FractionDescription> fractionDescription,
+      SubstanceSourceMaterial_Organism organism,
+      List<SubstanceSourceMaterial_PartDescription> partDescription}) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceSourceMaterial newSubstanceSourceMaterial =
+        new SubstanceSourceMaterial(
+      resourceType: 'SubstanceSourceMaterial',
+      id: await fhirDb.newResourceId('SubstanceSourceMaterial'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sourceMaterialClass: sourceMaterialClass,
+      sourceMaterialType: sourceMaterialType,
+      sourceMaterialState: sourceMaterialState,
+      organismId: organismId,
+      organismName: organismName,
+      elementOrganismName: elementOrganismName,
+      parentSubstanceId: parentSubstanceId,
+      parentSubstanceName: parentSubstanceName,
+      elementParentSubstanceName: elementParentSubstanceName,
+      countryOfOrigin: countryOfOrigin,
+      geographicalLocation: geographicalLocation,
+      elementGeographicalLocation: elementGeographicalLocation,
+      developmentStage: developmentStage,
+      fractionDescription: fractionDescription,
+      organism: organism,
+      partDescription: partDescription,
+    );
+    newSubstanceSourceMaterial.meta.createdAt = DateTime.now();
+    newSubstanceSourceMaterial.meta.lastUpdated =
+        newSubstanceSourceMaterial.meta.createdAt;
+    int saved = await fhirDb.newResource(newSubstanceSourceMaterial);
+    return newSubstanceSourceMaterial;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<SubstanceSourceMaterial> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept sourceMaterialClass,
-		CodeableConcept sourceMaterialType,
-		CodeableConcept sourceMaterialState,
-		Identifier organismId,
-		String organismName,
-		Element elementOrganismName,
-		List<Identifier> parentSubstanceId,
-		List<String> parentSubstanceName,
-		List<Element> elementParentSubstanceName,
-		List<CodeableConcept> countryOfOrigin,
-		List<String> geographicalLocation,
-		List<Element> elementGeographicalLocation,
-		CodeableConcept developmentStage,
-		List<SubstanceSourceMaterial_FractionDescription> fractionDescription,
-		SubstanceSourceMaterial_Organism organism,
-		List<SubstanceSourceMaterial_PartDescription> partDescription}) async {
-	var fhirDb = new DatabaseHelper();
-	SubstanceSourceMaterial newSubstanceSourceMaterial = new SubstanceSourceMaterial(
-			resourceType: 'SubstanceSourceMaterial',
-			id: await fhirDb.newResourceId('SubstanceSourceMaterial'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			sourceMaterialClass: sourceMaterialClass,
-			sourceMaterialType: sourceMaterialType,
-			sourceMaterialState: sourceMaterialState,
-			organismId: organismId,
-			organismName: organismName,
-			elementOrganismName: elementOrganismName,
-			parentSubstanceId: parentSubstanceId,
-			parentSubstanceName: parentSubstanceName,
-			elementParentSubstanceName: elementParentSubstanceName,
-			countryOfOrigin: countryOfOrigin,
-			geographicalLocation: geographicalLocation,
-			elementGeographicalLocation: elementGeographicalLocation,
-			developmentStage: developmentStage,
-			fractionDescription: fractionDescription,
-			organism: organism,
-			partDescription: partDescription,
-);
-	int saved = await fhirDb.newResource(newSubstanceSourceMaterial);
-	return newSubstanceSourceMaterial;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'SubstanceSourceMaterial';
+  String resourceType = 'SubstanceSourceMaterial';
   String id;
   Meta meta;
   String implicitRules;
@@ -107,62 +111,64 @@ save () async {
   SubstanceSourceMaterial_Organism organism;
   List<SubstanceSourceMaterial_PartDescription> partDescription;
 
-SubstanceSourceMaterial(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.sourceMaterialClass,
-    this.sourceMaterialType,
-    this.sourceMaterialState,
-    this.organismId,
-    this.organismName,
-    this.elementOrganismName,
-    this.parentSubstanceId,
-    this.parentSubstanceName,
-    this.elementParentSubstanceName,
-    this.countryOfOrigin,
-    this.geographicalLocation,
-    this.elementGeographicalLocation,
-    this.developmentStage,
-    this.fractionDescription,
-    this.organism,
-    this.partDescription
-    });
+  SubstanceSourceMaterial(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.sourceMaterialClass,
+      this.sourceMaterialType,
+      this.sourceMaterialState,
+      this.organismId,
+      this.organismName,
+      this.elementOrganismName,
+      this.parentSubstanceId,
+      this.parentSubstanceName,
+      this.elementParentSubstanceName,
+      this.countryOfOrigin,
+      this.geographicalLocation,
+      this.elementGeographicalLocation,
+      this.developmentStage,
+      this.fractionDescription,
+      this.organism,
+      this.partDescription});
 
-  factory SubstanceSourceMaterial.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterialFromJson(json);
+  factory SubstanceSourceMaterial.fromJson(Map<String, dynamic> json) =>
+      _$SubstanceSourceMaterialFromJson(json);
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterialToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_FractionDescription {
+  static Future<SubstanceSourceMaterial_FractionDescription> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String fraction,
+      Element elementFraction,
+      CodeableConcept materialType}) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceSourceMaterial_FractionDescription
+        newSubstanceSourceMaterial_FractionDescription =
+        new SubstanceSourceMaterial_FractionDescription(
+      id: await fhirDb
+          .newResourceId('SubstanceSourceMaterial_FractionDescription'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      fraction: fraction,
+      elementFraction: elementFraction,
+      materialType: materialType,
+    );
+    return newSubstanceSourceMaterial_FractionDescription;
+  }
 
-
-	static Future<SubstanceSourceMaterial_FractionDescription> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String fraction,
-		Element elementFraction,
-		CodeableConcept materialType}) async {
-	var fhirDb = new DatabaseHelper();
-	SubstanceSourceMaterial_FractionDescription newSubstanceSourceMaterial_FractionDescription = new SubstanceSourceMaterial_FractionDescription(
-			id: await fhirDb.newResourceId('SubstanceSourceMaterial_FractionDescription'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			fraction: fraction,
-			elementFraction: elementFraction,
-			materialType: materialType,
-);
-	return newSubstanceSourceMaterial_FractionDescription;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -170,53 +176,55 @@ class SubstanceSourceMaterial_FractionDescription {
   Element elementFraction;
   CodeableConcept materialType;
 
-SubstanceSourceMaterial_FractionDescription(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.fraction,
-    this.elementFraction,
-    this.materialType
-    });
+  SubstanceSourceMaterial_FractionDescription(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.fraction,
+      this.elementFraction,
+      this.materialType});
 
-  factory SubstanceSourceMaterial_FractionDescription.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_FractionDescriptionFromJson(json);
-  Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_FractionDescriptionToJson(this);
+  factory SubstanceSourceMaterial_FractionDescription.fromJson(
+          Map<String, dynamic> json) =>
+      _$SubstanceSourceMaterial_FractionDescriptionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SubstanceSourceMaterial_FractionDescriptionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Organism {
+  static Future<SubstanceSourceMaterial_Organism> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept family,
+      CodeableConcept genus,
+      CodeableConcept species,
+      CodeableConcept intraspecificType,
+      String intraspecificDescription,
+      Element elementIntraspecificDescription,
+      List<SubstanceSourceMaterial_Author> author,
+      SubstanceSourceMaterial_Hybrid hybrid,
+      SubstanceSourceMaterial_OrganismGeneral organismGeneral}) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceSourceMaterial_Organism newSubstanceSourceMaterial_Organism =
+        new SubstanceSourceMaterial_Organism(
+      id: await fhirDb.newResourceId('SubstanceSourceMaterial_Organism'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      family: family,
+      genus: genus,
+      species: species,
+      intraspecificType: intraspecificType,
+      intraspecificDescription: intraspecificDescription,
+      elementIntraspecificDescription: elementIntraspecificDescription,
+      author: author,
+      hybrid: hybrid,
+      organismGeneral: organismGeneral,
+    );
+    return newSubstanceSourceMaterial_Organism;
+  }
 
-
-	static Future<SubstanceSourceMaterial_Organism> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept family,
-		CodeableConcept genus,
-		CodeableConcept species,
-		CodeableConcept intraspecificType,
-		String intraspecificDescription,
-		Element elementIntraspecificDescription,
-		List<SubstanceSourceMaterial_Author> author,
-		SubstanceSourceMaterial_Hybrid hybrid,
-		SubstanceSourceMaterial_OrganismGeneral organismGeneral}) async {
-	var fhirDb = new DatabaseHelper();
-	SubstanceSourceMaterial_Organism newSubstanceSourceMaterial_Organism = new SubstanceSourceMaterial_Organism(
-			id: await fhirDb.newResourceId('SubstanceSourceMaterial_Organism'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			family: family,
-			genus: genus,
-			species: species,
-			intraspecificType: intraspecificType,
-			intraspecificDescription: intraspecificDescription,
-			elementIntraspecificDescription: elementIntraspecificDescription,
-			author: author,
-			hybrid: hybrid,
-			organismGeneral: organismGeneral,
-);
-	return newSubstanceSourceMaterial_Organism;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -230,47 +238,49 @@ class SubstanceSourceMaterial_Organism {
   SubstanceSourceMaterial_Hybrid hybrid;
   SubstanceSourceMaterial_OrganismGeneral organismGeneral;
 
-SubstanceSourceMaterial_Organism(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.family,
-    this.genus,
-    this.species,
-    this.intraspecificType,
-    this.intraspecificDescription,
-    this.elementIntraspecificDescription,
-    this.author,
-    this.hybrid,
-    this.organismGeneral
-    });
+  SubstanceSourceMaterial_Organism(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.family,
+      this.genus,
+      this.species,
+      this.intraspecificType,
+      this.intraspecificDescription,
+      this.elementIntraspecificDescription,
+      this.author,
+      this.hybrid,
+      this.organismGeneral});
 
-  factory SubstanceSourceMaterial_Organism.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_OrganismFromJson(json);
-  Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_OrganismToJson(this);
+  factory SubstanceSourceMaterial_Organism.fromJson(
+          Map<String, dynamic> json) =>
+      _$SubstanceSourceMaterial_OrganismFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SubstanceSourceMaterial_OrganismToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Author {
+  static Future<SubstanceSourceMaterial_Author> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept authorType,
+      String authorDescription,
+      Element elementAuthorDescription}) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceSourceMaterial_Author newSubstanceSourceMaterial_Author =
+        new SubstanceSourceMaterial_Author(
+      id: await fhirDb.newResourceId('SubstanceSourceMaterial_Author'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      authorType: authorType,
+      authorDescription: authorDescription,
+      elementAuthorDescription: elementAuthorDescription,
+    );
+    return newSubstanceSourceMaterial_Author;
+  }
 
-
-	static Future<SubstanceSourceMaterial_Author> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept authorType,
-		String authorDescription,
-		Element elementAuthorDescription}) async {
-	var fhirDb = new DatabaseHelper();
-	SubstanceSourceMaterial_Author newSubstanceSourceMaterial_Author = new SubstanceSourceMaterial_Author(
-			id: await fhirDb.newResourceId('SubstanceSourceMaterial_Author'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			authorType: authorType,
-			authorDescription: authorDescription,
-			elementAuthorDescription: elementAuthorDescription,
-);
-	return newSubstanceSourceMaterial_Author;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -278,53 +288,53 @@ class SubstanceSourceMaterial_Author {
   String authorDescription;
   Element elementAuthorDescription;
 
-SubstanceSourceMaterial_Author(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.authorType,
-    this.authorDescription,
-    this.elementAuthorDescription
-    });
+  SubstanceSourceMaterial_Author(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.authorType,
+      this.authorDescription,
+      this.elementAuthorDescription});
 
-  factory SubstanceSourceMaterial_Author.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_AuthorFromJson(json);
+  factory SubstanceSourceMaterial_Author.fromJson(Map<String, dynamic> json) =>
+      _$SubstanceSourceMaterial_AuthorFromJson(json);
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_AuthorToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Hybrid {
+  static Future<SubstanceSourceMaterial_Hybrid> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String maternalOrganismId,
+      Element elementMaternalOrganismId,
+      String maternalOrganismName,
+      Element elementMaternalOrganismName,
+      String paternalOrganismId,
+      Element elementPaternalOrganismId,
+      String paternalOrganismName,
+      Element elementPaternalOrganismName,
+      CodeableConcept hybridType}) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceSourceMaterial_Hybrid newSubstanceSourceMaterial_Hybrid =
+        new SubstanceSourceMaterial_Hybrid(
+      id: await fhirDb.newResourceId('SubstanceSourceMaterial_Hybrid'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      maternalOrganismId: maternalOrganismId,
+      elementMaternalOrganismId: elementMaternalOrganismId,
+      maternalOrganismName: maternalOrganismName,
+      elementMaternalOrganismName: elementMaternalOrganismName,
+      paternalOrganismId: paternalOrganismId,
+      elementPaternalOrganismId: elementPaternalOrganismId,
+      paternalOrganismName: paternalOrganismName,
+      elementPaternalOrganismName: elementPaternalOrganismName,
+      hybridType: hybridType,
+    );
+    return newSubstanceSourceMaterial_Hybrid;
+  }
 
-
-	static Future<SubstanceSourceMaterial_Hybrid> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String maternalOrganismId,
-		Element elementMaternalOrganismId,
-		String maternalOrganismName,
-		Element elementMaternalOrganismName,
-		String paternalOrganismId,
-		Element elementPaternalOrganismId,
-		String paternalOrganismName,
-		Element elementPaternalOrganismName,
-		CodeableConcept hybridType}) async {
-	var fhirDb = new DatabaseHelper();
-	SubstanceSourceMaterial_Hybrid newSubstanceSourceMaterial_Hybrid = new SubstanceSourceMaterial_Hybrid(
-			id: await fhirDb.newResourceId('SubstanceSourceMaterial_Hybrid'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			maternalOrganismId: maternalOrganismId,
-			elementMaternalOrganismId: elementMaternalOrganismId,
-			maternalOrganismName: maternalOrganismName,
-			elementMaternalOrganismName: elementMaternalOrganismName,
-			paternalOrganismId: paternalOrganismId,
-			elementPaternalOrganismId: elementPaternalOrganismId,
-			paternalOrganismName: paternalOrganismName,
-			elementPaternalOrganismName: elementPaternalOrganismName,
-			hybridType: hybridType,
-);
-	return newSubstanceSourceMaterial_Hybrid;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -338,49 +348,50 @@ class SubstanceSourceMaterial_Hybrid {
   Element elementPaternalOrganismName;
   CodeableConcept hybridType;
 
-SubstanceSourceMaterial_Hybrid(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.maternalOrganismId,
-    this.elementMaternalOrganismId,
-    this.maternalOrganismName,
-    this.elementMaternalOrganismName,
-    this.paternalOrganismId,
-    this.elementPaternalOrganismId,
-    this.paternalOrganismName,
-    this.elementPaternalOrganismName,
-    this.hybridType
-    });
+  SubstanceSourceMaterial_Hybrid(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.maternalOrganismId,
+      this.elementMaternalOrganismId,
+      this.maternalOrganismName,
+      this.elementMaternalOrganismName,
+      this.paternalOrganismId,
+      this.elementPaternalOrganismId,
+      this.paternalOrganismName,
+      this.elementPaternalOrganismName,
+      this.hybridType});
 
-  factory SubstanceSourceMaterial_Hybrid.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_HybridFromJson(json);
+  factory SubstanceSourceMaterial_Hybrid.fromJson(Map<String, dynamic> json) =>
+      _$SubstanceSourceMaterial_HybridFromJson(json);
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_HybridToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_OrganismGeneral {
+  static Future<SubstanceSourceMaterial_OrganismGeneral> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept kingdom,
+      CodeableConcept phylum,
+      CodeableConcept classs,
+      CodeableConcept order}) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceSourceMaterial_OrganismGeneral
+        newSubstanceSourceMaterial_OrganismGeneral =
+        new SubstanceSourceMaterial_OrganismGeneral(
+      id: await fhirDb.newResourceId('SubstanceSourceMaterial_OrganismGeneral'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      kingdom: kingdom,
+      phylum: phylum,
+      classs: classs,
+      order: order,
+    );
+    return newSubstanceSourceMaterial_OrganismGeneral;
+  }
 
-
-	static Future<SubstanceSourceMaterial_OrganismGeneral> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept kingdom,
-		CodeableConcept phylum,
-		CodeableConcept classs,
-		CodeableConcept order}) async {
-	var fhirDb = new DatabaseHelper();
-	SubstanceSourceMaterial_OrganismGeneral newSubstanceSourceMaterial_OrganismGeneral = new SubstanceSourceMaterial_OrganismGeneral(
-			id: await fhirDb.newResourceId('SubstanceSourceMaterial_OrganismGeneral'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			kingdom: kingdom,
-			phylum: phylum,
-			classs: classs,
-			order: order,
-);
-	return newSubstanceSourceMaterial_OrganismGeneral;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -389,58 +400,62 @@ class SubstanceSourceMaterial_OrganismGeneral {
   CodeableConcept classs;
   CodeableConcept order;
 
-SubstanceSourceMaterial_OrganismGeneral(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.kingdom,
-    this.phylum,
-    this.classs,
-    this.order
-    });
+  SubstanceSourceMaterial_OrganismGeneral(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.kingdom,
+      this.phylum,
+      this.classs,
+      this.order});
 
-  factory SubstanceSourceMaterial_OrganismGeneral.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_OrganismGeneralFromJson(json);
-  Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_OrganismGeneralToJson(this);
+  factory SubstanceSourceMaterial_OrganismGeneral.fromJson(
+          Map<String, dynamic> json) =>
+      _$SubstanceSourceMaterial_OrganismGeneralFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SubstanceSourceMaterial_OrganismGeneralToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_PartDescription {
+  static Future<SubstanceSourceMaterial_PartDescription> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept part,
+      CodeableConcept partLocation}) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceSourceMaterial_PartDescription
+        newSubstanceSourceMaterial_PartDescription =
+        new SubstanceSourceMaterial_PartDescription(
+      id: await fhirDb.newResourceId('SubstanceSourceMaterial_PartDescription'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      part: part,
+      partLocation: partLocation,
+    );
+    return newSubstanceSourceMaterial_PartDescription;
+  }
 
-
-	static Future<SubstanceSourceMaterial_PartDescription> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept part,
-		CodeableConcept partLocation}) async {
-	var fhirDb = new DatabaseHelper();
-	SubstanceSourceMaterial_PartDescription newSubstanceSourceMaterial_PartDescription = new SubstanceSourceMaterial_PartDescription(
-			id: await fhirDb.newResourceId('SubstanceSourceMaterial_PartDescription'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			part: part,
-			partLocation: partLocation,
-);
-	return newSubstanceSourceMaterial_PartDescription;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept part;
   CodeableConcept partLocation;
 
-SubstanceSourceMaterial_PartDescription(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.part,
-    this.partLocation
-    });
+  SubstanceSourceMaterial_PartDescription(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.part,
+      this.partLocation});
 
-  factory SubstanceSourceMaterial_PartDescription.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_PartDescriptionFromJson(json);
-  Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_PartDescriptionToJson(this);
+  factory SubstanceSourceMaterial_PartDescription.fromJson(
+          Map<String, dynamic> json) =>
+      _$SubstanceSourceMaterial_PartDescriptionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SubstanceSourceMaterial_PartDescriptionToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -468,8 +483,9 @@ SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

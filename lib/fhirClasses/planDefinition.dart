@@ -24,137 +24,139 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition {
+  static Future<PlanDefinition> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      List<Identifier> identifier,
+      String version,
+      Element elementVersion,
+      String name,
+      Element elementName,
+      String title,
+      Element elementTitle,
+      String subtitle,
+      Element elementSubtitle,
+      CodeableConcept type,
+      String status,
+      Element elementStatus,
+      bool experimental,
+      Element elementExperimental,
+      CodeableConcept subjectCodeableConcept,
+      Reference subjectReference,
+      DateTime date,
+      Element elementDate,
+      String publisher,
+      Element elementPublisher,
+      List<ContactDetail> contact,
+      String description,
+      Element elementDescription,
+      List<UsageContext> useContext,
+      List<CodeableConcept> jurisdiction,
+      String purpose,
+      Element elementPurpose,
+      String usage,
+      Element elementUsage,
+      String copyright,
+      Element elementCopyright,
+      String approvalDate,
+      Element elementApprovalDate,
+      String lastReviewDate,
+      Element elementLastReviewDate,
+      Period effectivePeriod,
+      List<CodeableConcept> topic,
+      List<ContactDetail> author,
+      List<ContactDetail> editor,
+      List<ContactDetail> reviewer,
+      List<ContactDetail> endorser,
+      List<RelatedArtifact> relatedArtifact,
+      List<String> library,
+      List<PlanDefinition_Goal> goal,
+      List<PlanDefinition_Action> action}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition newPlanDefinition = new PlanDefinition(
+      resourceType: 'PlanDefinition',
+      id: await fhirDb.newResourceId('PlanDefinition'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      subtitle: subtitle,
+      elementSubtitle: elementSubtitle,
+      type: type,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      subjectCodeableConcept: subjectCodeableConcept,
+      subjectReference: subjectReference,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      usage: usage,
+      elementUsage: elementUsage,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      approvalDate: approvalDate,
+      elementApprovalDate: elementApprovalDate,
+      lastReviewDate: lastReviewDate,
+      elementLastReviewDate: elementLastReviewDate,
+      effectivePeriod: effectivePeriod,
+      topic: topic,
+      author: author,
+      editor: editor,
+      reviewer: reviewer,
+      endorser: endorser,
+      relatedArtifact: relatedArtifact,
+      library: library,
+      goal: goal,
+      action: action,
+    );
+    newPlanDefinition.meta.createdAt = DateTime.now();
+    newPlanDefinition.meta.lastUpdated = newPlanDefinition.meta.createdAt;
+    int saved = await fhirDb.newResource(newPlanDefinition);
+    return newPlanDefinition;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<PlanDefinition> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		List<Identifier> identifier,
-		String version,
-		Element elementVersion,
-		String name,
-		Element elementName,
-		String title,
-		Element elementTitle,
-		String subtitle,
-		Element elementSubtitle,
-		CodeableConcept type,
-		String status,
-		Element elementStatus,
-		bool experimental,
-		Element elementExperimental,
-		CodeableConcept subjectCodeableConcept,
-		Reference subjectReference,
-		DateTime date,
-		Element elementDate,
-		String publisher,
-		Element elementPublisher,
-		List<ContactDetail> contact,
-		String description,
-		Element elementDescription,
-		List<UsageContext> useContext,
-		List<CodeableConcept> jurisdiction,
-		String purpose,
-		Element elementPurpose,
-		String usage,
-		Element elementUsage,
-		String copyright,
-		Element elementCopyright,
-		String approvalDate,
-		Element elementApprovalDate,
-		String lastReviewDate,
-		Element elementLastReviewDate,
-		Period effectivePeriod,
-		List<CodeableConcept> topic,
-		List<ContactDetail> author,
-		List<ContactDetail> editor,
-		List<ContactDetail> reviewer,
-		List<ContactDetail> endorser,
-		List<RelatedArtifact> relatedArtifact,
-		List<String> library,
-		List<PlanDefinition_Goal> goal,
-		List<PlanDefinition_Action> action}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition newPlanDefinition = new PlanDefinition(
-			resourceType: 'PlanDefinition',
-			id: await fhirDb.newResourceId('PlanDefinition'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			identifier: identifier,
-			version: version,
-			elementVersion: elementVersion,
-			name: name,
-			elementName: elementName,
-			title: title,
-			elementTitle: elementTitle,
-			subtitle: subtitle,
-			elementSubtitle: elementSubtitle,
-			type: type,
-			status: status,
-			elementStatus: elementStatus,
-			experimental: experimental,
-			elementExperimental: elementExperimental,
-			subjectCodeableConcept: subjectCodeableConcept,
-			subjectReference: subjectReference,
-			date: date,
-			elementDate: elementDate,
-			publisher: publisher,
-			elementPublisher: elementPublisher,
-			contact: contact,
-			description: description,
-			elementDescription: elementDescription,
-			useContext: useContext,
-			jurisdiction: jurisdiction,
-			purpose: purpose,
-			elementPurpose: elementPurpose,
-			usage: usage,
-			elementUsage: elementUsage,
-			copyright: copyright,
-			elementCopyright: elementCopyright,
-			approvalDate: approvalDate,
-			elementApprovalDate: elementApprovalDate,
-			lastReviewDate: lastReviewDate,
-			elementLastReviewDate: elementLastReviewDate,
-			effectivePeriod: effectivePeriod,
-			topic: topic,
-			author: author,
-			editor: editor,
-			reviewer: reviewer,
-			endorser: endorser,
-			relatedArtifact: relatedArtifact,
-			library: library,
-			goal: goal,
-			action: action,
-);
-	int saved = await fhirDb.newResource(newPlanDefinition);
-	return newPlanDefinition;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'PlanDefinition';
+  String resourceType = 'PlanDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -213,101 +215,100 @@ save () async {
   List<PlanDefinition_Goal> goal;
   List<PlanDefinition_Action> action;
 
-PlanDefinition(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.subtitle,
-    this.elementSubtitle,
-    this.type,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.subjectCodeableConcept,
-    this.subjectReference,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.usage,
-    this.elementUsage,
-    this.copyright,
-    this.elementCopyright,
-    this.approvalDate,
-    this.elementApprovalDate,
-    this.lastReviewDate,
-    this.elementLastReviewDate,
-    this.effectivePeriod,
-    this.topic,
-    this.author,
-    this.editor,
-    this.reviewer,
-    this.endorser,
-    this.relatedArtifact,
-    this.library,
-    this.goal,
-    this.action
-    });
+  PlanDefinition(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.identifier,
+      this.version,
+      this.elementVersion,
+      this.name,
+      this.elementName,
+      this.title,
+      this.elementTitle,
+      this.subtitle,
+      this.elementSubtitle,
+      this.type,
+      this.status,
+      this.elementStatus,
+      this.experimental,
+      this.elementExperimental,
+      this.subjectCodeableConcept,
+      this.subjectReference,
+      this.date,
+      this.elementDate,
+      this.publisher,
+      this.elementPublisher,
+      this.contact,
+      this.description,
+      this.elementDescription,
+      this.useContext,
+      this.jurisdiction,
+      this.purpose,
+      this.elementPurpose,
+      this.usage,
+      this.elementUsage,
+      this.copyright,
+      this.elementCopyright,
+      this.approvalDate,
+      this.elementApprovalDate,
+      this.lastReviewDate,
+      this.elementLastReviewDate,
+      this.effectivePeriod,
+      this.topic,
+      this.author,
+      this.editor,
+      this.reviewer,
+      this.endorser,
+      this.relatedArtifact,
+      this.library,
+      this.goal,
+      this.action});
 
-  factory PlanDefinition.fromJson(Map<String, dynamic> json) => _$PlanDefinitionFromJson(json);
+  factory PlanDefinition.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinitionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Goal {
+  static Future<PlanDefinition_Goal> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept category,
+      CodeableConcept description,
+      CodeableConcept priority,
+      CodeableConcept start,
+      List<CodeableConcept> addresses,
+      List<RelatedArtifact> documentation,
+      List<PlanDefinition_Target> target}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition_Goal newPlanDefinition_Goal = new PlanDefinition_Goal(
+      id: await fhirDb.newResourceId('PlanDefinition_Goal'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      category: category,
+      description: description,
+      priority: priority,
+      start: start,
+      addresses: addresses,
+      documentation: documentation,
+      target: target,
+    );
+    return newPlanDefinition_Goal;
+  }
 
-
-	static Future<PlanDefinition_Goal> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept category,
-		CodeableConcept description,
-		CodeableConcept priority,
-		CodeableConcept start,
-		List<CodeableConcept> addresses,
-		List<RelatedArtifact> documentation,
-		List<PlanDefinition_Target> target}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition_Goal newPlanDefinition_Goal = new PlanDefinition_Goal(
-			id: await fhirDb.newResourceId('PlanDefinition_Goal'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			category: category,
-			description: description,
-			priority: priority,
-			start: start,
-			addresses: addresses,
-			documentation: documentation,
-			target: target,
-);
-	return newPlanDefinition_Goal;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -319,49 +320,48 @@ class PlanDefinition_Goal {
   List<RelatedArtifact> documentation;
   List<PlanDefinition_Target> target;
 
-PlanDefinition_Goal(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.category,
-    @required this.description,
-    this.priority,
-    this.start,
-    this.addresses,
-    this.documentation,
-    this.target
-    });
+  PlanDefinition_Goal(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.category,
+      @required this.description,
+      this.priority,
+      this.start,
+      this.addresses,
+      this.documentation,
+      this.target});
 
-  factory PlanDefinition_Goal.fromJson(Map<String, dynamic> json) => _$PlanDefinition_GoalFromJson(json);
+  factory PlanDefinition_Goal.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinition_GoalFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinition_GoalToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Target {
+  static Future<PlanDefinition_Target> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept measure,
+      Quantity detailQuantity,
+      Range detailRange,
+      CodeableConcept detailCodeableConcept,
+      Duration due}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition_Target newPlanDefinition_Target = new PlanDefinition_Target(
+      id: await fhirDb.newResourceId('PlanDefinition_Target'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      measure: measure,
+      detailQuantity: detailQuantity,
+      detailRange: detailRange,
+      detailCodeableConcept: detailCodeableConcept,
+      due: due,
+    );
+    return newPlanDefinition_Target;
+  }
 
-
-	static Future<PlanDefinition_Target> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept measure,
-		Quantity detailQuantity,
-		Range detailRange,
-		CodeableConcept detailCodeableConcept,
-		Duration due}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition_Target newPlanDefinition_Target = new PlanDefinition_Target(
-			id: await fhirDb.newResourceId('PlanDefinition_Target'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			measure: measure,
-			detailQuantity: detailQuantity,
-			detailRange: detailRange,
-			detailCodeableConcept: detailCodeableConcept,
-			due: due,
-);
-	return newPlanDefinition_Target;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -371,133 +371,132 @@ class PlanDefinition_Target {
   CodeableConcept detailCodeableConcept;
   Duration due;
 
-PlanDefinition_Target(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.measure,
-    this.detailQuantity,
-    this.detailRange,
-    this.detailCodeableConcept,
-    this.due
-    });
+  PlanDefinition_Target(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.measure,
+      this.detailQuantity,
+      this.detailRange,
+      this.detailCodeableConcept,
+      this.due});
 
-  factory PlanDefinition_Target.fromJson(Map<String, dynamic> json) => _$PlanDefinition_TargetFromJson(json);
+  factory PlanDefinition_Target.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinition_TargetFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinition_TargetToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Action {
+  static Future<PlanDefinition_Action> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String prefix,
+      Element elementPrefix,
+      String title,
+      Element elementTitle,
+      String description,
+      Element elementDescription,
+      String textEquivalent,
+      Element elementTextEquivalent,
+      String priority,
+      Element elementPriority,
+      List<CodeableConcept> code,
+      List<CodeableConcept> reason,
+      List<RelatedArtifact> documentation,
+      List<String> goalId,
+      List<Element> elementGoalId,
+      CodeableConcept subjectCodeableConcept,
+      Reference subjectReference,
+      List<TriggerDefinition> trigger,
+      List<PlanDefinition_Condition> condition,
+      List<DataRequirement> input,
+      List<DataRequirement> output,
+      List<PlanDefinition_RelatedAction> relatedAction,
+      String timingDateTime,
+      Element elementTimingDateTime,
+      Age timingAge,
+      Period timingPeriod,
+      Duration timingDuration,
+      Range timingRange,
+      Timing timingTiming,
+      List<PlanDefinition_Participant> participant,
+      CodeableConcept type,
+      String groupingBehavior,
+      Element elementGroupingBehavior,
+      String selectionBehavior,
+      Element elementSelectionBehavior,
+      String requiredBehavior,
+      Element elementRequiredBehavior,
+      String precheckBehavior,
+      Element elementPrecheckBehavior,
+      String cardinalityBehavior,
+      Element elementCardinalityBehavior,
+      String definitionCanonical,
+      Element elementDefinitionCanonical,
+      String definitionUri,
+      Element elementDefinitionUri,
+      String transform,
+      List<PlanDefinition_DynamicValue> dynamicValue,
+      List<PlanDefinition_Action> action}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition_Action newPlanDefinition_Action = new PlanDefinition_Action(
+      id: await fhirDb.newResourceId('PlanDefinition_Action'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      prefix: prefix,
+      elementPrefix: elementPrefix,
+      title: title,
+      elementTitle: elementTitle,
+      description: description,
+      elementDescription: elementDescription,
+      textEquivalent: textEquivalent,
+      elementTextEquivalent: elementTextEquivalent,
+      priority: priority,
+      elementPriority: elementPriority,
+      code: code,
+      reason: reason,
+      documentation: documentation,
+      goalId: goalId,
+      elementGoalId: elementGoalId,
+      subjectCodeableConcept: subjectCodeableConcept,
+      subjectReference: subjectReference,
+      trigger: trigger,
+      condition: condition,
+      input: input,
+      output: output,
+      relatedAction: relatedAction,
+      timingDateTime: timingDateTime,
+      elementTimingDateTime: elementTimingDateTime,
+      timingAge: timingAge,
+      timingPeriod: timingPeriod,
+      timingDuration: timingDuration,
+      timingRange: timingRange,
+      timingTiming: timingTiming,
+      participant: participant,
+      type: type,
+      groupingBehavior: groupingBehavior,
+      elementGroupingBehavior: elementGroupingBehavior,
+      selectionBehavior: selectionBehavior,
+      elementSelectionBehavior: elementSelectionBehavior,
+      requiredBehavior: requiredBehavior,
+      elementRequiredBehavior: elementRequiredBehavior,
+      precheckBehavior: precheckBehavior,
+      elementPrecheckBehavior: elementPrecheckBehavior,
+      cardinalityBehavior: cardinalityBehavior,
+      elementCardinalityBehavior: elementCardinalityBehavior,
+      definitionCanonical: definitionCanonical,
+      elementDefinitionCanonical: elementDefinitionCanonical,
+      definitionUri: definitionUri,
+      elementDefinitionUri: elementDefinitionUri,
+      transform: transform,
+      dynamicValue: dynamicValue,
+      action: action,
+    );
+    return newPlanDefinition_Action;
+  }
 
-
-	static Future<PlanDefinition_Action> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String prefix,
-		Element elementPrefix,
-		String title,
-		Element elementTitle,
-		String description,
-		Element elementDescription,
-		String textEquivalent,
-		Element elementTextEquivalent,
-		String priority,
-		Element elementPriority,
-		List<CodeableConcept> code,
-		List<CodeableConcept> reason,
-		List<RelatedArtifact> documentation,
-		List<String> goalId,
-		List<Element> elementGoalId,
-		CodeableConcept subjectCodeableConcept,
-		Reference subjectReference,
-		List<TriggerDefinition> trigger,
-		List<PlanDefinition_Condition> condition,
-		List<DataRequirement> input,
-		List<DataRequirement> output,
-		List<PlanDefinition_RelatedAction> relatedAction,
-		String timingDateTime,
-		Element elementTimingDateTime,
-		Age timingAge,
-		Period timingPeriod,
-		Duration timingDuration,
-		Range timingRange,
-		Timing timingTiming,
-		List<PlanDefinition_Participant> participant,
-		CodeableConcept type,
-		String groupingBehavior,
-		Element elementGroupingBehavior,
-		String selectionBehavior,
-		Element elementSelectionBehavior,
-		String requiredBehavior,
-		Element elementRequiredBehavior,
-		String precheckBehavior,
-		Element elementPrecheckBehavior,
-		String cardinalityBehavior,
-		Element elementCardinalityBehavior,
-		String definitionCanonical,
-		Element elementDefinitionCanonical,
-		String definitionUri,
-		Element elementDefinitionUri,
-		String transform,
-		List<PlanDefinition_DynamicValue> dynamicValue,
-		List<PlanDefinition_Action> action}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition_Action newPlanDefinition_Action = new PlanDefinition_Action(
-			id: await fhirDb.newResourceId('PlanDefinition_Action'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			prefix: prefix,
-			elementPrefix: elementPrefix,
-			title: title,
-			elementTitle: elementTitle,
-			description: description,
-			elementDescription: elementDescription,
-			textEquivalent: textEquivalent,
-			elementTextEquivalent: elementTextEquivalent,
-			priority: priority,
-			elementPriority: elementPriority,
-			code: code,
-			reason: reason,
-			documentation: documentation,
-			goalId: goalId,
-			elementGoalId: elementGoalId,
-			subjectCodeableConcept: subjectCodeableConcept,
-			subjectReference: subjectReference,
-			trigger: trigger,
-			condition: condition,
-			input: input,
-			output: output,
-			relatedAction: relatedAction,
-			timingDateTime: timingDateTime,
-			elementTimingDateTime: elementTimingDateTime,
-			timingAge: timingAge,
-			timingPeriod: timingPeriod,
-			timingDuration: timingDuration,
-			timingRange: timingRange,
-			timingTiming: timingTiming,
-			participant: participant,
-			type: type,
-			groupingBehavior: groupingBehavior,
-			elementGroupingBehavior: elementGroupingBehavior,
-			selectionBehavior: selectionBehavior,
-			elementSelectionBehavior: elementSelectionBehavior,
-			requiredBehavior: requiredBehavior,
-			elementRequiredBehavior: elementRequiredBehavior,
-			precheckBehavior: precheckBehavior,
-			elementPrecheckBehavior: elementPrecheckBehavior,
-			cardinalityBehavior: cardinalityBehavior,
-			elementCardinalityBehavior: elementCardinalityBehavior,
-			definitionCanonical: definitionCanonical,
-			elementDefinitionCanonical: elementDefinitionCanonical,
-			definitionUri: definitionUri,
-			elementDefinitionUri: elementDefinitionUri,
-			transform: transform,
-			dynamicValue: dynamicValue,
-			action: action,
-);
-	return newPlanDefinition_Action;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -523,7 +522,8 @@ class PlanDefinition_Action {
   List<DataRequirement> input;
   List<DataRequirement> output;
   List<PlanDefinition_RelatedAction> relatedAction;
-  String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementTimingDateTime;
   Age timingAge;
   Period timingPeriod;
@@ -532,9 +532,11 @@ class PlanDefinition_Action {
   Timing timingTiming;
   List<PlanDefinition_Participant> participant;
   CodeableConcept type;
-  String groupingBehavior; // <code> enum: visual-group/logical-group/sentence-group;
+  String
+      groupingBehavior; // <code> enum: visual-group/logical-group/sentence-group;
   Element elementGroupingBehavior;
-  String selectionBehavior; // <code> enum: any/all/all-or-none/exactly-one/at-most-one/one-or-more;
+  String
+      selectionBehavior; // <code> enum: any/all/all-or-none/exactly-one/at-most-one/one-or-more;
   Element elementSelectionBehavior;
   String requiredBehavior; // <code> enum: must/could/must-unless-documented;
   Element elementRequiredBehavior;
@@ -550,86 +552,86 @@ class PlanDefinition_Action {
   List<PlanDefinition_DynamicValue> dynamicValue;
   List<PlanDefinition_Action> action;
 
-PlanDefinition_Action(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.prefix,
-    this.elementPrefix,
-    this.title,
-    this.elementTitle,
-    this.description,
-    this.elementDescription,
-    this.textEquivalent,
-    this.elementTextEquivalent,
-    this.priority,
-    this.elementPriority,
-    this.code,
-    this.reason,
-    this.documentation,
-    this.goalId,
-    this.elementGoalId,
-    this.subjectCodeableConcept,
-    this.subjectReference,
-    this.trigger,
-    this.condition,
-    this.input,
-    this.output,
-    this.relatedAction,
-    this.timingDateTime,
-    this.elementTimingDateTime,
-    this.timingAge,
-    this.timingPeriod,
-    this.timingDuration,
-    this.timingRange,
-    this.timingTiming,
-    this.participant,
-    this.type,
-    this.groupingBehavior,
-    this.elementGroupingBehavior,
-    this.selectionBehavior,
-    this.elementSelectionBehavior,
-    this.requiredBehavior,
-    this.elementRequiredBehavior,
-    this.precheckBehavior,
-    this.elementPrecheckBehavior,
-    this.cardinalityBehavior,
-    this.elementCardinalityBehavior,
-    this.definitionCanonical,
-    this.elementDefinitionCanonical,
-    this.definitionUri,
-    this.elementDefinitionUri,
-    this.transform,
-    this.dynamicValue,
-    this.action
-    });
+  PlanDefinition_Action(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.prefix,
+      this.elementPrefix,
+      this.title,
+      this.elementTitle,
+      this.description,
+      this.elementDescription,
+      this.textEquivalent,
+      this.elementTextEquivalent,
+      this.priority,
+      this.elementPriority,
+      this.code,
+      this.reason,
+      this.documentation,
+      this.goalId,
+      this.elementGoalId,
+      this.subjectCodeableConcept,
+      this.subjectReference,
+      this.trigger,
+      this.condition,
+      this.input,
+      this.output,
+      this.relatedAction,
+      this.timingDateTime,
+      this.elementTimingDateTime,
+      this.timingAge,
+      this.timingPeriod,
+      this.timingDuration,
+      this.timingRange,
+      this.timingTiming,
+      this.participant,
+      this.type,
+      this.groupingBehavior,
+      this.elementGroupingBehavior,
+      this.selectionBehavior,
+      this.elementSelectionBehavior,
+      this.requiredBehavior,
+      this.elementRequiredBehavior,
+      this.precheckBehavior,
+      this.elementPrecheckBehavior,
+      this.cardinalityBehavior,
+      this.elementCardinalityBehavior,
+      this.definitionCanonical,
+      this.elementDefinitionCanonical,
+      this.definitionUri,
+      this.elementDefinitionUri,
+      this.transform,
+      this.dynamicValue,
+      this.action});
 
-  factory PlanDefinition_Action.fromJson(Map<String, dynamic> json) => _$PlanDefinition_ActionFromJson(json);
+  factory PlanDefinition_Action.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinition_ActionFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinition_ActionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Condition {
+  static Future<PlanDefinition_Condition> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String kind,
+      Element elementKind,
+      Expression expression}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition_Condition newPlanDefinition_Condition =
+        new PlanDefinition_Condition(
+      id: await fhirDb.newResourceId('PlanDefinition_Condition'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      kind: kind,
+      elementKind: elementKind,
+      expression: expression,
+    );
+    return newPlanDefinition_Condition;
+  }
 
-
-	static Future<PlanDefinition_Condition> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String kind,
-		Element elementKind,
-		Expression expression}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition_Condition newPlanDefinition_Condition = new PlanDefinition_Condition(
-			id: await fhirDb.newResourceId('PlanDefinition_Condition'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			kind: kind,
-			elementKind: elementKind,
-			expression: expression,
-);
-	return newPlanDefinition_Condition;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -637,95 +639,96 @@ class PlanDefinition_Condition {
   Element elementKind;
   Expression expression;
 
-PlanDefinition_Condition(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.kind,
-    this.elementKind,
-    this.expression
-    });
+  PlanDefinition_Condition(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.kind,
+      this.elementKind,
+      this.expression});
 
-  factory PlanDefinition_Condition.fromJson(Map<String, dynamic> json) => _$PlanDefinition_ConditionFromJson(json);
+  factory PlanDefinition_Condition.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinition_ConditionFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinition_ConditionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_RelatedAction {
+  static Future<PlanDefinition_RelatedAction> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String actionId,
+      Element elementActionId,
+      String relationship,
+      Element elementRelationship,
+      Duration offsetDuration,
+      Range offsetRange}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition_RelatedAction newPlanDefinition_RelatedAction =
+        new PlanDefinition_RelatedAction(
+      id: await fhirDb.newResourceId('PlanDefinition_RelatedAction'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      actionId: actionId,
+      elementActionId: elementActionId,
+      relationship: relationship,
+      elementRelationship: elementRelationship,
+      offsetDuration: offsetDuration,
+      offsetRange: offsetRange,
+    );
+    return newPlanDefinition_RelatedAction;
+  }
 
-
-	static Future<PlanDefinition_RelatedAction> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String actionId,
-		Element elementActionId,
-		String relationship,
-		Element elementRelationship,
-		Duration offsetDuration,
-		Range offsetRange}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition_RelatedAction newPlanDefinition_RelatedAction = new PlanDefinition_RelatedAction(
-			id: await fhirDb.newResourceId('PlanDefinition_RelatedAction'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			actionId: actionId,
-			elementActionId: elementActionId,
-			relationship: relationship,
-			elementRelationship: elementRelationship,
-			offsetDuration: offsetDuration,
-			offsetRange: offsetRange,
-);
-	return newPlanDefinition_RelatedAction;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   String actionId;
   Element elementActionId;
-  String relationship; // <code> enum: before-start/before/before-end/concurrent-with-start/concurrent/concurrent-with-end/after-start/after/after-end;
+  String
+      relationship; // <code> enum: before-start/before/before-end/concurrent-with-start/concurrent/concurrent-with-end/after-start/after/after-end;
   Element elementRelationship;
   Duration offsetDuration;
   Range offsetRange;
 
-PlanDefinition_RelatedAction(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.actionId,
-    this.elementActionId,
-    this.relationship,
-    this.elementRelationship,
-    this.offsetDuration,
-    this.offsetRange
-    });
+  PlanDefinition_RelatedAction(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.actionId,
+      this.elementActionId,
+      this.relationship,
+      this.elementRelationship,
+      this.offsetDuration,
+      this.offsetRange});
 
-  factory PlanDefinition_RelatedAction.fromJson(Map<String, dynamic> json) => _$PlanDefinition_RelatedActionFromJson(json);
+  factory PlanDefinition_RelatedAction.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinition_RelatedActionFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinition_RelatedActionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_Participant {
+  static Future<PlanDefinition_Participant> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String type,
+      Element elementType,
+      CodeableConcept role}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition_Participant newPlanDefinition_Participant =
+        new PlanDefinition_Participant(
+      id: await fhirDb.newResourceId('PlanDefinition_Participant'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      role: role,
+    );
+    return newPlanDefinition_Participant;
+  }
 
-
-	static Future<PlanDefinition_Participant> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String type,
-		Element elementType,
-		CodeableConcept role}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition_Participant newPlanDefinition_Participant = new PlanDefinition_Participant(
-			id: await fhirDb.newResourceId('PlanDefinition_Participant'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			elementType: elementType,
-			role: role,
-);
-	return newPlanDefinition_Participant;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -733,41 +736,41 @@ class PlanDefinition_Participant {
   Element elementType;
   CodeableConcept role;
 
-PlanDefinition_Participant(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.elementType,
-    this.role
-    });
+  PlanDefinition_Participant(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.elementType,
+      this.role});
 
-  factory PlanDefinition_Participant.fromJson(Map<String, dynamic> json) => _$PlanDefinition_ParticipantFromJson(json);
+  factory PlanDefinition_Participant.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinition_ParticipantFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinition_ParticipantToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class PlanDefinition_DynamicValue {
+  static Future<PlanDefinition_DynamicValue> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String path,
+      Element elementPath,
+      Expression expression}) async {
+    var fhirDb = new DatabaseHelper();
+    PlanDefinition_DynamicValue newPlanDefinition_DynamicValue =
+        new PlanDefinition_DynamicValue(
+      id: await fhirDb.newResourceId('PlanDefinition_DynamicValue'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      path: path,
+      elementPath: elementPath,
+      expression: expression,
+    );
+    return newPlanDefinition_DynamicValue;
+  }
 
-
-	static Future<PlanDefinition_DynamicValue> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String path,
-		Element elementPath,
-		Expression expression}) async {
-	var fhirDb = new DatabaseHelper();
-	PlanDefinition_DynamicValue newPlanDefinition_DynamicValue = new PlanDefinition_DynamicValue(
-			id: await fhirDb.newResourceId('PlanDefinition_DynamicValue'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			path: path,
-			elementPath: elementPath,
-			expression: expression,
-);
-	return newPlanDefinition_DynamicValue;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -775,19 +778,18 @@ class PlanDefinition_DynamicValue {
   Element elementPath;
   Expression expression;
 
-PlanDefinition_DynamicValue(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.path,
-    this.elementPath,
-    this.expression
-    });
+  PlanDefinition_DynamicValue(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.path,
+      this.elementPath,
+      this.expression});
 
-  factory PlanDefinition_DynamicValue.fromJson(Map<String, dynamic> json) => _$PlanDefinition_DynamicValueFromJson(json);
+  factory PlanDefinition_DynamicValue.fromJson(Map<String, dynamic> json) =>
+      _$PlanDefinition_DynamicValueFromJson(json);
   Map<String, dynamic> toJson() => _$PlanDefinition_DynamicValueToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -814,8 +816,9 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

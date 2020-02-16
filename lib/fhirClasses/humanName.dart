@@ -6,50 +6,43 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class HumanName {
+  static Future<HumanName> newInstance(
+      {String id,
+      List<Extension> extension,
+      String use,
+      Element elementUse,
+      String text,
+      Element elementText,
+      String family,
+      Element elementFamily,
+      List<String> given,
+      List<Element> elementGiven,
+      List<String> prefix,
+      List<Element> elementPrefix,
+      List<String> suffix,
+      List<Element> elementSuffix,
+      Period period}) async {
+    var fhirDb = new DatabaseHelper();
+    HumanName newHumanName = new HumanName(
+      id: await fhirDb.newResourceId('HumanName'),
+      extension: extension,
+      use: use,
+      elementUse: elementUse,
+      text: text,
+      elementText: elementText,
+      family: family,
+      elementFamily: elementFamily,
+      given: given,
+      elementGiven: elementGiven,
+      prefix: prefix,
+      elementPrefix: elementPrefix,
+      suffix: suffix,
+      elementSuffix: elementSuffix,
+      period: period,
+    );
+    return newHumanName;
+  }
 
-
-	static Future<HumanName> newInstance({
-		String id,
-		List<Extension> extension,
-		String use,
-		Element elementUse,
-		String text,
-		Element elementText,
-		String family,
-		Element elementFamily,
-		List<String> given,
-		List<Element> elementGiven,
-		List<String> prefix,
-		List<Element> elementPrefix,
-		List<String> suffix,
-		List<Element> elementSuffix,
-		Period period}) async {
-	var fhirDb = new DatabaseHelper();
-	HumanName newHumanName = new HumanName(
-			id: await fhirDb.newResourceId('HumanName'),
-			extension: extension,
-			use: use,
-			elementUse: elementUse,
-			text: text,
-			elementText: elementText,
-			family: family,
-			elementFamily: elementFamily,
-			given: given,
-			elementGiven: elementGiven,
-			prefix: prefix,
-			elementPrefix: elementPrefix,
-			suffix: suffix,
-			elementSuffix: elementSuffix,
-			period: period,
-);
-	int saved = await fhirDb.newResource(newHumanName);
-	return newHumanName;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   String use; // <code> enum: usual/official/temp/nickname/anonymous/old/maiden;
@@ -66,28 +59,27 @@ save () async {
   List<Element> elementSuffix;
   Period period;
 
-HumanName(
-  {this.id,
-    this.extension,
-    this.use,
-    this.elementUse,
-    this.text,
-    this.elementText,
-    this.family,
-    this.elementFamily,
-    this.given,
-    this.elementGiven,
-    this.prefix,
-    this.elementPrefix,
-    this.suffix,
-    this.elementSuffix,
-    this.period
-    });
+  HumanName(
+      {this.id,
+      this.extension,
+      this.use,
+      this.elementUse,
+      this.text,
+      this.elementText,
+      this.family,
+      this.elementFamily,
+      this.given,
+      this.elementGiven,
+      this.prefix,
+      this.elementPrefix,
+      this.suffix,
+      this.elementSuffix,
+      this.period});
 
-  factory HumanName.fromJson(Map<String, dynamic> json) => _$HumanNameFromJson(json);
+  factory HumanName.fromJson(Map<String, dynamic> json) =>
+      _$HumanNameFromJson(json);
   Map<String, dynamic> toJson() => _$HumanNameToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

@@ -14,85 +14,87 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class GuidanceResponse {
+  static Future<GuidanceResponse> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Identifier requestIdentifier,
+      List<Identifier> identifier,
+      String moduleUri,
+      Element elementModuleUri,
+      String moduleCanonical,
+      Element elementModuleCanonical,
+      CodeableConcept moduleCodeableConcept,
+      String status,
+      Element elementStatus,
+      Reference subject,
+      Reference encounter,
+      DateTime occurrenceDateTime,
+      Element elementOccurrenceDateTime,
+      Reference performer,
+      List<CodeableConcept> reasonCode,
+      List<Reference> reasonReference,
+      List<Annotation> note,
+      List<Reference> evaluationMessage,
+      Reference outputParameters,
+      Reference result,
+      List<DataRequirement> dataRequirement}) async {
+    var fhirDb = new DatabaseHelper();
+    GuidanceResponse newGuidanceResponse = new GuidanceResponse(
+      resourceType: 'GuidanceResponse',
+      id: await fhirDb.newResourceId('GuidanceResponse'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      requestIdentifier: requestIdentifier,
+      identifier: identifier,
+      moduleUri: moduleUri,
+      elementModuleUri: elementModuleUri,
+      moduleCanonical: moduleCanonical,
+      elementModuleCanonical: elementModuleCanonical,
+      moduleCodeableConcept: moduleCodeableConcept,
+      status: status,
+      elementStatus: elementStatus,
+      subject: subject,
+      encounter: encounter,
+      occurrenceDateTime: occurrenceDateTime,
+      elementOccurrenceDateTime: elementOccurrenceDateTime,
+      performer: performer,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      note: note,
+      evaluationMessage: evaluationMessage,
+      outputParameters: outputParameters,
+      result: result,
+      dataRequirement: dataRequirement,
+    );
+    newGuidanceResponse.meta.createdAt = DateTime.now();
+    newGuidanceResponse.meta.lastUpdated = newGuidanceResponse.meta.createdAt;
+    int saved = await fhirDb.newResource(newGuidanceResponse);
+    return newGuidanceResponse;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<GuidanceResponse> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Identifier requestIdentifier,
-		List<Identifier> identifier,
-		String moduleUri,
-		Element elementModuleUri,
-		String moduleCanonical,
-		Element elementModuleCanonical,
-		CodeableConcept moduleCodeableConcept,
-		String status,
-		Element elementStatus,
-		Reference subject,
-		Reference encounter,
-		DateTime occurrenceDateTime,
-		Element elementOccurrenceDateTime,
-		Reference performer,
-		List<CodeableConcept> reasonCode,
-		List<Reference> reasonReference,
-		List<Annotation> note,
-		List<Reference> evaluationMessage,
-		Reference outputParameters,
-		Reference result,
-		List<DataRequirement> dataRequirement}) async {
-	var fhirDb = new DatabaseHelper();
-	GuidanceResponse newGuidanceResponse = new GuidanceResponse(
-			resourceType: 'GuidanceResponse',
-			id: await fhirDb.newResourceId('GuidanceResponse'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			requestIdentifier: requestIdentifier,
-			identifier: identifier,
-			moduleUri: moduleUri,
-			elementModuleUri: elementModuleUri,
-			moduleCanonical: moduleCanonical,
-			elementModuleCanonical: elementModuleCanonical,
-			moduleCodeableConcept: moduleCodeableConcept,
-			status: status,
-			elementStatus: elementStatus,
-			subject: subject,
-			encounter: encounter,
-			occurrenceDateTime: occurrenceDateTime,
-			elementOccurrenceDateTime: elementOccurrenceDateTime,
-			performer: performer,
-			reasonCode: reasonCode,
-			reasonReference: reasonReference,
-			note: note,
-			evaluationMessage: evaluationMessage,
-			outputParameters: outputParameters,
-			result: result,
-			dataRequirement: dataRequirement,
-);
-	int saved = await fhirDb.newResource(newGuidanceResponse);
-	return newGuidanceResponse;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'GuidanceResponse';
+  String resourceType = 'GuidanceResponse';
   String id;
   Meta meta;
   String implicitRules;
@@ -110,7 +112,8 @@ save () async {
   String moduleCanonical; //  pattern: ^\S*$
   Element elementModuleCanonical;
   CodeableConcept moduleCodeableConcept;
-  String status; // <code> enum: success/data-requested/data-required/in-progress/failure/entered-in-error;
+  String
+      status; // <code> enum: success/data-requested/data-required/in-progress/failure/entered-in-error;
   Element elementStatus;
   Reference subject;
   Reference encounter;
@@ -125,45 +128,44 @@ save () async {
   Reference result;
   List<DataRequirement> dataRequirement;
 
-GuidanceResponse(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.requestIdentifier,
-    this.identifier,
-    this.moduleUri,
-    this.elementModuleUri,
-    this.moduleCanonical,
-    this.elementModuleCanonical,
-    this.moduleCodeableConcept,
-    this.status,
-    this.elementStatus,
-    this.subject,
-    this.encounter,
-    this.occurrenceDateTime,
-    this.elementOccurrenceDateTime,
-    this.performer,
-    this.reasonCode,
-    this.reasonReference,
-    this.note,
-    this.evaluationMessage,
-    this.outputParameters,
-    this.result,
-    this.dataRequirement
-    });
+  GuidanceResponse(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.requestIdentifier,
+      this.identifier,
+      this.moduleUri,
+      this.elementModuleUri,
+      this.moduleCanonical,
+      this.elementModuleCanonical,
+      this.moduleCodeableConcept,
+      this.status,
+      this.elementStatus,
+      this.subject,
+      this.encounter,
+      this.occurrenceDateTime,
+      this.elementOccurrenceDateTime,
+      this.performer,
+      this.reasonCode,
+      this.reasonReference,
+      this.note,
+      this.evaluationMessage,
+      this.outputParameters,
+      this.result,
+      this.dataRequirement});
 
-  factory GuidanceResponse.fromJson(Map<String, dynamic> json) => _$GuidanceResponseFromJson(json);
+  factory GuidanceResponse.fromJson(Map<String, dynamic> json) =>
+      _$GuidanceResponseFromJson(json);
   Map<String, dynamic> toJson() => _$GuidanceResponseToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -190,8 +192,9 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -6,38 +6,31 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Reference {
+  static Future<Reference> newInstance(
+      {String id,
+      List<Extension> extension,
+      String reference,
+      Element elementReference,
+      String type,
+      Element elementType,
+      Identifier identifier,
+      String display,
+      Element elementDisplay}) async {
+    var fhirDb = new DatabaseHelper();
+    Reference newReference = new Reference(
+      id: await fhirDb.newResourceId('Reference'),
+      extension: extension,
+      reference: reference,
+      elementReference: elementReference,
+      type: type,
+      elementType: elementType,
+      identifier: identifier,
+      display: display,
+      elementDisplay: elementDisplay,
+    );
+    return newReference;
+  }
 
-
-	static Future<Reference> newInstance({
-		String id,
-		List<Extension> extension,
-		String reference,
-		Element elementReference,
-		String type,
-		Element elementType,
-		Identifier identifier,
-		String display,
-		Element elementDisplay}) async {
-	var fhirDb = new DatabaseHelper();
-	Reference newReference = new Reference(
-			id: await fhirDb.newResourceId('Reference'),
-			extension: extension,
-			reference: reference,
-			elementReference: elementReference,
-			type: type,
-			elementType: elementType,
-			identifier: identifier,
-			display: display,
-			elementDisplay: elementDisplay,
-);
-	int saved = await fhirDb.newResource(newReference);
-	return newReference;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   String reference;
@@ -48,22 +41,21 @@ save () async {
   String display;
   Element elementDisplay;
 
-Reference(
-  {this.id,
-    this.extension,
-    this.reference,
-    this.elementReference,
-    this.type,
-    this.elementType,
-    this.identifier,
-    this.display,
-    this.elementDisplay
-    });
+  Reference(
+      {this.id,
+      this.extension,
+      this.reference,
+      this.elementReference,
+      this.type,
+      this.elementType,
+      this.identifier,
+      this.display,
+      this.elementDisplay});
 
-  factory Reference.fromJson(Map<String, dynamic> json) => _$ReferenceFromJson(json);
+  factory Reference.fromJson(Map<String, dynamic> json) =>
+      _$ReferenceFromJson(json);
   Map<String, dynamic> toJson() => _$ReferenceToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

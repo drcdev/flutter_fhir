@@ -5,32 +5,25 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Period {
+  static Future<Period> newInstance(
+      {String id,
+      List<Extension> extension,
+      DateTime start,
+      Element elementStart,
+      DateTime end,
+      Element elementEnd}) async {
+    var fhirDb = new DatabaseHelper();
+    Period newPeriod = new Period(
+      id: await fhirDb.newResourceId('Period'),
+      extension: extension,
+      start: start,
+      elementStart: elementStart,
+      end: end,
+      elementEnd: elementEnd,
+    );
+    return newPeriod;
+  }
 
-
-	static Future<Period> newInstance({
-		String id,
-		List<Extension> extension,
-		DateTime start,
-		Element elementStart,
-		DateTime end,
-		Element elementEnd}) async {
-	var fhirDb = new DatabaseHelper();
-	Period newPeriod = new Period(
-			id: await fhirDb.newResourceId('Period'),
-			extension: extension,
-			start: start,
-			elementStart: elementStart,
-			end: end,
-			elementEnd: elementEnd,
-);
-	int saved = await fhirDb.newResource(newPeriod);
-	return newPeriod;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   DateTime start;
@@ -38,19 +31,17 @@ save () async {
   DateTime end;
   Element elementEnd;
 
-Period(
-  {this.id,
-    this.extension,
-    this.start,
-    this.elementStart,
-    this.end,
-    this.elementEnd
-    });
+  Period(
+      {this.id,
+      this.extension,
+      this.start,
+      this.elementStart,
+      this.end,
+      this.elementEnd});
 
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);
   Map<String, dynamic> toJson() => _$PeriodToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

@@ -6,34 +6,27 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Contributor {
+  static Future<Contributor> newInstance(
+      {String id,
+      List<Extension> extension,
+      String type,
+      Element elementType,
+      String name,
+      Element elementName,
+      List<ContactDetail> contact}) async {
+    var fhirDb = new DatabaseHelper();
+    Contributor newContributor = new Contributor(
+      id: await fhirDb.newResourceId('Contributor'),
+      extension: extension,
+      type: type,
+      elementType: elementType,
+      name: name,
+      elementName: elementName,
+      contact: contact,
+    );
+    return newContributor;
+  }
 
-
-	static Future<Contributor> newInstance({
-		String id,
-		List<Extension> extension,
-		String type,
-		Element elementType,
-		String name,
-		Element elementName,
-		List<ContactDetail> contact}) async {
-	var fhirDb = new DatabaseHelper();
-	Contributor newContributor = new Contributor(
-			id: await fhirDb.newResourceId('Contributor'),
-			extension: extension,
-			type: type,
-			elementType: elementType,
-			name: name,
-			elementName: elementName,
-			contact: contact,
-);
-	int saved = await fhirDb.newResource(newContributor);
-	return newContributor;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   String type; // <code> enum: author/editor/reviewer/endorser;
@@ -42,20 +35,19 @@ save () async {
   Element elementName;
   List<ContactDetail> contact;
 
-Contributor(
-  {this.id,
-    this.extension,
-    this.type,
-    this.elementType,
-    this.name,
-    this.elementName,
-    this.contact
-    });
+  Contributor(
+      {this.id,
+      this.extension,
+      this.type,
+      this.elementType,
+      this.name,
+      this.elementName,
+      this.contact});
 
-  factory Contributor.fromJson(Map<String, dynamic> json) => _$ContributorFromJson(json);
+  factory Contributor.fromJson(Map<String, dynamic> json) =>
+      _$ContributorFromJson(json);
   Map<String, dynamic> toJson() => _$ContributorToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

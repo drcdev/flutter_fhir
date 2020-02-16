@@ -23,189 +23,192 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition {
+  static Future<ActivityDefinition> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      List<Identifier> identifier,
+      String version,
+      Element elementVersion,
+      String name,
+      Element elementName,
+      String title,
+      Element elementTitle,
+      String subtitle,
+      Element elementSubtitle,
+      String status,
+      Element elementStatus,
+      bool experimental,
+      Element elementExperimental,
+      CodeableConcept subjectCodeableConcept,
+      Reference subjectReference,
+      DateTime date,
+      Element elementDate,
+      String publisher,
+      Element elementPublisher,
+      List<ContactDetail> contact,
+      String description,
+      Element elementDescription,
+      List<UsageContext> useContext,
+      List<CodeableConcept> jurisdiction,
+      String purpose,
+      Element elementPurpose,
+      String usage,
+      Element elementUsage,
+      String copyright,
+      Element elementCopyright,
+      String approvalDate,
+      Element elementApprovalDate,
+      String lastReviewDate,
+      Element elementLastReviewDate,
+      Period effectivePeriod,
+      List<CodeableConcept> topic,
+      List<ContactDetail> author,
+      List<ContactDetail> editor,
+      List<ContactDetail> reviewer,
+      List<ContactDetail> endorser,
+      List<RelatedArtifact> relatedArtifact,
+      List<String> library,
+      String kind,
+      Element elementKind,
+      String profile,
+      CodeableConcept code,
+      String intent,
+      Element elementIntent,
+      String priority,
+      Element elementPriority,
+      bool doNotPerform,
+      Element elementDoNotPerform,
+      Timing timingTiming,
+      String timingDateTime,
+      Element elementTimingDateTime,
+      Age timingAge,
+      Period timingPeriod,
+      Range timingRange,
+      Duration timingDuration,
+      Reference location,
+      List<ActivityDefinition_Participant> participant,
+      Reference productReference,
+      CodeableConcept productCodeableConcept,
+      Quantity quantity,
+      List<Dosage> dosage,
+      List<CodeableConcept> bodySite,
+      List<Reference> specimenRequirement,
+      List<Reference> observationRequirement,
+      List<Reference> observationResultRequirement,
+      String transform,
+      List<ActivityDefinition_DynamicValue> dynamicValue}) async {
+    var fhirDb = new DatabaseHelper();
+    ActivityDefinition newActivityDefinition = new ActivityDefinition(
+      resourceType: 'ActivityDefinition',
+      id: await fhirDb.newResourceId('ActivityDefinition'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      subtitle: subtitle,
+      elementSubtitle: elementSubtitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      subjectCodeableConcept: subjectCodeableConcept,
+      subjectReference: subjectReference,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      usage: usage,
+      elementUsage: elementUsage,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      approvalDate: approvalDate,
+      elementApprovalDate: elementApprovalDate,
+      lastReviewDate: lastReviewDate,
+      elementLastReviewDate: elementLastReviewDate,
+      effectivePeriod: effectivePeriod,
+      topic: topic,
+      author: author,
+      editor: editor,
+      reviewer: reviewer,
+      endorser: endorser,
+      relatedArtifact: relatedArtifact,
+      library: library,
+      kind: kind,
+      elementKind: elementKind,
+      profile: profile,
+      code: code,
+      intent: intent,
+      elementIntent: elementIntent,
+      priority: priority,
+      elementPriority: elementPriority,
+      doNotPerform: doNotPerform,
+      elementDoNotPerform: elementDoNotPerform,
+      timingTiming: timingTiming,
+      timingDateTime: timingDateTime,
+      elementTimingDateTime: elementTimingDateTime,
+      timingAge: timingAge,
+      timingPeriod: timingPeriod,
+      timingRange: timingRange,
+      timingDuration: timingDuration,
+      location: location,
+      participant: participant,
+      productReference: productReference,
+      productCodeableConcept: productCodeableConcept,
+      quantity: quantity,
+      dosage: dosage,
+      bodySite: bodySite,
+      specimenRequirement: specimenRequirement,
+      observationRequirement: observationRequirement,
+      observationResultRequirement: observationResultRequirement,
+      transform: transform,
+      dynamicValue: dynamicValue,
+    );
+    newActivityDefinition.meta.createdAt = DateTime.now();
+    newActivityDefinition.meta.lastUpdated =
+        newActivityDefinition.meta.createdAt;
+    int saved = await fhirDb.newResource(newActivityDefinition);
+    return newActivityDefinition;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ActivityDefinition> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		List<Identifier> identifier,
-		String version,
-		Element elementVersion,
-		String name,
-		Element elementName,
-		String title,
-		Element elementTitle,
-		String subtitle,
-		Element elementSubtitle,
-		String status,
-		Element elementStatus,
-		bool experimental,
-		Element elementExperimental,
-		CodeableConcept subjectCodeableConcept,
-		Reference subjectReference,
-		DateTime date,
-		Element elementDate,
-		String publisher,
-		Element elementPublisher,
-		List<ContactDetail> contact,
-		String description,
-		Element elementDescription,
-		List<UsageContext> useContext,
-		List<CodeableConcept> jurisdiction,
-		String purpose,
-		Element elementPurpose,
-		String usage,
-		Element elementUsage,
-		String copyright,
-		Element elementCopyright,
-		String approvalDate,
-		Element elementApprovalDate,
-		String lastReviewDate,
-		Element elementLastReviewDate,
-		Period effectivePeriod,
-		List<CodeableConcept> topic,
-		List<ContactDetail> author,
-		List<ContactDetail> editor,
-		List<ContactDetail> reviewer,
-		List<ContactDetail> endorser,
-		List<RelatedArtifact> relatedArtifact,
-		List<String> library,
-		String kind,
-		Element elementKind,
-		String profile,
-		CodeableConcept code,
-		String intent,
-		Element elementIntent,
-		String priority,
-		Element elementPriority,
-		bool doNotPerform,
-		Element elementDoNotPerform,
-		Timing timingTiming,
-		String timingDateTime,
-		Element elementTimingDateTime,
-		Age timingAge,
-		Period timingPeriod,
-		Range timingRange,
-		Duration timingDuration,
-		Reference location,
-		List<ActivityDefinition_Participant> participant,
-		Reference productReference,
-		CodeableConcept productCodeableConcept,
-		Quantity quantity,
-		List<Dosage> dosage,
-		List<CodeableConcept> bodySite,
-		List<Reference> specimenRequirement,
-		List<Reference> observationRequirement,
-		List<Reference> observationResultRequirement,
-		String transform,
-		List<ActivityDefinition_DynamicValue> dynamicValue}) async {
-	var fhirDb = new DatabaseHelper();
-	ActivityDefinition newActivityDefinition = new ActivityDefinition(
-			resourceType: 'ActivityDefinition',
-			id: await fhirDb.newResourceId('ActivityDefinition'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			identifier: identifier,
-			version: version,
-			elementVersion: elementVersion,
-			name: name,
-			elementName: elementName,
-			title: title,
-			elementTitle: elementTitle,
-			subtitle: subtitle,
-			elementSubtitle: elementSubtitle,
-			status: status,
-			elementStatus: elementStatus,
-			experimental: experimental,
-			elementExperimental: elementExperimental,
-			subjectCodeableConcept: subjectCodeableConcept,
-			subjectReference: subjectReference,
-			date: date,
-			elementDate: elementDate,
-			publisher: publisher,
-			elementPublisher: elementPublisher,
-			contact: contact,
-			description: description,
-			elementDescription: elementDescription,
-			useContext: useContext,
-			jurisdiction: jurisdiction,
-			purpose: purpose,
-			elementPurpose: elementPurpose,
-			usage: usage,
-			elementUsage: elementUsage,
-			copyright: copyright,
-			elementCopyright: elementCopyright,
-			approvalDate: approvalDate,
-			elementApprovalDate: elementApprovalDate,
-			lastReviewDate: lastReviewDate,
-			elementLastReviewDate: elementLastReviewDate,
-			effectivePeriod: effectivePeriod,
-			topic: topic,
-			author: author,
-			editor: editor,
-			reviewer: reviewer,
-			endorser: endorser,
-			relatedArtifact: relatedArtifact,
-			library: library,
-			kind: kind,
-			elementKind: elementKind,
-			profile: profile,
-			code: code,
-			intent: intent,
-			elementIntent: elementIntent,
-			priority: priority,
-			elementPriority: elementPriority,
-			doNotPerform: doNotPerform,
-			elementDoNotPerform: elementDoNotPerform,
-			timingTiming: timingTiming,
-			timingDateTime: timingDateTime,
-			elementTimingDateTime: elementTimingDateTime,
-			timingAge: timingAge,
-			timingPeriod: timingPeriod,
-			timingRange: timingRange,
-			timingDuration: timingDuration,
-			location: location,
-			participant: participant,
-			productReference: productReference,
-			productCodeableConcept: productCodeableConcept,
-			quantity: quantity,
-			dosage: dosage,
-			bodySite: bodySite,
-			specimenRequirement: specimenRequirement,
-			observationRequirement: observationRequirement,
-			observationResultRequirement: observationResultRequirement,
-			transform: transform,
-			dynamicValue: dynamicValue,
-);
-	int saved = await fhirDb.newResource(newActivityDefinition);
-	return newActivityDefinition;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'ActivityDefinition';
+  String resourceType = 'ActivityDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -271,7 +274,8 @@ save () async {
   bool doNotPerform;
   Element elementDoNotPerform;
   Timing timingTiming;
-  String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementTimingDateTime;
   Age timingAge;
   Period timingPeriod;
@@ -290,119 +294,119 @@ save () async {
   String transform;
   List<ActivityDefinition_DynamicValue> dynamicValue;
 
-ActivityDefinition(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.subtitle,
-    this.elementSubtitle,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.subjectCodeableConcept,
-    this.subjectReference,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.usage,
-    this.elementUsage,
-    this.copyright,
-    this.elementCopyright,
-    this.approvalDate,
-    this.elementApprovalDate,
-    this.lastReviewDate,
-    this.elementLastReviewDate,
-    this.effectivePeriod,
-    this.topic,
-    this.author,
-    this.editor,
-    this.reviewer,
-    this.endorser,
-    this.relatedArtifact,
-    this.library,
-    this.kind,
-    this.elementKind,
-    this.profile,
-    this.code,
-    this.intent,
-    this.elementIntent,
-    this.priority,
-    this.elementPriority,
-    this.doNotPerform,
-    this.elementDoNotPerform,
-    this.timingTiming,
-    this.timingDateTime,
-    this.elementTimingDateTime,
-    this.timingAge,
-    this.timingPeriod,
-    this.timingRange,
-    this.timingDuration,
-    this.location,
-    this.participant,
-    this.productReference,
-    this.productCodeableConcept,
-    this.quantity,
-    this.dosage,
-    this.bodySite,
-    this.specimenRequirement,
-    this.observationRequirement,
-    this.observationResultRequirement,
-    this.transform,
-    this.dynamicValue
-    });
+  ActivityDefinition(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.identifier,
+      this.version,
+      this.elementVersion,
+      this.name,
+      this.elementName,
+      this.title,
+      this.elementTitle,
+      this.subtitle,
+      this.elementSubtitle,
+      this.status,
+      this.elementStatus,
+      this.experimental,
+      this.elementExperimental,
+      this.subjectCodeableConcept,
+      this.subjectReference,
+      this.date,
+      this.elementDate,
+      this.publisher,
+      this.elementPublisher,
+      this.contact,
+      this.description,
+      this.elementDescription,
+      this.useContext,
+      this.jurisdiction,
+      this.purpose,
+      this.elementPurpose,
+      this.usage,
+      this.elementUsage,
+      this.copyright,
+      this.elementCopyright,
+      this.approvalDate,
+      this.elementApprovalDate,
+      this.lastReviewDate,
+      this.elementLastReviewDate,
+      this.effectivePeriod,
+      this.topic,
+      this.author,
+      this.editor,
+      this.reviewer,
+      this.endorser,
+      this.relatedArtifact,
+      this.library,
+      this.kind,
+      this.elementKind,
+      this.profile,
+      this.code,
+      this.intent,
+      this.elementIntent,
+      this.priority,
+      this.elementPriority,
+      this.doNotPerform,
+      this.elementDoNotPerform,
+      this.timingTiming,
+      this.timingDateTime,
+      this.elementTimingDateTime,
+      this.timingAge,
+      this.timingPeriod,
+      this.timingRange,
+      this.timingDuration,
+      this.location,
+      this.participant,
+      this.productReference,
+      this.productCodeableConcept,
+      this.quantity,
+      this.dosage,
+      this.bodySite,
+      this.specimenRequirement,
+      this.observationRequirement,
+      this.observationResultRequirement,
+      this.transform,
+      this.dynamicValue});
 
-  factory ActivityDefinition.fromJson(Map<String, dynamic> json) => _$ActivityDefinitionFromJson(json);
+  factory ActivityDefinition.fromJson(Map<String, dynamic> json) =>
+      _$ActivityDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$ActivityDefinitionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition_Participant {
+  static Future<ActivityDefinition_Participant> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String type,
+      Element elementType,
+      CodeableConcept role}) async {
+    var fhirDb = new DatabaseHelper();
+    ActivityDefinition_Participant newActivityDefinition_Participant =
+        new ActivityDefinition_Participant(
+      id: await fhirDb.newResourceId('ActivityDefinition_Participant'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      role: role,
+    );
+    return newActivityDefinition_Participant;
+  }
 
-
-	static Future<ActivityDefinition_Participant> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String type,
-		Element elementType,
-		CodeableConcept role}) async {
-	var fhirDb = new DatabaseHelper();
-	ActivityDefinition_Participant newActivityDefinition_Participant = new ActivityDefinition_Participant(
-			id: await fhirDb.newResourceId('ActivityDefinition_Participant'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			elementType: elementType,
-			role: role,
-);
-	return newActivityDefinition_Participant;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -410,41 +414,41 @@ class ActivityDefinition_Participant {
   Element elementType;
   CodeableConcept role;
 
-ActivityDefinition_Participant(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.elementType,
-    this.role
-    });
+  ActivityDefinition_Participant(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.elementType,
+      this.role});
 
-  factory ActivityDefinition_Participant.fromJson(Map<String, dynamic> json) => _$ActivityDefinition_ParticipantFromJson(json);
+  factory ActivityDefinition_Participant.fromJson(Map<String, dynamic> json) =>
+      _$ActivityDefinition_ParticipantFromJson(json);
   Map<String, dynamic> toJson() => _$ActivityDefinition_ParticipantToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition_DynamicValue {
+  static Future<ActivityDefinition_DynamicValue> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String path,
+      Element elementPath,
+      Expression expression}) async {
+    var fhirDb = new DatabaseHelper();
+    ActivityDefinition_DynamicValue newActivityDefinition_DynamicValue =
+        new ActivityDefinition_DynamicValue(
+      id: await fhirDb.newResourceId('ActivityDefinition_DynamicValue'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      path: path,
+      elementPath: elementPath,
+      expression: expression,
+    );
+    return newActivityDefinition_DynamicValue;
+  }
 
-
-	static Future<ActivityDefinition_DynamicValue> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String path,
-		Element elementPath,
-		Expression expression}) async {
-	var fhirDb = new DatabaseHelper();
-	ActivityDefinition_DynamicValue newActivityDefinition_DynamicValue = new ActivityDefinition_DynamicValue(
-			id: await fhirDb.newResourceId('ActivityDefinition_DynamicValue'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			path: path,
-			elementPath: elementPath,
-			expression: expression,
-);
-	return newActivityDefinition_DynamicValue;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -452,19 +456,19 @@ class ActivityDefinition_DynamicValue {
   Element elementPath;
   Expression expression;
 
-ActivityDefinition_DynamicValue(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.path,
-    this.elementPath,
-    @required this.expression
-    });
+  ActivityDefinition_DynamicValue(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.path,
+      this.elementPath,
+      @required this.expression});
 
-  factory ActivityDefinition_DynamicValue.fromJson(Map<String, dynamic> json) => _$ActivityDefinition_DynamicValueFromJson(json);
-  Map<String, dynamic> toJson() => _$ActivityDefinition_DynamicValueToJson(this);
+  factory ActivityDefinition_DynamicValue.fromJson(Map<String, dynamic> json) =>
+      _$ActivityDefinition_DynamicValueFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ActivityDefinition_DynamicValueToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -491,8 +495,9 @@ ActivityDefinition _$ActivityDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

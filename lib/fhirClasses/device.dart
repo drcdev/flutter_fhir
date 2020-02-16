@@ -15,115 +15,117 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Device {
+  static Future<Device> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      Reference definition,
+      List<Device_UdiCarrier> udiCarrier,
+      String status,
+      Element elementStatus,
+      List<CodeableConcept> statusReason,
+      String distinctIdentifier,
+      Element elementDistinctIdentifier,
+      String manufacturer,
+      Element elementManufacturer,
+      DateTime manufactureDate,
+      Element elementManufactureDate,
+      DateTime expirationDate,
+      Element elementExpirationDate,
+      String lotNumber,
+      Element elementLotNumber,
+      String serialNumber,
+      Element elementSerialNumber,
+      List<Device_DeviceName> deviceName,
+      String modelNumber,
+      Element elementModelNumber,
+      String partNumber,
+      Element elementPartNumber,
+      CodeableConcept type,
+      List<Device_Specialization> specialization,
+      List<Device_Version> version,
+      List<Device_Property> property,
+      Reference patient,
+      Reference owner,
+      List<ContactPoint> contact,
+      Reference location,
+      String url,
+      Element elementUrl,
+      List<Annotation> note,
+      List<CodeableConcept> safety,
+      Reference parent}) async {
+    var fhirDb = new DatabaseHelper();
+    Device newDevice = new Device(
+      resourceType: 'Device',
+      id: await fhirDb.newResourceId('Device'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      definition: definition,
+      udiCarrier: udiCarrier,
+      status: status,
+      elementStatus: elementStatus,
+      statusReason: statusReason,
+      distinctIdentifier: distinctIdentifier,
+      elementDistinctIdentifier: elementDistinctIdentifier,
+      manufacturer: manufacturer,
+      elementManufacturer: elementManufacturer,
+      manufactureDate: manufactureDate,
+      elementManufactureDate: elementManufactureDate,
+      expirationDate: expirationDate,
+      elementExpirationDate: elementExpirationDate,
+      lotNumber: lotNumber,
+      elementLotNumber: elementLotNumber,
+      serialNumber: serialNumber,
+      elementSerialNumber: elementSerialNumber,
+      deviceName: deviceName,
+      modelNumber: modelNumber,
+      elementModelNumber: elementModelNumber,
+      partNumber: partNumber,
+      elementPartNumber: elementPartNumber,
+      type: type,
+      specialization: specialization,
+      version: version,
+      property: property,
+      patient: patient,
+      owner: owner,
+      contact: contact,
+      location: location,
+      url: url,
+      elementUrl: elementUrl,
+      note: note,
+      safety: safety,
+      parent: parent,
+    );
+    newDevice.meta.createdAt = DateTime.now();
+    newDevice.meta.lastUpdated = newDevice.meta.createdAt;
+    int saved = await fhirDb.newResource(newDevice);
+    return newDevice;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Device> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		Reference definition,
-		List<Device_UdiCarrier> udiCarrier,
-		String status,
-		Element elementStatus,
-		List<CodeableConcept> statusReason,
-		String distinctIdentifier,
-		Element elementDistinctIdentifier,
-		String manufacturer,
-		Element elementManufacturer,
-		DateTime manufactureDate,
-		Element elementManufactureDate,
-		DateTime expirationDate,
-		Element elementExpirationDate,
-		String lotNumber,
-		Element elementLotNumber,
-		String serialNumber,
-		Element elementSerialNumber,
-		List<Device_DeviceName> deviceName,
-		String modelNumber,
-		Element elementModelNumber,
-		String partNumber,
-		Element elementPartNumber,
-		CodeableConcept type,
-		List<Device_Specialization> specialization,
-		List<Device_Version> version,
-		List<Device_Property> property,
-		Reference patient,
-		Reference owner,
-		List<ContactPoint> contact,
-		Reference location,
-		String url,
-		Element elementUrl,
-		List<Annotation> note,
-		List<CodeableConcept> safety,
-		Reference parent}) async {
-	var fhirDb = new DatabaseHelper();
-	Device newDevice = new Device(
-			resourceType: 'Device',
-			id: await fhirDb.newResourceId('Device'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			definition: definition,
-			udiCarrier: udiCarrier,
-			status: status,
-			elementStatus: elementStatus,
-			statusReason: statusReason,
-			distinctIdentifier: distinctIdentifier,
-			elementDistinctIdentifier: elementDistinctIdentifier,
-			manufacturer: manufacturer,
-			elementManufacturer: elementManufacturer,
-			manufactureDate: manufactureDate,
-			elementManufactureDate: elementManufactureDate,
-			expirationDate: expirationDate,
-			elementExpirationDate: elementExpirationDate,
-			lotNumber: lotNumber,
-			elementLotNumber: elementLotNumber,
-			serialNumber: serialNumber,
-			elementSerialNumber: elementSerialNumber,
-			deviceName: deviceName,
-			modelNumber: modelNumber,
-			elementModelNumber: elementModelNumber,
-			partNumber: partNumber,
-			elementPartNumber: elementPartNumber,
-			type: type,
-			specialization: specialization,
-			version: version,
-			property: property,
-			patient: patient,
-			owner: owner,
-			contact: contact,
-			location: location,
-			url: url,
-			elementUrl: elementUrl,
-			note: note,
-			safety: safety,
-			parent: parent,
-);
-	int saved = await fhirDb.newResource(newDevice);
-	return newDevice;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'Device';
+  String resourceType = 'Device';
   String id;
   Meta meta;
   String implicitRules;
@@ -171,55 +173,54 @@ save () async {
   List<CodeableConcept> safety;
   Reference parent;
 
-Device(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.definition,
-    this.udiCarrier,
-    this.status,
-    this.elementStatus,
-    this.statusReason,
-    this.distinctIdentifier,
-    this.elementDistinctIdentifier,
-    this.manufacturer,
-    this.elementManufacturer,
-    this.manufactureDate,
-    this.elementManufactureDate,
-    this.expirationDate,
-    this.elementExpirationDate,
-    this.lotNumber,
-    this.elementLotNumber,
-    this.serialNumber,
-    this.elementSerialNumber,
-    this.deviceName,
-    this.modelNumber,
-    this.elementModelNumber,
-    this.partNumber,
-    this.elementPartNumber,
-    this.type,
-    this.specialization,
-    this.version,
-    this.property,
-    this.patient,
-    this.owner,
-    this.contact,
-    this.location,
-    this.url,
-    this.elementUrl,
-    this.note,
-    this.safety,
-    this.parent
-    });
+  Device(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.definition,
+      this.udiCarrier,
+      this.status,
+      this.elementStatus,
+      this.statusReason,
+      this.distinctIdentifier,
+      this.elementDistinctIdentifier,
+      this.manufacturer,
+      this.elementManufacturer,
+      this.manufactureDate,
+      this.elementManufactureDate,
+      this.expirationDate,
+      this.elementExpirationDate,
+      this.lotNumber,
+      this.elementLotNumber,
+      this.serialNumber,
+      this.elementSerialNumber,
+      this.deviceName,
+      this.modelNumber,
+      this.elementModelNumber,
+      this.partNumber,
+      this.elementPartNumber,
+      this.type,
+      this.specialization,
+      this.version,
+      this.property,
+      this.patient,
+      this.owner,
+      this.contact,
+      this.location,
+      this.url,
+      this.elementUrl,
+      this.note,
+      this.safety,
+      this.parent});
 
   factory Device.fromJson(Map<String, dynamic> json) => _$DeviceFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceToJson(this);
@@ -227,44 +228,43 @@ Device(
 
 @JsonSerializable(explicitToJson: true)
 class Device_UdiCarrier {
+  static Future<Device_UdiCarrier> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String deviceIdentifier,
+      Element elementDeviceIdentifier,
+      String issuer,
+      Element elementIssuer,
+      String jurisdiction,
+      Element elementJurisdiction,
+      String carrierAIDC,
+      Element elementCarrierAIDC,
+      String carrierHRF,
+      Element elementCarrierHRF,
+      String entryType,
+      Element elementEntryType}) async {
+    var fhirDb = new DatabaseHelper();
+    Device_UdiCarrier newDevice_UdiCarrier = new Device_UdiCarrier(
+      id: await fhirDb.newResourceId('Device_UdiCarrier'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      deviceIdentifier: deviceIdentifier,
+      elementDeviceIdentifier: elementDeviceIdentifier,
+      issuer: issuer,
+      elementIssuer: elementIssuer,
+      jurisdiction: jurisdiction,
+      elementJurisdiction: elementJurisdiction,
+      carrierAIDC: carrierAIDC,
+      elementCarrierAIDC: elementCarrierAIDC,
+      carrierHRF: carrierHRF,
+      elementCarrierHRF: elementCarrierHRF,
+      entryType: entryType,
+      elementEntryType: elementEntryType,
+    );
+    return newDevice_UdiCarrier;
+  }
 
-
-	static Future<Device_UdiCarrier> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String deviceIdentifier,
-		Element elementDeviceIdentifier,
-		String issuer,
-		Element elementIssuer,
-		String jurisdiction,
-		Element elementJurisdiction,
-		String carrierAIDC,
-		Element elementCarrierAIDC,
-		String carrierHRF,
-		Element elementCarrierHRF,
-		String entryType,
-		Element elementEntryType}) async {
-	var fhirDb = new DatabaseHelper();
-	Device_UdiCarrier newDevice_UdiCarrier = new Device_UdiCarrier(
-			id: await fhirDb.newResourceId('Device_UdiCarrier'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			deviceIdentifier: deviceIdentifier,
-			elementDeviceIdentifier: elementDeviceIdentifier,
-			issuer: issuer,
-			elementIssuer: elementIssuer,
-			jurisdiction: jurisdiction,
-			elementJurisdiction: elementJurisdiction,
-			carrierAIDC: carrierAIDC,
-			elementCarrierAIDC: elementCarrierAIDC,
-			carrierHRF: carrierHRF,
-			elementCarrierHRF: elementCarrierHRF,
-			entryType: entryType,
-			elementEntryType: elementEntryType,
-);
-	return newDevice_UdiCarrier;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -278,99 +278,99 @@ class Device_UdiCarrier {
   Element elementCarrierAIDC;
   String carrierHRF;
   Element elementCarrierHRF;
-  String entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
+  String
+      entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
   Element elementEntryType;
 
-Device_UdiCarrier(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.deviceIdentifier,
-    this.elementDeviceIdentifier,
-    this.issuer,
-    this.elementIssuer,
-    this.jurisdiction,
-    this.elementJurisdiction,
-    this.carrierAIDC,
-    this.elementCarrierAIDC,
-    this.carrierHRF,
-    this.elementCarrierHRF,
-    this.entryType,
-    this.elementEntryType
-    });
+  Device_UdiCarrier(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.deviceIdentifier,
+      this.elementDeviceIdentifier,
+      this.issuer,
+      this.elementIssuer,
+      this.jurisdiction,
+      this.elementJurisdiction,
+      this.carrierAIDC,
+      this.elementCarrierAIDC,
+      this.carrierHRF,
+      this.elementCarrierHRF,
+      this.entryType,
+      this.elementEntryType});
 
-  factory Device_UdiCarrier.fromJson(Map<String, dynamic> json) => _$Device_UdiCarrierFromJson(json);
+  factory Device_UdiCarrier.fromJson(Map<String, dynamic> json) =>
+      _$Device_UdiCarrierFromJson(json);
   Map<String, dynamic> toJson() => _$Device_UdiCarrierToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Device_DeviceName {
+  static Future<Device_DeviceName> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String name,
+      Element elementName,
+      String type,
+      Element elementType}) async {
+    var fhirDb = new DatabaseHelper();
+    Device_DeviceName newDevice_DeviceName = new Device_DeviceName(
+      id: await fhirDb.newResourceId('Device_DeviceName'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      type: type,
+      elementType: elementType,
+    );
+    return newDevice_DeviceName;
+  }
 
-
-	static Future<Device_DeviceName> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String name,
-		Element elementName,
-		String type,
-		Element elementType}) async {
-	var fhirDb = new DatabaseHelper();
-	Device_DeviceName newDevice_DeviceName = new Device_DeviceName(
-			id: await fhirDb.newResourceId('Device_DeviceName'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			name: name,
-			elementName: elementName,
-			type: type,
-			elementType: elementType,
-);
-	return newDevice_DeviceName;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   String name;
   Element elementName;
-  String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
+  String
+      type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
   Element elementType;
 
-Device_DeviceName(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.type,
-    this.elementType
-    });
+  Device_DeviceName(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.name,
+      this.elementName,
+      this.type,
+      this.elementType});
 
-  factory Device_DeviceName.fromJson(Map<String, dynamic> json) => _$Device_DeviceNameFromJson(json);
+  factory Device_DeviceName.fromJson(Map<String, dynamic> json) =>
+      _$Device_DeviceNameFromJson(json);
   Map<String, dynamic> toJson() => _$Device_DeviceNameToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Device_Specialization {
+  static Future<Device_Specialization> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept systemType,
+      String version,
+      Element elementVersion}) async {
+    var fhirDb = new DatabaseHelper();
+    Device_Specialization newDevice_Specialization = new Device_Specialization(
+      id: await fhirDb.newResourceId('Device_Specialization'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      systemType: systemType,
+      version: version,
+      elementVersion: elementVersion,
+    );
+    return newDevice_Specialization;
+  }
 
-
-	static Future<Device_Specialization> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept systemType,
-		String version,
-		Element elementVersion}) async {
-	var fhirDb = new DatabaseHelper();
-	Device_Specialization newDevice_Specialization = new Device_Specialization(
-			id: await fhirDb.newResourceId('Device_Specialization'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			systemType: systemType,
-			version: version,
-			elementVersion: elementVersion,
-);
-	return newDevice_Specialization;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -378,43 +378,42 @@ class Device_Specialization {
   String version;
   Element elementVersion;
 
-Device_Specialization(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.systemType,
-    this.version,
-    this.elementVersion
-    });
+  Device_Specialization(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.systemType,
+      this.version,
+      this.elementVersion});
 
-  factory Device_Specialization.fromJson(Map<String, dynamic> json) => _$Device_SpecializationFromJson(json);
+  factory Device_Specialization.fromJson(Map<String, dynamic> json) =>
+      _$Device_SpecializationFromJson(json);
   Map<String, dynamic> toJson() => _$Device_SpecializationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Device_Version {
+  static Future<Device_Version> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept type,
+      Identifier component,
+      String value,
+      Element elementValue}) async {
+    var fhirDb = new DatabaseHelper();
+    Device_Version newDevice_Version = new Device_Version(
+      id: await fhirDb.newResourceId('Device_Version'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      component: component,
+      value: value,
+      elementValue: elementValue,
+    );
+    return newDevice_Version;
+  }
 
-
-	static Future<Device_Version> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept type,
-		Identifier component,
-		String value,
-		Element elementValue}) async {
-	var fhirDb = new DatabaseHelper();
-	Device_Version newDevice_Version = new Device_Version(
-			id: await fhirDb.newResourceId('Device_Version'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			component: component,
-			value: value,
-			elementValue: elementValue,
-);
-	return newDevice_Version;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -423,42 +422,41 @@ class Device_Version {
   String value;
   Element elementValue;
 
-Device_Version(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.component,
-    this.value,
-    this.elementValue
-    });
+  Device_Version(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.component,
+      this.value,
+      this.elementValue});
 
-  factory Device_Version.fromJson(Map<String, dynamic> json) => _$Device_VersionFromJson(json);
+  factory Device_Version.fromJson(Map<String, dynamic> json) =>
+      _$Device_VersionFromJson(json);
   Map<String, dynamic> toJson() => _$Device_VersionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Device_Property {
+  static Future<Device_Property> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept type,
+      List<Quantity> valueQuantity,
+      List<CodeableConcept> valueCode}) async {
+    var fhirDb = new DatabaseHelper();
+    Device_Property newDevice_Property = new Device_Property(
+      id: await fhirDb.newResourceId('Device_Property'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      valueQuantity: valueQuantity,
+      valueCode: valueCode,
+    );
+    return newDevice_Property;
+  }
 
-
-	static Future<Device_Property> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept type,
-		List<Quantity> valueQuantity,
-		List<CodeableConcept> valueCode}) async {
-	var fhirDb = new DatabaseHelper();
-	Device_Property newDevice_Property = new Device_Property(
-			id: await fhirDb.newResourceId('Device_Property'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			valueQuantity: valueQuantity,
-			valueCode: valueCode,
-);
-	return newDevice_Property;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -466,19 +464,18 @@ class Device_Property {
   List<Quantity> valueQuantity;
   List<CodeableConcept> valueCode;
 
-Device_Property(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.type,
-    this.valueQuantity,
-    this.valueCode
-    });
+  Device_Property(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.type,
+      this.valueQuantity,
+      this.valueCode});
 
-  factory Device_Property.fromJson(Map<String, dynamic> json) => _$Device_PropertyFromJson(json);
+  factory Device_Property.fromJson(Map<String, dynamic> json) =>
+      _$Device_PropertyFromJson(json);
   Map<String, dynamic> toJson() => _$Device_PropertyToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -505,8 +502,9 @@ Device _$DeviceFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -13,81 +13,83 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Composition {
+  static Future<Composition> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Identifier identifier,
+      String status,
+      Element elementStatus,
+      CodeableConcept type,
+      List<CodeableConcept> category,
+      Reference subject,
+      Reference encounter,
+      DateTime date,
+      Element elementDate,
+      List<Reference> author,
+      String title,
+      Element elementTitle,
+      String confidentiality,
+      Element elementConfidentiality,
+      List<Composition_Attester> attester,
+      Reference custodian,
+      List<Composition_RelatesTo> relatesTo,
+      List<Composition_Event> event,
+      List<Composition_Section> section}) async {
+    var fhirDb = new DatabaseHelper();
+    Composition newComposition = new Composition(
+      resourceType: 'Composition',
+      id: await fhirDb.newResourceId('Composition'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      type: type,
+      category: category,
+      subject: subject,
+      encounter: encounter,
+      date: date,
+      elementDate: elementDate,
+      author: author,
+      title: title,
+      elementTitle: elementTitle,
+      confidentiality: confidentiality,
+      elementConfidentiality: elementConfidentiality,
+      attester: attester,
+      custodian: custodian,
+      relatesTo: relatesTo,
+      event: event,
+      section: section,
+    );
+    newComposition.meta.createdAt = DateTime.now();
+    newComposition.meta.lastUpdated = newComposition.meta.createdAt;
+    int saved = await fhirDb.newResource(newComposition);
+    return newComposition;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Composition> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Identifier identifier,
-		String status,
-		Element elementStatus,
-		CodeableConcept type,
-		List<CodeableConcept> category,
-		Reference subject,
-		Reference encounter,
-		DateTime date,
-		Element elementDate,
-		List<Reference> author,
-		String title,
-		Element elementTitle,
-		String confidentiality,
-		Element elementConfidentiality,
-		List<Composition_Attester> attester,
-		Reference custodian,
-		List<Composition_RelatesTo> relatesTo,
-		List<Composition_Event> event,
-		List<Composition_Section> section}) async {
-	var fhirDb = new DatabaseHelper();
-	Composition newComposition = new Composition(
-			resourceType: 'Composition',
-			id: await fhirDb.newResourceId('Composition'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			status: status,
-			elementStatus: elementStatus,
-			type: type,
-			category: category,
-			subject: subject,
-			encounter: encounter,
-			date: date,
-			elementDate: elementDate,
-			author: author,
-			title: title,
-			elementTitle: elementTitle,
-			confidentiality: confidentiality,
-			elementConfidentiality: elementConfidentiality,
-			attester: attester,
-			custodian: custodian,
-			relatesTo: relatesTo,
-			event: event,
-			section: section,
-);
-	int saved = await fhirDb.newResource(newComposition);
-	return newComposition;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'Composition';
+  String resourceType = 'Composition';
   String id;
   Meta meta;
   String implicitRules;
@@ -118,69 +120,68 @@ save () async {
   List<Composition_Event> event;
   List<Composition_Section> section;
 
-Composition(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    @required this.type,
-    this.category,
-    this.subject,
-    this.encounter,
-    this.date,
-    this.elementDate,
-    @required this.author,
-    this.title,
-    this.elementTitle,
-    this.confidentiality,
-    this.elementConfidentiality,
-    this.attester,
-    this.custodian,
-    this.relatesTo,
-    this.event,
-    this.section
-    });
+  Composition(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.status,
+      this.elementStatus,
+      @required this.type,
+      this.category,
+      this.subject,
+      this.encounter,
+      this.date,
+      this.elementDate,
+      @required this.author,
+      this.title,
+      this.elementTitle,
+      this.confidentiality,
+      this.elementConfidentiality,
+      this.attester,
+      this.custodian,
+      this.relatesTo,
+      this.event,
+      this.section});
 
-  factory Composition.fromJson(Map<String, dynamic> json) => _$CompositionFromJson(json);
+  factory Composition.fromJson(Map<String, dynamic> json) =>
+      _$CompositionFromJson(json);
   Map<String, dynamic> toJson() => _$CompositionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Composition_Attester {
+  static Future<Composition_Attester> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String mode,
+      Element elementMode,
+      DateTime time,
+      Element elementTime,
+      Reference party}) async {
+    var fhirDb = new DatabaseHelper();
+    Composition_Attester newComposition_Attester = new Composition_Attester(
+      id: await fhirDb.newResourceId('Composition_Attester'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      mode: mode,
+      elementMode: elementMode,
+      time: time,
+      elementTime: elementTime,
+      party: party,
+    );
+    return newComposition_Attester;
+  }
 
-
-	static Future<Composition_Attester> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String mode,
-		Element elementMode,
-		DateTime time,
-		Element elementTime,
-		Reference party}) async {
-	var fhirDb = new DatabaseHelper();
-	Composition_Attester newComposition_Attester = new Composition_Attester(
-			id: await fhirDb.newResourceId('Composition_Attester'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			mode: mode,
-			elementMode: elementMode,
-			time: time,
-			elementTime: elementTime,
-			party: party,
-);
-	return newComposition_Attester;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -190,45 +191,44 @@ class Composition_Attester {
   Element elementTime;
   Reference party;
 
-Composition_Attester(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.mode,
-    this.elementMode,
-    this.time,
-    this.elementTime,
-    this.party
-    });
+  Composition_Attester(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.mode,
+      this.elementMode,
+      this.time,
+      this.elementTime,
+      this.party});
 
-  factory Composition_Attester.fromJson(Map<String, dynamic> json) => _$Composition_AttesterFromJson(json);
+  factory Composition_Attester.fromJson(Map<String, dynamic> json) =>
+      _$Composition_AttesterFromJson(json);
   Map<String, dynamic> toJson() => _$Composition_AttesterToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Composition_RelatesTo {
+  static Future<Composition_RelatesTo> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String code,
+      Element elementCode,
+      Identifier targetIdentifier,
+      Reference targetReference}) async {
+    var fhirDb = new DatabaseHelper();
+    Composition_RelatesTo newComposition_RelatesTo = new Composition_RelatesTo(
+      id: await fhirDb.newResourceId('Composition_RelatesTo'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      targetIdentifier: targetIdentifier,
+      targetReference: targetReference,
+    );
+    return newComposition_RelatesTo;
+  }
 
-
-	static Future<Composition_RelatesTo> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String code,
-		Element elementCode,
-		Identifier targetIdentifier,
-		Reference targetReference}) async {
-	var fhirDb = new DatabaseHelper();
-	Composition_RelatesTo newComposition_RelatesTo = new Composition_RelatesTo(
-			id: await fhirDb.newResourceId('Composition_RelatesTo'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			elementCode: elementCode,
-			targetIdentifier: targetIdentifier,
-			targetReference: targetReference,
-);
-	return newComposition_RelatesTo;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -237,42 +237,41 @@ class Composition_RelatesTo {
   Identifier targetIdentifier;
   Reference targetReference;
 
-Composition_RelatesTo(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.elementCode,
-    this.targetIdentifier,
-    this.targetReference
-    });
+  Composition_RelatesTo(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.elementCode,
+      this.targetIdentifier,
+      this.targetReference});
 
-  factory Composition_RelatesTo.fromJson(Map<String, dynamic> json) => _$Composition_RelatesToFromJson(json);
+  factory Composition_RelatesTo.fromJson(Map<String, dynamic> json) =>
+      _$Composition_RelatesToFromJson(json);
   Map<String, dynamic> toJson() => _$Composition_RelatesToToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Composition_Event {
+  static Future<Composition_Event> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<CodeableConcept> code,
+      Period period,
+      List<Reference> detail}) async {
+    var fhirDb = new DatabaseHelper();
+    Composition_Event newComposition_Event = new Composition_Event(
+      id: await fhirDb.newResourceId('Composition_Event'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      period: period,
+      detail: detail,
+    );
+    return newComposition_Event;
+  }
 
-
-	static Future<Composition_Event> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<CodeableConcept> code,
-		Period period,
-		List<Reference> detail}) async {
-	var fhirDb = new DatabaseHelper();
-	Composition_Event newComposition_Event = new Composition_Event(
-			id: await fhirDb.newResourceId('Composition_Event'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			period: period,
-			detail: detail,
-);
-	return newComposition_Event;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -280,59 +279,58 @@ class Composition_Event {
   Period period;
   List<Reference> detail;
 
-Composition_Event(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.period,
-    this.detail
-    });
+  Composition_Event(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.period,
+      this.detail});
 
-  factory Composition_Event.fromJson(Map<String, dynamic> json) => _$Composition_EventFromJson(json);
+  factory Composition_Event.fromJson(Map<String, dynamic> json) =>
+      _$Composition_EventFromJson(json);
   Map<String, dynamic> toJson() => _$Composition_EventToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Composition_Section {
+  static Future<Composition_Section> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String title,
+      Element elementTitle,
+      CodeableConcept code,
+      List<Reference> author,
+      Reference focus,
+      Narrative text,
+      String mode,
+      Element elementMode,
+      CodeableConcept orderedBy,
+      List<Reference> entry,
+      CodeableConcept emptyReason,
+      List<Composition_Section> section}) async {
+    var fhirDb = new DatabaseHelper();
+    Composition_Section newComposition_Section = new Composition_Section(
+      id: await fhirDb.newResourceId('Composition_Section'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      title: title,
+      elementTitle: elementTitle,
+      code: code,
+      author: author,
+      focus: focus,
+      text: text,
+      mode: mode,
+      elementMode: elementMode,
+      orderedBy: orderedBy,
+      entry: entry,
+      emptyReason: emptyReason,
+      section: section,
+    );
+    return newComposition_Section;
+  }
 
-
-	static Future<Composition_Section> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String title,
-		Element elementTitle,
-		CodeableConcept code,
-		List<Reference> author,
-		Reference focus,
-		Narrative text,
-		String mode,
-		Element elementMode,
-		CodeableConcept orderedBy,
-		List<Reference> entry,
-		CodeableConcept emptyReason,
-		List<Composition_Section> section}) async {
-	var fhirDb = new DatabaseHelper();
-	Composition_Section newComposition_Section = new Composition_Section(
-			id: await fhirDb.newResourceId('Composition_Section'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			title: title,
-			elementTitle: elementTitle,
-			code: code,
-			author: author,
-			focus: focus,
-			text: text,
-			mode: mode,
-			elementMode: elementMode,
-			orderedBy: orderedBy,
-			entry: entry,
-			emptyReason: emptyReason,
-			section: section,
-);
-	return newComposition_Section;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -349,28 +347,27 @@ class Composition_Section {
   CodeableConcept emptyReason;
   List<Composition_Section> section;
 
-Composition_Section(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.title,
-    this.elementTitle,
-    this.code,
-    this.author,
-    this.focus,
-    this.text,
-    this.mode,
-    this.elementMode,
-    this.orderedBy,
-    this.entry,
-    this.emptyReason,
-    this.section
-    });
+  Composition_Section(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.title,
+      this.elementTitle,
+      this.code,
+      this.author,
+      this.focus,
+      this.text,
+      this.mode,
+      this.elementMode,
+      this.orderedBy,
+      this.entry,
+      this.emptyReason,
+      this.section});
 
-  factory Composition_Section.fromJson(Map<String, dynamic> json) => _$Composition_SectionFromJson(json);
+  factory Composition_Section.fromJson(Map<String, dynamic> json) =>
+      _$Composition_SectionFromJson(json);
   Map<String, dynamic> toJson() => _$Composition_SectionToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -397,8 +394,9 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

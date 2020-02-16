@@ -13,81 +13,84 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class VerificationResult {
+  static Future<VerificationResult> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Reference> target,
+      List<String> targetLocation,
+      List<Element> elementTargetLocation,
+      CodeableConcept need,
+      String status,
+      Element elementStatus,
+      DateTime statusDate,
+      Element elementStatusDate,
+      CodeableConcept validationType,
+      List<CodeableConcept> validationProcess,
+      Timing frequency,
+      DateTime lastPerformed,
+      Element elementLastPerformed,
+      String nextScheduled,
+      Element elementNextScheduled,
+      CodeableConcept failureAction,
+      List<VerificationResult_PrimarySource> primarySource,
+      VerificationResult_Attestation attestation,
+      List<VerificationResult_Validator> validator}) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult newVerificationResult = new VerificationResult(
+      resourceType: 'VerificationResult',
+      id: await fhirDb.newResourceId('VerificationResult'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      target: target,
+      targetLocation: targetLocation,
+      elementTargetLocation: elementTargetLocation,
+      need: need,
+      status: status,
+      elementStatus: elementStatus,
+      statusDate: statusDate,
+      elementStatusDate: elementStatusDate,
+      validationType: validationType,
+      validationProcess: validationProcess,
+      frequency: frequency,
+      lastPerformed: lastPerformed,
+      elementLastPerformed: elementLastPerformed,
+      nextScheduled: nextScheduled,
+      elementNextScheduled: elementNextScheduled,
+      failureAction: failureAction,
+      primarySource: primarySource,
+      attestation: attestation,
+      validator: validator,
+    );
+    newVerificationResult.meta.createdAt = DateTime.now();
+    newVerificationResult.meta.lastUpdated =
+        newVerificationResult.meta.createdAt;
+    int saved = await fhirDb.newResource(newVerificationResult);
+    return newVerificationResult;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<VerificationResult> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Reference> target,
-		List<String> targetLocation,
-		List<Element> elementTargetLocation,
-		CodeableConcept need,
-		String status,
-		Element elementStatus,
-		DateTime statusDate,
-		Element elementStatusDate,
-		CodeableConcept validationType,
-		List<CodeableConcept> validationProcess,
-		Timing frequency,
-		DateTime lastPerformed,
-		Element elementLastPerformed,
-		String nextScheduled,
-		Element elementNextScheduled,
-		CodeableConcept failureAction,
-		List<VerificationResult_PrimarySource> primarySource,
-		VerificationResult_Attestation attestation,
-		List<VerificationResult_Validator> validator}) async {
-	var fhirDb = new DatabaseHelper();
-	VerificationResult newVerificationResult = new VerificationResult(
-			resourceType: 'VerificationResult',
-			id: await fhirDb.newResourceId('VerificationResult'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			target: target,
-			targetLocation: targetLocation,
-			elementTargetLocation: elementTargetLocation,
-			need: need,
-			status: status,
-			elementStatus: elementStatus,
-			statusDate: statusDate,
-			elementStatusDate: elementStatusDate,
-			validationType: validationType,
-			validationProcess: validationProcess,
-			frequency: frequency,
-			lastPerformed: lastPerformed,
-			elementLastPerformed: elementLastPerformed,
-			nextScheduled: nextScheduled,
-			elementNextScheduled: elementNextScheduled,
-			failureAction: failureAction,
-			primarySource: primarySource,
-			attestation: attestation,
-			validator: validator,
-);
-	int saved = await fhirDb.newResource(newVerificationResult);
-	return newVerificationResult;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'VerificationResult';
+  String resourceType = 'VerificationResult';
   String id;
   Meta meta;
   String implicitRules;
@@ -118,75 +121,75 @@ save () async {
   VerificationResult_Attestation attestation;
   List<VerificationResult_Validator> validator;
 
-VerificationResult(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.target,
-    this.targetLocation,
-    this.elementTargetLocation,
-    this.need,
-    this.status,
-    this.elementStatus,
-    this.statusDate,
-    this.elementStatusDate,
-    this.validationType,
-    this.validationProcess,
-    this.frequency,
-    this.lastPerformed,
-    this.elementLastPerformed,
-    this.nextScheduled,
-    this.elementNextScheduled,
-    this.failureAction,
-    this.primarySource,
-    this.attestation,
-    this.validator
-    });
+  VerificationResult(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.target,
+      this.targetLocation,
+      this.elementTargetLocation,
+      this.need,
+      this.status,
+      this.elementStatus,
+      this.statusDate,
+      this.elementStatusDate,
+      this.validationType,
+      this.validationProcess,
+      this.frequency,
+      this.lastPerformed,
+      this.elementLastPerformed,
+      this.nextScheduled,
+      this.elementNextScheduled,
+      this.failureAction,
+      this.primarySource,
+      this.attestation,
+      this.validator});
 
-  factory VerificationResult.fromJson(Map<String, dynamic> json) => _$VerificationResultFromJson(json);
+  factory VerificationResult.fromJson(Map<String, dynamic> json) =>
+      _$VerificationResultFromJson(json);
   Map<String, dynamic> toJson() => _$VerificationResultToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_PrimarySource {
+  static Future<VerificationResult_PrimarySource> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Reference who,
+      List<CodeableConcept> type,
+      List<CodeableConcept> communicationMethod,
+      CodeableConcept validationStatus,
+      DateTime validationDate,
+      Element elementValidationDate,
+      CodeableConcept canPushUpdates,
+      List<CodeableConcept> pushTypeAvailable}) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult_PrimarySource newVerificationResult_PrimarySource =
+        new VerificationResult_PrimarySource(
+      id: await fhirDb.newResourceId('VerificationResult_PrimarySource'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      who: who,
+      type: type,
+      communicationMethod: communicationMethod,
+      validationStatus: validationStatus,
+      validationDate: validationDate,
+      elementValidationDate: elementValidationDate,
+      canPushUpdates: canPushUpdates,
+      pushTypeAvailable: pushTypeAvailable,
+    );
+    return newVerificationResult_PrimarySource;
+  }
 
-
-	static Future<VerificationResult_PrimarySource> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Reference who,
-		List<CodeableConcept> type,
-		List<CodeableConcept> communicationMethod,
-		CodeableConcept validationStatus,
-		DateTime validationDate,
-		Element elementValidationDate,
-		CodeableConcept canPushUpdates,
-		List<CodeableConcept> pushTypeAvailable}) async {
-	var fhirDb = new DatabaseHelper();
-	VerificationResult_PrimarySource newVerificationResult_PrimarySource = new VerificationResult_PrimarySource(
-			id: await fhirDb.newResourceId('VerificationResult_PrimarySource'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			who: who,
-			type: type,
-			communicationMethod: communicationMethod,
-			validationStatus: validationStatus,
-			validationDate: validationDate,
-			elementValidationDate: elementValidationDate,
-			canPushUpdates: canPushUpdates,
-			pushTypeAvailable: pushTypeAvailable,
-);
-	return newVerificationResult_PrimarySource;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -199,62 +202,64 @@ class VerificationResult_PrimarySource {
   CodeableConcept canPushUpdates;
   List<CodeableConcept> pushTypeAvailable;
 
-VerificationResult_PrimarySource(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.who,
-    this.type,
-    this.communicationMethod,
-    this.validationStatus,
-    this.validationDate,
-    this.elementValidationDate,
-    this.canPushUpdates,
-    this.pushTypeAvailable
-    });
+  VerificationResult_PrimarySource(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.who,
+      this.type,
+      this.communicationMethod,
+      this.validationStatus,
+      this.validationDate,
+      this.elementValidationDate,
+      this.canPushUpdates,
+      this.pushTypeAvailable});
 
-  factory VerificationResult_PrimarySource.fromJson(Map<String, dynamic> json) => _$VerificationResult_PrimarySourceFromJson(json);
-  Map<String, dynamic> toJson() => _$VerificationResult_PrimarySourceToJson(this);
+  factory VerificationResult_PrimarySource.fromJson(
+          Map<String, dynamic> json) =>
+      _$VerificationResult_PrimarySourceFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$VerificationResult_PrimarySourceToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Attestation {
+  static Future<VerificationResult_Attestation> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Reference who,
+      Reference onBehalfOf,
+      CodeableConcept communicationMethod,
+      String date,
+      Element elementDate,
+      String sourceIdentityCertificate,
+      Element elementSourceIdentityCertificate,
+      String proxyIdentityCertificate,
+      Element elementProxyIdentityCertificate,
+      Signature proxySignature,
+      Signature sourceSignature}) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult_Attestation newVerificationResult_Attestation =
+        new VerificationResult_Attestation(
+      id: await fhirDb.newResourceId('VerificationResult_Attestation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      who: who,
+      onBehalfOf: onBehalfOf,
+      communicationMethod: communicationMethod,
+      date: date,
+      elementDate: elementDate,
+      sourceIdentityCertificate: sourceIdentityCertificate,
+      elementSourceIdentityCertificate: elementSourceIdentityCertificate,
+      proxyIdentityCertificate: proxyIdentityCertificate,
+      elementProxyIdentityCertificate: elementProxyIdentityCertificate,
+      proxySignature: proxySignature,
+      sourceSignature: sourceSignature,
+    );
+    return newVerificationResult_Attestation;
+  }
 
-
-	static Future<VerificationResult_Attestation> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Reference who,
-		Reference onBehalfOf,
-		CodeableConcept communicationMethod,
-		String date,
-		Element elementDate,
-		String sourceIdentityCertificate,
-		Element elementSourceIdentityCertificate,
-		String proxyIdentityCertificate,
-		Element elementProxyIdentityCertificate,
-		Signature proxySignature,
-		Signature sourceSignature}) async {
-	var fhirDb = new DatabaseHelper();
-	VerificationResult_Attestation newVerificationResult_Attestation = new VerificationResult_Attestation(
-			id: await fhirDb.newResourceId('VerificationResult_Attestation'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			who: who,
-			onBehalfOf: onBehalfOf,
-			communicationMethod: communicationMethod,
-			date: date,
-			elementDate: elementDate,
-			sourceIdentityCertificate: sourceIdentityCertificate,
-			elementSourceIdentityCertificate: elementSourceIdentityCertificate,
-			proxyIdentityCertificate: proxyIdentityCertificate,
-			elementProxyIdentityCertificate: elementProxyIdentityCertificate,
-			proxySignature: proxySignature,
-			sourceSignature: sourceSignature,
-);
-	return newVerificationResult_Attestation;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -270,51 +275,51 @@ class VerificationResult_Attestation {
   Signature proxySignature;
   Signature sourceSignature;
 
-VerificationResult_Attestation(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.who,
-    this.onBehalfOf,
-    this.communicationMethod,
-    this.date,
-    this.elementDate,
-    this.sourceIdentityCertificate,
-    this.elementSourceIdentityCertificate,
-    this.proxyIdentityCertificate,
-    this.elementProxyIdentityCertificate,
-    this.proxySignature,
-    this.sourceSignature
-    });
+  VerificationResult_Attestation(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.who,
+      this.onBehalfOf,
+      this.communicationMethod,
+      this.date,
+      this.elementDate,
+      this.sourceIdentityCertificate,
+      this.elementSourceIdentityCertificate,
+      this.proxyIdentityCertificate,
+      this.elementProxyIdentityCertificate,
+      this.proxySignature,
+      this.sourceSignature});
 
-  factory VerificationResult_Attestation.fromJson(Map<String, dynamic> json) => _$VerificationResult_AttestationFromJson(json);
+  factory VerificationResult_Attestation.fromJson(Map<String, dynamic> json) =>
+      _$VerificationResult_AttestationFromJson(json);
   Map<String, dynamic> toJson() => _$VerificationResult_AttestationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Validator {
+  static Future<VerificationResult_Validator> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Reference organization,
+      String identityCertificate,
+      Element elementIdentityCertificate,
+      Signature attestationSignature}) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult_Validator newVerificationResult_Validator =
+        new VerificationResult_Validator(
+      id: await fhirDb.newResourceId('VerificationResult_Validator'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      organization: organization,
+      identityCertificate: identityCertificate,
+      elementIdentityCertificate: elementIdentityCertificate,
+      attestationSignature: attestationSignature,
+    );
+    return newVerificationResult_Validator;
+  }
 
-
-	static Future<VerificationResult_Validator> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Reference organization,
-		String identityCertificate,
-		Element elementIdentityCertificate,
-		Signature attestationSignature}) async {
-	var fhirDb = new DatabaseHelper();
-	VerificationResult_Validator newVerificationResult_Validator = new VerificationResult_Validator(
-			id: await fhirDb.newResourceId('VerificationResult_Validator'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			organization: organization,
-			identityCertificate: identityCertificate,
-			elementIdentityCertificate: elementIdentityCertificate,
-			attestationSignature: attestationSignature,
-);
-	return newVerificationResult_Validator;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -323,20 +328,19 @@ class VerificationResult_Validator {
   Element elementIdentityCertificate;
   Signature attestationSignature;
 
-VerificationResult_Validator(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.organization,
-    this.identityCertificate,
-    this.elementIdentityCertificate,
-    this.attestationSignature
-    });
+  VerificationResult_Validator(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.organization,
+      this.identityCertificate,
+      this.elementIdentityCertificate,
+      this.attestationSignature});
 
-  factory VerificationResult_Validator.fromJson(Map<String, dynamic> json) => _$VerificationResult_ValidatorFromJson(json);
+  factory VerificationResult_Validator.fromJson(Map<String, dynamic> json) =>
+      _$VerificationResult_ValidatorFromJson(json);
   Map<String, dynamic> toJson() => _$VerificationResult_ValidatorToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -363,8 +367,9 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -5,44 +5,37 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Quantity {
+  static Future<Quantity> newInstance(
+      {String id,
+      List<Extension> extension,
+      double value,
+      Element elementValue,
+      String comparator,
+      Element elementComparator,
+      String unit,
+      Element elementUnit,
+      String system,
+      Element elementSystem,
+      String code,
+      Element elementCode}) async {
+    var fhirDb = new DatabaseHelper();
+    Quantity newQuantity = new Quantity(
+      id: await fhirDb.newResourceId('Quantity'),
+      extension: extension,
+      value: value,
+      elementValue: elementValue,
+      comparator: comparator,
+      elementComparator: elementComparator,
+      unit: unit,
+      elementUnit: elementUnit,
+      system: system,
+      elementSystem: elementSystem,
+      code: code,
+      elementCode: elementCode,
+    );
+    return newQuantity;
+  }
 
-
-	static Future<Quantity> newInstance({
-		String id,
-		List<Extension> extension,
-		double value,
-		Element elementValue,
-		String comparator,
-		Element elementComparator,
-		String unit,
-		Element elementUnit,
-		String system,
-		Element elementSystem,
-		String code,
-		Element elementCode}) async {
-	var fhirDb = new DatabaseHelper();
-	Quantity newQuantity = new Quantity(
-			id: await fhirDb.newResourceId('Quantity'),
-			extension: extension,
-			value: value,
-			elementValue: elementValue,
-			comparator: comparator,
-			elementComparator: elementComparator,
-			unit: unit,
-			elementUnit: elementUnit,
-			system: system,
-			elementSystem: elementSystem,
-			code: code,
-			elementCode: elementCode,
-);
-	int saved = await fhirDb.newResource(newQuantity);
-	return newQuantity;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   double value;
@@ -56,25 +49,24 @@ save () async {
   String code;
   Element elementCode;
 
-Quantity(
-  {this.id,
-    this.extension,
-    this.value,
-    this.elementValue,
-    this.comparator,
-    this.elementComparator,
-    this.unit,
-    this.elementUnit,
-    this.system,
-    this.elementSystem,
-    this.code,
-    this.elementCode
-    });
+  Quantity(
+      {this.id,
+      this.extension,
+      this.value,
+      this.elementValue,
+      this.comparator,
+      this.elementComparator,
+      this.unit,
+      this.elementUnit,
+      this.system,
+      this.elementSystem,
+      this.code,
+      this.elementCode});
 
-  factory Quantity.fromJson(Map<String, dynamic> json) => _$QuantityFromJson(json);
+  factory Quantity.fromJson(Map<String, dynamic> json) =>
+      _$QuantityFromJson(json);
   Map<String, dynamic> toJson() => _$QuantityToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

@@ -5,6 +5,7 @@ import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
+import 'package:flutter_fhir/util/db.dart';
 
 class RegisterFamily extends StatelessWidget {
   Patient pt;
@@ -56,14 +57,37 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           relation1,
+          Divider(
+            color: Colors.lightBlueAccent,
+            thickness: 2,
+          ),
           relation2,
+          Divider(
+            color: Colors.lightBlueAccent,
+            thickness: 2,
+          ),
           relation3,
+          Divider(
+            color: Colors.lightBlueAccent,
+            thickness: 2,
+          ),
           RaisedButton(
             onPressed: () async {
-              pt = await addFamily(pt, relation1);
-              pt = await addFamily(pt, relation2);
-              pt = await addFamily(pt, relation3);
+              pt.contact ??= List<Patient_Contact>();
+              Patient_Contact contact = await family(relation1);
+              if (contact != null) {
+                pt.contact.add(contact);
+              }
+              contact = await family(relation2);
+              if (contact != null) {
+                pt.contact.add(contact);
+              }
+              contact = await family(relation3);
+              if (contact != null) {
+                pt.contact.add(contact);
+              }
               pt.save();
+              print(pt.meta.lastUpdated);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Register()),
@@ -73,11 +97,20 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
           ),
           RaisedButton(
             onPressed: () async {
-              pt = await addFamily(pt, relation1);
-              pt = await addFamily(pt, relation2);
-              pt = await addFamily(pt, relation3);
+              pt.contact ??= List<Patient_Contact>();
+              Patient_Contact contact = await family(relation1);
+              if (contact != null) {
+                pt.contact.add(contact);
+              }
+              contact = await family(relation2);
+              if (contact != null) {
+                pt.contact.add(contact);
+              }
+              contact = await family(relation3);
+              if (contact != null) {
+                pt.contact.add(contact);
+              }
               pt.save();
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -106,64 +139,61 @@ class RelationPicker extends StatefulWidget {
 class _RelationPickerState extends State<RelationPicker> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+    return Expanded(
+      flex: 1,
+      child:
+          Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+        Column(children: <Widget>[
           DropdownButton<String>(
-            items: <String>[
-              'mother',
-              'grandmother',
-              'aunt',
-              'sister',
-              'father',
-              'grandfather',
-              'uncle',
-              'brother'
-            ].map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: new Text(value),
-              );
-            }).toList(),
-            hint: Text('Relationship'),
-            value: widget.relation,
-            onChanged: (String newVal) {
-              setState(() {
-                widget.relation = newVal;
-              });
-            },
-          ),
-          TextField(
-            decoration: new InputDecoration(hintText: 'Given Names'),
-            controller: widget.given,
-          ),
-          TextField(
-            decoration: new InputDecoration(
-              hintText: 'Family Name',
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(width: 8.0),
-              ),
+              items: <String>[
+                'mother',
+                'grandmother',
+                'aunt',
+                'sister',
+                'father',
+                'grandfather',
+                'uncle',
+                'brother'
+              ].map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: new Text(value),
+                );
+              }).toList(),
+              hint: Text('Relationship'),
+              value: widget.relation,
+              onChanged: (String newVal) {
+                setState(() {
+                  widget.relation = newVal;
+                });
+              })
+        ]),
+        Expanded(
+          flex: 1,
+          child: Column(children: <Widget>[
+            TextField(
+              decoration: new InputDecoration(hintText: 'Given Names'),
+              controller: widget.given,
             ),
-            controller: widget.family,
-          ),
-        ]);
+            TextField(
+              decoration: new InputDecoration(hintText: 'Family Name'),
+              controller: widget.family,
+            )
+          ]),
+        )
+      ]),
+    );
   }
 }
 
-Future<Patient> addFamily(Patient pt, RelationPicker relation) async {
+Future<Patient_Contact> family(RelationPicker relation) async {
   if ((relation.given.text != '' || relation.family.text != '') &&
       relation != null) {
-    final Patient_Contact ct = await Patient_Contact.newInstance(
+    return await Patient_Contact.newInstance(
         relationship: [CodeableConcept(text: relation.relation)],
         name: HumanName(
             given: [relation.given.text], family: relation.family.text));
-    if (pt.contact == null) {
-      pt.contact = new List<Patient_Contact>();
-    }
-    ;
-    pt.contact.add(ct);
+  } else {
+    return null;
   }
-  ;
-  return pt;
 }

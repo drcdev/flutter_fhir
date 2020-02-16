@@ -12,67 +12,70 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AppointmentResponse {
+  static Future<AppointmentResponse> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      Reference appointment,
+      DateTime start,
+      Element elementStart,
+      DateTime end,
+      Element elementEnd,
+      List<CodeableConcept> participantType,
+      Reference actor,
+      String participantStatus,
+      Element elementParticipantStatus,
+      String comment,
+      Element elementComment}) async {
+    var fhirDb = new DatabaseHelper();
+    AppointmentResponse newAppointmentResponse = new AppointmentResponse(
+      resourceType: 'AppointmentResponse',
+      id: await fhirDb.newResourceId('AppointmentResponse'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      appointment: appointment,
+      start: start,
+      elementStart: elementStart,
+      end: end,
+      elementEnd: elementEnd,
+      participantType: participantType,
+      actor: actor,
+      participantStatus: participantStatus,
+      elementParticipantStatus: elementParticipantStatus,
+      comment: comment,
+      elementComment: elementComment,
+    );
+    newAppointmentResponse.meta.createdAt = DateTime.now();
+    newAppointmentResponse.meta.lastUpdated =
+        newAppointmentResponse.meta.createdAt;
+    int saved = await fhirDb.newResource(newAppointmentResponse);
+    return newAppointmentResponse;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<AppointmentResponse> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		Reference appointment,
-		DateTime start,
-		Element elementStart,
-		DateTime end,
-		Element elementEnd,
-		List<CodeableConcept> participantType,
-		Reference actor,
-		String participantStatus,
-		Element elementParticipantStatus,
-		String comment,
-		Element elementComment}) async {
-	var fhirDb = new DatabaseHelper();
-	AppointmentResponse newAppointmentResponse = new AppointmentResponse(
-			resourceType: 'AppointmentResponse',
-			id: await fhirDb.newResourceId('AppointmentResponse'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			appointment: appointment,
-			start: start,
-			elementStart: elementStart,
-			end: end,
-			elementEnd: elementEnd,
-			participantType: participantType,
-			actor: actor,
-			participantStatus: participantStatus,
-			elementParticipantStatus: elementParticipantStatus,
-			comment: comment,
-			elementComment: elementComment,
-);
-	int saved = await fhirDb.newResource(newAppointmentResponse);
-	return newAppointmentResponse;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'AppointmentResponse';
+  String resourceType = 'AppointmentResponse';
   String id;
   Meta meta;
   String implicitRules;
@@ -96,36 +99,35 @@ save () async {
   String comment;
   Element elementComment;
 
-AppointmentResponse(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    @required this.appointment,
-    this.start,
-    this.elementStart,
-    this.end,
-    this.elementEnd,
-    this.participantType,
-    this.actor,
-    this.participantStatus,
-    this.elementParticipantStatus,
-    this.comment,
-    this.elementComment
-    });
+  AppointmentResponse(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      @required this.appointment,
+      this.start,
+      this.elementStart,
+      this.end,
+      this.elementEnd,
+      this.participantType,
+      this.actor,
+      this.participantStatus,
+      this.elementParticipantStatus,
+      this.comment,
+      this.elementComment});
 
-  factory AppointmentResponse.fromJson(Map<String, dynamic> json) => _$AppointmentResponseFromJson(json);
+  factory AppointmentResponse.fromJson(Map<String, dynamic> json) =>
+      _$AppointmentResponseFromJson(json);
   Map<String, dynamic> toJson() => _$AppointmentResponseToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -152,8 +154,9 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -5,32 +5,25 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Money {
+  static Future<Money> newInstance(
+      {String id,
+      List<Extension> extension,
+      double value,
+      Element elementValue,
+      String currency,
+      Element elementCurrency}) async {
+    var fhirDb = new DatabaseHelper();
+    Money newMoney = new Money(
+      id: await fhirDb.newResourceId('Money'),
+      extension: extension,
+      value: value,
+      elementValue: elementValue,
+      currency: currency,
+      elementCurrency: elementCurrency,
+    );
+    return newMoney;
+  }
 
-
-	static Future<Money> newInstance({
-		String id,
-		List<Extension> extension,
-		double value,
-		Element elementValue,
-		String currency,
-		Element elementCurrency}) async {
-	var fhirDb = new DatabaseHelper();
-	Money newMoney = new Money(
-			id: await fhirDb.newResourceId('Money'),
-			extension: extension,
-			value: value,
-			elementValue: elementValue,
-			currency: currency,
-			elementCurrency: elementCurrency,
-);
-	int saved = await fhirDb.newResource(newMoney);
-	return newMoney;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   double value;
@@ -38,19 +31,17 @@ save () async {
   String currency;
   Element elementCurrency;
 
-Money(
-  {this.id,
-    this.extension,
-    this.value,
-    this.elementValue,
-    this.currency,
-    this.elementCurrency
-    });
+  Money(
+      {this.id,
+      this.extension,
+      this.value,
+      this.elementValue,
+      this.currency,
+      this.elementCurrency});
 
   factory Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);
   Map<String, dynamic> toJson() => _$MoneyToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

@@ -15,113 +15,115 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class TestScript {
+  static Future<TestScript> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      Identifier identifier,
+      String version,
+      Element elementVersion,
+      String name,
+      Element elementName,
+      String title,
+      Element elementTitle,
+      String status,
+      Element elementStatus,
+      bool experimental,
+      Element elementExperimental,
+      DateTime date,
+      Element elementDate,
+      String publisher,
+      Element elementPublisher,
+      List<ContactDetail> contact,
+      String description,
+      Element elementDescription,
+      List<UsageContext> useContext,
+      List<CodeableConcept> jurisdiction,
+      String purpose,
+      Element elementPurpose,
+      String copyright,
+      Element elementCopyright,
+      List<TestScript_Origin> origin,
+      List<TestScript_Destination> destination,
+      TestScript_Metadata metadata,
+      List<TestScript_Fixture> fixture,
+      List<Reference> profile,
+      List<TestScript_Variable> variable,
+      TestScript_Setup setup,
+      List<TestScript_Test> test,
+      TestScript_Teardown teardown}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript newTestScript = new TestScript(
+      resourceType: 'TestScript',
+      id: await fhirDb.newResourceId('TestScript'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      origin: origin,
+      destination: destination,
+      metadata: metadata,
+      fixture: fixture,
+      profile: profile,
+      variable: variable,
+      setup: setup,
+      test: test,
+      teardown: teardown,
+    );
+    newTestScript.meta.createdAt = DateTime.now();
+    newTestScript.meta.lastUpdated = newTestScript.meta.createdAt;
+    int saved = await fhirDb.newResource(newTestScript);
+    return newTestScript;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<TestScript> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		Identifier identifier,
-		String version,
-		Element elementVersion,
-		String name,
-		Element elementName,
-		String title,
-		Element elementTitle,
-		String status,
-		Element elementStatus,
-		bool experimental,
-		Element elementExperimental,
-		DateTime date,
-		Element elementDate,
-		String publisher,
-		Element elementPublisher,
-		List<ContactDetail> contact,
-		String description,
-		Element elementDescription,
-		List<UsageContext> useContext,
-		List<CodeableConcept> jurisdiction,
-		String purpose,
-		Element elementPurpose,
-		String copyright,
-		Element elementCopyright,
-		List<TestScript_Origin> origin,
-		List<TestScript_Destination> destination,
-		TestScript_Metadata metadata,
-		List<TestScript_Fixture> fixture,
-		List<Reference> profile,
-		List<TestScript_Variable> variable,
-		TestScript_Setup setup,
-		List<TestScript_Test> test,
-		TestScript_Teardown teardown}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript newTestScript = new TestScript(
-			resourceType: 'TestScript',
-			id: await fhirDb.newResourceId('TestScript'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			identifier: identifier,
-			version: version,
-			elementVersion: elementVersion,
-			name: name,
-			elementName: elementName,
-			title: title,
-			elementTitle: elementTitle,
-			status: status,
-			elementStatus: elementStatus,
-			experimental: experimental,
-			elementExperimental: elementExperimental,
-			date: date,
-			elementDate: elementDate,
-			publisher: publisher,
-			elementPublisher: elementPublisher,
-			contact: contact,
-			description: description,
-			elementDescription: elementDescription,
-			useContext: useContext,
-			jurisdiction: jurisdiction,
-			purpose: purpose,
-			elementPurpose: elementPurpose,
-			copyright: copyright,
-			elementCopyright: elementCopyright,
-			origin: origin,
-			destination: destination,
-			metadata: metadata,
-			fixture: fixture,
-			profile: profile,
-			variable: variable,
-			setup: setup,
-			test: test,
-			teardown: teardown,
-);
-	int saved = await fhirDb.newResource(newTestScript);
-	return newTestScript;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'TestScript';
+  String resourceType = 'TestScript';
   String id;
   Meta meta;
   String implicitRules;
@@ -168,81 +170,80 @@ save () async {
   List<TestScript_Test> test;
   TestScript_Teardown teardown;
 
-TestScript(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.copyright,
-    this.elementCopyright,
-    this.origin,
-    this.destination,
-    this.metadata,
-    this.fixture,
-    this.profile,
-    this.variable,
-    this.setup,
-    this.test,
-    this.teardown
-    });
+  TestScript(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.identifier,
+      this.version,
+      this.elementVersion,
+      this.name,
+      this.elementName,
+      this.title,
+      this.elementTitle,
+      this.status,
+      this.elementStatus,
+      this.experimental,
+      this.elementExperimental,
+      this.date,
+      this.elementDate,
+      this.publisher,
+      this.elementPublisher,
+      this.contact,
+      this.description,
+      this.elementDescription,
+      this.useContext,
+      this.jurisdiction,
+      this.purpose,
+      this.elementPurpose,
+      this.copyright,
+      this.elementCopyright,
+      this.origin,
+      this.destination,
+      this.metadata,
+      this.fixture,
+      this.profile,
+      this.variable,
+      this.setup,
+      this.test,
+      this.teardown});
 
-  factory TestScript.fromJson(Map<String, dynamic> json) => _$TestScriptFromJson(json);
+  factory TestScript.fromJson(Map<String, dynamic> json) =>
+      _$TestScriptFromJson(json);
   Map<String, dynamic> toJson() => _$TestScriptToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Origin {
+  static Future<TestScript_Origin> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      int index,
+      Element elementIndex,
+      Coding profile}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Origin newTestScript_Origin = new TestScript_Origin(
+      id: await fhirDb.newResourceId('TestScript_Origin'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      index: index,
+      elementIndex: elementIndex,
+      profile: profile,
+    );
+    return newTestScript_Origin;
+  }
 
-
-	static Future<TestScript_Origin> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		int index,
-		Element elementIndex,
-		Coding profile}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Origin newTestScript_Origin = new TestScript_Origin(
-			id: await fhirDb.newResourceId('TestScript_Origin'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			index: index,
-			elementIndex: elementIndex,
-			profile: profile,
-);
-	return newTestScript_Origin;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -250,41 +251,41 @@ class TestScript_Origin {
   Element elementIndex;
   Coding profile;
 
-TestScript_Origin(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.index,
-    this.elementIndex,
-    @required this.profile
-    });
+  TestScript_Origin(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.index,
+      this.elementIndex,
+      @required this.profile});
 
-  factory TestScript_Origin.fromJson(Map<String, dynamic> json) => _$TestScript_OriginFromJson(json);
+  factory TestScript_Origin.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_OriginFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_OriginToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Destination {
+  static Future<TestScript_Destination> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      int index,
+      Element elementIndex,
+      Coding profile}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Destination newTestScript_Destination =
+        new TestScript_Destination(
+      id: await fhirDb.newResourceId('TestScript_Destination'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      index: index,
+      elementIndex: elementIndex,
+      profile: profile,
+    );
+    return newTestScript_Destination;
+  }
 
-
-	static Future<TestScript_Destination> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		int index,
-		Element elementIndex,
-		Coding profile}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Destination newTestScript_Destination = new TestScript_Destination(
-			id: await fhirDb.newResourceId('TestScript_Destination'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			index: index,
-			elementIndex: elementIndex,
-			profile: profile,
-);
-	return newTestScript_Destination;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -292,81 +293,79 @@ class TestScript_Destination {
   Element elementIndex;
   Coding profile;
 
-TestScript_Destination(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.index,
-    this.elementIndex,
-    @required this.profile
-    });
+  TestScript_Destination(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.index,
+      this.elementIndex,
+      @required this.profile});
 
-  factory TestScript_Destination.fromJson(Map<String, dynamic> json) => _$TestScript_DestinationFromJson(json);
+  factory TestScript_Destination.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_DestinationFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_DestinationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Metadata {
+  static Future<TestScript_Metadata> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<TestScript_Link> link,
+      List<TestScript_Capability> capability}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Metadata newTestScript_Metadata = new TestScript_Metadata(
+      id: await fhirDb.newResourceId('TestScript_Metadata'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      link: link,
+      capability: capability,
+    );
+    return newTestScript_Metadata;
+  }
 
-
-	static Future<TestScript_Metadata> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<TestScript_Link> link,
-		List<TestScript_Capability> capability}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Metadata newTestScript_Metadata = new TestScript_Metadata(
-			id: await fhirDb.newResourceId('TestScript_Metadata'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			link: link,
-			capability: capability,
-);
-	return newTestScript_Metadata;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<TestScript_Link> link;
   List<TestScript_Capability> capability;
 
-TestScript_Metadata(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.link,
-    @required this.capability
-    });
+  TestScript_Metadata(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.link,
+      @required this.capability});
 
-  factory TestScript_Metadata.fromJson(Map<String, dynamic> json) => _$TestScript_MetadataFromJson(json);
+  factory TestScript_Metadata.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_MetadataFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_MetadataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Link {
+  static Future<TestScript_Link> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      String description,
+      Element elementDescription}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Link newTestScript_Link = new TestScript_Link(
+      id: await fhirDb.newResourceId('TestScript_Link'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      description: description,
+      elementDescription: elementDescription,
+    );
+    return newTestScript_Link;
+  }
 
-
-	static Future<TestScript_Link> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		String description,
-		Element elementDescription}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Link newTestScript_Link = new TestScript_Link(
-			id: await fhirDb.newResourceId('TestScript_Link'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			description: description,
-			elementDescription: elementDescription,
-);
-	return newTestScript_Link;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -375,62 +374,61 @@ class TestScript_Link {
   String description;
   Element elementDescription;
 
-TestScript_Link(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.description,
-    this.elementDescription
-    });
+  TestScript_Link(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.description,
+      this.elementDescription});
 
-  factory TestScript_Link.fromJson(Map<String, dynamic> json) => _$TestScript_LinkFromJson(json);
+  factory TestScript_Link.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_LinkFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_LinkToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Capability {
+  static Future<TestScript_Capability> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      bool require,
+      Element elementRequired,
+      bool validated,
+      Element elementValidated,
+      String description,
+      Element elementDescription,
+      List<int> origin,
+      List<Element> elementOrigin,
+      int destination,
+      Element elementDestination,
+      List<String> link,
+      List<Element> elementLink,
+      String capabilities}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Capability newTestScript_Capability = new TestScript_Capability(
+      id: await fhirDb.newResourceId('TestScript_Capability'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      require: require,
+      elementRequired: elementRequired,
+      validated: validated,
+      elementValidated: elementValidated,
+      description: description,
+      elementDescription: elementDescription,
+      origin: origin,
+      elementOrigin: elementOrigin,
+      destination: destination,
+      elementDestination: elementDestination,
+      link: link,
+      elementLink: elementLink,
+      capabilities: capabilities,
+    );
+    return newTestScript_Capability;
+  }
 
-
-	static Future<TestScript_Capability> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		bool require,
-		Element elementRequired,
-		bool validated,
-		Element elementValidated,
-		String description,
-		Element elementDescription,
-		List<int> origin,
-		List<Element> elementOrigin,
-		int destination,
-		Element elementDestination,
-		List<String> link,
-		List<Element> elementLink,
-		String capabilities}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Capability newTestScript_Capability = new TestScript_Capability(
-			id: await fhirDb.newResourceId('TestScript_Capability'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			require: require,
-			elementRequired: elementRequired,
-			validated: validated,
-			elementValidated: elementValidated,
-			description: description,
-			elementDescription: elementDescription,
-			origin: origin,
-			elementOrigin: elementOrigin,
-			destination: destination,
-			elementDestination: elementDestination,
-			link: link,
-			elementLink: elementLink,
-			capabilities: capabilities,
-);
-	return newTestScript_Capability;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -448,55 +446,54 @@ class TestScript_Capability {
   List<Element> elementLink;
   String capabilities;
 
-TestScript_Capability(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.require,
-    this.elementRequired,
-    this.validated,
-    this.elementValidated,
-    this.description,
-    this.elementDescription,
-    this.origin,
-    this.elementOrigin,
-    this.destination,
-    this.elementDestination,
-    this.link,
-    this.elementLink,
-    @required this.capabilities
-    });
+  TestScript_Capability(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.require,
+      this.elementRequired,
+      this.validated,
+      this.elementValidated,
+      this.description,
+      this.elementDescription,
+      this.origin,
+      this.elementOrigin,
+      this.destination,
+      this.elementDestination,
+      this.link,
+      this.elementLink,
+      @required this.capabilities});
 
-  factory TestScript_Capability.fromJson(Map<String, dynamic> json) => _$TestScript_CapabilityFromJson(json);
+  factory TestScript_Capability.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_CapabilityFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_CapabilityToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Fixture {
+  static Future<TestScript_Fixture> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      bool autocreate,
+      Element elementAutocreate,
+      bool autodelete,
+      Element elementAutodelete,
+      Reference resource}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Fixture newTestScript_Fixture = new TestScript_Fixture(
+      id: await fhirDb.newResourceId('TestScript_Fixture'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      autocreate: autocreate,
+      elementAutocreate: elementAutocreate,
+      autodelete: autodelete,
+      elementAutodelete: elementAutodelete,
+      resource: resource,
+    );
+    return newTestScript_Fixture;
+  }
 
-
-	static Future<TestScript_Fixture> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		bool autocreate,
-		Element elementAutocreate,
-		bool autodelete,
-		Element elementAutodelete,
-		Reference resource}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Fixture newTestScript_Fixture = new TestScript_Fixture(
-			id: await fhirDb.newResourceId('TestScript_Fixture'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			autocreate: autocreate,
-			elementAutocreate: elementAutocreate,
-			autodelete: autodelete,
-			elementAutodelete: elementAutodelete,
-			resource: resource,
-);
-	return newTestScript_Fixture;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -506,69 +503,68 @@ class TestScript_Fixture {
   Element elementAutodelete;
   Reference resource;
 
-TestScript_Fixture(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.autocreate,
-    this.elementAutocreate,
-    this.autodelete,
-    this.elementAutodelete,
-    this.resource
-    });
+  TestScript_Fixture(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.autocreate,
+      this.elementAutocreate,
+      this.autodelete,
+      this.elementAutodelete,
+      this.resource});
 
-  factory TestScript_Fixture.fromJson(Map<String, dynamic> json) => _$TestScript_FixtureFromJson(json);
+  factory TestScript_Fixture.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_FixtureFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_FixtureToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Variable {
+  static Future<TestScript_Variable> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String name,
+      Element elementName,
+      String defaultValue,
+      Element elementDefaultValue,
+      String description,
+      Element elementDescription,
+      String expression,
+      Element elementExpression,
+      String headerField,
+      Element elementHeaderField,
+      String hint,
+      Element elementHint,
+      String path,
+      Element elementPath,
+      String sourceId,
+      Element elementSourceId}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Variable newTestScript_Variable = new TestScript_Variable(
+      id: await fhirDb.newResourceId('TestScript_Variable'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      defaultValue: defaultValue,
+      elementDefaultValue: elementDefaultValue,
+      description: description,
+      elementDescription: elementDescription,
+      expression: expression,
+      elementExpression: elementExpression,
+      headerField: headerField,
+      elementHeaderField: elementHeaderField,
+      hint: hint,
+      elementHint: elementHint,
+      path: path,
+      elementPath: elementPath,
+      sourceId: sourceId,
+      elementSourceId: elementSourceId,
+    );
+    return newTestScript_Variable;
+  }
 
-
-	static Future<TestScript_Variable> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String name,
-		Element elementName,
-		String defaultValue,
-		Element elementDefaultValue,
-		String description,
-		Element elementDescription,
-		String expression,
-		Element elementExpression,
-		String headerField,
-		Element elementHeaderField,
-		String hint,
-		Element elementHint,
-		String path,
-		Element elementPath,
-		String sourceId,
-		Element elementSourceId}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Variable newTestScript_Variable = new TestScript_Variable(
-			id: await fhirDb.newResourceId('TestScript_Variable'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			name: name,
-			elementName: elementName,
-			defaultValue: defaultValue,
-			elementDefaultValue: elementDefaultValue,
-			description: description,
-			elementDescription: elementDescription,
-			expression: expression,
-			elementExpression: elementExpression,
-			headerField: headerField,
-			elementHeaderField: elementHeaderField,
-			hint: hint,
-			elementHint: elementHint,
-			path: path,
-			elementPath: elementPath,
-			sourceId: sourceId,
-			elementSourceId: elementSourceId,
-);
-	return newTestScript_Variable;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -589,184 +585,178 @@ class TestScript_Variable {
   String sourceId;
   Element elementSourceId;
 
-TestScript_Variable(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.defaultValue,
-    this.elementDefaultValue,
-    this.description,
-    this.elementDescription,
-    this.expression,
-    this.elementExpression,
-    this.headerField,
-    this.elementHeaderField,
-    this.hint,
-    this.elementHint,
-    this.path,
-    this.elementPath,
-    this.sourceId,
-    this.elementSourceId
-    });
+  TestScript_Variable(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.name,
+      this.elementName,
+      this.defaultValue,
+      this.elementDefaultValue,
+      this.description,
+      this.elementDescription,
+      this.expression,
+      this.elementExpression,
+      this.headerField,
+      this.elementHeaderField,
+      this.hint,
+      this.elementHint,
+      this.path,
+      this.elementPath,
+      this.sourceId,
+      this.elementSourceId});
 
-  factory TestScript_Variable.fromJson(Map<String, dynamic> json) => _$TestScript_VariableFromJson(json);
+  factory TestScript_Variable.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_VariableFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_VariableToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Setup {
+  static Future<TestScript_Setup> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<TestScript_Action> action}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Setup newTestScript_Setup = new TestScript_Setup(
+      id: await fhirDb.newResourceId('TestScript_Setup'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      action: action,
+    );
+    return newTestScript_Setup;
+  }
 
-
-	static Future<TestScript_Setup> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<TestScript_Action> action}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Setup newTestScript_Setup = new TestScript_Setup(
-			id: await fhirDb.newResourceId('TestScript_Setup'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			action: action,
-);
-	return newTestScript_Setup;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<TestScript_Action> action;
 
-TestScript_Setup(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.action
-    });
+  TestScript_Setup(
+      {this.id, this.extension, this.modifierExtension, @required this.action});
 
-  factory TestScript_Setup.fromJson(Map<String, dynamic> json) => _$TestScript_SetupFromJson(json);
+  factory TestScript_Setup.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_SetupFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_SetupToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action {
+  static Future<TestScript_Action> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      TestScript_Operation operation,
+      TestScript_Assert asserts}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Action newTestScript_Action = new TestScript_Action(
+      id: await fhirDb.newResourceId('TestScript_Action'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      operation: operation,
+      asserts: asserts,
+    );
+    return newTestScript_Action;
+  }
 
-
-	static Future<TestScript_Action> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		TestScript_Operation operation,
-		TestScript_Assert asserts}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Action newTestScript_Action = new TestScript_Action(
-			id: await fhirDb.newResourceId('TestScript_Action'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			operation: operation,
-			asserts: asserts,
-);
-	return newTestScript_Action;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   TestScript_Operation operation;
   TestScript_Assert asserts;
 
-TestScript_Action(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.operation,
-    this.asserts
-    });
+  TestScript_Action(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.operation,
+      this.asserts});
 
-  factory TestScript_Action.fromJson(Map<String, dynamic> json) => _$TestScript_ActionFromJson(json);
+  factory TestScript_Action.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_ActionFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_ActionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Operation {
+  static Future<TestScript_Operation> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Coding type,
+      String resource,
+      Element elementResource,
+      String label,
+      Element elementLabel,
+      String description,
+      Element elementDescription,
+      String accept,
+      Element elementAccept,
+      String contentType,
+      Element elementContentType,
+      int destination,
+      Element elementDestination,
+      bool encodeRequestUrl,
+      Element elementEncodeRequestUrl,
+      String method,
+      Element elementMethod,
+      int origin,
+      Element elementOrigin,
+      String params,
+      Element elementParams,
+      List<TestScript_RequestHeader> requestHeader,
+      String requestId,
+      Element elementRequestId,
+      String responseId,
+      Element elementResponseId,
+      String sourceId,
+      Element elementSourceId,
+      String targetId,
+      Element elementTargetId,
+      String url,
+      Element elementUrl}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Operation newTestScript_Operation = new TestScript_Operation(
+      id: await fhirDb.newResourceId('TestScript_Operation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      resource: resource,
+      elementResource: elementResource,
+      label: label,
+      elementLabel: elementLabel,
+      description: description,
+      elementDescription: elementDescription,
+      accept: accept,
+      elementAccept: elementAccept,
+      contentType: contentType,
+      elementContentType: elementContentType,
+      destination: destination,
+      elementDestination: elementDestination,
+      encodeRequestUrl: encodeRequestUrl,
+      elementEncodeRequestUrl: elementEncodeRequestUrl,
+      method: method,
+      elementMethod: elementMethod,
+      origin: origin,
+      elementOrigin: elementOrigin,
+      params: params,
+      elementParams: elementParams,
+      requestHeader: requestHeader,
+      requestId: requestId,
+      elementRequestId: elementRequestId,
+      responseId: responseId,
+      elementResponseId: elementResponseId,
+      sourceId: sourceId,
+      elementSourceId: elementSourceId,
+      targetId: targetId,
+      elementTargetId: elementTargetId,
+      url: url,
+      elementUrl: elementUrl,
+    );
+    return newTestScript_Operation;
+  }
 
-
-	static Future<TestScript_Operation> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Coding type,
-		String resource,
-		Element elementResource,
-		String label,
-		Element elementLabel,
-		String description,
-		Element elementDescription,
-		String accept,
-		Element elementAccept,
-		String contentType,
-		Element elementContentType,
-		int destination,
-		Element elementDestination,
-		bool encodeRequestUrl,
-		Element elementEncodeRequestUrl,
-		String method,
-		Element elementMethod,
-		int origin,
-		Element elementOrigin,
-		String params,
-		Element elementParams,
-		List<TestScript_RequestHeader> requestHeader,
-		String requestId,
-		Element elementRequestId,
-		String responseId,
-		Element elementResponseId,
-		String sourceId,
-		Element elementSourceId,
-		String targetId,
-		Element elementTargetId,
-		String url,
-		Element elementUrl}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Operation newTestScript_Operation = new TestScript_Operation(
-			id: await fhirDb.newResourceId('TestScript_Operation'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			resource: resource,
-			elementResource: elementResource,
-			label: label,
-			elementLabel: elementLabel,
-			description: description,
-			elementDescription: elementDescription,
-			accept: accept,
-			elementAccept: elementAccept,
-			contentType: contentType,
-			elementContentType: elementContentType,
-			destination: destination,
-			elementDestination: elementDestination,
-			encodeRequestUrl: encodeRequestUrl,
-			elementEncodeRequestUrl: elementEncodeRequestUrl,
-			method: method,
-			elementMethod: elementMethod,
-			origin: origin,
-			elementOrigin: elementOrigin,
-			params: params,
-			elementParams: elementParams,
-			requestHeader: requestHeader,
-			requestId: requestId,
-			elementRequestId: elementRequestId,
-			responseId: responseId,
-			elementResponseId: elementResponseId,
-			sourceId: sourceId,
-			elementSourceId: elementSourceId,
-			targetId: targetId,
-			elementTargetId: elementTargetId,
-			url: url,
-			elementUrl: elementUrl,
-);
-	return newTestScript_Operation;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -803,72 +793,72 @@ class TestScript_Operation {
   String url;
   Element elementUrl;
 
-TestScript_Operation(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.resource,
-    this.elementResource,
-    this.label,
-    this.elementLabel,
-    this.description,
-    this.elementDescription,
-    this.accept,
-    this.elementAccept,
-    this.contentType,
-    this.elementContentType,
-    this.destination,
-    this.elementDestination,
-    this.encodeRequestUrl,
-    this.elementEncodeRequestUrl,
-    this.method,
-    this.elementMethod,
-    this.origin,
-    this.elementOrigin,
-    this.params,
-    this.elementParams,
-    this.requestHeader,
-    this.requestId,
-    this.elementRequestId,
-    this.responseId,
-    this.elementResponseId,
-    this.sourceId,
-    this.elementSourceId,
-    this.targetId,
-    this.elementTargetId,
-    this.url,
-    this.elementUrl
-    });
+  TestScript_Operation(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.resource,
+      this.elementResource,
+      this.label,
+      this.elementLabel,
+      this.description,
+      this.elementDescription,
+      this.accept,
+      this.elementAccept,
+      this.contentType,
+      this.elementContentType,
+      this.destination,
+      this.elementDestination,
+      this.encodeRequestUrl,
+      this.elementEncodeRequestUrl,
+      this.method,
+      this.elementMethod,
+      this.origin,
+      this.elementOrigin,
+      this.params,
+      this.elementParams,
+      this.requestHeader,
+      this.requestId,
+      this.elementRequestId,
+      this.responseId,
+      this.elementResponseId,
+      this.sourceId,
+      this.elementSourceId,
+      this.targetId,
+      this.elementTargetId,
+      this.url,
+      this.elementUrl});
 
-  factory TestScript_Operation.fromJson(Map<String, dynamic> json) => _$TestScript_OperationFromJson(json);
+  factory TestScript_Operation.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_OperationFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_OperationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_RequestHeader {
+  static Future<TestScript_RequestHeader> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String field,
+      Element elementField,
+      String value,
+      Element elementValue}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_RequestHeader newTestScript_RequestHeader =
+        new TestScript_RequestHeader(
+      id: await fhirDb.newResourceId('TestScript_RequestHeader'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      field: field,
+      elementField: elementField,
+      value: value,
+      elementValue: elementValue,
+    );
+    return newTestScript_RequestHeader;
+  }
 
-
-	static Future<TestScript_RequestHeader> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String field,
-		Element elementField,
-		String value,
-		Element elementValue}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_RequestHeader newTestScript_RequestHeader = new TestScript_RequestHeader(
-			id: await fhirDb.newResourceId('TestScript_RequestHeader'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			field: field,
-			elementField: elementField,
-			value: value,
-			elementValue: elementValue,
-);
-	return newTestScript_RequestHeader;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -877,124 +867,123 @@ class TestScript_RequestHeader {
   String value;
   Element elementValue;
 
-TestScript_RequestHeader(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.field,
-    this.elementField,
-    this.value,
-    this.elementValue
-    });
+  TestScript_RequestHeader(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.field,
+      this.elementField,
+      this.value,
+      this.elementValue});
 
-  factory TestScript_RequestHeader.fromJson(Map<String, dynamic> json) => _$TestScript_RequestHeaderFromJson(json);
+  factory TestScript_RequestHeader.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_RequestHeaderFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_RequestHeaderToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Assert {
+  static Future<TestScript_Assert> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String label,
+      Element elementLabel,
+      String description,
+      Element elementDescription,
+      String direction,
+      Element elementDirection,
+      String compareToSourceId,
+      Element elementCompareToSourceId,
+      String compareToSourceExpression,
+      Element elementCompareToSourceExpression,
+      String compareToSourcePath,
+      Element elementCompareToSourcePath,
+      String contentType,
+      Element elementContentType,
+      String expression,
+      Element elementExpression,
+      String headerField,
+      Element elementHeaderField,
+      String minimumId,
+      Element elementMinimumId,
+      bool navigationLinks,
+      Element elementNavigationLinks,
+      String operator,
+      Element elementOperator,
+      String path,
+      Element elementPath,
+      String requestMethod,
+      Element elementRequestMethod,
+      String requestURL,
+      Element elementRequestURL,
+      String resource,
+      Element elementResource,
+      String response,
+      Element elementResponse,
+      String responseCode,
+      Element elementResponseCode,
+      String sourceId,
+      Element elementSourceId,
+      String validateProfileId,
+      Element elementValidateProfileId,
+      String value,
+      Element elementValue,
+      bool warningOnly,
+      Element elementWarningOnly}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Assert newTestScript_Assert = new TestScript_Assert(
+      id: await fhirDb.newResourceId('TestScript_Assert'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      label: label,
+      elementLabel: elementLabel,
+      description: description,
+      elementDescription: elementDescription,
+      direction: direction,
+      elementDirection: elementDirection,
+      compareToSourceId: compareToSourceId,
+      elementCompareToSourceId: elementCompareToSourceId,
+      compareToSourceExpression: compareToSourceExpression,
+      elementCompareToSourceExpression: elementCompareToSourceExpression,
+      compareToSourcePath: compareToSourcePath,
+      elementCompareToSourcePath: elementCompareToSourcePath,
+      contentType: contentType,
+      elementContentType: elementContentType,
+      expression: expression,
+      elementExpression: elementExpression,
+      headerField: headerField,
+      elementHeaderField: elementHeaderField,
+      minimumId: minimumId,
+      elementMinimumId: elementMinimumId,
+      navigationLinks: navigationLinks,
+      elementNavigationLinks: elementNavigationLinks,
+      operator: operator,
+      elementOperator: elementOperator,
+      path: path,
+      elementPath: elementPath,
+      requestMethod: requestMethod,
+      elementRequestMethod: elementRequestMethod,
+      requestURL: requestURL,
+      elementRequestURL: elementRequestURL,
+      resource: resource,
+      elementResource: elementResource,
+      response: response,
+      elementResponse: elementResponse,
+      responseCode: responseCode,
+      elementResponseCode: elementResponseCode,
+      sourceId: sourceId,
+      elementSourceId: elementSourceId,
+      validateProfileId: validateProfileId,
+      elementValidateProfileId: elementValidateProfileId,
+      value: value,
+      elementValue: elementValue,
+      warningOnly: warningOnly,
+      elementWarningOnly: elementWarningOnly,
+    );
+    return newTestScript_Assert;
+  }
 
-
-	static Future<TestScript_Assert> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String label,
-		Element elementLabel,
-		String description,
-		Element elementDescription,
-		String direction,
-		Element elementDirection,
-		String compareToSourceId,
-		Element elementCompareToSourceId,
-		String compareToSourceExpression,
-		Element elementCompareToSourceExpression,
-		String compareToSourcePath,
-		Element elementCompareToSourcePath,
-		String contentType,
-		Element elementContentType,
-		String expression,
-		Element elementExpression,
-		String headerField,
-		Element elementHeaderField,
-		String minimumId,
-		Element elementMinimumId,
-		bool navigationLinks,
-		Element elementNavigationLinks,
-		String operator,
-		Element elementOperator,
-		String path,
-		Element elementPath,
-		String requestMethod,
-		Element elementRequestMethod,
-		String requestURL,
-		Element elementRequestURL,
-		String resource,
-		Element elementResource,
-		String response,
-		Element elementResponse,
-		String responseCode,
-		Element elementResponseCode,
-		String sourceId,
-		Element elementSourceId,
-		String validateProfileId,
-		Element elementValidateProfileId,
-		String value,
-		Element elementValue,
-		bool warningOnly,
-		Element elementWarningOnly}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Assert newTestScript_Assert = new TestScript_Assert(
-			id: await fhirDb.newResourceId('TestScript_Assert'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			label: label,
-			elementLabel: elementLabel,
-			description: description,
-			elementDescription: elementDescription,
-			direction: direction,
-			elementDirection: elementDirection,
-			compareToSourceId: compareToSourceId,
-			elementCompareToSourceId: elementCompareToSourceId,
-			compareToSourceExpression: compareToSourceExpression,
-			elementCompareToSourceExpression: elementCompareToSourceExpression,
-			compareToSourcePath: compareToSourcePath,
-			elementCompareToSourcePath: elementCompareToSourcePath,
-			contentType: contentType,
-			elementContentType: elementContentType,
-			expression: expression,
-			elementExpression: elementExpression,
-			headerField: headerField,
-			elementHeaderField: elementHeaderField,
-			minimumId: minimumId,
-			elementMinimumId: elementMinimumId,
-			navigationLinks: navigationLinks,
-			elementNavigationLinks: elementNavigationLinks,
-			operator: operator,
-			elementOperator: elementOperator,
-			path: path,
-			elementPath: elementPath,
-			requestMethod: requestMethod,
-			elementRequestMethod: elementRequestMethod,
-			requestURL: requestURL,
-			elementRequestURL: elementRequestURL,
-			resource: resource,
-			elementResource: elementResource,
-			response: response,
-			elementResponse: elementResponse,
-			responseCode: responseCode,
-			elementResponseCode: elementResponseCode,
-			sourceId: sourceId,
-			elementSourceId: elementSourceId,
-			validateProfileId: validateProfileId,
-			elementValidateProfileId: elementValidateProfileId,
-			value: value,
-			elementValue: elementValue,
-			warningOnly: warningOnly,
-			elementWarningOnly: elementWarningOnly,
-);
-	return newTestScript_Assert;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1020,7 +1009,8 @@ class TestScript_Assert {
   Element elementMinimumId;
   bool navigationLinks;
   Element elementNavigationLinks;
-  String operator; // <code> enum: equals/notEquals/in/notIn/greaterThan/lessThan/empty/notEmpty/contains/notContains/eval;
+  String
+      operator; // <code> enum: equals/notEquals/in/notIn/greaterThan/lessThan/empty/notEmpty/contains/notContains/eval;
   Element elementOperator;
   String path;
   Element elementPath;
@@ -1030,7 +1020,8 @@ class TestScript_Assert {
   Element elementRequestURL;
   String resource;
   Element elementResource;
-  String response; // <code> enum: okay/created/noContent/notModified/bad/forbidden/notFound/methodNotAllowed/conflict/gone/preconditionFailed/unprocessable;
+  String
+      response; // <code> enum: okay/created/noContent/notModified/bad/forbidden/notFound/methodNotAllowed/conflict/gone/preconditionFailed/unprocessable;
   Element elementResponse;
   String responseCode;
   Element elementResponseCode;
@@ -1043,86 +1034,85 @@ class TestScript_Assert {
   bool warningOnly;
   Element elementWarningOnly;
 
-TestScript_Assert(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.label,
-    this.elementLabel,
-    this.description,
-    this.elementDescription,
-    this.direction,
-    this.elementDirection,
-    this.compareToSourceId,
-    this.elementCompareToSourceId,
-    this.compareToSourceExpression,
-    this.elementCompareToSourceExpression,
-    this.compareToSourcePath,
-    this.elementCompareToSourcePath,
-    this.contentType,
-    this.elementContentType,
-    this.expression,
-    this.elementExpression,
-    this.headerField,
-    this.elementHeaderField,
-    this.minimumId,
-    this.elementMinimumId,
-    this.navigationLinks,
-    this.elementNavigationLinks,
-    this.operator,
-    this.elementOperator,
-    this.path,
-    this.elementPath,
-    this.requestMethod,
-    this.elementRequestMethod,
-    this.requestURL,
-    this.elementRequestURL,
-    this.resource,
-    this.elementResource,
-    this.response,
-    this.elementResponse,
-    this.responseCode,
-    this.elementResponseCode,
-    this.sourceId,
-    this.elementSourceId,
-    this.validateProfileId,
-    this.elementValidateProfileId,
-    this.value,
-    this.elementValue,
-    this.warningOnly,
-    this.elementWarningOnly
-    });
+  TestScript_Assert(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.label,
+      this.elementLabel,
+      this.description,
+      this.elementDescription,
+      this.direction,
+      this.elementDirection,
+      this.compareToSourceId,
+      this.elementCompareToSourceId,
+      this.compareToSourceExpression,
+      this.elementCompareToSourceExpression,
+      this.compareToSourcePath,
+      this.elementCompareToSourcePath,
+      this.contentType,
+      this.elementContentType,
+      this.expression,
+      this.elementExpression,
+      this.headerField,
+      this.elementHeaderField,
+      this.minimumId,
+      this.elementMinimumId,
+      this.navigationLinks,
+      this.elementNavigationLinks,
+      this.operator,
+      this.elementOperator,
+      this.path,
+      this.elementPath,
+      this.requestMethod,
+      this.elementRequestMethod,
+      this.requestURL,
+      this.elementRequestURL,
+      this.resource,
+      this.elementResource,
+      this.response,
+      this.elementResponse,
+      this.responseCode,
+      this.elementResponseCode,
+      this.sourceId,
+      this.elementSourceId,
+      this.validateProfileId,
+      this.elementValidateProfileId,
+      this.value,
+      this.elementValue,
+      this.warningOnly,
+      this.elementWarningOnly});
 
-  factory TestScript_Assert.fromJson(Map<String, dynamic> json) => _$TestScript_AssertFromJson(json);
+  factory TestScript_Assert.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_AssertFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_AssertToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Test {
+  static Future<TestScript_Test> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String name,
+      Element elementName,
+      String description,
+      Element elementDescription,
+      List<TestScript_Action1> action}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Test newTestScript_Test = new TestScript_Test(
+      id: await fhirDb.newResourceId('TestScript_Test'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      description: description,
+      elementDescription: elementDescription,
+      action: action,
+    );
+    return newTestScript_Test;
+  }
 
-
-	static Future<TestScript_Test> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String name,
-		Element elementName,
-		String description,
-		Element elementDescription,
-		List<TestScript_Action1> action}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Test newTestScript_Test = new TestScript_Test(
-			id: await fhirDb.newResourceId('TestScript_Test'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			name: name,
-			elementName: elementName,
-			description: description,
-			elementDescription: elementDescription,
-			action: action,
-);
-	return newTestScript_Test;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -1132,127 +1122,120 @@ class TestScript_Test {
   Element elementDescription;
   List<TestScript_Action1> action;
 
-TestScript_Test(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.description,
-    this.elementDescription,
-    @required this.action
-    });
+  TestScript_Test(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.name,
+      this.elementName,
+      this.description,
+      this.elementDescription,
+      @required this.action});
 
-  factory TestScript_Test.fromJson(Map<String, dynamic> json) => _$TestScript_TestFromJson(json);
+  factory TestScript_Test.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_TestFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_TestToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action1 {
+  static Future<TestScript_Action1> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      TestScript_Operation operation,
+      TestScript_Assert asserts}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Action1 newTestScript_Action1 = new TestScript_Action1(
+      id: await fhirDb.newResourceId('TestScript_Action1'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      operation: operation,
+      asserts: asserts,
+    );
+    return newTestScript_Action1;
+  }
 
-
-	static Future<TestScript_Action1> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		TestScript_Operation operation,
-		TestScript_Assert asserts}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Action1 newTestScript_Action1 = new TestScript_Action1(
-			id: await fhirDb.newResourceId('TestScript_Action1'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			operation: operation,
-			asserts: asserts,
-);
-	return newTestScript_Action1;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   TestScript_Operation operation;
   TestScript_Assert asserts;
 
-TestScript_Action1(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.operation,
-    this.asserts
-    });
+  TestScript_Action1(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.operation,
+      this.asserts});
 
-  factory TestScript_Action1.fromJson(Map<String, dynamic> json) => _$TestScript_Action1FromJson(json);
+  factory TestScript_Action1.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_Action1FromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_Action1ToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Teardown {
+  static Future<TestScript_Teardown> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<TestScript_Action2> action}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Teardown newTestScript_Teardown = new TestScript_Teardown(
+      id: await fhirDb.newResourceId('TestScript_Teardown'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      action: action,
+    );
+    return newTestScript_Teardown;
+  }
 
-
-	static Future<TestScript_Teardown> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<TestScript_Action2> action}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Teardown newTestScript_Teardown = new TestScript_Teardown(
-			id: await fhirDb.newResourceId('TestScript_Teardown'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			action: action,
-);
-	return newTestScript_Teardown;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<TestScript_Action2> action;
 
-TestScript_Teardown(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.action
-    });
+  TestScript_Teardown(
+      {this.id, this.extension, this.modifierExtension, @required this.action});
 
-  factory TestScript_Teardown.fromJson(Map<String, dynamic> json) => _$TestScript_TeardownFromJson(json);
+  factory TestScript_Teardown.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_TeardownFromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_TeardownToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action2 {
+  static Future<TestScript_Action2> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      TestScript_Operation operation}) async {
+    var fhirDb = new DatabaseHelper();
+    TestScript_Action2 newTestScript_Action2 = new TestScript_Action2(
+      id: await fhirDb.newResourceId('TestScript_Action2'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      operation: operation,
+    );
+    return newTestScript_Action2;
+  }
 
-
-	static Future<TestScript_Action2> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		TestScript_Operation operation}) async {
-	var fhirDb = new DatabaseHelper();
-	TestScript_Action2 newTestScript_Action2 = new TestScript_Action2(
-			id: await fhirDb.newResourceId('TestScript_Action2'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			operation: operation,
-);
-	return newTestScript_Action2;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   TestScript_Operation operation;
 
-TestScript_Action2(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.operation
-    });
+  TestScript_Action2(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.operation});
 
-  factory TestScript_Action2.fromJson(Map<String, dynamic> json) => _$TestScript_Action2FromJson(json);
+  factory TestScript_Action2.fromJson(Map<String, dynamic> json) =>
+      _$TestScript_Action2FromJson(json);
   Map<String, dynamic> toJson() => _$TestScript_Action2ToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -1279,8 +1262,9 @@ TestScript _$TestScriptFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

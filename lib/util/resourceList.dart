@@ -214,109 +214,83 @@ Type ResourceType(String type) {
   if (type == 'ContactDetail') ContactDetail;
   if (type == 'Contributor') Contributor;
   if (type == 'DataRequirement') DataRequirement;
-  if (type == 'ParameterDefinition')
-    ParameterDefinition;
+  if (type == 'ParameterDefinition') ParameterDefinition;
   if (type == 'RelatedArtifact') RelatedArtifact;
-  if (type == 'TriggerDefinition')
-    TriggerDefinition;
+  if (type == 'TriggerDefinition') TriggerDefinition;
   if (type == 'UsageContext') UsageContext;
   if (type == 'Dosage') Dosage;
   if (type == 'Population') Population;
   if (type == 'ProductShelfLife') ProductShelfLife;
-  if (type == 'ProdCharacteristic')
-    ProdCharacteristic;
+  if (type == 'ProdCharacteristic') ProdCharacteristic;
   if (type == 'MarketingStatus') MarketingStatus;
   if (type == 'SubstanceAmount') SubstanceAmount;
   if (type == 'Expression') Expression;
-  if (type == 'ElementDefinition')
-    ElementDefinition;
+  if (type == 'ElementDefinition') ElementDefinition;
   if (type == 'Account') Account;
-  if (type == 'ActivityDefinition')
-    ActivityDefinition;
+  if (type == 'ActivityDefinition') ActivityDefinition;
   if (type == 'AdverseEvent') AdverseEvent;
-  if (type == 'AllergyIntolerance')
-    AllergyIntolerance;
+  if (type == 'AllergyIntolerance') AllergyIntolerance;
   if (type == 'Appointment') Appointment;
-  if (type == 'AppointmentResponse')
-    AppointmentResponse;
+  if (type == 'AppointmentResponse') AppointmentResponse;
   if (type == 'AuditEvent') AuditEvent;
   if (type == 'Basic') Basic;
   if (type == 'Binary') Binary;
-  if (type == 'BiologicallyDerivedProduct')
-    BiologicallyDerivedProduct;
+  if (type == 'BiologicallyDerivedProduct') BiologicallyDerivedProduct;
   if (type == 'BodyStructure') BodyStructure;
   if (type == 'Bundle') Bundle;
-  if (type == 'CapabilityStatement')
-    CapabilityStatement;
+  if (type == 'CapabilityStatement') CapabilityStatement;
   if (type == 'CarePlan') CarePlan;
   if (type == 'CareTeam') CareTeam;
   if (type == 'CatalogEntry') CatalogEntry;
   if (type == 'ChargeItem') ChargeItem;
-  if (type == 'ChargeItemDefinition')
-    ChargeItemDefinition;
+  if (type == 'ChargeItemDefinition') ChargeItemDefinition;
   if (type == 'Claim') Claim;
   if (type == 'ClaimResponse') ClaimResponse;
-  if (type == 'ClinicalImpression')
-    ClinicalImpression;
+  if (type == 'ClinicalImpression') ClinicalImpression;
   if (type == 'CodeSystem') CodeSystem;
   if (type == 'Communication') Communication;
-  if (type == 'CommunicationRequest')
-    CommunicationRequest;
-  if (type == 'CompartmentDefinition')
-    CompartmentDefinition;
+  if (type == 'CommunicationRequest') CommunicationRequest;
+  if (type == 'CompartmentDefinition') CompartmentDefinition;
   if (type == 'Composition') Composition;
   if (type == 'ConceptMap') ConceptMap;
   if (type == 'Condition') Condition;
   if (type == 'Consent') Consent;
   if (type == 'Contract') Contract;
   if (type == 'Coverage') Coverage;
-  if (type == 'CoverageEligibilityRequest')
-    CoverageEligibilityRequest;
-  if (type == 'CoverageEligibilityResponse')
-    CoverageEligibilityResponse;
+  if (type == 'CoverageEligibilityRequest') CoverageEligibilityRequest;
+  if (type == 'CoverageEligibilityResponse') CoverageEligibilityResponse;
   if (type == 'DetectedIssue') DetectedIssue;
   if (type == 'Device') Device;
   if (type == 'DeviceDefinition') DeviceDefinition;
   if (type == 'DeviceMetric') DeviceMetric;
   if (type == 'DeviceRequest') DeviceRequest;
-  if (type == 'DeviceUseStatement')
-    DeviceUseStatement;
+  if (type == 'DeviceUseStatement') DeviceUseStatement;
   if (type == 'DiagnosticReport') DiagnosticReport;
   if (type == 'DocumentManifest') DocumentManifest;
-  if (type == 'DocumentReference')
-    DocumentReference;
-  if (type == 'EffectEvidenceSynthesis')
-    EffectEvidenceSynthesis;
+  if (type == 'DocumentReference') DocumentReference;
+  if (type == 'EffectEvidenceSynthesis') EffectEvidenceSynthesis;
   if (type == 'Encounter') Encounter;
   if (type == 'Endpoint') Endpoint;
-  if (type == 'EnrollmentRequest')
-    EnrollmentRequest;
-  if (type == 'EnrollmentResponse')
-    EnrollmentResponse;
+  if (type == 'EnrollmentRequest') EnrollmentRequest;
+  if (type == 'EnrollmentResponse') EnrollmentResponse;
   if (type == 'EpisodeOfCare') EpisodeOfCare;
   if (type == 'EventDefinition') EventDefinition;
   if (type == 'Evidence') Evidence;
   if (type == 'EvidenceVariable') EvidenceVariable;
   if (type == 'ExampleScenario') ExampleScenario;
-  if (type == 'ExplanationOfBenefit')
-    ExplanationOfBenefit;
-  if (type == 'FamilyMemberHistory')
-    FamilyMemberHistory;
+  if (type == 'ExplanationOfBenefit') ExplanationOfBenefit;
+  if (type == 'FamilyMemberHistory') FamilyMemberHistory;
   if (type == 'Flag') Flag;
   if (type == 'Goal') Goal;
   if (type == 'GraphDefinition') GraphDefinition;
   if (type == 'Group') Group;
   if (type == 'GuidanceResponse') GuidanceResponse;
-  if (type == 'HealthcareService')
-    HealthcareService;
+  if (type == 'HealthcareService') HealthcareService;
   if (type == 'ImagingStudy') ImagingStudy;
   if (type == 'Immunization') Immunization;
-  if (type == 'ImmunizationEvaluation')
-    ImmunizationEvaluation;
-  if (type == 'ImmunizationRecommendation')
-    ImmunizationRecommendation;
-  if (type == 'ImplementationGuide')
-    ImplementationGuide;
+  if (type == 'ImmunizationEvaluation') ImmunizationEvaluation;
+  if (type == 'ImmunizationRecommendation') ImmunizationRecommendation;
+  if (type == 'ImplementationGuide') ImplementationGuide;
   if (type == 'InsurancePlan') InsurancePlan;
   if (type == 'Invoice') Invoice;
   if (type == 'Library') Library;
@@ -327,56 +301,38 @@ Type ResourceType(String type) {
   if (type == 'MeasureReport') MeasureReport;
   if (type == 'Media') Media;
   if (type == 'Medication') Medication;
-  if (type == 'MedicationAdministration')
-    MedicationAdministration;
-  if (type == 'MedicationDispense')
-    MedicationDispense;
-  if (type == 'MedicationKnowledge')
-    MedicationKnowledge;
-  if (type == 'MedicationRequest')
-    MedicationRequest;
-  if (type == 'MedicationStatement')
-    MedicationStatement;
+  if (type == 'MedicationAdministration') MedicationAdministration;
+  if (type == 'MedicationDispense') MedicationDispense;
+  if (type == 'MedicationKnowledge') MedicationKnowledge;
+  if (type == 'MedicationRequest') MedicationRequest;
+  if (type == 'MedicationStatement') MedicationStatement;
   if (type == 'MedicinalProduct') MedicinalProduct;
-  if (type == 'MedicinalProductAuthorization')
-    MedicinalProductAuthorization;
+  if (type == 'MedicinalProductAuthorization') MedicinalProductAuthorization;
   if (type == 'MedicinalProductContraindication')
     MedicinalProductContraindication;
-  if (type == 'MedicinalProductIndication')
-    MedicinalProductIndication;
-  if (type == 'MedicinalProductIngredient')
-    MedicinalProductIngredient;
-  if (type == 'MedicinalProductInteraction')
-    MedicinalProductInteraction;
-  if (type == 'MedicinalProductManufactured')
-    MedicinalProductManufactured;
-  if (type == 'MedicinalProductPackaged')
-    MedicinalProductPackaged;
-  if (type == 'MedicinalProductPharmaceutical')
-    MedicinalProductPharmaceutical;
+  if (type == 'MedicinalProductIndication') MedicinalProductIndication;
+  if (type == 'MedicinalProductIngredient') MedicinalProductIngredient;
+  if (type == 'MedicinalProductInteraction') MedicinalProductInteraction;
+  if (type == 'MedicinalProductManufactured') MedicinalProductManufactured;
+  if (type == 'MedicinalProductPackaged') MedicinalProductPackaged;
+  if (type == 'MedicinalProductPharmaceutical') MedicinalProductPharmaceutical;
   if (type == 'MedicinalProductUndesirableEffect')
     MedicinalProductUndesirableEffect;
-  if (type == 'MessageDefinition')
-    MessageDefinition;
+  if (type == 'MessageDefinition') MessageDefinition;
   if (type == 'MessageHeader') MessageHeader;
-  if (type == 'MolecularSequence')
-    MolecularSequence;
+  if (type == 'MolecularSequence') MolecularSequence;
   if (type == 'NamingSystem') NamingSystem;
   if (type == 'NutritionOrder') NutritionOrder;
   if (type == 'Observation') Observation;
-  if (type == 'ObservationDefinition')
-    ObservationDefinition;
-  if (type == 'OperationDefinition')
-    OperationDefinition;
+  if (type == 'ObservationDefinition') ObservationDefinition;
+  if (type == 'OperationDefinition') OperationDefinition;
   if (type == 'OperationOutcome') OperationOutcome;
   if (type == 'Organization') Organization;
-  if (type == 'OrganizationAffiliation')
-    OrganizationAffiliation;
+  if (type == 'OrganizationAffiliation') OrganizationAffiliation;
   if (type == 'Parameters') Parameters;
   if (type == 'Patient') Patient;
   if (type == 'PaymentNotice') PaymentNotice;
-  if (type == 'PaymentReconciliation')
-    PaymentReconciliation;
+  if (type == 'PaymentReconciliation') PaymentReconciliation;
   if (type == 'Person') Person;
   if (type == 'PlanDefinition') PlanDefinition;
   if (type == 'Practitioner') Practitioner;
@@ -384,53 +340,40 @@ Type ResourceType(String type) {
   if (type == 'Procedure') Procedure;
   if (type == 'Provenance') Provenance;
   if (type == 'Questionnaire') Questionnaire;
-  if (type == 'QuestionnaireResponse')
-    QuestionnaireResponse;
+  if (type == 'QuestionnaireResponse') QuestionnaireResponse;
   if (type == 'RelatedPerson') RelatedPerson;
   if (type == 'RequestGroup') RequestGroup;
-  if (type == 'ResearchDefinition')
-    ResearchDefinition;
-  if (type == 'ResearchElementDefinition')
-    ResearchElementDefinition;
+  if (type == 'ResearchDefinition') ResearchDefinition;
+  if (type == 'ResearchElementDefinition') ResearchElementDefinition;
   if (type == 'ResearchStudy') ResearchStudy;
   if (type == 'ResearchSubject') ResearchSubject;
   if (type == 'RiskAssessment') RiskAssessment;
-  if (type == 'RiskEvidenceSynthesis')
-    RiskEvidenceSynthesis;
+  if (type == 'RiskEvidenceSynthesis') RiskEvidenceSynthesis;
   if (type == 'Schedule') Schedule;
   if (type == 'SearchParameter') SearchParameter;
   if (type == 'ServiceRequest') ServiceRequest;
   if (type == 'Slot') Slot;
   if (type == 'Specimen') Specimen;
-  if (type == 'SpecimenDefinition')
-    SpecimenDefinition;
-  if (type == 'StructureDefinition')
-    StructureDefinition;
+  if (type == 'SpecimenDefinition') SpecimenDefinition;
+  if (type == 'StructureDefinition') StructureDefinition;
   if (type == 'StructureMap') StructureMap;
   if (type == 'Subscription') Subscription;
   if (type == 'Substance') Substance;
-  if (type == 'SubstanceNucleicAcid')
-    SubstanceNucleicAcid;
+  if (type == 'SubstanceNucleicAcid') SubstanceNucleicAcid;
   if (type == 'SubstancePolymer') SubstancePolymer;
   if (type == 'SubstanceProtein') SubstanceProtein;
-  if (type == 'SubstanceReferenceInformation')
-    SubstanceReferenceInformation;
-  if (type == 'SubstanceSourceMaterial')
-    SubstanceSourceMaterial;
-  if (type == 'SubstanceSpecification')
-    SubstanceSpecification;
+  if (type == 'SubstanceReferenceInformation') SubstanceReferenceInformation;
+  if (type == 'SubstanceSourceMaterial') SubstanceSourceMaterial;
+  if (type == 'SubstanceSpecification') SubstanceSpecification;
   if (type == 'SupplyDelivery') SupplyDelivery;
   if (type == 'SupplyRequest') SupplyRequest;
   if (type == 'Task') Task;
-  if (type == 'TerminologyCapabilities')
-    TerminologyCapabilities;
+  if (type == 'TerminologyCapabilities') TerminologyCapabilities;
   if (type == 'TestReport') TestReport;
   if (type == 'TestScript') TestScript;
   if (type == 'ValueSet') ValueSet;
-  if (type == 'VerificationResult')
-    VerificationResult;
-  if (type == 'VisionPrescription')
-    VisionPrescription;
+  if (type == 'VerificationResult') VerificationResult;
+  if (type == 'VisionPrescription') VisionPrescription;
 }
 
 dynamic ResourceTypes(String type, Map<String, dynamic> json) {
@@ -680,4 +623,3 @@ dynamic ResourceTypes(String type, Map<String, dynamic> json) {
   if (type == 'VisionPrescription')
     return (new VisionPrescription.fromJson(json));
 }
-

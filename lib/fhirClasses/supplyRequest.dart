@@ -16,87 +16,89 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SupplyRequest {
+  static Future<SupplyRequest> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      String status,
+      Element elementStatus,
+      CodeableConcept category,
+      String priority,
+      Element elementPriority,
+      CodeableConcept itemCodeableConcept,
+      Reference itemReference,
+      Quantity quantity,
+      List<SupplyRequest_Parameter> parameter,
+      String occurrenceDateTime,
+      Element elementOccurrenceDateTime,
+      Period occurrencePeriod,
+      Timing occurrenceTiming,
+      DateTime authoredOn,
+      Element elementAuthoredOn,
+      Reference requester,
+      List<Reference> supplier,
+      List<CodeableConcept> reasonCode,
+      List<Reference> reasonReference,
+      Reference deliverFrom,
+      Reference deliverTo}) async {
+    var fhirDb = new DatabaseHelper();
+    SupplyRequest newSupplyRequest = new SupplyRequest(
+      resourceType: 'SupplyRequest',
+      id: await fhirDb.newResourceId('SupplyRequest'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      category: category,
+      priority: priority,
+      elementPriority: elementPriority,
+      itemCodeableConcept: itemCodeableConcept,
+      itemReference: itemReference,
+      quantity: quantity,
+      parameter: parameter,
+      occurrenceDateTime: occurrenceDateTime,
+      elementOccurrenceDateTime: elementOccurrenceDateTime,
+      occurrencePeriod: occurrencePeriod,
+      occurrenceTiming: occurrenceTiming,
+      authoredOn: authoredOn,
+      elementAuthoredOn: elementAuthoredOn,
+      requester: requester,
+      supplier: supplier,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      deliverFrom: deliverFrom,
+      deliverTo: deliverTo,
+    );
+    newSupplyRequest.meta.createdAt = DateTime.now();
+    newSupplyRequest.meta.lastUpdated = newSupplyRequest.meta.createdAt;
+    int saved = await fhirDb.newResource(newSupplyRequest);
+    return newSupplyRequest;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<SupplyRequest> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		String status,
-		Element elementStatus,
-		CodeableConcept category,
-		String priority,
-		Element elementPriority,
-		CodeableConcept itemCodeableConcept,
-		Reference itemReference,
-		Quantity quantity,
-		List<SupplyRequest_Parameter> parameter,
-		String occurrenceDateTime,
-		Element elementOccurrenceDateTime,
-		Period occurrencePeriod,
-		Timing occurrenceTiming,
-		DateTime authoredOn,
-		Element elementAuthoredOn,
-		Reference requester,
-		List<Reference> supplier,
-		List<CodeableConcept> reasonCode,
-		List<Reference> reasonReference,
-		Reference deliverFrom,
-		Reference deliverTo}) async {
-	var fhirDb = new DatabaseHelper();
-	SupplyRequest newSupplyRequest = new SupplyRequest(
-			resourceType: 'SupplyRequest',
-			id: await fhirDb.newResourceId('SupplyRequest'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			status: status,
-			elementStatus: elementStatus,
-			category: category,
-			priority: priority,
-			elementPriority: elementPriority,
-			itemCodeableConcept: itemCodeableConcept,
-			itemReference: itemReference,
-			quantity: quantity,
-			parameter: parameter,
-			occurrenceDateTime: occurrenceDateTime,
-			elementOccurrenceDateTime: elementOccurrenceDateTime,
-			occurrencePeriod: occurrencePeriod,
-			occurrenceTiming: occurrenceTiming,
-			authoredOn: authoredOn,
-			elementAuthoredOn: elementAuthoredOn,
-			requester: requester,
-			supplier: supplier,
-			reasonCode: reasonCode,
-			reasonReference: reasonReference,
-			deliverFrom: deliverFrom,
-			deliverTo: deliverTo,
-);
-	int saved = await fhirDb.newResource(newSupplyRequest);
-	return newSupplyRequest;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'SupplyRequest';
+  String resourceType = 'SupplyRequest';
   String id;
   Meta meta;
   String implicitRules;
@@ -108,7 +110,8 @@ save () async {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String status; // <code> enum: draft/active/suspended/cancelled/completed/entered-in-error/unknown;
+  String
+      status; // <code> enum: draft/active/suspended/cancelled/completed/entered-in-error/unknown;
   Element elementStatus;
   CodeableConcept category;
   String priority;
@@ -117,7 +120,8 @@ save () async {
   Reference itemReference;
   Quantity quantity;
   List<SupplyRequest_Parameter> parameter;
-  String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   Timing occurrenceTiming;
@@ -130,74 +134,74 @@ save () async {
   Reference deliverFrom;
   Reference deliverTo;
 
-SupplyRequest(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.category,
-    this.priority,
-    this.elementPriority,
-    this.itemCodeableConcept,
-    this.itemReference,
-    @required this.quantity,
-    this.parameter,
-    this.occurrenceDateTime,
-    this.elementOccurrenceDateTime,
-    this.occurrencePeriod,
-    this.occurrenceTiming,
-    this.authoredOn,
-    this.elementAuthoredOn,
-    this.requester,
-    this.supplier,
-    this.reasonCode,
-    this.reasonReference,
-    this.deliverFrom,
-    this.deliverTo
-    });
+  SupplyRequest(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.status,
+      this.elementStatus,
+      this.category,
+      this.priority,
+      this.elementPriority,
+      this.itemCodeableConcept,
+      this.itemReference,
+      @required this.quantity,
+      this.parameter,
+      this.occurrenceDateTime,
+      this.elementOccurrenceDateTime,
+      this.occurrencePeriod,
+      this.occurrenceTiming,
+      this.authoredOn,
+      this.elementAuthoredOn,
+      this.requester,
+      this.supplier,
+      this.reasonCode,
+      this.reasonReference,
+      this.deliverFrom,
+      this.deliverTo});
 
-  factory SupplyRequest.fromJson(Map<String, dynamic> json) => _$SupplyRequestFromJson(json);
+  factory SupplyRequest.fromJson(Map<String, dynamic> json) =>
+      _$SupplyRequestFromJson(json);
   Map<String, dynamic> toJson() => _$SupplyRequestToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class SupplyRequest_Parameter {
+  static Future<SupplyRequest_Parameter> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept code,
+      CodeableConcept valueCodeableConcept,
+      Quantity valueQuantity,
+      Range valueRange,
+      bool valueBoolean,
+      Element elementValueBoolean}) async {
+    var fhirDb = new DatabaseHelper();
+    SupplyRequest_Parameter newSupplyRequest_Parameter =
+        new SupplyRequest_Parameter(
+      id: await fhirDb.newResourceId('SupplyRequest_Parameter'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      valueCodeableConcept: valueCodeableConcept,
+      valueQuantity: valueQuantity,
+      valueRange: valueRange,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+    );
+    return newSupplyRequest_Parameter;
+  }
 
-
-	static Future<SupplyRequest_Parameter> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept code,
-		CodeableConcept valueCodeableConcept,
-		Quantity valueQuantity,
-		Range valueRange,
-		bool valueBoolean,
-		Element elementValueBoolean}) async {
-	var fhirDb = new DatabaseHelper();
-	SupplyRequest_Parameter newSupplyRequest_Parameter = new SupplyRequest_Parameter(
-			id: await fhirDb.newResourceId('SupplyRequest_Parameter'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			valueCodeableConcept: valueCodeableConcept,
-			valueQuantity: valueQuantity,
-			valueRange: valueRange,
-			valueBoolean: valueBoolean,
-			elementValueBoolean: elementValueBoolean,
-);
-	return newSupplyRequest_Parameter;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -208,22 +212,21 @@ class SupplyRequest_Parameter {
   bool valueBoolean; //  pattern: ^true|false$
   Element elementValueBoolean;
 
-SupplyRequest_Parameter(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.valueCodeableConcept,
-    this.valueQuantity,
-    this.valueRange,
-    this.valueBoolean,
-    this.elementValueBoolean
-    });
+  SupplyRequest_Parameter(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.valueCodeableConcept,
+      this.valueQuantity,
+      this.valueRange,
+      this.valueBoolean,
+      this.elementValueBoolean});
 
-  factory SupplyRequest_Parameter.fromJson(Map<String, dynamic> json) => _$SupplyRequest_ParameterFromJson(json);
+  factory SupplyRequest_Parameter.fromJson(Map<String, dynamic> json) =>
+      _$SupplyRequest_ParameterFromJson(json);
   Map<String, dynamic> toJson() => _$SupplyRequest_ParameterToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -250,8 +253,9 @@ SupplyRequest _$SupplyRequestFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

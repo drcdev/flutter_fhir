@@ -5,44 +5,31 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Range {
+  static Future<Range> newInstance(
+      {String id,
+      List<Extension> extension,
+      Quantity low,
+      Quantity high}) async {
+    var fhirDb = new DatabaseHelper();
+    Range newRange = new Range(
+      id: await fhirDb.newResourceId('Range'),
+      extension: extension,
+      low: low,
+      high: high,
+    );
+    return newRange;
+  }
 
-
-	static Future<Range> newInstance({
-		String id,
-		List<Extension> extension,
-		Quantity low,
-		Quantity high}) async {
-	var fhirDb = new DatabaseHelper();
-	Range newRange = new Range(
-			id: await fhirDb.newResourceId('Range'),
-			extension: extension,
-			low: low,
-			high: high,
-);
-	int saved = await fhirDb.newResource(newRange);
-	return newRange;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   Quantity low;
   Quantity high;
 
-Range(
-  {this.id,
-    this.extension,
-    this.low,
-    this.high
-    });
+  Range({this.id, this.extension, this.low, this.high});
 
   factory Range.fromJson(Map<String, dynamic> json) => _$RangeFromJson(json);
   Map<String, dynamic> toJson() => _$RangeToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

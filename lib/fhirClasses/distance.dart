@@ -5,44 +5,37 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Distance {
+  static Future<Distance> newInstance(
+      {String id,
+      List<Extension> extension,
+      double value,
+      Element elementValue,
+      String comparator,
+      Element elementComparator,
+      String unit,
+      Element elementUnit,
+      String system,
+      Element elementSystem,
+      String code,
+      Element elementCode}) async {
+    var fhirDb = new DatabaseHelper();
+    Distance newDistance = new Distance(
+      id: await fhirDb.newResourceId('Distance'),
+      extension: extension,
+      value: value,
+      elementValue: elementValue,
+      comparator: comparator,
+      elementComparator: elementComparator,
+      unit: unit,
+      elementUnit: elementUnit,
+      system: system,
+      elementSystem: elementSystem,
+      code: code,
+      elementCode: elementCode,
+    );
+    return newDistance;
+  }
 
-
-	static Future<Distance> newInstance({
-		String id,
-		List<Extension> extension,
-		double value,
-		Element elementValue,
-		String comparator,
-		Element elementComparator,
-		String unit,
-		Element elementUnit,
-		String system,
-		Element elementSystem,
-		String code,
-		Element elementCode}) async {
-	var fhirDb = new DatabaseHelper();
-	Distance newDistance = new Distance(
-			id: await fhirDb.newResourceId('Distance'),
-			extension: extension,
-			value: value,
-			elementValue: elementValue,
-			comparator: comparator,
-			elementComparator: elementComparator,
-			unit: unit,
-			elementUnit: elementUnit,
-			system: system,
-			elementSystem: elementSystem,
-			code: code,
-			elementCode: elementCode,
-);
-	int saved = await fhirDb.newResource(newDistance);
-	return newDistance;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   double value;
@@ -56,25 +49,24 @@ save () async {
   String code;
   Element elementCode;
 
-Distance(
-  {this.id,
-    this.extension,
-    this.value,
-    this.elementValue,
-    this.comparator,
-    this.elementComparator,
-    this.unit,
-    this.elementUnit,
-    this.system,
-    this.elementSystem,
-    this.code,
-    this.elementCode
-    });
+  Distance(
+      {this.id,
+      this.extension,
+      this.value,
+      this.elementValue,
+      this.comparator,
+      this.elementComparator,
+      this.unit,
+      this.elementUnit,
+      this.system,
+      this.elementSystem,
+      this.code,
+      this.elementCode});
 
-  factory Distance.fromJson(Map<String, dynamic> json) => _$DistanceFromJson(json);
+  factory Distance.fromJson(Map<String, dynamic> json) =>
+      _$DistanceFromJson(json);
   Map<String, dynamic> toJson() => _$DistanceToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

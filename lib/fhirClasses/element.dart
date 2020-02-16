@@ -4,36 +4,25 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Element {
+  static Future<Element> newInstance(
+      {String id, List<Extension> extension}) async {
+    var fhirDb = new DatabaseHelper();
+    Element newElement = new Element(
+      id: await fhirDb.newResourceId('Element'),
+      extension: extension,
+    );
+    return newElement;
+  }
 
-
-	static Future<Element> newInstance({
-		String id,
-		List<Extension> extension}) async {
-	var fhirDb = new DatabaseHelper();
-	Element newElement = new Element(
-			id: await fhirDb.newResourceId('Element'),
-			extension: extension,
-);
-	int saved = await fhirDb.newResource(newElement);
-	return newElement;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
 
-Element(
-  {this.id,
-    this.extension
-    });
+  Element({this.id, this.extension});
 
-  factory Element.fromJson(Map<String, dynamic> json) => _$ElementFromJson(json);
+  factory Element.fromJson(Map<String, dynamic> json) =>
+      _$ElementFromJson(json);
   Map<String, dynamic> toJson() => _$ElementToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

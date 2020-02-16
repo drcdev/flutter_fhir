@@ -17,131 +17,135 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis {
+  static Future<EffectEvidenceSynthesis> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      List<Identifier> identifier,
+      String version,
+      Element elementVersion,
+      String name,
+      Element elementName,
+      String title,
+      Element elementTitle,
+      String status,
+      Element elementStatus,
+      DateTime date,
+      Element elementDate,
+      String publisher,
+      Element elementPublisher,
+      List<ContactDetail> contact,
+      String description,
+      Element elementDescription,
+      List<Annotation> note,
+      List<UsageContext> useContext,
+      List<CodeableConcept> jurisdiction,
+      String copyright,
+      Element elementCopyright,
+      String approvalDate,
+      Element elementApprovalDate,
+      String lastReviewDate,
+      Element elementLastReviewDate,
+      Period effectivePeriod,
+      List<CodeableConcept> topic,
+      List<ContactDetail> author,
+      List<ContactDetail> editor,
+      List<ContactDetail> reviewer,
+      List<ContactDetail> endorser,
+      List<RelatedArtifact> relatedArtifact,
+      CodeableConcept synthesisType,
+      CodeableConcept studyType,
+      Reference population,
+      Reference exposure,
+      Reference exposureAlternative,
+      Reference outcome,
+      EffectEvidenceSynthesis_SampleSize sampleSize,
+      List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure,
+      List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate,
+      List<EffectEvidenceSynthesis_Certainty> certainty}) async {
+    var fhirDb = new DatabaseHelper();
+    EffectEvidenceSynthesis newEffectEvidenceSynthesis =
+        new EffectEvidenceSynthesis(
+      resourceType: 'EffectEvidenceSynthesis',
+      id: await fhirDb.newResourceId('EffectEvidenceSynthesis'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      status: status,
+      elementStatus: elementStatus,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      note: note,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      approvalDate: approvalDate,
+      elementApprovalDate: elementApprovalDate,
+      lastReviewDate: lastReviewDate,
+      elementLastReviewDate: elementLastReviewDate,
+      effectivePeriod: effectivePeriod,
+      topic: topic,
+      author: author,
+      editor: editor,
+      reviewer: reviewer,
+      endorser: endorser,
+      relatedArtifact: relatedArtifact,
+      synthesisType: synthesisType,
+      studyType: studyType,
+      population: population,
+      exposure: exposure,
+      exposureAlternative: exposureAlternative,
+      outcome: outcome,
+      sampleSize: sampleSize,
+      resultsByExposure: resultsByExposure,
+      effectEstimate: effectEstimate,
+      certainty: certainty,
+    );
+    newEffectEvidenceSynthesis.meta.createdAt = DateTime.now();
+    newEffectEvidenceSynthesis.meta.lastUpdated =
+        newEffectEvidenceSynthesis.meta.createdAt;
+    int saved = await fhirDb.newResource(newEffectEvidenceSynthesis);
+    return newEffectEvidenceSynthesis;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<EffectEvidenceSynthesis> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		List<Identifier> identifier,
-		String version,
-		Element elementVersion,
-		String name,
-		Element elementName,
-		String title,
-		Element elementTitle,
-		String status,
-		Element elementStatus,
-		DateTime date,
-		Element elementDate,
-		String publisher,
-		Element elementPublisher,
-		List<ContactDetail> contact,
-		String description,
-		Element elementDescription,
-		List<Annotation> note,
-		List<UsageContext> useContext,
-		List<CodeableConcept> jurisdiction,
-		String copyright,
-		Element elementCopyright,
-		String approvalDate,
-		Element elementApprovalDate,
-		String lastReviewDate,
-		Element elementLastReviewDate,
-		Period effectivePeriod,
-		List<CodeableConcept> topic,
-		List<ContactDetail> author,
-		List<ContactDetail> editor,
-		List<ContactDetail> reviewer,
-		List<ContactDetail> endorser,
-		List<RelatedArtifact> relatedArtifact,
-		CodeableConcept synthesisType,
-		CodeableConcept studyType,
-		Reference population,
-		Reference exposure,
-		Reference exposureAlternative,
-		Reference outcome,
-		EffectEvidenceSynthesis_SampleSize sampleSize,
-		List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure,
-		List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate,
-		List<EffectEvidenceSynthesis_Certainty> certainty}) async {
-	var fhirDb = new DatabaseHelper();
-	EffectEvidenceSynthesis newEffectEvidenceSynthesis = new EffectEvidenceSynthesis(
-			resourceType: 'EffectEvidenceSynthesis',
-			id: await fhirDb.newResourceId('EffectEvidenceSynthesis'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			identifier: identifier,
-			version: version,
-			elementVersion: elementVersion,
-			name: name,
-			elementName: elementName,
-			title: title,
-			elementTitle: elementTitle,
-			status: status,
-			elementStatus: elementStatus,
-			date: date,
-			elementDate: elementDate,
-			publisher: publisher,
-			elementPublisher: elementPublisher,
-			contact: contact,
-			description: description,
-			elementDescription: elementDescription,
-			note: note,
-			useContext: useContext,
-			jurisdiction: jurisdiction,
-			copyright: copyright,
-			elementCopyright: elementCopyright,
-			approvalDate: approvalDate,
-			elementApprovalDate: elementApprovalDate,
-			lastReviewDate: lastReviewDate,
-			elementLastReviewDate: elementLastReviewDate,
-			effectivePeriod: effectivePeriod,
-			topic: topic,
-			author: author,
-			editor: editor,
-			reviewer: reviewer,
-			endorser: endorser,
-			relatedArtifact: relatedArtifact,
-			synthesisType: synthesisType,
-			studyType: studyType,
-			population: population,
-			exposure: exposure,
-			exposureAlternative: exposureAlternative,
-			outcome: outcome,
-			sampleSize: sampleSize,
-			resultsByExposure: resultsByExposure,
-			effectEstimate: effectEstimate,
-			certainty: certainty,
-);
-	int saved = await fhirDb.newResource(newEffectEvidenceSynthesis);
-	return newEffectEvidenceSynthesis;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'EffectEvidenceSynthesis';
+  String resourceType = 'EffectEvidenceSynthesis';
   String id;
   Meta meta;
   String implicitRules;
@@ -197,96 +201,96 @@ save () async {
   List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate;
   List<EffectEvidenceSynthesis_Certainty> certainty;
 
-EffectEvidenceSynthesis(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.status,
-    this.elementStatus,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.note,
-    this.useContext,
-    this.jurisdiction,
-    this.copyright,
-    this.elementCopyright,
-    this.approvalDate,
-    this.elementApprovalDate,
-    this.lastReviewDate,
-    this.elementLastReviewDate,
-    this.effectivePeriod,
-    this.topic,
-    this.author,
-    this.editor,
-    this.reviewer,
-    this.endorser,
-    this.relatedArtifact,
-    this.synthesisType,
-    this.studyType,
-    @required this.population,
-    @required this.exposure,
-    @required this.exposureAlternative,
-    @required this.outcome,
-    this.sampleSize,
-    this.resultsByExposure,
-    this.effectEstimate,
-    this.certainty
-    });
+  EffectEvidenceSynthesis(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.identifier,
+      this.version,
+      this.elementVersion,
+      this.name,
+      this.elementName,
+      this.title,
+      this.elementTitle,
+      this.status,
+      this.elementStatus,
+      this.date,
+      this.elementDate,
+      this.publisher,
+      this.elementPublisher,
+      this.contact,
+      this.description,
+      this.elementDescription,
+      this.note,
+      this.useContext,
+      this.jurisdiction,
+      this.copyright,
+      this.elementCopyright,
+      this.approvalDate,
+      this.elementApprovalDate,
+      this.lastReviewDate,
+      this.elementLastReviewDate,
+      this.effectivePeriod,
+      this.topic,
+      this.author,
+      this.editor,
+      this.reviewer,
+      this.endorser,
+      this.relatedArtifact,
+      this.synthesisType,
+      this.studyType,
+      @required this.population,
+      @required this.exposure,
+      @required this.exposureAlternative,
+      @required this.outcome,
+      this.sampleSize,
+      this.resultsByExposure,
+      this.effectEstimate,
+      this.certainty});
 
-  factory EffectEvidenceSynthesis.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesisFromJson(json);
+  factory EffectEvidenceSynthesis.fromJson(Map<String, dynamic> json) =>
+      _$EffectEvidenceSynthesisFromJson(json);
   Map<String, dynamic> toJson() => _$EffectEvidenceSynthesisToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_SampleSize {
+  static Future<EffectEvidenceSynthesis_SampleSize> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String description,
+      Element elementDescription,
+      int numberOfStudies,
+      Element elementNumberOfStudies,
+      int numberOfParticipants,
+      Element elementNumberOfParticipants}) async {
+    var fhirDb = new DatabaseHelper();
+    EffectEvidenceSynthesis_SampleSize newEffectEvidenceSynthesis_SampleSize =
+        new EffectEvidenceSynthesis_SampleSize(
+      id: await fhirDb.newResourceId('EffectEvidenceSynthesis_SampleSize'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      numberOfStudies: numberOfStudies,
+      elementNumberOfStudies: elementNumberOfStudies,
+      numberOfParticipants: numberOfParticipants,
+      elementNumberOfParticipants: elementNumberOfParticipants,
+    );
+    return newEffectEvidenceSynthesis_SampleSize;
+  }
 
-
-	static Future<EffectEvidenceSynthesis_SampleSize> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String description,
-		Element elementDescription,
-		int numberOfStudies,
-		Element elementNumberOfStudies,
-		int numberOfParticipants,
-		Element elementNumberOfParticipants}) async {
-	var fhirDb = new DatabaseHelper();
-	EffectEvidenceSynthesis_SampleSize newEffectEvidenceSynthesis_SampleSize = new EffectEvidenceSynthesis_SampleSize(
-			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_SampleSize'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			description: description,
-			elementDescription: elementDescription,
-			numberOfStudies: numberOfStudies,
-			elementNumberOfStudies: elementNumberOfStudies,
-			numberOfParticipants: numberOfParticipants,
-			elementNumberOfParticipants: elementNumberOfParticipants,
-);
-	return newEffectEvidenceSynthesis_SampleSize;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -297,50 +301,54 @@ class EffectEvidenceSynthesis_SampleSize {
   int numberOfParticipants;
   Element elementNumberOfParticipants;
 
-EffectEvidenceSynthesis_SampleSize(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.description,
-    this.elementDescription,
-    this.numberOfStudies,
-    this.elementNumberOfStudies,
-    this.numberOfParticipants,
-    this.elementNumberOfParticipants
-    });
+  EffectEvidenceSynthesis_SampleSize(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.description,
+      this.elementDescription,
+      this.numberOfStudies,
+      this.elementNumberOfStudies,
+      this.numberOfParticipants,
+      this.elementNumberOfParticipants});
 
-  factory EffectEvidenceSynthesis_SampleSize.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesis_SampleSizeFromJson(json);
-  Map<String, dynamic> toJson() => _$EffectEvidenceSynthesis_SampleSizeToJson(this);
+  factory EffectEvidenceSynthesis_SampleSize.fromJson(
+          Map<String, dynamic> json) =>
+      _$EffectEvidenceSynthesis_SampleSizeFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$EffectEvidenceSynthesis_SampleSizeToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_ResultsByExposure {
+  static Future<EffectEvidenceSynthesis_ResultsByExposure> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String description,
+      Element elementDescription,
+      String exposureState,
+      Element elementExposureState,
+      CodeableConcept variantState,
+      Reference riskEvidenceSynthesis}) async {
+    var fhirDb = new DatabaseHelper();
+    EffectEvidenceSynthesis_ResultsByExposure
+        newEffectEvidenceSynthesis_ResultsByExposure =
+        new EffectEvidenceSynthesis_ResultsByExposure(
+      id: await fhirDb
+          .newResourceId('EffectEvidenceSynthesis_ResultsByExposure'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      exposureState: exposureState,
+      elementExposureState: elementExposureState,
+      variantState: variantState,
+      riskEvidenceSynthesis: riskEvidenceSynthesis,
+    );
+    return newEffectEvidenceSynthesis_ResultsByExposure;
+  }
 
-
-	static Future<EffectEvidenceSynthesis_ResultsByExposure> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String description,
-		Element elementDescription,
-		String exposureState,
-		Element elementExposureState,
-		CodeableConcept variantState,
-		Reference riskEvidenceSynthesis}) async {
-	var fhirDb = new DatabaseHelper();
-	EffectEvidenceSynthesis_ResultsByExposure newEffectEvidenceSynthesis_ResultsByExposure = new EffectEvidenceSynthesis_ResultsByExposure(
-			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_ResultsByExposure'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			description: description,
-			elementDescription: elementDescription,
-			exposureState: exposureState,
-			elementExposureState: elementExposureState,
-			variantState: variantState,
-			riskEvidenceSynthesis: riskEvidenceSynthesis,
-);
-	return newEffectEvidenceSynthesis_ResultsByExposure;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -351,54 +359,58 @@ class EffectEvidenceSynthesis_ResultsByExposure {
   CodeableConcept variantState;
   Reference riskEvidenceSynthesis;
 
-EffectEvidenceSynthesis_ResultsByExposure(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.description,
-    this.elementDescription,
-    this.exposureState,
-    this.elementExposureState,
-    this.variantState,
-    @required this.riskEvidenceSynthesis
-    });
+  EffectEvidenceSynthesis_ResultsByExposure(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.description,
+      this.elementDescription,
+      this.exposureState,
+      this.elementExposureState,
+      this.variantState,
+      @required this.riskEvidenceSynthesis});
 
-  factory EffectEvidenceSynthesis_ResultsByExposure.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesis_ResultsByExposureFromJson(json);
-  Map<String, dynamic> toJson() => _$EffectEvidenceSynthesis_ResultsByExposureToJson(this);
+  factory EffectEvidenceSynthesis_ResultsByExposure.fromJson(
+          Map<String, dynamic> json) =>
+      _$EffectEvidenceSynthesis_ResultsByExposureFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$EffectEvidenceSynthesis_ResultsByExposureToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_EffectEstimate {
+  static Future<EffectEvidenceSynthesis_EffectEstimate> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String description,
+      Element elementDescription,
+      CodeableConcept type,
+      CodeableConcept variantState,
+      double value,
+      Element elementValue,
+      CodeableConcept unitOfMeasure,
+      List<EffectEvidenceSynthesis_PrecisionEstimate>
+          precisionEstimate}) async {
+    var fhirDb = new DatabaseHelper();
+    EffectEvidenceSynthesis_EffectEstimate
+        newEffectEvidenceSynthesis_EffectEstimate =
+        new EffectEvidenceSynthesis_EffectEstimate(
+      id: await fhirDb.newResourceId('EffectEvidenceSynthesis_EffectEstimate'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      type: type,
+      variantState: variantState,
+      value: value,
+      elementValue: elementValue,
+      unitOfMeasure: unitOfMeasure,
+      precisionEstimate: precisionEstimate,
+    );
+    return newEffectEvidenceSynthesis_EffectEstimate;
+  }
 
-
-	static Future<EffectEvidenceSynthesis_EffectEstimate> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String description,
-		Element elementDescription,
-		CodeableConcept type,
-		CodeableConcept variantState,
-		double value,
-		Element elementValue,
-		CodeableConcept unitOfMeasure,
-		List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate}) async {
-	var fhirDb = new DatabaseHelper();
-	EffectEvidenceSynthesis_EffectEstimate newEffectEvidenceSynthesis_EffectEstimate = new EffectEvidenceSynthesis_EffectEstimate(
-			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_EffectEstimate'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			description: description,
-			elementDescription: elementDescription,
-			type: type,
-			variantState: variantState,
-			value: value,
-			elementValue: elementValue,
-			unitOfMeasure: unitOfMeasure,
-			precisionEstimate: precisionEstimate,
-);
-	return newEffectEvidenceSynthesis_EffectEstimate;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -411,54 +423,58 @@ class EffectEvidenceSynthesis_EffectEstimate {
   CodeableConcept unitOfMeasure;
   List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
-EffectEvidenceSynthesis_EffectEstimate(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.description,
-    this.elementDescription,
-    this.type,
-    this.variantState,
-    this.value,
-    this.elementValue,
-    this.unitOfMeasure,
-    this.precisionEstimate
-    });
+  EffectEvidenceSynthesis_EffectEstimate(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.description,
+      this.elementDescription,
+      this.type,
+      this.variantState,
+      this.value,
+      this.elementValue,
+      this.unitOfMeasure,
+      this.precisionEstimate});
 
-  factory EffectEvidenceSynthesis_EffectEstimate.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesis_EffectEstimateFromJson(json);
-  Map<String, dynamic> toJson() => _$EffectEvidenceSynthesis_EffectEstimateToJson(this);
+  factory EffectEvidenceSynthesis_EffectEstimate.fromJson(
+          Map<String, dynamic> json) =>
+      _$EffectEvidenceSynthesis_EffectEstimateFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$EffectEvidenceSynthesis_EffectEstimateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_PrecisionEstimate {
+  static Future<EffectEvidenceSynthesis_PrecisionEstimate> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept type,
+      double level,
+      Element elementLevel,
+      double from,
+      Element elementFrom,
+      double to,
+      Element elementTo}) async {
+    var fhirDb = new DatabaseHelper();
+    EffectEvidenceSynthesis_PrecisionEstimate
+        newEffectEvidenceSynthesis_PrecisionEstimate =
+        new EffectEvidenceSynthesis_PrecisionEstimate(
+      id: await fhirDb
+          .newResourceId('EffectEvidenceSynthesis_PrecisionEstimate'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      level: level,
+      elementLevel: elementLevel,
+      from: from,
+      elementFrom: elementFrom,
+      to: to,
+      elementTo: elementTo,
+    );
+    return newEffectEvidenceSynthesis_PrecisionEstimate;
+  }
 
-
-	static Future<EffectEvidenceSynthesis_PrecisionEstimate> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept type,
-		double level,
-		Element elementLevel,
-		double from,
-		Element elementFrom,
-		double to,
-		Element elementTo}) async {
-	var fhirDb = new DatabaseHelper();
-	EffectEvidenceSynthesis_PrecisionEstimate newEffectEvidenceSynthesis_PrecisionEstimate = new EffectEvidenceSynthesis_PrecisionEstimate(
-			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_PrecisionEstimate'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			level: level,
-			elementLevel: elementLevel,
-			from: from,
-			elementFrom: elementFrom,
-			to: to,
-			elementTo: elementTo,
-);
-	return newEffectEvidenceSynthesis_PrecisionEstimate;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -470,45 +486,48 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
   double to;
   Element elementTo;
 
-EffectEvidenceSynthesis_PrecisionEstimate(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.level,
-    this.elementLevel,
-    this.from,
-    this.elementFrom,
-    this.to,
-    this.elementTo
-    });
+  EffectEvidenceSynthesis_PrecisionEstimate(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.level,
+      this.elementLevel,
+      this.from,
+      this.elementFrom,
+      this.to,
+      this.elementTo});
 
-  factory EffectEvidenceSynthesis_PrecisionEstimate.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesis_PrecisionEstimateFromJson(json);
-  Map<String, dynamic> toJson() => _$EffectEvidenceSynthesis_PrecisionEstimateToJson(this);
+  factory EffectEvidenceSynthesis_PrecisionEstimate.fromJson(
+          Map<String, dynamic> json) =>
+      _$EffectEvidenceSynthesis_PrecisionEstimateFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$EffectEvidenceSynthesis_PrecisionEstimateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_Certainty {
+  static Future<EffectEvidenceSynthesis_Certainty> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<CodeableConcept> rating,
+      List<Annotation> note,
+      List<EffectEvidenceSynthesis_CertaintySubcomponent>
+          certaintySubcomponent}) async {
+    var fhirDb = new DatabaseHelper();
+    EffectEvidenceSynthesis_Certainty newEffectEvidenceSynthesis_Certainty =
+        new EffectEvidenceSynthesis_Certainty(
+      id: await fhirDb.newResourceId('EffectEvidenceSynthesis_Certainty'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      rating: rating,
+      note: note,
+      certaintySubcomponent: certaintySubcomponent,
+    );
+    return newEffectEvidenceSynthesis_Certainty;
+  }
 
-
-	static Future<EffectEvidenceSynthesis_Certainty> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<CodeableConcept> rating,
-		List<Annotation> note,
-		List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent}) async {
-	var fhirDb = new DatabaseHelper();
-	EffectEvidenceSynthesis_Certainty newEffectEvidenceSynthesis_Certainty = new EffectEvidenceSynthesis_Certainty(
-			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_Certainty'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			rating: rating,
-			note: note,
-			certaintySubcomponent: certaintySubcomponent,
-);
-	return newEffectEvidenceSynthesis_Certainty;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -516,41 +535,45 @@ class EffectEvidenceSynthesis_Certainty {
   List<Annotation> note;
   List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
-EffectEvidenceSynthesis_Certainty(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.rating,
-    this.note,
-    this.certaintySubcomponent
-    });
+  EffectEvidenceSynthesis_Certainty(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.rating,
+      this.note,
+      this.certaintySubcomponent});
 
-  factory EffectEvidenceSynthesis_Certainty.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesis_CertaintyFromJson(json);
-  Map<String, dynamic> toJson() => _$EffectEvidenceSynthesis_CertaintyToJson(this);
+  factory EffectEvidenceSynthesis_Certainty.fromJson(
+          Map<String, dynamic> json) =>
+      _$EffectEvidenceSynthesis_CertaintyFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$EffectEvidenceSynthesis_CertaintyToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_CertaintySubcomponent {
+  static Future<EffectEvidenceSynthesis_CertaintySubcomponent> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept type,
+      List<CodeableConcept> rating,
+      List<Annotation> note}) async {
+    var fhirDb = new DatabaseHelper();
+    EffectEvidenceSynthesis_CertaintySubcomponent
+        newEffectEvidenceSynthesis_CertaintySubcomponent =
+        new EffectEvidenceSynthesis_CertaintySubcomponent(
+      id: await fhirDb
+          .newResourceId('EffectEvidenceSynthesis_CertaintySubcomponent'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      rating: rating,
+      note: note,
+    );
+    return newEffectEvidenceSynthesis_CertaintySubcomponent;
+  }
 
-
-	static Future<EffectEvidenceSynthesis_CertaintySubcomponent> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept type,
-		List<CodeableConcept> rating,
-		List<Annotation> note}) async {
-	var fhirDb = new DatabaseHelper();
-	EffectEvidenceSynthesis_CertaintySubcomponent newEffectEvidenceSynthesis_CertaintySubcomponent = new EffectEvidenceSynthesis_CertaintySubcomponent(
-			id: await fhirDb.newResourceId('EffectEvidenceSynthesis_CertaintySubcomponent'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			rating: rating,
-			note: note,
-);
-	return newEffectEvidenceSynthesis_CertaintySubcomponent;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -558,19 +581,20 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
   List<CodeableConcept> rating;
   List<Annotation> note;
 
-EffectEvidenceSynthesis_CertaintySubcomponent(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.rating,
-    this.note
-    });
+  EffectEvidenceSynthesis_CertaintySubcomponent(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.rating,
+      this.note});
 
-  factory EffectEvidenceSynthesis_CertaintySubcomponent.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesis_CertaintySubcomponentFromJson(json);
-  Map<String, dynamic> toJson() => _$EffectEvidenceSynthesis_CertaintySubcomponentToJson(this);
+  factory EffectEvidenceSynthesis_CertaintySubcomponent.fromJson(
+          Map<String, dynamic> json) =>
+      _$EffectEvidenceSynthesis_CertaintySubcomponentFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$EffectEvidenceSynthesis_CertaintySubcomponentToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -598,8 +622,9 @@ EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

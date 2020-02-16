@@ -9,84 +9,79 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class TriggerDefinition {
+  static Future<TriggerDefinition> newInstance(
+      {String id,
+      List<Extension> extension,
+      String type,
+      Element elementType,
+      String name,
+      Element elementName,
+      Timing timingTiming,
+      Reference timingReference,
+      String timingDate,
+      Element elementTimingDate,
+      String timingDateTime,
+      Element elementTimingDateTime,
+      List<DataRequirement> data,
+      Expression condition}) async {
+    var fhirDb = new DatabaseHelper();
+    TriggerDefinition newTriggerDefinition = new TriggerDefinition(
+      id: await fhirDb.newResourceId('TriggerDefinition'),
+      extension: extension,
+      type: type,
+      elementType: elementType,
+      name: name,
+      elementName: elementName,
+      timingTiming: timingTiming,
+      timingReference: timingReference,
+      timingDate: timingDate,
+      elementTimingDate: elementTimingDate,
+      timingDateTime: timingDateTime,
+      elementTimingDateTime: elementTimingDateTime,
+      data: data,
+      condition: condition,
+    );
+    return newTriggerDefinition;
+  }
 
-
-	static Future<TriggerDefinition> newInstance({
-		String id,
-		List<Extension> extension,
-		String type,
-		Element elementType,
-		String name,
-		Element elementName,
-		Timing timingTiming,
-		Reference timingReference,
-		String timingDate,
-		Element elementTimingDate,
-		String timingDateTime,
-		Element elementTimingDateTime,
-		List<DataRequirement> data,
-		Expression condition}) async {
-	var fhirDb = new DatabaseHelper();
-	TriggerDefinition newTriggerDefinition = new TriggerDefinition(
-			id: await fhirDb.newResourceId('TriggerDefinition'),
-			extension: extension,
-			type: type,
-			elementType: elementType,
-			name: name,
-			elementName: elementName,
-			timingTiming: timingTiming,
-			timingReference: timingReference,
-			timingDate: timingDate,
-			elementTimingDate: elementTimingDate,
-			timingDateTime: timingDateTime,
-			elementTimingDateTime: elementTimingDateTime,
-			data: data,
-			condition: condition,
-);
-	int saved = await fhirDb.newResource(newTriggerDefinition);
-	return newTriggerDefinition;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
-  String type; // <code> enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended;
+  String
+      type; // <code> enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended;
   Element elementType;
   String name;
   Element elementName;
   Timing timingTiming;
   Reference timingReference;
-  String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String
+      timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
   Element elementTimingDate;
-  String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementTimingDateTime;
   List<DataRequirement> data;
   Expression condition;
 
-TriggerDefinition(
-  {this.id,
-    this.extension,
-    this.type,
-    this.elementType,
-    this.name,
-    this.elementName,
-    this.timingTiming,
-    this.timingReference,
-    this.timingDate,
-    this.elementTimingDate,
-    this.timingDateTime,
-    this.elementTimingDateTime,
-    this.data,
-    this.condition
-    });
+  TriggerDefinition(
+      {this.id,
+      this.extension,
+      this.type,
+      this.elementType,
+      this.name,
+      this.elementName,
+      this.timingTiming,
+      this.timingReference,
+      this.timingDate,
+      this.elementTimingDate,
+      this.timingDateTime,
+      this.elementTimingDateTime,
+      this.data,
+      this.condition});
 
-  factory TriggerDefinition.fromJson(Map<String, dynamic> json) => _$TriggerDefinitionFromJson(json);
+  factory TriggerDefinition.fromJson(Map<String, dynamic> json) =>
+      _$TriggerDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$TriggerDefinitionToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

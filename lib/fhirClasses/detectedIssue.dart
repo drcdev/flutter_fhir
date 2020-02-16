@@ -13,79 +13,81 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DetectedIssue {
+  static Future<DetectedIssue> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      String status,
+      Element elementStatus,
+      CodeableConcept code,
+      String severity,
+      Element elementSeverity,
+      Reference patient,
+      String identifiedDateTime,
+      Element elementIdentifiedDateTime,
+      Period identifiedPeriod,
+      Reference author,
+      List<Reference> implicated,
+      List<DetectedIssue_Evidence> evidence,
+      String detail,
+      Element elementDetail,
+      String reference,
+      Element elementReference,
+      List<DetectedIssue_Mitigation> mitigation}) async {
+    var fhirDb = new DatabaseHelper();
+    DetectedIssue newDetectedIssue = new DetectedIssue(
+      resourceType: 'DetectedIssue',
+      id: await fhirDb.newResourceId('DetectedIssue'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      code: code,
+      severity: severity,
+      elementSeverity: elementSeverity,
+      patient: patient,
+      identifiedDateTime: identifiedDateTime,
+      elementIdentifiedDateTime: elementIdentifiedDateTime,
+      identifiedPeriod: identifiedPeriod,
+      author: author,
+      implicated: implicated,
+      evidence: evidence,
+      detail: detail,
+      elementDetail: elementDetail,
+      reference: reference,
+      elementReference: elementReference,
+      mitigation: mitigation,
+    );
+    newDetectedIssue.meta.createdAt = DateTime.now();
+    newDetectedIssue.meta.lastUpdated = newDetectedIssue.meta.createdAt;
+    int saved = await fhirDb.newResource(newDetectedIssue);
+    return newDetectedIssue;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<DetectedIssue> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		String status,
-		Element elementStatus,
-		CodeableConcept code,
-		String severity,
-		Element elementSeverity,
-		Reference patient,
-		String identifiedDateTime,
-		Element elementIdentifiedDateTime,
-		Period identifiedPeriod,
-		Reference author,
-		List<Reference> implicated,
-		List<DetectedIssue_Evidence> evidence,
-		String detail,
-		Element elementDetail,
-		String reference,
-		Element elementReference,
-		List<DetectedIssue_Mitigation> mitigation}) async {
-	var fhirDb = new DatabaseHelper();
-	DetectedIssue newDetectedIssue = new DetectedIssue(
-			resourceType: 'DetectedIssue',
-			id: await fhirDb.newResourceId('DetectedIssue'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			status: status,
-			elementStatus: elementStatus,
-			code: code,
-			severity: severity,
-			elementSeverity: elementSeverity,
-			patient: patient,
-			identifiedDateTime: identifiedDateTime,
-			elementIdentifiedDateTime: elementIdentifiedDateTime,
-			identifiedPeriod: identifiedPeriod,
-			author: author,
-			implicated: implicated,
-			evidence: evidence,
-			detail: detail,
-			elementDetail: elementDetail,
-			reference: reference,
-			elementReference: elementReference,
-			mitigation: mitigation,
-);
-	int saved = await fhirDb.newResource(newDetectedIssue);
-	return newDetectedIssue;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'DetectedIssue';
+  String resourceType = 'DetectedIssue';
   String id;
   Meta meta;
   String implicitRules;
@@ -103,7 +105,8 @@ save () async {
   String severity; // <code> enum: high/moderate/low;
   Element elementSeverity;
   Reference patient;
-  String identifiedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      identifiedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementIdentifiedDateTime;
   Period identifiedPeriod;
   Reference author;
@@ -115,104 +118,104 @@ save () async {
   Element elementReference;
   List<DetectedIssue_Mitigation> mitigation;
 
-DetectedIssue(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.code,
-    this.severity,
-    this.elementSeverity,
-    this.patient,
-    this.identifiedDateTime,
-    this.elementIdentifiedDateTime,
-    this.identifiedPeriod,
-    this.author,
-    this.implicated,
-    this.evidence,
-    this.detail,
-    this.elementDetail,
-    this.reference,
-    this.elementReference,
-    this.mitigation
-    });
+  DetectedIssue(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.status,
+      this.elementStatus,
+      this.code,
+      this.severity,
+      this.elementSeverity,
+      this.patient,
+      this.identifiedDateTime,
+      this.elementIdentifiedDateTime,
+      this.identifiedPeriod,
+      this.author,
+      this.implicated,
+      this.evidence,
+      this.detail,
+      this.elementDetail,
+      this.reference,
+      this.elementReference,
+      this.mitigation});
 
-  factory DetectedIssue.fromJson(Map<String, dynamic> json) => _$DetectedIssueFromJson(json);
+  factory DetectedIssue.fromJson(Map<String, dynamic> json) =>
+      _$DetectedIssueFromJson(json);
   Map<String, dynamic> toJson() => _$DetectedIssueToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DetectedIssue_Evidence {
+  static Future<DetectedIssue_Evidence> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<CodeableConcept> code,
+      List<Reference> detail}) async {
+    var fhirDb = new DatabaseHelper();
+    DetectedIssue_Evidence newDetectedIssue_Evidence =
+        new DetectedIssue_Evidence(
+      id: await fhirDb.newResourceId('DetectedIssue_Evidence'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      detail: detail,
+    );
+    return newDetectedIssue_Evidence;
+  }
 
-
-	static Future<DetectedIssue_Evidence> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<CodeableConcept> code,
-		List<Reference> detail}) async {
-	var fhirDb = new DatabaseHelper();
-	DetectedIssue_Evidence newDetectedIssue_Evidence = new DetectedIssue_Evidence(
-			id: await fhirDb.newResourceId('DetectedIssue_Evidence'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			detail: detail,
-);
-	return newDetectedIssue_Evidence;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<CodeableConcept> code;
   List<Reference> detail;
 
-DetectedIssue_Evidence(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.detail
-    });
+  DetectedIssue_Evidence(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.detail});
 
-  factory DetectedIssue_Evidence.fromJson(Map<String, dynamic> json) => _$DetectedIssue_EvidenceFromJson(json);
+  factory DetectedIssue_Evidence.fromJson(Map<String, dynamic> json) =>
+      _$DetectedIssue_EvidenceFromJson(json);
   Map<String, dynamic> toJson() => _$DetectedIssue_EvidenceToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DetectedIssue_Mitigation {
+  static Future<DetectedIssue_Mitigation> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept action,
+      DateTime date,
+      Element elementDate,
+      Reference author}) async {
+    var fhirDb = new DatabaseHelper();
+    DetectedIssue_Mitigation newDetectedIssue_Mitigation =
+        new DetectedIssue_Mitigation(
+      id: await fhirDb.newResourceId('DetectedIssue_Mitigation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      action: action,
+      date: date,
+      elementDate: elementDate,
+      author: author,
+    );
+    return newDetectedIssue_Mitigation;
+  }
 
-
-	static Future<DetectedIssue_Mitigation> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept action,
-		DateTime date,
-		Element elementDate,
-		Reference author}) async {
-	var fhirDb = new DatabaseHelper();
-	DetectedIssue_Mitigation newDetectedIssue_Mitigation = new DetectedIssue_Mitigation(
-			id: await fhirDb.newResourceId('DetectedIssue_Mitigation'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			action: action,
-			date: date,
-			elementDate: elementDate,
-			author: author,
-);
-	return newDetectedIssue_Mitigation;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -221,20 +224,19 @@ class DetectedIssue_Mitigation {
   Element elementDate;
   Reference author;
 
-DetectedIssue_Mitigation(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.action,
-    this.date,
-    this.elementDate,
-    this.author
-    });
+  DetectedIssue_Mitigation(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.action,
+      this.date,
+      this.elementDate,
+      this.author});
 
-  factory DetectedIssue_Mitigation.fromJson(Map<String, dynamic> json) => _$DetectedIssue_MitigationFromJson(json);
+  factory DetectedIssue_Mitigation.fromJson(Map<String, dynamic> json) =>
+      _$DetectedIssue_MitigationFromJson(json);
   Map<String, dynamic> toJson() => _$DetectedIssue_MitigationToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -261,8 +263,9 @@ DetectedIssue _$DetectedIssueFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

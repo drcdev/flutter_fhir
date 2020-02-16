@@ -8,46 +8,39 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Signature {
+  static Future<Signature> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Coding> type,
+      DateTime when,
+      Element elementWhen,
+      Reference who,
+      Reference onBehalfOf,
+      String targetFormat,
+      Element elementTargetFormat,
+      String sigFormat,
+      Element elementSigFormat,
+      String data,
+      Element elementData}) async {
+    var fhirDb = new DatabaseHelper();
+    Signature newSignature = new Signature(
+      id: await fhirDb.newResourceId('Signature'),
+      extension: extension,
+      type: type,
+      when: when,
+      elementWhen: elementWhen,
+      who: who,
+      onBehalfOf: onBehalfOf,
+      targetFormat: targetFormat,
+      elementTargetFormat: elementTargetFormat,
+      sigFormat: sigFormat,
+      elementSigFormat: elementSigFormat,
+      data: data,
+      elementData: elementData,
+    );
+    return newSignature;
+  }
 
-
-	static Future<Signature> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Coding> type,
-		DateTime when,
-		Element elementWhen,
-		Reference who,
-		Reference onBehalfOf,
-		String targetFormat,
-		Element elementTargetFormat,
-		String sigFormat,
-		Element elementSigFormat,
-		String data,
-		Element elementData}) async {
-	var fhirDb = new DatabaseHelper();
-	Signature newSignature = new Signature(
-			id: await fhirDb.newResourceId('Signature'),
-			extension: extension,
-			type: type,
-			when: when,
-			elementWhen: elementWhen,
-			who: who,
-			onBehalfOf: onBehalfOf,
-			targetFormat: targetFormat,
-			elementTargetFormat: elementTargetFormat,
-			sigFormat: sigFormat,
-			elementSigFormat: elementSigFormat,
-			data: data,
-			elementData: elementData,
-);
-	int saved = await fhirDb.newResource(newSignature);
-	return newSignature;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   List<Coding> type;
@@ -62,26 +55,25 @@ save () async {
   String data;
   Element elementData;
 
-Signature(
-  {this.id,
-    this.extension,
-    @required this.type,
-    this.when,
-    this.elementWhen,
-    @required this.who,
-    this.onBehalfOf,
-    this.targetFormat,
-    this.elementTargetFormat,
-    this.sigFormat,
-    this.elementSigFormat,
-    this.data,
-    this.elementData
-    });
+  Signature(
+      {this.id,
+      this.extension,
+      @required this.type,
+      this.when,
+      this.elementWhen,
+      @required this.who,
+      this.onBehalfOf,
+      this.targetFormat,
+      this.elementTargetFormat,
+      this.sigFormat,
+      this.elementSigFormat,
+      this.data,
+      this.elementData});
 
-  factory Signature.fromJson(Map<String, dynamic> json) => _$SignatureFromJson(json);
+  factory Signature.fromJson(Map<String, dynamic> json) =>
+      _$SignatureFromJson(json);
   Map<String, dynamic> toJson() => _$SignatureToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

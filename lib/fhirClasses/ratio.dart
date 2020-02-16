@@ -5,44 +5,31 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Ratio {
+  static Future<Ratio> newInstance(
+      {String id,
+      List<Extension> extension,
+      Quantity numerator,
+      Quantity denominator}) async {
+    var fhirDb = new DatabaseHelper();
+    Ratio newRatio = new Ratio(
+      id: await fhirDb.newResourceId('Ratio'),
+      extension: extension,
+      numerator: numerator,
+      denominator: denominator,
+    );
+    return newRatio;
+  }
 
-
-	static Future<Ratio> newInstance({
-		String id,
-		List<Extension> extension,
-		Quantity numerator,
-		Quantity denominator}) async {
-	var fhirDb = new DatabaseHelper();
-	Ratio newRatio = new Ratio(
-			id: await fhirDb.newResourceId('Ratio'),
-			extension: extension,
-			numerator: numerator,
-			denominator: denominator,
-);
-	int saved = await fhirDb.newResource(newRatio);
-	return newRatio;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   Quantity numerator;
   Quantity denominator;
 
-Ratio(
-  {this.id,
-    this.extension,
-    this.numerator,
-    this.denominator
-    });
+  Ratio({this.id, this.extension, this.numerator, this.denominator});
 
   factory Ratio.fromJson(Map<String, dynamic> json) => _$RatioFromJson(json);
   Map<String, dynamic> toJson() => _$RatioToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

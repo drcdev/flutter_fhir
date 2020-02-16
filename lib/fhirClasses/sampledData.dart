@@ -7,50 +7,43 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SampledData {
+  static Future<SampledData> newInstance(
+      {String id,
+      List<Extension> extension,
+      Quantity origin,
+      double period,
+      Element elementPeriod,
+      double factor,
+      Element elementFactor,
+      double lowerLimit,
+      Element elementLowerLimit,
+      double upperLimit,
+      Element elementUpperLimit,
+      int dimensions,
+      Element elementDimensions,
+      String data,
+      Element elementData}) async {
+    var fhirDb = new DatabaseHelper();
+    SampledData newSampledData = new SampledData(
+      id: await fhirDb.newResourceId('SampledData'),
+      extension: extension,
+      origin: origin,
+      period: period,
+      elementPeriod: elementPeriod,
+      factor: factor,
+      elementFactor: elementFactor,
+      lowerLimit: lowerLimit,
+      elementLowerLimit: elementLowerLimit,
+      upperLimit: upperLimit,
+      elementUpperLimit: elementUpperLimit,
+      dimensions: dimensions,
+      elementDimensions: elementDimensions,
+      data: data,
+      elementData: elementData,
+    );
+    return newSampledData;
+  }
 
-
-	static Future<SampledData> newInstance({
-		String id,
-		List<Extension> extension,
-		Quantity origin,
-		double period,
-		Element elementPeriod,
-		double factor,
-		Element elementFactor,
-		double lowerLimit,
-		Element elementLowerLimit,
-		double upperLimit,
-		Element elementUpperLimit,
-		int dimensions,
-		Element elementDimensions,
-		String data,
-		Element elementData}) async {
-	var fhirDb = new DatabaseHelper();
-	SampledData newSampledData = new SampledData(
-			id: await fhirDb.newResourceId('SampledData'),
-			extension: extension,
-			origin: origin,
-			period: period,
-			elementPeriod: elementPeriod,
-			factor: factor,
-			elementFactor: elementFactor,
-			lowerLimit: lowerLimit,
-			elementLowerLimit: elementLowerLimit,
-			upperLimit: upperLimit,
-			elementUpperLimit: elementUpperLimit,
-			dimensions: dimensions,
-			elementDimensions: elementDimensions,
-			data: data,
-			elementData: elementData,
-);
-	int saved = await fhirDb.newResource(newSampledData);
-	return newSampledData;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   Quantity origin;
@@ -67,28 +60,27 @@ save () async {
   String data;
   Element elementData;
 
-SampledData(
-  {this.id,
-    this.extension,
-    @required this.origin,
-    this.period,
-    this.elementPeriod,
-    this.factor,
-    this.elementFactor,
-    this.lowerLimit,
-    this.elementLowerLimit,
-    this.upperLimit,
-    this.elementUpperLimit,
-    this.dimensions,
-    this.elementDimensions,
-    this.data,
-    this.elementData
-    });
+  SampledData(
+      {this.id,
+      this.extension,
+      @required this.origin,
+      this.period,
+      this.elementPeriod,
+      this.factor,
+      this.elementFactor,
+      this.lowerLimit,
+      this.elementLowerLimit,
+      this.upperLimit,
+      this.elementUpperLimit,
+      this.dimensions,
+      this.elementDimensions,
+      this.data,
+      this.elementData});
 
-  factory SampledData.fromJson(Map<String, dynamic> json) => _$SampledDataFromJson(json);
+  factory SampledData.fromJson(Map<String, dynamic> json) =>
+      _$SampledDataFromJson(json);
   Map<String, dynamic> toJson() => _$SampledDataToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

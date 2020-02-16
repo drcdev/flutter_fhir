@@ -5,44 +5,37 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Count {
+  static Future<Count> newInstance(
+      {String id,
+      List<Extension> extension,
+      double value,
+      Element elementValue,
+      String comparator,
+      Element elementComparator,
+      String unit,
+      Element elementUnit,
+      String system,
+      Element elementSystem,
+      String code,
+      Element elementCode}) async {
+    var fhirDb = new DatabaseHelper();
+    Count newCount = new Count(
+      id: await fhirDb.newResourceId('Count'),
+      extension: extension,
+      value: value,
+      elementValue: elementValue,
+      comparator: comparator,
+      elementComparator: elementComparator,
+      unit: unit,
+      elementUnit: elementUnit,
+      system: system,
+      elementSystem: elementSystem,
+      code: code,
+      elementCode: elementCode,
+    );
+    return newCount;
+  }
 
-
-	static Future<Count> newInstance({
-		String id,
-		List<Extension> extension,
-		double value,
-		Element elementValue,
-		String comparator,
-		Element elementComparator,
-		String unit,
-		Element elementUnit,
-		String system,
-		Element elementSystem,
-		String code,
-		Element elementCode}) async {
-	var fhirDb = new DatabaseHelper();
-	Count newCount = new Count(
-			id: await fhirDb.newResourceId('Count'),
-			extension: extension,
-			value: value,
-			elementValue: elementValue,
-			comparator: comparator,
-			elementComparator: elementComparator,
-			unit: unit,
-			elementUnit: elementUnit,
-			system: system,
-			elementSystem: elementSystem,
-			code: code,
-			elementCode: elementCode,
-);
-	int saved = await fhirDb.newResource(newCount);
-	return newCount;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   double value;
@@ -56,25 +49,23 @@ save () async {
   String code;
   Element elementCode;
 
-Count(
-  {this.id,
-    this.extension,
-    this.value,
-    this.elementValue,
-    this.comparator,
-    this.elementComparator,
-    this.unit,
-    this.elementUnit,
-    this.system,
-    this.elementSystem,
-    this.code,
-    this.elementCode
-    });
+  Count(
+      {this.id,
+      this.extension,
+      this.value,
+      this.elementValue,
+      this.comparator,
+      this.elementComparator,
+      this.unit,
+      this.elementUnit,
+      this.system,
+      this.elementSystem,
+      this.code,
+      this.elementCode});
 
   factory Count.fromJson(Map<String, dynamic> json) => _$CountFromJson(json);
   Map<String, dynamic> toJson() => _$CountToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

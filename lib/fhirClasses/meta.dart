@@ -6,46 +6,42 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Meta {
+  static Future<Meta> newInstance(
+      {String id,
+      List<Extension> extension,
+      String versionId,
+      Element elementVersionId,
+      DateTime createdAt,
+      DateTime lastUpdated,
+      Element elementLastUpdated,
+      String source,
+      Element elementSource,
+      List<String> profile,
+      List<Coding> security,
+      List<Coding> tag}) async {
+    var fhirDb = new DatabaseHelper();
+    Meta newMeta = new Meta(
+      id: await fhirDb.newResourceId('Meta'),
+      extension: extension,
+      versionId: versionId,
+      elementVersionId: elementVersionId,
+      createdAt: createdAt,
+      lastUpdated: lastUpdated,
+      elementLastUpdated: elementLastUpdated,
+      source: source,
+      elementSource: elementSource,
+      profile: profile,
+      security: security,
+      tag: tag,
+    );
+    return newMeta;
+  }
 
-
-	static Future<Meta> newInstance({
-		String id,
-		List<Extension> extension,
-		String versionId,
-		Element elementVersionId,
-		DateTime lastUpdated,
-		Element elementLastUpdated,
-		String source,
-		Element elementSource,
-		List<String> profile,
-		List<Coding> security,
-		List<Coding> tag}) async {
-	var fhirDb = new DatabaseHelper();
-	Meta newMeta = new Meta(
-			id: await fhirDb.newResourceId('Meta'),
-			extension: extension,
-			versionId: versionId,
-			elementVersionId: elementVersionId,
-			lastUpdated: lastUpdated,
-			elementLastUpdated: elementLastUpdated,
-			source: source,
-			elementSource: elementSource,
-			profile: profile,
-			security: security,
-			tag: tag,
-);
-	int saved = await fhirDb.newResource(newMeta);
-	return newMeta;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   String versionId;
   Element elementVersionId;
+  DateTime createdAt;
   DateTime lastUpdated;
   Element elementLastUpdated;
   String source;
@@ -54,24 +50,23 @@ save () async {
   List<Coding> security;
   List<Coding> tag;
 
-Meta(
-  {this.id,
-    this.extension,
-    this.versionId,
-    this.elementVersionId,
-    this.lastUpdated,
-    this.elementLastUpdated,
-    this.source,
-    this.elementSource,
-    this.profile,
-    this.security,
-    this.tag
-    });
+  Meta(
+      {this.id,
+      this.extension,
+      this.versionId,
+      this.elementVersionId,
+      this.createdAt,
+      this.lastUpdated,
+      this.elementLastUpdated,
+      this.source,
+      this.elementSource,
+      this.profile,
+      this.security,
+      this.tag});
 
   factory Meta.fromJson(Map<String, dynamic> json) => _$MetaFromJson(json);
   Map<String, dynamic> toJson() => _$MetaToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -89,6 +84,9 @@ Meta _$MetaFromJson(Map<String, dynamic> json) {
     elementVersionId: json['elementVersionId'] == null
         ? null
         : Element.fromJson(json['elementVersionId'] as Map<String, dynamic>),
+    createdAt: json['createdAt'] == null
+        ? null
+        : DateTime.parse(json['createdAt'] as String),
     lastUpdated: json['lastUpdated'] == null
         ? null
         : DateTime.parse(json['lastUpdated'] as String),
@@ -116,6 +114,7 @@ Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'versionId': instance.versionId,
       'elementVersionId': instance.elementVersionId?.toJson(),
+      'createdAt': instance.createdAt?.toIso8601String(),
       'lastUpdated': instance.lastUpdated?.toIso8601String(),
       'elementLastUpdated': instance.elementLastUpdated?.toJson(),
       'source': instance.source,

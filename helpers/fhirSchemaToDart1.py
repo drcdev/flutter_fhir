@@ -2,7 +2,7 @@
 
 import json
 import re
-#import os
+import os
 import fhirToDartFunc as fhir
 
 #open fhir json schema
@@ -22,9 +22,23 @@ hexNum = 15
 #only looks in definitions (these are mostly resources, not primitives)
 definitions = schema['definitions']
 for objects in definitions:
-        #ignore any of those that are in the ResourceList (names, no definitions)
-        if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
-            
+    
+    #ignore any of those that are in the ResourceList (names, no definitions)
+    if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
+#                
+#        if('resourceType' in definitions[objects]['properties']):
+#            dbStart = ''.join([dbStart,
+#                               f"""\n\t\tawait db.execute('''CREATE TABLE {objects}\n""",
+#                               '\t\t\tid TEXT PRIMARY KEY,\n',
+#                               '\t\t\tcreatedAt TEXT,\n',
+#                               '\t\t\tlastUpdated TEXT,\n',
+#                               """\t\t\tjsonResource TEXT)''');"""])                                                                             
+#            if('const' in definitions[objects]['properties']['resourceType']):
+#                dbStart = ''.join([dbStart, '\nconst: ', definitions[objects]['properties']['resourceType']['const']])
+#            else:
+#                dbStart = ''.join([dbStart, '\nnon-const', objects])
+#        if('meta' in definitions[objects]['properties']):
+#            dbStart = ''.join([dbStart, '\n\tmeta'])
             
 #             hexNum +=1
 #             curNum = str(hex(hexNum)[2:])
@@ -34,7 +48,7 @@ for objects in definitions:
 #                                "','",
 #                                curNum if len(curNum) == 3 else '0' + curNum,
 #                                "','{$deviceId}','0000',0),\n\t\t"])
-# with open('temp.dart',"w", encoding="utf-8") as f:
+#with open('temp.dart',"w", encoding="utf-8") as f:
 #     f.write(dbStart)
 #     f.close()
 
@@ -63,7 +77,7 @@ for objects in definitions:
             
             #HiveField for this paramateter
             properties = definitions[objects]['properties']
-            dartCode = ''.join([dartCode, '\n', fhir.HiveCode(properties, objects), '\n'])
+            dartCode = ''.join([dartCode, fhir.HiveCode(properties, objects), '\n'])
                         
             #look in the properties section of each resource to see what pattern
             #it fits and based on that, print out specific information
@@ -262,4 +276,20 @@ testScript = testScript.replace('bool required', 'bool require')
 
 with open(fhirDir + 'testScript.dart',"w", encoding="utf-8") as f:
     f.write(testScript)
+    f.close()
+    
+with open(fhirDir + 'meta.dart') as metas:
+            meta = metas.read()
+        
+meta = meta.replace('		DateTime lastUpdated,',
+                    '		DateTime createdAt,\n		DateTime lastUpdated,')
+meta = meta.replace('			lastUpdated: lastUpdated,',
+                    '			createdAt: createdAt,\n			lastUpdated: lastUpdated,')
+meta = meta.replace('  DateTime lastUpdated;',
+                    '  DateTime createdAt;\n  DateTime lastUpdated;')
+meta = meta.replace('    this.lastUpdated,',
+                    '    this.createdAt,\n    this.lastUpdated,')
+
+with open(fhirDir + 'meta.dart',"w", encoding="utf-8") as f:
+    f.write(meta)
     f.close()

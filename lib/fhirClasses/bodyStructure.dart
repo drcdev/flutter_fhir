@@ -13,63 +13,65 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class BodyStructure {
+  static Future<BodyStructure> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      bool active,
+      Element elementActive,
+      CodeableConcept morphology,
+      CodeableConcept location,
+      List<CodeableConcept> locationQualifier,
+      String description,
+      Element elementDescription,
+      List<Attachment> image,
+      Reference patient}) async {
+    var fhirDb = new DatabaseHelper();
+    BodyStructure newBodyStructure = new BodyStructure(
+      resourceType: 'BodyStructure',
+      id: await fhirDb.newResourceId('BodyStructure'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      active: active,
+      elementActive: elementActive,
+      morphology: morphology,
+      location: location,
+      locationQualifier: locationQualifier,
+      description: description,
+      elementDescription: elementDescription,
+      image: image,
+      patient: patient,
+    );
+    newBodyStructure.meta.createdAt = DateTime.now();
+    newBodyStructure.meta.lastUpdated = newBodyStructure.meta.createdAt;
+    int saved = await fhirDb.newResource(newBodyStructure);
+    return newBodyStructure;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<BodyStructure> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		bool active,
-		Element elementActive,
-		CodeableConcept morphology,
-		CodeableConcept location,
-		List<CodeableConcept> locationQualifier,
-		String description,
-		Element elementDescription,
-		List<Attachment> image,
-		Reference patient}) async {
-	var fhirDb = new DatabaseHelper();
-	BodyStructure newBodyStructure = new BodyStructure(
-			resourceType: 'BodyStructure',
-			id: await fhirDb.newResourceId('BodyStructure'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			active: active,
-			elementActive: elementActive,
-			morphology: morphology,
-			location: location,
-			locationQualifier: locationQualifier,
-			description: description,
-			elementDescription: elementDescription,
-			image: image,
-			patient: patient,
-);
-	int saved = await fhirDb.newResource(newBodyStructure);
-	return newBodyStructure;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'BodyStructure';
+  String resourceType = 'BodyStructure';
   String id;
   Meta meta;
   String implicitRules;
@@ -91,34 +93,33 @@ save () async {
   List<Attachment> image;
   Reference patient;
 
-BodyStructure(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.active,
-    this.elementActive,
-    this.morphology,
-    this.location,
-    this.locationQualifier,
-    this.description,
-    this.elementDescription,
-    this.image,
-    @required this.patient
-    });
+  BodyStructure(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.active,
+      this.elementActive,
+      this.morphology,
+      this.location,
+      this.locationQualifier,
+      this.description,
+      this.elementDescription,
+      this.image,
+      @required this.patient});
 
-  factory BodyStructure.fromJson(Map<String, dynamic> json) => _$BodyStructureFromJson(json);
+  factory BodyStructure.fromJson(Map<String, dynamic> json) =>
+      _$BodyStructureFromJson(json);
   Map<String, dynamic> toJson() => _$BodyStructureToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -145,8 +146,9 @@ BodyStructure _$BodyStructureFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -17,99 +17,101 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition {
+  static Future<DeviceDefinition> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      List<DeviceDefinition_UdiDeviceIdentifier> udiDeviceIdentifier,
+      String manufacturerString,
+      Element elementManufacturerString,
+      Reference manufacturerReference,
+      List<DeviceDefinition_DeviceName> deviceName,
+      String modelNumber,
+      Element elementModelNumber,
+      CodeableConcept type,
+      List<DeviceDefinition_Specialization> specialization,
+      List<String> version,
+      List<Element> elementVersion,
+      List<CodeableConcept> safety,
+      List<ProductShelfLife> shelfLifeStorage,
+      ProdCharacteristic physicalCharacteristics,
+      List<CodeableConcept> languageCode,
+      List<DeviceDefinition_Capability> capability,
+      List<DeviceDefinition_Property> property,
+      Reference owner,
+      List<ContactPoint> contact,
+      String url,
+      Element elementUrl,
+      String onlineInformation,
+      Element elementOnlineInformation,
+      List<Annotation> note,
+      Quantity quantity,
+      Reference parentDevice,
+      List<DeviceDefinition_Material> material}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceDefinition newDeviceDefinition = new DeviceDefinition(
+      resourceType: 'DeviceDefinition',
+      id: await fhirDb.newResourceId('DeviceDefinition'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      udiDeviceIdentifier: udiDeviceIdentifier,
+      manufacturerString: manufacturerString,
+      elementManufacturerString: elementManufacturerString,
+      manufacturerReference: manufacturerReference,
+      deviceName: deviceName,
+      modelNumber: modelNumber,
+      elementModelNumber: elementModelNumber,
+      type: type,
+      specialization: specialization,
+      version: version,
+      elementVersion: elementVersion,
+      safety: safety,
+      shelfLifeStorage: shelfLifeStorage,
+      physicalCharacteristics: physicalCharacteristics,
+      languageCode: languageCode,
+      capability: capability,
+      property: property,
+      owner: owner,
+      contact: contact,
+      url: url,
+      elementUrl: elementUrl,
+      onlineInformation: onlineInformation,
+      elementOnlineInformation: elementOnlineInformation,
+      note: note,
+      quantity: quantity,
+      parentDevice: parentDevice,
+      material: material,
+    );
+    newDeviceDefinition.meta.createdAt = DateTime.now();
+    newDeviceDefinition.meta.lastUpdated = newDeviceDefinition.meta.createdAt;
+    int saved = await fhirDb.newResource(newDeviceDefinition);
+    return newDeviceDefinition;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<DeviceDefinition> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		List<DeviceDefinition_UdiDeviceIdentifier> udiDeviceIdentifier,
-		String manufacturerString,
-		Element elementManufacturerString,
-		Reference manufacturerReference,
-		List<DeviceDefinition_DeviceName> deviceName,
-		String modelNumber,
-		Element elementModelNumber,
-		CodeableConcept type,
-		List<DeviceDefinition_Specialization> specialization,
-		List<String> version,
-		List<Element> elementVersion,
-		List<CodeableConcept> safety,
-		List<ProductShelfLife> shelfLifeStorage,
-		ProdCharacteristic physicalCharacteristics,
-		List<CodeableConcept> languageCode,
-		List<DeviceDefinition_Capability> capability,
-		List<DeviceDefinition_Property> property,
-		Reference owner,
-		List<ContactPoint> contact,
-		String url,
-		Element elementUrl,
-		String onlineInformation,
-		Element elementOnlineInformation,
-		List<Annotation> note,
-		Quantity quantity,
-		Reference parentDevice,
-		List<DeviceDefinition_Material> material}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceDefinition newDeviceDefinition = new DeviceDefinition(
-			resourceType: 'DeviceDefinition',
-			id: await fhirDb.newResourceId('DeviceDefinition'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			udiDeviceIdentifier: udiDeviceIdentifier,
-			manufacturerString: manufacturerString,
-			elementManufacturerString: elementManufacturerString,
-			manufacturerReference: manufacturerReference,
-			deviceName: deviceName,
-			modelNumber: modelNumber,
-			elementModelNumber: elementModelNumber,
-			type: type,
-			specialization: specialization,
-			version: version,
-			elementVersion: elementVersion,
-			safety: safety,
-			shelfLifeStorage: shelfLifeStorage,
-			physicalCharacteristics: physicalCharacteristics,
-			languageCode: languageCode,
-			capability: capability,
-			property: property,
-			owner: owner,
-			contact: contact,
-			url: url,
-			elementUrl: elementUrl,
-			onlineInformation: onlineInformation,
-			elementOnlineInformation: elementOnlineInformation,
-			note: note,
-			quantity: quantity,
-			parentDevice: parentDevice,
-			material: material,
-);
-	int saved = await fhirDb.newResource(newDeviceDefinition);
-	return newDeviceDefinition;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'DeviceDefinition';
+  String resourceType = 'DeviceDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -149,80 +151,81 @@ save () async {
   Reference parentDevice;
   List<DeviceDefinition_Material> material;
 
-DeviceDefinition(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.udiDeviceIdentifier,
-    this.manufacturerString,
-    this.elementManufacturerString,
-    this.manufacturerReference,
-    this.deviceName,
-    this.modelNumber,
-    this.elementModelNumber,
-    this.type,
-    this.specialization,
-    this.version,
-    this.elementVersion,
-    this.safety,
-    this.shelfLifeStorage,
-    this.physicalCharacteristics,
-    this.languageCode,
-    this.capability,
-    this.property,
-    this.owner,
-    this.contact,
-    this.url,
-    this.elementUrl,
-    this.onlineInformation,
-    this.elementOnlineInformation,
-    this.note,
-    this.quantity,
-    this.parentDevice,
-    this.material
-    });
+  DeviceDefinition(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.udiDeviceIdentifier,
+      this.manufacturerString,
+      this.elementManufacturerString,
+      this.manufacturerReference,
+      this.deviceName,
+      this.modelNumber,
+      this.elementModelNumber,
+      this.type,
+      this.specialization,
+      this.version,
+      this.elementVersion,
+      this.safety,
+      this.shelfLifeStorage,
+      this.physicalCharacteristics,
+      this.languageCode,
+      this.capability,
+      this.property,
+      this.owner,
+      this.contact,
+      this.url,
+      this.elementUrl,
+      this.onlineInformation,
+      this.elementOnlineInformation,
+      this.note,
+      this.quantity,
+      this.parentDevice,
+      this.material});
 
-  factory DeviceDefinition.fromJson(Map<String, dynamic> json) => _$DeviceDefinitionFromJson(json);
+  factory DeviceDefinition.fromJson(Map<String, dynamic> json) =>
+      _$DeviceDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceDefinitionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_UdiDeviceIdentifier {
+  static Future<DeviceDefinition_UdiDeviceIdentifier> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String deviceIdentifier,
+      Element elementDeviceIdentifier,
+      String issuer,
+      Element elementIssuer,
+      String jurisdiction,
+      Element elementJurisdiction}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceDefinition_UdiDeviceIdentifier
+        newDeviceDefinition_UdiDeviceIdentifier =
+        new DeviceDefinition_UdiDeviceIdentifier(
+      id: await fhirDb.newResourceId('DeviceDefinition_UdiDeviceIdentifier'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      deviceIdentifier: deviceIdentifier,
+      elementDeviceIdentifier: elementDeviceIdentifier,
+      issuer: issuer,
+      elementIssuer: elementIssuer,
+      jurisdiction: jurisdiction,
+      elementJurisdiction: elementJurisdiction,
+    );
+    return newDeviceDefinition_UdiDeviceIdentifier;
+  }
 
-
-	static Future<DeviceDefinition_UdiDeviceIdentifier> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String deviceIdentifier,
-		Element elementDeviceIdentifier,
-		String issuer,
-		Element elementIssuer,
-		String jurisdiction,
-		Element elementJurisdiction}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceDefinition_UdiDeviceIdentifier newDeviceDefinition_UdiDeviceIdentifier = new DeviceDefinition_UdiDeviceIdentifier(
-			id: await fhirDb.newResourceId('DeviceDefinition_UdiDeviceIdentifier'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			deviceIdentifier: deviceIdentifier,
-			elementDeviceIdentifier: elementDeviceIdentifier,
-			issuer: issuer,
-			elementIssuer: elementIssuer,
-			jurisdiction: jurisdiction,
-			elementJurisdiction: elementJurisdiction,
-);
-	return newDeviceDefinition_UdiDeviceIdentifier;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -233,92 +236,95 @@ class DeviceDefinition_UdiDeviceIdentifier {
   String jurisdiction;
   Element elementJurisdiction;
 
-DeviceDefinition_UdiDeviceIdentifier(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.deviceIdentifier,
-    this.elementDeviceIdentifier,
-    this.issuer,
-    this.elementIssuer,
-    this.jurisdiction,
-    this.elementJurisdiction
-    });
+  DeviceDefinition_UdiDeviceIdentifier(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.deviceIdentifier,
+      this.elementDeviceIdentifier,
+      this.issuer,
+      this.elementIssuer,
+      this.jurisdiction,
+      this.elementJurisdiction});
 
-  factory DeviceDefinition_UdiDeviceIdentifier.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_UdiDeviceIdentifierFromJson(json);
-  Map<String, dynamic> toJson() => _$DeviceDefinition_UdiDeviceIdentifierToJson(this);
+  factory DeviceDefinition_UdiDeviceIdentifier.fromJson(
+          Map<String, dynamic> json) =>
+      _$DeviceDefinition_UdiDeviceIdentifierFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$DeviceDefinition_UdiDeviceIdentifierToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_DeviceName {
+  static Future<DeviceDefinition_DeviceName> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String name,
+      Element elementName,
+      String type,
+      Element elementType}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceDefinition_DeviceName newDeviceDefinition_DeviceName =
+        new DeviceDefinition_DeviceName(
+      id: await fhirDb.newResourceId('DeviceDefinition_DeviceName'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      type: type,
+      elementType: elementType,
+    );
+    return newDeviceDefinition_DeviceName;
+  }
 
-
-	static Future<DeviceDefinition_DeviceName> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String name,
-		Element elementName,
-		String type,
-		Element elementType}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceDefinition_DeviceName newDeviceDefinition_DeviceName = new DeviceDefinition_DeviceName(
-			id: await fhirDb.newResourceId('DeviceDefinition_DeviceName'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			name: name,
-			elementName: elementName,
-			type: type,
-			elementType: elementType,
-);
-	return newDeviceDefinition_DeviceName;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   String name;
   Element elementName;
-  String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
+  String
+      type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
   Element elementType;
 
-DeviceDefinition_DeviceName(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.type,
-    this.elementType
-    });
+  DeviceDefinition_DeviceName(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.name,
+      this.elementName,
+      this.type,
+      this.elementType});
 
-  factory DeviceDefinition_DeviceName.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_DeviceNameFromJson(json);
+  factory DeviceDefinition_DeviceName.fromJson(Map<String, dynamic> json) =>
+      _$DeviceDefinition_DeviceNameFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceDefinition_DeviceNameToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Specialization {
+  static Future<DeviceDefinition_Specialization> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String systemType,
+      Element elementSystemType,
+      String version,
+      Element elementVersion}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceDefinition_Specialization newDeviceDefinition_Specialization =
+        new DeviceDefinition_Specialization(
+      id: await fhirDb.newResourceId('DeviceDefinition_Specialization'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      systemType: systemType,
+      elementSystemType: elementSystemType,
+      version: version,
+      elementVersion: elementVersion,
+    );
+    return newDeviceDefinition_Specialization;
+  }
 
-
-	static Future<DeviceDefinition_Specialization> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String systemType,
-		Element elementSystemType,
-		String version,
-		Element elementVersion}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceDefinition_Specialization newDeviceDefinition_Specialization = new DeviceDefinition_Specialization(
-			id: await fhirDb.newResourceId('DeviceDefinition_Specialization'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			systemType: systemType,
-			elementSystemType: elementSystemType,
-			version: version,
-			elementVersion: elementVersion,
-);
-	return newDeviceDefinition_Specialization;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -327,80 +333,81 @@ class DeviceDefinition_Specialization {
   String version;
   Element elementVersion;
 
-DeviceDefinition_Specialization(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.systemType,
-    this.elementSystemType,
-    this.version,
-    this.elementVersion
-    });
+  DeviceDefinition_Specialization(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.systemType,
+      this.elementSystemType,
+      this.version,
+      this.elementVersion});
 
-  factory DeviceDefinition_Specialization.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_SpecializationFromJson(json);
-  Map<String, dynamic> toJson() => _$DeviceDefinition_SpecializationToJson(this);
+  factory DeviceDefinition_Specialization.fromJson(Map<String, dynamic> json) =>
+      _$DeviceDefinition_SpecializationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$DeviceDefinition_SpecializationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Capability {
+  static Future<DeviceDefinition_Capability> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept type,
+      List<CodeableConcept> description}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceDefinition_Capability newDeviceDefinition_Capability =
+        new DeviceDefinition_Capability(
+      id: await fhirDb.newResourceId('DeviceDefinition_Capability'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      description: description,
+    );
+    return newDeviceDefinition_Capability;
+  }
 
-
-	static Future<DeviceDefinition_Capability> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept type,
-		List<CodeableConcept> description}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceDefinition_Capability newDeviceDefinition_Capability = new DeviceDefinition_Capability(
-			id: await fhirDb.newResourceId('DeviceDefinition_Capability'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			description: description,
-);
-	return newDeviceDefinition_Capability;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept type;
   List<CodeableConcept> description;
 
-DeviceDefinition_Capability(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.type,
-    this.description
-    });
+  DeviceDefinition_Capability(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.type,
+      this.description});
 
-  factory DeviceDefinition_Capability.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_CapabilityFromJson(json);
+  factory DeviceDefinition_Capability.fromJson(Map<String, dynamic> json) =>
+      _$DeviceDefinition_CapabilityFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceDefinition_CapabilityToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Property {
+  static Future<DeviceDefinition_Property> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept type,
+      List<Quantity> valueQuantity,
+      List<CodeableConcept> valueCode}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceDefinition_Property newDeviceDefinition_Property =
+        new DeviceDefinition_Property(
+      id: await fhirDb.newResourceId('DeviceDefinition_Property'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      valueQuantity: valueQuantity,
+      valueCode: valueCode,
+    );
+    return newDeviceDefinition_Property;
+  }
 
-
-	static Future<DeviceDefinition_Property> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept type,
-		List<Quantity> valueQuantity,
-		List<CodeableConcept> valueCode}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceDefinition_Property newDeviceDefinition_Property = new DeviceDefinition_Property(
-			id: await fhirDb.newResourceId('DeviceDefinition_Property'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			valueQuantity: valueQuantity,
-			valueCode: valueCode,
-);
-	return newDeviceDefinition_Property;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -408,45 +415,45 @@ class DeviceDefinition_Property {
   List<Quantity> valueQuantity;
   List<CodeableConcept> valueCode;
 
-DeviceDefinition_Property(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.type,
-    this.valueQuantity,
-    this.valueCode
-    });
+  DeviceDefinition_Property(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.type,
+      this.valueQuantity,
+      this.valueCode});
 
-  factory DeviceDefinition_Property.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_PropertyFromJson(json);
+  factory DeviceDefinition_Property.fromJson(Map<String, dynamic> json) =>
+      _$DeviceDefinition_PropertyFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceDefinition_PropertyToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeviceDefinition_Material {
+  static Future<DeviceDefinition_Material> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      CodeableConcept substance,
+      bool alternate,
+      Element elementAlternate,
+      bool allergenicIndicator,
+      Element elementAllergenicIndicator}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceDefinition_Material newDeviceDefinition_Material =
+        new DeviceDefinition_Material(
+      id: await fhirDb.newResourceId('DeviceDefinition_Material'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      substance: substance,
+      alternate: alternate,
+      elementAlternate: elementAlternate,
+      allergenicIndicator: allergenicIndicator,
+      elementAllergenicIndicator: elementAllergenicIndicator,
+    );
+    return newDeviceDefinition_Material;
+  }
 
-
-	static Future<DeviceDefinition_Material> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		CodeableConcept substance,
-		bool alternate,
-		Element elementAlternate,
-		bool allergenicIndicator,
-		Element elementAllergenicIndicator}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceDefinition_Material newDeviceDefinition_Material = new DeviceDefinition_Material(
-			id: await fhirDb.newResourceId('DeviceDefinition_Material'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			substance: substance,
-			alternate: alternate,
-			elementAlternate: elementAlternate,
-			allergenicIndicator: allergenicIndicator,
-			elementAllergenicIndicator: elementAllergenicIndicator,
-);
-	return newDeviceDefinition_Material;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -456,21 +463,20 @@ class DeviceDefinition_Material {
   bool allergenicIndicator;
   Element elementAllergenicIndicator;
 
-DeviceDefinition_Material(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.substance,
-    this.alternate,
-    this.elementAlternate,
-    this.allergenicIndicator,
-    this.elementAllergenicIndicator
-    });
+  DeviceDefinition_Material(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.substance,
+      this.alternate,
+      this.elementAlternate,
+      this.allergenicIndicator,
+      this.elementAllergenicIndicator});
 
-  factory DeviceDefinition_Material.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_MaterialFromJson(json);
+  factory DeviceDefinition_Material.fromJson(Map<String, dynamic> json) =>
+      _$DeviceDefinition_MaterialFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceDefinition_MaterialToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -497,8 +503,9 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

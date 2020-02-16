@@ -10,34 +10,27 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class UsageContext {
+  static Future<UsageContext> newInstance(
+      {String id,
+      List<Extension> extension,
+      Coding code,
+      CodeableConcept valueCodeableConcept,
+      Quantity valueQuantity,
+      Range valueRange,
+      Reference valueReference}) async {
+    var fhirDb = new DatabaseHelper();
+    UsageContext newUsageContext = new UsageContext(
+      id: await fhirDb.newResourceId('UsageContext'),
+      extension: extension,
+      code: code,
+      valueCodeableConcept: valueCodeableConcept,
+      valueQuantity: valueQuantity,
+      valueRange: valueRange,
+      valueReference: valueReference,
+    );
+    return newUsageContext;
+  }
 
-
-	static Future<UsageContext> newInstance({
-		String id,
-		List<Extension> extension,
-		Coding code,
-		CodeableConcept valueCodeableConcept,
-		Quantity valueQuantity,
-		Range valueRange,
-		Reference valueReference}) async {
-	var fhirDb = new DatabaseHelper();
-	UsageContext newUsageContext = new UsageContext(
-			id: await fhirDb.newResourceId('UsageContext'),
-			extension: extension,
-			code: code,
-			valueCodeableConcept: valueCodeableConcept,
-			valueQuantity: valueQuantity,
-			valueRange: valueRange,
-			valueReference: valueReference,
-);
-	int saved = await fhirDb.newResource(newUsageContext);
-	return newUsageContext;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   Coding code;
@@ -46,20 +39,19 @@ save () async {
   Range valueRange;
   Reference valueReference;
 
-UsageContext(
-  {this.id,
-    this.extension,
-    @required this.code,
-    this.valueCodeableConcept,
-    this.valueQuantity,
-    this.valueRange,
-    this.valueReference
-    });
+  UsageContext(
+      {this.id,
+      this.extension,
+      @required this.code,
+      this.valueCodeableConcept,
+      this.valueQuantity,
+      this.valueRange,
+      this.valueReference});
 
-  factory UsageContext.fromJson(Map<String, dynamic> json) => _$UsageContextFromJson(json);
+  factory UsageContext.fromJson(Map<String, dynamic> json) =>
+      _$UsageContextFromJson(json);
   Map<String, dynamic> toJson() => _$UsageContextToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

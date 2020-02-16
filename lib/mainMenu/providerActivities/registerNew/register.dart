@@ -1,13 +1,10 @@
-import 'package:path_provider/path_provider.dart';
-import 'package:hive/hive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
-import 'package:flutter_fhir/mainMenu/mainMenu.dart';
-import 'package:flutter_fhir/mainMenu/testingSettings/objects.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/registerFamily.dart';
+import 'package:flutter_fhir/util/db.dart';
 
 class Register extends StatelessWidget {
   @override
@@ -160,40 +157,45 @@ class _RegistrationFormState extends State<RegistrationForm> {
             ],
           ),
 
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              RaisedButton(
-                onPressed: () async {
-                  Patient pt = await Patient.newInstance(address: [
-                    Address(district: barrio)
-                  ], name: [
-                    HumanName(
-                        given: [givenNameController.text],
-                        family: familyNameController.text)
-                  ], birthDate: _birthDate.toString());
-                  print(pt.id);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RegisterFamily(
-                              pt: pt,
-                            )),
-                  );
-                },
-                child: Text('Press to Create Patient'),
-              ),
-              RaisedButton(
-                onPressed: () {
+          Expanded(
+            flex: 1,
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () async {
+                    Patient pt = await Patient.newInstance(address: [
+                      Address(district: barrio)
+                    ], name: [
+                      HumanName(
+                          given: [givenNameController.text],
+                          family: familyNameController.text)
+                    ], birthDate: _birthDate.toString());
+                    print(pt.id);
+                    print(pt.meta.createdAt);
+                    print(pt.meta.lastUpdated);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterFamily(
+                                pt: pt,
+                              )),
+                    );
+                  },
+                  child: Text('Press to Create Patient'),
+                ),
+                RaisedButton(
+                  onPressed: () {
 //                              Navigator.push(
 //                                context,
 //                                MaterialPageRoute(
 //                                    builder: (context) => MainMenu()),
 //                              );
-                },
-                child: Text('Return to Opening Page'),
-              ),
-            ],
+                  },
+                  child: Text('Return to Opening Page'),
+                ),
+              ],
+            ),
           ),
         ],
       ),

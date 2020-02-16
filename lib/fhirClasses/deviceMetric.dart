@@ -13,69 +13,71 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DeviceMetric {
+  static Future<DeviceMetric> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      CodeableConcept type,
+      CodeableConcept unit,
+      Reference source,
+      Reference parent,
+      String operationalStatus,
+      Element elementOperationalStatus,
+      String color,
+      Element elementColor,
+      String category,
+      Element elementCategory,
+      Timing measurementPeriod,
+      List<DeviceMetric_Calibration> calibration}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceMetric newDeviceMetric = new DeviceMetric(
+      resourceType: 'DeviceMetric',
+      id: await fhirDb.newResourceId('DeviceMetric'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      type: type,
+      unit: unit,
+      source: source,
+      parent: parent,
+      operationalStatus: operationalStatus,
+      elementOperationalStatus: elementOperationalStatus,
+      color: color,
+      elementColor: elementColor,
+      category: category,
+      elementCategory: elementCategory,
+      measurementPeriod: measurementPeriod,
+      calibration: calibration,
+    );
+    newDeviceMetric.meta.createdAt = DateTime.now();
+    newDeviceMetric.meta.lastUpdated = newDeviceMetric.meta.createdAt;
+    int saved = await fhirDb.newResource(newDeviceMetric);
+    return newDeviceMetric;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<DeviceMetric> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		CodeableConcept type,
-		CodeableConcept unit,
-		Reference source,
-		Reference parent,
-		String operationalStatus,
-		Element elementOperationalStatus,
-		String color,
-		Element elementColor,
-		String category,
-		Element elementCategory,
-		Timing measurementPeriod,
-		List<DeviceMetric_Calibration> calibration}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceMetric newDeviceMetric = new DeviceMetric(
-			resourceType: 'DeviceMetric',
-			id: await fhirDb.newResourceId('DeviceMetric'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			type: type,
-			unit: unit,
-			source: source,
-			parent: parent,
-			operationalStatus: operationalStatus,
-			elementOperationalStatus: elementOperationalStatus,
-			color: color,
-			elementColor: elementColor,
-			category: category,
-			elementCategory: elementCategory,
-			measurementPeriod: measurementPeriod,
-			calibration: calibration,
-);
-	int saved = await fhirDb.newResource(newDeviceMetric);
-	return newDeviceMetric;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'DeviceMetric';
+  String resourceType = 'DeviceMetric';
   String id;
   Meta meta;
   String implicitRules;
@@ -100,91 +102,91 @@ save () async {
   Timing measurementPeriod;
   List<DeviceMetric_Calibration> calibration;
 
-DeviceMetric(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    @required this.type,
-    this.unit,
-    this.source,
-    this.parent,
-    this.operationalStatus,
-    this.elementOperationalStatus,
-    this.color,
-    this.elementColor,
-    this.category,
-    this.elementCategory,
-    this.measurementPeriod,
-    this.calibration
-    });
+  DeviceMetric(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      @required this.type,
+      this.unit,
+      this.source,
+      this.parent,
+      this.operationalStatus,
+      this.elementOperationalStatus,
+      this.color,
+      this.elementColor,
+      this.category,
+      this.elementCategory,
+      this.measurementPeriod,
+      this.calibration});
 
-  factory DeviceMetric.fromJson(Map<String, dynamic> json) => _$DeviceMetricFromJson(json);
+  factory DeviceMetric.fromJson(Map<String, dynamic> json) =>
+      _$DeviceMetricFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceMetricToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class DeviceMetric_Calibration {
+  static Future<DeviceMetric_Calibration> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String type,
+      Element elementType,
+      String state,
+      Element elementState,
+      DateTime time,
+      Element elementTime}) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceMetric_Calibration newDeviceMetric_Calibration =
+        new DeviceMetric_Calibration(
+      id: await fhirDb.newResourceId('DeviceMetric_Calibration'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      state: state,
+      elementState: elementState,
+      time: time,
+      elementTime: elementTime,
+    );
+    return newDeviceMetric_Calibration;
+  }
 
-
-	static Future<DeviceMetric_Calibration> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String type,
-		Element elementType,
-		String state,
-		Element elementState,
-		DateTime time,
-		Element elementTime}) async {
-	var fhirDb = new DatabaseHelper();
-	DeviceMetric_Calibration newDeviceMetric_Calibration = new DeviceMetric_Calibration(
-			id: await fhirDb.newResourceId('DeviceMetric_Calibration'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			elementType: elementType,
-			state: state,
-			elementState: elementState,
-			time: time,
-			elementTime: elementTime,
-);
-	return newDeviceMetric_Calibration;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   String type; // <code> enum: unspecified/offset/gain/two-point;
   Element elementType;
-  String state; // <code> enum: not-calibrated/calibration-required/calibrated/unspecified;
+  String
+      state; // <code> enum: not-calibrated/calibration-required/calibrated/unspecified;
   Element elementState;
   DateTime time;
   Element elementTime;
 
-DeviceMetric_Calibration(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.elementType,
-    this.state,
-    this.elementState,
-    this.time,
-    this.elementTime
-    });
+  DeviceMetric_Calibration(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.elementType,
+      this.state,
+      this.elementState,
+      this.time,
+      this.elementTime});
 
-  factory DeviceMetric_Calibration.fromJson(Map<String, dynamic> json) => _$DeviceMetric_CalibrationFromJson(json);
+  factory DeviceMetric_Calibration.fromJson(Map<String, dynamic> json) =>
+      _$DeviceMetric_CalibrationFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceMetric_CalibrationToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -211,8 +213,9 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

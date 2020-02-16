@@ -10,55 +10,57 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Bundle {
+  static Future<Bundle> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Identifier identifier,
+      String type,
+      Element elementType,
+      DateTime timestamp,
+      Element elementTimestamp,
+      int total,
+      Element elementTotal,
+      List<Bundle_Link> link,
+      List<Bundle_Entry> entry,
+      Signature signature}) async {
+    var fhirDb = new DatabaseHelper();
+    Bundle newBundle = new Bundle(
+      resourceType: 'Bundle',
+      id: await fhirDb.newResourceId('Bundle'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      identifier: identifier,
+      type: type,
+      elementType: elementType,
+      timestamp: timestamp,
+      elementTimestamp: elementTimestamp,
+      total: total,
+      elementTotal: elementTotal,
+      link: link,
+      entry: entry,
+      signature: signature,
+    );
+    newBundle.meta.createdAt = DateTime.now();
+    newBundle.meta.lastUpdated = newBundle.meta.createdAt;
+    int saved = await fhirDb.newResource(newBundle);
+    return newBundle;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Bundle> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Identifier identifier,
-		String type,
-		Element elementType,
-		DateTime timestamp,
-		Element elementTimestamp,
-		int total,
-		Element elementTotal,
-		List<Bundle_Link> link,
-		List<Bundle_Entry> entry,
-		Signature signature}) async {
-	var fhirDb = new DatabaseHelper();
-	Bundle newBundle = new Bundle(
-			resourceType: 'Bundle',
-			id: await fhirDb.newResourceId('Bundle'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			identifier: identifier,
-			type: type,
-			elementType: elementType,
-			timestamp: timestamp,
-			elementTimestamp: elementTimestamp,
-			total: total,
-			elementTotal: elementTotal,
-			link: link,
-			entry: entry,
-			signature: signature,
-);
-	int saved = await fhirDb.newResource(newBundle);
-	return newBundle;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'Bundle';
+  String resourceType = 'Bundle';
   String id;
   Meta meta;
   String implicitRules;
@@ -66,7 +68,8 @@ save () async {
   String language;
   Element elementLanguage;
   Identifier identifier;
-  String type; // <code> enum: document/message/transaction/transaction-response/batch/batch-response/history/searchset/collection;
+  String
+      type; // <code> enum: document/message/transaction/transaction-response/batch/batch-response/history/searchset/collection;
   Element elementType;
   DateTime timestamp;
   Element elementTimestamp;
@@ -76,25 +79,24 @@ save () async {
   List<Bundle_Entry> entry;
   Signature signature;
 
-Bundle(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.identifier,
-    this.type,
-    this.elementType,
-    this.timestamp,
-    this.elementTimestamp,
-    this.total,
-    this.elementTotal,
-    this.link,
-    this.entry,
-    this.signature
-    });
+  Bundle(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.identifier,
+      this.type,
+      this.elementType,
+      this.timestamp,
+      this.elementTimestamp,
+      this.total,
+      this.elementTotal,
+      this.link,
+      this.entry,
+      this.signature});
 
   factory Bundle.fromJson(Map<String, dynamic> json) => _$BundleFromJson(json);
   Map<String, dynamic> toJson() => _$BundleToJson(this);
@@ -102,28 +104,27 @@ Bundle(
 
 @JsonSerializable(explicitToJson: true)
 class Bundle_Link {
+  static Future<Bundle_Link> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String relation,
+      Element elementRelation,
+      String url,
+      Element elementUrl}) async {
+    var fhirDb = new DatabaseHelper();
+    Bundle_Link newBundle_Link = new Bundle_Link(
+      id: await fhirDb.newResourceId('Bundle_Link'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      relation: relation,
+      elementRelation: elementRelation,
+      url: url,
+      elementUrl: elementUrl,
+    );
+    return newBundle_Link;
+  }
 
-
-	static Future<Bundle_Link> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String relation,
-		Element elementRelation,
-		String url,
-		Element elementUrl}) async {
-	var fhirDb = new DatabaseHelper();
-	Bundle_Link newBundle_Link = new Bundle_Link(
-			id: await fhirDb.newResourceId('Bundle_Link'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			relation: relation,
-			elementRelation: elementRelation,
-			url: url,
-			elementUrl: elementUrl,
-);
-	return newBundle_Link;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -132,50 +133,49 @@ class Bundle_Link {
   String url;
   Element elementUrl;
 
-Bundle_Link(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.relation,
-    this.elementRelation,
-    this.url,
-    this.elementUrl
-    });
+  Bundle_Link(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.relation,
+      this.elementRelation,
+      this.url,
+      this.elementUrl});
 
-  factory Bundle_Link.fromJson(Map<String, dynamic> json) => _$Bundle_LinkFromJson(json);
+  factory Bundle_Link.fromJson(Map<String, dynamic> json) =>
+      _$Bundle_LinkFromJson(json);
   Map<String, dynamic> toJson() => _$Bundle_LinkToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Bundle_Entry {
+  static Future<Bundle_Entry> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Bundle_Link> link,
+      String fullUrl,
+      Element elementFullUrl,
+      dynamic resource,
+      Bundle_Search search,
+      Bundle_Request request,
+      Bundle_Response response}) async {
+    var fhirDb = new DatabaseHelper();
+    Bundle_Entry newBundle_Entry = new Bundle_Entry(
+      id: await fhirDb.newResourceId('Bundle_Entry'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      link: link,
+      fullUrl: fullUrl,
+      elementFullUrl: elementFullUrl,
+      resource: resource,
+      search: search,
+      request: request,
+      response: response,
+    );
+    return newBundle_Entry;
+  }
 
-
-	static Future<Bundle_Entry> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Bundle_Link> link,
-		String fullUrl,
-		Element elementFullUrl,
-		dynamic resource,
-		Bundle_Search search,
-		Bundle_Request request,
-		Bundle_Response response}) async {
-	var fhirDb = new DatabaseHelper();
-	Bundle_Entry newBundle_Entry = new Bundle_Entry(
-			id: await fhirDb.newResourceId('Bundle_Entry'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			link: link,
-			fullUrl: fullUrl,
-			elementFullUrl: elementFullUrl,
-			resource: resource,
-			search: search,
-			request: request,
-			response: response,
-);
-	return newBundle_Entry;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -187,47 +187,46 @@ class Bundle_Entry {
   Bundle_Request request;
   Bundle_Response response;
 
-Bundle_Entry(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.link,
-    this.fullUrl,
-    this.elementFullUrl,
-    this.resource,
-    this.search,
-    this.request,
-    this.response
-    });
+  Bundle_Entry(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.link,
+      this.fullUrl,
+      this.elementFullUrl,
+      this.resource,
+      this.search,
+      this.request,
+      this.response});
 
-  factory Bundle_Entry.fromJson(Map<String, dynamic> json) => _$Bundle_EntryFromJson(json);
+  factory Bundle_Entry.fromJson(Map<String, dynamic> json) =>
+      _$Bundle_EntryFromJson(json);
   Map<String, dynamic> toJson() => _$Bundle_EntryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Bundle_Search {
+  static Future<Bundle_Search> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String mode,
+      Element elementMode,
+      double score,
+      Element elementScore}) async {
+    var fhirDb = new DatabaseHelper();
+    Bundle_Search newBundle_Search = new Bundle_Search(
+      id: await fhirDb.newResourceId('Bundle_Search'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      mode: mode,
+      elementMode: elementMode,
+      score: score,
+      elementScore: elementScore,
+    );
+    return newBundle_Search;
+  }
 
-
-	static Future<Bundle_Search> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String mode,
-		Element elementMode,
-		double score,
-		Element elementScore}) async {
-	var fhirDb = new DatabaseHelper();
-	Bundle_Search newBundle_Search = new Bundle_Search(
-			id: await fhirDb.newResourceId('Bundle_Search'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			mode: mode,
-			elementMode: elementMode,
-			score: score,
-			elementScore: elementScore,
-);
-	return newBundle_Search;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -236,60 +235,59 @@ class Bundle_Search {
   double score;
   Element elementScore;
 
-Bundle_Search(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.mode,
-    this.elementMode,
-    this.score,
-    this.elementScore
-    });
+  Bundle_Search(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.mode,
+      this.elementMode,
+      this.score,
+      this.elementScore});
 
-  factory Bundle_Search.fromJson(Map<String, dynamic> json) => _$Bundle_SearchFromJson(json);
+  factory Bundle_Search.fromJson(Map<String, dynamic> json) =>
+      _$Bundle_SearchFromJson(json);
   Map<String, dynamic> toJson() => _$Bundle_SearchToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Bundle_Request {
+  static Future<Bundle_Request> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String method,
+      Element elementMethod,
+      String url,
+      Element elementUrl,
+      String ifNoneMatch,
+      Element elementIfNoneMatch,
+      DateTime ifModifiedSince,
+      Element elementIfModifiedSince,
+      String ifMatch,
+      Element elementIfMatch,
+      String ifNoneExist,
+      Element elementIfNoneExist}) async {
+    var fhirDb = new DatabaseHelper();
+    Bundle_Request newBundle_Request = new Bundle_Request(
+      id: await fhirDb.newResourceId('Bundle_Request'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      method: method,
+      elementMethod: elementMethod,
+      url: url,
+      elementUrl: elementUrl,
+      ifNoneMatch: ifNoneMatch,
+      elementIfNoneMatch: elementIfNoneMatch,
+      ifModifiedSince: ifModifiedSince,
+      elementIfModifiedSince: elementIfModifiedSince,
+      ifMatch: ifMatch,
+      elementIfMatch: elementIfMatch,
+      ifNoneExist: ifNoneExist,
+      elementIfNoneExist: elementIfNoneExist,
+    );
+    return newBundle_Request;
+  }
 
-
-	static Future<Bundle_Request> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String method,
-		Element elementMethod,
-		String url,
-		Element elementUrl,
-		String ifNoneMatch,
-		Element elementIfNoneMatch,
-		DateTime ifModifiedSince,
-		Element elementIfModifiedSince,
-		String ifMatch,
-		Element elementIfMatch,
-		String ifNoneExist,
-		Element elementIfNoneExist}) async {
-	var fhirDb = new DatabaseHelper();
-	Bundle_Request newBundle_Request = new Bundle_Request(
-			id: await fhirDb.newResourceId('Bundle_Request'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			method: method,
-			elementMethod: elementMethod,
-			url: url,
-			elementUrl: elementUrl,
-			ifNoneMatch: ifNoneMatch,
-			elementIfNoneMatch: elementIfNoneMatch,
-			ifModifiedSince: ifModifiedSince,
-			elementIfModifiedSince: elementIfModifiedSince,
-			ifMatch: ifMatch,
-			elementIfMatch: elementIfMatch,
-			ifNoneExist: ifNoneExist,
-			elementIfNoneExist: elementIfNoneExist,
-);
-	return newBundle_Request;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -306,62 +304,61 @@ class Bundle_Request {
   String ifNoneExist;
   Element elementIfNoneExist;
 
-Bundle_Request(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.method,
-    this.elementMethod,
-    this.url,
-    this.elementUrl,
-    this.ifNoneMatch,
-    this.elementIfNoneMatch,
-    this.ifModifiedSince,
-    this.elementIfModifiedSince,
-    this.ifMatch,
-    this.elementIfMatch,
-    this.ifNoneExist,
-    this.elementIfNoneExist
-    });
+  Bundle_Request(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.method,
+      this.elementMethod,
+      this.url,
+      this.elementUrl,
+      this.ifNoneMatch,
+      this.elementIfNoneMatch,
+      this.ifModifiedSince,
+      this.elementIfModifiedSince,
+      this.ifMatch,
+      this.elementIfMatch,
+      this.ifNoneExist,
+      this.elementIfNoneExist});
 
-  factory Bundle_Request.fromJson(Map<String, dynamic> json) => _$Bundle_RequestFromJson(json);
+  factory Bundle_Request.fromJson(Map<String, dynamic> json) =>
+      _$Bundle_RequestFromJson(json);
   Map<String, dynamic> toJson() => _$Bundle_RequestToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Bundle_Response {
+  static Future<Bundle_Response> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String status,
+      Element elementStatus,
+      String location,
+      Element elementLocation,
+      String etag,
+      Element elementEtag,
+      DateTime lastModified,
+      Element elementLastModified,
+      dynamic outcome}) async {
+    var fhirDb = new DatabaseHelper();
+    Bundle_Response newBundle_Response = new Bundle_Response(
+      id: await fhirDb.newResourceId('Bundle_Response'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      status: status,
+      elementStatus: elementStatus,
+      location: location,
+      elementLocation: elementLocation,
+      etag: etag,
+      elementEtag: elementEtag,
+      lastModified: lastModified,
+      elementLastModified: elementLastModified,
+      outcome: outcome,
+    );
+    return newBundle_Response;
+  }
 
-
-	static Future<Bundle_Response> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String status,
-		Element elementStatus,
-		String location,
-		Element elementLocation,
-		String etag,
-		Element elementEtag,
-		DateTime lastModified,
-		Element elementLastModified,
-		dynamic outcome}) async {
-	var fhirDb = new DatabaseHelper();
-	Bundle_Response newBundle_Response = new Bundle_Response(
-			id: await fhirDb.newResourceId('Bundle_Response'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			status: status,
-			elementStatus: elementStatus,
-			location: location,
-			elementLocation: elementLocation,
-			etag: etag,
-			elementEtag: elementEtag,
-			lastModified: lastModified,
-			elementLastModified: elementLastModified,
-			outcome: outcome,
-);
-	return newBundle_Response;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -375,25 +372,24 @@ class Bundle_Response {
   Element elementLastModified;
   dynamic outcome;
 
-Bundle_Response(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.status,
-    this.elementStatus,
-    this.location,
-    this.elementLocation,
-    this.etag,
-    this.elementEtag,
-    this.lastModified,
-    this.elementLastModified,
-    this.outcome
-    });
+  Bundle_Response(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.status,
+      this.elementStatus,
+      this.location,
+      this.elementLocation,
+      this.etag,
+      this.elementEtag,
+      this.lastModified,
+      this.elementLastModified,
+      this.outcome});
 
-  factory Bundle_Response.fromJson(Map<String, dynamic> json) => _$Bundle_ResponseFromJson(json);
+  factory Bundle_Response.fromJson(Map<String, dynamic> json) =>
+      _$Bundle_ResponseFromJson(json);
   Map<String, dynamic> toJson() => _$Bundle_ResponseToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -520,9 +516,10 @@ Bundle_Entry _$Bundle_EntryFromJson(Map<String, dynamic> json) {
     elementFullUrl: json['elementFullUrl'] == null
         ? null
         : Element.fromJson(json['elementFullUrl'] as Map<String, dynamic>),
-        resource: json['resource'] == null
+    resource: json['resource'] == null
         ? null
-        : ResourceTypes(json['resource']['resourceType'], json['resource'] as Map<String, dynamic>),
+        : ResourceTypes(json['resource']['resourceType'],
+            json['resource'] as Map<String, dynamic>),
     search: json['search'] == null
         ? null
         : Bundle_Search.fromJson(json['search'] as Map<String, dynamic>),
@@ -674,9 +671,10 @@ Bundle_Response _$Bundle_ResponseFromJson(Map<String, dynamic> json) {
     elementLastModified: json['elementLastModified'] == null
         ? null
         : Element.fromJson(json['elementLastModified'] as Map<String, dynamic>),
-        outcome: json['outcome'] == null
+    outcome: json['outcome'] == null
         ? null
-        : ResourceTypes(json['outcome']['resourceType'], json['outcome'] as Map<String, dynamic>),
+        : ResourceTypes(json['outcome']['resourceType'],
+            json['outcome'] as Map<String, dynamic>),
   );
 }
 

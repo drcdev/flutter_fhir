@@ -13,73 +13,75 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PaymentNotice {
+  static Future<PaymentNotice> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      String status,
+      Element elementStatus,
+      Reference request,
+      Reference response,
+      DateTime created,
+      Element elementCreated,
+      Reference provider,
+      Reference payment,
+      String paymentDate,
+      Element elementPaymentDate,
+      Reference payee,
+      Reference recipient,
+      Money amount,
+      CodeableConcept paymentStatus}) async {
+    var fhirDb = new DatabaseHelper();
+    PaymentNotice newPaymentNotice = new PaymentNotice(
+      resourceType: 'PaymentNotice',
+      id: await fhirDb.newResourceId('PaymentNotice'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      request: request,
+      response: response,
+      created: created,
+      elementCreated: elementCreated,
+      provider: provider,
+      payment: payment,
+      paymentDate: paymentDate,
+      elementPaymentDate: elementPaymentDate,
+      payee: payee,
+      recipient: recipient,
+      amount: amount,
+      paymentStatus: paymentStatus,
+    );
+    newPaymentNotice.meta.createdAt = DateTime.now();
+    newPaymentNotice.meta.lastUpdated = newPaymentNotice.meta.createdAt;
+    int saved = await fhirDb.newResource(newPaymentNotice);
+    return newPaymentNotice;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<PaymentNotice> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		String status,
-		Element elementStatus,
-		Reference request,
-		Reference response,
-		DateTime created,
-		Element elementCreated,
-		Reference provider,
-		Reference payment,
-		String paymentDate,
-		Element elementPaymentDate,
-		Reference payee,
-		Reference recipient,
-		Money amount,
-		CodeableConcept paymentStatus}) async {
-	var fhirDb = new DatabaseHelper();
-	PaymentNotice newPaymentNotice = new PaymentNotice(
-			resourceType: 'PaymentNotice',
-			id: await fhirDb.newResourceId('PaymentNotice'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			status: status,
-			elementStatus: elementStatus,
-			request: request,
-			response: response,
-			created: created,
-			elementCreated: elementCreated,
-			provider: provider,
-			payment: payment,
-			paymentDate: paymentDate,
-			elementPaymentDate: elementPaymentDate,
-			payee: payee,
-			recipient: recipient,
-			amount: amount,
-			paymentStatus: paymentStatus,
-);
-	int saved = await fhirDb.newResource(newPaymentNotice);
-	return newPaymentNotice;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'PaymentNotice';
+  String resourceType = 'PaymentNotice';
   String id;
   Meta meta;
   String implicitRules;
@@ -106,39 +108,38 @@ save () async {
   Money amount;
   CodeableConcept paymentStatus;
 
-PaymentNotice(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.request,
-    this.response,
-    this.created,
-    this.elementCreated,
-    this.provider,
-    @required this.payment,
-    this.paymentDate,
-    this.elementPaymentDate,
-    this.payee,
-    @required this.recipient,
-    @required this.amount,
-    this.paymentStatus
-    });
+  PaymentNotice(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.status,
+      this.elementStatus,
+      this.request,
+      this.response,
+      this.created,
+      this.elementCreated,
+      this.provider,
+      @required this.payment,
+      this.paymentDate,
+      this.elementPaymentDate,
+      this.payee,
+      @required this.recipient,
+      @required this.amount,
+      this.paymentStatus});
 
-  factory PaymentNotice.fromJson(Map<String, dynamic> json) => _$PaymentNoticeFromJson(json);
+  factory PaymentNotice.fromJson(Map<String, dynamic> json) =>
+      _$PaymentNoticeFromJson(json);
   Map<String, dynamic> toJson() => _$PaymentNoticeToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -165,8 +166,9 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

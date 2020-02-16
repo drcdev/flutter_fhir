@@ -6,48 +6,36 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CodeableConcept {
+  static Future<CodeableConcept> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Coding> coding,
+      String text,
+      Element elementText}) async {
+    var fhirDb = new DatabaseHelper();
+    CodeableConcept newCodeableConcept = new CodeableConcept(
+      id: await fhirDb.newResourceId('CodeableConcept'),
+      extension: extension,
+      coding: coding,
+      text: text,
+      elementText: elementText,
+    );
+    return newCodeableConcept;
+  }
 
-
-	static Future<CodeableConcept> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Coding> coding,
-		String text,
-		Element elementText}) async {
-	var fhirDb = new DatabaseHelper();
-	CodeableConcept newCodeableConcept = new CodeableConcept(
-			id: await fhirDb.newResourceId('CodeableConcept'),
-			extension: extension,
-			coding: coding,
-			text: text,
-			elementText: elementText,
-);
-	int saved = await fhirDb.newResource(newCodeableConcept);
-	return newCodeableConcept;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   List<Coding> coding;
   String text;
   Element elementText;
 
-CodeableConcept(
-  {this.id,
-    this.extension,
-    this.coding,
-    this.text,
-    this.elementText
-    });
+  CodeableConcept(
+      {this.id, this.extension, this.coding, this.text, this.elementText});
 
-  factory CodeableConcept.fromJson(Map<String, dynamic> json) => _$CodeableConceptFromJson(json);
+  factory CodeableConcept.fromJson(Map<String, dynamic> json) =>
+      _$CodeableConceptFromJson(json);
   Map<String, dynamic> toJson() => _$CodeableConceptToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

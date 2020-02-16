@@ -15,73 +15,75 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CareTeam {
+  static Future<CareTeam> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      String status,
+      Element elementStatus,
+      List<CodeableConcept> category,
+      String name,
+      Element elementName,
+      Reference subject,
+      Reference encounter,
+      Period period,
+      List<CareTeam_Participant> participant,
+      List<CodeableConcept> reasonCode,
+      List<Reference> reasonReference,
+      List<Reference> managingOrganization,
+      List<ContactPoint> telecom,
+      List<Annotation> note}) async {
+    var fhirDb = new DatabaseHelper();
+    CareTeam newCareTeam = new CareTeam(
+      resourceType: 'CareTeam',
+      id: await fhirDb.newResourceId('CareTeam'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      category: category,
+      name: name,
+      elementName: elementName,
+      subject: subject,
+      encounter: encounter,
+      period: period,
+      participant: participant,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      managingOrganization: managingOrganization,
+      telecom: telecom,
+      note: note,
+    );
+    newCareTeam.meta.createdAt = DateTime.now();
+    newCareTeam.meta.lastUpdated = newCareTeam.meta.createdAt;
+    int saved = await fhirDb.newResource(newCareTeam);
+    return newCareTeam;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<CareTeam> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		String status,
-		Element elementStatus,
-		List<CodeableConcept> category,
-		String name,
-		Element elementName,
-		Reference subject,
-		Reference encounter,
-		Period period,
-		List<CareTeam_Participant> participant,
-		List<CodeableConcept> reasonCode,
-		List<Reference> reasonReference,
-		List<Reference> managingOrganization,
-		List<ContactPoint> telecom,
-		List<Annotation> note}) async {
-	var fhirDb = new DatabaseHelper();
-	CareTeam newCareTeam = new CareTeam(
-			resourceType: 'CareTeam',
-			id: await fhirDb.newResourceId('CareTeam'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			status: status,
-			elementStatus: elementStatus,
-			category: category,
-			name: name,
-			elementName: elementName,
-			subject: subject,
-			encounter: encounter,
-			period: period,
-			participant: participant,
-			reasonCode: reasonCode,
-			reasonReference: reasonReference,
-			managingOrganization: managingOrganization,
-			telecom: telecom,
-			note: note,
-);
-	int saved = await fhirDb.newResource(newCareTeam);
-	return newCareTeam;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'CareTeam';
+  String resourceType = 'CareTeam';
   String id;
   Meta meta;
   String implicitRules;
@@ -93,7 +95,8 @@ save () async {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String status; // <code> enum: proposed/active/suspended/inactive/entered-in-error;
+  String
+      status; // <code> enum: proposed/active/suspended/inactive/entered-in-error;
   Element elementStatus;
   List<CodeableConcept> category;
   String name;
@@ -108,63 +111,62 @@ save () async {
   List<ContactPoint> telecom;
   List<Annotation> note;
 
-CareTeam(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.category,
-    this.name,
-    this.elementName,
-    this.subject,
-    this.encounter,
-    this.period,
-    this.participant,
-    this.reasonCode,
-    this.reasonReference,
-    this.managingOrganization,
-    this.telecom,
-    this.note
-    });
+  CareTeam(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.status,
+      this.elementStatus,
+      this.category,
+      this.name,
+      this.elementName,
+      this.subject,
+      this.encounter,
+      this.period,
+      this.participant,
+      this.reasonCode,
+      this.reasonReference,
+      this.managingOrganization,
+      this.telecom,
+      this.note});
 
-  factory CareTeam.fromJson(Map<String, dynamic> json) => _$CareTeamFromJson(json);
+  factory CareTeam.fromJson(Map<String, dynamic> json) =>
+      _$CareTeamFromJson(json);
   Map<String, dynamic> toJson() => _$CareTeamToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CareTeam_Participant {
+  static Future<CareTeam_Participant> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<CodeableConcept> role,
+      Reference member,
+      Reference onBehalfOf,
+      Period period}) async {
+    var fhirDb = new DatabaseHelper();
+    CareTeam_Participant newCareTeam_Participant = new CareTeam_Participant(
+      id: await fhirDb.newResourceId('CareTeam_Participant'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      role: role,
+      member: member,
+      onBehalfOf: onBehalfOf,
+      period: period,
+    );
+    return newCareTeam_Participant;
+  }
 
-
-	static Future<CareTeam_Participant> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<CodeableConcept> role,
-		Reference member,
-		Reference onBehalfOf,
-		Period period}) async {
-	var fhirDb = new DatabaseHelper();
-	CareTeam_Participant newCareTeam_Participant = new CareTeam_Participant(
-			id: await fhirDb.newResourceId('CareTeam_Participant'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			role: role,
-			member: member,
-			onBehalfOf: onBehalfOf,
-			period: period,
-);
-	return newCareTeam_Participant;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -173,20 +175,19 @@ class CareTeam_Participant {
   Reference onBehalfOf;
   Period period;
 
-CareTeam_Participant(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.role,
-    this.member,
-    this.onBehalfOf,
-    this.period
-    });
+  CareTeam_Participant(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.role,
+      this.member,
+      this.onBehalfOf,
+      this.period});
 
-  factory CareTeam_Participant.fromJson(Map<String, dynamic> json) => _$CareTeam_ParticipantFromJson(json);
+  factory CareTeam_Participant.fromJson(Map<String, dynamic> json) =>
+      _$CareTeam_ParticipantFromJson(json);
   Map<String, dynamic> toJson() => _$CareTeam_ParticipantToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -213,8 +214,9 @@ CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

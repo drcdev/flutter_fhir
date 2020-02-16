@@ -6,62 +6,55 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Address {
+  static Future<Address> newInstance(
+      {String id,
+      List<Extension> extension,
+      String use,
+      Element elementUse,
+      String type,
+      Element elementType,
+      String text,
+      Element elementText,
+      List<String> line,
+      List<Element> elementLine,
+      String city,
+      Element elementCity,
+      String district,
+      Element elementDistrict,
+      String state,
+      Element elementState,
+      String postalCode,
+      Element elementPostalCode,
+      String country,
+      Element elementCountry,
+      Period period}) async {
+    var fhirDb = new DatabaseHelper();
+    Address newAddress = new Address(
+      id: await fhirDb.newResourceId('Address'),
+      extension: extension,
+      use: use,
+      elementUse: elementUse,
+      type: type,
+      elementType: elementType,
+      text: text,
+      elementText: elementText,
+      line: line,
+      elementLine: elementLine,
+      city: city,
+      elementCity: elementCity,
+      district: district,
+      elementDistrict: elementDistrict,
+      state: state,
+      elementState: elementState,
+      postalCode: postalCode,
+      elementPostalCode: elementPostalCode,
+      country: country,
+      elementCountry: elementCountry,
+      period: period,
+    );
+    return newAddress;
+  }
 
-
-	static Future<Address> newInstance({
-		String id,
-		List<Extension> extension,
-		String use,
-		Element elementUse,
-		String type,
-		Element elementType,
-		String text,
-		Element elementText,
-		List<String> line,
-		List<Element> elementLine,
-		String city,
-		Element elementCity,
-		String district,
-		Element elementDistrict,
-		String state,
-		Element elementState,
-		String postalCode,
-		Element elementPostalCode,
-		String country,
-		Element elementCountry,
-		Period period}) async {
-	var fhirDb = new DatabaseHelper();
-	Address newAddress = new Address(
-			id: await fhirDb.newResourceId('Address'),
-			extension: extension,
-			use: use,
-			elementUse: elementUse,
-			type: type,
-			elementType: elementType,
-			text: text,
-			elementText: elementText,
-			line: line,
-			elementLine: elementLine,
-			city: city,
-			elementCity: elementCity,
-			district: district,
-			elementDistrict: elementDistrict,
-			state: state,
-			elementState: elementState,
-			postalCode: postalCode,
-			elementPostalCode: elementPostalCode,
-			country: country,
-			elementCountry: elementCountry,
-			period: period,
-);
-	int saved = await fhirDb.newResource(newAddress);
-	return newAddress;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   String use; // <code> enum: home/work/temp/old/billing;
@@ -84,34 +77,33 @@ save () async {
   Element elementCountry;
   Period period;
 
-Address(
-  {this.id,
-    this.extension,
-    this.use,
-    this.elementUse,
-    this.type,
-    this.elementType,
-    this.text,
-    this.elementText,
-    this.line,
-    this.elementLine,
-    this.city,
-    this.elementCity,
-    this.district,
-    this.elementDistrict,
-    this.state,
-    this.elementState,
-    this.postalCode,
-    this.elementPostalCode,
-    this.country,
-    this.elementCountry,
-    this.period
-    });
+  Address(
+      {this.id,
+      this.extension,
+      this.use,
+      this.elementUse,
+      this.type,
+      this.elementType,
+      this.text,
+      this.elementText,
+      this.line,
+      this.elementLine,
+      this.city,
+      this.elementCity,
+      this.district,
+      this.elementDistrict,
+      this.state,
+      this.elementState,
+      this.postalCode,
+      this.elementPostalCode,
+      this.country,
+      this.elementCountry,
+      this.period});
 
-  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

@@ -14,125 +14,128 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement {
+  static Future<CapabilityStatement> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      String version,
+      Element elementVersion,
+      String name,
+      Element elementName,
+      String title,
+      Element elementTitle,
+      String status,
+      Element elementStatus,
+      bool experimental,
+      Element elementExperimental,
+      DateTime date,
+      Element elementDate,
+      String publisher,
+      Element elementPublisher,
+      List<ContactDetail> contact,
+      String description,
+      Element elementDescription,
+      List<UsageContext> useContext,
+      List<CodeableConcept> jurisdiction,
+      String purpose,
+      Element elementPurpose,
+      String copyright,
+      Element elementCopyright,
+      String kind,
+      Element elementKind,
+      List<String> instantiates,
+      List<String> imports,
+      CapabilityStatement_Software software,
+      CapabilityStatement_Implementation implementation,
+      String fhirVersion,
+      Element elementFhirVersion,
+      List<String> format,
+      List<Element> elementFormat,
+      List<String> patchFormat,
+      List<Element> elementPatchFormat,
+      List<String> implementationGuide,
+      List<CapabilityStatement_Rest> rest,
+      List<CapabilityStatement_Messaging> messaging,
+      List<CapabilityStatement_Document> document}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement newCapabilityStatement = new CapabilityStatement(
+      resourceType: 'CapabilityStatement',
+      id: await fhirDb.newResourceId('CapabilityStatement'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      kind: kind,
+      elementKind: elementKind,
+      instantiates: instantiates,
+      imports: imports,
+      software: software,
+      implementation: implementation,
+      fhirVersion: fhirVersion,
+      elementFhirVersion: elementFhirVersion,
+      format: format,
+      elementFormat: elementFormat,
+      patchFormat: patchFormat,
+      elementPatchFormat: elementPatchFormat,
+      implementationGuide: implementationGuide,
+      rest: rest,
+      messaging: messaging,
+      document: document,
+    );
+    newCapabilityStatement.meta.createdAt = DateTime.now();
+    newCapabilityStatement.meta.lastUpdated =
+        newCapabilityStatement.meta.createdAt;
+    int saved = await fhirDb.newResource(newCapabilityStatement);
+    return newCapabilityStatement;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<CapabilityStatement> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		String version,
-		Element elementVersion,
-		String name,
-		Element elementName,
-		String title,
-		Element elementTitle,
-		String status,
-		Element elementStatus,
-		bool experimental,
-		Element elementExperimental,
-		DateTime date,
-		Element elementDate,
-		String publisher,
-		Element elementPublisher,
-		List<ContactDetail> contact,
-		String description,
-		Element elementDescription,
-		List<UsageContext> useContext,
-		List<CodeableConcept> jurisdiction,
-		String purpose,
-		Element elementPurpose,
-		String copyright,
-		Element elementCopyright,
-		String kind,
-		Element elementKind,
-		List<String> instantiates,
-		List<String> imports,
-		CapabilityStatement_Software software,
-		CapabilityStatement_Implementation implementation,
-		String fhirVersion,
-		Element elementFhirVersion,
-		List<String> format,
-		List<Element> elementFormat,
-		List<String> patchFormat,
-		List<Element> elementPatchFormat,
-		List<String> implementationGuide,
-		List<CapabilityStatement_Rest> rest,
-		List<CapabilityStatement_Messaging> messaging,
-		List<CapabilityStatement_Document> document}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement newCapabilityStatement = new CapabilityStatement(
-			resourceType: 'CapabilityStatement',
-			id: await fhirDb.newResourceId('CapabilityStatement'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			version: version,
-			elementVersion: elementVersion,
-			name: name,
-			elementName: elementName,
-			title: title,
-			elementTitle: elementTitle,
-			status: status,
-			elementStatus: elementStatus,
-			experimental: experimental,
-			elementExperimental: elementExperimental,
-			date: date,
-			elementDate: elementDate,
-			publisher: publisher,
-			elementPublisher: elementPublisher,
-			contact: contact,
-			description: description,
-			elementDescription: elementDescription,
-			useContext: useContext,
-			jurisdiction: jurisdiction,
-			purpose: purpose,
-			elementPurpose: elementPurpose,
-			copyright: copyright,
-			elementCopyright: elementCopyright,
-			kind: kind,
-			elementKind: elementKind,
-			instantiates: instantiates,
-			imports: imports,
-			software: software,
-			implementation: implementation,
-			fhirVersion: fhirVersion,
-			elementFhirVersion: elementFhirVersion,
-			format: format,
-			elementFormat: elementFormat,
-			patchFormat: patchFormat,
-			elementPatchFormat: elementPatchFormat,
-			implementationGuide: implementationGuide,
-			rest: rest,
-			messaging: messaging,
-			document: document,
-);
-	int saved = await fhirDb.newResource(newCapabilityStatement);
-	return newCapabilityStatement;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'CapabilityStatement';
+  String resourceType = 'CapabilityStatement';
   String id;
   Meta meta;
   String implicitRules;
@@ -174,7 +177,8 @@ save () async {
   List<String> imports;
   CapabilityStatement_Software software;
   CapabilityStatement_Implementation implementation;
-  String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
+  String
+      fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
   Element elementFhirVersion;
   List<String> format;
   List<Element> elementFormat;
@@ -185,93 +189,93 @@ save () async {
   List<CapabilityStatement_Messaging> messaging;
   List<CapabilityStatement_Document> document;
 
-CapabilityStatement(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.copyright,
-    this.elementCopyright,
-    this.kind,
-    this.elementKind,
-    this.instantiates,
-    this.imports,
-    this.software,
-    this.implementation,
-    this.fhirVersion,
-    this.elementFhirVersion,
-    this.format,
-    this.elementFormat,
-    this.patchFormat,
-    this.elementPatchFormat,
-    this.implementationGuide,
-    this.rest,
-    this.messaging,
-    this.document
-    });
+  CapabilityStatement(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.version,
+      this.elementVersion,
+      this.name,
+      this.elementName,
+      this.title,
+      this.elementTitle,
+      this.status,
+      this.elementStatus,
+      this.experimental,
+      this.elementExperimental,
+      this.date,
+      this.elementDate,
+      this.publisher,
+      this.elementPublisher,
+      this.contact,
+      this.description,
+      this.elementDescription,
+      this.useContext,
+      this.jurisdiction,
+      this.purpose,
+      this.elementPurpose,
+      this.copyright,
+      this.elementCopyright,
+      this.kind,
+      this.elementKind,
+      this.instantiates,
+      this.imports,
+      this.software,
+      this.implementation,
+      this.fhirVersion,
+      this.elementFhirVersion,
+      this.format,
+      this.elementFormat,
+      this.patchFormat,
+      this.elementPatchFormat,
+      this.implementationGuide,
+      this.rest,
+      this.messaging,
+      this.document});
 
-  factory CapabilityStatement.fromJson(Map<String, dynamic> json) => _$CapabilityStatementFromJson(json);
+  factory CapabilityStatement.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatementFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatementToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Software {
+  static Future<CapabilityStatement_Software> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String name,
+      Element elementName,
+      String version,
+      Element elementVersion,
+      DateTime releaseDate,
+      Element elementReleaseDate}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Software newCapabilityStatement_Software =
+        new CapabilityStatement_Software(
+      id: await fhirDb.newResourceId('CapabilityStatement_Software'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      version: version,
+      elementVersion: elementVersion,
+      releaseDate: releaseDate,
+      elementReleaseDate: elementReleaseDate,
+    );
+    return newCapabilityStatement_Software;
+  }
 
-
-	static Future<CapabilityStatement_Software> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String name,
-		Element elementName,
-		String version,
-		Element elementVersion,
-		DateTime releaseDate,
-		Element elementReleaseDate}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Software newCapabilityStatement_Software = new CapabilityStatement_Software(
-			id: await fhirDb.newResourceId('CapabilityStatement_Software'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			name: name,
-			elementName: elementName,
-			version: version,
-			elementVersion: elementVersion,
-			releaseDate: releaseDate,
-			elementReleaseDate: elementReleaseDate,
-);
-	return newCapabilityStatement_Software;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -282,48 +286,48 @@ class CapabilityStatement_Software {
   DateTime releaseDate;
   Element elementReleaseDate;
 
-CapabilityStatement_Software(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.version,
-    this.elementVersion,
-    this.releaseDate,
-    this.elementReleaseDate
-    });
+  CapabilityStatement_Software(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.name,
+      this.elementName,
+      this.version,
+      this.elementVersion,
+      this.releaseDate,
+      this.elementReleaseDate});
 
-  factory CapabilityStatement_Software.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SoftwareFromJson(json);
+  factory CapabilityStatement_Software.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_SoftwareFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_SoftwareToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Implementation {
+  static Future<CapabilityStatement_Implementation> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String description,
+      Element elementDescription,
+      String url,
+      Element elementUrl,
+      Reference custodian}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Implementation newCapabilityStatement_Implementation =
+        new CapabilityStatement_Implementation(
+      id: await fhirDb.newResourceId('CapabilityStatement_Implementation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      url: url,
+      elementUrl: elementUrl,
+      custodian: custodian,
+    );
+    return newCapabilityStatement_Implementation;
+  }
 
-
-	static Future<CapabilityStatement_Implementation> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String description,
-		Element elementDescription,
-		String url,
-		Element elementUrl,
-		Reference custodian}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Implementation newCapabilityStatement_Implementation = new CapabilityStatement_Implementation(
-			id: await fhirDb.newResourceId('CapabilityStatement_Implementation'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			description: description,
-			elementDescription: elementDescription,
-			url: url,
-			elementUrl: elementUrl,
-			custodian: custodian,
-);
-	return newCapabilityStatement_Implementation;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -333,57 +337,59 @@ class CapabilityStatement_Implementation {
   Element elementUrl;
   Reference custodian;
 
-CapabilityStatement_Implementation(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.description,
-    this.elementDescription,
-    this.url,
-    this.elementUrl,
-    this.custodian
-    });
+  CapabilityStatement_Implementation(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.description,
+      this.elementDescription,
+      this.url,
+      this.elementUrl,
+      this.custodian});
 
-  factory CapabilityStatement_Implementation.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_ImplementationFromJson(json);
-  Map<String, dynamic> toJson() => _$CapabilityStatement_ImplementationToJson(this);
+  factory CapabilityStatement_Implementation.fromJson(
+          Map<String, dynamic> json) =>
+      _$CapabilityStatement_ImplementationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CapabilityStatement_ImplementationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Rest {
+  static Future<CapabilityStatement_Rest> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String mode,
+      Element elementMode,
+      String documentation,
+      Element elementDocumentation,
+      CapabilityStatement_Security security,
+      List<CapabilityStatement_Resource> resource,
+      List<CapabilityStatement_Interaction1> interaction,
+      List<CapabilityStatement_SearchParam> searchParam,
+      List<CapabilityStatement_Operation> operation,
+      List<String> compartment}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Rest newCapabilityStatement_Rest =
+        new CapabilityStatement_Rest(
+      id: await fhirDb.newResourceId('CapabilityStatement_Rest'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      mode: mode,
+      elementMode: elementMode,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+      security: security,
+      resource: resource,
+      interaction: interaction,
+      searchParam: searchParam,
+      operation: operation,
+      compartment: compartment,
+    );
+    return newCapabilityStatement_Rest;
+  }
 
-
-	static Future<CapabilityStatement_Rest> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String mode,
-		Element elementMode,
-		String documentation,
-		Element elementDocumentation,
-		CapabilityStatement_Security security,
-		List<CapabilityStatement_Resource> resource,
-		List<CapabilityStatement_Interaction1> interaction,
-		List<CapabilityStatement_SearchParam> searchParam,
-		List<CapabilityStatement_Operation> operation,
-		List<String> compartment}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Rest newCapabilityStatement_Rest = new CapabilityStatement_Rest(
-			id: await fhirDb.newResourceId('CapabilityStatement_Rest'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			mode: mode,
-			elementMode: elementMode,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-			security: security,
-			resource: resource,
-			interaction: interaction,
-			searchParam: searchParam,
-			operation: operation,
-			compartment: compartment,
-);
-	return newCapabilityStatement_Rest;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -398,52 +404,52 @@ class CapabilityStatement_Rest {
   List<CapabilityStatement_Operation> operation;
   List<String> compartment;
 
-CapabilityStatement_Rest(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.mode,
-    this.elementMode,
-    this.documentation,
-    this.elementDocumentation,
-    this.security,
-    this.resource,
-    this.interaction,
-    this.searchParam,
-    this.operation,
-    this.compartment
-    });
+  CapabilityStatement_Rest(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.mode,
+      this.elementMode,
+      this.documentation,
+      this.elementDocumentation,
+      this.security,
+      this.resource,
+      this.interaction,
+      this.searchParam,
+      this.operation,
+      this.compartment});
 
-  factory CapabilityStatement_Rest.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_RestFromJson(json);
+  factory CapabilityStatement_Rest.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_RestFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_RestToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Security {
+  static Future<CapabilityStatement_Security> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      bool cors,
+      Element elementCors,
+      List<CodeableConcept> service,
+      String description,
+      Element elementDescription}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Security newCapabilityStatement_Security =
+        new CapabilityStatement_Security(
+      id: await fhirDb.newResourceId('CapabilityStatement_Security'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      cors: cors,
+      elementCors: elementCors,
+      service: service,
+      description: description,
+      elementDescription: elementDescription,
+    );
+    return newCapabilityStatement_Security;
+  }
 
-
-	static Future<CapabilityStatement_Security> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		bool cors,
-		Element elementCors,
-		List<CodeableConcept> service,
-		String description,
-		Element elementDescription}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Security newCapabilityStatement_Security = new CapabilityStatement_Security(
-			id: await fhirDb.newResourceId('CapabilityStatement_Security'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			cors: cors,
-			elementCors: elementCors,
-			service: service,
-			description: description,
-			elementDescription: elementDescription,
-);
-	return newCapabilityStatement_Security;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -453,95 +459,95 @@ class CapabilityStatement_Security {
   String description;
   Element elementDescription;
 
-CapabilityStatement_Security(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.cors,
-    this.elementCors,
-    this.service,
-    this.description,
-    this.elementDescription
-    });
+  CapabilityStatement_Security(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.cors,
+      this.elementCors,
+      this.service,
+      this.description,
+      this.elementDescription});
 
-  factory CapabilityStatement_Security.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SecurityFromJson(json);
+  factory CapabilityStatement_Security.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_SecurityFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_SecurityToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Resource {
+  static Future<CapabilityStatement_Resource> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String type,
+      Element elementType,
+      String profile,
+      List<String> supportedProfile,
+      String documentation,
+      Element elementDocumentation,
+      List<CapabilityStatement_Interaction> interaction,
+      String versioning,
+      Element elementVersioning,
+      bool readHistory,
+      Element elementReadHistory,
+      bool updateCreate,
+      Element elementUpdateCreate,
+      bool conditionalCreate,
+      Element elementConditionalCreate,
+      String conditionalRead,
+      Element elementConditionalRead,
+      bool conditionalUpdate,
+      Element elementConditionalUpdate,
+      String conditionalDelete,
+      Element elementConditionalDelete,
+      List<String> referencePolicy,
+      List<Element> elementReferencePolicy,
+      List<String> searchInclude,
+      List<Element> elementSearchInclude,
+      List<String> searchRevInclude,
+      List<Element> elementSearchRevInclude,
+      List<CapabilityStatement_SearchParam> searchParam,
+      List<CapabilityStatement_Operation> operation}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Resource newCapabilityStatement_Resource =
+        new CapabilityStatement_Resource(
+      id: await fhirDb.newResourceId('CapabilityStatement_Resource'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      profile: profile,
+      supportedProfile: supportedProfile,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+      interaction: interaction,
+      versioning: versioning,
+      elementVersioning: elementVersioning,
+      readHistory: readHistory,
+      elementReadHistory: elementReadHistory,
+      updateCreate: updateCreate,
+      elementUpdateCreate: elementUpdateCreate,
+      conditionalCreate: conditionalCreate,
+      elementConditionalCreate: elementConditionalCreate,
+      conditionalRead: conditionalRead,
+      elementConditionalRead: elementConditionalRead,
+      conditionalUpdate: conditionalUpdate,
+      elementConditionalUpdate: elementConditionalUpdate,
+      conditionalDelete: conditionalDelete,
+      elementConditionalDelete: elementConditionalDelete,
+      referencePolicy: referencePolicy,
+      elementReferencePolicy: elementReferencePolicy,
+      searchInclude: searchInclude,
+      elementSearchInclude: elementSearchInclude,
+      searchRevInclude: searchRevInclude,
+      elementSearchRevInclude: elementSearchRevInclude,
+      searchParam: searchParam,
+      operation: operation,
+    );
+    return newCapabilityStatement_Resource;
+  }
 
-
-	static Future<CapabilityStatement_Resource> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String type,
-		Element elementType,
-		String profile,
-		List<String> supportedProfile,
-		String documentation,
-		Element elementDocumentation,
-		List<CapabilityStatement_Interaction> interaction,
-		String versioning,
-		Element elementVersioning,
-		bool readHistory,
-		Element elementReadHistory,
-		bool updateCreate,
-		Element elementUpdateCreate,
-		bool conditionalCreate,
-		Element elementConditionalCreate,
-		String conditionalRead,
-		Element elementConditionalRead,
-		bool conditionalUpdate,
-		Element elementConditionalUpdate,
-		String conditionalDelete,
-		Element elementConditionalDelete,
-		List<String> referencePolicy,
-		List<Element> elementReferencePolicy,
-		List<String> searchInclude,
-		List<Element> elementSearchInclude,
-		List<String> searchRevInclude,
-		List<Element> elementSearchRevInclude,
-		List<CapabilityStatement_SearchParam> searchParam,
-		List<CapabilityStatement_Operation> operation}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Resource newCapabilityStatement_Resource = new CapabilityStatement_Resource(
-			id: await fhirDb.newResourceId('CapabilityStatement_Resource'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			type: type,
-			elementType: elementType,
-			profile: profile,
-			supportedProfile: supportedProfile,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-			interaction: interaction,
-			versioning: versioning,
-			elementVersioning: elementVersioning,
-			readHistory: readHistory,
-			elementReadHistory: elementReadHistory,
-			updateCreate: updateCreate,
-			elementUpdateCreate: elementUpdateCreate,
-			conditionalCreate: conditionalCreate,
-			elementConditionalCreate: elementConditionalCreate,
-			conditionalRead: conditionalRead,
-			elementConditionalRead: elementConditionalRead,
-			conditionalUpdate: conditionalUpdate,
-			elementConditionalUpdate: elementConditionalUpdate,
-			conditionalDelete: conditionalDelete,
-			elementConditionalDelete: elementConditionalDelete,
-			referencePolicy: referencePolicy,
-			elementReferencePolicy: elementReferencePolicy,
-			searchInclude: searchInclude,
-			elementSearchInclude: elementSearchInclude,
-			searchRevInclude: searchRevInclude,
-			elementSearchRevInclude: elementSearchRevInclude,
-			searchParam: searchParam,
-			operation: operation,
-);
-	return newCapabilityStatement_Resource;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -560,13 +566,15 @@ class CapabilityStatement_Resource {
   Element elementUpdateCreate;
   bool conditionalCreate;
   Element elementConditionalCreate;
-  String conditionalRead; // <code> enum: not-supported/modified-since/not-match/full-support;
+  String
+      conditionalRead; // <code> enum: not-supported/modified-since/not-match/full-support;
   Element elementConditionalRead;
   bool conditionalUpdate;
   Element elementConditionalUpdate;
   String conditionalDelete; // <code> enum: not-supported/single/multiple;
   Element elementConditionalDelete;
-  List<String> referencePolicy; // <code> enum: literal/logical/resolves/enforced/local> referencePolicy;
+  List<String>
+      referencePolicy; // <code> enum: literal/logical/resolves/enforced/local> referencePolicy;
   List<Element> elementReferencePolicy;
   List<String> searchInclude;
   List<Element> elementSearchInclude;
@@ -575,175 +583,179 @@ class CapabilityStatement_Resource {
   List<CapabilityStatement_SearchParam> searchParam;
   List<CapabilityStatement_Operation> operation;
 
-CapabilityStatement_Resource(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.elementType,
-    this.profile,
-    this.supportedProfile,
-    this.documentation,
-    this.elementDocumentation,
-    this.interaction,
-    this.versioning,
-    this.elementVersioning,
-    this.readHistory,
-    this.elementReadHistory,
-    this.updateCreate,
-    this.elementUpdateCreate,
-    this.conditionalCreate,
-    this.elementConditionalCreate,
-    this.conditionalRead,
-    this.elementConditionalRead,
-    this.conditionalUpdate,
-    this.elementConditionalUpdate,
-    this.conditionalDelete,
-    this.elementConditionalDelete,
-    this.referencePolicy,
-    this.elementReferencePolicy,
-    this.searchInclude,
-    this.elementSearchInclude,
-    this.searchRevInclude,
-    this.elementSearchRevInclude,
-    this.searchParam,
-    this.operation
-    });
+  CapabilityStatement_Resource(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.type,
+      this.elementType,
+      this.profile,
+      this.supportedProfile,
+      this.documentation,
+      this.elementDocumentation,
+      this.interaction,
+      this.versioning,
+      this.elementVersioning,
+      this.readHistory,
+      this.elementReadHistory,
+      this.updateCreate,
+      this.elementUpdateCreate,
+      this.conditionalCreate,
+      this.elementConditionalCreate,
+      this.conditionalRead,
+      this.elementConditionalRead,
+      this.conditionalUpdate,
+      this.elementConditionalUpdate,
+      this.conditionalDelete,
+      this.elementConditionalDelete,
+      this.referencePolicy,
+      this.elementReferencePolicy,
+      this.searchInclude,
+      this.elementSearchInclude,
+      this.searchRevInclude,
+      this.elementSearchRevInclude,
+      this.searchParam,
+      this.operation});
 
-  factory CapabilityStatement_Resource.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_ResourceFromJson(json);
+  factory CapabilityStatement_Resource.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_ResourceFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_ResourceToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction {
+  static Future<CapabilityStatement_Interaction> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String code,
+      Element elementCode,
+      String documentation,
+      Element elementDocumentation}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Interaction newCapabilityStatement_Interaction =
+        new CapabilityStatement_Interaction(
+      id: await fhirDb.newResourceId('CapabilityStatement_Interaction'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newCapabilityStatement_Interaction;
+  }
 
-
-	static Future<CapabilityStatement_Interaction> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String code,
-		Element elementCode,
-		String documentation,
-		Element elementDocumentation}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Interaction newCapabilityStatement_Interaction = new CapabilityStatement_Interaction(
-			id: await fhirDb.newResourceId('CapabilityStatement_Interaction'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			elementCode: elementCode,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-);
-	return newCapabilityStatement_Interaction;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String code; // <code> enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type;
+  String
+      code; // <code> enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type;
   Element elementCode;
   String documentation;
   Element elementDocumentation;
 
-CapabilityStatement_Interaction(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.elementCode,
-    this.documentation,
-    this.elementDocumentation
-    });
+  CapabilityStatement_Interaction(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.elementCode,
+      this.documentation,
+      this.elementDocumentation});
 
-  factory CapabilityStatement_Interaction.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_InteractionFromJson(json);
-  Map<String, dynamic> toJson() => _$CapabilityStatement_InteractionToJson(this);
+  factory CapabilityStatement_Interaction.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_InteractionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CapabilityStatement_InteractionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SearchParam {
+  static Future<CapabilityStatement_SearchParam> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String name,
+      Element elementName,
+      String definition,
+      String type,
+      Element elementType,
+      String documentation,
+      Element elementDocumentation}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_SearchParam newCapabilityStatement_SearchParam =
+        new CapabilityStatement_SearchParam(
+      id: await fhirDb.newResourceId('CapabilityStatement_SearchParam'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      definition: definition,
+      type: type,
+      elementType: elementType,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newCapabilityStatement_SearchParam;
+  }
 
-
-	static Future<CapabilityStatement_SearchParam> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String name,
-		Element elementName,
-		String definition,
-		String type,
-		Element elementType,
-		String documentation,
-		Element elementDocumentation}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_SearchParam newCapabilityStatement_SearchParam = new CapabilityStatement_SearchParam(
-			id: await fhirDb.newResourceId('CapabilityStatement_SearchParam'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			name: name,
-			elementName: elementName,
-			definition: definition,
-			type: type,
-			elementType: elementType,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-);
-	return newCapabilityStatement_SearchParam;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   String name;
   Element elementName;
   String definition;
-  String type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
+  String
+      type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
   Element elementType;
   String documentation;
   Element elementDocumentation;
 
-CapabilityStatement_SearchParam(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.definition,
-    this.type,
-    this.elementType,
-    this.documentation,
-    this.elementDocumentation
-    });
+  CapabilityStatement_SearchParam(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.name,
+      this.elementName,
+      this.definition,
+      this.type,
+      this.elementType,
+      this.documentation,
+      this.elementDocumentation});
 
-  factory CapabilityStatement_SearchParam.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SearchParamFromJson(json);
-  Map<String, dynamic> toJson() => _$CapabilityStatement_SearchParamToJson(this);
+  factory CapabilityStatement_SearchParam.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_SearchParamFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CapabilityStatement_SearchParamToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Operation {
+  static Future<CapabilityStatement_Operation> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String name,
+      Element elementName,
+      String definition,
+      String documentation,
+      Element elementDocumentation}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Operation newCapabilityStatement_Operation =
+        new CapabilityStatement_Operation(
+      id: await fhirDb.newResourceId('CapabilityStatement_Operation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      definition: definition,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newCapabilityStatement_Operation;
+  }
 
-
-	static Future<CapabilityStatement_Operation> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String name,
-		Element elementName,
-		String definition,
-		String documentation,
-		Element elementDocumentation}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Operation newCapabilityStatement_Operation = new CapabilityStatement_Operation(
-			id: await fhirDb.newResourceId('CapabilityStatement_Operation'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			name: name,
-			elementName: elementName,
-			definition: definition,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-);
-	return newCapabilityStatement_Operation;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -753,45 +765,45 @@ class CapabilityStatement_Operation {
   String documentation;
   Element elementDocumentation;
 
-CapabilityStatement_Operation(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    @required this.definition,
-    this.documentation,
-    this.elementDocumentation
-    });
+  CapabilityStatement_Operation(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.name,
+      this.elementName,
+      @required this.definition,
+      this.documentation,
+      this.elementDocumentation});
 
-  factory CapabilityStatement_Operation.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_OperationFromJson(json);
+  factory CapabilityStatement_Operation.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_OperationFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_OperationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction1 {
+  static Future<CapabilityStatement_Interaction1> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String code,
+      Element elementCode,
+      String documentation,
+      Element elementDocumentation}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Interaction1 newCapabilityStatement_Interaction1 =
+        new CapabilityStatement_Interaction1(
+      id: await fhirDb.newResourceId('CapabilityStatement_Interaction1'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newCapabilityStatement_Interaction1;
+  }
 
-
-	static Future<CapabilityStatement_Interaction1> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String code,
-		Element elementCode,
-		String documentation,
-		Element elementDocumentation}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Interaction1 newCapabilityStatement_Interaction1 = new CapabilityStatement_Interaction1(
-			id: await fhirDb.newResourceId('CapabilityStatement_Interaction1'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			elementCode: elementCode,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-);
-	return newCapabilityStatement_Interaction1;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -800,48 +812,50 @@ class CapabilityStatement_Interaction1 {
   String documentation;
   Element elementDocumentation;
 
-CapabilityStatement_Interaction1(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.elementCode,
-    this.documentation,
-    this.elementDocumentation
-    });
+  CapabilityStatement_Interaction1(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.elementCode,
+      this.documentation,
+      this.elementDocumentation});
 
-  factory CapabilityStatement_Interaction1.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_Interaction1FromJson(json);
-  Map<String, dynamic> toJson() => _$CapabilityStatement_Interaction1ToJson(this);
+  factory CapabilityStatement_Interaction1.fromJson(
+          Map<String, dynamic> json) =>
+      _$CapabilityStatement_Interaction1FromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CapabilityStatement_Interaction1ToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Messaging {
+  static Future<CapabilityStatement_Messaging> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<CapabilityStatement_Endpoint> endpoint,
+      int reliableCache,
+      Element elementReliableCache,
+      String documentation,
+      Element elementDocumentation,
+      List<CapabilityStatement_SupportedMessage> supportedMessage}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Messaging newCapabilityStatement_Messaging =
+        new CapabilityStatement_Messaging(
+      id: await fhirDb.newResourceId('CapabilityStatement_Messaging'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      endpoint: endpoint,
+      reliableCache: reliableCache,
+      elementReliableCache: elementReliableCache,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+      supportedMessage: supportedMessage,
+    );
+    return newCapabilityStatement_Messaging;
+  }
 
-
-	static Future<CapabilityStatement_Messaging> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<CapabilityStatement_Endpoint> endpoint,
-		int reliableCache,
-		Element elementReliableCache,
-		String documentation,
-		Element elementDocumentation,
-		List<CapabilityStatement_SupportedMessage> supportedMessage}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Messaging newCapabilityStatement_Messaging = new CapabilityStatement_Messaging(
-			id: await fhirDb.newResourceId('CapabilityStatement_Messaging'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			endpoint: endpoint,
-			reliableCache: reliableCache,
-			elementReliableCache: elementReliableCache,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-			supportedMessage: supportedMessage,
-);
-	return newCapabilityStatement_Messaging;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -852,44 +866,44 @@ class CapabilityStatement_Messaging {
   Element elementDocumentation;
   List<CapabilityStatement_SupportedMessage> supportedMessage;
 
-CapabilityStatement_Messaging(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.endpoint,
-    this.reliableCache,
-    this.elementReliableCache,
-    this.documentation,
-    this.elementDocumentation,
-    this.supportedMessage
-    });
+  CapabilityStatement_Messaging(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.endpoint,
+      this.reliableCache,
+      this.elementReliableCache,
+      this.documentation,
+      this.elementDocumentation,
+      this.supportedMessage});
 
-  factory CapabilityStatement_Messaging.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_MessagingFromJson(json);
+  factory CapabilityStatement_Messaging.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_MessagingFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_MessagingToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Endpoint {
+  static Future<CapabilityStatement_Endpoint> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Coding protocol,
+      String address,
+      Element elementAddress}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Endpoint newCapabilityStatement_Endpoint =
+        new CapabilityStatement_Endpoint(
+      id: await fhirDb.newResourceId('CapabilityStatement_Endpoint'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      protocol: protocol,
+      address: address,
+      elementAddress: elementAddress,
+    );
+    return newCapabilityStatement_Endpoint;
+  }
 
-
-	static Future<CapabilityStatement_Endpoint> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Coding protocol,
-		String address,
-		Element elementAddress}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Endpoint newCapabilityStatement_Endpoint = new CapabilityStatement_Endpoint(
-			id: await fhirDb.newResourceId('CapabilityStatement_Endpoint'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			protocol: protocol,
-			address: address,
-			elementAddress: elementAddress,
-);
-	return newCapabilityStatement_Endpoint;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -897,41 +911,42 @@ class CapabilityStatement_Endpoint {
   String address;
   Element elementAddress;
 
-CapabilityStatement_Endpoint(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.protocol,
-    this.address,
-    this.elementAddress
-    });
+  CapabilityStatement_Endpoint(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.protocol,
+      this.address,
+      this.elementAddress});
 
-  factory CapabilityStatement_Endpoint.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_EndpointFromJson(json);
+  factory CapabilityStatement_Endpoint.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_EndpointFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_EndpointToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SupportedMessage {
+  static Future<CapabilityStatement_SupportedMessage> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String mode,
+      Element elementMode,
+      String definition}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_SupportedMessage
+        newCapabilityStatement_SupportedMessage =
+        new CapabilityStatement_SupportedMessage(
+      id: await fhirDb.newResourceId('CapabilityStatement_SupportedMessage'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      mode: mode,
+      elementMode: elementMode,
+      definition: definition,
+    );
+    return newCapabilityStatement_SupportedMessage;
+  }
 
-
-	static Future<CapabilityStatement_SupportedMessage> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String mode,
-		Element elementMode,
-		String definition}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_SupportedMessage newCapabilityStatement_SupportedMessage = new CapabilityStatement_SupportedMessage(
-			id: await fhirDb.newResourceId('CapabilityStatement_SupportedMessage'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			mode: mode,
-			elementMode: elementMode,
-			definition: definition,
-);
-	return newCapabilityStatement_SupportedMessage;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -939,45 +954,47 @@ class CapabilityStatement_SupportedMessage {
   Element elementMode;
   String definition;
 
-CapabilityStatement_SupportedMessage(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.mode,
-    this.elementMode,
-    @required this.definition
-    });
+  CapabilityStatement_SupportedMessage(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.mode,
+      this.elementMode,
+      @required this.definition});
 
-  factory CapabilityStatement_SupportedMessage.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SupportedMessageFromJson(json);
-  Map<String, dynamic> toJson() => _$CapabilityStatement_SupportedMessageToJson(this);
+  factory CapabilityStatement_SupportedMessage.fromJson(
+          Map<String, dynamic> json) =>
+      _$CapabilityStatement_SupportedMessageFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CapabilityStatement_SupportedMessageToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Document {
+  static Future<CapabilityStatement_Document> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String mode,
+      Element elementMode,
+      String documentation,
+      Element elementDocumentation,
+      String profile}) async {
+    var fhirDb = new DatabaseHelper();
+    CapabilityStatement_Document newCapabilityStatement_Document =
+        new CapabilityStatement_Document(
+      id: await fhirDb.newResourceId('CapabilityStatement_Document'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      mode: mode,
+      elementMode: elementMode,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+      profile: profile,
+    );
+    return newCapabilityStatement_Document;
+  }
 
-
-	static Future<CapabilityStatement_Document> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String mode,
-		Element elementMode,
-		String documentation,
-		Element elementDocumentation,
-		String profile}) async {
-	var fhirDb = new DatabaseHelper();
-	CapabilityStatement_Document newCapabilityStatement_Document = new CapabilityStatement_Document(
-			id: await fhirDb.newResourceId('CapabilityStatement_Document'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			mode: mode,
-			elementMode: elementMode,
-			documentation: documentation,
-			elementDocumentation: elementDocumentation,
-			profile: profile,
-);
-	return newCapabilityStatement_Document;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -987,21 +1004,20 @@ class CapabilityStatement_Document {
   Element elementDocumentation;
   String profile;
 
-CapabilityStatement_Document(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.mode,
-    this.elementMode,
-    this.documentation,
-    this.elementDocumentation,
-    @required this.profile
-    });
+  CapabilityStatement_Document(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.mode,
+      this.elementMode,
+      this.documentation,
+      this.elementDocumentation,
+      @required this.profile});
 
-  factory CapabilityStatement_Document.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_DocumentFromJson(json);
+  factory CapabilityStatement_Document.fromJson(Map<String, dynamic> json) =>
+      _$CapabilityStatement_DocumentFromJson(json);
   Map<String, dynamic> toJson() => _$CapabilityStatement_DocumentToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -1028,8 +1044,9 @@ CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

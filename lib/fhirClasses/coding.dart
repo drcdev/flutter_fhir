@@ -5,44 +5,37 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Coding {
+  static Future<Coding> newInstance(
+      {String id,
+      List<Extension> extension,
+      String system,
+      Element elementSystem,
+      String version,
+      Element elementVersion,
+      String code,
+      Element elementCode,
+      String display,
+      Element elementDisplay,
+      bool userSelected,
+      Element elementUserSelected}) async {
+    var fhirDb = new DatabaseHelper();
+    Coding newCoding = new Coding(
+      id: await fhirDb.newResourceId('Coding'),
+      extension: extension,
+      system: system,
+      elementSystem: elementSystem,
+      version: version,
+      elementVersion: elementVersion,
+      code: code,
+      elementCode: elementCode,
+      display: display,
+      elementDisplay: elementDisplay,
+      userSelected: userSelected,
+      elementUserSelected: elementUserSelected,
+    );
+    return newCoding;
+  }
 
-
-	static Future<Coding> newInstance({
-		String id,
-		List<Extension> extension,
-		String system,
-		Element elementSystem,
-		String version,
-		Element elementVersion,
-		String code,
-		Element elementCode,
-		String display,
-		Element elementDisplay,
-		bool userSelected,
-		Element elementUserSelected}) async {
-	var fhirDb = new DatabaseHelper();
-	Coding newCoding = new Coding(
-			id: await fhirDb.newResourceId('Coding'),
-			extension: extension,
-			system: system,
-			elementSystem: elementSystem,
-			version: version,
-			elementVersion: elementVersion,
-			code: code,
-			elementCode: elementCode,
-			display: display,
-			elementDisplay: elementDisplay,
-			userSelected: userSelected,
-			elementUserSelected: elementUserSelected,
-);
-	int saved = await fhirDb.newResource(newCoding);
-	return newCoding;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
   String id;
   List<Extension> extension;
   String system;
@@ -56,25 +49,23 @@ save () async {
   bool userSelected;
   Element elementUserSelected;
 
-Coding(
-  {this.id,
-    this.extension,
-    this.system,
-    this.elementSystem,
-    this.version,
-    this.elementVersion,
-    this.code,
-    this.elementCode,
-    this.display,
-    this.elementDisplay,
-    this.userSelected,
-    this.elementUserSelected
-    });
+  Coding(
+      {this.id,
+      this.extension,
+      this.system,
+      this.elementSystem,
+      this.version,
+      this.elementVersion,
+      this.code,
+      this.elementCode,
+      this.display,
+      this.elementDisplay,
+      this.userSelected,
+      this.elementUserSelected});
 
   factory Coding.fromJson(Map<String, dynamic> json) => _$CodingFromJson(json);
   Map<String, dynamic> toJson() => _$CodingToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

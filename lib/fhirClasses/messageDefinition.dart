@@ -14,121 +14,123 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MessageDefinition {
+  static Future<MessageDefinition> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String url,
+      Element elementUrl,
+      List<Identifier> identifier,
+      String version,
+      Element elementVersion,
+      String name,
+      Element elementName,
+      String title,
+      Element elementTitle,
+      List<String> replaces,
+      String status,
+      Element elementStatus,
+      bool experimental,
+      Element elementExperimental,
+      DateTime date,
+      Element elementDate,
+      String publisher,
+      Element elementPublisher,
+      List<ContactDetail> contact,
+      String description,
+      Element elementDescription,
+      List<UsageContext> useContext,
+      List<CodeableConcept> jurisdiction,
+      String purpose,
+      Element elementPurpose,
+      String copyright,
+      Element elementCopyright,
+      String base,
+      List<String> parent,
+      Coding eventCoding,
+      String eventUri,
+      Element elementEventUri,
+      String category,
+      Element elementCategory,
+      List<MessageDefinition_Focus> focus,
+      String responseRequired,
+      Element elementResponseRequired,
+      List<MessageDefinition_AllowedResponse> allowedResponse,
+      List<String> graph}) async {
+    var fhirDb = new DatabaseHelper();
+    MessageDefinition newMessageDefinition = new MessageDefinition(
+      resourceType: 'MessageDefinition',
+      id: await fhirDb.newResourceId('MessageDefinition'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      replaces: replaces,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      base: base,
+      parent: parent,
+      eventCoding: eventCoding,
+      eventUri: eventUri,
+      elementEventUri: elementEventUri,
+      category: category,
+      elementCategory: elementCategory,
+      focus: focus,
+      responseRequired: responseRequired,
+      elementResponseRequired: elementResponseRequired,
+      allowedResponse: allowedResponse,
+      graph: graph,
+    );
+    newMessageDefinition.meta.createdAt = DateTime.now();
+    newMessageDefinition.meta.lastUpdated = newMessageDefinition.meta.createdAt;
+    int saved = await fhirDb.newResource(newMessageDefinition);
+    return newMessageDefinition;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<MessageDefinition> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String url,
-		Element elementUrl,
-		List<Identifier> identifier,
-		String version,
-		Element elementVersion,
-		String name,
-		Element elementName,
-		String title,
-		Element elementTitle,
-		List<String> replaces,
-		String status,
-		Element elementStatus,
-		bool experimental,
-		Element elementExperimental,
-		DateTime date,
-		Element elementDate,
-		String publisher,
-		Element elementPublisher,
-		List<ContactDetail> contact,
-		String description,
-		Element elementDescription,
-		List<UsageContext> useContext,
-		List<CodeableConcept> jurisdiction,
-		String purpose,
-		Element elementPurpose,
-		String copyright,
-		Element elementCopyright,
-		String base,
-		List<String> parent,
-		Coding eventCoding,
-		String eventUri,
-		Element elementEventUri,
-		String category,
-		Element elementCategory,
-		List<MessageDefinition_Focus> focus,
-		String responseRequired,
-		Element elementResponseRequired,
-		List<MessageDefinition_AllowedResponse> allowedResponse,
-		List<String> graph}) async {
-	var fhirDb = new DatabaseHelper();
-	MessageDefinition newMessageDefinition = new MessageDefinition(
-			resourceType: 'MessageDefinition',
-			id: await fhirDb.newResourceId('MessageDefinition'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			url: url,
-			elementUrl: elementUrl,
-			identifier: identifier,
-			version: version,
-			elementVersion: elementVersion,
-			name: name,
-			elementName: elementName,
-			title: title,
-			elementTitle: elementTitle,
-			replaces: replaces,
-			status: status,
-			elementStatus: elementStatus,
-			experimental: experimental,
-			elementExperimental: elementExperimental,
-			date: date,
-			elementDate: elementDate,
-			publisher: publisher,
-			elementPublisher: elementPublisher,
-			contact: contact,
-			description: description,
-			elementDescription: elementDescription,
-			useContext: useContext,
-			jurisdiction: jurisdiction,
-			purpose: purpose,
-			elementPurpose: elementPurpose,
-			copyright: copyright,
-			elementCopyright: elementCopyright,
-			base: base,
-			parent: parent,
-			eventCoding: eventCoding,
-			eventUri: eventUri,
-			elementEventUri: elementEventUri,
-			category: category,
-			elementCategory: elementCategory,
-			focus: focus,
-			responseRequired: responseRequired,
-			elementResponseRequired: elementResponseRequired,
-			allowedResponse: allowedResponse,
-			graph: graph,
-);
-	int saved = await fhirDb.newResource(newMessageDefinition);
-	return newMessageDefinition;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'MessageDefinition';
+  String resourceType = 'MessageDefinition';
   String id;
   Meta meta;
   String implicitRules;
@@ -179,93 +181,93 @@ save () async {
   List<MessageDefinition_AllowedResponse> allowedResponse;
   List<String> graph;
 
-MessageDefinition(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.replaces,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.copyright,
-    this.elementCopyright,
-    this.base,
-    this.parent,
-    this.eventCoding,
-    this.eventUri,
-    this.elementEventUri,
-    this.category,
-    this.elementCategory,
-    this.focus,
-    this.responseRequired,
-    this.elementResponseRequired,
-    this.allowedResponse,
-    this.graph
-    });
+  MessageDefinition(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.url,
+      this.elementUrl,
+      this.identifier,
+      this.version,
+      this.elementVersion,
+      this.name,
+      this.elementName,
+      this.title,
+      this.elementTitle,
+      this.replaces,
+      this.status,
+      this.elementStatus,
+      this.experimental,
+      this.elementExperimental,
+      this.date,
+      this.elementDate,
+      this.publisher,
+      this.elementPublisher,
+      this.contact,
+      this.description,
+      this.elementDescription,
+      this.useContext,
+      this.jurisdiction,
+      this.purpose,
+      this.elementPurpose,
+      this.copyright,
+      this.elementCopyright,
+      this.base,
+      this.parent,
+      this.eventCoding,
+      this.eventUri,
+      this.elementEventUri,
+      this.category,
+      this.elementCategory,
+      this.focus,
+      this.responseRequired,
+      this.elementResponseRequired,
+      this.allowedResponse,
+      this.graph});
 
-  factory MessageDefinition.fromJson(Map<String, dynamic> json) => _$MessageDefinitionFromJson(json);
+  factory MessageDefinition.fromJson(Map<String, dynamic> json) =>
+      _$MessageDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$MessageDefinitionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class MessageDefinition_Focus {
+  static Future<MessageDefinition_Focus> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String code,
+      Element elementCode,
+      String profile,
+      int min,
+      Element elementMin,
+      String max,
+      Element elementMax}) async {
+    var fhirDb = new DatabaseHelper();
+    MessageDefinition_Focus newMessageDefinition_Focus =
+        new MessageDefinition_Focus(
+      id: await fhirDb.newResourceId('MessageDefinition_Focus'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      profile: profile,
+      min: min,
+      elementMin: elementMin,
+      max: max,
+      elementMax: elementMax,
+    );
+    return newMessageDefinition_Focus;
+  }
 
-
-	static Future<MessageDefinition_Focus> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String code,
-		Element elementCode,
-		String profile,
-		int min,
-		Element elementMin,
-		String max,
-		Element elementMax}) async {
-	var fhirDb = new DatabaseHelper();
-	MessageDefinition_Focus newMessageDefinition_Focus = new MessageDefinition_Focus(
-			id: await fhirDb.newResourceId('MessageDefinition_Focus'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			code: code,
-			elementCode: elementCode,
-			profile: profile,
-			min: min,
-			elementMin: elementMin,
-			max: max,
-			elementMax: elementMax,
-);
-	return newMessageDefinition_Focus;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -277,45 +279,45 @@ class MessageDefinition_Focus {
   String max;
   Element elementMax;
 
-MessageDefinition_Focus(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.elementCode,
-    this.profile,
-    this.min,
-    this.elementMin,
-    this.max,
-    this.elementMax
-    });
+  MessageDefinition_Focus(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.code,
+      this.elementCode,
+      this.profile,
+      this.min,
+      this.elementMin,
+      this.max,
+      this.elementMax});
 
-  factory MessageDefinition_Focus.fromJson(Map<String, dynamic> json) => _$MessageDefinition_FocusFromJson(json);
+  factory MessageDefinition_Focus.fromJson(Map<String, dynamic> json) =>
+      _$MessageDefinition_FocusFromJson(json);
   Map<String, dynamic> toJson() => _$MessageDefinition_FocusToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class MessageDefinition_AllowedResponse {
+  static Future<MessageDefinition_AllowedResponse> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String message,
+      String situation,
+      Element elementSituation}) async {
+    var fhirDb = new DatabaseHelper();
+    MessageDefinition_AllowedResponse newMessageDefinition_AllowedResponse =
+        new MessageDefinition_AllowedResponse(
+      id: await fhirDb.newResourceId('MessageDefinition_AllowedResponse'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      message: message,
+      situation: situation,
+      elementSituation: elementSituation,
+    );
+    return newMessageDefinition_AllowedResponse;
+  }
 
-
-	static Future<MessageDefinition_AllowedResponse> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String message,
-		String situation,
-		Element elementSituation}) async {
-	var fhirDb = new DatabaseHelper();
-	MessageDefinition_AllowedResponse newMessageDefinition_AllowedResponse = new MessageDefinition_AllowedResponse(
-			id: await fhirDb.newResourceId('MessageDefinition_AllowedResponse'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			message: message,
-			situation: situation,
-			elementSituation: elementSituation,
-);
-	return newMessageDefinition_AllowedResponse;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -323,19 +325,20 @@ class MessageDefinition_AllowedResponse {
   String situation;
   Element elementSituation;
 
-MessageDefinition_AllowedResponse(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.message,
-    this.situation,
-    this.elementSituation
-    });
+  MessageDefinition_AllowedResponse(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      @required this.message,
+      this.situation,
+      this.elementSituation});
 
-  factory MessageDefinition_AllowedResponse.fromJson(Map<String, dynamic> json) => _$MessageDefinition_AllowedResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$MessageDefinition_AllowedResponseToJson(this);
+  factory MessageDefinition_AllowedResponse.fromJson(
+          Map<String, dynamic> json) =>
+      _$MessageDefinition_AllowedResponseFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$MessageDefinition_AllowedResponseToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -362,8 +365,9 @@ MessageDefinition _$MessageDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -16,73 +16,75 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Specimen {
+  static Future<Specimen> newInstance(
+      {String resourceType,
+      String id,
+      Meta meta,
+      String implicitRules,
+      Element elementImplicitRules,
+      String language,
+      Element elementLanguage,
+      Narrative text,
+      List<dynamic> contained,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      Identifier accessionIdentifier,
+      String status,
+      Element elementStatus,
+      CodeableConcept type,
+      Reference subject,
+      DateTime receivedTime,
+      Element elementReceivedTime,
+      List<Reference> parent,
+      List<Reference> request,
+      Specimen_Collection collection,
+      List<Specimen_Processing> processing,
+      List<Specimen_Container> container,
+      List<CodeableConcept> condition,
+      List<Annotation> note}) async {
+    var fhirDb = new DatabaseHelper();
+    Specimen newSpecimen = new Specimen(
+      resourceType: 'Specimen',
+      id: await fhirDb.newResourceId('Specimen'),
+      meta: await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      accessionIdentifier: accessionIdentifier,
+      status: status,
+      elementStatus: elementStatus,
+      type: type,
+      subject: subject,
+      receivedTime: receivedTime,
+      elementReceivedTime: elementReceivedTime,
+      parent: parent,
+      request: request,
+      collection: collection,
+      processing: processing,
+      container: container,
+      condition: condition,
+      note: note,
+    );
+    newSpecimen.meta.createdAt = DateTime.now();
+    newSpecimen.meta.lastUpdated = newSpecimen.meta.createdAt;
+    int saved = await fhirDb.newResource(newSpecimen);
+    return newSpecimen;
+  }
 
+  save() async {
+    this.meta.lastUpdated = DateTime.now();
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Specimen> newInstance({
-		String  resourceType,
-		String id,
-		Meta meta,
-		String implicitRules,
-		Element elementImplicitRules,
-		String language,
-		Element elementLanguage,
-		Narrative text,
-		List<dynamic> contained,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		Identifier accessionIdentifier,
-		String status,
-		Element elementStatus,
-		CodeableConcept type,
-		Reference subject,
-		DateTime receivedTime,
-		Element elementReceivedTime,
-		List<Reference> parent,
-		List<Reference> request,
-		Specimen_Collection collection,
-		List<Specimen_Processing> processing,
-		List<Specimen_Container> container,
-		List<CodeableConcept> condition,
-		List<Annotation> note}) async {
-	var fhirDb = new DatabaseHelper();
-	Specimen newSpecimen = new Specimen(
-			resourceType: 'Specimen',
-			id: await fhirDb.newResourceId('Specimen'),
-			meta: meta,
-			implicitRules: implicitRules,
-			elementImplicitRules: elementImplicitRules,
-			language: language,
-			elementLanguage: elementLanguage,
-			text: text,
-			contained: contained,
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			accessionIdentifier: accessionIdentifier,
-			status: status,
-			elementStatus: elementStatus,
-			type: type,
-			subject: subject,
-			receivedTime: receivedTime,
-			elementReceivedTime: elementReceivedTime,
-			parent: parent,
-			request: request,
-			collection: collection,
-			processing: processing,
-			container: container,
-			condition: condition,
-			note: note,
-);
-	int saved = await fhirDb.newResource(newSpecimen);
-	return newSpecimen;
-}
-
-save () async {
-	var fhirDb = new DatabaseHelper();
-	int saved = await fhirDb.saveResource(this);
-}
-  String resourceType= 'Specimen';
+  String resourceType = 'Specimen';
   String id;
   Meta meta;
   String implicitRules;
@@ -95,7 +97,8 @@ save () async {
   List<Extension> modifierExtension;
   List<Identifier> identifier;
   Identifier accessionIdentifier;
-  String status; // <code> enum: available/unavailable/unsatisfactory/entered-in-error;
+  String
+      status; // <code> enum: available/unavailable/unsatisfactory/entered-in-error;
   Element elementStatus;
   CodeableConcept type;
   Reference subject;
@@ -109,80 +112,80 @@ save () async {
   List<CodeableConcept> condition;
   List<Annotation> note;
 
-Specimen(
-  {@required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.accessionIdentifier,
-    this.status,
-    this.elementStatus,
-    this.type,
-    this.subject,
-    this.receivedTime,
-    this.elementReceivedTime,
-    this.parent,
-    this.request,
-    this.collection,
-    this.processing,
-    this.container,
-    this.condition,
-    this.note
-    });
+  Specimen(
+      {@required this.resourceType,
+      this.id,
+      this.meta,
+      this.implicitRules,
+      this.elementImplicitRules,
+      this.language,
+      this.elementLanguage,
+      this.text,
+      this.contained,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.accessionIdentifier,
+      this.status,
+      this.elementStatus,
+      this.type,
+      this.subject,
+      this.receivedTime,
+      this.elementReceivedTime,
+      this.parent,
+      this.request,
+      this.collection,
+      this.processing,
+      this.container,
+      this.condition,
+      this.note});
 
-  factory Specimen.fromJson(Map<String, dynamic> json) => _$SpecimenFromJson(json);
+  factory Specimen.fromJson(Map<String, dynamic> json) =>
+      _$SpecimenFromJson(json);
   Map<String, dynamic> toJson() => _$SpecimenToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Specimen_Collection {
+  static Future<Specimen_Collection> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      Reference collector,
+      String collectedDateTime,
+      Element elementCollectedDateTime,
+      Period collectedPeriod,
+      Duration duration,
+      Quantity quantity,
+      CodeableConcept method,
+      CodeableConcept bodySite,
+      CodeableConcept fastingStatusCodeableConcept,
+      Duration fastingStatusDuration}) async {
+    var fhirDb = new DatabaseHelper();
+    Specimen_Collection newSpecimen_Collection = new Specimen_Collection(
+      id: await fhirDb.newResourceId('Specimen_Collection'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      collector: collector,
+      collectedDateTime: collectedDateTime,
+      elementCollectedDateTime: elementCollectedDateTime,
+      collectedPeriod: collectedPeriod,
+      duration: duration,
+      quantity: quantity,
+      method: method,
+      bodySite: bodySite,
+      fastingStatusCodeableConcept: fastingStatusCodeableConcept,
+      fastingStatusDuration: fastingStatusDuration,
+    );
+    return newSpecimen_Collection;
+  }
 
-
-	static Future<Specimen_Collection> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		Reference collector,
-		String collectedDateTime,
-		Element elementCollectedDateTime,
-		Period collectedPeriod,
-		Duration duration,
-		Quantity quantity,
-		CodeableConcept method,
-		CodeableConcept bodySite,
-		CodeableConcept fastingStatusCodeableConcept,
-		Duration fastingStatusDuration}) async {
-	var fhirDb = new DatabaseHelper();
-	Specimen_Collection newSpecimen_Collection = new Specimen_Collection(
-			id: await fhirDb.newResourceId('Specimen_Collection'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			collector: collector,
-			collectedDateTime: collectedDateTime,
-			elementCollectedDateTime: elementCollectedDateTime,
-			collectedPeriod: collectedPeriod,
-			duration: duration,
-			quantity: quantity,
-			method: method,
-			bodySite: bodySite,
-			fastingStatusCodeableConcept: fastingStatusCodeableConcept,
-			fastingStatusDuration: fastingStatusDuration,
-);
-	return newSpecimen_Collection;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
   Reference collector;
-  String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementCollectedDateTime;
   Period collectedPeriod;
   Duration duration;
@@ -192,56 +195,55 @@ class Specimen_Collection {
   CodeableConcept fastingStatusCodeableConcept;
   Duration fastingStatusDuration;
 
-Specimen_Collection(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.collector,
-    this.collectedDateTime,
-    this.elementCollectedDateTime,
-    this.collectedPeriod,
-    this.duration,
-    this.quantity,
-    this.method,
-    this.bodySite,
-    this.fastingStatusCodeableConcept,
-    this.fastingStatusDuration
-    });
+  Specimen_Collection(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.collector,
+      this.collectedDateTime,
+      this.elementCollectedDateTime,
+      this.collectedPeriod,
+      this.duration,
+      this.quantity,
+      this.method,
+      this.bodySite,
+      this.fastingStatusCodeableConcept,
+      this.fastingStatusDuration});
 
-  factory Specimen_Collection.fromJson(Map<String, dynamic> json) => _$Specimen_CollectionFromJson(json);
+  factory Specimen_Collection.fromJson(Map<String, dynamic> json) =>
+      _$Specimen_CollectionFromJson(json);
   Map<String, dynamic> toJson() => _$Specimen_CollectionToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Specimen_Processing {
+  static Future<Specimen_Processing> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      String description,
+      Element elementDescription,
+      CodeableConcept procedure,
+      List<Reference> additive,
+      String timeDateTime,
+      Element elementTimeDateTime,
+      Period timePeriod}) async {
+    var fhirDb = new DatabaseHelper();
+    Specimen_Processing newSpecimen_Processing = new Specimen_Processing(
+      id: await fhirDb.newResourceId('Specimen_Processing'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      procedure: procedure,
+      additive: additive,
+      timeDateTime: timeDateTime,
+      elementTimeDateTime: elementTimeDateTime,
+      timePeriod: timePeriod,
+    );
+    return newSpecimen_Processing;
+  }
 
-
-	static Future<Specimen_Processing> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		String description,
-		Element elementDescription,
-		CodeableConcept procedure,
-		List<Reference> additive,
-		String timeDateTime,
-		Element elementTimeDateTime,
-		Period timePeriod}) async {
-	var fhirDb = new DatabaseHelper();
-	Specimen_Processing newSpecimen_Processing = new Specimen_Processing(
-			id: await fhirDb.newResourceId('Specimen_Processing'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			description: description,
-			elementDescription: elementDescription,
-			procedure: procedure,
-			additive: additive,
-			timeDateTime: timeDateTime,
-			elementTimeDateTime: elementTimeDateTime,
-			timePeriod: timePeriod,
-);
-	return newSpecimen_Processing;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -249,59 +251,59 @@ class Specimen_Processing {
   Element elementDescription;
   CodeableConcept procedure;
   List<Reference> additive;
-  String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String
+      timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
   Element elementTimeDateTime;
   Period timePeriod;
 
-Specimen_Processing(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.description,
-    this.elementDescription,
-    this.procedure,
-    this.additive,
-    this.timeDateTime,
-    this.elementTimeDateTime,
-    this.timePeriod
-    });
+  Specimen_Processing(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.description,
+      this.elementDescription,
+      this.procedure,
+      this.additive,
+      this.timeDateTime,
+      this.elementTimeDateTime,
+      this.timePeriod});
 
-  factory Specimen_Processing.fromJson(Map<String, dynamic> json) => _$Specimen_ProcessingFromJson(json);
+  factory Specimen_Processing.fromJson(Map<String, dynamic> json) =>
+      _$Specimen_ProcessingFromJson(json);
   Map<String, dynamic> toJson() => _$Specimen_ProcessingToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class Specimen_Container {
+  static Future<Specimen_Container> newInstance(
+      {String id,
+      List<Extension> extension,
+      List<Extension> modifierExtension,
+      List<Identifier> identifier,
+      String description,
+      Element elementDescription,
+      CodeableConcept type,
+      Quantity capacity,
+      Quantity specimenQuantity,
+      CodeableConcept additiveCodeableConcept,
+      Reference additiveReference}) async {
+    var fhirDb = new DatabaseHelper();
+    Specimen_Container newSpecimen_Container = new Specimen_Container(
+      id: await fhirDb.newResourceId('Specimen_Container'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      description: description,
+      elementDescription: elementDescription,
+      type: type,
+      capacity: capacity,
+      specimenQuantity: specimenQuantity,
+      additiveCodeableConcept: additiveCodeableConcept,
+      additiveReference: additiveReference,
+    );
+    return newSpecimen_Container;
+  }
 
-
-	static Future<Specimen_Container> newInstance({
-		String id,
-		List<Extension> extension,
-		List<Extension> modifierExtension,
-		List<Identifier> identifier,
-		String description,
-		Element elementDescription,
-		CodeableConcept type,
-		Quantity capacity,
-		Quantity specimenQuantity,
-		CodeableConcept additiveCodeableConcept,
-		Reference additiveReference}) async {
-	var fhirDb = new DatabaseHelper();
-	Specimen_Container newSpecimen_Container = new Specimen_Container(
-			id: await fhirDb.newResourceId('Specimen_Container'),
-			extension: extension,
-			modifierExtension: modifierExtension,
-			identifier: identifier,
-			description: description,
-			elementDescription: elementDescription,
-			type: type,
-			capacity: capacity,
-			specimenQuantity: specimenQuantity,
-			additiveCodeableConcept: additiveCodeableConcept,
-			additiveReference: additiveReference,
-);
-	return newSpecimen_Container;
-}
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
@@ -314,24 +316,23 @@ class Specimen_Container {
   CodeableConcept additiveCodeableConcept;
   Reference additiveReference;
 
-Specimen_Container(
-  {this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.description,
-    this.elementDescription,
-    this.type,
-    this.capacity,
-    this.specimenQuantity,
-    this.additiveCodeableConcept,
-    this.additiveReference
-    });
+  Specimen_Container(
+      {this.id,
+      this.extension,
+      this.modifierExtension,
+      this.identifier,
+      this.description,
+      this.elementDescription,
+      this.type,
+      this.capacity,
+      this.specimenQuantity,
+      this.additiveCodeableConcept,
+      this.additiveReference});
 
-  factory Specimen_Container.fromJson(Map<String, dynamic> json) => _$Specimen_ContainerFromJson(json);
+  factory Specimen_Container.fromJson(Map<String, dynamic> json) =>
+      _$Specimen_ContainerFromJson(json);
   Map<String, dynamic> toJson() => _$Specimen_ContainerToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -358,8 +359,9 @@ Specimen _$SpecimenFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -55,29 +55,48 @@ class DatabaseHelper {
   Future<int> newResource(dynamic resource) async {
     var dbClient = await db;
     //creates the new row values
-    var row = {'id': resource.id, 'json_resource': jsonEncode(resource)};
+    var row = {
+      'id': resource.id,
+      'createdAt': resource.meta.createdAt.toString(),
+      'lastUpdated': resource.meta.lastUpdated.toString(),
+      'jsonResource': jsonEncode(resource)
+    };
     //inserts new row into db
     return await dbClient.insert(resource.runtimeType.toString(), row);
   }
 
   Future<int> saveResource(dynamic resource) async {
     var dbClient = await db;
-    //encodes the resource as Json then stores it as json string
-    var row = {'id': resource.id, 'json_resource': jsonEncode(resource)};
-    return await dbClient.update('${resource.runtimeType.toString()}', row,
-        where: 'id = ?', whereArgs: [resource.id]);
+
+    List<Map> results = await dbClient.query(resource.resourceType,
+        columns: ['id'], where: 'id = ?', whereArgs: [resource.id]);
+
+    if (results.length > 0) {
+      //encodes the resource as Json then stores it as json string
+      var row = {
+        'id': resource.id,
+        'createdAt': resource.meta.createdAt.toString(),
+        'lastUpdated': resource.meta.lastUpdated.toString(),
+        'jsonResource': jsonEncode(resource)
+      };
+      return await dbClient.update('${resource.runtimeType.toString()}', row,
+          where: 'id = ?', whereArgs: [resource.id]);
+    } else {
+      return await newResource(resource);
+    }
   }
 
   Future<List<dynamic>> getList(String table) async {
     var dbClient = await db;
+
     //gets list from table
-    List<Map> list = await dbClient.query(table, columns: ['json_resource']);
+    List<Map> list = await dbClient.query(table, columns: ['jsonResource']);
     //creates new list 'query' for returning the values, all of dynamic type
     //to allow the list to be whatever the table is
     List<dynamic> query = List<dynamic>();
     for (int i = 0; i < list.length; i++) {
       query.add(ResourceTypes(
-          table, jsonDecode(list[i]['json_resource']) as Map<String, dynamic>));
+          table, jsonDecode(list[i]['jsonResource']) as Map<String, dynamic>));
     }
     return query;
   }
@@ -102,567 +121,744 @@ class DatabaseHelper {
 			deviceId TEXT,
 			lastId TEXT,
 			total INT)''');
-    await db.execute('''CREATE TABLE Element (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Extension (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Narrative (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Annotation (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Attachment (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Identifier (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE CodeableConcept (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Coding (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Quantity (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Duration (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Distance (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Count (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Money (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Age (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Range (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Period (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Ratio (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Reference (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE SampledData (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Signature (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE HumanName (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Address (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE ContactPoint (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Timing (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Meta (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE ContactDetail (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Contributor (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE DataRequirement (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE ParameterDefinition (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE RelatedArtifact (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE TriggerDefinition (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE UsageContext (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Dosage (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Population (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE ProductShelfLife (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE ProdCharacteristic (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE MarketingStatus (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE SubstanceAmount (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE Expression (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
-    await db.execute('''CREATE TABLE ElementDefinition (
-			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
     await db.execute('''CREATE TABLE Account (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ActivityDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE AdverseEvent (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE AllergyIntolerance (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Appointment (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE AppointmentResponse (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE AuditEvent (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Basic (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Binary (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE BiologicallyDerivedProduct (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE BodyStructure (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Bundle (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CapabilityStatement (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CarePlan (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CareTeam (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CatalogEntry (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ChargeItem (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ChargeItemDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Claim (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ClaimResponse (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ClinicalImpression (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CodeSystem (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Communication (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CommunicationRequest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CompartmentDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Composition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ConceptMap (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Condition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Consent (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Contract (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Coverage (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CoverageEligibilityRequest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE CoverageEligibilityResponse (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DetectedIssue (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Device (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DeviceDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DeviceMetric (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DeviceRequest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DeviceUseStatement (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DiagnosticReport (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DocumentManifest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE DocumentReference (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE EffectEvidenceSynthesis (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Encounter (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Endpoint (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE EnrollmentRequest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE EnrollmentResponse (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE EpisodeOfCare (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE EventDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Evidence (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE EvidenceVariable (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ExampleScenario (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
+    await db.execute('''CREATE TABLE ExampleScenario_Instance (
+			id TEXT PRIMARY KEY,
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ExplanationOfBenefit (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE FamilyMemberHistory (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Flag (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Goal (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE GraphDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE 'Group' (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE GuidanceResponse (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE HealthcareService (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ImagingStudy (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Immunization (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ImmunizationEvaluation (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ImmunizationRecommendation (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ImplementationGuide (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE InsurancePlan (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Invoice (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Library (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Linkage (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE List (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Location (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Measure (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MeasureReport (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Media (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Medication (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicationAdministration (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicationDispense (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicationKnowledge (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicationRequest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicationStatement (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProduct (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductAuthorization (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductContraindication (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductIndication (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductIngredient (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductInteraction (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductManufactured (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductPackaged (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductPharmaceutical (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MedicinalProductUndesirableEffect (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MessageDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MessageHeader (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE MolecularSequence (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE NamingSystem (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE NutritionOrder (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Observation (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ObservationDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE OperationDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE OperationOutcome (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Organization (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE OrganizationAffiliation (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Parameters (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Patient (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE PaymentNotice (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE PaymentReconciliation (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Person (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE PlanDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Practitioner (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE PractitionerRole (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Procedure (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Provenance (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Questionnaire (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE QuestionnaireResponse (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE RelatedPerson (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE RequestGroup (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ResearchDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ResearchElementDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ResearchStudy (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ResearchSubject (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE RiskAssessment (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE RiskEvidenceSynthesis (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Schedule (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SearchParameter (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ServiceRequest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Slot (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Specimen (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SpecimenDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE StructureDefinition (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE StructureMap (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Subscription (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Substance (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SubstanceNucleicAcid (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SubstancePolymer (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SubstanceProtein (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SubstanceReferenceInformation (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SubstanceSourceMaterial (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SubstanceSpecification (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SupplyDelivery (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE SupplyRequest (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE Task (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE TerminologyCapabilities (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE TestReport (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE TestScript (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE ValueSet (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE VerificationResult (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
     await db.execute('''CREATE TABLE VisionPrescription (
 			id TEXT PRIMARY KEY,
-			json_resource TEXT)''');
+			createdAt TEXT,
+			lastUpdated TEXT,
+			jsonResource TEXT)''');
 
     await db.rawInsert(
-			'''INSERT INTO Classes (resourceType, id, deviceId, lastId, total)
+        '''INSERT INTO Classes (resourceType, id, deviceId, lastId, total)
 			VALUES
 				('Element','010','$deviceId','0000',0),
 				('Extension','011','$deviceId','0000',0),
