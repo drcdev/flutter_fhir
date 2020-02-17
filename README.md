@@ -48,14 +48,23 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
 ToDo: define canonical types\n
 Todo: understand initstate better, learn Future, async, await
 
-#Hive
-1. For now, I've decided to go with Hive. It's a relatively easy, straightforward NoSQL DB, and
-    for the very small amount of data I'm collecting, should be fine.
-2. I'm also looking at other options for the future. So if anyone would like to weight in, I'm
-    open to suggestions. These are my thoughts so far.
-    a. SQLite. definitely an option. There are some concerns for speed apparently, although not with
-        my current amount of data. It would also take a lot more legwork to get FHIR to map to it
-        well. Although it may be that it should still be done.
+#DB - SQLITE (for now)
+1. Gone back to SQLite after hive only let me open 233 boxes.
+2. Not sure if it would be fast enough for a real app, but I'm sure it's more than enough for what
+    I'm currently doing.
+3. Has the following structure:
+    a. 'Classes' table: stores each class on separate row. Has columns for class name (entitled
+        'resourceType' - the primary key), also the id of the class (which is just counting in hex),
+        the last 4 digits of the deviceId hashed, and then a 4 digit integer which counts the last
+        id that has been created on that device. There is also a total column, indicating the
+        number of total resources of that class on the device, and a lastUpdated column, indicating
+        when most recently a row in that table was updated.
+    b. There is a table for each resourceType. This does not include subclasses, such as Patient_Contact,
+        nor does it include dataTypes such as Address or Meta. Each table includes the unique id, the
+        createdAt DateTime, the lastUpdated DateTime, and the json string of the full resource.
+    c. ToDo: consider adding another table for users data, preferences, including language, passwords
+        for offline work, and server addresses
+4. There are some other databases which I've considered, may still go back to them.
     b. Moor. This is the Room library for flutter. Apparently makes working with SQLite easier.
     c. Sembast. another NoSQL DB that has more functionality than Hive. However, it stores everything
         in one file, and loads it into memory, which seemed system intensive at times.

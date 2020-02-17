@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';

@@ -7,6 +7,9 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:device_info/device_info.dart';
 
+
+//ToDo: create ability to only edit one cell at a time
+
 class DatabaseHelper {
   static final DatabaseHelper _instance = new DatabaseHelper.internal();
 
@@ -62,7 +65,20 @@ class DatabaseHelper {
       'jsonResource': jsonEncode(resource)
     };
     //inserts new row into db
-    return await dbClient.insert(resource.runtimeType.toString(), row);
+    int rowNum = await dbClient.insert(resource.runtimeType.toString(), row);
+
+    //if successful
+    if (rowNum != null) {
+      //updates resourceType in Classes table, but only true resourceTypes
+      List<Map<String, dynamic>> list = await dbClient.query(
+          'Classes', where: 'resourceType = ?',
+          whereArgs: [resource.runtimeType.toString()]);
+      var count = await dbClient.rawUpdate(
+          'UPDATE Classes SET total = ?, lastUpdated = ? WHERE resourceType = ?',
+          ['${list[0]['total'] + 1}', '${resource.meta.lastUpdated.toString()}', '${resource.runtimeType.toString()}']);
+    }
+
+    return rowNum;
   }
 
   Future<int> saveResource(dynamic resource) async {
@@ -79,8 +95,16 @@ class DatabaseHelper {
         'lastUpdated': resource.meta.lastUpdated.toString(),
         'jsonResource': jsonEncode(resource)
       };
-      return await dbClient.update('${resource.runtimeType.toString()}', row,
+      int rowNum = await dbClient.update('${resource.runtimeType.toString()}', row,
           where: 'id = ?', whereArgs: [resource.id]);
+      if (rowNum != null) {
+        List<Map<String, dynamic>> list = await dbClient.query(
+          'Classes', where: 'resourceType = ?',
+          whereArgs: [resource.runtimeType.toString()]);
+      var count = await dbClient.rawUpdate(
+          'UPDATE Classes SET lastUpdated = ? WHERE resourceType = ?',
+          ['${resource.meta.lastUpdated.toString()}', '${resource.runtimeType.toString()}']);
+    }
     } else {
       return await newResource(resource);
     }
@@ -120,7 +144,8 @@ class DatabaseHelper {
 			id TEXT,
 			deviceId TEXT,
 			lastId TEXT,
-			total INT)''');
+			total INT,
+			lastUpdated TEXT)''');
     await db.execute('''CREATE TABLE Account (
 			id TEXT PRIMARY KEY,
 			createdAt TEXT,
