@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -15,36 +15,37 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Person {
-  static Future<Person> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<HumanName> name,
-      List<ContactPoint> telecom,
-      String gender,
-      Element elementGender,
-      String birthDate,
-      Element elementBirthDate,
-      List<Address> address,
-      Attachment photo,
-      Reference managingOrganization,
-      bool active,
-      Element elementActive,
-      List<Person_Link> link}) async {
+  static Future<Person> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<HumanName> name,
+    List<ContactPoint> telecom,
+    String gender,
+    Element elementGender,
+    String birthDate,
+    Element elementBirthDate,
+    List<Address> address,
+    Attachment photo,
+    Reference managingOrganization,
+    bool active,
+    Element elementActive,
+    List<Person_Link> link,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Person newPerson = new Person(
-      resourceType: 'Person',
-      id: await fhirDb.newResourceId('Person'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Person'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -69,17 +70,17 @@ class Person {
     );
     newPerson.meta.createdAt = DateTime.now();
     newPerson.meta.lastUpdated = newPerson.meta.createdAt;
-    int saved = await fhirDb.newResource(newPerson);
+    int saved = await fhirDb.saveResource(newPerson);
     return newPerson;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Person';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -93,7 +94,7 @@ class Person {
   List<Identifier> identifier;
   List<HumanName> name;
   List<ContactPoint> telecom;
-  String gender; // <code> enum: male/female/other/unknown;
+  String gender;
   Element elementGender;
   String birthDate;
   Element elementBirthDate;
@@ -104,31 +105,32 @@ class Person {
   Element elementActive;
   List<Person_Link> link;
 
-  Person(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.name,
-      this.telecom,
-      this.gender,
-      this.elementGender,
-      this.birthDate,
-      this.elementBirthDate,
-      this.address,
-      this.photo,
-      this.managingOrganization,
-      this.active,
-      this.elementActive,
-      this.link});
+  Person({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.name,
+    this.telecom,
+    this.gender,
+    this.elementGender,
+    this.birthDate,
+    this.elementBirthDate,
+    this.address,
+    this.photo,
+    this.managingOrganization,
+    this.active,
+    this.elementActive,
+    this.link,
+  });
 
   factory Person.fromJson(Map<String, dynamic> json) => _$PersonFromJson(json);
   Map<String, dynamic> toJson() => _$PersonToJson(this);
@@ -136,16 +138,17 @@ class Person {
 
 @JsonSerializable(explicitToJson: true)
 class Person_Link {
-  static Future<Person_Link> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference target,
-      String assurance,
-      Element elementAssurance}) async {
+  static Future<Person_Link> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference target,
+    String assurance,
+    Element elementAssurance,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Person_Link newPerson_Link = new Person_Link(
-      id: await fhirDb.newResourceId('Person_Link'),
+      id: id ?? await fhirDb.newResourceId('Person_Link'),
       extension: extension,
       modifierExtension: modifierExtension,
       target: target,
@@ -159,16 +162,17 @@ class Person_Link {
   List<Extension> extension;
   List<Extension> modifierExtension;
   Reference target;
-  String assurance; // <code> enum: level1/level2/level3/level4;
+  String assurance;
   Element elementAssurance;
 
-  Person_Link(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.target,
-      this.assurance,
-      this.elementAssurance});
+  Person_Link({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.target,
+    this.assurance,
+    this.elementAssurance,
+  });
 
   factory Person_Link.fromJson(Map<String, dynamic> json) =>
       _$Person_LinkFromJson(json);

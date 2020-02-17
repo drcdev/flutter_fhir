@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/age.dart';
@@ -16,60 +16,61 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class FamilyMemberHistory {
-  static Future<FamilyMemberHistory> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<String> instantiatesCanonical,
-      List<String> instantiatesUri,
-      List<Element> elementInstantiatesUri,
-      String status,
-      Element elementStatus,
-      CodeableConcept dataAbsentReason,
-      Reference patient,
-      DateTime date,
-      Element elementDate,
-      String name,
-      Element elementName,
-      CodeableConcept relationship,
-      CodeableConcept sex,
-      Period bornPeriod,
-      String bornDate,
-      Element elementBornDate,
-      String bornString,
-      Element elementBornString,
-      Age ageAge,
-      Range ageRange,
-      String ageString,
-      Element elementAgeString,
-      bool estimatedAge,
-      Element elementEstimatedAge,
-      bool deceasedBoolean,
-      Element elementDeceasedBoolean,
-      Age deceasedAge,
-      Range deceasedRange,
-      String deceasedDate,
-      Element elementDeceasedDate,
-      String deceasedString,
-      Element elementDeceasedString,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<Annotation> note,
-      List<FamilyMemberHistory_Condition> condition}) async {
+  static Future<FamilyMemberHistory> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> instantiatesCanonical,
+    List<String> instantiatesUri,
+    List<Element> elementInstantiatesUri,
+    String status,
+    Element elementStatus,
+    CodeableConcept dataAbsentReason,
+    Reference patient,
+    DateTime date,
+    Element elementDate,
+    String name,
+    Element elementName,
+    CodeableConcept relationship,
+    CodeableConcept sex,
+    Period bornPeriod,
+    String bornDate,
+    Element elementBornDate,
+    String bornString,
+    Element elementBornString,
+    Age ageAge,
+    Range ageRange,
+    String ageString,
+    Element elementAgeString,
+    bool estimatedAge,
+    Element elementEstimatedAge,
+    bool deceasedBoolean,
+    Element elementDeceasedBoolean,
+    Age deceasedAge,
+    Range deceasedRange,
+    String deceasedDate,
+    Element elementDeceasedDate,
+    String deceasedString,
+    Element elementDeceasedString,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Annotation> note,
+    List<FamilyMemberHistory_Condition> condition,
+  }) async {
     var fhirDb = new DatabaseHelper();
     FamilyMemberHistory newFamilyMemberHistory = new FamilyMemberHistory(
-      resourceType: 'FamilyMemberHistory',
-      id: await fhirDb.newResourceId('FamilyMemberHistory'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('FamilyMemberHistory'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -119,17 +120,17 @@ class FamilyMemberHistory {
     newFamilyMemberHistory.meta.createdAt = DateTime.now();
     newFamilyMemberHistory.meta.lastUpdated =
         newFamilyMemberHistory.meta.createdAt;
-    int saved = await fhirDb.newResource(newFamilyMemberHistory);
+    int saved = await fhirDb.saveResource(newFamilyMemberHistory);
     return newFamilyMemberHistory;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'FamilyMemberHistory';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -144,8 +145,7 @@ class FamilyMemberHistory {
   List<String> instantiatesCanonical;
   List<String> instantiatesUri;
   List<Element> elementInstantiatesUri;
-  String
-      status; // <code> enum: partial/completed/entered-in-error/health-unknown;
+  String status;
   Element elementStatus;
   CodeableConcept dataAbsentReason;
   Reference patient;
@@ -156,80 +156,79 @@ class FamilyMemberHistory {
   CodeableConcept relationship;
   CodeableConcept sex;
   Period bornPeriod;
-  String
-      bornDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String bornDate;
   Element elementBornDate;
-  String bornString; //  pattern: ^[ \r\n\t\S]+$
+  String bornString;
   Element elementBornString;
   Age ageAge;
   Range ageRange;
-  String ageString; //  pattern: ^[ \r\n\t\S]+$
+  String ageString;
   Element elementAgeString;
   bool estimatedAge;
   Element elementEstimatedAge;
-  bool deceasedBoolean; //  pattern: ^true|false$
+  bool deceasedBoolean;
   Element elementDeceasedBoolean;
   Age deceasedAge;
   Range deceasedRange;
-  String
-      deceasedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String deceasedDate;
   Element elementDeceasedDate;
-  String deceasedString; //  pattern: ^[ \r\n\t\S]+$
+  String deceasedString;
   Element elementDeceasedString;
   List<CodeableConcept> reasonCode;
   List<Reference> reasonReference;
   List<Annotation> note;
   List<FamilyMemberHistory_Condition> condition;
 
-  FamilyMemberHistory(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.instantiatesCanonical,
-      this.instantiatesUri,
-      this.elementInstantiatesUri,
-      this.status,
-      this.elementStatus,
-      this.dataAbsentReason,
-      @required this.patient,
-      this.date,
-      this.elementDate,
-      this.name,
-      this.elementName,
-      @required this.relationship,
-      this.sex,
-      this.bornPeriod,
-      this.bornDate,
-      this.elementBornDate,
-      this.bornString,
-      this.elementBornString,
-      this.ageAge,
-      this.ageRange,
-      this.ageString,
-      this.elementAgeString,
-      this.estimatedAge,
-      this.elementEstimatedAge,
-      this.deceasedBoolean,
-      this.elementDeceasedBoolean,
-      this.deceasedAge,
-      this.deceasedRange,
-      this.deceasedDate,
-      this.elementDeceasedDate,
-      this.deceasedString,
-      this.elementDeceasedString,
-      this.reasonCode,
-      this.reasonReference,
-      this.note,
-      this.condition});
+  FamilyMemberHistory({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.status,
+    this.elementStatus,
+    this.dataAbsentReason,
+    @required this.patient,
+    this.date,
+    this.elementDate,
+    this.name,
+    this.elementName,
+    @required this.relationship,
+    this.sex,
+    this.bornPeriod,
+    this.bornDate,
+    this.elementBornDate,
+    this.bornString,
+    this.elementBornString,
+    this.ageAge,
+    this.ageRange,
+    this.ageString,
+    this.elementAgeString,
+    this.estimatedAge,
+    this.elementEstimatedAge,
+    this.deceasedBoolean,
+    this.elementDeceasedBoolean,
+    this.deceasedAge,
+    this.deceasedRange,
+    this.deceasedDate,
+    this.elementDeceasedDate,
+    this.deceasedString,
+    this.elementDeceasedString,
+    this.reasonCode,
+    this.reasonReference,
+    this.note,
+    this.condition,
+  });
 
   factory FamilyMemberHistory.fromJson(Map<String, dynamic> json) =>
       _$FamilyMemberHistoryFromJson(json);
@@ -238,24 +237,25 @@ class FamilyMemberHistory {
 
 @JsonSerializable(explicitToJson: true)
 class FamilyMemberHistory_Condition {
-  static Future<FamilyMemberHistory_Condition> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      CodeableConcept outcome,
-      bool contributedToDeath,
-      Element elementContributedToDeath,
-      Age onsetAge,
-      Range onsetRange,
-      Period onsetPeriod,
-      String onsetString,
-      Element elementOnsetString,
-      List<Annotation> note}) async {
+  static Future<FamilyMemberHistory_Condition> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    CodeableConcept outcome,
+    bool contributedToDeath,
+    Element elementContributedToDeath,
+    Age onsetAge,
+    Range onsetRange,
+    Period onsetPeriod,
+    String onsetString,
+    Element elementOnsetString,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     FamilyMemberHistory_Condition newFamilyMemberHistory_Condition =
         new FamilyMemberHistory_Condition(
-      id: await fhirDb.newResourceId('FamilyMemberHistory_Condition'),
+      id: id ?? await fhirDb.newResourceId('FamilyMemberHistory_Condition'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -282,24 +282,25 @@ class FamilyMemberHistory_Condition {
   Age onsetAge;
   Range onsetRange;
   Period onsetPeriod;
-  String onsetString; //  pattern: ^[ \r\n\t\S]+$
+  String onsetString;
   Element elementOnsetString;
   List<Annotation> note;
 
-  FamilyMemberHistory_Condition(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.code,
-      this.outcome,
-      this.contributedToDeath,
-      this.elementContributedToDeath,
-      this.onsetAge,
-      this.onsetRange,
-      this.onsetPeriod,
-      this.onsetString,
-      this.elementOnsetString,
-      this.note});
+  FamilyMemberHistory_Condition({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+    this.outcome,
+    this.contributedToDeath,
+    this.elementContributedToDeath,
+    this.onsetAge,
+    this.onsetRange,
+    this.onsetPeriod,
+    this.onsetString,
+    this.elementOnsetString,
+    this.note,
+  });
 
   factory FamilyMemberHistory_Condition.fromJson(Map<String, dynamic> json) =>
       _$FamilyMemberHistory_ConditionFromJson(json);

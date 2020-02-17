@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
@@ -10,35 +10,36 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Subscription {
-  static Future<Subscription> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String status,
-      Element elementStatus,
-      List<ContactPoint> contact,
-      DateTime end,
-      Element elementEnd,
-      String reason,
-      Element elementReason,
-      String criteria,
-      Element elementCriteria,
-      String error,
-      Element elementError,
-      Subscription_Channel channel}) async {
+  static Future<Subscription> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String status,
+    Element elementStatus,
+    List<ContactPoint> contact,
+    DateTime end,
+    Element elementEnd,
+    String reason,
+    Element elementReason,
+    String criteria,
+    Element elementCriteria,
+    String error,
+    Element elementError,
+    Subscription_Channel channel,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Subscription newSubscription = new Subscription(
-      resourceType: 'Subscription',
-      id: await fhirDb.newResourceId('Subscription'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Subscription'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -62,17 +63,17 @@ class Subscription {
     );
     newSubscription.meta.createdAt = DateTime.now();
     newSubscription.meta.lastUpdated = newSubscription.meta.createdAt;
-    int saved = await fhirDb.newResource(newSubscription);
+    int saved = await fhirDb.saveResource(newSubscription);
     return newSubscription;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Subscription';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -83,7 +84,7 @@ class Subscription {
   List<dynamic> contained;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String status; // <code> enum: requested/active/error/off;
+  String status;
   Element elementStatus;
   List<ContactPoint> contact;
   DateTime end;
@@ -96,30 +97,31 @@ class Subscription {
   Element elementError;
   Subscription_Channel channel;
 
-  Subscription(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.status,
-      this.elementStatus,
-      this.contact,
-      this.end,
-      this.elementEnd,
-      this.reason,
-      this.elementReason,
-      this.criteria,
-      this.elementCriteria,
-      this.error,
-      this.elementError,
-      @required this.channel});
+  Subscription({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.status,
+    this.elementStatus,
+    this.contact,
+    this.end,
+    this.elementEnd,
+    this.reason,
+    this.elementReason,
+    this.criteria,
+    this.elementCriteria,
+    this.error,
+    this.elementError,
+    @required this.channel,
+  });
 
   factory Subscription.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionFromJson(json);
@@ -128,21 +130,22 @@ class Subscription {
 
 @JsonSerializable(explicitToJson: true)
 class Subscription_Channel {
-  static Future<Subscription_Channel> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      String endpoint,
-      Element elementEndpoint,
-      String payload,
-      Element elementPayload,
-      List<String> header,
-      List<Element> elementHeader}) async {
+  static Future<Subscription_Channel> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String endpoint,
+    Element elementEndpoint,
+    String payload,
+    Element elementPayload,
+    List<String> header,
+    List<Element> elementHeader,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Subscription_Channel newSubscription_Channel = new Subscription_Channel(
-      id: await fhirDb.newResourceId('Subscription_Channel'),
+      id: id ?? await fhirDb.newResourceId('Subscription_Channel'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -160,7 +163,7 @@ class Subscription_Channel {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String type; // <code> enum: rest-hook/websocket/email/sms/message;
+  String type;
   Element elementType;
   String endpoint;
   Element elementEndpoint;
@@ -169,18 +172,19 @@ class Subscription_Channel {
   List<String> header;
   List<Element> elementHeader;
 
-  Subscription_Channel(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.endpoint,
-      this.elementEndpoint,
-      this.payload,
-      this.elementPayload,
-      this.header,
-      this.elementHeader});
+  Subscription_Channel({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.endpoint,
+    this.elementEndpoint,
+    this.payload,
+    this.elementPayload,
+    this.header,
+    this.elementHeader,
+  });
 
   factory Subscription_Channel.fromJson(Map<String, dynamic> json) =>
       _$Subscription_ChannelFromJson(json);

@@ -1,24 +1,26 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Reference {
-  static Future<Reference> newInstance(
-      {String id,
-      List<Extension> extension,
-      String reference,
-      Element elementReference,
-      String type,
-      Element elementType,
-      Identifier identifier,
-      String display,
-      Element elementDisplay}) async {
+  static Future<Reference> newInstance({
+    String id,
+    List<Extension> extension,
+    String reference,
+    Element elementReference,
+    String type,
+    Element elementType,
+    Identifier identifier,
+    String display,
+    Element elementDisplay,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Reference newReference = new Reference(
-      id: await fhirDb.newResourceId('Reference'),
+      id: id ?? await fhirDb.newResourceId('Reference'),
       extension: extension,
       reference: reference,
       elementReference: elementReference,
@@ -41,16 +43,17 @@ class Reference {
   String display;
   Element elementDisplay;
 
-  Reference(
-      {this.id,
-      this.extension,
-      this.reference,
-      this.elementReference,
-      this.type,
-      this.elementType,
-      this.identifier,
-      this.display,
-      this.elementDisplay});
+  Reference({
+    this.id,
+    this.extension,
+    this.reference,
+    this.elementReference,
+    this.type,
+    this.elementType,
+    this.identifier,
+    this.display,
+    this.elementDisplay,
+  });
 
   factory Reference.fromJson(Map<String, dynamic> json) =>
       _$ReferenceFromJson(json);

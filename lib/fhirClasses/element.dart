@@ -1,14 +1,17 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Element {
-  static Future<Element> newInstance(
-      {String id, List<Extension> extension}) async {
+  static Future<Element> newInstance({
+    String id,
+    List<Extension> extension,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Element newElement = new Element(
-      id: await fhirDb.newResourceId('Element'),
+      id: id ?? await fhirDb.newResourceId('Element'),
       extension: extension,
     );
     return newElement;
@@ -17,7 +20,10 @@ class Element {
   String id;
   List<Extension> extension;
 
-  Element({this.id, this.extension});
+  Element({
+    this.id,
+    this.extension,
+  });
 
   factory Element.fromJson(Map<String, dynamic> json) =>
       _$ElementFromJson(json);

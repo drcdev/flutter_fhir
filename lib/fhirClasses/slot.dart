@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -12,39 +12,40 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Slot {
-  static Future<Slot> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<CodeableConcept> serviceCategory,
-      List<CodeableConcept> serviceType,
-      List<CodeableConcept> specialty,
-      CodeableConcept appointmentType,
-      Reference schedule,
-      String status,
-      Element elementStatus,
-      DateTime start,
-      Element elementStart,
-      DateTime end,
-      Element elementEnd,
-      bool overbooked,
-      Element elementOverbooked,
-      String comment,
-      Element elementComment}) async {
+  static Future<Slot> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<CodeableConcept> serviceCategory,
+    List<CodeableConcept> serviceType,
+    List<CodeableConcept> specialty,
+    CodeableConcept appointmentType,
+    Reference schedule,
+    String status,
+    Element elementStatus,
+    DateTime start,
+    Element elementStart,
+    DateTime end,
+    Element elementEnd,
+    bool overbooked,
+    Element elementOverbooked,
+    String comment,
+    Element elementComment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Slot newSlot = new Slot(
-      resourceType: 'Slot',
-      id: await fhirDb.newResourceId('Slot'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Slot'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -72,17 +73,17 @@ class Slot {
     );
     newSlot.meta.createdAt = DateTime.now();
     newSlot.meta.lastUpdated = newSlot.meta.createdAt;
-    int saved = await fhirDb.newResource(newSlot);
+    int saved = await fhirDb.saveResource(newSlot);
     return newSlot;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Slot';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -99,8 +100,7 @@ class Slot {
   List<CodeableConcept> specialty;
   CodeableConcept appointmentType;
   Reference schedule;
-  String
-      status; // <code> enum: busy/free/busy-unavailable/busy-tentative/entered-in-error;
+  String status;
   Element elementStatus;
   DateTime start;
   Element elementStart;
@@ -111,34 +111,35 @@ class Slot {
   String comment;
   Element elementComment;
 
-  Slot(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.serviceCategory,
-      this.serviceType,
-      this.specialty,
-      this.appointmentType,
-      @required this.schedule,
-      this.status,
-      this.elementStatus,
-      this.start,
-      this.elementStart,
-      this.end,
-      this.elementEnd,
-      this.overbooked,
-      this.elementOverbooked,
-      this.comment,
-      this.elementComment});
+  Slot({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.serviceCategory,
+    this.serviceType,
+    this.specialty,
+    this.appointmentType,
+    @required this.schedule,
+    this.status,
+    this.elementStatus,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+    this.overbooked,
+    this.elementOverbooked,
+    this.comment,
+    this.elementComment,
+  });
 
   factory Slot.fromJson(Map<String, dynamic> json) => _$SlotFromJson(json);
   Map<String, dynamic> toJson() => _$SlotToJson(this);

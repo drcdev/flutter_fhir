@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -14,50 +14,51 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ClinicalImpression {
-  static Future<ClinicalImpression> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept statusReason,
-      CodeableConcept code,
-      String description,
-      Element elementDescription,
-      Reference subject,
-      Reference encounter,
-      String effectiveDateTime,
-      Element elementEffectiveDateTime,
-      Period effectivePeriod,
-      DateTime date,
-      Element elementDate,
-      Reference assessor,
-      Reference previous,
-      List<Reference> problem,
-      List<ClinicalImpression_Investigation> investigation,
-      List<String> protocol,
-      List<Element> elementProtocol,
-      String summary,
-      Element elementSummary,
-      List<ClinicalImpression_Finding> finding,
-      List<CodeableConcept> prognosisCodeableConcept,
-      List<Reference> prognosisReference,
-      List<Reference> supportingInfo,
-      List<Annotation> note}) async {
+  static Future<ClinicalImpression> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept statusReason,
+    CodeableConcept code,
+    String description,
+    Element elementDescription,
+    Reference subject,
+    Reference encounter,
+    String effectiveDateTime,
+    Element elementEffectiveDateTime,
+    Period effectivePeriod,
+    DateTime date,
+    Element elementDate,
+    Reference assessor,
+    Reference previous,
+    List<Reference> problem,
+    List<ClinicalImpression_Investigation> investigation,
+    List<String> protocol,
+    List<Element> elementProtocol,
+    String summary,
+    Element elementSummary,
+    List<ClinicalImpression_Finding> finding,
+    List<CodeableConcept> prognosisCodeableConcept,
+    List<Reference> prognosisReference,
+    List<Reference> supportingInfo,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ClinicalImpression newClinicalImpression = new ClinicalImpression(
-      resourceType: 'ClinicalImpression',
-      id: await fhirDb.newResourceId('ClinicalImpression'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ClinicalImpression'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -97,17 +98,17 @@ class ClinicalImpression {
     newClinicalImpression.meta.createdAt = DateTime.now();
     newClinicalImpression.meta.lastUpdated =
         newClinicalImpression.meta.createdAt;
-    int saved = await fhirDb.newResource(newClinicalImpression);
+    int saved = await fhirDb.saveResource(newClinicalImpression);
     return newClinicalImpression;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ClinicalImpression';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -127,8 +128,7 @@ class ClinicalImpression {
   Element elementDescription;
   Reference subject;
   Reference encounter;
-  String
-      effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String effectiveDateTime;
   Element elementEffectiveDateTime;
   Period effectivePeriod;
   DateTime date;
@@ -147,45 +147,46 @@ class ClinicalImpression {
   List<Reference> supportingInfo;
   List<Annotation> note;
 
-  ClinicalImpression(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.statusReason,
-      this.code,
-      this.description,
-      this.elementDescription,
-      @required this.subject,
-      this.encounter,
-      this.effectiveDateTime,
-      this.elementEffectiveDateTime,
-      this.effectivePeriod,
-      this.date,
-      this.elementDate,
-      this.assessor,
-      this.previous,
-      this.problem,
-      this.investigation,
-      this.protocol,
-      this.elementProtocol,
-      this.summary,
-      this.elementSummary,
-      this.finding,
-      this.prognosisCodeableConcept,
-      this.prognosisReference,
-      this.supportingInfo,
-      this.note});
+  ClinicalImpression({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.statusReason,
+    this.code,
+    this.description,
+    this.elementDescription,
+    @required this.subject,
+    this.encounter,
+    this.effectiveDateTime,
+    this.elementEffectiveDateTime,
+    this.effectivePeriod,
+    this.date,
+    this.elementDate,
+    this.assessor,
+    this.previous,
+    this.problem,
+    this.investigation,
+    this.protocol,
+    this.elementProtocol,
+    this.summary,
+    this.elementSummary,
+    this.finding,
+    this.prognosisCodeableConcept,
+    this.prognosisReference,
+    this.supportingInfo,
+    this.note,
+  });
 
   factory ClinicalImpression.fromJson(Map<String, dynamic> json) =>
       _$ClinicalImpressionFromJson(json);
@@ -194,16 +195,17 @@ class ClinicalImpression {
 
 @JsonSerializable(explicitToJson: true)
 class ClinicalImpression_Investigation {
-  static Future<ClinicalImpression_Investigation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      List<Reference> item}) async {
+  static Future<ClinicalImpression_Investigation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    List<Reference> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ClinicalImpression_Investigation newClinicalImpression_Investigation =
         new ClinicalImpression_Investigation(
-      id: await fhirDb.newResourceId('ClinicalImpression_Investigation'),
+      id: id ?? await fhirDb.newResourceId('ClinicalImpression_Investigation'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -218,12 +220,13 @@ class ClinicalImpression_Investigation {
   CodeableConcept code;
   List<Reference> item;
 
-  ClinicalImpression_Investigation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.code,
-      this.item});
+  ClinicalImpression_Investigation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+    this.item,
+  });
 
   factory ClinicalImpression_Investigation.fromJson(
           Map<String, dynamic> json) =>
@@ -234,18 +237,19 @@ class ClinicalImpression_Investigation {
 
 @JsonSerializable(explicitToJson: true)
 class ClinicalImpression_Finding {
-  static Future<ClinicalImpression_Finding> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept itemCodeableConcept,
-      Reference itemReference,
-      String basis,
-      Element elementBasis}) async {
+  static Future<ClinicalImpression_Finding> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept itemCodeableConcept,
+    Reference itemReference,
+    String basis,
+    Element elementBasis,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ClinicalImpression_Finding newClinicalImpression_Finding =
         new ClinicalImpression_Finding(
-      id: await fhirDb.newResourceId('ClinicalImpression_Finding'),
+      id: id ?? await fhirDb.newResourceId('ClinicalImpression_Finding'),
       extension: extension,
       modifierExtension: modifierExtension,
       itemCodeableConcept: itemCodeableConcept,
@@ -264,14 +268,15 @@ class ClinicalImpression_Finding {
   String basis;
   Element elementBasis;
 
-  ClinicalImpression_Finding(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.itemCodeableConcept,
-      this.itemReference,
-      this.basis,
-      this.elementBasis});
+  ClinicalImpression_Finding({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.itemCodeableConcept,
+    this.itemReference,
+    this.basis,
+    this.elementBasis,
+  });
 
   factory ClinicalImpression_Finding.fromJson(Map<String, dynamic> json) =>
       _$ClinicalImpression_FindingFromJson(json);

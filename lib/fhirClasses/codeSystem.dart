@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -14,66 +14,67 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CodeSystem {
-  static Future<CodeSystem> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String purpose,
-      Element elementPurpose,
-      String copyright,
-      Element elementCopyright,
-      bool caseSensitive,
-      Element elementCaseSensitive,
-      String valueSet,
-      String hierarchyMeaning,
-      Element elementHierarchyMeaning,
-      bool compositional,
-      Element elementCompositional,
-      bool versionNeeded,
-      Element elementVersionNeeded,
-      String content,
-      Element elementContent,
-      String supplements,
-      int count,
-      Element elementCount,
-      List<CodeSystem_Filter> filter,
-      List<CodeSystem_Property> property,
-      List<CodeSystem_Concept> concept}) async {
+  static Future<CodeSystem> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    bool caseSensitive,
+    Element elementCaseSensitive,
+    String valueSet,
+    String hierarchyMeaning,
+    Element elementHierarchyMeaning,
+    bool compositional,
+    Element elementCompositional,
+    bool versionNeeded,
+    Element elementVersionNeeded,
+    String content,
+    Element elementContent,
+    String supplements,
+    int count,
+    Element elementCount,
+    List<CodeSystem_Filter> filter,
+    List<CodeSystem_Property> property,
+    List<CodeSystem_Concept> concept,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CodeSystem newCodeSystem = new CodeSystem(
-      resourceType: 'CodeSystem',
-      id: await fhirDb.newResourceId('CodeSystem'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('CodeSystem'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -128,17 +129,17 @@ class CodeSystem {
     );
     newCodeSystem.meta.createdAt = DateTime.now();
     newCodeSystem.meta.lastUpdated = newCodeSystem.meta.createdAt;
-    int saved = await fhirDb.newResource(newCodeSystem);
+    int saved = await fhirDb.saveResource(newCodeSystem);
     return newCodeSystem;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'CodeSystem';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -158,7 +159,7 @@ class CodeSystem {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -178,15 +179,13 @@ class CodeSystem {
   bool caseSensitive;
   Element elementCaseSensitive;
   String valueSet;
-  String
-      hierarchyMeaning; // <code> enum: grouped-by/is-a/part-of/classified-with;
+  String hierarchyMeaning;
   Element elementHierarchyMeaning;
   bool compositional;
   Element elementCompositional;
   bool versionNeeded;
   Element elementVersionNeeded;
-  String
-      content; // <code> enum: not-present/example/fragment/complete/supplement;
+  String content;
   Element elementContent;
   String supplements;
   int count;
@@ -195,61 +194,62 @@ class CodeSystem {
   List<CodeSystem_Property> property;
   List<CodeSystem_Concept> concept;
 
-  CodeSystem(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.purpose,
-      this.elementPurpose,
-      this.copyright,
-      this.elementCopyright,
-      this.caseSensitive,
-      this.elementCaseSensitive,
-      this.valueSet,
-      this.hierarchyMeaning,
-      this.elementHierarchyMeaning,
-      this.compositional,
-      this.elementCompositional,
-      this.versionNeeded,
-      this.elementVersionNeeded,
-      this.content,
-      this.elementContent,
-      this.supplements,
-      this.count,
-      this.elementCount,
-      this.filter,
-      this.property,
-      this.concept});
+  CodeSystem({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.caseSensitive,
+    this.elementCaseSensitive,
+    this.valueSet,
+    this.hierarchyMeaning,
+    this.elementHierarchyMeaning,
+    this.compositional,
+    this.elementCompositional,
+    this.versionNeeded,
+    this.elementVersionNeeded,
+    this.content,
+    this.elementContent,
+    this.supplements,
+    this.count,
+    this.elementCount,
+    this.filter,
+    this.property,
+    this.concept,
+  });
 
   factory CodeSystem.fromJson(Map<String, dynamic> json) =>
       _$CodeSystemFromJson(json);
@@ -258,21 +258,22 @@ class CodeSystem {
 
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Filter {
-  static Future<CodeSystem_Filter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String description,
-      Element elementDescription,
-      List<String> operator,
-      List<Element> elementOperator,
-      String value,
-      Element elementValue}) async {
+  static Future<CodeSystem_Filter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String description,
+    Element elementDescription,
+    List<String> operator,
+    List<Element> elementOperator,
+    String value,
+    Element elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CodeSystem_Filter newCodeSystem_Filter = new CodeSystem_Filter(
-      id: await fhirDb.newResourceId('CodeSystem_Filter'),
+      id: id ?? await fhirDb.newResourceId('CodeSystem_Filter'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -299,18 +300,19 @@ class CodeSystem_Filter {
   String value;
   Element elementValue;
 
-  CodeSystem_Filter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.description,
-      this.elementDescription,
-      this.operator,
-      this.elementOperator,
-      this.value,
-      this.elementValue});
+  CodeSystem_Filter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.description,
+    this.elementDescription,
+    this.operator,
+    this.elementOperator,
+    this.value,
+    this.elementValue,
+  });
 
   factory CodeSystem_Filter.fromJson(Map<String, dynamic> json) =>
       _$CodeSystem_FilterFromJson(json);
@@ -319,21 +321,22 @@ class CodeSystem_Filter {
 
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Property {
-  static Future<CodeSystem_Property> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String uri,
-      Element elementUri,
-      String description,
-      Element elementDescription,
-      String type,
-      Element elementType}) async {
+  static Future<CodeSystem_Property> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String uri,
+    Element elementUri,
+    String description,
+    Element elementDescription,
+    String type,
+    Element elementType,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CodeSystem_Property newCodeSystem_Property = new CodeSystem_Property(
-      id: await fhirDb.newResourceId('CodeSystem_Property'),
+      id: id ?? await fhirDb.newResourceId('CodeSystem_Property'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -357,22 +360,22 @@ class CodeSystem_Property {
   Element elementUri;
   String description;
   Element elementDescription;
-  String
-      type; // <code> enum: code/Coding/string/integer/boolean/dateTime/decimal;
+  String type;
   Element elementType;
 
-  CodeSystem_Property(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.uri,
-      this.elementUri,
-      this.description,
-      this.elementDescription,
-      this.type,
-      this.elementType});
+  CodeSystem_Property({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.uri,
+    this.elementUri,
+    this.description,
+    this.elementDescription,
+    this.type,
+    this.elementType,
+  });
 
   factory CodeSystem_Property.fromJson(Map<String, dynamic> json) =>
       _$CodeSystem_PropertyFromJson(json);
@@ -381,22 +384,23 @@ class CodeSystem_Property {
 
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Concept {
-  static Future<CodeSystem_Concept> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String display,
-      Element elementDisplay,
-      String definition,
-      Element elementDefinition,
-      List<CodeSystem_Designation> designation,
-      List<CodeSystem_Property1> property,
-      List<CodeSystem_Concept> concept}) async {
+  static Future<CodeSystem_Concept> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String display,
+    Element elementDisplay,
+    String definition,
+    Element elementDefinition,
+    List<CodeSystem_Designation> designation,
+    List<CodeSystem_Property1> property,
+    List<CodeSystem_Concept> concept,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CodeSystem_Concept newCodeSystem_Concept = new CodeSystem_Concept(
-      id: await fhirDb.newResourceId('CodeSystem_Concept'),
+      id: id ?? await fhirDb.newResourceId('CodeSystem_Concept'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -425,19 +429,20 @@ class CodeSystem_Concept {
   List<CodeSystem_Property1> property;
   List<CodeSystem_Concept> concept;
 
-  CodeSystem_Concept(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.display,
-      this.elementDisplay,
-      this.definition,
-      this.elementDefinition,
-      this.designation,
-      this.property,
-      this.concept});
+  CodeSystem_Concept({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.display,
+    this.elementDisplay,
+    this.definition,
+    this.elementDefinition,
+    this.designation,
+    this.property,
+    this.concept,
+  });
 
   factory CodeSystem_Concept.fromJson(Map<String, dynamic> json) =>
       _$CodeSystem_ConceptFromJson(json);
@@ -446,19 +451,20 @@ class CodeSystem_Concept {
 
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Designation {
-  static Future<CodeSystem_Designation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String language,
-      Element elementLanguage,
-      Coding use,
-      String value,
-      Element elementValue}) async {
+  static Future<CodeSystem_Designation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String language,
+    Element elementLanguage,
+    Coding use,
+    String value,
+    Element elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CodeSystem_Designation newCodeSystem_Designation =
         new CodeSystem_Designation(
-      id: await fhirDb.newResourceId('CodeSystem_Designation'),
+      id: id ?? await fhirDb.newResourceId('CodeSystem_Designation'),
       extension: extension,
       modifierExtension: modifierExtension,
       language: language,
@@ -479,15 +485,16 @@ class CodeSystem_Designation {
   String value;
   Element elementValue;
 
-  CodeSystem_Designation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.language,
-      this.elementLanguage,
-      this.use,
-      this.value,
-      this.elementValue});
+  CodeSystem_Designation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.language,
+    this.elementLanguage,
+    this.use,
+    this.value,
+    this.elementValue,
+  });
 
   factory CodeSystem_Designation.fromJson(Map<String, dynamic> json) =>
       _$CodeSystem_DesignationFromJson(json);
@@ -496,28 +503,29 @@ class CodeSystem_Designation {
 
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Property1 {
-  static Future<CodeSystem_Property1> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String valueCode,
-      Element elementValueCode,
-      Coding valueCoding,
-      String valueString,
-      Element elementValueString,
-      int valueInteger,
-      Element elementValueInteger,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      String valueDateTime,
-      Element elementValueDateTime,
-      int valueDecimal,
-      Element elementValueDecimal}) async {
+  static Future<CodeSystem_Property1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String valueCode,
+    Element elementValueCode,
+    Coding valueCoding,
+    String valueString,
+    Element elementValueString,
+    int valueInteger,
+    Element elementValueInteger,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    String valueDateTime,
+    Element elementValueDateTime,
+    int valueDecimal,
+    Element elementValueDecimal,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CodeSystem_Property1 newCodeSystem_Property1 = new CodeSystem_Property1(
-      id: await fhirDb.newResourceId('CodeSystem_Property1'),
+      id: id ?? await fhirDb.newResourceId('CodeSystem_Property1'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -544,40 +552,40 @@ class CodeSystem_Property1 {
   List<Extension> modifierExtension;
   String code;
   Element elementCode;
-  String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+  String valueCode;
   Element elementValueCode;
   Coding valueCoding;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
-  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal;
   Element elementValueDecimal;
 
-  CodeSystem_Property1(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.valueCode,
-      this.elementValueCode,
-      this.valueCoding,
-      this.valueString,
-      this.elementValueString,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valueDecimal,
-      this.elementValueDecimal});
+  CodeSystem_Property1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.valueCode,
+    this.elementValueCode,
+    this.valueCoding,
+    this.valueString,
+    this.elementValueString,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueDecimal,
+    this.elementValueDecimal,
+  });
 
   factory CodeSystem_Property1.fromJson(Map<String, dynamic> json) =>
       _$CodeSystem_Property1FromJson(json);

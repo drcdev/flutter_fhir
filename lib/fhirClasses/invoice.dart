@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -14,43 +14,44 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Invoice {
-  static Future<Invoice> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      String cancelledReason,
-      Element elementCancelledReason,
-      CodeableConcept type,
-      Reference subject,
-      Reference recipient,
-      DateTime date,
-      Element elementDate,
-      List<Invoice_Participant> participant,
-      Reference issuer,
-      Reference account,
-      List<Invoice_LineItem> lineItem,
-      List<Invoice_PriceComponent> totalPriceComponent,
-      Money totalNet,
-      Money totalGross,
-      String paymentTerms,
-      Element elementPaymentTerms,
-      List<Annotation> note}) async {
+  static Future<Invoice> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    String cancelledReason,
+    Element elementCancelledReason,
+    CodeableConcept type,
+    Reference subject,
+    Reference recipient,
+    DateTime date,
+    Element elementDate,
+    List<Invoice_Participant> participant,
+    Reference issuer,
+    Reference account,
+    List<Invoice_LineItem> lineItem,
+    List<Invoice_PriceComponent> totalPriceComponent,
+    Money totalNet,
+    Money totalGross,
+    String paymentTerms,
+    Element elementPaymentTerms,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Invoice newInvoice = new Invoice(
-      resourceType: 'Invoice',
-      id: await fhirDb.newResourceId('Invoice'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Invoice'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -82,17 +83,17 @@ class Invoice {
     );
     newInvoice.meta.createdAt = DateTime.now();
     newInvoice.meta.lastUpdated = newInvoice.meta.createdAt;
-    int saved = await fhirDb.newResource(newInvoice);
+    int saved = await fhirDb.saveResource(newInvoice);
     return newInvoice;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Invoice';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -104,8 +105,7 @@ class Invoice {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String
-      status; // <code> enum: draft/issued/balanced/cancelled/entered-in-error;
+  String status;
   Element elementStatus;
   String cancelledReason;
   Element elementCancelledReason;
@@ -125,38 +125,39 @@ class Invoice {
   Element elementPaymentTerms;
   List<Annotation> note;
 
-  Invoice(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.cancelledReason,
-      this.elementCancelledReason,
-      this.type,
-      this.subject,
-      this.recipient,
-      this.date,
-      this.elementDate,
-      this.participant,
-      this.issuer,
-      this.account,
-      this.lineItem,
-      this.totalPriceComponent,
-      this.totalNet,
-      this.totalGross,
-      this.paymentTerms,
-      this.elementPaymentTerms,
-      this.note});
+  Invoice({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.cancelledReason,
+    this.elementCancelledReason,
+    this.type,
+    this.subject,
+    this.recipient,
+    this.date,
+    this.elementDate,
+    this.participant,
+    this.issuer,
+    this.account,
+    this.lineItem,
+    this.totalPriceComponent,
+    this.totalNet,
+    this.totalGross,
+    this.paymentTerms,
+    this.elementPaymentTerms,
+    this.note,
+  });
 
   factory Invoice.fromJson(Map<String, dynamic> json) =>
       _$InvoiceFromJson(json);
@@ -165,15 +166,16 @@ class Invoice {
 
 @JsonSerializable(explicitToJson: true)
 class Invoice_Participant {
-  static Future<Invoice_Participant> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept role,
-      Reference actor}) async {
+  static Future<Invoice_Participant> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept role,
+    Reference actor,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Invoice_Participant newInvoice_Participant = new Invoice_Participant(
-      id: await fhirDb.newResourceId('Invoice_Participant'),
+      id: id ?? await fhirDb.newResourceId('Invoice_Participant'),
       extension: extension,
       modifierExtension: modifierExtension,
       role: role,
@@ -188,12 +190,13 @@ class Invoice_Participant {
   CodeableConcept role;
   Reference actor;
 
-  Invoice_Participant(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.role,
-      @required this.actor});
+  Invoice_Participant({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.role,
+    @required this.actor,
+  });
 
   factory Invoice_Participant.fromJson(Map<String, dynamic> json) =>
       _$Invoice_ParticipantFromJson(json);
@@ -202,18 +205,19 @@ class Invoice_Participant {
 
 @JsonSerializable(explicitToJson: true)
 class Invoice_LineItem {
-  static Future<Invoice_LineItem> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      Reference chargeItemReference,
-      CodeableConcept chargeItemCodeableConcept,
-      List<Invoice_PriceComponent> priceComponent}) async {
+  static Future<Invoice_LineItem> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    Reference chargeItemReference,
+    CodeableConcept chargeItemCodeableConcept,
+    List<Invoice_PriceComponent> priceComponent,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Invoice_LineItem newInvoice_LineItem = new Invoice_LineItem(
-      id: await fhirDb.newResourceId('Invoice_LineItem'),
+      id: id ?? await fhirDb.newResourceId('Invoice_LineItem'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -234,15 +238,16 @@ class Invoice_LineItem {
   CodeableConcept chargeItemCodeableConcept;
   List<Invoice_PriceComponent> priceComponent;
 
-  Invoice_LineItem(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      this.chargeItemReference,
-      this.chargeItemCodeableConcept,
-      this.priceComponent});
+  Invoice_LineItem({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.chargeItemReference,
+    this.chargeItemCodeableConcept,
+    this.priceComponent,
+  });
 
   factory Invoice_LineItem.fromJson(Map<String, dynamic> json) =>
       _$Invoice_LineItemFromJson(json);
@@ -251,20 +256,21 @@ class Invoice_LineItem {
 
 @JsonSerializable(explicitToJson: true)
 class Invoice_PriceComponent {
-  static Future<Invoice_PriceComponent> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      CodeableConcept code,
-      double factor,
-      Element elementFactor,
-      Money amount}) async {
+  static Future<Invoice_PriceComponent> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    CodeableConcept code,
+    double factor,
+    Element elementFactor,
+    Money amount,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Invoice_PriceComponent newInvoice_PriceComponent =
         new Invoice_PriceComponent(
-      id: await fhirDb.newResourceId('Invoice_PriceComponent'),
+      id: id ?? await fhirDb.newResourceId('Invoice_PriceComponent'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -280,24 +286,24 @@ class Invoice_PriceComponent {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String
-      type; // <code> enum: base/surcharge/deduction/discount/tax/informational;
+  String type;
   Element elementType;
   CodeableConcept code;
   double factor;
   Element elementFactor;
   Money amount;
 
-  Invoice_PriceComponent(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.code,
-      this.factor,
-      this.elementFactor,
-      this.amount});
+  Invoice_PriceComponent({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.code,
+    this.factor,
+    this.elementFactor,
+    this.amount,
+  });
 
   factory Invoice_PriceComponent.fromJson(Map<String, dynamic> json) =>
       _$Invoice_PriceComponentFromJson(json);

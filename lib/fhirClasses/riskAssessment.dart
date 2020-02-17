@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,44 +15,45 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class RiskAssessment {
-  static Future<RiskAssessment> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      Reference basedOn,
-      Reference parent,
-      String status,
-      Element elementStatus,
-      CodeableConcept method,
-      CodeableConcept code,
-      Reference subject,
-      Reference encounter,
-      String occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Period occurrencePeriod,
-      Reference condition,
-      Reference performer,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<Reference> basis,
-      List<RiskAssessment_Prediction> prediction,
-      String mitigation,
-      Element elementMitigation,
-      List<Annotation> note}) async {
+  static Future<RiskAssessment> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    Reference basedOn,
+    Reference parent,
+    String status,
+    Element elementStatus,
+    CodeableConcept method,
+    CodeableConcept code,
+    Reference subject,
+    Reference encounter,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    Reference condition,
+    Reference performer,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Reference> basis,
+    List<RiskAssessment_Prediction> prediction,
+    String mitigation,
+    Element elementMitigation,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskAssessment newRiskAssessment = new RiskAssessment(
-      resourceType: 'RiskAssessment',
-      id: await fhirDb.newResourceId('RiskAssessment'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('RiskAssessment'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -85,17 +86,17 @@ class RiskAssessment {
     );
     newRiskAssessment.meta.createdAt = DateTime.now();
     newRiskAssessment.meta.lastUpdated = newRiskAssessment.meta.createdAt;
-    int saved = await fhirDb.newResource(newRiskAssessment);
+    int saved = await fhirDb.saveResource(newRiskAssessment);
     return newRiskAssessment;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'RiskAssessment';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -115,8 +116,7 @@ class RiskAssessment {
   CodeableConcept code;
   Reference subject;
   Reference encounter;
-  String
-      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String occurrenceDateTime;
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   Reference condition;
@@ -129,39 +129,40 @@ class RiskAssessment {
   Element elementMitigation;
   List<Annotation> note;
 
-  RiskAssessment(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.parent,
-      this.status,
-      this.elementStatus,
-      this.method,
-      this.code,
-      @required this.subject,
-      this.encounter,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.occurrencePeriod,
-      this.condition,
-      this.performer,
-      this.reasonCode,
-      this.reasonReference,
-      this.basis,
-      this.prediction,
-      this.mitigation,
-      this.elementMitigation,
-      this.note});
+  RiskAssessment({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.parent,
+    this.status,
+    this.elementStatus,
+    this.method,
+    this.code,
+    @required this.subject,
+    this.encounter,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.condition,
+    this.performer,
+    this.reasonCode,
+    this.reasonReference,
+    this.basis,
+    this.prediction,
+    this.mitigation,
+    this.elementMitigation,
+    this.note,
+  });
 
   factory RiskAssessment.fromJson(Map<String, dynamic> json) =>
       _$RiskAssessmentFromJson(json);
@@ -170,25 +171,26 @@ class RiskAssessment {
 
 @JsonSerializable(explicitToJson: true)
 class RiskAssessment_Prediction {
-  static Future<RiskAssessment_Prediction> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept outcome,
-      int probabilityDecimal,
-      Element elementProbabilityDecimal,
-      Range probabilityRange,
-      CodeableConcept qualitativeRisk,
-      double relativeRisk,
-      Element elementRelativeRisk,
-      Period whenPeriod,
-      Range whenRange,
-      String rationale,
-      Element elementRationale}) async {
+  static Future<RiskAssessment_Prediction> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept outcome,
+    int probabilityDecimal,
+    Element elementProbabilityDecimal,
+    Range probabilityRange,
+    CodeableConcept qualitativeRisk,
+    double relativeRisk,
+    Element elementRelativeRisk,
+    Period whenPeriod,
+    Range whenRange,
+    String rationale,
+    Element elementRationale,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskAssessment_Prediction newRiskAssessment_Prediction =
         new RiskAssessment_Prediction(
-      id: await fhirDb.newResourceId('RiskAssessment_Prediction'),
+      id: id ?? await fhirDb.newResourceId('RiskAssessment_Prediction'),
       extension: extension,
       modifierExtension: modifierExtension,
       outcome: outcome,
@@ -210,7 +212,7 @@ class RiskAssessment_Prediction {
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept outcome;
-  int probabilityDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int probabilityDecimal;
   Element elementProbabilityDecimal;
   Range probabilityRange;
   CodeableConcept qualitativeRisk;
@@ -221,21 +223,22 @@ class RiskAssessment_Prediction {
   String rationale;
   Element elementRationale;
 
-  RiskAssessment_Prediction(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.outcome,
-      this.probabilityDecimal,
-      this.elementProbabilityDecimal,
-      this.probabilityRange,
-      this.qualitativeRisk,
-      this.relativeRisk,
-      this.elementRelativeRisk,
-      this.whenPeriod,
-      this.whenRange,
-      this.rationale,
-      this.elementRationale});
+  RiskAssessment_Prediction({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.outcome,
+    this.probabilityDecimal,
+    this.elementProbabilityDecimal,
+    this.probabilityRange,
+    this.qualitativeRisk,
+    this.relativeRisk,
+    this.elementRelativeRisk,
+    this.whenPeriod,
+    this.whenRange,
+    this.rationale,
+    this.elementRationale,
+  });
 
   factory RiskAssessment_Prediction.fromJson(Map<String, dynamic> json) =>
       _$RiskAssessment_PredictionFromJson(json);

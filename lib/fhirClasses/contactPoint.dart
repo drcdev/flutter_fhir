@@ -1,26 +1,28 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ContactPoint {
-  static Future<ContactPoint> newInstance(
-      {String id,
-      List<Extension> extension,
-      String system,
-      Element elementSystem,
-      String value,
-      Element elementValue,
-      String use,
-      Element elementUse,
-      int rank,
-      Element elementRank,
-      Period period}) async {
+  static Future<ContactPoint> newInstance({
+    String id,
+    List<Extension> extension,
+    String system,
+    Element elementSystem,
+    String value,
+    Element elementValue,
+    String use,
+    Element elementUse,
+    int rank,
+    Element elementRank,
+    Period period,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ContactPoint newContactPoint = new ContactPoint(
-      id: await fhirDb.newResourceId('ContactPoint'),
+      id: id ?? await fhirDb.newResourceId('ContactPoint'),
       extension: extension,
       system: system,
       elementSystem: elementSystem,
@@ -37,28 +39,29 @@ class ContactPoint {
 
   String id;
   List<Extension> extension;
-  String system; // <code> enum: phone/fax/email/pager/url/sms/other;
+  String system;
   Element elementSystem;
   String value;
   Element elementValue;
-  String use; // <code> enum: home/work/temp/old/mobile;
+  String use;
   Element elementUse;
   int rank;
   Element elementRank;
   Period period;
 
-  ContactPoint(
-      {this.id,
-      this.extension,
-      this.system,
-      this.elementSystem,
-      this.value,
-      this.elementValue,
-      this.use,
-      this.elementUse,
-      this.rank,
-      this.elementRank,
-      this.period});
+  ContactPoint({
+    this.id,
+    this.extension,
+    this.system,
+    this.elementSystem,
+    this.value,
+    this.elementValue,
+    this.use,
+    this.elementUse,
+    this.rank,
+    this.elementRank,
+    this.period,
+  });
 
   factory ContactPoint.fromJson(Map<String, dynamic> json) =>
       _$ContactPointFromJson(json);

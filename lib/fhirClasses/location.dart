@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -15,46 +15,47 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Location {
-  static Future<Location> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      Coding operationalStatus,
-      String name,
-      Element elementName,
-      List<String> alias,
-      List<Element> elementAlias,
-      String description,
-      Element elementDescription,
-      String mode,
-      Element elementMode,
-      List<CodeableConcept> type,
-      List<ContactPoint> telecom,
-      Address address,
-      CodeableConcept physicalType,
-      Location_Position position,
-      Reference managingOrganization,
-      Reference partOf,
-      List<Location_HoursOfOperation> hoursOfOperation,
-      String availabilityExceptions,
-      Element elementAvailabilityExceptions,
-      List<Reference> endpoint}) async {
+  static Future<Location> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Coding operationalStatus,
+    String name,
+    Element elementName,
+    List<String> alias,
+    List<Element> elementAlias,
+    String description,
+    Element elementDescription,
+    String mode,
+    Element elementMode,
+    List<CodeableConcept> type,
+    List<ContactPoint> telecom,
+    Address address,
+    CodeableConcept physicalType,
+    Location_Position position,
+    Reference managingOrganization,
+    Reference partOf,
+    List<Location_HoursOfOperation> hoursOfOperation,
+    String availabilityExceptions,
+    Element elementAvailabilityExceptions,
+    List<Reference> endpoint,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Location newLocation = new Location(
-      resourceType: 'Location',
-      id: await fhirDb.newResourceId('Location'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Location'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -89,17 +90,17 @@ class Location {
     );
     newLocation.meta.createdAt = DateTime.now();
     newLocation.meta.lastUpdated = newLocation.meta.createdAt;
-    int saved = await fhirDb.newResource(newLocation);
+    int saved = await fhirDb.saveResource(newLocation);
     return newLocation;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Location';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -111,7 +112,7 @@ class Location {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String status; // <code> enum: active/suspended/inactive;
+  String status;
   Element elementStatus;
   Coding operationalStatus;
   String name;
@@ -120,7 +121,7 @@ class Location {
   List<Element> elementAlias;
   String description;
   Element elementDescription;
-  String mode; // <code> enum: instance/kind;
+  String mode;
   Element elementMode;
   List<CodeableConcept> type;
   List<ContactPoint> telecom;
@@ -134,41 +135,42 @@ class Location {
   Element elementAvailabilityExceptions;
   List<Reference> endpoint;
 
-  Location(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.operationalStatus,
-      this.name,
-      this.elementName,
-      this.alias,
-      this.elementAlias,
-      this.description,
-      this.elementDescription,
-      this.mode,
-      this.elementMode,
-      this.type,
-      this.telecom,
-      this.address,
-      this.physicalType,
-      this.position,
-      this.managingOrganization,
-      this.partOf,
-      this.hoursOfOperation,
-      this.availabilityExceptions,
-      this.elementAvailabilityExceptions,
-      this.endpoint});
+  Location({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.operationalStatus,
+    this.name,
+    this.elementName,
+    this.alias,
+    this.elementAlias,
+    this.description,
+    this.elementDescription,
+    this.mode,
+    this.elementMode,
+    this.type,
+    this.telecom,
+    this.address,
+    this.physicalType,
+    this.position,
+    this.managingOrganization,
+    this.partOf,
+    this.hoursOfOperation,
+    this.availabilityExceptions,
+    this.elementAvailabilityExceptions,
+    this.endpoint,
+  });
 
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
@@ -177,19 +179,20 @@ class Location {
 
 @JsonSerializable(explicitToJson: true)
 class Location_Position {
-  static Future<Location_Position> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      double longitude,
-      Element elementLongitude,
-      double latitude,
-      Element elementLatitude,
-      double altitude,
-      Element elementAltitude}) async {
+  static Future<Location_Position> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    double longitude,
+    Element elementLongitude,
+    double latitude,
+    Element elementLatitude,
+    double altitude,
+    Element elementAltitude,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Location_Position newLocation_Position = new Location_Position(
-      id: await fhirDb.newResourceId('Location_Position'),
+      id: id ?? await fhirDb.newResourceId('Location_Position'),
       extension: extension,
       modifierExtension: modifierExtension,
       longitude: longitude,
@@ -212,16 +215,17 @@ class Location_Position {
   double altitude;
   Element elementAltitude;
 
-  Location_Position(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.longitude,
-      this.elementLongitude,
-      this.latitude,
-      this.elementLatitude,
-      this.altitude,
-      this.elementAltitude});
+  Location_Position({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.longitude,
+    this.elementLongitude,
+    this.latitude,
+    this.elementLatitude,
+    this.altitude,
+    this.elementAltitude,
+  });
 
   factory Location_Position.fromJson(Map<String, dynamic> json) =>
       _$Location_PositionFromJson(json);
@@ -230,22 +234,23 @@ class Location_Position {
 
 @JsonSerializable(explicitToJson: true)
 class Location_HoursOfOperation {
-  static Future<Location_HoursOfOperation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<String> daysOfWeek,
-      List<Element> elementDaysOfWeek,
-      bool allDay,
-      Element elementAllDay,
-      String openingTime,
-      Element elementOpeningTime,
-      String closingTime,
-      Element elementClosingTime}) async {
+  static Future<Location_HoursOfOperation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<String> daysOfWeek,
+    List<Element> elementDaysOfWeek,
+    bool allDay,
+    Element elementAllDay,
+    String openingTime,
+    Element elementOpeningTime,
+    String closingTime,
+    Element elementClosingTime,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Location_HoursOfOperation newLocation_HoursOfOperation =
         new Location_HoursOfOperation(
-      id: await fhirDb.newResourceId('Location_HoursOfOperation'),
+      id: id ?? await fhirDb.newResourceId('Location_HoursOfOperation'),
       extension: extension,
       modifierExtension: modifierExtension,
       daysOfWeek: daysOfWeek,
@@ -272,18 +277,19 @@ class Location_HoursOfOperation {
   String closingTime;
   Element elementClosingTime;
 
-  Location_HoursOfOperation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.daysOfWeek,
-      this.elementDaysOfWeek,
-      this.allDay,
-      this.elementAllDay,
-      this.openingTime,
-      this.elementOpeningTime,
-      this.closingTime,
-      this.elementClosingTime});
+  Location_HoursOfOperation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.daysOfWeek,
+    this.elementDaysOfWeek,
+    this.allDay,
+    this.elementAllDay,
+    this.openingTime,
+    this.elementOpeningTime,
+    this.closingTime,
+    this.elementClosingTime,
+  });
 
   factory Location_HoursOfOperation.fromJson(Map<String, dynamic> json) =>
       _$Location_HoursOfOperationFromJson(json);

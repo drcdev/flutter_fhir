@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -16,58 +16,59 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition {
-  static Future<ChargeItemDefinition> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String title,
-      Element elementTitle,
-      List<String> derivedFromUri,
-      List<Element> elementDerivedFromUri,
-      List<String> partOf,
-      List<String> replaces,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String copyright,
-      Element elementCopyright,
-      String approvalDate,
-      Element elementApprovalDate,
-      String lastReviewDate,
-      Element elementLastReviewDate,
-      Period effectivePeriod,
-      CodeableConcept code,
-      List<Reference> instance,
-      List<ChargeItemDefinition_Applicability> applicability,
-      List<ChargeItemDefinition_PropertyGroup> propertyGroup}) async {
+  static Future<ChargeItemDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String title,
+    Element elementTitle,
+    List<String> derivedFromUri,
+    List<Element> elementDerivedFromUri,
+    List<String> partOf,
+    List<String> replaces,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    CodeableConcept code,
+    List<Reference> instance,
+    List<ChargeItemDefinition_Applicability> applicability,
+    List<ChargeItemDefinition_PropertyGroup> propertyGroup,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ChargeItemDefinition newChargeItemDefinition = new ChargeItemDefinition(
-      resourceType: 'ChargeItemDefinition',
-      id: await fhirDb.newResourceId('ChargeItemDefinition'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ChargeItemDefinition'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -115,17 +116,17 @@ class ChargeItemDefinition {
     newChargeItemDefinition.meta.createdAt = DateTime.now();
     newChargeItemDefinition.meta.lastUpdated =
         newChargeItemDefinition.meta.createdAt;
-    int saved = await fhirDb.newResource(newChargeItemDefinition);
+    int saved = await fhirDb.saveResource(newChargeItemDefinition);
     return newChargeItemDefinition;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ChargeItemDefinition';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -147,7 +148,7 @@ class ChargeItemDefinition {
   List<Element> elementDerivedFromUri;
   List<String> partOf;
   List<String> replaces;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -172,53 +173,54 @@ class ChargeItemDefinition {
   List<ChargeItemDefinition_Applicability> applicability;
   List<ChargeItemDefinition_PropertyGroup> propertyGroup;
 
-  ChargeItemDefinition(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.title,
-      this.elementTitle,
-      this.derivedFromUri,
-      this.elementDerivedFromUri,
-      this.partOf,
-      this.replaces,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.copyright,
-      this.elementCopyright,
-      this.approvalDate,
-      this.elementApprovalDate,
-      this.lastReviewDate,
-      this.elementLastReviewDate,
-      this.effectivePeriod,
-      this.code,
-      this.instance,
-      this.applicability,
-      this.propertyGroup});
+  ChargeItemDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.title,
+    this.elementTitle,
+    this.derivedFromUri,
+    this.elementDerivedFromUri,
+    this.partOf,
+    this.replaces,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.code,
+    this.instance,
+    this.applicability,
+    this.propertyGroup,
+  });
 
   factory ChargeItemDefinition.fromJson(Map<String, dynamic> json) =>
       _$ChargeItemDefinitionFromJson(json);
@@ -227,20 +229,22 @@ class ChargeItemDefinition {
 
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_Applicability {
-  static Future<ChargeItemDefinition_Applicability> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String description,
-      Element elementDescription,
-      String language,
-      Element elementLanguage,
-      String expression,
-      Element elementExpression}) async {
+  static Future<ChargeItemDefinition_Applicability> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    String language,
+    Element elementLanguage,
+    String expression,
+    Element elementExpression,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ChargeItemDefinition_Applicability newChargeItemDefinition_Applicability =
         new ChargeItemDefinition_Applicability(
-      id: await fhirDb.newResourceId('ChargeItemDefinition_Applicability'),
+      id: id ??
+          await fhirDb.newResourceId('ChargeItemDefinition_Applicability'),
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -263,16 +267,17 @@ class ChargeItemDefinition_Applicability {
   String expression;
   Element elementExpression;
 
-  ChargeItemDefinition_Applicability(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.description,
-      this.elementDescription,
-      this.language,
-      this.elementLanguage,
-      this.expression,
-      this.elementExpression});
+  ChargeItemDefinition_Applicability({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.language,
+    this.elementLanguage,
+    this.expression,
+    this.elementExpression,
+  });
 
   factory ChargeItemDefinition_Applicability.fromJson(
           Map<String, dynamic> json) =>
@@ -283,16 +288,18 @@ class ChargeItemDefinition_Applicability {
 
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_PropertyGroup {
-  static Future<ChargeItemDefinition_PropertyGroup> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<ChargeItemDefinition_Applicability> applicability,
-      List<ChargeItemDefinition_PriceComponent> priceComponent}) async {
+  static Future<ChargeItemDefinition_PropertyGroup> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<ChargeItemDefinition_Applicability> applicability,
+    List<ChargeItemDefinition_PriceComponent> priceComponent,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ChargeItemDefinition_PropertyGroup newChargeItemDefinition_PropertyGroup =
         new ChargeItemDefinition_PropertyGroup(
-      id: await fhirDb.newResourceId('ChargeItemDefinition_PropertyGroup'),
+      id: id ??
+          await fhirDb.newResourceId('ChargeItemDefinition_PropertyGroup'),
       extension: extension,
       modifierExtension: modifierExtension,
       applicability: applicability,
@@ -307,12 +314,13 @@ class ChargeItemDefinition_PropertyGroup {
   List<ChargeItemDefinition_Applicability> applicability;
   List<ChargeItemDefinition_PriceComponent> priceComponent;
 
-  ChargeItemDefinition_PropertyGroup(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.applicability,
-      this.priceComponent});
+  ChargeItemDefinition_PropertyGroup({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.applicability,
+    this.priceComponent,
+  });
 
   factory ChargeItemDefinition_PropertyGroup.fromJson(
           Map<String, dynamic> json) =>
@@ -323,20 +331,22 @@ class ChargeItemDefinition_PropertyGroup {
 
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_PriceComponent {
-  static Future<ChargeItemDefinition_PriceComponent> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      CodeableConcept code,
-      double factor,
-      Element elementFactor,
-      Money amount}) async {
+  static Future<ChargeItemDefinition_PriceComponent> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    CodeableConcept code,
+    double factor,
+    Element elementFactor,
+    Money amount,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ChargeItemDefinition_PriceComponent newChargeItemDefinition_PriceComponent =
         new ChargeItemDefinition_PriceComponent(
-      id: await fhirDb.newResourceId('ChargeItemDefinition_PriceComponent'),
+      id: id ??
+          await fhirDb.newResourceId('ChargeItemDefinition_PriceComponent'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -359,16 +369,17 @@ class ChargeItemDefinition_PriceComponent {
   Element elementFactor;
   Money amount;
 
-  ChargeItemDefinition_PriceComponent(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.code,
-      this.factor,
-      this.elementFactor,
-      this.amount});
+  ChargeItemDefinition_PriceComponent({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.code,
+    this.factor,
+    this.elementFactor,
+    this.amount,
+  });
 
   factory ChargeItemDefinition_PriceComponent.fromJson(
           Map<String, dynamic> json) =>

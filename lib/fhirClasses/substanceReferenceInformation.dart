@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -14,30 +14,31 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation {
-  static Future<SubstanceReferenceInformation> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String comment,
-      Element elementComment,
-      List<SubstanceReferenceInformation_Gene> gene,
-      List<SubstanceReferenceInformation_GeneElement> geneElement,
-      List<SubstanceReferenceInformation_Classification> classification,
-      List<SubstanceReferenceInformation_Target> target}) async {
+  static Future<SubstanceReferenceInformation> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String comment,
+    Element elementComment,
+    List<SubstanceReferenceInformation_Gene> gene,
+    List<SubstanceReferenceInformation_GeneElement> geneElement,
+    List<SubstanceReferenceInformation_Classification> classification,
+    List<SubstanceReferenceInformation_Target> target,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceReferenceInformation newSubstanceReferenceInformation =
         new SubstanceReferenceInformation(
-      resourceType: 'SubstanceReferenceInformation',
-      id: await fhirDb.newResourceId('SubstanceReferenceInformation'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('SubstanceReferenceInformation'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -56,17 +57,17 @@ class SubstanceReferenceInformation {
     newSubstanceReferenceInformation.meta.createdAt = DateTime.now();
     newSubstanceReferenceInformation.meta.lastUpdated =
         newSubstanceReferenceInformation.meta.createdAt;
-    int saved = await fhirDb.newResource(newSubstanceReferenceInformation);
+    int saved = await fhirDb.saveResource(newSubstanceReferenceInformation);
     return newSubstanceReferenceInformation;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'SubstanceReferenceInformation';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -84,24 +85,25 @@ class SubstanceReferenceInformation {
   List<SubstanceReferenceInformation_Classification> classification;
   List<SubstanceReferenceInformation_Target> target;
 
-  SubstanceReferenceInformation(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.comment,
-      this.elementComment,
-      this.gene,
-      this.geneElement,
-      this.classification,
-      this.target});
+  SubstanceReferenceInformation({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.comment,
+    this.elementComment,
+    this.gene,
+    this.geneElement,
+    this.classification,
+    this.target,
+  });
 
   factory SubstanceReferenceInformation.fromJson(Map<String, dynamic> json) =>
       _$SubstanceReferenceInformationFromJson(json);
@@ -110,17 +112,19 @@ class SubstanceReferenceInformation {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Gene {
-  static Future<SubstanceReferenceInformation_Gene> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept geneSequenceOrigin,
-      CodeableConcept gene,
-      List<Reference> source}) async {
+  static Future<SubstanceReferenceInformation_Gene> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept geneSequenceOrigin,
+    CodeableConcept gene,
+    List<Reference> source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceReferenceInformation_Gene newSubstanceReferenceInformation_Gene =
         new SubstanceReferenceInformation_Gene(
-      id: await fhirDb.newResourceId('SubstanceReferenceInformation_Gene'),
+      id: id ??
+          await fhirDb.newResourceId('SubstanceReferenceInformation_Gene'),
       extension: extension,
       modifierExtension: modifierExtension,
       geneSequenceOrigin: geneSequenceOrigin,
@@ -137,13 +141,14 @@ class SubstanceReferenceInformation_Gene {
   CodeableConcept gene;
   List<Reference> source;
 
-  SubstanceReferenceInformation_Gene(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.geneSequenceOrigin,
-      this.gene,
-      this.source});
+  SubstanceReferenceInformation_Gene({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.geneSequenceOrigin,
+    this.gene,
+    this.source,
+  });
 
   factory SubstanceReferenceInformation_Gene.fromJson(
           Map<String, dynamic> json) =>
@@ -154,19 +159,21 @@ class SubstanceReferenceInformation_Gene {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_GeneElement {
-  static Future<SubstanceReferenceInformation_GeneElement> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      Identifier element,
-      List<Reference> source}) async {
+  static Future<SubstanceReferenceInformation_GeneElement> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Identifier element,
+    List<Reference> source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceReferenceInformation_GeneElement
         newSubstanceReferenceInformation_GeneElement =
         new SubstanceReferenceInformation_GeneElement(
-      id: await fhirDb
-          .newResourceId('SubstanceReferenceInformation_GeneElement'),
+      id: id ??
+          await fhirDb
+              .newResourceId('SubstanceReferenceInformation_GeneElement'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -183,13 +190,14 @@ class SubstanceReferenceInformation_GeneElement {
   Identifier element;
   List<Reference> source;
 
-  SubstanceReferenceInformation_GeneElement(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.element,
-      this.source});
+  SubstanceReferenceInformation_GeneElement({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.element,
+    this.source,
+  });
 
   factory SubstanceReferenceInformation_GeneElement.fromJson(
           Map<String, dynamic> json) =>
@@ -200,20 +208,22 @@ class SubstanceReferenceInformation_GeneElement {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Classification {
-  static Future<SubstanceReferenceInformation_Classification> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept domain,
-      CodeableConcept classification,
-      List<CodeableConcept> subtype,
-      List<Reference> source}) async {
+  static Future<SubstanceReferenceInformation_Classification> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept domain,
+    CodeableConcept classification,
+    List<CodeableConcept> subtype,
+    List<Reference> source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceReferenceInformation_Classification
         newSubstanceReferenceInformation_Classification =
         new SubstanceReferenceInformation_Classification(
-      id: await fhirDb
-          .newResourceId('SubstanceReferenceInformation_Classification'),
+      id: id ??
+          await fhirDb
+              .newResourceId('SubstanceReferenceInformation_Classification'),
       extension: extension,
       modifierExtension: modifierExtension,
       domain: domain,
@@ -232,14 +242,15 @@ class SubstanceReferenceInformation_Classification {
   List<CodeableConcept> subtype;
   List<Reference> source;
 
-  SubstanceReferenceInformation_Classification(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.domain,
-      this.classification,
-      this.subtype,
-      this.source});
+  SubstanceReferenceInformation_Classification({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.domain,
+    this.classification,
+    this.subtype,
+    this.source,
+  });
 
   factory SubstanceReferenceInformation_Classification.fromJson(
           Map<String, dynamic> json) =>
@@ -250,26 +261,28 @@ class SubstanceReferenceInformation_Classification {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Target {
-  static Future<SubstanceReferenceInformation_Target> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier target,
-      CodeableConcept type,
-      CodeableConcept interaction,
-      CodeableConcept organism,
-      CodeableConcept organismType,
-      Quantity amountQuantity,
-      Range amountRange,
-      String amountString,
-      Element elementAmountString,
-      CodeableConcept amountType,
-      List<Reference> source}) async {
+  static Future<SubstanceReferenceInformation_Target> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier target,
+    CodeableConcept type,
+    CodeableConcept interaction,
+    CodeableConcept organism,
+    CodeableConcept organismType,
+    Quantity amountQuantity,
+    Range amountRange,
+    String amountString,
+    Element elementAmountString,
+    CodeableConcept amountType,
+    List<Reference> source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceReferenceInformation_Target
         newSubstanceReferenceInformation_Target =
         new SubstanceReferenceInformation_Target(
-      id: await fhirDb.newResourceId('SubstanceReferenceInformation_Target'),
+      id: id ??
+          await fhirDb.newResourceId('SubstanceReferenceInformation_Target'),
       extension: extension,
       modifierExtension: modifierExtension,
       target: target,
@@ -297,26 +310,27 @@ class SubstanceReferenceInformation_Target {
   CodeableConcept organismType;
   Quantity amountQuantity;
   Range amountRange;
-  String amountString; //  pattern: ^[ \r\n\t\S]+$
+  String amountString;
   Element elementAmountString;
   CodeableConcept amountType;
   List<Reference> source;
 
-  SubstanceReferenceInformation_Target(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.target,
-      this.type,
-      this.interaction,
-      this.organism,
-      this.organismType,
-      this.amountQuantity,
-      this.amountRange,
-      this.amountString,
-      this.elementAmountString,
-      this.amountType,
-      this.source});
+  SubstanceReferenceInformation_Target({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.target,
+    this.type,
+    this.interaction,
+    this.organism,
+    this.organismType,
+    this.amountQuantity,
+    this.amountRange,
+    this.amountString,
+    this.elementAmountString,
+    this.amountType,
+    this.source,
+  });
 
   factory SubstanceReferenceInformation_Target.fromJson(
           Map<String, dynamic> json) =>

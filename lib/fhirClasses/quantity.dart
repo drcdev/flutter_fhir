@@ -1,26 +1,28 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Quantity {
-  static Future<Quantity> newInstance(
-      {String id,
-      List<Extension> extension,
-      double value,
-      Element elementValue,
-      String comparator,
-      Element elementComparator,
-      String unit,
-      Element elementUnit,
-      String system,
-      Element elementSystem,
-      String code,
-      Element elementCode}) async {
+  static Future<Quantity> newInstance({
+    String id,
+    List<Extension> extension,
+    double value,
+    Element elementValue,
+    String comparator,
+    Element elementComparator,
+    String unit,
+    Element elementUnit,
+    String system,
+    Element elementSystem,
+    String code,
+    Element elementCode,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Quantity newQuantity = new Quantity(
-      id: await fhirDb.newResourceId('Quantity'),
+      id: id ?? await fhirDb.newResourceId('Quantity'),
       extension: extension,
       value: value,
       elementValue: elementValue,
@@ -40,7 +42,7 @@ class Quantity {
   List<Extension> extension;
   double value;
   Element elementValue;
-  String comparator; // <code> enum: </<=/>=/>;
+  String comparator;
   Element elementComparator;
   String unit;
   Element elementUnit;
@@ -49,19 +51,20 @@ class Quantity {
   String code;
   Element elementCode;
 
-  Quantity(
-      {this.id,
-      this.extension,
-      this.value,
-      this.elementValue,
-      this.comparator,
-      this.elementComparator,
-      this.unit,
-      this.elementUnit,
-      this.system,
-      this.elementSystem,
-      this.code,
-      this.elementCode});
+  Quantity({
+    this.id,
+    this.extension,
+    this.value,
+    this.elementValue,
+    this.comparator,
+    this.elementComparator,
+    this.unit,
+    this.elementUnit,
+    this.system,
+    this.elementSystem,
+    this.code,
+    this.elementCode,
+  });
 
   factory Quantity.fromJson(Map<String, dynamic> json) =>
       _$QuantityFromJson(json);

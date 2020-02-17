@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -17,65 +17,66 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis {
-  static Future<RiskEvidenceSynthesis> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<Annotation> note,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String copyright,
-      Element elementCopyright,
-      String approvalDate,
-      Element elementApprovalDate,
-      String lastReviewDate,
-      Element elementLastReviewDate,
-      Period effectivePeriod,
-      List<CodeableConcept> topic,
-      List<ContactDetail> author,
-      List<ContactDetail> editor,
-      List<ContactDetail> reviewer,
-      List<ContactDetail> endorser,
-      List<RelatedArtifact> relatedArtifact,
-      CodeableConcept synthesisType,
-      CodeableConcept studyType,
-      Reference population,
-      Reference exposure,
-      Reference outcome,
-      RiskEvidenceSynthesis_SampleSize sampleSize,
-      RiskEvidenceSynthesis_RiskEstimate riskEstimate,
-      List<RiskEvidenceSynthesis_Certainty> certainty}) async {
+  static Future<RiskEvidenceSynthesis> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<Annotation> note,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    List<CodeableConcept> topic,
+    List<ContactDetail> author,
+    List<ContactDetail> editor,
+    List<ContactDetail> reviewer,
+    List<ContactDetail> endorser,
+    List<RelatedArtifact> relatedArtifact,
+    CodeableConcept synthesisType,
+    CodeableConcept studyType,
+    Reference population,
+    Reference exposure,
+    Reference outcome,
+    RiskEvidenceSynthesis_SampleSize sampleSize,
+    RiskEvidenceSynthesis_RiskEstimate riskEstimate,
+    List<RiskEvidenceSynthesis_Certainty> certainty,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskEvidenceSynthesis newRiskEvidenceSynthesis = new RiskEvidenceSynthesis(
-      resourceType: 'RiskEvidenceSynthesis',
-      id: await fhirDb.newResourceId('RiskEvidenceSynthesis'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('RiskEvidenceSynthesis'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -130,17 +131,17 @@ class RiskEvidenceSynthesis {
     newRiskEvidenceSynthesis.meta.createdAt = DateTime.now();
     newRiskEvidenceSynthesis.meta.lastUpdated =
         newRiskEvidenceSynthesis.meta.createdAt;
-    int saved = await fhirDb.newResource(newRiskEvidenceSynthesis);
+    int saved = await fhirDb.saveResource(newRiskEvidenceSynthesis);
     return newRiskEvidenceSynthesis;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'RiskEvidenceSynthesis';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -160,7 +161,7 @@ class RiskEvidenceSynthesis {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   DateTime date;
   Element elementDate;
@@ -194,60 +195,61 @@ class RiskEvidenceSynthesis {
   RiskEvidenceSynthesis_RiskEstimate riskEstimate;
   List<RiskEvidenceSynthesis_Certainty> certainty;
 
-  RiskEvidenceSynthesis(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.note,
-      this.useContext,
-      this.jurisdiction,
-      this.copyright,
-      this.elementCopyright,
-      this.approvalDate,
-      this.elementApprovalDate,
-      this.lastReviewDate,
-      this.elementLastReviewDate,
-      this.effectivePeriod,
-      this.topic,
-      this.author,
-      this.editor,
-      this.reviewer,
-      this.endorser,
-      this.relatedArtifact,
-      this.synthesisType,
-      this.studyType,
-      @required this.population,
-      this.exposure,
-      @required this.outcome,
-      this.sampleSize,
-      this.riskEstimate,
-      this.certainty});
+  RiskEvidenceSynthesis({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.note,
+    this.useContext,
+    this.jurisdiction,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.topic,
+    this.author,
+    this.editor,
+    this.reviewer,
+    this.endorser,
+    this.relatedArtifact,
+    this.synthesisType,
+    this.studyType,
+    @required this.population,
+    this.exposure,
+    @required this.outcome,
+    this.sampleSize,
+    this.riskEstimate,
+    this.certainty,
+  });
 
   factory RiskEvidenceSynthesis.fromJson(Map<String, dynamic> json) =>
       _$RiskEvidenceSynthesisFromJson(json);
@@ -256,20 +258,21 @@ class RiskEvidenceSynthesis {
 
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_SampleSize {
-  static Future<RiskEvidenceSynthesis_SampleSize> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String description,
-      Element elementDescription,
-      int numberOfStudies,
-      Element elementNumberOfStudies,
-      int numberOfParticipants,
-      Element elementNumberOfParticipants}) async {
+  static Future<RiskEvidenceSynthesis_SampleSize> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    int numberOfStudies,
+    Element elementNumberOfStudies,
+    int numberOfParticipants,
+    Element elementNumberOfParticipants,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskEvidenceSynthesis_SampleSize newRiskEvidenceSynthesis_SampleSize =
         new RiskEvidenceSynthesis_SampleSize(
-      id: await fhirDb.newResourceId('RiskEvidenceSynthesis_SampleSize'),
+      id: id ?? await fhirDb.newResourceId('RiskEvidenceSynthesis_SampleSize'),
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -292,16 +295,17 @@ class RiskEvidenceSynthesis_SampleSize {
   int numberOfParticipants;
   Element elementNumberOfParticipants;
 
-  RiskEvidenceSynthesis_SampleSize(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.description,
-      this.elementDescription,
-      this.numberOfStudies,
-      this.elementNumberOfStudies,
-      this.numberOfParticipants,
-      this.elementNumberOfParticipants});
+  RiskEvidenceSynthesis_SampleSize({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.numberOfStudies,
+    this.elementNumberOfStudies,
+    this.numberOfParticipants,
+    this.elementNumberOfParticipants,
+  });
 
   factory RiskEvidenceSynthesis_SampleSize.fromJson(
           Map<String, dynamic> json) =>
@@ -312,25 +316,27 @@ class RiskEvidenceSynthesis_SampleSize {
 
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_RiskEstimate {
-  static Future<RiskEvidenceSynthesis_RiskEstimate> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String description,
-      Element elementDescription,
-      CodeableConcept type,
-      double value,
-      Element elementValue,
-      CodeableConcept unitOfMeasure,
-      int denominatorCount,
-      Element elementDenominatorCount,
-      int numeratorCount,
-      Element elementNumeratorCount,
-      List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate}) async {
+  static Future<RiskEvidenceSynthesis_RiskEstimate> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    CodeableConcept type,
+    double value,
+    Element elementValue,
+    CodeableConcept unitOfMeasure,
+    int denominatorCount,
+    Element elementDenominatorCount,
+    int numeratorCount,
+    Element elementNumeratorCount,
+    List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskEvidenceSynthesis_RiskEstimate newRiskEvidenceSynthesis_RiskEstimate =
         new RiskEvidenceSynthesis_RiskEstimate(
-      id: await fhirDb.newResourceId('RiskEvidenceSynthesis_RiskEstimate'),
+      id: id ??
+          await fhirDb.newResourceId('RiskEvidenceSynthesis_RiskEstimate'),
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -363,21 +369,22 @@ class RiskEvidenceSynthesis_RiskEstimate {
   Element elementNumeratorCount;
   List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
-  RiskEvidenceSynthesis_RiskEstimate(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.description,
-      this.elementDescription,
-      this.type,
-      this.value,
-      this.elementValue,
-      this.unitOfMeasure,
-      this.denominatorCount,
-      this.elementDenominatorCount,
-      this.numeratorCount,
-      this.elementNumeratorCount,
-      this.precisionEstimate});
+  RiskEvidenceSynthesis_RiskEstimate({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.type,
+    this.value,
+    this.elementValue,
+    this.unitOfMeasure,
+    this.denominatorCount,
+    this.elementDenominatorCount,
+    this.numeratorCount,
+    this.elementNumeratorCount,
+    this.precisionEstimate,
+  });
 
   factory RiskEvidenceSynthesis_RiskEstimate.fromJson(
           Map<String, dynamic> json) =>
@@ -388,22 +395,24 @@ class RiskEvidenceSynthesis_RiskEstimate {
 
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_PrecisionEstimate {
-  static Future<RiskEvidenceSynthesis_PrecisionEstimate> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      double level,
-      Element elementLevel,
-      double from,
-      Element elementFrom,
-      double to,
-      Element elementTo}) async {
+  static Future<RiskEvidenceSynthesis_PrecisionEstimate> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    double level,
+    Element elementLevel,
+    double from,
+    Element elementFrom,
+    double to,
+    Element elementTo,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskEvidenceSynthesis_PrecisionEstimate
         newRiskEvidenceSynthesis_PrecisionEstimate =
         new RiskEvidenceSynthesis_PrecisionEstimate(
-      id: await fhirDb.newResourceId('RiskEvidenceSynthesis_PrecisionEstimate'),
+      id: id ??
+          await fhirDb.newResourceId('RiskEvidenceSynthesis_PrecisionEstimate'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -428,17 +437,18 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
   double to;
   Element elementTo;
 
-  RiskEvidenceSynthesis_PrecisionEstimate(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.level,
-      this.elementLevel,
-      this.from,
-      this.elementFrom,
-      this.to,
-      this.elementTo});
+  RiskEvidenceSynthesis_PrecisionEstimate({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.level,
+    this.elementLevel,
+    this.from,
+    this.elementFrom,
+    this.to,
+    this.elementTo,
+  });
 
   factory RiskEvidenceSynthesis_PrecisionEstimate.fromJson(
           Map<String, dynamic> json) =>
@@ -449,18 +459,18 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
 
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_Certainty {
-  static Future<RiskEvidenceSynthesis_Certainty> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CodeableConcept> rating,
-      List<Annotation> note,
-      List<RiskEvidenceSynthesis_CertaintySubcomponent>
-          certaintySubcomponent}) async {
+  static Future<RiskEvidenceSynthesis_Certainty> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> rating,
+    List<Annotation> note,
+    List<RiskEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskEvidenceSynthesis_Certainty newRiskEvidenceSynthesis_Certainty =
         new RiskEvidenceSynthesis_Certainty(
-      id: await fhirDb.newResourceId('RiskEvidenceSynthesis_Certainty'),
+      id: id ?? await fhirDb.newResourceId('RiskEvidenceSynthesis_Certainty'),
       extension: extension,
       modifierExtension: modifierExtension,
       rating: rating,
@@ -477,13 +487,14 @@ class RiskEvidenceSynthesis_Certainty {
   List<Annotation> note;
   List<RiskEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
-  RiskEvidenceSynthesis_Certainty(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.rating,
-      this.note,
-      this.certaintySubcomponent});
+  RiskEvidenceSynthesis_Certainty({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.rating,
+    this.note,
+    this.certaintySubcomponent,
+  });
 
   factory RiskEvidenceSynthesis_Certainty.fromJson(Map<String, dynamic> json) =>
       _$RiskEvidenceSynthesis_CertaintyFromJson(json);
@@ -493,19 +504,21 @@ class RiskEvidenceSynthesis_Certainty {
 
 @JsonSerializable(explicitToJson: true)
 class RiskEvidenceSynthesis_CertaintySubcomponent {
-  static Future<RiskEvidenceSynthesis_CertaintySubcomponent> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      List<CodeableConcept> rating,
-      List<Annotation> note}) async {
+  static Future<RiskEvidenceSynthesis_CertaintySubcomponent> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    List<CodeableConcept> rating,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RiskEvidenceSynthesis_CertaintySubcomponent
         newRiskEvidenceSynthesis_CertaintySubcomponent =
         new RiskEvidenceSynthesis_CertaintySubcomponent(
-      id: await fhirDb
-          .newResourceId('RiskEvidenceSynthesis_CertaintySubcomponent'),
+      id: id ??
+          await fhirDb
+              .newResourceId('RiskEvidenceSynthesis_CertaintySubcomponent'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -522,13 +535,14 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
   List<CodeableConcept> rating;
   List<Annotation> note;
 
-  RiskEvidenceSynthesis_CertaintySubcomponent(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.rating,
-      this.note});
+  RiskEvidenceSynthesis_CertaintySubcomponent({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.rating,
+    this.note,
+  });
 
   factory RiskEvidenceSynthesis_CertaintySubcomponent.fromJson(
           Map<String, dynamic> json) =>

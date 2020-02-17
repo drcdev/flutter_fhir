@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,38 +15,39 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SupplyDelivery {
-  static Future<SupplyDelivery> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> basedOn,
-      List<Reference> partOf,
-      String status,
-      Element elementStatus,
-      Reference patient,
-      CodeableConcept type,
-      SupplyDelivery_SuppliedItem suppliedItem,
-      String occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Period occurrencePeriod,
-      Timing occurrenceTiming,
-      Reference supplier,
-      Reference destination,
-      List<Reference> receiver}) async {
+  static Future<SupplyDelivery> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    Reference patient,
+    CodeableConcept type,
+    SupplyDelivery_SuppliedItem suppliedItem,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    Timing occurrenceTiming,
+    Reference supplier,
+    Reference destination,
+    List<Reference> receiver,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SupplyDelivery newSupplyDelivery = new SupplyDelivery(
-      resourceType: 'SupplyDelivery',
-      id: await fhirDb.newResourceId('SupplyDelivery'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('SupplyDelivery'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -73,17 +74,17 @@ class SupplyDelivery {
     );
     newSupplyDelivery.meta.createdAt = DateTime.now();
     newSupplyDelivery.meta.lastUpdated = newSupplyDelivery.meta.createdAt;
-    int saved = await fhirDb.newResource(newSupplyDelivery);
+    int saved = await fhirDb.saveResource(newSupplyDelivery);
     return newSupplyDelivery;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'SupplyDelivery';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -97,14 +98,12 @@ class SupplyDelivery {
   List<Identifier> identifier;
   List<Reference> basedOn;
   List<Reference> partOf;
-  String
-      status; // <code> enum: in-progress/completed/abandoned/entered-in-error;
+  String status;
   Element elementStatus;
   Reference patient;
   CodeableConcept type;
   SupplyDelivery_SuppliedItem suppliedItem;
-  String
-      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String occurrenceDateTime;
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   Timing occurrenceTiming;
@@ -112,33 +111,34 @@ class SupplyDelivery {
   Reference destination;
   List<Reference> receiver;
 
-  SupplyDelivery(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.partOf,
-      this.status,
-      this.elementStatus,
-      this.patient,
-      this.type,
-      this.suppliedItem,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.occurrencePeriod,
-      this.occurrenceTiming,
-      this.supplier,
-      this.destination,
-      this.receiver});
+  SupplyDelivery({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.patient,
+    this.type,
+    this.suppliedItem,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.occurrenceTiming,
+    this.supplier,
+    this.destination,
+    this.receiver,
+  });
 
   factory SupplyDelivery.fromJson(Map<String, dynamic> json) =>
       _$SupplyDeliveryFromJson(json);
@@ -147,17 +147,18 @@ class SupplyDelivery {
 
 @JsonSerializable(explicitToJson: true)
 class SupplyDelivery_SuppliedItem {
-  static Future<SupplyDelivery_SuppliedItem> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Quantity quantity,
-      CodeableConcept itemCodeableConcept,
-      Reference itemReference}) async {
+  static Future<SupplyDelivery_SuppliedItem> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Quantity quantity,
+    CodeableConcept itemCodeableConcept,
+    Reference itemReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SupplyDelivery_SuppliedItem newSupplyDelivery_SuppliedItem =
         new SupplyDelivery_SuppliedItem(
-      id: await fhirDb.newResourceId('SupplyDelivery_SuppliedItem'),
+      id: id ?? await fhirDb.newResourceId('SupplyDelivery_SuppliedItem'),
       extension: extension,
       modifierExtension: modifierExtension,
       quantity: quantity,
@@ -174,13 +175,14 @@ class SupplyDelivery_SuppliedItem {
   CodeableConcept itemCodeableConcept;
   Reference itemReference;
 
-  SupplyDelivery_SuppliedItem(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.quantity,
-      this.itemCodeableConcept,
-      this.itemReference});
+  SupplyDelivery_SuppliedItem({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.quantity,
+    this.itemCodeableConcept,
+    this.itemReference,
+  });
 
   factory SupplyDelivery_SuppliedItem.fromJson(Map<String, dynamic> json) =>
       _$SupplyDelivery_SuppliedItemFromJson(json);

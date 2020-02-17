@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -18,59 +18,60 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Questionnaire {
-  static Future<Questionnaire> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      List<String> derivedFrom,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      List<String> subjectType,
-      List<Element> elementSubjectType,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String purpose,
-      Element elementPurpose,
-      String copyright,
-      Element elementCopyright,
-      String approvalDate,
-      Element elementApprovalDate,
-      String lastReviewDate,
-      Element elementLastReviewDate,
-      Period effectivePeriod,
-      List<Coding> code,
-      List<Questionnaire_Item> item}) async {
+  static Future<Questionnaire> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    List<String> derivedFrom,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    List<String> subjectType,
+    List<Element> elementSubjectType,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    List<Coding> code,
+    List<Questionnaire_Item> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Questionnaire newQuestionnaire = new Questionnaire(
-      resourceType: 'Questionnaire',
-      id: await fhirDb.newResourceId('Questionnaire'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Questionnaire'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -118,17 +119,17 @@ class Questionnaire {
     );
     newQuestionnaire.meta.createdAt = DateTime.now();
     newQuestionnaire.meta.lastUpdated = newQuestionnaire.meta.createdAt;
-    int saved = await fhirDb.newResource(newQuestionnaire);
+    int saved = await fhirDb.saveResource(newQuestionnaire);
     return newQuestionnaire;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Questionnaire';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -149,7 +150,7 @@ class Questionnaire {
   String title;
   Element elementTitle;
   List<String> derivedFrom;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -176,54 +177,55 @@ class Questionnaire {
   List<Coding> code;
   List<Questionnaire_Item> item;
 
-  Questionnaire(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.derivedFrom,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.subjectType,
-      this.elementSubjectType,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.purpose,
-      this.elementPurpose,
-      this.copyright,
-      this.elementCopyright,
-      this.approvalDate,
-      this.elementApprovalDate,
-      this.lastReviewDate,
-      this.elementLastReviewDate,
-      this.effectivePeriod,
-      this.code,
-      this.item});
+  Questionnaire({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.derivedFrom,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.subjectType,
+    this.elementSubjectType,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.code,
+    this.item,
+  });
 
   factory Questionnaire.fromJson(Map<String, dynamic> json) =>
       _$QuestionnaireFromJson(json);
@@ -232,39 +234,40 @@ class Questionnaire {
 
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_Item {
-  static Future<Questionnaire_Item> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String linkId,
-      Element elementLinkId,
-      String definition,
-      Element elementDefinition,
-      List<Coding> code,
-      String prefix,
-      Element elementPrefix,
-      String text,
-      Element elementText,
-      String type,
-      Element elementType,
-      List<Questionnaire_EnableWhen> enableWhen,
-      String enableBehavior,
-      Element elementEnableBehavior,
-      bool required,
-      Element elementRequired,
-      bool repeats,
-      Element elementRepeats,
-      bool readOnly,
-      Element elementReadOnly,
-      int maxLength,
-      Element elementMaxLength,
-      String answerValueSet,
-      List<Questionnaire_AnswerOption> answerOption,
-      List<Questionnaire_Initial> initial,
-      List<Questionnaire_Item> item}) async {
+  static Future<Questionnaire_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String linkId,
+    Element elementLinkId,
+    String definition,
+    Element elementDefinition,
+    List<Coding> code,
+    String prefix,
+    Element elementPrefix,
+    String text,
+    Element elementText,
+    String type,
+    Element elementType,
+    List<Questionnaire_EnableWhen> enableWhen,
+    String enableBehavior,
+    Element elementEnableBehavior,
+    bool required,
+    Element elementRequired,
+    bool repeats,
+    Element elementRepeats,
+    bool readOnly,
+    Element elementReadOnly,
+    int maxLength,
+    Element elementMaxLength,
+    String answerValueSet,
+    List<Questionnaire_AnswerOption> answerOption,
+    List<Questionnaire_Initial> initial,
+    List<Questionnaire_Item> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Questionnaire_Item newQuestionnaire_Item = new Questionnaire_Item(
-      id: await fhirDb.newResourceId('Questionnaire_Item'),
+      id: id ?? await fhirDb.newResourceId('Questionnaire_Item'),
       extension: extension,
       modifierExtension: modifierExtension,
       linkId: linkId,
@@ -309,11 +312,10 @@ class Questionnaire_Item {
   Element elementPrefix;
   String text;
   Element elementText;
-  String
-      type; // <code> enum: group/display/boolean/decimal/integer/date/dateTime/time/string/text/url/choice/open-choice/attachment/reference/quantity;
+  String type;
   Element elementType;
   List<Questionnaire_EnableWhen> enableWhen;
-  String enableBehavior; // <code> enum: all/any;
+  String enableBehavior;
   Element elementEnableBehavior;
   bool required;
   Element elementRequired;
@@ -328,36 +330,37 @@ class Questionnaire_Item {
   List<Questionnaire_Initial> initial;
   List<Questionnaire_Item> item;
 
-  Questionnaire_Item(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.linkId,
-      this.elementLinkId,
-      this.definition,
-      this.elementDefinition,
-      this.code,
-      this.prefix,
-      this.elementPrefix,
-      this.text,
-      this.elementText,
-      this.type,
-      this.elementType,
-      this.enableWhen,
-      this.enableBehavior,
-      this.elementEnableBehavior,
-      this.required,
-      this.elementRequired,
-      this.repeats,
-      this.elementRepeats,
-      this.readOnly,
-      this.elementReadOnly,
-      this.maxLength,
-      this.elementMaxLength,
-      this.answerValueSet,
-      this.answerOption,
-      this.initial,
-      this.item});
+  Questionnaire_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.linkId,
+    this.elementLinkId,
+    this.definition,
+    this.elementDefinition,
+    this.code,
+    this.prefix,
+    this.elementPrefix,
+    this.text,
+    this.elementText,
+    this.type,
+    this.elementType,
+    this.enableWhen,
+    this.enableBehavior,
+    this.elementEnableBehavior,
+    this.required,
+    this.elementRequired,
+    this.repeats,
+    this.elementRepeats,
+    this.readOnly,
+    this.elementReadOnly,
+    this.maxLength,
+    this.elementMaxLength,
+    this.answerValueSet,
+    this.answerOption,
+    this.initial,
+    this.item,
+  });
 
   factory Questionnaire_Item.fromJson(Map<String, dynamic> json) =>
       _$Questionnaire_ItemFromJson(json);
@@ -366,35 +369,36 @@ class Questionnaire_Item {
 
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_EnableWhen {
-  static Future<Questionnaire_EnableWhen> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String question,
-      Element elementQuestion,
-      String operator,
-      Element elementOperator,
-      bool answerBoolean,
-      Element elementAnswerBoolean,
-      int answerDecimal,
-      Element elementAnswerDecimal,
-      int answerInteger,
-      Element elementAnswerInteger,
-      String answerDate,
-      Element elementAnswerDate,
-      String answerDateTime,
-      Element elementAnswerDateTime,
-      String answerTime,
-      Element elementAnswerTime,
-      String answerString,
-      Element elementAnswerString,
-      Coding answerCoding,
-      Quantity answerQuantity,
-      Reference answerReference}) async {
+  static Future<Questionnaire_EnableWhen> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String question,
+    Element elementQuestion,
+    String operator,
+    Element elementOperator,
+    bool answerBoolean,
+    Element elementAnswerBoolean,
+    int answerDecimal,
+    Element elementAnswerDecimal,
+    int answerInteger,
+    Element elementAnswerInteger,
+    String answerDate,
+    Element elementAnswerDate,
+    String answerDateTime,
+    Element elementAnswerDateTime,
+    String answerTime,
+    Element elementAnswerTime,
+    String answerString,
+    Element elementAnswerString,
+    Coding answerCoding,
+    Quantity answerQuantity,
+    Reference answerReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Questionnaire_EnableWhen newQuestionnaire_EnableWhen =
         new Questionnaire_EnableWhen(
-      id: await fhirDb.newResourceId('Questionnaire_EnableWhen'),
+      id: id ?? await fhirDb.newResourceId('Questionnaire_EnableWhen'),
       extension: extension,
       modifierExtension: modifierExtension,
       question: question,
@@ -427,54 +431,52 @@ class Questionnaire_EnableWhen {
   List<Extension> modifierExtension;
   String question;
   Element elementQuestion;
-  String operator; // <code> enum: exists/=/!=/>/</>=/<=;
+  String operator;
   Element elementOperator;
-  bool answerBoolean; //  pattern: ^true|false$
+  bool answerBoolean;
   Element elementAnswerBoolean;
-  int answerDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int answerDecimal;
   Element elementAnswerDecimal;
-  int answerInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int answerInteger;
   Element elementAnswerInteger;
-  String
-      answerDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String answerDate;
   Element elementAnswerDate;
-  String
-      answerDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String answerDateTime;
   Element elementAnswerDateTime;
-  String
-      answerTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String answerTime;
   Element elementAnswerTime;
-  String answerString; //  pattern: ^[ \r\n\t\S]+$
+  String answerString;
   Element elementAnswerString;
   Coding answerCoding;
   Quantity answerQuantity;
   Reference answerReference;
 
-  Questionnaire_EnableWhen(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.question,
-      this.elementQuestion,
-      this.operator,
-      this.elementOperator,
-      this.answerBoolean,
-      this.elementAnswerBoolean,
-      this.answerDecimal,
-      this.elementAnswerDecimal,
-      this.answerInteger,
-      this.elementAnswerInteger,
-      this.answerDate,
-      this.elementAnswerDate,
-      this.answerDateTime,
-      this.elementAnswerDateTime,
-      this.answerTime,
-      this.elementAnswerTime,
-      this.answerString,
-      this.elementAnswerString,
-      this.answerCoding,
-      this.answerQuantity,
-      this.answerReference});
+  Questionnaire_EnableWhen({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.question,
+    this.elementQuestion,
+    this.operator,
+    this.elementOperator,
+    this.answerBoolean,
+    this.elementAnswerBoolean,
+    this.answerDecimal,
+    this.elementAnswerDecimal,
+    this.answerInteger,
+    this.elementAnswerInteger,
+    this.answerDate,
+    this.elementAnswerDate,
+    this.answerDateTime,
+    this.elementAnswerDateTime,
+    this.answerTime,
+    this.elementAnswerTime,
+    this.answerString,
+    this.elementAnswerString,
+    this.answerCoding,
+    this.answerQuantity,
+    this.answerReference,
+  });
 
   factory Questionnaire_EnableWhen.fromJson(Map<String, dynamic> json) =>
       _$Questionnaire_EnableWhenFromJson(json);
@@ -483,26 +485,27 @@ class Questionnaire_EnableWhen {
 
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_AnswerOption {
-  static Future<Questionnaire_AnswerOption> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int valueInteger,
-      Element elementValueInteger,
-      String valueDate,
-      Element elementValueDate,
-      String valueTime,
-      Element elementValueTime,
-      String valueString,
-      Element elementValueString,
-      Coding valueCoding,
-      Reference valueReference,
-      bool initialSelected,
-      Element elementInitialSelected}) async {
+  static Future<Questionnaire_AnswerOption> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueDate,
+    Element elementValueDate,
+    String valueTime,
+    Element elementValueTime,
+    String valueString,
+    Element elementValueString,
+    Coding valueCoding,
+    Reference valueReference,
+    bool initialSelected,
+    Element elementInitialSelected,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Questionnaire_AnswerOption newQuestionnaire_AnswerOption =
         new Questionnaire_AnswerOption(
-      id: await fhirDb.newResourceId('Questionnaire_AnswerOption'),
+      id: id ?? await fhirDb.newResourceId('Questionnaire_AnswerOption'),
       extension: extension,
       modifierExtension: modifierExtension,
       valueInteger: valueInteger,
@@ -524,37 +527,36 @@ class Questionnaire_AnswerOption {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  String
-      valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String valueDate;
   Element elementValueDate;
-  String
-      valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String valueTime;
   Element elementValueTime;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
   Coding valueCoding;
   Reference valueReference;
   bool initialSelected;
   Element elementInitialSelected;
 
-  Questionnaire_AnswerOption(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueDate,
-      this.elementValueDate,
-      this.valueTime,
-      this.elementValueTime,
-      this.valueString,
-      this.elementValueString,
-      this.valueCoding,
-      this.valueReference,
-      this.initialSelected,
-      this.elementInitialSelected});
+  Questionnaire_AnswerOption({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueString,
+    this.elementValueString,
+    this.valueCoding,
+    this.valueReference,
+    this.initialSelected,
+    this.elementInitialSelected,
+  });
 
   factory Questionnaire_AnswerOption.fromJson(Map<String, dynamic> json) =>
       _$Questionnaire_AnswerOptionFromJson(json);
@@ -563,33 +565,34 @@ class Questionnaire_AnswerOption {
 
 @JsonSerializable(explicitToJson: true)
 class Questionnaire_Initial {
-  static Future<Questionnaire_Initial> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      int valueDecimal,
-      Element elementValueDecimal,
-      int valueInteger,
-      Element elementValueInteger,
-      String valueDate,
-      Element elementValueDate,
-      String valueDateTime,
-      Element elementValueDateTime,
-      String valueTime,
-      Element elementValueTime,
-      String valueString,
-      Element elementValueString,
-      String valueUri,
-      Element elementValueUri,
-      Attachment valueAttachment,
-      Coding valueCoding,
-      Quantity valueQuantity,
-      Reference valueReference}) async {
+  static Future<Questionnaire_Initial> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueDecimal,
+    Element elementValueDecimal,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    String valueTime,
+    Element elementValueTime,
+    String valueString,
+    Element elementValueString,
+    String valueUri,
+    Element elementValueUri,
+    Attachment valueAttachment,
+    Coding valueCoding,
+    Quantity valueQuantity,
+    Reference valueReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Questionnaire_Initial newQuestionnaire_Initial = new Questionnaire_Initial(
-      id: await fhirDb.newResourceId('Questionnaire_Initial'),
+      id: id ?? await fhirDb.newResourceId('Questionnaire_Initial'),
       extension: extension,
       modifierExtension: modifierExtension,
       valueBoolean: valueBoolean,
@@ -619,54 +622,52 @@ class Questionnaire_Initial {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal;
   Element elementValueDecimal;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  String
-      valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String valueDate;
   Element elementValueDate;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
-  String
-      valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String valueTime;
   Element elementValueTime;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  String valueUri; //  pattern: ^\S*$
+  String valueUri;
   Element elementValueUri;
   Attachment valueAttachment;
   Coding valueCoding;
   Quantity valueQuantity;
   Reference valueReference;
 
-  Questionnaire_Initial(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueDecimal,
-      this.elementValueDecimal,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueDate,
-      this.elementValueDate,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valueTime,
-      this.elementValueTime,
-      this.valueString,
-      this.elementValueString,
-      this.valueUri,
-      this.elementValueUri,
-      this.valueAttachment,
-      this.valueCoding,
-      this.valueQuantity,
-      this.valueReference});
+  Questionnaire_Initial({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueString,
+    this.elementValueString,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueAttachment,
+    this.valueCoding,
+    this.valueQuantity,
+    this.valueReference,
+  });
 
   factory Questionnaire_Initial.fromJson(Map<String, dynamic> json) =>
       _$Questionnaire_InitialFromJson(json);

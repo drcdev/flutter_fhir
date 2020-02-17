@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -14,32 +14,33 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Substance {
-  static Future<Substance> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      List<CodeableConcept> category,
-      CodeableConcept code,
-      String description,
-      Element elementDescription,
-      List<Substance_Instance> instance,
-      List<Substance_Ingredient> ingredient}) async {
+  static Future<Substance> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> category,
+    CodeableConcept code,
+    String description,
+    Element elementDescription,
+    List<Substance_Instance> instance,
+    List<Substance_Ingredient> ingredient,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Substance newSubstance = new Substance(
-      resourceType: 'Substance',
-      id: await fhirDb.newResourceId('Substance'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Substance'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -60,17 +61,17 @@ class Substance {
     );
     newSubstance.meta.createdAt = DateTime.now();
     newSubstance.meta.lastUpdated = newSubstance.meta.createdAt;
-    int saved = await fhirDb.newResource(newSubstance);
+    int saved = await fhirDb.saveResource(newSubstance);
     return newSubstance;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Substance';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -82,7 +83,7 @@ class Substance {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String status; // <code> enum: active/inactive/entered-in-error;
+  String status;
   Element elementStatus;
   List<CodeableConcept> category;
   CodeableConcept code;
@@ -91,27 +92,28 @@ class Substance {
   List<Substance_Instance> instance;
   List<Substance_Ingredient> ingredient;
 
-  Substance(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.category,
-      @required this.code,
-      this.description,
-      this.elementDescription,
-      this.instance,
-      this.ingredient});
+  Substance({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.category,
+    @required this.code,
+    this.description,
+    this.elementDescription,
+    this.instance,
+    this.ingredient,
+  });
 
   factory Substance.fromJson(Map<String, dynamic> json) =>
       _$SubstanceFromJson(json);
@@ -120,17 +122,18 @@ class Substance {
 
 @JsonSerializable(explicitToJson: true)
 class Substance_Instance {
-  static Future<Substance_Instance> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      DateTime expiry,
-      Element elementExpiry,
-      Quantity quantity}) async {
+  static Future<Substance_Instance> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    DateTime expiry,
+    Element elementExpiry,
+    Quantity quantity,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Substance_Instance newSubstance_Instance = new Substance_Instance(
-      id: await fhirDb.newResourceId('Substance_Instance'),
+      id: id ?? await fhirDb.newResourceId('Substance_Instance'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -149,14 +152,15 @@ class Substance_Instance {
   Element elementExpiry;
   Quantity quantity;
 
-  Substance_Instance(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.expiry,
-      this.elementExpiry,
-      this.quantity});
+  Substance_Instance({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.expiry,
+    this.elementExpiry,
+    this.quantity,
+  });
 
   factory Substance_Instance.fromJson(Map<String, dynamic> json) =>
       _$Substance_InstanceFromJson(json);
@@ -165,16 +169,17 @@ class Substance_Instance {
 
 @JsonSerializable(explicitToJson: true)
 class Substance_Ingredient {
-  static Future<Substance_Ingredient> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Ratio quantity,
-      CodeableConcept substanceCodeableConcept,
-      Reference substanceReference}) async {
+  static Future<Substance_Ingredient> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Ratio quantity,
+    CodeableConcept substanceCodeableConcept,
+    Reference substanceReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Substance_Ingredient newSubstance_Ingredient = new Substance_Ingredient(
-      id: await fhirDb.newResourceId('Substance_Ingredient'),
+      id: id ?? await fhirDb.newResourceId('Substance_Ingredient'),
       extension: extension,
       modifierExtension: modifierExtension,
       quantity: quantity,
@@ -191,13 +196,14 @@ class Substance_Ingredient {
   CodeableConcept substanceCodeableConcept;
   Reference substanceReference;
 
-  Substance_Ingredient(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.quantity,
-      this.substanceCodeableConcept,
-      this.substanceReference});
+  Substance_Ingredient({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.quantity,
+    this.substanceCodeableConcept,
+    this.substanceReference,
+  });
 
   factory Substance_Ingredient.fromJson(Map<String, dynamic> json) =>
       _$Substance_IngredientFromJson(json);

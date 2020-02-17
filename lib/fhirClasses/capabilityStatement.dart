@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -14,64 +14,65 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement {
-  static Future<CapabilityStatement> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String purpose,
-      Element elementPurpose,
-      String copyright,
-      Element elementCopyright,
-      String kind,
-      Element elementKind,
-      List<String> instantiates,
-      List<String> imports,
-      CapabilityStatement_Software software,
-      CapabilityStatement_Implementation implementation,
-      String fhirVersion,
-      Element elementFhirVersion,
-      List<String> format,
-      List<Element> elementFormat,
-      List<String> patchFormat,
-      List<Element> elementPatchFormat,
-      List<String> implementationGuide,
-      List<CapabilityStatement_Rest> rest,
-      List<CapabilityStatement_Messaging> messaging,
-      List<CapabilityStatement_Document> document}) async {
+  static Future<CapabilityStatement> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    String kind,
+    Element elementKind,
+    List<String> instantiates,
+    List<String> imports,
+    CapabilityStatement_Software software,
+    CapabilityStatement_Implementation implementation,
+    String fhirVersion,
+    Element elementFhirVersion,
+    List<String> format,
+    List<Element> elementFormat,
+    List<String> patchFormat,
+    List<Element> elementPatchFormat,
+    List<String> implementationGuide,
+    List<CapabilityStatement_Rest> rest,
+    List<CapabilityStatement_Messaging> messaging,
+    List<CapabilityStatement_Document> document,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement newCapabilityStatement = new CapabilityStatement(
-      resourceType: 'CapabilityStatement',
-      id: await fhirDb.newResourceId('CapabilityStatement'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -125,17 +126,17 @@ class CapabilityStatement {
     newCapabilityStatement.meta.createdAt = DateTime.now();
     newCapabilityStatement.meta.lastUpdated =
         newCapabilityStatement.meta.createdAt;
-    int saved = await fhirDb.newResource(newCapabilityStatement);
+    int saved = await fhirDb.saveResource(newCapabilityStatement);
     return newCapabilityStatement;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'CapabilityStatement';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -154,7 +155,7 @@ class CapabilityStatement {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -171,14 +172,13 @@ class CapabilityStatement {
   Element elementPurpose;
   String copyright;
   Element elementCopyright;
-  String kind; // <code> enum: instance/capability/requirements;
+  String kind;
   Element elementKind;
   List<String> instantiates;
   List<String> imports;
   CapabilityStatement_Software software;
   CapabilityStatement_Implementation implementation;
-  String
-      fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
+  String fhirVersion;
   Element elementFhirVersion;
   List<String> format;
   List<Element> elementFormat;
@@ -189,59 +189,60 @@ class CapabilityStatement {
   List<CapabilityStatement_Messaging> messaging;
   List<CapabilityStatement_Document> document;
 
-  CapabilityStatement(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.purpose,
-      this.elementPurpose,
-      this.copyright,
-      this.elementCopyright,
-      this.kind,
-      this.elementKind,
-      this.instantiates,
-      this.imports,
-      this.software,
-      this.implementation,
-      this.fhirVersion,
-      this.elementFhirVersion,
-      this.format,
-      this.elementFormat,
-      this.patchFormat,
-      this.elementPatchFormat,
-      this.implementationGuide,
-      this.rest,
-      this.messaging,
-      this.document});
+  CapabilityStatement({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.kind,
+    this.elementKind,
+    this.instantiates,
+    this.imports,
+    this.software,
+    this.implementation,
+    this.fhirVersion,
+    this.elementFhirVersion,
+    this.format,
+    this.elementFormat,
+    this.patchFormat,
+    this.elementPatchFormat,
+    this.implementationGuide,
+    this.rest,
+    this.messaging,
+    this.document,
+  });
 
   factory CapabilityStatement.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatementFromJson(json);
@@ -250,20 +251,21 @@ class CapabilityStatement {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Software {
-  static Future<CapabilityStatement_Software> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String version,
-      Element elementVersion,
-      DateTime releaseDate,
-      Element elementReleaseDate}) async {
+  static Future<CapabilityStatement_Software> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String version,
+    Element elementVersion,
+    DateTime releaseDate,
+    Element elementReleaseDate,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Software newCapabilityStatement_Software =
         new CapabilityStatement_Software(
-      id: await fhirDb.newResourceId('CapabilityStatement_Software'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Software'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -286,16 +288,17 @@ class CapabilityStatement_Software {
   DateTime releaseDate;
   Element elementReleaseDate;
 
-  CapabilityStatement_Software(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.version,
-      this.elementVersion,
-      this.releaseDate,
-      this.elementReleaseDate});
+  CapabilityStatement_Software({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.version,
+    this.elementVersion,
+    this.releaseDate,
+    this.elementReleaseDate,
+  });
 
   factory CapabilityStatement_Software.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_SoftwareFromJson(json);
@@ -304,19 +307,21 @@ class CapabilityStatement_Software {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Implementation {
-  static Future<CapabilityStatement_Implementation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String description,
-      Element elementDescription,
-      String url,
-      Element elementUrl,
-      Reference custodian}) async {
+  static Future<CapabilityStatement_Implementation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    String url,
+    Element elementUrl,
+    Reference custodian,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Implementation newCapabilityStatement_Implementation =
         new CapabilityStatement_Implementation(
-      id: await fhirDb.newResourceId('CapabilityStatement_Implementation'),
+      id: id ??
+          await fhirDb.newResourceId('CapabilityStatement_Implementation'),
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -337,15 +342,16 @@ class CapabilityStatement_Implementation {
   Element elementUrl;
   Reference custodian;
 
-  CapabilityStatement_Implementation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.description,
-      this.elementDescription,
-      this.url,
-      this.elementUrl,
-      this.custodian});
+  CapabilityStatement_Implementation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.url,
+    this.elementUrl,
+    this.custodian,
+  });
 
   factory CapabilityStatement_Implementation.fromJson(
           Map<String, dynamic> json) =>
@@ -356,24 +362,25 @@ class CapabilityStatement_Implementation {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Rest {
-  static Future<CapabilityStatement_Rest> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String mode,
-      Element elementMode,
-      String documentation,
-      Element elementDocumentation,
-      CapabilityStatement_Security security,
-      List<CapabilityStatement_Resource> resource,
-      List<CapabilityStatement_Interaction1> interaction,
-      List<CapabilityStatement_SearchParam> searchParam,
-      List<CapabilityStatement_Operation> operation,
-      List<String> compartment}) async {
+  static Future<CapabilityStatement_Rest> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String mode,
+    Element elementMode,
+    String documentation,
+    Element elementDocumentation,
+    CapabilityStatement_Security security,
+    List<CapabilityStatement_Resource> resource,
+    List<CapabilityStatement_Interaction1> interaction,
+    List<CapabilityStatement_SearchParam> searchParam,
+    List<CapabilityStatement_Operation> operation,
+    List<String> compartment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Rest newCapabilityStatement_Rest =
         new CapabilityStatement_Rest(
-      id: await fhirDb.newResourceId('CapabilityStatement_Rest'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Rest'),
       extension: extension,
       modifierExtension: modifierExtension,
       mode: mode,
@@ -393,7 +400,7 @@ class CapabilityStatement_Rest {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String mode; // <code> enum: client/server;
+  String mode;
   Element elementMode;
   String documentation;
   Element elementDocumentation;
@@ -404,20 +411,21 @@ class CapabilityStatement_Rest {
   List<CapabilityStatement_Operation> operation;
   List<String> compartment;
 
-  CapabilityStatement_Rest(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.mode,
-      this.elementMode,
-      this.documentation,
-      this.elementDocumentation,
-      this.security,
-      this.resource,
-      this.interaction,
-      this.searchParam,
-      this.operation,
-      this.compartment});
+  CapabilityStatement_Rest({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.mode,
+    this.elementMode,
+    this.documentation,
+    this.elementDocumentation,
+    this.security,
+    this.resource,
+    this.interaction,
+    this.searchParam,
+    this.operation,
+    this.compartment,
+  });
 
   factory CapabilityStatement_Rest.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_RestFromJson(json);
@@ -426,19 +434,20 @@ class CapabilityStatement_Rest {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Security {
-  static Future<CapabilityStatement_Security> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool cors,
-      Element elementCors,
-      List<CodeableConcept> service,
-      String description,
-      Element elementDescription}) async {
+  static Future<CapabilityStatement_Security> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool cors,
+    Element elementCors,
+    List<CodeableConcept> service,
+    String description,
+    Element elementDescription,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Security newCapabilityStatement_Security =
         new CapabilityStatement_Security(
-      id: await fhirDb.newResourceId('CapabilityStatement_Security'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Security'),
       extension: extension,
       modifierExtension: modifierExtension,
       cors: cors,
@@ -459,15 +468,16 @@ class CapabilityStatement_Security {
   String description;
   Element elementDescription;
 
-  CapabilityStatement_Security(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.cors,
-      this.elementCors,
-      this.service,
-      this.description,
-      this.elementDescription});
+  CapabilityStatement_Security({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.cors,
+    this.elementCors,
+    this.service,
+    this.description,
+    this.elementDescription,
+  });
 
   factory CapabilityStatement_Security.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_SecurityFromJson(json);
@@ -476,43 +486,44 @@ class CapabilityStatement_Security {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Resource {
-  static Future<CapabilityStatement_Resource> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      String profile,
-      List<String> supportedProfile,
-      String documentation,
-      Element elementDocumentation,
-      List<CapabilityStatement_Interaction> interaction,
-      String versioning,
-      Element elementVersioning,
-      bool readHistory,
-      Element elementReadHistory,
-      bool updateCreate,
-      Element elementUpdateCreate,
-      bool conditionalCreate,
-      Element elementConditionalCreate,
-      String conditionalRead,
-      Element elementConditionalRead,
-      bool conditionalUpdate,
-      Element elementConditionalUpdate,
-      String conditionalDelete,
-      Element elementConditionalDelete,
-      List<String> referencePolicy,
-      List<Element> elementReferencePolicy,
-      List<String> searchInclude,
-      List<Element> elementSearchInclude,
-      List<String> searchRevInclude,
-      List<Element> elementSearchRevInclude,
-      List<CapabilityStatement_SearchParam> searchParam,
-      List<CapabilityStatement_Operation> operation}) async {
+  static Future<CapabilityStatement_Resource> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String profile,
+    List<String> supportedProfile,
+    String documentation,
+    Element elementDocumentation,
+    List<CapabilityStatement_Interaction> interaction,
+    String versioning,
+    Element elementVersioning,
+    bool readHistory,
+    Element elementReadHistory,
+    bool updateCreate,
+    Element elementUpdateCreate,
+    bool conditionalCreate,
+    Element elementConditionalCreate,
+    String conditionalRead,
+    Element elementConditionalRead,
+    bool conditionalUpdate,
+    Element elementConditionalUpdate,
+    String conditionalDelete,
+    Element elementConditionalDelete,
+    String referencePolicy,
+    List<Element> elementReferencePolicy,
+    List<String> searchInclude,
+    List<Element> elementSearchInclude,
+    List<String> searchRevInclude,
+    List<Element> elementSearchRevInclude,
+    List<CapabilityStatement_SearchParam> searchParam,
+    List<CapabilityStatement_Operation> operation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Resource newCapabilityStatement_Resource =
         new CapabilityStatement_Resource(
-      id: await fhirDb.newResourceId('CapabilityStatement_Resource'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Resource'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -558,7 +569,7 @@ class CapabilityStatement_Resource {
   String documentation;
   Element elementDocumentation;
   List<CapabilityStatement_Interaction> interaction;
-  String versioning; // <code> enum: no-version/versioned/versioned-update;
+  String versioning;
   Element elementVersioning;
   bool readHistory;
   Element elementReadHistory;
@@ -566,15 +577,13 @@ class CapabilityStatement_Resource {
   Element elementUpdateCreate;
   bool conditionalCreate;
   Element elementConditionalCreate;
-  String
-      conditionalRead; // <code> enum: not-supported/modified-since/not-match/full-support;
+  String conditionalRead;
   Element elementConditionalRead;
   bool conditionalUpdate;
   Element elementConditionalUpdate;
-  String conditionalDelete; // <code> enum: not-supported/single/multiple;
+  String conditionalDelete;
   Element elementConditionalDelete;
-  List<String>
-      referencePolicy; // <code> enum: literal/logical/resolves/enforced/local> referencePolicy;
+  String referencePolicy;
   List<Element> elementReferencePolicy;
   List<String> searchInclude;
   List<Element> elementSearchInclude;
@@ -583,39 +592,40 @@ class CapabilityStatement_Resource {
   List<CapabilityStatement_SearchParam> searchParam;
   List<CapabilityStatement_Operation> operation;
 
-  CapabilityStatement_Resource(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.profile,
-      this.supportedProfile,
-      this.documentation,
-      this.elementDocumentation,
-      this.interaction,
-      this.versioning,
-      this.elementVersioning,
-      this.readHistory,
-      this.elementReadHistory,
-      this.updateCreate,
-      this.elementUpdateCreate,
-      this.conditionalCreate,
-      this.elementConditionalCreate,
-      this.conditionalRead,
-      this.elementConditionalRead,
-      this.conditionalUpdate,
-      this.elementConditionalUpdate,
-      this.conditionalDelete,
-      this.elementConditionalDelete,
-      this.referencePolicy,
-      this.elementReferencePolicy,
-      this.searchInclude,
-      this.elementSearchInclude,
-      this.searchRevInclude,
-      this.elementSearchRevInclude,
-      this.searchParam,
-      this.operation});
+  CapabilityStatement_Resource({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.profile,
+    this.supportedProfile,
+    this.documentation,
+    this.elementDocumentation,
+    this.interaction,
+    this.versioning,
+    this.elementVersioning,
+    this.readHistory,
+    this.elementReadHistory,
+    this.updateCreate,
+    this.elementUpdateCreate,
+    this.conditionalCreate,
+    this.elementConditionalCreate,
+    this.conditionalRead,
+    this.elementConditionalRead,
+    this.conditionalUpdate,
+    this.elementConditionalUpdate,
+    this.conditionalDelete,
+    this.elementConditionalDelete,
+    this.referencePolicy,
+    this.elementReferencePolicy,
+    this.searchInclude,
+    this.elementSearchInclude,
+    this.searchRevInclude,
+    this.elementSearchRevInclude,
+    this.searchParam,
+    this.operation,
+  });
 
   factory CapabilityStatement_Resource.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_ResourceFromJson(json);
@@ -624,18 +634,19 @@ class CapabilityStatement_Resource {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction {
-  static Future<CapabilityStatement_Interaction> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<CapabilityStatement_Interaction> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Interaction newCapabilityStatement_Interaction =
         new CapabilityStatement_Interaction(
-      id: await fhirDb.newResourceId('CapabilityStatement_Interaction'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Interaction'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -649,20 +660,20 @@ class CapabilityStatement_Interaction {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String
-      code; // <code> enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type;
+  String code;
   Element elementCode;
   String documentation;
   Element elementDocumentation;
 
-  CapabilityStatement_Interaction(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.documentation,
-      this.elementDocumentation});
+  CapabilityStatement_Interaction({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory CapabilityStatement_Interaction.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_InteractionFromJson(json);
@@ -672,21 +683,22 @@ class CapabilityStatement_Interaction {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SearchParam {
-  static Future<CapabilityStatement_SearchParam> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String definition,
-      String type,
-      Element elementType,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<CapabilityStatement_SearchParam> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String definition,
+    String type,
+    Element elementType,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_SearchParam newCapabilityStatement_SearchParam =
         new CapabilityStatement_SearchParam(
-      id: await fhirDb.newResourceId('CapabilityStatement_SearchParam'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_SearchParam'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -706,23 +718,23 @@ class CapabilityStatement_SearchParam {
   String name;
   Element elementName;
   String definition;
-  String
-      type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
+  String type;
   Element elementType;
   String documentation;
   Element elementDocumentation;
 
-  CapabilityStatement_SearchParam(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.definition,
-      this.type,
-      this.elementType,
-      this.documentation,
-      this.elementDocumentation});
+  CapabilityStatement_SearchParam({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.definition,
+    this.type,
+    this.elementType,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory CapabilityStatement_SearchParam.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_SearchParamFromJson(json);
@@ -732,19 +744,20 @@ class CapabilityStatement_SearchParam {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Operation {
-  static Future<CapabilityStatement_Operation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String definition,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<CapabilityStatement_Operation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String definition,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Operation newCapabilityStatement_Operation =
         new CapabilityStatement_Operation(
-      id: await fhirDb.newResourceId('CapabilityStatement_Operation'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Operation'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -765,15 +778,16 @@ class CapabilityStatement_Operation {
   String documentation;
   Element elementDocumentation;
 
-  CapabilityStatement_Operation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      @required this.definition,
-      this.documentation,
-      this.elementDocumentation});
+  CapabilityStatement_Operation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    @required this.definition,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory CapabilityStatement_Operation.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_OperationFromJson(json);
@@ -782,18 +796,19 @@ class CapabilityStatement_Operation {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction1 {
-  static Future<CapabilityStatement_Interaction1> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<CapabilityStatement_Interaction1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Interaction1 newCapabilityStatement_Interaction1 =
         new CapabilityStatement_Interaction1(
-      id: await fhirDb.newResourceId('CapabilityStatement_Interaction1'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Interaction1'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -807,19 +822,20 @@ class CapabilityStatement_Interaction1 {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String code; // <code> enum: transaction/batch/search-system/history-system;
+  String code;
   Element elementCode;
   String documentation;
   Element elementDocumentation;
 
-  CapabilityStatement_Interaction1(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.documentation,
-      this.elementDocumentation});
+  CapabilityStatement_Interaction1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory CapabilityStatement_Interaction1.fromJson(
           Map<String, dynamic> json) =>
@@ -830,20 +846,21 @@ class CapabilityStatement_Interaction1 {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Messaging {
-  static Future<CapabilityStatement_Messaging> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CapabilityStatement_Endpoint> endpoint,
-      int reliableCache,
-      Element elementReliableCache,
-      String documentation,
-      Element elementDocumentation,
-      List<CapabilityStatement_SupportedMessage> supportedMessage}) async {
+  static Future<CapabilityStatement_Messaging> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CapabilityStatement_Endpoint> endpoint,
+    int reliableCache,
+    Element elementReliableCache,
+    String documentation,
+    Element elementDocumentation,
+    List<CapabilityStatement_SupportedMessage> supportedMessage,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Messaging newCapabilityStatement_Messaging =
         new CapabilityStatement_Messaging(
-      id: await fhirDb.newResourceId('CapabilityStatement_Messaging'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Messaging'),
       extension: extension,
       modifierExtension: modifierExtension,
       endpoint: endpoint,
@@ -866,16 +883,17 @@ class CapabilityStatement_Messaging {
   Element elementDocumentation;
   List<CapabilityStatement_SupportedMessage> supportedMessage;
 
-  CapabilityStatement_Messaging(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.endpoint,
-      this.reliableCache,
-      this.elementReliableCache,
-      this.documentation,
-      this.elementDocumentation,
-      this.supportedMessage});
+  CapabilityStatement_Messaging({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.endpoint,
+    this.reliableCache,
+    this.elementReliableCache,
+    this.documentation,
+    this.elementDocumentation,
+    this.supportedMessage,
+  });
 
   factory CapabilityStatement_Messaging.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_MessagingFromJson(json);
@@ -884,17 +902,18 @@ class CapabilityStatement_Messaging {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Endpoint {
-  static Future<CapabilityStatement_Endpoint> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Coding protocol,
-      String address,
-      Element elementAddress}) async {
+  static Future<CapabilityStatement_Endpoint> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Coding protocol,
+    String address,
+    Element elementAddress,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Endpoint newCapabilityStatement_Endpoint =
         new CapabilityStatement_Endpoint(
-      id: await fhirDb.newResourceId('CapabilityStatement_Endpoint'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Endpoint'),
       extension: extension,
       modifierExtension: modifierExtension,
       protocol: protocol,
@@ -911,13 +930,14 @@ class CapabilityStatement_Endpoint {
   String address;
   Element elementAddress;
 
-  CapabilityStatement_Endpoint(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.protocol,
-      this.address,
-      this.elementAddress});
+  CapabilityStatement_Endpoint({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.protocol,
+    this.address,
+    this.elementAddress,
+  });
 
   factory CapabilityStatement_Endpoint.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_EndpointFromJson(json);
@@ -926,18 +946,20 @@ class CapabilityStatement_Endpoint {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SupportedMessage {
-  static Future<CapabilityStatement_SupportedMessage> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String mode,
-      Element elementMode,
-      String definition}) async {
+  static Future<CapabilityStatement_SupportedMessage> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String mode,
+    Element elementMode,
+    String definition,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_SupportedMessage
         newCapabilityStatement_SupportedMessage =
         new CapabilityStatement_SupportedMessage(
-      id: await fhirDb.newResourceId('CapabilityStatement_SupportedMessage'),
+      id: id ??
+          await fhirDb.newResourceId('CapabilityStatement_SupportedMessage'),
       extension: extension,
       modifierExtension: modifierExtension,
       mode: mode,
@@ -950,17 +972,18 @@ class CapabilityStatement_SupportedMessage {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String mode; // <code> enum: sender/receiver;
+  String mode;
   Element elementMode;
   String definition;
 
-  CapabilityStatement_SupportedMessage(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.mode,
-      this.elementMode,
-      @required this.definition});
+  CapabilityStatement_SupportedMessage({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.mode,
+    this.elementMode,
+    @required this.definition,
+  });
 
   factory CapabilityStatement_SupportedMessage.fromJson(
           Map<String, dynamic> json) =>
@@ -971,19 +994,20 @@ class CapabilityStatement_SupportedMessage {
 
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Document {
-  static Future<CapabilityStatement_Document> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String mode,
-      Element elementMode,
-      String documentation,
-      Element elementDocumentation,
-      String profile}) async {
+  static Future<CapabilityStatement_Document> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String mode,
+    Element elementMode,
+    String documentation,
+    Element elementDocumentation,
+    String profile,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement_Document newCapabilityStatement_Document =
         new CapabilityStatement_Document(
-      id: await fhirDb.newResourceId('CapabilityStatement_Document'),
+      id: id ?? await fhirDb.newResourceId('CapabilityStatement_Document'),
       extension: extension,
       modifierExtension: modifierExtension,
       mode: mode,
@@ -998,21 +1022,22 @@ class CapabilityStatement_Document {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String mode; // <code> enum: producer/consumer;
+  String mode;
   Element elementMode;
   String documentation;
   Element elementDocumentation;
   String profile;
 
-  CapabilityStatement_Document(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.mode,
-      this.elementMode,
-      this.documentation,
-      this.elementDocumentation,
-      @required this.profile});
+  CapabilityStatement_Document({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.mode,
+    this.elementMode,
+    this.documentation,
+    this.elementDocumentation,
+    @required this.profile,
+  });
 
   factory CapabilityStatement_Document.fromJson(Map<String, dynamic> json) =>
       _$CapabilityStatement_DocumentFromJson(json);
@@ -1484,8 +1509,7 @@ CapabilityStatement_Resource _$CapabilityStatement_ResourceFromJson(
         ? null
         : Element.fromJson(
             json['elementConditionalDelete'] as Map<String, dynamic>),
-    referencePolicy:
-        (json['referencePolicy'] as List)?.map((e) => e as String)?.toList(),
+    referencePolicy: json['referencePolicy'] as String,
     elementReferencePolicy: (json['elementReferencePolicy'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))

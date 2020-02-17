@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
@@ -39,52 +39,53 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap {
-  static Future<StructureMap> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String purpose,
-      Element elementPurpose,
-      String copyright,
-      Element elementCopyright,
-      List<StructureMap_Structure> structure,
-      List<String> import,
-      List<StructureMap_Group> group}) async {
+  static Future<StructureMap> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    List<StructureMap_Structure> structure,
+    List<String> import,
+    List<StructureMap_Group> group,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap newStructureMap = new StructureMap(
-      resourceType: 'StructureMap',
-      id: await fhirDb.newResourceId('StructureMap'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('StructureMap'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -125,17 +126,17 @@ class StructureMap {
     );
     newStructureMap.meta.createdAt = DateTime.now();
     newStructureMap.meta.lastUpdated = newStructureMap.meta.createdAt;
-    int saved = await fhirDb.newResource(newStructureMap);
+    int saved = await fhirDb.saveResource(newStructureMap);
     return newStructureMap;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'StructureMap';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -155,7 +156,7 @@ class StructureMap {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -176,47 +177,48 @@ class StructureMap {
   List<String> import;
   List<StructureMap_Group> group;
 
-  StructureMap(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.purpose,
-      this.elementPurpose,
-      this.copyright,
-      this.elementCopyright,
-      this.structure,
-      this.import,
-      @required this.group});
+  StructureMap({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.structure,
+    this.import,
+    @required this.group,
+  });
 
   factory StructureMap.fromJson(Map<String, dynamic> json) =>
       _$StructureMapFromJson(json);
@@ -225,21 +227,22 @@ class StructureMap {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Structure {
-  static Future<StructureMap_Structure> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      String mode,
-      Element elementMode,
-      String alias,
-      Element elementAlias,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<StructureMap_Structure> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    String mode,
+    Element elementMode,
+    String alias,
+    Element elementAlias,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Structure newStructureMap_Structure =
         new StructureMap_Structure(
-      id: await fhirDb.newResourceId('StructureMap_Structure'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Structure'),
       extension: extension,
       modifierExtension: modifierExtension,
       url: url,
@@ -257,24 +260,25 @@ class StructureMap_Structure {
   List<Extension> extension;
   List<Extension> modifierExtension;
   String url;
-  String mode; // <code> enum: source/queried/target/produced;
+  String mode;
   Element elementMode;
   String alias;
   Element elementAlias;
   String documentation;
   Element elementDocumentation;
 
-  StructureMap_Structure(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.url,
-      this.mode,
-      this.elementMode,
-      this.alias,
-      this.elementAlias,
-      this.documentation,
-      this.elementDocumentation});
+  StructureMap_Structure({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.url,
+    this.mode,
+    this.elementMode,
+    this.alias,
+    this.elementAlias,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory StructureMap_Structure.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_StructureFromJson(json);
@@ -283,23 +287,24 @@ class StructureMap_Structure {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Group {
-  static Future<StructureMap_Group> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String extend,
-      Element elementExtends,
-      String typeMode,
-      Element elementTypeMode,
-      String documentation,
-      Element elementDocumentation,
-      List<StructureMap_Input> input,
-      List<StructureMap_Rule> rule}) async {
+  static Future<StructureMap_Group> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String extend,
+    Element elementExtends,
+    String typeMode,
+    Element elementTypeMode,
+    String documentation,
+    Element elementDocumentation,
+    List<StructureMap_Input> input,
+    List<StructureMap_Rule> rule,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Group newStructureMap_Group = new StructureMap_Group(
-      id: await fhirDb.newResourceId('StructureMap_Group'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Group'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -323,27 +328,28 @@ class StructureMap_Group {
   Element elementName;
   String extend;
   Element elementExtends;
-  String typeMode; // <code> enum: none/types/type-and-types;
+  String typeMode;
   Element elementTypeMode;
   String documentation;
   Element elementDocumentation;
   List<StructureMap_Input> input;
   List<StructureMap_Rule> rule;
 
-  StructureMap_Group(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.extend,
-      this.elementExtends,
-      this.typeMode,
-      this.elementTypeMode,
-      this.documentation,
-      this.elementDocumentation,
-      @required this.input,
-      @required this.rule});
+  StructureMap_Group({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.extend,
+    this.elementExtends,
+    this.typeMode,
+    this.elementTypeMode,
+    this.documentation,
+    this.elementDocumentation,
+    @required this.input,
+    @required this.rule,
+  });
 
   factory StructureMap_Group.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_GroupFromJson(json);
@@ -352,21 +358,22 @@ class StructureMap_Group {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Input {
-  static Future<StructureMap_Input> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String type,
-      Element elementType,
-      String mode,
-      Element elementMode,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<StructureMap_Input> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String type,
+    Element elementType,
+    String mode,
+    Element elementMode,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Input newStructureMap_Input = new StructureMap_Input(
-      id: await fhirDb.newResourceId('StructureMap_Input'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Input'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -388,23 +395,24 @@ class StructureMap_Input {
   Element elementName;
   String type;
   Element elementType;
-  String mode; // <code> enum: source/target;
+  String mode;
   Element elementMode;
   String documentation;
   Element elementDocumentation;
 
-  StructureMap_Input(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.type,
-      this.elementType,
-      this.mode,
-      this.elementMode,
-      this.documentation,
-      this.elementDocumentation});
+  StructureMap_Input({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.type,
+    this.elementType,
+    this.mode,
+    this.elementMode,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory StructureMap_Input.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_InputFromJson(json);
@@ -413,21 +421,22 @@ class StructureMap_Input {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Rule {
-  static Future<StructureMap_Rule> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      List<StructureMap_Source> source,
-      List<StructureMap_Target> target,
-      List<StructureMap_Rule> rule,
-      List<StructureMap_Dependent> dependent,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<StructureMap_Rule> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    List<StructureMap_Source> source,
+    List<StructureMap_Target> target,
+    List<StructureMap_Rule> rule,
+    List<StructureMap_Dependent> dependent,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Rule newStructureMap_Rule = new StructureMap_Rule(
-      id: await fhirDb.newResourceId('StructureMap_Rule'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Rule'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -454,18 +463,19 @@ class StructureMap_Rule {
   String documentation;
   Element elementDocumentation;
 
-  StructureMap_Rule(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      @required this.source,
-      this.target,
-      this.rule,
-      this.dependent,
-      this.documentation,
-      this.elementDocumentation});
+  StructureMap_Rule({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    @required this.source,
+    this.target,
+    this.rule,
+    this.dependent,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory StructureMap_Rule.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_RuleFromJson(json);
@@ -474,102 +484,103 @@ class StructureMap_Rule {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Source {
-  static Future<StructureMap_Source> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String context,
-      Element elementContext,
-      int min,
-      Element elementMin,
-      String max,
-      Element elementMax,
-      String type,
-      Element elementType,
-      String defaultValueBase64Binary,
-      Element elementDefaultValueBase64Binary,
-      bool defaultValueBoolean,
-      Element elementDefaultValueBoolean,
-      String defaultValueCanonical,
-      Element elementDefaultValueCanonical,
-      String defaultValueCode,
-      Element elementDefaultValueCode,
-      String defaultValueDate,
-      Element elementDefaultValueDate,
-      String defaultValueDateTime,
-      Element elementDefaultValueDateTime,
-      int defaultValueDecimal,
-      Element elementDefaultValueDecimal,
-      String defaultValueId,
-      Element elementDefaultValueId,
-      String defaultValueInstant,
-      Element elementDefaultValueInstant,
-      int defaultValueInteger,
-      Element elementDefaultValueInteger,
-      String defaultValueMarkdown,
-      Element elementDefaultValueMarkdown,
-      String defaultValueOid,
-      Element elementDefaultValueOid,
-      int defaultValuePositiveInt,
-      Element elementDefaultValuePositiveInt,
-      String defaultValueString,
-      Element elementDefaultValueString,
-      String defaultValueTime,
-      Element elementDefaultValueTime,
-      int defaultValueUnsignedInt,
-      Element elementDefaultValueUnsignedInt,
-      String defaultValueUri,
-      Element elementDefaultValueUri,
-      String defaultValueUrl,
-      Element elementDefaultValueUrl,
-      String defaultValueUuid,
-      Element elementDefaultValueUuid,
-      Address defaultValueAddress,
-      Age defaultValueAge,
-      Annotation defaultValueAnnotation,
-      Attachment defaultValueAttachment,
-      CodeableConcept defaultValueCodeableConcept,
-      Coding defaultValueCoding,
-      ContactPoint defaultValueContactPoint,
-      Count defaultValueCount,
-      Distance defaultValueDistance,
-      Duration defaultValueDuration,
-      HumanName defaultValueHumanName,
-      Identifier defaultValueIdentifier,
-      Money defaultValueMoney,
-      Period defaultValuePeriod,
-      Quantity defaultValueQuantity,
-      Range defaultValueRange,
-      Ratio defaultValueRatio,
-      Reference defaultValueReference,
-      SampledData defaultValueSampledData,
-      Signature defaultValueSignature,
-      Timing defaultValueTiming,
-      ContactDetail defaultValueContactDetail,
-      Contributor defaultValueContributor,
-      DataRequirement defaultValueDataRequirement,
-      Expression defaultValueExpression,
-      ParameterDefinition defaultValueParameterDefinition,
-      RelatedArtifact defaultValueRelatedArtifact,
-      TriggerDefinition defaultValueTriggerDefinition,
-      UsageContext defaultValueUsageContext,
-      Dosage defaultValueDosage,
-      Meta defaultValueMeta,
-      String element,
-      Element elementElement,
-      String listMode,
-      Element elementListMode,
-      String variable,
-      Element elementVariable,
-      String condition,
-      Element elementCondition,
-      String check,
-      Element elementCheck,
-      String logMessage,
-      Element elementLogMessage}) async {
+  static Future<StructureMap_Source> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String context,
+    Element elementContext,
+    int min,
+    Element elementMin,
+    String max,
+    Element elementMax,
+    String type,
+    Element elementType,
+    String defaultValueBase64Binary,
+    Element elementDefaultValueBase64Binary,
+    bool defaultValueBoolean,
+    Element elementDefaultValueBoolean,
+    String defaultValueCanonical,
+    Element elementDefaultValueCanonical,
+    String defaultValueCode,
+    Element elementDefaultValueCode,
+    String defaultValueDate,
+    Element elementDefaultValueDate,
+    String defaultValueDateTime,
+    Element elementDefaultValueDateTime,
+    int defaultValueDecimal,
+    Element elementDefaultValueDecimal,
+    String defaultValueId,
+    Element elementDefaultValueId,
+    String defaultValueInstant,
+    Element elementDefaultValueInstant,
+    int defaultValueInteger,
+    Element elementDefaultValueInteger,
+    String defaultValueMarkdown,
+    Element elementDefaultValueMarkdown,
+    String defaultValueOid,
+    Element elementDefaultValueOid,
+    int defaultValuePositiveInt,
+    Element elementDefaultValuePositiveInt,
+    String defaultValueString,
+    Element elementDefaultValueString,
+    String defaultValueTime,
+    Element elementDefaultValueTime,
+    int defaultValueUnsignedInt,
+    Element elementDefaultValueUnsignedInt,
+    String defaultValueUri,
+    Element elementDefaultValueUri,
+    String defaultValueUrl,
+    Element elementDefaultValueUrl,
+    String defaultValueUuid,
+    Element elementDefaultValueUuid,
+    Address defaultValueAddress,
+    Age defaultValueAge,
+    Annotation defaultValueAnnotation,
+    Attachment defaultValueAttachment,
+    CodeableConcept defaultValueCodeableConcept,
+    Coding defaultValueCoding,
+    ContactPoint defaultValueContactPoint,
+    Count defaultValueCount,
+    Distance defaultValueDistance,
+    Duration defaultValueDuration,
+    HumanName defaultValueHumanName,
+    Identifier defaultValueIdentifier,
+    Money defaultValueMoney,
+    Period defaultValuePeriod,
+    Quantity defaultValueQuantity,
+    Range defaultValueRange,
+    Ratio defaultValueRatio,
+    Reference defaultValueReference,
+    SampledData defaultValueSampledData,
+    Signature defaultValueSignature,
+    Timing defaultValueTiming,
+    ContactDetail defaultValueContactDetail,
+    Contributor defaultValueContributor,
+    DataRequirement defaultValueDataRequirement,
+    Expression defaultValueExpression,
+    ParameterDefinition defaultValueParameterDefinition,
+    RelatedArtifact defaultValueRelatedArtifact,
+    TriggerDefinition defaultValueTriggerDefinition,
+    UsageContext defaultValueUsageContext,
+    Dosage defaultValueDosage,
+    Meta defaultValueMeta,
+    String element,
+    Element elementElement,
+    String listMode,
+    Element elementListMode,
+    String variable,
+    Element elementVariable,
+    String condition,
+    Element elementCondition,
+    String check,
+    Element elementCheck,
+    String logMessage,
+    Element elementLogMessage,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Source newStructureMap_Source = new StructureMap_Source(
-      id: await fhirDb.newResourceId('StructureMap_Source'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Source'),
       extension: extension,
       modifierExtension: modifierExtension,
       context: context,
@@ -676,48 +687,43 @@ class StructureMap_Source {
   Element elementMax;
   String type;
   Element elementType;
-  String defaultValueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+  String defaultValueBase64Binary;
   Element elementDefaultValueBase64Binary;
-  bool defaultValueBoolean; //  pattern: ^true|false$
+  bool defaultValueBoolean;
   Element elementDefaultValueBoolean;
-  String defaultValueCanonical; //  pattern: ^\S*$
+  String defaultValueCanonical;
   Element elementDefaultValueCanonical;
-  String defaultValueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+  String defaultValueCode;
   Element elementDefaultValueCode;
-  String
-      defaultValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String defaultValueDate;
   Element elementDefaultValueDate;
-  String
-      defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String defaultValueDateTime;
   Element elementDefaultValueDateTime;
-  int defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int defaultValueDecimal;
   Element elementDefaultValueDecimal;
-  String defaultValueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
+  String defaultValueId;
   Element elementDefaultValueId;
-  String
-      defaultValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
+  String defaultValueInstant;
   Element elementDefaultValueInstant;
-  int defaultValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int defaultValueInteger;
   Element elementDefaultValueInteger;
-  String defaultValueMarkdown; //  pattern: ^[ \r\n\t\S]+$
+  String defaultValueMarkdown;
   Element elementDefaultValueMarkdown;
-  String defaultValueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
+  String defaultValueOid;
   Element elementDefaultValueOid;
-  int defaultValuePositiveInt; //  pattern: ^[1-9][0-9]*$
+  int defaultValuePositiveInt;
   Element elementDefaultValuePositiveInt;
-  String defaultValueString; //  pattern: ^[ \r\n\t\S]+$
+  String defaultValueString;
   Element elementDefaultValueString;
-  String
-      defaultValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String defaultValueTime;
   Element elementDefaultValueTime;
-  int defaultValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+  int defaultValueUnsignedInt;
   Element elementDefaultValueUnsignedInt;
-  String defaultValueUri; //  pattern: ^\S*$
+  String defaultValueUri;
   Element elementDefaultValueUri;
-  String defaultValueUrl; //  pattern: ^\S*$
+  String defaultValueUrl;
   Element elementDefaultValueUrl;
-  String
-      defaultValueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+  String defaultValueUuid;
   Element elementDefaultValueUuid;
   Address defaultValueAddress;
   Age defaultValueAge;
@@ -752,7 +758,7 @@ class StructureMap_Source {
   Meta defaultValueMeta;
   String element;
   Element elementElement;
-  String listMode; // <code> enum: first/not_first/last/not_last/only_one;
+  String listMode;
   Element elementListMode;
   String variable;
   Element elementVariable;
@@ -763,99 +769,100 @@ class StructureMap_Source {
   String logMessage;
   Element elementLogMessage;
 
-  StructureMap_Source(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.context,
-      this.elementContext,
-      this.min,
-      this.elementMin,
-      this.max,
-      this.elementMax,
-      this.type,
-      this.elementType,
-      this.defaultValueBase64Binary,
-      this.elementDefaultValueBase64Binary,
-      this.defaultValueBoolean,
-      this.elementDefaultValueBoolean,
-      this.defaultValueCanonical,
-      this.elementDefaultValueCanonical,
-      this.defaultValueCode,
-      this.elementDefaultValueCode,
-      this.defaultValueDate,
-      this.elementDefaultValueDate,
-      this.defaultValueDateTime,
-      this.elementDefaultValueDateTime,
-      this.defaultValueDecimal,
-      this.elementDefaultValueDecimal,
-      this.defaultValueId,
-      this.elementDefaultValueId,
-      this.defaultValueInstant,
-      this.elementDefaultValueInstant,
-      this.defaultValueInteger,
-      this.elementDefaultValueInteger,
-      this.defaultValueMarkdown,
-      this.elementDefaultValueMarkdown,
-      this.defaultValueOid,
-      this.elementDefaultValueOid,
-      this.defaultValuePositiveInt,
-      this.elementDefaultValuePositiveInt,
-      this.defaultValueString,
-      this.elementDefaultValueString,
-      this.defaultValueTime,
-      this.elementDefaultValueTime,
-      this.defaultValueUnsignedInt,
-      this.elementDefaultValueUnsignedInt,
-      this.defaultValueUri,
-      this.elementDefaultValueUri,
-      this.defaultValueUrl,
-      this.elementDefaultValueUrl,
-      this.defaultValueUuid,
-      this.elementDefaultValueUuid,
-      this.defaultValueAddress,
-      this.defaultValueAge,
-      this.defaultValueAnnotation,
-      this.defaultValueAttachment,
-      this.defaultValueCodeableConcept,
-      this.defaultValueCoding,
-      this.defaultValueContactPoint,
-      this.defaultValueCount,
-      this.defaultValueDistance,
-      this.defaultValueDuration,
-      this.defaultValueHumanName,
-      this.defaultValueIdentifier,
-      this.defaultValueMoney,
-      this.defaultValuePeriod,
-      this.defaultValueQuantity,
-      this.defaultValueRange,
-      this.defaultValueRatio,
-      this.defaultValueReference,
-      this.defaultValueSampledData,
-      this.defaultValueSignature,
-      this.defaultValueTiming,
-      this.defaultValueContactDetail,
-      this.defaultValueContributor,
-      this.defaultValueDataRequirement,
-      this.defaultValueExpression,
-      this.defaultValueParameterDefinition,
-      this.defaultValueRelatedArtifact,
-      this.defaultValueTriggerDefinition,
-      this.defaultValueUsageContext,
-      this.defaultValueDosage,
-      this.defaultValueMeta,
-      this.element,
-      this.elementElement,
-      this.listMode,
-      this.elementListMode,
-      this.variable,
-      this.elementVariable,
-      this.condition,
-      this.elementCondition,
-      this.check,
-      this.elementCheck,
-      this.logMessage,
-      this.elementLogMessage});
+  StructureMap_Source({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.context,
+    this.elementContext,
+    this.min,
+    this.elementMin,
+    this.max,
+    this.elementMax,
+    this.type,
+    this.elementType,
+    this.defaultValueBase64Binary,
+    this.elementDefaultValueBase64Binary,
+    this.defaultValueBoolean,
+    this.elementDefaultValueBoolean,
+    this.defaultValueCanonical,
+    this.elementDefaultValueCanonical,
+    this.defaultValueCode,
+    this.elementDefaultValueCode,
+    this.defaultValueDate,
+    this.elementDefaultValueDate,
+    this.defaultValueDateTime,
+    this.elementDefaultValueDateTime,
+    this.defaultValueDecimal,
+    this.elementDefaultValueDecimal,
+    this.defaultValueId,
+    this.elementDefaultValueId,
+    this.defaultValueInstant,
+    this.elementDefaultValueInstant,
+    this.defaultValueInteger,
+    this.elementDefaultValueInteger,
+    this.defaultValueMarkdown,
+    this.elementDefaultValueMarkdown,
+    this.defaultValueOid,
+    this.elementDefaultValueOid,
+    this.defaultValuePositiveInt,
+    this.elementDefaultValuePositiveInt,
+    this.defaultValueString,
+    this.elementDefaultValueString,
+    this.defaultValueTime,
+    this.elementDefaultValueTime,
+    this.defaultValueUnsignedInt,
+    this.elementDefaultValueUnsignedInt,
+    this.defaultValueUri,
+    this.elementDefaultValueUri,
+    this.defaultValueUrl,
+    this.elementDefaultValueUrl,
+    this.defaultValueUuid,
+    this.elementDefaultValueUuid,
+    this.defaultValueAddress,
+    this.defaultValueAge,
+    this.defaultValueAnnotation,
+    this.defaultValueAttachment,
+    this.defaultValueCodeableConcept,
+    this.defaultValueCoding,
+    this.defaultValueContactPoint,
+    this.defaultValueCount,
+    this.defaultValueDistance,
+    this.defaultValueDuration,
+    this.defaultValueHumanName,
+    this.defaultValueIdentifier,
+    this.defaultValueMoney,
+    this.defaultValuePeriod,
+    this.defaultValueQuantity,
+    this.defaultValueRange,
+    this.defaultValueRatio,
+    this.defaultValueReference,
+    this.defaultValueSampledData,
+    this.defaultValueSignature,
+    this.defaultValueTiming,
+    this.defaultValueContactDetail,
+    this.defaultValueContributor,
+    this.defaultValueDataRequirement,
+    this.defaultValueExpression,
+    this.defaultValueParameterDefinition,
+    this.defaultValueRelatedArtifact,
+    this.defaultValueTriggerDefinition,
+    this.defaultValueUsageContext,
+    this.defaultValueDosage,
+    this.defaultValueMeta,
+    this.element,
+    this.elementElement,
+    this.listMode,
+    this.elementListMode,
+    this.variable,
+    this.elementVariable,
+    this.condition,
+    this.elementCondition,
+    this.check,
+    this.elementCheck,
+    this.logMessage,
+    this.elementLogMessage,
+  });
 
   factory StructureMap_Source.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_SourceFromJson(json);
@@ -864,28 +871,29 @@ class StructureMap_Source {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Target {
-  static Future<StructureMap_Target> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String context,
-      Element elementContext,
-      String contextType,
-      Element elementContextType,
-      String element,
-      Element elementElement,
-      String variable,
-      Element elementVariable,
-      List<String> listMode,
-      List<Element> elementListMode,
-      String listRuleId,
-      Element elementListRuleId,
-      String transform,
-      Element elementTransform,
-      List<StructureMap_Parameter> parameter}) async {
+  static Future<StructureMap_Target> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String context,
+    Element elementContext,
+    String contextType,
+    Element elementContextType,
+    String element,
+    Element elementElement,
+    String variable,
+    Element elementVariable,
+    String listMode,
+    List<Element> elementListMode,
+    String listRuleId,
+    Element elementListRuleId,
+    String transform,
+    Element elementTransform,
+    List<StructureMap_Parameter> parameter,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Target newStructureMap_Target = new StructureMap_Target(
-      id: await fhirDb.newResourceId('StructureMap_Target'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Target'),
       extension: extension,
       modifierExtension: modifierExtension,
       context: context,
@@ -912,40 +920,40 @@ class StructureMap_Target {
   List<Extension> modifierExtension;
   String context;
   Element elementContext;
-  String contextType; // <code> enum: type/variable;
+  String contextType;
   Element elementContextType;
   String element;
   Element elementElement;
   String variable;
   Element elementVariable;
-  List<String> listMode; // <code> enum: first/share/last/collate> listMode;
+  String listMode;
   List<Element> elementListMode;
   String listRuleId;
   Element elementListRuleId;
-  String
-      transform; // <code> enum: create/copy/truncate/escape/cast/append/translate/reference/dateOp/uuid/pointer/evaluate/cc/c/qty/id/cp;
+  String transform;
   Element elementTransform;
   List<StructureMap_Parameter> parameter;
 
-  StructureMap_Target(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.context,
-      this.elementContext,
-      this.contextType,
-      this.elementContextType,
-      this.element,
-      this.elementElement,
-      this.variable,
-      this.elementVariable,
-      this.listMode,
-      this.elementListMode,
-      this.listRuleId,
-      this.elementListRuleId,
-      this.transform,
-      this.elementTransform,
-      this.parameter});
+  StructureMap_Target({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.context,
+    this.elementContext,
+    this.contextType,
+    this.elementContextType,
+    this.element,
+    this.elementElement,
+    this.variable,
+    this.elementVariable,
+    this.listMode,
+    this.elementListMode,
+    this.listRuleId,
+    this.elementListRuleId,
+    this.transform,
+    this.elementTransform,
+    this.parameter,
+  });
 
   factory StructureMap_Target.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_TargetFromJson(json);
@@ -954,24 +962,25 @@ class StructureMap_Target {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Parameter {
-  static Future<StructureMap_Parameter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String valueId,
-      Element elementValueId,
-      String valueString,
-      Element elementValueString,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      int valueInteger,
-      Element elementValueInteger,
-      int valueDecimal,
-      Element elementValueDecimal}) async {
+  static Future<StructureMap_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String valueId,
+    Element elementValueId,
+    String valueString,
+    Element elementValueString,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueInteger,
+    Element elementValueInteger,
+    int valueDecimal,
+    Element elementValueDecimal,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Parameter newStructureMap_Parameter =
         new StructureMap_Parameter(
-      id: await fhirDb.newResourceId('StructureMap_Parameter'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Parameter'),
       extension: extension,
       modifierExtension: modifierExtension,
       valueId: valueId,
@@ -991,31 +1000,32 @@ class StructureMap_Parameter {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
+  String valueId;
   Element elementValueId;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal;
   Element elementValueDecimal;
 
-  StructureMap_Parameter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.valueId,
-      this.elementValueId,
-      this.valueString,
-      this.elementValueString,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueDecimal,
-      this.elementValueDecimal});
+  StructureMap_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueId,
+    this.elementValueId,
+    this.valueString,
+    this.elementValueString,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDecimal,
+    this.elementValueDecimal,
+  });
 
   factory StructureMap_Parameter.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_ParameterFromJson(json);
@@ -1024,18 +1034,19 @@ class StructureMap_Parameter {
 
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Dependent {
-  static Future<StructureMap_Dependent> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      List<String> variable,
-      List<Element> elementVariable}) async {
+  static Future<StructureMap_Dependent> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    List<String> variable,
+    List<Element> elementVariable,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Dependent newStructureMap_Dependent =
         new StructureMap_Dependent(
-      id: await fhirDb.newResourceId('StructureMap_Dependent'),
+      id: id ?? await fhirDb.newResourceId('StructureMap_Dependent'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -1054,14 +1065,15 @@ class StructureMap_Dependent {
   List<String> variable;
   List<Element> elementVariable;
 
-  StructureMap_Dependent(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.variable,
-      this.elementVariable});
+  StructureMap_Dependent({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.variable,
+    this.elementVariable,
+  });
 
   factory StructureMap_Dependent.fromJson(Map<String, dynamic> json) =>
       _$StructureMap_DependentFromJson(json);
@@ -1842,7 +1854,7 @@ StructureMap_Target _$StructureMap_TargetFromJson(Map<String, dynamic> json) {
     elementVariable: json['elementVariable'] == null
         ? null
         : Element.fromJson(json['elementVariable'] as Map<String, dynamic>),
-    listMode: (json['listMode'] as List)?.map((e) => e as String)?.toList(),
+    listMode: json['listMode'] as String,
     elementListMode: (json['elementListMode'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))

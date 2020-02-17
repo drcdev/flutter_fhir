@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -17,58 +17,59 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ChargeItem {
-  static Future<ChargeItem> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<String> definitionUri,
-      List<Element> elementDefinitionUri,
-      List<String> definitionCanonical,
-      String status,
-      Element elementStatus,
-      List<Reference> partOf,
-      CodeableConcept code,
-      Reference subject,
-      Reference context,
-      String occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Period occurrencePeriod,
-      Timing occurrenceTiming,
-      List<ChargeItem_Performer> performer,
-      Reference performingOrganization,
-      Reference requestingOrganization,
-      Reference costCenter,
-      Quantity quantity,
-      List<CodeableConcept> bodysite,
-      double factorOverride,
-      Element elementFactorOverride,
-      Money priceOverride,
-      String overrideReason,
-      Element elementOverrideReason,
-      Reference enterer,
-      DateTime enteredDate,
-      Element elementEnteredDate,
-      List<CodeableConcept> reason,
-      List<Reference> service,
-      Reference productReference,
-      CodeableConcept productCodeableConcept,
-      List<Reference> account,
-      List<Annotation> note,
-      List<Reference> supportingInformation}) async {
+  static Future<ChargeItem> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> definitionUri,
+    List<Element> elementDefinitionUri,
+    List<String> definitionCanonical,
+    String status,
+    Element elementStatus,
+    List<Reference> partOf,
+    CodeableConcept code,
+    Reference subject,
+    Reference context,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    Timing occurrenceTiming,
+    List<ChargeItem_Performer> performer,
+    Reference performingOrganization,
+    Reference requestingOrganization,
+    Reference costCenter,
+    Quantity quantity,
+    List<CodeableConcept> bodysite,
+    double factorOverride,
+    Element elementFactorOverride,
+    Money priceOverride,
+    String overrideReason,
+    Element elementOverrideReason,
+    Reference enterer,
+    DateTime enteredDate,
+    Element elementEnteredDate,
+    List<CodeableConcept> reason,
+    List<Reference> service,
+    Reference productReference,
+    CodeableConcept productCodeableConcept,
+    List<Reference> account,
+    List<Annotation> note,
+    List<Reference> supportingInformation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ChargeItem newChargeItem = new ChargeItem(
-      resourceType: 'ChargeItem',
-      id: await fhirDb.newResourceId('ChargeItem'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ChargeItem'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -115,17 +116,17 @@ class ChargeItem {
     );
     newChargeItem.meta.createdAt = DateTime.now();
     newChargeItem.meta.lastUpdated = newChargeItem.meta.createdAt;
-    int saved = await fhirDb.newResource(newChargeItem);
+    int saved = await fhirDb.saveResource(newChargeItem);
     return newChargeItem;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ChargeItem';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -140,15 +141,13 @@ class ChargeItem {
   List<String> definitionUri;
   List<Element> elementDefinitionUri;
   List<String> definitionCanonical;
-  String
-      status; // <code> enum: planned/billable/not-billable/aborted/billed/entered-in-error/unknown;
+  String status;
   Element elementStatus;
   List<Reference> partOf;
   CodeableConcept code;
   Reference subject;
   Reference context;
-  String
-      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String occurrenceDateTime;
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   Timing occurrenceTiming;
@@ -174,53 +173,54 @@ class ChargeItem {
   List<Annotation> note;
   List<Reference> supportingInformation;
 
-  ChargeItem(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.definitionUri,
-      this.elementDefinitionUri,
-      this.definitionCanonical,
-      this.status,
-      this.elementStatus,
-      this.partOf,
-      @required this.code,
-      @required this.subject,
-      this.context,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.occurrencePeriod,
-      this.occurrenceTiming,
-      this.performer,
-      this.performingOrganization,
-      this.requestingOrganization,
-      this.costCenter,
-      this.quantity,
-      this.bodysite,
-      this.factorOverride,
-      this.elementFactorOverride,
-      this.priceOverride,
-      this.overrideReason,
-      this.elementOverrideReason,
-      this.enterer,
-      this.enteredDate,
-      this.elementEnteredDate,
-      this.reason,
-      this.service,
-      this.productReference,
-      this.productCodeableConcept,
-      this.account,
-      this.note,
-      this.supportingInformation});
+  ChargeItem({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.definitionUri,
+    this.elementDefinitionUri,
+    this.definitionCanonical,
+    this.status,
+    this.elementStatus,
+    this.partOf,
+    @required this.code,
+    @required this.subject,
+    this.context,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.occurrenceTiming,
+    this.performer,
+    this.performingOrganization,
+    this.requestingOrganization,
+    this.costCenter,
+    this.quantity,
+    this.bodysite,
+    this.factorOverride,
+    this.elementFactorOverride,
+    this.priceOverride,
+    this.overrideReason,
+    this.elementOverrideReason,
+    this.enterer,
+    this.enteredDate,
+    this.elementEnteredDate,
+    this.reason,
+    this.service,
+    this.productReference,
+    this.productCodeableConcept,
+    this.account,
+    this.note,
+    this.supportingInformation,
+  });
 
   factory ChargeItem.fromJson(Map<String, dynamic> json) =>
       _$ChargeItemFromJson(json);
@@ -229,15 +229,16 @@ class ChargeItem {
 
 @JsonSerializable(explicitToJson: true)
 class ChargeItem_Performer {
-  static Future<ChargeItem_Performer> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept function,
-      Reference actor}) async {
+  static Future<ChargeItem_Performer> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept function,
+    Reference actor,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ChargeItem_Performer newChargeItem_Performer = new ChargeItem_Performer(
-      id: await fhirDb.newResourceId('ChargeItem_Performer'),
+      id: id ?? await fhirDb.newResourceId('ChargeItem_Performer'),
       extension: extension,
       modifierExtension: modifierExtension,
       function: function,
@@ -252,12 +253,13 @@ class ChargeItem_Performer {
   CodeableConcept function;
   Reference actor;
 
-  ChargeItem_Performer(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.function,
-      @required this.actor});
+  ChargeItem_Performer({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.function,
+    @required this.actor,
+  });
 
   factory ChargeItem_Performer.fromJson(Map<String, dynamic> json) =>
       _$ChargeItem_PerformerFromJson(json);

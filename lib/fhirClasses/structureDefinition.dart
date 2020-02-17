@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/elementDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -15,67 +15,68 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition {
-  static Future<StructureDefinition> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String purpose,
-      Element elementPurpose,
-      String copyright,
-      Element elementCopyright,
-      List<Coding> keyword,
-      String fhirVersion,
-      Element elementFhirVersion,
-      List<StructureDefinition_Mapping> mapping,
-      String kind,
-      Element elementKind,
-      bool abstract,
-      Element elementAbstract,
-      List<StructureDefinition_Context> context,
-      List<String> contextInvariant,
-      List<Element> elementContextInvariant,
-      String type,
-      Element elementType,
-      String baseDefinition,
-      String derivation,
-      Element elementDerivation,
-      StructureDefinition_Snapshot snapshot,
-      StructureDefinition_Differential differential}) async {
+  static Future<StructureDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    List<Coding> keyword,
+    String fhirVersion,
+    Element elementFhirVersion,
+    List<StructureDefinition_Mapping> mapping,
+    String kind,
+    Element elementKind,
+    bool abstract,
+    Element elementAbstract,
+    List<StructureDefinition_Context> context,
+    List<String> contextInvariant,
+    List<Element> elementContextInvariant,
+    String type,
+    Element elementType,
+    String baseDefinition,
+    String derivation,
+    Element elementDerivation,
+    StructureDefinition_Snapshot snapshot,
+    StructureDefinition_Differential differential,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureDefinition newStructureDefinition = new StructureDefinition(
-      resourceType: 'StructureDefinition',
-      id: await fhirDb.newResourceId('StructureDefinition'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('StructureDefinition'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -132,17 +133,17 @@ class StructureDefinition {
     newStructureDefinition.meta.createdAt = DateTime.now();
     newStructureDefinition.meta.lastUpdated =
         newStructureDefinition.meta.createdAt;
-    int saved = await fhirDb.newResource(newStructureDefinition);
+    int saved = await fhirDb.saveResource(newStructureDefinition);
     return newStructureDefinition;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'StructureDefinition';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -162,7 +163,7 @@ class StructureDefinition {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -180,11 +181,10 @@ class StructureDefinition {
   String copyright;
   Element elementCopyright;
   List<Coding> keyword;
-  String
-      fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
+  String fhirVersion;
   Element elementFhirVersion;
   List<StructureDefinition_Mapping> mapping;
-  String kind; // <code> enum: primitive-type/complex-type/resource/logical;
+  String kind;
   Element elementKind;
   bool abstract;
   Element elementAbstract;
@@ -194,67 +194,68 @@ class StructureDefinition {
   String type;
   Element elementType;
   String baseDefinition;
-  String derivation; // <code> enum: specialization/constraint;
+  String derivation;
   Element elementDerivation;
   StructureDefinition_Snapshot snapshot;
   StructureDefinition_Differential differential;
 
-  StructureDefinition(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.purpose,
-      this.elementPurpose,
-      this.copyright,
-      this.elementCopyright,
-      this.keyword,
-      this.fhirVersion,
-      this.elementFhirVersion,
-      this.mapping,
-      this.kind,
-      this.elementKind,
-      this.abstract,
-      this.elementAbstract,
-      this.context,
-      this.contextInvariant,
-      this.elementContextInvariant,
-      this.type,
-      this.elementType,
-      this.baseDefinition,
-      this.derivation,
-      this.elementDerivation,
-      this.snapshot,
-      this.differential});
+  StructureDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.keyword,
+    this.fhirVersion,
+    this.elementFhirVersion,
+    this.mapping,
+    this.kind,
+    this.elementKind,
+    this.abstract,
+    this.elementAbstract,
+    this.context,
+    this.contextInvariant,
+    this.elementContextInvariant,
+    this.type,
+    this.elementType,
+    this.baseDefinition,
+    this.derivation,
+    this.elementDerivation,
+    this.snapshot,
+    this.differential,
+  });
 
   factory StructureDefinition.fromJson(Map<String, dynamic> json) =>
       _$StructureDefinitionFromJson(json);
@@ -263,22 +264,23 @@ class StructureDefinition {
 
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Mapping {
-  static Future<StructureDefinition_Mapping> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String identity,
-      Element elementIdentity,
-      String uri,
-      Element elementUri,
-      String name,
-      Element elementName,
-      String comment,
-      Element elementComment}) async {
+  static Future<StructureDefinition_Mapping> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String identity,
+    Element elementIdentity,
+    String uri,
+    Element elementUri,
+    String name,
+    Element elementName,
+    String comment,
+    Element elementComment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Mapping newStructureDefinition_Mapping =
         new StructureDefinition_Mapping(
-      id: await fhirDb.newResourceId('StructureDefinition_Mapping'),
+      id: id ?? await fhirDb.newResourceId('StructureDefinition_Mapping'),
       extension: extension,
       modifierExtension: modifierExtension,
       identity: identity,
@@ -305,18 +307,19 @@ class StructureDefinition_Mapping {
   String comment;
   Element elementComment;
 
-  StructureDefinition_Mapping(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identity,
-      this.elementIdentity,
-      this.uri,
-      this.elementUri,
-      this.name,
-      this.elementName,
-      this.comment,
-      this.elementComment});
+  StructureDefinition_Mapping({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identity,
+    this.elementIdentity,
+    this.uri,
+    this.elementUri,
+    this.name,
+    this.elementName,
+    this.comment,
+    this.elementComment,
+  });
 
   factory StructureDefinition_Mapping.fromJson(Map<String, dynamic> json) =>
       _$StructureDefinition_MappingFromJson(json);
@@ -325,18 +328,19 @@ class StructureDefinition_Mapping {
 
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Context {
-  static Future<StructureDefinition_Context> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      String expression,
-      Element elementExpression}) async {
+  static Future<StructureDefinition_Context> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String expression,
+    Element elementExpression,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Context newStructureDefinition_Context =
         new StructureDefinition_Context(
-      id: await fhirDb.newResourceId('StructureDefinition_Context'),
+      id: id ?? await fhirDb.newResourceId('StructureDefinition_Context'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -350,19 +354,20 @@ class StructureDefinition_Context {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String type; // <code> enum: fhirpath/element/extension;
+  String type;
   Element elementType;
   String expression;
   Element elementExpression;
 
-  StructureDefinition_Context(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.expression,
-      this.elementExpression});
+  StructureDefinition_Context({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.expression,
+    this.elementExpression,
+  });
 
   factory StructureDefinition_Context.fromJson(Map<String, dynamic> json) =>
       _$StructureDefinition_ContextFromJson(json);
@@ -371,15 +376,16 @@ class StructureDefinition_Context {
 
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Snapshot {
-  static Future<StructureDefinition_Snapshot> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<ElementDefinition> element}) async {
+  static Future<StructureDefinition_Snapshot> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<ElementDefinition> element,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Snapshot newStructureDefinition_Snapshot =
         new StructureDefinition_Snapshot(
-      id: await fhirDb.newResourceId('StructureDefinition_Snapshot'),
+      id: id ?? await fhirDb.newResourceId('StructureDefinition_Snapshot'),
       extension: extension,
       modifierExtension: modifierExtension,
       element: element,
@@ -392,11 +398,12 @@ class StructureDefinition_Snapshot {
   List<Extension> modifierExtension;
   List<ElementDefinition> element;
 
-  StructureDefinition_Snapshot(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.element});
+  StructureDefinition_Snapshot({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.element,
+  });
 
   factory StructureDefinition_Snapshot.fromJson(Map<String, dynamic> json) =>
       _$StructureDefinition_SnapshotFromJson(json);
@@ -405,15 +412,16 @@ class StructureDefinition_Snapshot {
 
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Differential {
-  static Future<StructureDefinition_Differential> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<ElementDefinition> element}) async {
+  static Future<StructureDefinition_Differential> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<ElementDefinition> element,
+  }) async {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Differential newStructureDefinition_Differential =
         new StructureDefinition_Differential(
-      id: await fhirDb.newResourceId('StructureDefinition_Differential'),
+      id: id ?? await fhirDb.newResourceId('StructureDefinition_Differential'),
       extension: extension,
       modifierExtension: modifierExtension,
       element: element,
@@ -426,11 +434,12 @@ class StructureDefinition_Differential {
   List<Extension> modifierExtension;
   List<ElementDefinition> element;
 
-  StructureDefinition_Differential(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.element});
+  StructureDefinition_Differential({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.element,
+  });
 
   factory StructureDefinition_Differential.fromJson(
           Map<String, dynamic> json) =>

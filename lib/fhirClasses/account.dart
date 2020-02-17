@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -13,37 +13,38 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Account {
-  static Future<Account> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept type,
-      String name,
-      Element elementName,
-      List<Reference> subject,
-      Period servicePeriod,
-      List<Account_Coverage> coverage,
-      Reference owner,
-      String description,
-      Element elementDescription,
-      List<Account_Guarantor> guarantor,
-      Reference partOf}) async {
+  static Future<Account> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept type,
+    String name,
+    Element elementName,
+    List<Reference> subject,
+    Period servicePeriod,
+    List<Account_Coverage> coverage,
+    Reference owner,
+    String description,
+    Element elementDescription,
+    List<Account_Guarantor> guarantor,
+    Reference partOf,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Account newAccount = new Account(
-      resourceType: 'Account',
-      id: await fhirDb.newResourceId('Account'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Account'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -69,17 +70,17 @@ class Account {
     );
     newAccount.meta.createdAt = DateTime.now();
     newAccount.meta.lastUpdated = newAccount.meta.createdAt;
-    int saved = await fhirDb.newResource(newAccount);
+    int saved = await fhirDb.saveResource(newAccount);
     return newAccount;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Account';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -91,8 +92,7 @@ class Account {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String
-      status; // <code> enum: active/inactive/entered-in-error/on-hold/unknown;
+  String status;
   Element elementStatus;
   CodeableConcept type;
   String name;
@@ -106,32 +106,33 @@ class Account {
   List<Account_Guarantor> guarantor;
   Reference partOf;
 
-  Account(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.type,
-      this.name,
-      this.elementName,
-      this.subject,
-      this.servicePeriod,
-      this.coverage,
-      this.owner,
-      this.description,
-      this.elementDescription,
-      this.guarantor,
-      this.partOf});
+  Account({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.type,
+    this.name,
+    this.elementName,
+    this.subject,
+    this.servicePeriod,
+    this.coverage,
+    this.owner,
+    this.description,
+    this.elementDescription,
+    this.guarantor,
+    this.partOf,
+  });
 
   factory Account.fromJson(Map<String, dynamic> json) =>
       _$AccountFromJson(json);
@@ -140,16 +141,17 @@ class Account {
 
 @JsonSerializable(explicitToJson: true)
 class Account_Coverage {
-  static Future<Account_Coverage> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference coverage,
-      int priority,
-      Element elementPriority}) async {
+  static Future<Account_Coverage> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference coverage,
+    int priority,
+    Element elementPriority,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Account_Coverage newAccount_Coverage = new Account_Coverage(
-      id: await fhirDb.newResourceId('Account_Coverage'),
+      id: id ?? await fhirDb.newResourceId('Account_Coverage'),
       extension: extension,
       modifierExtension: modifierExtension,
       coverage: coverage,
@@ -166,13 +168,14 @@ class Account_Coverage {
   int priority;
   Element elementPriority;
 
-  Account_Coverage(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.coverage,
-      this.priority,
-      this.elementPriority});
+  Account_Coverage({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.coverage,
+    this.priority,
+    this.elementPriority,
+  });
 
   factory Account_Coverage.fromJson(Map<String, dynamic> json) =>
       _$Account_CoverageFromJson(json);
@@ -181,17 +184,18 @@ class Account_Coverage {
 
 @JsonSerializable(explicitToJson: true)
 class Account_Guarantor {
-  static Future<Account_Guarantor> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference party,
-      bool onHold,
-      Element elementOnHold,
-      Period period}) async {
+  static Future<Account_Guarantor> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference party,
+    bool onHold,
+    Element elementOnHold,
+    Period period,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Account_Guarantor newAccount_Guarantor = new Account_Guarantor(
-      id: await fhirDb.newResourceId('Account_Guarantor'),
+      id: id ?? await fhirDb.newResourceId('Account_Guarantor'),
       extension: extension,
       modifierExtension: modifierExtension,
       party: party,
@@ -210,14 +214,15 @@ class Account_Guarantor {
   Element elementOnHold;
   Period period;
 
-  Account_Guarantor(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.party,
-      this.onHold,
-      this.elementOnHold,
-      this.period});
+  Account_Guarantor({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.party,
+    this.onHold,
+    this.elementOnHold,
+    this.period,
+  });
 
   factory Account_Guarantor.fromJson(Map<String, dynamic> json) =>
       _$Account_GuarantorFromJson(json);

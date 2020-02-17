@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -16,45 +16,46 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder {
-  static Future<NutritionOrder> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<String> instantiatesCanonical,
-      List<String> instantiatesUri,
-      List<Element> elementInstantiatesUri,
-      List<String> instantiates,
-      List<Element> elementInstantiates,
-      String status,
-      Element elementStatus,
-      String intent,
-      Element elementIntent,
-      Reference patient,
-      Reference encounter,
-      DateTime dateTime,
-      Element elementDateTime,
-      Reference orderer,
-      List<Reference> allergyIntolerance,
-      List<CodeableConcept> foodPreferenceModifier,
-      List<CodeableConcept> excludeFoodModifier,
-      NutritionOrder_OralDiet oralDiet,
-      List<NutritionOrder_Supplement> supplement,
-      NutritionOrder_EnteralFormula enteralFormula,
-      List<Annotation> note}) async {
+  static Future<NutritionOrder> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> instantiatesCanonical,
+    List<String> instantiatesUri,
+    List<Element> elementInstantiatesUri,
+    List<String> instantiates,
+    List<Element> elementInstantiates,
+    String status,
+    Element elementStatus,
+    String intent,
+    Element elementIntent,
+    Reference patient,
+    Reference encounter,
+    DateTime dateTime,
+    Element elementDateTime,
+    Reference orderer,
+    List<Reference> allergyIntolerance,
+    List<CodeableConcept> foodPreferenceModifier,
+    List<CodeableConcept> excludeFoodModifier,
+    NutritionOrder_OralDiet oralDiet,
+    List<NutritionOrder_Supplement> supplement,
+    NutritionOrder_EnteralFormula enteralFormula,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NutritionOrder newNutritionOrder = new NutritionOrder(
-      resourceType: 'NutritionOrder',
-      id: await fhirDb.newResourceId('NutritionOrder'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('NutritionOrder'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -88,17 +89,17 @@ class NutritionOrder {
     );
     newNutritionOrder.meta.createdAt = DateTime.now();
     newNutritionOrder.meta.lastUpdated = newNutritionOrder.meta.createdAt;
-    int saved = await fhirDb.newResource(newNutritionOrder);
+    int saved = await fhirDb.saveResource(newNutritionOrder);
     return newNutritionOrder;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'NutritionOrder';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -132,40 +133,41 @@ class NutritionOrder {
   NutritionOrder_EnteralFormula enteralFormula;
   List<Annotation> note;
 
-  NutritionOrder(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.instantiatesCanonical,
-      this.instantiatesUri,
-      this.elementInstantiatesUri,
-      this.instantiates,
-      this.elementInstantiates,
-      this.status,
-      this.elementStatus,
-      this.intent,
-      this.elementIntent,
-      @required this.patient,
-      this.encounter,
-      this.dateTime,
-      this.elementDateTime,
-      this.orderer,
-      this.allergyIntolerance,
-      this.foodPreferenceModifier,
-      this.excludeFoodModifier,
-      this.oralDiet,
-      this.supplement,
-      this.enteralFormula,
-      this.note});
+  NutritionOrder({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.instantiates,
+    this.elementInstantiates,
+    this.status,
+    this.elementStatus,
+    this.intent,
+    this.elementIntent,
+    @required this.patient,
+    this.encounter,
+    this.dateTime,
+    this.elementDateTime,
+    this.orderer,
+    this.allergyIntolerance,
+    this.foodPreferenceModifier,
+    this.excludeFoodModifier,
+    this.oralDiet,
+    this.supplement,
+    this.enteralFormula,
+    this.note,
+  });
 
   factory NutritionOrder.fromJson(Map<String, dynamic> json) =>
       _$NutritionOrderFromJson(json);
@@ -174,21 +176,22 @@ class NutritionOrder {
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_OralDiet {
-  static Future<NutritionOrder_OralDiet> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CodeableConcept> type,
-      List<Timing> schedule,
-      List<NutritionOrder_Nutrient> nutrient,
-      List<NutritionOrder_Texture> texture,
-      List<CodeableConcept> fluidConsistencyType,
-      String instruction,
-      Element elementInstruction}) async {
+  static Future<NutritionOrder_OralDiet> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> type,
+    List<Timing> schedule,
+    List<NutritionOrder_Nutrient> nutrient,
+    List<NutritionOrder_Texture> texture,
+    List<CodeableConcept> fluidConsistencyType,
+    String instruction,
+    Element elementInstruction,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_OralDiet newNutritionOrder_OralDiet =
         new NutritionOrder_OralDiet(
-      id: await fhirDb.newResourceId('NutritionOrder_OralDiet'),
+      id: id ?? await fhirDb.newResourceId('NutritionOrder_OralDiet'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -213,17 +216,18 @@ class NutritionOrder_OralDiet {
   String instruction;
   Element elementInstruction;
 
-  NutritionOrder_OralDiet(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.schedule,
-      this.nutrient,
-      this.texture,
-      this.fluidConsistencyType,
-      this.instruction,
-      this.elementInstruction});
+  NutritionOrder_OralDiet({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.schedule,
+    this.nutrient,
+    this.texture,
+    this.fluidConsistencyType,
+    this.instruction,
+    this.elementInstruction,
+  });
 
   factory NutritionOrder_OralDiet.fromJson(Map<String, dynamic> json) =>
       _$NutritionOrder_OralDietFromJson(json);
@@ -232,16 +236,17 @@ class NutritionOrder_OralDiet {
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Nutrient {
-  static Future<NutritionOrder_Nutrient> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept modifier,
-      Quantity amount}) async {
+  static Future<NutritionOrder_Nutrient> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept modifier,
+    Quantity amount,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Nutrient newNutritionOrder_Nutrient =
         new NutritionOrder_Nutrient(
-      id: await fhirDb.newResourceId('NutritionOrder_Nutrient'),
+      id: id ?? await fhirDb.newResourceId('NutritionOrder_Nutrient'),
       extension: extension,
       modifierExtension: modifierExtension,
       modifier: modifier,
@@ -256,12 +261,13 @@ class NutritionOrder_Nutrient {
   CodeableConcept modifier;
   Quantity amount;
 
-  NutritionOrder_Nutrient(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.modifier,
-      this.amount});
+  NutritionOrder_Nutrient({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.modifier,
+    this.amount,
+  });
 
   factory NutritionOrder_Nutrient.fromJson(Map<String, dynamic> json) =>
       _$NutritionOrder_NutrientFromJson(json);
@@ -270,16 +276,17 @@ class NutritionOrder_Nutrient {
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Texture {
-  static Future<NutritionOrder_Texture> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept modifier,
-      CodeableConcept foodType}) async {
+  static Future<NutritionOrder_Texture> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept modifier,
+    CodeableConcept foodType,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Texture newNutritionOrder_Texture =
         new NutritionOrder_Texture(
-      id: await fhirDb.newResourceId('NutritionOrder_Texture'),
+      id: id ?? await fhirDb.newResourceId('NutritionOrder_Texture'),
       extension: extension,
       modifierExtension: modifierExtension,
       modifier: modifier,
@@ -294,12 +301,13 @@ class NutritionOrder_Texture {
   CodeableConcept modifier;
   CodeableConcept foodType;
 
-  NutritionOrder_Texture(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.modifier,
-      this.foodType});
+  NutritionOrder_Texture({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.modifier,
+    this.foodType,
+  });
 
   factory NutritionOrder_Texture.fromJson(Map<String, dynamic> json) =>
       _$NutritionOrder_TextureFromJson(json);
@@ -308,21 +316,22 @@ class NutritionOrder_Texture {
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Supplement {
-  static Future<NutritionOrder_Supplement> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      String productName,
-      Element elementProductName,
-      List<Timing> schedule,
-      Quantity quantity,
-      String instruction,
-      Element elementInstruction}) async {
+  static Future<NutritionOrder_Supplement> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String productName,
+    Element elementProductName,
+    List<Timing> schedule,
+    Quantity quantity,
+    String instruction,
+    Element elementInstruction,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Supplement newNutritionOrder_Supplement =
         new NutritionOrder_Supplement(
-      id: await fhirDb.newResourceId('NutritionOrder_Supplement'),
+      id: id ?? await fhirDb.newResourceId('NutritionOrder_Supplement'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -347,17 +356,18 @@ class NutritionOrder_Supplement {
   String instruction;
   Element elementInstruction;
 
-  NutritionOrder_Supplement(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.productName,
-      this.elementProductName,
-      this.schedule,
-      this.quantity,
-      this.instruction,
-      this.elementInstruction});
+  NutritionOrder_Supplement({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.productName,
+    this.elementProductName,
+    this.schedule,
+    this.quantity,
+    this.instruction,
+    this.elementInstruction,
+  });
 
   factory NutritionOrder_Supplement.fromJson(Map<String, dynamic> json) =>
       _$NutritionOrder_SupplementFromJson(json);
@@ -366,26 +376,27 @@ class NutritionOrder_Supplement {
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_EnteralFormula {
-  static Future<NutritionOrder_EnteralFormula> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept baseFormulaType,
-      String baseFormulaProductName,
-      Element elementBaseFormulaProductName,
-      CodeableConcept additiveType,
-      String additiveProductName,
-      Element elementAdditiveProductName,
-      Quantity caloricDensity,
-      CodeableConcept routeofAdministration,
-      List<NutritionOrder_Administration> administration,
-      Quantity maxVolumeToDeliver,
-      String administrationInstruction,
-      Element elementAdministrationInstruction}) async {
+  static Future<NutritionOrder_EnteralFormula> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept baseFormulaType,
+    String baseFormulaProductName,
+    Element elementBaseFormulaProductName,
+    CodeableConcept additiveType,
+    String additiveProductName,
+    Element elementAdditiveProductName,
+    Quantity caloricDensity,
+    CodeableConcept routeofAdministration,
+    List<NutritionOrder_Administration> administration,
+    Quantity maxVolumeToDeliver,
+    String administrationInstruction,
+    Element elementAdministrationInstruction,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_EnteralFormula newNutritionOrder_EnteralFormula =
         new NutritionOrder_EnteralFormula(
-      id: await fhirDb.newResourceId('NutritionOrder_EnteralFormula'),
+      id: id ?? await fhirDb.newResourceId('NutritionOrder_EnteralFormula'),
       extension: extension,
       modifierExtension: modifierExtension,
       baseFormulaType: baseFormulaType,
@@ -420,22 +431,23 @@ class NutritionOrder_EnteralFormula {
   String administrationInstruction;
   Element elementAdministrationInstruction;
 
-  NutritionOrder_EnteralFormula(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.baseFormulaType,
-      this.baseFormulaProductName,
-      this.elementBaseFormulaProductName,
-      this.additiveType,
-      this.additiveProductName,
-      this.elementAdditiveProductName,
-      this.caloricDensity,
-      this.routeofAdministration,
-      this.administration,
-      this.maxVolumeToDeliver,
-      this.administrationInstruction,
-      this.elementAdministrationInstruction});
+  NutritionOrder_EnteralFormula({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.baseFormulaType,
+    this.baseFormulaProductName,
+    this.elementBaseFormulaProductName,
+    this.additiveType,
+    this.additiveProductName,
+    this.elementAdditiveProductName,
+    this.caloricDensity,
+    this.routeofAdministration,
+    this.administration,
+    this.maxVolumeToDeliver,
+    this.administrationInstruction,
+    this.elementAdministrationInstruction,
+  });
 
   factory NutritionOrder_EnteralFormula.fromJson(Map<String, dynamic> json) =>
       _$NutritionOrder_EnteralFormulaFromJson(json);
@@ -444,18 +456,19 @@ class NutritionOrder_EnteralFormula {
 
 @JsonSerializable(explicitToJson: true)
 class NutritionOrder_Administration {
-  static Future<NutritionOrder_Administration> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Timing schedule,
-      Quantity quantity,
-      Quantity rateQuantity,
-      Ratio rateRatio}) async {
+  static Future<NutritionOrder_Administration> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Timing schedule,
+    Quantity quantity,
+    Quantity rateQuantity,
+    Ratio rateRatio,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Administration newNutritionOrder_Administration =
         new NutritionOrder_Administration(
-      id: await fhirDb.newResourceId('NutritionOrder_Administration'),
+      id: id ?? await fhirDb.newResourceId('NutritionOrder_Administration'),
       extension: extension,
       modifierExtension: modifierExtension,
       schedule: schedule,
@@ -474,14 +487,15 @@ class NutritionOrder_Administration {
   Quantity rateQuantity;
   Ratio rateRatio;
 
-  NutritionOrder_Administration(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.schedule,
-      this.quantity,
-      this.rateQuantity,
-      this.rateRatio});
+  NutritionOrder_Administration({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.schedule,
+    this.quantity,
+    this.rateQuantity,
+    this.rateRatio,
+  });
 
   factory NutritionOrder_Administration.fromJson(Map<String, dynamic> json) =>
       _$NutritionOrder_AdministrationFromJson(json);

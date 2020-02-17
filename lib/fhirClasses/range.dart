@@ -1,18 +1,20 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Range {
-  static Future<Range> newInstance(
-      {String id,
-      List<Extension> extension,
-      Quantity low,
-      Quantity high}) async {
+  static Future<Range> newInstance({
+    String id,
+    List<Extension> extension,
+    Quantity low,
+    Quantity high,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Range newRange = new Range(
-      id: await fhirDb.newResourceId('Range'),
+      id: id ?? await fhirDb.newResourceId('Range'),
       extension: extension,
       low: low,
       high: high,
@@ -25,7 +27,12 @@ class Range {
   Quantity low;
   Quantity high;
 
-  Range({this.id, this.extension, this.low, this.high});
+  Range({
+    this.id,
+    this.extension,
+    this.low,
+    this.high,
+  });
 
   factory Range.fromJson(Map<String, dynamic> json) => _$RangeFromJson(json);
   Map<String, dynamic> toJson() => _$RangeToJson(this);

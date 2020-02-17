@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -13,54 +13,55 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Appointment {
-  static Future<Appointment> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept cancelationReason,
-      List<CodeableConcept> serviceCategory,
-      List<CodeableConcept> serviceType,
-      List<CodeableConcept> specialty,
-      CodeableConcept appointmentType,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      int priority,
-      Element elementPriority,
-      String description,
-      Element elementDescription,
-      List<Reference> supportingInformation,
-      DateTime start,
-      Element elementStart,
-      DateTime end,
-      Element elementEnd,
-      int minutesDuration,
-      Element elementMinutesDuration,
-      List<Reference> slot,
-      DateTime created,
-      Element elementCreated,
-      String comment,
-      Element elementComment,
-      String patientInstruction,
-      Element elementPatientInstruction,
-      List<Reference> basedOn,
-      List<Appointment_Participant> participant,
-      List<Period> requestedPeriod}) async {
+  static Future<Appointment> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept cancelationReason,
+    List<CodeableConcept> serviceCategory,
+    List<CodeableConcept> serviceType,
+    List<CodeableConcept> specialty,
+    CodeableConcept appointmentType,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    int priority,
+    Element elementPriority,
+    String description,
+    Element elementDescription,
+    List<Reference> supportingInformation,
+    DateTime start,
+    Element elementStart,
+    DateTime end,
+    Element elementEnd,
+    int minutesDuration,
+    Element elementMinutesDuration,
+    List<Reference> slot,
+    DateTime created,
+    Element elementCreated,
+    String comment,
+    Element elementComment,
+    String patientInstruction,
+    Element elementPatientInstruction,
+    List<Reference> basedOn,
+    List<Appointment_Participant> participant,
+    List<Period> requestedPeriod,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Appointment newAppointment = new Appointment(
-      resourceType: 'Appointment',
-      id: await fhirDb.newResourceId('Appointment'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Appointment'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -103,17 +104,17 @@ class Appointment {
     );
     newAppointment.meta.createdAt = DateTime.now();
     newAppointment.meta.lastUpdated = newAppointment.meta.createdAt;
-    int saved = await fhirDb.newResource(newAppointment);
+    int saved = await fhirDb.saveResource(newAppointment);
     return newAppointment;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Appointment';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -125,8 +126,7 @@ class Appointment {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String
-      status; // <code> enum: proposed/pending/booked/arrived/fulfilled/cancelled/noshow/entered-in-error/checked-in/waitlist;
+  String status;
   Element elementStatus;
   CodeableConcept cancelationReason;
   List<CodeableConcept> serviceCategory;
@@ -157,49 +157,50 @@ class Appointment {
   List<Appointment_Participant> participant;
   List<Period> requestedPeriod;
 
-  Appointment(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.cancelationReason,
-      this.serviceCategory,
-      this.serviceType,
-      this.specialty,
-      this.appointmentType,
-      this.reasonCode,
-      this.reasonReference,
-      this.priority,
-      this.elementPriority,
-      this.description,
-      this.elementDescription,
-      this.supportingInformation,
-      this.start,
-      this.elementStart,
-      this.end,
-      this.elementEnd,
-      this.minutesDuration,
-      this.elementMinutesDuration,
-      this.slot,
-      this.created,
-      this.elementCreated,
-      this.comment,
-      this.elementComment,
-      this.patientInstruction,
-      this.elementPatientInstruction,
-      this.basedOn,
-      @required this.participant,
-      this.requestedPeriod});
+  Appointment({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.cancelationReason,
+    this.serviceCategory,
+    this.serviceType,
+    this.specialty,
+    this.appointmentType,
+    this.reasonCode,
+    this.reasonReference,
+    this.priority,
+    this.elementPriority,
+    this.description,
+    this.elementDescription,
+    this.supportingInformation,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+    this.minutesDuration,
+    this.elementMinutesDuration,
+    this.slot,
+    this.created,
+    this.elementCreated,
+    this.comment,
+    this.elementComment,
+    this.patientInstruction,
+    this.elementPatientInstruction,
+    this.basedOn,
+    @required this.participant,
+    this.requestedPeriod,
+  });
 
   factory Appointment.fromJson(Map<String, dynamic> json) =>
       _$AppointmentFromJson(json);
@@ -208,21 +209,22 @@ class Appointment {
 
 @JsonSerializable(explicitToJson: true)
 class Appointment_Participant {
-  static Future<Appointment_Participant> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CodeableConcept> type,
-      Reference actor,
-      String required,
-      Element elementRequired,
-      String status,
-      Element elementStatus,
-      Period period}) async {
+  static Future<Appointment_Participant> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> type,
+    Reference actor,
+    String required,
+    Element elementRequired,
+    String status,
+    Element elementStatus,
+    Period period,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Appointment_Participant newAppointment_Participant =
         new Appointment_Participant(
-      id: await fhirDb.newResourceId('Appointment_Participant'),
+      id: id ?? await fhirDb.newResourceId('Appointment_Participant'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -241,23 +243,24 @@ class Appointment_Participant {
   List<Extension> modifierExtension;
   List<CodeableConcept> type;
   Reference actor;
-  String required; // <code> enum: required/optional/information-only;
+  String required;
   Element elementRequired;
-  String status; // <code> enum: accepted/declined/tentative/needs-action;
+  String status;
   Element elementStatus;
   Period period;
 
-  Appointment_Participant(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.actor,
-      this.required,
-      this.elementRequired,
-      this.status,
-      this.elementStatus,
-      this.period});
+  Appointment_Participant({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.actor,
+    this.required,
+    this.elementRequired,
+    this.status,
+    this.elementStatus,
+    this.period,
+  });
 
   factory Appointment_Participant.fromJson(Map<String, dynamic> json) =>
       _$Appointment_ParticipantFromJson(json);

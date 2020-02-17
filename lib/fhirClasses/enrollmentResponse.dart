@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -11,35 +11,36 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class EnrollmentResponse {
-  static Future<EnrollmentResponse> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      Reference request,
-      String outcome,
-      Element elementOutcome,
-      String disposition,
-      Element elementDisposition,
-      DateTime created,
-      Element elementCreated,
-      Reference organization,
-      Reference requestProvider}) async {
+  static Future<EnrollmentResponse> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Reference request,
+    String outcome,
+    Element elementOutcome,
+    String disposition,
+    Element elementDisposition,
+    DateTime created,
+    Element elementCreated,
+    Reference organization,
+    Reference requestProvider,
+  }) async {
     var fhirDb = new DatabaseHelper();
     EnrollmentResponse newEnrollmentResponse = new EnrollmentResponse(
-      resourceType: 'EnrollmentResponse',
-      id: await fhirDb.newResourceId('EnrollmentResponse'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('EnrollmentResponse'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -64,17 +65,17 @@ class EnrollmentResponse {
     newEnrollmentResponse.meta.createdAt = DateTime.now();
     newEnrollmentResponse.meta.lastUpdated =
         newEnrollmentResponse.meta.createdAt;
-    int saved = await fhirDb.newResource(newEnrollmentResponse);
+    int saved = await fhirDb.saveResource(newEnrollmentResponse);
     return newEnrollmentResponse;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'EnrollmentResponse';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -89,7 +90,7 @@ class EnrollmentResponse {
   String status;
   Element elementStatus;
   Reference request;
-  String outcome; // <code> enum: queued/complete/error/partial;
+  String outcome;
   Element elementOutcome;
   String disposition;
   Element elementDisposition;
@@ -98,30 +99,31 @@ class EnrollmentResponse {
   Reference organization;
   Reference requestProvider;
 
-  EnrollmentResponse(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.request,
-      this.outcome,
-      this.elementOutcome,
-      this.disposition,
-      this.elementDisposition,
-      this.created,
-      this.elementCreated,
-      this.organization,
-      this.requestProvider});
+  EnrollmentResponse({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.request,
+    this.outcome,
+    this.elementOutcome,
+    this.disposition,
+    this.elementDisposition,
+    this.created,
+    this.elementCreated,
+    this.organization,
+    this.requestProvider,
+  });
 
   factory EnrollmentResponse.fromJson(Map<String, dynamic> json) =>
       _$EnrollmentResponseFromJson(json);

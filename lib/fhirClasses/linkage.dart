@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
@@ -10,27 +10,28 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Linkage {
-  static Future<Linkage> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool active,
-      Element elementActive,
-      Reference author,
-      List<Linkage_Item> item}) async {
+  static Future<Linkage> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool active,
+    Element elementActive,
+    Reference author,
+    List<Linkage_Item> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Linkage newLinkage = new Linkage(
-      resourceType: 'Linkage',
-      id: await fhirDb.newResourceId('Linkage'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Linkage'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -46,17 +47,17 @@ class Linkage {
     );
     newLinkage.meta.createdAt = DateTime.now();
     newLinkage.meta.lastUpdated = newLinkage.meta.createdAt;
-    int saved = await fhirDb.newResource(newLinkage);
+    int saved = await fhirDb.saveResource(newLinkage);
     return newLinkage;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Linkage';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -72,22 +73,23 @@ class Linkage {
   Reference author;
   List<Linkage_Item> item;
 
-  Linkage(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.active,
-      this.elementActive,
-      this.author,
-      @required this.item});
+  Linkage({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.active,
+    this.elementActive,
+    this.author,
+    @required this.item,
+  });
 
   factory Linkage.fromJson(Map<String, dynamic> json) =>
       _$LinkageFromJson(json);
@@ -96,16 +98,17 @@ class Linkage {
 
 @JsonSerializable(explicitToJson: true)
 class Linkage_Item {
-  static Future<Linkage_Item> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      Reference resource}) async {
+  static Future<Linkage_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    Reference resource,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Linkage_Item newLinkage_Item = new Linkage_Item(
-      id: await fhirDb.newResourceId('Linkage_Item'),
+      id: id ?? await fhirDb.newResourceId('Linkage_Item'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -118,17 +121,18 @@ class Linkage_Item {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String type; // <code> enum: source/alternate/historical;
+  String type;
   Element elementType;
   Reference resource;
 
-  Linkage_Item(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      @required this.resource});
+  Linkage_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    @required this.resource,
+  });
 
   factory Linkage_Item.fromJson(Map<String, dynamic> json) =>
       _$Linkage_ItemFromJson(json);

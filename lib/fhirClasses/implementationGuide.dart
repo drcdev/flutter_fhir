@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -13,56 +13,57 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide {
-  static Future<ImplementationGuide> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String copyright,
-      Element elementCopyright,
-      String packageId,
-      Element elementPackageId,
-      String license,
-      Element elementLicense,
-      List<String> fhirVersion,
-      List<Element> elementFhirVersion,
-      List<ImplementationGuide_DependsOn> dependsOn,
-      List<ImplementationGuide_Global> global,
-      ImplementationGuide_Definition definition,
-      ImplementationGuide_Manifest manifest}) async {
+  static Future<ImplementationGuide> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String copyright,
+    Element elementCopyright,
+    String packageId,
+    Element elementPackageId,
+    String license,
+    Element elementLicense,
+    String fhirVersion,
+    List<Element> elementFhirVersion,
+    List<ImplementationGuide_DependsOn> dependsOn,
+    List<ImplementationGuide_Global> global,
+    ImplementationGuide_Definition definition,
+    ImplementationGuide_Manifest manifest,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide newImplementationGuide = new ImplementationGuide(
-      resourceType: 'ImplementationGuide',
-      id: await fhirDb.newResourceId('ImplementationGuide'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -108,17 +109,17 @@ class ImplementationGuide {
     newImplementationGuide.meta.createdAt = DateTime.now();
     newImplementationGuide.meta.lastUpdated =
         newImplementationGuide.meta.createdAt;
-    int saved = await fhirDb.newResource(newImplementationGuide);
+    int saved = await fhirDb.saveResource(newImplementationGuide);
     return newImplementationGuide;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ImplementationGuide';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -137,7 +138,7 @@ class ImplementationGuide {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -154,62 +155,61 @@ class ImplementationGuide {
   Element elementCopyright;
   String packageId;
   Element elementPackageId;
-  String
-      license; // <code> enum: not-open-source/0BSD/AAL/Abstyles/Adobe-2006/Adobe-Glyph/ADSL/AFL-1.1/AFL-1.2/AFL-2.0/AFL-2.1/AFL-3.0/Afmparse/AGPL-1.0-only/AGPL-1.0-or-later/AGPL-3.0-only/AGPL-3.0-or-later/Aladdin/AMDPLPA/AML/AMPAS/ANTLR-PD/Apache-1.0/Apache-1.1/Apache-2.0/APAFML/APL-1.0/APSL-1.0/APSL-1.1/APSL-1.2/APSL-2.0/Artistic-1.0-cl8/Artistic-1.0-Perl/Artistic-1.0/Artistic-2.0/Bahyph/Barr/Beerware/BitTorrent-1.0/BitTorrent-1.1/Borceux/BSD-1-Clause/BSD-2-Clause-FreeBSD/BSD-2-Clause-NetBSD/BSD-2-Clause-Patent/BSD-2-Clause/BSD-3-Clause-Attribution/BSD-3-Clause-Clear/BSD-3-Clause-LBNL/BSD-3-Clause-No-Nuclear-License-2014/BSD-3-Clause-No-Nuclear-License/BSD-3-Clause-No-Nuclear-Warranty/BSD-3-Clause/BSD-4-Clause-UC/BSD-4-Clause/BSD-Protection/BSD-Source-Code/BSL-1.0/bzip2-1.0.5/bzip2-1.0.6/Caldera/CATOSL-1.1/CC-BY-1.0/CC-BY-2.0/CC-BY-2.5/CC-BY-3.0/CC-BY-4.0/CC-BY-NC-1.0/CC-BY-NC-2.0/CC-BY-NC-2.5/CC-BY-NC-3.0/CC-BY-NC-4.0/CC-BY-NC-ND-1.0/CC-BY-NC-ND-2.0/CC-BY-NC-ND-2.5/CC-BY-NC-ND-3.0/CC-BY-NC-ND-4.0/CC-BY-NC-SA-1.0/CC-BY-NC-SA-2.0/CC-BY-NC-SA-2.5/CC-BY-NC-SA-3.0/CC-BY-NC-SA-4.0/CC-BY-ND-1.0/CC-BY-ND-2.0/CC-BY-ND-2.5/CC-BY-ND-3.0/CC-BY-ND-4.0/CC-BY-SA-1.0/CC-BY-SA-2.0/CC-BY-SA-2.5/CC-BY-SA-3.0/CC-BY-SA-4.0/CC0-1.0/CDDL-1.0/CDDL-1.1/CDLA-Permissive-1.0/CDLA-Sharing-1.0/CECILL-1.0/CECILL-1.1/CECILL-2.0/CECILL-2.1/CECILL-B/CECILL-C/ClArtistic/CNRI-Jython/CNRI-Python-GPL-Compatible/CNRI-Python/Condor-1.1/CPAL-1.0/CPL-1.0/CPOL-1.02/Crossword/CrystalStacker/CUA-OPL-1.0/Cube/curl/D-FSL-1.0/diffmark/DOC/Dotseqn/DSDP/dvipdfm/ECL-1.0/ECL-2.0/EFL-1.0/EFL-2.0/eGenix/Entessa/EPL-1.0/EPL-2.0/ErlPL-1.1/EUDatagrid/EUPL-1.0/EUPL-1.1/EUPL-1.2/Eurosym/Fair/Frameworx-1.0/FreeImage/FSFAP/FSFUL/FSFULLR/FTL/GFDL-1.1-only/GFDL-1.1-or-later/GFDL-1.2-only/GFDL-1.2-or-later/GFDL-1.3-only/GFDL-1.3-or-later/Giftware/GL2PS/Glide/Glulxe/gnuplot/GPL-1.0-only/GPL-1.0-or-later/GPL-2.0-only/GPL-2.0-or-later/GPL-3.0-only/GPL-3.0-or-later/gSOAP-1.3b/HaskellReport/HPND/IBM-pibs/ICU/IJG/ImageMagick/iMatix/Imlib2/Info-ZIP/Intel-ACPI/Intel/Interbase-1.0/IPA/IPL-1.0/ISC/JasPer-2.0/JSON/LAL-1.2/LAL-1.3/Latex2e/Leptonica/LGPL-2.0-only/LGPL-2.0-or-later/LGPL-2.1-only/LGPL-2.1-or-later/LGPL-3.0-only/LGPL-3.0-or-later/LGPLLR/Libpng/libtiff/LiLiQ-P-1.1/LiLiQ-R-1.1/LiLiQ-Rplus-1.1/Linux-OpenIB/LPL-1.0/LPL-1.02/LPPL-1.0/LPPL-1.1/LPPL-1.2/LPPL-1.3a/LPPL-1.3c/MakeIndex/MirOS/MIT-0/MIT-advertising/MIT-CMU/MIT-enna/MIT-feh/MIT/MITNFA/Motosoto/mpich2/MPL-1.0/MPL-1.1/MPL-2.0-no-copyleft-exception/MPL-2.0/MS-PL/MS-RL/MTLL/Multics/Mup/NASA-1.3/Naumen/NBPL-1.0/NCSA/Net-SNMP/NetCDF/Newsletr/NGPL/NLOD-1.0/NLPL/Nokia/NOSL/Noweb/NPL-1.0/NPL-1.1/NPOSL-3.0/NRL/NTP/OCCT-PL/OCLC-2.0/ODbL-1.0/OFL-1.0/OFL-1.1/OGTSL/OLDAP-1.1/OLDAP-1.2/OLDAP-1.3/OLDAP-1.4/OLDAP-2.0.1/OLDAP-2.0/OLDAP-2.1/OLDAP-2.2.1/OLDAP-2.2.2/OLDAP-2.2/OLDAP-2.3/OLDAP-2.4/OLDAP-2.5/OLDAP-2.6/OLDAP-2.7/OLDAP-2.8/OML/OpenSSL/OPL-1.0/OSET-PL-2.1/OSL-1.0/OSL-1.1/OSL-2.0/OSL-2.1/OSL-3.0/PDDL-1.0/PHP-3.0/PHP-3.01/Plexus/PostgreSQL/psfrag/psutils/Python-2.0/Qhull/QPL-1.0/Rdisc/RHeCos-1.1/RPL-1.1/RPL-1.5/RPSL-1.0/RSA-MD/RSCPL/Ruby/SAX-PD/Saxpath/SCEA/Sendmail/SGI-B-1.0/SGI-B-1.1/SGI-B-2.0/SimPL-2.0/SISSL-1.2/SISSL/Sleepycat/SMLNJ/SMPPL/SNIA/Spencer-86/Spencer-94/Spencer-99/SPL-1.0/SugarCRM-1.1.3/SWL/TCL/TCP-wrappers/TMate/TORQUE-1.1/TOSL/Unicode-DFS-2015/Unicode-DFS-2016/Unicode-TOU/Unlicense/UPL-1.0/Vim/VOSTROM/VSL-1.0/W3C-19980720/W3C-20150513/W3C/Watcom-1.0/Wsuipa/WTFPL/X11/Xerox/XFree86-1.1/xinetd/Xnet/xpp/XSkat/YPL-1.0/YPL-1.1/Zed/Zend-2.0/Zimbra-1.3/Zimbra-1.4/zlib-acknowledgement/Zlib/ZPL-1.1/ZPL-2.0/ZPL-2.1;
+  String license;
   Element elementLicense;
-  List<String>
-      fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1> fhirVersion;
+  String fhirVersion;
   List<Element> elementFhirVersion;
   List<ImplementationGuide_DependsOn> dependsOn;
   List<ImplementationGuide_Global> global;
   ImplementationGuide_Definition definition;
   ImplementationGuide_Manifest manifest;
 
-  ImplementationGuide(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.copyright,
-      this.elementCopyright,
-      this.packageId,
-      this.elementPackageId,
-      this.license,
-      this.elementLicense,
-      this.fhirVersion,
-      this.elementFhirVersion,
-      this.dependsOn,
-      this.global,
-      this.definition,
-      this.manifest});
+  ImplementationGuide({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.copyright,
+    this.elementCopyright,
+    this.packageId,
+    this.elementPackageId,
+    this.license,
+    this.elementLicense,
+    this.fhirVersion,
+    this.elementFhirVersion,
+    this.dependsOn,
+    this.global,
+    this.definition,
+    this.manifest,
+  });
 
   factory ImplementationGuide.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuideFromJson(json);
@@ -218,19 +218,20 @@ class ImplementationGuide {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_DependsOn {
-  static Future<ImplementationGuide_DependsOn> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String uri,
-      String packageId,
-      Element elementPackageId,
-      String version,
-      Element elementVersion}) async {
+  static Future<ImplementationGuide_DependsOn> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String uri,
+    String packageId,
+    Element elementPackageId,
+    String version,
+    Element elementVersion,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_DependsOn newImplementationGuide_DependsOn =
         new ImplementationGuide_DependsOn(
-      id: await fhirDb.newResourceId('ImplementationGuide_DependsOn'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_DependsOn'),
       extension: extension,
       modifierExtension: modifierExtension,
       uri: uri,
@@ -251,15 +252,16 @@ class ImplementationGuide_DependsOn {
   String version;
   Element elementVersion;
 
-  ImplementationGuide_DependsOn(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.uri,
-      this.packageId,
-      this.elementPackageId,
-      this.version,
-      this.elementVersion});
+  ImplementationGuide_DependsOn({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.uri,
+    this.packageId,
+    this.elementPackageId,
+    this.version,
+    this.elementVersion,
+  });
 
   factory ImplementationGuide_DependsOn.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_DependsOnFromJson(json);
@@ -268,17 +270,18 @@ class ImplementationGuide_DependsOn {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Global {
-  static Future<ImplementationGuide_Global> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      String profile}) async {
+  static Future<ImplementationGuide_Global> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String profile,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Global newImplementationGuide_Global =
         new ImplementationGuide_Global(
-      id: await fhirDb.newResourceId('ImplementationGuide_Global'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Global'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -295,13 +298,14 @@ class ImplementationGuide_Global {
   Element elementType;
   String profile;
 
-  ImplementationGuide_Global(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      @required this.profile});
+  ImplementationGuide_Global({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    @required this.profile,
+  });
 
   factory ImplementationGuide_Global.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_GlobalFromJson(json);
@@ -310,19 +314,20 @@ class ImplementationGuide_Global {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Definition {
-  static Future<ImplementationGuide_Definition> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<ImplementationGuide_Grouping> grouping,
-      List<ImplementationGuide_Resource> resource,
-      ImplementationGuide_Page page,
-      List<ImplementationGuide_Parameter> parameter,
-      List<ImplementationGuide_Template> template}) async {
+  static Future<ImplementationGuide_Definition> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<ImplementationGuide_Grouping> grouping,
+    List<ImplementationGuide_Resource> resource,
+    ImplementationGuide_Page page,
+    List<ImplementationGuide_Parameter> parameter,
+    List<ImplementationGuide_Template> template,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Definition newImplementationGuide_Definition =
         new ImplementationGuide_Definition(
-      id: await fhirDb.newResourceId('ImplementationGuide_Definition'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Definition'),
       extension: extension,
       modifierExtension: modifierExtension,
       grouping: grouping,
@@ -343,15 +348,16 @@ class ImplementationGuide_Definition {
   List<ImplementationGuide_Parameter> parameter;
   List<ImplementationGuide_Template> template;
 
-  ImplementationGuide_Definition(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.grouping,
-      @required this.resource,
-      this.page,
-      this.parameter,
-      this.template});
+  ImplementationGuide_Definition({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.grouping,
+    @required this.resource,
+    this.page,
+    this.parameter,
+    this.template,
+  });
 
   factory ImplementationGuide_Definition.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_DefinitionFromJson(json);
@@ -360,18 +366,19 @@ class ImplementationGuide_Definition {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Grouping {
-  static Future<ImplementationGuide_Grouping> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String description,
-      Element elementDescription}) async {
+  static Future<ImplementationGuide_Grouping> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Grouping newImplementationGuide_Grouping =
         new ImplementationGuide_Grouping(
-      id: await fhirDb.newResourceId('ImplementationGuide_Grouping'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Grouping'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -390,14 +397,15 @@ class ImplementationGuide_Grouping {
   String description;
   Element elementDescription;
 
-  ImplementationGuide_Grouping(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.description,
-      this.elementDescription});
+  ImplementationGuide_Grouping({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+  });
 
   factory ImplementationGuide_Grouping.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_GroupingFromJson(json);
@@ -406,27 +414,28 @@ class ImplementationGuide_Grouping {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Resource {
-  static Future<ImplementationGuide_Resource> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference reference,
-      List<String> fhirVersion,
-      List<Element> elementFhirVersion,
-      String name,
-      Element elementName,
-      String description,
-      Element elementDescription,
-      bool exampleBoolean,
-      Element elementExampleBoolean,
-      String exampleCanonical,
-      Element elementExampleCanonical,
-      String groupingId,
-      Element elementGroupingId}) async {
+  static Future<ImplementationGuide_Resource> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference reference,
+    String fhirVersion,
+    List<Element> elementFhirVersion,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+    bool exampleBoolean,
+    Element elementExampleBoolean,
+    String exampleCanonical,
+    Element elementExampleCanonical,
+    String groupingId,
+    Element elementGroupingId,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Resource newImplementationGuide_Resource =
         new ImplementationGuide_Resource(
-      id: await fhirDb.newResourceId('ImplementationGuide_Resource'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Resource'),
       extension: extension,
       modifierExtension: modifierExtension,
       reference: reference,
@@ -450,37 +459,37 @@ class ImplementationGuide_Resource {
   List<Extension> extension;
   List<Extension> modifierExtension;
   Reference reference;
-  List<String>
-      fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1> fhirVersion;
+  String fhirVersion;
   List<Element> elementFhirVersion;
   String name;
   Element elementName;
   String description;
   Element elementDescription;
-  bool exampleBoolean; //  pattern: ^true|false$
+  bool exampleBoolean;
   Element elementExampleBoolean;
-  String exampleCanonical; //  pattern: ^\S*$
+  String exampleCanonical;
   Element elementExampleCanonical;
   String groupingId;
   Element elementGroupingId;
 
-  ImplementationGuide_Resource(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.reference,
-      this.fhirVersion,
-      this.elementFhirVersion,
-      this.name,
-      this.elementName,
-      this.description,
-      this.elementDescription,
-      this.exampleBoolean,
-      this.elementExampleBoolean,
-      this.exampleCanonical,
-      this.elementExampleCanonical,
-      this.groupingId,
-      this.elementGroupingId});
+  ImplementationGuide_Resource({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.reference,
+    this.fhirVersion,
+    this.elementFhirVersion,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+    this.exampleBoolean,
+    this.elementExampleBoolean,
+    this.exampleCanonical,
+    this.elementExampleCanonical,
+    this.groupingId,
+    this.elementGroupingId,
+  });
 
   factory ImplementationGuide_Resource.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_ResourceFromJson(json);
@@ -489,22 +498,23 @@ class ImplementationGuide_Resource {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Page {
-  static Future<ImplementationGuide_Page> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String nameUrl,
-      Element elementNameUrl,
-      Reference nameReference,
-      String title,
-      Element elementTitle,
-      String generation,
-      Element elementGeneration,
-      List<ImplementationGuide_Page> page}) async {
+  static Future<ImplementationGuide_Page> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String nameUrl,
+    Element elementNameUrl,
+    Reference nameReference,
+    String title,
+    Element elementTitle,
+    String generation,
+    Element elementGeneration,
+    List<ImplementationGuide_Page> page,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Page newImplementationGuide_Page =
         new ImplementationGuide_Page(
-      id: await fhirDb.newResourceId('ImplementationGuide_Page'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Page'),
       extension: extension,
       modifierExtension: modifierExtension,
       nameUrl: nameUrl,
@@ -522,27 +532,28 @@ class ImplementationGuide_Page {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String nameUrl; //  pattern: ^\S*$
+  String nameUrl;
   Element elementNameUrl;
   Reference nameReference;
   String title;
   Element elementTitle;
-  String generation; // <code> enum: html/markdown/xml/generated;
+  String generation;
   Element elementGeneration;
   List<ImplementationGuide_Page> page;
 
-  ImplementationGuide_Page(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.nameUrl,
-      this.elementNameUrl,
-      this.nameReference,
-      this.title,
-      this.elementTitle,
-      this.generation,
-      this.elementGeneration,
-      this.page});
+  ImplementationGuide_Page({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.nameUrl,
+    this.elementNameUrl,
+    this.nameReference,
+    this.title,
+    this.elementTitle,
+    this.generation,
+    this.elementGeneration,
+    this.page,
+  });
 
   factory ImplementationGuide_Page.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_PageFromJson(json);
@@ -551,18 +562,19 @@ class ImplementationGuide_Page {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Parameter {
-  static Future<ImplementationGuide_Parameter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String value,
-      Element elementValue}) async {
+  static Future<ImplementationGuide_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String value,
+    Element elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Parameter newImplementationGuide_Parameter =
         new ImplementationGuide_Parameter(
-      id: await fhirDb.newResourceId('ImplementationGuide_Parameter'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Parameter'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -576,20 +588,20 @@ class ImplementationGuide_Parameter {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String
-      code; // <code> enum: apply/path-resource/path-pages/path-tx-cache/expansion-parameter/rule-broken-links/generate-xml/generate-json/generate-turtle/html-template;
+  String code;
   Element elementCode;
   String value;
   Element elementValue;
 
-  ImplementationGuide_Parameter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.value,
-      this.elementValue});
+  ImplementationGuide_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.value,
+    this.elementValue,
+  });
 
   factory ImplementationGuide_Parameter.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_ParameterFromJson(json);
@@ -598,20 +610,21 @@ class ImplementationGuide_Parameter {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Template {
-  static Future<ImplementationGuide_Template> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String source,
-      Element elementSource,
-      String scope,
-      Element elementScope}) async {
+  static Future<ImplementationGuide_Template> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String source,
+    Element elementSource,
+    String scope,
+    Element elementScope,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Template newImplementationGuide_Template =
         new ImplementationGuide_Template(
-      id: await fhirDb.newResourceId('ImplementationGuide_Template'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Template'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -634,16 +647,17 @@ class ImplementationGuide_Template {
   String scope;
   Element elementScope;
 
-  ImplementationGuide_Template(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.source,
-      this.elementSource,
-      this.scope,
-      this.elementScope});
+  ImplementationGuide_Template({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.source,
+    this.elementSource,
+    this.scope,
+    this.elementScope,
+  });
 
   factory ImplementationGuide_Template.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_TemplateFromJson(json);
@@ -652,22 +666,23 @@ class ImplementationGuide_Template {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Manifest {
-  static Future<ImplementationGuide_Manifest> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String rendering,
-      Element elementRendering,
-      List<ImplementationGuide_Resource1> resource,
-      List<ImplementationGuide_Page1> page,
-      List<String> image,
-      List<Element> elementImage,
-      List<String> other,
-      List<Element> elementOther}) async {
+  static Future<ImplementationGuide_Manifest> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String rendering,
+    Element elementRendering,
+    List<ImplementationGuide_Resource1> resource,
+    List<ImplementationGuide_Page1> page,
+    List<String> image,
+    List<Element> elementImage,
+    List<String> other,
+    List<Element> elementOther,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Manifest newImplementationGuide_Manifest =
         new ImplementationGuide_Manifest(
-      id: await fhirDb.newResourceId('ImplementationGuide_Manifest'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Manifest'),
       extension: extension,
       modifierExtension: modifierExtension,
       rendering: rendering,
@@ -694,18 +709,19 @@ class ImplementationGuide_Manifest {
   List<String> other;
   List<Element> elementOther;
 
-  ImplementationGuide_Manifest(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.rendering,
-      this.elementRendering,
-      @required this.resource,
-      this.page,
-      this.image,
-      this.elementImage,
-      this.other,
-      this.elementOther});
+  ImplementationGuide_Manifest({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.rendering,
+    this.elementRendering,
+    @required this.resource,
+    this.page,
+    this.image,
+    this.elementImage,
+    this.other,
+    this.elementOther,
+  });
 
   factory ImplementationGuide_Manifest.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_ManifestFromJson(json);
@@ -714,21 +730,22 @@ class ImplementationGuide_Manifest {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Resource1 {
-  static Future<ImplementationGuide_Resource1> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference reference,
-      bool exampleBoolean,
-      Element elementExampleBoolean,
-      String exampleCanonical,
-      Element elementExampleCanonical,
-      String relativePath,
-      Element elementRelativePath}) async {
+  static Future<ImplementationGuide_Resource1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference reference,
+    bool exampleBoolean,
+    Element elementExampleBoolean,
+    String exampleCanonical,
+    Element elementExampleCanonical,
+    String relativePath,
+    Element elementRelativePath,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Resource1 newImplementationGuide_Resource1 =
         new ImplementationGuide_Resource1(
-      id: await fhirDb.newResourceId('ImplementationGuide_Resource1'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Resource1'),
       extension: extension,
       modifierExtension: modifierExtension,
       reference: reference,
@@ -746,24 +763,25 @@ class ImplementationGuide_Resource1 {
   List<Extension> extension;
   List<Extension> modifierExtension;
   Reference reference;
-  bool exampleBoolean; //  pattern: ^true|false$
+  bool exampleBoolean;
   Element elementExampleBoolean;
-  String exampleCanonical; //  pattern: ^\S*$
+  String exampleCanonical;
   Element elementExampleCanonical;
   String relativePath;
   Element elementRelativePath;
 
-  ImplementationGuide_Resource1(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.reference,
-      this.exampleBoolean,
-      this.elementExampleBoolean,
-      this.exampleCanonical,
-      this.elementExampleCanonical,
-      this.relativePath,
-      this.elementRelativePath});
+  ImplementationGuide_Resource1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.reference,
+    this.exampleBoolean,
+    this.elementExampleBoolean,
+    this.exampleCanonical,
+    this.elementExampleCanonical,
+    this.relativePath,
+    this.elementRelativePath,
+  });
 
   factory ImplementationGuide_Resource1.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_Resource1FromJson(json);
@@ -772,20 +790,21 @@ class ImplementationGuide_Resource1 {
 
 @JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Page1 {
-  static Future<ImplementationGuide_Page1> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      List<String> anchor,
-      List<Element> elementAnchor}) async {
+  static Future<ImplementationGuide_Page1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    List<String> anchor,
+    List<Element> elementAnchor,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Page1 newImplementationGuide_Page1 =
         new ImplementationGuide_Page1(
-      id: await fhirDb.newResourceId('ImplementationGuide_Page1'),
+      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Page1'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -808,16 +827,17 @@ class ImplementationGuide_Page1 {
   List<String> anchor;
   List<Element> elementAnchor;
 
-  ImplementationGuide_Page1(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.anchor,
-      this.elementAnchor});
+  ImplementationGuide_Page1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.anchor,
+    this.elementAnchor,
+  });
 
   factory ImplementationGuide_Page1.fromJson(Map<String, dynamic> json) =>
       _$ImplementationGuide_Page1FromJson(json);
@@ -923,8 +943,7 @@ ImplementationGuide _$ImplementationGuideFromJson(Map<String, dynamic> json) {
     elementLicense: json['elementLicense'] == null
         ? null
         : Element.fromJson(json['elementLicense'] as Map<String, dynamic>),
-    fhirVersion:
-        (json['fhirVersion'] as List)?.map((e) => e as String)?.toList(),
+    fhirVersion: json['fhirVersion'] as String,
     elementFhirVersion: (json['elementFhirVersion'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
@@ -1175,8 +1194,7 @@ ImplementationGuide_Resource _$ImplementationGuide_ResourceFromJson(
     reference: json['reference'] == null
         ? null
         : Reference.fromJson(json['reference'] as Map<String, dynamic>),
-    fhirVersion:
-        (json['fhirVersion'] as List)?.map((e) => e as String)?.toList(),
+    fhirVersion: json['fhirVersion'] as String,
     elementFhirVersion: (json['elementFhirVersion'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))

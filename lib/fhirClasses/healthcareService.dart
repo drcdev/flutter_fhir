@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -15,53 +15,54 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class HealthcareService {
-  static Future<HealthcareService> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      bool active,
-      Element elementActive,
-      Reference providedBy,
-      List<CodeableConcept> category,
-      List<CodeableConcept> type,
-      List<CodeableConcept> specialty,
-      List<Reference> location,
-      String name,
-      Element elementName,
-      String comment,
-      Element elementComment,
-      String extraDetails,
-      Element elementExtraDetails,
-      Attachment photo,
-      List<ContactPoint> telecom,
-      List<Reference> coverageArea,
-      List<CodeableConcept> serviceProvisionCode,
-      List<HealthcareService_Eligibility> eligibility,
-      List<CodeableConcept> program,
-      List<CodeableConcept> characteristic,
-      List<CodeableConcept> communication,
-      List<CodeableConcept> referralMethod,
-      bool appointmentRequired,
-      Element elementAppointmentRequired,
-      List<HealthcareService_AvailableTime> availableTime,
-      List<HealthcareService_NotAvailable> notAvailable,
-      String availabilityExceptions,
-      Element elementAvailabilityExceptions,
-      List<Reference> endpoint}) async {
+  static Future<HealthcareService> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    Reference providedBy,
+    List<CodeableConcept> category,
+    List<CodeableConcept> type,
+    List<CodeableConcept> specialty,
+    List<Reference> location,
+    String name,
+    Element elementName,
+    String comment,
+    Element elementComment,
+    String extraDetails,
+    Element elementExtraDetails,
+    Attachment photo,
+    List<ContactPoint> telecom,
+    List<Reference> coverageArea,
+    List<CodeableConcept> serviceProvisionCode,
+    List<HealthcareService_Eligibility> eligibility,
+    List<CodeableConcept> program,
+    List<CodeableConcept> characteristic,
+    List<CodeableConcept> communication,
+    List<CodeableConcept> referralMethod,
+    bool appointmentRequired,
+    Element elementAppointmentRequired,
+    List<HealthcareService_AvailableTime> availableTime,
+    List<HealthcareService_NotAvailable> notAvailable,
+    String availabilityExceptions,
+    Element elementAvailabilityExceptions,
+    List<Reference> endpoint,
+  }) async {
     var fhirDb = new DatabaseHelper();
     HealthcareService newHealthcareService = new HealthcareService(
-      resourceType: 'HealthcareService',
-      id: await fhirDb.newResourceId('HealthcareService'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('HealthcareService'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -103,17 +104,17 @@ class HealthcareService {
     );
     newHealthcareService.meta.createdAt = DateTime.now();
     newHealthcareService.meta.lastUpdated = newHealthcareService.meta.createdAt;
-    int saved = await fhirDb.newResource(newHealthcareService);
+    int saved = await fhirDb.saveResource(newHealthcareService);
     return newHealthcareService;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'HealthcareService';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -155,48 +156,49 @@ class HealthcareService {
   Element elementAvailabilityExceptions;
   List<Reference> endpoint;
 
-  HealthcareService(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.active,
-      this.elementActive,
-      this.providedBy,
-      this.category,
-      this.type,
-      this.specialty,
-      this.location,
-      this.name,
-      this.elementName,
-      this.comment,
-      this.elementComment,
-      this.extraDetails,
-      this.elementExtraDetails,
-      this.photo,
-      this.telecom,
-      this.coverageArea,
-      this.serviceProvisionCode,
-      this.eligibility,
-      this.program,
-      this.characteristic,
-      this.communication,
-      this.referralMethod,
-      this.appointmentRequired,
-      this.elementAppointmentRequired,
-      this.availableTime,
-      this.notAvailable,
-      this.availabilityExceptions,
-      this.elementAvailabilityExceptions,
-      this.endpoint});
+  HealthcareService({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    this.providedBy,
+    this.category,
+    this.type,
+    this.specialty,
+    this.location,
+    this.name,
+    this.elementName,
+    this.comment,
+    this.elementComment,
+    this.extraDetails,
+    this.elementExtraDetails,
+    this.photo,
+    this.telecom,
+    this.coverageArea,
+    this.serviceProvisionCode,
+    this.eligibility,
+    this.program,
+    this.characteristic,
+    this.communication,
+    this.referralMethod,
+    this.appointmentRequired,
+    this.elementAppointmentRequired,
+    this.availableTime,
+    this.notAvailable,
+    this.availabilityExceptions,
+    this.elementAvailabilityExceptions,
+    this.endpoint,
+  });
 
   factory HealthcareService.fromJson(Map<String, dynamic> json) =>
       _$HealthcareServiceFromJson(json);
@@ -205,17 +207,18 @@ class HealthcareService {
 
 @JsonSerializable(explicitToJson: true)
 class HealthcareService_Eligibility {
-  static Future<HealthcareService_Eligibility> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      String comment,
-      Element elementComment}) async {
+  static Future<HealthcareService_Eligibility> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    String comment,
+    Element elementComment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     HealthcareService_Eligibility newHealthcareService_Eligibility =
         new HealthcareService_Eligibility(
-      id: await fhirDb.newResourceId('HealthcareService_Eligibility'),
+      id: id ?? await fhirDb.newResourceId('HealthcareService_Eligibility'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -232,13 +235,14 @@ class HealthcareService_Eligibility {
   String comment;
   Element elementComment;
 
-  HealthcareService_Eligibility(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.comment,
-      this.elementComment});
+  HealthcareService_Eligibility({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.comment,
+    this.elementComment,
+  });
 
   factory HealthcareService_Eligibility.fromJson(Map<String, dynamic> json) =>
       _$HealthcareService_EligibilityFromJson(json);
@@ -247,22 +251,23 @@ class HealthcareService_Eligibility {
 
 @JsonSerializable(explicitToJson: true)
 class HealthcareService_AvailableTime {
-  static Future<HealthcareService_AvailableTime> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<String> daysOfWeek,
-      List<Element> elementDaysOfWeek,
-      bool allDay,
-      Element elementAllDay,
-      String availableStartTime,
-      Element elementAvailableStartTime,
-      String availableEndTime,
-      Element elementAvailableEndTime}) async {
+  static Future<HealthcareService_AvailableTime> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String daysOfWeek,
+    List<Element> elementDaysOfWeek,
+    bool allDay,
+    Element elementAllDay,
+    String availableStartTime,
+    Element elementAvailableStartTime,
+    String availableEndTime,
+    Element elementAvailableEndTime,
+  }) async {
     var fhirDb = new DatabaseHelper();
     HealthcareService_AvailableTime newHealthcareService_AvailableTime =
         new HealthcareService_AvailableTime(
-      id: await fhirDb.newResourceId('HealthcareService_AvailableTime'),
+      id: id ?? await fhirDb.newResourceId('HealthcareService_AvailableTime'),
       extension: extension,
       modifierExtension: modifierExtension,
       daysOfWeek: daysOfWeek,
@@ -280,8 +285,7 @@ class HealthcareService_AvailableTime {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  List<String>
-      daysOfWeek; // <code> enum: mon/tue/wed/thu/fri/sat/sun> daysOfWeek;
+  String daysOfWeek;
   List<Element> elementDaysOfWeek;
   bool allDay;
   Element elementAllDay;
@@ -290,18 +294,19 @@ class HealthcareService_AvailableTime {
   String availableEndTime;
   Element elementAvailableEndTime;
 
-  HealthcareService_AvailableTime(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.daysOfWeek,
-      this.elementDaysOfWeek,
-      this.allDay,
-      this.elementAllDay,
-      this.availableStartTime,
-      this.elementAvailableStartTime,
-      this.availableEndTime,
-      this.elementAvailableEndTime});
+  HealthcareService_AvailableTime({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.daysOfWeek,
+    this.elementDaysOfWeek,
+    this.allDay,
+    this.elementAllDay,
+    this.availableStartTime,
+    this.elementAvailableStartTime,
+    this.availableEndTime,
+    this.elementAvailableEndTime,
+  });
 
   factory HealthcareService_AvailableTime.fromJson(Map<String, dynamic> json) =>
       _$HealthcareService_AvailableTimeFromJson(json);
@@ -311,17 +316,18 @@ class HealthcareService_AvailableTime {
 
 @JsonSerializable(explicitToJson: true)
 class HealthcareService_NotAvailable {
-  static Future<HealthcareService_NotAvailable> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String description,
-      Element elementDescription,
-      Period during}) async {
+  static Future<HealthcareService_NotAvailable> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    Period during,
+  }) async {
     var fhirDb = new DatabaseHelper();
     HealthcareService_NotAvailable newHealthcareService_NotAvailable =
         new HealthcareService_NotAvailable(
-      id: await fhirDb.newResourceId('HealthcareService_NotAvailable'),
+      id: id ?? await fhirDb.newResourceId('HealthcareService_NotAvailable'),
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -338,13 +344,14 @@ class HealthcareService_NotAvailable {
   Element elementDescription;
   Period during;
 
-  HealthcareService_NotAvailable(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.description,
-      this.elementDescription,
-      this.during});
+  HealthcareService_NotAvailable({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.during,
+  });
 
   factory HealthcareService_NotAvailable.fromJson(Map<String, dynamic> json) =>
       _$HealthcareService_NotAvailableFromJson(json);
@@ -599,7 +606,7 @@ HealthcareService_AvailableTime _$HealthcareService_AvailableTimeFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    daysOfWeek: (json['daysOfWeek'] as List)?.map((e) => e as String)?.toList(),
+    daysOfWeek: json['daysOfWeek'] as String,
     elementDaysOfWeek: (json['elementDaysOfWeek'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))

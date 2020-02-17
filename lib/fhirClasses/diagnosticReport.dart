@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -14,46 +14,47 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DiagnosticReport {
-  static Future<DiagnosticReport> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> basedOn,
-      String status,
-      Element elementStatus,
-      List<CodeableConcept> category,
-      CodeableConcept code,
-      Reference subject,
-      Reference encounter,
-      String effectiveDateTime,
-      Element elementEffectiveDateTime,
-      Period effectivePeriod,
-      DateTime issued,
-      Element elementIssued,
-      List<Reference> performer,
-      List<Reference> resultsInterpreter,
-      List<Reference> specimen,
-      List<Reference> result,
-      List<Reference> imagingStudy,
-      List<DiagnosticReport_Media> media,
-      String conclusion,
-      Element elementConclusion,
-      List<CodeableConcept> conclusionCode,
-      List<Attachment> presentedForm}) async {
+  static Future<DiagnosticReport> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> category,
+    CodeableConcept code,
+    Reference subject,
+    Reference encounter,
+    String effectiveDateTime,
+    Element elementEffectiveDateTime,
+    Period effectivePeriod,
+    DateTime issued,
+    Element elementIssued,
+    List<Reference> performer,
+    List<Reference> resultsInterpreter,
+    List<Reference> specimen,
+    List<Reference> result,
+    List<Reference> imagingStudy,
+    List<DiagnosticReport_Media> media,
+    String conclusion,
+    Element elementConclusion,
+    List<CodeableConcept> conclusionCode,
+    List<Attachment> presentedForm,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DiagnosticReport newDiagnosticReport = new DiagnosticReport(
-      resourceType: 'DiagnosticReport',
-      id: await fhirDb.newResourceId('DiagnosticReport'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('DiagnosticReport'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -88,17 +89,17 @@ class DiagnosticReport {
     );
     newDiagnosticReport.meta.createdAt = DateTime.now();
     newDiagnosticReport.meta.lastUpdated = newDiagnosticReport.meta.createdAt;
-    int saved = await fhirDb.newResource(newDiagnosticReport);
+    int saved = await fhirDb.saveResource(newDiagnosticReport);
     return newDiagnosticReport;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'DiagnosticReport';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -111,15 +112,13 @@ class DiagnosticReport {
   List<Extension> modifierExtension;
   List<Identifier> identifier;
   List<Reference> basedOn;
-  String
-      status; // <code> enum: registered/partial/preliminary/final/amended/corrected/appended/cancelled/entered-in-error/unknown;
+  String status;
   Element elementStatus;
   List<CodeableConcept> category;
   CodeableConcept code;
   Reference subject;
   Reference encounter;
-  String
-      effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String effectiveDateTime;
   Element elementEffectiveDateTime;
   Period effectivePeriod;
   DateTime issued;
@@ -135,41 +134,42 @@ class DiagnosticReport {
   List<CodeableConcept> conclusionCode;
   List<Attachment> presentedForm;
 
-  DiagnosticReport(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.status,
-      this.elementStatus,
-      this.category,
-      @required this.code,
-      this.subject,
-      this.encounter,
-      this.effectiveDateTime,
-      this.elementEffectiveDateTime,
-      this.effectivePeriod,
-      this.issued,
-      this.elementIssued,
-      this.performer,
-      this.resultsInterpreter,
-      this.specimen,
-      this.result,
-      this.imagingStudy,
-      this.media,
-      this.conclusion,
-      this.elementConclusion,
-      this.conclusionCode,
-      this.presentedForm});
+  DiagnosticReport({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.status,
+    this.elementStatus,
+    this.category,
+    @required this.code,
+    this.subject,
+    this.encounter,
+    this.effectiveDateTime,
+    this.elementEffectiveDateTime,
+    this.effectivePeriod,
+    this.issued,
+    this.elementIssued,
+    this.performer,
+    this.resultsInterpreter,
+    this.specimen,
+    this.result,
+    this.imagingStudy,
+    this.media,
+    this.conclusion,
+    this.elementConclusion,
+    this.conclusionCode,
+    this.presentedForm,
+  });
 
   factory DiagnosticReport.fromJson(Map<String, dynamic> json) =>
       _$DiagnosticReportFromJson(json);
@@ -178,17 +178,18 @@ class DiagnosticReport {
 
 @JsonSerializable(explicitToJson: true)
 class DiagnosticReport_Media {
-  static Future<DiagnosticReport_Media> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String comment,
-      Element elementComment,
-      Reference link}) async {
+  static Future<DiagnosticReport_Media> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String comment,
+    Element elementComment,
+    Reference link,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DiagnosticReport_Media newDiagnosticReport_Media =
         new DiagnosticReport_Media(
-      id: await fhirDb.newResourceId('DiagnosticReport_Media'),
+      id: id ?? await fhirDb.newResourceId('DiagnosticReport_Media'),
       extension: extension,
       modifierExtension: modifierExtension,
       comment: comment,
@@ -205,13 +206,14 @@ class DiagnosticReport_Media {
   Element elementComment;
   Reference link;
 
-  DiagnosticReport_Media(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.comment,
-      this.elementComment,
-      @required this.link});
+  DiagnosticReport_Media({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.comment,
+    this.elementComment,
+    @required this.link,
+  });
 
   factory DiagnosticReport_Media.fromJson(Map<String, dynamic> json) =>
       _$DiagnosticReport_MediaFromJson(json);

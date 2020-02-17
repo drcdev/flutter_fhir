@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -13,43 +13,44 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence {
-  static Future<MolecularSequence> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String type,
-      Element elementType,
-      int coordinateSystem,
-      Element elementCoordinateSystem,
-      Reference patient,
-      Reference specimen,
-      Reference device,
-      Reference performer,
-      Quantity quantity,
-      MolecularSequence_ReferenceSeq referenceSeq,
-      List<MolecularSequence_Variant> variant,
-      String observedSeq,
-      Element elementObservedSeq,
-      List<MolecularSequence_Quality> quality,
-      int readCoverage,
-      Element elementReadCoverage,
-      List<MolecularSequence_Repository> repository,
-      List<Reference> pointer,
-      List<MolecularSequence_StructureVariant> structureVariant}) async {
+  static Future<MolecularSequence> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String type,
+    Element elementType,
+    int coordinateSystem,
+    Element elementCoordinateSystem,
+    Reference patient,
+    Reference specimen,
+    Reference device,
+    Reference performer,
+    Quantity quantity,
+    MolecularSequence_ReferenceSeq referenceSeq,
+    List<MolecularSequence_Variant> variant,
+    String observedSeq,
+    Element elementObservedSeq,
+    List<MolecularSequence_Quality> quality,
+    int readCoverage,
+    Element elementReadCoverage,
+    List<MolecularSequence_Repository> repository,
+    List<Reference> pointer,
+    List<MolecularSequence_StructureVariant> structureVariant,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence newMolecularSequence = new MolecularSequence(
-      resourceType: 'MolecularSequence',
-      id: await fhirDb.newResourceId('MolecularSequence'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('MolecularSequence'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -81,17 +82,17 @@ class MolecularSequence {
     );
     newMolecularSequence.meta.createdAt = DateTime.now();
     newMolecularSequence.meta.lastUpdated = newMolecularSequence.meta.createdAt;
-    int saved = await fhirDb.newResource(newMolecularSequence);
+    int saved = await fhirDb.saveResource(newMolecularSequence);
     return newMolecularSequence;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'MolecularSequence';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -103,7 +104,7 @@ class MolecularSequence {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String type; // <code> enum: aa/dna/rna;
+  String type;
   Element elementType;
   int coordinateSystem;
   Element elementCoordinateSystem;
@@ -123,38 +124,39 @@ class MolecularSequence {
   List<Reference> pointer;
   List<MolecularSequence_StructureVariant> structureVariant;
 
-  MolecularSequence(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.type,
-      this.elementType,
-      this.coordinateSystem,
-      this.elementCoordinateSystem,
-      this.patient,
-      this.specimen,
-      this.device,
-      this.performer,
-      this.quantity,
-      this.referenceSeq,
-      this.variant,
-      this.observedSeq,
-      this.elementObservedSeq,
-      this.quality,
-      this.readCoverage,
-      this.elementReadCoverage,
-      this.repository,
-      this.pointer,
-      this.structureVariant});
+  MolecularSequence({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.type,
+    this.elementType,
+    this.coordinateSystem,
+    this.elementCoordinateSystem,
+    this.patient,
+    this.specimen,
+    this.device,
+    this.performer,
+    this.quantity,
+    this.referenceSeq,
+    this.variant,
+    this.observedSeq,
+    this.elementObservedSeq,
+    this.quality,
+    this.readCoverage,
+    this.elementReadCoverage,
+    this.repository,
+    this.pointer,
+    this.structureVariant,
+  });
 
   factory MolecularSequence.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequenceFromJson(json);
@@ -163,29 +165,30 @@ class MolecularSequence {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_ReferenceSeq {
-  static Future<MolecularSequence_ReferenceSeq> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept chromosome,
-      String genomeBuild,
-      Element elementGenomeBuild,
-      String orientation,
-      Element elementOrientation,
-      CodeableConcept referenceSeqId,
-      Reference referenceSeqPointer,
-      String referenceSeqString,
-      Element elementReferenceSeqString,
-      String strand,
-      Element elementStrand,
-      int windowStart,
-      Element elementWindowStart,
-      int windowEnd,
-      Element elementWindowEnd}) async {
+  static Future<MolecularSequence_ReferenceSeq> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept chromosome,
+    String genomeBuild,
+    Element elementGenomeBuild,
+    String orientation,
+    Element elementOrientation,
+    CodeableConcept referenceSeqId,
+    Reference referenceSeqPointer,
+    String referenceSeqString,
+    Element elementReferenceSeqString,
+    String strand,
+    Element elementStrand,
+    int windowStart,
+    Element elementWindowStart,
+    int windowEnd,
+    Element elementWindowEnd,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_ReferenceSeq newMolecularSequence_ReferenceSeq =
         new MolecularSequence_ReferenceSeq(
-      id: await fhirDb.newResourceId('MolecularSequence_ReferenceSeq'),
+      id: id ?? await fhirDb.newResourceId('MolecularSequence_ReferenceSeq'),
       extension: extension,
       modifierExtension: modifierExtension,
       chromosome: chromosome,
@@ -213,38 +216,39 @@ class MolecularSequence_ReferenceSeq {
   CodeableConcept chromosome;
   String genomeBuild;
   Element elementGenomeBuild;
-  String orientation; // <code> enum: sense/antisense;
+  String orientation;
   Element elementOrientation;
   CodeableConcept referenceSeqId;
   Reference referenceSeqPointer;
   String referenceSeqString;
   Element elementReferenceSeqString;
-  String strand; // <code> enum: watson/crick;
+  String strand;
   Element elementStrand;
   int windowStart;
   Element elementWindowStart;
   int windowEnd;
   Element elementWindowEnd;
 
-  MolecularSequence_ReferenceSeq(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.chromosome,
-      this.genomeBuild,
-      this.elementGenomeBuild,
-      this.orientation,
-      this.elementOrientation,
-      this.referenceSeqId,
-      this.referenceSeqPointer,
-      this.referenceSeqString,
-      this.elementReferenceSeqString,
-      this.strand,
-      this.elementStrand,
-      this.windowStart,
-      this.elementWindowStart,
-      this.windowEnd,
-      this.elementWindowEnd});
+  MolecularSequence_ReferenceSeq({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.chromosome,
+    this.genomeBuild,
+    this.elementGenomeBuild,
+    this.orientation,
+    this.elementOrientation,
+    this.referenceSeqId,
+    this.referenceSeqPointer,
+    this.referenceSeqString,
+    this.elementReferenceSeqString,
+    this.strand,
+    this.elementStrand,
+    this.windowStart,
+    this.elementWindowStart,
+    this.windowEnd,
+    this.elementWindowEnd,
+  });
 
   factory MolecularSequence_ReferenceSeq.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequence_ReferenceSeqFromJson(json);
@@ -253,25 +257,26 @@ class MolecularSequence_ReferenceSeq {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Variant {
-  static Future<MolecularSequence_Variant> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int start,
-      Element elementStart,
-      int end,
-      Element elementEnd,
-      String observedAllele,
-      Element elementObservedAllele,
-      String referenceAllele,
-      Element elementReferenceAllele,
-      String cigar,
-      Element elementCigar,
-      Reference variantPointer}) async {
+  static Future<MolecularSequence_Variant> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int start,
+    Element elementStart,
+    int end,
+    Element elementEnd,
+    String observedAllele,
+    Element elementObservedAllele,
+    String referenceAllele,
+    Element elementReferenceAllele,
+    String cigar,
+    Element elementCigar,
+    Reference variantPointer,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Variant newMolecularSequence_Variant =
         new MolecularSequence_Variant(
-      id: await fhirDb.newResourceId('MolecularSequence_Variant'),
+      id: id ?? await fhirDb.newResourceId('MolecularSequence_Variant'),
       extension: extension,
       modifierExtension: modifierExtension,
       start: start,
@@ -304,21 +309,22 @@ class MolecularSequence_Variant {
   Element elementCigar;
   Reference variantPointer;
 
-  MolecularSequence_Variant(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.start,
-      this.elementStart,
-      this.end,
-      this.elementEnd,
-      this.observedAllele,
-      this.elementObservedAllele,
-      this.referenceAllele,
-      this.elementReferenceAllele,
-      this.cigar,
-      this.elementCigar,
-      this.variantPointer});
+  MolecularSequence_Variant({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+    this.observedAllele,
+    this.elementObservedAllele,
+    this.referenceAllele,
+    this.elementReferenceAllele,
+    this.cigar,
+    this.elementCigar,
+    this.variantPointer,
+  });
 
   factory MolecularSequence_Variant.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequence_VariantFromJson(json);
@@ -327,40 +333,41 @@ class MolecularSequence_Variant {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Quality {
-  static Future<MolecularSequence_Quality> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      CodeableConcept standardSequence,
-      int start,
-      Element elementStart,
-      int end,
-      Element elementEnd,
-      Quantity score,
-      CodeableConcept method,
-      double truthTP,
-      Element elementTruthTP,
-      double queryTP,
-      Element elementQueryTP,
-      double truthFN,
-      Element elementTruthFN,
-      double queryFP,
-      Element elementQueryFP,
-      double gtFP,
-      Element elementGtFP,
-      double precision,
-      Element elementPrecision,
-      double recall,
-      Element elementRecall,
-      double fScore,
-      Element elementFScore,
-      MolecularSequence_Roc roc}) async {
+  static Future<MolecularSequence_Quality> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    CodeableConcept standardSequence,
+    int start,
+    Element elementStart,
+    int end,
+    Element elementEnd,
+    Quantity score,
+    CodeableConcept method,
+    double truthTP,
+    Element elementTruthTP,
+    double queryTP,
+    Element elementQueryTP,
+    double truthFN,
+    Element elementTruthFN,
+    double queryFP,
+    Element elementQueryFP,
+    double gtFP,
+    Element elementGtFP,
+    double precision,
+    Element elementPrecision,
+    double recall,
+    Element elementRecall,
+    double fScore,
+    Element elementFScore,
+    MolecularSequence_Roc roc,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Quality newMolecularSequence_Quality =
         new MolecularSequence_Quality(
-      id: await fhirDb.newResourceId('MolecularSequence_Quality'),
+      id: id ?? await fhirDb.newResourceId('MolecularSequence_Quality'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -396,7 +403,7 @@ class MolecularSequence_Quality {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String type; // <code> enum: indel/snp/unknown;
+  String type;
   Element elementType;
   CodeableConcept standardSequence;
   int start;
@@ -423,36 +430,37 @@ class MolecularSequence_Quality {
   Element elementFScore;
   MolecularSequence_Roc roc;
 
-  MolecularSequence_Quality(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.standardSequence,
-      this.start,
-      this.elementStart,
-      this.end,
-      this.elementEnd,
-      this.score,
-      this.method,
-      this.truthTP,
-      this.elementTruthTP,
-      this.queryTP,
-      this.elementQueryTP,
-      this.truthFN,
-      this.elementTruthFN,
-      this.queryFP,
-      this.elementQueryFP,
-      this.gtFP,
-      this.elementGtFP,
-      this.precision,
-      this.elementPrecision,
-      this.recall,
-      this.elementRecall,
-      this.fScore,
-      this.elementFScore,
-      this.roc});
+  MolecularSequence_Quality({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.standardSequence,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+    this.score,
+    this.method,
+    this.truthTP,
+    this.elementTruthTP,
+    this.queryTP,
+    this.elementQueryTP,
+    this.truthFN,
+    this.elementTruthFN,
+    this.queryFP,
+    this.elementQueryFP,
+    this.gtFP,
+    this.elementGtFP,
+    this.precision,
+    this.elementPrecision,
+    this.recall,
+    this.elementRecall,
+    this.fScore,
+    this.elementFScore,
+    this.roc,
+  });
 
   factory MolecularSequence_Quality.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequence_QualityFromJson(json);
@@ -461,27 +469,28 @@ class MolecularSequence_Quality {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Roc {
-  static Future<MolecularSequence_Roc> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<int> score,
-      List<Element> elementScore,
-      List<int> numTP,
-      List<Element> elementNumTP,
-      List<int> numFP,
-      List<Element> elementNumFP,
-      List<int> numFN,
-      List<Element> elementNumFN,
-      List<double> precision,
-      List<Element> elementPrecision,
-      List<double> sensitivity,
-      List<Element> elementSensitivity,
-      List<double> fMeasure,
-      List<Element> elementFMeasure}) async {
+  static Future<MolecularSequence_Roc> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<int> score,
+    List<Element> elementScore,
+    List<int> numTP,
+    List<Element> elementNumTP,
+    List<int> numFP,
+    List<Element> elementNumFP,
+    List<int> numFN,
+    List<Element> elementNumFN,
+    List<double> precision,
+    List<Element> elementPrecision,
+    List<double> sensitivity,
+    List<Element> elementSensitivity,
+    List<double> fMeasure,
+    List<Element> elementFMeasure,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Roc newMolecularSequence_Roc = new MolecularSequence_Roc(
-      id: await fhirDb.newResourceId('MolecularSequence_Roc'),
+      id: id ?? await fhirDb.newResourceId('MolecularSequence_Roc'),
       extension: extension,
       modifierExtension: modifierExtension,
       score: score,
@@ -520,24 +529,25 @@ class MolecularSequence_Roc {
   List<double> fMeasure;
   List<Element> elementFMeasure;
 
-  MolecularSequence_Roc(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.score,
-      this.elementScore,
-      this.numTP,
-      this.elementNumTP,
-      this.numFP,
-      this.elementNumFP,
-      this.numFN,
-      this.elementNumFN,
-      this.precision,
-      this.elementPrecision,
-      this.sensitivity,
-      this.elementSensitivity,
-      this.fMeasure,
-      this.elementFMeasure});
+  MolecularSequence_Roc({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.score,
+    this.elementScore,
+    this.numTP,
+    this.elementNumTP,
+    this.numFP,
+    this.elementNumFP,
+    this.numFN,
+    this.elementNumFN,
+    this.precision,
+    this.elementPrecision,
+    this.sensitivity,
+    this.elementSensitivity,
+    this.fMeasure,
+    this.elementFMeasure,
+  });
 
   factory MolecularSequence_Roc.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequence_RocFromJson(json);
@@ -546,26 +556,27 @@ class MolecularSequence_Roc {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Repository {
-  static Future<MolecularSequence_Repository> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      String url,
-      Element elementUrl,
-      String name,
-      Element elementName,
-      String datasetId,
-      Element elementDatasetId,
-      String variantsetId,
-      Element elementVariantsetId,
-      String readsetId,
-      Element elementReadsetId}) async {
+  static Future<MolecularSequence_Repository> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String url,
+    Element elementUrl,
+    String name,
+    Element elementName,
+    String datasetId,
+    Element elementDatasetId,
+    String variantsetId,
+    Element elementVariantsetId,
+    String readsetId,
+    Element elementReadsetId,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Repository newMolecularSequence_Repository =
         new MolecularSequence_Repository(
-      id: await fhirDb.newResourceId('MolecularSequence_Repository'),
+      id: id ?? await fhirDb.newResourceId('MolecularSequence_Repository'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -587,7 +598,7 @@ class MolecularSequence_Repository {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String type; // <code> enum: directlink/openapi/login/oauth/other;
+  String type;
   Element elementType;
   String url;
   Element elementUrl;
@@ -600,22 +611,23 @@ class MolecularSequence_Repository {
   String readsetId;
   Element elementReadsetId;
 
-  MolecularSequence_Repository(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.url,
-      this.elementUrl,
-      this.name,
-      this.elementName,
-      this.datasetId,
-      this.elementDatasetId,
-      this.variantsetId,
-      this.elementVariantsetId,
-      this.readsetId,
-      this.elementReadsetId});
+  MolecularSequence_Repository({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.url,
+    this.elementUrl,
+    this.name,
+    this.elementName,
+    this.datasetId,
+    this.elementDatasetId,
+    this.variantsetId,
+    this.elementVariantsetId,
+    this.readsetId,
+    this.elementReadsetId,
+  });
 
   factory MolecularSequence_Repository.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequence_RepositoryFromJson(json);
@@ -624,21 +636,23 @@ class MolecularSequence_Repository {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_StructureVariant {
-  static Future<MolecularSequence_StructureVariant> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept variantType,
-      bool exact,
-      Element elementExact,
-      int length,
-      Element elementLength,
-      MolecularSequence_Outer outer,
-      MolecularSequence_Inner inner}) async {
+  static Future<MolecularSequence_StructureVariant> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept variantType,
+    bool exact,
+    Element elementExact,
+    int length,
+    Element elementLength,
+    MolecularSequence_Outer outer,
+    MolecularSequence_Inner inner,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_StructureVariant newMolecularSequence_StructureVariant =
         new MolecularSequence_StructureVariant(
-      id: await fhirDb.newResourceId('MolecularSequence_StructureVariant'),
+      id: id ??
+          await fhirDb.newResourceId('MolecularSequence_StructureVariant'),
       extension: extension,
       modifierExtension: modifierExtension,
       variantType: variantType,
@@ -663,17 +677,18 @@ class MolecularSequence_StructureVariant {
   MolecularSequence_Outer outer;
   MolecularSequence_Inner inner;
 
-  MolecularSequence_StructureVariant(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.variantType,
-      this.exact,
-      this.elementExact,
-      this.length,
-      this.elementLength,
-      this.outer,
-      this.inner});
+  MolecularSequence_StructureVariant({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.variantType,
+    this.exact,
+    this.elementExact,
+    this.length,
+    this.elementLength,
+    this.outer,
+    this.inner,
+  });
 
   factory MolecularSequence_StructureVariant.fromJson(
           Map<String, dynamic> json) =>
@@ -684,18 +699,19 @@ class MolecularSequence_StructureVariant {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Outer {
-  static Future<MolecularSequence_Outer> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int start,
-      Element elementStart,
-      int end,
-      Element elementEnd}) async {
+  static Future<MolecularSequence_Outer> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int start,
+    Element elementStart,
+    int end,
+    Element elementEnd,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Outer newMolecularSequence_Outer =
         new MolecularSequence_Outer(
-      id: await fhirDb.newResourceId('MolecularSequence_Outer'),
+      id: id ?? await fhirDb.newResourceId('MolecularSequence_Outer'),
       extension: extension,
       modifierExtension: modifierExtension,
       start: start,
@@ -714,14 +730,15 @@ class MolecularSequence_Outer {
   int end;
   Element elementEnd;
 
-  MolecularSequence_Outer(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.start,
-      this.elementStart,
-      this.end,
-      this.elementEnd});
+  MolecularSequence_Outer({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+  });
 
   factory MolecularSequence_Outer.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequence_OuterFromJson(json);
@@ -730,18 +747,19 @@ class MolecularSequence_Outer {
 
 @JsonSerializable(explicitToJson: true)
 class MolecularSequence_Inner {
-  static Future<MolecularSequence_Inner> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int start,
-      Element elementStart,
-      int end,
-      Element elementEnd}) async {
+  static Future<MolecularSequence_Inner> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int start,
+    Element elementStart,
+    int end,
+    Element elementEnd,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Inner newMolecularSequence_Inner =
         new MolecularSequence_Inner(
-      id: await fhirDb.newResourceId('MolecularSequence_Inner'),
+      id: id ?? await fhirDb.newResourceId('MolecularSequence_Inner'),
       extension: extension,
       modifierExtension: modifierExtension,
       start: start,
@@ -760,14 +778,15 @@ class MolecularSequence_Inner {
   int end;
   Element elementEnd;
 
-  MolecularSequence_Inner(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.start,
-      this.elementStart,
-      this.end,
-      this.elementEnd});
+  MolecularSequence_Inner({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+  });
 
   factory MolecularSequence_Inner.fromJson(Map<String, dynamic> json) =>
       _$MolecularSequence_InnerFromJson(json);

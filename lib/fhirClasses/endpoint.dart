@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -15,39 +15,40 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Endpoint {
-  static Future<Endpoint> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      Coding connectionType,
-      String name,
-      Element elementName,
-      Reference managingOrganization,
-      List<ContactPoint> contact,
-      Period period,
-      List<CodeableConcept> payloadType,
-      List<String> payloadMimeType,
-      List<Element> elementPayloadMimeType,
-      String address,
-      Element elementAddress,
-      List<String> header,
-      List<Element> elementHeader}) async {
+  static Future<Endpoint> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Coding connectionType,
+    String name,
+    Element elementName,
+    Reference managingOrganization,
+    List<ContactPoint> contact,
+    Period period,
+    List<CodeableConcept> payloadType,
+    List<String> payloadMimeType,
+    List<Element> elementPayloadMimeType,
+    String address,
+    Element elementAddress,
+    List<String> header,
+    List<Element> elementHeader,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Endpoint newEndpoint = new Endpoint(
-      resourceType: 'Endpoint',
-      id: await fhirDb.newResourceId('Endpoint'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Endpoint'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -75,17 +76,17 @@ class Endpoint {
     );
     newEndpoint.meta.createdAt = DateTime.now();
     newEndpoint.meta.lastUpdated = newEndpoint.meta.createdAt;
-    int saved = await fhirDb.newResource(newEndpoint);
+    int saved = await fhirDb.saveResource(newEndpoint);
     return newEndpoint;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Endpoint';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -97,8 +98,7 @@ class Endpoint {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String
-      status; // <code> enum: active/suspended/error/off/entered-in-error/test;
+  String status;
   Element elementStatus;
   Coding connectionType;
   String name;
@@ -114,34 +114,35 @@ class Endpoint {
   List<String> header;
   List<Element> elementHeader;
 
-  Endpoint(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      @required this.connectionType,
-      this.name,
-      this.elementName,
-      this.managingOrganization,
-      this.contact,
-      this.period,
-      @required this.payloadType,
-      this.payloadMimeType,
-      this.elementPayloadMimeType,
-      this.address,
-      this.elementAddress,
-      this.header,
-      this.elementHeader});
+  Endpoint({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.connectionType,
+    this.name,
+    this.elementName,
+    this.managingOrganization,
+    this.contact,
+    this.period,
+    @required this.payloadType,
+    this.payloadMimeType,
+    this.elementPayloadMimeType,
+    this.address,
+    this.elementAddress,
+    this.header,
+    this.elementHeader,
+  });
 
   factory Endpoint.fromJson(Map<String, dynamic> json) =>
       _$EndpointFromJson(json);

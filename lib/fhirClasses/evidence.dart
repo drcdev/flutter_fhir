@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -17,64 +17,65 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Evidence {
-  static Future<Evidence> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String shortTitle,
-      Element elementShortTitle,
-      String subtitle,
-      Element elementSubtitle,
-      String status,
-      Element elementStatus,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<Annotation> note,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String copyright,
-      Element elementCopyright,
-      String approvalDate,
-      Element elementApprovalDate,
-      String lastReviewDate,
-      Element elementLastReviewDate,
-      Period effectivePeriod,
-      List<CodeableConcept> topic,
-      List<ContactDetail> author,
-      List<ContactDetail> editor,
-      List<ContactDetail> reviewer,
-      List<ContactDetail> endorser,
-      List<RelatedArtifact> relatedArtifact,
-      Reference exposureBackground,
-      List<Reference> exposureVariant,
-      List<Reference> outcome}) async {
+  static Future<Evidence> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String shortTitle,
+    Element elementShortTitle,
+    String subtitle,
+    Element elementSubtitle,
+    String status,
+    Element elementStatus,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<Annotation> note,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    List<CodeableConcept> topic,
+    List<ContactDetail> author,
+    List<ContactDetail> editor,
+    List<ContactDetail> reviewer,
+    List<ContactDetail> endorser,
+    List<RelatedArtifact> relatedArtifact,
+    Reference exposureBackground,
+    List<Reference> exposureVariant,
+    List<Reference> outcome,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Evidence newEvidence = new Evidence(
-      resourceType: 'Evidence',
-      id: await fhirDb.newResourceId('Evidence'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Evidence'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -127,17 +128,17 @@ class Evidence {
     );
     newEvidence.meta.createdAt = DateTime.now();
     newEvidence.meta.lastUpdated = newEvidence.meta.createdAt;
-    int saved = await fhirDb.newResource(newEvidence);
+    int saved = await fhirDb.saveResource(newEvidence);
     return newEvidence;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Evidence';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -161,7 +162,7 @@ class Evidence {
   Element elementShortTitle;
   String subtitle;
   Element elementSubtitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   DateTime date;
   Element elementDate;
@@ -190,59 +191,60 @@ class Evidence {
   List<Reference> exposureVariant;
   List<Reference> outcome;
 
-  Evidence(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.shortTitle,
-      this.elementShortTitle,
-      this.subtitle,
-      this.elementSubtitle,
-      this.status,
-      this.elementStatus,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.note,
-      this.useContext,
-      this.jurisdiction,
-      this.copyright,
-      this.elementCopyright,
-      this.approvalDate,
-      this.elementApprovalDate,
-      this.lastReviewDate,
-      this.elementLastReviewDate,
-      this.effectivePeriod,
-      this.topic,
-      this.author,
-      this.editor,
-      this.reviewer,
-      this.endorser,
-      this.relatedArtifact,
-      @required this.exposureBackground,
-      this.exposureVariant,
-      this.outcome});
+  Evidence({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.shortTitle,
+    this.elementShortTitle,
+    this.subtitle,
+    this.elementSubtitle,
+    this.status,
+    this.elementStatus,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.note,
+    this.useContext,
+    this.jurisdiction,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.topic,
+    this.author,
+    this.editor,
+    this.reviewer,
+    this.endorser,
+    this.relatedArtifact,
+    @required this.exposureBackground,
+    this.exposureVariant,
+    this.outcome,
+  });
 
   factory Evidence.fromJson(Map<String, dynamic> json) =>
       _$EvidenceFromJson(json);

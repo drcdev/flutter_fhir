@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -11,48 +11,49 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CompartmentDefinition {
-  static Future<CompartmentDefinition> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      String purpose,
-      Element elementPurpose,
-      String code,
-      Element elementCode,
-      bool search,
-      Element elementSearch,
-      List<CompartmentDefinition_Resource> resource}) async {
+  static Future<CompartmentDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    String purpose,
+    Element elementPurpose,
+    String code,
+    Element elementCode,
+    bool search,
+    Element elementSearch,
+    List<CompartmentDefinition_Resource> resource,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CompartmentDefinition newCompartmentDefinition = new CompartmentDefinition(
-      resourceType: 'CompartmentDefinition',
-      id: await fhirDb.newResourceId('CompartmentDefinition'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('CompartmentDefinition'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -90,17 +91,17 @@ class CompartmentDefinition {
     newCompartmentDefinition.meta.createdAt = DateTime.now();
     newCompartmentDefinition.meta.lastUpdated =
         newCompartmentDefinition.meta.createdAt;
-    int saved = await fhirDb.newResource(newCompartmentDefinition);
+    int saved = await fhirDb.saveResource(newCompartmentDefinition);
     return newCompartmentDefinition;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'CompartmentDefinition';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -117,7 +118,7 @@ class CompartmentDefinition {
   Element elementVersion;
   String name;
   Element elementName;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -131,50 +132,50 @@ class CompartmentDefinition {
   List<UsageContext> useContext;
   String purpose;
   Element elementPurpose;
-  String
-      code; // <code> enum: Patient/Encounter/RelatedPerson/Practitioner/Device;
+  String code;
   Element elementCode;
   bool search;
   Element elementSearch;
   List<CompartmentDefinition_Resource> resource;
 
-  CompartmentDefinition(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.purpose,
-      this.elementPurpose,
-      this.code,
-      this.elementCode,
-      this.search,
-      this.elementSearch,
-      this.resource});
+  CompartmentDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.purpose,
+    this.elementPurpose,
+    this.code,
+    this.elementCode,
+    this.search,
+    this.elementSearch,
+    this.resource,
+  });
 
   factory CompartmentDefinition.fromJson(Map<String, dynamic> json) =>
       _$CompartmentDefinitionFromJson(json);
@@ -183,20 +184,21 @@ class CompartmentDefinition {
 
 @JsonSerializable(explicitToJson: true)
 class CompartmentDefinition_Resource {
-  static Future<CompartmentDefinition_Resource> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      List<String> param,
-      List<Element> elementParam,
-      String documentation,
-      Element elementDocumentation}) async {
+  static Future<CompartmentDefinition_Resource> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    List<String> param,
+    List<Element> elementParam,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CompartmentDefinition_Resource newCompartmentDefinition_Resource =
         new CompartmentDefinition_Resource(
-      id: await fhirDb.newResourceId('CompartmentDefinition_Resource'),
+      id: id ?? await fhirDb.newResourceId('CompartmentDefinition_Resource'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -219,16 +221,17 @@ class CompartmentDefinition_Resource {
   String documentation;
   Element elementDocumentation;
 
-  CompartmentDefinition_Resource(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.param,
-      this.elementParam,
-      this.documentation,
-      this.elementDocumentation});
+  CompartmentDefinition_Resource({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.param,
+    this.elementParam,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
   factory CompartmentDefinition_Resource.fromJson(Map<String, dynamic> json) =>
       _$CompartmentDefinition_ResourceFromJson(json);

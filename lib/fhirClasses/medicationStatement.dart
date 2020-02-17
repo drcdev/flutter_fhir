@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,45 +15,46 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MedicationStatement {
-  static Future<MedicationStatement> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> basedOn,
-      List<Reference> partOf,
-      String status,
-      Element elementStatus,
-      List<CodeableConcept> statusReason,
-      CodeableConcept category,
-      CodeableConcept medicationCodeableConcept,
-      Reference medicationReference,
-      Reference subject,
-      Reference context,
-      String effectiveDateTime,
-      Element elementEffectiveDateTime,
-      Period effectivePeriod,
-      DateTime dateAsserted,
-      Element elementDateAsserted,
-      Reference informationSource,
-      List<Reference> derivedFrom,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<Annotation> note,
-      List<Dosage> dosage}) async {
+  static Future<MedicationStatement> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> statusReason,
+    CodeableConcept category,
+    CodeableConcept medicationCodeableConcept,
+    Reference medicationReference,
+    Reference subject,
+    Reference context,
+    String effectiveDateTime,
+    Element elementEffectiveDateTime,
+    Period effectivePeriod,
+    DateTime dateAsserted,
+    Element elementDateAsserted,
+    Reference informationSource,
+    List<Reference> derivedFrom,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Annotation> note,
+    List<Dosage> dosage,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationStatement newMedicationStatement = new MedicationStatement(
-      resourceType: 'MedicationStatement',
-      id: await fhirDb.newResourceId('MedicationStatement'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('MedicationStatement'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -88,17 +89,17 @@ class MedicationStatement {
     newMedicationStatement.meta.createdAt = DateTime.now();
     newMedicationStatement.meta.lastUpdated =
         newMedicationStatement.meta.createdAt;
-    int saved = await fhirDb.newResource(newMedicationStatement);
+    int saved = await fhirDb.saveResource(newMedicationStatement);
     return newMedicationStatement;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'MedicationStatement';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -120,8 +121,7 @@ class MedicationStatement {
   Reference medicationReference;
   Reference subject;
   Reference context;
-  String
-      effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String effectiveDateTime;
   Element elementEffectiveDateTime;
   Period effectivePeriod;
   DateTime dateAsserted;
@@ -133,40 +133,41 @@ class MedicationStatement {
   List<Annotation> note;
   List<Dosage> dosage;
 
-  MedicationStatement(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.partOf,
-      this.status,
-      this.elementStatus,
-      this.statusReason,
-      this.category,
-      this.medicationCodeableConcept,
-      this.medicationReference,
-      @required this.subject,
-      this.context,
-      this.effectiveDateTime,
-      this.elementEffectiveDateTime,
-      this.effectivePeriod,
-      this.dateAsserted,
-      this.elementDateAsserted,
-      this.informationSource,
-      this.derivedFrom,
-      this.reasonCode,
-      this.reasonReference,
-      this.note,
-      this.dosage});
+  MedicationStatement({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.statusReason,
+    this.category,
+    this.medicationCodeableConcept,
+    this.medicationReference,
+    @required this.subject,
+    this.context,
+    this.effectiveDateTime,
+    this.elementEffectiveDateTime,
+    this.effectivePeriod,
+    this.dateAsserted,
+    this.elementDateAsserted,
+    this.informationSource,
+    this.derivedFrom,
+    this.reasonCode,
+    this.reasonReference,
+    this.note,
+    this.dosage,
+  });
 
   factory MedicationStatement.fromJson(Map<String, dynamic> json) =>
       _$MedicationStatementFromJson(json);

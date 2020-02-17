@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -12,29 +12,30 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Basic {
-  static Future<Basic> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      CodeableConcept code,
-      Reference subject,
-      String created,
-      Element elementCreated,
-      Reference author}) async {
+  static Future<Basic> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    CodeableConcept code,
+    Reference subject,
+    String created,
+    Element elementCreated,
+    Reference author,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Basic newBasic = new Basic(
-      resourceType: 'Basic',
-      id: await fhirDb.newResourceId('Basic'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Basic'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -52,17 +53,17 @@ class Basic {
     );
     newBasic.meta.createdAt = DateTime.now();
     newBasic.meta.lastUpdated = newBasic.meta.createdAt;
-    int saved = await fhirDb.newResource(newBasic);
+    int saved = await fhirDb.saveResource(newBasic);
     return newBasic;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Basic';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -80,24 +81,25 @@ class Basic {
   Element elementCreated;
   Reference author;
 
-  Basic(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      @required this.code,
-      this.subject,
-      this.created,
-      this.elementCreated,
-      this.author});
+  Basic({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    @required this.code,
+    this.subject,
+    this.created,
+    this.elementCreated,
+    this.author,
+  });
 
   factory Basic.fromJson(Map<String, dynamic> json) => _$BasicFromJson(json);
   Map<String, dynamic> toJson() => _$BasicToJson(this);

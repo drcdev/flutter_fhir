@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -13,39 +13,40 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ObservationDefinition {
-  static Future<ObservationDefinition> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CodeableConcept> category,
-      CodeableConcept code,
-      List<Identifier> identifier,
-      List<String> permittedDataType,
-      List<Element> elementPermittedDataType,
-      bool multipleResultsAllowed,
-      Element elementMultipleResultsAllowed,
-      CodeableConcept method,
-      String preferredReportName,
-      Element elementPreferredReportName,
-      ObservationDefinition_QuantitativeDetails quantitativeDetails,
-      List<ObservationDefinition_QualifiedInterval> qualifiedInterval,
-      Reference validCodedValueSet,
-      Reference normalCodedValueSet,
-      Reference abnormalCodedValueSet,
-      Reference criticalCodedValueSet}) async {
+  static Future<ObservationDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> category,
+    CodeableConcept code,
+    List<Identifier> identifier,
+    String permittedDataType,
+    List<Element> elementPermittedDataType,
+    bool multipleResultsAllowed,
+    Element elementMultipleResultsAllowed,
+    CodeableConcept method,
+    String preferredReportName,
+    Element elementPreferredReportName,
+    ObservationDefinition_QuantitativeDetails quantitativeDetails,
+    List<ObservationDefinition_QualifiedInterval> qualifiedInterval,
+    Reference validCodedValueSet,
+    Reference normalCodedValueSet,
+    Reference abnormalCodedValueSet,
+    Reference criticalCodedValueSet,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ObservationDefinition newObservationDefinition = new ObservationDefinition(
-      resourceType: 'ObservationDefinition',
-      id: await fhirDb.newResourceId('ObservationDefinition'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ObservationDefinition'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -74,17 +75,17 @@ class ObservationDefinition {
     newObservationDefinition.meta.createdAt = DateTime.now();
     newObservationDefinition.meta.lastUpdated =
         newObservationDefinition.meta.createdAt;
-    int saved = await fhirDb.newResource(newObservationDefinition);
+    int saved = await fhirDb.saveResource(newObservationDefinition);
     return newObservationDefinition;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ObservationDefinition';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -98,8 +99,7 @@ class ObservationDefinition {
   List<CodeableConcept> category;
   CodeableConcept code;
   List<Identifier> identifier;
-  List<String>
-      permittedDataType; // <code> enum: Quantity/CodeableConcept/string/boolean/integer/Range/Ratio/SampledData/time/dateTime/Period> permittedDataType;
+  String permittedDataType;
   List<Element> elementPermittedDataType;
   bool multipleResultsAllowed;
   Element elementMultipleResultsAllowed;
@@ -113,34 +113,35 @@ class ObservationDefinition {
   Reference abnormalCodedValueSet;
   Reference criticalCodedValueSet;
 
-  ObservationDefinition(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.category,
-      @required this.code,
-      this.identifier,
-      this.permittedDataType,
-      this.elementPermittedDataType,
-      this.multipleResultsAllowed,
-      this.elementMultipleResultsAllowed,
-      this.method,
-      this.preferredReportName,
-      this.elementPreferredReportName,
-      this.quantitativeDetails,
-      this.qualifiedInterval,
-      this.validCodedValueSet,
-      this.normalCodedValueSet,
-      this.abnormalCodedValueSet,
-      this.criticalCodedValueSet});
+  ObservationDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.category,
+    @required this.code,
+    this.identifier,
+    this.permittedDataType,
+    this.elementPermittedDataType,
+    this.multipleResultsAllowed,
+    this.elementMultipleResultsAllowed,
+    this.method,
+    this.preferredReportName,
+    this.elementPreferredReportName,
+    this.quantitativeDetails,
+    this.qualifiedInterval,
+    this.validCodedValueSet,
+    this.normalCodedValueSet,
+    this.abnormalCodedValueSet,
+    this.criticalCodedValueSet,
+  });
 
   factory ObservationDefinition.fromJson(Map<String, dynamic> json) =>
       _$ObservationDefinitionFromJson(json);
@@ -149,22 +150,24 @@ class ObservationDefinition {
 
 @JsonSerializable(explicitToJson: true)
 class ObservationDefinition_QuantitativeDetails {
-  static Future<ObservationDefinition_QuantitativeDetails> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept customaryUnit,
-      CodeableConcept unit,
-      double conversionFactor,
-      Element elementConversionFactor,
-      int decimalPrecision,
-      Element elementDecimalPrecision}) async {
+  static Future<ObservationDefinition_QuantitativeDetails> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept customaryUnit,
+    CodeableConcept unit,
+    double conversionFactor,
+    Element elementConversionFactor,
+    int decimalPrecision,
+    Element elementDecimalPrecision,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ObservationDefinition_QuantitativeDetails
         newObservationDefinition_QuantitativeDetails =
         new ObservationDefinition_QuantitativeDetails(
-      id: await fhirDb
-          .newResourceId('ObservationDefinition_QuantitativeDetails'),
+      id: id ??
+          await fhirDb
+              .newResourceId('ObservationDefinition_QuantitativeDetails'),
       extension: extension,
       modifierExtension: modifierExtension,
       customaryUnit: customaryUnit,
@@ -187,16 +190,17 @@ class ObservationDefinition_QuantitativeDetails {
   int decimalPrecision;
   Element elementDecimalPrecision;
 
-  ObservationDefinition_QuantitativeDetails(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.customaryUnit,
-      this.unit,
-      this.conversionFactor,
-      this.elementConversionFactor,
-      this.decimalPrecision,
-      this.elementDecimalPrecision});
+  ObservationDefinition_QuantitativeDetails({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.customaryUnit,
+    this.unit,
+    this.conversionFactor,
+    this.elementConversionFactor,
+    this.decimalPrecision,
+    this.elementDecimalPrecision,
+  });
 
   factory ObservationDefinition_QuantitativeDetails.fromJson(
           Map<String, dynamic> json) =>
@@ -207,26 +211,28 @@ class ObservationDefinition_QuantitativeDetails {
 
 @JsonSerializable(explicitToJson: true)
 class ObservationDefinition_QualifiedInterval {
-  static Future<ObservationDefinition_QualifiedInterval> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String category,
-      Element elementCategory,
-      Range range,
-      CodeableConcept context,
-      List<CodeableConcept> appliesTo,
-      String gender,
-      Element elementGender,
-      Range age,
-      Range gestationalAge,
-      String condition,
-      Element elementCondition}) async {
+  static Future<ObservationDefinition_QualifiedInterval> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String category,
+    Element elementCategory,
+    Range range,
+    CodeableConcept context,
+    List<CodeableConcept> appliesTo,
+    String gender,
+    Element elementGender,
+    Range age,
+    Range gestationalAge,
+    String condition,
+    Element elementCondition,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ObservationDefinition_QualifiedInterval
         newObservationDefinition_QualifiedInterval =
         new ObservationDefinition_QualifiedInterval(
-      id: await fhirDb.newResourceId('ObservationDefinition_QualifiedInterval'),
+      id: id ??
+          await fhirDb.newResourceId('ObservationDefinition_QualifiedInterval'),
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -247,33 +253,34 @@ class ObservationDefinition_QualifiedInterval {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String category; // <code> enum: reference/critical/absolute;
+  String category;
   Element elementCategory;
   Range range;
   CodeableConcept context;
   List<CodeableConcept> appliesTo;
-  String gender; // <code> enum: male/female/other/unknown;
+  String gender;
   Element elementGender;
   Range age;
   Range gestationalAge;
   String condition;
   Element elementCondition;
 
-  ObservationDefinition_QualifiedInterval(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.category,
-      this.elementCategory,
-      this.range,
-      this.context,
-      this.appliesTo,
-      this.gender,
-      this.elementGender,
-      this.age,
-      this.gestationalAge,
-      this.condition,
-      this.elementCondition});
+  ObservationDefinition_QualifiedInterval({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.category,
+    this.elementCategory,
+    this.range,
+    this.context,
+    this.appliesTo,
+    this.gender,
+    this.elementGender,
+    this.age,
+    this.gestationalAge,
+    this.condition,
+    this.elementCondition,
+  });
 
   factory ObservationDefinition_QualifiedInterval.fromJson(
           Map<String, dynamic> json) =>
@@ -332,8 +339,7 @@ ObservationDefinition _$ObservationDefinitionFromJson(
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    permittedDataType:
-        (json['permittedDataType'] as List)?.map((e) => e as String)?.toList(),
+    permittedDataType: json['permittedDataType'] as String,
     elementPermittedDataType: (json['elementPermittedDataType'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))

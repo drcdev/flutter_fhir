@@ -1,20 +1,22 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ContactDetail {
-  static Future<ContactDetail> newInstance(
-      {String id,
-      List<Extension> extension,
-      String name,
-      Element elementName,
-      List<ContactPoint> telecom}) async {
+  static Future<ContactDetail> newInstance({
+    String id,
+    List<Extension> extension,
+    String name,
+    Element elementName,
+    List<ContactPoint> telecom,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ContactDetail newContactDetail = new ContactDetail(
-      id: await fhirDb.newResourceId('ContactDetail'),
+      id: id ?? await fhirDb.newResourceId('ContactDetail'),
       extension: extension,
       name: name,
       elementName: elementName,
@@ -29,8 +31,13 @@ class ContactDetail {
   Element elementName;
   List<ContactPoint> telecom;
 
-  ContactDetail(
-      {this.id, this.extension, this.name, this.elementName, this.telecom});
+  ContactDetail({
+    this.id,
+    this.extension,
+    this.name,
+    this.elementName,
+    this.telecom,
+  });
 
   factory ContactDetail.fromJson(Map<String, dynamic> json) =>
       _$ContactDetailFromJson(json);

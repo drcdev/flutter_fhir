@@ -1,5 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -8,27 +9,28 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ProdCharacteristic {
-  static Future<ProdCharacteristic> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Quantity height,
-      Quantity width,
-      Quantity depth,
-      Quantity weight,
-      Quantity nominalVolume,
-      Quantity externalDiameter,
-      String shape,
-      Element elementShape,
-      List<String> color,
-      List<Element> elementColor,
-      List<String> imprint,
-      List<Element> elementImprint,
-      List<Attachment> image,
-      CodeableConcept scoring}) async {
+  static Future<ProdCharacteristic> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Quantity height,
+    Quantity width,
+    Quantity depth,
+    Quantity weight,
+    Quantity nominalVolume,
+    Quantity externalDiameter,
+    String shape,
+    Element elementShape,
+    List<String> color,
+    List<Element> elementColor,
+    List<String> imprint,
+    List<Element> elementImprint,
+    List<Attachment> image,
+    CodeableConcept scoring,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ProdCharacteristic newProdCharacteristic = new ProdCharacteristic(
-      id: await fhirDb.newResourceId('ProdCharacteristic'),
+      id: id ?? await fhirDb.newResourceId('ProdCharacteristic'),
       extension: extension,
       modifierExtension: modifierExtension,
       height: height,
@@ -67,24 +69,25 @@ class ProdCharacteristic {
   List<Attachment> image;
   CodeableConcept scoring;
 
-  ProdCharacteristic(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.height,
-      this.width,
-      this.depth,
-      this.weight,
-      this.nominalVolume,
-      this.externalDiameter,
-      this.shape,
-      this.elementShape,
-      this.color,
-      this.elementColor,
-      this.imprint,
-      this.elementImprint,
-      this.image,
-      this.scoring});
+  ProdCharacteristic({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.height,
+    this.width,
+    this.depth,
+    this.weight,
+    this.nominalVolume,
+    this.externalDiameter,
+    this.shape,
+    this.elementShape,
+    this.color,
+    this.elementColor,
+    this.imprint,
+    this.elementImprint,
+    this.image,
+    this.scoring,
+  });
 
   factory ProdCharacteristic.fromJson(Map<String, dynamic> json) =>
       _$ProdCharacteristicFromJson(json);

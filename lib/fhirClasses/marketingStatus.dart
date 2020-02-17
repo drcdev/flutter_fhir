@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -8,19 +8,20 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MarketingStatus {
-  static Future<MarketingStatus> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept country,
-      CodeableConcept jurisdiction,
-      CodeableConcept status,
-      Period dateRange,
-      DateTime restoreDate,
-      Element elementRestoreDate}) async {
+  static Future<MarketingStatus> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept country,
+    CodeableConcept jurisdiction,
+    CodeableConcept status,
+    Period dateRange,
+    DateTime restoreDate,
+    Element elementRestoreDate,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MarketingStatus newMarketingStatus = new MarketingStatus(
-      id: await fhirDb.newResourceId('MarketingStatus'),
+      id: id ?? await fhirDb.newResourceId('MarketingStatus'),
       extension: extension,
       modifierExtension: modifierExtension,
       country: country,
@@ -43,16 +44,17 @@ class MarketingStatus {
   DateTime restoreDate;
   Element elementRestoreDate;
 
-  MarketingStatus(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.country,
-      this.jurisdiction,
-      @required this.status,
-      @required this.dateRange,
-      this.restoreDate,
-      this.elementRestoreDate});
+  MarketingStatus({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.country,
+    this.jurisdiction,
+    @required this.status,
+    @required this.dateRange,
+    this.restoreDate,
+    this.elementRestoreDate,
+  });
 
   factory MarketingStatus.fromJson(Map<String, dynamic> json) =>
       _$MarketingStatusFromJson(json);

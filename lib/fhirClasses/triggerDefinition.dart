@@ -1,5 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/dataRequirement.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -9,24 +10,25 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class TriggerDefinition {
-  static Future<TriggerDefinition> newInstance(
-      {String id,
-      List<Extension> extension,
-      String type,
-      Element elementType,
-      String name,
-      Element elementName,
-      Timing timingTiming,
-      Reference timingReference,
-      String timingDate,
-      Element elementTimingDate,
-      String timingDateTime,
-      Element elementTimingDateTime,
-      List<DataRequirement> data,
-      Expression condition}) async {
+  static Future<TriggerDefinition> newInstance({
+    String id,
+    List<Extension> extension,
+    String type,
+    Element elementType,
+    String name,
+    Element elementName,
+    Timing timingTiming,
+    Reference timingReference,
+    String timingDate,
+    Element elementTimingDate,
+    String timingDateTime,
+    Element elementTimingDateTime,
+    List<DataRequirement> data,
+    Expression condition,
+  }) async {
     var fhirDb = new DatabaseHelper();
     TriggerDefinition newTriggerDefinition = new TriggerDefinition(
-      id: await fhirDb.newResourceId('TriggerDefinition'),
+      id: id ?? await fhirDb.newResourceId('TriggerDefinition'),
       extension: extension,
       type: type,
       elementType: elementType,
@@ -46,37 +48,35 @@ class TriggerDefinition {
 
   String id;
   List<Extension> extension;
-  String
-      type; // <code> enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended;
+  String type;
   Element elementType;
   String name;
   Element elementName;
   Timing timingTiming;
   Reference timingReference;
-  String
-      timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String timingDate;
   Element elementTimingDate;
-  String
-      timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String timingDateTime;
   Element elementTimingDateTime;
   List<DataRequirement> data;
   Expression condition;
 
-  TriggerDefinition(
-      {this.id,
-      this.extension,
-      this.type,
-      this.elementType,
-      this.name,
-      this.elementName,
-      this.timingTiming,
-      this.timingReference,
-      this.timingDate,
-      this.elementTimingDate,
-      this.timingDateTime,
-      this.elementTimingDateTime,
-      this.data,
-      this.condition});
+  TriggerDefinition({
+    this.id,
+    this.extension,
+    this.type,
+    this.elementType,
+    this.name,
+    this.elementName,
+    this.timingTiming,
+    this.timingReference,
+    this.timingDate,
+    this.elementTimingDate,
+    this.timingDateTime,
+    this.elementTimingDateTime,
+    this.data,
+    this.condition,
+  });
 
   factory TriggerDefinition.fromJson(Map<String, dynamic> json) =>
       _$TriggerDefinitionFromJson(json);

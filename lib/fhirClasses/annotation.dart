@@ -1,24 +1,26 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Annotation {
-  static Future<Annotation> newInstance(
-      {String id,
-      List<Extension> extension,
-      Reference authorReference,
-      String authorString,
-      Element elementAuthorString,
-      DateTime time,
-      Element elementTime,
-      String text,
-      Element elementText}) async {
+  static Future<Annotation> newInstance({
+    String id,
+    List<Extension> extension,
+    Reference authorReference,
+    String authorString,
+    Element elementAuthorString,
+    DateTime time,
+    Element elementTime,
+    String text,
+    Element elementText,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Annotation newAnnotation = new Annotation(
-      id: await fhirDb.newResourceId('Annotation'),
+      id: id ?? await fhirDb.newResourceId('Annotation'),
       extension: extension,
       authorReference: authorReference,
       authorString: authorString,
@@ -34,23 +36,24 @@ class Annotation {
   String id;
   List<Extension> extension;
   Reference authorReference;
-  String authorString; //  pattern: ^[ \r\n\t\S]+$
+  String authorString;
   Element elementAuthorString;
   DateTime time;
   Element elementTime;
   String text;
   Element elementText;
 
-  Annotation(
-      {this.id,
-      this.extension,
-      this.authorReference,
-      this.authorString,
-      this.elementAuthorString,
-      this.time,
-      this.elementTime,
-      this.text,
-      this.elementText});
+  Annotation({
+    this.id,
+    this.extension,
+    this.authorReference,
+    this.authorString,
+    this.elementAuthorString,
+    this.time,
+    this.elementTime,
+    this.text,
+    this.elementText,
+  });
 
   factory Annotation.fromJson(Map<String, dynamic> json) =>
       _$AnnotationFromJson(json);

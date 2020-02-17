@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -8,17 +8,18 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ProductShelfLife {
-  static Future<ProductShelfLife> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      CodeableConcept type,
-      Quantity period,
-      List<CodeableConcept> specialPrecautionsForStorage}) async {
+  static Future<ProductShelfLife> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    CodeableConcept type,
+    Quantity period,
+    List<CodeableConcept> specialPrecautionsForStorage,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ProductShelfLife newProductShelfLife = new ProductShelfLife(
-      id: await fhirDb.newResourceId('ProductShelfLife'),
+      id: id ?? await fhirDb.newResourceId('ProductShelfLife'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -37,14 +38,15 @@ class ProductShelfLife {
   Quantity period;
   List<CodeableConcept> specialPrecautionsForStorage;
 
-  ProductShelfLife(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      @required this.type,
-      @required this.period,
-      this.specialPrecautionsForStorage});
+  ProductShelfLife({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    @required this.type,
+    @required this.period,
+    this.specialPrecautionsForStorage,
+  });
 
   factory ProductShelfLife.fromJson(Map<String, dynamic> json) =>
       _$ProductShelfLifeFromJson(json);

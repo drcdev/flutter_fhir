@@ -1,23 +1,25 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Population {
-  static Future<Population> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Range ageRange,
-      CodeableConcept ageCodeableConcept,
-      CodeableConcept gender,
-      CodeableConcept race,
-      CodeableConcept physiologicalCondition}) async {
+  static Future<Population> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Range ageRange,
+    CodeableConcept ageCodeableConcept,
+    CodeableConcept gender,
+    CodeableConcept race,
+    CodeableConcept physiologicalCondition,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Population newPopulation = new Population(
-      id: await fhirDb.newResourceId('Population'),
+      id: id ?? await fhirDb.newResourceId('Population'),
       extension: extension,
       modifierExtension: modifierExtension,
       ageRange: ageRange,
@@ -38,15 +40,16 @@ class Population {
   CodeableConcept race;
   CodeableConcept physiologicalCondition;
 
-  Population(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.ageRange,
-      this.ageCodeableConcept,
-      this.gender,
-      this.race,
-      this.physiologicalCondition});
+  Population({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.ageRange,
+    this.ageCodeableConcept,
+    this.gender,
+    this.race,
+    this.physiologicalCondition,
+  });
 
   factory Population.fromJson(Map<String, dynamic> json) =>
       _$PopulationFromJson(json);

@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -12,29 +12,30 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceProtein {
-  static Future<SubstanceProtein> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept sequenceType,
-      int numberOfSubunits,
-      Element elementNumberOfSubunits,
-      List<String> disulfideLinkage,
-      List<Element> elementDisulfideLinkage,
-      List<SubstanceProtein_Subunit> subunit}) async {
+  static Future<SubstanceProtein> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept sequenceType,
+    int numberOfSubunits,
+    Element elementNumberOfSubunits,
+    List<String> disulfideLinkage,
+    List<Element> elementDisulfideLinkage,
+    List<SubstanceProtein_Subunit> subunit,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceProtein newSubstanceProtein = new SubstanceProtein(
-      resourceType: 'SubstanceProtein',
-      id: await fhirDb.newResourceId('SubstanceProtein'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('SubstanceProtein'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -52,17 +53,17 @@ class SubstanceProtein {
     );
     newSubstanceProtein.meta.createdAt = DateTime.now();
     newSubstanceProtein.meta.lastUpdated = newSubstanceProtein.meta.createdAt;
-    int saved = await fhirDb.newResource(newSubstanceProtein);
+    int saved = await fhirDb.saveResource(newSubstanceProtein);
     return newSubstanceProtein;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'SubstanceProtein';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -80,24 +81,25 @@ class SubstanceProtein {
   List<Element> elementDisulfideLinkage;
   List<SubstanceProtein_Subunit> subunit;
 
-  SubstanceProtein(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.sequenceType,
-      this.numberOfSubunits,
-      this.elementNumberOfSubunits,
-      this.disulfideLinkage,
-      this.elementDisulfideLinkage,
-      this.subunit});
+  SubstanceProtein({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.sequenceType,
+    this.numberOfSubunits,
+    this.elementNumberOfSubunits,
+    this.disulfideLinkage,
+    this.elementDisulfideLinkage,
+    this.subunit,
+  });
 
   factory SubstanceProtein.fromJson(Map<String, dynamic> json) =>
       _$SubstanceProteinFromJson(json);
@@ -106,27 +108,28 @@ class SubstanceProtein {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceProtein_Subunit {
-  static Future<SubstanceProtein_Subunit> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int subunit,
-      Element elementSubunit,
-      String sequence,
-      Element elementSequence,
-      int length,
-      Element elementLength,
-      Attachment sequenceAttachment,
-      Identifier nTerminalModificationId,
-      String nTerminalModification,
-      Element elementNTerminalModification,
-      Identifier cTerminalModificationId,
-      String cTerminalModification,
-      Element elementCTerminalModification}) async {
+  static Future<SubstanceProtein_Subunit> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int subunit,
+    Element elementSubunit,
+    String sequence,
+    Element elementSequence,
+    int length,
+    Element elementLength,
+    Attachment sequenceAttachment,
+    Identifier nTerminalModificationId,
+    String nTerminalModification,
+    Element elementNTerminalModification,
+    Identifier cTerminalModificationId,
+    String cTerminalModification,
+    Element elementCTerminalModification,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceProtein_Subunit newSubstanceProtein_Subunit =
         new SubstanceProtein_Subunit(
-      id: await fhirDb.newResourceId('SubstanceProtein_Subunit'),
+      id: id ?? await fhirDb.newResourceId('SubstanceProtein_Subunit'),
       extension: extension,
       modifierExtension: modifierExtension,
       subunit: subunit,
@@ -163,23 +166,24 @@ class SubstanceProtein_Subunit {
   String cTerminalModification;
   Element elementCTerminalModification;
 
-  SubstanceProtein_Subunit(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.subunit,
-      this.elementSubunit,
-      this.sequence,
-      this.elementSequence,
-      this.length,
-      this.elementLength,
-      this.sequenceAttachment,
-      this.nTerminalModificationId,
-      this.nTerminalModification,
-      this.elementNTerminalModification,
-      this.cTerminalModificationId,
-      this.cTerminalModification,
-      this.elementCTerminalModification});
+  SubstanceProtein_Subunit({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.subunit,
+    this.elementSubunit,
+    this.sequence,
+    this.elementSequence,
+    this.length,
+    this.elementLength,
+    this.sequenceAttachment,
+    this.nTerminalModificationId,
+    this.nTerminalModification,
+    this.elementNTerminalModification,
+    this.cTerminalModificationId,
+    this.cTerminalModification,
+    this.elementCTerminalModification,
+  });
 
   factory SubstanceProtein_Subunit.fromJson(Map<String, dynamic> json) =>
       _$SubstanceProtein_SubunitFromJson(json);

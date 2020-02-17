@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,46 +15,47 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Coverage {
-  static Future<Coverage> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept type,
-      Reference policyHolder,
-      Reference subscriber,
-      String subscriberId,
-      Element elementSubscriberId,
-      Reference beneficiary,
-      String dependent,
-      Element elementDependent,
-      CodeableConcept relationship,
-      Period period,
-      List<Reference> payor,
-      List<Coverage_Class> classs,
-      int order,
-      Element elementOrder,
-      String network,
-      Element elementNetwork,
-      List<Coverage_CostToBeneficiary> costToBeneficiary,
-      bool subrogation,
-      Element elementSubrogation,
-      List<Reference> contract}) async {
+  static Future<Coverage> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept type,
+    Reference policyHolder,
+    Reference subscriber,
+    String subscriberId,
+    Element elementSubscriberId,
+    Reference beneficiary,
+    String dependent,
+    Element elementDependent,
+    CodeableConcept relationship,
+    Period period,
+    List<Reference> payor,
+    List<Coverage_Class> classs,
+    int order,
+    Element elementOrder,
+    String network,
+    Element elementNetwork,
+    List<Coverage_CostToBeneficiary> costToBeneficiary,
+    bool subrogation,
+    Element elementSubrogation,
+    List<Reference> contract,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Coverage newCoverage = new Coverage(
-      resourceType: 'Coverage',
-      id: await fhirDb.newResourceId('Coverage'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Coverage'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -89,17 +90,17 @@ class Coverage {
     );
     newCoverage.meta.createdAt = DateTime.now();
     newCoverage.meta.lastUpdated = newCoverage.meta.createdAt;
-    int saved = await fhirDb.newResource(newCoverage);
+    int saved = await fhirDb.saveResource(newCoverage);
     return newCoverage;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Coverage';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -134,41 +135,42 @@ class Coverage {
   Element elementSubrogation;
   List<Reference> contract;
 
-  Coverage(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.type,
-      this.policyHolder,
-      this.subscriber,
-      this.subscriberId,
-      this.elementSubscriberId,
-      @required this.beneficiary,
-      this.dependent,
-      this.elementDependent,
-      this.relationship,
-      this.period,
-      @required this.payor,
-      this.classs,
-      this.order,
-      this.elementOrder,
-      this.network,
-      this.elementNetwork,
-      this.costToBeneficiary,
-      this.subrogation,
-      this.elementSubrogation,
-      this.contract});
+  Coverage({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.type,
+    this.policyHolder,
+    this.subscriber,
+    this.subscriberId,
+    this.elementSubscriberId,
+    @required this.beneficiary,
+    this.dependent,
+    this.elementDependent,
+    this.relationship,
+    this.period,
+    @required this.payor,
+    this.classs,
+    this.order,
+    this.elementOrder,
+    this.network,
+    this.elementNetwork,
+    this.costToBeneficiary,
+    this.subrogation,
+    this.elementSubrogation,
+    this.contract,
+  });
 
   factory Coverage.fromJson(Map<String, dynamic> json) =>
       _$CoverageFromJson(json);
@@ -177,18 +179,19 @@ class Coverage {
 
 @JsonSerializable(explicitToJson: true)
 class Coverage_Class {
-  static Future<Coverage_Class> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      String value,
-      Element elementValue,
-      String name,
-      Element elementName}) async {
+  static Future<Coverage_Class> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String value,
+    Element elementValue,
+    String name,
+    Element elementName,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Coverage_Class newCoverage_Class = new Coverage_Class(
-      id: await fhirDb.newResourceId('Coverage_Class'),
+      id: id ?? await fhirDb.newResourceId('Coverage_Class'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -209,15 +212,16 @@ class Coverage_Class {
   String name;
   Element elementName;
 
-  Coverage_Class(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.value,
-      this.elementValue,
-      this.name,
-      this.elementName});
+  Coverage_Class({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.value,
+    this.elementValue,
+    this.name,
+    this.elementName,
+  });
 
   factory Coverage_Class.fromJson(Map<String, dynamic> json) =>
       _$Coverage_ClassFromJson(json);
@@ -226,18 +230,19 @@ class Coverage_Class {
 
 @JsonSerializable(explicitToJson: true)
 class Coverage_CostToBeneficiary {
-  static Future<Coverage_CostToBeneficiary> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      Quantity valueQuantity,
-      Money valueMoney,
-      List<Coverage_Exception> exception}) async {
+  static Future<Coverage_CostToBeneficiary> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Quantity valueQuantity,
+    Money valueMoney,
+    List<Coverage_Exception> exception,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Coverage_CostToBeneficiary newCoverage_CostToBeneficiary =
         new Coverage_CostToBeneficiary(
-      id: await fhirDb.newResourceId('Coverage_CostToBeneficiary'),
+      id: id ?? await fhirDb.newResourceId('Coverage_CostToBeneficiary'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -256,14 +261,15 @@ class Coverage_CostToBeneficiary {
   Money valueMoney;
   List<Coverage_Exception> exception;
 
-  Coverage_CostToBeneficiary(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.valueQuantity,
-      this.valueMoney,
-      this.exception});
+  Coverage_CostToBeneficiary({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.valueQuantity,
+    this.valueMoney,
+    this.exception,
+  });
 
   factory Coverage_CostToBeneficiary.fromJson(Map<String, dynamic> json) =>
       _$Coverage_CostToBeneficiaryFromJson(json);
@@ -272,15 +278,16 @@ class Coverage_CostToBeneficiary {
 
 @JsonSerializable(explicitToJson: true)
 class Coverage_Exception {
-  static Future<Coverage_Exception> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      Period period}) async {
+  static Future<Coverage_Exception> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Period period,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Coverage_Exception newCoverage_Exception = new Coverage_Exception(
-      id: await fhirDb.newResourceId('Coverage_Exception'),
+      id: id ?? await fhirDb.newResourceId('Coverage_Exception'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -295,12 +302,13 @@ class Coverage_Exception {
   CodeableConcept type;
   Period period;
 
-  Coverage_Exception(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.period});
+  Coverage_Exception({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.period,
+  });
 
   factory Coverage_Exception.fromJson(Map<String, dynamic> json) =>
       _$Coverage_ExceptionFromJson(json);

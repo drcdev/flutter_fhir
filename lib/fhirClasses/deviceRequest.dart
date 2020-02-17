@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -17,56 +17,57 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DeviceRequest {
-  static Future<DeviceRequest> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<String> instantiatesCanonical,
-      List<String> instantiatesUri,
-      List<Element> elementInstantiatesUri,
-      List<Reference> basedOn,
-      List<Reference> priorRequest,
-      Identifier groupIdentifier,
-      String status,
-      Element elementStatus,
-      String intent,
-      Element elementIntent,
-      String priority,
-      Element elementPriority,
-      Reference codeReference,
-      CodeableConcept codeCodeableConcept,
-      List<DeviceRequest_Parameter> parameter,
-      Reference subject,
-      Reference encounter,
-      String occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Period occurrencePeriod,
-      Timing occurrenceTiming,
-      DateTime authoredOn,
-      Element elementAuthoredOn,
-      Reference requester,
-      CodeableConcept performerType,
-      Reference performer,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<Reference> insurance,
-      List<Reference> supportingInfo,
-      List<Annotation> note,
-      List<Reference> relevantHistory}) async {
+  static Future<DeviceRequest> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> instantiatesCanonical,
+    List<String> instantiatesUri,
+    List<Element> elementInstantiatesUri,
+    List<Reference> basedOn,
+    List<Reference> priorRequest,
+    Identifier groupIdentifier,
+    String status,
+    Element elementStatus,
+    String intent,
+    Element elementIntent,
+    String priority,
+    Element elementPriority,
+    Reference codeReference,
+    CodeableConcept codeCodeableConcept,
+    List<DeviceRequest_Parameter> parameter,
+    Reference subject,
+    Reference encounter,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    Timing occurrenceTiming,
+    DateTime authoredOn,
+    Element elementAuthoredOn,
+    Reference requester,
+    CodeableConcept performerType,
+    Reference performer,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Reference> insurance,
+    List<Reference> supportingInfo,
+    List<Annotation> note,
+    List<Reference> relevantHistory,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DeviceRequest newDeviceRequest = new DeviceRequest(
-      resourceType: 'DeviceRequest',
-      id: await fhirDb.newResourceId('DeviceRequest'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('DeviceRequest'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -111,17 +112,17 @@ class DeviceRequest {
     );
     newDeviceRequest.meta.createdAt = DateTime.now();
     newDeviceRequest.meta.lastUpdated = newDeviceRequest.meta.createdAt;
-    int saved = await fhirDb.newResource(newDeviceRequest);
+    int saved = await fhirDb.saveResource(newDeviceRequest);
     return newDeviceRequest;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'DeviceRequest';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -150,8 +151,7 @@ class DeviceRequest {
   List<DeviceRequest_Parameter> parameter;
   Reference subject;
   Reference encounter;
-  String
-      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String occurrenceDateTime;
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   Timing occurrenceTiming;
@@ -167,51 +167,52 @@ class DeviceRequest {
   List<Annotation> note;
   List<Reference> relevantHistory;
 
-  DeviceRequest(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.instantiatesCanonical,
-      this.instantiatesUri,
-      this.elementInstantiatesUri,
-      this.basedOn,
-      this.priorRequest,
-      this.groupIdentifier,
-      this.status,
-      this.elementStatus,
-      this.intent,
-      this.elementIntent,
-      this.priority,
-      this.elementPriority,
-      this.codeReference,
-      this.codeCodeableConcept,
-      this.parameter,
-      @required this.subject,
-      this.encounter,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.occurrencePeriod,
-      this.occurrenceTiming,
-      this.authoredOn,
-      this.elementAuthoredOn,
-      this.requester,
-      this.performerType,
-      this.performer,
-      this.reasonCode,
-      this.reasonReference,
-      this.insurance,
-      this.supportingInfo,
-      this.note,
-      this.relevantHistory});
+  DeviceRequest({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.basedOn,
+    this.priorRequest,
+    this.groupIdentifier,
+    this.status,
+    this.elementStatus,
+    this.intent,
+    this.elementIntent,
+    this.priority,
+    this.elementPriority,
+    this.codeReference,
+    this.codeCodeableConcept,
+    this.parameter,
+    @required this.subject,
+    this.encounter,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.occurrenceTiming,
+    this.authoredOn,
+    this.elementAuthoredOn,
+    this.requester,
+    this.performerType,
+    this.performer,
+    this.reasonCode,
+    this.reasonReference,
+    this.insurance,
+    this.supportingInfo,
+    this.note,
+    this.relevantHistory,
+  });
 
   factory DeviceRequest.fromJson(Map<String, dynamic> json) =>
       _$DeviceRequestFromJson(json);
@@ -220,20 +221,21 @@ class DeviceRequest {
 
 @JsonSerializable(explicitToJson: true)
 class DeviceRequest_Parameter {
-  static Future<DeviceRequest_Parameter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      CodeableConcept valueCodeableConcept,
-      Quantity valueQuantity,
-      Range valueRange,
-      bool valueBoolean,
-      Element elementValueBoolean}) async {
+  static Future<DeviceRequest_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    CodeableConcept valueCodeableConcept,
+    Quantity valueQuantity,
+    Range valueRange,
+    bool valueBoolean,
+    Element elementValueBoolean,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DeviceRequest_Parameter newDeviceRequest_Parameter =
         new DeviceRequest_Parameter(
-      id: await fhirDb.newResourceId('DeviceRequest_Parameter'),
+      id: id ?? await fhirDb.newResourceId('DeviceRequest_Parameter'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -253,19 +255,20 @@ class DeviceRequest_Parameter {
   CodeableConcept valueCodeableConcept;
   Quantity valueQuantity;
   Range valueRange;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
 
-  DeviceRequest_Parameter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.valueCodeableConcept,
-      this.valueQuantity,
-      this.valueRange,
-      this.valueBoolean,
-      this.elementValueBoolean});
+  DeviceRequest_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.valueCodeableConcept,
+    this.valueQuantity,
+    this.valueRange,
+    this.valueBoolean,
+    this.elementValueBoolean,
+  });
 
   factory DeviceRequest_Parameter.fromJson(Map<String, dynamic> json) =>
       _$DeviceRequest_ParameterFromJson(json);

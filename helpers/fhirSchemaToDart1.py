@@ -1,270 +1,330 @@
 #!/usr/bin/env python3
 
 import json
-import re
-import os
-import fhirToDartFunc as fhir
+
 
 #open fhir json schema
 with open('./helpers/fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
+    
+#makes first letter of word lowercase
+def lowcc(string):
+    return string[0].lower()+string[1:len(string)]
 
-#os.remove('./lib/fhirClasses/classes.dart')
+# #makes first letter of word lowercase
+def upcc(string):
+    return string[0].upper()+string[1:len(string)]
 
-dartCode = '' #where we will store our code
+
+def writeFile(file, text):
+    with open(file,"w", encoding="utf-8") as f:
+        f.write(text)
+    f.close()
+
+#checks if it's a primitive type
+def isPrimitive(string):
+    if('"' in string):
+        string = string[1:len(string)-1]
+    return(string in ['base64Binary', 'boolean', 'canonical', 'code', 'date',
+                      'dateTime', 'decimal', 'id', 'instant', 'integer', 
+                      'markdown', 'oid', 'positiveInt', 'string', 'time',
+                      'unsignedInt', 'uri', 'url', 'uuid', 'number'])
+
+def rem_(string):
+    if(string[0] == '_'):
+        return('element' + upcc(string[1:len(string)]))
+    if(string == 'class'):
+        return('classs')
+    if(string == 'extends'):
+        return('extend')
+    if(string == 'for'):
+        return('fore')
+    if(string == 'assert'):
+        return('asserts')
+    else:
+        return(string)  
+
+#returns the item if it's a primitive, otherwise returns type of primitive
+def primitiveDart(string):
+    primitivesDart = {'base64Binary': 'String', 'boolean': 'bool', 
+        'canonical': 'String', 'code': 'String', 'date': 'String', 
+        'dateTime': 'DateTime', 'decimal': 'double', 'id': 'String', 
+        'instant': 'DateTime', 'integer': 'int', 'markdown': 'String', 
+        'oid': 'String', 'positiveInt': 'int', 'string': 'String', 
+        'time': 'String', 'unsignedInt': 'int', 'uri': 'String', 
+        'url': 'String', 'uuid': 'String', 'xhtml': 'String'}
+    if(string in primitivesDart):
+        return(primitivesDart[string])
+    else:
+        return(string)
+
+#turns word list into lists to avoid using reserved term
+def lists(string):
+    return('Lists' if string == 'List' else string)   
+
+def allTogether(newInstance, objects, newResource, variables, constructor):
+    if('this.resourceType' in constructor and objects != 'ExampleScenario_Instance'):
+        saveNew = ''.join(['\tnew',
+                           lists(objects),
+                           '.meta.createdAt = DateTime.now();\n',
+                           '\tnew',
+                           lists(objects),
+                           '.meta.lastUpdated = new', 
+                           lists(objects), 
+                           '.meta.createdAt;\n',
+                           '\tint saved = await fhirDb.saveResource(new',
+                           lists(objects),
+                           ');\n',
+                           '\t return new',
+                           lists(objects),
+                           ';\n}\n\nsave() async {\n',
+                           '\t\tthis.meta.lastUpdated = DateTime.now();\n',
+                           '\t\tvar fhirDb = new DatabaseHelper();\n',
+                           '\t\tint saveed = await fhirDb.saveResource(this);\n',
+                           '}\n\n'])
+    else:
+        saveNew = ''.join(['\treturn new', lists(objects), ';\n}\n\n'])
+    return(''.join([newInstance,
+                    '}) async {\nvar fhirDb = new DatabaseHelper();\n',
+                    lists(objects), ' new', lists(objects), ' = new ', lists(objects), '(\n',
+                    newResource,
+                    ');\n',
+                    saveNew,
+                    variables,
+                    '\n',
+                    lists(objects), 
+                    '(\n\t{',
+                    constructor,
+                    '});\n\n  factory ', 
+                    lists(objects), 
+                    '.fromJson',
+                    '(Map<String, dynamic> json) => _$', 
+                    lists(objects), 
+                    'FromJson(json);\n  Map<String, dynamic> toJson()',
+                    ' => _$', 
+                    lists(objects), 
+                    'ToJson(this);\n}\n\n']))
+
+def imported():
+    return(''.join(["import 'package:flutter_fhir/util/db.dart';\n",
+                    "import 'package:flutter/foundation.dart';\n",
+                     "import 'package:json_annotation/json_annotation.dart';\n"]))
+
+def idOrMeta(key, objects):
+    if(key == 'id'):
+        return(''.join(["id ?? await fhirDb.newResourceId('", objects, "')"]))
+    elif(key == 'meta'):
+        return(''.join(["meta ?? await Meta.newInstance()"]))
+    else:
+        return key
+
+
 importDict = {} #will store which other classes we will import
+varDict = {}
+dartCode = ''
 
-dbStart = ''
-hexNum = 15
+#hexNum = 15
+importL = 'element'
 
 # ****************************************************************************
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 definitions = schema['definitions']
-for objects in definitions:
-    
+for objects in definitions: 
+
     #ignore any of those that are in the ResourceList (names, no definitions)
     if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
-#                
-#        if('resourceType' in definitions[objects]['properties']):
-#            dbStart = ''.join([dbStart,
-#                               f"""\n\t\tawait db.execute('''CREATE TABLE {objects}\n""",
-#                               '\t\t\tid TEXT PRIMARY KEY,\n',
-#                               '\t\t\tcreatedAt TEXT,\n',
-#                               '\t\t\tlastUpdated TEXT,\n',
-#                               """\t\t\tjsonResource TEXT)''');"""])                                                                             
-#            if('const' in definitions[objects]['properties']['resourceType']):
-#                dbStart = ''.join([dbStart, '\nconst: ', definitions[objects]['properties']['resourceType']['const']])
-#            else:
-#                dbStart = ''.join([dbStart, '\nnon-const', objects])
-#        if('meta' in definitions[objects]['properties']):
-#            dbStart = ''.join([dbStart, '\n\tmeta'])
-            
-#             hexNum +=1
-#             curNum = str(hex(hexNum)[2:])
-#             dbStart = ''.join([dbStart,
-#                                "('", 
-#                                objects,
-#                                "','",
-#                                curNum if len(curNum) == 3 else '0' + curNum,
-#                                "','{$deviceId}','0000',0),\n\t\t"])
-#with open('temp.dart',"w", encoding="utf-8") as f:
-#     f.write(dbStart)
-#     f.close()
-
-            
-            if('_' not in objects):      
-                
-                dartCode = ''.join([dartCode, 
-                                    "part '", 
-                                    fhir.lowcc(fhir.lists(objects)), 
-                                    ".g.dart';\n\n"])
-                importL = fhir.lowcc(fhir.lists(objects))
-                importDict[importL] = []
-                
-            else:
-                importL = fhir.lowcc(fhir.lists(objects.split('_')[0]))
-                
-            #add JsonSerializable code at top of Dart class
-            dartCode = ''.join([dartCode, 
-                                '@JsonSerializable(explicitToJson: true)\n', 
-                                'class ',
-                                fhir.lists(objects), 
-                                ' {\n\n'])
-            
-            #Modifier description includes '\n\n' need to change it to a comment
-            dartCode = dartCode.replace('\n\nModifier', '\n// Modifier')
-            
-            #HiveField for this paramateter
-            properties = definitions[objects]['properties']
-            dartCode = ''.join([dartCode, fhir.HiveCode(properties, objects), '\n'])
-                        
-            #look in the properties section of each resource to see what pattern
-            #it fits and based on that, print out specific information
-            for field in properties:      
-                       
-    #******************************************************************************
-    #***** This adds comments to the files, but adds notable extra time to run this program *****
-            #prints comment to the Dart code, formatted lines <= 70 characters
-                # comments = properties[field]['description']
-                # comments = re.sub(r'\n+', ' ', comments)
-                # comments = re.sub(r'\r', ' ', comments)
-                # dartCode = ''.join([dartCode, less70(comments), '\n'])
-    #******************************************************************************
-                                        
-                #if items is NOT included it means that the item is NOT an array/list
-                if('items' not in properties[field]):
-                    
-                    #if  there's a $ref in it, print out that value
-                    if('$ref' in properties[field]):
-                        ref = (properties[field]['$ref']).split('/definitions/')[1]
-                        dartCode = ''.join([dartCode, 
-                                            '  ',
-                                            fhir.refProperties(ref, ' ', field)
-                                            ])
-                        
-                        if(not fhir.isPrimitive(ref) and ref not in importDict[importL]):
-                            importDict[importL].append(ref)
-                        
-                    #if  there's a const in it, print out that value
-                    elif('const' in properties[field]):  
-                                    
-                        value = properties[field]['const']
-                        if(field == 'resourceType'):
-                            value2 = 'String'
-                        else:
-                            value2 = value
-                            
-                        #if it's resourceType it's a final string
-                        dartCode = ''.join([dartCode,
-                                            '  ',
-                                            fhir.primitiveDart(value2), 
-                                            ' ', 
-                                            fhir.rem_(field),
-                                            ("= '" + objects + "'") if 
-                                            field == 'resourceType' else '',
-                                            ';\n'])
-                        
-                        if(not fhir.isPrimitive(value) and value not in importDict[importL]):
-                            importDict[importL].append(value)
-                        
-                    #if  there's a pattern in it, print out the type of pattern
-                    elif('pattern' in properties[field]):  
-                        
-                        value = properties[field]
-                        
-                        #if the type is a number, declare it an int or a double
-                        if('number' == value['type']):
-                            dartCode = ''.join([dartCode, 
-                                                '  double ' if ('decimal' or 'Decimal') in field else '  int '])
-                        else:
-                            dartCode = ''.join([dartCode, 
-                                            '  ',
-                                            fhir.primitiveDart(value['type']), 
-                                            ' '])
-                            
-                        # include the pattern as a comment
-                        dartCode = ''.join([dartCode, 
-                                            fhir.rem_(field), 
-                                            '; //  pattern: ', 
-                                            value['pattern'], 
-                                            '\n'])
-                        
-                        if(not fhir.isPrimitive(value['type']) and 
-                           value['type'] not in importDict[importL]):
-                            importDict[importL].append(value['type'])
-                         
-                    #if it's enum, print it as type of enum, and then include the
-                    #possible values as a comment at the end of the line
-                    elif('enum' in properties[field]):
-    
-                        dartCode = ''.join([dartCode, 
-                                            '  ',
-                                            'String ', 
-                                            fhir.rem_(field), 
-                                            '; // <code> enum: ',  
-                                            '/'.join(properties[field]['enum']), 
-                                            ';\n'])
-    
-                #if it does include items, it is an array/list
-                elif('$ref' in properties[field]['items']):
-                    
-                    value = properties[field]['items']['$ref'].split('/definitions/')[1]
-                    
-                    #make the item a list since it's an array in json
-                    dartCode = ''.join([dartCode,  
-                                        '  ',
-                                        'List<', 
-                                        fhir.refProperties(fhir.primitiveDart(value), 
-                                                           '> ', 
-                                                           field)])
-    
-                    if(not fhir.isPrimitive(value) and value not in importDict[importL]):
-                            importDict[importL].append(value)
-                    
-                                #if it does include items, it is an array/list
-                elif('enum' in properties[field]['items']):
-                    
-                    #make the item a list since it's an array in json
-                    dartCode = ''.join([dartCode, 
-                                        '  ',
-                                        'List<String> ', 
-                                        fhir.rem_(field), 
-                                        '; ',
-                                        '// <code> enum: ', 
-                                        '/'.join(properties[field]['items']['enum']),
-                                        '> ', 
-                                        fhir.rem_(field), ';\n'])   
-
-                                      
-            #add more constructor code
-            dartCode = ''.join([dartCode, '\n', fhir.lists(objects), '(\n  '])
-            arguments = ''
-            for fielded in schema['definitions'][objects]['properties']:
-                
-                # #resourceType isn't a passable argument
-                # if(fielded != 'resourceType'):
-                    
-                #separate the optional and required constructor parameters
-                arguments = ''.join([arguments, 
-                                     'this.' if ('required' not in schema['definitions'][objects] or
-                                                 fielded not in schema['definitions'][objects]['required']) else 
-                                     '@required this.',
-                                     fhir.rem_(fielded), ',\n    '])
-                        
-            #create the factory
-            dartCode = ''.join([dartCode, 
-                                '{',
-                                arguments,
-                                '})',
-                                ';\n\n  factory ', 
-                                fhir.lists(objects), 
-                                '.fromJson',
-                                '(Map<String, dynamic> json) => _$', 
-                                fhir.lists(objects), 
-                                'FromJson(json);\n  Map<String, dynamic> toJson()',
-                                ' => _$', 
-                                fhir.lists(objects), 
-                                'ToJson(this);\n}\n\n'])
-   
-
-
-dartCode = dartCode.replace(fhir.patientFunc1, fhir.patientFunc2)
-
-# with open("dartFhirClasses.dart", "w", encoding="utf-8") as f:
-#     f.write(dartCode)
-# f.close()
-
-fhirDir = './lib/fhirClasses/'
-
-#add in any import files that are needed
-dartCode = dartCode.split("part '")
-for code in dartCode:
-    g = re.search(r'(?<=\nclass\s).*(?=\s{)', code)
-    if(g != None):
-        g = fhir.lowcc(fhir.lists(g.group(0)))
-        code = ''.join(["\npart '", code])
-        for l in importDict[g]:
-            l = 'Lists' if l == 'List' else l
-            if('_' not in l and fhir.lowcc(l) != fhir.lowcc(g) and fhir.lowcc(l) != 'xhtml'):
-                code = ''.join(["import 'package:flutter_fhir/fhirClasses/",
-                                fhir.lowcc(l), ".dart';\n", code])
-        code = code.replace(',\n    });', '\n    });')
-        code = ''.join(["import 'package:flutter_fhir/util/db.dart';\n", code]) 
-        if('@required' in code):
-            code = ''.join(["import 'package:flutter/foundation.dart';\n", code])
-        code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n", code])
-        code = code.replace("import 'package:flutter_fhir/fhirClasses/resourceList.dart';","import 'package:flutter_fhir/util/resourceList.dart';")
-        with open(fhirDir + fhir.lowcc(g) + ".dart","w", encoding="utf-8") as f:
-            f.write(code)
-        f.close()
         
-with open(fhirDir + 'patient.dart') as pt:
-            patient = pt.read()
-patient = patient.replace(fhir.patientReplace1, fhir.patientReplace2)
+        #for when I need to figure something out about defining classes
+        # count = fhir.classDefinition(definitions, objects, hexNum)
+        # dbStart = ''.join([dbStart, count[0]])
+        # hexNum = count[1]
+# fhir.writeFile(temp.dart, dbStart)
+            
+        
+        #if not a sublcass
+        if('_' not in objects):     
+            if(lowcc(objects.split('_')[0]) != importL):
+                if(lowcc(importL) in importDict.keys()):
+                    dartCode = ''.join(["part '",
+                                        lists(lowcc(importL)),
+                                        ".g.dart';\n\n",
+                                        dartCode])
+                    for l in importDict[lowcc(importL)]:
+                        l = 'Lists' if l == 'List' else l
+                        if('_' not in l and 
+                           lowcc(l) != lowcc(lowcc(importL)) and 
+                           lowcc(l) != 'xhtml'):
+                            dartCode = ''.join(["import 'package:flutter_fhir/fhirClasses/",
+                                lowcc(l), ".dart';\n", dartCode])
+                dartCode = ''.join([imported(), dartCode])
+                writeFile('./lib/fhirClasses/' + lists(lowcc(importL)) + ".dart", dartCode)
+                dartCode = '' #where we will store our code
+                importDict = {} #will store which other classes we will import
+            importL = lowcc(lists(objects))
+            importDict[importL] = []
+        else:
+            importL = lowcc(lists(objects.split('_')[0]))
+                    
+        required = []
+        if('required' in definitions[objects]):
+            required = definitions[objects]['required']
+                
+            
+        #look in the properties section of each resource to see what pattern
+        #it fits and based on that, print out specific information
+        properties = definitions[objects]['properties']
+        for field in properties:   
+            if('required' in schema['definitions'][objects] and field in schema['definitions'][objects]['required']):
+                required.append(field) 
+                   
+#******************************************************************************
+#***** This adds comments to the files, but adds notable extra time to run this program *****
+        #Modifier description includes '\n\n' need to change it to a comment
+        # dartCode = dartCode.replace('\n\nModifier', '\n// Modifier')
+        #prints comment to the Dart code, formatted lines <= 70 characters
+            # comments = properties[field]['description']
+            # comments = re.sub(r'\n+', ' ', comments)
+            # comments = re.sub(r'\r', ' ', comments)
+            # dartCode = ''.join([dartCode, less70(comments), '\n'])
+#******************************************************************************
+                                    
+            #if items is NOT included it means that the item is NOT an array/list
+            if('items' not in properties[field]):
+                
+                #if  there's a $ref in it, print out that value
+                if('$ref' in properties[field]):
+                    ref = (properties[field]['$ref']).split('/definitions/')[1]
+                    varDict[field] = primitiveDart(ref)
 
-with open(fhirDir + 'patient.dart',"w", encoding="utf-8") as f:
-    f.write(patient)
+                    if(not isPrimitive(ref)):
+                        if(importL in importDict.keys()):
+                            if(ref not in importDict[importL]):
+                                importDict[importL].append(ref)
+                        else:
+                            importDict[importL] = [ref] 
+                    
+                #if  there's a const in it, print out that value
+                elif('const' in properties[field]):  
+                                
+                    value = properties[field]['const']
+                    if(field == 'resourceType'):
+                        value2 = 'String'
+                    else:
+                        value2 = value
+                        
+                    varDict[field] = primitiveDart(value2)
+                    
+                    if(not isPrimitive(value2) and value not in importDict[importL]):
+                        importDict[importL].append(value)
+                    
+                #if  there's a pattern in it, print out the type of pattern
+                elif('pattern' in properties[field]):  
+                    
+                    value = properties[field]
+                    
+                    #if the type is a number, declare it an int or a double
+                    if('number' == value['type']):
+                        varDict[field] = 'double' if ('decimal' or 'Decimal') in field else 'int'
+                    else:
+                        varDict[field] = primitiveDart(value['type'])
+                    
+                    if(not isPrimitive(value['type']) and 
+                       value['type'] not in importDict[importL]):
+                        importDict[importL].append(value['type'])
+                     
+                #if it's enum, print it as type of enum, and then include the
+                #possible values as a comment at the end of the line
+                elif('enum' in properties[field]):
+
+                    varDict[field] = 'String'
+
+            #if it does include items, it is an array/list
+            elif('$ref' in properties[field]['items']):
+                value = properties[field]['items']['$ref'].split('/definitions/')[1]
+                
+                varDict[field] = 'List<' + primitiveDart(value) + '>'
+
+                if(not isPrimitive(value)):
+                    if(importL in importDict.keys()):
+                        if(value not in importDict[importL]):
+                            importDict[importL].append(value)
+                    else:
+                        importDict[importL] = [value] 
+            
+            #if it does include items, it is an array/list
+            elif('enum' in properties[field]['items']):
+                
+                varDict[field] = 'String'
+
+        dartCode = ''.join([dartCode, 
+                            '\n@JsonSerializable(explicitToJson: true)\nclass ',
+                            lists(objects),
+                            '{\n\n\tstatic Future<',
+                            lists(objects),
+                            '> newInstance(\n\t{'])
+        newInstance = ''
+        newResource = ''
+        variables = ''
+        constructor = ''
+        for key, val in varDict.items():
+            key = rem_(key)
+            newInstance = ''.join([newInstance, 
+                                   "\t", 
+                                   primitiveDart(val), 
+                                   " ", 
+                                   key, 
+                                   ',\n'])
+            newResource = ''.join([newResource, 
+                                   '\t',
+                                   key,
+                                   ': ',
+                                   idOrMeta(key, objects),
+                                   ',\n'])
+            variables = ''.join([variables, "\t", primitiveDart(val), " ", key, ';\n'])
+            constructor = ''.join([constructor,
+                                   '@required ' if key in required else '',
+                                   'this.', 
+                                   key, 
+                                   ',\n'])
+    
+        dartCode = ''.join([dartCode, 
+                            allTogether(newInstance, objects, newResource, variables, constructor)])
+    
+        varDict = {}
+
+dartCode = ''.join(["part '",
+                    lists(lowcc(importL)),
+                    ".g.dart';\n\n",
+                    dartCode])
+if(lowcc(importL) in importDict.keys()):
+    for l in importDict[lowcc(importL)]:
+        l = 'Lists' if l == 'List' else l
+        if('_' not in l and 
+           lowcc(l) != lowcc(lowcc(importL)) and 
+           lowcc(l) != 'xhtml'):
+            dartCode = ''.join(["import 'package:flutter_fhir/fhirClasses/",
+                                lowcc(l), 
+                                ".dart';\n", 
+                                dartCode])
+dartCode = ''.join([imported(),dartCode])
+fhirDir = './lib/fhirClasses/'
+writeFile(fhirDir + lowcc(importL) + ".dart", dartCode)
+    
+with open(fhirDir + 'meta.dart') as metas:
+            meta = metas.read()
+        
+meta = meta.replace('\tDateTime lastUpdated,',
+                    '\tDateTime createdAt,\n\tDateTime lastUpdated,')
+meta = meta.replace('\tlastUpdated: lastUpdated,',
+                    '\tcreatedAt: createdAt,\n\tlastUpdated: lastUpdated,')
+meta = meta.replace('\tDateTime lastUpdated;',
+                    '\tDateTime createdAt;\n\tDateTime lastUpdated;')
+meta = meta.replace('this.lastUpdated,',
+                    'this.createdAt,\nthis.lastUpdated,')
+
+with open(fhirDir + 'meta.dart',"w", encoding="utf-8") as f:
+    f.write(meta)
     f.close()
     
 with open(fhirDir + 'testScript.dart') as ts:
@@ -277,19 +337,24 @@ testScript = testScript.replace('bool required', 'bool require')
 with open(fhirDir + 'testScript.dart',"w", encoding="utf-8") as f:
     f.write(testScript)
     f.close()
-    
-with open(fhirDir + 'meta.dart') as metas:
-            meta = metas.read()
-        
-meta = meta.replace('		DateTime lastUpdated,',
-                    '		DateTime createdAt,\n		DateTime lastUpdated,')
-meta = meta.replace('			lastUpdated: lastUpdated,',
-                    '			createdAt: createdAt,\n			lastUpdated: lastUpdated,')
-meta = meta.replace('  DateTime lastUpdated;',
-                    '  DateTime createdAt;\n  DateTime lastUpdated;')
-meta = meta.replace('    this.lastUpdated,',
-                    '    this.createdAt,\n    this.lastUpdated,')
 
-with open(fhirDir + 'meta.dart',"w", encoding="utf-8") as f:
-    f.write(meta)
+                
+with open(fhirDir + 'patient.dart') as pt:
+            patient = pt.read()
+patient = patient.replace('factory Patient.',
+                          '''String printName() {
+    return ('${(this.name?.first?.family?.toString() ?? '')}'
+        ', '
+        '${(this.name?.first?.given?.first?.toString() ?? '')}');
+  }
+
+  factory Patient.''')
+
+with open(fhirDir + 'patient.dart',"w", encoding="utf-8") as f:
+    f.write(patient)
     f.close()
+    
+    
+    
+
+

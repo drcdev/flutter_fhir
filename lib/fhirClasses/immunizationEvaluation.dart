@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -12,47 +12,48 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ImmunizationEvaluation {
-  static Future<ImmunizationEvaluation> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      Reference patient,
-      DateTime date,
-      Element elementDate,
-      Reference authority,
-      CodeableConcept targetDisease,
-      Reference immunizationEvent,
-      CodeableConcept doseStatus,
-      List<CodeableConcept> doseStatusReason,
-      String description,
-      Element elementDescription,
-      String series,
-      Element elementSeries,
-      int doseNumberPositiveInt,
-      Element elementDoseNumberPositiveInt,
-      String doseNumberString,
-      Element elementDoseNumberString,
-      int seriesDosesPositiveInt,
-      Element elementSeriesDosesPositiveInt,
-      String seriesDosesString,
-      Element elementSeriesDosesString}) async {
+  static Future<ImmunizationEvaluation> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Reference patient,
+    DateTime date,
+    Element elementDate,
+    Reference authority,
+    CodeableConcept targetDisease,
+    Reference immunizationEvent,
+    CodeableConcept doseStatus,
+    List<CodeableConcept> doseStatusReason,
+    String description,
+    Element elementDescription,
+    String series,
+    Element elementSeries,
+    int doseNumberPositiveInt,
+    Element elementDoseNumberPositiveInt,
+    String doseNumberString,
+    Element elementDoseNumberString,
+    int seriesDosesPositiveInt,
+    Element elementSeriesDosesPositiveInt,
+    String seriesDosesString,
+    Element elementSeriesDosesString,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImmunizationEvaluation newImmunizationEvaluation =
         new ImmunizationEvaluation(
-      resourceType: 'ImmunizationEvaluation',
-      id: await fhirDb.newResourceId('ImmunizationEvaluation'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ImmunizationEvaluation'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -88,17 +89,17 @@ class ImmunizationEvaluation {
     newImmunizationEvaluation.meta.createdAt = DateTime.now();
     newImmunizationEvaluation.meta.lastUpdated =
         newImmunizationEvaluation.meta.createdAt;
-    int saved = await fhirDb.newResource(newImmunizationEvaluation);
+    int saved = await fhirDb.saveResource(newImmunizationEvaluation);
     return newImmunizationEvaluation;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ImmunizationEvaluation';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -124,50 +125,51 @@ class ImmunizationEvaluation {
   Element elementDescription;
   String series;
   Element elementSeries;
-  int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
+  int doseNumberPositiveInt;
   Element elementDoseNumberPositiveInt;
-  String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
+  String doseNumberString;
   Element elementDoseNumberString;
-  int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
+  int seriesDosesPositiveInt;
   Element elementSeriesDosesPositiveInt;
-  String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
+  String seriesDosesString;
   Element elementSeriesDosesString;
 
-  ImmunizationEvaluation(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      @required this.patient,
-      this.date,
-      this.elementDate,
-      this.authority,
-      @required this.targetDisease,
-      @required this.immunizationEvent,
-      @required this.doseStatus,
-      this.doseStatusReason,
-      this.description,
-      this.elementDescription,
-      this.series,
-      this.elementSeries,
-      this.doseNumberPositiveInt,
-      this.elementDoseNumberPositiveInt,
-      this.doseNumberString,
-      this.elementDoseNumberString,
-      this.seriesDosesPositiveInt,
-      this.elementSeriesDosesPositiveInt,
-      this.seriesDosesString,
-      this.elementSeriesDosesString});
+  ImmunizationEvaluation({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.patient,
+    this.date,
+    this.elementDate,
+    this.authority,
+    @required this.targetDisease,
+    @required this.immunizationEvent,
+    @required this.doseStatus,
+    this.doseStatusReason,
+    this.description,
+    this.elementDescription,
+    this.series,
+    this.elementSeries,
+    this.doseNumberPositiveInt,
+    this.elementDoseNumberPositiveInt,
+    this.doseNumberString,
+    this.elementDoseNumberString,
+    this.seriesDosesPositiveInt,
+    this.elementSeriesDosesPositiveInt,
+    this.seriesDosesString,
+    this.elementSeriesDosesString,
+  });
 
   factory ImmunizationEvaluation.fromJson(Map<String, dynamic> json) =>
       _$ImmunizationEvaluationFromJson(json);

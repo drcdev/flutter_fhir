@@ -1,31 +1,32 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SampledData {
-  static Future<SampledData> newInstance(
-      {String id,
-      List<Extension> extension,
-      Quantity origin,
-      double period,
-      Element elementPeriod,
-      double factor,
-      Element elementFactor,
-      double lowerLimit,
-      Element elementLowerLimit,
-      double upperLimit,
-      Element elementUpperLimit,
-      int dimensions,
-      Element elementDimensions,
-      String data,
-      Element elementData}) async {
+  static Future<SampledData> newInstance({
+    String id,
+    List<Extension> extension,
+    Quantity origin,
+    double period,
+    Element elementPeriod,
+    double factor,
+    Element elementFactor,
+    double lowerLimit,
+    Element elementLowerLimit,
+    double upperLimit,
+    Element elementUpperLimit,
+    int dimensions,
+    Element elementDimensions,
+    String data,
+    Element elementData,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SampledData newSampledData = new SampledData(
-      id: await fhirDb.newResourceId('SampledData'),
+      id: id ?? await fhirDb.newResourceId('SampledData'),
       extension: extension,
       origin: origin,
       period: period,
@@ -60,22 +61,23 @@ class SampledData {
   String data;
   Element elementData;
 
-  SampledData(
-      {this.id,
-      this.extension,
-      @required this.origin,
-      this.period,
-      this.elementPeriod,
-      this.factor,
-      this.elementFactor,
-      this.lowerLimit,
-      this.elementLowerLimit,
-      this.upperLimit,
-      this.elementUpperLimit,
-      this.dimensions,
-      this.elementDimensions,
-      this.data,
-      this.elementData});
+  SampledData({
+    this.id,
+    this.extension,
+    @required this.origin,
+    this.period,
+    this.elementPeriod,
+    this.factor,
+    this.elementFactor,
+    this.lowerLimit,
+    this.elementLowerLimit,
+    this.upperLimit,
+    this.elementUpperLimit,
+    this.dimensions,
+    this.elementDimensions,
+    this.data,
+    this.elementData,
+  });
 
   factory SampledData.fromJson(Map<String, dynamic> json) =>
       _$SampledDataFromJson(json);

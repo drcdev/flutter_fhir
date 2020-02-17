@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -18,40 +18,41 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan {
-  static Future<InsurancePlan> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      List<CodeableConcept> type,
-      String name,
-      Element elementName,
-      List<String> alias,
-      List<Element> elementAlias,
-      Period period,
-      Reference ownedBy,
-      Reference administeredBy,
-      List<Reference> coverageArea,
-      List<InsurancePlan_Contact> contact,
-      List<Reference> endpoint,
-      List<Reference> network,
-      List<InsurancePlan_Coverage> coverage,
-      List<InsurancePlan_Plan> plan}) async {
+  static Future<InsurancePlan> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> type,
+    String name,
+    Element elementName,
+    List<String> alias,
+    List<Element> elementAlias,
+    Period period,
+    Reference ownedBy,
+    Reference administeredBy,
+    List<Reference> coverageArea,
+    List<InsurancePlan_Contact> contact,
+    List<Reference> endpoint,
+    List<Reference> network,
+    List<InsurancePlan_Coverage> coverage,
+    List<InsurancePlan_Plan> plan,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan newInsurancePlan = new InsurancePlan(
-      resourceType: 'InsurancePlan',
-      id: await fhirDb.newResourceId('InsurancePlan'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('InsurancePlan'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -80,17 +81,17 @@ class InsurancePlan {
     );
     newInsurancePlan.meta.createdAt = DateTime.now();
     newInsurancePlan.meta.lastUpdated = newInsurancePlan.meta.createdAt;
-    int saved = await fhirDb.newResource(newInsurancePlan);
+    int saved = await fhirDb.saveResource(newInsurancePlan);
     return newInsurancePlan;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'InsurancePlan';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -102,7 +103,7 @@ class InsurancePlan {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   List<CodeableConcept> type;
   String name;
@@ -119,35 +120,36 @@ class InsurancePlan {
   List<InsurancePlan_Coverage> coverage;
   List<InsurancePlan_Plan> plan;
 
-  InsurancePlan(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.type,
-      this.name,
-      this.elementName,
-      this.alias,
-      this.elementAlias,
-      this.period,
-      this.ownedBy,
-      this.administeredBy,
-      this.coverageArea,
-      this.contact,
-      this.endpoint,
-      this.network,
-      this.coverage,
-      this.plan});
+  InsurancePlan({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.type,
+    this.name,
+    this.elementName,
+    this.alias,
+    this.elementAlias,
+    this.period,
+    this.ownedBy,
+    this.administeredBy,
+    this.coverageArea,
+    this.contact,
+    this.endpoint,
+    this.network,
+    this.coverage,
+    this.plan,
+  });
 
   factory InsurancePlan.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlanFromJson(json);
@@ -156,17 +158,18 @@ class InsurancePlan {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Contact {
-  static Future<InsurancePlan_Contact> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept purpose,
-      HumanName name,
-      List<ContactPoint> telecom,
-      Address address}) async {
+  static Future<InsurancePlan_Contact> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept purpose,
+    HumanName name,
+    List<ContactPoint> telecom,
+    Address address,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Contact newInsurancePlan_Contact = new InsurancePlan_Contact(
-      id: await fhirDb.newResourceId('InsurancePlan_Contact'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_Contact'),
       extension: extension,
       modifierExtension: modifierExtension,
       purpose: purpose,
@@ -185,14 +188,15 @@ class InsurancePlan_Contact {
   List<ContactPoint> telecom;
   Address address;
 
-  InsurancePlan_Contact(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.purpose,
-      this.name,
-      this.telecom,
-      this.address});
+  InsurancePlan_Contact({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.purpose,
+    this.name,
+    this.telecom,
+    this.address,
+  });
 
   factory InsurancePlan_Contact.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_ContactFromJson(json);
@@ -201,17 +205,18 @@ class InsurancePlan_Contact {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Coverage {
-  static Future<InsurancePlan_Coverage> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      List<Reference> network,
-      List<InsurancePlan_Benefit> benefit}) async {
+  static Future<InsurancePlan_Coverage> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    List<Reference> network,
+    List<InsurancePlan_Benefit> benefit,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Coverage newInsurancePlan_Coverage =
         new InsurancePlan_Coverage(
-      id: await fhirDb.newResourceId('InsurancePlan_Coverage'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_Coverage'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -228,13 +233,14 @@ class InsurancePlan_Coverage {
   List<Reference> network;
   List<InsurancePlan_Benefit> benefit;
 
-  InsurancePlan_Coverage(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.network,
-      @required this.benefit});
+  InsurancePlan_Coverage({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.network,
+    @required this.benefit,
+  });
 
   factory InsurancePlan_Coverage.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_CoverageFromJson(json);
@@ -243,17 +249,18 @@ class InsurancePlan_Coverage {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit {
-  static Future<InsurancePlan_Benefit> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      String requirement,
-      Element elementRequirement,
-      List<InsurancePlan_Limit> limit}) async {
+  static Future<InsurancePlan_Benefit> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String requirement,
+    Element elementRequirement,
+    List<InsurancePlan_Limit> limit,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Benefit newInsurancePlan_Benefit = new InsurancePlan_Benefit(
-      id: await fhirDb.newResourceId('InsurancePlan_Benefit'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_Benefit'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -272,14 +279,15 @@ class InsurancePlan_Benefit {
   Element elementRequirement;
   List<InsurancePlan_Limit> limit;
 
-  InsurancePlan_Benefit(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.requirement,
-      this.elementRequirement,
-      this.limit});
+  InsurancePlan_Benefit({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.requirement,
+    this.elementRequirement,
+    this.limit,
+  });
 
   factory InsurancePlan_Benefit.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_BenefitFromJson(json);
@@ -288,15 +296,16 @@ class InsurancePlan_Benefit {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Limit {
-  static Future<InsurancePlan_Limit> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Quantity value,
-      CodeableConcept code}) async {
+  static Future<InsurancePlan_Limit> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Quantity value,
+    CodeableConcept code,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Limit newInsurancePlan_Limit = new InsurancePlan_Limit(
-      id: await fhirDb.newResourceId('InsurancePlan_Limit'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_Limit'),
       extension: extension,
       modifierExtension: modifierExtension,
       value: value,
@@ -311,8 +320,13 @@ class InsurancePlan_Limit {
   Quantity value;
   CodeableConcept code;
 
-  InsurancePlan_Limit(
-      {this.id, this.extension, this.modifierExtension, this.value, this.code});
+  InsurancePlan_Limit({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.value,
+    this.code,
+  });
 
   factory InsurancePlan_Limit.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_LimitFromJson(json);
@@ -321,19 +335,20 @@ class InsurancePlan_Limit {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Plan {
-  static Future<InsurancePlan_Plan> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      CodeableConcept type,
-      List<Reference> coverageArea,
-      List<Reference> network,
-      List<InsurancePlan_GeneralCost> generalCost,
-      List<InsurancePlan_SpecificCost> specificCost}) async {
+  static Future<InsurancePlan_Plan> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    CodeableConcept type,
+    List<Reference> coverageArea,
+    List<Reference> network,
+    List<InsurancePlan_GeneralCost> generalCost,
+    List<InsurancePlan_SpecificCost> specificCost,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Plan newInsurancePlan_Plan = new InsurancePlan_Plan(
-      id: await fhirDb.newResourceId('InsurancePlan_Plan'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_Plan'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -356,16 +371,17 @@ class InsurancePlan_Plan {
   List<InsurancePlan_GeneralCost> generalCost;
   List<InsurancePlan_SpecificCost> specificCost;
 
-  InsurancePlan_Plan(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.type,
-      this.coverageArea,
-      this.network,
-      this.generalCost,
-      this.specificCost});
+  InsurancePlan_Plan({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.type,
+    this.coverageArea,
+    this.network,
+    this.generalCost,
+    this.specificCost,
+  });
 
   factory InsurancePlan_Plan.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_PlanFromJson(json);
@@ -374,20 +390,21 @@ class InsurancePlan_Plan {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_GeneralCost {
-  static Future<InsurancePlan_GeneralCost> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      int groupSize,
-      Element elementGroupSize,
-      Money cost,
-      String comment,
-      Element elementComment}) async {
+  static Future<InsurancePlan_GeneralCost> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    int groupSize,
+    Element elementGroupSize,
+    Money cost,
+    String comment,
+    Element elementComment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_GeneralCost newInsurancePlan_GeneralCost =
         new InsurancePlan_GeneralCost(
-      id: await fhirDb.newResourceId('InsurancePlan_GeneralCost'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_GeneralCost'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -410,16 +427,17 @@ class InsurancePlan_GeneralCost {
   String comment;
   Element elementComment;
 
-  InsurancePlan_GeneralCost(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.groupSize,
-      this.elementGroupSize,
-      this.cost,
-      this.comment,
-      this.elementComment});
+  InsurancePlan_GeneralCost({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.groupSize,
+    this.elementGroupSize,
+    this.cost,
+    this.comment,
+    this.elementComment,
+  });
 
   factory InsurancePlan_GeneralCost.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_GeneralCostFromJson(json);
@@ -428,16 +446,17 @@ class InsurancePlan_GeneralCost {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_SpecificCost {
-  static Future<InsurancePlan_SpecificCost> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept category,
-      List<InsurancePlan_Benefit1> benefit}) async {
+  static Future<InsurancePlan_SpecificCost> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    List<InsurancePlan_Benefit1> benefit,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_SpecificCost newInsurancePlan_SpecificCost =
         new InsurancePlan_SpecificCost(
-      id: await fhirDb.newResourceId('InsurancePlan_SpecificCost'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_SpecificCost'),
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -452,12 +471,13 @@ class InsurancePlan_SpecificCost {
   CodeableConcept category;
   List<InsurancePlan_Benefit1> benefit;
 
-  InsurancePlan_SpecificCost(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.category,
-      this.benefit});
+  InsurancePlan_SpecificCost({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.category,
+    this.benefit,
+  });
 
   factory InsurancePlan_SpecificCost.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_SpecificCostFromJson(json);
@@ -466,16 +486,17 @@ class InsurancePlan_SpecificCost {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit1 {
-  static Future<InsurancePlan_Benefit1> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      List<InsurancePlan_Cost> cost}) async {
+  static Future<InsurancePlan_Benefit1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    List<InsurancePlan_Cost> cost,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Benefit1 newInsurancePlan_Benefit1 =
         new InsurancePlan_Benefit1(
-      id: await fhirDb.newResourceId('InsurancePlan_Benefit1'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_Benefit1'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -490,12 +511,13 @@ class InsurancePlan_Benefit1 {
   CodeableConcept type;
   List<InsurancePlan_Cost> cost;
 
-  InsurancePlan_Benefit1(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.cost});
+  InsurancePlan_Benefit1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.cost,
+  });
 
   factory InsurancePlan_Benefit1.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_Benefit1FromJson(json);
@@ -504,17 +526,18 @@ class InsurancePlan_Benefit1 {
 
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Cost {
-  static Future<InsurancePlan_Cost> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      CodeableConcept applicability,
-      List<CodeableConcept> qualifiers,
-      Quantity value}) async {
+  static Future<InsurancePlan_Cost> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    CodeableConcept applicability,
+    List<CodeableConcept> qualifiers,
+    Quantity value,
+  }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Cost newInsurancePlan_Cost = new InsurancePlan_Cost(
-      id: await fhirDb.newResourceId('InsurancePlan_Cost'),
+      id: id ?? await fhirDb.newResourceId('InsurancePlan_Cost'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -533,14 +556,15 @@ class InsurancePlan_Cost {
   List<CodeableConcept> qualifiers;
   Quantity value;
 
-  InsurancePlan_Cost(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.applicability,
-      this.qualifiers,
-      this.value});
+  InsurancePlan_Cost({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.applicability,
+    this.qualifiers,
+    this.value,
+  });
 
   factory InsurancePlan_Cost.fromJson(Map<String, dynamic> json) =>
       _$InsurancePlan_CostFromJson(json);

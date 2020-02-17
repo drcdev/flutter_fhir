@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/population.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -12,31 +12,32 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductContraindication {
-  static Future<MedicinalProductContraindication> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Reference> subject,
-      CodeableConcept disease,
-      CodeableConcept diseaseStatus,
-      List<CodeableConcept> comorbidity,
-      List<Reference> therapeuticIndication,
-      List<MedicinalProductContraindication_OtherTherapy> otherTherapy,
-      List<Population> population}) async {
+  static Future<MedicinalProductContraindication> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> subject,
+    CodeableConcept disease,
+    CodeableConcept diseaseStatus,
+    List<CodeableConcept> comorbidity,
+    List<Reference> therapeuticIndication,
+    List<MedicinalProductContraindication_OtherTherapy> otherTherapy,
+    List<Population> population,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProductContraindication newMedicinalProductContraindication =
         new MedicinalProductContraindication(
-      resourceType: 'MedicinalProductContraindication',
-      id: await fhirDb.newResourceId('MedicinalProductContraindication'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('MedicinalProductContraindication'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -56,17 +57,17 @@ class MedicinalProductContraindication {
     newMedicinalProductContraindication.meta.createdAt = DateTime.now();
     newMedicinalProductContraindication.meta.lastUpdated =
         newMedicinalProductContraindication.meta.createdAt;
-    int saved = await fhirDb.newResource(newMedicinalProductContraindication);
+    int saved = await fhirDb.saveResource(newMedicinalProductContraindication);
     return newMedicinalProductContraindication;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'MedicinalProductContraindication';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -85,25 +86,26 @@ class MedicinalProductContraindication {
   List<MedicinalProductContraindication_OtherTherapy> otherTherapy;
   List<Population> population;
 
-  MedicinalProductContraindication(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.subject,
-      this.disease,
-      this.diseaseStatus,
-      this.comorbidity,
-      this.therapeuticIndication,
-      this.otherTherapy,
-      this.population});
+  MedicinalProductContraindication({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.subject,
+    this.disease,
+    this.diseaseStatus,
+    this.comorbidity,
+    this.therapeuticIndication,
+    this.otherTherapy,
+    this.population,
+  });
 
   factory MedicinalProductContraindication.fromJson(
           Map<String, dynamic> json) =>
@@ -114,19 +116,21 @@ class MedicinalProductContraindication {
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductContraindication_OtherTherapy {
-  static Future<MedicinalProductContraindication_OtherTherapy> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept therapyRelationshipType,
-      CodeableConcept medicationCodeableConcept,
-      Reference medicationReference}) async {
+  static Future<MedicinalProductContraindication_OtherTherapy> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept therapyRelationshipType,
+    CodeableConcept medicationCodeableConcept,
+    Reference medicationReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProductContraindication_OtherTherapy
         newMedicinalProductContraindication_OtherTherapy =
         new MedicinalProductContraindication_OtherTherapy(
-      id: await fhirDb
-          .newResourceId('MedicinalProductContraindication_OtherTherapy'),
+      id: id ??
+          await fhirDb
+              .newResourceId('MedicinalProductContraindication_OtherTherapy'),
       extension: extension,
       modifierExtension: modifierExtension,
       therapyRelationshipType: therapyRelationshipType,
@@ -143,13 +147,14 @@ class MedicinalProductContraindication_OtherTherapy {
   CodeableConcept medicationCodeableConcept;
   Reference medicationReference;
 
-  MedicinalProductContraindication_OtherTherapy(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.therapyRelationshipType,
-      this.medicationCodeableConcept,
-      this.medicationReference});
+  MedicinalProductContraindication_OtherTherapy({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.therapyRelationshipType,
+    this.medicationCodeableConcept,
+    this.medicationReference,
+  });
 
   factory MedicinalProductContraindication_OtherTherapy.fromJson(
           Map<String, dynamic> json) =>

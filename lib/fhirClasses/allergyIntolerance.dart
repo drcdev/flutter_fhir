@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -16,50 +16,51 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AllergyIntolerance {
-  static Future<AllergyIntolerance> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      CodeableConcept clinicalStatus,
-      CodeableConcept verificationStatus,
-      String type,
-      Element elementType,
-      List<String> category,
-      List<Element> elementCategory,
-      String criticality,
-      Element elementCriticality,
-      CodeableConcept code,
-      Reference patient,
-      Reference encounter,
-      String onsetDateTime,
-      Element elementOnsetDateTime,
-      Age onsetAge,
-      Period onsetPeriod,
-      Range onsetRange,
-      String onsetString,
-      Element elementOnsetString,
-      DateTime recordedDate,
-      Element elementRecordedDate,
-      Reference recorder,
-      Reference asserter,
-      DateTime lastOccurrence,
-      Element elementLastOccurrence,
-      List<Annotation> note,
-      List<AllergyIntolerance_Reaction> reaction}) async {
+  static Future<AllergyIntolerance> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    CodeableConcept clinicalStatus,
+    CodeableConcept verificationStatus,
+    String type,
+    Element elementType,
+    String category,
+    List<Element> elementCategory,
+    String criticality,
+    Element elementCriticality,
+    CodeableConcept code,
+    Reference patient,
+    Reference encounter,
+    String onsetDateTime,
+    Element elementOnsetDateTime,
+    Age onsetAge,
+    Period onsetPeriod,
+    Range onsetRange,
+    String onsetString,
+    Element elementOnsetString,
+    DateTime recordedDate,
+    Element elementRecordedDate,
+    Reference recorder,
+    Reference asserter,
+    DateTime lastOccurrence,
+    Element elementLastOccurrence,
+    List<Annotation> note,
+    List<AllergyIntolerance_Reaction> reaction,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AllergyIntolerance newAllergyIntolerance = new AllergyIntolerance(
-      resourceType: 'AllergyIntolerance',
-      id: await fhirDb.newResourceId('AllergyIntolerance'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('AllergyIntolerance'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -99,17 +100,17 @@ class AllergyIntolerance {
     newAllergyIntolerance.meta.createdAt = DateTime.now();
     newAllergyIntolerance.meta.lastUpdated =
         newAllergyIntolerance.meta.createdAt;
-    int saved = await fhirDb.newResource(newAllergyIntolerance);
+    int saved = await fhirDb.saveResource(newAllergyIntolerance);
     return newAllergyIntolerance;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'AllergyIntolerance';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -123,23 +124,21 @@ class AllergyIntolerance {
   List<Identifier> identifier;
   CodeableConcept clinicalStatus;
   CodeableConcept verificationStatus;
-  String type; // <code> enum: allergy/intolerance;
+  String type;
   Element elementType;
-  List<String>
-      category; // <code> enum: food/medication/environment/biologic> category;
+  String category;
   List<Element> elementCategory;
-  String criticality; // <code> enum: low/high/unable-to-assess;
+  String criticality;
   Element elementCriticality;
   CodeableConcept code;
   Reference patient;
   Reference encounter;
-  String
-      onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String onsetDateTime;
   Element elementOnsetDateTime;
   Age onsetAge;
   Period onsetPeriod;
   Range onsetRange;
-  String onsetString; //  pattern: ^[ \r\n\t\S]+$
+  String onsetString;
   Element elementOnsetString;
   DateTime recordedDate;
   Element elementRecordedDate;
@@ -150,45 +149,46 @@ class AllergyIntolerance {
   List<Annotation> note;
   List<AllergyIntolerance_Reaction> reaction;
 
-  AllergyIntolerance(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.clinicalStatus,
-      this.verificationStatus,
-      this.type,
-      this.elementType,
-      this.category,
-      this.elementCategory,
-      this.criticality,
-      this.elementCriticality,
-      this.code,
-      @required this.patient,
-      this.encounter,
-      this.onsetDateTime,
-      this.elementOnsetDateTime,
-      this.onsetAge,
-      this.onsetPeriod,
-      this.onsetRange,
-      this.onsetString,
-      this.elementOnsetString,
-      this.recordedDate,
-      this.elementRecordedDate,
-      this.recorder,
-      this.asserter,
-      this.lastOccurrence,
-      this.elementLastOccurrence,
-      this.note,
-      this.reaction});
+  AllergyIntolerance({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.clinicalStatus,
+    this.verificationStatus,
+    this.type,
+    this.elementType,
+    this.category,
+    this.elementCategory,
+    this.criticality,
+    this.elementCriticality,
+    this.code,
+    @required this.patient,
+    this.encounter,
+    this.onsetDateTime,
+    this.elementOnsetDateTime,
+    this.onsetAge,
+    this.onsetPeriod,
+    this.onsetRange,
+    this.onsetString,
+    this.elementOnsetString,
+    this.recordedDate,
+    this.elementRecordedDate,
+    this.recorder,
+    this.asserter,
+    this.lastOccurrence,
+    this.elementLastOccurrence,
+    this.note,
+    this.reaction,
+  });
 
   factory AllergyIntolerance.fromJson(Map<String, dynamic> json) =>
       _$AllergyIntoleranceFromJson(json);
@@ -197,24 +197,25 @@ class AllergyIntolerance {
 
 @JsonSerializable(explicitToJson: true)
 class AllergyIntolerance_Reaction {
-  static Future<AllergyIntolerance_Reaction> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept substance,
-      List<CodeableConcept> manifestation,
-      String description,
-      Element elementDescription,
-      DateTime onset,
-      Element elementOnset,
-      String severity,
-      Element elementSeverity,
-      CodeableConcept exposureRoute,
-      List<Annotation> note}) async {
+  static Future<AllergyIntolerance_Reaction> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept substance,
+    List<CodeableConcept> manifestation,
+    String description,
+    Element elementDescription,
+    DateTime onset,
+    Element elementOnset,
+    String severity,
+    Element elementSeverity,
+    CodeableConcept exposureRoute,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AllergyIntolerance_Reaction newAllergyIntolerance_Reaction =
         new AllergyIntolerance_Reaction(
-      id: await fhirDb.newResourceId('AllergyIntolerance_Reaction'),
+      id: id ?? await fhirDb.newResourceId('AllergyIntolerance_Reaction'),
       extension: extension,
       modifierExtension: modifierExtension,
       substance: substance,
@@ -240,25 +241,26 @@ class AllergyIntolerance_Reaction {
   Element elementDescription;
   DateTime onset;
   Element elementOnset;
-  String severity; // <code> enum: mild/moderate/severe;
+  String severity;
   Element elementSeverity;
   CodeableConcept exposureRoute;
   List<Annotation> note;
 
-  AllergyIntolerance_Reaction(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.substance,
-      @required this.manifestation,
-      this.description,
-      this.elementDescription,
-      this.onset,
-      this.elementOnset,
-      this.severity,
-      this.elementSeverity,
-      this.exposureRoute,
-      this.note});
+  AllergyIntolerance_Reaction({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.substance,
+    @required this.manifestation,
+    this.description,
+    this.elementDescription,
+    this.onset,
+    this.elementOnset,
+    this.severity,
+    this.elementSeverity,
+    this.exposureRoute,
+    this.note,
+  });
 
   factory AllergyIntolerance_Reaction.fromJson(Map<String, dynamic> json) =>
       _$AllergyIntolerance_ReactionFromJson(json);
@@ -318,7 +320,7 @@ AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
     elementType: json['elementType'] == null
         ? null
         : Element.fromJson(json['elementType'] as Map<String, dynamic>),
-    category: (json['category'] as List)?.map((e) => e as String)?.toList(),
+    category: json['category'] as String,
     elementCategory: (json['elementCategory'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))

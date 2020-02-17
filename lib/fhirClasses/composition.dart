@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -13,42 +13,43 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Composition {
-  static Future<Composition> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept type,
-      List<CodeableConcept> category,
-      Reference subject,
-      Reference encounter,
-      DateTime date,
-      Element elementDate,
-      List<Reference> author,
-      String title,
-      Element elementTitle,
-      String confidentiality,
-      Element elementConfidentiality,
-      List<Composition_Attester> attester,
-      Reference custodian,
-      List<Composition_RelatesTo> relatesTo,
-      List<Composition_Event> event,
-      List<Composition_Section> section}) async {
+  static Future<Composition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept type,
+    List<CodeableConcept> category,
+    Reference subject,
+    Reference encounter,
+    DateTime date,
+    Element elementDate,
+    List<Reference> author,
+    String title,
+    Element elementTitle,
+    String confidentiality,
+    Element elementConfidentiality,
+    List<Composition_Attester> attester,
+    Reference custodian,
+    List<Composition_RelatesTo> relatesTo,
+    List<Composition_Event> event,
+    List<Composition_Section> section,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Composition newComposition = new Composition(
-      resourceType: 'Composition',
-      id: await fhirDb.newResourceId('Composition'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Composition'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -79,17 +80,17 @@ class Composition {
     );
     newComposition.meta.createdAt = DateTime.now();
     newComposition.meta.lastUpdated = newComposition.meta.createdAt;
-    int saved = await fhirDb.newResource(newComposition);
+    int saved = await fhirDb.saveResource(newComposition);
     return newComposition;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Composition';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -101,7 +102,7 @@ class Composition {
   List<Extension> extension;
   List<Extension> modifierExtension;
   Identifier identifier;
-  String status; // <code> enum: preliminary/final/amended/entered-in-error;
+  String status;
   Element elementStatus;
   CodeableConcept type;
   List<CodeableConcept> category;
@@ -120,37 +121,38 @@ class Composition {
   List<Composition_Event> event;
   List<Composition_Section> section;
 
-  Composition(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      @required this.type,
-      this.category,
-      this.subject,
-      this.encounter,
-      this.date,
-      this.elementDate,
-      @required this.author,
-      this.title,
-      this.elementTitle,
-      this.confidentiality,
-      this.elementConfidentiality,
-      this.attester,
-      this.custodian,
-      this.relatesTo,
-      this.event,
-      this.section});
+  Composition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.type,
+    this.category,
+    this.subject,
+    this.encounter,
+    this.date,
+    this.elementDate,
+    @required this.author,
+    this.title,
+    this.elementTitle,
+    this.confidentiality,
+    this.elementConfidentiality,
+    this.attester,
+    this.custodian,
+    this.relatesTo,
+    this.event,
+    this.section,
+  });
 
   factory Composition.fromJson(Map<String, dynamic> json) =>
       _$CompositionFromJson(json);
@@ -159,18 +161,19 @@ class Composition {
 
 @JsonSerializable(explicitToJson: true)
 class Composition_Attester {
-  static Future<Composition_Attester> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String mode,
-      Element elementMode,
-      DateTime time,
-      Element elementTime,
-      Reference party}) async {
+  static Future<Composition_Attester> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String mode,
+    Element elementMode,
+    DateTime time,
+    Element elementTime,
+    Reference party,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Composition_Attester newComposition_Attester = new Composition_Attester(
-      id: await fhirDb.newResourceId('Composition_Attester'),
+      id: id ?? await fhirDb.newResourceId('Composition_Attester'),
       extension: extension,
       modifierExtension: modifierExtension,
       mode: mode,
@@ -185,21 +188,22 @@ class Composition_Attester {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String mode; // <code> enum: personal/professional/legal/official;
+  String mode;
   Element elementMode;
   DateTime time;
   Element elementTime;
   Reference party;
 
-  Composition_Attester(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.mode,
-      this.elementMode,
-      this.time,
-      this.elementTime,
-      this.party});
+  Composition_Attester({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.mode,
+    this.elementMode,
+    this.time,
+    this.elementTime,
+    this.party,
+  });
 
   factory Composition_Attester.fromJson(Map<String, dynamic> json) =>
       _$Composition_AttesterFromJson(json);
@@ -208,17 +212,18 @@ class Composition_Attester {
 
 @JsonSerializable(explicitToJson: true)
 class Composition_RelatesTo {
-  static Future<Composition_RelatesTo> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      Identifier targetIdentifier,
-      Reference targetReference}) async {
+  static Future<Composition_RelatesTo> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    Identifier targetIdentifier,
+    Reference targetReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Composition_RelatesTo newComposition_RelatesTo = new Composition_RelatesTo(
-      id: await fhirDb.newResourceId('Composition_RelatesTo'),
+      id: id ?? await fhirDb.newResourceId('Composition_RelatesTo'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -237,14 +242,15 @@ class Composition_RelatesTo {
   Identifier targetIdentifier;
   Reference targetReference;
 
-  Composition_RelatesTo(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.targetIdentifier,
-      this.targetReference});
+  Composition_RelatesTo({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.targetIdentifier,
+    this.targetReference,
+  });
 
   factory Composition_RelatesTo.fromJson(Map<String, dynamic> json) =>
       _$Composition_RelatesToFromJson(json);
@@ -253,16 +259,17 @@ class Composition_RelatesTo {
 
 @JsonSerializable(explicitToJson: true)
 class Composition_Event {
-  static Future<Composition_Event> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CodeableConcept> code,
-      Period period,
-      List<Reference> detail}) async {
+  static Future<Composition_Event> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> code,
+    Period period,
+    List<Reference> detail,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Composition_Event newComposition_Event = new Composition_Event(
-      id: await fhirDb.newResourceId('Composition_Event'),
+      id: id ?? await fhirDb.newResourceId('Composition_Event'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -279,13 +286,14 @@ class Composition_Event {
   Period period;
   List<Reference> detail;
 
-  Composition_Event(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.period,
-      this.detail});
+  Composition_Event({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.period,
+    this.detail,
+  });
 
   factory Composition_Event.fromJson(Map<String, dynamic> json) =>
       _$Composition_EventFromJson(json);
@@ -294,25 +302,26 @@ class Composition_Event {
 
 @JsonSerializable(explicitToJson: true)
 class Composition_Section {
-  static Future<Composition_Section> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String title,
-      Element elementTitle,
-      CodeableConcept code,
-      List<Reference> author,
-      Reference focus,
-      Narrative text,
-      String mode,
-      Element elementMode,
-      CodeableConcept orderedBy,
-      List<Reference> entry,
-      CodeableConcept emptyReason,
-      List<Composition_Section> section}) async {
+  static Future<Composition_Section> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String title,
+    Element elementTitle,
+    CodeableConcept code,
+    List<Reference> author,
+    Reference focus,
+    Narrative text,
+    String mode,
+    Element elementMode,
+    CodeableConcept orderedBy,
+    List<Reference> entry,
+    CodeableConcept emptyReason,
+    List<Composition_Section> section,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Composition_Section newComposition_Section = new Composition_Section(
-      id: await fhirDb.newResourceId('Composition_Section'),
+      id: id ?? await fhirDb.newResourceId('Composition_Section'),
       extension: extension,
       modifierExtension: modifierExtension,
       title: title,
@@ -347,22 +356,23 @@ class Composition_Section {
   CodeableConcept emptyReason;
   List<Composition_Section> section;
 
-  Composition_Section(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.title,
-      this.elementTitle,
-      this.code,
-      this.author,
-      this.focus,
-      this.text,
-      this.mode,
-      this.elementMode,
-      this.orderedBy,
-      this.entry,
-      this.emptyReason,
-      this.section});
+  Composition_Section({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.title,
+    this.elementTitle,
+    this.code,
+    this.author,
+    this.focus,
+    this.text,
+    this.mode,
+    this.elementMode,
+    this.orderedBy,
+    this.entry,
+    this.emptyReason,
+    this.section,
+  });
 
   factory Composition_Section.fromJson(Map<String, dynamic> json) =>
       _$Composition_SectionFromJson(json);

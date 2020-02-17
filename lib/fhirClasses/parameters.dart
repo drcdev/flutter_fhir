@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -38,20 +38,21 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Parameters {
-  static Future<Parameters> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      List<Parameters_Parameter> parameter}) async {
+  static Future<Parameters> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    List<Parameters_Parameter> parameter,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Parameters newParameters = new Parameters(
-      resourceType: 'Parameters',
-      id: await fhirDb.newResourceId('Parameters'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Parameters'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -60,17 +61,17 @@ class Parameters {
     );
     newParameters.meta.createdAt = DateTime.now();
     newParameters.meta.lastUpdated = newParameters.meta.createdAt;
-    int saved = await fhirDb.newResource(newParameters);
+    int saved = await fhirDb.saveResource(newParameters);
     return newParameters;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Parameters';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -79,15 +80,16 @@ class Parameters {
   Element elementLanguage;
   List<Parameters_Parameter> parameter;
 
-  Parameters(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.parameter});
+  Parameters({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.parameter,
+  });
 
   factory Parameters.fromJson(Map<String, dynamic> json) =>
       _$ParametersFromJson(json);
@@ -96,86 +98,87 @@ class Parameters {
 
 @JsonSerializable(explicitToJson: true)
 class Parameters_Parameter {
-  static Future<Parameters_Parameter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String valueBase64Binary,
-      Element elementValueBase64Binary,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      String valueCanonical,
-      Element elementValueCanonical,
-      String valueCode,
-      Element elementValueCode,
-      String valueDate,
-      Element elementValueDate,
-      String valueDateTime,
-      Element elementValueDateTime,
-      int valueDecimal,
-      Element elementValueDecimal,
-      String valueId,
-      Element elementValueId,
-      String valueInstant,
-      Element elementValueInstant,
-      int valueInteger,
-      Element elementValueInteger,
-      String valueMarkdown,
-      Element elementValueMarkdown,
-      String valueOid,
-      Element elementValueOid,
-      int valuePositiveInt,
-      Element elementValuePositiveInt,
-      String valueString,
-      Element elementValueString,
-      String valueTime,
-      Element elementValueTime,
-      int valueUnsignedInt,
-      Element elementValueUnsignedInt,
-      String valueUri,
-      Element elementValueUri,
-      String valueUrl,
-      Element elementValueUrl,
-      String valueUuid,
-      Element elementValueUuid,
-      Address valueAddress,
-      Age valueAge,
-      Annotation valueAnnotation,
-      Attachment valueAttachment,
-      CodeableConcept valueCodeableConcept,
-      Coding valueCoding,
-      ContactPoint valueContactPoint,
-      Count valueCount,
-      Distance valueDistance,
-      Duration valueDuration,
-      HumanName valueHumanName,
-      Identifier valueIdentifier,
-      Money valueMoney,
-      Period valuePeriod,
-      Quantity valueQuantity,
-      Range valueRange,
-      Ratio valueRatio,
-      Reference valueReference,
-      SampledData valueSampledData,
-      Signature valueSignature,
-      Timing valueTiming,
-      ContactDetail valueContactDetail,
-      Contributor valueContributor,
-      DataRequirement valueDataRequirement,
-      Expression valueExpression,
-      ParameterDefinition valueParameterDefinition,
-      RelatedArtifact valueRelatedArtifact,
-      TriggerDefinition valueTriggerDefinition,
-      UsageContext valueUsageContext,
-      Dosage valueDosage,
-      Meta valueMeta,
-      dynamic resource,
-      List<Parameters_Parameter> part}) async {
+  static Future<Parameters_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String valueBase64Binary,
+    Element elementValueBase64Binary,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    String valueCanonical,
+    Element elementValueCanonical,
+    String valueCode,
+    Element elementValueCode,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    int valueDecimal,
+    Element elementValueDecimal,
+    String valueId,
+    Element elementValueId,
+    String valueInstant,
+    Element elementValueInstant,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueMarkdown,
+    Element elementValueMarkdown,
+    String valueOid,
+    Element elementValueOid,
+    int valuePositiveInt,
+    Element elementValuePositiveInt,
+    String valueString,
+    Element elementValueString,
+    String valueTime,
+    Element elementValueTime,
+    int valueUnsignedInt,
+    Element elementValueUnsignedInt,
+    String valueUri,
+    Element elementValueUri,
+    String valueUrl,
+    Element elementValueUrl,
+    String valueUuid,
+    Element elementValueUuid,
+    Address valueAddress,
+    Age valueAge,
+    Annotation valueAnnotation,
+    Attachment valueAttachment,
+    CodeableConcept valueCodeableConcept,
+    Coding valueCoding,
+    ContactPoint valueContactPoint,
+    Count valueCount,
+    Distance valueDistance,
+    Duration valueDuration,
+    HumanName valueHumanName,
+    Identifier valueIdentifier,
+    Money valueMoney,
+    Period valuePeriod,
+    Quantity valueQuantity,
+    Range valueRange,
+    Ratio valueRatio,
+    Reference valueReference,
+    SampledData valueSampledData,
+    Signature valueSignature,
+    Timing valueTiming,
+    ContactDetail valueContactDetail,
+    Contributor valueContributor,
+    DataRequirement valueDataRequirement,
+    Expression valueExpression,
+    ParameterDefinition valueParameterDefinition,
+    RelatedArtifact valueRelatedArtifact,
+    TriggerDefinition valueTriggerDefinition,
+    UsageContext valueUsageContext,
+    Dosage valueDosage,
+    Meta valueMeta,
+    dynamic resource,
+    List<Parameters_Parameter> part,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Parameters_Parameter newParameters_Parameter = new Parameters_Parameter(
-      id: await fhirDb.newResourceId('Parameters_Parameter'),
+      id: id ?? await fhirDb.newResourceId('Parameters_Parameter'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -260,48 +263,43 @@ class Parameters_Parameter {
   List<Extension> modifierExtension;
   String name;
   Element elementName;
-  String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+  String valueBase64Binary;
   Element elementValueBase64Binary;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  String valueCanonical; //  pattern: ^\S*$
+  String valueCanonical;
   Element elementValueCanonical;
-  String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+  String valueCode;
   Element elementValueCode;
-  String
-      valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String valueDate;
   Element elementValueDate;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
-  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal;
   Element elementValueDecimal;
-  String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
+  String valueId;
   Element elementValueId;
-  String
-      valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
+  String valueInstant;
   Element elementValueInstant;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
+  String valueMarkdown;
   Element elementValueMarkdown;
-  String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
+  String valueOid;
   Element elementValueOid;
-  int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
+  int valuePositiveInt;
   Element elementValuePositiveInt;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  String
-      valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String valueTime;
   Element elementValueTime;
-  int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+  int valueUnsignedInt;
   Element elementValueUnsignedInt;
-  String valueUri; //  pattern: ^\S*$
+  String valueUri;
   Element elementValueUri;
-  String valueUrl; //  pattern: ^\S*$
+  String valueUrl;
   Element elementValueUrl;
-  String
-      valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+  String valueUuid;
   Element elementValueUuid;
   Address valueAddress;
   Age valueAge;
@@ -337,83 +335,84 @@ class Parameters_Parameter {
   dynamic resource;
   List<Parameters_Parameter> part;
 
-  Parameters_Parameter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.valueBase64Binary,
-      this.elementValueBase64Binary,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueCanonical,
-      this.elementValueCanonical,
-      this.valueCode,
-      this.elementValueCode,
-      this.valueDate,
-      this.elementValueDate,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valueDecimal,
-      this.elementValueDecimal,
-      this.valueId,
-      this.elementValueId,
-      this.valueInstant,
-      this.elementValueInstant,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueMarkdown,
-      this.elementValueMarkdown,
-      this.valueOid,
-      this.elementValueOid,
-      this.valuePositiveInt,
-      this.elementValuePositiveInt,
-      this.valueString,
-      this.elementValueString,
-      this.valueTime,
-      this.elementValueTime,
-      this.valueUnsignedInt,
-      this.elementValueUnsignedInt,
-      this.valueUri,
-      this.elementValueUri,
-      this.valueUrl,
-      this.elementValueUrl,
-      this.valueUuid,
-      this.elementValueUuid,
-      this.valueAddress,
-      this.valueAge,
-      this.valueAnnotation,
-      this.valueAttachment,
-      this.valueCodeableConcept,
-      this.valueCoding,
-      this.valueContactPoint,
-      this.valueCount,
-      this.valueDistance,
-      this.valueDuration,
-      this.valueHumanName,
-      this.valueIdentifier,
-      this.valueMoney,
-      this.valuePeriod,
-      this.valueQuantity,
-      this.valueRange,
-      this.valueRatio,
-      this.valueReference,
-      this.valueSampledData,
-      this.valueSignature,
-      this.valueTiming,
-      this.valueContactDetail,
-      this.valueContributor,
-      this.valueDataRequirement,
-      this.valueExpression,
-      this.valueParameterDefinition,
-      this.valueRelatedArtifact,
-      this.valueTriggerDefinition,
-      this.valueUsageContext,
-      this.valueDosage,
-      this.valueMeta,
-      this.resource,
-      this.part});
+  Parameters_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.valueBase64Binary,
+    this.elementValueBase64Binary,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueCanonical,
+    this.elementValueCanonical,
+    this.valueCode,
+    this.elementValueCode,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueId,
+    this.elementValueId,
+    this.valueInstant,
+    this.elementValueInstant,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueMarkdown,
+    this.elementValueMarkdown,
+    this.valueOid,
+    this.elementValueOid,
+    this.valuePositiveInt,
+    this.elementValuePositiveInt,
+    this.valueString,
+    this.elementValueString,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueUnsignedInt,
+    this.elementValueUnsignedInt,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueUrl,
+    this.elementValueUrl,
+    this.valueUuid,
+    this.elementValueUuid,
+    this.valueAddress,
+    this.valueAge,
+    this.valueAnnotation,
+    this.valueAttachment,
+    this.valueCodeableConcept,
+    this.valueCoding,
+    this.valueContactPoint,
+    this.valueCount,
+    this.valueDistance,
+    this.valueDuration,
+    this.valueHumanName,
+    this.valueIdentifier,
+    this.valueMoney,
+    this.valuePeriod,
+    this.valueQuantity,
+    this.valueRange,
+    this.valueRatio,
+    this.valueReference,
+    this.valueSampledData,
+    this.valueSignature,
+    this.valueTiming,
+    this.valueContactDetail,
+    this.valueContributor,
+    this.valueDataRequirement,
+    this.valueExpression,
+    this.valueParameterDefinition,
+    this.valueRelatedArtifact,
+    this.valueTriggerDefinition,
+    this.valueUsageContext,
+    this.valueDosage,
+    this.valueMeta,
+    this.resource,
+    this.part,
+  });
 
   factory Parameters_Parameter.fromJson(Map<String, dynamic> json) =>
       _$Parameters_ParameterFromJson(json);

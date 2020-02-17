@@ -1,20 +1,22 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Money {
-  static Future<Money> newInstance(
-      {String id,
-      List<Extension> extension,
-      double value,
-      Element elementValue,
-      String currency,
-      Element elementCurrency}) async {
+  static Future<Money> newInstance({
+    String id,
+    List<Extension> extension,
+    double value,
+    Element elementValue,
+    String currency,
+    Element elementCurrency,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Money newMoney = new Money(
-      id: await fhirDb.newResourceId('Money'),
+      id: id ?? await fhirDb.newResourceId('Money'),
       extension: extension,
       value: value,
       elementValue: elementValue,
@@ -31,13 +33,14 @@ class Money {
   String currency;
   Element elementCurrency;
 
-  Money(
-      {this.id,
-      this.extension,
-      this.value,
-      this.elementValue,
-      this.currency,
-      this.elementCurrency});
+  Money({
+    this.id,
+    this.extension,
+    this.value,
+    this.elementValue,
+    this.currency,
+    this.elementCurrency,
+  });
 
   factory Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);
   Map<String, dynamic> toJson() => _$MoneyToJson(this);

@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -11,32 +11,33 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class EnrollmentRequest {
-  static Future<EnrollmentRequest> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      DateTime created,
-      Element elementCreated,
-      Reference insurer,
-      Reference provider,
-      Reference candidate,
-      Reference coverage}) async {
+  static Future<EnrollmentRequest> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    DateTime created,
+    Element elementCreated,
+    Reference insurer,
+    Reference provider,
+    Reference candidate,
+    Reference coverage,
+  }) async {
     var fhirDb = new DatabaseHelper();
     EnrollmentRequest newEnrollmentRequest = new EnrollmentRequest(
-      resourceType: 'EnrollmentRequest',
-      id: await fhirDb.newResourceId('EnrollmentRequest'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('EnrollmentRequest'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -57,17 +58,17 @@ class EnrollmentRequest {
     );
     newEnrollmentRequest.meta.createdAt = DateTime.now();
     newEnrollmentRequest.meta.lastUpdated = newEnrollmentRequest.meta.createdAt;
-    int saved = await fhirDb.newResource(newEnrollmentRequest);
+    int saved = await fhirDb.saveResource(newEnrollmentRequest);
     return newEnrollmentRequest;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'EnrollmentRequest';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -88,27 +89,28 @@ class EnrollmentRequest {
   Reference candidate;
   Reference coverage;
 
-  EnrollmentRequest(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.created,
-      this.elementCreated,
-      this.insurer,
-      this.provider,
-      this.candidate,
-      this.coverage});
+  EnrollmentRequest({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.created,
+    this.elementCreated,
+    this.insurer,
+    this.provider,
+    this.candidate,
+    this.coverage,
+  });
 
   factory EnrollmentRequest.fromJson(Map<String, dynamic> json) =>
       _$EnrollmentRequestFromJson(json);

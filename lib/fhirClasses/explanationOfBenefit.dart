@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -18,73 +18,74 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit {
-  static Future<ExplanationOfBenefit> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept type,
-      CodeableConcept subType,
-      String use,
-      Element elementUse,
-      Reference patient,
-      Period billablePeriod,
-      DateTime created,
-      Element elementCreated,
-      Reference enterer,
-      Reference insurer,
-      Reference provider,
-      CodeableConcept priority,
-      CodeableConcept fundsReserveRequested,
-      CodeableConcept fundsReserve,
-      List<ExplanationOfBenefit_Related> related,
-      Reference prescription,
-      Reference originalPrescription,
-      ExplanationOfBenefit_Payee payee,
-      Reference referral,
-      Reference facility,
-      Reference claim,
-      Reference claimResponse,
-      String outcome,
-      Element elementOutcome,
-      String disposition,
-      Element elementDisposition,
-      List<String> preAuthRef,
-      List<Element> elementPreAuthRef,
-      List<Period> preAuthRefPeriod,
-      List<ExplanationOfBenefit_CareTeam> careTeam,
-      List<ExplanationOfBenefit_SupportingInfo> supportingInfo,
-      List<ExplanationOfBenefit_Diagnosis> diagnosis,
-      List<ExplanationOfBenefit_Procedure> procedure,
-      int precedence,
-      Element elementPrecedence,
-      List<ExplanationOfBenefit_Insurance> insurance,
-      ExplanationOfBenefit_Accident accident,
-      List<ExplanationOfBenefit_Item> item,
-      List<ExplanationOfBenefit_AddItem> addItem,
-      List<ExplanationOfBenefit_Adjudication> adjudication,
-      List<ExplanationOfBenefit_Total> total,
-      ExplanationOfBenefit_Payment payment,
-      CodeableConcept formCode,
-      Attachment form,
-      List<ExplanationOfBenefit_ProcessNote> processNote,
-      Period benefitPeriod,
-      List<ExplanationOfBenefit_BenefitBalance> benefitBalance}) async {
+  static Future<ExplanationOfBenefit> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept type,
+    CodeableConcept subType,
+    String use,
+    Element elementUse,
+    Reference patient,
+    Period billablePeriod,
+    DateTime created,
+    Element elementCreated,
+    Reference enterer,
+    Reference insurer,
+    Reference provider,
+    CodeableConcept priority,
+    CodeableConcept fundsReserveRequested,
+    CodeableConcept fundsReserve,
+    List<ExplanationOfBenefit_Related> related,
+    Reference prescription,
+    Reference originalPrescription,
+    ExplanationOfBenefit_Payee payee,
+    Reference referral,
+    Reference facility,
+    Reference claim,
+    Reference claimResponse,
+    String outcome,
+    Element elementOutcome,
+    String disposition,
+    Element elementDisposition,
+    List<String> preAuthRef,
+    List<Element> elementPreAuthRef,
+    List<Period> preAuthRefPeriod,
+    List<ExplanationOfBenefit_CareTeam> careTeam,
+    List<ExplanationOfBenefit_SupportingInfo> supportingInfo,
+    List<ExplanationOfBenefit_Diagnosis> diagnosis,
+    List<ExplanationOfBenefit_Procedure> procedure,
+    int precedence,
+    Element elementPrecedence,
+    List<ExplanationOfBenefit_Insurance> insurance,
+    ExplanationOfBenefit_Accident accident,
+    List<ExplanationOfBenefit_Item> item,
+    List<ExplanationOfBenefit_AddItem> addItem,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_Total> total,
+    ExplanationOfBenefit_Payment payment,
+    CodeableConcept formCode,
+    Attachment form,
+    List<ExplanationOfBenefit_ProcessNote> processNote,
+    Period benefitPeriod,
+    List<ExplanationOfBenefit_BenefitBalance> benefitBalance,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit newExplanationOfBenefit = new ExplanationOfBenefit(
-      resourceType: 'ExplanationOfBenefit',
-      id: await fhirDb.newResourceId('ExplanationOfBenefit'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -147,17 +148,17 @@ class ExplanationOfBenefit {
     newExplanationOfBenefit.meta.createdAt = DateTime.now();
     newExplanationOfBenefit.meta.lastUpdated =
         newExplanationOfBenefit.meta.createdAt;
-    int saved = await fhirDb.newResource(newExplanationOfBenefit);
+    int saved = await fhirDb.saveResource(newExplanationOfBenefit);
     return newExplanationOfBenefit;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ExplanationOfBenefit';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -169,7 +170,7 @@ class ExplanationOfBenefit {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String status; // <code> enum: active/cancelled/draft/entered-in-error;
+  String status;
   Element elementStatus;
   CodeableConcept type;
   CodeableConcept subType;
@@ -219,68 +220,69 @@ class ExplanationOfBenefit {
   Period benefitPeriod;
   List<ExplanationOfBenefit_BenefitBalance> benefitBalance;
 
-  ExplanationOfBenefit(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      @required this.type,
-      this.subType,
-      this.use,
-      this.elementUse,
-      @required this.patient,
-      this.billablePeriod,
-      this.created,
-      this.elementCreated,
-      this.enterer,
-      @required this.insurer,
-      @required this.provider,
-      this.priority,
-      this.fundsReserveRequested,
-      this.fundsReserve,
-      this.related,
-      this.prescription,
-      this.originalPrescription,
-      this.payee,
-      this.referral,
-      this.facility,
-      this.claim,
-      this.claimResponse,
-      this.outcome,
-      this.elementOutcome,
-      this.disposition,
-      this.elementDisposition,
-      this.preAuthRef,
-      this.elementPreAuthRef,
-      this.preAuthRefPeriod,
-      this.careTeam,
-      this.supportingInfo,
-      this.diagnosis,
-      this.procedure,
-      this.precedence,
-      this.elementPrecedence,
-      @required this.insurance,
-      this.accident,
-      this.item,
-      this.addItem,
-      this.adjudication,
-      this.total,
-      this.payment,
-      this.formCode,
-      this.form,
-      this.processNote,
-      this.benefitPeriod,
-      this.benefitBalance});
+  ExplanationOfBenefit({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.type,
+    this.subType,
+    this.use,
+    this.elementUse,
+    @required this.patient,
+    this.billablePeriod,
+    this.created,
+    this.elementCreated,
+    this.enterer,
+    @required this.insurer,
+    @required this.provider,
+    this.priority,
+    this.fundsReserveRequested,
+    this.fundsReserve,
+    this.related,
+    this.prescription,
+    this.originalPrescription,
+    this.payee,
+    this.referral,
+    this.facility,
+    this.claim,
+    this.claimResponse,
+    this.outcome,
+    this.elementOutcome,
+    this.disposition,
+    this.elementDisposition,
+    this.preAuthRef,
+    this.elementPreAuthRef,
+    this.preAuthRefPeriod,
+    this.careTeam,
+    this.supportingInfo,
+    this.diagnosis,
+    this.procedure,
+    this.precedence,
+    this.elementPrecedence,
+    @required this.insurance,
+    this.accident,
+    this.item,
+    this.addItem,
+    this.adjudication,
+    this.total,
+    this.payment,
+    this.formCode,
+    this.form,
+    this.processNote,
+    this.benefitPeriod,
+    this.benefitBalance,
+  });
 
   factory ExplanationOfBenefit.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefitFromJson(json);
@@ -289,17 +291,18 @@ class ExplanationOfBenefit {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Related {
-  static Future<ExplanationOfBenefit_Related> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference claim,
-      CodeableConcept relationship,
-      Identifier reference}) async {
+  static Future<ExplanationOfBenefit_Related> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference claim,
+    CodeableConcept relationship,
+    Identifier reference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Related newExplanationOfBenefit_Related =
         new ExplanationOfBenefit_Related(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Related'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Related'),
       extension: extension,
       modifierExtension: modifierExtension,
       claim: claim,
@@ -316,13 +319,14 @@ class ExplanationOfBenefit_Related {
   CodeableConcept relationship;
   Identifier reference;
 
-  ExplanationOfBenefit_Related(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.claim,
-      this.relationship,
-      this.reference});
+  ExplanationOfBenefit_Related({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.claim,
+    this.relationship,
+    this.reference,
+  });
 
   factory ExplanationOfBenefit_Related.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_RelatedFromJson(json);
@@ -331,16 +335,17 @@ class ExplanationOfBenefit_Related {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Payee {
-  static Future<ExplanationOfBenefit_Payee> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      Reference party}) async {
+  static Future<ExplanationOfBenefit_Payee> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Reference party,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Payee newExplanationOfBenefit_Payee =
         new ExplanationOfBenefit_Payee(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Payee'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Payee'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -355,8 +360,13 @@ class ExplanationOfBenefit_Payee {
   CodeableConcept type;
   Reference party;
 
-  ExplanationOfBenefit_Payee(
-      {this.id, this.extension, this.modifierExtension, this.type, this.party});
+  ExplanationOfBenefit_Payee({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.party,
+  });
 
   factory ExplanationOfBenefit_Payee.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_PayeeFromJson(json);
@@ -365,21 +375,22 @@ class ExplanationOfBenefit_Payee {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_CareTeam {
-  static Future<ExplanationOfBenefit_CareTeam> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      Reference provider,
-      bool responsible,
-      Element elementResponsible,
-      CodeableConcept role,
-      CodeableConcept qualification}) async {
+  static Future<ExplanationOfBenefit_CareTeam> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    Reference provider,
+    bool responsible,
+    Element elementResponsible,
+    CodeableConcept role,
+    CodeableConcept qualification,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_CareTeam newExplanationOfBenefit_CareTeam =
         new ExplanationOfBenefit_CareTeam(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_CareTeam'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_CareTeam'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -404,17 +415,18 @@ class ExplanationOfBenefit_CareTeam {
   CodeableConcept role;
   CodeableConcept qualification;
 
-  ExplanationOfBenefit_CareTeam(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      @required this.provider,
-      this.responsible,
-      this.elementResponsible,
-      this.role,
-      this.qualification});
+  ExplanationOfBenefit_CareTeam({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    @required this.provider,
+    this.responsible,
+    this.elementResponsible,
+    this.role,
+    this.qualification,
+  });
 
   factory ExplanationOfBenefit_CareTeam.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_CareTeamFromJson(json);
@@ -423,29 +435,31 @@ class ExplanationOfBenefit_CareTeam {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SupportingInfo {
-  static Future<ExplanationOfBenefit_SupportingInfo> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      CodeableConcept category,
-      CodeableConcept code,
-      String timingDate,
-      Element elementTimingDate,
-      Period timingPeriod,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      String valueString,
-      Element elementValueString,
-      Quantity valueQuantity,
-      Attachment valueAttachment,
-      Reference valueReference,
-      Coding reason}) async {
+  static Future<ExplanationOfBenefit_SupportingInfo> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept category,
+    CodeableConcept code,
+    String timingDate,
+    Element elementTimingDate,
+    Period timingPeriod,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    String valueString,
+    Element elementValueString,
+    Quantity valueQuantity,
+    Attachment valueAttachment,
+    Reference valueReference,
+    Coding reason,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_SupportingInfo newExplanationOfBenefit_SupportingInfo =
         new ExplanationOfBenefit_SupportingInfo(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_SupportingInfo'),
+      id: id ??
+          await fhirDb.newResourceId('ExplanationOfBenefit_SupportingInfo'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -474,38 +488,38 @@ class ExplanationOfBenefit_SupportingInfo {
   Element elementSequence;
   CodeableConcept category;
   CodeableConcept code;
-  String
-      timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String timingDate;
   Element elementTimingDate;
   Period timingPeriod;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
   Quantity valueQuantity;
   Attachment valueAttachment;
   Reference valueReference;
   Coding reason;
 
-  ExplanationOfBenefit_SupportingInfo(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      @required this.category,
-      this.code,
-      this.timingDate,
-      this.elementTimingDate,
-      this.timingPeriod,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueString,
-      this.elementValueString,
-      this.valueQuantity,
-      this.valueAttachment,
-      this.valueReference,
-      this.reason});
+  ExplanationOfBenefit_SupportingInfo({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    @required this.category,
+    this.code,
+    this.timingDate,
+    this.elementTimingDate,
+    this.timingPeriod,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueString,
+    this.elementValueString,
+    this.valueQuantity,
+    this.valueAttachment,
+    this.valueReference,
+    this.reason,
+  });
 
   factory ExplanationOfBenefit_SupportingInfo.fromJson(
           Map<String, dynamic> json) =>
@@ -516,21 +530,22 @@ class ExplanationOfBenefit_SupportingInfo {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Diagnosis {
-  static Future<ExplanationOfBenefit_Diagnosis> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      CodeableConcept diagnosisCodeableConcept,
-      Reference diagnosisReference,
-      List<CodeableConcept> type,
-      CodeableConcept onAdmission,
-      CodeableConcept packageCode}) async {
+  static Future<ExplanationOfBenefit_Diagnosis> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept diagnosisCodeableConcept,
+    Reference diagnosisReference,
+    List<CodeableConcept> type,
+    CodeableConcept onAdmission,
+    CodeableConcept packageCode,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Diagnosis newExplanationOfBenefit_Diagnosis =
         new ExplanationOfBenefit_Diagnosis(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Diagnosis'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Diagnosis'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -555,17 +570,18 @@ class ExplanationOfBenefit_Diagnosis {
   CodeableConcept onAdmission;
   CodeableConcept packageCode;
 
-  ExplanationOfBenefit_Diagnosis(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      this.diagnosisCodeableConcept,
-      this.diagnosisReference,
-      this.type,
-      this.onAdmission,
-      this.packageCode});
+  ExplanationOfBenefit_Diagnosis({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.diagnosisCodeableConcept,
+    this.diagnosisReference,
+    this.type,
+    this.onAdmission,
+    this.packageCode,
+  });
 
   factory ExplanationOfBenefit_Diagnosis.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_DiagnosisFromJson(json);
@@ -574,22 +590,23 @@ class ExplanationOfBenefit_Diagnosis {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Procedure {
-  static Future<ExplanationOfBenefit_Procedure> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      List<CodeableConcept> type,
-      DateTime date,
-      Element elementDate,
-      CodeableConcept procedureCodeableConcept,
-      Reference procedureReference,
-      List<Reference> udi}) async {
+  static Future<ExplanationOfBenefit_Procedure> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    List<CodeableConcept> type,
+    DateTime date,
+    Element elementDate,
+    CodeableConcept procedureCodeableConcept,
+    Reference procedureReference,
+    List<Reference> udi,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Procedure newExplanationOfBenefit_Procedure =
         new ExplanationOfBenefit_Procedure(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Procedure'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Procedure'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -616,18 +633,19 @@ class ExplanationOfBenefit_Procedure {
   Reference procedureReference;
   List<Reference> udi;
 
-  ExplanationOfBenefit_Procedure(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      this.type,
-      this.date,
-      this.elementDate,
-      this.procedureCodeableConcept,
-      this.procedureReference,
-      this.udi});
+  ExplanationOfBenefit_Procedure({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.type,
+    this.date,
+    this.elementDate,
+    this.procedureCodeableConcept,
+    this.procedureReference,
+    this.udi,
+  });
 
   factory ExplanationOfBenefit_Procedure.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_ProcedureFromJson(json);
@@ -636,19 +654,20 @@ class ExplanationOfBenefit_Procedure {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Insurance {
-  static Future<ExplanationOfBenefit_Insurance> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool focal,
-      Element elementFocal,
-      Reference coverage,
-      List<String> preAuthRef,
-      List<Element> elementPreAuthRef}) async {
+  static Future<ExplanationOfBenefit_Insurance> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool focal,
+    Element elementFocal,
+    Reference coverage,
+    List<String> preAuthRef,
+    List<Element> elementPreAuthRef,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Insurance newExplanationOfBenefit_Insurance =
         new ExplanationOfBenefit_Insurance(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Insurance'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Insurance'),
       extension: extension,
       modifierExtension: modifierExtension,
       focal: focal,
@@ -669,15 +688,16 @@ class ExplanationOfBenefit_Insurance {
   List<String> preAuthRef;
   List<Element> elementPreAuthRef;
 
-  ExplanationOfBenefit_Insurance(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.focal,
-      this.elementFocal,
-      @required this.coverage,
-      this.preAuthRef,
-      this.elementPreAuthRef});
+  ExplanationOfBenefit_Insurance({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.focal,
+    this.elementFocal,
+    @required this.coverage,
+    this.preAuthRef,
+    this.elementPreAuthRef,
+  });
 
   factory ExplanationOfBenefit_Insurance.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_InsuranceFromJson(json);
@@ -686,19 +706,20 @@ class ExplanationOfBenefit_Insurance {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Accident {
-  static Future<ExplanationOfBenefit_Accident> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String date,
-      Element elementDate,
-      CodeableConcept type,
-      Address locationAddress,
-      Reference locationReference}) async {
+  static Future<ExplanationOfBenefit_Accident> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String date,
+    Element elementDate,
+    CodeableConcept type,
+    Address locationAddress,
+    Reference locationReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Accident newExplanationOfBenefit_Accident =
         new ExplanationOfBenefit_Accident(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Accident'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Accident'),
       extension: extension,
       modifierExtension: modifierExtension,
       date: date,
@@ -719,15 +740,16 @@ class ExplanationOfBenefit_Accident {
   Address locationAddress;
   Reference locationReference;
 
-  ExplanationOfBenefit_Accident(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.date,
-      this.elementDate,
-      this.type,
-      this.locationAddress,
-      this.locationReference});
+  ExplanationOfBenefit_Accident({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.date,
+    this.elementDate,
+    this.type,
+    this.locationAddress,
+    this.locationReference,
+  });
 
   factory ExplanationOfBenefit_Accident.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_AccidentFromJson(json);
@@ -736,48 +758,49 @@ class ExplanationOfBenefit_Accident {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Item {
-  static Future<ExplanationOfBenefit_Item> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      List<int> careTeamSequence,
-      List<Element> elementCareTeamSequence,
-      List<int> diagnosisSequence,
-      List<Element> elementDiagnosisSequence,
-      List<int> procedureSequence,
-      List<Element> elementProcedureSequence,
-      List<int> informationSequence,
-      List<Element> elementInformationSequence,
-      CodeableConcept revenue,
-      CodeableConcept category,
-      CodeableConcept productOrService,
-      List<CodeableConcept> modifier,
-      List<CodeableConcept> programCode,
-      String servicedDate,
-      Element elementServicedDate,
-      Period servicedPeriod,
-      CodeableConcept locationCodeableConcept,
-      Address locationAddress,
-      Reference locationReference,
-      Quantity quantity,
-      Money unitPrice,
-      double factor,
-      Element elementFactor,
-      Money net,
-      List<Reference> udi,
-      CodeableConcept bodySite,
-      List<CodeableConcept> subSite,
-      List<Reference> encounter,
-      List<int> noteNumber,
-      List<Element> elementNoteNumber,
-      List<ExplanationOfBenefit_Adjudication> adjudication,
-      List<ExplanationOfBenefit_Detail> detail}) async {
+  static Future<ExplanationOfBenefit_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    List<int> careTeamSequence,
+    List<Element> elementCareTeamSequence,
+    List<int> diagnosisSequence,
+    List<Element> elementDiagnosisSequence,
+    List<int> procedureSequence,
+    List<Element> elementProcedureSequence,
+    List<int> informationSequence,
+    List<Element> elementInformationSequence,
+    CodeableConcept revenue,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    String servicedDate,
+    Element elementServicedDate,
+    Period servicedPeriod,
+    CodeableConcept locationCodeableConcept,
+    Address locationAddress,
+    Reference locationReference,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<Reference> udi,
+    CodeableConcept bodySite,
+    List<CodeableConcept> subSite,
+    List<Reference> encounter,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_Detail> detail,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Item newExplanationOfBenefit_Item =
         new ExplanationOfBenefit_Item(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Item'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Item'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -836,8 +859,7 @@ class ExplanationOfBenefit_Item {
   CodeableConcept productOrService;
   List<CodeableConcept> modifier;
   List<CodeableConcept> programCode;
-  String
-      servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String servicedDate;
   Element elementServicedDate;
   Period servicedPeriod;
   CodeableConcept locationCodeableConcept;
@@ -857,44 +879,45 @@ class ExplanationOfBenefit_Item {
   List<ExplanationOfBenefit_Adjudication> adjudication;
   List<ExplanationOfBenefit_Detail> detail;
 
-  ExplanationOfBenefit_Item(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      this.careTeamSequence,
-      this.elementCareTeamSequence,
-      this.diagnosisSequence,
-      this.elementDiagnosisSequence,
-      this.procedureSequence,
-      this.elementProcedureSequence,
-      this.informationSequence,
-      this.elementInformationSequence,
-      this.revenue,
-      this.category,
-      @required this.productOrService,
-      this.modifier,
-      this.programCode,
-      this.servicedDate,
-      this.elementServicedDate,
-      this.servicedPeriod,
-      this.locationCodeableConcept,
-      this.locationAddress,
-      this.locationReference,
-      this.quantity,
-      this.unitPrice,
-      this.factor,
-      this.elementFactor,
-      this.net,
-      this.udi,
-      this.bodySite,
-      this.subSite,
-      this.encounter,
-      this.noteNumber,
-      this.elementNoteNumber,
-      this.adjudication,
-      this.detail});
+  ExplanationOfBenefit_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.careTeamSequence,
+    this.elementCareTeamSequence,
+    this.diagnosisSequence,
+    this.elementDiagnosisSequence,
+    this.procedureSequence,
+    this.elementProcedureSequence,
+    this.informationSequence,
+    this.elementInformationSequence,
+    this.revenue,
+    this.category,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.servicedDate,
+    this.elementServicedDate,
+    this.servicedPeriod,
+    this.locationCodeableConcept,
+    this.locationAddress,
+    this.locationReference,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.udi,
+    this.bodySite,
+    this.subSite,
+    this.encounter,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.detail,
+  });
 
   factory ExplanationOfBenefit_Item.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_ItemFromJson(json);
@@ -903,19 +926,20 @@ class ExplanationOfBenefit_Item {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Adjudication {
-  static Future<ExplanationOfBenefit_Adjudication> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept category,
-      CodeableConcept reason,
-      Money amount,
-      double value,
-      Element elementValue}) async {
+  static Future<ExplanationOfBenefit_Adjudication> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    CodeableConcept reason,
+    Money amount,
+    double value,
+    Element elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Adjudication newExplanationOfBenefit_Adjudication =
         new ExplanationOfBenefit_Adjudication(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Adjudication'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Adjudication'),
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -936,15 +960,16 @@ class ExplanationOfBenefit_Adjudication {
   double value;
   Element elementValue;
 
-  ExplanationOfBenefit_Adjudication(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.category,
-      this.reason,
-      this.amount,
-      this.value,
-      this.elementValue});
+  ExplanationOfBenefit_Adjudication({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.category,
+    this.reason,
+    this.amount,
+    this.value,
+    this.elementValue,
+  });
 
   factory ExplanationOfBenefit_Adjudication.fromJson(
           Map<String, dynamic> json) =>
@@ -955,31 +980,32 @@ class ExplanationOfBenefit_Adjudication {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Detail {
-  static Future<ExplanationOfBenefit_Detail> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      CodeableConcept revenue,
-      CodeableConcept category,
-      CodeableConcept productOrService,
-      List<CodeableConcept> modifier,
-      List<CodeableConcept> programCode,
-      Quantity quantity,
-      Money unitPrice,
-      double factor,
-      Element elementFactor,
-      Money net,
-      List<Reference> udi,
-      List<int> noteNumber,
-      List<Element> elementNoteNumber,
-      List<ExplanationOfBenefit_Adjudication> adjudication,
-      List<ExplanationOfBenefit_SubDetail> subDetail}) async {
+  static Future<ExplanationOfBenefit_Detail> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept revenue,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<Reference> udi,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_SubDetail> subDetail,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Detail newExplanationOfBenefit_Detail =
         new ExplanationOfBenefit_Detail(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Detail'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Detail'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -1024,27 +1050,28 @@ class ExplanationOfBenefit_Detail {
   List<ExplanationOfBenefit_Adjudication> adjudication;
   List<ExplanationOfBenefit_SubDetail> subDetail;
 
-  ExplanationOfBenefit_Detail(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      this.revenue,
-      this.category,
-      @required this.productOrService,
-      this.modifier,
-      this.programCode,
-      this.quantity,
-      this.unitPrice,
-      this.factor,
-      this.elementFactor,
-      this.net,
-      this.udi,
-      this.noteNumber,
-      this.elementNoteNumber,
-      this.adjudication,
-      this.subDetail});
+  ExplanationOfBenefit_Detail({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.revenue,
+    this.category,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.udi,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.subDetail,
+  });
 
   factory ExplanationOfBenefit_Detail.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_DetailFromJson(json);
@@ -1053,30 +1080,31 @@ class ExplanationOfBenefit_Detail {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SubDetail {
-  static Future<ExplanationOfBenefit_SubDetail> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int sequence,
-      Element elementSequence,
-      CodeableConcept revenue,
-      CodeableConcept category,
-      CodeableConcept productOrService,
-      List<CodeableConcept> modifier,
-      List<CodeableConcept> programCode,
-      Quantity quantity,
-      Money unitPrice,
-      double factor,
-      Element elementFactor,
-      Money net,
-      List<Reference> udi,
-      List<int> noteNumber,
-      List<Element> elementNoteNumber,
-      List<ExplanationOfBenefit_Adjudication> adjudication}) async {
+  static Future<ExplanationOfBenefit_SubDetail> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept revenue,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<Reference> udi,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_SubDetail newExplanationOfBenefit_SubDetail =
         new ExplanationOfBenefit_SubDetail(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail'),
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -1119,26 +1147,27 @@ class ExplanationOfBenefit_SubDetail {
   List<Element> elementNoteNumber;
   List<ExplanationOfBenefit_Adjudication> adjudication;
 
-  ExplanationOfBenefit_SubDetail(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.sequence,
-      this.elementSequence,
-      this.revenue,
-      this.category,
-      @required this.productOrService,
-      this.modifier,
-      this.programCode,
-      this.quantity,
-      this.unitPrice,
-      this.factor,
-      this.elementFactor,
-      this.net,
-      this.udi,
-      this.noteNumber,
-      this.elementNoteNumber,
-      this.adjudication});
+  ExplanationOfBenefit_SubDetail({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.revenue,
+    this.category,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.udi,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+  });
 
   factory ExplanationOfBenefit_SubDetail.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_SubDetailFromJson(json);
@@ -1147,41 +1176,42 @@ class ExplanationOfBenefit_SubDetail {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_AddItem {
-  static Future<ExplanationOfBenefit_AddItem> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<int> itemSequence,
-      List<Element> elementItemSequence,
-      List<int> detailSequence,
-      List<Element> elementDetailSequence,
-      List<int> subDetailSequence,
-      List<Element> elementSubDetailSequence,
-      List<Reference> provider,
-      CodeableConcept productOrService,
-      List<CodeableConcept> modifier,
-      List<CodeableConcept> programCode,
-      String servicedDate,
-      Element elementServicedDate,
-      Period servicedPeriod,
-      CodeableConcept locationCodeableConcept,
-      Address locationAddress,
-      Reference locationReference,
-      Quantity quantity,
-      Money unitPrice,
-      double factor,
-      Element elementFactor,
-      Money net,
-      CodeableConcept bodySite,
-      List<CodeableConcept> subSite,
-      List<int> noteNumber,
-      List<Element> elementNoteNumber,
-      List<ExplanationOfBenefit_Adjudication> adjudication,
-      List<ExplanationOfBenefit_Detail1> detail}) async {
+  static Future<ExplanationOfBenefit_AddItem> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<int> itemSequence,
+    List<Element> elementItemSequence,
+    List<int> detailSequence,
+    List<Element> elementDetailSequence,
+    List<int> subDetailSequence,
+    List<Element> elementSubDetailSequence,
+    List<Reference> provider,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    String servicedDate,
+    Element elementServicedDate,
+    Period servicedPeriod,
+    CodeableConcept locationCodeableConcept,
+    Address locationAddress,
+    Reference locationReference,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    CodeableConcept bodySite,
+    List<CodeableConcept> subSite,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_Detail1> detail,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_AddItem newExplanationOfBenefit_AddItem =
         new ExplanationOfBenefit_AddItem(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_AddItem'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_AddItem'),
       extension: extension,
       modifierExtension: modifierExtension,
       itemSequence: itemSequence,
@@ -1228,8 +1258,7 @@ class ExplanationOfBenefit_AddItem {
   CodeableConcept productOrService;
   List<CodeableConcept> modifier;
   List<CodeableConcept> programCode;
-  String
-      servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String servicedDate;
   Element elementServicedDate;
   Period servicedPeriod;
   CodeableConcept locationCodeableConcept;
@@ -1247,37 +1276,38 @@ class ExplanationOfBenefit_AddItem {
   List<ExplanationOfBenefit_Adjudication> adjudication;
   List<ExplanationOfBenefit_Detail1> detail;
 
-  ExplanationOfBenefit_AddItem(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.itemSequence,
-      this.elementItemSequence,
-      this.detailSequence,
-      this.elementDetailSequence,
-      this.subDetailSequence,
-      this.elementSubDetailSequence,
-      this.provider,
-      @required this.productOrService,
-      this.modifier,
-      this.programCode,
-      this.servicedDate,
-      this.elementServicedDate,
-      this.servicedPeriod,
-      this.locationCodeableConcept,
-      this.locationAddress,
-      this.locationReference,
-      this.quantity,
-      this.unitPrice,
-      this.factor,
-      this.elementFactor,
-      this.net,
-      this.bodySite,
-      this.subSite,
-      this.noteNumber,
-      this.elementNoteNumber,
-      this.adjudication,
-      this.detail});
+  ExplanationOfBenefit_AddItem({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.itemSequence,
+    this.elementItemSequence,
+    this.detailSequence,
+    this.elementDetailSequence,
+    this.subDetailSequence,
+    this.elementSubDetailSequence,
+    this.provider,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.servicedDate,
+    this.elementServicedDate,
+    this.servicedPeriod,
+    this.locationCodeableConcept,
+    this.locationAddress,
+    this.locationReference,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.bodySite,
+    this.subSite,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.detail,
+  });
 
   factory ExplanationOfBenefit_AddItem.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_AddItemFromJson(json);
@@ -1286,25 +1316,26 @@ class ExplanationOfBenefit_AddItem {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Detail1 {
-  static Future<ExplanationOfBenefit_Detail1> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept productOrService,
-      List<CodeableConcept> modifier,
-      Quantity quantity,
-      Money unitPrice,
-      double factor,
-      Element elementFactor,
-      Money net,
-      List<int> noteNumber,
-      List<Element> elementNoteNumber,
-      List<ExplanationOfBenefit_Adjudication> adjudication,
-      List<ExplanationOfBenefit_SubDetail1> subDetail}) async {
+  static Future<ExplanationOfBenefit_Detail1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_SubDetail1> subDetail,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Detail1 newExplanationOfBenefit_Detail1 =
         new ExplanationOfBenefit_Detail1(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Detail1'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Detail1'),
       extension: extension,
       modifierExtension: modifierExtension,
       productOrService: productOrService,
@@ -1337,21 +1368,22 @@ class ExplanationOfBenefit_Detail1 {
   List<ExplanationOfBenefit_Adjudication> adjudication;
   List<ExplanationOfBenefit_SubDetail1> subDetail;
 
-  ExplanationOfBenefit_Detail1(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.productOrService,
-      this.modifier,
-      this.quantity,
-      this.unitPrice,
-      this.factor,
-      this.elementFactor,
-      this.net,
-      this.noteNumber,
-      this.elementNoteNumber,
-      this.adjudication,
-      this.subDetail});
+  ExplanationOfBenefit_Detail1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.productOrService,
+    this.modifier,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.subDetail,
+  });
 
   factory ExplanationOfBenefit_Detail1.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_Detail1FromJson(json);
@@ -1360,24 +1392,25 @@ class ExplanationOfBenefit_Detail1 {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SubDetail1 {
-  static Future<ExplanationOfBenefit_SubDetail1> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept productOrService,
-      List<CodeableConcept> modifier,
-      Quantity quantity,
-      Money unitPrice,
-      double factor,
-      Element elementFactor,
-      Money net,
-      List<int> noteNumber,
-      List<Element> elementNoteNumber,
-      List<ExplanationOfBenefit_Adjudication> adjudication}) async {
+  static Future<ExplanationOfBenefit_SubDetail1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_SubDetail1 newExplanationOfBenefit_SubDetail1 =
         new ExplanationOfBenefit_SubDetail1(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail1'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail1'),
       extension: extension,
       modifierExtension: modifierExtension,
       productOrService: productOrService,
@@ -1408,20 +1441,21 @@ class ExplanationOfBenefit_SubDetail1 {
   List<Element> elementNoteNumber;
   List<ExplanationOfBenefit_Adjudication> adjudication;
 
-  ExplanationOfBenefit_SubDetail1(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.productOrService,
-      this.modifier,
-      this.quantity,
-      this.unitPrice,
-      this.factor,
-      this.elementFactor,
-      this.net,
-      this.noteNumber,
-      this.elementNoteNumber,
-      this.adjudication});
+  ExplanationOfBenefit_SubDetail1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.productOrService,
+    this.modifier,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+  });
 
   factory ExplanationOfBenefit_SubDetail1.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_SubDetail1FromJson(json);
@@ -1431,16 +1465,17 @@ class ExplanationOfBenefit_SubDetail1 {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Total {
-  static Future<ExplanationOfBenefit_Total> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept category,
-      Money amount}) async {
+  static Future<ExplanationOfBenefit_Total> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    Money amount,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Total newExplanationOfBenefit_Total =
         new ExplanationOfBenefit_Total(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Total'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Total'),
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -1455,12 +1490,13 @@ class ExplanationOfBenefit_Total {
   CodeableConcept category;
   Money amount;
 
-  ExplanationOfBenefit_Total(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.category,
-      @required this.amount});
+  ExplanationOfBenefit_Total({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.category,
+    @required this.amount,
+  });
 
   factory ExplanationOfBenefit_Total.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_TotalFromJson(json);
@@ -1469,21 +1505,22 @@ class ExplanationOfBenefit_Total {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Payment {
-  static Future<ExplanationOfBenefit_Payment> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      Money adjustment,
-      CodeableConcept adjustmentReason,
-      String date,
-      Element elementDate,
-      Money amount,
-      Identifier identifier}) async {
+  static Future<ExplanationOfBenefit_Payment> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Money adjustment,
+    CodeableConcept adjustmentReason,
+    String date,
+    Element elementDate,
+    Money amount,
+    Identifier identifier,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Payment newExplanationOfBenefit_Payment =
         new ExplanationOfBenefit_Payment(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Payment'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Payment'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -1508,17 +1545,18 @@ class ExplanationOfBenefit_Payment {
   Money amount;
   Identifier identifier;
 
-  ExplanationOfBenefit_Payment(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.adjustment,
-      this.adjustmentReason,
-      this.date,
-      this.elementDate,
-      this.amount,
-      this.identifier});
+  ExplanationOfBenefit_Payment({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.adjustment,
+    this.adjustmentReason,
+    this.date,
+    this.elementDate,
+    this.amount,
+    this.identifier,
+  });
 
   factory ExplanationOfBenefit_Payment.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_PaymentFromJson(json);
@@ -1527,21 +1565,22 @@ class ExplanationOfBenefit_Payment {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_ProcessNote {
-  static Future<ExplanationOfBenefit_ProcessNote> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int number,
-      Element elementNumber,
-      String type,
-      Element elementType,
-      String text,
-      Element elementText,
-      CodeableConcept language}) async {
+  static Future<ExplanationOfBenefit_ProcessNote> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int number,
+    Element elementNumber,
+    String type,
+    Element elementType,
+    String text,
+    Element elementText,
+    CodeableConcept language,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_ProcessNote newExplanationOfBenefit_ProcessNote =
         new ExplanationOfBenefit_ProcessNote(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_ProcessNote'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_ProcessNote'),
       extension: extension,
       modifierExtension: modifierExtension,
       number: number,
@@ -1560,23 +1599,24 @@ class ExplanationOfBenefit_ProcessNote {
   List<Extension> modifierExtension;
   int number;
   Element elementNumber;
-  String type; // <code> enum: display/print/printoper;
+  String type;
   Element elementType;
   String text;
   Element elementText;
   CodeableConcept language;
 
-  ExplanationOfBenefit_ProcessNote(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.number,
-      this.elementNumber,
-      this.type,
-      this.elementType,
-      this.text,
-      this.elementText,
-      this.language});
+  ExplanationOfBenefit_ProcessNote({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.number,
+    this.elementNumber,
+    this.type,
+    this.elementType,
+    this.text,
+    this.elementText,
+    this.language,
+  });
 
   factory ExplanationOfBenefit_ProcessNote.fromJson(
           Map<String, dynamic> json) =>
@@ -1587,25 +1627,27 @@ class ExplanationOfBenefit_ProcessNote {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_BenefitBalance {
-  static Future<ExplanationOfBenefit_BenefitBalance> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept category,
-      bool excluded,
-      Element elementExcluded,
-      String name,
-      Element elementName,
-      String description,
-      Element elementDescription,
-      CodeableConcept network,
-      CodeableConcept unit,
-      CodeableConcept term,
-      List<ExplanationOfBenefit_Financial> financial}) async {
+  static Future<ExplanationOfBenefit_BenefitBalance> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    bool excluded,
+    Element elementExcluded,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+    CodeableConcept network,
+    CodeableConcept unit,
+    CodeableConcept term,
+    List<ExplanationOfBenefit_Financial> financial,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_BenefitBalance newExplanationOfBenefit_BenefitBalance =
         new ExplanationOfBenefit_BenefitBalance(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_BenefitBalance'),
+      id: id ??
+          await fhirDb.newResourceId('ExplanationOfBenefit_BenefitBalance'),
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -1638,21 +1680,22 @@ class ExplanationOfBenefit_BenefitBalance {
   CodeableConcept term;
   List<ExplanationOfBenefit_Financial> financial;
 
-  ExplanationOfBenefit_BenefitBalance(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.category,
-      this.excluded,
-      this.elementExcluded,
-      this.name,
-      this.elementName,
-      this.description,
-      this.elementDescription,
-      this.network,
-      this.unit,
-      this.term,
-      this.financial});
+  ExplanationOfBenefit_BenefitBalance({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.category,
+    this.excluded,
+    this.elementExcluded,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+    this.network,
+    this.unit,
+    this.term,
+    this.financial,
+  });
 
   factory ExplanationOfBenefit_BenefitBalance.fromJson(
           Map<String, dynamic> json) =>
@@ -1663,23 +1706,24 @@ class ExplanationOfBenefit_BenefitBalance {
 
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Financial {
-  static Future<ExplanationOfBenefit_Financial> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      int allowedUnsignedInt,
-      Element elementAllowedUnsignedInt,
-      String allowedString,
-      Element elementAllowedString,
-      Money allowedMoney,
-      int usedUnsignedInt,
-      Element elementUsedUnsignedInt,
-      Money usedMoney}) async {
+  static Future<ExplanationOfBenefit_Financial> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    int allowedUnsignedInt,
+    Element elementAllowedUnsignedInt,
+    String allowedString,
+    Element elementAllowedString,
+    Money allowedMoney,
+    int usedUnsignedInt,
+    Element elementUsedUnsignedInt,
+    Money usedMoney,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ExplanationOfBenefit_Financial newExplanationOfBenefit_Financial =
         new ExplanationOfBenefit_Financial(
-      id: await fhirDb.newResourceId('ExplanationOfBenefit_Financial'),
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Financial'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -1699,28 +1743,29 @@ class ExplanationOfBenefit_Financial {
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept type;
-  int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+  int allowedUnsignedInt;
   Element elementAllowedUnsignedInt;
-  String allowedString; //  pattern: ^[ \r\n\t\S]+$
+  String allowedString;
   Element elementAllowedString;
   Money allowedMoney;
-  int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+  int usedUnsignedInt;
   Element elementUsedUnsignedInt;
   Money usedMoney;
 
-  ExplanationOfBenefit_Financial(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.allowedUnsignedInt,
-      this.elementAllowedUnsignedInt,
-      this.allowedString,
-      this.elementAllowedString,
-      this.allowedMoney,
-      this.usedUnsignedInt,
-      this.elementUsedUnsignedInt,
-      this.usedMoney});
+  ExplanationOfBenefit_Financial({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.allowedUnsignedInt,
+    this.elementAllowedUnsignedInt,
+    this.allowedString,
+    this.elementAllowedString,
+    this.allowedMoney,
+    this.usedUnsignedInt,
+    this.elementUsedUnsignedInt,
+    this.usedMoney,
+  });
 
   factory ExplanationOfBenefit_Financial.fromJson(Map<String, dynamic> json) =>
       _$ExplanationOfBenefit_FinancialFromJson(json);

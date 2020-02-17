@@ -7,7 +7,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:device_info/device_info.dart';
 
-
 //ToDo: create ability to only edit one cell at a time
 
 class DatabaseHelper {
@@ -55,58 +54,59 @@ class DatabaseHelper {
         newNum.toString());
   }
 
-  Future<int> newResource(dynamic resource) async {
+  Future<int> saveResource(dynamic resource) async {
     var dbClient = await db;
-    //creates the new row values
+
     var row = {
       'id': resource.id,
       'createdAt': resource.meta.createdAt.toString(),
       'lastUpdated': resource.meta.lastUpdated.toString(),
       'jsonResource': jsonEncode(resource)
     };
-    //inserts new row into db
-    int rowNum = await dbClient.insert(resource.runtimeType.toString(), row);
-
-    //if successful
-    if (rowNum != null) {
-      //updates resourceType in Classes table, but only true resourceTypes
-      List<Map<String, dynamic>> list = await dbClient.query(
-          'Classes', where: 'resourceType = ?',
-          whereArgs: [resource.runtimeType.toString()]);
-      var count = await dbClient.rawUpdate(
-          'UPDATE Classes SET total = ?, lastUpdated = ? WHERE resourceType = ?',
-          ['${list[0]['total'] + 1}', '${resource.meta.lastUpdated.toString()}', '${resource.runtimeType.toString()}']);
-    }
-
-    return rowNum;
-  }
-
-  Future<int> saveResource(dynamic resource) async {
-    var dbClient = await db;
 
     List<Map> results = await dbClient.query(resource.resourceType,
         columns: ['id'], where: 'id = ?', whereArgs: [resource.id]);
 
+    int rowNum;
+
     if (results.length > 0) {
-      //encodes the resource as Json then stores it as json string
-      var row = {
-        'id': resource.id,
-        'createdAt': resource.meta.createdAt.toString(),
-        'lastUpdated': resource.meta.lastUpdated.toString(),
-        'jsonResource': jsonEncode(resource)
-      };
-      int rowNum = await dbClient.update('${resource.runtimeType.toString()}', row,
+      //if already exists in table, udpate the row
+      rowNum = await dbClient.update('${resource.runtimeType.toString()}', row,
           where: 'id = ?', whereArgs: [resource.id]);
-      if (rowNum != null) {
-        List<Map<String, dynamic>> list = await dbClient.query(
-          'Classes', where: 'resourceType = ?',
-          whereArgs: [resource.runtimeType.toString()]);
-      var count = await dbClient.rawUpdate(
-          'UPDATE Classes SET lastUpdated = ? WHERE resourceType = ?',
-          ['${resource.meta.lastUpdated.toString()}', '${resource.runtimeType.toString()}']);
-    }
     } else {
-      return await newResource(resource);
+      //inserts new row into db
+      rowNum = await dbClient.insert(resource.runtimeType.toString(), row);
+    }
+    //if successful
+
+    List<Map<String, dynamic>> list = await dbClient.query('Classes',
+        where: 'resourceType = ?',
+        whereArgs: [resource.runtimeType.toString()]);
+    var count = await dbClient.rawUpdate(
+        'UPDATE Classes SET total = ?, lastUpdated = ? WHERE resourceType = ?',
+        [
+          '${(list[0]['total'] + 1) ? rowNum != null && results.length <= 0 : list[0]['total']}',
+          '${resource.meta.lastUpdated.toString()}',
+          '${resource.runtimeType.toString()}'
+        ]);
+    return rowNum;
+  }
+
+  Future<dynamic> search(String resourceType, String id) async {
+    var dbClient = await db;
+    List<Map> list = await dbClient.query(resourceType,
+        columns: ['jsonResource'], where: 'id = ?', whereArgs: [id]);
+    if(list.length == 0) {
+      return 'No matches';
+    } else if(list.length == 1){
+      dynamic query;
+      for (int i = 0; i < list.length; i++) {
+        query.add(ResourceTypes(
+            resourceType, jsonDecode(list[i]['jsonResource']) as Map<String, dynamic>));
+      }
+      return query[0];
+    } else {
+      return 'Too many matches';
     }
   }
 
@@ -139,6 +139,7 @@ class DatabaseHelper {
     // When creating the db, create the table, master table holds last
     //id number for that resource from this device, also number of resources
     //total on this device
+    print('made it');
     await db.execute('''CREATE TABLE Classes (
 			resourceType TEXT PRIMARY KEY,
 			id TEXT,

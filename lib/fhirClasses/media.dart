@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,54 +15,55 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Media {
-  static Future<Media> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> basedOn,
-      List<Reference> partOf,
-      String status,
-      Element elementStatus,
-      CodeableConcept type,
-      CodeableConcept modality,
-      CodeableConcept view,
-      Reference subject,
-      Reference encounter,
-      String createdDateTime,
-      Element elementCreatedDateTime,
-      Period createdPeriod,
-      DateTime issued,
-      Element elementIssued,
-      Reference operator,
-      List<CodeableConcept> reasonCode,
-      CodeableConcept bodySite,
-      String deviceName,
-      Element elementDeviceName,
-      Reference device,
-      int height,
-      Element elementHeight,
-      int width,
-      Element elementWidth,
-      int frames,
-      Element elementFrames,
-      double duration,
-      Element elementDuration,
-      Attachment content,
-      List<Annotation> note}) async {
+  static Future<Media> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    CodeableConcept type,
+    CodeableConcept modality,
+    CodeableConcept view,
+    Reference subject,
+    Reference encounter,
+    String createdDateTime,
+    Element elementCreatedDateTime,
+    Period createdPeriod,
+    DateTime issued,
+    Element elementIssued,
+    Reference operator,
+    List<CodeableConcept> reasonCode,
+    CodeableConcept bodySite,
+    String deviceName,
+    Element elementDeviceName,
+    Reference device,
+    int height,
+    Element elementHeight,
+    int width,
+    Element elementWidth,
+    int frames,
+    Element elementFrames,
+    double duration,
+    Element elementDuration,
+    Attachment content,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Media newMedia = new Media(
-      resourceType: 'Media',
-      id: await fhirDb.newResourceId('Media'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Media'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -105,17 +106,17 @@ class Media {
     );
     newMedia.meta.createdAt = DateTime.now();
     newMedia.meta.lastUpdated = newMedia.meta.createdAt;
-    int saved = await fhirDb.newResource(newMedia);
+    int saved = await fhirDb.saveResource(newMedia);
     return newMedia;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Media';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -136,8 +137,7 @@ class Media {
   CodeableConcept view;
   Reference subject;
   Reference encounter;
-  String
-      createdDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String createdDateTime;
   Element elementCreatedDateTime;
   Period createdPeriod;
   DateTime issued;
@@ -159,49 +159,50 @@ class Media {
   Attachment content;
   List<Annotation> note;
 
-  Media(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.partOf,
-      this.status,
-      this.elementStatus,
-      this.type,
-      this.modality,
-      this.view,
-      this.subject,
-      this.encounter,
-      this.createdDateTime,
-      this.elementCreatedDateTime,
-      this.createdPeriod,
-      this.issued,
-      this.elementIssued,
-      this.operator,
-      this.reasonCode,
-      this.bodySite,
-      this.deviceName,
-      this.elementDeviceName,
-      this.device,
-      this.height,
-      this.elementHeight,
-      this.width,
-      this.elementWidth,
-      this.frames,
-      this.elementFrames,
-      this.duration,
-      this.elementDuration,
-      @required this.content,
-      this.note});
+  Media({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.type,
+    this.modality,
+    this.view,
+    this.subject,
+    this.encounter,
+    this.createdDateTime,
+    this.elementCreatedDateTime,
+    this.createdPeriod,
+    this.issued,
+    this.elementIssued,
+    this.operator,
+    this.reasonCode,
+    this.bodySite,
+    this.deviceName,
+    this.elementDeviceName,
+    this.device,
+    this.height,
+    this.elementHeight,
+    this.width,
+    this.elementWidth,
+    this.frames,
+    this.elementFrames,
+    this.duration,
+    this.elementDuration,
+    @required this.content,
+    this.note,
+  });
 
   factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
   Map<String, dynamic> toJson() => _$MediaToJson(this);

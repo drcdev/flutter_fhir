@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -13,38 +13,39 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PaymentNotice {
-  static Future<PaymentNotice> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      Reference request,
-      Reference response,
-      DateTime created,
-      Element elementCreated,
-      Reference provider,
-      Reference payment,
-      String paymentDate,
-      Element elementPaymentDate,
-      Reference payee,
-      Reference recipient,
-      Money amount,
-      CodeableConcept paymentStatus}) async {
+  static Future<PaymentNotice> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Reference request,
+    Reference response,
+    DateTime created,
+    Element elementCreated,
+    Reference provider,
+    Reference payment,
+    String paymentDate,
+    Element elementPaymentDate,
+    Reference payee,
+    Reference recipient,
+    Money amount,
+    CodeableConcept paymentStatus,
+  }) async {
     var fhirDb = new DatabaseHelper();
     PaymentNotice newPaymentNotice = new PaymentNotice(
-      resourceType: 'PaymentNotice',
-      id: await fhirDb.newResourceId('PaymentNotice'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('PaymentNotice'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -71,17 +72,17 @@ class PaymentNotice {
     );
     newPaymentNotice.meta.createdAt = DateTime.now();
     newPaymentNotice.meta.lastUpdated = newPaymentNotice.meta.createdAt;
-    int saved = await fhirDb.newResource(newPaymentNotice);
+    int saved = await fhirDb.saveResource(newPaymentNotice);
     return newPaymentNotice;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'PaymentNotice';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -108,33 +109,34 @@ class PaymentNotice {
   Money amount;
   CodeableConcept paymentStatus;
 
-  PaymentNotice(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.request,
-      this.response,
-      this.created,
-      this.elementCreated,
-      this.provider,
-      @required this.payment,
-      this.paymentDate,
-      this.elementPaymentDate,
-      this.payee,
-      @required this.recipient,
-      @required this.amount,
-      this.paymentStatus});
+  PaymentNotice({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.request,
+    this.response,
+    this.created,
+    this.elementCreated,
+    this.provider,
+    @required this.payment,
+    this.paymentDate,
+    this.elementPaymentDate,
+    this.payee,
+    @required this.recipient,
+    @required this.amount,
+    this.paymentStatus,
+  });
 
   factory PaymentNotice.fromJson(Map<String, dynamic> json) =>
       _$PaymentNoticeFromJson(json);

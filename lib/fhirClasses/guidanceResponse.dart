@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/dataRequirement.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -14,44 +14,45 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class GuidanceResponse {
-  static Future<GuidanceResponse> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier requestIdentifier,
-      List<Identifier> identifier,
-      String moduleUri,
-      Element elementModuleUri,
-      String moduleCanonical,
-      Element elementModuleCanonical,
-      CodeableConcept moduleCodeableConcept,
-      String status,
-      Element elementStatus,
-      Reference subject,
-      Reference encounter,
-      DateTime occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Reference performer,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<Annotation> note,
-      List<Reference> evaluationMessage,
-      Reference outputParameters,
-      Reference result,
-      List<DataRequirement> dataRequirement}) async {
+  static Future<GuidanceResponse> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier requestIdentifier,
+    List<Identifier> identifier,
+    String moduleUri,
+    Element elementModuleUri,
+    String moduleCanonical,
+    Element elementModuleCanonical,
+    CodeableConcept moduleCodeableConcept,
+    String status,
+    Element elementStatus,
+    Reference subject,
+    Reference encounter,
+    DateTime occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Reference performer,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Annotation> note,
+    List<Reference> evaluationMessage,
+    Reference outputParameters,
+    Reference result,
+    List<DataRequirement> dataRequirement,
+  }) async {
     var fhirDb = new DatabaseHelper();
     GuidanceResponse newGuidanceResponse = new GuidanceResponse(
-      resourceType: 'GuidanceResponse',
-      id: await fhirDb.newResourceId('GuidanceResponse'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('GuidanceResponse'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -84,17 +85,17 @@ class GuidanceResponse {
     );
     newGuidanceResponse.meta.createdAt = DateTime.now();
     newGuidanceResponse.meta.lastUpdated = newGuidanceResponse.meta.createdAt;
-    int saved = await fhirDb.newResource(newGuidanceResponse);
+    int saved = await fhirDb.saveResource(newGuidanceResponse);
     return newGuidanceResponse;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'GuidanceResponse';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -107,13 +108,12 @@ class GuidanceResponse {
   List<Extension> modifierExtension;
   Identifier requestIdentifier;
   List<Identifier> identifier;
-  String moduleUri; //  pattern: ^\S*$
+  String moduleUri;
   Element elementModuleUri;
-  String moduleCanonical; //  pattern: ^\S*$
+  String moduleCanonical;
   Element elementModuleCanonical;
   CodeableConcept moduleCodeableConcept;
-  String
-      status; // <code> enum: success/data-requested/data-required/in-progress/failure/entered-in-error;
+  String status;
   Element elementStatus;
   Reference subject;
   Reference encounter;
@@ -128,39 +128,40 @@ class GuidanceResponse {
   Reference result;
   List<DataRequirement> dataRequirement;
 
-  GuidanceResponse(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.requestIdentifier,
-      this.identifier,
-      this.moduleUri,
-      this.elementModuleUri,
-      this.moduleCanonical,
-      this.elementModuleCanonical,
-      this.moduleCodeableConcept,
-      this.status,
-      this.elementStatus,
-      this.subject,
-      this.encounter,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.performer,
-      this.reasonCode,
-      this.reasonReference,
-      this.note,
-      this.evaluationMessage,
-      this.outputParameters,
-      this.result,
-      this.dataRequirement});
+  GuidanceResponse({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.requestIdentifier,
+    this.identifier,
+    this.moduleUri,
+    this.elementModuleUri,
+    this.moduleCanonical,
+    this.elementModuleCanonical,
+    this.moduleCodeableConcept,
+    this.status,
+    this.elementStatus,
+    this.subject,
+    this.encounter,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.performer,
+    this.reasonCode,
+    this.reasonReference,
+    this.note,
+    this.evaluationMessage,
+    this.outputParameters,
+    this.result,
+    this.dataRequirement,
+  });
 
   factory GuidanceResponse.fromJson(Map<String, dynamic> json) =>
       _$GuidanceResponseFromJson(json);

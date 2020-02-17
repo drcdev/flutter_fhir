@@ -1,36 +1,38 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Address {
-  static Future<Address> newInstance(
-      {String id,
-      List<Extension> extension,
-      String use,
-      Element elementUse,
-      String type,
-      Element elementType,
-      String text,
-      Element elementText,
-      List<String> line,
-      List<Element> elementLine,
-      String city,
-      Element elementCity,
-      String district,
-      Element elementDistrict,
-      String state,
-      Element elementState,
-      String postalCode,
-      Element elementPostalCode,
-      String country,
-      Element elementCountry,
-      Period period}) async {
+  static Future<Address> newInstance({
+    String id,
+    List<Extension> extension,
+    String use,
+    Element elementUse,
+    String type,
+    Element elementType,
+    String text,
+    Element elementText,
+    List<String> line,
+    List<Element> elementLine,
+    String city,
+    Element elementCity,
+    String district,
+    Element elementDistrict,
+    String state,
+    Element elementState,
+    String postalCode,
+    Element elementPostalCode,
+    String country,
+    Element elementCountry,
+    Period period,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Address newAddress = new Address(
-      id: await fhirDb.newResourceId('Address'),
+      id: id ?? await fhirDb.newResourceId('Address'),
       extension: extension,
       use: use,
       elementUse: elementUse,
@@ -57,9 +59,9 @@ class Address {
 
   String id;
   List<Extension> extension;
-  String use; // <code> enum: home/work/temp/old/billing;
+  String use;
   Element elementUse;
-  String type; // <code> enum: postal/physical/both;
+  String type;
   Element elementType;
   String text;
   Element elementText;
@@ -77,28 +79,29 @@ class Address {
   Element elementCountry;
   Period period;
 
-  Address(
-      {this.id,
-      this.extension,
-      this.use,
-      this.elementUse,
-      this.type,
-      this.elementType,
-      this.text,
-      this.elementText,
-      this.line,
-      this.elementLine,
-      this.city,
-      this.elementCity,
-      this.district,
-      this.elementDistrict,
-      this.state,
-      this.elementState,
-      this.postalCode,
-      this.elementPostalCode,
-      this.country,
-      this.elementCountry,
-      this.period});
+  Address({
+    this.id,
+    this.extension,
+    this.use,
+    this.elementUse,
+    this.type,
+    this.elementType,
+    this.text,
+    this.elementText,
+    this.line,
+    this.elementLine,
+    this.city,
+    this.elementCity,
+    this.district,
+    this.elementDistrict,
+    this.state,
+    this.elementState,
+    this.postalCode,
+    this.elementPostalCode,
+    this.country,
+    this.elementCountry,
+    this.period,
+  });
 
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);

@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,41 +15,42 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DeviceUseStatement {
-  static Future<DeviceUseStatement> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> basedOn,
-      String status,
-      Element elementStatus,
-      Reference subject,
-      List<Reference> derivedFrom,
-      Timing timingTiming,
-      Period timingPeriod,
-      String timingDateTime,
-      Element elementTimingDateTime,
-      DateTime recordedOn,
-      Element elementRecordedOn,
-      Reference source,
-      Reference device,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      CodeableConcept bodySite,
-      List<Annotation> note}) async {
+  static Future<DeviceUseStatement> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    String status,
+    Element elementStatus,
+    Reference subject,
+    List<Reference> derivedFrom,
+    Timing timingTiming,
+    Period timingPeriod,
+    String timingDateTime,
+    Element elementTimingDateTime,
+    DateTime recordedOn,
+    Element elementRecordedOn,
+    Reference source,
+    Reference device,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    CodeableConcept bodySite,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DeviceUseStatement newDeviceUseStatement = new DeviceUseStatement(
-      resourceType: 'DeviceUseStatement',
-      id: await fhirDb.newResourceId('DeviceUseStatement'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('DeviceUseStatement'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -80,17 +81,17 @@ class DeviceUseStatement {
     newDeviceUseStatement.meta.createdAt = DateTime.now();
     newDeviceUseStatement.meta.lastUpdated =
         newDeviceUseStatement.meta.createdAt;
-    int saved = await fhirDb.newResource(newDeviceUseStatement);
+    int saved = await fhirDb.saveResource(newDeviceUseStatement);
     return newDeviceUseStatement;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'DeviceUseStatement';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -103,15 +104,13 @@ class DeviceUseStatement {
   List<Extension> modifierExtension;
   List<Identifier> identifier;
   List<Reference> basedOn;
-  String
-      status; // <code> enum: active/completed/entered-in-error/intended/stopped/on-hold;
+  String status;
   Element elementStatus;
   Reference subject;
   List<Reference> derivedFrom;
   Timing timingTiming;
   Period timingPeriod;
-  String
-      timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String timingDateTime;
   Element elementTimingDateTime;
   DateTime recordedOn;
   Element elementRecordedOn;
@@ -122,36 +121,37 @@ class DeviceUseStatement {
   CodeableConcept bodySite;
   List<Annotation> note;
 
-  DeviceUseStatement(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.status,
-      this.elementStatus,
-      @required this.subject,
-      this.derivedFrom,
-      this.timingTiming,
-      this.timingPeriod,
-      this.timingDateTime,
-      this.elementTimingDateTime,
-      this.recordedOn,
-      this.elementRecordedOn,
-      this.source,
-      @required this.device,
-      this.reasonCode,
-      this.reasonReference,
-      this.bodySite,
-      this.note});
+  DeviceUseStatement({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.status,
+    this.elementStatus,
+    @required this.subject,
+    this.derivedFrom,
+    this.timingTiming,
+    this.timingPeriod,
+    this.timingDateTime,
+    this.elementTimingDateTime,
+    this.recordedOn,
+    this.elementRecordedOn,
+    this.source,
+    @required this.device,
+    this.reasonCode,
+    this.reasonReference,
+    this.bodySite,
+    this.note,
+  });
 
   factory DeviceUseStatement.fromJson(Map<String, dynamic> json) =>
       _$DeviceUseStatementFromJson(json);

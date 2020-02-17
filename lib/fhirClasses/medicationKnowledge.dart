@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -16,50 +16,50 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge {
-  static Future<MedicationKnowledge> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      String status,
-      Element elementStatus,
-      Reference manufacturer,
-      CodeableConcept doseForm,
-      Quantity amount,
-      List<String> synonym,
-      List<Element> elementSynonym,
-      List<MedicationKnowledge_RelatedMedicationKnowledge>
-          relatedMedicationKnowledge,
-      List<Reference> associatedMedication,
-      List<CodeableConcept> productType,
-      List<MedicationKnowledge_Monograph> monograph,
-      List<MedicationKnowledge_Ingredient> ingredient,
-      String preparationInstruction,
-      Element elementPreparationInstruction,
-      List<CodeableConcept> intendedRoute,
-      List<MedicationKnowledge_Cost> cost,
-      List<MedicationKnowledge_MonitoringProgram> monitoringProgram,
-      List<MedicationKnowledge_AdministrationGuidelines>
-          administrationGuidelines,
-      List<MedicationKnowledge_MedicineClassification> medicineClassification,
-      MedicationKnowledge_Packaging packaging,
-      List<MedicationKnowledge_DrugCharacteristic> drugCharacteristic,
-      List<Reference> contraindication,
-      List<MedicationKnowledge_Regulatory> regulatory,
-      List<MedicationKnowledge_Kinetics> kinetics}) async {
+  static Future<MedicationKnowledge> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    String status,
+    Element elementStatus,
+    Reference manufacturer,
+    CodeableConcept doseForm,
+    Quantity amount,
+    List<String> synonym,
+    List<Element> elementSynonym,
+    List<MedicationKnowledge_RelatedMedicationKnowledge>
+        relatedMedicationKnowledge,
+    List<Reference> associatedMedication,
+    List<CodeableConcept> productType,
+    List<MedicationKnowledge_Monograph> monograph,
+    List<MedicationKnowledge_Ingredient> ingredient,
+    String preparationInstruction,
+    Element elementPreparationInstruction,
+    List<CodeableConcept> intendedRoute,
+    List<MedicationKnowledge_Cost> cost,
+    List<MedicationKnowledge_MonitoringProgram> monitoringProgram,
+    List<MedicationKnowledge_AdministrationGuidelines> administrationGuidelines,
+    List<MedicationKnowledge_MedicineClassification> medicineClassification,
+    MedicationKnowledge_Packaging packaging,
+    List<MedicationKnowledge_DrugCharacteristic> drugCharacteristic,
+    List<Reference> contraindication,
+    List<MedicationKnowledge_Regulatory> regulatory,
+    List<MedicationKnowledge_Kinetics> kinetics,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge newMedicationKnowledge = new MedicationKnowledge(
-      resourceType: 'MedicationKnowledge',
-      id: await fhirDb.newResourceId('MedicationKnowledge'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -97,17 +97,17 @@ class MedicationKnowledge {
     newMedicationKnowledge.meta.createdAt = DateTime.now();
     newMedicationKnowledge.meta.lastUpdated =
         newMedicationKnowledge.meta.createdAt;
-    int saved = await fhirDb.newResource(newMedicationKnowledge);
+    int saved = await fhirDb.saveResource(newMedicationKnowledge);
     return newMedicationKnowledge;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'MedicationKnowledge';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -145,43 +145,44 @@ class MedicationKnowledge {
   List<MedicationKnowledge_Regulatory> regulatory;
   List<MedicationKnowledge_Kinetics> kinetics;
 
-  MedicationKnowledge(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.status,
-      this.elementStatus,
-      this.manufacturer,
-      this.doseForm,
-      this.amount,
-      this.synonym,
-      this.elementSynonym,
-      this.relatedMedicationKnowledge,
-      this.associatedMedication,
-      this.productType,
-      this.monograph,
-      this.ingredient,
-      this.preparationInstruction,
-      this.elementPreparationInstruction,
-      this.intendedRoute,
-      this.cost,
-      this.monitoringProgram,
-      this.administrationGuidelines,
-      this.medicineClassification,
-      this.packaging,
-      this.drugCharacteristic,
-      this.contraindication,
-      this.regulatory,
-      this.kinetics});
+  MedicationKnowledge({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.status,
+    this.elementStatus,
+    this.manufacturer,
+    this.doseForm,
+    this.amount,
+    this.synonym,
+    this.elementSynonym,
+    this.relatedMedicationKnowledge,
+    this.associatedMedication,
+    this.productType,
+    this.monograph,
+    this.ingredient,
+    this.preparationInstruction,
+    this.elementPreparationInstruction,
+    this.intendedRoute,
+    this.cost,
+    this.monitoringProgram,
+    this.administrationGuidelines,
+    this.medicineClassification,
+    this.packaging,
+    this.drugCharacteristic,
+    this.contraindication,
+    this.regulatory,
+    this.kinetics,
+  });
 
   factory MedicationKnowledge.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledgeFromJson(json);
@@ -190,18 +191,20 @@ class MedicationKnowledge {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_RelatedMedicationKnowledge {
-  static Future<MedicationKnowledge_RelatedMedicationKnowledge> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      List<Reference> reference}) async {
+  static Future<MedicationKnowledge_RelatedMedicationKnowledge> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    List<Reference> reference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_RelatedMedicationKnowledge
         newMedicationKnowledge_RelatedMedicationKnowledge =
         new MedicationKnowledge_RelatedMedicationKnowledge(
-      id: await fhirDb
-          .newResourceId('MedicationKnowledge_RelatedMedicationKnowledge'),
+      id: id ??
+          await fhirDb
+              .newResourceId('MedicationKnowledge_RelatedMedicationKnowledge'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -216,12 +219,13 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
   CodeableConcept type;
   List<Reference> reference;
 
-  MedicationKnowledge_RelatedMedicationKnowledge(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      @required this.reference});
+  MedicationKnowledge_RelatedMedicationKnowledge({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    @required this.reference,
+  });
 
   factory MedicationKnowledge_RelatedMedicationKnowledge.fromJson(
           Map<String, dynamic> json) =>
@@ -232,16 +236,17 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Monograph {
-  static Future<MedicationKnowledge_Monograph> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      Reference source}) async {
+  static Future<MedicationKnowledge_Monograph> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Reference source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Monograph newMedicationKnowledge_Monograph =
         new MedicationKnowledge_Monograph(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Monograph'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Monograph'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -256,12 +261,13 @@ class MedicationKnowledge_Monograph {
   CodeableConcept type;
   Reference source;
 
-  MedicationKnowledge_Monograph(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.source});
+  MedicationKnowledge_Monograph({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.source,
+  });
 
   factory MedicationKnowledge_Monograph.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_MonographFromJson(json);
@@ -270,19 +276,20 @@ class MedicationKnowledge_Monograph {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Ingredient {
-  static Future<MedicationKnowledge_Ingredient> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept itemCodeableConcept,
-      Reference itemReference,
-      bool isActive,
-      Element elementIsActive,
-      Ratio strength}) async {
+  static Future<MedicationKnowledge_Ingredient> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept itemCodeableConcept,
+    Reference itemReference,
+    bool isActive,
+    Element elementIsActive,
+    Ratio strength,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Ingredient newMedicationKnowledge_Ingredient =
         new MedicationKnowledge_Ingredient(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Ingredient'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Ingredient'),
       extension: extension,
       modifierExtension: modifierExtension,
       itemCodeableConcept: itemCodeableConcept,
@@ -303,15 +310,16 @@ class MedicationKnowledge_Ingredient {
   Element elementIsActive;
   Ratio strength;
 
-  MedicationKnowledge_Ingredient(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.itemCodeableConcept,
-      this.itemReference,
-      this.isActive,
-      this.elementIsActive,
-      this.strength});
+  MedicationKnowledge_Ingredient({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.itemCodeableConcept,
+    this.itemReference,
+    this.isActive,
+    this.elementIsActive,
+    this.strength,
+  });
 
   factory MedicationKnowledge_Ingredient.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_IngredientFromJson(json);
@@ -320,18 +328,19 @@ class MedicationKnowledge_Ingredient {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Cost {
-  static Future<MedicationKnowledge_Cost> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      String source,
-      Element elementSource,
-      Money cost}) async {
+  static Future<MedicationKnowledge_Cost> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String source,
+    Element elementSource,
+    Money cost,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Cost newMedicationKnowledge_Cost =
         new MedicationKnowledge_Cost(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Cost'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Cost'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -350,14 +359,15 @@ class MedicationKnowledge_Cost {
   Element elementSource;
   Money cost;
 
-  MedicationKnowledge_Cost(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.source,
-      this.elementSource,
-      @required this.cost});
+  MedicationKnowledge_Cost({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.source,
+    this.elementSource,
+    @required this.cost,
+  });
 
   factory MedicationKnowledge_Cost.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_CostFromJson(json);
@@ -366,18 +376,20 @@ class MedicationKnowledge_Cost {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MonitoringProgram {
-  static Future<MedicationKnowledge_MonitoringProgram> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      String name,
-      Element elementName}) async {
+  static Future<MedicationKnowledge_MonitoringProgram> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String name,
+    Element elementName,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_MonitoringProgram
         newMedicationKnowledge_MonitoringProgram =
         new MedicationKnowledge_MonitoringProgram(
-      id: await fhirDb.newResourceId('MedicationKnowledge_MonitoringProgram'),
+      id: id ??
+          await fhirDb.newResourceId('MedicationKnowledge_MonitoringProgram'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -394,13 +406,14 @@ class MedicationKnowledge_MonitoringProgram {
   String name;
   Element elementName;
 
-  MedicationKnowledge_MonitoringProgram(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.name,
-      this.elementName});
+  MedicationKnowledge_MonitoringProgram({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.name,
+    this.elementName,
+  });
 
   factory MedicationKnowledge_MonitoringProgram.fromJson(
           Map<String, dynamic> json) =>
@@ -411,21 +424,22 @@ class MedicationKnowledge_MonitoringProgram {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_AdministrationGuidelines {
-  static Future<MedicationKnowledge_AdministrationGuidelines> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<MedicationKnowledge_Dosage> dosage,
-      CodeableConcept indicationCodeableConcept,
-      Reference indicationReference,
-      List<MedicationKnowledge_PatientCharacteristics>
-          patientCharacteristics}) async {
+  static Future<MedicationKnowledge_AdministrationGuidelines> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<MedicationKnowledge_Dosage> dosage,
+    CodeableConcept indicationCodeableConcept,
+    Reference indicationReference,
+    List<MedicationKnowledge_PatientCharacteristics> patientCharacteristics,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_AdministrationGuidelines
         newMedicationKnowledge_AdministrationGuidelines =
         new MedicationKnowledge_AdministrationGuidelines(
-      id: await fhirDb
-          .newResourceId('MedicationKnowledge_AdministrationGuidelines'),
+      id: id ??
+          await fhirDb
+              .newResourceId('MedicationKnowledge_AdministrationGuidelines'),
       extension: extension,
       modifierExtension: modifierExtension,
       dosage: dosage,
@@ -444,14 +458,15 @@ class MedicationKnowledge_AdministrationGuidelines {
   Reference indicationReference;
   List<MedicationKnowledge_PatientCharacteristics> patientCharacteristics;
 
-  MedicationKnowledge_AdministrationGuidelines(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.dosage,
-      this.indicationCodeableConcept,
-      this.indicationReference,
-      this.patientCharacteristics});
+  MedicationKnowledge_AdministrationGuidelines({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.dosage,
+    this.indicationCodeableConcept,
+    this.indicationReference,
+    this.patientCharacteristics,
+  });
 
   factory MedicationKnowledge_AdministrationGuidelines.fromJson(
           Map<String, dynamic> json) =>
@@ -462,16 +477,17 @@ class MedicationKnowledge_AdministrationGuidelines {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Dosage {
-  static Future<MedicationKnowledge_Dosage> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      List<Dosage> dosage}) async {
+  static Future<MedicationKnowledge_Dosage> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    List<Dosage> dosage,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Dosage newMedicationKnowledge_Dosage =
         new MedicationKnowledge_Dosage(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Dosage'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Dosage'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -486,12 +502,13 @@ class MedicationKnowledge_Dosage {
   CodeableConcept type;
   List<Dosage> dosage;
 
-  MedicationKnowledge_Dosage(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      @required this.dosage});
+  MedicationKnowledge_Dosage({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    @required this.dosage,
+  });
 
   factory MedicationKnowledge_Dosage.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_DosageFromJson(json);
@@ -500,20 +517,22 @@ class MedicationKnowledge_Dosage {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_PatientCharacteristics {
-  static Future<MedicationKnowledge_PatientCharacteristics> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept characteristicCodeableConcept,
-      Quantity characteristicQuantity,
-      List<String> value,
-      List<Element> elementValue}) async {
+  static Future<MedicationKnowledge_PatientCharacteristics> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept characteristicCodeableConcept,
+    Quantity characteristicQuantity,
+    List<String> value,
+    List<Element> elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_PatientCharacteristics
         newMedicationKnowledge_PatientCharacteristics =
         new MedicationKnowledge_PatientCharacteristics(
-      id: await fhirDb
-          .newResourceId('MedicationKnowledge_PatientCharacteristics'),
+      id: id ??
+          await fhirDb
+              .newResourceId('MedicationKnowledge_PatientCharacteristics'),
       extension: extension,
       modifierExtension: modifierExtension,
       characteristicCodeableConcept: characteristicCodeableConcept,
@@ -532,14 +551,15 @@ class MedicationKnowledge_PatientCharacteristics {
   List<String> value;
   List<Element> elementValue;
 
-  MedicationKnowledge_PatientCharacteristics(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.characteristicCodeableConcept,
-      this.characteristicQuantity,
-      this.value,
-      this.elementValue});
+  MedicationKnowledge_PatientCharacteristics({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.characteristicCodeableConcept,
+    this.characteristicQuantity,
+    this.value,
+    this.elementValue,
+  });
 
   factory MedicationKnowledge_PatientCharacteristics.fromJson(
           Map<String, dynamic> json) =>
@@ -550,18 +570,20 @@ class MedicationKnowledge_PatientCharacteristics {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MedicineClassification {
-  static Future<MedicationKnowledge_MedicineClassification> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      List<CodeableConcept> classification}) async {
+  static Future<MedicationKnowledge_MedicineClassification> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    List<CodeableConcept> classification,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_MedicineClassification
         newMedicationKnowledge_MedicineClassification =
         new MedicationKnowledge_MedicineClassification(
-      id: await fhirDb
-          .newResourceId('MedicationKnowledge_MedicineClassification'),
+      id: id ??
+          await fhirDb
+              .newResourceId('MedicationKnowledge_MedicineClassification'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -576,12 +598,13 @@ class MedicationKnowledge_MedicineClassification {
   CodeableConcept type;
   List<CodeableConcept> classification;
 
-  MedicationKnowledge_MedicineClassification(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.classification});
+  MedicationKnowledge_MedicineClassification({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.classification,
+  });
 
   factory MedicationKnowledge_MedicineClassification.fromJson(
           Map<String, dynamic> json) =>
@@ -592,16 +615,17 @@ class MedicationKnowledge_MedicineClassification {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Packaging {
-  static Future<MedicationKnowledge_Packaging> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      Quantity quantity}) async {
+  static Future<MedicationKnowledge_Packaging> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Quantity quantity,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Packaging newMedicationKnowledge_Packaging =
         new MedicationKnowledge_Packaging(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Packaging'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Packaging'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -616,12 +640,13 @@ class MedicationKnowledge_Packaging {
   CodeableConcept type;
   Quantity quantity;
 
-  MedicationKnowledge_Packaging(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.quantity});
+  MedicationKnowledge_Packaging({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.quantity,
+  });
 
   factory MedicationKnowledge_Packaging.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_PackagingFromJson(json);
@@ -630,22 +655,24 @@ class MedicationKnowledge_Packaging {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_DrugCharacteristic {
-  static Future<MedicationKnowledge_DrugCharacteristic> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      CodeableConcept valueCodeableConcept,
-      String valueString,
-      Element elementValueString,
-      Quantity valueQuantity,
-      String valueBase64Binary,
-      Element elementValueBase64Binary}) async {
+  static Future<MedicationKnowledge_DrugCharacteristic> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    CodeableConcept valueCodeableConcept,
+    String valueString,
+    Element elementValueString,
+    Quantity valueQuantity,
+    String valueBase64Binary,
+    Element elementValueBase64Binary,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_DrugCharacteristic
         newMedicationKnowledge_DrugCharacteristic =
         new MedicationKnowledge_DrugCharacteristic(
-      id: await fhirDb.newResourceId('MedicationKnowledge_DrugCharacteristic'),
+      id: id ??
+          await fhirDb.newResourceId('MedicationKnowledge_DrugCharacteristic'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -664,23 +691,24 @@ class MedicationKnowledge_DrugCharacteristic {
   List<Extension> modifierExtension;
   CodeableConcept type;
   CodeableConcept valueCodeableConcept;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
   Quantity valueQuantity;
-  String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+  String valueBase64Binary;
   Element elementValueBase64Binary;
 
-  MedicationKnowledge_DrugCharacteristic(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.valueCodeableConcept,
-      this.valueString,
-      this.elementValueString,
-      this.valueQuantity,
-      this.valueBase64Binary,
-      this.elementValueBase64Binary});
+  MedicationKnowledge_DrugCharacteristic({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.valueCodeableConcept,
+    this.valueString,
+    this.elementValueString,
+    this.valueQuantity,
+    this.valueBase64Binary,
+    this.elementValueBase64Binary,
+  });
 
   factory MedicationKnowledge_DrugCharacteristic.fromJson(
           Map<String, dynamic> json) =>
@@ -691,18 +719,19 @@ class MedicationKnowledge_DrugCharacteristic {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Regulatory {
-  static Future<MedicationKnowledge_Regulatory> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference regulatoryAuthority,
-      List<MedicationKnowledge_Substitution> substitution,
-      List<MedicationKnowledge_Schedule> schedule,
-      MedicationKnowledge_MaxDispense maxDispense}) async {
+  static Future<MedicationKnowledge_Regulatory> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference regulatoryAuthority,
+    List<MedicationKnowledge_Substitution> substitution,
+    List<MedicationKnowledge_Schedule> schedule,
+    MedicationKnowledge_MaxDispense maxDispense,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Regulatory newMedicationKnowledge_Regulatory =
         new MedicationKnowledge_Regulatory(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Regulatory'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Regulatory'),
       extension: extension,
       modifierExtension: modifierExtension,
       regulatoryAuthority: regulatoryAuthority,
@@ -721,14 +750,15 @@ class MedicationKnowledge_Regulatory {
   List<MedicationKnowledge_Schedule> schedule;
   MedicationKnowledge_MaxDispense maxDispense;
 
-  MedicationKnowledge_Regulatory(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.regulatoryAuthority,
-      this.substitution,
-      this.schedule,
-      this.maxDispense});
+  MedicationKnowledge_Regulatory({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.regulatoryAuthority,
+    this.substitution,
+    this.schedule,
+    this.maxDispense,
+  });
 
   factory MedicationKnowledge_Regulatory.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_RegulatoryFromJson(json);
@@ -737,17 +767,18 @@ class MedicationKnowledge_Regulatory {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Substitution {
-  static Future<MedicationKnowledge_Substitution> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      bool allowed,
-      Element elementAllowed}) async {
+  static Future<MedicationKnowledge_Substitution> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    bool allowed,
+    Element elementAllowed,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Substitution newMedicationKnowledge_Substitution =
         new MedicationKnowledge_Substitution(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Substitution'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Substitution'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -764,13 +795,14 @@ class MedicationKnowledge_Substitution {
   bool allowed;
   Element elementAllowed;
 
-  MedicationKnowledge_Substitution(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.allowed,
-      this.elementAllowed});
+  MedicationKnowledge_Substitution({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.allowed,
+    this.elementAllowed,
+  });
 
   factory MedicationKnowledge_Substitution.fromJson(
           Map<String, dynamic> json) =>
@@ -781,15 +813,16 @@ class MedicationKnowledge_Substitution {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Schedule {
-  static Future<MedicationKnowledge_Schedule> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept schedule}) async {
+  static Future<MedicationKnowledge_Schedule> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept schedule,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Schedule newMedicationKnowledge_Schedule =
         new MedicationKnowledge_Schedule(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Schedule'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Schedule'),
       extension: extension,
       modifierExtension: modifierExtension,
       schedule: schedule,
@@ -802,11 +835,12 @@ class MedicationKnowledge_Schedule {
   List<Extension> modifierExtension;
   CodeableConcept schedule;
 
-  MedicationKnowledge_Schedule(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.schedule});
+  MedicationKnowledge_Schedule({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.schedule,
+  });
 
   factory MedicationKnowledge_Schedule.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_ScheduleFromJson(json);
@@ -815,16 +849,17 @@ class MedicationKnowledge_Schedule {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MaxDispense {
-  static Future<MedicationKnowledge_MaxDispense> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Quantity quantity,
-      Duration period}) async {
+  static Future<MedicationKnowledge_MaxDispense> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Quantity quantity,
+    Duration period,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_MaxDispense newMedicationKnowledge_MaxDispense =
         new MedicationKnowledge_MaxDispense(
-      id: await fhirDb.newResourceId('MedicationKnowledge_MaxDispense'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_MaxDispense'),
       extension: extension,
       modifierExtension: modifierExtension,
       quantity: quantity,
@@ -839,12 +874,13 @@ class MedicationKnowledge_MaxDispense {
   Quantity quantity;
   Duration period;
 
-  MedicationKnowledge_MaxDispense(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.quantity,
-      this.period});
+  MedicationKnowledge_MaxDispense({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.quantity,
+    this.period,
+  });
 
   factory MedicationKnowledge_MaxDispense.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_MaxDispenseFromJson(json);
@@ -854,17 +890,18 @@ class MedicationKnowledge_MaxDispense {
 
 @JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Kinetics {
-  static Future<MedicationKnowledge_Kinetics> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Quantity> areaUnderCurve,
-      List<Quantity> lethalDose50,
-      Duration halfLifePeriod}) async {
+  static Future<MedicationKnowledge_Kinetics> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Quantity> areaUnderCurve,
+    List<Quantity> lethalDose50,
+    Duration halfLifePeriod,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Kinetics newMedicationKnowledge_Kinetics =
         new MedicationKnowledge_Kinetics(
-      id: await fhirDb.newResourceId('MedicationKnowledge_Kinetics'),
+      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Kinetics'),
       extension: extension,
       modifierExtension: modifierExtension,
       areaUnderCurve: areaUnderCurve,
@@ -881,13 +918,14 @@ class MedicationKnowledge_Kinetics {
   List<Quantity> lethalDose50;
   Duration halfLifePeriod;
 
-  MedicationKnowledge_Kinetics(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.areaUnderCurve,
-      this.lethalDose50,
-      this.halfLifePeriod});
+  MedicationKnowledge_Kinetics({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.areaUnderCurve,
+    this.lethalDose50,
+    this.halfLifePeriod,
+  });
 
   factory MedicationKnowledge_Kinetics.fromJson(Map<String, dynamic> json) =>
       _$MedicationKnowledge_KineticsFromJson(json);

@@ -26,7 +26,8 @@ class _Parasite extends StatefulWidget {
   Patient pt;
   _Parasite({this.pt});
   @override
-  _ParasiteState createState() => pt != null ? _ParasiteState(pt: pt) : _ParasiteState();
+  _ParasiteState createState() =>
+      pt != null ? _ParasiteState(pt: pt) : _ParasiteState();
 }
 
 class _ParasiteState extends State<_Parasite> {
@@ -42,7 +43,7 @@ class _ParasiteState extends State<_Parasite> {
   @override
   void initState() {
     super.initState();
-    if(pt != null) {
+    if (pt != null) {
       search = pt.printName();
       searchPt.text = search;
     }
@@ -52,7 +53,6 @@ class _ParasiteState extends State<_Parasite> {
       });
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,24 +71,25 @@ class _ParasiteState extends State<_Parasite> {
 //              PageButton('assets/images/vaccine.png', 'Immunizations', Vaccine()),
 //            ],
           ),
-
-          Padding( padding: const EdgeInsets.all(10.0), ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+          ),
           TextField(
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
             decoration: InputDecoration(
-              labelText: 'Search Patient Name',
-              labelStyle: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              )
-            ),
+                labelText: 'Search Patient Name',
+                labelStyle: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                )),
             controller: searchPt,
           ),
-
-          Padding( padding: const EdgeInsets.all(5.0), ),
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+          ),
           Expanded(
             //read the list of patients on the device, and create a scrollable,
             // searchable list for provider
@@ -102,32 +103,39 @@ class _ParasiteState extends State<_Parasite> {
                     itemBuilder: (context, index) {
                       String name = snapshot.data[index].printName(); //pt name
                       String id = snapshot.data[index].id; //pt id
-                      return search == null || search == '' ? new Card(
-                        color: Colors.blueGrey,
-                        child: ListTile(
-                          title: Text(name,
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                          //allows selection of single patient from list
-                          onLongPress: () async {
-                            pt = await readPatient(id);
-                            setState(() => searchPt.text = name);
-                          },
-                        ),
-                      ) :
-                      snapshot.data[index].printName().toLowerCase().contains(
-                          search.toLowerCase()) ? new Card(
-                          color: Colors.blueGrey,
-                            child: ListTile(
-                              title: Text(snapshot.data[index].printName(),
-                                style: TextStyle(
-                                  color: Colors.white,
+                      return search == null || search == ''
+                          ? new Card(
+                              color: Colors.blueGrey,
+                              child: ListTile(
+                                title: Text(
+                                  name,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
+                                //allows selection of single patient from list
+                                onLongPress: () async {
+                                  pt = await fhirDb.search('Patient', id);
+                                  setState(() => searchPt.text = name);
+                                },
                               ),
-                            ),
-                          ) : new Container();
+                            )
+                          : snapshot.data[index]
+                                  .printName()
+                                  .toLowerCase()
+                                  .contains(search.toLowerCase())
+                              ? new Card(
+                                  color: Colors.blueGrey,
+                                  child: ListTile(
+                                    title: Text(
+                                      snapshot.data[index].printName(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : new Container();
                     },
                   );
                 } else {
@@ -138,8 +146,9 @@ class _ParasiteState extends State<_Parasite> {
               },
             ),
           ),
-          Padding( padding: const EdgeInsets.all(12.0), ),
-
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+          ),
           RaisedButton(
             onPressed: () {
               Navigator.push(
@@ -154,5 +163,3 @@ class _ParasiteState extends State<_Parasite> {
     );
   }
 }
-
-

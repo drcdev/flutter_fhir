@@ -1,22 +1,24 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Contributor {
-  static Future<Contributor> newInstance(
-      {String id,
-      List<Extension> extension,
-      String type,
-      Element elementType,
-      String name,
-      Element elementName,
-      List<ContactDetail> contact}) async {
+  static Future<Contributor> newInstance({
+    String id,
+    List<Extension> extension,
+    String type,
+    Element elementType,
+    String name,
+    Element elementName,
+    List<ContactDetail> contact,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contributor newContributor = new Contributor(
-      id: await fhirDb.newResourceId('Contributor'),
+      id: id ?? await fhirDb.newResourceId('Contributor'),
       extension: extension,
       type: type,
       elementType: elementType,
@@ -29,20 +31,21 @@ class Contributor {
 
   String id;
   List<Extension> extension;
-  String type; // <code> enum: author/editor/reviewer/endorser;
+  String type;
   Element elementType;
   String name;
   Element elementName;
   List<ContactDetail> contact;
 
-  Contributor(
-      {this.id,
-      this.extension,
-      this.type,
-      this.elementType,
-      this.name,
-      this.elementName,
-      this.contact});
+  Contributor({
+    this.id,
+    this.extension,
+    this.type,
+    this.elementType,
+    this.name,
+    this.elementName,
+    this.contact,
+  });
 
   factory Contributor.fromJson(Map<String, dynamic> json) =>
       _$ContributorFromJson(json);

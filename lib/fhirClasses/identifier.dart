@@ -1,5 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -8,21 +9,22 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Identifier {
-  static Future<Identifier> newInstance(
-      {String id,
-      List<Extension> extension,
-      String use,
-      Element elementUse,
-      CodeableConcept type,
-      String system,
-      Element elementSystem,
-      String value,
-      Element elementValue,
-      Period period,
-      Reference assigner}) async {
+  static Future<Identifier> newInstance({
+    String id,
+    List<Extension> extension,
+    String use,
+    Element elementUse,
+    CodeableConcept type,
+    String system,
+    Element elementSystem,
+    String value,
+    Element elementValue,
+    Period period,
+    Reference assigner,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Identifier newIdentifier = new Identifier(
-      id: await fhirDb.newResourceId('Identifier'),
+      id: id ?? await fhirDb.newResourceId('Identifier'),
       extension: extension,
       use: use,
       elementUse: elementUse,
@@ -39,7 +41,7 @@ class Identifier {
 
   String id;
   List<Extension> extension;
-  String use; // <code> enum: usual/official/temp/secondary/old;
+  String use;
   Element elementUse;
   CodeableConcept type;
   String system;
@@ -49,18 +51,19 @@ class Identifier {
   Period period;
   Reference assigner;
 
-  Identifier(
-      {this.id,
-      this.extension,
-      this.use,
-      this.elementUse,
-      this.type,
-      this.system,
-      this.elementSystem,
-      this.value,
-      this.elementValue,
-      this.period,
-      this.assigner});
+  Identifier({
+    this.id,
+    this.extension,
+    this.use,
+    this.elementUse,
+    this.type,
+    this.system,
+    this.elementSystem,
+    this.value,
+    this.elementValue,
+    this.period,
+    this.assigner,
+  });
 
   factory Identifier.fromJson(Map<String, dynamic> json) =>
       _$IdentifierFromJson(json);

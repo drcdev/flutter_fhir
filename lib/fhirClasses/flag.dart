@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -13,32 +13,33 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Flag {
-  static Future<Flag> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      List<CodeableConcept> category,
-      CodeableConcept code,
-      Reference subject,
-      Period period,
-      Reference encounter,
-      Reference author}) async {
+  static Future<Flag> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> category,
+    CodeableConcept code,
+    Reference subject,
+    Period period,
+    Reference encounter,
+    Reference author,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Flag newFlag = new Flag(
-      resourceType: 'Flag',
-      id: await fhirDb.newResourceId('Flag'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Flag'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -59,17 +60,17 @@ class Flag {
     );
     newFlag.meta.createdAt = DateTime.now();
     newFlag.meta.lastUpdated = newFlag.meta.createdAt;
-    int saved = await fhirDb.newResource(newFlag);
+    int saved = await fhirDb.saveResource(newFlag);
     return newFlag;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Flag';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -81,7 +82,7 @@ class Flag {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String status; // <code> enum: active/inactive/entered-in-error;
+  String status;
   Element elementStatus;
   List<CodeableConcept> category;
   CodeableConcept code;
@@ -90,27 +91,28 @@ class Flag {
   Reference encounter;
   Reference author;
 
-  Flag(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.category,
-      @required this.code,
-      @required this.subject,
-      this.period,
-      this.encounter,
-      this.author});
+  Flag({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.category,
+    @required this.code,
+    @required this.subject,
+    this.period,
+    this.encounter,
+    this.author,
+  });
 
   factory Flag.fromJson(Map<String, dynamic> json) => _$FlagFromJson(json);
   Map<String, dynamic> toJson() => _$FlagToJson(this);

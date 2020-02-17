@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -12,30 +12,31 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ImmunizationRecommendation {
-  static Future<ImmunizationRecommendation> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      Reference patient,
-      DateTime date,
-      Element elementDate,
-      Reference authority,
-      List<ImmunizationRecommendation_Recommendation> recommendation}) async {
+  static Future<ImmunizationRecommendation> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    Reference patient,
+    DateTime date,
+    Element elementDate,
+    Reference authority,
+    List<ImmunizationRecommendation_Recommendation> recommendation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImmunizationRecommendation newImmunizationRecommendation =
         new ImmunizationRecommendation(
-      resourceType: 'ImmunizationRecommendation',
-      id: await fhirDb.newResourceId('ImmunizationRecommendation'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ImmunizationRecommendation'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -54,17 +55,17 @@ class ImmunizationRecommendation {
     newImmunizationRecommendation.meta.createdAt = DateTime.now();
     newImmunizationRecommendation.meta.lastUpdated =
         newImmunizationRecommendation.meta.createdAt;
-    int saved = await fhirDb.newResource(newImmunizationRecommendation);
+    int saved = await fhirDb.saveResource(newImmunizationRecommendation);
     return newImmunizationRecommendation;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ImmunizationRecommendation';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -82,24 +83,25 @@ class ImmunizationRecommendation {
   Reference authority;
   List<ImmunizationRecommendation_Recommendation> recommendation;
 
-  ImmunizationRecommendation(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      @required this.patient,
-      this.date,
-      this.elementDate,
-      this.authority,
-      @required this.recommendation});
+  ImmunizationRecommendation({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    @required this.patient,
+    this.date,
+    this.elementDate,
+    this.authority,
+    @required this.recommendation,
+  });
 
   factory ImmunizationRecommendation.fromJson(Map<String, dynamic> json) =>
       _$ImmunizationRecommendationFromJson(json);
@@ -108,36 +110,38 @@ class ImmunizationRecommendation {
 
 @JsonSerializable(explicitToJson: true)
 class ImmunizationRecommendation_Recommendation {
-  static Future<ImmunizationRecommendation_Recommendation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<CodeableConcept> vaccineCode,
-      CodeableConcept targetDisease,
-      List<CodeableConcept> contraindicatedVaccineCode,
-      CodeableConcept forecastStatus,
-      List<CodeableConcept> forecastReason,
-      List<ImmunizationRecommendation_DateCriterion> dateCriterion,
-      String description,
-      Element elementDescription,
-      String series,
-      Element elementSeries,
-      int doseNumberPositiveInt,
-      Element elementDoseNumberPositiveInt,
-      String doseNumberString,
-      Element elementDoseNumberString,
-      int seriesDosesPositiveInt,
-      Element elementSeriesDosesPositiveInt,
-      String seriesDosesString,
-      Element elementSeriesDosesString,
-      List<Reference> supportingImmunization,
-      List<Reference> supportingPatientInformation}) async {
+  static Future<ImmunizationRecommendation_Recommendation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> vaccineCode,
+    CodeableConcept targetDisease,
+    List<CodeableConcept> contraindicatedVaccineCode,
+    CodeableConcept forecastStatus,
+    List<CodeableConcept> forecastReason,
+    List<ImmunizationRecommendation_DateCriterion> dateCriterion,
+    String description,
+    Element elementDescription,
+    String series,
+    Element elementSeries,
+    int doseNumberPositiveInt,
+    Element elementDoseNumberPositiveInt,
+    String doseNumberString,
+    Element elementDoseNumberString,
+    int seriesDosesPositiveInt,
+    Element elementSeriesDosesPositiveInt,
+    String seriesDosesString,
+    Element elementSeriesDosesString,
+    List<Reference> supportingImmunization,
+    List<Reference> supportingPatientInformation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImmunizationRecommendation_Recommendation
         newImmunizationRecommendation_Recommendation =
         new ImmunizationRecommendation_Recommendation(
-      id: await fhirDb
-          .newResourceId('ImmunizationRecommendation_Recommendation'),
+      id: id ??
+          await fhirDb
+              .newResourceId('ImmunizationRecommendation_Recommendation'),
       extension: extension,
       modifierExtension: modifierExtension,
       vaccineCode: vaccineCode,
@@ -177,41 +181,42 @@ class ImmunizationRecommendation_Recommendation {
   Element elementDescription;
   String series;
   Element elementSeries;
-  int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
+  int doseNumberPositiveInt;
   Element elementDoseNumberPositiveInt;
-  String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
+  String doseNumberString;
   Element elementDoseNumberString;
-  int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
+  int seriesDosesPositiveInt;
   Element elementSeriesDosesPositiveInt;
-  String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
+  String seriesDosesString;
   Element elementSeriesDosesString;
   List<Reference> supportingImmunization;
   List<Reference> supportingPatientInformation;
 
-  ImmunizationRecommendation_Recommendation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.vaccineCode,
-      this.targetDisease,
-      this.contraindicatedVaccineCode,
-      @required this.forecastStatus,
-      this.forecastReason,
-      this.dateCriterion,
-      this.description,
-      this.elementDescription,
-      this.series,
-      this.elementSeries,
-      this.doseNumberPositiveInt,
-      this.elementDoseNumberPositiveInt,
-      this.doseNumberString,
-      this.elementDoseNumberString,
-      this.seriesDosesPositiveInt,
-      this.elementSeriesDosesPositiveInt,
-      this.seriesDosesString,
-      this.elementSeriesDosesString,
-      this.supportingImmunization,
-      this.supportingPatientInformation});
+  ImmunizationRecommendation_Recommendation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.vaccineCode,
+    this.targetDisease,
+    this.contraindicatedVaccineCode,
+    @required this.forecastStatus,
+    this.forecastReason,
+    this.dateCriterion,
+    this.description,
+    this.elementDescription,
+    this.series,
+    this.elementSeries,
+    this.doseNumberPositiveInt,
+    this.elementDoseNumberPositiveInt,
+    this.doseNumberString,
+    this.elementDoseNumberString,
+    this.seriesDosesPositiveInt,
+    this.elementSeriesDosesPositiveInt,
+    this.seriesDosesString,
+    this.elementSeriesDosesString,
+    this.supportingImmunization,
+    this.supportingPatientInformation,
+  });
 
   factory ImmunizationRecommendation_Recommendation.fromJson(
           Map<String, dynamic> json) =>
@@ -222,19 +227,21 @@ class ImmunizationRecommendation_Recommendation {
 
 @JsonSerializable(explicitToJson: true)
 class ImmunizationRecommendation_DateCriterion {
-  static Future<ImmunizationRecommendation_DateCriterion> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      DateTime value,
-      Element elementValue}) async {
+  static Future<ImmunizationRecommendation_DateCriterion> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    DateTime value,
+    Element elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ImmunizationRecommendation_DateCriterion
         newImmunizationRecommendation_DateCriterion =
         new ImmunizationRecommendation_DateCriterion(
-      id: await fhirDb
-          .newResourceId('ImmunizationRecommendation_DateCriterion'),
+      id: id ??
+          await fhirDb
+              .newResourceId('ImmunizationRecommendation_DateCriterion'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -251,13 +258,14 @@ class ImmunizationRecommendation_DateCriterion {
   DateTime value;
   Element elementValue;
 
-  ImmunizationRecommendation_DateCriterion(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.code,
-      this.value,
-      this.elementValue});
+  ImmunizationRecommendation_DateCriterion({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+    this.value,
+    this.elementValue,
+  });
 
   factory ImmunizationRecommendation_DateCriterion.fromJson(
           Map<String, dynamic> json) =>

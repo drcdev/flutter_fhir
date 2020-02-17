@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -13,36 +13,37 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MessageHeader {
-  static Future<MessageHeader> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Coding eventCoding,
-      String eventUri,
-      Element elementEventUri,
-      List<MessageHeader_Destination> destination,
-      Reference sender,
-      Reference enterer,
-      Reference author,
-      MessageHeader_Source source,
-      Reference responsible,
-      CodeableConcept reason,
-      MessageHeader_Response response,
-      List<Reference> focus,
-      String definition}) async {
+  static Future<MessageHeader> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Coding eventCoding,
+    String eventUri,
+    Element elementEventUri,
+    List<MessageHeader_Destination> destination,
+    Reference sender,
+    Reference enterer,
+    Reference author,
+    MessageHeader_Source source,
+    Reference responsible,
+    CodeableConcept reason,
+    MessageHeader_Response response,
+    List<Reference> focus,
+    String definition,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MessageHeader newMessageHeader = new MessageHeader(
-      resourceType: 'MessageHeader',
-      id: await fhirDb.newResourceId('MessageHeader'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('MessageHeader'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -67,17 +68,17 @@ class MessageHeader {
     );
     newMessageHeader.meta.createdAt = DateTime.now();
     newMessageHeader.meta.lastUpdated = newMessageHeader.meta.createdAt;
-    int saved = await fhirDb.newResource(newMessageHeader);
+    int saved = await fhirDb.saveResource(newMessageHeader);
     return newMessageHeader;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'MessageHeader';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -89,7 +90,7 @@ class MessageHeader {
   List<Extension> extension;
   List<Extension> modifierExtension;
   Coding eventCoding;
-  String eventUri; //  pattern: ^\S*$
+  String eventUri;
   Element elementEventUri;
   List<MessageHeader_Destination> destination;
   Reference sender;
@@ -102,31 +103,32 @@ class MessageHeader {
   List<Reference> focus;
   String definition;
 
-  MessageHeader(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.eventCoding,
-      this.eventUri,
-      this.elementEventUri,
-      this.destination,
-      this.sender,
-      this.enterer,
-      this.author,
-      @required this.source,
-      this.responsible,
-      this.reason,
-      this.response,
-      this.focus,
-      this.definition});
+  MessageHeader({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.eventCoding,
+    this.eventUri,
+    this.elementEventUri,
+    this.destination,
+    this.sender,
+    this.enterer,
+    this.author,
+    @required this.source,
+    this.responsible,
+    this.reason,
+    this.response,
+    this.focus,
+    this.definition,
+  });
 
   factory MessageHeader.fromJson(Map<String, dynamic> json) =>
       _$MessageHeaderFromJson(json);
@@ -135,20 +137,21 @@ class MessageHeader {
 
 @JsonSerializable(explicitToJson: true)
 class MessageHeader_Destination {
-  static Future<MessageHeader_Destination> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      Reference target,
-      String endpoint,
-      Element elementEndpoint,
-      Reference receiver}) async {
+  static Future<MessageHeader_Destination> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    Reference target,
+    String endpoint,
+    Element elementEndpoint,
+    Reference receiver,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MessageHeader_Destination newMessageHeader_Destination =
         new MessageHeader_Destination(
-      id: await fhirDb.newResourceId('MessageHeader_Destination'),
+      id: id ?? await fhirDb.newResourceId('MessageHeader_Destination'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -171,16 +174,17 @@ class MessageHeader_Destination {
   Element elementEndpoint;
   Reference receiver;
 
-  MessageHeader_Destination(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.target,
-      this.endpoint,
-      this.elementEndpoint,
-      this.receiver});
+  MessageHeader_Destination({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.target,
+    this.endpoint,
+    this.elementEndpoint,
+    this.receiver,
+  });
 
   factory MessageHeader_Destination.fromJson(Map<String, dynamic> json) =>
       _$MessageHeader_DestinationFromJson(json);
@@ -189,22 +193,23 @@ class MessageHeader_Destination {
 
 @JsonSerializable(explicitToJson: true)
 class MessageHeader_Source {
-  static Future<MessageHeader_Source> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String software,
-      Element elementSoftware,
-      String version,
-      Element elementVersion,
-      ContactPoint contact,
-      String endpoint,
-      Element elementEndpoint}) async {
+  static Future<MessageHeader_Source> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String software,
+    Element elementSoftware,
+    String version,
+    Element elementVersion,
+    ContactPoint contact,
+    String endpoint,
+    Element elementEndpoint,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MessageHeader_Source newMessageHeader_Source = new MessageHeader_Source(
-      id: await fhirDb.newResourceId('MessageHeader_Source'),
+      id: id ?? await fhirDb.newResourceId('MessageHeader_Source'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -233,19 +238,20 @@ class MessageHeader_Source {
   String endpoint;
   Element elementEndpoint;
 
-  MessageHeader_Source(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.software,
-      this.elementSoftware,
-      this.version,
-      this.elementVersion,
-      this.contact,
-      this.endpoint,
-      this.elementEndpoint});
+  MessageHeader_Source({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.software,
+    this.elementSoftware,
+    this.version,
+    this.elementVersion,
+    this.contact,
+    this.endpoint,
+    this.elementEndpoint,
+  });
 
   factory MessageHeader_Source.fromJson(Map<String, dynamic> json) =>
       _$MessageHeader_SourceFromJson(json);
@@ -254,19 +260,20 @@ class MessageHeader_Source {
 
 @JsonSerializable(explicitToJson: true)
 class MessageHeader_Response {
-  static Future<MessageHeader_Response> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String identifier,
-      Element elementIdentifier,
-      String code,
-      Element elementCode,
-      Reference details}) async {
+  static Future<MessageHeader_Response> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String identifier,
+    Element elementIdentifier,
+    String code,
+    Element elementCode,
+    Reference details,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MessageHeader_Response newMessageHeader_Response =
         new MessageHeader_Response(
-      id: await fhirDb.newResourceId('MessageHeader_Response'),
+      id: id ?? await fhirDb.newResourceId('MessageHeader_Response'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -283,19 +290,20 @@ class MessageHeader_Response {
   List<Extension> modifierExtension;
   String identifier;
   Element elementIdentifier;
-  String code; // <code> enum: ok/transient-error/fatal-error;
+  String code;
   Element elementCode;
   Reference details;
 
-  MessageHeader_Response(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.elementIdentifier,
-      this.code,
-      this.elementCode,
-      this.details});
+  MessageHeader_Response({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.elementIdentifier,
+    this.code,
+    this.elementCode,
+    this.details,
+  });
 
   factory MessageHeader_Response.fromJson(Map<String, dynamic> json) =>
       _$MessageHeader_ResponseFromJson(json);

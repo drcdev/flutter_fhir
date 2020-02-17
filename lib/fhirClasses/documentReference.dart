@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -15,43 +15,44 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DocumentReference {
-  static Future<DocumentReference> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier masterIdentifier,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      String docStatus,
-      Element elementDocStatus,
-      CodeableConcept type,
-      List<CodeableConcept> category,
-      Reference subject,
-      DateTime date,
-      Element elementDate,
-      List<Reference> author,
-      Reference authenticator,
-      Reference custodian,
-      List<DocumentReference_RelatesTo> relatesTo,
-      String description,
-      Element elementDescription,
-      List<CodeableConcept> securityLabel,
-      List<DocumentReference_Content> content,
-      DocumentReference_Context context}) async {
+  static Future<DocumentReference> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier masterIdentifier,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    String docStatus,
+    Element elementDocStatus,
+    CodeableConcept type,
+    List<CodeableConcept> category,
+    Reference subject,
+    DateTime date,
+    Element elementDate,
+    List<Reference> author,
+    Reference authenticator,
+    Reference custodian,
+    List<DocumentReference_RelatesTo> relatesTo,
+    String description,
+    Element elementDescription,
+    List<CodeableConcept> securityLabel,
+    List<DocumentReference_Content> content,
+    DocumentReference_Context context,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DocumentReference newDocumentReference = new DocumentReference(
-      resourceType: 'DocumentReference',
-      id: await fhirDb.newResourceId('DocumentReference'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('DocumentReference'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -83,17 +84,17 @@ class DocumentReference {
     );
     newDocumentReference.meta.createdAt = DateTime.now();
     newDocumentReference.meta.lastUpdated = newDocumentReference.meta.createdAt;
-    int saved = await fhirDb.newResource(newDocumentReference);
+    int saved = await fhirDb.saveResource(newDocumentReference);
     return newDocumentReference;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'DocumentReference';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -106,7 +107,7 @@ class DocumentReference {
   List<Extension> modifierExtension;
   Identifier masterIdentifier;
   List<Identifier> identifier;
-  String status; // <code> enum: current/superseded/entered-in-error;
+  String status;
   Element elementStatus;
   String docStatus;
   Element elementDocStatus;
@@ -125,38 +126,39 @@ class DocumentReference {
   List<DocumentReference_Content> content;
   DocumentReference_Context context;
 
-  DocumentReference(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.masterIdentifier,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.docStatus,
-      this.elementDocStatus,
-      this.type,
-      this.category,
-      this.subject,
-      this.date,
-      this.elementDate,
-      this.author,
-      this.authenticator,
-      this.custodian,
-      this.relatesTo,
-      this.description,
-      this.elementDescription,
-      this.securityLabel,
-      @required this.content,
-      this.context});
+  DocumentReference({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.masterIdentifier,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.docStatus,
+    this.elementDocStatus,
+    this.type,
+    this.category,
+    this.subject,
+    this.date,
+    this.elementDate,
+    this.author,
+    this.authenticator,
+    this.custodian,
+    this.relatesTo,
+    this.description,
+    this.elementDescription,
+    this.securityLabel,
+    @required this.content,
+    this.context,
+  });
 
   factory DocumentReference.fromJson(Map<String, dynamic> json) =>
       _$DocumentReferenceFromJson(json);
@@ -165,17 +167,18 @@ class DocumentReference {
 
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_RelatesTo {
-  static Future<DocumentReference_RelatesTo> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      Reference target}) async {
+  static Future<DocumentReference_RelatesTo> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    Reference target,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DocumentReference_RelatesTo newDocumentReference_RelatesTo =
         new DocumentReference_RelatesTo(
-      id: await fhirDb.newResourceId('DocumentReference_RelatesTo'),
+      id: id ?? await fhirDb.newResourceId('DocumentReference_RelatesTo'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -188,17 +191,18 @@ class DocumentReference_RelatesTo {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String code; // <code> enum: replaces/transforms/signs/appends;
+  String code;
   Element elementCode;
   Reference target;
 
-  DocumentReference_RelatesTo(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      @required this.target});
+  DocumentReference_RelatesTo({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    @required this.target,
+  });
 
   factory DocumentReference_RelatesTo.fromJson(Map<String, dynamic> json) =>
       _$DocumentReference_RelatesToFromJson(json);
@@ -207,16 +211,17 @@ class DocumentReference_RelatesTo {
 
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_Content {
-  static Future<DocumentReference_Content> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Attachment attachment,
-      Coding format}) async {
+  static Future<DocumentReference_Content> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Attachment attachment,
+    Coding format,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DocumentReference_Content newDocumentReference_Content =
         new DocumentReference_Content(
-      id: await fhirDb.newResourceId('DocumentReference_Content'),
+      id: id ?? await fhirDb.newResourceId('DocumentReference_Content'),
       extension: extension,
       modifierExtension: modifierExtension,
       attachment: attachment,
@@ -231,12 +236,13 @@ class DocumentReference_Content {
   Attachment attachment;
   Coding format;
 
-  DocumentReference_Content(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.attachment,
-      this.format});
+  DocumentReference_Content({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.attachment,
+    this.format,
+  });
 
   factory DocumentReference_Content.fromJson(Map<String, dynamic> json) =>
       _$DocumentReference_ContentFromJson(json);
@@ -245,21 +251,22 @@ class DocumentReference_Content {
 
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_Context {
-  static Future<DocumentReference_Context> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Reference> encounter,
-      List<CodeableConcept> event,
-      Period period,
-      CodeableConcept facilityType,
-      CodeableConcept practiceSetting,
-      Reference sourcePatientInfo,
-      List<Reference> related}) async {
+  static Future<DocumentReference_Context> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> encounter,
+    List<CodeableConcept> event,
+    Period period,
+    CodeableConcept facilityType,
+    CodeableConcept practiceSetting,
+    Reference sourcePatientInfo,
+    List<Reference> related,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DocumentReference_Context newDocumentReference_Context =
         new DocumentReference_Context(
-      id: await fhirDb.newResourceId('DocumentReference_Context'),
+      id: id ?? await fhirDb.newResourceId('DocumentReference_Context'),
       extension: extension,
       modifierExtension: modifierExtension,
       encounter: encounter,
@@ -284,17 +291,18 @@ class DocumentReference_Context {
   Reference sourcePatientInfo;
   List<Reference> related;
 
-  DocumentReference_Context(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.encounter,
-      this.event,
-      this.period,
-      this.facilityType,
-      this.practiceSetting,
-      this.sourcePatientInfo,
-      this.related});
+  DocumentReference_Context({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.encounter,
+    this.event,
+    this.period,
+    this.facilityType,
+    this.practiceSetting,
+    this.sourcePatientInfo,
+    this.related,
+  });
 
   factory DocumentReference_Context.fromJson(Map<String, dynamic> json) =>
       _$DocumentReference_ContextFromJson(json);

@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/productShelfLife.dart';
 import 'package:flutter_fhir/fhirClasses/prodCharacteristic.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -16,34 +16,35 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged {
-  static Future<MedicinalProductPackaged> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> subject,
-      String description,
-      Element elementDescription,
-      CodeableConcept legalStatusOfSupply,
-      List<MarketingStatus> marketingStatus,
-      Reference marketingAuthorization,
-      List<Reference> manufacturer,
-      List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier,
-      List<MedicinalProductPackaged_PackageItem> packageItem}) async {
+  static Future<MedicinalProductPackaged> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> subject,
+    String description,
+    Element elementDescription,
+    CodeableConcept legalStatusOfSupply,
+    List<MarketingStatus> marketingStatus,
+    Reference marketingAuthorization,
+    List<Reference> manufacturer,
+    List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier,
+    List<MedicinalProductPackaged_PackageItem> packageItem,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProductPackaged newMedicinalProductPackaged =
         new MedicinalProductPackaged(
-      resourceType: 'MedicinalProductPackaged',
-      id: await fhirDb.newResourceId('MedicinalProductPackaged'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('MedicinalProductPackaged'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -66,17 +67,17 @@ class MedicinalProductPackaged {
     newMedicinalProductPackaged.meta.createdAt = DateTime.now();
     newMedicinalProductPackaged.meta.lastUpdated =
         newMedicinalProductPackaged.meta.createdAt;
-    int saved = await fhirDb.newResource(newMedicinalProductPackaged);
+    int saved = await fhirDb.saveResource(newMedicinalProductPackaged);
     return newMedicinalProductPackaged;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'MedicinalProductPackaged';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -98,28 +99,29 @@ class MedicinalProductPackaged {
   List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier;
   List<MedicinalProductPackaged_PackageItem> packageItem;
 
-  MedicinalProductPackaged(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.subject,
-      this.description,
-      this.elementDescription,
-      this.legalStatusOfSupply,
-      this.marketingStatus,
-      this.marketingAuthorization,
-      this.manufacturer,
-      this.batchIdentifier,
-      @required this.packageItem});
+  MedicinalProductPackaged({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.subject,
+    this.description,
+    this.elementDescription,
+    this.legalStatusOfSupply,
+    this.marketingStatus,
+    this.marketingAuthorization,
+    this.manufacturer,
+    this.batchIdentifier,
+    @required this.packageItem,
+  });
 
   factory MedicinalProductPackaged.fromJson(Map<String, dynamic> json) =>
       _$MedicinalProductPackagedFromJson(json);
@@ -128,18 +130,20 @@ class MedicinalProductPackaged {
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged_BatchIdentifier {
-  static Future<MedicinalProductPackaged_BatchIdentifier> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier outerPackaging,
-      Identifier immediatePackaging}) async {
+  static Future<MedicinalProductPackaged_BatchIdentifier> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier outerPackaging,
+    Identifier immediatePackaging,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProductPackaged_BatchIdentifier
         newMedicinalProductPackaged_BatchIdentifier =
         new MedicinalProductPackaged_BatchIdentifier(
-      id: await fhirDb
-          .newResourceId('MedicinalProductPackaged_BatchIdentifier'),
+      id: id ??
+          await fhirDb
+              .newResourceId('MedicinalProductPackaged_BatchIdentifier'),
       extension: extension,
       modifierExtension: modifierExtension,
       outerPackaging: outerPackaging,
@@ -154,12 +158,13 @@ class MedicinalProductPackaged_BatchIdentifier {
   Identifier outerPackaging;
   Identifier immediatePackaging;
 
-  MedicinalProductPackaged_BatchIdentifier(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.outerPackaging,
-      this.immediatePackaging});
+  MedicinalProductPackaged_BatchIdentifier({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.outerPackaging,
+    this.immediatePackaging,
+  });
 
   factory MedicinalProductPackaged_BatchIdentifier.fromJson(
           Map<String, dynamic> json) =>
@@ -170,27 +175,29 @@ class MedicinalProductPackaged_BatchIdentifier {
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged_PackageItem {
-  static Future<MedicinalProductPackaged_PackageItem> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      CodeableConcept type,
-      Quantity quantity,
-      List<CodeableConcept> material,
-      List<CodeableConcept> alternateMaterial,
-      List<Reference> device,
-      List<Reference> manufacturedItem,
-      List<MedicinalProductPackaged_PackageItem> packageItem,
-      ProdCharacteristic physicalCharacteristics,
-      List<CodeableConcept> otherCharacteristics,
-      List<ProductShelfLife> shelfLifeStorage,
-      List<Reference> manufacturer}) async {
+  static Future<MedicinalProductPackaged_PackageItem> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    CodeableConcept type,
+    Quantity quantity,
+    List<CodeableConcept> material,
+    List<CodeableConcept> alternateMaterial,
+    List<Reference> device,
+    List<Reference> manufacturedItem,
+    List<MedicinalProductPackaged_PackageItem> packageItem,
+    ProdCharacteristic physicalCharacteristics,
+    List<CodeableConcept> otherCharacteristics,
+    List<ProductShelfLife> shelfLifeStorage,
+    List<Reference> manufacturer,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProductPackaged_PackageItem
         newMedicinalProductPackaged_PackageItem =
         new MedicinalProductPackaged_PackageItem(
-      id: await fhirDb.newResourceId('MedicinalProductPackaged_PackageItem'),
+      id: id ??
+          await fhirDb.newResourceId('MedicinalProductPackaged_PackageItem'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -225,22 +232,23 @@ class MedicinalProductPackaged_PackageItem {
   List<ProductShelfLife> shelfLifeStorage;
   List<Reference> manufacturer;
 
-  MedicinalProductPackaged_PackageItem(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      @required this.type,
-      @required this.quantity,
-      this.material,
-      this.alternateMaterial,
-      this.device,
-      this.manufacturedItem,
-      this.packageItem,
-      this.physicalCharacteristics,
-      this.otherCharacteristics,
-      this.shelfLifeStorage,
-      this.manufacturer});
+  MedicinalProductPackaged_PackageItem({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    @required this.type,
+    @required this.quantity,
+    this.material,
+    this.alternateMaterial,
+    this.device,
+    this.manufacturedItem,
+    this.packageItem,
+    this.physicalCharacteristics,
+    this.otherCharacteristics,
+    this.shelfLifeStorage,
+    this.manufacturer,
+  });
 
   factory MedicinalProductPackaged_PackageItem.fromJson(
           Map<String, dynamic> json) =>

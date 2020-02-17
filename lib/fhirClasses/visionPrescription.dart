@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -14,34 +14,35 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class VisionPrescription {
-  static Future<VisionPrescription> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      DateTime created,
-      Element elementCreated,
-      Reference patient,
-      Reference encounter,
-      DateTime dateWritten,
-      Element elementDateWritten,
-      Reference prescriber,
-      List<VisionPrescription_LensSpecification> lensSpecification}) async {
+  static Future<VisionPrescription> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    DateTime created,
+    Element elementCreated,
+    Reference patient,
+    Reference encounter,
+    DateTime dateWritten,
+    Element elementDateWritten,
+    Reference prescriber,
+    List<VisionPrescription_LensSpecification> lensSpecification,
+  }) async {
     var fhirDb = new DatabaseHelper();
     VisionPrescription newVisionPrescription = new VisionPrescription(
-      resourceType: 'VisionPrescription',
-      id: await fhirDb.newResourceId('VisionPrescription'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('VisionPrescription'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -65,17 +66,17 @@ class VisionPrescription {
     newVisionPrescription.meta.createdAt = DateTime.now();
     newVisionPrescription.meta.lastUpdated =
         newVisionPrescription.meta.createdAt;
-    int saved = await fhirDb.newResource(newVisionPrescription);
+    int saved = await fhirDb.saveResource(newVisionPrescription);
     return newVisionPrescription;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'VisionPrescription';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -98,29 +99,30 @@ class VisionPrescription {
   Reference prescriber;
   List<VisionPrescription_LensSpecification> lensSpecification;
 
-  VisionPrescription(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.created,
-      this.elementCreated,
-      @required this.patient,
-      this.encounter,
-      this.dateWritten,
-      this.elementDateWritten,
-      @required this.prescriber,
-      @required this.lensSpecification});
+  VisionPrescription({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.created,
+    this.elementCreated,
+    @required this.patient,
+    this.encounter,
+    this.dateWritten,
+    this.elementDateWritten,
+    @required this.prescriber,
+    @required this.lensSpecification,
+  });
 
   factory VisionPrescription.fromJson(Map<String, dynamic> json) =>
       _$VisionPrescriptionFromJson(json);
@@ -129,39 +131,41 @@ class VisionPrescription {
 
 @JsonSerializable(explicitToJson: true)
 class VisionPrescription_LensSpecification {
-  static Future<VisionPrescription_LensSpecification> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept product,
-      String eye,
-      Element elementEye,
-      double sphere,
-      Element elementSphere,
-      double cylinder,
-      Element elementCylinder,
-      int axis,
-      Element elementAxis,
-      List<VisionPrescription_Prism> prism,
-      double add,
-      Element elementAdd,
-      double power,
-      Element elementPower,
-      double backCurve,
-      Element elementBackCurve,
-      double diameter,
-      Element elementDiameter,
-      Quantity duration,
-      String color,
-      Element elementColor,
-      String brand,
-      Element elementBrand,
-      List<Annotation> note}) async {
+  static Future<VisionPrescription_LensSpecification> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept product,
+    String eye,
+    Element elementEye,
+    double sphere,
+    Element elementSphere,
+    double cylinder,
+    Element elementCylinder,
+    int axis,
+    Element elementAxis,
+    List<VisionPrescription_Prism> prism,
+    double add,
+    Element elementAdd,
+    double power,
+    Element elementPower,
+    double backCurve,
+    Element elementBackCurve,
+    double diameter,
+    Element elementDiameter,
+    Quantity duration,
+    String color,
+    Element elementColor,
+    String brand,
+    Element elementBrand,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     VisionPrescription_LensSpecification
         newVisionPrescription_LensSpecification =
         new VisionPrescription_LensSpecification(
-      id: await fhirDb.newResourceId('VisionPrescription_LensSpecification'),
+      id: id ??
+          await fhirDb.newResourceId('VisionPrescription_LensSpecification'),
       extension: extension,
       modifierExtension: modifierExtension,
       product: product,
@@ -196,7 +200,7 @@ class VisionPrescription_LensSpecification {
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept product;
-  String eye; // <code> enum: right/left;
+  String eye;
   Element elementEye;
   double sphere;
   Element elementSphere;
@@ -220,34 +224,35 @@ class VisionPrescription_LensSpecification {
   Element elementBrand;
   List<Annotation> note;
 
-  VisionPrescription_LensSpecification(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.product,
-      this.eye,
-      this.elementEye,
-      this.sphere,
-      this.elementSphere,
-      this.cylinder,
-      this.elementCylinder,
-      this.axis,
-      this.elementAxis,
-      this.prism,
-      this.add,
-      this.elementAdd,
-      this.power,
-      this.elementPower,
-      this.backCurve,
-      this.elementBackCurve,
-      this.diameter,
-      this.elementDiameter,
-      this.duration,
-      this.color,
-      this.elementColor,
-      this.brand,
-      this.elementBrand,
-      this.note});
+  VisionPrescription_LensSpecification({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.product,
+    this.eye,
+    this.elementEye,
+    this.sphere,
+    this.elementSphere,
+    this.cylinder,
+    this.elementCylinder,
+    this.axis,
+    this.elementAxis,
+    this.prism,
+    this.add,
+    this.elementAdd,
+    this.power,
+    this.elementPower,
+    this.backCurve,
+    this.elementBackCurve,
+    this.diameter,
+    this.elementDiameter,
+    this.duration,
+    this.color,
+    this.elementColor,
+    this.brand,
+    this.elementBrand,
+    this.note,
+  });
 
   factory VisionPrescription_LensSpecification.fromJson(
           Map<String, dynamic> json) =>
@@ -258,18 +263,19 @@ class VisionPrescription_LensSpecification {
 
 @JsonSerializable(explicitToJson: true)
 class VisionPrescription_Prism {
-  static Future<VisionPrescription_Prism> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      double amount,
-      Element elementAmount,
-      String base,
-      Element elementBase}) async {
+  static Future<VisionPrescription_Prism> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    double amount,
+    Element elementAmount,
+    String base,
+    Element elementBase,
+  }) async {
     var fhirDb = new DatabaseHelper();
     VisionPrescription_Prism newVisionPrescription_Prism =
         new VisionPrescription_Prism(
-      id: await fhirDb.newResourceId('VisionPrescription_Prism'),
+      id: id ?? await fhirDb.newResourceId('VisionPrescription_Prism'),
       extension: extension,
       modifierExtension: modifierExtension,
       amount: amount,
@@ -285,17 +291,18 @@ class VisionPrescription_Prism {
   List<Extension> modifierExtension;
   double amount;
   Element elementAmount;
-  String base; // <code> enum: up/down/in/out;
+  String base;
   Element elementBase;
 
-  VisionPrescription_Prism(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.amount,
-      this.elementAmount,
-      this.base,
-      this.elementBase});
+  VisionPrescription_Prism({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.amount,
+    this.elementAmount,
+    this.base,
+    this.elementBase,
+  });
 
   factory VisionPrescription_Prism.fromJson(Map<String, dynamic> json) =>
       _$VisionPrescription_PrismFromJson(json);

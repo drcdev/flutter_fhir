@@ -1,18 +1,20 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Ratio {
-  static Future<Ratio> newInstance(
-      {String id,
-      List<Extension> extension,
-      Quantity numerator,
-      Quantity denominator}) async {
+  static Future<Ratio> newInstance({
+    String id,
+    List<Extension> extension,
+    Quantity numerator,
+    Quantity denominator,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Ratio newRatio = new Ratio(
-      id: await fhirDb.newResourceId('Ratio'),
+      id: id ?? await fhirDb.newResourceId('Ratio'),
       extension: extension,
       numerator: numerator,
       denominator: denominator,
@@ -25,7 +27,12 @@ class Ratio {
   Quantity numerator;
   Quantity denominator;
 
-  Ratio({this.id, this.extension, this.numerator, this.denominator});
+  Ratio({
+    this.id,
+    this.extension,
+    this.numerator,
+    this.denominator,
+  });
 
   factory Ratio.fromJson(Map<String, dynamic> json) => _$RatioFromJson(json);
   Map<String, dynamic> toJson() => _$RatioToJson(this);

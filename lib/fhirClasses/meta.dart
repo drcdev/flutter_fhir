@@ -1,27 +1,29 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Meta {
-  static Future<Meta> newInstance(
-      {String id,
-      List<Extension> extension,
-      String versionId,
-      Element elementVersionId,
-      DateTime createdAt,
-      DateTime lastUpdated,
-      Element elementLastUpdated,
-      String source,
-      Element elementSource,
-      List<String> profile,
-      List<Coding> security,
-      List<Coding> tag}) async {
+  static Future<Meta> newInstance({
+    String id,
+    List<Extension> extension,
+    String versionId,
+    Element elementVersionId,
+    DateTime createdAt,
+    DateTime lastUpdated,
+    Element elementLastUpdated,
+    String source,
+    Element elementSource,
+    List<String> profile,
+    List<Coding> security,
+    List<Coding> tag,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Meta newMeta = new Meta(
-      id: await fhirDb.newResourceId('Meta'),
+      id: id ?? await fhirDb.newResourceId('Meta'),
       extension: extension,
       versionId: versionId,
       elementVersionId: elementVersionId,
@@ -50,19 +52,20 @@ class Meta {
   List<Coding> security;
   List<Coding> tag;
 
-  Meta(
-      {this.id,
-      this.extension,
-      this.versionId,
-      this.elementVersionId,
-      this.createdAt,
-      this.lastUpdated,
-      this.elementLastUpdated,
-      this.source,
-      this.elementSource,
-      this.profile,
-      this.security,
-      this.tag});
+  Meta({
+    this.id,
+    this.extension,
+    this.versionId,
+    this.elementVersionId,
+    this.createdAt,
+    this.lastUpdated,
+    this.elementLastUpdated,
+    this.source,
+    this.elementSource,
+    this.profile,
+    this.security,
+    this.tag,
+  });
 
   factory Meta.fromJson(Map<String, dynamic> json) => _$MetaFromJson(json);
   Map<String, dynamic> toJson() => _$MetaToJson(this);

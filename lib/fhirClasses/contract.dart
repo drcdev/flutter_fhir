@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -20,67 +20,68 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Contract {
-  static Future<Contract> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String url,
-      Element elementUrl,
-      String version,
-      Element elementVersion,
-      String status,
-      Element elementStatus,
-      CodeableConcept legalState,
-      Reference instantiatesCanonical,
-      String instantiatesUri,
-      Element elementInstantiatesUri,
-      CodeableConcept contentDerivative,
-      DateTime issued,
-      Element elementIssued,
-      Period applies,
-      CodeableConcept expirationType,
-      List<Reference> subject,
-      List<Reference> authority,
-      List<Reference> domain,
-      List<Reference> site,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String subtitle,
-      Element elementSubtitle,
-      List<String> alias,
-      List<Element> elementAlias,
-      Reference author,
-      CodeableConcept scope,
-      CodeableConcept topicCodeableConcept,
-      Reference topicReference,
-      CodeableConcept type,
-      List<CodeableConcept> subType,
-      Contract_ContentDefinition contentDefinition,
-      List<Contract_Term> term,
-      List<Reference> supportingInfo,
-      List<Reference> relevantHistory,
-      List<Contract_Signer> signer,
-      List<Contract_Friendly> friendly,
-      List<Contract_Legal> legal,
-      List<Contract_Rule> rule,
-      Attachment legallyBindingAttachment,
-      Reference legallyBindingReference}) async {
+  static Future<Contract> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String url,
+    Element elementUrl,
+    String version,
+    Element elementVersion,
+    String status,
+    Element elementStatus,
+    CodeableConcept legalState,
+    Reference instantiatesCanonical,
+    String instantiatesUri,
+    Element elementInstantiatesUri,
+    CodeableConcept contentDerivative,
+    DateTime issued,
+    Element elementIssued,
+    Period applies,
+    CodeableConcept expirationType,
+    List<Reference> subject,
+    List<Reference> authority,
+    List<Reference> domain,
+    List<Reference> site,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String subtitle,
+    Element elementSubtitle,
+    List<String> alias,
+    List<Element> elementAlias,
+    Reference author,
+    CodeableConcept scope,
+    CodeableConcept topicCodeableConcept,
+    Reference topicReference,
+    CodeableConcept type,
+    List<CodeableConcept> subType,
+    Contract_ContentDefinition contentDefinition,
+    List<Contract_Term> term,
+    List<Reference> supportingInfo,
+    List<Reference> relevantHistory,
+    List<Contract_Signer> signer,
+    List<Contract_Friendly> friendly,
+    List<Contract_Legal> legal,
+    List<Contract_Rule> rule,
+    Attachment legallyBindingAttachment,
+    Reference legallyBindingReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract newContract = new Contract(
-      resourceType: 'Contract',
-      id: await fhirDb.newResourceId('Contract'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Contract'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -136,17 +137,17 @@ class Contract {
     );
     newContract.meta.createdAt = DateTime.now();
     newContract.meta.lastUpdated = newContract.meta.createdAt;
-    int saved = await fhirDb.newResource(newContract);
+    int saved = await fhirDb.saveResource(newContract);
     return newContract;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Contract';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -202,62 +203,63 @@ class Contract {
   Attachment legallyBindingAttachment;
   Reference legallyBindingReference;
 
-  Contract(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.url,
-      this.elementUrl,
-      this.version,
-      this.elementVersion,
-      this.status,
-      this.elementStatus,
-      this.legalState,
-      this.instantiatesCanonical,
-      this.instantiatesUri,
-      this.elementInstantiatesUri,
-      this.contentDerivative,
-      this.issued,
-      this.elementIssued,
-      this.applies,
-      this.expirationType,
-      this.subject,
-      this.authority,
-      this.domain,
-      this.site,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.subtitle,
-      this.elementSubtitle,
-      this.alias,
-      this.elementAlias,
-      this.author,
-      this.scope,
-      this.topicCodeableConcept,
-      this.topicReference,
-      this.type,
-      this.subType,
-      this.contentDefinition,
-      this.term,
-      this.supportingInfo,
-      this.relevantHistory,
-      this.signer,
-      this.friendly,
-      this.legal,
-      this.rule,
-      this.legallyBindingAttachment,
-      this.legallyBindingReference});
+  Contract({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.url,
+    this.elementUrl,
+    this.version,
+    this.elementVersion,
+    this.status,
+    this.elementStatus,
+    this.legalState,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.contentDerivative,
+    this.issued,
+    this.elementIssued,
+    this.applies,
+    this.expirationType,
+    this.subject,
+    this.authority,
+    this.domain,
+    this.site,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.subtitle,
+    this.elementSubtitle,
+    this.alias,
+    this.elementAlias,
+    this.author,
+    this.scope,
+    this.topicCodeableConcept,
+    this.topicReference,
+    this.type,
+    this.subType,
+    this.contentDefinition,
+    this.term,
+    this.supportingInfo,
+    this.relevantHistory,
+    this.signer,
+    this.friendly,
+    this.legal,
+    this.rule,
+    this.legallyBindingAttachment,
+    this.legallyBindingReference,
+  });
 
   factory Contract.fromJson(Map<String, dynamic> json) =>
       _$ContractFromJson(json);
@@ -266,23 +268,24 @@ class Contract {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_ContentDefinition {
-  static Future<Contract_ContentDefinition> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      CodeableConcept subType,
-      Reference publisher,
-      DateTime publicationDate,
-      Element elementPublicationDate,
-      String publicationStatus,
-      Element elementPublicationStatus,
-      String copyright,
-      Element elementCopyright}) async {
+  static Future<Contract_ContentDefinition> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    CodeableConcept subType,
+    Reference publisher,
+    DateTime publicationDate,
+    Element elementPublicationDate,
+    String publicationStatus,
+    Element elementPublicationStatus,
+    String copyright,
+    Element elementCopyright,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_ContentDefinition newContract_ContentDefinition =
         new Contract_ContentDefinition(
-      id: await fhirDb.newResourceId('Contract_ContentDefinition'),
+      id: id ?? await fhirDb.newResourceId('Contract_ContentDefinition'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -311,19 +314,20 @@ class Contract_ContentDefinition {
   String copyright;
   Element elementCopyright;
 
-  Contract_ContentDefinition(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.subType,
-      this.publisher,
-      this.publicationDate,
-      this.elementPublicationDate,
-      this.publicationStatus,
-      this.elementPublicationStatus,
-      this.copyright,
-      this.elementCopyright});
+  Contract_ContentDefinition({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.subType,
+    this.publisher,
+    this.publicationDate,
+    this.elementPublicationDate,
+    this.publicationStatus,
+    this.elementPublicationStatus,
+    this.copyright,
+    this.elementCopyright,
+  });
 
   factory Contract_ContentDefinition.fromJson(Map<String, dynamic> json) =>
       _$Contract_ContentDefinitionFromJson(json);
@@ -332,28 +336,29 @@ class Contract_ContentDefinition {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Term {
-  static Future<Contract_Term> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      DateTime issued,
-      Element elementIssued,
-      Period applies,
-      CodeableConcept topicCodeableConcept,
-      Reference topicReference,
-      CodeableConcept type,
-      CodeableConcept subType,
-      String text,
-      Element elementText,
-      List<Contract_SecurityLabel> securityLabel,
-      Contract_Offer offer,
-      List<Contract_Asset> asset,
-      List<Contract_Action> action,
-      List<Contract_Term> group}) async {
+  static Future<Contract_Term> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    DateTime issued,
+    Element elementIssued,
+    Period applies,
+    CodeableConcept topicCodeableConcept,
+    Reference topicReference,
+    CodeableConcept type,
+    CodeableConcept subType,
+    String text,
+    Element elementText,
+    List<Contract_SecurityLabel> securityLabel,
+    Contract_Offer offer,
+    List<Contract_Asset> asset,
+    List<Contract_Action> action,
+    List<Contract_Term> group,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Term newContract_Term = new Contract_Term(
-      id: await fhirDb.newResourceId('Contract_Term'),
+      id: id ?? await fhirDb.newResourceId('Contract_Term'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -394,25 +399,26 @@ class Contract_Term {
   List<Contract_Action> action;
   List<Contract_Term> group;
 
-  Contract_Term(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.issued,
-      this.elementIssued,
-      this.applies,
-      this.topicCodeableConcept,
-      this.topicReference,
-      this.type,
-      this.subType,
-      this.text,
-      this.elementText,
-      this.securityLabel,
-      @required this.offer,
-      this.asset,
-      this.action,
-      this.group});
+  Contract_Term({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.issued,
+    this.elementIssued,
+    this.applies,
+    this.topicCodeableConcept,
+    this.topicReference,
+    this.type,
+    this.subType,
+    this.text,
+    this.elementText,
+    this.securityLabel,
+    @required this.offer,
+    this.asset,
+    this.action,
+    this.group,
+  });
 
   factory Contract_Term.fromJson(Map<String, dynamic> json) =>
       _$Contract_TermFromJson(json);
@@ -421,19 +427,20 @@ class Contract_Term {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_SecurityLabel {
-  static Future<Contract_SecurityLabel> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<int> number,
-      List<Element> elementNumber,
-      Coding classification,
-      List<Coding> category,
-      List<Coding> control}) async {
+  static Future<Contract_SecurityLabel> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<int> number,
+    List<Element> elementNumber,
+    Coding classification,
+    List<Coding> category,
+    List<Coding> control,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_SecurityLabel newContract_SecurityLabel =
         new Contract_SecurityLabel(
-      id: await fhirDb.newResourceId('Contract_SecurityLabel'),
+      id: id ?? await fhirDb.newResourceId('Contract_SecurityLabel'),
       extension: extension,
       modifierExtension: modifierExtension,
       number: number,
@@ -454,15 +461,16 @@ class Contract_SecurityLabel {
   List<Coding> category;
   List<Coding> control;
 
-  Contract_SecurityLabel(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.number,
-      this.elementNumber,
-      @required this.classification,
-      this.category,
-      this.control});
+  Contract_SecurityLabel({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.number,
+    this.elementNumber,
+    @required this.classification,
+    this.category,
+    this.control,
+  });
 
   factory Contract_SecurityLabel.fromJson(Map<String, dynamic> json) =>
       _$Contract_SecurityLabelFromJson(json);
@@ -471,26 +479,27 @@ class Contract_SecurityLabel {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Offer {
-  static Future<Contract_Offer> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Contract_Party> party,
-      Reference topic,
-      CodeableConcept type,
-      CodeableConcept decision,
-      List<CodeableConcept> decisionMode,
-      List<Contract_Answer> answer,
-      String text,
-      Element elementText,
-      List<String> linkId,
-      List<Element> elementLinkId,
-      List<int> securityLabelNumber,
-      List<Element> elementSecurityLabelNumber}) async {
+  static Future<Contract_Offer> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Contract_Party> party,
+    Reference topic,
+    CodeableConcept type,
+    CodeableConcept decision,
+    List<CodeableConcept> decisionMode,
+    List<Contract_Answer> answer,
+    String text,
+    Element elementText,
+    List<String> linkId,
+    List<Element> elementLinkId,
+    List<int> securityLabelNumber,
+    List<Element> elementSecurityLabelNumber,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Offer newContract_Offer = new Contract_Offer(
-      id: await fhirDb.newResourceId('Contract_Offer'),
+      id: id ?? await fhirDb.newResourceId('Contract_Offer'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -527,23 +536,24 @@ class Contract_Offer {
   List<int> securityLabelNumber;
   List<Element> elementSecurityLabelNumber;
 
-  Contract_Offer(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.party,
-      this.topic,
-      this.type,
-      this.decision,
-      this.decisionMode,
-      this.answer,
-      this.text,
-      this.elementText,
-      this.linkId,
-      this.elementLinkId,
-      this.securityLabelNumber,
-      this.elementSecurityLabelNumber});
+  Contract_Offer({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.party,
+    this.topic,
+    this.type,
+    this.decision,
+    this.decisionMode,
+    this.answer,
+    this.text,
+    this.elementText,
+    this.linkId,
+    this.elementLinkId,
+    this.securityLabelNumber,
+    this.elementSecurityLabelNumber,
+  });
 
   factory Contract_Offer.fromJson(Map<String, dynamic> json) =>
       _$Contract_OfferFromJson(json);
@@ -552,15 +562,16 @@ class Contract_Offer {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Party {
-  static Future<Contract_Party> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Reference> reference,
-      CodeableConcept role}) async {
+  static Future<Contract_Party> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> reference,
+    CodeableConcept role,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Party newContract_Party = new Contract_Party(
-      id: await fhirDb.newResourceId('Contract_Party'),
+      id: id ?? await fhirDb.newResourceId('Contract_Party'),
       extension: extension,
       modifierExtension: modifierExtension,
       reference: reference,
@@ -575,12 +586,13 @@ class Contract_Party {
   List<Reference> reference;
   CodeableConcept role;
 
-  Contract_Party(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.reference,
-      @required this.role});
+  Contract_Party({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.reference,
+    @required this.role,
+  });
 
   factory Contract_Party.fromJson(Map<String, dynamic> json) =>
       _$Contract_PartyFromJson(json);
@@ -589,33 +601,34 @@ class Contract_Party {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Answer {
-  static Future<Contract_Answer> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      int valueDecimal,
-      Element elementValueDecimal,
-      int valueInteger,
-      Element elementValueInteger,
-      String valueDate,
-      Element elementValueDate,
-      String valueDateTime,
-      Element elementValueDateTime,
-      String valueTime,
-      Element elementValueTime,
-      String valueString,
-      Element elementValueString,
-      String valueUri,
-      Element elementValueUri,
-      Attachment valueAttachment,
-      Coding valueCoding,
-      Quantity valueQuantity,
-      Reference valueReference}) async {
+  static Future<Contract_Answer> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueDecimal,
+    Element elementValueDecimal,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    String valueTime,
+    Element elementValueTime,
+    String valueString,
+    Element elementValueString,
+    String valueUri,
+    Element elementValueUri,
+    Attachment valueAttachment,
+    Coding valueCoding,
+    Quantity valueQuantity,
+    Reference valueReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Answer newContract_Answer = new Contract_Answer(
-      id: await fhirDb.newResourceId('Contract_Answer'),
+      id: id ?? await fhirDb.newResourceId('Contract_Answer'),
       extension: extension,
       modifierExtension: modifierExtension,
       valueBoolean: valueBoolean,
@@ -645,54 +658,52 @@ class Contract_Answer {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal;
   Element elementValueDecimal;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  String
-      valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String valueDate;
   Element elementValueDate;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
-  String
-      valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String valueTime;
   Element elementValueTime;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  String valueUri; //  pattern: ^\S*$
+  String valueUri;
   Element elementValueUri;
   Attachment valueAttachment;
   Coding valueCoding;
   Quantity valueQuantity;
   Reference valueReference;
 
-  Contract_Answer(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueDecimal,
-      this.elementValueDecimal,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueDate,
-      this.elementValueDate,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valueTime,
-      this.elementValueTime,
-      this.valueString,
-      this.elementValueString,
-      this.valueUri,
-      this.elementValueUri,
-      this.valueAttachment,
-      this.valueCoding,
-      this.valueQuantity,
-      this.valueReference});
+  Contract_Answer({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueString,
+    this.elementValueString,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueAttachment,
+    this.valueCoding,
+    this.valueQuantity,
+    this.valueReference,
+  });
 
   factory Contract_Answer.fromJson(Map<String, dynamic> json) =>
       _$Contract_AnswerFromJson(json);
@@ -701,32 +712,33 @@ class Contract_Answer {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Asset {
-  static Future<Contract_Asset> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept scope,
-      List<CodeableConcept> type,
-      List<Reference> typeReference,
-      List<CodeableConcept> subtype,
-      Coding relationship,
-      List<Contract_Context> context,
-      String condition,
-      Element elementCondition,
-      List<CodeableConcept> periodType,
-      List<Period> period,
-      List<Period> usePeriod,
-      String text,
-      Element elementText,
-      List<String> linkId,
-      List<Element> elementLinkId,
-      List<Contract_Answer> answer,
-      List<int> securityLabelNumber,
-      List<Element> elementSecurityLabelNumber,
-      List<Contract_ValuedItem> valuedItem}) async {
+  static Future<Contract_Asset> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept scope,
+    List<CodeableConcept> type,
+    List<Reference> typeReference,
+    List<CodeableConcept> subtype,
+    Coding relationship,
+    List<Contract_Context> context,
+    String condition,
+    Element elementCondition,
+    List<CodeableConcept> periodType,
+    List<Period> period,
+    List<Period> usePeriod,
+    String text,
+    Element elementText,
+    List<String> linkId,
+    List<Element> elementLinkId,
+    List<Contract_Answer> answer,
+    List<int> securityLabelNumber,
+    List<Element> elementSecurityLabelNumber,
+    List<Contract_ValuedItem> valuedItem,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Asset newContract_Asset = new Contract_Asset(
-      id: await fhirDb.newResourceId('Contract_Asset'),
+      id: id ?? await fhirDb.newResourceId('Contract_Asset'),
       extension: extension,
       modifierExtension: modifierExtension,
       scope: scope,
@@ -775,29 +787,30 @@ class Contract_Asset {
   List<Element> elementSecurityLabelNumber;
   List<Contract_ValuedItem> valuedItem;
 
-  Contract_Asset(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.scope,
-      this.type,
-      this.typeReference,
-      this.subtype,
-      this.relationship,
-      this.context,
-      this.condition,
-      this.elementCondition,
-      this.periodType,
-      this.period,
-      this.usePeriod,
-      this.text,
-      this.elementText,
-      this.linkId,
-      this.elementLinkId,
-      this.answer,
-      this.securityLabelNumber,
-      this.elementSecurityLabelNumber,
-      this.valuedItem});
+  Contract_Asset({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.scope,
+    this.type,
+    this.typeReference,
+    this.subtype,
+    this.relationship,
+    this.context,
+    this.condition,
+    this.elementCondition,
+    this.periodType,
+    this.period,
+    this.usePeriod,
+    this.text,
+    this.elementText,
+    this.linkId,
+    this.elementLinkId,
+    this.answer,
+    this.securityLabelNumber,
+    this.elementSecurityLabelNumber,
+    this.valuedItem,
+  });
 
   factory Contract_Asset.fromJson(Map<String, dynamic> json) =>
       _$Contract_AssetFromJson(json);
@@ -806,17 +819,18 @@ class Contract_Asset {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Context {
-  static Future<Contract_Context> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference reference,
-      List<CodeableConcept> code,
-      String text,
-      Element elementText}) async {
+  static Future<Contract_Context> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference reference,
+    List<CodeableConcept> code,
+    String text,
+    Element elementText,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Context newContract_Context = new Contract_Context(
-      id: await fhirDb.newResourceId('Contract_Context'),
+      id: id ?? await fhirDb.newResourceId('Contract_Context'),
       extension: extension,
       modifierExtension: modifierExtension,
       reference: reference,
@@ -835,14 +849,15 @@ class Contract_Context {
   String text;
   Element elementText;
 
-  Contract_Context(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.reference,
-      this.code,
-      this.text,
-      this.elementText});
+  Contract_Context({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.reference,
+    this.code,
+    this.text,
+    this.elementText,
+  });
 
   factory Contract_Context.fromJson(Map<String, dynamic> json) =>
       _$Contract_ContextFromJson(json);
@@ -851,35 +866,36 @@ class Contract_Context {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_ValuedItem {
-  static Future<Contract_ValuedItem> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept entityCodeableConcept,
-      Reference entityReference,
-      Identifier identifier,
-      DateTime effectiveTime,
-      Element elementEffectiveTime,
-      Quantity quantity,
-      Money unitPrice,
-      double factor,
-      Element elementFactor,
-      double points,
-      Element elementPoints,
-      Money net,
-      String payment,
-      Element elementPayment,
-      DateTime paymentDate,
-      Element elementPaymentDate,
-      Reference responsible,
-      Reference recipient,
-      List<String> linkId,
-      List<Element> elementLinkId,
-      List<int> securityLabelNumber,
-      List<Element> elementSecurityLabelNumber}) async {
+  static Future<Contract_ValuedItem> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept entityCodeableConcept,
+    Reference entityReference,
+    Identifier identifier,
+    DateTime effectiveTime,
+    Element elementEffectiveTime,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    double points,
+    Element elementPoints,
+    Money net,
+    String payment,
+    Element elementPayment,
+    DateTime paymentDate,
+    Element elementPaymentDate,
+    Reference responsible,
+    Reference recipient,
+    List<String> linkId,
+    List<Element> elementLinkId,
+    List<int> securityLabelNumber,
+    List<Element> elementSecurityLabelNumber,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_ValuedItem newContract_ValuedItem = new Contract_ValuedItem(
-      id: await fhirDb.newResourceId('Contract_ValuedItem'),
+      id: id ?? await fhirDb.newResourceId('Contract_ValuedItem'),
       extension: extension,
       modifierExtension: modifierExtension,
       entityCodeableConcept: entityCodeableConcept,
@@ -934,32 +950,33 @@ class Contract_ValuedItem {
   List<int> securityLabelNumber;
   List<Element> elementSecurityLabelNumber;
 
-  Contract_ValuedItem(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.entityCodeableConcept,
-      this.entityReference,
-      this.identifier,
-      this.effectiveTime,
-      this.elementEffectiveTime,
-      this.quantity,
-      this.unitPrice,
-      this.factor,
-      this.elementFactor,
-      this.points,
-      this.elementPoints,
-      this.net,
-      this.payment,
-      this.elementPayment,
-      this.paymentDate,
-      this.elementPaymentDate,
-      this.responsible,
-      this.recipient,
-      this.linkId,
-      this.elementLinkId,
-      this.securityLabelNumber,
-      this.elementSecurityLabelNumber});
+  Contract_ValuedItem({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.entityCodeableConcept,
+    this.entityReference,
+    this.identifier,
+    this.effectiveTime,
+    this.elementEffectiveTime,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.points,
+    this.elementPoints,
+    this.net,
+    this.payment,
+    this.elementPayment,
+    this.paymentDate,
+    this.elementPaymentDate,
+    this.responsible,
+    this.recipient,
+    this.linkId,
+    this.elementLinkId,
+    this.securityLabelNumber,
+    this.elementSecurityLabelNumber,
+  });
 
   factory Contract_ValuedItem.fromJson(Map<String, dynamic> json) =>
       _$Contract_ValuedItemFromJson(json);
@@ -968,45 +985,46 @@ class Contract_ValuedItem {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Action {
-  static Future<Contract_Action> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool doNotPerform,
-      Element elementDoNotPerform,
-      CodeableConcept type,
-      List<Contract_Subject> subject,
-      CodeableConcept intent,
-      List<String> linkId,
-      List<Element> elementLinkId,
-      CodeableConcept status,
-      Reference context,
-      List<String> contextLinkId,
-      List<Element> elementContextLinkId,
-      String occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Period occurrencePeriod,
-      Timing occurrenceTiming,
-      List<Reference> requester,
-      List<String> requesterLinkId,
-      List<Element> elementRequesterLinkId,
-      List<CodeableConcept> performerType,
-      CodeableConcept performerRole,
-      Reference performer,
-      List<String> performerLinkId,
-      List<Element> elementPerformerLinkId,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<String> reason,
-      List<Element> elementReason,
-      List<String> reasonLinkId,
-      List<Element> elementReasonLinkId,
-      List<Annotation> note,
-      List<int> securityLabelNumber,
-      List<Element> elementSecurityLabelNumber}) async {
+  static Future<Contract_Action> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool doNotPerform,
+    Element elementDoNotPerform,
+    CodeableConcept type,
+    List<Contract_Subject> subject,
+    CodeableConcept intent,
+    List<String> linkId,
+    List<Element> elementLinkId,
+    CodeableConcept status,
+    Reference context,
+    List<String> contextLinkId,
+    List<Element> elementContextLinkId,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    Timing occurrenceTiming,
+    List<Reference> requester,
+    List<String> requesterLinkId,
+    List<Element> elementRequesterLinkId,
+    List<CodeableConcept> performerType,
+    CodeableConcept performerRole,
+    Reference performer,
+    List<String> performerLinkId,
+    List<Element> elementPerformerLinkId,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<String> reason,
+    List<Element> elementReason,
+    List<String> reasonLinkId,
+    List<Element> elementReasonLinkId,
+    List<Annotation> note,
+    List<int> securityLabelNumber,
+    List<Element> elementSecurityLabelNumber,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Action newContract_Action = new Contract_Action(
-      id: await fhirDb.newResourceId('Contract_Action'),
+      id: id ?? await fhirDb.newResourceId('Contract_Action'),
       extension: extension,
       modifierExtension: modifierExtension,
       doNotPerform: doNotPerform,
@@ -1059,8 +1077,7 @@ class Contract_Action {
   Reference context;
   List<String> contextLinkId;
   List<Element> elementContextLinkId;
-  String
-      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String occurrenceDateTime;
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   Timing occurrenceTiming;
@@ -1082,42 +1099,43 @@ class Contract_Action {
   List<int> securityLabelNumber;
   List<Element> elementSecurityLabelNumber;
 
-  Contract_Action(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.doNotPerform,
-      this.elementDoNotPerform,
-      @required this.type,
-      this.subject,
-      @required this.intent,
-      this.linkId,
-      this.elementLinkId,
-      @required this.status,
-      this.context,
-      this.contextLinkId,
-      this.elementContextLinkId,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.occurrencePeriod,
-      this.occurrenceTiming,
-      this.requester,
-      this.requesterLinkId,
-      this.elementRequesterLinkId,
-      this.performerType,
-      this.performerRole,
-      this.performer,
-      this.performerLinkId,
-      this.elementPerformerLinkId,
-      this.reasonCode,
-      this.reasonReference,
-      this.reason,
-      this.elementReason,
-      this.reasonLinkId,
-      this.elementReasonLinkId,
-      this.note,
-      this.securityLabelNumber,
-      this.elementSecurityLabelNumber});
+  Contract_Action({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.doNotPerform,
+    this.elementDoNotPerform,
+    @required this.type,
+    this.subject,
+    @required this.intent,
+    this.linkId,
+    this.elementLinkId,
+    @required this.status,
+    this.context,
+    this.contextLinkId,
+    this.elementContextLinkId,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.occurrenceTiming,
+    this.requester,
+    this.requesterLinkId,
+    this.elementRequesterLinkId,
+    this.performerType,
+    this.performerRole,
+    this.performer,
+    this.performerLinkId,
+    this.elementPerformerLinkId,
+    this.reasonCode,
+    this.reasonReference,
+    this.reason,
+    this.elementReason,
+    this.reasonLinkId,
+    this.elementReasonLinkId,
+    this.note,
+    this.securityLabelNumber,
+    this.elementSecurityLabelNumber,
+  });
 
   factory Contract_Action.fromJson(Map<String, dynamic> json) =>
       _$Contract_ActionFromJson(json);
@@ -1126,15 +1144,16 @@ class Contract_Action {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Subject {
-  static Future<Contract_Subject> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Reference> reference,
-      CodeableConcept role}) async {
+  static Future<Contract_Subject> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> reference,
+    CodeableConcept role,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Subject newContract_Subject = new Contract_Subject(
-      id: await fhirDb.newResourceId('Contract_Subject'),
+      id: id ?? await fhirDb.newResourceId('Contract_Subject'),
       extension: extension,
       modifierExtension: modifierExtension,
       reference: reference,
@@ -1149,12 +1168,13 @@ class Contract_Subject {
   List<Reference> reference;
   CodeableConcept role;
 
-  Contract_Subject(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.reference,
-      this.role});
+  Contract_Subject({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.reference,
+    this.role,
+  });
 
   factory Contract_Subject.fromJson(Map<String, dynamic> json) =>
       _$Contract_SubjectFromJson(json);
@@ -1163,16 +1183,17 @@ class Contract_Subject {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Signer {
-  static Future<Contract_Signer> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Coding type,
-      Reference party,
-      List<Signature> signature}) async {
+  static Future<Contract_Signer> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Coding type,
+    Reference party,
+    List<Signature> signature,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Signer newContract_Signer = new Contract_Signer(
-      id: await fhirDb.newResourceId('Contract_Signer'),
+      id: id ?? await fhirDb.newResourceId('Contract_Signer'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -1189,13 +1210,14 @@ class Contract_Signer {
   Reference party;
   List<Signature> signature;
 
-  Contract_Signer(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      @required this.party,
-      @required this.signature});
+  Contract_Signer({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    @required this.party,
+    @required this.signature,
+  });
 
   factory Contract_Signer.fromJson(Map<String, dynamic> json) =>
       _$Contract_SignerFromJson(json);
@@ -1204,15 +1226,16 @@ class Contract_Signer {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Friendly {
-  static Future<Contract_Friendly> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Attachment contentAttachment,
-      Reference contentReference}) async {
+  static Future<Contract_Friendly> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Attachment contentAttachment,
+    Reference contentReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Friendly newContract_Friendly = new Contract_Friendly(
-      id: await fhirDb.newResourceId('Contract_Friendly'),
+      id: id ?? await fhirDb.newResourceId('Contract_Friendly'),
       extension: extension,
       modifierExtension: modifierExtension,
       contentAttachment: contentAttachment,
@@ -1227,12 +1250,13 @@ class Contract_Friendly {
   Attachment contentAttachment;
   Reference contentReference;
 
-  Contract_Friendly(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.contentAttachment,
-      this.contentReference});
+  Contract_Friendly({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.contentAttachment,
+    this.contentReference,
+  });
 
   factory Contract_Friendly.fromJson(Map<String, dynamic> json) =>
       _$Contract_FriendlyFromJson(json);
@@ -1241,15 +1265,16 @@ class Contract_Friendly {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Legal {
-  static Future<Contract_Legal> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Attachment contentAttachment,
-      Reference contentReference}) async {
+  static Future<Contract_Legal> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Attachment contentAttachment,
+    Reference contentReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Legal newContract_Legal = new Contract_Legal(
-      id: await fhirDb.newResourceId('Contract_Legal'),
+      id: id ?? await fhirDb.newResourceId('Contract_Legal'),
       extension: extension,
       modifierExtension: modifierExtension,
       contentAttachment: contentAttachment,
@@ -1264,12 +1289,13 @@ class Contract_Legal {
   Attachment contentAttachment;
   Reference contentReference;
 
-  Contract_Legal(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.contentAttachment,
-      this.contentReference});
+  Contract_Legal({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.contentAttachment,
+    this.contentReference,
+  });
 
   factory Contract_Legal.fromJson(Map<String, dynamic> json) =>
       _$Contract_LegalFromJson(json);
@@ -1278,15 +1304,16 @@ class Contract_Legal {
 
 @JsonSerializable(explicitToJson: true)
 class Contract_Rule {
-  static Future<Contract_Rule> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Attachment contentAttachment,
-      Reference contentReference}) async {
+  static Future<Contract_Rule> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Attachment contentAttachment,
+    Reference contentReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Contract_Rule newContract_Rule = new Contract_Rule(
-      id: await fhirDb.newResourceId('Contract_Rule'),
+      id: id ?? await fhirDb.newResourceId('Contract_Rule'),
       extension: extension,
       modifierExtension: modifierExtension,
       contentAttachment: contentAttachment,
@@ -1301,12 +1328,13 @@ class Contract_Rule {
   Attachment contentAttachment;
   Reference contentReference;
 
-  Contract_Rule(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.contentAttachment,
-      this.contentReference});
+  Contract_Rule({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.contentAttachment,
+    this.contentReference,
+  });
 
   factory Contract_Rule.fromJson(Map<String, dynamic> json) =>
       _$Contract_RuleFromJson(json);

@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -16,45 +16,46 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification {
-  static Future<SubstanceSpecification> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      CodeableConcept type,
-      CodeableConcept status,
-      CodeableConcept domain,
-      String description,
-      Element elementDescription,
-      List<Reference> source,
-      String comment,
-      Element elementComment,
-      List<SubstanceSpecification_Moiety> moiety,
-      List<SubstanceSpecification_Property> property,
-      Reference referenceInformation,
-      SubstanceSpecification_Structure structure,
-      List<SubstanceSpecification_Code> code,
-      List<SubstanceSpecification_Name> name,
-      List<SubstanceSpecification_MolecularWeight> molecularWeight,
-      List<SubstanceSpecification_Relationship> relationship,
-      Reference nucleicAcid,
-      Reference polymer,
-      Reference protein,
-      Reference sourceMaterial}) async {
+  static Future<SubstanceSpecification> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    CodeableConcept type,
+    CodeableConcept status,
+    CodeableConcept domain,
+    String description,
+    Element elementDescription,
+    List<Reference> source,
+    String comment,
+    Element elementComment,
+    List<SubstanceSpecification_Moiety> moiety,
+    List<SubstanceSpecification_Property> property,
+    Reference referenceInformation,
+    SubstanceSpecification_Structure structure,
+    List<SubstanceSpecification_Code> code,
+    List<SubstanceSpecification_Name> name,
+    List<SubstanceSpecification_MolecularWeight> molecularWeight,
+    List<SubstanceSpecification_Relationship> relationship,
+    Reference nucleicAcid,
+    Reference polymer,
+    Reference protein,
+    Reference sourceMaterial,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification newSubstanceSpecification =
         new SubstanceSpecification(
-      resourceType: 'SubstanceSpecification',
-      id: await fhirDb.newResourceId('SubstanceSpecification'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -88,17 +89,17 @@ class SubstanceSpecification {
     newSubstanceSpecification.meta.createdAt = DateTime.now();
     newSubstanceSpecification.meta.lastUpdated =
         newSubstanceSpecification.meta.createdAt;
-    int saved = await fhirDb.newResource(newSubstanceSpecification);
+    int saved = await fhirDb.saveResource(newSubstanceSpecification);
     return newSubstanceSpecification;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'SubstanceSpecification';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -131,39 +132,40 @@ class SubstanceSpecification {
   Reference protein;
   Reference sourceMaterial;
 
-  SubstanceSpecification(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.type,
-      this.status,
-      this.domain,
-      this.description,
-      this.elementDescription,
-      this.source,
-      this.comment,
-      this.elementComment,
-      this.moiety,
-      this.property,
-      this.referenceInformation,
-      this.structure,
-      this.code,
-      this.name,
-      this.molecularWeight,
-      this.relationship,
-      this.nucleicAcid,
-      this.polymer,
-      this.protein,
-      this.sourceMaterial});
+  SubstanceSpecification({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.type,
+    this.status,
+    this.domain,
+    this.description,
+    this.elementDescription,
+    this.source,
+    this.comment,
+    this.elementComment,
+    this.moiety,
+    this.property,
+    this.referenceInformation,
+    this.structure,
+    this.code,
+    this.name,
+    this.molecularWeight,
+    this.relationship,
+    this.nucleicAcid,
+    this.polymer,
+    this.protein,
+    this.sourceMaterial,
+  });
 
   factory SubstanceSpecification.fromJson(Map<String, dynamic> json) =>
       _$SubstanceSpecificationFromJson(json);
@@ -172,25 +174,26 @@ class SubstanceSpecification {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Moiety {
-  static Future<SubstanceSpecification_Moiety> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept role,
-      Identifier identifier,
-      String name,
-      Element elementName,
-      CodeableConcept stereochemistry,
-      CodeableConcept opticalActivity,
-      String molecularFormula,
-      Element elementMolecularFormula,
-      Quantity amountQuantity,
-      String amountString,
-      Element elementAmountString}) async {
+  static Future<SubstanceSpecification_Moiety> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept role,
+    Identifier identifier,
+    String name,
+    Element elementName,
+    CodeableConcept stereochemistry,
+    CodeableConcept opticalActivity,
+    String molecularFormula,
+    Element elementMolecularFormula,
+    Quantity amountQuantity,
+    String amountString,
+    Element elementAmountString,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Moiety newSubstanceSpecification_Moiety =
         new SubstanceSpecification_Moiety(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Moiety'),
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification_Moiety'),
       extension: extension,
       modifierExtension: modifierExtension,
       role: role,
@@ -220,24 +223,25 @@ class SubstanceSpecification_Moiety {
   String molecularFormula;
   Element elementMolecularFormula;
   Quantity amountQuantity;
-  String amountString; //  pattern: ^[ \r\n\t\S]+$
+  String amountString;
   Element elementAmountString;
 
-  SubstanceSpecification_Moiety(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.role,
-      this.identifier,
-      this.name,
-      this.elementName,
-      this.stereochemistry,
-      this.opticalActivity,
-      this.molecularFormula,
-      this.elementMolecularFormula,
-      this.amountQuantity,
-      this.amountString,
-      this.elementAmountString});
+  SubstanceSpecification_Moiety({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.role,
+    this.identifier,
+    this.name,
+    this.elementName,
+    this.stereochemistry,
+    this.opticalActivity,
+    this.molecularFormula,
+    this.elementMolecularFormula,
+    this.amountQuantity,
+    this.amountString,
+    this.elementAmountString,
+  });
 
   factory SubstanceSpecification_Moiety.fromJson(Map<String, dynamic> json) =>
       _$SubstanceSpecification_MoietyFromJson(json);
@@ -246,23 +250,24 @@ class SubstanceSpecification_Moiety {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Property {
-  static Future<SubstanceSpecification_Property> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept category,
-      CodeableConcept code,
-      String parameters,
-      Element elementParameters,
-      Reference definingSubstanceReference,
-      CodeableConcept definingSubstanceCodeableConcept,
-      Quantity amountQuantity,
-      String amountString,
-      Element elementAmountString}) async {
+  static Future<SubstanceSpecification_Property> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    CodeableConcept code,
+    String parameters,
+    Element elementParameters,
+    Reference definingSubstanceReference,
+    CodeableConcept definingSubstanceCodeableConcept,
+    Quantity amountQuantity,
+    String amountString,
+    Element elementAmountString,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Property newSubstanceSpecification_Property =
         new SubstanceSpecification_Property(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Property'),
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification_Property'),
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -288,22 +293,23 @@ class SubstanceSpecification_Property {
   Reference definingSubstanceReference;
   CodeableConcept definingSubstanceCodeableConcept;
   Quantity amountQuantity;
-  String amountString; //  pattern: ^[ \r\n\t\S]+$
+  String amountString;
   Element elementAmountString;
 
-  SubstanceSpecification_Property(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.category,
-      this.code,
-      this.parameters,
-      this.elementParameters,
-      this.definingSubstanceReference,
-      this.definingSubstanceCodeableConcept,
-      this.amountQuantity,
-      this.amountString,
-      this.elementAmountString});
+  SubstanceSpecification_Property({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.category,
+    this.code,
+    this.parameters,
+    this.elementParameters,
+    this.definingSubstanceReference,
+    this.definingSubstanceCodeableConcept,
+    this.amountQuantity,
+    this.amountString,
+    this.elementAmountString,
+  });
 
   factory SubstanceSpecification_Property.fromJson(Map<String, dynamic> json) =>
       _$SubstanceSpecification_PropertyFromJson(json);
@@ -313,24 +319,25 @@ class SubstanceSpecification_Property {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Structure {
-  static Future<SubstanceSpecification_Structure> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept stereochemistry,
-      CodeableConcept opticalActivity,
-      String molecularFormula,
-      Element elementMolecularFormula,
-      String molecularFormulaByMoiety,
-      Element elementMolecularFormulaByMoiety,
-      List<SubstanceSpecification_Isotope> isotope,
-      SubstanceSpecification_MolecularWeight molecularWeight,
-      List<Reference> source,
-      List<SubstanceSpecification_Representation> representation}) async {
+  static Future<SubstanceSpecification_Structure> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept stereochemistry,
+    CodeableConcept opticalActivity,
+    String molecularFormula,
+    Element elementMolecularFormula,
+    String molecularFormulaByMoiety,
+    Element elementMolecularFormulaByMoiety,
+    List<SubstanceSpecification_Isotope> isotope,
+    SubstanceSpecification_MolecularWeight molecularWeight,
+    List<Reference> source,
+    List<SubstanceSpecification_Representation> representation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Structure newSubstanceSpecification_Structure =
         new SubstanceSpecification_Structure(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Structure'),
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification_Structure'),
       extension: extension,
       modifierExtension: modifierExtension,
       stereochemistry: stereochemistry,
@@ -361,20 +368,21 @@ class SubstanceSpecification_Structure {
   List<Reference> source;
   List<SubstanceSpecification_Representation> representation;
 
-  SubstanceSpecification_Structure(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.stereochemistry,
-      this.opticalActivity,
-      this.molecularFormula,
-      this.elementMolecularFormula,
-      this.molecularFormulaByMoiety,
-      this.elementMolecularFormulaByMoiety,
-      this.isotope,
-      this.molecularWeight,
-      this.source,
-      this.representation});
+  SubstanceSpecification_Structure({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.stereochemistry,
+    this.opticalActivity,
+    this.molecularFormula,
+    this.elementMolecularFormula,
+    this.molecularFormulaByMoiety,
+    this.elementMolecularFormulaByMoiety,
+    this.isotope,
+    this.molecularWeight,
+    this.source,
+    this.representation,
+  });
 
   factory SubstanceSpecification_Structure.fromJson(
           Map<String, dynamic> json) =>
@@ -385,19 +393,20 @@ class SubstanceSpecification_Structure {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Isotope {
-  static Future<SubstanceSpecification_Isotope> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      CodeableConcept name,
-      CodeableConcept substitution,
-      Quantity halfLife,
-      SubstanceSpecification_MolecularWeight molecularWeight}) async {
+  static Future<SubstanceSpecification_Isotope> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    CodeableConcept name,
+    CodeableConcept substitution,
+    Quantity halfLife,
+    SubstanceSpecification_MolecularWeight molecularWeight,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Isotope newSubstanceSpecification_Isotope =
         new SubstanceSpecification_Isotope(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Isotope'),
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification_Isotope'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -418,15 +427,16 @@ class SubstanceSpecification_Isotope {
   Quantity halfLife;
   SubstanceSpecification_MolecularWeight molecularWeight;
 
-  SubstanceSpecification_Isotope(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.name,
-      this.substitution,
-      this.halfLife,
-      this.molecularWeight});
+  SubstanceSpecification_Isotope({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.name,
+    this.substitution,
+    this.halfLife,
+    this.molecularWeight,
+  });
 
   factory SubstanceSpecification_Isotope.fromJson(Map<String, dynamic> json) =>
       _$SubstanceSpecification_IsotopeFromJson(json);
@@ -435,18 +445,20 @@ class SubstanceSpecification_Isotope {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_MolecularWeight {
-  static Future<SubstanceSpecification_MolecularWeight> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept method,
-      CodeableConcept type,
-      Quantity amount}) async {
+  static Future<SubstanceSpecification_MolecularWeight> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept method,
+    CodeableConcept type,
+    Quantity amount,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_MolecularWeight
         newSubstanceSpecification_MolecularWeight =
         new SubstanceSpecification_MolecularWeight(
-      id: await fhirDb.newResourceId('SubstanceSpecification_MolecularWeight'),
+      id: id ??
+          await fhirDb.newResourceId('SubstanceSpecification_MolecularWeight'),
       extension: extension,
       modifierExtension: modifierExtension,
       method: method,
@@ -463,13 +475,14 @@ class SubstanceSpecification_MolecularWeight {
   CodeableConcept type;
   Quantity amount;
 
-  SubstanceSpecification_MolecularWeight(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.method,
-      this.type,
-      this.amount});
+  SubstanceSpecification_MolecularWeight({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.method,
+    this.type,
+    this.amount,
+  });
 
   factory SubstanceSpecification_MolecularWeight.fromJson(
           Map<String, dynamic> json) =>
@@ -480,19 +493,21 @@ class SubstanceSpecification_MolecularWeight {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Representation {
-  static Future<SubstanceSpecification_Representation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      String representation,
-      Element elementRepresentation,
-      Attachment attachment}) async {
+  static Future<SubstanceSpecification_Representation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String representation,
+    Element elementRepresentation,
+    Attachment attachment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Representation
         newSubstanceSpecification_Representation =
         new SubstanceSpecification_Representation(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Representation'),
+      id: id ??
+          await fhirDb.newResourceId('SubstanceSpecification_Representation'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -511,14 +526,15 @@ class SubstanceSpecification_Representation {
   Element elementRepresentation;
   Attachment attachment;
 
-  SubstanceSpecification_Representation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.representation,
-      this.elementRepresentation,
-      this.attachment});
+  SubstanceSpecification_Representation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.representation,
+    this.elementRepresentation,
+    this.attachment,
+  });
 
   factory SubstanceSpecification_Representation.fromJson(
           Map<String, dynamic> json) =>
@@ -529,21 +545,22 @@ class SubstanceSpecification_Representation {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Code {
-  static Future<SubstanceSpecification_Code> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      CodeableConcept status,
-      DateTime statusDate,
-      Element elementStatusDate,
-      String comment,
-      Element elementComment,
-      List<Reference> source}) async {
+  static Future<SubstanceSpecification_Code> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    CodeableConcept status,
+    DateTime statusDate,
+    Element elementStatusDate,
+    String comment,
+    Element elementComment,
+    List<Reference> source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Code newSubstanceSpecification_Code =
         new SubstanceSpecification_Code(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Code'),
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification_Code'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -568,17 +585,18 @@ class SubstanceSpecification_Code {
   Element elementComment;
   List<Reference> source;
 
-  SubstanceSpecification_Code(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.status,
-      this.statusDate,
-      this.elementStatusDate,
-      this.comment,
-      this.elementComment,
-      this.source});
+  SubstanceSpecification_Code({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.status,
+    this.statusDate,
+    this.elementStatusDate,
+    this.comment,
+    this.elementComment,
+    this.source,
+  });
 
   factory SubstanceSpecification_Code.fromJson(Map<String, dynamic> json) =>
       _$SubstanceSpecification_CodeFromJson(json);
@@ -587,27 +605,28 @@ class SubstanceSpecification_Code {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Name {
-  static Future<SubstanceSpecification_Name> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      CodeableConcept type,
-      CodeableConcept status,
-      bool preferred,
-      Element elementPreferred,
-      List<CodeableConcept> language,
-      List<CodeableConcept> domain,
-      List<CodeableConcept> jurisdiction,
-      List<SubstanceSpecification_Name> synonym,
-      List<SubstanceSpecification_Name> translation,
-      List<SubstanceSpecification_Official> official,
-      List<Reference> source}) async {
+  static Future<SubstanceSpecification_Name> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    CodeableConcept type,
+    CodeableConcept status,
+    bool preferred,
+    Element elementPreferred,
+    List<CodeableConcept> language,
+    List<CodeableConcept> domain,
+    List<CodeableConcept> jurisdiction,
+    List<SubstanceSpecification_Name> synonym,
+    List<SubstanceSpecification_Name> translation,
+    List<SubstanceSpecification_Official> official,
+    List<Reference> source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Name newSubstanceSpecification_Name =
         new SubstanceSpecification_Name(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Name'),
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification_Name'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -644,23 +663,24 @@ class SubstanceSpecification_Name {
   List<SubstanceSpecification_Official> official;
   List<Reference> source;
 
-  SubstanceSpecification_Name(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.type,
-      this.status,
-      this.preferred,
-      this.elementPreferred,
-      this.language,
-      this.domain,
-      this.jurisdiction,
-      this.synonym,
-      this.translation,
-      this.official,
-      this.source});
+  SubstanceSpecification_Name({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.type,
+    this.status,
+    this.preferred,
+    this.elementPreferred,
+    this.language,
+    this.domain,
+    this.jurisdiction,
+    this.synonym,
+    this.translation,
+    this.official,
+    this.source,
+  });
 
   factory SubstanceSpecification_Name.fromJson(Map<String, dynamic> json) =>
       _$SubstanceSpecification_NameFromJson(json);
@@ -669,18 +689,19 @@ class SubstanceSpecification_Name {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Official {
-  static Future<SubstanceSpecification_Official> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept authority,
-      CodeableConcept status,
-      DateTime date,
-      Element elementDate}) async {
+  static Future<SubstanceSpecification_Official> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept authority,
+    CodeableConcept status,
+    DateTime date,
+    Element elementDate,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Official newSubstanceSpecification_Official =
         new SubstanceSpecification_Official(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Official'),
+      id: id ?? await fhirDb.newResourceId('SubstanceSpecification_Official'),
       extension: extension,
       modifierExtension: modifierExtension,
       authority: authority,
@@ -699,14 +720,15 @@ class SubstanceSpecification_Official {
   DateTime date;
   Element elementDate;
 
-  SubstanceSpecification_Official(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.authority,
-      this.status,
-      this.date,
-      this.elementDate});
+  SubstanceSpecification_Official({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.authority,
+    this.status,
+    this.date,
+    this.elementDate,
+  });
 
   factory SubstanceSpecification_Official.fromJson(Map<String, dynamic> json) =>
       _$SubstanceSpecification_OfficialFromJson(json);
@@ -716,27 +738,29 @@ class SubstanceSpecification_Official {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceSpecification_Relationship {
-  static Future<SubstanceSpecification_Relationship> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference substanceReference,
-      CodeableConcept substanceCodeableConcept,
-      CodeableConcept relationship,
-      bool isDefining,
-      Element elementIsDefining,
-      Quantity amountQuantity,
-      Range amountRange,
-      Ratio amountRatio,
-      String amountString,
-      Element elementAmountString,
-      Ratio amountRatioLowLimit,
-      CodeableConcept amountType,
-      List<Reference> source}) async {
+  static Future<SubstanceSpecification_Relationship> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference substanceReference,
+    CodeableConcept substanceCodeableConcept,
+    CodeableConcept relationship,
+    bool isDefining,
+    Element elementIsDefining,
+    Quantity amountQuantity,
+    Range amountRange,
+    Ratio amountRatio,
+    String amountString,
+    Element elementAmountString,
+    Ratio amountRatioLowLimit,
+    CodeableConcept amountType,
+    List<Reference> source,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceSpecification_Relationship newSubstanceSpecification_Relationship =
         new SubstanceSpecification_Relationship(
-      id: await fhirDb.newResourceId('SubstanceSpecification_Relationship'),
+      id: id ??
+          await fhirDb.newResourceId('SubstanceSpecification_Relationship'),
       extension: extension,
       modifierExtension: modifierExtension,
       substanceReference: substanceReference,
@@ -767,29 +791,30 @@ class SubstanceSpecification_Relationship {
   Quantity amountQuantity;
   Range amountRange;
   Ratio amountRatio;
-  String amountString; //  pattern: ^[ \r\n\t\S]+$
+  String amountString;
   Element elementAmountString;
   Ratio amountRatioLowLimit;
   CodeableConcept amountType;
   List<Reference> source;
 
-  SubstanceSpecification_Relationship(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.substanceReference,
-      this.substanceCodeableConcept,
-      this.relationship,
-      this.isDefining,
-      this.elementIsDefining,
-      this.amountQuantity,
-      this.amountRange,
-      this.amountRatio,
-      this.amountString,
-      this.elementAmountString,
-      this.amountRatioLowLimit,
-      this.amountType,
-      this.source});
+  SubstanceSpecification_Relationship({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.substanceReference,
+    this.substanceCodeableConcept,
+    this.relationship,
+    this.isDefining,
+    this.elementIsDefining,
+    this.amountQuantity,
+    this.amountRange,
+    this.amountRatio,
+    this.amountString,
+    this.elementAmountString,
+    this.amountRatioLowLimit,
+    this.amountType,
+    this.source,
+  });
 
   factory SubstanceSpecification_Relationship.fromJson(
           Map<String, dynamic> json) =>

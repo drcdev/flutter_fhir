@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,51 +15,52 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CommunicationRequest {
-  static Future<CommunicationRequest> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> basedOn,
-      List<Reference> replaces,
-      Identifier groupIdentifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept statusReason,
-      List<CodeableConcept> category,
-      String priority,
-      Element elementPriority,
-      bool doNotPerform,
-      Element elementDoNotPerform,
-      List<CodeableConcept> medium,
-      Reference subject,
-      List<Reference> about,
-      Reference encounter,
-      List<CommunicationRequest_Payload> payload,
-      String occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Period occurrencePeriod,
-      DateTime authoredOn,
-      Element elementAuthoredOn,
-      Reference requester,
-      List<Reference> recipient,
-      Reference sender,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<Annotation> note}) async {
+  static Future<CommunicationRequest> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    List<Reference> replaces,
+    Identifier groupIdentifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept statusReason,
+    List<CodeableConcept> category,
+    String priority,
+    Element elementPriority,
+    bool doNotPerform,
+    Element elementDoNotPerform,
+    List<CodeableConcept> medium,
+    Reference subject,
+    List<Reference> about,
+    Reference encounter,
+    List<CommunicationRequest_Payload> payload,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    DateTime authoredOn,
+    Element elementAuthoredOn,
+    Reference requester,
+    List<Reference> recipient,
+    Reference sender,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Annotation> note,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CommunicationRequest newCommunicationRequest = new CommunicationRequest(
-      resourceType: 'CommunicationRequest',
-      id: await fhirDb.newResourceId('CommunicationRequest'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('CommunicationRequest'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -100,17 +101,17 @@ class CommunicationRequest {
     newCommunicationRequest.meta.createdAt = DateTime.now();
     newCommunicationRequest.meta.lastUpdated =
         newCommunicationRequest.meta.createdAt;
-    int saved = await fhirDb.newResource(newCommunicationRequest);
+    int saved = await fhirDb.saveResource(newCommunicationRequest);
     return newCommunicationRequest;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'CommunicationRequest';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -138,8 +139,7 @@ class CommunicationRequest {
   List<Reference> about;
   Reference encounter;
   List<CommunicationRequest_Payload> payload;
-  String
-      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String occurrenceDateTime;
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   DateTime authoredOn;
@@ -151,46 +151,47 @@ class CommunicationRequest {
   List<Reference> reasonReference;
   List<Annotation> note;
 
-  CommunicationRequest(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.replaces,
-      this.groupIdentifier,
-      this.status,
-      this.elementStatus,
-      this.statusReason,
-      this.category,
-      this.priority,
-      this.elementPriority,
-      this.doNotPerform,
-      this.elementDoNotPerform,
-      this.medium,
-      this.subject,
-      this.about,
-      this.encounter,
-      this.payload,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.occurrencePeriod,
-      this.authoredOn,
-      this.elementAuthoredOn,
-      this.requester,
-      this.recipient,
-      this.sender,
-      this.reasonCode,
-      this.reasonReference,
-      this.note});
+  CommunicationRequest({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.replaces,
+    this.groupIdentifier,
+    this.status,
+    this.elementStatus,
+    this.statusReason,
+    this.category,
+    this.priority,
+    this.elementPriority,
+    this.doNotPerform,
+    this.elementDoNotPerform,
+    this.medium,
+    this.subject,
+    this.about,
+    this.encounter,
+    this.payload,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.authoredOn,
+    this.elementAuthoredOn,
+    this.requester,
+    this.recipient,
+    this.sender,
+    this.reasonCode,
+    this.reasonReference,
+    this.note,
+  });
 
   factory CommunicationRequest.fromJson(Map<String, dynamic> json) =>
       _$CommunicationRequestFromJson(json);
@@ -199,18 +200,19 @@ class CommunicationRequest {
 
 @JsonSerializable(explicitToJson: true)
 class CommunicationRequest_Payload {
-  static Future<CommunicationRequest_Payload> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String contentString,
-      Element elementContentString,
-      Attachment contentAttachment,
-      Reference contentReference}) async {
+  static Future<CommunicationRequest_Payload> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String contentString,
+    Element elementContentString,
+    Attachment contentAttachment,
+    Reference contentReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CommunicationRequest_Payload newCommunicationRequest_Payload =
         new CommunicationRequest_Payload(
-      id: await fhirDb.newResourceId('CommunicationRequest_Payload'),
+      id: id ?? await fhirDb.newResourceId('CommunicationRequest_Payload'),
       extension: extension,
       modifierExtension: modifierExtension,
       contentString: contentString,
@@ -224,19 +226,20 @@ class CommunicationRequest_Payload {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String contentString; //  pattern: ^[ \r\n\t\S]+$
+  String contentString;
   Element elementContentString;
   Attachment contentAttachment;
   Reference contentReference;
 
-  CommunicationRequest_Payload(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.contentString,
-      this.elementContentString,
-      this.contentAttachment,
-      this.contentReference});
+  CommunicationRequest_Payload({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.contentString,
+    this.elementContentString,
+    this.contentAttachment,
+    this.contentReference,
+  });
 
   factory CommunicationRequest_Payload.fromJson(Map<String, dynamic> json) =>
       _$CommunicationRequest_PayloadFromJson(json);

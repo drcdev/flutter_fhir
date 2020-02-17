@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -11,32 +11,33 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductInteraction {
-  static Future<MedicinalProductInteraction> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Reference> subject,
-      String description,
-      Element elementDescription,
-      List<MedicinalProductInteraction_Interactant> interactant,
-      CodeableConcept type,
-      CodeableConcept effect,
-      CodeableConcept incidence,
-      CodeableConcept management}) async {
+  static Future<MedicinalProductInteraction> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> subject,
+    String description,
+    Element elementDescription,
+    List<MedicinalProductInteraction_Interactant> interactant,
+    CodeableConcept type,
+    CodeableConcept effect,
+    CodeableConcept incidence,
+    CodeableConcept management,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProductInteraction newMedicinalProductInteraction =
         new MedicinalProductInteraction(
-      resourceType: 'MedicinalProductInteraction',
-      id: await fhirDb.newResourceId('MedicinalProductInteraction'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('MedicinalProductInteraction'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -57,17 +58,17 @@ class MedicinalProductInteraction {
     newMedicinalProductInteraction.meta.createdAt = DateTime.now();
     newMedicinalProductInteraction.meta.lastUpdated =
         newMedicinalProductInteraction.meta.createdAt;
-    int saved = await fhirDb.newResource(newMedicinalProductInteraction);
+    int saved = await fhirDb.saveResource(newMedicinalProductInteraction);
     return newMedicinalProductInteraction;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'MedicinalProductInteraction';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -87,26 +88,27 @@ class MedicinalProductInteraction {
   CodeableConcept incidence;
   CodeableConcept management;
 
-  MedicinalProductInteraction(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.subject,
-      this.description,
-      this.elementDescription,
-      this.interactant,
-      this.type,
-      this.effect,
-      this.incidence,
-      this.management});
+  MedicinalProductInteraction({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.subject,
+    this.description,
+    this.elementDescription,
+    this.interactant,
+    this.type,
+    this.effect,
+    this.incidence,
+    this.management,
+  });
 
   factory MedicinalProductInteraction.fromJson(Map<String, dynamic> json) =>
       _$MedicinalProductInteractionFromJson(json);
@@ -115,17 +117,19 @@ class MedicinalProductInteraction {
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductInteraction_Interactant {
-  static Future<MedicinalProductInteraction_Interactant> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference itemReference,
-      CodeableConcept itemCodeableConcept}) async {
+  static Future<MedicinalProductInteraction_Interactant> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference itemReference,
+    CodeableConcept itemCodeableConcept,
+  }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProductInteraction_Interactant
         newMedicinalProductInteraction_Interactant =
         new MedicinalProductInteraction_Interactant(
-      id: await fhirDb.newResourceId('MedicinalProductInteraction_Interactant'),
+      id: id ??
+          await fhirDb.newResourceId('MedicinalProductInteraction_Interactant'),
       extension: extension,
       modifierExtension: modifierExtension,
       itemReference: itemReference,
@@ -140,12 +144,13 @@ class MedicinalProductInteraction_Interactant {
   Reference itemReference;
   CodeableConcept itemCodeableConcept;
 
-  MedicinalProductInteraction_Interactant(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.itemReference,
-      this.itemCodeableConcept});
+  MedicinalProductInteraction_Interactant({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.itemReference,
+    this.itemCodeableConcept,
+  });
 
   factory MedicinalProductInteraction_Interactant.fromJson(
           Map<String, dynamic> json) =>

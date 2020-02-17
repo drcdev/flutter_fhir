@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -17,38 +17,39 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class RelatedPerson {
-  static Future<RelatedPerson> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      bool active,
-      Element elementActive,
-      Reference patient,
-      List<CodeableConcept> relationship,
-      List<HumanName> name,
-      List<ContactPoint> telecom,
-      String gender,
-      Element elementGender,
-      String birthDate,
-      Element elementBirthDate,
-      List<Address> address,
-      List<Attachment> photo,
-      Period period,
-      List<RelatedPerson_Communication> communication}) async {
+  static Future<RelatedPerson> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    Reference patient,
+    List<CodeableConcept> relationship,
+    List<HumanName> name,
+    List<ContactPoint> telecom,
+    String gender,
+    Element elementGender,
+    String birthDate,
+    Element elementBirthDate,
+    List<Address> address,
+    List<Attachment> photo,
+    Period period,
+    List<RelatedPerson_Communication> communication,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RelatedPerson newRelatedPerson = new RelatedPerson(
-      resourceType: 'RelatedPerson',
-      id: await fhirDb.newResourceId('RelatedPerson'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('RelatedPerson'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -75,17 +76,17 @@ class RelatedPerson {
     );
     newRelatedPerson.meta.createdAt = DateTime.now();
     newRelatedPerson.meta.lastUpdated = newRelatedPerson.meta.createdAt;
-    int saved = await fhirDb.newResource(newRelatedPerson);
+    int saved = await fhirDb.saveResource(newRelatedPerson);
     return newRelatedPerson;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'RelatedPerson';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -103,7 +104,7 @@ class RelatedPerson {
   List<CodeableConcept> relationship;
   List<HumanName> name;
   List<ContactPoint> telecom;
-  String gender; // <code> enum: male/female/other/unknown;
+  String gender;
   Element elementGender;
   String birthDate;
   Element elementBirthDate;
@@ -112,33 +113,34 @@ class RelatedPerson {
   Period period;
   List<RelatedPerson_Communication> communication;
 
-  RelatedPerson(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.active,
-      this.elementActive,
-      @required this.patient,
-      this.relationship,
-      this.name,
-      this.telecom,
-      this.gender,
-      this.elementGender,
-      this.birthDate,
-      this.elementBirthDate,
-      this.address,
-      this.photo,
-      this.period,
-      this.communication});
+  RelatedPerson({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    @required this.patient,
+    this.relationship,
+    this.name,
+    this.telecom,
+    this.gender,
+    this.elementGender,
+    this.birthDate,
+    this.elementBirthDate,
+    this.address,
+    this.photo,
+    this.period,
+    this.communication,
+  });
 
   factory RelatedPerson.fromJson(Map<String, dynamic> json) =>
       _$RelatedPersonFromJson(json);
@@ -147,17 +149,18 @@ class RelatedPerson {
 
 @JsonSerializable(explicitToJson: true)
 class RelatedPerson_Communication {
-  static Future<RelatedPerson_Communication> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept language,
-      bool preferred,
-      Element elementPreferred}) async {
+  static Future<RelatedPerson_Communication> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept language,
+    bool preferred,
+    Element elementPreferred,
+  }) async {
     var fhirDb = new DatabaseHelper();
     RelatedPerson_Communication newRelatedPerson_Communication =
         new RelatedPerson_Communication(
-      id: await fhirDb.newResourceId('RelatedPerson_Communication'),
+      id: id ?? await fhirDb.newResourceId('RelatedPerson_Communication'),
       extension: extension,
       modifierExtension: modifierExtension,
       language: language,
@@ -174,13 +177,14 @@ class RelatedPerson_Communication {
   bool preferred;
   Element elementPreferred;
 
-  RelatedPerson_Communication(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.language,
-      this.preferred,
-      this.elementPreferred});
+  RelatedPerson_Communication({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.language,
+    this.preferred,
+    this.elementPreferred,
+  });
 
   factory RelatedPerson_Communication.fromJson(Map<String, dynamic> json) =>
       _$RelatedPerson_CommunicationFromJson(json);

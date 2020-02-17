@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -8,23 +8,24 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Signature {
-  static Future<Signature> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Coding> type,
-      DateTime when,
-      Element elementWhen,
-      Reference who,
-      Reference onBehalfOf,
-      String targetFormat,
-      Element elementTargetFormat,
-      String sigFormat,
-      Element elementSigFormat,
-      String data,
-      Element elementData}) async {
+  static Future<Signature> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Coding> type,
+    DateTime when,
+    Element elementWhen,
+    Reference who,
+    Reference onBehalfOf,
+    String targetFormat,
+    Element elementTargetFormat,
+    String sigFormat,
+    Element elementSigFormat,
+    String data,
+    Element elementData,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Signature newSignature = new Signature(
-      id: await fhirDb.newResourceId('Signature'),
+      id: id ?? await fhirDb.newResourceId('Signature'),
       extension: extension,
       type: type,
       when: when,
@@ -55,20 +56,21 @@ class Signature {
   String data;
   Element elementData;
 
-  Signature(
-      {this.id,
-      this.extension,
-      @required this.type,
-      this.when,
-      this.elementWhen,
-      @required this.who,
-      this.onBehalfOf,
-      this.targetFormat,
-      this.elementTargetFormat,
-      this.sigFormat,
-      this.elementSigFormat,
-      this.data,
-      this.elementData});
+  Signature({
+    this.id,
+    this.extension,
+    @required this.type,
+    this.when,
+    this.elementWhen,
+    @required this.who,
+    this.onBehalfOf,
+    this.targetFormat,
+    this.elementTargetFormat,
+    this.sigFormat,
+    this.elementSigFormat,
+    this.data,
+    this.elementData,
+  });
 
   factory Signature.fromJson(Map<String, dynamic> json) =>
       _$SignatureFromJson(json);

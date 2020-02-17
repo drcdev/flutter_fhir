@@ -1,29 +1,31 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ParameterDefinition {
-  static Future<ParameterDefinition> newInstance(
-      {String id,
-      List<Extension> extension,
-      String name,
-      Element elementName,
-      String use,
-      Element elementUse,
-      int min,
-      Element elementMin,
-      String max,
-      Element elementMax,
-      String documentation,
-      Element elementDocumentation,
-      String type,
-      Element elementType,
-      String profile}) async {
+  static Future<ParameterDefinition> newInstance({
+    String id,
+    List<Extension> extension,
+    String name,
+    Element elementName,
+    String use,
+    Element elementUse,
+    int min,
+    Element elementMin,
+    String max,
+    Element elementMax,
+    String documentation,
+    Element elementDocumentation,
+    String type,
+    Element elementType,
+    String profile,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ParameterDefinition newParameterDefinition = new ParameterDefinition(
-      id: await fhirDb.newResourceId('ParameterDefinition'),
+      id: id ?? await fhirDb.newResourceId('ParameterDefinition'),
       extension: extension,
       name: name,
       elementName: elementName,
@@ -58,22 +60,23 @@ class ParameterDefinition {
   Element elementType;
   String profile;
 
-  ParameterDefinition(
-      {this.id,
-      this.extension,
-      this.name,
-      this.elementName,
-      this.use,
-      this.elementUse,
-      this.min,
-      this.elementMin,
-      this.max,
-      this.elementMax,
-      this.documentation,
-      this.elementDocumentation,
-      this.type,
-      this.elementType,
-      this.profile});
+  ParameterDefinition({
+    this.id,
+    this.extension,
+    this.name,
+    this.elementName,
+    this.use,
+    this.elementUse,
+    this.min,
+    this.elementMin,
+    this.max,
+    this.elementMax,
+    this.documentation,
+    this.elementDocumentation,
+    this.type,
+    this.elementType,
+    this.profile,
+  });
 
   factory ParameterDefinition.fromJson(Map<String, dynamic> json) =>
       _$ParameterDefinitionFromJson(json);

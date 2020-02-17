@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/sampledData.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
@@ -19,69 +19,70 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Observation {
-  static Future<Observation> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<Reference> basedOn,
-      List<Reference> partOf,
-      String status,
-      Element elementStatus,
-      List<CodeableConcept> category,
-      CodeableConcept code,
-      Reference subject,
-      List<Reference> focus,
-      Reference encounter,
-      String effectiveDateTime,
-      Element elementEffectiveDateTime,
-      Period effectivePeriod,
-      Timing effectiveTiming,
-      String effectiveInstant,
-      Element elementEffectiveInstant,
-      DateTime issued,
-      Element elementIssued,
-      List<Reference> performer,
-      Quantity valueQuantity,
-      CodeableConcept valueCodeableConcept,
-      String valueString,
-      Element elementValueString,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      int valueInteger,
-      Element elementValueInteger,
-      Range valueRange,
-      Ratio valueRatio,
-      SampledData valueSampledData,
-      String valueTime,
-      Element elementValueTime,
-      String valueDateTime,
-      Element elementValueDateTime,
-      Period valuePeriod,
-      CodeableConcept dataAbsentReason,
-      List<CodeableConcept> interpretation,
-      List<Annotation> note,
-      CodeableConcept bodySite,
-      CodeableConcept method,
-      Reference specimen,
-      Reference device,
-      List<Observation_ReferenceRange> referenceRange,
-      List<Reference> hasMember,
-      List<Reference> derivedFrom,
-      List<Observation_Component> component}) async {
+  static Future<Observation> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> category,
+    CodeableConcept code,
+    Reference subject,
+    List<Reference> focus,
+    Reference encounter,
+    String effectiveDateTime,
+    Element elementEffectiveDateTime,
+    Period effectivePeriod,
+    Timing effectiveTiming,
+    String effectiveInstant,
+    Element elementEffectiveInstant,
+    DateTime issued,
+    Element elementIssued,
+    List<Reference> performer,
+    Quantity valueQuantity,
+    CodeableConcept valueCodeableConcept,
+    String valueString,
+    Element elementValueString,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueInteger,
+    Element elementValueInteger,
+    Range valueRange,
+    Ratio valueRatio,
+    SampledData valueSampledData,
+    String valueTime,
+    Element elementValueTime,
+    String valueDateTime,
+    Element elementValueDateTime,
+    Period valuePeriod,
+    CodeableConcept dataAbsentReason,
+    List<CodeableConcept> interpretation,
+    List<Annotation> note,
+    CodeableConcept bodySite,
+    CodeableConcept method,
+    Reference specimen,
+    Reference device,
+    List<Observation_ReferenceRange> referenceRange,
+    List<Reference> hasMember,
+    List<Reference> derivedFrom,
+    List<Observation_Component> component,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Observation newObservation = new Observation(
-      resourceType: 'Observation',
-      id: await fhirDb.newResourceId('Observation'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Observation'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -139,17 +140,17 @@ class Observation {
     );
     newObservation.meta.createdAt = DateTime.now();
     newObservation.meta.lastUpdated = newObservation.meta.createdAt;
-    int saved = await fhirDb.newResource(newObservation);
+    int saved = await fhirDb.saveResource(newObservation);
     return newObservation;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Observation';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -163,41 +164,36 @@ class Observation {
   List<Identifier> identifier;
   List<Reference> basedOn;
   List<Reference> partOf;
-  String
-      status; // <code> enum: registered/preliminary/final/amended/corrected/cancelled/entered-in-error/unknown;
+  String status;
   Element elementStatus;
   List<CodeableConcept> category;
   CodeableConcept code;
   Reference subject;
   List<Reference> focus;
   Reference encounter;
-  String
-      effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String effectiveDateTime;
   Element elementEffectiveDateTime;
   Period effectivePeriod;
   Timing effectiveTiming;
-  String
-      effectiveInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
+  String effectiveInstant;
   Element elementEffectiveInstant;
   DateTime issued;
   Element elementIssued;
   List<Reference> performer;
   Quantity valueQuantity;
   CodeableConcept valueCodeableConcept;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
   Range valueRange;
   Ratio valueRatio;
   SampledData valueSampledData;
-  String
-      valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String valueTime;
   Element elementValueTime;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
   Period valuePeriod;
   CodeableConcept dataAbsentReason;
@@ -212,64 +208,65 @@ class Observation {
   List<Reference> derivedFrom;
   List<Observation_Component> component;
 
-  Observation(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.partOf,
-      this.status,
-      this.elementStatus,
-      this.category,
-      @required this.code,
-      this.subject,
-      this.focus,
-      this.encounter,
-      this.effectiveDateTime,
-      this.elementEffectiveDateTime,
-      this.effectivePeriod,
-      this.effectiveTiming,
-      this.effectiveInstant,
-      this.elementEffectiveInstant,
-      this.issued,
-      this.elementIssued,
-      this.performer,
-      this.valueQuantity,
-      this.valueCodeableConcept,
-      this.valueString,
-      this.elementValueString,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueRange,
-      this.valueRatio,
-      this.valueSampledData,
-      this.valueTime,
-      this.elementValueTime,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valuePeriod,
-      this.dataAbsentReason,
-      this.interpretation,
-      this.note,
-      this.bodySite,
-      this.method,
-      this.specimen,
-      this.device,
-      this.referenceRange,
-      this.hasMember,
-      this.derivedFrom,
-      this.component});
+  Observation({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.category,
+    @required this.code,
+    this.subject,
+    this.focus,
+    this.encounter,
+    this.effectiveDateTime,
+    this.elementEffectiveDateTime,
+    this.effectivePeriod,
+    this.effectiveTiming,
+    this.effectiveInstant,
+    this.elementEffectiveInstant,
+    this.issued,
+    this.elementIssued,
+    this.performer,
+    this.valueQuantity,
+    this.valueCodeableConcept,
+    this.valueString,
+    this.elementValueString,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueRange,
+    this.valueRatio,
+    this.valueSampledData,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valuePeriod,
+    this.dataAbsentReason,
+    this.interpretation,
+    this.note,
+    this.bodySite,
+    this.method,
+    this.specimen,
+    this.device,
+    this.referenceRange,
+    this.hasMember,
+    this.derivedFrom,
+    this.component,
+  });
 
   factory Observation.fromJson(Map<String, dynamic> json) =>
       _$ObservationFromJson(json);
@@ -278,21 +275,22 @@ class Observation {
 
 @JsonSerializable(explicitToJson: true)
 class Observation_ReferenceRange {
-  static Future<Observation_ReferenceRange> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Quantity low,
-      Quantity high,
-      CodeableConcept type,
-      List<CodeableConcept> appliesTo,
-      Range age,
-      String text,
-      Element elementText}) async {
+  static Future<Observation_ReferenceRange> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Quantity low,
+    Quantity high,
+    CodeableConcept type,
+    List<CodeableConcept> appliesTo,
+    Range age,
+    String text,
+    Element elementText,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Observation_ReferenceRange newObservation_ReferenceRange =
         new Observation_ReferenceRange(
-      id: await fhirDb.newResourceId('Observation_ReferenceRange'),
+      id: id ?? await fhirDb.newResourceId('Observation_ReferenceRange'),
       extension: extension,
       modifierExtension: modifierExtension,
       low: low,
@@ -317,17 +315,18 @@ class Observation_ReferenceRange {
   String text;
   Element elementText;
 
-  Observation_ReferenceRange(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.low,
-      this.high,
-      this.type,
-      this.appliesTo,
-      this.age,
-      this.text,
-      this.elementText});
+  Observation_ReferenceRange({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.low,
+    this.high,
+    this.type,
+    this.appliesTo,
+    this.age,
+    this.text,
+    this.elementText,
+  });
 
   factory Observation_ReferenceRange.fromJson(Map<String, dynamic> json) =>
       _$Observation_ReferenceRangeFromJson(json);
@@ -336,33 +335,34 @@ class Observation_ReferenceRange {
 
 @JsonSerializable(explicitToJson: true)
 class Observation_Component {
-  static Future<Observation_Component> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code,
-      Quantity valueQuantity,
-      CodeableConcept valueCodeableConcept,
-      String valueString,
-      Element elementValueString,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      int valueInteger,
-      Element elementValueInteger,
-      Range valueRange,
-      Ratio valueRatio,
-      SampledData valueSampledData,
-      String valueTime,
-      Element elementValueTime,
-      String valueDateTime,
-      Element elementValueDateTime,
-      Period valuePeriod,
-      CodeableConcept dataAbsentReason,
-      List<CodeableConcept> interpretation,
-      List<Observation_ReferenceRange> referenceRange}) async {
+  static Future<Observation_Component> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    Quantity valueQuantity,
+    CodeableConcept valueCodeableConcept,
+    String valueString,
+    Element elementValueString,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueInteger,
+    Element elementValueInteger,
+    Range valueRange,
+    Ratio valueRatio,
+    SampledData valueSampledData,
+    String valueTime,
+    Element elementValueTime,
+    String valueDateTime,
+    Element elementValueDateTime,
+    Period valuePeriod,
+    CodeableConcept dataAbsentReason,
+    List<CodeableConcept> interpretation,
+    List<Observation_ReferenceRange> referenceRange,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Observation_Component newObservation_Component = new Observation_Component(
-      id: await fhirDb.newResourceId('Observation_Component'),
+      id: id ?? await fhirDb.newResourceId('Observation_Component'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -395,50 +395,49 @@ class Observation_Component {
   CodeableConcept code;
   Quantity valueQuantity;
   CodeableConcept valueCodeableConcept;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
   Range valueRange;
   Ratio valueRatio;
   SampledData valueSampledData;
-  String
-      valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String valueTime;
   Element elementValueTime;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
   Period valuePeriod;
   CodeableConcept dataAbsentReason;
   List<CodeableConcept> interpretation;
   List<Observation_ReferenceRange> referenceRange;
 
-  Observation_Component(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.code,
-      this.valueQuantity,
-      this.valueCodeableConcept,
-      this.valueString,
-      this.elementValueString,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueRange,
-      this.valueRatio,
-      this.valueSampledData,
-      this.valueTime,
-      this.elementValueTime,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valuePeriod,
-      this.dataAbsentReason,
-      this.interpretation,
-      this.referenceRange});
+  Observation_Component({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+    this.valueQuantity,
+    this.valueCodeableConcept,
+    this.valueString,
+    this.elementValueString,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueRange,
+    this.valueRatio,
+    this.valueSampledData,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valuePeriod,
+    this.dataAbsentReason,
+    this.interpretation,
+    this.referenceRange,
+  });
 
   factory Observation_Component.fromJson(Map<String, dynamic> json) =>
       _$Observation_ComponentFromJson(json);

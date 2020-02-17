@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -12,30 +12,31 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid {
-  static Future<SubstanceNucleicAcid> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept sequenceType,
-      int numberOfSubunits,
-      Element elementNumberOfSubunits,
-      String areaOfHybridisation,
-      Element elementAreaOfHybridisation,
-      CodeableConcept oligoNucleotideType,
-      List<SubstanceNucleicAcid_Subunit> subunit}) async {
+  static Future<SubstanceNucleicAcid> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept sequenceType,
+    int numberOfSubunits,
+    Element elementNumberOfSubunits,
+    String areaOfHybridisation,
+    Element elementAreaOfHybridisation,
+    CodeableConcept oligoNucleotideType,
+    List<SubstanceNucleicAcid_Subunit> subunit,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceNucleicAcid newSubstanceNucleicAcid = new SubstanceNucleicAcid(
-      resourceType: 'SubstanceNucleicAcid',
-      id: await fhirDb.newResourceId('SubstanceNucleicAcid'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('SubstanceNucleicAcid'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -55,17 +56,17 @@ class SubstanceNucleicAcid {
     newSubstanceNucleicAcid.meta.createdAt = DateTime.now();
     newSubstanceNucleicAcid.meta.lastUpdated =
         newSubstanceNucleicAcid.meta.createdAt;
-    int saved = await fhirDb.newResource(newSubstanceNucleicAcid);
+    int saved = await fhirDb.saveResource(newSubstanceNucleicAcid);
     return newSubstanceNucleicAcid;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'SubstanceNucleicAcid';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -84,25 +85,26 @@ class SubstanceNucleicAcid {
   CodeableConcept oligoNucleotideType;
   List<SubstanceNucleicAcid_Subunit> subunit;
 
-  SubstanceNucleicAcid(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.sequenceType,
-      this.numberOfSubunits,
-      this.elementNumberOfSubunits,
-      this.areaOfHybridisation,
-      this.elementAreaOfHybridisation,
-      this.oligoNucleotideType,
-      this.subunit});
+  SubstanceNucleicAcid({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.sequenceType,
+    this.numberOfSubunits,
+    this.elementNumberOfSubunits,
+    this.areaOfHybridisation,
+    this.elementAreaOfHybridisation,
+    this.oligoNucleotideType,
+    this.subunit,
+  });
 
   factory SubstanceNucleicAcid.fromJson(Map<String, dynamic> json) =>
       _$SubstanceNucleicAcidFromJson(json);
@@ -111,25 +113,26 @@ class SubstanceNucleicAcid {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid_Subunit {
-  static Future<SubstanceNucleicAcid_Subunit> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      int subunit,
-      Element elementSubunit,
-      String sequence,
-      Element elementSequence,
-      int length,
-      Element elementLength,
-      Attachment sequenceAttachment,
-      CodeableConcept fivePrime,
-      CodeableConcept threePrime,
-      List<SubstanceNucleicAcid_Linkage> linkage,
-      List<SubstanceNucleicAcid_Sugar> sugar}) async {
+  static Future<SubstanceNucleicAcid_Subunit> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int subunit,
+    Element elementSubunit,
+    String sequence,
+    Element elementSequence,
+    int length,
+    Element elementLength,
+    Attachment sequenceAttachment,
+    CodeableConcept fivePrime,
+    CodeableConcept threePrime,
+    List<SubstanceNucleicAcid_Linkage> linkage,
+    List<SubstanceNucleicAcid_Sugar> sugar,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceNucleicAcid_Subunit newSubstanceNucleicAcid_Subunit =
         new SubstanceNucleicAcid_Subunit(
-      id: await fhirDb.newResourceId('SubstanceNucleicAcid_Subunit'),
+      id: id ?? await fhirDb.newResourceId('SubstanceNucleicAcid_Subunit'),
       extension: extension,
       modifierExtension: modifierExtension,
       subunit: subunit,
@@ -162,21 +165,22 @@ class SubstanceNucleicAcid_Subunit {
   List<SubstanceNucleicAcid_Linkage> linkage;
   List<SubstanceNucleicAcid_Sugar> sugar;
 
-  SubstanceNucleicAcid_Subunit(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.subunit,
-      this.elementSubunit,
-      this.sequence,
-      this.elementSequence,
-      this.length,
-      this.elementLength,
-      this.sequenceAttachment,
-      this.fivePrime,
-      this.threePrime,
-      this.linkage,
-      this.sugar});
+  SubstanceNucleicAcid_Subunit({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.subunit,
+    this.elementSubunit,
+    this.sequence,
+    this.elementSequence,
+    this.length,
+    this.elementLength,
+    this.sequenceAttachment,
+    this.fivePrime,
+    this.threePrime,
+    this.linkage,
+    this.sugar,
+  });
 
   factory SubstanceNucleicAcid_Subunit.fromJson(Map<String, dynamic> json) =>
       _$SubstanceNucleicAcid_SubunitFromJson(json);
@@ -185,21 +189,22 @@ class SubstanceNucleicAcid_Subunit {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid_Linkage {
-  static Future<SubstanceNucleicAcid_Linkage> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String connectivity,
-      Element elementConnectivity,
-      Identifier identifier,
-      String name,
-      Element elementName,
-      String residueSite,
-      Element elementResidueSite}) async {
+  static Future<SubstanceNucleicAcid_Linkage> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String connectivity,
+    Element elementConnectivity,
+    Identifier identifier,
+    String name,
+    Element elementName,
+    String residueSite,
+    Element elementResidueSite,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceNucleicAcid_Linkage newSubstanceNucleicAcid_Linkage =
         new SubstanceNucleicAcid_Linkage(
-      id: await fhirDb.newResourceId('SubstanceNucleicAcid_Linkage'),
+      id: id ?? await fhirDb.newResourceId('SubstanceNucleicAcid_Linkage'),
       extension: extension,
       modifierExtension: modifierExtension,
       connectivity: connectivity,
@@ -224,17 +229,18 @@ class SubstanceNucleicAcid_Linkage {
   String residueSite;
   Element elementResidueSite;
 
-  SubstanceNucleicAcid_Linkage(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.connectivity,
-      this.elementConnectivity,
-      this.identifier,
-      this.name,
-      this.elementName,
-      this.residueSite,
-      this.elementResidueSite});
+  SubstanceNucleicAcid_Linkage({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.connectivity,
+    this.elementConnectivity,
+    this.identifier,
+    this.name,
+    this.elementName,
+    this.residueSite,
+    this.elementResidueSite,
+  });
 
   factory SubstanceNucleicAcid_Linkage.fromJson(Map<String, dynamic> json) =>
       _$SubstanceNucleicAcid_LinkageFromJson(json);
@@ -243,19 +249,20 @@ class SubstanceNucleicAcid_Linkage {
 
 @JsonSerializable(explicitToJson: true)
 class SubstanceNucleicAcid_Sugar {
-  static Future<SubstanceNucleicAcid_Sugar> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      String name,
-      Element elementName,
-      String residueSite,
-      Element elementResidueSite}) async {
+  static Future<SubstanceNucleicAcid_Sugar> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    String name,
+    Element elementName,
+    String residueSite,
+    Element elementResidueSite,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceNucleicAcid_Sugar newSubstanceNucleicAcid_Sugar =
         new SubstanceNucleicAcid_Sugar(
-      id: await fhirDb.newResourceId('SubstanceNucleicAcid_Sugar'),
+      id: id ?? await fhirDb.newResourceId('SubstanceNucleicAcid_Sugar'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -276,15 +283,16 @@ class SubstanceNucleicAcid_Sugar {
   String residueSite;
   Element elementResidueSite;
 
-  SubstanceNucleicAcid_Sugar(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.name,
-      this.elementName,
-      this.residueSite,
-      this.elementResidueSite});
+  SubstanceNucleicAcid_Sugar({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.name,
+    this.elementName,
+    this.residueSite,
+    this.elementResidueSite,
+  });
 
   factory SubstanceNucleicAcid_Sugar.fromJson(Map<String, dynamic> json) =>
       _$SubstanceNucleicAcid_SugarFromJson(json);

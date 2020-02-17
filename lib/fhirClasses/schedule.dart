@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -13,33 +13,34 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Schedule {
-  static Future<Schedule> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      bool active,
-      Element elementActive,
-      List<CodeableConcept> serviceCategory,
-      List<CodeableConcept> serviceType,
-      List<CodeableConcept> specialty,
-      List<Reference> actor,
-      Period planningHorizon,
-      String comment,
-      Element elementComment}) async {
+  static Future<Schedule> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    List<CodeableConcept> serviceCategory,
+    List<CodeableConcept> serviceType,
+    List<CodeableConcept> specialty,
+    List<Reference> actor,
+    Period planningHorizon,
+    String comment,
+    Element elementComment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Schedule newSchedule = new Schedule(
-      resourceType: 'Schedule',
-      id: await fhirDb.newResourceId('Schedule'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Schedule'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -61,17 +62,17 @@ class Schedule {
     );
     newSchedule.meta.createdAt = DateTime.now();
     newSchedule.meta.lastUpdated = newSchedule.meta.createdAt;
-    int saved = await fhirDb.newResource(newSchedule);
+    int saved = await fhirDb.saveResource(newSchedule);
     return newSchedule;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Schedule';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -93,28 +94,29 @@ class Schedule {
   String comment;
   Element elementComment;
 
-  Schedule(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.active,
-      this.elementActive,
-      this.serviceCategory,
-      this.serviceType,
-      this.specialty,
-      @required this.actor,
-      this.planningHorizon,
-      this.comment,
-      this.elementComment});
+  Schedule({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    this.serviceCategory,
+    this.serviceType,
+    this.specialty,
+    @required this.actor,
+    this.planningHorizon,
+    this.comment,
+    this.elementComment,
+  });
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
       _$ScheduleFromJson(json);

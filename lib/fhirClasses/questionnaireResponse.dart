@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -14,36 +14,37 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class QuestionnaireResponse {
-  static Future<QuestionnaireResponse> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      List<Reference> basedOn,
-      List<Reference> partOf,
-      String questionnaire,
-      String status,
-      Element elementStatus,
-      Reference subject,
-      Reference encounter,
-      DateTime authored,
-      Element elementAuthored,
-      Reference author,
-      Reference source,
-      List<QuestionnaireResponse_Item> item}) async {
+  static Future<QuestionnaireResponse> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    List<Reference> basedOn,
+    List<Reference> partOf,
+    String questionnaire,
+    String status,
+    Element elementStatus,
+    Reference subject,
+    Reference encounter,
+    DateTime authored,
+    Element elementAuthored,
+    Reference author,
+    Reference source,
+    List<QuestionnaireResponse_Item> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     QuestionnaireResponse newQuestionnaireResponse = new QuestionnaireResponse(
-      resourceType: 'QuestionnaireResponse',
-      id: await fhirDb.newResourceId('QuestionnaireResponse'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('QuestionnaireResponse'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -69,17 +70,17 @@ class QuestionnaireResponse {
     newQuestionnaireResponse.meta.createdAt = DateTime.now();
     newQuestionnaireResponse.meta.lastUpdated =
         newQuestionnaireResponse.meta.createdAt;
-    int saved = await fhirDb.newResource(newQuestionnaireResponse);
+    int saved = await fhirDb.saveResource(newQuestionnaireResponse);
     return newQuestionnaireResponse;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'QuestionnaireResponse';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -94,8 +95,7 @@ class QuestionnaireResponse {
   List<Reference> basedOn;
   List<Reference> partOf;
   String questionnaire;
-  String
-      status; // <code> enum: in-progress/completed/amended/entered-in-error/stopped;
+  String status;
   Element elementStatus;
   Reference subject;
   Reference encounter;
@@ -105,31 +105,32 @@ class QuestionnaireResponse {
   Reference source;
   List<QuestionnaireResponse_Item> item;
 
-  QuestionnaireResponse(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.basedOn,
-      this.partOf,
-      this.questionnaire,
-      this.status,
-      this.elementStatus,
-      this.subject,
-      this.encounter,
-      this.authored,
-      this.elementAuthored,
-      this.author,
-      this.source,
-      this.item});
+  QuestionnaireResponse({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.partOf,
+    this.questionnaire,
+    this.status,
+    this.elementStatus,
+    this.subject,
+    this.encounter,
+    this.authored,
+    this.elementAuthored,
+    this.author,
+    this.source,
+    this.item,
+  });
 
   factory QuestionnaireResponse.fromJson(Map<String, dynamic> json) =>
       _$QuestionnaireResponseFromJson(json);
@@ -138,22 +139,23 @@ class QuestionnaireResponse {
 
 @JsonSerializable(explicitToJson: true)
 class QuestionnaireResponse_Item {
-  static Future<QuestionnaireResponse_Item> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String linkId,
-      Element elementLinkId,
-      String definition,
-      Element elementDefinition,
-      String text,
-      Element elementText,
-      List<QuestionnaireResponse_Answer> answer,
-      List<QuestionnaireResponse_Item> item}) async {
+  static Future<QuestionnaireResponse_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String linkId,
+    Element elementLinkId,
+    String definition,
+    Element elementDefinition,
+    String text,
+    Element elementText,
+    List<QuestionnaireResponse_Answer> answer,
+    List<QuestionnaireResponse_Item> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     QuestionnaireResponse_Item newQuestionnaireResponse_Item =
         new QuestionnaireResponse_Item(
-      id: await fhirDb.newResourceId('QuestionnaireResponse_Item'),
+      id: id ?? await fhirDb.newResourceId('QuestionnaireResponse_Item'),
       extension: extension,
       modifierExtension: modifierExtension,
       linkId: linkId,
@@ -180,18 +182,19 @@ class QuestionnaireResponse_Item {
   List<QuestionnaireResponse_Answer> answer;
   List<QuestionnaireResponse_Item> item;
 
-  QuestionnaireResponse_Item(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.linkId,
-      this.elementLinkId,
-      this.definition,
-      this.elementDefinition,
-      this.text,
-      this.elementText,
-      this.answer,
-      this.item});
+  QuestionnaireResponse_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.linkId,
+    this.elementLinkId,
+    this.definition,
+    this.elementDefinition,
+    this.text,
+    this.elementText,
+    this.answer,
+    this.item,
+  });
 
   factory QuestionnaireResponse_Item.fromJson(Map<String, dynamic> json) =>
       _$QuestionnaireResponse_ItemFromJson(json);
@@ -200,35 +203,36 @@ class QuestionnaireResponse_Item {
 
 @JsonSerializable(explicitToJson: true)
 class QuestionnaireResponse_Answer {
-  static Future<QuestionnaireResponse_Answer> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      int valueDecimal,
-      Element elementValueDecimal,
-      int valueInteger,
-      Element elementValueInteger,
-      String valueDate,
-      Element elementValueDate,
-      String valueDateTime,
-      Element elementValueDateTime,
-      String valueTime,
-      Element elementValueTime,
-      String valueString,
-      Element elementValueString,
-      String valueUri,
-      Element elementValueUri,
-      Attachment valueAttachment,
-      Coding valueCoding,
-      Quantity valueQuantity,
-      Reference valueReference,
-      List<QuestionnaireResponse_Item> item}) async {
+  static Future<QuestionnaireResponse_Answer> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueDecimal,
+    Element elementValueDecimal,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    String valueTime,
+    Element elementValueTime,
+    String valueString,
+    Element elementValueString,
+    String valueUri,
+    Element elementValueUri,
+    Attachment valueAttachment,
+    Coding valueCoding,
+    Quantity valueQuantity,
+    Reference valueReference,
+    List<QuestionnaireResponse_Item> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     QuestionnaireResponse_Answer newQuestionnaireResponse_Answer =
         new QuestionnaireResponse_Answer(
-      id: await fhirDb.newResourceId('QuestionnaireResponse_Answer'),
+      id: id ?? await fhirDb.newResourceId('QuestionnaireResponse_Answer'),
       extension: extension,
       modifierExtension: modifierExtension,
       valueBoolean: valueBoolean,
@@ -259,24 +263,21 @@ class QuestionnaireResponse_Answer {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal;
   Element elementValueDecimal;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  String
-      valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String valueDate;
   Element elementValueDate;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
-  String
-      valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+  String valueTime;
   Element elementValueTime;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  String valueUri; //  pattern: ^\S*$
+  String valueUri;
   Element elementValueUri;
   Attachment valueAttachment;
   Coding valueCoding;
@@ -284,31 +285,32 @@ class QuestionnaireResponse_Answer {
   Reference valueReference;
   List<QuestionnaireResponse_Item> item;
 
-  QuestionnaireResponse_Answer(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueDecimal,
-      this.elementValueDecimal,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueDate,
-      this.elementValueDate,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valueTime,
-      this.elementValueTime,
-      this.valueString,
-      this.elementValueString,
-      this.valueUri,
-      this.elementValueUri,
-      this.valueAttachment,
-      this.valueCoding,
-      this.valueQuantity,
-      this.valueReference,
-      this.item});
+  QuestionnaireResponse_Answer({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueString,
+    this.elementValueString,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueAttachment,
+    this.valueCoding,
+    this.valueQuantity,
+    this.valueReference,
+    this.item,
+  });
 
   factory QuestionnaireResponse_Answer.fromJson(Map<String, dynamic> json) =>
       _$QuestionnaireResponse_AnswerFromJson(json);

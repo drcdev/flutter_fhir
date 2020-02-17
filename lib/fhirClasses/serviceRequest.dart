@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -18,70 +18,71 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ServiceRequest {
-  static Future<ServiceRequest> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      List<String> instantiatesCanonical,
-      List<String> instantiatesUri,
-      List<Element> elementInstantiatesUri,
-      List<Reference> basedOn,
-      List<Reference> replaces,
-      Identifier requisition,
-      String status,
-      Element elementStatus,
-      String intent,
-      Element elementIntent,
-      List<CodeableConcept> category,
-      String priority,
-      Element elementPriority,
-      bool doNotPerform,
-      Element elementDoNotPerform,
-      CodeableConcept code,
-      List<CodeableConcept> orderDetail,
-      Quantity quantityQuantity,
-      Ratio quantityRatio,
-      Range quantityRange,
-      Reference subject,
-      Reference encounter,
-      String occurrenceDateTime,
-      Element elementOccurrenceDateTime,
-      Period occurrencePeriod,
-      Timing occurrenceTiming,
-      bool asNeededBoolean,
-      Element elementAsNeededBoolean,
-      CodeableConcept asNeededCodeableConcept,
-      DateTime authoredOn,
-      Element elementAuthoredOn,
-      Reference requester,
-      CodeableConcept performerType,
-      List<Reference> performer,
-      List<CodeableConcept> locationCode,
-      List<Reference> locationReference,
-      List<CodeableConcept> reasonCode,
-      List<Reference> reasonReference,
-      List<Reference> insurance,
-      List<Reference> supportingInfo,
-      List<Reference> specimen,
-      List<CodeableConcept> bodySite,
-      List<Annotation> note,
-      String patientInstruction,
-      Element elementPatientInstruction,
-      List<Reference> relevantHistory}) async {
+  static Future<ServiceRequest> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> instantiatesCanonical,
+    List<String> instantiatesUri,
+    List<Element> elementInstantiatesUri,
+    List<Reference> basedOn,
+    List<Reference> replaces,
+    Identifier requisition,
+    String status,
+    Element elementStatus,
+    String intent,
+    Element elementIntent,
+    List<CodeableConcept> category,
+    String priority,
+    Element elementPriority,
+    bool doNotPerform,
+    Element elementDoNotPerform,
+    CodeableConcept code,
+    List<CodeableConcept> orderDetail,
+    Quantity quantityQuantity,
+    Ratio quantityRatio,
+    Range quantityRange,
+    Reference subject,
+    Reference encounter,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    Timing occurrenceTiming,
+    bool asNeededBoolean,
+    Element elementAsNeededBoolean,
+    CodeableConcept asNeededCodeableConcept,
+    DateTime authoredOn,
+    Element elementAuthoredOn,
+    Reference requester,
+    CodeableConcept performerType,
+    List<Reference> performer,
+    List<CodeableConcept> locationCode,
+    List<Reference> locationReference,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Reference> insurance,
+    List<Reference> supportingInfo,
+    List<Reference> specimen,
+    List<CodeableConcept> bodySite,
+    List<Annotation> note,
+    String patientInstruction,
+    Element elementPatientInstruction,
+    List<Reference> relevantHistory,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ServiceRequest newServiceRequest = new ServiceRequest(
-      resourceType: 'ServiceRequest',
-      id: await fhirDb.newResourceId('ServiceRequest'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ServiceRequest'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -140,17 +141,17 @@ class ServiceRequest {
     );
     newServiceRequest.meta.createdAt = DateTime.now();
     newServiceRequest.meta.lastUpdated = newServiceRequest.meta.createdAt;
-    int saved = await fhirDb.newResource(newServiceRequest);
+    int saved = await fhirDb.saveResource(newServiceRequest);
     return newServiceRequest;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ServiceRequest';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -184,12 +185,11 @@ class ServiceRequest {
   Range quantityRange;
   Reference subject;
   Reference encounter;
-  String
-      occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String occurrenceDateTime;
   Element elementOccurrenceDateTime;
   Period occurrencePeriod;
   Timing occurrenceTiming;
-  bool asNeededBoolean; //  pattern: ^true|false$
+  bool asNeededBoolean;
   Element elementAsNeededBoolean;
   CodeableConcept asNeededCodeableConcept;
   DateTime authoredOn;
@@ -210,65 +210,66 @@ class ServiceRequest {
   Element elementPatientInstruction;
   List<Reference> relevantHistory;
 
-  ServiceRequest(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.instantiatesCanonical,
-      this.instantiatesUri,
-      this.elementInstantiatesUri,
-      this.basedOn,
-      this.replaces,
-      this.requisition,
-      this.status,
-      this.elementStatus,
-      this.intent,
-      this.elementIntent,
-      this.category,
-      this.priority,
-      this.elementPriority,
-      this.doNotPerform,
-      this.elementDoNotPerform,
-      this.code,
-      this.orderDetail,
-      this.quantityQuantity,
-      this.quantityRatio,
-      this.quantityRange,
-      @required this.subject,
-      this.encounter,
-      this.occurrenceDateTime,
-      this.elementOccurrenceDateTime,
-      this.occurrencePeriod,
-      this.occurrenceTiming,
-      this.asNeededBoolean,
-      this.elementAsNeededBoolean,
-      this.asNeededCodeableConcept,
-      this.authoredOn,
-      this.elementAuthoredOn,
-      this.requester,
-      this.performerType,
-      this.performer,
-      this.locationCode,
-      this.locationReference,
-      this.reasonCode,
-      this.reasonReference,
-      this.insurance,
-      this.supportingInfo,
-      this.specimen,
-      this.bodySite,
-      this.note,
-      this.patientInstruction,
-      this.elementPatientInstruction,
-      this.relevantHistory});
+  ServiceRequest({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.basedOn,
+    this.replaces,
+    this.requisition,
+    this.status,
+    this.elementStatus,
+    this.intent,
+    this.elementIntent,
+    this.category,
+    this.priority,
+    this.elementPriority,
+    this.doNotPerform,
+    this.elementDoNotPerform,
+    this.code,
+    this.orderDetail,
+    this.quantityQuantity,
+    this.quantityRatio,
+    this.quantityRange,
+    @required this.subject,
+    this.encounter,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.occurrenceTiming,
+    this.asNeededBoolean,
+    this.elementAsNeededBoolean,
+    this.asNeededCodeableConcept,
+    this.authoredOn,
+    this.elementAuthoredOn,
+    this.requester,
+    this.performerType,
+    this.performer,
+    this.locationCode,
+    this.locationReference,
+    this.reasonCode,
+    this.reasonReference,
+    this.insurance,
+    this.supportingInfo,
+    this.specimen,
+    this.bodySite,
+    this.note,
+    this.patientInstruction,
+    this.elementPatientInstruction,
+    this.relevantHistory,
+  });
 
   factory ServiceRequest.fromJson(Map<String, dynamic> json) =>
       _$ServiceRequestFromJson(json);

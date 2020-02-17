@@ -1,20 +1,22 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CodeableConcept {
-  static Future<CodeableConcept> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Coding> coding,
-      String text,
-      Element elementText}) async {
+  static Future<CodeableConcept> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Coding> coding,
+    String text,
+    Element elementText,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CodeableConcept newCodeableConcept = new CodeableConcept(
-      id: await fhirDb.newResourceId('CodeableConcept'),
+      id: id ?? await fhirDb.newResourceId('CodeableConcept'),
       extension: extension,
       coding: coding,
       text: text,
@@ -29,8 +31,13 @@ class CodeableConcept {
   String text;
   Element elementText;
 
-  CodeableConcept(
-      {this.id, this.extension, this.coding, this.text, this.elementText});
+  CodeableConcept({
+    this.id,
+    this.extension,
+    this.coding,
+    this.text,
+    this.elementText,
+  });
 
   factory CodeableConcept.fromJson(Map<String, dynamic> json) =>
       _$CodeableConceptFromJson(json);

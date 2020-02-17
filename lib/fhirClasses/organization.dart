@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -15,36 +15,37 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Organization {
-  static Future<Organization> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      bool active,
-      Element elementActive,
-      List<CodeableConcept> type,
-      String name,
-      Element elementName,
-      List<String> alias,
-      List<Element> elementAlias,
-      List<ContactPoint> telecom,
-      List<Address> address,
-      Reference partOf,
-      List<Organization_Contact> contact,
-      List<Reference> endpoint}) async {
+  static Future<Organization> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    List<CodeableConcept> type,
+    String name,
+    Element elementName,
+    List<String> alias,
+    List<Element> elementAlias,
+    List<ContactPoint> telecom,
+    List<Address> address,
+    Reference partOf,
+    List<Organization_Contact> contact,
+    List<Reference> endpoint,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Organization newOrganization = new Organization(
-      resourceType: 'Organization',
-      id: await fhirDb.newResourceId('Organization'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Organization'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -69,17 +70,17 @@ class Organization {
     );
     newOrganization.meta.createdAt = DateTime.now();
     newOrganization.meta.lastUpdated = newOrganization.meta.createdAt;
-    int saved = await fhirDb.newResource(newOrganization);
+    int saved = await fhirDb.saveResource(newOrganization);
     return newOrganization;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Organization';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -104,31 +105,32 @@ class Organization {
   List<Organization_Contact> contact;
   List<Reference> endpoint;
 
-  Organization(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.active,
-      this.elementActive,
-      this.type,
-      this.name,
-      this.elementName,
-      this.alias,
-      this.elementAlias,
-      this.telecom,
-      this.address,
-      this.partOf,
-      this.contact,
-      this.endpoint});
+  Organization({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    this.type,
+    this.name,
+    this.elementName,
+    this.alias,
+    this.elementAlias,
+    this.telecom,
+    this.address,
+    this.partOf,
+    this.contact,
+    this.endpoint,
+  });
 
   factory Organization.fromJson(Map<String, dynamic> json) =>
       _$OrganizationFromJson(json);
@@ -137,17 +139,18 @@ class Organization {
 
 @JsonSerializable(explicitToJson: true)
 class Organization_Contact {
-  static Future<Organization_Contact> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept purpose,
-      HumanName name,
-      List<ContactPoint> telecom,
-      Address address}) async {
+  static Future<Organization_Contact> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept purpose,
+    HumanName name,
+    List<ContactPoint> telecom,
+    Address address,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Organization_Contact newOrganization_Contact = new Organization_Contact(
-      id: await fhirDb.newResourceId('Organization_Contact'),
+      id: id ?? await fhirDb.newResourceId('Organization_Contact'),
       extension: extension,
       modifierExtension: modifierExtension,
       purpose: purpose,
@@ -166,14 +169,15 @@ class Organization_Contact {
   List<ContactPoint> telecom;
   Address address;
 
-  Organization_Contact(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.purpose,
-      this.name,
-      this.telecom,
-      this.address});
+  Organization_Contact({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.purpose,
+    this.name,
+    this.telecom,
+    this.address,
+  });
 
   factory Organization_Contact.fromJson(Map<String, dynamic> json) =>
       _$Organization_ContactFromJson(json);

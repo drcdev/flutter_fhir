@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -14,47 +14,48 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse {
-  static Future<CoverageEligibilityResponse> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      List<String> purpose,
-      List<Element> elementPurpose,
-      Reference patient,
-      String servicedDate,
-      Element elementServicedDate,
-      Period servicedPeriod,
-      DateTime created,
-      Element elementCreated,
-      Reference requestor,
-      Reference request,
-      String outcome,
-      Element elementOutcome,
-      String disposition,
-      Element elementDisposition,
-      Reference insurer,
-      List<CoverageEligibilityResponse_Insurance> insurance,
-      String preAuthRef,
-      Element elementPreAuthRef,
-      CodeableConcept form,
-      List<CoverageEligibilityResponse_Error> error}) async {
+  static Future<CoverageEligibilityResponse> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    String purpose,
+    List<Element> elementPurpose,
+    Reference patient,
+    String servicedDate,
+    Element elementServicedDate,
+    Period servicedPeriod,
+    DateTime created,
+    Element elementCreated,
+    Reference requestor,
+    Reference request,
+    String outcome,
+    Element elementOutcome,
+    String disposition,
+    Element elementDisposition,
+    Reference insurer,
+    List<CoverageEligibilityResponse_Insurance> insurance,
+    String preAuthRef,
+    Element elementPreAuthRef,
+    CodeableConcept form,
+    List<CoverageEligibilityResponse_Error> error,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CoverageEligibilityResponse newCoverageEligibilityResponse =
         new CoverageEligibilityResponse(
-      resourceType: 'CoverageEligibilityResponse',
-      id: await fhirDb.newResourceId('CoverageEligibilityResponse'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -90,17 +91,17 @@ class CoverageEligibilityResponse {
     newCoverageEligibilityResponse.meta.createdAt = DateTime.now();
     newCoverageEligibilityResponse.meta.lastUpdated =
         newCoverageEligibilityResponse.meta.createdAt;
-    int saved = await fhirDb.newResource(newCoverageEligibilityResponse);
+    int saved = await fhirDb.saveResource(newCoverageEligibilityResponse);
     return newCoverageEligibilityResponse;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'CoverageEligibilityResponse';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -114,19 +115,17 @@ class CoverageEligibilityResponse {
   List<Identifier> identifier;
   String status;
   Element elementStatus;
-  List<String>
-      purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
+  String purpose;
   List<Element> elementPurpose;
   Reference patient;
-  String
-      servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+  String servicedDate;
   Element elementServicedDate;
   Period servicedPeriod;
   DateTime created;
   Element elementCreated;
   Reference requestor;
   Reference request;
-  String outcome; // <code> enum: queued/complete/error/partial;
+  String outcome;
   Element elementOutcome;
   String disposition;
   Element elementDisposition;
@@ -137,41 +136,42 @@ class CoverageEligibilityResponse {
   CodeableConcept form;
   List<CoverageEligibilityResponse_Error> error;
 
-  CoverageEligibilityResponse(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.purpose,
-      this.elementPurpose,
-      @required this.patient,
-      this.servicedDate,
-      this.elementServicedDate,
-      this.servicedPeriod,
-      this.created,
-      this.elementCreated,
-      this.requestor,
-      @required this.request,
-      this.outcome,
-      this.elementOutcome,
-      this.disposition,
-      this.elementDisposition,
-      @required this.insurer,
-      this.insurance,
-      this.preAuthRef,
-      this.elementPreAuthRef,
-      this.form,
-      this.error});
+  CoverageEligibilityResponse({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.purpose,
+    this.elementPurpose,
+    @required this.patient,
+    this.servicedDate,
+    this.elementServicedDate,
+    this.servicedPeriod,
+    this.created,
+    this.elementCreated,
+    this.requestor,
+    @required this.request,
+    this.outcome,
+    this.elementOutcome,
+    this.disposition,
+    this.elementDisposition,
+    @required this.insurer,
+    this.insurance,
+    this.preAuthRef,
+    this.elementPreAuthRef,
+    this.form,
+    this.error,
+  });
 
   factory CoverageEligibilityResponse.fromJson(Map<String, dynamic> json) =>
       _$CoverageEligibilityResponseFromJson(json);
@@ -180,20 +180,22 @@ class CoverageEligibilityResponse {
 
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Insurance {
-  static Future<CoverageEligibilityResponse_Insurance> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference coverage,
-      bool inforce,
-      Element elementInforce,
-      Period benefitPeriod,
-      List<CoverageEligibilityResponse_Item> item}) async {
+  static Future<CoverageEligibilityResponse_Insurance> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference coverage,
+    bool inforce,
+    Element elementInforce,
+    Period benefitPeriod,
+    List<CoverageEligibilityResponse_Item> item,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CoverageEligibilityResponse_Insurance
         newCoverageEligibilityResponse_Insurance =
         new CoverageEligibilityResponse_Insurance(
-      id: await fhirDb.newResourceId('CoverageEligibilityResponse_Insurance'),
+      id: id ??
+          await fhirDb.newResourceId('CoverageEligibilityResponse_Insurance'),
       extension: extension,
       modifierExtension: modifierExtension,
       coverage: coverage,
@@ -214,15 +216,16 @@ class CoverageEligibilityResponse_Insurance {
   Period benefitPeriod;
   List<CoverageEligibilityResponse_Item> item;
 
-  CoverageEligibilityResponse_Insurance(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.coverage,
-      this.inforce,
-      this.elementInforce,
-      this.benefitPeriod,
-      this.item});
+  CoverageEligibilityResponse_Insurance({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.coverage,
+    this.inforce,
+    this.elementInforce,
+    this.benefitPeriod,
+    this.item,
+  });
 
   factory CoverageEligibilityResponse_Insurance.fromJson(
           Map<String, dynamic> json) =>
@@ -233,33 +236,34 @@ class CoverageEligibilityResponse_Insurance {
 
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Item {
-  static Future<CoverageEligibilityResponse_Item> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept category,
-      CodeableConcept productOrService,
-      List<CodeableConcept> modifier,
-      Reference provider,
-      bool excluded,
-      Element elementExcluded,
-      String name,
-      Element elementName,
-      String description,
-      Element elementDescription,
-      CodeableConcept network,
-      CodeableConcept unit,
-      CodeableConcept term,
-      List<CoverageEligibilityResponse_Benefit> benefit,
-      bool authorizationRequired,
-      Element elementAuthorizationRequired,
-      List<CodeableConcept> authorizationSupporting,
-      String authorizationUrl,
-      Element elementAuthorizationUrl}) async {
+  static Future<CoverageEligibilityResponse_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    Reference provider,
+    bool excluded,
+    Element elementExcluded,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+    CodeableConcept network,
+    CodeableConcept unit,
+    CodeableConcept term,
+    List<CoverageEligibilityResponse_Benefit> benefit,
+    bool authorizationRequired,
+    Element elementAuthorizationRequired,
+    List<CodeableConcept> authorizationSupporting,
+    String authorizationUrl,
+    Element elementAuthorizationUrl,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CoverageEligibilityResponse_Item newCoverageEligibilityResponse_Item =
         new CoverageEligibilityResponse_Item(
-      id: await fhirDb.newResourceId('CoverageEligibilityResponse_Item'),
+      id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Item'),
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -308,29 +312,30 @@ class CoverageEligibilityResponse_Item {
   String authorizationUrl;
   Element elementAuthorizationUrl;
 
-  CoverageEligibilityResponse_Item(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.category,
-      this.productOrService,
-      this.modifier,
-      this.provider,
-      this.excluded,
-      this.elementExcluded,
-      this.name,
-      this.elementName,
-      this.description,
-      this.elementDescription,
-      this.network,
-      this.unit,
-      this.term,
-      this.benefit,
-      this.authorizationRequired,
-      this.elementAuthorizationRequired,
-      this.authorizationSupporting,
-      this.authorizationUrl,
-      this.elementAuthorizationUrl});
+  CoverageEligibilityResponse_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.category,
+    this.productOrService,
+    this.modifier,
+    this.provider,
+    this.excluded,
+    this.elementExcluded,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+    this.network,
+    this.unit,
+    this.term,
+    this.benefit,
+    this.authorizationRequired,
+    this.elementAuthorizationRequired,
+    this.authorizationSupporting,
+    this.authorizationUrl,
+    this.elementAuthorizationUrl,
+  });
 
   factory CoverageEligibilityResponse_Item.fromJson(
           Map<String, dynamic> json) =>
@@ -341,25 +346,27 @@ class CoverageEligibilityResponse_Item {
 
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Benefit {
-  static Future<CoverageEligibilityResponse_Benefit> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      int allowedUnsignedInt,
-      Element elementAllowedUnsignedInt,
-      String allowedString,
-      Element elementAllowedString,
-      Money allowedMoney,
-      int usedUnsignedInt,
-      Element elementUsedUnsignedInt,
-      String usedString,
-      Element elementUsedString,
-      Money usedMoney}) async {
+  static Future<CoverageEligibilityResponse_Benefit> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    int allowedUnsignedInt,
+    Element elementAllowedUnsignedInt,
+    String allowedString,
+    Element elementAllowedString,
+    Money allowedMoney,
+    int usedUnsignedInt,
+    Element elementUsedUnsignedInt,
+    String usedString,
+    Element elementUsedString,
+    Money usedMoney,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CoverageEligibilityResponse_Benefit newCoverageEligibilityResponse_Benefit =
         new CoverageEligibilityResponse_Benefit(
-      id: await fhirDb.newResourceId('CoverageEligibilityResponse_Benefit'),
+      id: id ??
+          await fhirDb.newResourceId('CoverageEligibilityResponse_Benefit'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -381,32 +388,33 @@ class CoverageEligibilityResponse_Benefit {
   List<Extension> extension;
   List<Extension> modifierExtension;
   CodeableConcept type;
-  int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+  int allowedUnsignedInt;
   Element elementAllowedUnsignedInt;
-  String allowedString; //  pattern: ^[ \r\n\t\S]+$
+  String allowedString;
   Element elementAllowedString;
   Money allowedMoney;
-  int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+  int usedUnsignedInt;
   Element elementUsedUnsignedInt;
-  String usedString; //  pattern: ^[ \r\n\t\S]+$
+  String usedString;
   Element elementUsedString;
   Money usedMoney;
 
-  CoverageEligibilityResponse_Benefit(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.allowedUnsignedInt,
-      this.elementAllowedUnsignedInt,
-      this.allowedString,
-      this.elementAllowedString,
-      this.allowedMoney,
-      this.usedUnsignedInt,
-      this.elementUsedUnsignedInt,
-      this.usedString,
-      this.elementUsedString,
-      this.usedMoney});
+  CoverageEligibilityResponse_Benefit({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.allowedUnsignedInt,
+    this.elementAllowedUnsignedInt,
+    this.allowedString,
+    this.elementAllowedString,
+    this.allowedMoney,
+    this.usedUnsignedInt,
+    this.elementUsedUnsignedInt,
+    this.usedString,
+    this.elementUsedString,
+    this.usedMoney,
+  });
 
   factory CoverageEligibilityResponse_Benefit.fromJson(
           Map<String, dynamic> json) =>
@@ -417,15 +425,16 @@ class CoverageEligibilityResponse_Benefit {
 
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Error {
-  static Future<CoverageEligibilityResponse_Error> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept code}) async {
+  static Future<CoverageEligibilityResponse_Error> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+  }) async {
     var fhirDb = new DatabaseHelper();
     CoverageEligibilityResponse_Error newCoverageEligibilityResponse_Error =
         new CoverageEligibilityResponse_Error(
-      id: await fhirDb.newResourceId('CoverageEligibilityResponse_Error'),
+      id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Error'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -438,8 +447,12 @@ class CoverageEligibilityResponse_Error {
   List<Extension> modifierExtension;
   CodeableConcept code;
 
-  CoverageEligibilityResponse_Error(
-      {this.id, this.extension, this.modifierExtension, @required this.code});
+  CoverageEligibilityResponse_Error({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+  });
 
   factory CoverageEligibilityResponse_Error.fromJson(
           Map<String, dynamic> json) =>
@@ -494,7 +507,7 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     elementStatus: json['elementStatus'] == null
         ? null
         : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
-    purpose: (json['purpose'] as List)?.map((e) => e as String)?.toList(),
+    purpose: json['purpose'] as String,
     elementPurpose: (json['elementPurpose'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))

@@ -1,26 +1,28 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Age {
-  static Future<Age> newInstance(
-      {String id,
-      List<Extension> extension,
-      double value,
-      Element elementValue,
-      String comparator,
-      Element elementComparator,
-      String unit,
-      Element elementUnit,
-      String system,
-      Element elementSystem,
-      String code,
-      Element elementCode}) async {
+  static Future<Age> newInstance({
+    String id,
+    List<Extension> extension,
+    double value,
+    Element elementValue,
+    String comparator,
+    Element elementComparator,
+    String unit,
+    Element elementUnit,
+    String system,
+    Element elementSystem,
+    String code,
+    Element elementCode,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Age newAge = new Age(
-      id: await fhirDb.newResourceId('Age'),
+      id: id ?? await fhirDb.newResourceId('Age'),
       extension: extension,
       value: value,
       elementValue: elementValue,
@@ -40,7 +42,7 @@ class Age {
   List<Extension> extension;
   double value;
   Element elementValue;
-  String comparator; // <code> enum: </<=/>=/>;
+  String comparator;
   Element elementComparator;
   String unit;
   Element elementUnit;
@@ -49,19 +51,20 @@ class Age {
   String code;
   Element elementCode;
 
-  Age(
-      {this.id,
-      this.extension,
-      this.value,
-      this.elementValue,
-      this.comparator,
-      this.elementComparator,
-      this.unit,
-      this.elementUnit,
-      this.system,
-      this.elementSystem,
-      this.code,
-      this.elementCode});
+  Age({
+    this.id,
+    this.extension,
+    this.value,
+    this.elementValue,
+    this.comparator,
+    this.elementComparator,
+    this.unit,
+    this.elementUnit,
+    this.system,
+    this.elementSystem,
+    this.code,
+    this.elementCode,
+  });
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);
   Map<String, dynamic> toJson() => _$AgeToJson(this);

@@ -1,5 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -10,24 +11,25 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DataRequirement {
-  static Future<DataRequirement> newInstance(
-      {String id,
-      List<Extension> extension,
-      String type,
-      Element elementType,
-      List<String> profile,
-      CodeableConcept subjectCodeableConcept,
-      Reference subjectReference,
-      List<String> mustSupport,
-      List<Element> elementMustSupport,
-      List<DataRequirement_CodeFilter> codeFilter,
-      List<DataRequirement_DateFilter> dateFilter,
-      int limit,
-      Element elementLimit,
-      List<DataRequirement_Sort> sort}) async {
+  static Future<DataRequirement> newInstance({
+    String id,
+    List<Extension> extension,
+    String type,
+    Element elementType,
+    List<String> profile,
+    CodeableConcept subjectCodeableConcept,
+    Reference subjectReference,
+    List<String> mustSupport,
+    List<Element> elementMustSupport,
+    List<DataRequirement_CodeFilter> codeFilter,
+    List<DataRequirement_DateFilter> dateFilter,
+    int limit,
+    Element elementLimit,
+    List<DataRequirement_Sort> sort,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DataRequirement newDataRequirement = new DataRequirement(
-      id: await fhirDb.newResourceId('DataRequirement'),
+      id: id ?? await fhirDb.newResourceId('DataRequirement'),
       extension: extension,
       type: type,
       elementType: elementType,
@@ -60,21 +62,22 @@ class DataRequirement {
   Element elementLimit;
   List<DataRequirement_Sort> sort;
 
-  DataRequirement(
-      {this.id,
-      this.extension,
-      this.type,
-      this.elementType,
-      this.profile,
-      this.subjectCodeableConcept,
-      this.subjectReference,
-      this.mustSupport,
-      this.elementMustSupport,
-      this.codeFilter,
-      this.dateFilter,
-      this.limit,
-      this.elementLimit,
-      this.sort});
+  DataRequirement({
+    this.id,
+    this.extension,
+    this.type,
+    this.elementType,
+    this.profile,
+    this.subjectCodeableConcept,
+    this.subjectReference,
+    this.mustSupport,
+    this.elementMustSupport,
+    this.codeFilter,
+    this.dateFilter,
+    this.limit,
+    this.elementLimit,
+    this.sort,
+  });
 
   factory DataRequirement.fromJson(Map<String, dynamic> json) =>
       _$DataRequirementFromJson(json);
@@ -83,20 +86,21 @@ class DataRequirement {
 
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_CodeFilter {
-  static Future<DataRequirement_CodeFilter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String path,
-      Element elementPath,
-      String searchParam,
-      Element elementSearchParam,
-      String valueSet,
-      List<Coding> code}) async {
+  static Future<DataRequirement_CodeFilter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String path,
+    Element elementPath,
+    String searchParam,
+    Element elementSearchParam,
+    String valueSet,
+    List<Coding> code,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DataRequirement_CodeFilter newDataRequirement_CodeFilter =
         new DataRequirement_CodeFilter(
-      id: await fhirDb.newResourceId('DataRequirement_CodeFilter'),
+      id: id ?? await fhirDb.newResourceId('DataRequirement_CodeFilter'),
       extension: extension,
       modifierExtension: modifierExtension,
       path: path,
@@ -119,16 +123,17 @@ class DataRequirement_CodeFilter {
   String valueSet;
   List<Coding> code;
 
-  DataRequirement_CodeFilter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.path,
-      this.elementPath,
-      this.searchParam,
-      this.elementSearchParam,
-      this.valueSet,
-      this.code});
+  DataRequirement_CodeFilter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.path,
+    this.elementPath,
+    this.searchParam,
+    this.elementSearchParam,
+    this.valueSet,
+    this.code,
+  });
 
   factory DataRequirement_CodeFilter.fromJson(Map<String, dynamic> json) =>
       _$DataRequirement_CodeFilterFromJson(json);
@@ -137,22 +142,23 @@ class DataRequirement_CodeFilter {
 
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_DateFilter {
-  static Future<DataRequirement_DateFilter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String path,
-      Element elementPath,
-      String searchParam,
-      Element elementSearchParam,
-      String valueDateTime,
-      Element elementValueDateTime,
-      Period valuePeriod,
-      Duration valueDuration}) async {
+  static Future<DataRequirement_DateFilter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String path,
+    Element elementPath,
+    String searchParam,
+    Element elementSearchParam,
+    String valueDateTime,
+    Element elementValueDateTime,
+    Period valuePeriod,
+    Duration valueDuration,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DataRequirement_DateFilter newDataRequirement_DateFilter =
         new DataRequirement_DateFilter(
-      id: await fhirDb.newResourceId('DataRequirement_DateFilter'),
+      id: id ?? await fhirDb.newResourceId('DataRequirement_DateFilter'),
       extension: extension,
       modifierExtension: modifierExtension,
       path: path,
@@ -174,24 +180,24 @@ class DataRequirement_DateFilter {
   Element elementPath;
   String searchParam;
   Element elementSearchParam;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
   Period valuePeriod;
   Duration valueDuration;
 
-  DataRequirement_DateFilter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.path,
-      this.elementPath,
-      this.searchParam,
-      this.elementSearchParam,
-      this.valueDateTime,
-      this.elementValueDateTime,
-      this.valuePeriod,
-      this.valueDuration});
+  DataRequirement_DateFilter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.path,
+    this.elementPath,
+    this.searchParam,
+    this.elementSearchParam,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valuePeriod,
+    this.valueDuration,
+  });
 
   factory DataRequirement_DateFilter.fromJson(Map<String, dynamic> json) =>
       _$DataRequirement_DateFilterFromJson(json);
@@ -200,17 +206,18 @@ class DataRequirement_DateFilter {
 
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_Sort {
-  static Future<DataRequirement_Sort> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String path,
-      Element elementPath,
-      String direction,
-      Element elementDirection}) async {
+  static Future<DataRequirement_Sort> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String path,
+    Element elementPath,
+    String direction,
+    Element elementDirection,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DataRequirement_Sort newDataRequirement_Sort = new DataRequirement_Sort(
-      id: await fhirDb.newResourceId('DataRequirement_Sort'),
+      id: id ?? await fhirDb.newResourceId('DataRequirement_Sort'),
       extension: extension,
       modifierExtension: modifierExtension,
       path: path,
@@ -226,17 +233,18 @@ class DataRequirement_Sort {
   List<Extension> modifierExtension;
   String path;
   Element elementPath;
-  String direction; // <code> enum: ascending/descending;
+  String direction;
   Element elementDirection;
 
-  DataRequirement_Sort(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.path,
-      this.elementPath,
-      this.direction,
-      this.elementDirection});
+  DataRequirement_Sort({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.path,
+    this.elementPath,
+    this.direction,
+    this.elementDirection,
+  });
 
   factory DataRequirement_Sort.fromJson(Map<String, dynamic> json) =>
       _$DataRequirement_SortFromJson(json);

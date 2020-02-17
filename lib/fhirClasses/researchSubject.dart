@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -12,34 +12,35 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ResearchSubject {
-  static Future<ResearchSubject> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      Period period,
-      Reference study,
-      Reference individual,
-      String assignedArm,
-      Element elementAssignedArm,
-      String actualArm,
-      Element elementActualArm,
-      Reference consent}) async {
+  static Future<ResearchSubject> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Period period,
+    Reference study,
+    Reference individual,
+    String assignedArm,
+    Element elementAssignedArm,
+    String actualArm,
+    Element elementActualArm,
+    Reference consent,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ResearchSubject newResearchSubject = new ResearchSubject(
-      resourceType: 'ResearchSubject',
-      id: await fhirDb.newResourceId('ResearchSubject'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ResearchSubject'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -62,17 +63,17 @@ class ResearchSubject {
     );
     newResearchSubject.meta.createdAt = DateTime.now();
     newResearchSubject.meta.lastUpdated = newResearchSubject.meta.createdAt;
-    int saved = await fhirDb.newResource(newResearchSubject);
+    int saved = await fhirDb.saveResource(newResearchSubject);
     return newResearchSubject;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ResearchSubject';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -84,8 +85,7 @@ class ResearchSubject {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String
-      status; // <code> enum: candidate/eligible/follow-up/ineligible/not-registered/off-study/on-study/on-study-intervention/on-study-observation/pending-on-study/potential-candidate/screening/withdrawn;
+  String status;
   Element elementStatus;
   Period period;
   Reference study;
@@ -96,29 +96,30 @@ class ResearchSubject {
   Element elementActualArm;
   Reference consent;
 
-  ResearchSubject(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.period,
-      @required this.study,
-      @required this.individual,
-      this.assignedArm,
-      this.elementAssignedArm,
-      this.actualArm,
-      this.elementActualArm,
-      this.consent});
+  ResearchSubject({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.period,
+    @required this.study,
+    @required this.individual,
+    this.assignedArm,
+    this.elementAssignedArm,
+    this.actualArm,
+    this.elementActualArm,
+    this.consent,
+  });
 
   factory ResearchSubject.fromJson(Map<String, dynamic> json) =>
       _$ResearchSubjectFromJson(json);

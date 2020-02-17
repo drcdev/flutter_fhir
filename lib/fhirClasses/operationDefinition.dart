@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -12,67 +12,68 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition {
-  static Future<OperationDefinition> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      String kind,
-      Element elementKind,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String purpose,
-      Element elementPurpose,
-      bool affectsState,
-      Element elementAffectsState,
-      String code,
-      Element elementCode,
-      String comment,
-      Element elementComment,
-      String base,
-      List<String> resource,
-      List<Element> elementResource,
-      bool system,
-      Element elementSystem,
-      bool type,
-      Element elementType,
-      bool instance,
-      Element elementInstance,
-      String inputProfile,
-      String outputProfile,
-      List<OperationDefinition_Parameter> parameter,
-      List<OperationDefinition_Overload> overload}) async {
+  static Future<OperationDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    String kind,
+    Element elementKind,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    bool affectsState,
+    Element elementAffectsState,
+    String code,
+    Element elementCode,
+    String comment,
+    Element elementComment,
+    String base,
+    List<String> resource,
+    List<Element> elementResource,
+    bool system,
+    Element elementSystem,
+    bool type,
+    Element elementType,
+    bool instance,
+    Element elementInstance,
+    String inputProfile,
+    String outputProfile,
+    List<OperationDefinition_Parameter> parameter,
+    List<OperationDefinition_Overload> overload,
+  }) async {
     var fhirDb = new DatabaseHelper();
     OperationDefinition newOperationDefinition = new OperationDefinition(
-      resourceType: 'OperationDefinition',
-      id: await fhirDb.newResourceId('OperationDefinition'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('OperationDefinition'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -129,17 +130,17 @@ class OperationDefinition {
     newOperationDefinition.meta.createdAt = DateTime.now();
     newOperationDefinition.meta.lastUpdated =
         newOperationDefinition.meta.createdAt;
-    int saved = await fhirDb.newResource(newOperationDefinition);
+    int saved = await fhirDb.saveResource(newOperationDefinition);
     return newOperationDefinition;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'OperationDefinition';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -158,9 +159,9 @@ class OperationDefinition {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
-  String kind; // <code> enum: operation/query;
+  String kind;
   Element elementKind;
   bool experimental;
   Element elementExperimental;
@@ -195,62 +196,63 @@ class OperationDefinition {
   List<OperationDefinition_Parameter> parameter;
   List<OperationDefinition_Overload> overload;
 
-  OperationDefinition(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.kind,
-      this.elementKind,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.purpose,
-      this.elementPurpose,
-      this.affectsState,
-      this.elementAffectsState,
-      this.code,
-      this.elementCode,
-      this.comment,
-      this.elementComment,
-      this.base,
-      this.resource,
-      this.elementResource,
-      this.system,
-      this.elementSystem,
-      this.type,
-      this.elementType,
-      this.instance,
-      this.elementInstance,
-      this.inputProfile,
-      this.outputProfile,
-      this.parameter,
-      this.overload});
+  OperationDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.kind,
+    this.elementKind,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.affectsState,
+    this.elementAffectsState,
+    this.code,
+    this.elementCode,
+    this.comment,
+    this.elementComment,
+    this.base,
+    this.resource,
+    this.elementResource,
+    this.system,
+    this.elementSystem,
+    this.type,
+    this.elementType,
+    this.instance,
+    this.elementInstance,
+    this.inputProfile,
+    this.outputProfile,
+    this.parameter,
+    this.overload,
+  });
 
   factory OperationDefinition.fromJson(Map<String, dynamic> json) =>
       _$OperationDefinitionFromJson(json);
@@ -259,32 +261,33 @@ class OperationDefinition {
 
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_Parameter {
-  static Future<OperationDefinition_Parameter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String use,
-      Element elementUse,
-      int min,
-      Element elementMin,
-      String max,
-      Element elementMax,
-      String documentation,
-      Element elementDocumentation,
-      String type,
-      Element elementType,
-      List<String> targetProfile,
-      String searchType,
-      Element elementSearchType,
-      OperationDefinition_Binding binding,
-      List<OperationDefinition_ReferencedFrom> referencedFrom,
-      List<OperationDefinition_Parameter> part}) async {
+  static Future<OperationDefinition_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String use,
+    Element elementUse,
+    int min,
+    Element elementMin,
+    String max,
+    Element elementMax,
+    String documentation,
+    Element elementDocumentation,
+    String type,
+    Element elementType,
+    List<String> targetProfile,
+    String searchType,
+    Element elementSearchType,
+    OperationDefinition_Binding binding,
+    List<OperationDefinition_ReferencedFrom> referencedFrom,
+    List<OperationDefinition_Parameter> part,
+  }) async {
     var fhirDb = new DatabaseHelper();
     OperationDefinition_Parameter newOperationDefinition_Parameter =
         new OperationDefinition_Parameter(
-      id: await fhirDb.newResourceId('OperationDefinition_Parameter'),
+      id: id ?? await fhirDb.newResourceId('OperationDefinition_Parameter'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -314,7 +317,7 @@ class OperationDefinition_Parameter {
   List<Extension> modifierExtension;
   String name;
   Element elementName;
-  String use; // <code> enum: in/out;
+  String use;
   Element elementUse;
   int min;
   Element elementMin;
@@ -325,35 +328,35 @@ class OperationDefinition_Parameter {
   String type;
   Element elementType;
   List<String> targetProfile;
-  String
-      searchType; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
+  String searchType;
   Element elementSearchType;
   OperationDefinition_Binding binding;
   List<OperationDefinition_ReferencedFrom> referencedFrom;
   List<OperationDefinition_Parameter> part;
 
-  OperationDefinition_Parameter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.use,
-      this.elementUse,
-      this.min,
-      this.elementMin,
-      this.max,
-      this.elementMax,
-      this.documentation,
-      this.elementDocumentation,
-      this.type,
-      this.elementType,
-      this.targetProfile,
-      this.searchType,
-      this.elementSearchType,
-      this.binding,
-      this.referencedFrom,
-      this.part});
+  OperationDefinition_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.use,
+    this.elementUse,
+    this.min,
+    this.elementMin,
+    this.max,
+    this.elementMax,
+    this.documentation,
+    this.elementDocumentation,
+    this.type,
+    this.elementType,
+    this.targetProfile,
+    this.searchType,
+    this.elementSearchType,
+    this.binding,
+    this.referencedFrom,
+    this.part,
+  });
 
   factory OperationDefinition_Parameter.fromJson(Map<String, dynamic> json) =>
       _$OperationDefinition_ParameterFromJson(json);
@@ -362,17 +365,18 @@ class OperationDefinition_Parameter {
 
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_Binding {
-  static Future<OperationDefinition_Binding> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String strength,
-      Element elementStrength,
-      String valueSet}) async {
+  static Future<OperationDefinition_Binding> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String strength,
+    Element elementStrength,
+    String valueSet,
+  }) async {
     var fhirDb = new DatabaseHelper();
     OperationDefinition_Binding newOperationDefinition_Binding =
         new OperationDefinition_Binding(
-      id: await fhirDb.newResourceId('OperationDefinition_Binding'),
+      id: id ?? await fhirDb.newResourceId('OperationDefinition_Binding'),
       extension: extension,
       modifierExtension: modifierExtension,
       strength: strength,
@@ -385,17 +389,18 @@ class OperationDefinition_Binding {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String strength; // <code> enum: required/extensible/preferred/example;
+  String strength;
   Element elementStrength;
   String valueSet;
 
-  OperationDefinition_Binding(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.strength,
-      this.elementStrength,
-      @required this.valueSet});
+  OperationDefinition_Binding({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.strength,
+    this.elementStrength,
+    @required this.valueSet,
+  });
 
   factory OperationDefinition_Binding.fromJson(Map<String, dynamic> json) =>
       _$OperationDefinition_BindingFromJson(json);
@@ -404,18 +409,20 @@ class OperationDefinition_Binding {
 
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_ReferencedFrom {
-  static Future<OperationDefinition_ReferencedFrom> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String source,
-      Element elementSource,
-      String sourceId,
-      Element elementSourceId}) async {
+  static Future<OperationDefinition_ReferencedFrom> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String source,
+    Element elementSource,
+    String sourceId,
+    Element elementSourceId,
+  }) async {
     var fhirDb = new DatabaseHelper();
     OperationDefinition_ReferencedFrom newOperationDefinition_ReferencedFrom =
         new OperationDefinition_ReferencedFrom(
-      id: await fhirDb.newResourceId('OperationDefinition_ReferencedFrom'),
+      id: id ??
+          await fhirDb.newResourceId('OperationDefinition_ReferencedFrom'),
       extension: extension,
       modifierExtension: modifierExtension,
       source: source,
@@ -434,14 +441,15 @@ class OperationDefinition_ReferencedFrom {
   String sourceId;
   Element elementSourceId;
 
-  OperationDefinition_ReferencedFrom(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.source,
-      this.elementSource,
-      this.sourceId,
-      this.elementSourceId});
+  OperationDefinition_ReferencedFrom({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.source,
+    this.elementSource,
+    this.sourceId,
+    this.elementSourceId,
+  });
 
   factory OperationDefinition_ReferencedFrom.fromJson(
           Map<String, dynamic> json) =>
@@ -452,18 +460,19 @@ class OperationDefinition_ReferencedFrom {
 
 @JsonSerializable(explicitToJson: true)
 class OperationDefinition_Overload {
-  static Future<OperationDefinition_Overload> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<String> parameterName,
-      List<Element> elementParameterName,
-      String comment,
-      Element elementComment}) async {
+  static Future<OperationDefinition_Overload> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<String> parameterName,
+    List<Element> elementParameterName,
+    String comment,
+    Element elementComment,
+  }) async {
     var fhirDb = new DatabaseHelper();
     OperationDefinition_Overload newOperationDefinition_Overload =
         new OperationDefinition_Overload(
-      id: await fhirDb.newResourceId('OperationDefinition_Overload'),
+      id: id ?? await fhirDb.newResourceId('OperationDefinition_Overload'),
       extension: extension,
       modifierExtension: modifierExtension,
       parameterName: parameterName,
@@ -482,14 +491,15 @@ class OperationDefinition_Overload {
   String comment;
   Element elementComment;
 
-  OperationDefinition_Overload(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.parameterName,
-      this.elementParameterName,
-      this.comment,
-      this.elementComment});
+  OperationDefinition_Overload({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.parameterName,
+    this.elementParameterName,
+    this.comment,
+    this.elementComment,
+  });
 
   factory OperationDefinition_Overload.fromJson(Map<String, dynamic> json) =>
       _$OperationDefinition_OverloadFromJson(json);

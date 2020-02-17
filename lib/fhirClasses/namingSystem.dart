@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -13,44 +13,45 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class NamingSystem {
-  static Future<NamingSystem> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String status,
-      Element elementStatus,
-      String kind,
-      Element elementKind,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String responsible,
-      Element elementResponsible,
-      CodeableConcept type,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      String usage,
-      Element elementUsage,
-      List<NamingSystem_UniqueId> uniqueId}) async {
+  static Future<NamingSystem> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String status,
+    Element elementStatus,
+    String kind,
+    Element elementKind,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String responsible,
+    Element elementResponsible,
+    CodeableConcept type,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String usage,
+    Element elementUsage,
+    List<NamingSystem_UniqueId> uniqueId,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NamingSystem newNamingSystem = new NamingSystem(
-      resourceType: 'NamingSystem',
-      id: await fhirDb.newResourceId('NamingSystem'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('NamingSystem'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -83,17 +84,17 @@ class NamingSystem {
     );
     newNamingSystem.meta.createdAt = DateTime.now();
     newNamingSystem.meta.lastUpdated = newNamingSystem.meta.createdAt;
-    int saved = await fhirDb.newResource(newNamingSystem);
+    int saved = await fhirDb.saveResource(newNamingSystem);
     return newNamingSystem;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'NamingSystem';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -106,9 +107,9 @@ class NamingSystem {
   List<Extension> modifierExtension;
   String name;
   Element elementName;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
-  String kind; // <code> enum: codesystem/identifier/root;
+  String kind;
   Element elementKind;
   DateTime date;
   Element elementDate;
@@ -126,39 +127,40 @@ class NamingSystem {
   Element elementUsage;
   List<NamingSystem_UniqueId> uniqueId;
 
-  NamingSystem(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.status,
-      this.elementStatus,
-      this.kind,
-      this.elementKind,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.responsible,
-      this.elementResponsible,
-      this.type,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.usage,
-      this.elementUsage,
-      @required this.uniqueId});
+  NamingSystem({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.status,
+    this.elementStatus,
+    this.kind,
+    this.elementKind,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.responsible,
+    this.elementResponsible,
+    this.type,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.usage,
+    this.elementUsage,
+    @required this.uniqueId,
+  });
 
   factory NamingSystem.fromJson(Map<String, dynamic> json) =>
       _$NamingSystemFromJson(json);
@@ -167,22 +169,23 @@ class NamingSystem {
 
 @JsonSerializable(explicitToJson: true)
 class NamingSystem_UniqueId {
-  static Future<NamingSystem_UniqueId> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      String value,
-      Element elementValue,
-      bool preferred,
-      Element elementPreferred,
-      String comment,
-      Element elementComment,
-      Period period}) async {
+  static Future<NamingSystem_UniqueId> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String value,
+    Element elementValue,
+    bool preferred,
+    Element elementPreferred,
+    String comment,
+    Element elementComment,
+    Period period,
+  }) async {
     var fhirDb = new DatabaseHelper();
     NamingSystem_UniqueId newNamingSystem_UniqueId = new NamingSystem_UniqueId(
-      id: await fhirDb.newResourceId('NamingSystem_UniqueId'),
+      id: id ?? await fhirDb.newResourceId('NamingSystem_UniqueId'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -201,7 +204,7 @@ class NamingSystem_UniqueId {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String type; // <code> enum: oid/uuid/uri/other;
+  String type;
   Element elementType;
   String value;
   Element elementValue;
@@ -211,19 +214,20 @@ class NamingSystem_UniqueId {
   Element elementComment;
   Period period;
 
-  NamingSystem_UniqueId(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.value,
-      this.elementValue,
-      this.preferred,
-      this.elementPreferred,
-      this.comment,
-      this.elementComment,
-      this.period});
+  NamingSystem_UniqueId({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.value,
+    this.elementValue,
+    this.preferred,
+    this.elementPreferred,
+    this.comment,
+    this.elementComment,
+    this.period,
+  });
 
   factory NamingSystem_UniqueId.fromJson(Map<String, dynamic> json) =>
       _$NamingSystem_UniqueIdFromJson(json);

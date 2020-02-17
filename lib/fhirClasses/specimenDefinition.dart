@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -15,30 +15,31 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition {
-  static Future<SpecimenDefinition> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      CodeableConcept typeCollected,
-      List<CodeableConcept> patientPreparation,
-      String timeAspect,
-      Element elementTimeAspect,
-      List<CodeableConcept> collection,
-      List<SpecimenDefinition_TypeTested> typeTested}) async {
+  static Future<SpecimenDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    CodeableConcept typeCollected,
+    List<CodeableConcept> patientPreparation,
+    String timeAspect,
+    Element elementTimeAspect,
+    List<CodeableConcept> collection,
+    List<SpecimenDefinition_TypeTested> typeTested,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SpecimenDefinition newSpecimenDefinition = new SpecimenDefinition(
-      resourceType: 'SpecimenDefinition',
-      id: await fhirDb.newResourceId('SpecimenDefinition'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('SpecimenDefinition'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -58,17 +59,17 @@ class SpecimenDefinition {
     newSpecimenDefinition.meta.createdAt = DateTime.now();
     newSpecimenDefinition.meta.lastUpdated =
         newSpecimenDefinition.meta.createdAt;
-    int saved = await fhirDb.newResource(newSpecimenDefinition);
+    int saved = await fhirDb.saveResource(newSpecimenDefinition);
     return newSpecimenDefinition;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'SpecimenDefinition';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -87,25 +88,26 @@ class SpecimenDefinition {
   List<CodeableConcept> collection;
   List<SpecimenDefinition_TypeTested> typeTested;
 
-  SpecimenDefinition(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.typeCollected,
-      this.patientPreparation,
-      this.timeAspect,
-      this.elementTimeAspect,
-      this.collection,
-      this.typeTested});
+  SpecimenDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.typeCollected,
+    this.patientPreparation,
+    this.timeAspect,
+    this.elementTimeAspect,
+    this.collection,
+    this.typeTested,
+  });
 
   factory SpecimenDefinition.fromJson(Map<String, dynamic> json) =>
       _$SpecimenDefinitionFromJson(json);
@@ -114,25 +116,26 @@ class SpecimenDefinition {
 
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_TypeTested {
-  static Future<SpecimenDefinition_TypeTested> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool isDerived,
-      Element elementIsDerived,
-      CodeableConcept type,
-      String preference,
-      Element elementPreference,
-      SpecimenDefinition_Container container,
-      String requirement,
-      Element elementRequirement,
-      Duration retentionTime,
-      List<CodeableConcept> rejectionCriterion,
-      List<SpecimenDefinition_Handling> handling}) async {
+  static Future<SpecimenDefinition_TypeTested> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool isDerived,
+    Element elementIsDerived,
+    CodeableConcept type,
+    String preference,
+    Element elementPreference,
+    SpecimenDefinition_Container container,
+    String requirement,
+    Element elementRequirement,
+    Duration retentionTime,
+    List<CodeableConcept> rejectionCriterion,
+    List<SpecimenDefinition_Handling> handling,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SpecimenDefinition_TypeTested newSpecimenDefinition_TypeTested =
         new SpecimenDefinition_TypeTested(
-      id: await fhirDb.newResourceId('SpecimenDefinition_TypeTested'),
+      id: id ?? await fhirDb.newResourceId('SpecimenDefinition_TypeTested'),
       extension: extension,
       modifierExtension: modifierExtension,
       isDerived: isDerived,
@@ -156,7 +159,7 @@ class SpecimenDefinition_TypeTested {
   bool isDerived;
   Element elementIsDerived;
   CodeableConcept type;
-  String preference; // <code> enum: preferred/alternate;
+  String preference;
   Element elementPreference;
   SpecimenDefinition_Container container;
   String requirement;
@@ -165,21 +168,22 @@ class SpecimenDefinition_TypeTested {
   List<CodeableConcept> rejectionCriterion;
   List<SpecimenDefinition_Handling> handling;
 
-  SpecimenDefinition_TypeTested(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.isDerived,
-      this.elementIsDerived,
-      this.type,
-      this.preference,
-      this.elementPreference,
-      this.container,
-      this.requirement,
-      this.elementRequirement,
-      this.retentionTime,
-      this.rejectionCriterion,
-      this.handling});
+  SpecimenDefinition_TypeTested({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.isDerived,
+    this.elementIsDerived,
+    this.type,
+    this.preference,
+    this.elementPreference,
+    this.container,
+    this.requirement,
+    this.elementRequirement,
+    this.retentionTime,
+    this.rejectionCriterion,
+    this.handling,
+  });
 
   factory SpecimenDefinition_TypeTested.fromJson(Map<String, dynamic> json) =>
       _$SpecimenDefinition_TypeTestedFromJson(json);
@@ -188,26 +192,27 @@ class SpecimenDefinition_TypeTested {
 
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Container {
-  static Future<SpecimenDefinition_Container> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept material,
-      CodeableConcept type,
-      CodeableConcept cap,
-      String description,
-      Element elementDescription,
-      Quantity capacity,
-      Quantity minimumVolumeQuantity,
-      String minimumVolumeString,
-      Element elementMinimumVolumeString,
-      List<SpecimenDefinition_Additive> additive,
-      String preparation,
-      Element elementPreparation}) async {
+  static Future<SpecimenDefinition_Container> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept material,
+    CodeableConcept type,
+    CodeableConcept cap,
+    String description,
+    Element elementDescription,
+    Quantity capacity,
+    Quantity minimumVolumeQuantity,
+    String minimumVolumeString,
+    Element elementMinimumVolumeString,
+    List<SpecimenDefinition_Additive> additive,
+    String preparation,
+    Element elementPreparation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SpecimenDefinition_Container newSpecimenDefinition_Container =
         new SpecimenDefinition_Container(
-      id: await fhirDb.newResourceId('SpecimenDefinition_Container'),
+      id: id ?? await fhirDb.newResourceId('SpecimenDefinition_Container'),
       extension: extension,
       modifierExtension: modifierExtension,
       material: material,
@@ -236,28 +241,29 @@ class SpecimenDefinition_Container {
   Element elementDescription;
   Quantity capacity;
   Quantity minimumVolumeQuantity;
-  String minimumVolumeString; //  pattern: ^[ \r\n\t\S]+$
+  String minimumVolumeString;
   Element elementMinimumVolumeString;
   List<SpecimenDefinition_Additive> additive;
   String preparation;
   Element elementPreparation;
 
-  SpecimenDefinition_Container(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.material,
-      this.type,
-      this.cap,
-      this.description,
-      this.elementDescription,
-      this.capacity,
-      this.minimumVolumeQuantity,
-      this.minimumVolumeString,
-      this.elementMinimumVolumeString,
-      this.additive,
-      this.preparation,
-      this.elementPreparation});
+  SpecimenDefinition_Container({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.material,
+    this.type,
+    this.cap,
+    this.description,
+    this.elementDescription,
+    this.capacity,
+    this.minimumVolumeQuantity,
+    this.minimumVolumeString,
+    this.elementMinimumVolumeString,
+    this.additive,
+    this.preparation,
+    this.elementPreparation,
+  });
 
   factory SpecimenDefinition_Container.fromJson(Map<String, dynamic> json) =>
       _$SpecimenDefinition_ContainerFromJson(json);
@@ -266,16 +272,17 @@ class SpecimenDefinition_Container {
 
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Additive {
-  static Future<SpecimenDefinition_Additive> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept additiveCodeableConcept,
-      Reference additiveReference}) async {
+  static Future<SpecimenDefinition_Additive> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept additiveCodeableConcept,
+    Reference additiveReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SpecimenDefinition_Additive newSpecimenDefinition_Additive =
         new SpecimenDefinition_Additive(
-      id: await fhirDb.newResourceId('SpecimenDefinition_Additive'),
+      id: id ?? await fhirDb.newResourceId('SpecimenDefinition_Additive'),
       extension: extension,
       modifierExtension: modifierExtension,
       additiveCodeableConcept: additiveCodeableConcept,
@@ -290,12 +297,13 @@ class SpecimenDefinition_Additive {
   CodeableConcept additiveCodeableConcept;
   Reference additiveReference;
 
-  SpecimenDefinition_Additive(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.additiveCodeableConcept,
-      this.additiveReference});
+  SpecimenDefinition_Additive({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.additiveCodeableConcept,
+    this.additiveReference,
+  });
 
   factory SpecimenDefinition_Additive.fromJson(Map<String, dynamic> json) =>
       _$SpecimenDefinition_AdditiveFromJson(json);
@@ -304,19 +312,20 @@ class SpecimenDefinition_Additive {
 
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Handling {
-  static Future<SpecimenDefinition_Handling> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept temperatureQualifier,
-      Range temperatureRange,
-      Duration maxDuration,
-      String instruction,
-      Element elementInstruction}) async {
+  static Future<SpecimenDefinition_Handling> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept temperatureQualifier,
+    Range temperatureRange,
+    Duration maxDuration,
+    String instruction,
+    Element elementInstruction,
+  }) async {
     var fhirDb = new DatabaseHelper();
     SpecimenDefinition_Handling newSpecimenDefinition_Handling =
         new SpecimenDefinition_Handling(
-      id: await fhirDb.newResourceId('SpecimenDefinition_Handling'),
+      id: id ?? await fhirDb.newResourceId('SpecimenDefinition_Handling'),
       extension: extension,
       modifierExtension: modifierExtension,
       temperatureQualifier: temperatureQualifier,
@@ -337,15 +346,16 @@ class SpecimenDefinition_Handling {
   String instruction;
   Element elementInstruction;
 
-  SpecimenDefinition_Handling(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.temperatureQualifier,
-      this.temperatureRange,
-      this.maxDuration,
-      this.instruction,
-      this.elementInstruction});
+  SpecimenDefinition_Handling({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.temperatureQualifier,
+    this.temperatureRange,
+    this.maxDuration,
+    this.instruction,
+    this.elementInstruction,
+  });
 
   factory SpecimenDefinition_Handling.fromJson(Map<String, dynamic> json) =>
       _$SpecimenDefinition_HandlingFromJson(json);

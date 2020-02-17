@@ -1,20 +1,21 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Narrative {
-  static Future<Narrative> newInstance(
-      {String id,
-      List<Extension> extension,
-      String status,
-      Element elementStatus,
-      String div}) async {
+  static Future<Narrative> newInstance({
+    String id,
+    List<Extension> extension,
+    String status,
+    Element elementStatus,
+    String div,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Narrative newNarrative = new Narrative(
-      id: await fhirDb.newResourceId('Narrative'),
+      id: id ?? await fhirDb.newResourceId('Narrative'),
       extension: extension,
       status: status,
       elementStatus: elementStatus,
@@ -25,16 +26,17 @@ class Narrative {
 
   String id;
   List<Extension> extension;
-  String status; // <code> enum: generated/extensions/additional/empty;
+  String status;
   Element elementStatus;
   String div;
 
-  Narrative(
-      {this.id,
-      this.extension,
-      this.status,
-      this.elementStatus,
-      @required this.div});
+  Narrative({
+    this.id,
+    this.extension,
+    this.status,
+    this.elementStatus,
+    @required this.div,
+  });
 
   factory Narrative.fromJson(Map<String, dynamic> json) =>
       _$NarrativeFromJson(json);

@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -10,17 +10,18 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
 class UsageContext {
-  static Future<UsageContext> newInstance(
-      {String id,
-      List<Extension> extension,
-      Coding code,
-      CodeableConcept valueCodeableConcept,
-      Quantity valueQuantity,
-      Range valueRange,
-      Reference valueReference}) async {
+  static Future<UsageContext> newInstance({
+    String id,
+    List<Extension> extension,
+    Coding code,
+    CodeableConcept valueCodeableConcept,
+    Quantity valueQuantity,
+    Range valueRange,
+    Reference valueReference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     UsageContext newUsageContext = new UsageContext(
-      id: await fhirDb.newResourceId('UsageContext'),
+      id: id ?? await fhirDb.newResourceId('UsageContext'),
       extension: extension,
       code: code,
       valueCodeableConcept: valueCodeableConcept,
@@ -39,14 +40,15 @@ class UsageContext {
   Range valueRange;
   Reference valueReference;
 
-  UsageContext(
-      {this.id,
-      this.extension,
-      @required this.code,
-      this.valueCodeableConcept,
-      this.valueQuantity,
-      this.valueRange,
-      this.valueReference});
+  UsageContext({
+    this.id,
+    this.extension,
+    @required this.code,
+    this.valueCodeableConcept,
+    this.valueQuantity,
+    this.valueRange,
+    this.valueReference,
+  });
 
   factory UsageContext.fromJson(Map<String, dynamic> json) =>
       _$UsageContextFromJson(json);

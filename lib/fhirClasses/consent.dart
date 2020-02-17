@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -15,39 +15,40 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Consent {
-  static Future<Consent> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept scope,
-      List<CodeableConcept> category,
-      Reference patient,
-      DateTime dateTime,
-      Element elementDateTime,
-      List<Reference> performer,
-      List<Reference> organization,
-      Attachment sourceAttachment,
-      Reference sourceReference,
-      List<Consent_Policy> policy,
-      CodeableConcept policyRule,
-      List<Consent_Verification> verification,
-      Consent_Provision provision}) async {
+  static Future<Consent> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept scope,
+    List<CodeableConcept> category,
+    Reference patient,
+    DateTime dateTime,
+    Element elementDateTime,
+    List<Reference> performer,
+    List<Reference> organization,
+    Attachment sourceAttachment,
+    Reference sourceReference,
+    List<Consent_Policy> policy,
+    CodeableConcept policyRule,
+    List<Consent_Verification> verification,
+    Consent_Provision provision,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Consent newConsent = new Consent(
-      resourceType: 'Consent',
-      id: await fhirDb.newResourceId('Consent'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Consent'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -75,17 +76,17 @@ class Consent {
     );
     newConsent.meta.createdAt = DateTime.now();
     newConsent.meta.lastUpdated = newConsent.meta.createdAt;
-    int saved = await fhirDb.newResource(newConsent);
+    int saved = await fhirDb.saveResource(newConsent);
     return newConsent;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Consent';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -97,8 +98,7 @@ class Consent {
   List<Extension> extension;
   List<Extension> modifierExtension;
   List<Identifier> identifier;
-  String
-      status; // <code> enum: draft/proposed/active/rejected/inactive/entered-in-error;
+  String status;
   Element elementStatus;
   CodeableConcept scope;
   List<CodeableConcept> category;
@@ -114,34 +114,35 @@ class Consent {
   List<Consent_Verification> verification;
   Consent_Provision provision;
 
-  Consent(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      @required this.scope,
-      @required this.category,
-      this.patient,
-      this.dateTime,
-      this.elementDateTime,
-      this.performer,
-      this.organization,
-      this.sourceAttachment,
-      this.sourceReference,
-      this.policy,
-      this.policyRule,
-      this.verification,
-      this.provision});
+  Consent({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.scope,
+    @required this.category,
+    this.patient,
+    this.dateTime,
+    this.elementDateTime,
+    this.performer,
+    this.organization,
+    this.sourceAttachment,
+    this.sourceReference,
+    this.policy,
+    this.policyRule,
+    this.verification,
+    this.provision,
+  });
 
   factory Consent.fromJson(Map<String, dynamic> json) =>
       _$ConsentFromJson(json);
@@ -150,17 +151,18 @@ class Consent {
 
 @JsonSerializable(explicitToJson: true)
 class Consent_Policy {
-  static Future<Consent_Policy> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String authority,
-      Element elementAuthority,
-      String uri,
-      Element elementUri}) async {
+  static Future<Consent_Policy> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String authority,
+    Element elementAuthority,
+    String uri,
+    Element elementUri,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Consent_Policy newConsent_Policy = new Consent_Policy(
-      id: await fhirDb.newResourceId('Consent_Policy'),
+      id: id ?? await fhirDb.newResourceId('Consent_Policy'),
       extension: extension,
       modifierExtension: modifierExtension,
       authority: authority,
@@ -179,14 +181,15 @@ class Consent_Policy {
   String uri;
   Element elementUri;
 
-  Consent_Policy(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.authority,
-      this.elementAuthority,
-      this.uri,
-      this.elementUri});
+  Consent_Policy({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.authority,
+    this.elementAuthority,
+    this.uri,
+    this.elementUri,
+  });
 
   factory Consent_Policy.fromJson(Map<String, dynamic> json) =>
       _$Consent_PolicyFromJson(json);
@@ -195,18 +198,19 @@ class Consent_Policy {
 
 @JsonSerializable(explicitToJson: true)
 class Consent_Verification {
-  static Future<Consent_Verification> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      bool verified,
-      Element elementVerified,
-      Reference verifiedWith,
-      DateTime verificationDate,
-      Element elementVerificationDate}) async {
+  static Future<Consent_Verification> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool verified,
+    Element elementVerified,
+    Reference verifiedWith,
+    DateTime verificationDate,
+    Element elementVerificationDate,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Consent_Verification newConsent_Verification = new Consent_Verification(
-      id: await fhirDb.newResourceId('Consent_Verification'),
+      id: id ?? await fhirDb.newResourceId('Consent_Verification'),
       extension: extension,
       modifierExtension: modifierExtension,
       verified: verified,
@@ -227,15 +231,16 @@ class Consent_Verification {
   DateTime verificationDate;
   Element elementVerificationDate;
 
-  Consent_Verification(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.verified,
-      this.elementVerified,
-      this.verifiedWith,
-      this.verificationDate,
-      this.elementVerificationDate});
+  Consent_Verification({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.verified,
+    this.elementVerified,
+    this.verifiedWith,
+    this.verificationDate,
+    this.elementVerificationDate,
+  });
 
   factory Consent_Verification.fromJson(Map<String, dynamic> json) =>
       _$Consent_VerificationFromJson(json);
@@ -244,25 +249,26 @@ class Consent_Verification {
 
 @JsonSerializable(explicitToJson: true)
 class Consent_Provision {
-  static Future<Consent_Provision> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      Period period,
-      List<Consent_Actor> actor,
-      List<CodeableConcept> action,
-      List<Coding> securityLabel,
-      List<Coding> purpose,
-      List<Coding> classs,
-      List<CodeableConcept> code,
-      Period dataPeriod,
-      List<Consent_Data> data,
-      List<Consent_Provision> provision}) async {
+  static Future<Consent_Provision> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    Period period,
+    List<Consent_Actor> actor,
+    List<CodeableConcept> action,
+    List<Coding> securityLabel,
+    List<Coding> purpose,
+    List<Coding> classs,
+    List<CodeableConcept> code,
+    Period dataPeriod,
+    List<Consent_Data> data,
+    List<Consent_Provision> provision,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Consent_Provision newConsent_Provision = new Consent_Provision(
-      id: await fhirDb.newResourceId('Consent_Provision'),
+      id: id ?? await fhirDb.newResourceId('Consent_Provision'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -284,7 +290,7 @@ class Consent_Provision {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String type; // <code> enum: deny/permit;
+  String type;
   Element elementType;
   Period period;
   List<Consent_Actor> actor;
@@ -297,22 +303,23 @@ class Consent_Provision {
   List<Consent_Data> data;
   List<Consent_Provision> provision;
 
-  Consent_Provision(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.period,
-      this.actor,
-      this.action,
-      this.securityLabel,
-      this.purpose,
-      this.classs,
-      this.code,
-      this.dataPeriod,
-      this.data,
-      this.provision});
+  Consent_Provision({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.period,
+    this.actor,
+    this.action,
+    this.securityLabel,
+    this.purpose,
+    this.classs,
+    this.code,
+    this.dataPeriod,
+    this.data,
+    this.provision,
+  });
 
   factory Consent_Provision.fromJson(Map<String, dynamic> json) =>
       _$Consent_ProvisionFromJson(json);
@@ -321,15 +328,16 @@ class Consent_Provision {
 
 @JsonSerializable(explicitToJson: true)
 class Consent_Actor {
-  static Future<Consent_Actor> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept role,
-      Reference reference}) async {
+  static Future<Consent_Actor> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept role,
+    Reference reference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Consent_Actor newConsent_Actor = new Consent_Actor(
-      id: await fhirDb.newResourceId('Consent_Actor'),
+      id: id ?? await fhirDb.newResourceId('Consent_Actor'),
       extension: extension,
       modifierExtension: modifierExtension,
       role: role,
@@ -344,12 +352,13 @@ class Consent_Actor {
   CodeableConcept role;
   Reference reference;
 
-  Consent_Actor(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      @required this.role,
-      @required this.reference});
+  Consent_Actor({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.role,
+    @required this.reference,
+  });
 
   factory Consent_Actor.fromJson(Map<String, dynamic> json) =>
       _$Consent_ActorFromJson(json);
@@ -358,16 +367,17 @@ class Consent_Actor {
 
 @JsonSerializable(explicitToJson: true)
 class Consent_Data {
-  static Future<Consent_Data> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String meaning,
-      Element elementMeaning,
-      Reference reference}) async {
+  static Future<Consent_Data> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String meaning,
+    Element elementMeaning,
+    Reference reference,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Consent_Data newConsent_Data = new Consent_Data(
-      id: await fhirDb.newResourceId('Consent_Data'),
+      id: id ?? await fhirDb.newResourceId('Consent_Data'),
       extension: extension,
       modifierExtension: modifierExtension,
       meaning: meaning,
@@ -380,17 +390,18 @@ class Consent_Data {
   String id;
   List<Extension> extension;
   List<Extension> modifierExtension;
-  String meaning; // <code> enum: instance/related/dependents/authoredby;
+  String meaning;
   Element elementMeaning;
   Reference reference;
 
-  Consent_Data(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.meaning,
-      this.elementMeaning,
-      @required this.reference});
+  Consent_Data({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.meaning,
+    this.elementMeaning,
+    @required this.reference,
+  });
 
   factory Consent_Data.fromJson(Map<String, dynamic> json) =>
       _$Consent_DataFromJson(json);

@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -13,38 +13,39 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AuditEvent {
-  static Future<AuditEvent> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Coding type,
-      List<Coding> subtype,
-      String action,
-      Element elementAction,
-      Period period,
-      DateTime recorded,
-      Element elementRecorded,
-      String outcome,
-      Element elementOutcome,
-      String outcomeDesc,
-      Element elementOutcomeDesc,
-      List<CodeableConcept> purposeOfEvent,
-      List<AuditEvent_Agent> agent,
-      AuditEvent_Source source,
-      List<AuditEvent_Entity> entity}) async {
+  static Future<AuditEvent> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Coding type,
+    List<Coding> subtype,
+    String action,
+    Element elementAction,
+    Period period,
+    DateTime recorded,
+    Element elementRecorded,
+    String outcome,
+    Element elementOutcome,
+    String outcomeDesc,
+    Element elementOutcomeDesc,
+    List<CodeableConcept> purposeOfEvent,
+    List<AuditEvent_Agent> agent,
+    AuditEvent_Source source,
+    List<AuditEvent_Entity> entity,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent newAuditEvent = new AuditEvent(
-      resourceType: 'AuditEvent',
-      id: await fhirDb.newResourceId('AuditEvent'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('AuditEvent'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -71,17 +72,17 @@ class AuditEvent {
     );
     newAuditEvent.meta.createdAt = DateTime.now();
     newAuditEvent.meta.lastUpdated = newAuditEvent.meta.createdAt;
-    int saved = await fhirDb.newResource(newAuditEvent);
+    int saved = await fhirDb.saveResource(newAuditEvent);
     return newAuditEvent;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'AuditEvent';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -94,12 +95,12 @@ class AuditEvent {
   List<Extension> modifierExtension;
   Coding type;
   List<Coding> subtype;
-  String action; // <code> enum: C/R/U/D/E;
+  String action;
   Element elementAction;
   Period period;
   DateTime recorded;
   Element elementRecorded;
-  String outcome; // <code> enum: 0/4/8/12;
+  String outcome;
   Element elementOutcome;
   String outcomeDesc;
   Element elementOutcomeDesc;
@@ -108,33 +109,34 @@ class AuditEvent {
   AuditEvent_Source source;
   List<AuditEvent_Entity> entity;
 
-  AuditEvent(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      @required this.type,
-      this.subtype,
-      this.action,
-      this.elementAction,
-      this.period,
-      this.recorded,
-      this.elementRecorded,
-      this.outcome,
-      this.elementOutcome,
-      this.outcomeDesc,
-      this.elementOutcomeDesc,
-      this.purposeOfEvent,
-      @required this.agent,
-      @required this.source,
-      this.entity});
+  AuditEvent({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.subtype,
+    this.action,
+    this.elementAction,
+    this.period,
+    this.recorded,
+    this.elementRecorded,
+    this.outcome,
+    this.elementOutcome,
+    this.outcomeDesc,
+    this.elementOutcomeDesc,
+    this.purposeOfEvent,
+    @required this.agent,
+    @required this.source,
+    this.entity,
+  });
 
   factory AuditEvent.fromJson(Map<String, dynamic> json) =>
       _$AuditEventFromJson(json);
@@ -143,28 +145,29 @@ class AuditEvent {
 
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Agent {
-  static Future<AuditEvent_Agent> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      CodeableConcept type,
-      List<CodeableConcept> role,
-      Reference who,
-      String altId,
-      Element elementAltId,
-      String name,
-      Element elementName,
-      bool requestor,
-      Element elementRequestor,
-      Reference location,
-      List<String> policy,
-      List<Element> elementPolicy,
-      Coding media,
-      AuditEvent_Network network,
-      List<CodeableConcept> purposeOfUse}) async {
+  static Future<AuditEvent_Agent> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    List<CodeableConcept> role,
+    Reference who,
+    String altId,
+    Element elementAltId,
+    String name,
+    Element elementName,
+    bool requestor,
+    Element elementRequestor,
+    Reference location,
+    List<String> policy,
+    List<Element> elementPolicy,
+    Coding media,
+    AuditEvent_Network network,
+    List<CodeableConcept> purposeOfUse,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Agent newAuditEvent_Agent = new AuditEvent_Agent(
-      id: await fhirDb.newResourceId('AuditEvent_Agent'),
+      id: id ?? await fhirDb.newResourceId('AuditEvent_Agent'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -205,25 +208,26 @@ class AuditEvent_Agent {
   AuditEvent_Network network;
   List<CodeableConcept> purposeOfUse;
 
-  AuditEvent_Agent(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.role,
-      this.who,
-      this.altId,
-      this.elementAltId,
-      this.name,
-      this.elementName,
-      this.requestor,
-      this.elementRequestor,
-      this.location,
-      this.policy,
-      this.elementPolicy,
-      this.media,
-      this.network,
-      this.purposeOfUse});
+  AuditEvent_Agent({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.role,
+    this.who,
+    this.altId,
+    this.elementAltId,
+    this.name,
+    this.elementName,
+    this.requestor,
+    this.elementRequestor,
+    this.location,
+    this.policy,
+    this.elementPolicy,
+    this.media,
+    this.network,
+    this.purposeOfUse,
+  });
 
   factory AuditEvent_Agent.fromJson(Map<String, dynamic> json) =>
       _$AuditEvent_AgentFromJson(json);
@@ -232,17 +236,18 @@ class AuditEvent_Agent {
 
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Network {
-  static Future<AuditEvent_Network> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String address,
-      Element elementAddress,
-      String type,
-      Element elementType}) async {
+  static Future<AuditEvent_Network> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String address,
+    Element elementAddress,
+    String type,
+    Element elementType,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Network newAuditEvent_Network = new AuditEvent_Network(
-      id: await fhirDb.newResourceId('AuditEvent_Network'),
+      id: id ?? await fhirDb.newResourceId('AuditEvent_Network'),
       extension: extension,
       modifierExtension: modifierExtension,
       address: address,
@@ -258,17 +263,18 @@ class AuditEvent_Network {
   List<Extension> modifierExtension;
   String address;
   Element elementAddress;
-  String type; // <code> enum: 1/2/3/4/5;
+  String type;
   Element elementType;
 
-  AuditEvent_Network(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.address,
-      this.elementAddress,
-      this.type,
-      this.elementType});
+  AuditEvent_Network({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.address,
+    this.elementAddress,
+    this.type,
+    this.elementType,
+  });
 
   factory AuditEvent_Network.fromJson(Map<String, dynamic> json) =>
       _$AuditEvent_NetworkFromJson(json);
@@ -277,17 +283,18 @@ class AuditEvent_Network {
 
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Source {
-  static Future<AuditEvent_Source> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String site,
-      Element elementSite,
-      Reference observer,
-      List<Coding> type}) async {
+  static Future<AuditEvent_Source> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String site,
+    Element elementSite,
+    Reference observer,
+    List<Coding> type,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Source newAuditEvent_Source = new AuditEvent_Source(
-      id: await fhirDb.newResourceId('AuditEvent_Source'),
+      id: id ?? await fhirDb.newResourceId('AuditEvent_Source'),
       extension: extension,
       modifierExtension: modifierExtension,
       site: site,
@@ -306,14 +313,15 @@ class AuditEvent_Source {
   Reference observer;
   List<Coding> type;
 
-  AuditEvent_Source(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.site,
-      this.elementSite,
-      @required this.observer,
-      this.type});
+  AuditEvent_Source({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.site,
+    this.elementSite,
+    @required this.observer,
+    this.type,
+  });
 
   factory AuditEvent_Source.fromJson(Map<String, dynamic> json) =>
       _$AuditEvent_SourceFromJson(json);
@@ -322,25 +330,26 @@ class AuditEvent_Source {
 
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Entity {
-  static Future<AuditEvent_Entity> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Reference what,
-      Coding type,
-      Coding role,
-      Coding lifecycle,
-      List<Coding> securityLabel,
-      String name,
-      Element elementName,
-      String description,
-      Element elementDescription,
-      String query,
-      Element elementQuery,
-      List<AuditEvent_Detail> detail}) async {
+  static Future<AuditEvent_Entity> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference what,
+    Coding type,
+    Coding role,
+    Coding lifecycle,
+    List<Coding> securityLabel,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+    String query,
+    Element elementQuery,
+    List<AuditEvent_Detail> detail,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Entity newAuditEvent_Entity = new AuditEvent_Entity(
-      id: await fhirDb.newResourceId('AuditEvent_Entity'),
+      id: id ?? await fhirDb.newResourceId('AuditEvent_Entity'),
       extension: extension,
       modifierExtension: modifierExtension,
       what: what,
@@ -375,22 +384,23 @@ class AuditEvent_Entity {
   Element elementQuery;
   List<AuditEvent_Detail> detail;
 
-  AuditEvent_Entity(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.what,
-      this.type,
-      this.role,
-      this.lifecycle,
-      this.securityLabel,
-      this.name,
-      this.elementName,
-      this.description,
-      this.elementDescription,
-      this.query,
-      this.elementQuery,
-      this.detail});
+  AuditEvent_Entity({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.what,
+    this.type,
+    this.role,
+    this.lifecycle,
+    this.securityLabel,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+    this.query,
+    this.elementQuery,
+    this.detail,
+  });
 
   factory AuditEvent_Entity.fromJson(Map<String, dynamic> json) =>
       _$AuditEvent_EntityFromJson(json);
@@ -399,19 +409,20 @@ class AuditEvent_Entity {
 
 @JsonSerializable(explicitToJson: true)
 class AuditEvent_Detail {
-  static Future<AuditEvent_Detail> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String type,
-      Element elementType,
-      String valueString,
-      Element elementValueString,
-      String valueBase64Binary,
-      Element elementValueBase64Binary}) async {
+  static Future<AuditEvent_Detail> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String valueString,
+    Element elementValueString,
+    String valueBase64Binary,
+    Element elementValueBase64Binary,
+  }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Detail newAuditEvent_Detail = new AuditEvent_Detail(
-      id: await fhirDb.newResourceId('AuditEvent_Detail'),
+      id: id ?? await fhirDb.newResourceId('AuditEvent_Detail'),
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -429,21 +440,22 @@ class AuditEvent_Detail {
   List<Extension> modifierExtension;
   String type;
   Element elementType;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+  String valueBase64Binary;
   Element elementValueBase64Binary;
 
-  AuditEvent_Detail(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.type,
-      this.elementType,
-      this.valueString,
-      this.elementValueString,
-      this.valueBase64Binary,
-      this.elementValueBase64Binary});
+  AuditEvent_Detail({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.valueString,
+    this.elementValueString,
+    this.valueBase64Binary,
+    this.elementValueBase64Binary,
+  });
 
   factory AuditEvent_Detail.fromJson(Map<String, dynamic> json) =>
       _$AuditEvent_DetailFromJson(json);

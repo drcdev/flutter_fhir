@@ -1,30 +1,31 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Binary {
-  static Future<Binary> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      String contentType,
-      Element elementContentType,
-      Reference securityContext,
-      String data,
-      Element elementData}) async {
+  static Future<Binary> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    String contentType,
+    Element elementContentType,
+    Reference securityContext,
+    String data,
+    Element elementData,
+  }) async {
     var fhirDb = new DatabaseHelper();
     Binary newBinary = new Binary(
-      resourceType: 'Binary',
-      id: await fhirDb.newResourceId('Binary'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('Binary'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -37,17 +38,17 @@ class Binary {
     );
     newBinary.meta.createdAt = DateTime.now();
     newBinary.meta.lastUpdated = newBinary.meta.createdAt;
-    int saved = await fhirDb.newResource(newBinary);
+    int saved = await fhirDb.saveResource(newBinary);
     return newBinary;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'Binary';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -60,19 +61,20 @@ class Binary {
   String data;
   Element elementData;
 
-  Binary(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.contentType,
-      this.elementContentType,
-      this.securityContext,
-      this.data,
-      this.elementData});
+  Binary({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.contentType,
+    this.elementContentType,
+    this.securityContext,
+    this.data,
+    this.elementData,
+  });
 
   factory Binary.fromJson(Map<String, dynamic> json) => _$BinaryFromJson(json);
   Map<String, dynamic> toJson() => _$BinaryToJson(this);

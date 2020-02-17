@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -14,53 +14,54 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet {
-  static Future<ValueSet> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String url,
-      Element elementUrl,
-      List<Identifier> identifier,
-      String version,
-      Element elementVersion,
-      String name,
-      Element elementName,
-      String title,
-      Element elementTitle,
-      String status,
-      Element elementStatus,
-      bool experimental,
-      Element elementExperimental,
-      DateTime date,
-      Element elementDate,
-      String publisher,
-      Element elementPublisher,
-      List<ContactDetail> contact,
-      String description,
-      Element elementDescription,
-      List<UsageContext> useContext,
-      List<CodeableConcept> jurisdiction,
-      bool immutable,
-      Element elementImmutable,
-      String purpose,
-      Element elementPurpose,
-      String copyright,
-      Element elementCopyright,
-      ValueSet_Compose compose,
-      ValueSet_Expansion expansion}) async {
+  static Future<ValueSet> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    bool immutable,
+    Element elementImmutable,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    ValueSet_Compose compose,
+    ValueSet_Expansion expansion,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet newValueSet = new ValueSet(
-      resourceType: 'ValueSet',
-      id: await fhirDb.newResourceId('ValueSet'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('ValueSet'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -102,17 +103,17 @@ class ValueSet {
     );
     newValueSet.meta.createdAt = DateTime.now();
     newValueSet.meta.lastUpdated = newValueSet.meta.createdAt;
-    int saved = await fhirDb.newResource(newValueSet);
+    int saved = await fhirDb.saveResource(newValueSet);
     return newValueSet;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'ValueSet';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -132,7 +133,7 @@ class ValueSet {
   Element elementName;
   String title;
   Element elementTitle;
-  String status; // <code> enum: draft/active/retired/unknown;
+  String status;
   Element elementStatus;
   bool experimental;
   Element elementExperimental;
@@ -154,48 +155,49 @@ class ValueSet {
   ValueSet_Compose compose;
   ValueSet_Expansion expansion;
 
-  ValueSet(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.url,
-      this.elementUrl,
-      this.identifier,
-      this.version,
-      this.elementVersion,
-      this.name,
-      this.elementName,
-      this.title,
-      this.elementTitle,
-      this.status,
-      this.elementStatus,
-      this.experimental,
-      this.elementExperimental,
-      this.date,
-      this.elementDate,
-      this.publisher,
-      this.elementPublisher,
-      this.contact,
-      this.description,
-      this.elementDescription,
-      this.useContext,
-      this.jurisdiction,
-      this.immutable,
-      this.elementImmutable,
-      this.purpose,
-      this.elementPurpose,
-      this.copyright,
-      this.elementCopyright,
-      this.compose,
-      this.expansion});
+  ValueSet({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.immutable,
+    this.elementImmutable,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.compose,
+    this.expansion,
+  });
 
   factory ValueSet.fromJson(Map<String, dynamic> json) =>
       _$ValueSetFromJson(json);
@@ -204,19 +206,20 @@ class ValueSet {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Compose {
-  static Future<ValueSet_Compose> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String lockedDate,
-      Element elementLockedDate,
-      bool inactive,
-      Element elementInactive,
-      List<ValueSet_Include> include,
-      List<ValueSet_Include> exclude}) async {
+  static Future<ValueSet_Compose> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String lockedDate,
+    Element elementLockedDate,
+    bool inactive,
+    Element elementInactive,
+    List<ValueSet_Include> include,
+    List<ValueSet_Include> exclude,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Compose newValueSet_Compose = new ValueSet_Compose(
-      id: await fhirDb.newResourceId('ValueSet_Compose'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Compose'),
       extension: extension,
       modifierExtension: modifierExtension,
       lockedDate: lockedDate,
@@ -239,16 +242,17 @@ class ValueSet_Compose {
   List<ValueSet_Include> include;
   List<ValueSet_Include> exclude;
 
-  ValueSet_Compose(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.lockedDate,
-      this.elementLockedDate,
-      this.inactive,
-      this.elementInactive,
-      @required this.include,
-      this.exclude});
+  ValueSet_Compose({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.lockedDate,
+    this.elementLockedDate,
+    this.inactive,
+    this.elementInactive,
+    @required this.include,
+    this.exclude,
+  });
 
   factory ValueSet_Compose.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_ComposeFromJson(json);
@@ -257,20 +261,21 @@ class ValueSet_Compose {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Include {
-  static Future<ValueSet_Include> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String system,
-      Element elementSystem,
-      String version,
-      Element elementVersion,
-      List<ValueSet_Concept> concept,
-      List<ValueSet_Filter> filter,
-      List<String> valueSet}) async {
+  static Future<ValueSet_Include> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String system,
+    Element elementSystem,
+    String version,
+    Element elementVersion,
+    List<ValueSet_Concept> concept,
+    List<ValueSet_Filter> filter,
+    List<String> valueSet,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Include newValueSet_Include = new ValueSet_Include(
-      id: await fhirDb.newResourceId('ValueSet_Include'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Include'),
       extension: extension,
       modifierExtension: modifierExtension,
       system: system,
@@ -295,17 +300,18 @@ class ValueSet_Include {
   List<ValueSet_Filter> filter;
   List<String> valueSet;
 
-  ValueSet_Include(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.system,
-      this.elementSystem,
-      this.version,
-      this.elementVersion,
-      this.concept,
-      this.filter,
-      this.valueSet});
+  ValueSet_Include({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.system,
+    this.elementSystem,
+    this.version,
+    this.elementVersion,
+    this.concept,
+    this.filter,
+    this.valueSet,
+  });
 
   factory ValueSet_Include.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_IncludeFromJson(json);
@@ -314,18 +320,19 @@ class ValueSet_Include {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Concept {
-  static Future<ValueSet_Concept> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String code,
-      Element elementCode,
-      String display,
-      Element elementDisplay,
-      List<ValueSet_Designation> designation}) async {
+  static Future<ValueSet_Concept> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String display,
+    Element elementDisplay,
+    List<ValueSet_Designation> designation,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Concept newValueSet_Concept = new ValueSet_Concept(
-      id: await fhirDb.newResourceId('ValueSet_Concept'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Concept'),
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -346,15 +353,16 @@ class ValueSet_Concept {
   Element elementDisplay;
   List<ValueSet_Designation> designation;
 
-  ValueSet_Concept(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.code,
-      this.elementCode,
-      this.display,
-      this.elementDisplay,
-      this.designation});
+  ValueSet_Concept({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.display,
+    this.elementDisplay,
+    this.designation,
+  });
 
   factory ValueSet_Concept.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_ConceptFromJson(json);
@@ -363,18 +371,19 @@ class ValueSet_Concept {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Designation {
-  static Future<ValueSet_Designation> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String language,
-      Element elementLanguage,
-      Coding use,
-      String value,
-      Element elementValue}) async {
+  static Future<ValueSet_Designation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String language,
+    Element elementLanguage,
+    Coding use,
+    String value,
+    Element elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Designation newValueSet_Designation = new ValueSet_Designation(
-      id: await fhirDb.newResourceId('ValueSet_Designation'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Designation'),
       extension: extension,
       modifierExtension: modifierExtension,
       language: language,
@@ -395,15 +404,16 @@ class ValueSet_Designation {
   String value;
   Element elementValue;
 
-  ValueSet_Designation(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.language,
-      this.elementLanguage,
-      this.use,
-      this.value,
-      this.elementValue});
+  ValueSet_Designation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.language,
+    this.elementLanguage,
+    this.use,
+    this.value,
+    this.elementValue,
+  });
 
   factory ValueSet_Designation.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_DesignationFromJson(json);
@@ -412,19 +422,20 @@ class ValueSet_Designation {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Filter {
-  static Future<ValueSet_Filter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String property,
-      Element elementProperty,
-      String op,
-      Element elementOp,
-      String value,
-      Element elementValue}) async {
+  static Future<ValueSet_Filter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String property,
+    Element elementProperty,
+    String op,
+    Element elementOp,
+    String value,
+    Element elementValue,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Filter newValueSet_Filter = new ValueSet_Filter(
-      id: await fhirDb.newResourceId('ValueSet_Filter'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Filter'),
       extension: extension,
       modifierExtension: modifierExtension,
       property: property,
@@ -442,22 +453,22 @@ class ValueSet_Filter {
   List<Extension> modifierExtension;
   String property;
   Element elementProperty;
-  String
-      op; // <code> enum: =/is-a/descendent-of/is-not-a/regex/in/not-in/generalizes/exists;
+  String op;
   Element elementOp;
   String value;
   Element elementValue;
 
-  ValueSet_Filter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.property,
-      this.elementProperty,
-      this.op,
-      this.elementOp,
-      this.value,
-      this.elementValue});
+  ValueSet_Filter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.property,
+    this.elementProperty,
+    this.op,
+    this.elementOp,
+    this.value,
+    this.elementValue,
+  });
 
   factory ValueSet_Filter.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_FilterFromJson(json);
@@ -466,23 +477,24 @@ class ValueSet_Filter {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Expansion {
-  static Future<ValueSet_Expansion> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String identifier,
-      Element elementIdentifier,
-      DateTime timestamp,
-      Element elementTimestamp,
-      int total,
-      Element elementTotal,
-      int offset,
-      Element elementOffset,
-      List<ValueSet_Parameter> parameter,
-      List<ValueSet_Contains> contains}) async {
+  static Future<ValueSet_Expansion> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String identifier,
+    Element elementIdentifier,
+    DateTime timestamp,
+    Element elementTimestamp,
+    int total,
+    Element elementTotal,
+    int offset,
+    Element elementOffset,
+    List<ValueSet_Parameter> parameter,
+    List<ValueSet_Contains> contains,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Expansion newValueSet_Expansion = new ValueSet_Expansion(
-      id: await fhirDb.newResourceId('ValueSet_Expansion'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Expansion'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -513,20 +525,21 @@ class ValueSet_Expansion {
   List<ValueSet_Parameter> parameter;
   List<ValueSet_Contains> contains;
 
-  ValueSet_Expansion(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.elementIdentifier,
-      this.timestamp,
-      this.elementTimestamp,
-      this.total,
-      this.elementTotal,
-      this.offset,
-      this.elementOffset,
-      this.parameter,
-      this.contains});
+  ValueSet_Expansion({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.elementIdentifier,
+    this.timestamp,
+    this.elementTimestamp,
+    this.total,
+    this.elementTotal,
+    this.offset,
+    this.elementOffset,
+    this.parameter,
+    this.contains,
+  });
 
   factory ValueSet_Expansion.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_ExpansionFromJson(json);
@@ -535,29 +548,30 @@ class ValueSet_Expansion {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Parameter {
-  static Future<ValueSet_Parameter> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String name,
-      Element elementName,
-      String valueString,
-      Element elementValueString,
-      bool valueBoolean,
-      Element elementValueBoolean,
-      int valueInteger,
-      Element elementValueInteger,
-      int valueDecimal,
-      Element elementValueDecimal,
-      String valueUri,
-      Element elementValueUri,
-      String valueCode,
-      Element elementValueCode,
-      String valueDateTime,
-      Element elementValueDateTime}) async {
+  static Future<ValueSet_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String valueString,
+    Element elementValueString,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueInteger,
+    Element elementValueInteger,
+    int valueDecimal,
+    Element elementValueDecimal,
+    String valueUri,
+    Element elementValueUri,
+    String valueCode,
+    Element elementValueCode,
+    String valueDateTime,
+    Element elementValueDateTime,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Parameter newValueSet_Parameter = new ValueSet_Parameter(
-      id: await fhirDb.newResourceId('ValueSet_Parameter'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Parameter'),
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -585,42 +599,42 @@ class ValueSet_Parameter {
   List<Extension> modifierExtension;
   String name;
   Element elementName;
-  String valueString; //  pattern: ^[ \r\n\t\S]+$
+  String valueString;
   Element elementValueString;
-  bool valueBoolean; //  pattern: ^true|false$
+  bool valueBoolean;
   Element elementValueBoolean;
-  int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+  int valueInteger;
   Element elementValueInteger;
-  int valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+  int valueDecimal;
   Element elementValueDecimal;
-  String valueUri; //  pattern: ^\S*$
+  String valueUri;
   Element elementValueUri;
-  String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+  String valueCode;
   Element elementValueCode;
-  String
-      valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+  String valueDateTime;
   Element elementValueDateTime;
 
-  ValueSet_Parameter(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.name,
-      this.elementName,
-      this.valueString,
-      this.elementValueString,
-      this.valueBoolean,
-      this.elementValueBoolean,
-      this.valueInteger,
-      this.elementValueInteger,
-      this.valueDecimal,
-      this.elementValueDecimal,
-      this.valueUri,
-      this.elementValueUri,
-      this.valueCode,
-      this.elementValueCode,
-      this.valueDateTime,
-      this.elementValueDateTime});
+  ValueSet_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.valueString,
+    this.elementValueString,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueCode,
+    this.elementValueCode,
+    this.valueDateTime,
+    this.elementValueDateTime,
+  });
 
   factory ValueSet_Parameter.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_ParameterFromJson(json);
@@ -629,27 +643,28 @@ class ValueSet_Parameter {
 
 @JsonSerializable(explicitToJson: true)
 class ValueSet_Contains {
-  static Future<ValueSet_Contains> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      String system,
-      Element elementSystem,
-      bool abstract,
-      Element elementAbstract,
-      bool inactive,
-      Element elementInactive,
-      String version,
-      Element elementVersion,
-      String code,
-      Element elementCode,
-      String display,
-      Element elementDisplay,
-      List<ValueSet_Designation> designation,
-      List<ValueSet_Contains> contains}) async {
+  static Future<ValueSet_Contains> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String system,
+    Element elementSystem,
+    bool abstract,
+    Element elementAbstract,
+    bool inactive,
+    Element elementInactive,
+    String version,
+    Element elementVersion,
+    String code,
+    Element elementCode,
+    String display,
+    Element elementDisplay,
+    List<ValueSet_Designation> designation,
+    List<ValueSet_Contains> contains,
+  }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Contains newValueSet_Contains = new ValueSet_Contains(
-      id: await fhirDb.newResourceId('ValueSet_Contains'),
+      id: id ?? await fhirDb.newResourceId('ValueSet_Contains'),
       extension: extension,
       modifierExtension: modifierExtension,
       system: system,
@@ -688,24 +703,25 @@ class ValueSet_Contains {
   List<ValueSet_Designation> designation;
   List<ValueSet_Contains> contains;
 
-  ValueSet_Contains(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.system,
-      this.elementSystem,
-      this.abstract,
-      this.elementAbstract,
-      this.inactive,
-      this.elementInactive,
-      this.version,
-      this.elementVersion,
-      this.code,
-      this.elementCode,
-      this.display,
-      this.elementDisplay,
-      this.designation,
-      this.contains});
+  ValueSet_Contains({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.system,
+    this.elementSystem,
+    this.abstract,
+    this.elementAbstract,
+    this.inactive,
+    this.elementInactive,
+    this.version,
+    this.elementVersion,
+    this.code,
+    this.elementCode,
+    this.display,
+    this.elementDisplay,
+    this.designation,
+    this.contains,
+  });
 
   factory ValueSet_Contains.fromJson(Map<String, dynamic> json) =>
       _$ValueSet_ContainsFromJson(json);

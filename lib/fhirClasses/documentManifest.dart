@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter/foundation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -12,39 +12,40 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
 class DocumentManifest {
-  static Future<DocumentManifest> newInstance(
-      {String resourceType,
-      String id,
-      Meta meta,
-      String implicitRules,
-      Element elementImplicitRules,
-      String language,
-      Element elementLanguage,
-      Narrative text,
-      List<dynamic> contained,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier masterIdentifier,
-      List<Identifier> identifier,
-      String status,
-      Element elementStatus,
-      CodeableConcept type,
-      Reference subject,
-      DateTime created,
-      Element elementCreated,
-      List<Reference> author,
-      List<Reference> recipient,
-      String source,
-      Element elementSource,
-      String description,
-      Element elementDescription,
-      List<Reference> content,
-      List<DocumentManifest_Related> related}) async {
+  static Future<DocumentManifest> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier masterIdentifier,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept type,
+    Reference subject,
+    DateTime created,
+    Element elementCreated,
+    List<Reference> author,
+    List<Reference> recipient,
+    String source,
+    Element elementSource,
+    String description,
+    Element elementDescription,
+    List<Reference> content,
+    List<DocumentManifest_Related> related,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DocumentManifest newDocumentManifest = new DocumentManifest(
-      resourceType: 'DocumentManifest',
-      id: await fhirDb.newResourceId('DocumentManifest'),
-      meta: await Meta.newInstance(),
+      resourceType: resourceType,
+      id: id ?? await fhirDb.newResourceId('DocumentManifest'),
+      meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
       elementImplicitRules: elementImplicitRules,
       language: language,
@@ -72,17 +73,17 @@ class DocumentManifest {
     );
     newDocumentManifest.meta.createdAt = DateTime.now();
     newDocumentManifest.meta.lastUpdated = newDocumentManifest.meta.createdAt;
-    int saved = await fhirDb.newResource(newDocumentManifest);
+    int saved = await fhirDb.saveResource(newDocumentManifest);
     return newDocumentManifest;
   }
 
   save() async {
     this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
-    int saved = await fhirDb.saveResource(this);
+    int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType = 'DocumentManifest';
+  String resourceType;
   String id;
   Meta meta;
   String implicitRules;
@@ -95,7 +96,7 @@ class DocumentManifest {
   List<Extension> modifierExtension;
   Identifier masterIdentifier;
   List<Identifier> identifier;
-  String status; // <code> enum: current/superseded/entered-in-error;
+  String status;
   Element elementStatus;
   CodeableConcept type;
   Reference subject;
@@ -110,34 +111,35 @@ class DocumentManifest {
   List<Reference> content;
   List<DocumentManifest_Related> related;
 
-  DocumentManifest(
-      {@required this.resourceType,
-      this.id,
-      this.meta,
-      this.implicitRules,
-      this.elementImplicitRules,
-      this.language,
-      this.elementLanguage,
-      this.text,
-      this.contained,
-      this.extension,
-      this.modifierExtension,
-      this.masterIdentifier,
-      this.identifier,
-      this.status,
-      this.elementStatus,
-      this.type,
-      this.subject,
-      this.created,
-      this.elementCreated,
-      this.author,
-      this.recipient,
-      this.source,
-      this.elementSource,
-      this.description,
-      this.elementDescription,
-      @required this.content,
-      this.related});
+  DocumentManifest({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.masterIdentifier,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.type,
+    this.subject,
+    this.created,
+    this.elementCreated,
+    this.author,
+    this.recipient,
+    this.source,
+    this.elementSource,
+    this.description,
+    this.elementDescription,
+    @required this.content,
+    this.related,
+  });
 
   factory DocumentManifest.fromJson(Map<String, dynamic> json) =>
       _$DocumentManifestFromJson(json);
@@ -146,16 +148,17 @@ class DocumentManifest {
 
 @JsonSerializable(explicitToJson: true)
 class DocumentManifest_Related {
-  static Future<DocumentManifest_Related> newInstance(
-      {String id,
-      List<Extension> extension,
-      List<Extension> modifierExtension,
-      Identifier identifier,
-      Reference ref}) async {
+  static Future<DocumentManifest_Related> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    Reference ref,
+  }) async {
     var fhirDb = new DatabaseHelper();
     DocumentManifest_Related newDocumentManifest_Related =
         new DocumentManifest_Related(
-      id: await fhirDb.newResourceId('DocumentManifest_Related'),
+      id: id ?? await fhirDb.newResourceId('DocumentManifest_Related'),
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -170,12 +173,13 @@ class DocumentManifest_Related {
   Identifier identifier;
   Reference ref;
 
-  DocumentManifest_Related(
-      {this.id,
-      this.extension,
-      this.modifierExtension,
-      this.identifier,
-      this.ref});
+  DocumentManifest_Related({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.ref,
+  });
 
   factory DocumentManifest_Related.fromJson(Map<String, dynamic> json) =>
       _$DocumentManifest_RelatedFromJson(json);
