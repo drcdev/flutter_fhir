@@ -71,7 +71,7 @@ class OperationDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     OperationDefinition newOperationDefinition = new OperationDefinition(
-      resourceType: resourceType,
+      resourceType: 'OperationDefinition',
       id: id ?? await fhirDb.newResourceId('OperationDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -140,7 +140,7 @@ class OperationDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'OperationDefinition';
   String id;
   Meta meta;
   String implicitRules;

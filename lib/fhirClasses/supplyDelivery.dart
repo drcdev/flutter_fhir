@@ -45,7 +45,7 @@ class SupplyDelivery {
   }) async {
     var fhirDb = new DatabaseHelper();
     SupplyDelivery newSupplyDelivery = new SupplyDelivery(
-      resourceType: resourceType,
+      resourceType: 'SupplyDelivery',
       id: id ?? await fhirDb.newResourceId('SupplyDelivery'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -84,7 +84,7 @@ class SupplyDelivery {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SupplyDelivery';
   String id;
   Meta meta;
   String implicitRules;

@@ -33,7 +33,7 @@ class MedicinalProductUndesirableEffect {
     var fhirDb = new DatabaseHelper();
     MedicinalProductUndesirableEffect newMedicinalProductUndesirableEffect =
         new MedicinalProductUndesirableEffect(
-      resourceType: resourceType,
+      resourceType: 'MedicinalProductUndesirableEffect',
       id: id ?? await fhirDb.newResourceId('MedicinalProductUndesirableEffect'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -63,7 +63,7 @@ class MedicinalProductUndesirableEffect {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'MedicinalProductUndesirableEffect';
   String id;
   Meta meta;
   String implicitRules;

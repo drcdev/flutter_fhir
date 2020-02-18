@@ -41,8 +41,8 @@ class _MainMenuState extends State<_MainMenu> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               PageButton('assets/images/activities.png', 'Provider Activities',
                   ProviderActivities()),
-              ActionButton('assets/images/sync.png', 'Sync with server',
-                  sync, 'get'),
+              ActionButton(
+                  'assets/images/sync.png', 'Sync with server', sync, 'get'),
             ]),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               PageButton(

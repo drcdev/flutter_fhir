@@ -80,7 +80,7 @@ class Observation {
   }) async {
     var fhirDb = new DatabaseHelper();
     Observation newObservation = new Observation(
-      resourceType: resourceType,
+      resourceType: 'Observation',
       id: id ?? await fhirDb.newResourceId('Observation'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -150,7 +150,7 @@ class Observation {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Observation';
   String id;
   Meta meta;
   String implicitRules;

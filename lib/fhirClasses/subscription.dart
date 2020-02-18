@@ -37,7 +37,7 @@ class Subscription {
   }) async {
     var fhirDb = new DatabaseHelper();
     Subscription newSubscription = new Subscription(
-      resourceType: resourceType,
+      resourceType: 'Subscription',
       id: id ?? await fhirDb.newResourceId('Subscription'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -73,7 +73,7 @@ class Subscription {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Subscription';
   String id;
   Meta meta;
   String implicitRules;

@@ -96,7 +96,7 @@ class Measure {
   }) async {
     var fhirDb = new DatabaseHelper();
     Measure newMeasure = new Measure(
-      resourceType: resourceType,
+      resourceType: 'Measure',
       id: id ?? await fhirDb.newResourceId('Measure'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -185,7 +185,7 @@ class Measure {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Measure';
   String id;
   Meta meta;
   String implicitRules;

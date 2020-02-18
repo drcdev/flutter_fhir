@@ -83,7 +83,7 @@ class StructureMap {
   }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap newStructureMap = new StructureMap(
-      resourceType: resourceType,
+      resourceType: 'StructureMap',
       id: id ?? await fhirDb.newResourceId('StructureMap'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -136,7 +136,7 @@ class StructureMap {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'StructureMap';
   String id;
   Meta meta;
   String implicitRules;

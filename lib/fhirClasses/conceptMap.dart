@@ -63,7 +63,7 @@ class ConceptMap {
   }) async {
     var fhirDb = new DatabaseHelper();
     ConceptMap newConceptMap = new ConceptMap(
-      resourceType: resourceType,
+      resourceType: 'ConceptMap',
       id: id ?? await fhirDb.newResourceId('ConceptMap'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -122,7 +122,7 @@ class ConceptMap {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ConceptMap';
   String id;
   Meta meta;
   String implicitRules;

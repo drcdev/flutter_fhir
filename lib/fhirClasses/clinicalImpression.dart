@@ -56,7 +56,7 @@ class ClinicalImpression {
   }) async {
     var fhirDb = new DatabaseHelper();
     ClinicalImpression newClinicalImpression = new ClinicalImpression(
-      resourceType: resourceType,
+      resourceType: 'ClinicalImpression',
       id: id ?? await fhirDb.newResourceId('ClinicalImpression'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -108,7 +108,7 @@ class ClinicalImpression {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ClinicalImpression';
   String id;
   Meta meta;
   String implicitRules;

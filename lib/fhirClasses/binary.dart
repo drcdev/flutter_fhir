@@ -23,7 +23,7 @@ class Binary {
   }) async {
     var fhirDb = new DatabaseHelper();
     Binary newBinary = new Binary(
-      resourceType: resourceType,
+      resourceType: 'Binary',
       id: id ?? await fhirDb.newResourceId('Binary'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -48,7 +48,7 @@ class Binary {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Binary';
   String id;
   Meta meta;
   String implicitRules;

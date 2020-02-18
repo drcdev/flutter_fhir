@@ -74,7 +74,7 @@ class SearchParameter {
   }) async {
     var fhirDb = new DatabaseHelper();
     SearchParameter newSearchParameter = new SearchParameter(
-      resourceType: resourceType,
+      resourceType: 'SearchParameter',
       id: id ?? await fhirDb.newResourceId('SearchParameter'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -145,7 +145,7 @@ class SearchParameter {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SearchParameter';
   String id;
   Meta meta;
   String implicitRules;

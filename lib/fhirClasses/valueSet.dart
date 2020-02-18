@@ -59,7 +59,7 @@ class ValueSet {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet newValueSet = new ValueSet(
-      resourceType: resourceType,
+      resourceType: 'ValueSet',
       id: id ?? await fhirDb.newResourceId('ValueSet'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -113,7 +113,7 @@ class ValueSet {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ValueSet';
   String id;
   Meta meta;
   String implicitRules;

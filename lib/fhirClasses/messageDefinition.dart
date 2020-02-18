@@ -68,7 +68,7 @@ class MessageDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     MessageDefinition newMessageDefinition = new MessageDefinition(
-      resourceType: resourceType,
+      resourceType: 'MessageDefinition',
       id: id ?? await fhirDb.newResourceId('MessageDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -131,7 +131,7 @@ class MessageDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'MessageDefinition';
   String id;
   Meta meta;
   String implicitRules;

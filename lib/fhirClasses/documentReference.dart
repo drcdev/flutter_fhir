@@ -50,7 +50,7 @@ class DocumentReference {
   }) async {
     var fhirDb = new DatabaseHelper();
     DocumentReference newDocumentReference = new DocumentReference(
-      resourceType: resourceType,
+      resourceType: 'DocumentReference',
       id: id ?? await fhirDb.newResourceId('DocumentReference'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -94,7 +94,7 @@ class DocumentReference {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'DocumentReference';
   String id;
   Meta meta;
   String implicitRules;

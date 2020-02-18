@@ -110,11 +110,13 @@ def imported():
                     "import 'package:flutter/foundation.dart';\n",
                      "import 'package:json_annotation/json_annotation.dart';\n"]))
 
-def idOrMeta(key, objects):
+def idMetaResourceType(key, objects):
     if(key == 'id'):
         return(''.join(["id ?? await fhirDb.newResourceId('", objects, "')"]))
     elif(key == 'meta'):
         return(''.join(["meta ?? await Meta.newInstance()"]))
+    elif(key == 'resourceType'):
+        return(''.join(["'", objects, "'"]))
     else:
         return key
 
@@ -279,9 +281,15 @@ for objects in definitions:
                                    '\t',
                                    key,
                                    ': ',
-                                   idOrMeta(key, objects),
+                                   idMetaResourceType(key, objects),
                                    ',\n'])
-            variables = ''.join([variables, "\t", primitiveDart(val), " ", key, ';\n'])
+            variables = ''.join([variables, 
+                                 "\t", 
+                                 primitiveDart(val), 
+                                 " ", 
+                                 key, 
+                                 ("= '" + objects + "'") if key == 'resourceType' else '',
+                                 ';\n'])
             constructor = ''.join([constructor,
                                    '@required ' if key in required else '',
                                    'this.', 

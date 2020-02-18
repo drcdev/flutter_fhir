@@ -51,7 +51,7 @@ class ImmunizationEvaluation {
     var fhirDb = new DatabaseHelper();
     ImmunizationEvaluation newImmunizationEvaluation =
         new ImmunizationEvaluation(
-      resourceType: resourceType,
+      resourceType: 'ImmunizationEvaluation',
       id: id ?? await fhirDb.newResourceId('ImmunizationEvaluation'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -99,7 +99,7 @@ class ImmunizationEvaluation {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ImmunizationEvaluation';
   String id;
   Meta meta;
   String implicitRules;

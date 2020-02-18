@@ -37,7 +37,7 @@ class Flag {
   }) async {
     var fhirDb = new DatabaseHelper();
     Flag newFlag = new Flag(
-      resourceType: resourceType,
+      resourceType: 'Flag',
       id: id ?? await fhirDb.newResourceId('Flag'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -70,7 +70,7 @@ class Flag {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Flag';
   String id;
   Meta meta;
   String implicitRules;

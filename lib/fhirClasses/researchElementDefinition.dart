@@ -89,7 +89,7 @@ class ResearchElementDefinition {
     var fhirDb = new DatabaseHelper();
     ResearchElementDefinition newResearchElementDefinition =
         new ResearchElementDefinition(
-      resourceType: resourceType,
+      resourceType: 'ResearchElementDefinition',
       id: id ?? await fhirDb.newResourceId('ResearchElementDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -167,7 +167,7 @@ class ResearchElementDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ResearchElementDefinition';
   String id;
   Meta meta;
   String implicitRules;

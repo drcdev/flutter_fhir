@@ -43,7 +43,7 @@ class DocumentManifest {
   }) async {
     var fhirDb = new DatabaseHelper();
     DocumentManifest newDocumentManifest = new DocumentManifest(
-      resourceType: resourceType,
+      resourceType: 'DocumentManifest',
       id: id ?? await fhirDb.newResourceId('DocumentManifest'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -83,7 +83,7 @@ class DocumentManifest {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'DocumentManifest';
   String id;
   Meta meta;
   String implicitRules;

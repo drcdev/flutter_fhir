@@ -61,7 +61,7 @@ class Media {
   }) async {
     var fhirDb = new DatabaseHelper();
     Media newMedia = new Media(
-      resourceType: resourceType,
+      resourceType: 'Media',
       id: id ?? await fhirDb.newResourceId('Media'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -116,7 +116,7 @@ class Media {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Media';
   String id;
   Meta meta;
   String implicitRules;

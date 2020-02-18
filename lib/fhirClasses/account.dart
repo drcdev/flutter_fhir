@@ -42,7 +42,7 @@ class Account {
   }) async {
     var fhirDb = new DatabaseHelper();
     Account newAccount = new Account(
-      resourceType: resourceType,
+      resourceType: 'Account',
       id: id ?? await fhirDb.newResourceId('Account'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -80,7 +80,7 @@ class Account {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Account';
   String id;
   Meta meta;
   String implicitRules;

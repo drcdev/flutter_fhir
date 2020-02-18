@@ -34,7 +34,7 @@ class SubstanceNucleicAcid {
   }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceNucleicAcid newSubstanceNucleicAcid = new SubstanceNucleicAcid(
-      resourceType: resourceType,
+      resourceType: 'SubstanceNucleicAcid',
       id: id ?? await fhirDb.newResourceId('SubstanceNucleicAcid'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -66,7 +66,7 @@ class SubstanceNucleicAcid {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SubstanceNucleicAcid';
   String id;
   Meta meta;
   String implicitRules;

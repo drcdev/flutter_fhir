@@ -47,7 +47,7 @@ class RelatedPerson {
   }) async {
     var fhirDb = new DatabaseHelper();
     RelatedPerson newRelatedPerson = new RelatedPerson(
-      resourceType: resourceType,
+      resourceType: 'RelatedPerson',
       id: id ?? await fhirDb.newResourceId('RelatedPerson'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -86,7 +86,7 @@ class RelatedPerson {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'RelatedPerson';
   String id;
   Meta meta;
   String implicitRules;

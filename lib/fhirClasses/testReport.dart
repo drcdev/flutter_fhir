@@ -44,7 +44,7 @@ class TestReport {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport newTestReport = new TestReport(
-      resourceType: resourceType,
+      resourceType: 'TestReport',
       id: id ?? await fhirDb.newResourceId('TestReport'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -86,7 +86,7 @@ class TestReport {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'TestReport';
   String id;
   Meta meta;
   String implicitRules;

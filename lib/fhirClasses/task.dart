@@ -92,7 +92,7 @@ class Task {
   }) async {
     var fhirDb = new DatabaseHelper();
     Task newTask = new Task(
-      resourceType: resourceType,
+      resourceType: 'Task',
       id: id ?? await fhirDb.newResourceId('Task'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -154,7 +154,7 @@ class Task {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Task';
   String id;
   Meta meta;
   String implicitRules;

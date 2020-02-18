@@ -1,13 +1,15 @@
+import 'package:flutter_fhir/util/db.dart';
+import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:flutter_fhir/fhirClasses/bundle.dart' as bundle;
+import 'package:flutter_fhir/fhirClasses/bundle.dart';
 
 sync(String action, {String resourceType, List<dynamic> resourceList}) async {
   Map<String, String> headers = {'Content-type': 'application/json'};
   //Obtain authorization token
   String name = 'faulkenbej@chop.edu';
   String secret = 'chopchop';
-  String clientSecret = 'chopcho9';
+  String clientSecret = 'chopchop';
   Response response = await post(
       'https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&grant_type=password&username=$name&password=$secret&client_secret=$clientSecret',
       headers: headers);
@@ -23,17 +25,13 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
   switch (action) {
     case 'get':
       {
-        Response response = await get(
-            'https://dbhifhir.aidbox.app/Patient',
-            headers: headers);
-        var myBundle = bundle.Bundle.fromJson(json.decode(response.body));
+        Response response =
+            await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
+        var myBundle = Bundle.fromJson(json.decode(response.body));
         for (var i = 0; i < myBundle.total; i++) {
-          print(i);
-//      await Patient.fromJson(myBundle.entry[i].resource.toJson());
-          print(myBundle.entry[i].toJson().toString());
-          print(myBundle.entry[i].resource.toJson().toString());
+          ResourceTypes(myBundle.entry[i].resource.resourceType,
+              myBundle.entry[i].resource.toJson()).save();
         }
-        print('Patients downloaded.');
       }
       break;
     case 'post':

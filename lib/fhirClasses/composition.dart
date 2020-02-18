@@ -47,7 +47,7 @@ class Composition {
   }) async {
     var fhirDb = new DatabaseHelper();
     Composition newComposition = new Composition(
-      resourceType: resourceType,
+      resourceType: 'Composition',
       id: id ?? await fhirDb.newResourceId('Composition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -90,7 +90,7 @@ class Composition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Composition';
   String id;
   Meta meta;
   String implicitRules;

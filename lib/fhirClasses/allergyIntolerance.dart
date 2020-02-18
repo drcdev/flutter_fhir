@@ -58,7 +58,7 @@ class AllergyIntolerance {
   }) async {
     var fhirDb = new DatabaseHelper();
     AllergyIntolerance newAllergyIntolerance = new AllergyIntolerance(
-      resourceType: resourceType,
+      resourceType: 'AllergyIntolerance',
       id: id ?? await fhirDb.newResourceId('AllergyIntolerance'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -110,7 +110,7 @@ class AllergyIntolerance {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'AllergyIntolerance';
   String id;
   Meta meta;
   String implicitRules;

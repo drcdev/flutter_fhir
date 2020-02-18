@@ -49,7 +49,7 @@ class PaymentReconciliation {
   }) async {
     var fhirDb = new DatabaseHelper();
     PaymentReconciliation newPaymentReconciliation = new PaymentReconciliation(
-      resourceType: resourceType,
+      resourceType: 'PaymentReconciliation',
       id: id ?? await fhirDb.newResourceId('PaymentReconciliation'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -94,7 +94,7 @@ class PaymentReconciliation {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'PaymentReconciliation';
   String id;
   Meta meta;
   String implicitRules;

@@ -41,7 +41,7 @@ class DeviceMetric {
   }) async {
     var fhirDb = new DatabaseHelper();
     DeviceMetric newDeviceMetric = new DeviceMetric(
-      resourceType: resourceType,
+      resourceType: 'DeviceMetric',
       id: id ?? await fhirDb.newResourceId('DeviceMetric'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -78,7 +78,7 @@ class DeviceMetric {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'DeviceMetric';
   String id;
   Meta meta;
   String implicitRules;

@@ -26,7 +26,7 @@ class OperationOutcome {
   }) async {
     var fhirDb = new DatabaseHelper();
     OperationOutcome newOperationOutcome = new OperationOutcome(
-      resourceType: resourceType,
+      resourceType: 'OperationOutcome',
       id: id ?? await fhirDb.newResourceId('OperationOutcome'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -51,7 +51,7 @@ class OperationOutcome {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'OperationOutcome';
   String id;
   Meta meta;
   String implicitRules;

@@ -68,7 +68,7 @@ class FamilyMemberHistory {
   }) async {
     var fhirDb = new DatabaseHelper();
     FamilyMemberHistory newFamilyMemberHistory = new FamilyMemberHistory(
-      resourceType: resourceType,
+      resourceType: 'FamilyMemberHistory',
       id: id ?? await fhirDb.newResourceId('FamilyMemberHistory'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -130,7 +130,7 @@ class FamilyMemberHistory {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'FamilyMemberHistory';
   String id;
   Meta meta;
   String implicitRules;

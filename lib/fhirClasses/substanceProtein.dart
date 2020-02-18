@@ -33,7 +33,7 @@ class SubstanceProtein {
   }) async {
     var fhirDb = new DatabaseHelper();
     SubstanceProtein newSubstanceProtein = new SubstanceProtein(
-      resourceType: resourceType,
+      resourceType: 'SubstanceProtein',
       id: id ?? await fhirDb.newResourceId('SubstanceProtein'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -63,7 +63,7 @@ class SubstanceProtein {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SubstanceProtein';
   String id;
   Meta meta;
   String implicitRules;

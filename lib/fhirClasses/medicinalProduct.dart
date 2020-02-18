@@ -51,7 +51,7 @@ class MedicinalProduct {
   }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProduct newMedicinalProduct = new MedicinalProduct(
-      resourceType: resourceType,
+      resourceType: 'MedicinalProduct',
       id: id ?? await fhirDb.newResourceId('MedicinalProduct'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -96,7 +96,7 @@ class MedicinalProduct {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'MedicinalProduct';
   String id;
   Meta meta;
   String implicitRules;

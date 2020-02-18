@@ -46,7 +46,7 @@ class Consent {
   }) async {
     var fhirDb = new DatabaseHelper();
     Consent newConsent = new Consent(
-      resourceType: resourceType,
+      resourceType: 'Consent',
       id: id ?? await fhirDb.newResourceId('Consent'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -86,7 +86,7 @@ class Consent {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Consent';
   String id;
   Meta meta;
   String implicitRules;

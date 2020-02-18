@@ -45,7 +45,7 @@ class PractitionerRole {
   }) async {
     var fhirDb = new DatabaseHelper();
     PractitionerRole newPractitionerRole = new PractitionerRole(
-      resourceType: resourceType,
+      resourceType: 'PractitionerRole',
       id: id ?? await fhirDb.newResourceId('PractitionerRole'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -85,7 +85,7 @@ class PractitionerRole {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'PractitionerRole';
   String id;
   Meta meta;
   String implicitRules;

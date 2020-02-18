@@ -43,7 +43,7 @@ class PaymentNotice {
   }) async {
     var fhirDb = new DatabaseHelper();
     PaymentNotice newPaymentNotice = new PaymentNotice(
-      resourceType: resourceType,
+      resourceType: 'PaymentNotice',
       id: id ?? await fhirDb.newResourceId('PaymentNotice'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -82,7 +82,7 @@ class PaymentNotice {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'PaymentNotice';
   String id;
   Meta meta;
   String implicitRules;

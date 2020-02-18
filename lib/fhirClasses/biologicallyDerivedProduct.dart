@@ -43,7 +43,7 @@ class BiologicallyDerivedProduct {
     var fhirDb = new DatabaseHelper();
     BiologicallyDerivedProduct newBiologicallyDerivedProduct =
         new BiologicallyDerivedProduct(
-      resourceType: resourceType,
+      resourceType: 'BiologicallyDerivedProduct',
       id: id ?? await fhirDb.newResourceId('BiologicallyDerivedProduct'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -82,7 +82,7 @@ class BiologicallyDerivedProduct {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'BiologicallyDerivedProduct';
   String id;
   Meta meta;
   String implicitRules;

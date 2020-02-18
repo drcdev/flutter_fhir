@@ -46,7 +46,7 @@ class Endpoint {
   }) async {
     var fhirDb = new DatabaseHelper();
     Endpoint newEndpoint = new Endpoint(
-      resourceType: resourceType,
+      resourceType: 'Endpoint',
       id: id ?? await fhirDb.newResourceId('Endpoint'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -86,7 +86,7 @@ class Endpoint {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Endpoint';
   String id;
   Meta meta;
   String implicitRules;

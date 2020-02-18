@@ -77,7 +77,7 @@ class EffectEvidenceSynthesis {
     var fhirDb = new DatabaseHelper();
     EffectEvidenceSynthesis newEffectEvidenceSynthesis =
         new EffectEvidenceSynthesis(
-      resourceType: resourceType,
+      resourceType: 'EffectEvidenceSynthesis',
       id: id ?? await fhirDb.newResourceId('EffectEvidenceSynthesis'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -146,7 +146,7 @@ class EffectEvidenceSynthesis {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'EffectEvidenceSynthesis';
   String id;
   Meta meta;
   String implicitRules;

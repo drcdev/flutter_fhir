@@ -42,7 +42,7 @@ class Provenance {
   }) async {
     var fhirDb = new DatabaseHelper();
     Provenance newProvenance = new Provenance(
-      resourceType: resourceType,
+      resourceType: 'Provenance',
       id: id ?? await fhirDb.newResourceId('Provenance'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -80,7 +80,7 @@ class Provenance {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Provenance';
   String id;
   Meta meta;
   String implicitRules;

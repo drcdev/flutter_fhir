@@ -66,7 +66,7 @@ class TerminologyCapabilities {
     var fhirDb = new DatabaseHelper();
     TerminologyCapabilities newTerminologyCapabilities =
         new TerminologyCapabilities(
-      resourceType: resourceType,
+      resourceType: 'TerminologyCapabilities',
       id: id ?? await fhirDb.newResourceId('TerminologyCapabilities'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -129,7 +129,7 @@ class TerminologyCapabilities {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'TerminologyCapabilities';
   String id;
   Meta meta;
   String implicitRules;

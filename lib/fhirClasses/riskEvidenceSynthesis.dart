@@ -74,7 +74,7 @@ class RiskEvidenceSynthesis {
   }) async {
     var fhirDb = new DatabaseHelper();
     RiskEvidenceSynthesis newRiskEvidenceSynthesis = new RiskEvidenceSynthesis(
-      resourceType: resourceType,
+      resourceType: 'RiskEvidenceSynthesis',
       id: id ?? await fhirDb.newResourceId('RiskEvidenceSynthesis'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -141,7 +141,7 @@ class RiskEvidenceSynthesis {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'RiskEvidenceSynthesis';
   String id;
   Meta meta;
   String implicitRules;

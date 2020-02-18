@@ -38,7 +38,7 @@ class Schedule {
   }) async {
     var fhirDb = new DatabaseHelper();
     Schedule newSchedule = new Schedule(
-      resourceType: resourceType,
+      resourceType: 'Schedule',
       id: id ?? await fhirDb.newResourceId('Schedule'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -72,7 +72,7 @@ class Schedule {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Schedule';
   String id;
   Meta meta;
   String implicitRules;

@@ -35,7 +35,7 @@ class MedicinalProductInteraction {
     var fhirDb = new DatabaseHelper();
     MedicinalProductInteraction newMedicinalProductInteraction =
         new MedicinalProductInteraction(
-      resourceType: resourceType,
+      resourceType: 'MedicinalProductInteraction',
       id: id ?? await fhirDb.newResourceId('MedicinalProductInteraction'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -68,7 +68,7 @@ class MedicinalProductInteraction {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'MedicinalProductInteraction';
   String id;
   Meta meta;
   String implicitRules;

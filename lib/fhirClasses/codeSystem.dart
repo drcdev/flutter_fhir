@@ -72,7 +72,7 @@ class CodeSystem {
   }) async {
     var fhirDb = new DatabaseHelper();
     CodeSystem newCodeSystem = new CodeSystem(
-      resourceType: resourceType,
+      resourceType: 'CodeSystem',
       id: id ?? await fhirDb.newResourceId('CodeSystem'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -139,7 +139,7 @@ class CodeSystem {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'CodeSystem';
   String id;
   Meta meta;
   String implicitRules;

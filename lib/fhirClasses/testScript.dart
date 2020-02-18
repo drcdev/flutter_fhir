@@ -65,7 +65,7 @@ class TestScript {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestScript newTestScript = new TestScript(
-      resourceType: resourceType,
+      resourceType: 'TestScript',
       id: id ?? await fhirDb.newResourceId('TestScript'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -124,7 +124,7 @@ class TestScript {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'TestScript';
   String id;
   Meta meta;
   String implicitRules;

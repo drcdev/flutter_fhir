@@ -43,7 +43,7 @@ class SubstanceSourceMaterial {
     var fhirDb = new DatabaseHelper();
     SubstanceSourceMaterial newSubstanceSourceMaterial =
         new SubstanceSourceMaterial(
-      resourceType: resourceType,
+      resourceType: 'SubstanceSourceMaterial',
       id: id ?? await fhirDb.newResourceId('SubstanceSourceMaterial'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -84,7 +84,7 @@ class SubstanceSourceMaterial {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SubstanceSourceMaterial';
   String id;
   Meta meta;
   String implicitRules;

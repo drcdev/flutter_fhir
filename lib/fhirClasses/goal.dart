@@ -53,7 +53,7 @@ class Goal {
   }) async {
     var fhirDb = new DatabaseHelper();
     Goal newGoal = new Goal(
-      resourceType: resourceType,
+      resourceType: 'Goal',
       id: id ?? await fhirDb.newResourceId('Goal'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -98,7 +98,7 @@ class Goal {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Goal';
   String id;
   Meta meta;
   String implicitRules;

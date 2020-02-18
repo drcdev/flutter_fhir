@@ -171,9 +171,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           given: [givenNameController.text],
                           family: familyNameController.text)
                     ], birthDate: _birthDate.toString());
-                    print(pt.id);
-                    print(pt.meta.createdAt);
-                    print(pt.meta.lastUpdated);
                     Navigator.push(
                       context,
                       MaterialPageRoute(

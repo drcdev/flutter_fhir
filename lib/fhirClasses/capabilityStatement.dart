@@ -70,7 +70,7 @@ class CapabilityStatement {
   }) async {
     var fhirDb = new DatabaseHelper();
     CapabilityStatement newCapabilityStatement = new CapabilityStatement(
-      resourceType: resourceType,
+      resourceType: 'CapabilityStatement',
       id: id ?? await fhirDb.newResourceId('CapabilityStatement'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -136,7 +136,7 @@ class CapabilityStatement {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'CapabilityStatement';
   String id;
   Meta meta;
   String implicitRules;

@@ -52,7 +52,7 @@ class GraphDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     GraphDefinition newGraphDefinition = new GraphDefinition(
-      resourceType: resourceType,
+      resourceType: 'GraphDefinition',
       id: id ?? await fhirDb.newResourceId('GraphDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -101,7 +101,7 @@ class GraphDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'GraphDefinition';
   String id;
   Meta meta;
   String implicitRules;

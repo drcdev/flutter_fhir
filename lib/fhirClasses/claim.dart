@@ -62,7 +62,7 @@ class Claim {
   }) async {
     var fhirDb = new DatabaseHelper();
     Claim newClaim = new Claim(
-      resourceType: resourceType,
+      resourceType: 'Claim',
       id: id ?? await fhirDb.newResourceId('Claim'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -116,7 +116,7 @@ class Claim {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Claim';
   String id;
   Meta meta;
   String implicitRules;

@@ -43,7 +43,7 @@ class Slot {
   }) async {
     var fhirDb = new DatabaseHelper();
     Slot newSlot = new Slot(
-      resourceType: resourceType,
+      resourceType: 'Slot',
       id: id ?? await fhirDb.newResourceId('Slot'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -83,7 +83,7 @@ class Slot {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Slot';
   String id;
   Meta meta;
   String implicitRules;

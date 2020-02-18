@@ -50,7 +50,7 @@ class GuidanceResponse {
   }) async {
     var fhirDb = new DatabaseHelper();
     GuidanceResponse newGuidanceResponse = new GuidanceResponse(
-      resourceType: resourceType,
+      resourceType: 'GuidanceResponse',
       id: id ?? await fhirDb.newResourceId('GuidanceResponse'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -95,7 +95,7 @@ class GuidanceResponse {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'GuidanceResponse';
   String id;
   Meta meta;
   String implicitRules;

@@ -79,7 +79,7 @@ class Contract {
   }) async {
     var fhirDb = new DatabaseHelper();
     Contract newContract = new Contract(
-      resourceType: resourceType,
+      resourceType: 'Contract',
       id: id ?? await fhirDb.newResourceId('Contract'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -147,7 +147,7 @@ class Contract {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Contract';
   String id;
   Meta meta;
   String implicitRules;

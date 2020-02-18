@@ -51,7 +51,7 @@ class RiskAssessment {
   }) async {
     var fhirDb = new DatabaseHelper();
     RiskAssessment newRiskAssessment = new RiskAssessment(
-      resourceType: resourceType,
+      resourceType: 'RiskAssessment',
       id: id ?? await fhirDb.newResourceId('RiskAssessment'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -96,7 +96,7 @@ class RiskAssessment {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'RiskAssessment';
   String id;
   Meta meta;
   String implicitRules;

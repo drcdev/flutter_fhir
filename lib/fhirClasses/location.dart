@@ -53,7 +53,7 @@ class Location {
   }) async {
     var fhirDb = new DatabaseHelper();
     Location newLocation = new Location(
-      resourceType: resourceType,
+      resourceType: 'Location',
       id: id ?? await fhirDb.newResourceId('Location'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -100,7 +100,7 @@ class Location {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Location';
   String id;
   Meta meta;
   String implicitRules;

@@ -51,7 +51,7 @@ class AdverseEvent {
   }) async {
     var fhirDb = new DatabaseHelper();
     AdverseEvent newAdverseEvent = new AdverseEvent(
-      resourceType: resourceType,
+      resourceType: 'AdverseEvent',
       id: id ?? await fhirDb.newResourceId('AdverseEvent'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -99,7 +99,7 @@ class AdverseEvent {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'AdverseEvent';
   String id;
   Meta meta;
   String implicitRules;

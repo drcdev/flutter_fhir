@@ -61,7 +61,7 @@ class Condition {
   }) async {
     var fhirDb = new DatabaseHelper();
     Condition newCondition = new Condition(
-      resourceType: resourceType,
+      resourceType: 'Condition',
       id: id ?? await fhirDb.newResourceId('Condition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -115,7 +115,7 @@ class Condition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Condition';
   String id;
   Meta meta;
   String implicitRules;

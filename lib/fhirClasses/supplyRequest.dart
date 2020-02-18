@@ -53,7 +53,7 @@ class SupplyRequest {
   }) async {
     var fhirDb = new DatabaseHelper();
     SupplyRequest newSupplyRequest = new SupplyRequest(
-      resourceType: resourceType,
+      resourceType: 'SupplyRequest',
       id: id ?? await fhirDb.newResourceId('SupplyRequest'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -99,7 +99,7 @@ class SupplyRequest {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SupplyRequest';
   String id;
   Meta meta;
   String implicitRules;

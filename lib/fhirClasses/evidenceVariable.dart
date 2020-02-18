@@ -78,7 +78,7 @@ class EvidenceVariable {
   }) async {
     var fhirDb = new DatabaseHelper();
     EvidenceVariable newEvidenceVariable = new EvidenceVariable(
-      resourceType: resourceType,
+      resourceType: 'EvidenceVariable',
       id: id ?? await fhirDb.newResourceId('EvidenceVariable'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -143,7 +143,7 @@ class EvidenceVariable {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'EvidenceVariable';
   String id;
   Meta meta;
   String implicitRules;

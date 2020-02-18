@@ -111,7 +111,7 @@ class ActivityDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     ActivityDefinition newActivityDefinition = new ActivityDefinition(
-      resourceType: resourceType,
+      resourceType: 'ActivityDefinition',
       id: id ?? await fhirDb.newResourceId('ActivityDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -209,7 +209,7 @@ class ActivityDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ActivityDefinition';
   String id;
   Meta meta;
   String implicitRules;

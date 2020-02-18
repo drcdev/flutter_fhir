@@ -67,7 +67,7 @@ class Procedure {
   }) async {
     var fhirDb = new DatabaseHelper();
     Procedure newProcedure = new Procedure(
-      resourceType: resourceType,
+      resourceType: 'Procedure',
       id: id ?? await fhirDb.newResourceId('Procedure'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -127,7 +127,7 @@ class Procedure {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Procedure';
   String id;
   Meta meta;
   String implicitRules;

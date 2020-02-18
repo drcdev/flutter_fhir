@@ -69,7 +69,7 @@ class Questionnaire {
   }) async {
     var fhirDb = new DatabaseHelper();
     Questionnaire newQuestionnaire = new Questionnaire(
-      resourceType: resourceType,
+      resourceType: 'Questionnaire',
       id: id ?? await fhirDb.newResourceId('Questionnaire'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -129,7 +129,7 @@ class Questionnaire {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Questionnaire';
   String id;
   Meta meta;
   String implicitRules;

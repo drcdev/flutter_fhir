@@ -43,7 +43,7 @@ class AuditEvent {
   }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent newAuditEvent = new AuditEvent(
-      resourceType: resourceType,
+      resourceType: 'AuditEvent',
       id: id ?? await fhirDb.newResourceId('AuditEvent'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -82,7 +82,7 @@ class AuditEvent {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'AuditEvent';
   String id;
   Meta meta;
   String implicitRules;

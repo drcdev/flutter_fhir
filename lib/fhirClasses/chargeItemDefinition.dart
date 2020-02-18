@@ -66,7 +66,7 @@ class ChargeItemDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     ChargeItemDefinition newChargeItemDefinition = new ChargeItemDefinition(
-      resourceType: resourceType,
+      resourceType: 'ChargeItemDefinition',
       id: id ?? await fhirDb.newResourceId('ChargeItemDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -126,7 +126,7 @@ class ChargeItemDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ChargeItemDefinition';
   String id;
   Meta meta;
   String implicitRules;

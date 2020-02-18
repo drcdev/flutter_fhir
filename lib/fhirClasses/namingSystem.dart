@@ -49,7 +49,7 @@ class NamingSystem {
   }) async {
     var fhirDb = new DatabaseHelper();
     NamingSystem newNamingSystem = new NamingSystem(
-      resourceType: resourceType,
+      resourceType: 'NamingSystem',
       id: id ?? await fhirDb.newResourceId('NamingSystem'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -94,7 +94,7 @@ class NamingSystem {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'NamingSystem';
   String id;
   Meta meta;
   String implicitRules;

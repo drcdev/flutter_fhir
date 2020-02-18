@@ -36,7 +36,7 @@ class SubstanceReferenceInformation {
     var fhirDb = new DatabaseHelper();
     SubstanceReferenceInformation newSubstanceReferenceInformation =
         new SubstanceReferenceInformation(
-      resourceType: resourceType,
+      resourceType: 'SubstanceReferenceInformation',
       id: id ?? await fhirDb.newResourceId('SubstanceReferenceInformation'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -67,7 +67,7 @@ class SubstanceReferenceInformation {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SubstanceReferenceInformation';
   String id;
   Meta meta;
   String implicitRules;

@@ -43,7 +43,7 @@ class OrganizationAffiliation {
     var fhirDb = new DatabaseHelper();
     OrganizationAffiliation newOrganizationAffiliation =
         new OrganizationAffiliation(
-      resourceType: resourceType,
+      resourceType: 'OrganizationAffiliation',
       id: id ?? await fhirDb.newResourceId('OrganizationAffiliation'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -81,7 +81,7 @@ class OrganizationAffiliation {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'OrganizationAffiliation';
   String id;
   Meta meta;
   String implicitRules;

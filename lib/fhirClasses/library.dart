@@ -81,7 +81,7 @@ class Library {
   }) async {
     var fhirDb = new DatabaseHelper();
     Library newLibrary = new Library(
-      resourceType: resourceType,
+      resourceType: 'Library',
       id: id ?? await fhirDb.newResourceId('Library'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -152,7 +152,7 @@ class Library {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Library';
   String id;
   Meta meta;
   String implicitRules;

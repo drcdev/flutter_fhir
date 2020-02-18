@@ -37,7 +37,7 @@ class SpecimenDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     SpecimenDefinition newSpecimenDefinition = new SpecimenDefinition(
-      resourceType: resourceType,
+      resourceType: 'SpecimenDefinition',
       id: id ?? await fhirDb.newResourceId('SpecimenDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -69,7 +69,7 @@ class SpecimenDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'SpecimenDefinition';
   String id;
   Meta meta;
   String implicitRules;

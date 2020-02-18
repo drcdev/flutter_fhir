@@ -38,7 +38,7 @@ class EnrollmentResponse {
   }) async {
     var fhirDb = new DatabaseHelper();
     EnrollmentResponse newEnrollmentResponse = new EnrollmentResponse(
-      resourceType: resourceType,
+      resourceType: 'EnrollmentResponse',
       id: id ?? await fhirDb.newResourceId('EnrollmentResponse'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -75,7 +75,7 @@ class EnrollmentResponse {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'EnrollmentResponse';
   String id;
   Meta meta;
   String implicitRules;

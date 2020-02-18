@@ -47,7 +47,7 @@ class VerificationResult {
   }) async {
     var fhirDb = new DatabaseHelper();
     VerificationResult newVerificationResult = new VerificationResult(
-      resourceType: resourceType,
+      resourceType: 'VerificationResult',
       id: id ?? await fhirDb.newResourceId('VerificationResult'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -91,7 +91,7 @@ class VerificationResult {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'VerificationResult';
   String id;
   Meta meta;
   String implicitRules;

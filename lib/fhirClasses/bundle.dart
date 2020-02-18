@@ -31,7 +31,7 @@ class Bundle {
   }) async {
     var fhirDb = new DatabaseHelper();
     Bundle newBundle = new Bundle(
-      resourceType: resourceType,
+      resourceType: 'Bundle',
       id: id ?? await fhirDb.newResourceId('Bundle'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -61,7 +61,7 @@ class Bundle {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Bundle';
   String id;
   Meta meta;
   String implicitRules;

@@ -49,7 +49,7 @@ class Invoice {
   }) async {
     var fhirDb = new DatabaseHelper();
     Invoice newInvoice = new Invoice(
-      resourceType: resourceType,
+      resourceType: 'Invoice',
       id: id ?? await fhirDb.newResourceId('Invoice'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -93,7 +93,7 @@ class Invoice {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Invoice';
   String id;
   Meta meta;
   String implicitRules;

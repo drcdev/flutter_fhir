@@ -60,7 +60,7 @@ class DeviceDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     DeviceDefinition newDeviceDefinition = new DeviceDefinition(
-      resourceType: resourceType,
+      resourceType: 'DeviceDefinition',
       id: id ?? await fhirDb.newResourceId('DeviceDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -112,7 +112,7 @@ class DeviceDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'DeviceDefinition';
   String id;
   Meta meta;
   String implicitRules;

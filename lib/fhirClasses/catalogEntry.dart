@@ -45,7 +45,7 @@ class CatalogEntry {
   }) async {
     var fhirDb = new DatabaseHelper();
     CatalogEntry newCatalogEntry = new CatalogEntry(
-      resourceType: resourceType,
+      resourceType: 'CatalogEntry',
       id: id ?? await fhirDb.newResourceId('CatalogEntry'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -86,7 +86,7 @@ class CatalogEntry {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'CatalogEntry';
   String id;
   Meta meta;
   String implicitRules;

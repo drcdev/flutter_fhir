@@ -46,7 +46,7 @@ class DetectedIssue {
   }) async {
     var fhirDb = new DatabaseHelper();
     DetectedIssue newDetectedIssue = new DetectedIssue(
-      resourceType: resourceType,
+      resourceType: 'DetectedIssue',
       id: id ?? await fhirDb.newResourceId('DetectedIssue'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -88,7 +88,7 @@ class DetectedIssue {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'DetectedIssue';
   String id;
   Meta meta;
   String implicitRules;

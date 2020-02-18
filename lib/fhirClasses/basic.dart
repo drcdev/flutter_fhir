@@ -33,7 +33,7 @@ class Basic {
   }) async {
     var fhirDb = new DatabaseHelper();
     Basic newBasic = new Basic(
-      resourceType: resourceType,
+      resourceType: 'Basic',
       id: id ?? await fhirDb.newResourceId('Basic'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -63,7 +63,7 @@ class Basic {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Basic';
   String id;
   Meta meta;
   String implicitRules;

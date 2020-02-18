@@ -54,7 +54,7 @@ class Encounter {
   }) async {
     var fhirDb = new DatabaseHelper();
     Encounter newEncounter = new Encounter(
-      resourceType: resourceType,
+      resourceType: 'Encounter',
       id: id ?? await fhirDb.newResourceId('Encounter'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -102,7 +102,7 @@ class Encounter {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Encounter';
   String id;
   Meta meta;
   String implicitRules;

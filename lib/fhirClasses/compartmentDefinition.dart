@@ -51,7 +51,7 @@ class CompartmentDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     CompartmentDefinition newCompartmentDefinition = new CompartmentDefinition(
-      resourceType: resourceType,
+      resourceType: 'CompartmentDefinition',
       id: id ?? await fhirDb.newResourceId('CompartmentDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -101,7 +101,7 @@ class CompartmentDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'CompartmentDefinition';
   String id;
   Meta meta;
   String implicitRules;

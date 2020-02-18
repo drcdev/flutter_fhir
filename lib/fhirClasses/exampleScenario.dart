@@ -54,7 +54,7 @@ class ExampleScenario {
   }) async {
     var fhirDb = new DatabaseHelper();
     ExampleScenario newExampleScenario = new ExampleScenario(
-      resourceType: resourceType,
+      resourceType: 'ExampleScenario',
       id: id ?? await fhirDb.newResourceId('ExampleScenario'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -104,7 +104,7 @@ class ExampleScenario {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ExampleScenario';
   String id;
   Meta meta;
   String implicitRules;
@@ -275,7 +275,7 @@ class ExampleScenario_Instance {
       modifierExtension: modifierExtension,
       resourceId: resourceId,
       elementResourceId: elementResourceId,
-      resourceType: resourceType,
+      resourceType: 'ExampleScenario_Instance',
       elementResourceType: elementResourceType,
       name: name,
       elementName: elementName,
@@ -292,7 +292,7 @@ class ExampleScenario_Instance {
   List<Extension> modifierExtension;
   String resourceId;
   Element elementResourceId;
-  String resourceType;
+  String resourceType = 'ExampleScenario_Instance';
   Element elementResourceType;
   String name;
   Element elementName;

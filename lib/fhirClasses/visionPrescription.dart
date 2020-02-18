@@ -40,7 +40,7 @@ class VisionPrescription {
   }) async {
     var fhirDb = new DatabaseHelper();
     VisionPrescription newVisionPrescription = new VisionPrescription(
-      resourceType: resourceType,
+      resourceType: 'VisionPrescription',
       id: id ?? await fhirDb.newResourceId('VisionPrescription'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -76,7 +76,7 @@ class VisionPrescription {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'VisionPrescription';
   String id;
   Meta meta;
   String implicitRules;

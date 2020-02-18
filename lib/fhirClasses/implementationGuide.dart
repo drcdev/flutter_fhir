@@ -61,7 +61,7 @@ class ImplementationGuide {
   }) async {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide newImplementationGuide = new ImplementationGuide(
-      resourceType: resourceType,
+      resourceType: 'ImplementationGuide',
       id: id ?? await fhirDb.newResourceId('ImplementationGuide'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -119,7 +119,7 @@ class ImplementationGuide {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ImplementationGuide';
   String id;
   Meta meta;
   String implicitRules;

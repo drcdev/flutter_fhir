@@ -53,7 +53,7 @@ class CoverageEligibilityResponse {
     var fhirDb = new DatabaseHelper();
     CoverageEligibilityResponse newCoverageEligibilityResponse =
         new CoverageEligibilityResponse(
-      resourceType: resourceType,
+      resourceType: 'CoverageEligibilityResponse',
       id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -101,7 +101,7 @@ class CoverageEligibilityResponse {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'CoverageEligibilityResponse';
   String id;
   Meta meta;
   String implicitRules;

@@ -65,7 +65,7 @@ class DeviceRequest {
   }) async {
     var fhirDb = new DatabaseHelper();
     DeviceRequest newDeviceRequest = new DeviceRequest(
-      resourceType: resourceType,
+      resourceType: 'DeviceRequest',
       id: id ?? await fhirDb.newResourceId('DeviceRequest'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -122,7 +122,7 @@ class DeviceRequest {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'DeviceRequest';
   String id;
   Meta meta;
   String implicitRules;

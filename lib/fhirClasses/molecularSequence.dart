@@ -48,7 +48,7 @@ class MolecularSequence {
   }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence newMolecularSequence = new MolecularSequence(
-      resourceType: resourceType,
+      resourceType: 'MolecularSequence',
       id: id ?? await fhirDb.newResourceId('MolecularSequence'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -92,7 +92,7 @@ class MolecularSequence {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'MolecularSequence';
   String id;
   Meta meta;
   String implicitRules;

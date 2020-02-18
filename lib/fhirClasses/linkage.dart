@@ -29,7 +29,7 @@ class Linkage {
   }) async {
     var fhirDb = new DatabaseHelper();
     Linkage newLinkage = new Linkage(
-      resourceType: resourceType,
+      resourceType: 'Linkage',
       id: id ?? await fhirDb.newResourceId('Linkage'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -57,7 +57,7 @@ class Linkage {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Linkage';
   String id;
   Meta meta;
   String implicitRules;

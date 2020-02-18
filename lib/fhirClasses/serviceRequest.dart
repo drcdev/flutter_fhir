@@ -80,7 +80,7 @@ class ServiceRequest {
   }) async {
     var fhirDb = new DatabaseHelper();
     ServiceRequest newServiceRequest = new ServiceRequest(
-      resourceType: resourceType,
+      resourceType: 'ServiceRequest',
       id: id ?? await fhirDb.newResourceId('ServiceRequest'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -151,7 +151,7 @@ class ServiceRequest {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'ServiceRequest';
   String id;
   Meta meta;
   String implicitRules;

@@ -58,7 +58,7 @@ class CommunicationRequest {
   }) async {
     var fhirDb = new DatabaseHelper();
     CommunicationRequest newCommunicationRequest = new CommunicationRequest(
-      resourceType: resourceType,
+      resourceType: 'CommunicationRequest',
       id: id ?? await fhirDb.newResourceId('CommunicationRequest'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -111,7 +111,7 @@ class CommunicationRequest {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'CommunicationRequest';
   String id;
   Meta meta;
   String implicitRules;

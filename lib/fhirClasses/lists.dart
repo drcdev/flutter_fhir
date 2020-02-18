@@ -45,7 +45,7 @@ class Lists {
   }) async {
     var fhirDb = new DatabaseHelper();
     Lists newLists = new Lists(
-      resourceType: resourceType,
+      resourceType: 'List',
       id: id ?? await fhirDb.newResourceId('List'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -86,7 +86,7 @@ class Lists {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'List';
   String id;
   Meta meta;
   String implicitRules;

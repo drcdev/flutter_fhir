@@ -38,7 +38,7 @@ class BodyStructure {
   }) async {
     var fhirDb = new DatabaseHelper();
     BodyStructure newBodyStructure = new BodyStructure(
-      resourceType: resourceType,
+      resourceType: 'BodyStructure',
       id: id ?? await fhirDb.newResourceId('BodyStructure'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -72,7 +72,7 @@ class BodyStructure {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'BodyStructure';
   String id;
   Meta meta;
   String implicitRules;

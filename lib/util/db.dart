@@ -77,18 +77,20 @@ class DatabaseHelper {
       //inserts new row into db
       rowNum = await dbClient.insert(resource.runtimeType.toString(), row);
     }
-    //if successful
 
     List<Map<String, dynamic>> list = await dbClient.query('Classes',
         where: 'resourceType = ?',
         whereArgs: [resource.runtimeType.toString()]);
+
+    int total = (rowNum != null && results.length <= 0) ? list[0]['total'] + 1: list[0]['total'];
     var count = await dbClient.rawUpdate(
         'UPDATE Classes SET total = ?, lastUpdated = ? WHERE resourceType = ?',
         [
-          '${(list[0]['total'] + 1) ? rowNum != null && results.length <= 0 : list[0]['total']}',
+          '${total}',
           '${resource.meta.lastUpdated.toString()}',
           '${resource.runtimeType.toString()}'
         ]);
+
     return rowNum;
   }
 
@@ -96,13 +98,13 @@ class DatabaseHelper {
     var dbClient = await db;
     List<Map> list = await dbClient.query(resourceType,
         columns: ['jsonResource'], where: 'id = ?', whereArgs: [id]);
-    if(list.length == 0) {
+    if (list.length == 0) {
       return 'No matches';
-    } else if(list.length == 1){
+    } else if (list.length == 1) {
       dynamic query;
       for (int i = 0; i < list.length; i++) {
-        query.add(ResourceTypes(
-            resourceType, jsonDecode(list[i]['jsonResource']) as Map<String, dynamic>));
+        query.add(ResourceTypes(resourceType,
+            jsonDecode(list[i]['jsonResource']) as Map<String, dynamic>));
       }
       return query[0];
     } else {
@@ -117,12 +119,12 @@ class DatabaseHelper {
     List<Map> list = await dbClient.query(table, columns: ['jsonResource']);
     //creates new list 'query' for returning the values, all of dynamic type
     //to allow the list to be whatever the table is
-    List<dynamic> query = List<dynamic>();
+    List<dynamic> search = List<dynamic>();
     for (int i = 0; i < list.length; i++) {
-      query.add(ResourceTypes(
+      search.add(ResourceTypes(
           table, jsonDecode(list[i]['jsonResource']) as Map<String, dynamic>));
     }
-    return query;
+    return search;
   }
 
   Future<int> deleteResource(dynamic resource) async {
@@ -139,13 +141,13 @@ class DatabaseHelper {
     // When creating the db, create the table, master table holds last
     //id number for that resource from this device, also number of resources
     //total on this device
-    print('made it');
+
     await db.execute('''CREATE TABLE Classes (
 			resourceType TEXT PRIMARY KEY,
 			id TEXT,
 			deviceId TEXT,
 			lastId TEXT,
-			total INT,
+			total INTEGER,
 			lastUpdated TEXT)''');
     await db.execute('''CREATE TABLE Account (
 			id TEXT PRIMARY KEY,

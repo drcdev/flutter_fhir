@@ -45,7 +45,7 @@ class Group {
   }) async {
     var fhirDb = new DatabaseHelper();
     Group newGroup = new Group(
-      resourceType: resourceType,
+      resourceType: 'Group',
       id: id ?? await fhirDb.newResourceId('Group'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -84,7 +84,7 @@ class Group {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'Group';
   String id;
   Meta meta;
   String implicitRules;

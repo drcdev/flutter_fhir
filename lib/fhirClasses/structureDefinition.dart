@@ -74,7 +74,7 @@ class StructureDefinition {
   }) async {
     var fhirDb = new DatabaseHelper();
     StructureDefinition newStructureDefinition = new StructureDefinition(
-      resourceType: resourceType,
+      resourceType: 'StructureDefinition',
       id: id ?? await fhirDb.newResourceId('StructureDefinition'),
       meta: meta ?? await Meta.newInstance(),
       implicitRules: implicitRules,
@@ -143,7 +143,7 @@ class StructureDefinition {
     int saveed = await fhirDb.saveResource(this);
   }
 
-  String resourceType;
+  String resourceType = 'StructureDefinition';
   String id;
   Meta meta;
   String implicitRules;
