@@ -80,7 +80,7 @@ def allTogether(newInstance, objects, newResource, variables, constructor):
                            ';\n}\n\nsave() async {\n',
                            '\t\tthis.meta.lastUpdated = DateTime.now();\n',
                            '\t\tvar fhirDb = new DatabaseHelper();\n',
-                           '\t\tint saveed = await fhirDb.saveResource(this);\n',
+                           '\t\tint saved = await fhirDb.saveResource(this);\n',
                            '}\n\n'])
     else:
         saveNew = ''.join(['\treturn new', lists(objects), ';\n}\n\n'])
