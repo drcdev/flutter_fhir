@@ -1,16 +1,15 @@
 import 'dart:io';
 
-import 'package:flutter_fhir/mainMenu/providerActivities/parasites/parasite.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/vaccines/vaccine.dart';
-import 'package:flutter_fhir/util/vaccineRules.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
-import 'package:flutter_fhir/mainMenu/testingSettings/testing.dart';
 import 'package:flutter_fhir/util/sync.dart';
 import 'package:flutter_fhir/util/buttons.dart';
+import 'package:flutter_fhir/util/vaccineRules.dart';
+import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
+import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
+import 'package:flutter_fhir/mainMenu/testingSettings/testing.dart';
+
 
 class MainMenu extends StatelessWidget {
   @override

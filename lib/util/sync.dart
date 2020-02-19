@@ -1,4 +1,3 @@
-import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
@@ -10,8 +9,11 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
   String name = 'faulkenbej@chop.edu';
   String secret = 'chopchop';
   String clientSecret = 'chopchop';
+  String server = 'https://choptestpatients.aidbox.app';
+//  String server = 'https://dbhifhir.aidbox.app';
+
   Response response = await post(
-      'https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&grant_type=password&username=$name&password=$secret&client_secret=$clientSecret',
+      '$server/auth/token?client_id=greyfhir&grant_type=password&username=$name&password=$secret&client_secret=$clientSecret',
       headers: headers);
   if (response.statusCode == 200) {
     var parsedbody = json.decode(response.body);
@@ -26,9 +28,9 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
     case 'get':
       {
         Response response =
-            await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
+            await get('$server/Patient', headers: headers);
         var myBundle = Bundle.fromJson(json.decode(response.body));
-        for (var i = 0; i < myBundle.total; i++) {
+        for (int i = 0; i < myBundle.total; i++) {
           ResourceTypes(myBundle.entry[i].resource.resourceType,
                   myBundle.entry[i].resource.toJson())
               .save();

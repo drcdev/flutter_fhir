@@ -4,7 +4,6 @@ import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/registerFamily.dart';
-import 'package:flutter_fhir/util/db.dart';
 
 class Register extends StatelessWidget {
   @override

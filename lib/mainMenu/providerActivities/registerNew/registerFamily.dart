@@ -5,7 +5,6 @@ import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
-import 'package:flutter_fhir/util/db.dart';
 
 class RegisterFamily extends StatelessWidget {
   Patient pt;

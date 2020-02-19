@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:core';
-import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

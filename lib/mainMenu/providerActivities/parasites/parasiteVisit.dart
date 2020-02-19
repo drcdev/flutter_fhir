@@ -1,31 +1,38 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_fhir/fhirClasses/medicationAdministration.dart';
+import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/parasites/parasiteVisit.dart';
 import 'package:flutter_fhir/util/db.dart';
+import 'package:geolocator/geolocator.dart';
+
+import 'package:flutter_fhir/fhirClasses/composition.dart';
+import 'package:flutter_fhir/fhirClasses/encounter.dart';
 import 'package:flutter_fhir/fhirClasses/patient.dart';
 
-class Parasite extends StatelessWidget {
+class ParasiteVisit extends StatelessWidget {
   Patient pt;
-  Parasite({this.pt});
+  ParasiteVisit({this.pt});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: pt != null ? _Parasite(pt: pt) : _Parasite(),
+      home: pt != null ? _ParasiteVisit(pt: pt) : _ParasiteVisit(),
     );
   }
 }
 
-class _Parasite extends StatefulWidget {
+class _ParasiteVisit extends StatefulWidget {
   Patient pt;
-  _Parasite({this.pt});
+  _ParasiteVisit({this.pt});
   @override
-  _ParasiteState createState() =>
-      pt != null ? _ParasiteState(pt: pt) : _ParasiteState();
+  _ParasiteVisitState createState() =>
+      pt != null ? _ParasiteVisitState(pt: pt) : _ParasiteVisitState();
 }
 
-class _ParasiteState extends State<_Parasite> {
+class _ParasiteVisitState extends State<_ParasiteVisit> {
   Patient pt;
-  _ParasiteState({this.pt});
+  _ParasiteVisitState({this.pt});
   List<Patient> patientList;
   var searchPt = new TextEditingController();
   String search;
@@ -102,10 +109,7 @@ class _ParasiteState extends State<_Parasite> {
                                 //allows selection of single patient from list
                                 onLongPress: () async {
                                   pt = await fhirDb.search('Patient', id);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => ParasiteVisit(pt: pt)),
-                                  );
+                                  setState(() => searchPt.text = name);
                                 },
                               ),
                             )
