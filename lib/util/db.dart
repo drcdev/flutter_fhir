@@ -114,7 +114,7 @@ class DatabaseHelper {
     }
   }
 
-  Future<List<dynamic>> getList(String table, {List<dynamic> arguments}) async {
+  Future<List<dynamic>> getList(String table) async {
     var dbClient = await db;
 
     //gets list from table

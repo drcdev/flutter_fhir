@@ -1,8 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
+import 'package:flutter_fhir/fhirClasses/coding.dart';
+import 'package:flutter_fhir/fhirClasses/location.dart';
 import 'package:flutter_fhir/fhirClasses/medicationAdministration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
+import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:flutter_fhir/util/db.dart';
 import 'package:geolocator/geolocator.dart';
@@ -33,25 +37,21 @@ class _ParasiteVisit extends StatefulWidget {
 class _ParasiteVisitState extends State<_ParasiteVisit> {
   Patient pt;
   _ParasiteVisitState({this.pt});
-  List<Patient> patientList;
-  var searchPt = new TextEditingController();
-  String search;
-  var fhirDb = new DatabaseHelper();
+  Location location;
+  Composition composition;
+  Encounter encounter;
+  List<Location> locations;
+  MedicationAdministration medicationAdministration;
 
-  //check if a patient has been passed or selected if so, display only that
-  // patient add listener to allow patient search
-  @override
-  void initState() {
-    super.initState();
-    if (pt != null) {
-      search = pt.printName();
-      searchPt.text = search;
-    }
-    searchPt.addListener(() {
-      setState(() {
-        search = searchPt.text;
-      });
-    });
+  void _getLocation() async {
+    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+
+    Position currentPosition = await geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best);
+    location = await Location.newInstance(
+        position: await Location_Position.newInstance(
+            latitude: currentPosition.latitude,
+            longitude: currentPosition.longitude));
   }
 
   @override
@@ -61,97 +61,105 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
       appBar: AppBar(
         title: Text("Patient Activities"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-          ),
-          TextField(
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Name: ${pt.printName()}\n'
+              'Birthdate: ${pt.birthDate}\n'
+              'Community: ${pt.address[0].district}',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
-            decoration: InputDecoration(
-                labelText: 'Search Patient Name',
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                )),
-            controller: searchPt,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-          ),
-          Expanded(
-            //read the list of patients on the device, and create a scrollable,
-            // searchable list for provider
-            child: FutureBuilder(
-              future: fhirDb.getList('Patient'),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: snapshot.data.length, //# of patients
-                    itemBuilder: (context, index) {
-                      String name = snapshot.data[index].printName(); //pt name
-                      String id = snapshot.data[index].id; //pt id
-                      return search == null || search == ''
-                          ? new Card(
-                              color: Colors.blueGrey,
-                              child: ListTile(
-                                title: Text(
-                                  name,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                //allows selection of single patient from list
-                                onLongPress: () async {
-                                  pt = await fhirDb.search('Patient', id);
-                                  setState(() => searchPt.text = name);
-                                },
-                              ),
-                            )
-                          : snapshot.data[index]
-                                  .printName()
-                                  .toLowerCase()
-                                  .contains(search.toLowerCase())
-                              ? new Card(
-                                  color: Colors.blueGrey,
-                                  child: ListTile(
-                                    title: Text(
-                                      snapshot.data[index].printName(),
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : new Container();
-                    },
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
+            RaisedButton(
+              onPressed: () async {
+                _getLocation();
+                encounter = await Encounter.newInstance(
+                    status: 'in-progress',
+                    classs: await Coding.newInstance(
+                        system: 'http://hl7.org/fhir/v3/ActCode',
+                        code: 'HH',
+                        display: 'Home Health'),
+                    subject: await Reference.newInstance(
+                        reference: 'Patient/' + pt.id, display: pt.printName()),
+                    participant: [
+                      await Encounter_Participant.newInstance(
+                          individual: await Reference.newInstance(
+                              reference: 'Practitioner' + 'practitionerID',
+                              display: 'PractitionerName'))
+                    ],
+                    period: await Period.newInstance(start: DateTime.now()),
+                    location: [
+                      await Encounter_Location.newInstance(
+                          location: await Reference.newInstance(
+                              reference: 'Location/' + location.id,
+                              display: "Patient's House"))
+                    ],
+                    serviceProvider: await Reference.newInstance(
+                        reference: 'Organization' + 'OrganizationID',
+                        display: 'DR Clinic'));
+                composition = await Composition.newInstance(
+                    subject: encounter.subject,
+                    encounter: await Reference(
+                        reference: 'Encounter/' + encounter.id,
+                        display: 'Deworming Visit on '
+                            '${encounter.period.start.toString()}'
+                            ', for '
+                            '${pt.printName()}'),
+                    date: encounter.period.start,
+                    author: [encounter.participant[0].individual],
+                    title: 'Biannual Deworming Campaign');
               },
+              child: Text('Begin Visit'),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-          ),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
-              );
-            },
-            child: Text('Return to Opening Page'),
-          ),
-        ],
+            RaisedButton(
+              onPressed: () async {
+                medicationAdministration =
+                    await MedicationAdministration.newInstance(
+                        status: 'completed',
+                        medicationCodeableConcept:
+                            await CodeableConcept.newInstance(coding: [
+                          await Coding.newInstance(
+                              system: 'http://snomed.info/sct',
+                              code: '387558006',
+                              display: 'Albendazole')
+                        ]),
+                        subject: encounter.subject,
+                        context: composition.encounter,
+                        effectiveDateTime: DateTime.now().toString(),
+                        performer: [
+                      await MedicationAdministration_Performer.newInstance(
+                          actor: encounter.participant[0].individual)
+                    ]);
+                composition.section = [
+                  await Composition_Section.newInstance(entry: [
+                    await Reference.newInstance(
+                        reference: 'MedicationAdministration/' +
+                            medicationAdministration.id,
+                        display: 'Albendazole Given')
+                  ])
+                ];
+                composition.save();
+              },
+              child: Text('Medication Given'),
+            ),
+            RaisedButton(
+              onPressed: () async {
+                encounter.period.end = DateTime.now();
+                encounter.save();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainMenu()),
+                );
+              },
+              child: Text('Complete Visit'),
+            ),
+          ],
+        ),
       ),
     );
   }
