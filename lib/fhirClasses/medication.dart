@@ -11,211 +11,215 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Medication {
-  static Future<Medication> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    CodeableConcept code,
-    String status,
-    Element elementStatus,
-    Reference manufacturer,
-    CodeableConcept form,
-    Ratio amount,
-    List<Medication_Ingredient> ingredient,
-    Medication_Batch batch,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Medication newMedication = new Medication(
-      resourceType: 'Medication',
-      id: id ?? await fhirDb.newResourceId('Medication'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      code: code,
-      status: status,
-      elementStatus: elementStatus,
-      manufacturer: manufacturer,
-      form: form,
-      amount: amount,
-      ingredient: ingredient,
-      batch: batch,
-    );
-    newMedication.meta.createdAt = DateTime.now();
-    newMedication.meta.lastUpdated = newMedication.meta.createdAt;
-    int saved = await fhirDb.saveResource(newMedication);
-    return newMedication;
-  }
+class Medication{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Medication> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	CodeableConcept code,
+	String status,
+	Element elementStatus,
+	Reference manufacturer,
+	CodeableConcept form,
+	Ratio amount,
+	List<Medication_Ingredient> ingredient,
+	Medication_Batch batch,
+}) async {
+var fhirDb = new DatabaseHelper();
+Medication newMedication = new Medication(
+	resourceType: 'Medication',
+	id: id ?? await fhirDb.newResourceId('Medication'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	code: code,
+	status: status,
+	elementStatus: elementStatus,
+	manufacturer: manufacturer,
+	form: form,
+	amount: amount,
+	ingredient: ingredient,
+	batch: batch,
+);
+	newMedication.meta.createdAt = DateTime.now();
+	newMedication.meta.lastUpdated = newMedication.meta.createdAt;
+	int saved = await fhirDb.saveResource(newMedication);
+	 return newMedication;
+}
 
-  String resourceType = 'Medication';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  CodeableConcept code;
-  String status;
-  Element elementStatus;
-  Reference manufacturer;
-  CodeableConcept form;
-  Ratio amount;
-  List<Medication_Ingredient> ingredient;
-  Medication_Batch batch;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Medication({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.code,
-    this.status,
-    this.elementStatus,
-    this.manufacturer,
-    this.form,
-    this.amount,
-    this.ingredient,
-    this.batch,
-  });
+	String resourceType= 'Medication';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	CodeableConcept code;
+	String status;
+	Element elementStatus;
+	Reference manufacturer;
+	CodeableConcept form;
+	Ratio amount;
+	List<Medication_Ingredient> ingredient;
+	Medication_Batch batch;
 
-  factory Medication.fromJson(Map<String, dynamic> json) =>
-      _$MedicationFromJson(json);
+Medication(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.code,
+this.status,
+this.elementStatus,
+this.manufacturer,
+this.form,
+this.amount,
+this.ingredient,
+this.batch,
+});
+
+  factory Medication.fromJson(Map<String, dynamic> json) => _$MedicationFromJson(json);
   Map<String, dynamic> toJson() => _$MedicationToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Medication_Ingredient {
-  static Future<Medication_Ingredient> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept itemCodeableConcept,
-    Reference itemReference,
-    bool isActive,
-    Element elementIsActive,
-    Ratio strength,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Medication_Ingredient newMedication_Ingredient = new Medication_Ingredient(
-      id: id ?? await fhirDb.newResourceId('Medication_Ingredient'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      itemCodeableConcept: itemCodeableConcept,
-      itemReference: itemReference,
-      isActive: isActive,
-      elementIsActive: elementIsActive,
-      strength: strength,
-    );
-    return newMedication_Ingredient;
-  }
+class Medication_Ingredient{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept itemCodeableConcept;
-  Reference itemReference;
-  bool isActive;
-  Element elementIsActive;
-  Ratio strength;
+	static Future<Medication_Ingredient> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept itemCodeableConcept,
+	Reference itemReference,
+	bool isActive,
+	Element elementIsActive,
+	Ratio strength,
+}) async {
+var fhirDb = new DatabaseHelper();
+Medication_Ingredient newMedication_Ingredient = new Medication_Ingredient(
+	id: id ?? await fhirDb.newResourceId('Medication_Ingredient'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	itemCodeableConcept: itemCodeableConcept,
+	itemReference: itemReference,
+	isActive: isActive,
+	elementIsActive: elementIsActive,
+	strength: strength,
+);
+	return newMedication_Ingredient;
+}
 
-  Medication_Ingredient({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.itemCodeableConcept,
-    this.itemReference,
-    this.isActive,
-    this.elementIsActive,
-    this.strength,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept itemCodeableConcept;
+	Reference itemReference;
+	bool isActive;
+	Element elementIsActive;
+	Ratio strength;
 
-  factory Medication_Ingredient.fromJson(Map<String, dynamic> json) =>
-      _$Medication_IngredientFromJson(json);
+Medication_Ingredient(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.itemCodeableConcept,
+this.itemReference,
+this.isActive,
+this.elementIsActive,
+this.strength,
+});
+
+  factory Medication_Ingredient.fromJson(Map<String, dynamic> json) => _$Medication_IngredientFromJson(json);
   Map<String, dynamic> toJson() => _$Medication_IngredientToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Medication_Batch {
-  static Future<Medication_Batch> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String lotNumber,
-    Element elementLotNumber,
-    DateTime expirationDate,
-    Element elementExpirationDate,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Medication_Batch newMedication_Batch = new Medication_Batch(
-      id: id ?? await fhirDb.newResourceId('Medication_Batch'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      lotNumber: lotNumber,
-      elementLotNumber: elementLotNumber,
-      expirationDate: expirationDate,
-      elementExpirationDate: elementExpirationDate,
-    );
-    return newMedication_Batch;
-  }
+class Medication_Batch{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String lotNumber;
-  Element elementLotNumber;
-  DateTime expirationDate;
-  Element elementExpirationDate;
+	static Future<Medication_Batch> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String lotNumber,
+	Element elementLotNumber,
+	DateTime expirationDate,
+	Element elementExpirationDate,
+}) async {
+var fhirDb = new DatabaseHelper();
+Medication_Batch newMedication_Batch = new Medication_Batch(
+	id: id ?? await fhirDb.newResourceId('Medication_Batch'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	lotNumber: lotNumber,
+	elementLotNumber: elementLotNumber,
+	expirationDate: expirationDate,
+	elementExpirationDate: elementExpirationDate,
+);
+	return newMedication_Batch;
+}
 
-  Medication_Batch({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.lotNumber,
-    this.elementLotNumber,
-    this.expirationDate,
-    this.elementExpirationDate,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String lotNumber;
+	Element elementLotNumber;
+	DateTime expirationDate;
+	Element elementExpirationDate;
 
-  factory Medication_Batch.fromJson(Map<String, dynamic> json) =>
-      _$Medication_BatchFromJson(json);
+Medication_Batch(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.lotNumber,
+this.elementLotNumber,
+this.expirationDate,
+this.elementExpirationDate,
+});
+
+  factory Medication_Batch.fromJson(Map<String, dynamic> json) => _$Medication_BatchFromJson(json);
   Map<String, dynamic> toJson() => _$Medication_BatchToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -242,9 +246,8 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -15,990 +15,999 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse {
-  static Future<ClaimResponse> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    CodeableConcept type,
-    CodeableConcept subType,
-    String use,
-    Element elementUse,
-    Reference patient,
-    DateTime created,
-    Element elementCreated,
-    Reference insurer,
-    Reference requestor,
-    Reference request,
-    String outcome,
-    Element elementOutcome,
-    String disposition,
-    Element elementDisposition,
-    String preAuthRef,
-    Element elementPreAuthRef,
-    Period preAuthPeriod,
-    CodeableConcept payeeType,
-    List<ClaimResponse_Item> item,
-    List<ClaimResponse_AddItem> addItem,
-    List<ClaimResponse_Adjudication> adjudication,
-    List<ClaimResponse_Total> total,
-    ClaimResponse_Payment payment,
-    CodeableConcept fundsReserve,
-    CodeableConcept formCode,
-    Attachment form,
-    List<ClaimResponse_ProcessNote> processNote,
-    List<Reference> communicationRequest,
-    List<ClaimResponse_Insurance> insurance,
-    List<ClaimResponse_Error> error,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse newClaimResponse = new ClaimResponse(
-      resourceType: 'ClaimResponse',
-      id: id ?? await fhirDb.newResourceId('ClaimResponse'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      type: type,
-      subType: subType,
-      use: use,
-      elementUse: elementUse,
-      patient: patient,
-      created: created,
-      elementCreated: elementCreated,
-      insurer: insurer,
-      requestor: requestor,
-      request: request,
-      outcome: outcome,
-      elementOutcome: elementOutcome,
-      disposition: disposition,
-      elementDisposition: elementDisposition,
-      preAuthRef: preAuthRef,
-      elementPreAuthRef: elementPreAuthRef,
-      preAuthPeriod: preAuthPeriod,
-      payeeType: payeeType,
-      item: item,
-      addItem: addItem,
-      adjudication: adjudication,
-      total: total,
-      payment: payment,
-      fundsReserve: fundsReserve,
-      formCode: formCode,
-      form: form,
-      processNote: processNote,
-      communicationRequest: communicationRequest,
-      insurance: insurance,
-      error: error,
-    );
-    newClaimResponse.meta.createdAt = DateTime.now();
-    newClaimResponse.meta.lastUpdated = newClaimResponse.meta.createdAt;
-    int saved = await fhirDb.saveResource(newClaimResponse);
-    return newClaimResponse;
-  }
+class ClaimResponse{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<ClaimResponse> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	CodeableConcept type,
+	CodeableConcept subType,
+	String use,
+	Element elementUse,
+	Reference patient,
+	DateTime created,
+	Element elementCreated,
+	Reference insurer,
+	Reference requestor,
+	Reference request,
+	String outcome,
+	Element elementOutcome,
+	String disposition,
+	Element elementDisposition,
+	String preAuthRef,
+	Element elementPreAuthRef,
+	Period preAuthPeriod,
+	CodeableConcept payeeType,
+	List<ClaimResponse_Item> item,
+	List<ClaimResponse_AddItem> addItem,
+	List<ClaimResponse_Adjudication> adjudication,
+	List<ClaimResponse_Total> total,
+	ClaimResponse_Payment payment,
+	CodeableConcept fundsReserve,
+	CodeableConcept formCode,
+	Attachment form,
+	List<ClaimResponse_ProcessNote> processNote,
+	List<Reference> communicationRequest,
+	List<ClaimResponse_Insurance> insurance,
+	List<ClaimResponse_Error> error,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse newClaimResponse = new ClaimResponse(
+	resourceType: 'ClaimResponse',
+	id: id ?? await fhirDb.newResourceId('ClaimResponse'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	type: type,
+	subType: subType,
+	use: use,
+	elementUse: elementUse,
+	patient: patient,
+	created: created,
+	elementCreated: elementCreated,
+	insurer: insurer,
+	requestor: requestor,
+	request: request,
+	outcome: outcome,
+	elementOutcome: elementOutcome,
+	disposition: disposition,
+	elementDisposition: elementDisposition,
+	preAuthRef: preAuthRef,
+	elementPreAuthRef: elementPreAuthRef,
+	preAuthPeriod: preAuthPeriod,
+	payeeType: payeeType,
+	item: item,
+	addItem: addItem,
+	adjudication: adjudication,
+	total: total,
+	payment: payment,
+	fundsReserve: fundsReserve,
+	formCode: formCode,
+	form: form,
+	processNote: processNote,
+	communicationRequest: communicationRequest,
+	insurance: insurance,
+	error: error,
+);
+	newClaimResponse.meta.createdAt = DateTime.now();
+	newClaimResponse.meta.lastUpdated = newClaimResponse.meta.createdAt;
+	int saved = await fhirDb.saveResource(newClaimResponse);
+	 return newClaimResponse;
+}
 
-  String resourceType = 'ClaimResponse';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  CodeableConcept type;
-  CodeableConcept subType;
-  String use;
-  Element elementUse;
-  Reference patient;
-  DateTime created;
-  Element elementCreated;
-  Reference insurer;
-  Reference requestor;
-  Reference request;
-  String outcome;
-  Element elementOutcome;
-  String disposition;
-  Element elementDisposition;
-  String preAuthRef;
-  Element elementPreAuthRef;
-  Period preAuthPeriod;
-  CodeableConcept payeeType;
-  List<ClaimResponse_Item> item;
-  List<ClaimResponse_AddItem> addItem;
-  List<ClaimResponse_Adjudication> adjudication;
-  List<ClaimResponse_Total> total;
-  ClaimResponse_Payment payment;
-  CodeableConcept fundsReserve;
-  CodeableConcept formCode;
-  Attachment form;
-  List<ClaimResponse_ProcessNote> processNote;
-  List<Reference> communicationRequest;
-  List<ClaimResponse_Insurance> insurance;
-  List<ClaimResponse_Error> error;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  ClaimResponse({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    @required this.type,
-    this.subType,
-    this.use,
-    this.elementUse,
-    @required this.patient,
-    this.created,
-    this.elementCreated,
-    @required this.insurer,
-    this.requestor,
-    this.request,
-    this.outcome,
-    this.elementOutcome,
-    this.disposition,
-    this.elementDisposition,
-    this.preAuthRef,
-    this.elementPreAuthRef,
-    this.preAuthPeriod,
-    this.payeeType,
-    this.item,
-    this.addItem,
-    this.adjudication,
-    this.total,
-    this.payment,
-    this.fundsReserve,
-    this.formCode,
-    this.form,
-    this.processNote,
-    this.communicationRequest,
-    this.insurance,
-    this.error,
-  });
+	String resourceType= 'ClaimResponse';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	CodeableConcept type;
+	CodeableConcept subType;
+	String use;
+	Element elementUse;
+	Reference patient;
+	DateTime created;
+	Element elementCreated;
+	Reference insurer;
+	Reference requestor;
+	Reference request;
+	String outcome;
+	Element elementOutcome;
+	String disposition;
+	Element elementDisposition;
+	String preAuthRef;
+	Element elementPreAuthRef;
+	Period preAuthPeriod;
+	CodeableConcept payeeType;
+	List<ClaimResponse_Item> item;
+	List<ClaimResponse_AddItem> addItem;
+	List<ClaimResponse_Adjudication> adjudication;
+	List<ClaimResponse_Total> total;
+	ClaimResponse_Payment payment;
+	CodeableConcept fundsReserve;
+	CodeableConcept formCode;
+	Attachment form;
+	List<ClaimResponse_ProcessNote> processNote;
+	List<Reference> communicationRequest;
+	List<ClaimResponse_Insurance> insurance;
+	List<ClaimResponse_Error> error;
 
-  factory ClaimResponse.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponseFromJson(json);
+ClaimResponse(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+@required this.type,
+this.subType,
+this.use,
+this.elementUse,
+@required this.patient,
+this.created,
+this.elementCreated,
+@required this.insurer,
+this.requestor,
+this.request,
+this.outcome,
+this.elementOutcome,
+this.disposition,
+this.elementDisposition,
+this.preAuthRef,
+this.elementPreAuthRef,
+this.preAuthPeriod,
+this.payeeType,
+this.item,
+this.addItem,
+this.adjudication,
+this.total,
+this.payment,
+this.fundsReserve,
+this.formCode,
+this.form,
+this.processNote,
+this.communicationRequest,
+this.insurance,
+this.error,
+});
+
+  factory ClaimResponse.fromJson(Map<String, dynamic> json) => _$ClaimResponseFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponseToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Item {
-  static Future<ClaimResponse_Item> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int itemSequence,
-    Element elementItemSequence,
-    List<int> noteNumber,
-    List<Element> elementNoteNumber,
-    List<ClaimResponse_Adjudication> adjudication,
-    List<ClaimResponse_Detail> detail,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Item newClaimResponse_Item = new ClaimResponse_Item(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Item'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      itemSequence: itemSequence,
-      elementItemSequence: elementItemSequence,
-      noteNumber: noteNumber,
-      elementNoteNumber: elementNoteNumber,
-      adjudication: adjudication,
-      detail: detail,
-    );
-    return newClaimResponse_Item;
-  }
+class ClaimResponse_Item{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int itemSequence;
-  Element elementItemSequence;
-  List<int> noteNumber;
-  List<Element> elementNoteNumber;
-  List<ClaimResponse_Adjudication> adjudication;
-  List<ClaimResponse_Detail> detail;
+	static Future<ClaimResponse_Item> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int itemSequence,
+	Element elementItemSequence,
+	List<int> noteNumber,
+	List<Element> elementNoteNumber,
+	List<ClaimResponse_Adjudication> adjudication,
+	List<ClaimResponse_Detail> detail,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Item newClaimResponse_Item = new ClaimResponse_Item(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Item'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	itemSequence: itemSequence,
+	elementItemSequence: elementItemSequence,
+	noteNumber: noteNumber,
+	elementNoteNumber: elementNoteNumber,
+	adjudication: adjudication,
+	detail: detail,
+);
+	return newClaimResponse_Item;
+}
 
-  ClaimResponse_Item({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.itemSequence,
-    this.elementItemSequence,
-    this.noteNumber,
-    this.elementNoteNumber,
-    @required this.adjudication,
-    this.detail,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int itemSequence;
+	Element elementItemSequence;
+	List<int> noteNumber;
+	List<Element> elementNoteNumber;
+	List<ClaimResponse_Adjudication> adjudication;
+	List<ClaimResponse_Detail> detail;
 
-  factory ClaimResponse_Item.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_ItemFromJson(json);
+ClaimResponse_Item(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.itemSequence,
+this.elementItemSequence,
+this.noteNumber,
+this.elementNoteNumber,
+@required this.adjudication,
+this.detail,
+});
+
+  factory ClaimResponse_Item.fromJson(Map<String, dynamic> json) => _$ClaimResponse_ItemFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_ItemToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Adjudication {
-  static Future<ClaimResponse_Adjudication> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept category,
-    CodeableConcept reason,
-    Money amount,
-    double value,
-    Element elementValue,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Adjudication newClaimResponse_Adjudication =
-        new ClaimResponse_Adjudication(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Adjudication'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      category: category,
-      reason: reason,
-      amount: amount,
-      value: value,
-      elementValue: elementValue,
-    );
-    return newClaimResponse_Adjudication;
-  }
+class ClaimResponse_Adjudication{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept category;
-  CodeableConcept reason;
-  Money amount;
-  double value;
-  Element elementValue;
+	static Future<ClaimResponse_Adjudication> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept category,
+	CodeableConcept reason,
+	Money amount,
+	double value,
+	Element elementValue,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Adjudication newClaimResponse_Adjudication = new ClaimResponse_Adjudication(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Adjudication'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	category: category,
+	reason: reason,
+	amount: amount,
+	value: value,
+	elementValue: elementValue,
+);
+	return newClaimResponse_Adjudication;
+}
 
-  ClaimResponse_Adjudication({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.category,
-    this.reason,
-    this.amount,
-    this.value,
-    this.elementValue,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept category;
+	CodeableConcept reason;
+	Money amount;
+	double value;
+	Element elementValue;
 
-  factory ClaimResponse_Adjudication.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_AdjudicationFromJson(json);
+ClaimResponse_Adjudication(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.category,
+this.reason,
+this.amount,
+this.value,
+this.elementValue,
+});
+
+  factory ClaimResponse_Adjudication.fromJson(Map<String, dynamic> json) => _$ClaimResponse_AdjudicationFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_AdjudicationToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Detail {
-  static Future<ClaimResponse_Detail> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int detailSequence,
-    Element elementDetailSequence,
-    List<int> noteNumber,
-    List<Element> elementNoteNumber,
-    List<ClaimResponse_Adjudication> adjudication,
-    List<ClaimResponse_SubDetail> subDetail,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Detail newClaimResponse_Detail = new ClaimResponse_Detail(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Detail'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      detailSequence: detailSequence,
-      elementDetailSequence: elementDetailSequence,
-      noteNumber: noteNumber,
-      elementNoteNumber: elementNoteNumber,
-      adjudication: adjudication,
-      subDetail: subDetail,
-    );
-    return newClaimResponse_Detail;
-  }
+class ClaimResponse_Detail{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int detailSequence;
-  Element elementDetailSequence;
-  List<int> noteNumber;
-  List<Element> elementNoteNumber;
-  List<ClaimResponse_Adjudication> adjudication;
-  List<ClaimResponse_SubDetail> subDetail;
+	static Future<ClaimResponse_Detail> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int detailSequence,
+	Element elementDetailSequence,
+	List<int> noteNumber,
+	List<Element> elementNoteNumber,
+	List<ClaimResponse_Adjudication> adjudication,
+	List<ClaimResponse_SubDetail> subDetail,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Detail newClaimResponse_Detail = new ClaimResponse_Detail(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Detail'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	detailSequence: detailSequence,
+	elementDetailSequence: elementDetailSequence,
+	noteNumber: noteNumber,
+	elementNoteNumber: elementNoteNumber,
+	adjudication: adjudication,
+	subDetail: subDetail,
+);
+	return newClaimResponse_Detail;
+}
 
-  ClaimResponse_Detail({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.detailSequence,
-    this.elementDetailSequence,
-    this.noteNumber,
-    this.elementNoteNumber,
-    @required this.adjudication,
-    this.subDetail,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int detailSequence;
+	Element elementDetailSequence;
+	List<int> noteNumber;
+	List<Element> elementNoteNumber;
+	List<ClaimResponse_Adjudication> adjudication;
+	List<ClaimResponse_SubDetail> subDetail;
 
-  factory ClaimResponse_Detail.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_DetailFromJson(json);
+ClaimResponse_Detail(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.detailSequence,
+this.elementDetailSequence,
+this.noteNumber,
+this.elementNoteNumber,
+@required this.adjudication,
+this.subDetail,
+});
+
+  factory ClaimResponse_Detail.fromJson(Map<String, dynamic> json) => _$ClaimResponse_DetailFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_DetailToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_SubDetail {
-  static Future<ClaimResponse_SubDetail> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int subDetailSequence,
-    Element elementSubDetailSequence,
-    List<int> noteNumber,
-    List<Element> elementNoteNumber,
-    List<ClaimResponse_Adjudication> adjudication,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_SubDetail newClaimResponse_SubDetail =
-        new ClaimResponse_SubDetail(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_SubDetail'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      subDetailSequence: subDetailSequence,
-      elementSubDetailSequence: elementSubDetailSequence,
-      noteNumber: noteNumber,
-      elementNoteNumber: elementNoteNumber,
-      adjudication: adjudication,
-    );
-    return newClaimResponse_SubDetail;
-  }
+class ClaimResponse_SubDetail{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int subDetailSequence;
-  Element elementSubDetailSequence;
-  List<int> noteNumber;
-  List<Element> elementNoteNumber;
-  List<ClaimResponse_Adjudication> adjudication;
+	static Future<ClaimResponse_SubDetail> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int subDetailSequence,
+	Element elementSubDetailSequence,
+	List<int> noteNumber,
+	List<Element> elementNoteNumber,
+	List<ClaimResponse_Adjudication> adjudication,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_SubDetail newClaimResponse_SubDetail = new ClaimResponse_SubDetail(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_SubDetail'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	subDetailSequence: subDetailSequence,
+	elementSubDetailSequence: elementSubDetailSequence,
+	noteNumber: noteNumber,
+	elementNoteNumber: elementNoteNumber,
+	adjudication: adjudication,
+);
+	return newClaimResponse_SubDetail;
+}
 
-  ClaimResponse_SubDetail({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.subDetailSequence,
-    this.elementSubDetailSequence,
-    this.noteNumber,
-    this.elementNoteNumber,
-    this.adjudication,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int subDetailSequence;
+	Element elementSubDetailSequence;
+	List<int> noteNumber;
+	List<Element> elementNoteNumber;
+	List<ClaimResponse_Adjudication> adjudication;
 
-  factory ClaimResponse_SubDetail.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_SubDetailFromJson(json);
+ClaimResponse_SubDetail(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.subDetailSequence,
+this.elementSubDetailSequence,
+this.noteNumber,
+this.elementNoteNumber,
+this.adjudication,
+});
+
+  factory ClaimResponse_SubDetail.fromJson(Map<String, dynamic> json) => _$ClaimResponse_SubDetailFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_SubDetailToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_AddItem {
-  static Future<ClaimResponse_AddItem> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<int> itemSequence,
-    List<Element> elementItemSequence,
-    List<int> detailSequence,
-    List<Element> elementDetailSequence,
-    List<int> subdetailSequence,
-    List<Element> elementSubdetailSequence,
-    List<Reference> provider,
-    CodeableConcept productOrService,
-    List<CodeableConcept> modifier,
-    List<CodeableConcept> programCode,
-    String servicedDate,
-    Element elementServicedDate,
-    Period servicedPeriod,
-    CodeableConcept locationCodeableConcept,
-    Address locationAddress,
-    Reference locationReference,
-    Quantity quantity,
-    Money unitPrice,
-    double factor,
-    Element elementFactor,
-    Money net,
-    CodeableConcept bodySite,
-    List<CodeableConcept> subSite,
-    List<int> noteNumber,
-    List<Element> elementNoteNumber,
-    List<ClaimResponse_Adjudication> adjudication,
-    List<ClaimResponse_Detail1> detail,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_AddItem newClaimResponse_AddItem = new ClaimResponse_AddItem(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_AddItem'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      itemSequence: itemSequence,
-      elementItemSequence: elementItemSequence,
-      detailSequence: detailSequence,
-      elementDetailSequence: elementDetailSequence,
-      subdetailSequence: subdetailSequence,
-      elementSubdetailSequence: elementSubdetailSequence,
-      provider: provider,
-      productOrService: productOrService,
-      modifier: modifier,
-      programCode: programCode,
-      servicedDate: servicedDate,
-      elementServicedDate: elementServicedDate,
-      servicedPeriod: servicedPeriod,
-      locationCodeableConcept: locationCodeableConcept,
-      locationAddress: locationAddress,
-      locationReference: locationReference,
-      quantity: quantity,
-      unitPrice: unitPrice,
-      factor: factor,
-      elementFactor: elementFactor,
-      net: net,
-      bodySite: bodySite,
-      subSite: subSite,
-      noteNumber: noteNumber,
-      elementNoteNumber: elementNoteNumber,
-      adjudication: adjudication,
-      detail: detail,
-    );
-    return newClaimResponse_AddItem;
-  }
+class ClaimResponse_AddItem{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<int> itemSequence;
-  List<Element> elementItemSequence;
-  List<int> detailSequence;
-  List<Element> elementDetailSequence;
-  List<int> subdetailSequence;
-  List<Element> elementSubdetailSequence;
-  List<Reference> provider;
-  CodeableConcept productOrService;
-  List<CodeableConcept> modifier;
-  List<CodeableConcept> programCode;
-  String servicedDate;
-  Element elementServicedDate;
-  Period servicedPeriod;
-  CodeableConcept locationCodeableConcept;
-  Address locationAddress;
-  Reference locationReference;
-  Quantity quantity;
-  Money unitPrice;
-  double factor;
-  Element elementFactor;
-  Money net;
-  CodeableConcept bodySite;
-  List<CodeableConcept> subSite;
-  List<int> noteNumber;
-  List<Element> elementNoteNumber;
-  List<ClaimResponse_Adjudication> adjudication;
-  List<ClaimResponse_Detail1> detail;
+	static Future<ClaimResponse_AddItem> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<int> itemSequence,
+	List<Element> elementItemSequence,
+	List<int> detailSequence,
+	List<Element> elementDetailSequence,
+	List<int> subdetailSequence,
+	List<Element> elementSubdetailSequence,
+	List<Reference> provider,
+	CodeableConcept productOrService,
+	List<CodeableConcept> modifier,
+	List<CodeableConcept> programCode,
+	String servicedDate,
+	Element elementServicedDate,
+	Period servicedPeriod,
+	CodeableConcept locationCodeableConcept,
+	Address locationAddress,
+	Reference locationReference,
+	Quantity quantity,
+	Money unitPrice,
+	double factor,
+	Element elementFactor,
+	Money net,
+	CodeableConcept bodySite,
+	List<CodeableConcept> subSite,
+	List<int> noteNumber,
+	List<Element> elementNoteNumber,
+	List<ClaimResponse_Adjudication> adjudication,
+	List<ClaimResponse_Detail1> detail,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_AddItem newClaimResponse_AddItem = new ClaimResponse_AddItem(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_AddItem'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	itemSequence: itemSequence,
+	elementItemSequence: elementItemSequence,
+	detailSequence: detailSequence,
+	elementDetailSequence: elementDetailSequence,
+	subdetailSequence: subdetailSequence,
+	elementSubdetailSequence: elementSubdetailSequence,
+	provider: provider,
+	productOrService: productOrService,
+	modifier: modifier,
+	programCode: programCode,
+	servicedDate: servicedDate,
+	elementServicedDate: elementServicedDate,
+	servicedPeriod: servicedPeriod,
+	locationCodeableConcept: locationCodeableConcept,
+	locationAddress: locationAddress,
+	locationReference: locationReference,
+	quantity: quantity,
+	unitPrice: unitPrice,
+	factor: factor,
+	elementFactor: elementFactor,
+	net: net,
+	bodySite: bodySite,
+	subSite: subSite,
+	noteNumber: noteNumber,
+	elementNoteNumber: elementNoteNumber,
+	adjudication: adjudication,
+	detail: detail,
+);
+	return newClaimResponse_AddItem;
+}
 
-  ClaimResponse_AddItem({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.itemSequence,
-    this.elementItemSequence,
-    this.detailSequence,
-    this.elementDetailSequence,
-    this.subdetailSequence,
-    this.elementSubdetailSequence,
-    this.provider,
-    @required this.productOrService,
-    this.modifier,
-    this.programCode,
-    this.servicedDate,
-    this.elementServicedDate,
-    this.servicedPeriod,
-    this.locationCodeableConcept,
-    this.locationAddress,
-    this.locationReference,
-    this.quantity,
-    this.unitPrice,
-    this.factor,
-    this.elementFactor,
-    this.net,
-    this.bodySite,
-    this.subSite,
-    this.noteNumber,
-    this.elementNoteNumber,
-    @required this.adjudication,
-    this.detail,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<int> itemSequence;
+	List<Element> elementItemSequence;
+	List<int> detailSequence;
+	List<Element> elementDetailSequence;
+	List<int> subdetailSequence;
+	List<Element> elementSubdetailSequence;
+	List<Reference> provider;
+	CodeableConcept productOrService;
+	List<CodeableConcept> modifier;
+	List<CodeableConcept> programCode;
+	String servicedDate;
+	Element elementServicedDate;
+	Period servicedPeriod;
+	CodeableConcept locationCodeableConcept;
+	Address locationAddress;
+	Reference locationReference;
+	Quantity quantity;
+	Money unitPrice;
+	double factor;
+	Element elementFactor;
+	Money net;
+	CodeableConcept bodySite;
+	List<CodeableConcept> subSite;
+	List<int> noteNumber;
+	List<Element> elementNoteNumber;
+	List<ClaimResponse_Adjudication> adjudication;
+	List<ClaimResponse_Detail1> detail;
 
-  factory ClaimResponse_AddItem.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_AddItemFromJson(json);
+ClaimResponse_AddItem(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.itemSequence,
+this.elementItemSequence,
+this.detailSequence,
+this.elementDetailSequence,
+this.subdetailSequence,
+this.elementSubdetailSequence,
+this.provider,
+@required this.productOrService,
+this.modifier,
+this.programCode,
+this.servicedDate,
+this.elementServicedDate,
+this.servicedPeriod,
+this.locationCodeableConcept,
+this.locationAddress,
+this.locationReference,
+this.quantity,
+this.unitPrice,
+this.factor,
+this.elementFactor,
+this.net,
+this.bodySite,
+this.subSite,
+this.noteNumber,
+this.elementNoteNumber,
+@required this.adjudication,
+this.detail,
+});
+
+  factory ClaimResponse_AddItem.fromJson(Map<String, dynamic> json) => _$ClaimResponse_AddItemFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_AddItemToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Detail1 {
-  static Future<ClaimResponse_Detail1> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept productOrService,
-    List<CodeableConcept> modifier,
-    Quantity quantity,
-    Money unitPrice,
-    double factor,
-    Element elementFactor,
-    Money net,
-    List<int> noteNumber,
-    List<Element> elementNoteNumber,
-    List<ClaimResponse_Adjudication> adjudication,
-    List<ClaimResponse_SubDetail1> subDetail,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Detail1 newClaimResponse_Detail1 = new ClaimResponse_Detail1(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Detail1'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      productOrService: productOrService,
-      modifier: modifier,
-      quantity: quantity,
-      unitPrice: unitPrice,
-      factor: factor,
-      elementFactor: elementFactor,
-      net: net,
-      noteNumber: noteNumber,
-      elementNoteNumber: elementNoteNumber,
-      adjudication: adjudication,
-      subDetail: subDetail,
-    );
-    return newClaimResponse_Detail1;
-  }
+class ClaimResponse_Detail1{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept productOrService;
-  List<CodeableConcept> modifier;
-  Quantity quantity;
-  Money unitPrice;
-  double factor;
-  Element elementFactor;
-  Money net;
-  List<int> noteNumber;
-  List<Element> elementNoteNumber;
-  List<ClaimResponse_Adjudication> adjudication;
-  List<ClaimResponse_SubDetail1> subDetail;
+	static Future<ClaimResponse_Detail1> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept productOrService,
+	List<CodeableConcept> modifier,
+	Quantity quantity,
+	Money unitPrice,
+	double factor,
+	Element elementFactor,
+	Money net,
+	List<int> noteNumber,
+	List<Element> elementNoteNumber,
+	List<ClaimResponse_Adjudication> adjudication,
+	List<ClaimResponse_SubDetail1> subDetail,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Detail1 newClaimResponse_Detail1 = new ClaimResponse_Detail1(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Detail1'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	productOrService: productOrService,
+	modifier: modifier,
+	quantity: quantity,
+	unitPrice: unitPrice,
+	factor: factor,
+	elementFactor: elementFactor,
+	net: net,
+	noteNumber: noteNumber,
+	elementNoteNumber: elementNoteNumber,
+	adjudication: adjudication,
+	subDetail: subDetail,
+);
+	return newClaimResponse_Detail1;
+}
 
-  ClaimResponse_Detail1({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.productOrService,
-    this.modifier,
-    this.quantity,
-    this.unitPrice,
-    this.factor,
-    this.elementFactor,
-    this.net,
-    this.noteNumber,
-    this.elementNoteNumber,
-    @required this.adjudication,
-    this.subDetail,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept productOrService;
+	List<CodeableConcept> modifier;
+	Quantity quantity;
+	Money unitPrice;
+	double factor;
+	Element elementFactor;
+	Money net;
+	List<int> noteNumber;
+	List<Element> elementNoteNumber;
+	List<ClaimResponse_Adjudication> adjudication;
+	List<ClaimResponse_SubDetail1> subDetail;
 
-  factory ClaimResponse_Detail1.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_Detail1FromJson(json);
+ClaimResponse_Detail1(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.productOrService,
+this.modifier,
+this.quantity,
+this.unitPrice,
+this.factor,
+this.elementFactor,
+this.net,
+this.noteNumber,
+this.elementNoteNumber,
+@required this.adjudication,
+this.subDetail,
+});
+
+  factory ClaimResponse_Detail1.fromJson(Map<String, dynamic> json) => _$ClaimResponse_Detail1FromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_Detail1ToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_SubDetail1 {
-  static Future<ClaimResponse_SubDetail1> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept productOrService,
-    List<CodeableConcept> modifier,
-    Quantity quantity,
-    Money unitPrice,
-    double factor,
-    Element elementFactor,
-    Money net,
-    List<int> noteNumber,
-    List<Element> elementNoteNumber,
-    List<ClaimResponse_Adjudication> adjudication,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_SubDetail1 newClaimResponse_SubDetail1 =
-        new ClaimResponse_SubDetail1(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_SubDetail1'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      productOrService: productOrService,
-      modifier: modifier,
-      quantity: quantity,
-      unitPrice: unitPrice,
-      factor: factor,
-      elementFactor: elementFactor,
-      net: net,
-      noteNumber: noteNumber,
-      elementNoteNumber: elementNoteNumber,
-      adjudication: adjudication,
-    );
-    return newClaimResponse_SubDetail1;
-  }
+class ClaimResponse_SubDetail1{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept productOrService;
-  List<CodeableConcept> modifier;
-  Quantity quantity;
-  Money unitPrice;
-  double factor;
-  Element elementFactor;
-  Money net;
-  List<int> noteNumber;
-  List<Element> elementNoteNumber;
-  List<ClaimResponse_Adjudication> adjudication;
+	static Future<ClaimResponse_SubDetail1> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept productOrService,
+	List<CodeableConcept> modifier,
+	Quantity quantity,
+	Money unitPrice,
+	double factor,
+	Element elementFactor,
+	Money net,
+	List<int> noteNumber,
+	List<Element> elementNoteNumber,
+	List<ClaimResponse_Adjudication> adjudication,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_SubDetail1 newClaimResponse_SubDetail1 = new ClaimResponse_SubDetail1(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_SubDetail1'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	productOrService: productOrService,
+	modifier: modifier,
+	quantity: quantity,
+	unitPrice: unitPrice,
+	factor: factor,
+	elementFactor: elementFactor,
+	net: net,
+	noteNumber: noteNumber,
+	elementNoteNumber: elementNoteNumber,
+	adjudication: adjudication,
+);
+	return newClaimResponse_SubDetail1;
+}
 
-  ClaimResponse_SubDetail1({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.productOrService,
-    this.modifier,
-    this.quantity,
-    this.unitPrice,
-    this.factor,
-    this.elementFactor,
-    this.net,
-    this.noteNumber,
-    this.elementNoteNumber,
-    @required this.adjudication,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept productOrService;
+	List<CodeableConcept> modifier;
+	Quantity quantity;
+	Money unitPrice;
+	double factor;
+	Element elementFactor;
+	Money net;
+	List<int> noteNumber;
+	List<Element> elementNoteNumber;
+	List<ClaimResponse_Adjudication> adjudication;
 
-  factory ClaimResponse_SubDetail1.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_SubDetail1FromJson(json);
+ClaimResponse_SubDetail1(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.productOrService,
+this.modifier,
+this.quantity,
+this.unitPrice,
+this.factor,
+this.elementFactor,
+this.net,
+this.noteNumber,
+this.elementNoteNumber,
+@required this.adjudication,
+});
+
+  factory ClaimResponse_SubDetail1.fromJson(Map<String, dynamic> json) => _$ClaimResponse_SubDetail1FromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_SubDetail1ToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Total {
-  static Future<ClaimResponse_Total> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept category,
-    Money amount,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Total newClaimResponse_Total = new ClaimResponse_Total(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Total'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      category: category,
-      amount: amount,
-    );
-    return newClaimResponse_Total;
-  }
+class ClaimResponse_Total{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept category;
-  Money amount;
+	static Future<ClaimResponse_Total> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept category,
+	Money amount,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Total newClaimResponse_Total = new ClaimResponse_Total(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Total'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	category: category,
+	amount: amount,
+);
+	return newClaimResponse_Total;
+}
 
-  ClaimResponse_Total({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.category,
-    @required this.amount,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept category;
+	Money amount;
 
-  factory ClaimResponse_Total.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_TotalFromJson(json);
+ClaimResponse_Total(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.category,
+@required this.amount,
+});
+
+  factory ClaimResponse_Total.fromJson(Map<String, dynamic> json) => _$ClaimResponse_TotalFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_TotalToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Payment {
-  static Future<ClaimResponse_Payment> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept type,
-    Money adjustment,
-    CodeableConcept adjustmentReason,
-    String date,
-    Element elementDate,
-    Money amount,
-    Identifier identifier,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Payment newClaimResponse_Payment = new ClaimResponse_Payment(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Payment'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      adjustment: adjustment,
-      adjustmentReason: adjustmentReason,
-      date: date,
-      elementDate: elementDate,
-      amount: amount,
-      identifier: identifier,
-    );
-    return newClaimResponse_Payment;
-  }
+class ClaimResponse_Payment{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept type;
-  Money adjustment;
-  CodeableConcept adjustmentReason;
-  String date;
-  Element elementDate;
-  Money amount;
-  Identifier identifier;
+	static Future<ClaimResponse_Payment> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept type,
+	Money adjustment,
+	CodeableConcept adjustmentReason,
+	String date,
+	Element elementDate,
+	Money amount,
+	Identifier identifier,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Payment newClaimResponse_Payment = new ClaimResponse_Payment(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Payment'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	adjustment: adjustment,
+	adjustmentReason: adjustmentReason,
+	date: date,
+	elementDate: elementDate,
+	amount: amount,
+	identifier: identifier,
+);
+	return newClaimResponse_Payment;
+}
 
-  ClaimResponse_Payment({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.type,
-    this.adjustment,
-    this.adjustmentReason,
-    this.date,
-    this.elementDate,
-    @required this.amount,
-    this.identifier,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept type;
+	Money adjustment;
+	CodeableConcept adjustmentReason;
+	String date;
+	Element elementDate;
+	Money amount;
+	Identifier identifier;
 
-  factory ClaimResponse_Payment.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_PaymentFromJson(json);
+ClaimResponse_Payment(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.type,
+this.adjustment,
+this.adjustmentReason,
+this.date,
+this.elementDate,
+@required this.amount,
+this.identifier,
+});
+
+  factory ClaimResponse_Payment.fromJson(Map<String, dynamic> json) => _$ClaimResponse_PaymentFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_PaymentToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_ProcessNote {
-  static Future<ClaimResponse_ProcessNote> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int number,
-    Element elementNumber,
-    String type,
-    Element elementType,
-    String text,
-    Element elementText,
-    CodeableConcept language,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_ProcessNote newClaimResponse_ProcessNote =
-        new ClaimResponse_ProcessNote(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_ProcessNote'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      number: number,
-      elementNumber: elementNumber,
-      type: type,
-      elementType: elementType,
-      text: text,
-      elementText: elementText,
-      language: language,
-    );
-    return newClaimResponse_ProcessNote;
-  }
+class ClaimResponse_ProcessNote{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int number;
-  Element elementNumber;
-  String type;
-  Element elementType;
-  String text;
-  Element elementText;
-  CodeableConcept language;
+	static Future<ClaimResponse_ProcessNote> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int number,
+	Element elementNumber,
+	String type,
+	Element elementType,
+	String text,
+	Element elementText,
+	CodeableConcept language,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_ProcessNote newClaimResponse_ProcessNote = new ClaimResponse_ProcessNote(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_ProcessNote'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	number: number,
+	elementNumber: elementNumber,
+	type: type,
+	elementType: elementType,
+	text: text,
+	elementText: elementText,
+	language: language,
+);
+	return newClaimResponse_ProcessNote;
+}
 
-  ClaimResponse_ProcessNote({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.number,
-    this.elementNumber,
-    this.type,
-    this.elementType,
-    this.text,
-    this.elementText,
-    this.language,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int number;
+	Element elementNumber;
+	String type;
+	Element elementType;
+	String text;
+	Element elementText;
+	CodeableConcept language;
 
-  factory ClaimResponse_ProcessNote.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_ProcessNoteFromJson(json);
+ClaimResponse_ProcessNote(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.number,
+this.elementNumber,
+this.type,
+this.elementType,
+this.text,
+this.elementText,
+this.language,
+});
+
+  factory ClaimResponse_ProcessNote.fromJson(Map<String, dynamic> json) => _$ClaimResponse_ProcessNoteFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_ProcessNoteToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Insurance {
-  static Future<ClaimResponse_Insurance> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int sequence,
-    Element elementSequence,
-    bool focal,
-    Element elementFocal,
-    Reference coverage,
-    String businessArrangement,
-    Element elementBusinessArrangement,
-    Reference claimResponse,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Insurance newClaimResponse_Insurance =
-        new ClaimResponse_Insurance(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Insurance'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      sequence: sequence,
-      elementSequence: elementSequence,
-      focal: focal,
-      elementFocal: elementFocal,
-      coverage: coverage,
-      businessArrangement: businessArrangement,
-      elementBusinessArrangement: elementBusinessArrangement,
-      claimResponse: claimResponse,
-    );
-    return newClaimResponse_Insurance;
-  }
+class ClaimResponse_Insurance{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int sequence;
-  Element elementSequence;
-  bool focal;
-  Element elementFocal;
-  Reference coverage;
-  String businessArrangement;
-  Element elementBusinessArrangement;
-  Reference claimResponse;
+	static Future<ClaimResponse_Insurance> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int sequence,
+	Element elementSequence,
+	bool focal,
+	Element elementFocal,
+	Reference coverage,
+	String businessArrangement,
+	Element elementBusinessArrangement,
+	Reference claimResponse,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Insurance newClaimResponse_Insurance = new ClaimResponse_Insurance(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Insurance'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	sequence: sequence,
+	elementSequence: elementSequence,
+	focal: focal,
+	elementFocal: elementFocal,
+	coverage: coverage,
+	businessArrangement: businessArrangement,
+	elementBusinessArrangement: elementBusinessArrangement,
+	claimResponse: claimResponse,
+);
+	return newClaimResponse_Insurance;
+}
 
-  ClaimResponse_Insurance({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.sequence,
-    this.elementSequence,
-    this.focal,
-    this.elementFocal,
-    @required this.coverage,
-    this.businessArrangement,
-    this.elementBusinessArrangement,
-    this.claimResponse,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int sequence;
+	Element elementSequence;
+	bool focal;
+	Element elementFocal;
+	Reference coverage;
+	String businessArrangement;
+	Element elementBusinessArrangement;
+	Reference claimResponse;
 
-  factory ClaimResponse_Insurance.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_InsuranceFromJson(json);
+ClaimResponse_Insurance(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.sequence,
+this.elementSequence,
+this.focal,
+this.elementFocal,
+@required this.coverage,
+this.businessArrangement,
+this.elementBusinessArrangement,
+this.claimResponse,
+});
+
+  factory ClaimResponse_Insurance.fromJson(Map<String, dynamic> json) => _$ClaimResponse_InsuranceFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_InsuranceToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ClaimResponse_Error {
-  static Future<ClaimResponse_Error> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int itemSequence,
-    Element elementItemSequence,
-    int detailSequence,
-    Element elementDetailSequence,
-    int subDetailSequence,
-    Element elementSubDetailSequence,
-    CodeableConcept code,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ClaimResponse_Error newClaimResponse_Error = new ClaimResponse_Error(
-      id: id ?? await fhirDb.newResourceId('ClaimResponse_Error'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      itemSequence: itemSequence,
-      elementItemSequence: elementItemSequence,
-      detailSequence: detailSequence,
-      elementDetailSequence: elementDetailSequence,
-      subDetailSequence: subDetailSequence,
-      elementSubDetailSequence: elementSubDetailSequence,
-      code: code,
-    );
-    return newClaimResponse_Error;
-  }
+class ClaimResponse_Error{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int itemSequence;
-  Element elementItemSequence;
-  int detailSequence;
-  Element elementDetailSequence;
-  int subDetailSequence;
-  Element elementSubDetailSequence;
-  CodeableConcept code;
+	static Future<ClaimResponse_Error> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int itemSequence,
+	Element elementItemSequence,
+	int detailSequence,
+	Element elementDetailSequence,
+	int subDetailSequence,
+	Element elementSubDetailSequence,
+	CodeableConcept code,
+}) async {
+var fhirDb = new DatabaseHelper();
+ClaimResponse_Error newClaimResponse_Error = new ClaimResponse_Error(
+	id: id ?? await fhirDb.newResourceId('ClaimResponse_Error'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	itemSequence: itemSequence,
+	elementItemSequence: elementItemSequence,
+	detailSequence: detailSequence,
+	elementDetailSequence: elementDetailSequence,
+	subDetailSequence: subDetailSequence,
+	elementSubDetailSequence: elementSubDetailSequence,
+	code: code,
+);
+	return newClaimResponse_Error;
+}
 
-  ClaimResponse_Error({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.itemSequence,
-    this.elementItemSequence,
-    this.detailSequence,
-    this.elementDetailSequence,
-    this.subDetailSequence,
-    this.elementSubDetailSequence,
-    @required this.code,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int itemSequence;
+	Element elementItemSequence;
+	int detailSequence;
+	Element elementDetailSequence;
+	int subDetailSequence;
+	Element elementSubDetailSequence;
+	CodeableConcept code;
 
-  factory ClaimResponse_Error.fromJson(Map<String, dynamic> json) =>
-      _$ClaimResponse_ErrorFromJson(json);
+ClaimResponse_Error(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.itemSequence,
+this.elementItemSequence,
+this.detailSequence,
+this.elementDetailSequence,
+this.subDetailSequence,
+this.elementSubDetailSequence,
+@required this.code,
+});
+
+  factory ClaimResponse_Error.fromJson(Map<String, dynamic> json) => _$ClaimResponse_ErrorFromJson(json);
   Map<String, dynamic> toJson() => _$ClaimResponse_ErrorToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -1025,9 +1034,8 @@ ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -5,68 +5,70 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ContactPoint {
-  static Future<ContactPoint> newInstance({
-    String id,
-    List<Extension> extension,
-    String system,
-    Element elementSystem,
-    String value,
-    Element elementValue,
-    String use,
-    Element elementUse,
-    int rank,
-    Element elementRank,
-    Period period,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ContactPoint newContactPoint = new ContactPoint(
-      id: id ?? await fhirDb.newResourceId('ContactPoint'),
-      extension: extension,
-      system: system,
-      elementSystem: elementSystem,
-      value: value,
-      elementValue: elementValue,
-      use: use,
-      elementUse: elementUse,
-      rank: rank,
-      elementRank: elementRank,
-      period: period,
-    );
-    return newContactPoint;
-  }
+class ContactPoint{
 
-  String id;
-  List<Extension> extension;
-  String system;
-  Element elementSystem;
-  String value;
-  Element elementValue;
-  String use;
-  Element elementUse;
-  int rank;
-  Element elementRank;
-  Period period;
+	static Future<ContactPoint> newInstance(
+	{	String id,
+	List<Extension> extension,
+	String system,
+	Element elementSystem,
+	String value,
+	Element elementValue,
+	String use,
+	Element elementUse,
+	int rank,
+	Element elementRank,
+	Period period,
+}) async {
+var fhirDb = new DatabaseHelper();
+ContactPoint newContactPoint = new ContactPoint(
+	id: id ?? await fhirDb.newResourceId('ContactPoint'),
+	extension: extension,
+	system: system,
+	elementSystem: elementSystem,
+	value: value,
+	elementValue: elementValue,
+	use: use,
+	elementUse: elementUse,
+	rank: rank,
+	elementRank: elementRank,
+	period: period,
+);
+	return newContactPoint;
+}
 
-  ContactPoint({
-    this.id,
-    this.extension,
-    this.system,
-    this.elementSystem,
-    this.value,
-    this.elementValue,
-    this.use,
-    this.elementUse,
-    this.rank,
-    this.elementRank,
-    this.period,
-  });
+	String id;
+	List<Extension> extension;
+	String system;
+	Element elementSystem;
+	String value;
+	Element elementValue;
+	String use;
+	Element elementUse;
+	int rank;
+	Element elementRank;
+	Period period;
 
-  factory ContactPoint.fromJson(Map<String, dynamic> json) =>
-      _$ContactPointFromJson(json);
+ContactPoint(
+	{this.id,
+this.extension,
+this.system,
+this.elementSystem,
+this.value,
+this.elementValue,
+this.use,
+this.elementUse,
+this.rank,
+this.elementRank,
+this.period,
+});
+
+  factory ContactPoint.fromJson(Map<String, dynamic> json) => _$ContactPointFromJson(json);
   Map<String, dynamic> toJson() => _$ContactPointToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

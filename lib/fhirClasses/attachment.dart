@@ -4,96 +4,98 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Attachment {
-  static Future<Attachment> newInstance({
-    String id,
-    List<Extension> extension,
-    String contentType,
-    Element elementContentType,
-    String language,
-    Element elementLanguage,
-    String data,
-    Element elementData,
-    String url,
-    Element elementUrl,
-    int size,
-    Element elementSize,
-    String hash,
-    Element elementHash,
-    String title,
-    Element elementTitle,
-    DateTime creation,
-    Element elementCreation,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Attachment newAttachment = new Attachment(
-      id: id ?? await fhirDb.newResourceId('Attachment'),
-      extension: extension,
-      contentType: contentType,
-      elementContentType: elementContentType,
-      language: language,
-      elementLanguage: elementLanguage,
-      data: data,
-      elementData: elementData,
-      url: url,
-      elementUrl: elementUrl,
-      size: size,
-      elementSize: elementSize,
-      hash: hash,
-      elementHash: elementHash,
-      title: title,
-      elementTitle: elementTitle,
-      creation: creation,
-      elementCreation: elementCreation,
-    );
-    return newAttachment;
-  }
+class Attachment{
 
-  String id;
-  List<Extension> extension;
-  String contentType;
-  Element elementContentType;
-  String language;
-  Element elementLanguage;
-  String data;
-  Element elementData;
-  String url;
-  Element elementUrl;
-  int size;
-  Element elementSize;
-  String hash;
-  Element elementHash;
-  String title;
-  Element elementTitle;
-  DateTime creation;
-  Element elementCreation;
+	static Future<Attachment> newInstance(
+	{	String id,
+	List<Extension> extension,
+	String contentType,
+	Element elementContentType,
+	String language,
+	Element elementLanguage,
+	String data,
+	Element elementData,
+	String url,
+	Element elementUrl,
+	int size,
+	Element elementSize,
+	String hash,
+	Element elementHash,
+	String title,
+	Element elementTitle,
+	DateTime creation,
+	Element elementCreation,
+}) async {
+var fhirDb = new DatabaseHelper();
+Attachment newAttachment = new Attachment(
+	id: id ?? await fhirDb.newResourceId('Attachment'),
+	extension: extension,
+	contentType: contentType,
+	elementContentType: elementContentType,
+	language: language,
+	elementLanguage: elementLanguage,
+	data: data,
+	elementData: elementData,
+	url: url,
+	elementUrl: elementUrl,
+	size: size,
+	elementSize: elementSize,
+	hash: hash,
+	elementHash: elementHash,
+	title: title,
+	elementTitle: elementTitle,
+	creation: creation,
+	elementCreation: elementCreation,
+);
+	return newAttachment;
+}
 
-  Attachment({
-    this.id,
-    this.extension,
-    this.contentType,
-    this.elementContentType,
-    this.language,
-    this.elementLanguage,
-    this.data,
-    this.elementData,
-    this.url,
-    this.elementUrl,
-    this.size,
-    this.elementSize,
-    this.hash,
-    this.elementHash,
-    this.title,
-    this.elementTitle,
-    this.creation,
-    this.elementCreation,
-  });
+	String id;
+	List<Extension> extension;
+	String contentType;
+	Element elementContentType;
+	String language;
+	Element elementLanguage;
+	String data;
+	Element elementData;
+	String url;
+	Element elementUrl;
+	int size;
+	Element elementSize;
+	String hash;
+	Element elementHash;
+	String title;
+	Element elementTitle;
+	DateTime creation;
+	Element elementCreation;
 
-  factory Attachment.fromJson(Map<String, dynamic> json) =>
-      _$AttachmentFromJson(json);
+Attachment(
+	{this.id,
+this.extension,
+this.contentType,
+this.elementContentType,
+this.language,
+this.elementLanguage,
+this.data,
+this.elementData,
+this.url,
+this.elementUrl,
+this.size,
+this.elementSize,
+this.hash,
+this.elementHash,
+this.title,
+this.elementTitle,
+this.creation,
+this.elementCreation,
+});
+
+  factory Attachment.fromJson(Map<String, dynamic> json) => _$AttachmentFromJson(json);
   Map<String, dynamic> toJson() => _$AttachmentToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/mainMenu/mainMenu.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/parasites/parasiteVisit.dart';
+import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/parasites/parasiteVisit.dart';
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/fhirClasses/patient.dart';
 
@@ -104,7 +104,9 @@ class _ParasiteState extends State<_Parasite> {
                                   pt = await fhirDb.search('Patient', id);
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ParasiteVisit(pt: pt)),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ParasiteVisit(pt)),
                                   );
                                 },
                               ),

@@ -8,136 +8,139 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Linkage {
-  static Future<Linkage> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    bool active,
-    Element elementActive,
-    Reference author,
-    List<Linkage_Item> item,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Linkage newLinkage = new Linkage(
-      resourceType: 'Linkage',
-      id: id ?? await fhirDb.newResourceId('Linkage'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      active: active,
-      elementActive: elementActive,
-      author: author,
-      item: item,
-    );
-    newLinkage.meta.createdAt = DateTime.now();
-    newLinkage.meta.lastUpdated = newLinkage.meta.createdAt;
-    int saved = await fhirDb.saveResource(newLinkage);
-    return newLinkage;
-  }
+class Linkage{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Linkage> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	bool active,
+	Element elementActive,
+	Reference author,
+	List<Linkage_Item> item,
+}) async {
+var fhirDb = new DatabaseHelper();
+Linkage newLinkage = new Linkage(
+	resourceType: 'Linkage',
+	id: id ?? await fhirDb.newResourceId('Linkage'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	active: active,
+	elementActive: elementActive,
+	author: author,
+	item: item,
+);
+	newLinkage.meta.createdAt = DateTime.now();
+	newLinkage.meta.lastUpdated = newLinkage.meta.createdAt;
+	int saved = await fhirDb.saveResource(newLinkage);
+	 return newLinkage;
+}
 
-  String resourceType = 'Linkage';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  bool active;
-  Element elementActive;
-  Reference author;
-  List<Linkage_Item> item;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Linkage({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.active,
-    this.elementActive,
-    this.author,
-    @required this.item,
-  });
+	String resourceType= 'Linkage';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	bool active;
+	Element elementActive;
+	Reference author;
+	List<Linkage_Item> item;
 
-  factory Linkage.fromJson(Map<String, dynamic> json) =>
-      _$LinkageFromJson(json);
+Linkage(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.active,
+this.elementActive,
+this.author,
+@required this.item,
+});
+
+  factory Linkage.fromJson(Map<String, dynamic> json) => _$LinkageFromJson(json);
   Map<String, dynamic> toJson() => _$LinkageToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Linkage_Item {
-  static Future<Linkage_Item> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String type,
-    Element elementType,
-    Reference resource,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Linkage_Item newLinkage_Item = new Linkage_Item(
-      id: id ?? await fhirDb.newResourceId('Linkage_Item'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      elementType: elementType,
-      resource: resource,
-    );
-    return newLinkage_Item;
-  }
+class Linkage_Item{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String type;
-  Element elementType;
-  Reference resource;
+	static Future<Linkage_Item> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String type,
+	Element elementType,
+	Reference resource,
+}) async {
+var fhirDb = new DatabaseHelper();
+Linkage_Item newLinkage_Item = new Linkage_Item(
+	id: id ?? await fhirDb.newResourceId('Linkage_Item'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	elementType: elementType,
+	resource: resource,
+);
+	return newLinkage_Item;
+}
 
-  Linkage_Item({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.elementType,
-    @required this.resource,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String type;
+	Element elementType;
+	Reference resource;
 
-  factory Linkage_Item.fromJson(Map<String, dynamic> json) =>
-      _$Linkage_ItemFromJson(json);
+Linkage_Item(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.type,
+this.elementType,
+@required this.resource,
+});
+
+  factory Linkage_Item.fromJson(Map<String, dynamic> json) => _$Linkage_ItemFromJson(json);
   Map<String, dynamic> toJson() => _$Linkage_ItemToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -164,9 +167,8 @@ Linkage _$LinkageFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

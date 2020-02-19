@@ -10,408 +10,399 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class SubstancePolymer {
-  static Future<SubstancePolymer> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept classs,
-    CodeableConcept geometry,
-    List<CodeableConcept> copolymerConnectivity,
-    List<String> modification,
-    List<Element> elementModification,
-    List<SubstancePolymer_MonomerSet> monomerSet,
-    List<SubstancePolymer_Repeat> repeat,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstancePolymer newSubstancePolymer = new SubstancePolymer(
-      resourceType: 'SubstancePolymer',
-      id: id ?? await fhirDb.newResourceId('SubstancePolymer'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      classs: classs,
-      geometry: geometry,
-      copolymerConnectivity: copolymerConnectivity,
-      modification: modification,
-      elementModification: elementModification,
-      monomerSet: monomerSet,
-      repeat: repeat,
-    );
-    newSubstancePolymer.meta.createdAt = DateTime.now();
-    newSubstancePolymer.meta.lastUpdated = newSubstancePolymer.meta.createdAt;
-    int saved = await fhirDb.saveResource(newSubstancePolymer);
-    return newSubstancePolymer;
-  }
+class SubstancePolymer{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<SubstancePolymer> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept classs,
+	CodeableConcept geometry,
+	List<CodeableConcept> copolymerConnectivity,
+	List<String> modification,
+	List<Element> elementModification,
+	List<SubstancePolymer_MonomerSet> monomerSet,
+	List<SubstancePolymer_Repeat> repeat,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstancePolymer newSubstancePolymer = new SubstancePolymer(
+	resourceType: 'SubstancePolymer',
+	id: id ?? await fhirDb.newResourceId('SubstancePolymer'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	classs: classs,
+	geometry: geometry,
+	copolymerConnectivity: copolymerConnectivity,
+	modification: modification,
+	elementModification: elementModification,
+	monomerSet: monomerSet,
+	repeat: repeat,
+);
+	newSubstancePolymer.meta.createdAt = DateTime.now();
+	newSubstancePolymer.meta.lastUpdated = newSubstancePolymer.meta.createdAt;
+	int saved = await fhirDb.saveResource(newSubstancePolymer);
+	 return newSubstancePolymer;
+}
 
-  String resourceType = 'SubstancePolymer';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept classs;
-  CodeableConcept geometry;
-  List<CodeableConcept> copolymerConnectivity;
-  List<String> modification;
-  List<Element> elementModification;
-  List<SubstancePolymer_MonomerSet> monomerSet;
-  List<SubstancePolymer_Repeat> repeat;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  SubstancePolymer({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.classs,
-    this.geometry,
-    this.copolymerConnectivity,
-    this.modification,
-    this.elementModification,
-    this.monomerSet,
-    this.repeat,
-  });
+	String resourceType= 'SubstancePolymer';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept classs;
+	CodeableConcept geometry;
+	List<CodeableConcept> copolymerConnectivity;
+	List<String> modification;
+	List<Element> elementModification;
+	List<SubstancePolymer_MonomerSet> monomerSet;
+	List<SubstancePolymer_Repeat> repeat;
 
-  factory SubstancePolymer.fromJson(Map<String, dynamic> json) =>
-      _$SubstancePolymerFromJson(json);
+SubstancePolymer(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.classs,
+this.geometry,
+this.copolymerConnectivity,
+this.modification,
+this.elementModification,
+this.monomerSet,
+this.repeat,
+});
+
+  factory SubstancePolymer.fromJson(Map<String, dynamic> json) => _$SubstancePolymerFromJson(json);
   Map<String, dynamic> toJson() => _$SubstancePolymerToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class SubstancePolymer_MonomerSet {
-  static Future<SubstancePolymer_MonomerSet> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept ratioType,
-    List<SubstancePolymer_StartingMaterial> startingMaterial,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstancePolymer_MonomerSet newSubstancePolymer_MonomerSet =
-        new SubstancePolymer_MonomerSet(
-      id: id ?? await fhirDb.newResourceId('SubstancePolymer_MonomerSet'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      ratioType: ratioType,
-      startingMaterial: startingMaterial,
-    );
-    return newSubstancePolymer_MonomerSet;
-  }
+class SubstancePolymer_MonomerSet{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept ratioType;
-  List<SubstancePolymer_StartingMaterial> startingMaterial;
+	static Future<SubstancePolymer_MonomerSet> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept ratioType,
+	List<SubstancePolymer_StartingMaterial> startingMaterial,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstancePolymer_MonomerSet newSubstancePolymer_MonomerSet = new SubstancePolymer_MonomerSet(
+	id: id ?? await fhirDb.newResourceId('SubstancePolymer_MonomerSet'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	ratioType: ratioType,
+	startingMaterial: startingMaterial,
+);
+	return newSubstancePolymer_MonomerSet;
+}
 
-  SubstancePolymer_MonomerSet({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.ratioType,
-    this.startingMaterial,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept ratioType;
+	List<SubstancePolymer_StartingMaterial> startingMaterial;
 
-  factory SubstancePolymer_MonomerSet.fromJson(Map<String, dynamic> json) =>
-      _$SubstancePolymer_MonomerSetFromJson(json);
+SubstancePolymer_MonomerSet(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.ratioType,
+this.startingMaterial,
+});
+
+  factory SubstancePolymer_MonomerSet.fromJson(Map<String, dynamic> json) => _$SubstancePolymer_MonomerSetFromJson(json);
   Map<String, dynamic> toJson() => _$SubstancePolymer_MonomerSetToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class SubstancePolymer_StartingMaterial {
-  static Future<SubstancePolymer_StartingMaterial> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept material,
-    CodeableConcept type,
-    bool isDefining,
-    Element elementIsDefining,
-    SubstanceAmount amount,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstancePolymer_StartingMaterial newSubstancePolymer_StartingMaterial =
-        new SubstancePolymer_StartingMaterial(
-      id: id ?? await fhirDb.newResourceId('SubstancePolymer_StartingMaterial'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      material: material,
-      type: type,
-      isDefining: isDefining,
-      elementIsDefining: elementIsDefining,
-      amount: amount,
-    );
-    return newSubstancePolymer_StartingMaterial;
-  }
+class SubstancePolymer_StartingMaterial{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept material;
-  CodeableConcept type;
-  bool isDefining;
-  Element elementIsDefining;
-  SubstanceAmount amount;
-
-  SubstancePolymer_StartingMaterial({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.material,
-    this.type,
-    this.isDefining,
-    this.elementIsDefining,
-    this.amount,
-  });
-
-  factory SubstancePolymer_StartingMaterial.fromJson(
-          Map<String, dynamic> json) =>
-      _$SubstancePolymer_StartingMaterialFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$SubstancePolymer_StartingMaterialToJson(this);
+	static Future<SubstancePolymer_StartingMaterial> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept material,
+	CodeableConcept type,
+	bool isDefining,
+	Element elementIsDefining,
+	SubstanceAmount amount,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstancePolymer_StartingMaterial newSubstancePolymer_StartingMaterial = new SubstancePolymer_StartingMaterial(
+	id: id ?? await fhirDb.newResourceId('SubstancePolymer_StartingMaterial'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	material: material,
+	type: type,
+	isDefining: isDefining,
+	elementIsDefining: elementIsDefining,
+	amount: amount,
+);
+	return newSubstancePolymer_StartingMaterial;
 }
 
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept material;
+	CodeableConcept type;
+	bool isDefining;
+	Element elementIsDefining;
+	SubstanceAmount amount;
+
+SubstancePolymer_StartingMaterial(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.material,
+this.type,
+this.isDefining,
+this.elementIsDefining,
+this.amount,
+});
+
+  factory SubstancePolymer_StartingMaterial.fromJson(Map<String, dynamic> json) => _$SubstancePolymer_StartingMaterialFromJson(json);
+  Map<String, dynamic> toJson() => _$SubstancePolymer_StartingMaterialToJson(this);
+}
+
+
 @JsonSerializable(explicitToJson: true)
-class SubstancePolymer_Repeat {
-  static Future<SubstancePolymer_Repeat> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int numberOfUnits,
-    Element elementNumberOfUnits,
-    String averageMolecularFormula,
-    Element elementAverageMolecularFormula,
-    CodeableConcept repeatUnitAmountType,
-    List<SubstancePolymer_RepeatUnit> repeatUnit,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstancePolymer_Repeat newSubstancePolymer_Repeat =
-        new SubstancePolymer_Repeat(
-      id: id ?? await fhirDb.newResourceId('SubstancePolymer_Repeat'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      numberOfUnits: numberOfUnits,
-      elementNumberOfUnits: elementNumberOfUnits,
-      averageMolecularFormula: averageMolecularFormula,
-      elementAverageMolecularFormula: elementAverageMolecularFormula,
-      repeatUnitAmountType: repeatUnitAmountType,
-      repeatUnit: repeatUnit,
-    );
-    return newSubstancePolymer_Repeat;
-  }
+class SubstancePolymer_Repeat{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int numberOfUnits;
-  Element elementNumberOfUnits;
-  String averageMolecularFormula;
-  Element elementAverageMolecularFormula;
-  CodeableConcept repeatUnitAmountType;
-  List<SubstancePolymer_RepeatUnit> repeatUnit;
+	static Future<SubstancePolymer_Repeat> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int numberOfUnits,
+	Element elementNumberOfUnits,
+	String averageMolecularFormula,
+	Element elementAverageMolecularFormula,
+	CodeableConcept repeatUnitAmountType,
+	List<SubstancePolymer_RepeatUnit> repeatUnit,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstancePolymer_Repeat newSubstancePolymer_Repeat = new SubstancePolymer_Repeat(
+	id: id ?? await fhirDb.newResourceId('SubstancePolymer_Repeat'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	numberOfUnits: numberOfUnits,
+	elementNumberOfUnits: elementNumberOfUnits,
+	averageMolecularFormula: averageMolecularFormula,
+	elementAverageMolecularFormula: elementAverageMolecularFormula,
+	repeatUnitAmountType: repeatUnitAmountType,
+	repeatUnit: repeatUnit,
+);
+	return newSubstancePolymer_Repeat;
+}
 
-  SubstancePolymer_Repeat({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.numberOfUnits,
-    this.elementNumberOfUnits,
-    this.averageMolecularFormula,
-    this.elementAverageMolecularFormula,
-    this.repeatUnitAmountType,
-    this.repeatUnit,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int numberOfUnits;
+	Element elementNumberOfUnits;
+	String averageMolecularFormula;
+	Element elementAverageMolecularFormula;
+	CodeableConcept repeatUnitAmountType;
+	List<SubstancePolymer_RepeatUnit> repeatUnit;
 
-  factory SubstancePolymer_Repeat.fromJson(Map<String, dynamic> json) =>
-      _$SubstancePolymer_RepeatFromJson(json);
+SubstancePolymer_Repeat(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.numberOfUnits,
+this.elementNumberOfUnits,
+this.averageMolecularFormula,
+this.elementAverageMolecularFormula,
+this.repeatUnitAmountType,
+this.repeatUnit,
+});
+
+  factory SubstancePolymer_Repeat.fromJson(Map<String, dynamic> json) => _$SubstancePolymer_RepeatFromJson(json);
   Map<String, dynamic> toJson() => _$SubstancePolymer_RepeatToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class SubstancePolymer_RepeatUnit {
-  static Future<SubstancePolymer_RepeatUnit> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept orientationOfPolymerisation,
-    String repeatUnit,
-    Element elementRepeatUnit,
-    SubstanceAmount amount,
-    List<SubstancePolymer_DegreeOfPolymerisation> degreeOfPolymerisation,
-    List<SubstancePolymer_StructuralRepresentation> structuralRepresentation,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstancePolymer_RepeatUnit newSubstancePolymer_RepeatUnit =
-        new SubstancePolymer_RepeatUnit(
-      id: id ?? await fhirDb.newResourceId('SubstancePolymer_RepeatUnit'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      orientationOfPolymerisation: orientationOfPolymerisation,
-      repeatUnit: repeatUnit,
-      elementRepeatUnit: elementRepeatUnit,
-      amount: amount,
-      degreeOfPolymerisation: degreeOfPolymerisation,
-      structuralRepresentation: structuralRepresentation,
-    );
-    return newSubstancePolymer_RepeatUnit;
-  }
+class SubstancePolymer_RepeatUnit{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept orientationOfPolymerisation;
-  String repeatUnit;
-  Element elementRepeatUnit;
-  SubstanceAmount amount;
-  List<SubstancePolymer_DegreeOfPolymerisation> degreeOfPolymerisation;
-  List<SubstancePolymer_StructuralRepresentation> structuralRepresentation;
+	static Future<SubstancePolymer_RepeatUnit> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept orientationOfPolymerisation,
+	String repeatUnit,
+	Element elementRepeatUnit,
+	SubstanceAmount amount,
+	List<SubstancePolymer_DegreeOfPolymerisation> degreeOfPolymerisation,
+	List<SubstancePolymer_StructuralRepresentation> structuralRepresentation,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstancePolymer_RepeatUnit newSubstancePolymer_RepeatUnit = new SubstancePolymer_RepeatUnit(
+	id: id ?? await fhirDb.newResourceId('SubstancePolymer_RepeatUnit'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	orientationOfPolymerisation: orientationOfPolymerisation,
+	repeatUnit: repeatUnit,
+	elementRepeatUnit: elementRepeatUnit,
+	amount: amount,
+	degreeOfPolymerisation: degreeOfPolymerisation,
+	structuralRepresentation: structuralRepresentation,
+);
+	return newSubstancePolymer_RepeatUnit;
+}
 
-  SubstancePolymer_RepeatUnit({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.orientationOfPolymerisation,
-    this.repeatUnit,
-    this.elementRepeatUnit,
-    this.amount,
-    this.degreeOfPolymerisation,
-    this.structuralRepresentation,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept orientationOfPolymerisation;
+	String repeatUnit;
+	Element elementRepeatUnit;
+	SubstanceAmount amount;
+	List<SubstancePolymer_DegreeOfPolymerisation> degreeOfPolymerisation;
+	List<SubstancePolymer_StructuralRepresentation> structuralRepresentation;
 
-  factory SubstancePolymer_RepeatUnit.fromJson(Map<String, dynamic> json) =>
-      _$SubstancePolymer_RepeatUnitFromJson(json);
+SubstancePolymer_RepeatUnit(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.orientationOfPolymerisation,
+this.repeatUnit,
+this.elementRepeatUnit,
+this.amount,
+this.degreeOfPolymerisation,
+this.structuralRepresentation,
+});
+
+  factory SubstancePolymer_RepeatUnit.fromJson(Map<String, dynamic> json) => _$SubstancePolymer_RepeatUnitFromJson(json);
   Map<String, dynamic> toJson() => _$SubstancePolymer_RepeatUnitToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class SubstancePolymer_DegreeOfPolymerisation {
-  static Future<SubstancePolymer_DegreeOfPolymerisation> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept degree,
-    SubstanceAmount amount,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstancePolymer_DegreeOfPolymerisation
-        newSubstancePolymer_DegreeOfPolymerisation =
-        new SubstancePolymer_DegreeOfPolymerisation(
-      id: id ??
-          await fhirDb.newResourceId('SubstancePolymer_DegreeOfPolymerisation'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      degree: degree,
-      amount: amount,
-    );
-    return newSubstancePolymer_DegreeOfPolymerisation;
-  }
-
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept degree;
-  SubstanceAmount amount;
-
-  SubstancePolymer_DegreeOfPolymerisation({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.degree,
-    this.amount,
-  });
-
-  factory SubstancePolymer_DegreeOfPolymerisation.fromJson(
-          Map<String, dynamic> json) =>
-      _$SubstancePolymer_DegreeOfPolymerisationFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$SubstancePolymer_DegreeOfPolymerisationToJson(this);
-}
 
 @JsonSerializable(explicitToJson: true)
-class SubstancePolymer_StructuralRepresentation {
-  static Future<SubstancePolymer_StructuralRepresentation> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept type,
-    String representation,
-    Element elementRepresentation,
-    Attachment attachment,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstancePolymer_StructuralRepresentation
-        newSubstancePolymer_StructuralRepresentation =
-        new SubstancePolymer_StructuralRepresentation(
-      id: id ??
-          await fhirDb
-              .newResourceId('SubstancePolymer_StructuralRepresentation'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      representation: representation,
-      elementRepresentation: elementRepresentation,
-      attachment: attachment,
-    );
-    return newSubstancePolymer_StructuralRepresentation;
-  }
+class SubstancePolymer_DegreeOfPolymerisation{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept type;
-  String representation;
-  Element elementRepresentation;
-  Attachment attachment;
-
-  SubstancePolymer_StructuralRepresentation({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.representation,
-    this.elementRepresentation,
-    this.attachment,
-  });
-
-  factory SubstancePolymer_StructuralRepresentation.fromJson(
-          Map<String, dynamic> json) =>
-      _$SubstancePolymer_StructuralRepresentationFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$SubstancePolymer_StructuralRepresentationToJson(this);
+	static Future<SubstancePolymer_DegreeOfPolymerisation> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept degree,
+	SubstanceAmount amount,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstancePolymer_DegreeOfPolymerisation newSubstancePolymer_DegreeOfPolymerisation = new SubstancePolymer_DegreeOfPolymerisation(
+	id: id ?? await fhirDb.newResourceId('SubstancePolymer_DegreeOfPolymerisation'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	degree: degree,
+	amount: amount,
+);
+	return newSubstancePolymer_DegreeOfPolymerisation;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept degree;
+	SubstanceAmount amount;
+
+SubstancePolymer_DegreeOfPolymerisation(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.degree,
+this.amount,
+});
+
+  factory SubstancePolymer_DegreeOfPolymerisation.fromJson(Map<String, dynamic> json) => _$SubstancePolymer_DegreeOfPolymerisationFromJson(json);
+  Map<String, dynamic> toJson() => _$SubstancePolymer_DegreeOfPolymerisationToJson(this);
+}
+
+
+@JsonSerializable(explicitToJson: true)
+class SubstancePolymer_StructuralRepresentation{
+
+	static Future<SubstancePolymer_StructuralRepresentation> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept type,
+	String representation,
+	Element elementRepresentation,
+	Attachment attachment,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstancePolymer_StructuralRepresentation newSubstancePolymer_StructuralRepresentation = new SubstancePolymer_StructuralRepresentation(
+	id: id ?? await fhirDb.newResourceId('SubstancePolymer_StructuralRepresentation'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	representation: representation,
+	elementRepresentation: elementRepresentation,
+	attachment: attachment,
+);
+	return newSubstancePolymer_StructuralRepresentation;
+}
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept type;
+	String representation;
+	Element elementRepresentation;
+	Attachment attachment;
+
+SubstancePolymer_StructuralRepresentation(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.type,
+this.representation,
+this.elementRepresentation,
+this.attachment,
+});
+
+  factory SubstancePolymer_StructuralRepresentation.fromJson(Map<String, dynamic> json) => _$SubstancePolymer_StructuralRepresentationFromJson(json);
+  Map<String, dynamic> toJson() => _$SubstancePolymer_StructuralRepresentationToJson(this);
+}
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -438,9 +429,8 @@ SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -5,56 +5,58 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Population {
-  static Future<Population> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Range ageRange,
-    CodeableConcept ageCodeableConcept,
-    CodeableConcept gender,
-    CodeableConcept race,
-    CodeableConcept physiologicalCondition,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Population newPopulation = new Population(
-      id: id ?? await fhirDb.newResourceId('Population'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      ageRange: ageRange,
-      ageCodeableConcept: ageCodeableConcept,
-      gender: gender,
-      race: race,
-      physiologicalCondition: physiologicalCondition,
-    );
-    return newPopulation;
-  }
+class Population{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Range ageRange;
-  CodeableConcept ageCodeableConcept;
-  CodeableConcept gender;
-  CodeableConcept race;
-  CodeableConcept physiologicalCondition;
+	static Future<Population> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Range ageRange,
+	CodeableConcept ageCodeableConcept,
+	CodeableConcept gender,
+	CodeableConcept race,
+	CodeableConcept physiologicalCondition,
+}) async {
+var fhirDb = new DatabaseHelper();
+Population newPopulation = new Population(
+	id: id ?? await fhirDb.newResourceId('Population'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	ageRange: ageRange,
+	ageCodeableConcept: ageCodeableConcept,
+	gender: gender,
+	race: race,
+	physiologicalCondition: physiologicalCondition,
+);
+	return newPopulation;
+}
 
-  Population({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.ageRange,
-    this.ageCodeableConcept,
-    this.gender,
-    this.race,
-    this.physiologicalCondition,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Range ageRange;
+	CodeableConcept ageCodeableConcept;
+	CodeableConcept gender;
+	CodeableConcept race;
+	CodeableConcept physiologicalCondition;
 
-  factory Population.fromJson(Map<String, dynamic> json) =>
-      _$PopulationFromJson(json);
+Population(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.ageRange,
+this.ageCodeableConcept,
+this.gender,
+this.race,
+this.physiologicalCondition,
+});
+
+  factory Population.fromJson(Map<String, dynamic> json) => _$PopulationFromJson(json);
   Map<String, dynamic> toJson() => _$PopulationToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

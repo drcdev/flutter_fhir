@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_fhir/fhirClasses/patient.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/parasites/parasite.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/vaccines/vaccine.dart';
+import 'package:flutter_fhir/parasites/parasite.dart';
+import 'package:flutter_fhir/vaccines/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/util/buttons.dart';
 import 'package:flutter_fhir/util/db.dart';
@@ -51,15 +51,18 @@ class _ProviderActivitiesState extends State<_ProviderActivities> {
     var fhirDb = DatabaseHelper();
     List<dynamic> ptList = await fhirDb.getList('Patient');
     for (int i = 0; i < ptList.length; i++) {
-      double diff = DateTime.now()
-              .difference(DateTime.parse(ptList[i].birthDate))
-              .inDays /
-          365;
-      if (ptList[i].address != null && 2 <= diff && diff <= 5) {
-        if (locations.containsKey(ptList[i].address[0].district)) {
-          locations[ptList[i].address[0].district] += 1;
-        } else {
-          locations[ptList[i].address[0].district] = 1;
+      if (ptList[i].birthDate != null) {
+        double diff = DateTime
+            .now()
+            .difference(DateTime.parse(ptList[i].birthDate))
+            .inDays /
+            365;
+        if (ptList[i].address != null && 2 <= diff && diff <= 5) {
+          if (locations.containsKey(ptList[i].address[0].district)) {
+            locations[ptList[i].address[0].district] += 1;
+          } else {
+            locations[ptList[i].address[0].district] = 1;
+          }
         }
       }
     }

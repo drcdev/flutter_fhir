@@ -7,68 +7,70 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Identifier {
-  static Future<Identifier> newInstance({
-    String id,
-    List<Extension> extension,
-    String use,
-    Element elementUse,
-    CodeableConcept type,
-    String system,
-    Element elementSystem,
-    String value,
-    Element elementValue,
-    Period period,
-    Reference assigner,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Identifier newIdentifier = new Identifier(
-      id: id ?? await fhirDb.newResourceId('Identifier'),
-      extension: extension,
-      use: use,
-      elementUse: elementUse,
-      type: type,
-      system: system,
-      elementSystem: elementSystem,
-      value: value,
-      elementValue: elementValue,
-      period: period,
-      assigner: assigner,
-    );
-    return newIdentifier;
-  }
+class Identifier{
 
-  String id;
-  List<Extension> extension;
-  String use;
-  Element elementUse;
-  CodeableConcept type;
-  String system;
-  Element elementSystem;
-  String value;
-  Element elementValue;
-  Period period;
-  Reference assigner;
+	static Future<Identifier> newInstance(
+	{	String id,
+	List<Extension> extension,
+	String use,
+	Element elementUse,
+	CodeableConcept type,
+	String system,
+	Element elementSystem,
+	String value,
+	Element elementValue,
+	Period period,
+	Reference assigner,
+}) async {
+var fhirDb = new DatabaseHelper();
+Identifier newIdentifier = new Identifier(
+	id: id ?? await fhirDb.newResourceId('Identifier'),
+	extension: extension,
+	use: use,
+	elementUse: elementUse,
+	type: type,
+	system: system,
+	elementSystem: elementSystem,
+	value: value,
+	elementValue: elementValue,
+	period: period,
+	assigner: assigner,
+);
+	return newIdentifier;
+}
 
-  Identifier({
-    this.id,
-    this.extension,
-    this.use,
-    this.elementUse,
-    this.type,
-    this.system,
-    this.elementSystem,
-    this.value,
-    this.elementValue,
-    this.period,
-    this.assigner,
-  });
+	String id;
+	List<Extension> extension;
+	String use;
+	Element elementUse;
+	CodeableConcept type;
+	String system;
+	Element elementSystem;
+	String value;
+	Element elementValue;
+	Period period;
+	Reference assigner;
 
-  factory Identifier.fromJson(Map<String, dynamic> json) =>
-      _$IdentifierFromJson(json);
+Identifier(
+	{this.id,
+this.extension,
+this.use,
+this.elementUse,
+this.type,
+this.system,
+this.elementSystem,
+this.value,
+this.elementValue,
+this.period,
+this.assigner,
+});
+
+  factory Identifier.fromJson(Map<String, dynamic> json) => _$IdentifierFromJson(json);
   Map<String, dynamic> toJson() => _$IdentifierToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

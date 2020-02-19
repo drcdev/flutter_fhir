@@ -14,283 +14,279 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class MedicationAdministration {
-  static Future<MedicationAdministration> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    List<String> instantiates,
-    List<Element> elementInstantiates,
-    List<Reference> partOf,
-    String status,
-    Element elementStatus,
-    List<CodeableConcept> statusReason,
-    CodeableConcept category,
-    CodeableConcept medicationCodeableConcept,
-    Reference medicationReference,
-    Reference subject,
-    Reference context,
-    List<Reference> supportingInformation,
-    String effectiveDateTime,
-    Element elementEffectiveDateTime,
-    Period effectivePeriod,
-    List<MedicationAdministration_Performer> performer,
-    List<CodeableConcept> reasonCode,
-    List<Reference> reasonReference,
-    Reference request,
-    List<Reference> device,
-    List<Annotation> note,
-    MedicationAdministration_Dosage dosage,
-    List<Reference> eventHistory,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicationAdministration newMedicationAdministration =
-        new MedicationAdministration(
-      resourceType: 'MedicationAdministration',
-      id: id ?? await fhirDb.newResourceId('MedicationAdministration'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      instantiates: instantiates,
-      elementInstantiates: elementInstantiates,
-      partOf: partOf,
-      status: status,
-      elementStatus: elementStatus,
-      statusReason: statusReason,
-      category: category,
-      medicationCodeableConcept: medicationCodeableConcept,
-      medicationReference: medicationReference,
-      subject: subject,
-      context: context,
-      supportingInformation: supportingInformation,
-      effectiveDateTime: effectiveDateTime,
-      elementEffectiveDateTime: elementEffectiveDateTime,
-      effectivePeriod: effectivePeriod,
-      performer: performer,
-      reasonCode: reasonCode,
-      reasonReference: reasonReference,
-      request: request,
-      device: device,
-      note: note,
-      dosage: dosage,
-      eventHistory: eventHistory,
-    );
-    newMedicationAdministration.meta.createdAt = DateTime.now();
-    newMedicationAdministration.meta.lastUpdated =
-        newMedicationAdministration.meta.createdAt;
-    int saved = await fhirDb.saveResource(newMedicationAdministration);
-    return newMedicationAdministration;
-  }
+class MedicationAdministration{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<MedicationAdministration> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	List<String> instantiates,
+	List<Element> elementInstantiates,
+	List<Reference> partOf,
+	String status,
+	Element elementStatus,
+	List<CodeableConcept> statusReason,
+	CodeableConcept category,
+	CodeableConcept medicationCodeableConcept,
+	Reference medicationReference,
+	Reference subject,
+	Reference context,
+	List<Reference> supportingInformation,
+	String effectiveDateTime,
+	Element elementEffectiveDateTime,
+	Period effectivePeriod,
+	List<MedicationAdministration_Performer> performer,
+	List<CodeableConcept> reasonCode,
+	List<Reference> reasonReference,
+	Reference request,
+	List<Reference> device,
+	List<Annotation> note,
+	MedicationAdministration_Dosage dosage,
+	List<Reference> eventHistory,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicationAdministration newMedicationAdministration = new MedicationAdministration(
+	resourceType: 'MedicationAdministration',
+	id: id ?? await fhirDb.newResourceId('MedicationAdministration'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	instantiates: instantiates,
+	elementInstantiates: elementInstantiates,
+	partOf: partOf,
+	status: status,
+	elementStatus: elementStatus,
+	statusReason: statusReason,
+	category: category,
+	medicationCodeableConcept: medicationCodeableConcept,
+	medicationReference: medicationReference,
+	subject: subject,
+	context: context,
+	supportingInformation: supportingInformation,
+	effectiveDateTime: effectiveDateTime,
+	elementEffectiveDateTime: elementEffectiveDateTime,
+	effectivePeriod: effectivePeriod,
+	performer: performer,
+	reasonCode: reasonCode,
+	reasonReference: reasonReference,
+	request: request,
+	device: device,
+	note: note,
+	dosage: dosage,
+	eventHistory: eventHistory,
+);
+	newMedicationAdministration.meta.createdAt = DateTime.now();
+	newMedicationAdministration.meta.lastUpdated = newMedicationAdministration.meta.createdAt;
+	int saved = await fhirDb.saveResource(newMedicationAdministration);
+	 return newMedicationAdministration;
+}
 
-  String resourceType = 'MedicationAdministration';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  List<String> instantiates;
-  List<Element> elementInstantiates;
-  List<Reference> partOf;
-  String status;
-  Element elementStatus;
-  List<CodeableConcept> statusReason;
-  CodeableConcept category;
-  CodeableConcept medicationCodeableConcept;
-  Reference medicationReference;
-  Reference subject;
-  Reference context;
-  List<Reference> supportingInformation;
-  String effectiveDateTime;
-  Element elementEffectiveDateTime;
-  Period effectivePeriod;
-  List<MedicationAdministration_Performer> performer;
-  List<CodeableConcept> reasonCode;
-  List<Reference> reasonReference;
-  Reference request;
-  List<Reference> device;
-  List<Annotation> note;
-  MedicationAdministration_Dosage dosage;
-  List<Reference> eventHistory;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  MedicationAdministration({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.instantiates,
-    this.elementInstantiates,
-    this.partOf,
-    this.status,
-    this.elementStatus,
-    this.statusReason,
-    this.category,
-    this.medicationCodeableConcept,
-    this.medicationReference,
-    @required this.subject,
-    this.context,
-    this.supportingInformation,
-    this.effectiveDateTime,
-    this.elementEffectiveDateTime,
-    this.effectivePeriod,
-    this.performer,
-    this.reasonCode,
-    this.reasonReference,
-    this.request,
-    this.device,
-    this.note,
-    this.dosage,
-    this.eventHistory,
-  });
+	String resourceType= 'MedicationAdministration';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	List<String> instantiates;
+	List<Element> elementInstantiates;
+	List<Reference> partOf;
+	String status;
+	Element elementStatus;
+	List<CodeableConcept> statusReason;
+	CodeableConcept category;
+	CodeableConcept medicationCodeableConcept;
+	Reference medicationReference;
+	Reference subject;
+	Reference context;
+	List<Reference> supportingInformation;
+	String effectiveDateTime;
+	Element elementEffectiveDateTime;
+	Period effectivePeriod;
+	List<MedicationAdministration_Performer> performer;
+	List<CodeableConcept> reasonCode;
+	List<Reference> reasonReference;
+	Reference request;
+	List<Reference> device;
+	List<Annotation> note;
+	MedicationAdministration_Dosage dosage;
+	List<Reference> eventHistory;
 
-  factory MedicationAdministration.fromJson(Map<String, dynamic> json) =>
-      _$MedicationAdministrationFromJson(json);
+MedicationAdministration(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.instantiates,
+this.elementInstantiates,
+this.partOf,
+this.status,
+this.elementStatus,
+this.statusReason,
+this.category,
+this.medicationCodeableConcept,
+this.medicationReference,
+@required this.subject,
+this.context,
+this.supportingInformation,
+this.effectiveDateTime,
+this.elementEffectiveDateTime,
+this.effectivePeriod,
+this.performer,
+this.reasonCode,
+this.reasonReference,
+this.request,
+this.device,
+this.note,
+this.dosage,
+this.eventHistory,
+});
+
+  factory MedicationAdministration.fromJson(Map<String, dynamic> json) => _$MedicationAdministrationFromJson(json);
   Map<String, dynamic> toJson() => _$MedicationAdministrationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class MedicationAdministration_Performer {
-  static Future<MedicationAdministration_Performer> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept function,
-    Reference actor,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicationAdministration_Performer newMedicationAdministration_Performer =
-        new MedicationAdministration_Performer(
-      id: id ??
-          await fhirDb.newResourceId('MedicationAdministration_Performer'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      function: function,
-      actor: actor,
-    );
-    return newMedicationAdministration_Performer;
-  }
-
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept function;
-  Reference actor;
-
-  MedicationAdministration_Performer({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.function,
-    @required this.actor,
-  });
-
-  factory MedicationAdministration_Performer.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicationAdministration_PerformerFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicationAdministration_PerformerToJson(this);
-}
 
 @JsonSerializable(explicitToJson: true)
-class MedicationAdministration_Dosage {
-  static Future<MedicationAdministration_Dosage> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String text,
-    Element elementText,
-    CodeableConcept site,
-    CodeableConcept route,
-    CodeableConcept method,
-    Quantity dose,
-    Ratio rateRatio,
-    Quantity rateQuantity,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicationAdministration_Dosage newMedicationAdministration_Dosage =
-        new MedicationAdministration_Dosage(
-      id: id ?? await fhirDb.newResourceId('MedicationAdministration_Dosage'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      text: text,
-      elementText: elementText,
-      site: site,
-      route: route,
-      method: method,
-      dose: dose,
-      rateRatio: rateRatio,
-      rateQuantity: rateQuantity,
-    );
-    return newMedicationAdministration_Dosage;
-  }
+class MedicationAdministration_Performer{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String text;
-  Element elementText;
-  CodeableConcept site;
-  CodeableConcept route;
-  CodeableConcept method;
-  Quantity dose;
-  Ratio rateRatio;
-  Quantity rateQuantity;
-
-  MedicationAdministration_Dosage({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.text,
-    this.elementText,
-    this.site,
-    this.route,
-    this.method,
-    this.dose,
-    this.rateRatio,
-    this.rateQuantity,
-  });
-
-  factory MedicationAdministration_Dosage.fromJson(Map<String, dynamic> json) =>
-      _$MedicationAdministration_DosageFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicationAdministration_DosageToJson(this);
+	static Future<MedicationAdministration_Performer> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept function,
+	Reference actor,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicationAdministration_Performer newMedicationAdministration_Performer = new MedicationAdministration_Performer(
+	id: id ?? await fhirDb.newResourceId('MedicationAdministration_Performer'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	function: function,
+	actor: actor,
+);
+	return newMedicationAdministration_Performer;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept function;
+	Reference actor;
+
+MedicationAdministration_Performer(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.function,
+@required this.actor,
+});
+
+  factory MedicationAdministration_Performer.fromJson(Map<String, dynamic> json) => _$MedicationAdministration_PerformerFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicationAdministration_PerformerToJson(this);
+}
+
+
+@JsonSerializable(explicitToJson: true)
+class MedicationAdministration_Dosage{
+
+	static Future<MedicationAdministration_Dosage> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String text,
+	Element elementText,
+	CodeableConcept site,
+	CodeableConcept route,
+	CodeableConcept method,
+	Quantity dose,
+	Ratio rateRatio,
+	Quantity rateQuantity,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicationAdministration_Dosage newMedicationAdministration_Dosage = new MedicationAdministration_Dosage(
+	id: id ?? await fhirDb.newResourceId('MedicationAdministration_Dosage'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	text: text,
+	elementText: elementText,
+	site: site,
+	route: route,
+	method: method,
+	dose: dose,
+	rateRatio: rateRatio,
+	rateQuantity: rateQuantity,
+);
+	return newMedicationAdministration_Dosage;
+}
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String text;
+	Element elementText;
+	CodeableConcept site;
+	CodeableConcept route;
+	CodeableConcept method;
+	Quantity dose;
+	Ratio rateRatio;
+	Quantity rateQuantity;
+
+MedicationAdministration_Dosage(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.text,
+this.elementText,
+this.site,
+this.route,
+this.method,
+this.dose,
+this.rateRatio,
+this.rateQuantity,
+});
+
+  factory MedicationAdministration_Dosage.fromJson(Map<String, dynamic> json) => _$MedicationAdministration_DosageFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicationAdministration_DosageToJson(this);
+}
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -318,9 +314,8 @@ MedicationAdministration _$MedicationAdministrationFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

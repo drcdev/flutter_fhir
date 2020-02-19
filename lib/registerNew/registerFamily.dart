@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/fhirClasses/humanName.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
+import 'package:flutter_fhir/providerActivities.dart';
+import 'package:flutter_fhir/registerNew/register.dart';
 
 class RegisterFamily extends StatelessWidget {
   Patient pt;

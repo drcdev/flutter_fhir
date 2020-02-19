@@ -10,309 +10,311 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class SearchParameter {
-  static Future<SearchParameter> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String url,
-    Element elementUrl,
-    String version,
-    Element elementVersion,
-    String name,
-    Element elementName,
-    String derivedFrom,
-    String status,
-    Element elementStatus,
-    bool experimental,
-    Element elementExperimental,
-    DateTime date,
-    Element elementDate,
-    String publisher,
-    Element elementPublisher,
-    List<ContactDetail> contact,
-    String description,
-    Element elementDescription,
-    List<UsageContext> useContext,
-    List<CodeableConcept> jurisdiction,
-    String purpose,
-    Element elementPurpose,
-    String code,
-    Element elementCode,
-    List<String> base,
-    List<Element> elementBase,
-    String type,
-    Element elementType,
-    String expression,
-    Element elementExpression,
-    String xpath,
-    Element elementXpath,
-    String xpathUsage,
-    Element elementXpathUsage,
-    List<String> target,
-    List<Element> elementTarget,
-    bool multipleOr,
-    Element elementMultipleOr,
-    bool multipleAnd,
-    Element elementMultipleAnd,
-    String comparator,
-    List<Element> elementComparator,
-    String modifier,
-    List<Element> elementModifier,
-    List<String> chain,
-    List<Element> elementChain,
-    List<SearchParameter_Component> component,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SearchParameter newSearchParameter = new SearchParameter(
-      resourceType: 'SearchParameter',
-      id: id ?? await fhirDb.newResourceId('SearchParameter'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      url: url,
-      elementUrl: elementUrl,
-      version: version,
-      elementVersion: elementVersion,
-      name: name,
-      elementName: elementName,
-      derivedFrom: derivedFrom,
-      status: status,
-      elementStatus: elementStatus,
-      experimental: experimental,
-      elementExperimental: elementExperimental,
-      date: date,
-      elementDate: elementDate,
-      publisher: publisher,
-      elementPublisher: elementPublisher,
-      contact: contact,
-      description: description,
-      elementDescription: elementDescription,
-      useContext: useContext,
-      jurisdiction: jurisdiction,
-      purpose: purpose,
-      elementPurpose: elementPurpose,
-      code: code,
-      elementCode: elementCode,
-      base: base,
-      elementBase: elementBase,
-      type: type,
-      elementType: elementType,
-      expression: expression,
-      elementExpression: elementExpression,
-      xpath: xpath,
-      elementXpath: elementXpath,
-      xpathUsage: xpathUsage,
-      elementXpathUsage: elementXpathUsage,
-      target: target,
-      elementTarget: elementTarget,
-      multipleOr: multipleOr,
-      elementMultipleOr: elementMultipleOr,
-      multipleAnd: multipleAnd,
-      elementMultipleAnd: elementMultipleAnd,
-      comparator: comparator,
-      elementComparator: elementComparator,
-      modifier: modifier,
-      elementModifier: elementModifier,
-      chain: chain,
-      elementChain: elementChain,
-      component: component,
-    );
-    newSearchParameter.meta.createdAt = DateTime.now();
-    newSearchParameter.meta.lastUpdated = newSearchParameter.meta.createdAt;
-    int saved = await fhirDb.saveResource(newSearchParameter);
-    return newSearchParameter;
-  }
+class SearchParameter{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<SearchParameter> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String url,
+	Element elementUrl,
+	String version,
+	Element elementVersion,
+	String name,
+	Element elementName,
+	String derivedFrom,
+	String status,
+	Element elementStatus,
+	bool experimental,
+	Element elementExperimental,
+	DateTime date,
+	Element elementDate,
+	String publisher,
+	Element elementPublisher,
+	List<ContactDetail> contact,
+	String description,
+	Element elementDescription,
+	List<UsageContext> useContext,
+	List<CodeableConcept> jurisdiction,
+	String purpose,
+	Element elementPurpose,
+	String code,
+	Element elementCode,
+	List<String> base,
+	List<Element> elementBase,
+	String type,
+	Element elementType,
+	String expression,
+	Element elementExpression,
+	String xpath,
+	Element elementXpath,
+	String xpathUsage,
+	Element elementXpathUsage,
+	List<String> target,
+	List<Element> elementTarget,
+	bool multipleOr,
+	Element elementMultipleOr,
+	bool multipleAnd,
+	Element elementMultipleAnd,
+	String comparator,
+	List<Element> elementComparator,
+	String modifier,
+	List<Element> elementModifier,
+	List<String> chain,
+	List<Element> elementChain,
+	List<SearchParameter_Component> component,
+}) async {
+var fhirDb = new DatabaseHelper();
+SearchParameter newSearchParameter = new SearchParameter(
+	resourceType: 'SearchParameter',
+	id: id ?? await fhirDb.newResourceId('SearchParameter'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	url: url,
+	elementUrl: elementUrl,
+	version: version,
+	elementVersion: elementVersion,
+	name: name,
+	elementName: elementName,
+	derivedFrom: derivedFrom,
+	status: status,
+	elementStatus: elementStatus,
+	experimental: experimental,
+	elementExperimental: elementExperimental,
+	date: date,
+	elementDate: elementDate,
+	publisher: publisher,
+	elementPublisher: elementPublisher,
+	contact: contact,
+	description: description,
+	elementDescription: elementDescription,
+	useContext: useContext,
+	jurisdiction: jurisdiction,
+	purpose: purpose,
+	elementPurpose: elementPurpose,
+	code: code,
+	elementCode: elementCode,
+	base: base,
+	elementBase: elementBase,
+	type: type,
+	elementType: elementType,
+	expression: expression,
+	elementExpression: elementExpression,
+	xpath: xpath,
+	elementXpath: elementXpath,
+	xpathUsage: xpathUsage,
+	elementXpathUsage: elementXpathUsage,
+	target: target,
+	elementTarget: elementTarget,
+	multipleOr: multipleOr,
+	elementMultipleOr: elementMultipleOr,
+	multipleAnd: multipleAnd,
+	elementMultipleAnd: elementMultipleAnd,
+	comparator: comparator,
+	elementComparator: elementComparator,
+	modifier: modifier,
+	elementModifier: elementModifier,
+	chain: chain,
+	elementChain: elementChain,
+	component: component,
+);
+	newSearchParameter.meta.createdAt = DateTime.now();
+	newSearchParameter.meta.lastUpdated = newSearchParameter.meta.createdAt;
+	int saved = await fhirDb.saveResource(newSearchParameter);
+	 return newSearchParameter;
+}
 
-  String resourceType = 'SearchParameter';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String url;
-  Element elementUrl;
-  String version;
-  Element elementVersion;
-  String name;
-  Element elementName;
-  String derivedFrom;
-  String status;
-  Element elementStatus;
-  bool experimental;
-  Element elementExperimental;
-  DateTime date;
-  Element elementDate;
-  String publisher;
-  Element elementPublisher;
-  List<ContactDetail> contact;
-  String description;
-  Element elementDescription;
-  List<UsageContext> useContext;
-  List<CodeableConcept> jurisdiction;
-  String purpose;
-  Element elementPurpose;
-  String code;
-  Element elementCode;
-  List<String> base;
-  List<Element> elementBase;
-  String type;
-  Element elementType;
-  String expression;
-  Element elementExpression;
-  String xpath;
-  Element elementXpath;
-  String xpathUsage;
-  Element elementXpathUsage;
-  List<String> target;
-  List<Element> elementTarget;
-  bool multipleOr;
-  Element elementMultipleOr;
-  bool multipleAnd;
-  Element elementMultipleAnd;
-  String comparator;
-  List<Element> elementComparator;
-  String modifier;
-  List<Element> elementModifier;
-  List<String> chain;
-  List<Element> elementChain;
-  List<SearchParameter_Component> component;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  SearchParameter({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.derivedFrom,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.code,
-    this.elementCode,
-    this.base,
-    this.elementBase,
-    this.type,
-    this.elementType,
-    this.expression,
-    this.elementExpression,
-    this.xpath,
-    this.elementXpath,
-    this.xpathUsage,
-    this.elementXpathUsage,
-    this.target,
-    this.elementTarget,
-    this.multipleOr,
-    this.elementMultipleOr,
-    this.multipleAnd,
-    this.elementMultipleAnd,
-    this.comparator,
-    this.elementComparator,
-    this.modifier,
-    this.elementModifier,
-    this.chain,
-    this.elementChain,
-    this.component,
-  });
+	String resourceType= 'SearchParameter';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String url;
+	Element elementUrl;
+	String version;
+	Element elementVersion;
+	String name;
+	Element elementName;
+	String derivedFrom;
+	String status;
+	Element elementStatus;
+	bool experimental;
+	Element elementExperimental;
+	DateTime date;
+	Element elementDate;
+	String publisher;
+	Element elementPublisher;
+	List<ContactDetail> contact;
+	String description;
+	Element elementDescription;
+	List<UsageContext> useContext;
+	List<CodeableConcept> jurisdiction;
+	String purpose;
+	Element elementPurpose;
+	String code;
+	Element elementCode;
+	List<String> base;
+	List<Element> elementBase;
+	String type;
+	Element elementType;
+	String expression;
+	Element elementExpression;
+	String xpath;
+	Element elementXpath;
+	String xpathUsage;
+	Element elementXpathUsage;
+	List<String> target;
+	List<Element> elementTarget;
+	bool multipleOr;
+	Element elementMultipleOr;
+	bool multipleAnd;
+	Element elementMultipleAnd;
+	String comparator;
+	List<Element> elementComparator;
+	String modifier;
+	List<Element> elementModifier;
+	List<String> chain;
+	List<Element> elementChain;
+	List<SearchParameter_Component> component;
 
-  factory SearchParameter.fromJson(Map<String, dynamic> json) =>
-      _$SearchParameterFromJson(json);
+SearchParameter(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.url,
+this.elementUrl,
+this.version,
+this.elementVersion,
+this.name,
+this.elementName,
+this.derivedFrom,
+this.status,
+this.elementStatus,
+this.experimental,
+this.elementExperimental,
+this.date,
+this.elementDate,
+this.publisher,
+this.elementPublisher,
+this.contact,
+this.description,
+this.elementDescription,
+this.useContext,
+this.jurisdiction,
+this.purpose,
+this.elementPurpose,
+this.code,
+this.elementCode,
+this.base,
+this.elementBase,
+this.type,
+this.elementType,
+this.expression,
+this.elementExpression,
+this.xpath,
+this.elementXpath,
+this.xpathUsage,
+this.elementXpathUsage,
+this.target,
+this.elementTarget,
+this.multipleOr,
+this.elementMultipleOr,
+this.multipleAnd,
+this.elementMultipleAnd,
+this.comparator,
+this.elementComparator,
+this.modifier,
+this.elementModifier,
+this.chain,
+this.elementChain,
+this.component,
+});
+
+  factory SearchParameter.fromJson(Map<String, dynamic> json) => _$SearchParameterFromJson(json);
   Map<String, dynamic> toJson() => _$SearchParameterToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class SearchParameter_Component {
-  static Future<SearchParameter_Component> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String definition,
-    String expression,
-    Element elementExpression,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SearchParameter_Component newSearchParameter_Component =
-        new SearchParameter_Component(
-      id: id ?? await fhirDb.newResourceId('SearchParameter_Component'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      definition: definition,
-      expression: expression,
-      elementExpression: elementExpression,
-    );
-    return newSearchParameter_Component;
-  }
+class SearchParameter_Component{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String definition;
-  String expression;
-  Element elementExpression;
+	static Future<SearchParameter_Component> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String definition,
+	String expression,
+	Element elementExpression,
+}) async {
+var fhirDb = new DatabaseHelper();
+SearchParameter_Component newSearchParameter_Component = new SearchParameter_Component(
+	id: id ?? await fhirDb.newResourceId('SearchParameter_Component'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	definition: definition,
+	expression: expression,
+	elementExpression: elementExpression,
+);
+	return newSearchParameter_Component;
+}
 
-  SearchParameter_Component({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.definition,
-    this.expression,
-    this.elementExpression,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String definition;
+	String expression;
+	Element elementExpression;
 
-  factory SearchParameter_Component.fromJson(Map<String, dynamic> json) =>
-      _$SearchParameter_ComponentFromJson(json);
+SearchParameter_Component(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.definition,
+this.expression,
+this.elementExpression,
+});
+
+  factory SearchParameter_Component.fromJson(Map<String, dynamic> json) => _$SearchParameter_ComponentFromJson(json);
   Map<String, dynamic> toJson() => _$SearchParameter_ComponentToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -339,9 +341,8 @@ SearchParameter _$SearchParameterFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

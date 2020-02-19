@@ -14,379 +14,383 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class CarePlan {
-  static Future<CarePlan> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    List<String> instantiatesCanonical,
-    List<String> instantiatesUri,
-    List<Element> elementInstantiatesUri,
-    List<Reference> basedOn,
-    List<Reference> replaces,
-    List<Reference> partOf,
-    String status,
-    Element elementStatus,
-    String intent,
-    Element elementIntent,
-    List<CodeableConcept> category,
-    String title,
-    Element elementTitle,
-    String description,
-    Element elementDescription,
-    Reference subject,
-    Reference encounter,
-    Period period,
-    DateTime created,
-    Element elementCreated,
-    Reference author,
-    List<Reference> contributor,
-    List<Reference> careTeam,
-    List<Reference> addresses,
-    List<Reference> supportingInfo,
-    List<Reference> goal,
-    List<CarePlan_Activity> activity,
-    List<Annotation> note,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CarePlan newCarePlan = new CarePlan(
-      resourceType: 'CarePlan',
-      id: id ?? await fhirDb.newResourceId('CarePlan'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      instantiatesCanonical: instantiatesCanonical,
-      instantiatesUri: instantiatesUri,
-      elementInstantiatesUri: elementInstantiatesUri,
-      basedOn: basedOn,
-      replaces: replaces,
-      partOf: partOf,
-      status: status,
-      elementStatus: elementStatus,
-      intent: intent,
-      elementIntent: elementIntent,
-      category: category,
-      title: title,
-      elementTitle: elementTitle,
-      description: description,
-      elementDescription: elementDescription,
-      subject: subject,
-      encounter: encounter,
-      period: period,
-      created: created,
-      elementCreated: elementCreated,
-      author: author,
-      contributor: contributor,
-      careTeam: careTeam,
-      addresses: addresses,
-      supportingInfo: supportingInfo,
-      goal: goal,
-      activity: activity,
-      note: note,
-    );
-    newCarePlan.meta.createdAt = DateTime.now();
-    newCarePlan.meta.lastUpdated = newCarePlan.meta.createdAt;
-    int saved = await fhirDb.saveResource(newCarePlan);
-    return newCarePlan;
-  }
+class CarePlan{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<CarePlan> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	List<String> instantiatesCanonical,
+	List<String> instantiatesUri,
+	List<Element> elementInstantiatesUri,
+	List<Reference> basedOn,
+	List<Reference> replaces,
+	List<Reference> partOf,
+	String status,
+	Element elementStatus,
+	String intent,
+	Element elementIntent,
+	List<CodeableConcept> category,
+	String title,
+	Element elementTitle,
+	String description,
+	Element elementDescription,
+	Reference subject,
+	Reference encounter,
+	Period period,
+	DateTime created,
+	Element elementCreated,
+	Reference author,
+	List<Reference> contributor,
+	List<Reference> careTeam,
+	List<Reference> addresses,
+	List<Reference> supportingInfo,
+	List<Reference> goal,
+	List<CarePlan_Activity> activity,
+	List<Annotation> note,
+}) async {
+var fhirDb = new DatabaseHelper();
+CarePlan newCarePlan = new CarePlan(
+	resourceType: 'CarePlan',
+	id: id ?? await fhirDb.newResourceId('CarePlan'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	instantiatesCanonical: instantiatesCanonical,
+	instantiatesUri: instantiatesUri,
+	elementInstantiatesUri: elementInstantiatesUri,
+	basedOn: basedOn,
+	replaces: replaces,
+	partOf: partOf,
+	status: status,
+	elementStatus: elementStatus,
+	intent: intent,
+	elementIntent: elementIntent,
+	category: category,
+	title: title,
+	elementTitle: elementTitle,
+	description: description,
+	elementDescription: elementDescription,
+	subject: subject,
+	encounter: encounter,
+	period: period,
+	created: created,
+	elementCreated: elementCreated,
+	author: author,
+	contributor: contributor,
+	careTeam: careTeam,
+	addresses: addresses,
+	supportingInfo: supportingInfo,
+	goal: goal,
+	activity: activity,
+	note: note,
+);
+	newCarePlan.meta.createdAt = DateTime.now();
+	newCarePlan.meta.lastUpdated = newCarePlan.meta.createdAt;
+	int saved = await fhirDb.saveResource(newCarePlan);
+	 return newCarePlan;
+}
 
-  String resourceType = 'CarePlan';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  List<String> instantiatesCanonical;
-  List<String> instantiatesUri;
-  List<Element> elementInstantiatesUri;
-  List<Reference> basedOn;
-  List<Reference> replaces;
-  List<Reference> partOf;
-  String status;
-  Element elementStatus;
-  String intent;
-  Element elementIntent;
-  List<CodeableConcept> category;
-  String title;
-  Element elementTitle;
-  String description;
-  Element elementDescription;
-  Reference subject;
-  Reference encounter;
-  Period period;
-  DateTime created;
-  Element elementCreated;
-  Reference author;
-  List<Reference> contributor;
-  List<Reference> careTeam;
-  List<Reference> addresses;
-  List<Reference> supportingInfo;
-  List<Reference> goal;
-  List<CarePlan_Activity> activity;
-  List<Annotation> note;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  CarePlan({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.instantiatesCanonical,
-    this.instantiatesUri,
-    this.elementInstantiatesUri,
-    this.basedOn,
-    this.replaces,
-    this.partOf,
-    this.status,
-    this.elementStatus,
-    this.intent,
-    this.elementIntent,
-    this.category,
-    this.title,
-    this.elementTitle,
-    this.description,
-    this.elementDescription,
-    @required this.subject,
-    this.encounter,
-    this.period,
-    this.created,
-    this.elementCreated,
-    this.author,
-    this.contributor,
-    this.careTeam,
-    this.addresses,
-    this.supportingInfo,
-    this.goal,
-    this.activity,
-    this.note,
-  });
+	String resourceType= 'CarePlan';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	List<String> instantiatesCanonical;
+	List<String> instantiatesUri;
+	List<Element> elementInstantiatesUri;
+	List<Reference> basedOn;
+	List<Reference> replaces;
+	List<Reference> partOf;
+	String status;
+	Element elementStatus;
+	String intent;
+	Element elementIntent;
+	List<CodeableConcept> category;
+	String title;
+	Element elementTitle;
+	String description;
+	Element elementDescription;
+	Reference subject;
+	Reference encounter;
+	Period period;
+	DateTime created;
+	Element elementCreated;
+	Reference author;
+	List<Reference> contributor;
+	List<Reference> careTeam;
+	List<Reference> addresses;
+	List<Reference> supportingInfo;
+	List<Reference> goal;
+	List<CarePlan_Activity> activity;
+	List<Annotation> note;
 
-  factory CarePlan.fromJson(Map<String, dynamic> json) =>
-      _$CarePlanFromJson(json);
+CarePlan(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.instantiatesCanonical,
+this.instantiatesUri,
+this.elementInstantiatesUri,
+this.basedOn,
+this.replaces,
+this.partOf,
+this.status,
+this.elementStatus,
+this.intent,
+this.elementIntent,
+this.category,
+this.title,
+this.elementTitle,
+this.description,
+this.elementDescription,
+@required this.subject,
+this.encounter,
+this.period,
+this.created,
+this.elementCreated,
+this.author,
+this.contributor,
+this.careTeam,
+this.addresses,
+this.supportingInfo,
+this.goal,
+this.activity,
+this.note,
+});
+
+  factory CarePlan.fromJson(Map<String, dynamic> json) => _$CarePlanFromJson(json);
   Map<String, dynamic> toJson() => _$CarePlanToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class CarePlan_Activity {
-  static Future<CarePlan_Activity> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<CodeableConcept> outcomeCodeableConcept,
-    List<Reference> outcomeReference,
-    List<Annotation> progress,
-    Reference reference,
-    CarePlan_Detail detail,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CarePlan_Activity newCarePlan_Activity = new CarePlan_Activity(
-      id: id ?? await fhirDb.newResourceId('CarePlan_Activity'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      outcomeCodeableConcept: outcomeCodeableConcept,
-      outcomeReference: outcomeReference,
-      progress: progress,
-      reference: reference,
-      detail: detail,
-    );
-    return newCarePlan_Activity;
-  }
+class CarePlan_Activity{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<CodeableConcept> outcomeCodeableConcept;
-  List<Reference> outcomeReference;
-  List<Annotation> progress;
-  Reference reference;
-  CarePlan_Detail detail;
+	static Future<CarePlan_Activity> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<CodeableConcept> outcomeCodeableConcept,
+	List<Reference> outcomeReference,
+	List<Annotation> progress,
+	Reference reference,
+	CarePlan_Detail detail,
+}) async {
+var fhirDb = new DatabaseHelper();
+CarePlan_Activity newCarePlan_Activity = new CarePlan_Activity(
+	id: id ?? await fhirDb.newResourceId('CarePlan_Activity'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	outcomeCodeableConcept: outcomeCodeableConcept,
+	outcomeReference: outcomeReference,
+	progress: progress,
+	reference: reference,
+	detail: detail,
+);
+	return newCarePlan_Activity;
+}
 
-  CarePlan_Activity({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.outcomeCodeableConcept,
-    this.outcomeReference,
-    this.progress,
-    this.reference,
-    this.detail,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<CodeableConcept> outcomeCodeableConcept;
+	List<Reference> outcomeReference;
+	List<Annotation> progress;
+	Reference reference;
+	CarePlan_Detail detail;
 
-  factory CarePlan_Activity.fromJson(Map<String, dynamic> json) =>
-      _$CarePlan_ActivityFromJson(json);
+CarePlan_Activity(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.outcomeCodeableConcept,
+this.outcomeReference,
+this.progress,
+this.reference,
+this.detail,
+});
+
+  factory CarePlan_Activity.fromJson(Map<String, dynamic> json) => _$CarePlan_ActivityFromJson(json);
   Map<String, dynamic> toJson() => _$CarePlan_ActivityToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class CarePlan_Detail {
-  static Future<CarePlan_Detail> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String kind,
-    Element elementKind,
-    List<String> instantiatesCanonical,
-    List<String> instantiatesUri,
-    List<Element> elementInstantiatesUri,
-    CodeableConcept code,
-    List<CodeableConcept> reasonCode,
-    List<Reference> reasonReference,
-    List<Reference> goal,
-    String status,
-    Element elementStatus,
-    CodeableConcept statusReason,
-    bool doNotPerform,
-    Element elementDoNotPerform,
-    Timing scheduledTiming,
-    Period scheduledPeriod,
-    String scheduledString,
-    Element elementScheduledString,
-    Reference location,
-    List<Reference> performer,
-    CodeableConcept productCodeableConcept,
-    Reference productReference,
-    Quantity dailyAmount,
-    Quantity quantity,
-    String description,
-    Element elementDescription,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CarePlan_Detail newCarePlan_Detail = new CarePlan_Detail(
-      id: id ?? await fhirDb.newResourceId('CarePlan_Detail'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      kind: kind,
-      elementKind: elementKind,
-      instantiatesCanonical: instantiatesCanonical,
-      instantiatesUri: instantiatesUri,
-      elementInstantiatesUri: elementInstantiatesUri,
-      code: code,
-      reasonCode: reasonCode,
-      reasonReference: reasonReference,
-      goal: goal,
-      status: status,
-      elementStatus: elementStatus,
-      statusReason: statusReason,
-      doNotPerform: doNotPerform,
-      elementDoNotPerform: elementDoNotPerform,
-      scheduledTiming: scheduledTiming,
-      scheduledPeriod: scheduledPeriod,
-      scheduledString: scheduledString,
-      elementScheduledString: elementScheduledString,
-      location: location,
-      performer: performer,
-      productCodeableConcept: productCodeableConcept,
-      productReference: productReference,
-      dailyAmount: dailyAmount,
-      quantity: quantity,
-      description: description,
-      elementDescription: elementDescription,
-    );
-    return newCarePlan_Detail;
-  }
+class CarePlan_Detail{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String kind;
-  Element elementKind;
-  List<String> instantiatesCanonical;
-  List<String> instantiatesUri;
-  List<Element> elementInstantiatesUri;
-  CodeableConcept code;
-  List<CodeableConcept> reasonCode;
-  List<Reference> reasonReference;
-  List<Reference> goal;
-  String status;
-  Element elementStatus;
-  CodeableConcept statusReason;
-  bool doNotPerform;
-  Element elementDoNotPerform;
-  Timing scheduledTiming;
-  Period scheduledPeriod;
-  String scheduledString;
-  Element elementScheduledString;
-  Reference location;
-  List<Reference> performer;
-  CodeableConcept productCodeableConcept;
-  Reference productReference;
-  Quantity dailyAmount;
-  Quantity quantity;
-  String description;
-  Element elementDescription;
+	static Future<CarePlan_Detail> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String kind,
+	Element elementKind,
+	List<String> instantiatesCanonical,
+	List<String> instantiatesUri,
+	List<Element> elementInstantiatesUri,
+	CodeableConcept code,
+	List<CodeableConcept> reasonCode,
+	List<Reference> reasonReference,
+	List<Reference> goal,
+	String status,
+	Element elementStatus,
+	CodeableConcept statusReason,
+	bool doNotPerform,
+	Element elementDoNotPerform,
+	Timing scheduledTiming,
+	Period scheduledPeriod,
+	String scheduledString,
+	Element elementScheduledString,
+	Reference location,
+	List<Reference> performer,
+	CodeableConcept productCodeableConcept,
+	Reference productReference,
+	Quantity dailyAmount,
+	Quantity quantity,
+	String description,
+	Element elementDescription,
+}) async {
+var fhirDb = new DatabaseHelper();
+CarePlan_Detail newCarePlan_Detail = new CarePlan_Detail(
+	id: id ?? await fhirDb.newResourceId('CarePlan_Detail'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	kind: kind,
+	elementKind: elementKind,
+	instantiatesCanonical: instantiatesCanonical,
+	instantiatesUri: instantiatesUri,
+	elementInstantiatesUri: elementInstantiatesUri,
+	code: code,
+	reasonCode: reasonCode,
+	reasonReference: reasonReference,
+	goal: goal,
+	status: status,
+	elementStatus: elementStatus,
+	statusReason: statusReason,
+	doNotPerform: doNotPerform,
+	elementDoNotPerform: elementDoNotPerform,
+	scheduledTiming: scheduledTiming,
+	scheduledPeriod: scheduledPeriod,
+	scheduledString: scheduledString,
+	elementScheduledString: elementScheduledString,
+	location: location,
+	performer: performer,
+	productCodeableConcept: productCodeableConcept,
+	productReference: productReference,
+	dailyAmount: dailyAmount,
+	quantity: quantity,
+	description: description,
+	elementDescription: elementDescription,
+);
+	return newCarePlan_Detail;
+}
 
-  CarePlan_Detail({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.kind,
-    this.elementKind,
-    this.instantiatesCanonical,
-    this.instantiatesUri,
-    this.elementInstantiatesUri,
-    this.code,
-    this.reasonCode,
-    this.reasonReference,
-    this.goal,
-    this.status,
-    this.elementStatus,
-    this.statusReason,
-    this.doNotPerform,
-    this.elementDoNotPerform,
-    this.scheduledTiming,
-    this.scheduledPeriod,
-    this.scheduledString,
-    this.elementScheduledString,
-    this.location,
-    this.performer,
-    this.productCodeableConcept,
-    this.productReference,
-    this.dailyAmount,
-    this.quantity,
-    this.description,
-    this.elementDescription,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String kind;
+	Element elementKind;
+	List<String> instantiatesCanonical;
+	List<String> instantiatesUri;
+	List<Element> elementInstantiatesUri;
+	CodeableConcept code;
+	List<CodeableConcept> reasonCode;
+	List<Reference> reasonReference;
+	List<Reference> goal;
+	String status;
+	Element elementStatus;
+	CodeableConcept statusReason;
+	bool doNotPerform;
+	Element elementDoNotPerform;
+	Timing scheduledTiming;
+	Period scheduledPeriod;
+	String scheduledString;
+	Element elementScheduledString;
+	Reference location;
+	List<Reference> performer;
+	CodeableConcept productCodeableConcept;
+	Reference productReference;
+	Quantity dailyAmount;
+	Quantity quantity;
+	String description;
+	Element elementDescription;
 
-  factory CarePlan_Detail.fromJson(Map<String, dynamic> json) =>
-      _$CarePlan_DetailFromJson(json);
+CarePlan_Detail(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.kind,
+this.elementKind,
+this.instantiatesCanonical,
+this.instantiatesUri,
+this.elementInstantiatesUri,
+this.code,
+this.reasonCode,
+this.reasonReference,
+this.goal,
+this.status,
+this.elementStatus,
+this.statusReason,
+this.doNotPerform,
+this.elementDoNotPerform,
+this.scheduledTiming,
+this.scheduledPeriod,
+this.scheduledString,
+this.elementScheduledString,
+this.location,
+this.performer,
+this.productCodeableConcept,
+this.productReference,
+this.dailyAmount,
+this.quantity,
+this.description,
+this.elementDescription,
+});
+
+  factory CarePlan_Detail.fromJson(Map<String, dynamic> json) => _$CarePlan_DetailFromJson(json);
   Map<String, dynamic> toJson() => _$CarePlan_DetailToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -413,9 +417,8 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

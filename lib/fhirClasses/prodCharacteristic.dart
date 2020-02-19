@@ -7,92 +7,94 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ProdCharacteristic {
-  static Future<ProdCharacteristic> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Quantity height,
-    Quantity width,
-    Quantity depth,
-    Quantity weight,
-    Quantity nominalVolume,
-    Quantity externalDiameter,
-    String shape,
-    Element elementShape,
-    List<String> color,
-    List<Element> elementColor,
-    List<String> imprint,
-    List<Element> elementImprint,
-    List<Attachment> image,
-    CodeableConcept scoring,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ProdCharacteristic newProdCharacteristic = new ProdCharacteristic(
-      id: id ?? await fhirDb.newResourceId('ProdCharacteristic'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      height: height,
-      width: width,
-      depth: depth,
-      weight: weight,
-      nominalVolume: nominalVolume,
-      externalDiameter: externalDiameter,
-      shape: shape,
-      elementShape: elementShape,
-      color: color,
-      elementColor: elementColor,
-      imprint: imprint,
-      elementImprint: elementImprint,
-      image: image,
-      scoring: scoring,
-    );
-    return newProdCharacteristic;
-  }
+class ProdCharacteristic{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Quantity height;
-  Quantity width;
-  Quantity depth;
-  Quantity weight;
-  Quantity nominalVolume;
-  Quantity externalDiameter;
-  String shape;
-  Element elementShape;
-  List<String> color;
-  List<Element> elementColor;
-  List<String> imprint;
-  List<Element> elementImprint;
-  List<Attachment> image;
-  CodeableConcept scoring;
+	static Future<ProdCharacteristic> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Quantity height,
+	Quantity width,
+	Quantity depth,
+	Quantity weight,
+	Quantity nominalVolume,
+	Quantity externalDiameter,
+	String shape,
+	Element elementShape,
+	List<String> color,
+	List<Element> elementColor,
+	List<String> imprint,
+	List<Element> elementImprint,
+	List<Attachment> image,
+	CodeableConcept scoring,
+}) async {
+var fhirDb = new DatabaseHelper();
+ProdCharacteristic newProdCharacteristic = new ProdCharacteristic(
+	id: id ?? await fhirDb.newResourceId('ProdCharacteristic'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	height: height,
+	width: width,
+	depth: depth,
+	weight: weight,
+	nominalVolume: nominalVolume,
+	externalDiameter: externalDiameter,
+	shape: shape,
+	elementShape: elementShape,
+	color: color,
+	elementColor: elementColor,
+	imprint: imprint,
+	elementImprint: elementImprint,
+	image: image,
+	scoring: scoring,
+);
+	return newProdCharacteristic;
+}
 
-  ProdCharacteristic({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.height,
-    this.width,
-    this.depth,
-    this.weight,
-    this.nominalVolume,
-    this.externalDiameter,
-    this.shape,
-    this.elementShape,
-    this.color,
-    this.elementColor,
-    this.imprint,
-    this.elementImprint,
-    this.image,
-    this.scoring,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Quantity height;
+	Quantity width;
+	Quantity depth;
+	Quantity weight;
+	Quantity nominalVolume;
+	Quantity externalDiameter;
+	String shape;
+	Element elementShape;
+	List<String> color;
+	List<Element> elementColor;
+	List<String> imprint;
+	List<Element> elementImprint;
+	List<Attachment> image;
+	CodeableConcept scoring;
 
-  factory ProdCharacteristic.fromJson(Map<String, dynamic> json) =>
-      _$ProdCharacteristicFromJson(json);
+ProdCharacteristic(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.height,
+this.width,
+this.depth,
+this.weight,
+this.nominalVolume,
+this.externalDiameter,
+this.shape,
+this.elementShape,
+this.color,
+this.elementColor,
+this.imprint,
+this.elementImprint,
+this.image,
+this.scoring,
+});
+
+  factory ProdCharacteristic.fromJson(Map<String, dynamic> json) => _$ProdCharacteristicFromJson(json);
   Map<String, dynamic> toJson() => _$ProdCharacteristicToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

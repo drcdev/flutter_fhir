@@ -14,280 +14,283 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ResearchStudy {
-  static Future<ResearchStudy> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String title,
-    Element elementTitle,
-    List<Reference> protocol,
-    List<Reference> partOf,
-    String status,
-    Element elementStatus,
-    CodeableConcept primaryPurposeType,
-    CodeableConcept phase,
-    List<CodeableConcept> category,
-    List<CodeableConcept> focus,
-    List<CodeableConcept> condition,
-    List<ContactDetail> contact,
-    List<RelatedArtifact> relatedArtifact,
-    List<CodeableConcept> keyword,
-    List<CodeableConcept> location,
-    String description,
-    Element elementDescription,
-    List<Reference> enrollment,
-    Period period,
-    Reference sponsor,
-    Reference principalInvestigator,
-    List<Reference> site,
-    CodeableConcept reasonStopped,
-    List<Annotation> note,
-    List<ResearchStudy_Arm> arm,
-    List<ResearchStudy_Objective> objective,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ResearchStudy newResearchStudy = new ResearchStudy(
-      resourceType: 'ResearchStudy',
-      id: id ?? await fhirDb.newResourceId('ResearchStudy'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      title: title,
-      elementTitle: elementTitle,
-      protocol: protocol,
-      partOf: partOf,
-      status: status,
-      elementStatus: elementStatus,
-      primaryPurposeType: primaryPurposeType,
-      phase: phase,
-      category: category,
-      focus: focus,
-      condition: condition,
-      contact: contact,
-      relatedArtifact: relatedArtifact,
-      keyword: keyword,
-      location: location,
-      description: description,
-      elementDescription: elementDescription,
-      enrollment: enrollment,
-      period: period,
-      sponsor: sponsor,
-      principalInvestigator: principalInvestigator,
-      site: site,
-      reasonStopped: reasonStopped,
-      note: note,
-      arm: arm,
-      objective: objective,
-    );
-    newResearchStudy.meta.createdAt = DateTime.now();
-    newResearchStudy.meta.lastUpdated = newResearchStudy.meta.createdAt;
-    int saved = await fhirDb.saveResource(newResearchStudy);
-    return newResearchStudy;
-  }
+class ResearchStudy{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<ResearchStudy> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String title,
+	Element elementTitle,
+	List<Reference> protocol,
+	List<Reference> partOf,
+	String status,
+	Element elementStatus,
+	CodeableConcept primaryPurposeType,
+	CodeableConcept phase,
+	List<CodeableConcept> category,
+	List<CodeableConcept> focus,
+	List<CodeableConcept> condition,
+	List<ContactDetail> contact,
+	List<RelatedArtifact> relatedArtifact,
+	List<CodeableConcept> keyword,
+	List<CodeableConcept> location,
+	String description,
+	Element elementDescription,
+	List<Reference> enrollment,
+	Period period,
+	Reference sponsor,
+	Reference principalInvestigator,
+	List<Reference> site,
+	CodeableConcept reasonStopped,
+	List<Annotation> note,
+	List<ResearchStudy_Arm> arm,
+	List<ResearchStudy_Objective> objective,
+}) async {
+var fhirDb = new DatabaseHelper();
+ResearchStudy newResearchStudy = new ResearchStudy(
+	resourceType: 'ResearchStudy',
+	id: id ?? await fhirDb.newResourceId('ResearchStudy'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	title: title,
+	elementTitle: elementTitle,
+	protocol: protocol,
+	partOf: partOf,
+	status: status,
+	elementStatus: elementStatus,
+	primaryPurposeType: primaryPurposeType,
+	phase: phase,
+	category: category,
+	focus: focus,
+	condition: condition,
+	contact: contact,
+	relatedArtifact: relatedArtifact,
+	keyword: keyword,
+	location: location,
+	description: description,
+	elementDescription: elementDescription,
+	enrollment: enrollment,
+	period: period,
+	sponsor: sponsor,
+	principalInvestigator: principalInvestigator,
+	site: site,
+	reasonStopped: reasonStopped,
+	note: note,
+	arm: arm,
+	objective: objective,
+);
+	newResearchStudy.meta.createdAt = DateTime.now();
+	newResearchStudy.meta.lastUpdated = newResearchStudy.meta.createdAt;
+	int saved = await fhirDb.saveResource(newResearchStudy);
+	 return newResearchStudy;
+}
 
-  String resourceType = 'ResearchStudy';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String title;
-  Element elementTitle;
-  List<Reference> protocol;
-  List<Reference> partOf;
-  String status;
-  Element elementStatus;
-  CodeableConcept primaryPurposeType;
-  CodeableConcept phase;
-  List<CodeableConcept> category;
-  List<CodeableConcept> focus;
-  List<CodeableConcept> condition;
-  List<ContactDetail> contact;
-  List<RelatedArtifact> relatedArtifact;
-  List<CodeableConcept> keyword;
-  List<CodeableConcept> location;
-  String description;
-  Element elementDescription;
-  List<Reference> enrollment;
-  Period period;
-  Reference sponsor;
-  Reference principalInvestigator;
-  List<Reference> site;
-  CodeableConcept reasonStopped;
-  List<Annotation> note;
-  List<ResearchStudy_Arm> arm;
-  List<ResearchStudy_Objective> objective;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  ResearchStudy({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.title,
-    this.elementTitle,
-    this.protocol,
-    this.partOf,
-    this.status,
-    this.elementStatus,
-    this.primaryPurposeType,
-    this.phase,
-    this.category,
-    this.focus,
-    this.condition,
-    this.contact,
-    this.relatedArtifact,
-    this.keyword,
-    this.location,
-    this.description,
-    this.elementDescription,
-    this.enrollment,
-    this.period,
-    this.sponsor,
-    this.principalInvestigator,
-    this.site,
-    this.reasonStopped,
-    this.note,
-    this.arm,
-    this.objective,
-  });
+	String resourceType= 'ResearchStudy';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String title;
+	Element elementTitle;
+	List<Reference> protocol;
+	List<Reference> partOf;
+	String status;
+	Element elementStatus;
+	CodeableConcept primaryPurposeType;
+	CodeableConcept phase;
+	List<CodeableConcept> category;
+	List<CodeableConcept> focus;
+	List<CodeableConcept> condition;
+	List<ContactDetail> contact;
+	List<RelatedArtifact> relatedArtifact;
+	List<CodeableConcept> keyword;
+	List<CodeableConcept> location;
+	String description;
+	Element elementDescription;
+	List<Reference> enrollment;
+	Period period;
+	Reference sponsor;
+	Reference principalInvestigator;
+	List<Reference> site;
+	CodeableConcept reasonStopped;
+	List<Annotation> note;
+	List<ResearchStudy_Arm> arm;
+	List<ResearchStudy_Objective> objective;
 
-  factory ResearchStudy.fromJson(Map<String, dynamic> json) =>
-      _$ResearchStudyFromJson(json);
+ResearchStudy(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.title,
+this.elementTitle,
+this.protocol,
+this.partOf,
+this.status,
+this.elementStatus,
+this.primaryPurposeType,
+this.phase,
+this.category,
+this.focus,
+this.condition,
+this.contact,
+this.relatedArtifact,
+this.keyword,
+this.location,
+this.description,
+this.elementDescription,
+this.enrollment,
+this.period,
+this.sponsor,
+this.principalInvestigator,
+this.site,
+this.reasonStopped,
+this.note,
+this.arm,
+this.objective,
+});
+
+  factory ResearchStudy.fromJson(Map<String, dynamic> json) => _$ResearchStudyFromJson(json);
   Map<String, dynamic> toJson() => _$ResearchStudyToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ResearchStudy_Arm {
-  static Future<ResearchStudy_Arm> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String name,
-    Element elementName,
-    CodeableConcept type,
-    String description,
-    Element elementDescription,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ResearchStudy_Arm newResearchStudy_Arm = new ResearchStudy_Arm(
-      id: id ?? await fhirDb.newResourceId('ResearchStudy_Arm'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      name: name,
-      elementName: elementName,
-      type: type,
-      description: description,
-      elementDescription: elementDescription,
-    );
-    return newResearchStudy_Arm;
-  }
+class ResearchStudy_Arm{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String name;
-  Element elementName;
-  CodeableConcept type;
-  String description;
-  Element elementDescription;
+	static Future<ResearchStudy_Arm> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String name,
+	Element elementName,
+	CodeableConcept type,
+	String description,
+	Element elementDescription,
+}) async {
+var fhirDb = new DatabaseHelper();
+ResearchStudy_Arm newResearchStudy_Arm = new ResearchStudy_Arm(
+	id: id ?? await fhirDb.newResourceId('ResearchStudy_Arm'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	name: name,
+	elementName: elementName,
+	type: type,
+	description: description,
+	elementDescription: elementDescription,
+);
+	return newResearchStudy_Arm;
+}
 
-  ResearchStudy_Arm({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.type,
-    this.description,
-    this.elementDescription,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String name;
+	Element elementName;
+	CodeableConcept type;
+	String description;
+	Element elementDescription;
 
-  factory ResearchStudy_Arm.fromJson(Map<String, dynamic> json) =>
-      _$ResearchStudy_ArmFromJson(json);
+ResearchStudy_Arm(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.name,
+this.elementName,
+this.type,
+this.description,
+this.elementDescription,
+});
+
+  factory ResearchStudy_Arm.fromJson(Map<String, dynamic> json) => _$ResearchStudy_ArmFromJson(json);
   Map<String, dynamic> toJson() => _$ResearchStudy_ArmToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ResearchStudy_Objective {
-  static Future<ResearchStudy_Objective> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String name,
-    Element elementName,
-    CodeableConcept type,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ResearchStudy_Objective newResearchStudy_Objective =
-        new ResearchStudy_Objective(
-      id: id ?? await fhirDb.newResourceId('ResearchStudy_Objective'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      name: name,
-      elementName: elementName,
-      type: type,
-    );
-    return newResearchStudy_Objective;
-  }
+class ResearchStudy_Objective{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String name;
-  Element elementName;
-  CodeableConcept type;
+	static Future<ResearchStudy_Objective> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String name,
+	Element elementName,
+	CodeableConcept type,
+}) async {
+var fhirDb = new DatabaseHelper();
+ResearchStudy_Objective newResearchStudy_Objective = new ResearchStudy_Objective(
+	id: id ?? await fhirDb.newResourceId('ResearchStudy_Objective'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	name: name,
+	elementName: elementName,
+	type: type,
+);
+	return newResearchStudy_Objective;
+}
 
-  ResearchStudy_Objective({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.name,
-    this.elementName,
-    this.type,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String name;
+	Element elementName;
+	CodeableConcept type;
 
-  factory ResearchStudy_Objective.fromJson(Map<String, dynamic> json) =>
-      _$ResearchStudy_ObjectiveFromJson(json);
+ResearchStudy_Objective(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.name,
+this.elementName,
+this.type,
+});
+
+  factory ResearchStudy_Objective.fromJson(Map<String, dynamic> json) => _$ResearchStudy_ObjectiveFromJson(json);
   Map<String, dynamic> toJson() => _$ResearchStudy_ObjectiveToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -314,9 +317,8 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

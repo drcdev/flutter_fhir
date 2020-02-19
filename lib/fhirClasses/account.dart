@@ -11,223 +11,227 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Account {
-  static Future<Account> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    CodeableConcept type,
-    String name,
-    Element elementName,
-    List<Reference> subject,
-    Period servicePeriod,
-    List<Account_Coverage> coverage,
-    Reference owner,
-    String description,
-    Element elementDescription,
-    List<Account_Guarantor> guarantor,
-    Reference partOf,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Account newAccount = new Account(
-      resourceType: 'Account',
-      id: id ?? await fhirDb.newResourceId('Account'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      type: type,
-      name: name,
-      elementName: elementName,
-      subject: subject,
-      servicePeriod: servicePeriod,
-      coverage: coverage,
-      owner: owner,
-      description: description,
-      elementDescription: elementDescription,
-      guarantor: guarantor,
-      partOf: partOf,
-    );
-    newAccount.meta.createdAt = DateTime.now();
-    newAccount.meta.lastUpdated = newAccount.meta.createdAt;
-    int saved = await fhirDb.saveResource(newAccount);
-    return newAccount;
-  }
+class Account{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Account> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	CodeableConcept type,
+	String name,
+	Element elementName,
+	List<Reference> subject,
+	Period servicePeriod,
+	List<Account_Coverage> coverage,
+	Reference owner,
+	String description,
+	Element elementDescription,
+	List<Account_Guarantor> guarantor,
+	Reference partOf,
+}) async {
+var fhirDb = new DatabaseHelper();
+Account newAccount = new Account(
+	resourceType: 'Account',
+	id: id ?? await fhirDb.newResourceId('Account'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	type: type,
+	name: name,
+	elementName: elementName,
+	subject: subject,
+	servicePeriod: servicePeriod,
+	coverage: coverage,
+	owner: owner,
+	description: description,
+	elementDescription: elementDescription,
+	guarantor: guarantor,
+	partOf: partOf,
+);
+	newAccount.meta.createdAt = DateTime.now();
+	newAccount.meta.lastUpdated = newAccount.meta.createdAt;
+	int saved = await fhirDb.saveResource(newAccount);
+	 return newAccount;
+}
 
-  String resourceType = 'Account';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  CodeableConcept type;
-  String name;
-  Element elementName;
-  List<Reference> subject;
-  Period servicePeriod;
-  List<Account_Coverage> coverage;
-  Reference owner;
-  String description;
-  Element elementDescription;
-  List<Account_Guarantor> guarantor;
-  Reference partOf;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Account({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.type,
-    this.name,
-    this.elementName,
-    this.subject,
-    this.servicePeriod,
-    this.coverage,
-    this.owner,
-    this.description,
-    this.elementDescription,
-    this.guarantor,
-    this.partOf,
-  });
+	String resourceType= 'Account';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	CodeableConcept type;
+	String name;
+	Element elementName;
+	List<Reference> subject;
+	Period servicePeriod;
+	List<Account_Coverage> coverage;
+	Reference owner;
+	String description;
+	Element elementDescription;
+	List<Account_Guarantor> guarantor;
+	Reference partOf;
 
-  factory Account.fromJson(Map<String, dynamic> json) =>
-      _$AccountFromJson(json);
+Account(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+this.type,
+this.name,
+this.elementName,
+this.subject,
+this.servicePeriod,
+this.coverage,
+this.owner,
+this.description,
+this.elementDescription,
+this.guarantor,
+this.partOf,
+});
+
+  factory Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);
   Map<String, dynamic> toJson() => _$AccountToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Account_Coverage {
-  static Future<Account_Coverage> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Reference coverage,
-    int priority,
-    Element elementPriority,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Account_Coverage newAccount_Coverage = new Account_Coverage(
-      id: id ?? await fhirDb.newResourceId('Account_Coverage'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      coverage: coverage,
-      priority: priority,
-      elementPriority: elementPriority,
-    );
-    return newAccount_Coverage;
-  }
+class Account_Coverage{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Reference coverage;
-  int priority;
-  Element elementPriority;
+	static Future<Account_Coverage> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Reference coverage,
+	int priority,
+	Element elementPriority,
+}) async {
+var fhirDb = new DatabaseHelper();
+Account_Coverage newAccount_Coverage = new Account_Coverage(
+	id: id ?? await fhirDb.newResourceId('Account_Coverage'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	coverage: coverage,
+	priority: priority,
+	elementPriority: elementPriority,
+);
+	return newAccount_Coverage;
+}
 
-  Account_Coverage({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.coverage,
-    this.priority,
-    this.elementPriority,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Reference coverage;
+	int priority;
+	Element elementPriority;
 
-  factory Account_Coverage.fromJson(Map<String, dynamic> json) =>
-      _$Account_CoverageFromJson(json);
+Account_Coverage(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.coverage,
+this.priority,
+this.elementPriority,
+});
+
+  factory Account_Coverage.fromJson(Map<String, dynamic> json) => _$Account_CoverageFromJson(json);
   Map<String, dynamic> toJson() => _$Account_CoverageToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Account_Guarantor {
-  static Future<Account_Guarantor> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Reference party,
-    bool onHold,
-    Element elementOnHold,
-    Period period,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Account_Guarantor newAccount_Guarantor = new Account_Guarantor(
-      id: id ?? await fhirDb.newResourceId('Account_Guarantor'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      party: party,
-      onHold: onHold,
-      elementOnHold: elementOnHold,
-      period: period,
-    );
-    return newAccount_Guarantor;
-  }
+class Account_Guarantor{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Reference party;
-  bool onHold;
-  Element elementOnHold;
-  Period period;
+	static Future<Account_Guarantor> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Reference party,
+	bool onHold,
+	Element elementOnHold,
+	Period period,
+}) async {
+var fhirDb = new DatabaseHelper();
+Account_Guarantor newAccount_Guarantor = new Account_Guarantor(
+	id: id ?? await fhirDb.newResourceId('Account_Guarantor'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	party: party,
+	onHold: onHold,
+	elementOnHold: elementOnHold,
+	period: period,
+);
+	return newAccount_Guarantor;
+}
 
-  Account_Guarantor({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.party,
-    this.onHold,
-    this.elementOnHold,
-    this.period,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Reference party;
+	bool onHold;
+	Element elementOnHold;
+	Period period;
 
-  factory Account_Guarantor.fromJson(Map<String, dynamic> json) =>
-      _$Account_GuarantorFromJson(json);
+Account_Guarantor(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.party,
+this.onHold,
+this.elementOnHold,
+this.period,
+});
+
+  factory Account_Guarantor.fromJson(Map<String, dynamic> json) => _$Account_GuarantorFromJson(json);
   Map<String, dynamic> toJson() => _$Account_GuarantorToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -254,9 +258,8 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

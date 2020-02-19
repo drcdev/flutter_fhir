@@ -11,199 +11,203 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Lists {
-  static Future<Lists> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    String mode,
-    Element elementMode,
-    String title,
-    Element elementTitle,
-    CodeableConcept code,
-    Reference subject,
-    Reference encounter,
-    DateTime date,
-    Element elementDate,
-    Reference source,
-    CodeableConcept orderedBy,
-    List<Annotation> note,
-    List<List_Entry> entry,
-    CodeableConcept emptyReason,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Lists newLists = new Lists(
-      resourceType: 'List',
-      id: id ?? await fhirDb.newResourceId('List'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      mode: mode,
-      elementMode: elementMode,
-      title: title,
-      elementTitle: elementTitle,
-      code: code,
-      subject: subject,
-      encounter: encounter,
-      date: date,
-      elementDate: elementDate,
-      source: source,
-      orderedBy: orderedBy,
-      note: note,
-      entry: entry,
-      emptyReason: emptyReason,
-    );
-    newLists.meta.createdAt = DateTime.now();
-    newLists.meta.lastUpdated = newLists.meta.createdAt;
-    int saved = await fhirDb.saveResource(newLists);
-    return newLists;
-  }
+class Lists{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Lists> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	String mode,
+	Element elementMode,
+	String title,
+	Element elementTitle,
+	CodeableConcept code,
+	Reference subject,
+	Reference encounter,
+	DateTime date,
+	Element elementDate,
+	Reference source,
+	CodeableConcept orderedBy,
+	List<Annotation> note,
+	List<List_Entry> entry,
+	CodeableConcept emptyReason,
+}) async {
+var fhirDb = new DatabaseHelper();
+Lists newLists = new Lists(
+	resourceType: 'List',
+	id: id ?? await fhirDb.newResourceId('List'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	mode: mode,
+	elementMode: elementMode,
+	title: title,
+	elementTitle: elementTitle,
+	code: code,
+	subject: subject,
+	encounter: encounter,
+	date: date,
+	elementDate: elementDate,
+	source: source,
+	orderedBy: orderedBy,
+	note: note,
+	entry: entry,
+	emptyReason: emptyReason,
+);
+	newLists.meta.createdAt = DateTime.now();
+	newLists.meta.lastUpdated = newLists.meta.createdAt;
+	int saved = await fhirDb.saveResource(newLists);
+	 return newLists;
+}
 
-  String resourceType = 'List';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  String mode;
-  Element elementMode;
-  String title;
-  Element elementTitle;
-  CodeableConcept code;
-  Reference subject;
-  Reference encounter;
-  DateTime date;
-  Element elementDate;
-  Reference source;
-  CodeableConcept orderedBy;
-  List<Annotation> note;
-  List<List_Entry> entry;
-  CodeableConcept emptyReason;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Lists({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.mode,
-    this.elementMode,
-    this.title,
-    this.elementTitle,
-    this.code,
-    this.subject,
-    this.encounter,
-    this.date,
-    this.elementDate,
-    this.source,
-    this.orderedBy,
-    this.note,
-    this.entry,
-    this.emptyReason,
-  });
+	String resourceType= 'List';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	String mode;
+	Element elementMode;
+	String title;
+	Element elementTitle;
+	CodeableConcept code;
+	Reference subject;
+	Reference encounter;
+	DateTime date;
+	Element elementDate;
+	Reference source;
+	CodeableConcept orderedBy;
+	List<Annotation> note;
+	List<List_Entry> entry;
+	CodeableConcept emptyReason;
+
+Lists(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+this.mode,
+this.elementMode,
+this.title,
+this.elementTitle,
+this.code,
+this.subject,
+this.encounter,
+this.date,
+this.elementDate,
+this.source,
+this.orderedBy,
+this.note,
+this.entry,
+this.emptyReason,
+});
 
   factory Lists.fromJson(Map<String, dynamic> json) => _$ListsFromJson(json);
   Map<String, dynamic> toJson() => _$ListsToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class List_Entry {
-  static Future<List_Entry> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept flag,
-    bool deleted,
-    Element elementDeleted,
-    DateTime date,
-    Element elementDate,
-    Reference item,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    List_Entry newList_Entry = new List_Entry(
-      id: id ?? await fhirDb.newResourceId('List_Entry'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      flag: flag,
-      deleted: deleted,
-      elementDeleted: elementDeleted,
-      date: date,
-      elementDate: elementDate,
-      item: item,
-    );
-    return newList_Entry;
-  }
+class List_Entry{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept flag;
-  bool deleted;
-  Element elementDeleted;
-  DateTime date;
-  Element elementDate;
-  Reference item;
+	static Future<List_Entry> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept flag,
+	bool deleted,
+	Element elementDeleted,
+	DateTime date,
+	Element elementDate,
+	Reference item,
+}) async {
+var fhirDb = new DatabaseHelper();
+List_Entry newList_Entry = new List_Entry(
+	id: id ?? await fhirDb.newResourceId('List_Entry'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	flag: flag,
+	deleted: deleted,
+	elementDeleted: elementDeleted,
+	date: date,
+	elementDate: elementDate,
+	item: item,
+);
+	return newList_Entry;
+}
 
-  List_Entry({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.flag,
-    this.deleted,
-    this.elementDeleted,
-    this.date,
-    this.elementDate,
-    @required this.item,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept flag;
+	bool deleted;
+	Element elementDeleted;
+	DateTime date;
+	Element elementDate;
+	Reference item;
 
-  factory List_Entry.fromJson(Map<String, dynamic> json) =>
-      _$List_EntryFromJson(json);
+List_Entry(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.flag,
+this.deleted,
+this.elementDeleted,
+this.date,
+this.elementDate,
+@required this.item,
+});
+
+  factory List_Entry.fromJson(Map<String, dynamic> json) => _$List_EntryFromJson(json);
   Map<String, dynamic> toJson() => _$List_EntryToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -230,9 +234,8 @@ Lists _$ListsFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

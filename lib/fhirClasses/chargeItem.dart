@@ -15,256 +15,259 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ChargeItem {
-  static Future<ChargeItem> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    List<String> definitionUri,
-    List<Element> elementDefinitionUri,
-    List<String> definitionCanonical,
-    String status,
-    Element elementStatus,
-    List<Reference> partOf,
-    CodeableConcept code,
-    Reference subject,
-    Reference context,
-    String occurrenceDateTime,
-    Element elementOccurrenceDateTime,
-    Period occurrencePeriod,
-    Timing occurrenceTiming,
-    List<ChargeItem_Performer> performer,
-    Reference performingOrganization,
-    Reference requestingOrganization,
-    Reference costCenter,
-    Quantity quantity,
-    List<CodeableConcept> bodysite,
-    double factorOverride,
-    Element elementFactorOverride,
-    Money priceOverride,
-    String overrideReason,
-    Element elementOverrideReason,
-    Reference enterer,
-    DateTime enteredDate,
-    Element elementEnteredDate,
-    List<CodeableConcept> reason,
-    List<Reference> service,
-    Reference productReference,
-    CodeableConcept productCodeableConcept,
-    List<Reference> account,
-    List<Annotation> note,
-    List<Reference> supportingInformation,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ChargeItem newChargeItem = new ChargeItem(
-      resourceType: 'ChargeItem',
-      id: id ?? await fhirDb.newResourceId('ChargeItem'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      definitionUri: definitionUri,
-      elementDefinitionUri: elementDefinitionUri,
-      definitionCanonical: definitionCanonical,
-      status: status,
-      elementStatus: elementStatus,
-      partOf: partOf,
-      code: code,
-      subject: subject,
-      context: context,
-      occurrenceDateTime: occurrenceDateTime,
-      elementOccurrenceDateTime: elementOccurrenceDateTime,
-      occurrencePeriod: occurrencePeriod,
-      occurrenceTiming: occurrenceTiming,
-      performer: performer,
-      performingOrganization: performingOrganization,
-      requestingOrganization: requestingOrganization,
-      costCenter: costCenter,
-      quantity: quantity,
-      bodysite: bodysite,
-      factorOverride: factorOverride,
-      elementFactorOverride: elementFactorOverride,
-      priceOverride: priceOverride,
-      overrideReason: overrideReason,
-      elementOverrideReason: elementOverrideReason,
-      enterer: enterer,
-      enteredDate: enteredDate,
-      elementEnteredDate: elementEnteredDate,
-      reason: reason,
-      service: service,
-      productReference: productReference,
-      productCodeableConcept: productCodeableConcept,
-      account: account,
-      note: note,
-      supportingInformation: supportingInformation,
-    );
-    newChargeItem.meta.createdAt = DateTime.now();
-    newChargeItem.meta.lastUpdated = newChargeItem.meta.createdAt;
-    int saved = await fhirDb.saveResource(newChargeItem);
-    return newChargeItem;
-  }
+class ChargeItem{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<ChargeItem> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	List<String> definitionUri,
+	List<Element> elementDefinitionUri,
+	List<String> definitionCanonical,
+	String status,
+	Element elementStatus,
+	List<Reference> partOf,
+	CodeableConcept code,
+	Reference subject,
+	Reference context,
+	String occurrenceDateTime,
+	Element elementOccurrenceDateTime,
+	Period occurrencePeriod,
+	Timing occurrenceTiming,
+	List<ChargeItem_Performer> performer,
+	Reference performingOrganization,
+	Reference requestingOrganization,
+	Reference costCenter,
+	Quantity quantity,
+	List<CodeableConcept> bodysite,
+	double factorOverride,
+	Element elementFactorOverride,
+	Money priceOverride,
+	String overrideReason,
+	Element elementOverrideReason,
+	Reference enterer,
+	DateTime enteredDate,
+	Element elementEnteredDate,
+	List<CodeableConcept> reason,
+	List<Reference> service,
+	Reference productReference,
+	CodeableConcept productCodeableConcept,
+	List<Reference> account,
+	List<Annotation> note,
+	List<Reference> supportingInformation,
+}) async {
+var fhirDb = new DatabaseHelper();
+ChargeItem newChargeItem = new ChargeItem(
+	resourceType: 'ChargeItem',
+	id: id ?? await fhirDb.newResourceId('ChargeItem'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	definitionUri: definitionUri,
+	elementDefinitionUri: elementDefinitionUri,
+	definitionCanonical: definitionCanonical,
+	status: status,
+	elementStatus: elementStatus,
+	partOf: partOf,
+	code: code,
+	subject: subject,
+	context: context,
+	occurrenceDateTime: occurrenceDateTime,
+	elementOccurrenceDateTime: elementOccurrenceDateTime,
+	occurrencePeriod: occurrencePeriod,
+	occurrenceTiming: occurrenceTiming,
+	performer: performer,
+	performingOrganization: performingOrganization,
+	requestingOrganization: requestingOrganization,
+	costCenter: costCenter,
+	quantity: quantity,
+	bodysite: bodysite,
+	factorOverride: factorOverride,
+	elementFactorOverride: elementFactorOverride,
+	priceOverride: priceOverride,
+	overrideReason: overrideReason,
+	elementOverrideReason: elementOverrideReason,
+	enterer: enterer,
+	enteredDate: enteredDate,
+	elementEnteredDate: elementEnteredDate,
+	reason: reason,
+	service: service,
+	productReference: productReference,
+	productCodeableConcept: productCodeableConcept,
+	account: account,
+	note: note,
+	supportingInformation: supportingInformation,
+);
+	newChargeItem.meta.createdAt = DateTime.now();
+	newChargeItem.meta.lastUpdated = newChargeItem.meta.createdAt;
+	int saved = await fhirDb.saveResource(newChargeItem);
+	 return newChargeItem;
+}
 
-  String resourceType = 'ChargeItem';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  List<String> definitionUri;
-  List<Element> elementDefinitionUri;
-  List<String> definitionCanonical;
-  String status;
-  Element elementStatus;
-  List<Reference> partOf;
-  CodeableConcept code;
-  Reference subject;
-  Reference context;
-  String occurrenceDateTime;
-  Element elementOccurrenceDateTime;
-  Period occurrencePeriod;
-  Timing occurrenceTiming;
-  List<ChargeItem_Performer> performer;
-  Reference performingOrganization;
-  Reference requestingOrganization;
-  Reference costCenter;
-  Quantity quantity;
-  List<CodeableConcept> bodysite;
-  double factorOverride;
-  Element elementFactorOverride;
-  Money priceOverride;
-  String overrideReason;
-  Element elementOverrideReason;
-  Reference enterer;
-  DateTime enteredDate;
-  Element elementEnteredDate;
-  List<CodeableConcept> reason;
-  List<Reference> service;
-  Reference productReference;
-  CodeableConcept productCodeableConcept;
-  List<Reference> account;
-  List<Annotation> note;
-  List<Reference> supportingInformation;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  ChargeItem({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.definitionUri,
-    this.elementDefinitionUri,
-    this.definitionCanonical,
-    this.status,
-    this.elementStatus,
-    this.partOf,
-    @required this.code,
-    @required this.subject,
-    this.context,
-    this.occurrenceDateTime,
-    this.elementOccurrenceDateTime,
-    this.occurrencePeriod,
-    this.occurrenceTiming,
-    this.performer,
-    this.performingOrganization,
-    this.requestingOrganization,
-    this.costCenter,
-    this.quantity,
-    this.bodysite,
-    this.factorOverride,
-    this.elementFactorOverride,
-    this.priceOverride,
-    this.overrideReason,
-    this.elementOverrideReason,
-    this.enterer,
-    this.enteredDate,
-    this.elementEnteredDate,
-    this.reason,
-    this.service,
-    this.productReference,
-    this.productCodeableConcept,
-    this.account,
-    this.note,
-    this.supportingInformation,
-  });
+	String resourceType= 'ChargeItem';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	List<String> definitionUri;
+	List<Element> elementDefinitionUri;
+	List<String> definitionCanonical;
+	String status;
+	Element elementStatus;
+	List<Reference> partOf;
+	CodeableConcept code;
+	Reference subject;
+	Reference context;
+	String occurrenceDateTime;
+	Element elementOccurrenceDateTime;
+	Period occurrencePeriod;
+	Timing occurrenceTiming;
+	List<ChargeItem_Performer> performer;
+	Reference performingOrganization;
+	Reference requestingOrganization;
+	Reference costCenter;
+	Quantity quantity;
+	List<CodeableConcept> bodysite;
+	double factorOverride;
+	Element elementFactorOverride;
+	Money priceOverride;
+	String overrideReason;
+	Element elementOverrideReason;
+	Reference enterer;
+	DateTime enteredDate;
+	Element elementEnteredDate;
+	List<CodeableConcept> reason;
+	List<Reference> service;
+	Reference productReference;
+	CodeableConcept productCodeableConcept;
+	List<Reference> account;
+	List<Annotation> note;
+	List<Reference> supportingInformation;
 
-  factory ChargeItem.fromJson(Map<String, dynamic> json) =>
-      _$ChargeItemFromJson(json);
+ChargeItem(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.definitionUri,
+this.elementDefinitionUri,
+this.definitionCanonical,
+this.status,
+this.elementStatus,
+this.partOf,
+@required this.code,
+@required this.subject,
+this.context,
+this.occurrenceDateTime,
+this.elementOccurrenceDateTime,
+this.occurrencePeriod,
+this.occurrenceTiming,
+this.performer,
+this.performingOrganization,
+this.requestingOrganization,
+this.costCenter,
+this.quantity,
+this.bodysite,
+this.factorOverride,
+this.elementFactorOverride,
+this.priceOverride,
+this.overrideReason,
+this.elementOverrideReason,
+this.enterer,
+this.enteredDate,
+this.elementEnteredDate,
+this.reason,
+this.service,
+this.productReference,
+this.productCodeableConcept,
+this.account,
+this.note,
+this.supportingInformation,
+});
+
+  factory ChargeItem.fromJson(Map<String, dynamic> json) => _$ChargeItemFromJson(json);
   Map<String, dynamic> toJson() => _$ChargeItemToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ChargeItem_Performer {
-  static Future<ChargeItem_Performer> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept function,
-    Reference actor,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ChargeItem_Performer newChargeItem_Performer = new ChargeItem_Performer(
-      id: id ?? await fhirDb.newResourceId('ChargeItem_Performer'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      function: function,
-      actor: actor,
-    );
-    return newChargeItem_Performer;
-  }
+class ChargeItem_Performer{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept function;
-  Reference actor;
+	static Future<ChargeItem_Performer> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept function,
+	Reference actor,
+}) async {
+var fhirDb = new DatabaseHelper();
+ChargeItem_Performer newChargeItem_Performer = new ChargeItem_Performer(
+	id: id ?? await fhirDb.newResourceId('ChargeItem_Performer'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	function: function,
+	actor: actor,
+);
+	return newChargeItem_Performer;
+}
 
-  ChargeItem_Performer({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.function,
-    @required this.actor,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept function;
+	Reference actor;
 
-  factory ChargeItem_Performer.fromJson(Map<String, dynamic> json) =>
-      _$ChargeItem_PerformerFromJson(json);
+ChargeItem_Performer(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.function,
+@required this.actor,
+});
+
+  factory ChargeItem_Performer.fromJson(Map<String, dynamic> json) => _$ChargeItem_PerformerFromJson(json);
   Map<String, dynamic> toJson() => _$ChargeItem_PerformerToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -291,9 +294,8 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

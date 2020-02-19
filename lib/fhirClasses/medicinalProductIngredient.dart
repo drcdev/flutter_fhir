@@ -11,332 +11,315 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductIngredient {
-  static Future<MedicinalProductIngredient> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Identifier identifier,
-    CodeableConcept role,
-    bool allergenicIndicator,
-    Element elementAllergenicIndicator,
-    List<Reference> manufacturer,
-    List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance,
-    MedicinalProductIngredient_Substance substance,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductIngredient newMedicinalProductIngredient =
-        new MedicinalProductIngredient(
-      resourceType: 'MedicinalProductIngredient',
-      id: id ?? await fhirDb.newResourceId('MedicinalProductIngredient'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      role: role,
-      allergenicIndicator: allergenicIndicator,
-      elementAllergenicIndicator: elementAllergenicIndicator,
-      manufacturer: manufacturer,
-      specifiedSubstance: specifiedSubstance,
-      substance: substance,
-    );
-    newMedicinalProductIngredient.meta.createdAt = DateTime.now();
-    newMedicinalProductIngredient.meta.lastUpdated =
-        newMedicinalProductIngredient.meta.createdAt;
-    int saved = await fhirDb.saveResource(newMedicinalProductIngredient);
-    return newMedicinalProductIngredient;
-  }
+class MedicinalProductIngredient{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<MedicinalProductIngredient> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Identifier identifier,
+	CodeableConcept role,
+	bool allergenicIndicator,
+	Element elementAllergenicIndicator,
+	List<Reference> manufacturer,
+	List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance,
+	MedicinalProductIngredient_Substance substance,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductIngredient newMedicinalProductIngredient = new MedicinalProductIngredient(
+	resourceType: 'MedicinalProductIngredient',
+	id: id ?? await fhirDb.newResourceId('MedicinalProductIngredient'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	role: role,
+	allergenicIndicator: allergenicIndicator,
+	elementAllergenicIndicator: elementAllergenicIndicator,
+	manufacturer: manufacturer,
+	specifiedSubstance: specifiedSubstance,
+	substance: substance,
+);
+	newMedicinalProductIngredient.meta.createdAt = DateTime.now();
+	newMedicinalProductIngredient.meta.lastUpdated = newMedicinalProductIngredient.meta.createdAt;
+	int saved = await fhirDb.saveResource(newMedicinalProductIngredient);
+	 return newMedicinalProductIngredient;
+}
 
-  String resourceType = 'MedicinalProductIngredient';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Identifier identifier;
-  CodeableConcept role;
-  bool allergenicIndicator;
-  Element elementAllergenicIndicator;
-  List<Reference> manufacturer;
-  List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance;
-  MedicinalProductIngredient_Substance substance;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  MedicinalProductIngredient({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    @required this.role,
-    this.allergenicIndicator,
-    this.elementAllergenicIndicator,
-    this.manufacturer,
-    this.specifiedSubstance,
-    this.substance,
-  });
+	String resourceType= 'MedicinalProductIngredient';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Identifier identifier;
+	CodeableConcept role;
+	bool allergenicIndicator;
+	Element elementAllergenicIndicator;
+	List<Reference> manufacturer;
+	List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance;
+	MedicinalProductIngredient_Substance substance;
 
-  factory MedicinalProductIngredient.fromJson(Map<String, dynamic> json) =>
-      _$MedicinalProductIngredientFromJson(json);
+MedicinalProductIngredient(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+@required this.role,
+this.allergenicIndicator,
+this.elementAllergenicIndicator,
+this.manufacturer,
+this.specifiedSubstance,
+this.substance,
+});
+
+  factory MedicinalProductIngredient.fromJson(Map<String, dynamic> json) => _$MedicinalProductIngredientFromJson(json);
   Map<String, dynamic> toJson() => _$MedicinalProductIngredientToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class MedicinalProductIngredient_SpecifiedSubstance {
-  static Future<MedicinalProductIngredient_SpecifiedSubstance> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    CodeableConcept group,
-    CodeableConcept confidentiality,
-    List<MedicinalProductIngredient_Strength> strength,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductIngredient_SpecifiedSubstance
-        newMedicinalProductIngredient_SpecifiedSubstance =
-        new MedicinalProductIngredient_SpecifiedSubstance(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductIngredient_SpecifiedSubstance'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      group: group,
-      confidentiality: confidentiality,
-      strength: strength,
-    );
-    return newMedicinalProductIngredient_SpecifiedSubstance;
-  }
-
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  CodeableConcept group;
-  CodeableConcept confidentiality;
-  List<MedicinalProductIngredient_Strength> strength;
-
-  MedicinalProductIngredient_SpecifiedSubstance({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.code,
-    @required this.group,
-    this.confidentiality,
-    this.strength,
-  });
-
-  factory MedicinalProductIngredient_SpecifiedSubstance.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductIngredient_SpecifiedSubstanceFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductIngredient_SpecifiedSubstanceToJson(this);
-}
 
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductIngredient_Strength {
-  static Future<MedicinalProductIngredient_Strength> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Ratio presentation,
-    Ratio presentationLowLimit,
-    Ratio concentration,
-    Ratio concentrationLowLimit,
-    String measurementPoint,
-    Element elementMeasurementPoint,
-    List<CodeableConcept> country,
-    List<MedicinalProductIngredient_ReferenceStrength> referenceStrength,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductIngredient_Strength newMedicinalProductIngredient_Strength =
-        new MedicinalProductIngredient_Strength(
-      id: id ??
-          await fhirDb.newResourceId('MedicinalProductIngredient_Strength'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      presentation: presentation,
-      presentationLowLimit: presentationLowLimit,
-      concentration: concentration,
-      concentrationLowLimit: concentrationLowLimit,
-      measurementPoint: measurementPoint,
-      elementMeasurementPoint: elementMeasurementPoint,
-      country: country,
-      referenceStrength: referenceStrength,
-    );
-    return newMedicinalProductIngredient_Strength;
-  }
+class MedicinalProductIngredient_SpecifiedSubstance{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Ratio presentation;
-  Ratio presentationLowLimit;
-  Ratio concentration;
-  Ratio concentrationLowLimit;
-  String measurementPoint;
-  Element elementMeasurementPoint;
-  List<CodeableConcept> country;
-  List<MedicinalProductIngredient_ReferenceStrength> referenceStrength;
-
-  MedicinalProductIngredient_Strength({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.presentation,
-    this.presentationLowLimit,
-    this.concentration,
-    this.concentrationLowLimit,
-    this.measurementPoint,
-    this.elementMeasurementPoint,
-    this.country,
-    this.referenceStrength,
-  });
-
-  factory MedicinalProductIngredient_Strength.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductIngredient_StrengthFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductIngredient_StrengthToJson(this);
+	static Future<MedicinalProductIngredient_SpecifiedSubstance> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	CodeableConcept group,
+	CodeableConcept confidentiality,
+	List<MedicinalProductIngredient_Strength> strength,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductIngredient_SpecifiedSubstance newMedicinalProductIngredient_SpecifiedSubstance = new MedicinalProductIngredient_SpecifiedSubstance(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductIngredient_SpecifiedSubstance'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	group: group,
+	confidentiality: confidentiality,
+	strength: strength,
+);
+	return newMedicinalProductIngredient_SpecifiedSubstance;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	CodeableConcept group;
+	CodeableConcept confidentiality;
+	List<MedicinalProductIngredient_Strength> strength;
+
+MedicinalProductIngredient_SpecifiedSubstance(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.code,
+@required this.group,
+this.confidentiality,
+this.strength,
+});
+
+  factory MedicinalProductIngredient_SpecifiedSubstance.fromJson(Map<String, dynamic> json) => _$MedicinalProductIngredient_SpecifiedSubstanceFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductIngredient_SpecifiedSubstanceToJson(this);
+}
+
 
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductIngredient_ReferenceStrength {
-  static Future<MedicinalProductIngredient_ReferenceStrength> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept substance,
-    Ratio strength,
-    Ratio strengthLowLimit,
-    String measurementPoint,
-    Element elementMeasurementPoint,
-    List<CodeableConcept> country,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductIngredient_ReferenceStrength
-        newMedicinalProductIngredient_ReferenceStrength =
-        new MedicinalProductIngredient_ReferenceStrength(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductIngredient_ReferenceStrength'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      substance: substance,
-      strength: strength,
-      strengthLowLimit: strengthLowLimit,
-      measurementPoint: measurementPoint,
-      elementMeasurementPoint: elementMeasurementPoint,
-      country: country,
-    );
-    return newMedicinalProductIngredient_ReferenceStrength;
-  }
+class MedicinalProductIngredient_Strength{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept substance;
-  Ratio strength;
-  Ratio strengthLowLimit;
-  String measurementPoint;
-  Element elementMeasurementPoint;
-  List<CodeableConcept> country;
-
-  MedicinalProductIngredient_ReferenceStrength({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.substance,
-    @required this.strength,
-    this.strengthLowLimit,
-    this.measurementPoint,
-    this.elementMeasurementPoint,
-    this.country,
-  });
-
-  factory MedicinalProductIngredient_ReferenceStrength.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductIngredient_ReferenceStrengthFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductIngredient_ReferenceStrengthToJson(this);
+	static Future<MedicinalProductIngredient_Strength> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Ratio presentation,
+	Ratio presentationLowLimit,
+	Ratio concentration,
+	Ratio concentrationLowLimit,
+	String measurementPoint,
+	Element elementMeasurementPoint,
+	List<CodeableConcept> country,
+	List<MedicinalProductIngredient_ReferenceStrength> referenceStrength,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductIngredient_Strength newMedicinalProductIngredient_Strength = new MedicinalProductIngredient_Strength(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductIngredient_Strength'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	presentation: presentation,
+	presentationLowLimit: presentationLowLimit,
+	concentration: concentration,
+	concentrationLowLimit: concentrationLowLimit,
+	measurementPoint: measurementPoint,
+	elementMeasurementPoint: elementMeasurementPoint,
+	country: country,
+	referenceStrength: referenceStrength,
+);
+	return newMedicinalProductIngredient_Strength;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Ratio presentation;
+	Ratio presentationLowLimit;
+	Ratio concentration;
+	Ratio concentrationLowLimit;
+	String measurementPoint;
+	Element elementMeasurementPoint;
+	List<CodeableConcept> country;
+	List<MedicinalProductIngredient_ReferenceStrength> referenceStrength;
+
+MedicinalProductIngredient_Strength(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.presentation,
+this.presentationLowLimit,
+this.concentration,
+this.concentrationLowLimit,
+this.measurementPoint,
+this.elementMeasurementPoint,
+this.country,
+this.referenceStrength,
+});
+
+  factory MedicinalProductIngredient_Strength.fromJson(Map<String, dynamic> json) => _$MedicinalProductIngredient_StrengthFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductIngredient_StrengthToJson(this);
+}
+
 
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductIngredient_Substance {
-  static Future<MedicinalProductIngredient_Substance> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    List<MedicinalProductIngredient_Strength> strength,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductIngredient_Substance
-        newMedicinalProductIngredient_Substance =
-        new MedicinalProductIngredient_Substance(
-      id: id ??
-          await fhirDb.newResourceId('MedicinalProductIngredient_Substance'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      strength: strength,
-    );
-    return newMedicinalProductIngredient_Substance;
-  }
+class MedicinalProductIngredient_ReferenceStrength{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  List<MedicinalProductIngredient_Strength> strength;
-
-  MedicinalProductIngredient_Substance({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.code,
-    this.strength,
-  });
-
-  factory MedicinalProductIngredient_Substance.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductIngredient_SubstanceFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductIngredient_SubstanceToJson(this);
+	static Future<MedicinalProductIngredient_ReferenceStrength> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept substance,
+	Ratio strength,
+	Ratio strengthLowLimit,
+	String measurementPoint,
+	Element elementMeasurementPoint,
+	List<CodeableConcept> country,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductIngredient_ReferenceStrength newMedicinalProductIngredient_ReferenceStrength = new MedicinalProductIngredient_ReferenceStrength(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductIngredient_ReferenceStrength'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	substance: substance,
+	strength: strength,
+	strengthLowLimit: strengthLowLimit,
+	measurementPoint: measurementPoint,
+	elementMeasurementPoint: elementMeasurementPoint,
+	country: country,
+);
+	return newMedicinalProductIngredient_ReferenceStrength;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept substance;
+	Ratio strength;
+	Ratio strengthLowLimit;
+	String measurementPoint;
+	Element elementMeasurementPoint;
+	List<CodeableConcept> country;
+
+MedicinalProductIngredient_ReferenceStrength(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.substance,
+@required this.strength,
+this.strengthLowLimit,
+this.measurementPoint,
+this.elementMeasurementPoint,
+this.country,
+});
+
+  factory MedicinalProductIngredient_ReferenceStrength.fromJson(Map<String, dynamic> json) => _$MedicinalProductIngredient_ReferenceStrengthFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductIngredient_ReferenceStrengthToJson(this);
+}
+
+
+@JsonSerializable(explicitToJson: true)
+class MedicinalProductIngredient_Substance{
+
+	static Future<MedicinalProductIngredient_Substance> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	List<MedicinalProductIngredient_Strength> strength,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductIngredient_Substance newMedicinalProductIngredient_Substance = new MedicinalProductIngredient_Substance(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductIngredient_Substance'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	strength: strength,
+);
+	return newMedicinalProductIngredient_Substance;
+}
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	List<MedicinalProductIngredient_Strength> strength;
+
+MedicinalProductIngredient_Substance(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.code,
+this.strength,
+});
+
+  factory MedicinalProductIngredient_Substance.fromJson(Map<String, dynamic> json) => _$MedicinalProductIngredient_SubstanceFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductIngredient_SubstanceToJson(this);
+}
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -364,9 +347,8 @@ MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

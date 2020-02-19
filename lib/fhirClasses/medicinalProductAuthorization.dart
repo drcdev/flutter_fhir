@@ -11,279 +11,267 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductAuthorization {
-  static Future<MedicinalProductAuthorization> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    Reference subject,
-    List<CodeableConcept> country,
-    List<CodeableConcept> jurisdiction,
-    CodeableConcept status,
-    DateTime statusDate,
-    Element elementStatusDate,
-    DateTime restoreDate,
-    Element elementRestoreDate,
-    Period validityPeriod,
-    Period dataExclusivityPeriod,
-    DateTime dateOfFirstAuthorization,
-    Element elementDateOfFirstAuthorization,
-    DateTime internationalBirthDate,
-    Element elementInternationalBirthDate,
-    CodeableConcept legalBasis,
-    List<MedicinalProductAuthorization_JurisdictionalAuthorization>
-        jurisdictionalAuthorization,
-    Reference holder,
-    Reference regulator,
-    MedicinalProductAuthorization_Procedure procedure,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductAuthorization newMedicinalProductAuthorization =
-        new MedicinalProductAuthorization(
-      resourceType: 'MedicinalProductAuthorization',
-      id: id ?? await fhirDb.newResourceId('MedicinalProductAuthorization'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      subject: subject,
-      country: country,
-      jurisdiction: jurisdiction,
-      status: status,
-      statusDate: statusDate,
-      elementStatusDate: elementStatusDate,
-      restoreDate: restoreDate,
-      elementRestoreDate: elementRestoreDate,
-      validityPeriod: validityPeriod,
-      dataExclusivityPeriod: dataExclusivityPeriod,
-      dateOfFirstAuthorization: dateOfFirstAuthorization,
-      elementDateOfFirstAuthorization: elementDateOfFirstAuthorization,
-      internationalBirthDate: internationalBirthDate,
-      elementInternationalBirthDate: elementInternationalBirthDate,
-      legalBasis: legalBasis,
-      jurisdictionalAuthorization: jurisdictionalAuthorization,
-      holder: holder,
-      regulator: regulator,
-      procedure: procedure,
-    );
-    newMedicinalProductAuthorization.meta.createdAt = DateTime.now();
-    newMedicinalProductAuthorization.meta.lastUpdated =
-        newMedicinalProductAuthorization.meta.createdAt;
-    int saved = await fhirDb.saveResource(newMedicinalProductAuthorization);
-    return newMedicinalProductAuthorization;
-  }
+class MedicinalProductAuthorization{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<MedicinalProductAuthorization> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	Reference subject,
+	List<CodeableConcept> country,
+	List<CodeableConcept> jurisdiction,
+	CodeableConcept status,
+	DateTime statusDate,
+	Element elementStatusDate,
+	DateTime restoreDate,
+	Element elementRestoreDate,
+	Period validityPeriod,
+	Period dataExclusivityPeriod,
+	DateTime dateOfFirstAuthorization,
+	Element elementDateOfFirstAuthorization,
+	DateTime internationalBirthDate,
+	Element elementInternationalBirthDate,
+	CodeableConcept legalBasis,
+	List<MedicinalProductAuthorization_JurisdictionalAuthorization> jurisdictionalAuthorization,
+	Reference holder,
+	Reference regulator,
+	MedicinalProductAuthorization_Procedure procedure,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductAuthorization newMedicinalProductAuthorization = new MedicinalProductAuthorization(
+	resourceType: 'MedicinalProductAuthorization',
+	id: id ?? await fhirDb.newResourceId('MedicinalProductAuthorization'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	subject: subject,
+	country: country,
+	jurisdiction: jurisdiction,
+	status: status,
+	statusDate: statusDate,
+	elementStatusDate: elementStatusDate,
+	restoreDate: restoreDate,
+	elementRestoreDate: elementRestoreDate,
+	validityPeriod: validityPeriod,
+	dataExclusivityPeriod: dataExclusivityPeriod,
+	dateOfFirstAuthorization: dateOfFirstAuthorization,
+	elementDateOfFirstAuthorization: elementDateOfFirstAuthorization,
+	internationalBirthDate: internationalBirthDate,
+	elementInternationalBirthDate: elementInternationalBirthDate,
+	legalBasis: legalBasis,
+	jurisdictionalAuthorization: jurisdictionalAuthorization,
+	holder: holder,
+	regulator: regulator,
+	procedure: procedure,
+);
+	newMedicinalProductAuthorization.meta.createdAt = DateTime.now();
+	newMedicinalProductAuthorization.meta.lastUpdated = newMedicinalProductAuthorization.meta.createdAt;
+	int saved = await fhirDb.saveResource(newMedicinalProductAuthorization);
+	 return newMedicinalProductAuthorization;
+}
 
-  String resourceType = 'MedicinalProductAuthorization';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  Reference subject;
-  List<CodeableConcept> country;
-  List<CodeableConcept> jurisdiction;
-  CodeableConcept status;
-  DateTime statusDate;
-  Element elementStatusDate;
-  DateTime restoreDate;
-  Element elementRestoreDate;
-  Period validityPeriod;
-  Period dataExclusivityPeriod;
-  DateTime dateOfFirstAuthorization;
-  Element elementDateOfFirstAuthorization;
-  DateTime internationalBirthDate;
-  Element elementInternationalBirthDate;
-  CodeableConcept legalBasis;
-  List<MedicinalProductAuthorization_JurisdictionalAuthorization>
-      jurisdictionalAuthorization;
-  Reference holder;
-  Reference regulator;
-  MedicinalProductAuthorization_Procedure procedure;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  MedicinalProductAuthorization({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.subject,
-    this.country,
-    this.jurisdiction,
-    this.status,
-    this.statusDate,
-    this.elementStatusDate,
-    this.restoreDate,
-    this.elementRestoreDate,
-    this.validityPeriod,
-    this.dataExclusivityPeriod,
-    this.dateOfFirstAuthorization,
-    this.elementDateOfFirstAuthorization,
-    this.internationalBirthDate,
-    this.elementInternationalBirthDate,
-    this.legalBasis,
-    this.jurisdictionalAuthorization,
-    this.holder,
-    this.regulator,
-    this.procedure,
-  });
+	String resourceType= 'MedicinalProductAuthorization';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	Reference subject;
+	List<CodeableConcept> country;
+	List<CodeableConcept> jurisdiction;
+	CodeableConcept status;
+	DateTime statusDate;
+	Element elementStatusDate;
+	DateTime restoreDate;
+	Element elementRestoreDate;
+	Period validityPeriod;
+	Period dataExclusivityPeriod;
+	DateTime dateOfFirstAuthorization;
+	Element elementDateOfFirstAuthorization;
+	DateTime internationalBirthDate;
+	Element elementInternationalBirthDate;
+	CodeableConcept legalBasis;
+	List<MedicinalProductAuthorization_JurisdictionalAuthorization> jurisdictionalAuthorization;
+	Reference holder;
+	Reference regulator;
+	MedicinalProductAuthorization_Procedure procedure;
 
-  factory MedicinalProductAuthorization.fromJson(Map<String, dynamic> json) =>
-      _$MedicinalProductAuthorizationFromJson(json);
+MedicinalProductAuthorization(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.subject,
+this.country,
+this.jurisdiction,
+this.status,
+this.statusDate,
+this.elementStatusDate,
+this.restoreDate,
+this.elementRestoreDate,
+this.validityPeriod,
+this.dataExclusivityPeriod,
+this.dateOfFirstAuthorization,
+this.elementDateOfFirstAuthorization,
+this.internationalBirthDate,
+this.elementInternationalBirthDate,
+this.legalBasis,
+this.jurisdictionalAuthorization,
+this.holder,
+this.regulator,
+this.procedure,
+});
+
+  factory MedicinalProductAuthorization.fromJson(Map<String, dynamic> json) => _$MedicinalProductAuthorizationFromJson(json);
   Map<String, dynamic> toJson() => _$MedicinalProductAuthorizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class MedicinalProductAuthorization_JurisdictionalAuthorization {
-  static Future<MedicinalProductAuthorization_JurisdictionalAuthorization>
-      newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    CodeableConcept country,
-    List<CodeableConcept> jurisdiction,
-    CodeableConcept legalStatusOfSupply,
-    Period validityPeriod,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductAuthorization_JurisdictionalAuthorization
-        newMedicinalProductAuthorization_JurisdictionalAuthorization =
-        new MedicinalProductAuthorization_JurisdictionalAuthorization(
-      id: id ??
-          await fhirDb.newResourceId(
-              'MedicinalProductAuthorization_JurisdictionalAuthorization'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      country: country,
-      jurisdiction: jurisdiction,
-      legalStatusOfSupply: legalStatusOfSupply,
-      validityPeriod: validityPeriod,
-    );
-    return newMedicinalProductAuthorization_JurisdictionalAuthorization;
-  }
-
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  CodeableConcept country;
-  List<CodeableConcept> jurisdiction;
-  CodeableConcept legalStatusOfSupply;
-  Period validityPeriod;
-
-  MedicinalProductAuthorization_JurisdictionalAuthorization({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.country,
-    this.jurisdiction,
-    this.legalStatusOfSupply,
-    this.validityPeriod,
-  });
-
-  factory MedicinalProductAuthorization_JurisdictionalAuthorization.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductAuthorization_JurisdictionalAuthorizationFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductAuthorization_JurisdictionalAuthorizationToJson(this);
-}
 
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductAuthorization_Procedure {
-  static Future<MedicinalProductAuthorization_Procedure> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Identifier identifier,
-    CodeableConcept type,
-    Period datePeriod,
-    String dateDateTime,
-    Element elementDateDateTime,
-    List<MedicinalProductAuthorization_Procedure> application,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductAuthorization_Procedure
-        newMedicinalProductAuthorization_Procedure =
-        new MedicinalProductAuthorization_Procedure(
-      id: id ??
-          await fhirDb.newResourceId('MedicinalProductAuthorization_Procedure'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      type: type,
-      datePeriod: datePeriod,
-      dateDateTime: dateDateTime,
-      elementDateDateTime: elementDateDateTime,
-      application: application,
-    );
-    return newMedicinalProductAuthorization_Procedure;
-  }
+class MedicinalProductAuthorization_JurisdictionalAuthorization{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Identifier identifier;
-  CodeableConcept type;
-  Period datePeriod;
-  String dateDateTime;
-  Element elementDateDateTime;
-  List<MedicinalProductAuthorization_Procedure> application;
-
-  MedicinalProductAuthorization_Procedure({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    @required this.type,
-    this.datePeriod,
-    this.dateDateTime,
-    this.elementDateDateTime,
-    this.application,
-  });
-
-  factory MedicinalProductAuthorization_Procedure.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductAuthorization_ProcedureFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductAuthorization_ProcedureToJson(this);
+	static Future<MedicinalProductAuthorization_JurisdictionalAuthorization> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	CodeableConcept country,
+	List<CodeableConcept> jurisdiction,
+	CodeableConcept legalStatusOfSupply,
+	Period validityPeriod,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductAuthorization_JurisdictionalAuthorization newMedicinalProductAuthorization_JurisdictionalAuthorization = new MedicinalProductAuthorization_JurisdictionalAuthorization(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductAuthorization_JurisdictionalAuthorization'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	country: country,
+	jurisdiction: jurisdiction,
+	legalStatusOfSupply: legalStatusOfSupply,
+	validityPeriod: validityPeriod,
+);
+	return newMedicinalProductAuthorization_JurisdictionalAuthorization;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	CodeableConcept country;
+	List<CodeableConcept> jurisdiction;
+	CodeableConcept legalStatusOfSupply;
+	Period validityPeriod;
+
+MedicinalProductAuthorization_JurisdictionalAuthorization(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.country,
+this.jurisdiction,
+this.legalStatusOfSupply,
+this.validityPeriod,
+});
+
+  factory MedicinalProductAuthorization_JurisdictionalAuthorization.fromJson(Map<String, dynamic> json) => _$MedicinalProductAuthorization_JurisdictionalAuthorizationFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductAuthorization_JurisdictionalAuthorizationToJson(this);
+}
+
+
+@JsonSerializable(explicitToJson: true)
+class MedicinalProductAuthorization_Procedure{
+
+	static Future<MedicinalProductAuthorization_Procedure> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Identifier identifier,
+	CodeableConcept type,
+	Period datePeriod,
+	String dateDateTime,
+	Element elementDateDateTime,
+	List<MedicinalProductAuthorization_Procedure> application,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductAuthorization_Procedure newMedicinalProductAuthorization_Procedure = new MedicinalProductAuthorization_Procedure(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductAuthorization_Procedure'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	type: type,
+	datePeriod: datePeriod,
+	dateDateTime: dateDateTime,
+	elementDateDateTime: elementDateDateTime,
+	application: application,
+);
+	return newMedicinalProductAuthorization_Procedure;
+}
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Identifier identifier;
+	CodeableConcept type;
+	Period datePeriod;
+	String dateDateTime;
+	Element elementDateDateTime;
+	List<MedicinalProductAuthorization_Procedure> application;
+
+MedicinalProductAuthorization_Procedure(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.identifier,
+@required this.type,
+this.datePeriod,
+this.dateDateTime,
+this.elementDateDateTime,
+this.application,
+});
+
+  factory MedicinalProductAuthorization_Procedure.fromJson(Map<String, dynamic> json) => _$MedicinalProductAuthorization_ProcedureFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductAuthorization_ProcedureToJson(this);
+}
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -311,9 +299,8 @@ MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

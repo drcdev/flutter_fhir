@@ -15,177 +15,179 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Practitioner {
-  static Future<Practitioner> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    bool active,
-    Element elementActive,
-    List<HumanName> name,
-    List<ContactPoint> telecom,
-    List<Address> address,
-    String gender,
-    Element elementGender,
-    String birthDate,
-    Element elementBirthDate,
-    List<Attachment> photo,
-    List<Practitioner_Qualification> qualification,
-    List<CodeableConcept> communication,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Practitioner newPractitioner = new Practitioner(
-      resourceType: 'Practitioner',
-      id: id ?? await fhirDb.newResourceId('Practitioner'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      active: active,
-      elementActive: elementActive,
-      name: name,
-      telecom: telecom,
-      address: address,
-      gender: gender,
-      elementGender: elementGender,
-      birthDate: birthDate,
-      elementBirthDate: elementBirthDate,
-      photo: photo,
-      qualification: qualification,
-      communication: communication,
-    );
-    newPractitioner.meta.createdAt = DateTime.now();
-    newPractitioner.meta.lastUpdated = newPractitioner.meta.createdAt;
-    int saved = await fhirDb.saveResource(newPractitioner);
-    return newPractitioner;
-  }
+class Practitioner{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Practitioner> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	bool active,
+	Element elementActive,
+	List<HumanName> name,
+	List<ContactPoint> telecom,
+	List<Address> address,
+	String gender,
+	Element elementGender,
+	String birthDate,
+	Element elementBirthDate,
+	List<Attachment> photo,
+	List<Practitioner_Qualification> qualification,
+	List<CodeableConcept> communication,
+}) async {
+var fhirDb = new DatabaseHelper();
+Practitioner newPractitioner = new Practitioner(
+	resourceType: 'Practitioner',
+	id: id ?? await fhirDb.newResourceId('Practitioner'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	active: active,
+	elementActive: elementActive,
+	name: name,
+	telecom: telecom,
+	address: address,
+	gender: gender,
+	elementGender: elementGender,
+	birthDate: birthDate,
+	elementBirthDate: elementBirthDate,
+	photo: photo,
+	qualification: qualification,
+	communication: communication,
+);
+	newPractitioner.meta.createdAt = DateTime.now();
+	newPractitioner.meta.lastUpdated = newPractitioner.meta.createdAt;
+	int saved = await fhirDb.saveResource(newPractitioner);
+	 return newPractitioner;
+}
 
-  String resourceType = 'Practitioner';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  bool active;
-  Element elementActive;
-  List<HumanName> name;
-  List<ContactPoint> telecom;
-  List<Address> address;
-  String gender;
-  Element elementGender;
-  String birthDate;
-  Element elementBirthDate;
-  List<Attachment> photo;
-  List<Practitioner_Qualification> qualification;
-  List<CodeableConcept> communication;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Practitioner({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.active,
-    this.elementActive,
-    this.name,
-    this.telecom,
-    this.address,
-    this.gender,
-    this.elementGender,
-    this.birthDate,
-    this.elementBirthDate,
-    this.photo,
-    this.qualification,
-    this.communication,
-  });
+	String resourceType= 'Practitioner';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	bool active;
+	Element elementActive;
+	List<HumanName> name;
+	List<ContactPoint> telecom;
+	List<Address> address;
+	String gender;
+	Element elementGender;
+	String birthDate;
+	Element elementBirthDate;
+	List<Attachment> photo;
+	List<Practitioner_Qualification> qualification;
+	List<CodeableConcept> communication;
 
-  factory Practitioner.fromJson(Map<String, dynamic> json) =>
-      _$PractitionerFromJson(json);
+Practitioner(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.active,
+this.elementActive,
+this.name,
+this.telecom,
+this.address,
+this.gender,
+this.elementGender,
+this.birthDate,
+this.elementBirthDate,
+this.photo,
+this.qualification,
+this.communication,
+});
+
+  factory Practitioner.fromJson(Map<String, dynamic> json) => _$PractitionerFromJson(json);
   Map<String, dynamic> toJson() => _$PractitionerToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Practitioner_Qualification {
-  static Future<Practitioner_Qualification> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    CodeableConcept code,
-    Period period,
-    Reference issuer,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Practitioner_Qualification newPractitioner_Qualification =
-        new Practitioner_Qualification(
-      id: id ?? await fhirDb.newResourceId('Practitioner_Qualification'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      code: code,
-      period: period,
-      issuer: issuer,
-    );
-    return newPractitioner_Qualification;
-  }
+class Practitioner_Qualification{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  CodeableConcept code;
-  Period period;
-  Reference issuer;
+	static Future<Practitioner_Qualification> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	CodeableConcept code,
+	Period period,
+	Reference issuer,
+}) async {
+var fhirDb = new DatabaseHelper();
+Practitioner_Qualification newPractitioner_Qualification = new Practitioner_Qualification(
+	id: id ?? await fhirDb.newResourceId('Practitioner_Qualification'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	code: code,
+	period: period,
+	issuer: issuer,
+);
+	return newPractitioner_Qualification;
+}
 
-  Practitioner_Qualification({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    @required this.code,
-    this.period,
-    this.issuer,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	CodeableConcept code;
+	Period period;
+	Reference issuer;
 
-  factory Practitioner_Qualification.fromJson(Map<String, dynamic> json) =>
-      _$Practitioner_QualificationFromJson(json);
+Practitioner_Qualification(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.identifier,
+@required this.code,
+this.period,
+this.issuer,
+});
+
+  factory Practitioner_Qualification.fromJson(Map<String, dynamic> json) => _$Practitioner_QualificationFromJson(json);
   Map<String, dynamic> toJson() => _$Practitioner_QualificationToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -212,9 +214,8 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

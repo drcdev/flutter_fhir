@@ -5,60 +5,62 @@ import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Reference {
-  static Future<Reference> newInstance({
-    String id,
-    List<Extension> extension,
-    String reference,
-    Element elementReference,
-    String type,
-    Element elementType,
-    Identifier identifier,
-    String display,
-    Element elementDisplay,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Reference newReference = new Reference(
-      id: id ?? await fhirDb.newResourceId('Reference'),
-      extension: extension,
-      reference: reference,
-      elementReference: elementReference,
-      type: type,
-      elementType: elementType,
-      identifier: identifier,
-      display: display,
-      elementDisplay: elementDisplay,
-    );
-    return newReference;
-  }
+class Reference{
 
-  String id;
-  List<Extension> extension;
-  String reference;
-  Element elementReference;
-  String type;
-  Element elementType;
-  Identifier identifier;
-  String display;
-  Element elementDisplay;
+	static Future<Reference> newInstance(
+	{	String id,
+	List<Extension> extension,
+	String reference,
+	Element elementReference,
+	String type,
+	Element elementType,
+	Identifier identifier,
+	String display,
+	Element elementDisplay,
+}) async {
+var fhirDb = new DatabaseHelper();
+Reference newReference = new Reference(
+	id: id ?? await fhirDb.newResourceId('Reference'),
+	extension: extension,
+	reference: reference,
+	elementReference: elementReference,
+	type: type,
+	elementType: elementType,
+	identifier: identifier,
+	display: display,
+	elementDisplay: elementDisplay,
+);
+	return newReference;
+}
 
-  Reference({
-    this.id,
-    this.extension,
-    this.reference,
-    this.elementReference,
-    this.type,
-    this.elementType,
-    this.identifier,
-    this.display,
-    this.elementDisplay,
-  });
+	String id;
+	List<Extension> extension;
+	String reference;
+	Element elementReference;
+	String type;
+	Element elementType;
+	Identifier identifier;
+	String display;
+	Element elementDisplay;
 
-  factory Reference.fromJson(Map<String, dynamic> json) =>
-      _$ReferenceFromJson(json);
+Reference(
+	{this.id,
+this.extension,
+this.reference,
+this.elementReference,
+this.type,
+this.elementType,
+this.identifier,
+this.display,
+this.elementDisplay,
+});
+
+  factory Reference.fromJson(Map<String, dynamic> json) => _$ReferenceFromJson(json);
   Map<String, dynamic> toJson() => _$ReferenceToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

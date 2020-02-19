@@ -35,1945 +35,1946 @@ import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition {
-  static Future<ElementDefinition> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String path,
-    Element elementPath,
-    String representation,
-    List<Element> elementRepresentation,
-    String sliceName,
-    Element elementSliceName,
-    bool sliceIsConstraining,
-    Element elementSliceIsConstraining,
-    String label,
-    Element elementLabel,
-    List<Coding> code,
-    ElementDefinition_Slicing slicing,
-    String short,
-    Element elementShort,
-    String definition,
-    Element elementDefinition,
-    String comment,
-    Element elementComment,
-    String requirements,
-    Element elementRequirements,
-    List<String> alias,
-    List<Element> elementAlias,
-    int min,
-    Element elementMin,
-    String max,
-    Element elementMax,
-    ElementDefinition_Base base,
-    String contentReference,
-    Element elementContentReference,
-    List<ElementDefinition_Type> type,
-    String defaultValueBase64Binary,
-    Element elementDefaultValueBase64Binary,
-    bool defaultValueBoolean,
-    Element elementDefaultValueBoolean,
-    String defaultValueCanonical,
-    Element elementDefaultValueCanonical,
-    String defaultValueCode,
-    Element elementDefaultValueCode,
-    String defaultValueDate,
-    Element elementDefaultValueDate,
-    String defaultValueDateTime,
-    Element elementDefaultValueDateTime,
-    int defaultValueDecimal,
-    Element elementDefaultValueDecimal,
-    String defaultValueId,
-    Element elementDefaultValueId,
-    String defaultValueInstant,
-    Element elementDefaultValueInstant,
-    int defaultValueInteger,
-    Element elementDefaultValueInteger,
-    String defaultValueMarkdown,
-    Element elementDefaultValueMarkdown,
-    String defaultValueOid,
-    Element elementDefaultValueOid,
-    int defaultValuePositiveInt,
-    Element elementDefaultValuePositiveInt,
-    String defaultValueString,
-    Element elementDefaultValueString,
-    String defaultValueTime,
-    Element elementDefaultValueTime,
-    int defaultValueUnsignedInt,
-    Element elementDefaultValueUnsignedInt,
-    String defaultValueUri,
-    Element elementDefaultValueUri,
-    String defaultValueUrl,
-    Element elementDefaultValueUrl,
-    String defaultValueUuid,
-    Element elementDefaultValueUuid,
-    Address defaultValueAddress,
-    Age defaultValueAge,
-    Annotation defaultValueAnnotation,
-    Attachment defaultValueAttachment,
-    CodeableConcept defaultValueCodeableConcept,
-    Coding defaultValueCoding,
-    ContactPoint defaultValueContactPoint,
-    Count defaultValueCount,
-    Distance defaultValueDistance,
-    Duration defaultValueDuration,
-    HumanName defaultValueHumanName,
-    Identifier defaultValueIdentifier,
-    Money defaultValueMoney,
-    Period defaultValuePeriod,
-    Quantity defaultValueQuantity,
-    Range defaultValueRange,
-    Ratio defaultValueRatio,
-    Reference defaultValueReference,
-    SampledData defaultValueSampledData,
-    Signature defaultValueSignature,
-    Timing defaultValueTiming,
-    ContactDetail defaultValueContactDetail,
-    Contributor defaultValueContributor,
-    DataRequirement defaultValueDataRequirement,
-    Expression defaultValueExpression,
-    ParameterDefinition defaultValueParameterDefinition,
-    RelatedArtifact defaultValueRelatedArtifact,
-    TriggerDefinition defaultValueTriggerDefinition,
-    UsageContext defaultValueUsageContext,
-    Dosage defaultValueDosage,
-    Meta defaultValueMeta,
-    String meaningWhenMissing,
-    Element elementMeaningWhenMissing,
-    String orderMeaning,
-    Element elementOrderMeaning,
-    String fixedBase64Binary,
-    Element elementFixedBase64Binary,
-    bool fixedBoolean,
-    Element elementFixedBoolean,
-    String fixedCanonical,
-    Element elementFixedCanonical,
-    String fixedCode,
-    Element elementFixedCode,
-    String fixedDate,
-    Element elementFixedDate,
-    String fixedDateTime,
-    Element elementFixedDateTime,
-    int fixedDecimal,
-    Element elementFixedDecimal,
-    String fixedId,
-    Element elementFixedId,
-    String fixedInstant,
-    Element elementFixedInstant,
-    int fixedInteger,
-    Element elementFixedInteger,
-    String fixedMarkdown,
-    Element elementFixedMarkdown,
-    String fixedOid,
-    Element elementFixedOid,
-    int fixedPositiveInt,
-    Element elementFixedPositiveInt,
-    String fixedString,
-    Element elementFixedString,
-    String fixedTime,
-    Element elementFixedTime,
-    int fixedUnsignedInt,
-    Element elementFixedUnsignedInt,
-    String fixedUri,
-    Element elementFixedUri,
-    String fixedUrl,
-    Element elementFixedUrl,
-    String fixedUuid,
-    Element elementFixedUuid,
-    Address fixedAddress,
-    Age fixedAge,
-    Annotation fixedAnnotation,
-    Attachment fixedAttachment,
-    CodeableConcept fixedCodeableConcept,
-    Coding fixedCoding,
-    ContactPoint fixedContactPoint,
-    Count fixedCount,
-    Distance fixedDistance,
-    Duration fixedDuration,
-    HumanName fixedHumanName,
-    Identifier fixedIdentifier,
-    Money fixedMoney,
-    Period fixedPeriod,
-    Quantity fixedQuantity,
-    Range fixedRange,
-    Ratio fixedRatio,
-    Reference fixedReference,
-    SampledData fixedSampledData,
-    Signature fixedSignature,
-    Timing fixedTiming,
-    ContactDetail fixedContactDetail,
-    Contributor fixedContributor,
-    DataRequirement fixedDataRequirement,
-    Expression fixedExpression,
-    ParameterDefinition fixedParameterDefinition,
-    RelatedArtifact fixedRelatedArtifact,
-    TriggerDefinition fixedTriggerDefinition,
-    UsageContext fixedUsageContext,
-    Dosage fixedDosage,
-    Meta fixedMeta,
-    String patternBase64Binary,
-    Element elementPatternBase64Binary,
-    bool patternBoolean,
-    Element elementPatternBoolean,
-    String patternCanonical,
-    Element elementPatternCanonical,
-    String patternCode,
-    Element elementPatternCode,
-    String patternDate,
-    Element elementPatternDate,
-    String patternDateTime,
-    Element elementPatternDateTime,
-    int patternDecimal,
-    Element elementPatternDecimal,
-    String patternId,
-    Element elementPatternId,
-    String patternInstant,
-    Element elementPatternInstant,
-    int patternInteger,
-    Element elementPatternInteger,
-    String patternMarkdown,
-    Element elementPatternMarkdown,
-    String patternOid,
-    Element elementPatternOid,
-    int patternPositiveInt,
-    Element elementPatternPositiveInt,
-    String patternString,
-    Element elementPatternString,
-    String patternTime,
-    Element elementPatternTime,
-    int patternUnsignedInt,
-    Element elementPatternUnsignedInt,
-    String patternUri,
-    Element elementPatternUri,
-    String patternUrl,
-    Element elementPatternUrl,
-    String patternUuid,
-    Element elementPatternUuid,
-    Address patternAddress,
-    Age patternAge,
-    Annotation patternAnnotation,
-    Attachment patternAttachment,
-    CodeableConcept patternCodeableConcept,
-    Coding patternCoding,
-    ContactPoint patternContactPoint,
-    Count patternCount,
-    Distance patternDistance,
-    Duration patternDuration,
-    HumanName patternHumanName,
-    Identifier patternIdentifier,
-    Money patternMoney,
-    Period patternPeriod,
-    Quantity patternQuantity,
-    Range patternRange,
-    Ratio patternRatio,
-    Reference patternReference,
-    SampledData patternSampledData,
-    Signature patternSignature,
-    Timing patternTiming,
-    ContactDetail patternContactDetail,
-    Contributor patternContributor,
-    DataRequirement patternDataRequirement,
-    Expression patternExpression,
-    ParameterDefinition patternParameterDefinition,
-    RelatedArtifact patternRelatedArtifact,
-    TriggerDefinition patternTriggerDefinition,
-    UsageContext patternUsageContext,
-    Dosage patternDosage,
-    Meta patternMeta,
-    List<ElementDefinition_Example> example,
-    String minValueDate,
-    Element elementMinValueDate,
-    String minValueDateTime,
-    Element elementMinValueDateTime,
-    String minValueInstant,
-    Element elementMinValueInstant,
-    String minValueTime,
-    Element elementMinValueTime,
-    int minValueDecimal,
-    Element elementMinValueDecimal,
-    int minValueInteger,
-    Element elementMinValueInteger,
-    int minValuePositiveInt,
-    Element elementMinValuePositiveInt,
-    int minValueUnsignedInt,
-    Element elementMinValueUnsignedInt,
-    Quantity minValueQuantity,
-    String maxValueDate,
-    Element elementMaxValueDate,
-    String maxValueDateTime,
-    Element elementMaxValueDateTime,
-    String maxValueInstant,
-    Element elementMaxValueInstant,
-    String maxValueTime,
-    Element elementMaxValueTime,
-    int maxValueDecimal,
-    Element elementMaxValueDecimal,
-    int maxValueInteger,
-    Element elementMaxValueInteger,
-    int maxValuePositiveInt,
-    Element elementMaxValuePositiveInt,
-    int maxValueUnsignedInt,
-    Element elementMaxValueUnsignedInt,
-    Quantity maxValueQuantity,
-    int maxLength,
-    Element elementMaxLength,
-    List<String> condition,
-    List<Element> elementCondition,
-    List<ElementDefinition_Constraint> constraint,
-    bool mustSupport,
-    Element elementMustSupport,
-    bool isModifier,
-    Element elementIsModifier,
-    String isModifierReason,
-    Element elementIsModifierReason,
-    bool isSummary,
-    Element elementIsSummary,
-    ElementDefinition_Binding binding,
-    List<ElementDefinition_Mapping> mapping,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition newElementDefinition = new ElementDefinition(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      path: path,
-      elementPath: elementPath,
-      representation: representation,
-      elementRepresentation: elementRepresentation,
-      sliceName: sliceName,
-      elementSliceName: elementSliceName,
-      sliceIsConstraining: sliceIsConstraining,
-      elementSliceIsConstraining: elementSliceIsConstraining,
-      label: label,
-      elementLabel: elementLabel,
-      code: code,
-      slicing: slicing,
-      short: short,
-      elementShort: elementShort,
-      definition: definition,
-      elementDefinition: elementDefinition,
-      comment: comment,
-      elementComment: elementComment,
-      requirements: requirements,
-      elementRequirements: elementRequirements,
-      alias: alias,
-      elementAlias: elementAlias,
-      min: min,
-      elementMin: elementMin,
-      max: max,
-      elementMax: elementMax,
-      base: base,
-      contentReference: contentReference,
-      elementContentReference: elementContentReference,
-      type: type,
-      defaultValueBase64Binary: defaultValueBase64Binary,
-      elementDefaultValueBase64Binary: elementDefaultValueBase64Binary,
-      defaultValueBoolean: defaultValueBoolean,
-      elementDefaultValueBoolean: elementDefaultValueBoolean,
-      defaultValueCanonical: defaultValueCanonical,
-      elementDefaultValueCanonical: elementDefaultValueCanonical,
-      defaultValueCode: defaultValueCode,
-      elementDefaultValueCode: elementDefaultValueCode,
-      defaultValueDate: defaultValueDate,
-      elementDefaultValueDate: elementDefaultValueDate,
-      defaultValueDateTime: defaultValueDateTime,
-      elementDefaultValueDateTime: elementDefaultValueDateTime,
-      defaultValueDecimal: defaultValueDecimal,
-      elementDefaultValueDecimal: elementDefaultValueDecimal,
-      defaultValueId: defaultValueId,
-      elementDefaultValueId: elementDefaultValueId,
-      defaultValueInstant: defaultValueInstant,
-      elementDefaultValueInstant: elementDefaultValueInstant,
-      defaultValueInteger: defaultValueInteger,
-      elementDefaultValueInteger: elementDefaultValueInteger,
-      defaultValueMarkdown: defaultValueMarkdown,
-      elementDefaultValueMarkdown: elementDefaultValueMarkdown,
-      defaultValueOid: defaultValueOid,
-      elementDefaultValueOid: elementDefaultValueOid,
-      defaultValuePositiveInt: defaultValuePositiveInt,
-      elementDefaultValuePositiveInt: elementDefaultValuePositiveInt,
-      defaultValueString: defaultValueString,
-      elementDefaultValueString: elementDefaultValueString,
-      defaultValueTime: defaultValueTime,
-      elementDefaultValueTime: elementDefaultValueTime,
-      defaultValueUnsignedInt: defaultValueUnsignedInt,
-      elementDefaultValueUnsignedInt: elementDefaultValueUnsignedInt,
-      defaultValueUri: defaultValueUri,
-      elementDefaultValueUri: elementDefaultValueUri,
-      defaultValueUrl: defaultValueUrl,
-      elementDefaultValueUrl: elementDefaultValueUrl,
-      defaultValueUuid: defaultValueUuid,
-      elementDefaultValueUuid: elementDefaultValueUuid,
-      defaultValueAddress: defaultValueAddress,
-      defaultValueAge: defaultValueAge,
-      defaultValueAnnotation: defaultValueAnnotation,
-      defaultValueAttachment: defaultValueAttachment,
-      defaultValueCodeableConcept: defaultValueCodeableConcept,
-      defaultValueCoding: defaultValueCoding,
-      defaultValueContactPoint: defaultValueContactPoint,
-      defaultValueCount: defaultValueCount,
-      defaultValueDistance: defaultValueDistance,
-      defaultValueDuration: defaultValueDuration,
-      defaultValueHumanName: defaultValueHumanName,
-      defaultValueIdentifier: defaultValueIdentifier,
-      defaultValueMoney: defaultValueMoney,
-      defaultValuePeriod: defaultValuePeriod,
-      defaultValueQuantity: defaultValueQuantity,
-      defaultValueRange: defaultValueRange,
-      defaultValueRatio: defaultValueRatio,
-      defaultValueReference: defaultValueReference,
-      defaultValueSampledData: defaultValueSampledData,
-      defaultValueSignature: defaultValueSignature,
-      defaultValueTiming: defaultValueTiming,
-      defaultValueContactDetail: defaultValueContactDetail,
-      defaultValueContributor: defaultValueContributor,
-      defaultValueDataRequirement: defaultValueDataRequirement,
-      defaultValueExpression: defaultValueExpression,
-      defaultValueParameterDefinition: defaultValueParameterDefinition,
-      defaultValueRelatedArtifact: defaultValueRelatedArtifact,
-      defaultValueTriggerDefinition: defaultValueTriggerDefinition,
-      defaultValueUsageContext: defaultValueUsageContext,
-      defaultValueDosage: defaultValueDosage,
-      defaultValueMeta: defaultValueMeta,
-      meaningWhenMissing: meaningWhenMissing,
-      elementMeaningWhenMissing: elementMeaningWhenMissing,
-      orderMeaning: orderMeaning,
-      elementOrderMeaning: elementOrderMeaning,
-      fixedBase64Binary: fixedBase64Binary,
-      elementFixedBase64Binary: elementFixedBase64Binary,
-      fixedBoolean: fixedBoolean,
-      elementFixedBoolean: elementFixedBoolean,
-      fixedCanonical: fixedCanonical,
-      elementFixedCanonical: elementFixedCanonical,
-      fixedCode: fixedCode,
-      elementFixedCode: elementFixedCode,
-      fixedDate: fixedDate,
-      elementFixedDate: elementFixedDate,
-      fixedDateTime: fixedDateTime,
-      elementFixedDateTime: elementFixedDateTime,
-      fixedDecimal: fixedDecimal,
-      elementFixedDecimal: elementFixedDecimal,
-      fixedId: fixedId,
-      elementFixedId: elementFixedId,
-      fixedInstant: fixedInstant,
-      elementFixedInstant: elementFixedInstant,
-      fixedInteger: fixedInteger,
-      elementFixedInteger: elementFixedInteger,
-      fixedMarkdown: fixedMarkdown,
-      elementFixedMarkdown: elementFixedMarkdown,
-      fixedOid: fixedOid,
-      elementFixedOid: elementFixedOid,
-      fixedPositiveInt: fixedPositiveInt,
-      elementFixedPositiveInt: elementFixedPositiveInt,
-      fixedString: fixedString,
-      elementFixedString: elementFixedString,
-      fixedTime: fixedTime,
-      elementFixedTime: elementFixedTime,
-      fixedUnsignedInt: fixedUnsignedInt,
-      elementFixedUnsignedInt: elementFixedUnsignedInt,
-      fixedUri: fixedUri,
-      elementFixedUri: elementFixedUri,
-      fixedUrl: fixedUrl,
-      elementFixedUrl: elementFixedUrl,
-      fixedUuid: fixedUuid,
-      elementFixedUuid: elementFixedUuid,
-      fixedAddress: fixedAddress,
-      fixedAge: fixedAge,
-      fixedAnnotation: fixedAnnotation,
-      fixedAttachment: fixedAttachment,
-      fixedCodeableConcept: fixedCodeableConcept,
-      fixedCoding: fixedCoding,
-      fixedContactPoint: fixedContactPoint,
-      fixedCount: fixedCount,
-      fixedDistance: fixedDistance,
-      fixedDuration: fixedDuration,
-      fixedHumanName: fixedHumanName,
-      fixedIdentifier: fixedIdentifier,
-      fixedMoney: fixedMoney,
-      fixedPeriod: fixedPeriod,
-      fixedQuantity: fixedQuantity,
-      fixedRange: fixedRange,
-      fixedRatio: fixedRatio,
-      fixedReference: fixedReference,
-      fixedSampledData: fixedSampledData,
-      fixedSignature: fixedSignature,
-      fixedTiming: fixedTiming,
-      fixedContactDetail: fixedContactDetail,
-      fixedContributor: fixedContributor,
-      fixedDataRequirement: fixedDataRequirement,
-      fixedExpression: fixedExpression,
-      fixedParameterDefinition: fixedParameterDefinition,
-      fixedRelatedArtifact: fixedRelatedArtifact,
-      fixedTriggerDefinition: fixedTriggerDefinition,
-      fixedUsageContext: fixedUsageContext,
-      fixedDosage: fixedDosage,
-      fixedMeta: fixedMeta,
-      patternBase64Binary: patternBase64Binary,
-      elementPatternBase64Binary: elementPatternBase64Binary,
-      patternBoolean: patternBoolean,
-      elementPatternBoolean: elementPatternBoolean,
-      patternCanonical: patternCanonical,
-      elementPatternCanonical: elementPatternCanonical,
-      patternCode: patternCode,
-      elementPatternCode: elementPatternCode,
-      patternDate: patternDate,
-      elementPatternDate: elementPatternDate,
-      patternDateTime: patternDateTime,
-      elementPatternDateTime: elementPatternDateTime,
-      patternDecimal: patternDecimal,
-      elementPatternDecimal: elementPatternDecimal,
-      patternId: patternId,
-      elementPatternId: elementPatternId,
-      patternInstant: patternInstant,
-      elementPatternInstant: elementPatternInstant,
-      patternInteger: patternInteger,
-      elementPatternInteger: elementPatternInteger,
-      patternMarkdown: patternMarkdown,
-      elementPatternMarkdown: elementPatternMarkdown,
-      patternOid: patternOid,
-      elementPatternOid: elementPatternOid,
-      patternPositiveInt: patternPositiveInt,
-      elementPatternPositiveInt: elementPatternPositiveInt,
-      patternString: patternString,
-      elementPatternString: elementPatternString,
-      patternTime: patternTime,
-      elementPatternTime: elementPatternTime,
-      patternUnsignedInt: patternUnsignedInt,
-      elementPatternUnsignedInt: elementPatternUnsignedInt,
-      patternUri: patternUri,
-      elementPatternUri: elementPatternUri,
-      patternUrl: patternUrl,
-      elementPatternUrl: elementPatternUrl,
-      patternUuid: patternUuid,
-      elementPatternUuid: elementPatternUuid,
-      patternAddress: patternAddress,
-      patternAge: patternAge,
-      patternAnnotation: patternAnnotation,
-      patternAttachment: patternAttachment,
-      patternCodeableConcept: patternCodeableConcept,
-      patternCoding: patternCoding,
-      patternContactPoint: patternContactPoint,
-      patternCount: patternCount,
-      patternDistance: patternDistance,
-      patternDuration: patternDuration,
-      patternHumanName: patternHumanName,
-      patternIdentifier: patternIdentifier,
-      patternMoney: patternMoney,
-      patternPeriod: patternPeriod,
-      patternQuantity: patternQuantity,
-      patternRange: patternRange,
-      patternRatio: patternRatio,
-      patternReference: patternReference,
-      patternSampledData: patternSampledData,
-      patternSignature: patternSignature,
-      patternTiming: patternTiming,
-      patternContactDetail: patternContactDetail,
-      patternContributor: patternContributor,
-      patternDataRequirement: patternDataRequirement,
-      patternExpression: patternExpression,
-      patternParameterDefinition: patternParameterDefinition,
-      patternRelatedArtifact: patternRelatedArtifact,
-      patternTriggerDefinition: patternTriggerDefinition,
-      patternUsageContext: patternUsageContext,
-      patternDosage: patternDosage,
-      patternMeta: patternMeta,
-      example: example,
-      minValueDate: minValueDate,
-      elementMinValueDate: elementMinValueDate,
-      minValueDateTime: minValueDateTime,
-      elementMinValueDateTime: elementMinValueDateTime,
-      minValueInstant: minValueInstant,
-      elementMinValueInstant: elementMinValueInstant,
-      minValueTime: minValueTime,
-      elementMinValueTime: elementMinValueTime,
-      minValueDecimal: minValueDecimal,
-      elementMinValueDecimal: elementMinValueDecimal,
-      minValueInteger: minValueInteger,
-      elementMinValueInteger: elementMinValueInteger,
-      minValuePositiveInt: minValuePositiveInt,
-      elementMinValuePositiveInt: elementMinValuePositiveInt,
-      minValueUnsignedInt: minValueUnsignedInt,
-      elementMinValueUnsignedInt: elementMinValueUnsignedInt,
-      minValueQuantity: minValueQuantity,
-      maxValueDate: maxValueDate,
-      elementMaxValueDate: elementMaxValueDate,
-      maxValueDateTime: maxValueDateTime,
-      elementMaxValueDateTime: elementMaxValueDateTime,
-      maxValueInstant: maxValueInstant,
-      elementMaxValueInstant: elementMaxValueInstant,
-      maxValueTime: maxValueTime,
-      elementMaxValueTime: elementMaxValueTime,
-      maxValueDecimal: maxValueDecimal,
-      elementMaxValueDecimal: elementMaxValueDecimal,
-      maxValueInteger: maxValueInteger,
-      elementMaxValueInteger: elementMaxValueInteger,
-      maxValuePositiveInt: maxValuePositiveInt,
-      elementMaxValuePositiveInt: elementMaxValuePositiveInt,
-      maxValueUnsignedInt: maxValueUnsignedInt,
-      elementMaxValueUnsignedInt: elementMaxValueUnsignedInt,
-      maxValueQuantity: maxValueQuantity,
-      maxLength: maxLength,
-      elementMaxLength: elementMaxLength,
-      condition: condition,
-      elementCondition: elementCondition,
-      constraint: constraint,
-      mustSupport: mustSupport,
-      elementMustSupport: elementMustSupport,
-      isModifier: isModifier,
-      elementIsModifier: elementIsModifier,
-      isModifierReason: isModifierReason,
-      elementIsModifierReason: elementIsModifierReason,
-      isSummary: isSummary,
-      elementIsSummary: elementIsSummary,
-      binding: binding,
-      mapping: mapping,
-    );
-    return newElementDefinition;
-  }
+class ElementDefinition{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String path;
-  Element elementPath;
-  String representation;
-  List<Element> elementRepresentation;
-  String sliceName;
-  Element elementSliceName;
-  bool sliceIsConstraining;
-  Element elementSliceIsConstraining;
-  String label;
-  Element elementLabel;
-  List<Coding> code;
-  ElementDefinition_Slicing slicing;
-  String short;
-  Element elementShort;
-  String definition;
-  Element elementDefinition;
-  String comment;
-  Element elementComment;
-  String requirements;
-  Element elementRequirements;
-  List<String> alias;
-  List<Element> elementAlias;
-  int min;
-  Element elementMin;
-  String max;
-  Element elementMax;
-  ElementDefinition_Base base;
-  String contentReference;
-  Element elementContentReference;
-  List<ElementDefinition_Type> type;
-  String defaultValueBase64Binary;
-  Element elementDefaultValueBase64Binary;
-  bool defaultValueBoolean;
-  Element elementDefaultValueBoolean;
-  String defaultValueCanonical;
-  Element elementDefaultValueCanonical;
-  String defaultValueCode;
-  Element elementDefaultValueCode;
-  String defaultValueDate;
-  Element elementDefaultValueDate;
-  String defaultValueDateTime;
-  Element elementDefaultValueDateTime;
-  int defaultValueDecimal;
-  Element elementDefaultValueDecimal;
-  String defaultValueId;
-  Element elementDefaultValueId;
-  String defaultValueInstant;
-  Element elementDefaultValueInstant;
-  int defaultValueInteger;
-  Element elementDefaultValueInteger;
-  String defaultValueMarkdown;
-  Element elementDefaultValueMarkdown;
-  String defaultValueOid;
-  Element elementDefaultValueOid;
-  int defaultValuePositiveInt;
-  Element elementDefaultValuePositiveInt;
-  String defaultValueString;
-  Element elementDefaultValueString;
-  String defaultValueTime;
-  Element elementDefaultValueTime;
-  int defaultValueUnsignedInt;
-  Element elementDefaultValueUnsignedInt;
-  String defaultValueUri;
-  Element elementDefaultValueUri;
-  String defaultValueUrl;
-  Element elementDefaultValueUrl;
-  String defaultValueUuid;
-  Element elementDefaultValueUuid;
-  Address defaultValueAddress;
-  Age defaultValueAge;
-  Annotation defaultValueAnnotation;
-  Attachment defaultValueAttachment;
-  CodeableConcept defaultValueCodeableConcept;
-  Coding defaultValueCoding;
-  ContactPoint defaultValueContactPoint;
-  Count defaultValueCount;
-  Distance defaultValueDistance;
-  Duration defaultValueDuration;
-  HumanName defaultValueHumanName;
-  Identifier defaultValueIdentifier;
-  Money defaultValueMoney;
-  Period defaultValuePeriod;
-  Quantity defaultValueQuantity;
-  Range defaultValueRange;
-  Ratio defaultValueRatio;
-  Reference defaultValueReference;
-  SampledData defaultValueSampledData;
-  Signature defaultValueSignature;
-  Timing defaultValueTiming;
-  ContactDetail defaultValueContactDetail;
-  Contributor defaultValueContributor;
-  DataRequirement defaultValueDataRequirement;
-  Expression defaultValueExpression;
-  ParameterDefinition defaultValueParameterDefinition;
-  RelatedArtifact defaultValueRelatedArtifact;
-  TriggerDefinition defaultValueTriggerDefinition;
-  UsageContext defaultValueUsageContext;
-  Dosage defaultValueDosage;
-  Meta defaultValueMeta;
-  String meaningWhenMissing;
-  Element elementMeaningWhenMissing;
-  String orderMeaning;
-  Element elementOrderMeaning;
-  String fixedBase64Binary;
-  Element elementFixedBase64Binary;
-  bool fixedBoolean;
-  Element elementFixedBoolean;
-  String fixedCanonical;
-  Element elementFixedCanonical;
-  String fixedCode;
-  Element elementFixedCode;
-  String fixedDate;
-  Element elementFixedDate;
-  String fixedDateTime;
-  Element elementFixedDateTime;
-  int fixedDecimal;
-  Element elementFixedDecimal;
-  String fixedId;
-  Element elementFixedId;
-  String fixedInstant;
-  Element elementFixedInstant;
-  int fixedInteger;
-  Element elementFixedInteger;
-  String fixedMarkdown;
-  Element elementFixedMarkdown;
-  String fixedOid;
-  Element elementFixedOid;
-  int fixedPositiveInt;
-  Element elementFixedPositiveInt;
-  String fixedString;
-  Element elementFixedString;
-  String fixedTime;
-  Element elementFixedTime;
-  int fixedUnsignedInt;
-  Element elementFixedUnsignedInt;
-  String fixedUri;
-  Element elementFixedUri;
-  String fixedUrl;
-  Element elementFixedUrl;
-  String fixedUuid;
-  Element elementFixedUuid;
-  Address fixedAddress;
-  Age fixedAge;
-  Annotation fixedAnnotation;
-  Attachment fixedAttachment;
-  CodeableConcept fixedCodeableConcept;
-  Coding fixedCoding;
-  ContactPoint fixedContactPoint;
-  Count fixedCount;
-  Distance fixedDistance;
-  Duration fixedDuration;
-  HumanName fixedHumanName;
-  Identifier fixedIdentifier;
-  Money fixedMoney;
-  Period fixedPeriod;
-  Quantity fixedQuantity;
-  Range fixedRange;
-  Ratio fixedRatio;
-  Reference fixedReference;
-  SampledData fixedSampledData;
-  Signature fixedSignature;
-  Timing fixedTiming;
-  ContactDetail fixedContactDetail;
-  Contributor fixedContributor;
-  DataRequirement fixedDataRequirement;
-  Expression fixedExpression;
-  ParameterDefinition fixedParameterDefinition;
-  RelatedArtifact fixedRelatedArtifact;
-  TriggerDefinition fixedTriggerDefinition;
-  UsageContext fixedUsageContext;
-  Dosage fixedDosage;
-  Meta fixedMeta;
-  String patternBase64Binary;
-  Element elementPatternBase64Binary;
-  bool patternBoolean;
-  Element elementPatternBoolean;
-  String patternCanonical;
-  Element elementPatternCanonical;
-  String patternCode;
-  Element elementPatternCode;
-  String patternDate;
-  Element elementPatternDate;
-  String patternDateTime;
-  Element elementPatternDateTime;
-  int patternDecimal;
-  Element elementPatternDecimal;
-  String patternId;
-  Element elementPatternId;
-  String patternInstant;
-  Element elementPatternInstant;
-  int patternInteger;
-  Element elementPatternInteger;
-  String patternMarkdown;
-  Element elementPatternMarkdown;
-  String patternOid;
-  Element elementPatternOid;
-  int patternPositiveInt;
-  Element elementPatternPositiveInt;
-  String patternString;
-  Element elementPatternString;
-  String patternTime;
-  Element elementPatternTime;
-  int patternUnsignedInt;
-  Element elementPatternUnsignedInt;
-  String patternUri;
-  Element elementPatternUri;
-  String patternUrl;
-  Element elementPatternUrl;
-  String patternUuid;
-  Element elementPatternUuid;
-  Address patternAddress;
-  Age patternAge;
-  Annotation patternAnnotation;
-  Attachment patternAttachment;
-  CodeableConcept patternCodeableConcept;
-  Coding patternCoding;
-  ContactPoint patternContactPoint;
-  Count patternCount;
-  Distance patternDistance;
-  Duration patternDuration;
-  HumanName patternHumanName;
-  Identifier patternIdentifier;
-  Money patternMoney;
-  Period patternPeriod;
-  Quantity patternQuantity;
-  Range patternRange;
-  Ratio patternRatio;
-  Reference patternReference;
-  SampledData patternSampledData;
-  Signature patternSignature;
-  Timing patternTiming;
-  ContactDetail patternContactDetail;
-  Contributor patternContributor;
-  DataRequirement patternDataRequirement;
-  Expression patternExpression;
-  ParameterDefinition patternParameterDefinition;
-  RelatedArtifact patternRelatedArtifact;
-  TriggerDefinition patternTriggerDefinition;
-  UsageContext patternUsageContext;
-  Dosage patternDosage;
-  Meta patternMeta;
-  List<ElementDefinition_Example> example;
-  String minValueDate;
-  Element elementMinValueDate;
-  String minValueDateTime;
-  Element elementMinValueDateTime;
-  String minValueInstant;
-  Element elementMinValueInstant;
-  String minValueTime;
-  Element elementMinValueTime;
-  int minValueDecimal;
-  Element elementMinValueDecimal;
-  int minValueInteger;
-  Element elementMinValueInteger;
-  int minValuePositiveInt;
-  Element elementMinValuePositiveInt;
-  int minValueUnsignedInt;
-  Element elementMinValueUnsignedInt;
-  Quantity minValueQuantity;
-  String maxValueDate;
-  Element elementMaxValueDate;
-  String maxValueDateTime;
-  Element elementMaxValueDateTime;
-  String maxValueInstant;
-  Element elementMaxValueInstant;
-  String maxValueTime;
-  Element elementMaxValueTime;
-  int maxValueDecimal;
-  Element elementMaxValueDecimal;
-  int maxValueInteger;
-  Element elementMaxValueInteger;
-  int maxValuePositiveInt;
-  Element elementMaxValuePositiveInt;
-  int maxValueUnsignedInt;
-  Element elementMaxValueUnsignedInt;
-  Quantity maxValueQuantity;
-  int maxLength;
-  Element elementMaxLength;
-  List<String> condition;
-  List<Element> elementCondition;
-  List<ElementDefinition_Constraint> constraint;
-  bool mustSupport;
-  Element elementMustSupport;
-  bool isModifier;
-  Element elementIsModifier;
-  String isModifierReason;
-  Element elementIsModifierReason;
-  bool isSummary;
-  Element elementIsSummary;
-  ElementDefinition_Binding binding;
-  List<ElementDefinition_Mapping> mapping;
+	static Future<ElementDefinition> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String path,
+	Element elementPath,
+	String representation,
+	List<Element> elementRepresentation,
+	String sliceName,
+	Element elementSliceName,
+	bool sliceIsConstraining,
+	Element elementSliceIsConstraining,
+	String label,
+	Element elementLabel,
+	List<Coding> code,
+	ElementDefinition_Slicing slicing,
+	String short,
+	Element elementShort,
+	String definition,
+	Element elementDefinition,
+	String comment,
+	Element elementComment,
+	String requirements,
+	Element elementRequirements,
+	List<String> alias,
+	List<Element> elementAlias,
+	int min,
+	Element elementMin,
+	String max,
+	Element elementMax,
+	ElementDefinition_Base base,
+	String contentReference,
+	Element elementContentReference,
+	List<ElementDefinition_Type> type,
+	String defaultValueBase64Binary,
+	Element elementDefaultValueBase64Binary,
+	bool defaultValueBoolean,
+	Element elementDefaultValueBoolean,
+	String defaultValueCanonical,
+	Element elementDefaultValueCanonical,
+	String defaultValueCode,
+	Element elementDefaultValueCode,
+	String defaultValueDate,
+	Element elementDefaultValueDate,
+	String defaultValueDateTime,
+	Element elementDefaultValueDateTime,
+	int defaultValueDecimal,
+	Element elementDefaultValueDecimal,
+	String defaultValueId,
+	Element elementDefaultValueId,
+	String defaultValueInstant,
+	Element elementDefaultValueInstant,
+	int defaultValueInteger,
+	Element elementDefaultValueInteger,
+	String defaultValueMarkdown,
+	Element elementDefaultValueMarkdown,
+	String defaultValueOid,
+	Element elementDefaultValueOid,
+	int defaultValuePositiveInt,
+	Element elementDefaultValuePositiveInt,
+	String defaultValueString,
+	Element elementDefaultValueString,
+	String defaultValueTime,
+	Element elementDefaultValueTime,
+	int defaultValueUnsignedInt,
+	Element elementDefaultValueUnsignedInt,
+	String defaultValueUri,
+	Element elementDefaultValueUri,
+	String defaultValueUrl,
+	Element elementDefaultValueUrl,
+	String defaultValueUuid,
+	Element elementDefaultValueUuid,
+	Address defaultValueAddress,
+	Age defaultValueAge,
+	Annotation defaultValueAnnotation,
+	Attachment defaultValueAttachment,
+	CodeableConcept defaultValueCodeableConcept,
+	Coding defaultValueCoding,
+	ContactPoint defaultValueContactPoint,
+	Count defaultValueCount,
+	Distance defaultValueDistance,
+	Duration defaultValueDuration,
+	HumanName defaultValueHumanName,
+	Identifier defaultValueIdentifier,
+	Money defaultValueMoney,
+	Period defaultValuePeriod,
+	Quantity defaultValueQuantity,
+	Range defaultValueRange,
+	Ratio defaultValueRatio,
+	Reference defaultValueReference,
+	SampledData defaultValueSampledData,
+	Signature defaultValueSignature,
+	Timing defaultValueTiming,
+	ContactDetail defaultValueContactDetail,
+	Contributor defaultValueContributor,
+	DataRequirement defaultValueDataRequirement,
+	Expression defaultValueExpression,
+	ParameterDefinition defaultValueParameterDefinition,
+	RelatedArtifact defaultValueRelatedArtifact,
+	TriggerDefinition defaultValueTriggerDefinition,
+	UsageContext defaultValueUsageContext,
+	Dosage defaultValueDosage,
+	Meta defaultValueMeta,
+	String meaningWhenMissing,
+	Element elementMeaningWhenMissing,
+	String orderMeaning,
+	Element elementOrderMeaning,
+	String fixedBase64Binary,
+	Element elementFixedBase64Binary,
+	bool fixedBoolean,
+	Element elementFixedBoolean,
+	String fixedCanonical,
+	Element elementFixedCanonical,
+	String fixedCode,
+	Element elementFixedCode,
+	String fixedDate,
+	Element elementFixedDate,
+	String fixedDateTime,
+	Element elementFixedDateTime,
+	int fixedDecimal,
+	Element elementFixedDecimal,
+	String fixedId,
+	Element elementFixedId,
+	String fixedInstant,
+	Element elementFixedInstant,
+	int fixedInteger,
+	Element elementFixedInteger,
+	String fixedMarkdown,
+	Element elementFixedMarkdown,
+	String fixedOid,
+	Element elementFixedOid,
+	int fixedPositiveInt,
+	Element elementFixedPositiveInt,
+	String fixedString,
+	Element elementFixedString,
+	String fixedTime,
+	Element elementFixedTime,
+	int fixedUnsignedInt,
+	Element elementFixedUnsignedInt,
+	String fixedUri,
+	Element elementFixedUri,
+	String fixedUrl,
+	Element elementFixedUrl,
+	String fixedUuid,
+	Element elementFixedUuid,
+	Address fixedAddress,
+	Age fixedAge,
+	Annotation fixedAnnotation,
+	Attachment fixedAttachment,
+	CodeableConcept fixedCodeableConcept,
+	Coding fixedCoding,
+	ContactPoint fixedContactPoint,
+	Count fixedCount,
+	Distance fixedDistance,
+	Duration fixedDuration,
+	HumanName fixedHumanName,
+	Identifier fixedIdentifier,
+	Money fixedMoney,
+	Period fixedPeriod,
+	Quantity fixedQuantity,
+	Range fixedRange,
+	Ratio fixedRatio,
+	Reference fixedReference,
+	SampledData fixedSampledData,
+	Signature fixedSignature,
+	Timing fixedTiming,
+	ContactDetail fixedContactDetail,
+	Contributor fixedContributor,
+	DataRequirement fixedDataRequirement,
+	Expression fixedExpression,
+	ParameterDefinition fixedParameterDefinition,
+	RelatedArtifact fixedRelatedArtifact,
+	TriggerDefinition fixedTriggerDefinition,
+	UsageContext fixedUsageContext,
+	Dosage fixedDosage,
+	Meta fixedMeta,
+	String patternBase64Binary,
+	Element elementPatternBase64Binary,
+	bool patternBoolean,
+	Element elementPatternBoolean,
+	String patternCanonical,
+	Element elementPatternCanonical,
+	String patternCode,
+	Element elementPatternCode,
+	String patternDate,
+	Element elementPatternDate,
+	String patternDateTime,
+	Element elementPatternDateTime,
+	int patternDecimal,
+	Element elementPatternDecimal,
+	String patternId,
+	Element elementPatternId,
+	String patternInstant,
+	Element elementPatternInstant,
+	int patternInteger,
+	Element elementPatternInteger,
+	String patternMarkdown,
+	Element elementPatternMarkdown,
+	String patternOid,
+	Element elementPatternOid,
+	int patternPositiveInt,
+	Element elementPatternPositiveInt,
+	String patternString,
+	Element elementPatternString,
+	String patternTime,
+	Element elementPatternTime,
+	int patternUnsignedInt,
+	Element elementPatternUnsignedInt,
+	String patternUri,
+	Element elementPatternUri,
+	String patternUrl,
+	Element elementPatternUrl,
+	String patternUuid,
+	Element elementPatternUuid,
+	Address patternAddress,
+	Age patternAge,
+	Annotation patternAnnotation,
+	Attachment patternAttachment,
+	CodeableConcept patternCodeableConcept,
+	Coding patternCoding,
+	ContactPoint patternContactPoint,
+	Count patternCount,
+	Distance patternDistance,
+	Duration patternDuration,
+	HumanName patternHumanName,
+	Identifier patternIdentifier,
+	Money patternMoney,
+	Period patternPeriod,
+	Quantity patternQuantity,
+	Range patternRange,
+	Ratio patternRatio,
+	Reference patternReference,
+	SampledData patternSampledData,
+	Signature patternSignature,
+	Timing patternTiming,
+	ContactDetail patternContactDetail,
+	Contributor patternContributor,
+	DataRequirement patternDataRequirement,
+	Expression patternExpression,
+	ParameterDefinition patternParameterDefinition,
+	RelatedArtifact patternRelatedArtifact,
+	TriggerDefinition patternTriggerDefinition,
+	UsageContext patternUsageContext,
+	Dosage patternDosage,
+	Meta patternMeta,
+	List<ElementDefinition_Example> example,
+	String minValueDate,
+	Element elementMinValueDate,
+	String minValueDateTime,
+	Element elementMinValueDateTime,
+	String minValueInstant,
+	Element elementMinValueInstant,
+	String minValueTime,
+	Element elementMinValueTime,
+	int minValueDecimal,
+	Element elementMinValueDecimal,
+	int minValueInteger,
+	Element elementMinValueInteger,
+	int minValuePositiveInt,
+	Element elementMinValuePositiveInt,
+	int minValueUnsignedInt,
+	Element elementMinValueUnsignedInt,
+	Quantity minValueQuantity,
+	String maxValueDate,
+	Element elementMaxValueDate,
+	String maxValueDateTime,
+	Element elementMaxValueDateTime,
+	String maxValueInstant,
+	Element elementMaxValueInstant,
+	String maxValueTime,
+	Element elementMaxValueTime,
+	int maxValueDecimal,
+	Element elementMaxValueDecimal,
+	int maxValueInteger,
+	Element elementMaxValueInteger,
+	int maxValuePositiveInt,
+	Element elementMaxValuePositiveInt,
+	int maxValueUnsignedInt,
+	Element elementMaxValueUnsignedInt,
+	Quantity maxValueQuantity,
+	int maxLength,
+	Element elementMaxLength,
+	List<String> condition,
+	List<Element> elementCondition,
+	List<ElementDefinition_Constraint> constraint,
+	bool mustSupport,
+	Element elementMustSupport,
+	bool isModifier,
+	Element elementIsModifier,
+	String isModifierReason,
+	Element elementIsModifierReason,
+	bool isSummary,
+	Element elementIsSummary,
+	ElementDefinition_Binding binding,
+	List<ElementDefinition_Mapping> mapping,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition newElementDefinition = new ElementDefinition(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	path: path,
+	elementPath: elementPath,
+	representation: representation,
+	elementRepresentation: elementRepresentation,
+	sliceName: sliceName,
+	elementSliceName: elementSliceName,
+	sliceIsConstraining: sliceIsConstraining,
+	elementSliceIsConstraining: elementSliceIsConstraining,
+	label: label,
+	elementLabel: elementLabel,
+	code: code,
+	slicing: slicing,
+	short: short,
+	elementShort: elementShort,
+	definition: definition,
+	elementDefinition: elementDefinition,
+	comment: comment,
+	elementComment: elementComment,
+	requirements: requirements,
+	elementRequirements: elementRequirements,
+	alias: alias,
+	elementAlias: elementAlias,
+	min: min,
+	elementMin: elementMin,
+	max: max,
+	elementMax: elementMax,
+	base: base,
+	contentReference: contentReference,
+	elementContentReference: elementContentReference,
+	type: type,
+	defaultValueBase64Binary: defaultValueBase64Binary,
+	elementDefaultValueBase64Binary: elementDefaultValueBase64Binary,
+	defaultValueBoolean: defaultValueBoolean,
+	elementDefaultValueBoolean: elementDefaultValueBoolean,
+	defaultValueCanonical: defaultValueCanonical,
+	elementDefaultValueCanonical: elementDefaultValueCanonical,
+	defaultValueCode: defaultValueCode,
+	elementDefaultValueCode: elementDefaultValueCode,
+	defaultValueDate: defaultValueDate,
+	elementDefaultValueDate: elementDefaultValueDate,
+	defaultValueDateTime: defaultValueDateTime,
+	elementDefaultValueDateTime: elementDefaultValueDateTime,
+	defaultValueDecimal: defaultValueDecimal,
+	elementDefaultValueDecimal: elementDefaultValueDecimal,
+	defaultValueId: defaultValueId,
+	elementDefaultValueId: elementDefaultValueId,
+	defaultValueInstant: defaultValueInstant,
+	elementDefaultValueInstant: elementDefaultValueInstant,
+	defaultValueInteger: defaultValueInteger,
+	elementDefaultValueInteger: elementDefaultValueInteger,
+	defaultValueMarkdown: defaultValueMarkdown,
+	elementDefaultValueMarkdown: elementDefaultValueMarkdown,
+	defaultValueOid: defaultValueOid,
+	elementDefaultValueOid: elementDefaultValueOid,
+	defaultValuePositiveInt: defaultValuePositiveInt,
+	elementDefaultValuePositiveInt: elementDefaultValuePositiveInt,
+	defaultValueString: defaultValueString,
+	elementDefaultValueString: elementDefaultValueString,
+	defaultValueTime: defaultValueTime,
+	elementDefaultValueTime: elementDefaultValueTime,
+	defaultValueUnsignedInt: defaultValueUnsignedInt,
+	elementDefaultValueUnsignedInt: elementDefaultValueUnsignedInt,
+	defaultValueUri: defaultValueUri,
+	elementDefaultValueUri: elementDefaultValueUri,
+	defaultValueUrl: defaultValueUrl,
+	elementDefaultValueUrl: elementDefaultValueUrl,
+	defaultValueUuid: defaultValueUuid,
+	elementDefaultValueUuid: elementDefaultValueUuid,
+	defaultValueAddress: defaultValueAddress,
+	defaultValueAge: defaultValueAge,
+	defaultValueAnnotation: defaultValueAnnotation,
+	defaultValueAttachment: defaultValueAttachment,
+	defaultValueCodeableConcept: defaultValueCodeableConcept,
+	defaultValueCoding: defaultValueCoding,
+	defaultValueContactPoint: defaultValueContactPoint,
+	defaultValueCount: defaultValueCount,
+	defaultValueDistance: defaultValueDistance,
+	defaultValueDuration: defaultValueDuration,
+	defaultValueHumanName: defaultValueHumanName,
+	defaultValueIdentifier: defaultValueIdentifier,
+	defaultValueMoney: defaultValueMoney,
+	defaultValuePeriod: defaultValuePeriod,
+	defaultValueQuantity: defaultValueQuantity,
+	defaultValueRange: defaultValueRange,
+	defaultValueRatio: defaultValueRatio,
+	defaultValueReference: defaultValueReference,
+	defaultValueSampledData: defaultValueSampledData,
+	defaultValueSignature: defaultValueSignature,
+	defaultValueTiming: defaultValueTiming,
+	defaultValueContactDetail: defaultValueContactDetail,
+	defaultValueContributor: defaultValueContributor,
+	defaultValueDataRequirement: defaultValueDataRequirement,
+	defaultValueExpression: defaultValueExpression,
+	defaultValueParameterDefinition: defaultValueParameterDefinition,
+	defaultValueRelatedArtifact: defaultValueRelatedArtifact,
+	defaultValueTriggerDefinition: defaultValueTriggerDefinition,
+	defaultValueUsageContext: defaultValueUsageContext,
+	defaultValueDosage: defaultValueDosage,
+	defaultValueMeta: defaultValueMeta,
+	meaningWhenMissing: meaningWhenMissing,
+	elementMeaningWhenMissing: elementMeaningWhenMissing,
+	orderMeaning: orderMeaning,
+	elementOrderMeaning: elementOrderMeaning,
+	fixedBase64Binary: fixedBase64Binary,
+	elementFixedBase64Binary: elementFixedBase64Binary,
+	fixedBoolean: fixedBoolean,
+	elementFixedBoolean: elementFixedBoolean,
+	fixedCanonical: fixedCanonical,
+	elementFixedCanonical: elementFixedCanonical,
+	fixedCode: fixedCode,
+	elementFixedCode: elementFixedCode,
+	fixedDate: fixedDate,
+	elementFixedDate: elementFixedDate,
+	fixedDateTime: fixedDateTime,
+	elementFixedDateTime: elementFixedDateTime,
+	fixedDecimal: fixedDecimal,
+	elementFixedDecimal: elementFixedDecimal,
+	fixedId: fixedId,
+	elementFixedId: elementFixedId,
+	fixedInstant: fixedInstant,
+	elementFixedInstant: elementFixedInstant,
+	fixedInteger: fixedInteger,
+	elementFixedInteger: elementFixedInteger,
+	fixedMarkdown: fixedMarkdown,
+	elementFixedMarkdown: elementFixedMarkdown,
+	fixedOid: fixedOid,
+	elementFixedOid: elementFixedOid,
+	fixedPositiveInt: fixedPositiveInt,
+	elementFixedPositiveInt: elementFixedPositiveInt,
+	fixedString: fixedString,
+	elementFixedString: elementFixedString,
+	fixedTime: fixedTime,
+	elementFixedTime: elementFixedTime,
+	fixedUnsignedInt: fixedUnsignedInt,
+	elementFixedUnsignedInt: elementFixedUnsignedInt,
+	fixedUri: fixedUri,
+	elementFixedUri: elementFixedUri,
+	fixedUrl: fixedUrl,
+	elementFixedUrl: elementFixedUrl,
+	fixedUuid: fixedUuid,
+	elementFixedUuid: elementFixedUuid,
+	fixedAddress: fixedAddress,
+	fixedAge: fixedAge,
+	fixedAnnotation: fixedAnnotation,
+	fixedAttachment: fixedAttachment,
+	fixedCodeableConcept: fixedCodeableConcept,
+	fixedCoding: fixedCoding,
+	fixedContactPoint: fixedContactPoint,
+	fixedCount: fixedCount,
+	fixedDistance: fixedDistance,
+	fixedDuration: fixedDuration,
+	fixedHumanName: fixedHumanName,
+	fixedIdentifier: fixedIdentifier,
+	fixedMoney: fixedMoney,
+	fixedPeriod: fixedPeriod,
+	fixedQuantity: fixedQuantity,
+	fixedRange: fixedRange,
+	fixedRatio: fixedRatio,
+	fixedReference: fixedReference,
+	fixedSampledData: fixedSampledData,
+	fixedSignature: fixedSignature,
+	fixedTiming: fixedTiming,
+	fixedContactDetail: fixedContactDetail,
+	fixedContributor: fixedContributor,
+	fixedDataRequirement: fixedDataRequirement,
+	fixedExpression: fixedExpression,
+	fixedParameterDefinition: fixedParameterDefinition,
+	fixedRelatedArtifact: fixedRelatedArtifact,
+	fixedTriggerDefinition: fixedTriggerDefinition,
+	fixedUsageContext: fixedUsageContext,
+	fixedDosage: fixedDosage,
+	fixedMeta: fixedMeta,
+	patternBase64Binary: patternBase64Binary,
+	elementPatternBase64Binary: elementPatternBase64Binary,
+	patternBoolean: patternBoolean,
+	elementPatternBoolean: elementPatternBoolean,
+	patternCanonical: patternCanonical,
+	elementPatternCanonical: elementPatternCanonical,
+	patternCode: patternCode,
+	elementPatternCode: elementPatternCode,
+	patternDate: patternDate,
+	elementPatternDate: elementPatternDate,
+	patternDateTime: patternDateTime,
+	elementPatternDateTime: elementPatternDateTime,
+	patternDecimal: patternDecimal,
+	elementPatternDecimal: elementPatternDecimal,
+	patternId: patternId,
+	elementPatternId: elementPatternId,
+	patternInstant: patternInstant,
+	elementPatternInstant: elementPatternInstant,
+	patternInteger: patternInteger,
+	elementPatternInteger: elementPatternInteger,
+	patternMarkdown: patternMarkdown,
+	elementPatternMarkdown: elementPatternMarkdown,
+	patternOid: patternOid,
+	elementPatternOid: elementPatternOid,
+	patternPositiveInt: patternPositiveInt,
+	elementPatternPositiveInt: elementPatternPositiveInt,
+	patternString: patternString,
+	elementPatternString: elementPatternString,
+	patternTime: patternTime,
+	elementPatternTime: elementPatternTime,
+	patternUnsignedInt: patternUnsignedInt,
+	elementPatternUnsignedInt: elementPatternUnsignedInt,
+	patternUri: patternUri,
+	elementPatternUri: elementPatternUri,
+	patternUrl: patternUrl,
+	elementPatternUrl: elementPatternUrl,
+	patternUuid: patternUuid,
+	elementPatternUuid: elementPatternUuid,
+	patternAddress: patternAddress,
+	patternAge: patternAge,
+	patternAnnotation: patternAnnotation,
+	patternAttachment: patternAttachment,
+	patternCodeableConcept: patternCodeableConcept,
+	patternCoding: patternCoding,
+	patternContactPoint: patternContactPoint,
+	patternCount: patternCount,
+	patternDistance: patternDistance,
+	patternDuration: patternDuration,
+	patternHumanName: patternHumanName,
+	patternIdentifier: patternIdentifier,
+	patternMoney: patternMoney,
+	patternPeriod: patternPeriod,
+	patternQuantity: patternQuantity,
+	patternRange: patternRange,
+	patternRatio: patternRatio,
+	patternReference: patternReference,
+	patternSampledData: patternSampledData,
+	patternSignature: patternSignature,
+	patternTiming: patternTiming,
+	patternContactDetail: patternContactDetail,
+	patternContributor: patternContributor,
+	patternDataRequirement: patternDataRequirement,
+	patternExpression: patternExpression,
+	patternParameterDefinition: patternParameterDefinition,
+	patternRelatedArtifact: patternRelatedArtifact,
+	patternTriggerDefinition: patternTriggerDefinition,
+	patternUsageContext: patternUsageContext,
+	patternDosage: patternDosage,
+	patternMeta: patternMeta,
+	example: example,
+	minValueDate: minValueDate,
+	elementMinValueDate: elementMinValueDate,
+	minValueDateTime: minValueDateTime,
+	elementMinValueDateTime: elementMinValueDateTime,
+	minValueInstant: minValueInstant,
+	elementMinValueInstant: elementMinValueInstant,
+	minValueTime: minValueTime,
+	elementMinValueTime: elementMinValueTime,
+	minValueDecimal: minValueDecimal,
+	elementMinValueDecimal: elementMinValueDecimal,
+	minValueInteger: minValueInteger,
+	elementMinValueInteger: elementMinValueInteger,
+	minValuePositiveInt: minValuePositiveInt,
+	elementMinValuePositiveInt: elementMinValuePositiveInt,
+	minValueUnsignedInt: minValueUnsignedInt,
+	elementMinValueUnsignedInt: elementMinValueUnsignedInt,
+	minValueQuantity: minValueQuantity,
+	maxValueDate: maxValueDate,
+	elementMaxValueDate: elementMaxValueDate,
+	maxValueDateTime: maxValueDateTime,
+	elementMaxValueDateTime: elementMaxValueDateTime,
+	maxValueInstant: maxValueInstant,
+	elementMaxValueInstant: elementMaxValueInstant,
+	maxValueTime: maxValueTime,
+	elementMaxValueTime: elementMaxValueTime,
+	maxValueDecimal: maxValueDecimal,
+	elementMaxValueDecimal: elementMaxValueDecimal,
+	maxValueInteger: maxValueInteger,
+	elementMaxValueInteger: elementMaxValueInteger,
+	maxValuePositiveInt: maxValuePositiveInt,
+	elementMaxValuePositiveInt: elementMaxValuePositiveInt,
+	maxValueUnsignedInt: maxValueUnsignedInt,
+	elementMaxValueUnsignedInt: elementMaxValueUnsignedInt,
+	maxValueQuantity: maxValueQuantity,
+	maxLength: maxLength,
+	elementMaxLength: elementMaxLength,
+	condition: condition,
+	elementCondition: elementCondition,
+	constraint: constraint,
+	mustSupport: mustSupport,
+	elementMustSupport: elementMustSupport,
+	isModifier: isModifier,
+	elementIsModifier: elementIsModifier,
+	isModifierReason: isModifierReason,
+	elementIsModifierReason: elementIsModifierReason,
+	isSummary: isSummary,
+	elementIsSummary: elementIsSummary,
+	binding: binding,
+	mapping: mapping,
+);
+	return newElementDefinition;
+}
 
-  ElementDefinition({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.path,
-    this.elementPath,
-    this.representation,
-    this.elementRepresentation,
-    this.sliceName,
-    this.elementSliceName,
-    this.sliceIsConstraining,
-    this.elementSliceIsConstraining,
-    this.label,
-    this.elementLabel,
-    this.code,
-    this.slicing,
-    this.short,
-    this.elementShort,
-    this.definition,
-    this.elementDefinition,
-    this.comment,
-    this.elementComment,
-    this.requirements,
-    this.elementRequirements,
-    this.alias,
-    this.elementAlias,
-    this.min,
-    this.elementMin,
-    this.max,
-    this.elementMax,
-    this.base,
-    this.contentReference,
-    this.elementContentReference,
-    this.type,
-    this.defaultValueBase64Binary,
-    this.elementDefaultValueBase64Binary,
-    this.defaultValueBoolean,
-    this.elementDefaultValueBoolean,
-    this.defaultValueCanonical,
-    this.elementDefaultValueCanonical,
-    this.defaultValueCode,
-    this.elementDefaultValueCode,
-    this.defaultValueDate,
-    this.elementDefaultValueDate,
-    this.defaultValueDateTime,
-    this.elementDefaultValueDateTime,
-    this.defaultValueDecimal,
-    this.elementDefaultValueDecimal,
-    this.defaultValueId,
-    this.elementDefaultValueId,
-    this.defaultValueInstant,
-    this.elementDefaultValueInstant,
-    this.defaultValueInteger,
-    this.elementDefaultValueInteger,
-    this.defaultValueMarkdown,
-    this.elementDefaultValueMarkdown,
-    this.defaultValueOid,
-    this.elementDefaultValueOid,
-    this.defaultValuePositiveInt,
-    this.elementDefaultValuePositiveInt,
-    this.defaultValueString,
-    this.elementDefaultValueString,
-    this.defaultValueTime,
-    this.elementDefaultValueTime,
-    this.defaultValueUnsignedInt,
-    this.elementDefaultValueUnsignedInt,
-    this.defaultValueUri,
-    this.elementDefaultValueUri,
-    this.defaultValueUrl,
-    this.elementDefaultValueUrl,
-    this.defaultValueUuid,
-    this.elementDefaultValueUuid,
-    this.defaultValueAddress,
-    this.defaultValueAge,
-    this.defaultValueAnnotation,
-    this.defaultValueAttachment,
-    this.defaultValueCodeableConcept,
-    this.defaultValueCoding,
-    this.defaultValueContactPoint,
-    this.defaultValueCount,
-    this.defaultValueDistance,
-    this.defaultValueDuration,
-    this.defaultValueHumanName,
-    this.defaultValueIdentifier,
-    this.defaultValueMoney,
-    this.defaultValuePeriod,
-    this.defaultValueQuantity,
-    this.defaultValueRange,
-    this.defaultValueRatio,
-    this.defaultValueReference,
-    this.defaultValueSampledData,
-    this.defaultValueSignature,
-    this.defaultValueTiming,
-    this.defaultValueContactDetail,
-    this.defaultValueContributor,
-    this.defaultValueDataRequirement,
-    this.defaultValueExpression,
-    this.defaultValueParameterDefinition,
-    this.defaultValueRelatedArtifact,
-    this.defaultValueTriggerDefinition,
-    this.defaultValueUsageContext,
-    this.defaultValueDosage,
-    this.defaultValueMeta,
-    this.meaningWhenMissing,
-    this.elementMeaningWhenMissing,
-    this.orderMeaning,
-    this.elementOrderMeaning,
-    this.fixedBase64Binary,
-    this.elementFixedBase64Binary,
-    this.fixedBoolean,
-    this.elementFixedBoolean,
-    this.fixedCanonical,
-    this.elementFixedCanonical,
-    this.fixedCode,
-    this.elementFixedCode,
-    this.fixedDate,
-    this.elementFixedDate,
-    this.fixedDateTime,
-    this.elementFixedDateTime,
-    this.fixedDecimal,
-    this.elementFixedDecimal,
-    this.fixedId,
-    this.elementFixedId,
-    this.fixedInstant,
-    this.elementFixedInstant,
-    this.fixedInteger,
-    this.elementFixedInteger,
-    this.fixedMarkdown,
-    this.elementFixedMarkdown,
-    this.fixedOid,
-    this.elementFixedOid,
-    this.fixedPositiveInt,
-    this.elementFixedPositiveInt,
-    this.fixedString,
-    this.elementFixedString,
-    this.fixedTime,
-    this.elementFixedTime,
-    this.fixedUnsignedInt,
-    this.elementFixedUnsignedInt,
-    this.fixedUri,
-    this.elementFixedUri,
-    this.fixedUrl,
-    this.elementFixedUrl,
-    this.fixedUuid,
-    this.elementFixedUuid,
-    this.fixedAddress,
-    this.fixedAge,
-    this.fixedAnnotation,
-    this.fixedAttachment,
-    this.fixedCodeableConcept,
-    this.fixedCoding,
-    this.fixedContactPoint,
-    this.fixedCount,
-    this.fixedDistance,
-    this.fixedDuration,
-    this.fixedHumanName,
-    this.fixedIdentifier,
-    this.fixedMoney,
-    this.fixedPeriod,
-    this.fixedQuantity,
-    this.fixedRange,
-    this.fixedRatio,
-    this.fixedReference,
-    this.fixedSampledData,
-    this.fixedSignature,
-    this.fixedTiming,
-    this.fixedContactDetail,
-    this.fixedContributor,
-    this.fixedDataRequirement,
-    this.fixedExpression,
-    this.fixedParameterDefinition,
-    this.fixedRelatedArtifact,
-    this.fixedTriggerDefinition,
-    this.fixedUsageContext,
-    this.fixedDosage,
-    this.fixedMeta,
-    this.patternBase64Binary,
-    this.elementPatternBase64Binary,
-    this.patternBoolean,
-    this.elementPatternBoolean,
-    this.patternCanonical,
-    this.elementPatternCanonical,
-    this.patternCode,
-    this.elementPatternCode,
-    this.patternDate,
-    this.elementPatternDate,
-    this.patternDateTime,
-    this.elementPatternDateTime,
-    this.patternDecimal,
-    this.elementPatternDecimal,
-    this.patternId,
-    this.elementPatternId,
-    this.patternInstant,
-    this.elementPatternInstant,
-    this.patternInteger,
-    this.elementPatternInteger,
-    this.patternMarkdown,
-    this.elementPatternMarkdown,
-    this.patternOid,
-    this.elementPatternOid,
-    this.patternPositiveInt,
-    this.elementPatternPositiveInt,
-    this.patternString,
-    this.elementPatternString,
-    this.patternTime,
-    this.elementPatternTime,
-    this.patternUnsignedInt,
-    this.elementPatternUnsignedInt,
-    this.patternUri,
-    this.elementPatternUri,
-    this.patternUrl,
-    this.elementPatternUrl,
-    this.patternUuid,
-    this.elementPatternUuid,
-    this.patternAddress,
-    this.patternAge,
-    this.patternAnnotation,
-    this.patternAttachment,
-    this.patternCodeableConcept,
-    this.patternCoding,
-    this.patternContactPoint,
-    this.patternCount,
-    this.patternDistance,
-    this.patternDuration,
-    this.patternHumanName,
-    this.patternIdentifier,
-    this.patternMoney,
-    this.patternPeriod,
-    this.patternQuantity,
-    this.patternRange,
-    this.patternRatio,
-    this.patternReference,
-    this.patternSampledData,
-    this.patternSignature,
-    this.patternTiming,
-    this.patternContactDetail,
-    this.patternContributor,
-    this.patternDataRequirement,
-    this.patternExpression,
-    this.patternParameterDefinition,
-    this.patternRelatedArtifact,
-    this.patternTriggerDefinition,
-    this.patternUsageContext,
-    this.patternDosage,
-    this.patternMeta,
-    this.example,
-    this.minValueDate,
-    this.elementMinValueDate,
-    this.minValueDateTime,
-    this.elementMinValueDateTime,
-    this.minValueInstant,
-    this.elementMinValueInstant,
-    this.minValueTime,
-    this.elementMinValueTime,
-    this.minValueDecimal,
-    this.elementMinValueDecimal,
-    this.minValueInteger,
-    this.elementMinValueInteger,
-    this.minValuePositiveInt,
-    this.elementMinValuePositiveInt,
-    this.minValueUnsignedInt,
-    this.elementMinValueUnsignedInt,
-    this.minValueQuantity,
-    this.maxValueDate,
-    this.elementMaxValueDate,
-    this.maxValueDateTime,
-    this.elementMaxValueDateTime,
-    this.maxValueInstant,
-    this.elementMaxValueInstant,
-    this.maxValueTime,
-    this.elementMaxValueTime,
-    this.maxValueDecimal,
-    this.elementMaxValueDecimal,
-    this.maxValueInteger,
-    this.elementMaxValueInteger,
-    this.maxValuePositiveInt,
-    this.elementMaxValuePositiveInt,
-    this.maxValueUnsignedInt,
-    this.elementMaxValueUnsignedInt,
-    this.maxValueQuantity,
-    this.maxLength,
-    this.elementMaxLength,
-    this.condition,
-    this.elementCondition,
-    this.constraint,
-    this.mustSupport,
-    this.elementMustSupport,
-    this.isModifier,
-    this.elementIsModifier,
-    this.isModifierReason,
-    this.elementIsModifierReason,
-    this.isSummary,
-    this.elementIsSummary,
-    this.binding,
-    this.mapping,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String path;
+	Element elementPath;
+	String representation;
+	List<Element> elementRepresentation;
+	String sliceName;
+	Element elementSliceName;
+	bool sliceIsConstraining;
+	Element elementSliceIsConstraining;
+	String label;
+	Element elementLabel;
+	List<Coding> code;
+	ElementDefinition_Slicing slicing;
+	String short;
+	Element elementShort;
+	String definition;
+	Element elementDefinition;
+	String comment;
+	Element elementComment;
+	String requirements;
+	Element elementRequirements;
+	List<String> alias;
+	List<Element> elementAlias;
+	int min;
+	Element elementMin;
+	String max;
+	Element elementMax;
+	ElementDefinition_Base base;
+	String contentReference;
+	Element elementContentReference;
+	List<ElementDefinition_Type> type;
+	String defaultValueBase64Binary;
+	Element elementDefaultValueBase64Binary;
+	bool defaultValueBoolean;
+	Element elementDefaultValueBoolean;
+	String defaultValueCanonical;
+	Element elementDefaultValueCanonical;
+	String defaultValueCode;
+	Element elementDefaultValueCode;
+	String defaultValueDate;
+	Element elementDefaultValueDate;
+	String defaultValueDateTime;
+	Element elementDefaultValueDateTime;
+	int defaultValueDecimal;
+	Element elementDefaultValueDecimal;
+	String defaultValueId;
+	Element elementDefaultValueId;
+	String defaultValueInstant;
+	Element elementDefaultValueInstant;
+	int defaultValueInteger;
+	Element elementDefaultValueInteger;
+	String defaultValueMarkdown;
+	Element elementDefaultValueMarkdown;
+	String defaultValueOid;
+	Element elementDefaultValueOid;
+	int defaultValuePositiveInt;
+	Element elementDefaultValuePositiveInt;
+	String defaultValueString;
+	Element elementDefaultValueString;
+	String defaultValueTime;
+	Element elementDefaultValueTime;
+	int defaultValueUnsignedInt;
+	Element elementDefaultValueUnsignedInt;
+	String defaultValueUri;
+	Element elementDefaultValueUri;
+	String defaultValueUrl;
+	Element elementDefaultValueUrl;
+	String defaultValueUuid;
+	Element elementDefaultValueUuid;
+	Address defaultValueAddress;
+	Age defaultValueAge;
+	Annotation defaultValueAnnotation;
+	Attachment defaultValueAttachment;
+	CodeableConcept defaultValueCodeableConcept;
+	Coding defaultValueCoding;
+	ContactPoint defaultValueContactPoint;
+	Count defaultValueCount;
+	Distance defaultValueDistance;
+	Duration defaultValueDuration;
+	HumanName defaultValueHumanName;
+	Identifier defaultValueIdentifier;
+	Money defaultValueMoney;
+	Period defaultValuePeriod;
+	Quantity defaultValueQuantity;
+	Range defaultValueRange;
+	Ratio defaultValueRatio;
+	Reference defaultValueReference;
+	SampledData defaultValueSampledData;
+	Signature defaultValueSignature;
+	Timing defaultValueTiming;
+	ContactDetail defaultValueContactDetail;
+	Contributor defaultValueContributor;
+	DataRequirement defaultValueDataRequirement;
+	Expression defaultValueExpression;
+	ParameterDefinition defaultValueParameterDefinition;
+	RelatedArtifact defaultValueRelatedArtifact;
+	TriggerDefinition defaultValueTriggerDefinition;
+	UsageContext defaultValueUsageContext;
+	Dosage defaultValueDosage;
+	Meta defaultValueMeta;
+	String meaningWhenMissing;
+	Element elementMeaningWhenMissing;
+	String orderMeaning;
+	Element elementOrderMeaning;
+	String fixedBase64Binary;
+	Element elementFixedBase64Binary;
+	bool fixedBoolean;
+	Element elementFixedBoolean;
+	String fixedCanonical;
+	Element elementFixedCanonical;
+	String fixedCode;
+	Element elementFixedCode;
+	String fixedDate;
+	Element elementFixedDate;
+	String fixedDateTime;
+	Element elementFixedDateTime;
+	int fixedDecimal;
+	Element elementFixedDecimal;
+	String fixedId;
+	Element elementFixedId;
+	String fixedInstant;
+	Element elementFixedInstant;
+	int fixedInteger;
+	Element elementFixedInteger;
+	String fixedMarkdown;
+	Element elementFixedMarkdown;
+	String fixedOid;
+	Element elementFixedOid;
+	int fixedPositiveInt;
+	Element elementFixedPositiveInt;
+	String fixedString;
+	Element elementFixedString;
+	String fixedTime;
+	Element elementFixedTime;
+	int fixedUnsignedInt;
+	Element elementFixedUnsignedInt;
+	String fixedUri;
+	Element elementFixedUri;
+	String fixedUrl;
+	Element elementFixedUrl;
+	String fixedUuid;
+	Element elementFixedUuid;
+	Address fixedAddress;
+	Age fixedAge;
+	Annotation fixedAnnotation;
+	Attachment fixedAttachment;
+	CodeableConcept fixedCodeableConcept;
+	Coding fixedCoding;
+	ContactPoint fixedContactPoint;
+	Count fixedCount;
+	Distance fixedDistance;
+	Duration fixedDuration;
+	HumanName fixedHumanName;
+	Identifier fixedIdentifier;
+	Money fixedMoney;
+	Period fixedPeriod;
+	Quantity fixedQuantity;
+	Range fixedRange;
+	Ratio fixedRatio;
+	Reference fixedReference;
+	SampledData fixedSampledData;
+	Signature fixedSignature;
+	Timing fixedTiming;
+	ContactDetail fixedContactDetail;
+	Contributor fixedContributor;
+	DataRequirement fixedDataRequirement;
+	Expression fixedExpression;
+	ParameterDefinition fixedParameterDefinition;
+	RelatedArtifact fixedRelatedArtifact;
+	TriggerDefinition fixedTriggerDefinition;
+	UsageContext fixedUsageContext;
+	Dosage fixedDosage;
+	Meta fixedMeta;
+	String patternBase64Binary;
+	Element elementPatternBase64Binary;
+	bool patternBoolean;
+	Element elementPatternBoolean;
+	String patternCanonical;
+	Element elementPatternCanonical;
+	String patternCode;
+	Element elementPatternCode;
+	String patternDate;
+	Element elementPatternDate;
+	String patternDateTime;
+	Element elementPatternDateTime;
+	int patternDecimal;
+	Element elementPatternDecimal;
+	String patternId;
+	Element elementPatternId;
+	String patternInstant;
+	Element elementPatternInstant;
+	int patternInteger;
+	Element elementPatternInteger;
+	String patternMarkdown;
+	Element elementPatternMarkdown;
+	String patternOid;
+	Element elementPatternOid;
+	int patternPositiveInt;
+	Element elementPatternPositiveInt;
+	String patternString;
+	Element elementPatternString;
+	String patternTime;
+	Element elementPatternTime;
+	int patternUnsignedInt;
+	Element elementPatternUnsignedInt;
+	String patternUri;
+	Element elementPatternUri;
+	String patternUrl;
+	Element elementPatternUrl;
+	String patternUuid;
+	Element elementPatternUuid;
+	Address patternAddress;
+	Age patternAge;
+	Annotation patternAnnotation;
+	Attachment patternAttachment;
+	CodeableConcept patternCodeableConcept;
+	Coding patternCoding;
+	ContactPoint patternContactPoint;
+	Count patternCount;
+	Distance patternDistance;
+	Duration patternDuration;
+	HumanName patternHumanName;
+	Identifier patternIdentifier;
+	Money patternMoney;
+	Period patternPeriod;
+	Quantity patternQuantity;
+	Range patternRange;
+	Ratio patternRatio;
+	Reference patternReference;
+	SampledData patternSampledData;
+	Signature patternSignature;
+	Timing patternTiming;
+	ContactDetail patternContactDetail;
+	Contributor patternContributor;
+	DataRequirement patternDataRequirement;
+	Expression patternExpression;
+	ParameterDefinition patternParameterDefinition;
+	RelatedArtifact patternRelatedArtifact;
+	TriggerDefinition patternTriggerDefinition;
+	UsageContext patternUsageContext;
+	Dosage patternDosage;
+	Meta patternMeta;
+	List<ElementDefinition_Example> example;
+	String minValueDate;
+	Element elementMinValueDate;
+	String minValueDateTime;
+	Element elementMinValueDateTime;
+	String minValueInstant;
+	Element elementMinValueInstant;
+	String minValueTime;
+	Element elementMinValueTime;
+	int minValueDecimal;
+	Element elementMinValueDecimal;
+	int minValueInteger;
+	Element elementMinValueInteger;
+	int minValuePositiveInt;
+	Element elementMinValuePositiveInt;
+	int minValueUnsignedInt;
+	Element elementMinValueUnsignedInt;
+	Quantity minValueQuantity;
+	String maxValueDate;
+	Element elementMaxValueDate;
+	String maxValueDateTime;
+	Element elementMaxValueDateTime;
+	String maxValueInstant;
+	Element elementMaxValueInstant;
+	String maxValueTime;
+	Element elementMaxValueTime;
+	int maxValueDecimal;
+	Element elementMaxValueDecimal;
+	int maxValueInteger;
+	Element elementMaxValueInteger;
+	int maxValuePositiveInt;
+	Element elementMaxValuePositiveInt;
+	int maxValueUnsignedInt;
+	Element elementMaxValueUnsignedInt;
+	Quantity maxValueQuantity;
+	int maxLength;
+	Element elementMaxLength;
+	List<String> condition;
+	List<Element> elementCondition;
+	List<ElementDefinition_Constraint> constraint;
+	bool mustSupport;
+	Element elementMustSupport;
+	bool isModifier;
+	Element elementIsModifier;
+	String isModifierReason;
+	Element elementIsModifierReason;
+	bool isSummary;
+	Element elementIsSummary;
+	ElementDefinition_Binding binding;
+	List<ElementDefinition_Mapping> mapping;
 
-  factory ElementDefinition.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinitionFromJson(json);
+ElementDefinition(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.path,
+this.elementPath,
+this.representation,
+this.elementRepresentation,
+this.sliceName,
+this.elementSliceName,
+this.sliceIsConstraining,
+this.elementSliceIsConstraining,
+this.label,
+this.elementLabel,
+this.code,
+this.slicing,
+this.short,
+this.elementShort,
+this.definition,
+this.elementDefinition,
+this.comment,
+this.elementComment,
+this.requirements,
+this.elementRequirements,
+this.alias,
+this.elementAlias,
+this.min,
+this.elementMin,
+this.max,
+this.elementMax,
+this.base,
+this.contentReference,
+this.elementContentReference,
+this.type,
+this.defaultValueBase64Binary,
+this.elementDefaultValueBase64Binary,
+this.defaultValueBoolean,
+this.elementDefaultValueBoolean,
+this.defaultValueCanonical,
+this.elementDefaultValueCanonical,
+this.defaultValueCode,
+this.elementDefaultValueCode,
+this.defaultValueDate,
+this.elementDefaultValueDate,
+this.defaultValueDateTime,
+this.elementDefaultValueDateTime,
+this.defaultValueDecimal,
+this.elementDefaultValueDecimal,
+this.defaultValueId,
+this.elementDefaultValueId,
+this.defaultValueInstant,
+this.elementDefaultValueInstant,
+this.defaultValueInteger,
+this.elementDefaultValueInteger,
+this.defaultValueMarkdown,
+this.elementDefaultValueMarkdown,
+this.defaultValueOid,
+this.elementDefaultValueOid,
+this.defaultValuePositiveInt,
+this.elementDefaultValuePositiveInt,
+this.defaultValueString,
+this.elementDefaultValueString,
+this.defaultValueTime,
+this.elementDefaultValueTime,
+this.defaultValueUnsignedInt,
+this.elementDefaultValueUnsignedInt,
+this.defaultValueUri,
+this.elementDefaultValueUri,
+this.defaultValueUrl,
+this.elementDefaultValueUrl,
+this.defaultValueUuid,
+this.elementDefaultValueUuid,
+this.defaultValueAddress,
+this.defaultValueAge,
+this.defaultValueAnnotation,
+this.defaultValueAttachment,
+this.defaultValueCodeableConcept,
+this.defaultValueCoding,
+this.defaultValueContactPoint,
+this.defaultValueCount,
+this.defaultValueDistance,
+this.defaultValueDuration,
+this.defaultValueHumanName,
+this.defaultValueIdentifier,
+this.defaultValueMoney,
+this.defaultValuePeriod,
+this.defaultValueQuantity,
+this.defaultValueRange,
+this.defaultValueRatio,
+this.defaultValueReference,
+this.defaultValueSampledData,
+this.defaultValueSignature,
+this.defaultValueTiming,
+this.defaultValueContactDetail,
+this.defaultValueContributor,
+this.defaultValueDataRequirement,
+this.defaultValueExpression,
+this.defaultValueParameterDefinition,
+this.defaultValueRelatedArtifact,
+this.defaultValueTriggerDefinition,
+this.defaultValueUsageContext,
+this.defaultValueDosage,
+this.defaultValueMeta,
+this.meaningWhenMissing,
+this.elementMeaningWhenMissing,
+this.orderMeaning,
+this.elementOrderMeaning,
+this.fixedBase64Binary,
+this.elementFixedBase64Binary,
+this.fixedBoolean,
+this.elementFixedBoolean,
+this.fixedCanonical,
+this.elementFixedCanonical,
+this.fixedCode,
+this.elementFixedCode,
+this.fixedDate,
+this.elementFixedDate,
+this.fixedDateTime,
+this.elementFixedDateTime,
+this.fixedDecimal,
+this.elementFixedDecimal,
+this.fixedId,
+this.elementFixedId,
+this.fixedInstant,
+this.elementFixedInstant,
+this.fixedInteger,
+this.elementFixedInteger,
+this.fixedMarkdown,
+this.elementFixedMarkdown,
+this.fixedOid,
+this.elementFixedOid,
+this.fixedPositiveInt,
+this.elementFixedPositiveInt,
+this.fixedString,
+this.elementFixedString,
+this.fixedTime,
+this.elementFixedTime,
+this.fixedUnsignedInt,
+this.elementFixedUnsignedInt,
+this.fixedUri,
+this.elementFixedUri,
+this.fixedUrl,
+this.elementFixedUrl,
+this.fixedUuid,
+this.elementFixedUuid,
+this.fixedAddress,
+this.fixedAge,
+this.fixedAnnotation,
+this.fixedAttachment,
+this.fixedCodeableConcept,
+this.fixedCoding,
+this.fixedContactPoint,
+this.fixedCount,
+this.fixedDistance,
+this.fixedDuration,
+this.fixedHumanName,
+this.fixedIdentifier,
+this.fixedMoney,
+this.fixedPeriod,
+this.fixedQuantity,
+this.fixedRange,
+this.fixedRatio,
+this.fixedReference,
+this.fixedSampledData,
+this.fixedSignature,
+this.fixedTiming,
+this.fixedContactDetail,
+this.fixedContributor,
+this.fixedDataRequirement,
+this.fixedExpression,
+this.fixedParameterDefinition,
+this.fixedRelatedArtifact,
+this.fixedTriggerDefinition,
+this.fixedUsageContext,
+this.fixedDosage,
+this.fixedMeta,
+this.patternBase64Binary,
+this.elementPatternBase64Binary,
+this.patternBoolean,
+this.elementPatternBoolean,
+this.patternCanonical,
+this.elementPatternCanonical,
+this.patternCode,
+this.elementPatternCode,
+this.patternDate,
+this.elementPatternDate,
+this.patternDateTime,
+this.elementPatternDateTime,
+this.patternDecimal,
+this.elementPatternDecimal,
+this.patternId,
+this.elementPatternId,
+this.patternInstant,
+this.elementPatternInstant,
+this.patternInteger,
+this.elementPatternInteger,
+this.patternMarkdown,
+this.elementPatternMarkdown,
+this.patternOid,
+this.elementPatternOid,
+this.patternPositiveInt,
+this.elementPatternPositiveInt,
+this.patternString,
+this.elementPatternString,
+this.patternTime,
+this.elementPatternTime,
+this.patternUnsignedInt,
+this.elementPatternUnsignedInt,
+this.patternUri,
+this.elementPatternUri,
+this.patternUrl,
+this.elementPatternUrl,
+this.patternUuid,
+this.elementPatternUuid,
+this.patternAddress,
+this.patternAge,
+this.patternAnnotation,
+this.patternAttachment,
+this.patternCodeableConcept,
+this.patternCoding,
+this.patternContactPoint,
+this.patternCount,
+this.patternDistance,
+this.patternDuration,
+this.patternHumanName,
+this.patternIdentifier,
+this.patternMoney,
+this.patternPeriod,
+this.patternQuantity,
+this.patternRange,
+this.patternRatio,
+this.patternReference,
+this.patternSampledData,
+this.patternSignature,
+this.patternTiming,
+this.patternContactDetail,
+this.patternContributor,
+this.patternDataRequirement,
+this.patternExpression,
+this.patternParameterDefinition,
+this.patternRelatedArtifact,
+this.patternTriggerDefinition,
+this.patternUsageContext,
+this.patternDosage,
+this.patternMeta,
+this.example,
+this.minValueDate,
+this.elementMinValueDate,
+this.minValueDateTime,
+this.elementMinValueDateTime,
+this.minValueInstant,
+this.elementMinValueInstant,
+this.minValueTime,
+this.elementMinValueTime,
+this.minValueDecimal,
+this.elementMinValueDecimal,
+this.minValueInteger,
+this.elementMinValueInteger,
+this.minValuePositiveInt,
+this.elementMinValuePositiveInt,
+this.minValueUnsignedInt,
+this.elementMinValueUnsignedInt,
+this.minValueQuantity,
+this.maxValueDate,
+this.elementMaxValueDate,
+this.maxValueDateTime,
+this.elementMaxValueDateTime,
+this.maxValueInstant,
+this.elementMaxValueInstant,
+this.maxValueTime,
+this.elementMaxValueTime,
+this.maxValueDecimal,
+this.elementMaxValueDecimal,
+this.maxValueInteger,
+this.elementMaxValueInteger,
+this.maxValuePositiveInt,
+this.elementMaxValuePositiveInt,
+this.maxValueUnsignedInt,
+this.elementMaxValueUnsignedInt,
+this.maxValueQuantity,
+this.maxLength,
+this.elementMaxLength,
+this.condition,
+this.elementCondition,
+this.constraint,
+this.mustSupport,
+this.elementMustSupport,
+this.isModifier,
+this.elementIsModifier,
+this.isModifierReason,
+this.elementIsModifierReason,
+this.isSummary,
+this.elementIsSummary,
+this.binding,
+this.mapping,
+});
+
+  factory ElementDefinition.fromJson(Map<String, dynamic> json) => _$ElementDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinitionToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Slicing {
-  static Future<ElementDefinition_Slicing> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<ElementDefinition_Discriminator> discriminator,
-    String description,
-    Element elementDescription,
-    bool ordered,
-    Element elementOrdered,
-    String rules,
-    Element elementRules,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Slicing newElementDefinition_Slicing =
-        new ElementDefinition_Slicing(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Slicing'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      discriminator: discriminator,
-      description: description,
-      elementDescription: elementDescription,
-      ordered: ordered,
-      elementOrdered: elementOrdered,
-      rules: rules,
-      elementRules: elementRules,
-    );
-    return newElementDefinition_Slicing;
-  }
+class ElementDefinition_Slicing{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<ElementDefinition_Discriminator> discriminator;
-  String description;
-  Element elementDescription;
-  bool ordered;
-  Element elementOrdered;
-  String rules;
-  Element elementRules;
+	static Future<ElementDefinition_Slicing> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<ElementDefinition_Discriminator> discriminator,
+	String description,
+	Element elementDescription,
+	bool ordered,
+	Element elementOrdered,
+	String rules,
+	Element elementRules,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Slicing newElementDefinition_Slicing = new ElementDefinition_Slicing(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Slicing'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	discriminator: discriminator,
+	description: description,
+	elementDescription: elementDescription,
+	ordered: ordered,
+	elementOrdered: elementOrdered,
+	rules: rules,
+	elementRules: elementRules,
+);
+	return newElementDefinition_Slicing;
+}
 
-  ElementDefinition_Slicing({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.discriminator,
-    this.description,
-    this.elementDescription,
-    this.ordered,
-    this.elementOrdered,
-    this.rules,
-    this.elementRules,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<ElementDefinition_Discriminator> discriminator;
+	String description;
+	Element elementDescription;
+	bool ordered;
+	Element elementOrdered;
+	String rules;
+	Element elementRules;
 
-  factory ElementDefinition_Slicing.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_SlicingFromJson(json);
+ElementDefinition_Slicing(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.discriminator,
+this.description,
+this.elementDescription,
+this.ordered,
+this.elementOrdered,
+this.rules,
+this.elementRules,
+});
+
+  factory ElementDefinition_Slicing.fromJson(Map<String, dynamic> json) => _$ElementDefinition_SlicingFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinition_SlicingToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Discriminator {
-  static Future<ElementDefinition_Discriminator> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String type,
-    Element elementType,
-    String path,
-    Element elementPath,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Discriminator newElementDefinition_Discriminator =
-        new ElementDefinition_Discriminator(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Discriminator'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      elementType: elementType,
-      path: path,
-      elementPath: elementPath,
-    );
-    return newElementDefinition_Discriminator;
-  }
+class ElementDefinition_Discriminator{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String type;
-  Element elementType;
-  String path;
-  Element elementPath;
-
-  ElementDefinition_Discriminator({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.elementType,
-    this.path,
-    this.elementPath,
-  });
-
-  factory ElementDefinition_Discriminator.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_DiscriminatorFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$ElementDefinition_DiscriminatorToJson(this);
+	static Future<ElementDefinition_Discriminator> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String type,
+	Element elementType,
+	String path,
+	Element elementPath,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Discriminator newElementDefinition_Discriminator = new ElementDefinition_Discriminator(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Discriminator'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	elementType: elementType,
+	path: path,
+	elementPath: elementPath,
+);
+	return newElementDefinition_Discriminator;
 }
 
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String type;
+	Element elementType;
+	String path;
+	Element elementPath;
+
+ElementDefinition_Discriminator(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.type,
+this.elementType,
+this.path,
+this.elementPath,
+});
+
+  factory ElementDefinition_Discriminator.fromJson(Map<String, dynamic> json) => _$ElementDefinition_DiscriminatorFromJson(json);
+  Map<String, dynamic> toJson() => _$ElementDefinition_DiscriminatorToJson(this);
+}
+
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Base {
-  static Future<ElementDefinition_Base> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String path,
-    Element elementPath,
-    int min,
-    Element elementMin,
-    String max,
-    Element elementMax,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Base newElementDefinition_Base =
-        new ElementDefinition_Base(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Base'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      path: path,
-      elementPath: elementPath,
-      min: min,
-      elementMin: elementMin,
-      max: max,
-      elementMax: elementMax,
-    );
-    return newElementDefinition_Base;
-  }
+class ElementDefinition_Base{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String path;
-  Element elementPath;
-  int min;
-  Element elementMin;
-  String max;
-  Element elementMax;
+	static Future<ElementDefinition_Base> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String path,
+	Element elementPath,
+	int min,
+	Element elementMin,
+	String max,
+	Element elementMax,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Base newElementDefinition_Base = new ElementDefinition_Base(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Base'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	path: path,
+	elementPath: elementPath,
+	min: min,
+	elementMin: elementMin,
+	max: max,
+	elementMax: elementMax,
+);
+	return newElementDefinition_Base;
+}
 
-  ElementDefinition_Base({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.path,
-    this.elementPath,
-    this.min,
-    this.elementMin,
-    this.max,
-    this.elementMax,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String path;
+	Element elementPath;
+	int min;
+	Element elementMin;
+	String max;
+	Element elementMax;
 
-  factory ElementDefinition_Base.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_BaseFromJson(json);
+ElementDefinition_Base(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.path,
+this.elementPath,
+this.min,
+this.elementMin,
+this.max,
+this.elementMax,
+});
+
+  factory ElementDefinition_Base.fromJson(Map<String, dynamic> json) => _$ElementDefinition_BaseFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinition_BaseToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Type {
-  static Future<ElementDefinition_Type> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String code,
-    Element elementCode,
-    List<String> profile,
-    List<String> targetProfile,
-    String aggregation,
-    List<Element> elementAggregation,
-    String versioning,
-    Element elementVersioning,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Type newElementDefinition_Type =
-        new ElementDefinition_Type(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Type'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      elementCode: elementCode,
-      profile: profile,
-      targetProfile: targetProfile,
-      aggregation: aggregation,
-      elementAggregation: elementAggregation,
-      versioning: versioning,
-      elementVersioning: elementVersioning,
-    );
-    return newElementDefinition_Type;
-  }
+class ElementDefinition_Type{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String code;
-  Element elementCode;
-  List<String> profile;
-  List<String> targetProfile;
-  String aggregation;
-  List<Element> elementAggregation;
-  String versioning;
-  Element elementVersioning;
+	static Future<ElementDefinition_Type> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String code,
+	Element elementCode,
+	List<String> profile,
+	List<String> targetProfile,
+	String aggregation,
+	List<Element> elementAggregation,
+	String versioning,
+	Element elementVersioning,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Type newElementDefinition_Type = new ElementDefinition_Type(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Type'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	elementCode: elementCode,
+	profile: profile,
+	targetProfile: targetProfile,
+	aggregation: aggregation,
+	elementAggregation: elementAggregation,
+	versioning: versioning,
+	elementVersioning: elementVersioning,
+);
+	return newElementDefinition_Type;
+}
 
-  ElementDefinition_Type({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.elementCode,
-    this.profile,
-    this.targetProfile,
-    this.aggregation,
-    this.elementAggregation,
-    this.versioning,
-    this.elementVersioning,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String code;
+	Element elementCode;
+	List<String> profile;
+	List<String> targetProfile;
+	String aggregation;
+	List<Element> elementAggregation;
+	String versioning;
+	Element elementVersioning;
 
-  factory ElementDefinition_Type.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_TypeFromJson(json);
+ElementDefinition_Type(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.code,
+this.elementCode,
+this.profile,
+this.targetProfile,
+this.aggregation,
+this.elementAggregation,
+this.versioning,
+this.elementVersioning,
+});
+
+  factory ElementDefinition_Type.fromJson(Map<String, dynamic> json) => _$ElementDefinition_TypeFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinition_TypeToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Example {
-  static Future<ElementDefinition_Example> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String label,
-    Element elementLabel,
-    String valueBase64Binary,
-    Element elementValueBase64Binary,
-    bool valueBoolean,
-    Element elementValueBoolean,
-    String valueCanonical,
-    Element elementValueCanonical,
-    String valueCode,
-    Element elementValueCode,
-    String valueDate,
-    Element elementValueDate,
-    String valueDateTime,
-    Element elementValueDateTime,
-    int valueDecimal,
-    Element elementValueDecimal,
-    String valueId,
-    Element elementValueId,
-    String valueInstant,
-    Element elementValueInstant,
-    int valueInteger,
-    Element elementValueInteger,
-    String valueMarkdown,
-    Element elementValueMarkdown,
-    String valueOid,
-    Element elementValueOid,
-    int valuePositiveInt,
-    Element elementValuePositiveInt,
-    String valueString,
-    Element elementValueString,
-    String valueTime,
-    Element elementValueTime,
-    int valueUnsignedInt,
-    Element elementValueUnsignedInt,
-    String valueUri,
-    Element elementValueUri,
-    String valueUrl,
-    Element elementValueUrl,
-    String valueUuid,
-    Element elementValueUuid,
-    Address valueAddress,
-    Age valueAge,
-    Annotation valueAnnotation,
-    Attachment valueAttachment,
-    CodeableConcept valueCodeableConcept,
-    Coding valueCoding,
-    ContactPoint valueContactPoint,
-    Count valueCount,
-    Distance valueDistance,
-    Duration valueDuration,
-    HumanName valueHumanName,
-    Identifier valueIdentifier,
-    Money valueMoney,
-    Period valuePeriod,
-    Quantity valueQuantity,
-    Range valueRange,
-    Ratio valueRatio,
-    Reference valueReference,
-    SampledData valueSampledData,
-    Signature valueSignature,
-    Timing valueTiming,
-    ContactDetail valueContactDetail,
-    Contributor valueContributor,
-    DataRequirement valueDataRequirement,
-    Expression valueExpression,
-    ParameterDefinition valueParameterDefinition,
-    RelatedArtifact valueRelatedArtifact,
-    TriggerDefinition valueTriggerDefinition,
-    UsageContext valueUsageContext,
-    Dosage valueDosage,
-    Meta valueMeta,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Example newElementDefinition_Example =
-        new ElementDefinition_Example(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Example'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      label: label,
-      elementLabel: elementLabel,
-      valueBase64Binary: valueBase64Binary,
-      elementValueBase64Binary: elementValueBase64Binary,
-      valueBoolean: valueBoolean,
-      elementValueBoolean: elementValueBoolean,
-      valueCanonical: valueCanonical,
-      elementValueCanonical: elementValueCanonical,
-      valueCode: valueCode,
-      elementValueCode: elementValueCode,
-      valueDate: valueDate,
-      elementValueDate: elementValueDate,
-      valueDateTime: valueDateTime,
-      elementValueDateTime: elementValueDateTime,
-      valueDecimal: valueDecimal,
-      elementValueDecimal: elementValueDecimal,
-      valueId: valueId,
-      elementValueId: elementValueId,
-      valueInstant: valueInstant,
-      elementValueInstant: elementValueInstant,
-      valueInteger: valueInteger,
-      elementValueInteger: elementValueInteger,
-      valueMarkdown: valueMarkdown,
-      elementValueMarkdown: elementValueMarkdown,
-      valueOid: valueOid,
-      elementValueOid: elementValueOid,
-      valuePositiveInt: valuePositiveInt,
-      elementValuePositiveInt: elementValuePositiveInt,
-      valueString: valueString,
-      elementValueString: elementValueString,
-      valueTime: valueTime,
-      elementValueTime: elementValueTime,
-      valueUnsignedInt: valueUnsignedInt,
-      elementValueUnsignedInt: elementValueUnsignedInt,
-      valueUri: valueUri,
-      elementValueUri: elementValueUri,
-      valueUrl: valueUrl,
-      elementValueUrl: elementValueUrl,
-      valueUuid: valueUuid,
-      elementValueUuid: elementValueUuid,
-      valueAddress: valueAddress,
-      valueAge: valueAge,
-      valueAnnotation: valueAnnotation,
-      valueAttachment: valueAttachment,
-      valueCodeableConcept: valueCodeableConcept,
-      valueCoding: valueCoding,
-      valueContactPoint: valueContactPoint,
-      valueCount: valueCount,
-      valueDistance: valueDistance,
-      valueDuration: valueDuration,
-      valueHumanName: valueHumanName,
-      valueIdentifier: valueIdentifier,
-      valueMoney: valueMoney,
-      valuePeriod: valuePeriod,
-      valueQuantity: valueQuantity,
-      valueRange: valueRange,
-      valueRatio: valueRatio,
-      valueReference: valueReference,
-      valueSampledData: valueSampledData,
-      valueSignature: valueSignature,
-      valueTiming: valueTiming,
-      valueContactDetail: valueContactDetail,
-      valueContributor: valueContributor,
-      valueDataRequirement: valueDataRequirement,
-      valueExpression: valueExpression,
-      valueParameterDefinition: valueParameterDefinition,
-      valueRelatedArtifact: valueRelatedArtifact,
-      valueTriggerDefinition: valueTriggerDefinition,
-      valueUsageContext: valueUsageContext,
-      valueDosage: valueDosage,
-      valueMeta: valueMeta,
-    );
-    return newElementDefinition_Example;
-  }
+class ElementDefinition_Example{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String label;
-  Element elementLabel;
-  String valueBase64Binary;
-  Element elementValueBase64Binary;
-  bool valueBoolean;
-  Element elementValueBoolean;
-  String valueCanonical;
-  Element elementValueCanonical;
-  String valueCode;
-  Element elementValueCode;
-  String valueDate;
-  Element elementValueDate;
-  String valueDateTime;
-  Element elementValueDateTime;
-  int valueDecimal;
-  Element elementValueDecimal;
-  String valueId;
-  Element elementValueId;
-  String valueInstant;
-  Element elementValueInstant;
-  int valueInteger;
-  Element elementValueInteger;
-  String valueMarkdown;
-  Element elementValueMarkdown;
-  String valueOid;
-  Element elementValueOid;
-  int valuePositiveInt;
-  Element elementValuePositiveInt;
-  String valueString;
-  Element elementValueString;
-  String valueTime;
-  Element elementValueTime;
-  int valueUnsignedInt;
-  Element elementValueUnsignedInt;
-  String valueUri;
-  Element elementValueUri;
-  String valueUrl;
-  Element elementValueUrl;
-  String valueUuid;
-  Element elementValueUuid;
-  Address valueAddress;
-  Age valueAge;
-  Annotation valueAnnotation;
-  Attachment valueAttachment;
-  CodeableConcept valueCodeableConcept;
-  Coding valueCoding;
-  ContactPoint valueContactPoint;
-  Count valueCount;
-  Distance valueDistance;
-  Duration valueDuration;
-  HumanName valueHumanName;
-  Identifier valueIdentifier;
-  Money valueMoney;
-  Period valuePeriod;
-  Quantity valueQuantity;
-  Range valueRange;
-  Ratio valueRatio;
-  Reference valueReference;
-  SampledData valueSampledData;
-  Signature valueSignature;
-  Timing valueTiming;
-  ContactDetail valueContactDetail;
-  Contributor valueContributor;
-  DataRequirement valueDataRequirement;
-  Expression valueExpression;
-  ParameterDefinition valueParameterDefinition;
-  RelatedArtifact valueRelatedArtifact;
-  TriggerDefinition valueTriggerDefinition;
-  UsageContext valueUsageContext;
-  Dosage valueDosage;
-  Meta valueMeta;
+	static Future<ElementDefinition_Example> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String label,
+	Element elementLabel,
+	String valueBase64Binary,
+	Element elementValueBase64Binary,
+	bool valueBoolean,
+	Element elementValueBoolean,
+	String valueCanonical,
+	Element elementValueCanonical,
+	String valueCode,
+	Element elementValueCode,
+	String valueDate,
+	Element elementValueDate,
+	String valueDateTime,
+	Element elementValueDateTime,
+	int valueDecimal,
+	Element elementValueDecimal,
+	String valueId,
+	Element elementValueId,
+	String valueInstant,
+	Element elementValueInstant,
+	int valueInteger,
+	Element elementValueInteger,
+	String valueMarkdown,
+	Element elementValueMarkdown,
+	String valueOid,
+	Element elementValueOid,
+	int valuePositiveInt,
+	Element elementValuePositiveInt,
+	String valueString,
+	Element elementValueString,
+	String valueTime,
+	Element elementValueTime,
+	int valueUnsignedInt,
+	Element elementValueUnsignedInt,
+	String valueUri,
+	Element elementValueUri,
+	String valueUrl,
+	Element elementValueUrl,
+	String valueUuid,
+	Element elementValueUuid,
+	Address valueAddress,
+	Age valueAge,
+	Annotation valueAnnotation,
+	Attachment valueAttachment,
+	CodeableConcept valueCodeableConcept,
+	Coding valueCoding,
+	ContactPoint valueContactPoint,
+	Count valueCount,
+	Distance valueDistance,
+	Duration valueDuration,
+	HumanName valueHumanName,
+	Identifier valueIdentifier,
+	Money valueMoney,
+	Period valuePeriod,
+	Quantity valueQuantity,
+	Range valueRange,
+	Ratio valueRatio,
+	Reference valueReference,
+	SampledData valueSampledData,
+	Signature valueSignature,
+	Timing valueTiming,
+	ContactDetail valueContactDetail,
+	Contributor valueContributor,
+	DataRequirement valueDataRequirement,
+	Expression valueExpression,
+	ParameterDefinition valueParameterDefinition,
+	RelatedArtifact valueRelatedArtifact,
+	TriggerDefinition valueTriggerDefinition,
+	UsageContext valueUsageContext,
+	Dosage valueDosage,
+	Meta valueMeta,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Example newElementDefinition_Example = new ElementDefinition_Example(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Example'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	label: label,
+	elementLabel: elementLabel,
+	valueBase64Binary: valueBase64Binary,
+	elementValueBase64Binary: elementValueBase64Binary,
+	valueBoolean: valueBoolean,
+	elementValueBoolean: elementValueBoolean,
+	valueCanonical: valueCanonical,
+	elementValueCanonical: elementValueCanonical,
+	valueCode: valueCode,
+	elementValueCode: elementValueCode,
+	valueDate: valueDate,
+	elementValueDate: elementValueDate,
+	valueDateTime: valueDateTime,
+	elementValueDateTime: elementValueDateTime,
+	valueDecimal: valueDecimal,
+	elementValueDecimal: elementValueDecimal,
+	valueId: valueId,
+	elementValueId: elementValueId,
+	valueInstant: valueInstant,
+	elementValueInstant: elementValueInstant,
+	valueInteger: valueInteger,
+	elementValueInteger: elementValueInteger,
+	valueMarkdown: valueMarkdown,
+	elementValueMarkdown: elementValueMarkdown,
+	valueOid: valueOid,
+	elementValueOid: elementValueOid,
+	valuePositiveInt: valuePositiveInt,
+	elementValuePositiveInt: elementValuePositiveInt,
+	valueString: valueString,
+	elementValueString: elementValueString,
+	valueTime: valueTime,
+	elementValueTime: elementValueTime,
+	valueUnsignedInt: valueUnsignedInt,
+	elementValueUnsignedInt: elementValueUnsignedInt,
+	valueUri: valueUri,
+	elementValueUri: elementValueUri,
+	valueUrl: valueUrl,
+	elementValueUrl: elementValueUrl,
+	valueUuid: valueUuid,
+	elementValueUuid: elementValueUuid,
+	valueAddress: valueAddress,
+	valueAge: valueAge,
+	valueAnnotation: valueAnnotation,
+	valueAttachment: valueAttachment,
+	valueCodeableConcept: valueCodeableConcept,
+	valueCoding: valueCoding,
+	valueContactPoint: valueContactPoint,
+	valueCount: valueCount,
+	valueDistance: valueDistance,
+	valueDuration: valueDuration,
+	valueHumanName: valueHumanName,
+	valueIdentifier: valueIdentifier,
+	valueMoney: valueMoney,
+	valuePeriod: valuePeriod,
+	valueQuantity: valueQuantity,
+	valueRange: valueRange,
+	valueRatio: valueRatio,
+	valueReference: valueReference,
+	valueSampledData: valueSampledData,
+	valueSignature: valueSignature,
+	valueTiming: valueTiming,
+	valueContactDetail: valueContactDetail,
+	valueContributor: valueContributor,
+	valueDataRequirement: valueDataRequirement,
+	valueExpression: valueExpression,
+	valueParameterDefinition: valueParameterDefinition,
+	valueRelatedArtifact: valueRelatedArtifact,
+	valueTriggerDefinition: valueTriggerDefinition,
+	valueUsageContext: valueUsageContext,
+	valueDosage: valueDosage,
+	valueMeta: valueMeta,
+);
+	return newElementDefinition_Example;
+}
 
-  ElementDefinition_Example({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.label,
-    this.elementLabel,
-    this.valueBase64Binary,
-    this.elementValueBase64Binary,
-    this.valueBoolean,
-    this.elementValueBoolean,
-    this.valueCanonical,
-    this.elementValueCanonical,
-    this.valueCode,
-    this.elementValueCode,
-    this.valueDate,
-    this.elementValueDate,
-    this.valueDateTime,
-    this.elementValueDateTime,
-    this.valueDecimal,
-    this.elementValueDecimal,
-    this.valueId,
-    this.elementValueId,
-    this.valueInstant,
-    this.elementValueInstant,
-    this.valueInteger,
-    this.elementValueInteger,
-    this.valueMarkdown,
-    this.elementValueMarkdown,
-    this.valueOid,
-    this.elementValueOid,
-    this.valuePositiveInt,
-    this.elementValuePositiveInt,
-    this.valueString,
-    this.elementValueString,
-    this.valueTime,
-    this.elementValueTime,
-    this.valueUnsignedInt,
-    this.elementValueUnsignedInt,
-    this.valueUri,
-    this.elementValueUri,
-    this.valueUrl,
-    this.elementValueUrl,
-    this.valueUuid,
-    this.elementValueUuid,
-    this.valueAddress,
-    this.valueAge,
-    this.valueAnnotation,
-    this.valueAttachment,
-    this.valueCodeableConcept,
-    this.valueCoding,
-    this.valueContactPoint,
-    this.valueCount,
-    this.valueDistance,
-    this.valueDuration,
-    this.valueHumanName,
-    this.valueIdentifier,
-    this.valueMoney,
-    this.valuePeriod,
-    this.valueQuantity,
-    this.valueRange,
-    this.valueRatio,
-    this.valueReference,
-    this.valueSampledData,
-    this.valueSignature,
-    this.valueTiming,
-    this.valueContactDetail,
-    this.valueContributor,
-    this.valueDataRequirement,
-    this.valueExpression,
-    this.valueParameterDefinition,
-    this.valueRelatedArtifact,
-    this.valueTriggerDefinition,
-    this.valueUsageContext,
-    this.valueDosage,
-    this.valueMeta,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String label;
+	Element elementLabel;
+	String valueBase64Binary;
+	Element elementValueBase64Binary;
+	bool valueBoolean;
+	Element elementValueBoolean;
+	String valueCanonical;
+	Element elementValueCanonical;
+	String valueCode;
+	Element elementValueCode;
+	String valueDate;
+	Element elementValueDate;
+	String valueDateTime;
+	Element elementValueDateTime;
+	int valueDecimal;
+	Element elementValueDecimal;
+	String valueId;
+	Element elementValueId;
+	String valueInstant;
+	Element elementValueInstant;
+	int valueInteger;
+	Element elementValueInteger;
+	String valueMarkdown;
+	Element elementValueMarkdown;
+	String valueOid;
+	Element elementValueOid;
+	int valuePositiveInt;
+	Element elementValuePositiveInt;
+	String valueString;
+	Element elementValueString;
+	String valueTime;
+	Element elementValueTime;
+	int valueUnsignedInt;
+	Element elementValueUnsignedInt;
+	String valueUri;
+	Element elementValueUri;
+	String valueUrl;
+	Element elementValueUrl;
+	String valueUuid;
+	Element elementValueUuid;
+	Address valueAddress;
+	Age valueAge;
+	Annotation valueAnnotation;
+	Attachment valueAttachment;
+	CodeableConcept valueCodeableConcept;
+	Coding valueCoding;
+	ContactPoint valueContactPoint;
+	Count valueCount;
+	Distance valueDistance;
+	Duration valueDuration;
+	HumanName valueHumanName;
+	Identifier valueIdentifier;
+	Money valueMoney;
+	Period valuePeriod;
+	Quantity valueQuantity;
+	Range valueRange;
+	Ratio valueRatio;
+	Reference valueReference;
+	SampledData valueSampledData;
+	Signature valueSignature;
+	Timing valueTiming;
+	ContactDetail valueContactDetail;
+	Contributor valueContributor;
+	DataRequirement valueDataRequirement;
+	Expression valueExpression;
+	ParameterDefinition valueParameterDefinition;
+	RelatedArtifact valueRelatedArtifact;
+	TriggerDefinition valueTriggerDefinition;
+	UsageContext valueUsageContext;
+	Dosage valueDosage;
+	Meta valueMeta;
 
-  factory ElementDefinition_Example.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_ExampleFromJson(json);
+ElementDefinition_Example(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.label,
+this.elementLabel,
+this.valueBase64Binary,
+this.elementValueBase64Binary,
+this.valueBoolean,
+this.elementValueBoolean,
+this.valueCanonical,
+this.elementValueCanonical,
+this.valueCode,
+this.elementValueCode,
+this.valueDate,
+this.elementValueDate,
+this.valueDateTime,
+this.elementValueDateTime,
+this.valueDecimal,
+this.elementValueDecimal,
+this.valueId,
+this.elementValueId,
+this.valueInstant,
+this.elementValueInstant,
+this.valueInteger,
+this.elementValueInteger,
+this.valueMarkdown,
+this.elementValueMarkdown,
+this.valueOid,
+this.elementValueOid,
+this.valuePositiveInt,
+this.elementValuePositiveInt,
+this.valueString,
+this.elementValueString,
+this.valueTime,
+this.elementValueTime,
+this.valueUnsignedInt,
+this.elementValueUnsignedInt,
+this.valueUri,
+this.elementValueUri,
+this.valueUrl,
+this.elementValueUrl,
+this.valueUuid,
+this.elementValueUuid,
+this.valueAddress,
+this.valueAge,
+this.valueAnnotation,
+this.valueAttachment,
+this.valueCodeableConcept,
+this.valueCoding,
+this.valueContactPoint,
+this.valueCount,
+this.valueDistance,
+this.valueDuration,
+this.valueHumanName,
+this.valueIdentifier,
+this.valueMoney,
+this.valuePeriod,
+this.valueQuantity,
+this.valueRange,
+this.valueRatio,
+this.valueReference,
+this.valueSampledData,
+this.valueSignature,
+this.valueTiming,
+this.valueContactDetail,
+this.valueContributor,
+this.valueDataRequirement,
+this.valueExpression,
+this.valueParameterDefinition,
+this.valueRelatedArtifact,
+this.valueTriggerDefinition,
+this.valueUsageContext,
+this.valueDosage,
+this.valueMeta,
+});
+
+  factory ElementDefinition_Example.fromJson(Map<String, dynamic> json) => _$ElementDefinition_ExampleFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinition_ExampleToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Constraint {
-  static Future<ElementDefinition_Constraint> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String key,
-    Element elementKey,
-    String requirements,
-    Element elementRequirements,
-    String severity,
-    Element elementSeverity,
-    String human,
-    Element elementHuman,
-    String expression,
-    Element elementExpression,
-    String xpath,
-    Element elementXpath,
-    String source,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Constraint newElementDefinition_Constraint =
-        new ElementDefinition_Constraint(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Constraint'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      key: key,
-      elementKey: elementKey,
-      requirements: requirements,
-      elementRequirements: elementRequirements,
-      severity: severity,
-      elementSeverity: elementSeverity,
-      human: human,
-      elementHuman: elementHuman,
-      expression: expression,
-      elementExpression: elementExpression,
-      xpath: xpath,
-      elementXpath: elementXpath,
-      source: source,
-    );
-    return newElementDefinition_Constraint;
-  }
+class ElementDefinition_Constraint{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String key;
-  Element elementKey;
-  String requirements;
-  Element elementRequirements;
-  String severity;
-  Element elementSeverity;
-  String human;
-  Element elementHuman;
-  String expression;
-  Element elementExpression;
-  String xpath;
-  Element elementXpath;
-  String source;
+	static Future<ElementDefinition_Constraint> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String key,
+	Element elementKey,
+	String requirements,
+	Element elementRequirements,
+	String severity,
+	Element elementSeverity,
+	String human,
+	Element elementHuman,
+	String expression,
+	Element elementExpression,
+	String xpath,
+	Element elementXpath,
+	String source,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Constraint newElementDefinition_Constraint = new ElementDefinition_Constraint(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Constraint'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	key: key,
+	elementKey: elementKey,
+	requirements: requirements,
+	elementRequirements: elementRequirements,
+	severity: severity,
+	elementSeverity: elementSeverity,
+	human: human,
+	elementHuman: elementHuman,
+	expression: expression,
+	elementExpression: elementExpression,
+	xpath: xpath,
+	elementXpath: elementXpath,
+	source: source,
+);
+	return newElementDefinition_Constraint;
+}
 
-  ElementDefinition_Constraint({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.key,
-    this.elementKey,
-    this.requirements,
-    this.elementRequirements,
-    this.severity,
-    this.elementSeverity,
-    this.human,
-    this.elementHuman,
-    this.expression,
-    this.elementExpression,
-    this.xpath,
-    this.elementXpath,
-    this.source,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String key;
+	Element elementKey;
+	String requirements;
+	Element elementRequirements;
+	String severity;
+	Element elementSeverity;
+	String human;
+	Element elementHuman;
+	String expression;
+	Element elementExpression;
+	String xpath;
+	Element elementXpath;
+	String source;
 
-  factory ElementDefinition_Constraint.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_ConstraintFromJson(json);
+ElementDefinition_Constraint(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.key,
+this.elementKey,
+this.requirements,
+this.elementRequirements,
+this.severity,
+this.elementSeverity,
+this.human,
+this.elementHuman,
+this.expression,
+this.elementExpression,
+this.xpath,
+this.elementXpath,
+this.source,
+});
+
+  factory ElementDefinition_Constraint.fromJson(Map<String, dynamic> json) => _$ElementDefinition_ConstraintFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinition_ConstraintToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Binding {
-  static Future<ElementDefinition_Binding> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String strength,
-    Element elementStrength,
-    String description,
-    Element elementDescription,
-    String valueSet,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Binding newElementDefinition_Binding =
-        new ElementDefinition_Binding(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Binding'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      strength: strength,
-      elementStrength: elementStrength,
-      description: description,
-      elementDescription: elementDescription,
-      valueSet: valueSet,
-    );
-    return newElementDefinition_Binding;
-  }
+class ElementDefinition_Binding{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String strength;
-  Element elementStrength;
-  String description;
-  Element elementDescription;
-  String valueSet;
+	static Future<ElementDefinition_Binding> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String strength,
+	Element elementStrength,
+	String description,
+	Element elementDescription,
+	String valueSet,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Binding newElementDefinition_Binding = new ElementDefinition_Binding(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Binding'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	strength: strength,
+	elementStrength: elementStrength,
+	description: description,
+	elementDescription: elementDescription,
+	valueSet: valueSet,
+);
+	return newElementDefinition_Binding;
+}
 
-  ElementDefinition_Binding({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.strength,
-    this.elementStrength,
-    this.description,
-    this.elementDescription,
-    this.valueSet,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String strength;
+	Element elementStrength;
+	String description;
+	Element elementDescription;
+	String valueSet;
 
-  factory ElementDefinition_Binding.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_BindingFromJson(json);
+ElementDefinition_Binding(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.strength,
+this.elementStrength,
+this.description,
+this.elementDescription,
+this.valueSet,
+});
+
+  factory ElementDefinition_Binding.fromJson(Map<String, dynamic> json) => _$ElementDefinition_BindingFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinition_BindingToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ElementDefinition_Mapping {
-  static Future<ElementDefinition_Mapping> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String identity,
-    Element elementIdentity,
-    String language,
-    Element elementLanguage,
-    String map,
-    Element elementMap,
-    String comment,
-    Element elementComment,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ElementDefinition_Mapping newElementDefinition_Mapping =
-        new ElementDefinition_Mapping(
-      id: id ?? await fhirDb.newResourceId('ElementDefinition_Mapping'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identity: identity,
-      elementIdentity: elementIdentity,
-      language: language,
-      elementLanguage: elementLanguage,
-      map: map,
-      elementMap: elementMap,
-      comment: comment,
-      elementComment: elementComment,
-    );
-    return newElementDefinition_Mapping;
-  }
+class ElementDefinition_Mapping{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String identity;
-  Element elementIdentity;
-  String language;
-  Element elementLanguage;
-  String map;
-  Element elementMap;
-  String comment;
-  Element elementComment;
+	static Future<ElementDefinition_Mapping> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String identity,
+	Element elementIdentity,
+	String language,
+	Element elementLanguage,
+	String map,
+	Element elementMap,
+	String comment,
+	Element elementComment,
+}) async {
+var fhirDb = new DatabaseHelper();
+ElementDefinition_Mapping newElementDefinition_Mapping = new ElementDefinition_Mapping(
+	id: id ?? await fhirDb.newResourceId('ElementDefinition_Mapping'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identity: identity,
+	elementIdentity: elementIdentity,
+	language: language,
+	elementLanguage: elementLanguage,
+	map: map,
+	elementMap: elementMap,
+	comment: comment,
+	elementComment: elementComment,
+);
+	return newElementDefinition_Mapping;
+}
 
-  ElementDefinition_Mapping({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identity,
-    this.elementIdentity,
-    this.language,
-    this.elementLanguage,
-    this.map,
-    this.elementMap,
-    this.comment,
-    this.elementComment,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String identity;
+	Element elementIdentity;
+	String language;
+	Element elementLanguage;
+	String map;
+	Element elementMap;
+	String comment;
+	Element elementComment;
 
-  factory ElementDefinition_Mapping.fromJson(Map<String, dynamic> json) =>
-      _$ElementDefinition_MappingFromJson(json);
+ElementDefinition_Mapping(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.identity,
+this.elementIdentity,
+this.language,
+this.elementLanguage,
+this.map,
+this.elementMap,
+this.comment,
+this.elementComment,
+});
+
+  factory ElementDefinition_Mapping.fromJson(Map<String, dynamic> json) => _$ElementDefinition_MappingFromJson(json);
   Map<String, dynamic> toJson() => _$ElementDefinition_MappingToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

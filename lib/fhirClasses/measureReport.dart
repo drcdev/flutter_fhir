@@ -12,403 +12,407 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class MeasureReport {
-  static Future<MeasureReport> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    String type,
-    Element elementType,
-    String measure,
-    Reference subject,
-    DateTime date,
-    Element elementDate,
-    Reference reporter,
-    Period period,
-    CodeableConcept improvementNotation,
-    List<MeasureReport_Group> group,
-    List<Reference> evaluatedResource,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MeasureReport newMeasureReport = new MeasureReport(
-      resourceType: 'MeasureReport',
-      id: id ?? await fhirDb.newResourceId('MeasureReport'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      type: type,
-      elementType: elementType,
-      measure: measure,
-      subject: subject,
-      date: date,
-      elementDate: elementDate,
-      reporter: reporter,
-      period: period,
-      improvementNotation: improvementNotation,
-      group: group,
-      evaluatedResource: evaluatedResource,
-    );
-    newMeasureReport.meta.createdAt = DateTime.now();
-    newMeasureReport.meta.lastUpdated = newMeasureReport.meta.createdAt;
-    int saved = await fhirDb.saveResource(newMeasureReport);
-    return newMeasureReport;
-  }
+class MeasureReport{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<MeasureReport> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	String type,
+	Element elementType,
+	String measure,
+	Reference subject,
+	DateTime date,
+	Element elementDate,
+	Reference reporter,
+	Period period,
+	CodeableConcept improvementNotation,
+	List<MeasureReport_Group> group,
+	List<Reference> evaluatedResource,
+}) async {
+var fhirDb = new DatabaseHelper();
+MeasureReport newMeasureReport = new MeasureReport(
+	resourceType: 'MeasureReport',
+	id: id ?? await fhirDb.newResourceId('MeasureReport'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	type: type,
+	elementType: elementType,
+	measure: measure,
+	subject: subject,
+	date: date,
+	elementDate: elementDate,
+	reporter: reporter,
+	period: period,
+	improvementNotation: improvementNotation,
+	group: group,
+	evaluatedResource: evaluatedResource,
+);
+	newMeasureReport.meta.createdAt = DateTime.now();
+	newMeasureReport.meta.lastUpdated = newMeasureReport.meta.createdAt;
+	int saved = await fhirDb.saveResource(newMeasureReport);
+	 return newMeasureReport;
+}
 
-  String resourceType = 'MeasureReport';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  String type;
-  Element elementType;
-  String measure;
-  Reference subject;
-  DateTime date;
-  Element elementDate;
-  Reference reporter;
-  Period period;
-  CodeableConcept improvementNotation;
-  List<MeasureReport_Group> group;
-  List<Reference> evaluatedResource;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  MeasureReport({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.type,
-    this.elementType,
-    @required this.measure,
-    this.subject,
-    this.date,
-    this.elementDate,
-    this.reporter,
-    @required this.period,
-    this.improvementNotation,
-    this.group,
-    this.evaluatedResource,
-  });
+	String resourceType= 'MeasureReport';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	String type;
+	Element elementType;
+	String measure;
+	Reference subject;
+	DateTime date;
+	Element elementDate;
+	Reference reporter;
+	Period period;
+	CodeableConcept improvementNotation;
+	List<MeasureReport_Group> group;
+	List<Reference> evaluatedResource;
 
-  factory MeasureReport.fromJson(Map<String, dynamic> json) =>
-      _$MeasureReportFromJson(json);
+MeasureReport(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+this.type,
+this.elementType,
+@required this.measure,
+this.subject,
+this.date,
+this.elementDate,
+this.reporter,
+@required this.period,
+this.improvementNotation,
+this.group,
+this.evaluatedResource,
+});
+
+  factory MeasureReport.fromJson(Map<String, dynamic> json) => _$MeasureReportFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReportToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class MeasureReport_Group {
-  static Future<MeasureReport_Group> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    List<MeasureReport_Population> population,
-    Quantity measureScore,
-    List<MeasureReport_Stratifier> stratifier,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MeasureReport_Group newMeasureReport_Group = new MeasureReport_Group(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Group'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      population: population,
-      measureScore: measureScore,
-      stratifier: stratifier,
-    );
-    return newMeasureReport_Group;
-  }
+class MeasureReport_Group{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  List<MeasureReport_Population> population;
-  Quantity measureScore;
-  List<MeasureReport_Stratifier> stratifier;
+	static Future<MeasureReport_Group> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	List<MeasureReport_Population> population,
+	Quantity measureScore,
+	List<MeasureReport_Stratifier> stratifier,
+}) async {
+var fhirDb = new DatabaseHelper();
+MeasureReport_Group newMeasureReport_Group = new MeasureReport_Group(
+	id: id ?? await fhirDb.newResourceId('MeasureReport_Group'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	population: population,
+	measureScore: measureScore,
+	stratifier: stratifier,
+);
+	return newMeasureReport_Group;
+}
 
-  MeasureReport_Group({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.population,
-    this.measureScore,
-    this.stratifier,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	List<MeasureReport_Population> population;
+	Quantity measureScore;
+	List<MeasureReport_Stratifier> stratifier;
 
-  factory MeasureReport_Group.fromJson(Map<String, dynamic> json) =>
-      _$MeasureReport_GroupFromJson(json);
+MeasureReport_Group(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.code,
+this.population,
+this.measureScore,
+this.stratifier,
+});
+
+  factory MeasureReport_Group.fromJson(Map<String, dynamic> json) => _$MeasureReport_GroupFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_GroupToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class MeasureReport_Population {
-  static Future<MeasureReport_Population> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    int count,
-    Element elementCount,
-    Reference subjectResults,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MeasureReport_Population newMeasureReport_Population =
-        new MeasureReport_Population(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Population'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      count: count,
-      elementCount: elementCount,
-      subjectResults: subjectResults,
-    );
-    return newMeasureReport_Population;
-  }
+class MeasureReport_Population{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  int count;
-  Element elementCount;
-  Reference subjectResults;
+	static Future<MeasureReport_Population> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	int count,
+	Element elementCount,
+	Reference subjectResults,
+}) async {
+var fhirDb = new DatabaseHelper();
+MeasureReport_Population newMeasureReport_Population = new MeasureReport_Population(
+	id: id ?? await fhirDb.newResourceId('MeasureReport_Population'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	count: count,
+	elementCount: elementCount,
+	subjectResults: subjectResults,
+);
+	return newMeasureReport_Population;
+}
 
-  MeasureReport_Population({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.count,
-    this.elementCount,
-    this.subjectResults,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	int count;
+	Element elementCount;
+	Reference subjectResults;
 
-  factory MeasureReport_Population.fromJson(Map<String, dynamic> json) =>
-      _$MeasureReport_PopulationFromJson(json);
+MeasureReport_Population(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.code,
+this.count,
+this.elementCount,
+this.subjectResults,
+});
+
+  factory MeasureReport_Population.fromJson(Map<String, dynamic> json) => _$MeasureReport_PopulationFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_PopulationToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class MeasureReport_Stratifier {
-  static Future<MeasureReport_Stratifier> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<CodeableConcept> code,
-    List<MeasureReport_Stratum> stratum,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MeasureReport_Stratifier newMeasureReport_Stratifier =
-        new MeasureReport_Stratifier(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Stratifier'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      stratum: stratum,
-    );
-    return newMeasureReport_Stratifier;
-  }
+class MeasureReport_Stratifier{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<CodeableConcept> code;
-  List<MeasureReport_Stratum> stratum;
+	static Future<MeasureReport_Stratifier> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<CodeableConcept> code,
+	List<MeasureReport_Stratum> stratum,
+}) async {
+var fhirDb = new DatabaseHelper();
+MeasureReport_Stratifier newMeasureReport_Stratifier = new MeasureReport_Stratifier(
+	id: id ?? await fhirDb.newResourceId('MeasureReport_Stratifier'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	stratum: stratum,
+);
+	return newMeasureReport_Stratifier;
+}
 
-  MeasureReport_Stratifier({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.stratum,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<CodeableConcept> code;
+	List<MeasureReport_Stratum> stratum;
 
-  factory MeasureReport_Stratifier.fromJson(Map<String, dynamic> json) =>
-      _$MeasureReport_StratifierFromJson(json);
+MeasureReport_Stratifier(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.code,
+this.stratum,
+});
+
+  factory MeasureReport_Stratifier.fromJson(Map<String, dynamic> json) => _$MeasureReport_StratifierFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_StratifierToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class MeasureReport_Stratum {
-  static Future<MeasureReport_Stratum> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept value,
-    List<MeasureReport_Component> component,
-    List<MeasureReport_Population1> population,
-    Quantity measureScore,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MeasureReport_Stratum newMeasureReport_Stratum = new MeasureReport_Stratum(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Stratum'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      value: value,
-      component: component,
-      population: population,
-      measureScore: measureScore,
-    );
-    return newMeasureReport_Stratum;
-  }
+class MeasureReport_Stratum{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept value;
-  List<MeasureReport_Component> component;
-  List<MeasureReport_Population1> population;
-  Quantity measureScore;
+	static Future<MeasureReport_Stratum> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept value,
+	List<MeasureReport_Component> component,
+	List<MeasureReport_Population1> population,
+	Quantity measureScore,
+}) async {
+var fhirDb = new DatabaseHelper();
+MeasureReport_Stratum newMeasureReport_Stratum = new MeasureReport_Stratum(
+	id: id ?? await fhirDb.newResourceId('MeasureReport_Stratum'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	value: value,
+	component: component,
+	population: population,
+	measureScore: measureScore,
+);
+	return newMeasureReport_Stratum;
+}
 
-  MeasureReport_Stratum({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.value,
-    this.component,
-    this.population,
-    this.measureScore,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept value;
+	List<MeasureReport_Component> component;
+	List<MeasureReport_Population1> population;
+	Quantity measureScore;
 
-  factory MeasureReport_Stratum.fromJson(Map<String, dynamic> json) =>
-      _$MeasureReport_StratumFromJson(json);
+MeasureReport_Stratum(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.value,
+this.component,
+this.population,
+this.measureScore,
+});
+
+  factory MeasureReport_Stratum.fromJson(Map<String, dynamic> json) => _$MeasureReport_StratumFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_StratumToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class MeasureReport_Component {
-  static Future<MeasureReport_Component> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    CodeableConcept value,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MeasureReport_Component newMeasureReport_Component =
-        new MeasureReport_Component(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Component'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      value: value,
-    );
-    return newMeasureReport_Component;
-  }
+class MeasureReport_Component{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  CodeableConcept value;
+	static Future<MeasureReport_Component> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	CodeableConcept value,
+}) async {
+var fhirDb = new DatabaseHelper();
+MeasureReport_Component newMeasureReport_Component = new MeasureReport_Component(
+	id: id ?? await fhirDb.newResourceId('MeasureReport_Component'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	value: value,
+);
+	return newMeasureReport_Component;
+}
 
-  MeasureReport_Component({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.code,
-    @required this.value,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	CodeableConcept value;
 
-  factory MeasureReport_Component.fromJson(Map<String, dynamic> json) =>
-      _$MeasureReport_ComponentFromJson(json);
+MeasureReport_Component(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.code,
+@required this.value,
+});
+
+  factory MeasureReport_Component.fromJson(Map<String, dynamic> json) => _$MeasureReport_ComponentFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_ComponentToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class MeasureReport_Population1 {
-  static Future<MeasureReport_Population1> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    int count,
-    Element elementCount,
-    Reference subjectResults,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MeasureReport_Population1 newMeasureReport_Population1 =
-        new MeasureReport_Population1(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Population1'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      count: count,
-      elementCount: elementCount,
-      subjectResults: subjectResults,
-    );
-    return newMeasureReport_Population1;
-  }
+class MeasureReport_Population1{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  int count;
-  Element elementCount;
-  Reference subjectResults;
+	static Future<MeasureReport_Population1> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	int count,
+	Element elementCount,
+	Reference subjectResults,
+}) async {
+var fhirDb = new DatabaseHelper();
+MeasureReport_Population1 newMeasureReport_Population1 = new MeasureReport_Population1(
+	id: id ?? await fhirDb.newResourceId('MeasureReport_Population1'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	count: count,
+	elementCount: elementCount,
+	subjectResults: subjectResults,
+);
+	return newMeasureReport_Population1;
+}
 
-  MeasureReport_Population1({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.count,
-    this.elementCount,
-    this.subjectResults,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	int count;
+	Element elementCount;
+	Reference subjectResults;
 
-  factory MeasureReport_Population1.fromJson(Map<String, dynamic> json) =>
-      _$MeasureReport_Population1FromJson(json);
+MeasureReport_Population1(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.code,
+this.count,
+this.elementCount,
+this.subjectResults,
+});
+
+  factory MeasureReport_Population1.fromJson(Map<String, dynamic> json) => _$MeasureReport_Population1FromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_Population1ToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -435,9 +439,8 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

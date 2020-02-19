@@ -7,7 +7,7 @@ import 'package:flutter_fhir/fhirClasses/location.dart';
 import 'package:flutter_fhir/fhirClasses/medicationAdministration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
-import 'package:flutter_fhir/mainMenu/mainMenu.dart';
+import 'package:flutter_fhir/mainMenu.dart';
 import 'package:flutter_fhir/util/db.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -17,26 +17,25 @@ import 'package:flutter_fhir/fhirClasses/patient.dart';
 
 class ParasiteVisit extends StatelessWidget {
   Patient pt;
-  ParasiteVisit({this.pt});
+  ParasiteVisit(this.pt);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: pt != null ? _ParasiteVisit(pt: pt) : _ParasiteVisit(),
+      home: _ParasiteVisit(pt),
     );
   }
 }
 
 class _ParasiteVisit extends StatefulWidget {
   Patient pt;
-  _ParasiteVisit({this.pt});
+  _ParasiteVisit(this.pt);
   @override
-  _ParasiteVisitState createState() =>
-      pt != null ? _ParasiteVisitState(pt: pt) : _ParasiteVisitState();
+  _ParasiteVisitState createState() => _ParasiteVisitState(pt);
 }
 
 class _ParasiteVisitState extends State<_ParasiteVisit> {
   Patient pt;
-  _ParasiteVisitState({this.pt});
+  _ParasiteVisitState(this.pt);
   Location location;
   Composition composition;
   Encounter encounter;
@@ -52,6 +51,11 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
         position: await Location_Position.newInstance(
             latitude: currentPosition.latitude,
             longitude: currentPosition.longitude));
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -77,7 +81,9 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
             ),
             RaisedButton(
               onPressed: () async {
-                _getLocation();
+                await _getLocation();
+                String reference = 'Patient/' + pt.id;
+                String display = pt.printName();
                 encounter = await Encounter.newInstance(
                     status: 'in-progress',
                     classs: await Coding.newInstance(
@@ -85,7 +91,7 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
                         code: 'HH',
                         display: 'Home Health'),
                     subject: await Reference.newInstance(
-                        reference: 'Patient/' + pt.id, display: pt.printName()),
+                        reference: reference, display: display),
                     participant: [
                       await Encounter_Participant.newInstance(
                           individual: await Reference.newInstance(

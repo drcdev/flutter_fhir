@@ -10,265 +10,267 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class AdverseEvent {
-  static Future<AdverseEvent> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Identifier identifier,
-    String actuality,
-    Element elementActuality,
-    List<CodeableConcept> category,
-    CodeableConcept event,
-    Reference subject,
-    Reference encounter,
-    DateTime date,
-    Element elementDate,
-    DateTime detected,
-    Element elementDetected,
-    DateTime recordedDate,
-    Element elementRecordedDate,
-    List<Reference> resultingCondition,
-    Reference location,
-    CodeableConcept seriousness,
-    CodeableConcept severity,
-    CodeableConcept outcome,
-    Reference recorder,
-    List<Reference> contributor,
-    List<AdverseEvent_SuspectEntity> suspectEntity,
-    List<Reference> subjectMedicalHistory,
-    List<Reference> referenceDocument,
-    List<Reference> study,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    AdverseEvent newAdverseEvent = new AdverseEvent(
-      resourceType: 'AdverseEvent',
-      id: id ?? await fhirDb.newResourceId('AdverseEvent'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      actuality: actuality,
-      elementActuality: elementActuality,
-      category: category,
-      event: event,
-      subject: subject,
-      encounter: encounter,
-      date: date,
-      elementDate: elementDate,
-      detected: detected,
-      elementDetected: elementDetected,
-      recordedDate: recordedDate,
-      elementRecordedDate: elementRecordedDate,
-      resultingCondition: resultingCondition,
-      location: location,
-      seriousness: seriousness,
-      severity: severity,
-      outcome: outcome,
-      recorder: recorder,
-      contributor: contributor,
-      suspectEntity: suspectEntity,
-      subjectMedicalHistory: subjectMedicalHistory,
-      referenceDocument: referenceDocument,
-      study: study,
-    );
-    newAdverseEvent.meta.createdAt = DateTime.now();
-    newAdverseEvent.meta.lastUpdated = newAdverseEvent.meta.createdAt;
-    int saved = await fhirDb.saveResource(newAdverseEvent);
-    return newAdverseEvent;
-  }
+class AdverseEvent{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<AdverseEvent> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Identifier identifier,
+	String actuality,
+	Element elementActuality,
+	List<CodeableConcept> category,
+	CodeableConcept event,
+	Reference subject,
+	Reference encounter,
+	DateTime date,
+	Element elementDate,
+	DateTime detected,
+	Element elementDetected,
+	DateTime recordedDate,
+	Element elementRecordedDate,
+	List<Reference> resultingCondition,
+	Reference location,
+	CodeableConcept seriousness,
+	CodeableConcept severity,
+	CodeableConcept outcome,
+	Reference recorder,
+	List<Reference> contributor,
+	List<AdverseEvent_SuspectEntity> suspectEntity,
+	List<Reference> subjectMedicalHistory,
+	List<Reference> referenceDocument,
+	List<Reference> study,
+}) async {
+var fhirDb = new DatabaseHelper();
+AdverseEvent newAdverseEvent = new AdverseEvent(
+	resourceType: 'AdverseEvent',
+	id: id ?? await fhirDb.newResourceId('AdverseEvent'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	actuality: actuality,
+	elementActuality: elementActuality,
+	category: category,
+	event: event,
+	subject: subject,
+	encounter: encounter,
+	date: date,
+	elementDate: elementDate,
+	detected: detected,
+	elementDetected: elementDetected,
+	recordedDate: recordedDate,
+	elementRecordedDate: elementRecordedDate,
+	resultingCondition: resultingCondition,
+	location: location,
+	seriousness: seriousness,
+	severity: severity,
+	outcome: outcome,
+	recorder: recorder,
+	contributor: contributor,
+	suspectEntity: suspectEntity,
+	subjectMedicalHistory: subjectMedicalHistory,
+	referenceDocument: referenceDocument,
+	study: study,
+);
+	newAdverseEvent.meta.createdAt = DateTime.now();
+	newAdverseEvent.meta.lastUpdated = newAdverseEvent.meta.createdAt;
+	int saved = await fhirDb.saveResource(newAdverseEvent);
+	 return newAdverseEvent;
+}
 
-  String resourceType = 'AdverseEvent';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Identifier identifier;
-  String actuality;
-  Element elementActuality;
-  List<CodeableConcept> category;
-  CodeableConcept event;
-  Reference subject;
-  Reference encounter;
-  DateTime date;
-  Element elementDate;
-  DateTime detected;
-  Element elementDetected;
-  DateTime recordedDate;
-  Element elementRecordedDate;
-  List<Reference> resultingCondition;
-  Reference location;
-  CodeableConcept seriousness;
-  CodeableConcept severity;
-  CodeableConcept outcome;
-  Reference recorder;
-  List<Reference> contributor;
-  List<AdverseEvent_SuspectEntity> suspectEntity;
-  List<Reference> subjectMedicalHistory;
-  List<Reference> referenceDocument;
-  List<Reference> study;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  AdverseEvent({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.actuality,
-    this.elementActuality,
-    this.category,
-    this.event,
-    @required this.subject,
-    this.encounter,
-    this.date,
-    this.elementDate,
-    this.detected,
-    this.elementDetected,
-    this.recordedDate,
-    this.elementRecordedDate,
-    this.resultingCondition,
-    this.location,
-    this.seriousness,
-    this.severity,
-    this.outcome,
-    this.recorder,
-    this.contributor,
-    this.suspectEntity,
-    this.subjectMedicalHistory,
-    this.referenceDocument,
-    this.study,
-  });
+	String resourceType= 'AdverseEvent';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Identifier identifier;
+	String actuality;
+	Element elementActuality;
+	List<CodeableConcept> category;
+	CodeableConcept event;
+	Reference subject;
+	Reference encounter;
+	DateTime date;
+	Element elementDate;
+	DateTime detected;
+	Element elementDetected;
+	DateTime recordedDate;
+	Element elementRecordedDate;
+	List<Reference> resultingCondition;
+	Reference location;
+	CodeableConcept seriousness;
+	CodeableConcept severity;
+	CodeableConcept outcome;
+	Reference recorder;
+	List<Reference> contributor;
+	List<AdverseEvent_SuspectEntity> suspectEntity;
+	List<Reference> subjectMedicalHistory;
+	List<Reference> referenceDocument;
+	List<Reference> study;
 
-  factory AdverseEvent.fromJson(Map<String, dynamic> json) =>
-      _$AdverseEventFromJson(json);
+AdverseEvent(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.actuality,
+this.elementActuality,
+this.category,
+this.event,
+@required this.subject,
+this.encounter,
+this.date,
+this.elementDate,
+this.detected,
+this.elementDetected,
+this.recordedDate,
+this.elementRecordedDate,
+this.resultingCondition,
+this.location,
+this.seriousness,
+this.severity,
+this.outcome,
+this.recorder,
+this.contributor,
+this.suspectEntity,
+this.subjectMedicalHistory,
+this.referenceDocument,
+this.study,
+});
+
+  factory AdverseEvent.fromJson(Map<String, dynamic> json) => _$AdverseEventFromJson(json);
   Map<String, dynamic> toJson() => _$AdverseEventToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class AdverseEvent_SuspectEntity {
-  static Future<AdverseEvent_SuspectEntity> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Reference instance,
-    List<AdverseEvent_Causality> causality,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    AdverseEvent_SuspectEntity newAdverseEvent_SuspectEntity =
-        new AdverseEvent_SuspectEntity(
-      id: id ?? await fhirDb.newResourceId('AdverseEvent_SuspectEntity'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      instance: instance,
-      causality: causality,
-    );
-    return newAdverseEvent_SuspectEntity;
-  }
+class AdverseEvent_SuspectEntity{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Reference instance;
-  List<AdverseEvent_Causality> causality;
+	static Future<AdverseEvent_SuspectEntity> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Reference instance,
+	List<AdverseEvent_Causality> causality,
+}) async {
+var fhirDb = new DatabaseHelper();
+AdverseEvent_SuspectEntity newAdverseEvent_SuspectEntity = new AdverseEvent_SuspectEntity(
+	id: id ?? await fhirDb.newResourceId('AdverseEvent_SuspectEntity'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	instance: instance,
+	causality: causality,
+);
+	return newAdverseEvent_SuspectEntity;
+}
 
-  AdverseEvent_SuspectEntity({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.instance,
-    this.causality,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Reference instance;
+	List<AdverseEvent_Causality> causality;
 
-  factory AdverseEvent_SuspectEntity.fromJson(Map<String, dynamic> json) =>
-      _$AdverseEvent_SuspectEntityFromJson(json);
+AdverseEvent_SuspectEntity(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.instance,
+this.causality,
+});
+
+  factory AdverseEvent_SuspectEntity.fromJson(Map<String, dynamic> json) => _$AdverseEvent_SuspectEntityFromJson(json);
   Map<String, dynamic> toJson() => _$AdverseEvent_SuspectEntityToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class AdverseEvent_Causality {
-  static Future<AdverseEvent_Causality> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept assessment,
-    String productRelatedness,
-    Element elementProductRelatedness,
-    Reference author,
-    CodeableConcept method,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    AdverseEvent_Causality newAdverseEvent_Causality =
-        new AdverseEvent_Causality(
-      id: id ?? await fhirDb.newResourceId('AdverseEvent_Causality'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      assessment: assessment,
-      productRelatedness: productRelatedness,
-      elementProductRelatedness: elementProductRelatedness,
-      author: author,
-      method: method,
-    );
-    return newAdverseEvent_Causality;
-  }
+class AdverseEvent_Causality{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept assessment;
-  String productRelatedness;
-  Element elementProductRelatedness;
-  Reference author;
-  CodeableConcept method;
+	static Future<AdverseEvent_Causality> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept assessment,
+	String productRelatedness,
+	Element elementProductRelatedness,
+	Reference author,
+	CodeableConcept method,
+}) async {
+var fhirDb = new DatabaseHelper();
+AdverseEvent_Causality newAdverseEvent_Causality = new AdverseEvent_Causality(
+	id: id ?? await fhirDb.newResourceId('AdverseEvent_Causality'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	assessment: assessment,
+	productRelatedness: productRelatedness,
+	elementProductRelatedness: elementProductRelatedness,
+	author: author,
+	method: method,
+);
+	return newAdverseEvent_Causality;
+}
 
-  AdverseEvent_Causality({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.assessment,
-    this.productRelatedness,
-    this.elementProductRelatedness,
-    this.author,
-    this.method,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept assessment;
+	String productRelatedness;
+	Element elementProductRelatedness;
+	Reference author;
+	CodeableConcept method;
 
-  factory AdverseEvent_Causality.fromJson(Map<String, dynamic> json) =>
-      _$AdverseEvent_CausalityFromJson(json);
+AdverseEvent_Causality(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.assessment,
+this.productRelatedness,
+this.elementProductRelatedness,
+this.author,
+this.method,
+});
+
+  factory AdverseEvent_Causality.fromJson(Map<String, dynamic> json) => _$AdverseEvent_CausalityFromJson(json);
   Map<String, dynamic> toJson() => _$AdverseEvent_CausalityToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -295,9 +297,8 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

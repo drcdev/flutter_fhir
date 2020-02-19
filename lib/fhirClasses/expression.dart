@@ -4,72 +4,74 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Expression {
-  static Future<Expression> newInstance({
-    String id,
-    List<Extension> extension,
-    String description,
-    Element elementDescription,
-    String name,
-    Element elementName,
-    String language,
-    Element elementLanguage,
-    String expression,
-    Element elementExpression,
-    String reference,
-    Element elementReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Expression newExpression = new Expression(
-      id: id ?? await fhirDb.newResourceId('Expression'),
-      extension: extension,
-      description: description,
-      elementDescription: elementDescription,
-      name: name,
-      elementName: elementName,
-      language: language,
-      elementLanguage: elementLanguage,
-      expression: expression,
-      elementExpression: elementExpression,
-      reference: reference,
-      elementReference: elementReference,
-    );
-    return newExpression;
-  }
+class Expression{
 
-  String id;
-  List<Extension> extension;
-  String description;
-  Element elementDescription;
-  String name;
-  Element elementName;
-  String language;
-  Element elementLanguage;
-  String expression;
-  Element elementExpression;
-  String reference;
-  Element elementReference;
+	static Future<Expression> newInstance(
+	{	String id,
+	List<Extension> extension,
+	String description,
+	Element elementDescription,
+	String name,
+	Element elementName,
+	String language,
+	Element elementLanguage,
+	String expression,
+	Element elementExpression,
+	String reference,
+	Element elementReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Expression newExpression = new Expression(
+	id: id ?? await fhirDb.newResourceId('Expression'),
+	extension: extension,
+	description: description,
+	elementDescription: elementDescription,
+	name: name,
+	elementName: elementName,
+	language: language,
+	elementLanguage: elementLanguage,
+	expression: expression,
+	elementExpression: elementExpression,
+	reference: reference,
+	elementReference: elementReference,
+);
+	return newExpression;
+}
 
-  Expression({
-    this.id,
-    this.extension,
-    this.description,
-    this.elementDescription,
-    this.name,
-    this.elementName,
-    this.language,
-    this.elementLanguage,
-    this.expression,
-    this.elementExpression,
-    this.reference,
-    this.elementReference,
-  });
+	String id;
+	List<Extension> extension;
+	String description;
+	Element elementDescription;
+	String name;
+	Element elementName;
+	String language;
+	Element elementLanguage;
+	String expression;
+	Element elementExpression;
+	String reference;
+	Element elementReference;
 
-  factory Expression.fromJson(Map<String, dynamic> json) =>
-      _$ExpressionFromJson(json);
+Expression(
+	{this.id,
+this.extension,
+this.description,
+this.elementDescription,
+this.name,
+this.elementName,
+this.language,
+this.elementLanguage,
+this.expression,
+this.elementExpression,
+this.reference,
+this.elementReference,
+});
+
+  factory Expression.fromJson(Map<String, dynamic> json) => _$ExpressionFromJson(json);
   Map<String, dynamic> toJson() => _$ExpressionToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

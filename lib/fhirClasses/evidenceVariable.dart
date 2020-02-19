@@ -20,354 +20,355 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class EvidenceVariable {
-  static Future<EvidenceVariable> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String url,
-    Element elementUrl,
-    List<Identifier> identifier,
-    String version,
-    Element elementVersion,
-    String name,
-    Element elementName,
-    String title,
-    Element elementTitle,
-    String shortTitle,
-    Element elementShortTitle,
-    String subtitle,
-    Element elementSubtitle,
-    String status,
-    Element elementStatus,
-    DateTime date,
-    Element elementDate,
-    String publisher,
-    Element elementPublisher,
-    List<ContactDetail> contact,
-    String description,
-    Element elementDescription,
-    List<Annotation> note,
-    List<UsageContext> useContext,
-    List<CodeableConcept> jurisdiction,
-    String copyright,
-    Element elementCopyright,
-    String approvalDate,
-    Element elementApprovalDate,
-    String lastReviewDate,
-    Element elementLastReviewDate,
-    Period effectivePeriod,
-    List<CodeableConcept> topic,
-    List<ContactDetail> author,
-    List<ContactDetail> editor,
-    List<ContactDetail> reviewer,
-    List<ContactDetail> endorser,
-    List<RelatedArtifact> relatedArtifact,
-    String type,
-    Element elementType,
-    List<EvidenceVariable_Characteristic> characteristic,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    EvidenceVariable newEvidenceVariable = new EvidenceVariable(
-      resourceType: 'EvidenceVariable',
-      id: id ?? await fhirDb.newResourceId('EvidenceVariable'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      url: url,
-      elementUrl: elementUrl,
-      identifier: identifier,
-      version: version,
-      elementVersion: elementVersion,
-      name: name,
-      elementName: elementName,
-      title: title,
-      elementTitle: elementTitle,
-      shortTitle: shortTitle,
-      elementShortTitle: elementShortTitle,
-      subtitle: subtitle,
-      elementSubtitle: elementSubtitle,
-      status: status,
-      elementStatus: elementStatus,
-      date: date,
-      elementDate: elementDate,
-      publisher: publisher,
-      elementPublisher: elementPublisher,
-      contact: contact,
-      description: description,
-      elementDescription: elementDescription,
-      note: note,
-      useContext: useContext,
-      jurisdiction: jurisdiction,
-      copyright: copyright,
-      elementCopyright: elementCopyright,
-      approvalDate: approvalDate,
-      elementApprovalDate: elementApprovalDate,
-      lastReviewDate: lastReviewDate,
-      elementLastReviewDate: elementLastReviewDate,
-      effectivePeriod: effectivePeriod,
-      topic: topic,
-      author: author,
-      editor: editor,
-      reviewer: reviewer,
-      endorser: endorser,
-      relatedArtifact: relatedArtifact,
-      type: type,
-      elementType: elementType,
-      characteristic: characteristic,
-    );
-    newEvidenceVariable.meta.createdAt = DateTime.now();
-    newEvidenceVariable.meta.lastUpdated = newEvidenceVariable.meta.createdAt;
-    int saved = await fhirDb.saveResource(newEvidenceVariable);
-    return newEvidenceVariable;
-  }
+class EvidenceVariable{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<EvidenceVariable> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String url,
+	Element elementUrl,
+	List<Identifier> identifier,
+	String version,
+	Element elementVersion,
+	String name,
+	Element elementName,
+	String title,
+	Element elementTitle,
+	String shortTitle,
+	Element elementShortTitle,
+	String subtitle,
+	Element elementSubtitle,
+	String status,
+	Element elementStatus,
+	DateTime date,
+	Element elementDate,
+	String publisher,
+	Element elementPublisher,
+	List<ContactDetail> contact,
+	String description,
+	Element elementDescription,
+	List<Annotation> note,
+	List<UsageContext> useContext,
+	List<CodeableConcept> jurisdiction,
+	String copyright,
+	Element elementCopyright,
+	String approvalDate,
+	Element elementApprovalDate,
+	String lastReviewDate,
+	Element elementLastReviewDate,
+	Period effectivePeriod,
+	List<CodeableConcept> topic,
+	List<ContactDetail> author,
+	List<ContactDetail> editor,
+	List<ContactDetail> reviewer,
+	List<ContactDetail> endorser,
+	List<RelatedArtifact> relatedArtifact,
+	String type,
+	Element elementType,
+	List<EvidenceVariable_Characteristic> characteristic,
+}) async {
+var fhirDb = new DatabaseHelper();
+EvidenceVariable newEvidenceVariable = new EvidenceVariable(
+	resourceType: 'EvidenceVariable',
+	id: id ?? await fhirDb.newResourceId('EvidenceVariable'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	url: url,
+	elementUrl: elementUrl,
+	identifier: identifier,
+	version: version,
+	elementVersion: elementVersion,
+	name: name,
+	elementName: elementName,
+	title: title,
+	elementTitle: elementTitle,
+	shortTitle: shortTitle,
+	elementShortTitle: elementShortTitle,
+	subtitle: subtitle,
+	elementSubtitle: elementSubtitle,
+	status: status,
+	elementStatus: elementStatus,
+	date: date,
+	elementDate: elementDate,
+	publisher: publisher,
+	elementPublisher: elementPublisher,
+	contact: contact,
+	description: description,
+	elementDescription: elementDescription,
+	note: note,
+	useContext: useContext,
+	jurisdiction: jurisdiction,
+	copyright: copyright,
+	elementCopyright: elementCopyright,
+	approvalDate: approvalDate,
+	elementApprovalDate: elementApprovalDate,
+	lastReviewDate: lastReviewDate,
+	elementLastReviewDate: elementLastReviewDate,
+	effectivePeriod: effectivePeriod,
+	topic: topic,
+	author: author,
+	editor: editor,
+	reviewer: reviewer,
+	endorser: endorser,
+	relatedArtifact: relatedArtifact,
+	type: type,
+	elementType: elementType,
+	characteristic: characteristic,
+);
+	newEvidenceVariable.meta.createdAt = DateTime.now();
+	newEvidenceVariable.meta.lastUpdated = newEvidenceVariable.meta.createdAt;
+	int saved = await fhirDb.saveResource(newEvidenceVariable);
+	 return newEvidenceVariable;
+}
 
-  String resourceType = 'EvidenceVariable';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String url;
-  Element elementUrl;
-  List<Identifier> identifier;
-  String version;
-  Element elementVersion;
-  String name;
-  Element elementName;
-  String title;
-  Element elementTitle;
-  String shortTitle;
-  Element elementShortTitle;
-  String subtitle;
-  Element elementSubtitle;
-  String status;
-  Element elementStatus;
-  DateTime date;
-  Element elementDate;
-  String publisher;
-  Element elementPublisher;
-  List<ContactDetail> contact;
-  String description;
-  Element elementDescription;
-  List<Annotation> note;
-  List<UsageContext> useContext;
-  List<CodeableConcept> jurisdiction;
-  String copyright;
-  Element elementCopyright;
-  String approvalDate;
-  Element elementApprovalDate;
-  String lastReviewDate;
-  Element elementLastReviewDate;
-  Period effectivePeriod;
-  List<CodeableConcept> topic;
-  List<ContactDetail> author;
-  List<ContactDetail> editor;
-  List<ContactDetail> reviewer;
-  List<ContactDetail> endorser;
-  List<RelatedArtifact> relatedArtifact;
-  String type;
-  Element elementType;
-  List<EvidenceVariable_Characteristic> characteristic;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  EvidenceVariable({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.shortTitle,
-    this.elementShortTitle,
-    this.subtitle,
-    this.elementSubtitle,
-    this.status,
-    this.elementStatus,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.note,
-    this.useContext,
-    this.jurisdiction,
-    this.copyright,
-    this.elementCopyright,
-    this.approvalDate,
-    this.elementApprovalDate,
-    this.lastReviewDate,
-    this.elementLastReviewDate,
-    this.effectivePeriod,
-    this.topic,
-    this.author,
-    this.editor,
-    this.reviewer,
-    this.endorser,
-    this.relatedArtifact,
-    this.type,
-    this.elementType,
-    @required this.characteristic,
-  });
+	String resourceType= 'EvidenceVariable';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String url;
+	Element elementUrl;
+	List<Identifier> identifier;
+	String version;
+	Element elementVersion;
+	String name;
+	Element elementName;
+	String title;
+	Element elementTitle;
+	String shortTitle;
+	Element elementShortTitle;
+	String subtitle;
+	Element elementSubtitle;
+	String status;
+	Element elementStatus;
+	DateTime date;
+	Element elementDate;
+	String publisher;
+	Element elementPublisher;
+	List<ContactDetail> contact;
+	String description;
+	Element elementDescription;
+	List<Annotation> note;
+	List<UsageContext> useContext;
+	List<CodeableConcept> jurisdiction;
+	String copyright;
+	Element elementCopyright;
+	String approvalDate;
+	Element elementApprovalDate;
+	String lastReviewDate;
+	Element elementLastReviewDate;
+	Period effectivePeriod;
+	List<CodeableConcept> topic;
+	List<ContactDetail> author;
+	List<ContactDetail> editor;
+	List<ContactDetail> reviewer;
+	List<ContactDetail> endorser;
+	List<RelatedArtifact> relatedArtifact;
+	String type;
+	Element elementType;
+	List<EvidenceVariable_Characteristic> characteristic;
 
-  factory EvidenceVariable.fromJson(Map<String, dynamic> json) =>
-      _$EvidenceVariableFromJson(json);
+EvidenceVariable(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.url,
+this.elementUrl,
+this.identifier,
+this.version,
+this.elementVersion,
+this.name,
+this.elementName,
+this.title,
+this.elementTitle,
+this.shortTitle,
+this.elementShortTitle,
+this.subtitle,
+this.elementSubtitle,
+this.status,
+this.elementStatus,
+this.date,
+this.elementDate,
+this.publisher,
+this.elementPublisher,
+this.contact,
+this.description,
+this.elementDescription,
+this.note,
+this.useContext,
+this.jurisdiction,
+this.copyright,
+this.elementCopyright,
+this.approvalDate,
+this.elementApprovalDate,
+this.lastReviewDate,
+this.elementLastReviewDate,
+this.effectivePeriod,
+this.topic,
+this.author,
+this.editor,
+this.reviewer,
+this.endorser,
+this.relatedArtifact,
+this.type,
+this.elementType,
+@required this.characteristic,
+});
+
+  factory EvidenceVariable.fromJson(Map<String, dynamic> json) => _$EvidenceVariableFromJson(json);
   Map<String, dynamic> toJson() => _$EvidenceVariableToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class EvidenceVariable_Characteristic {
-  static Future<EvidenceVariable_Characteristic> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String description,
-    Element elementDescription,
-    Reference definitionReference,
-    String definitionCanonical,
-    Element elementDefinitionCanonical,
-    CodeableConcept definitionCodeableConcept,
-    Expression definitionExpression,
-    DataRequirement definitionDataRequirement,
-    TriggerDefinition definitionTriggerDefinition,
-    List<UsageContext> usageContext,
-    bool exclude,
-    Element elementExclude,
-    String participantEffectiveDateTime,
-    Element elementParticipantEffectiveDateTime,
-    Period participantEffectivePeriod,
-    Duration participantEffectiveDuration,
-    Timing participantEffectiveTiming,
-    Duration timeFromStart,
-    String groupMeasure,
-    Element elementGroupMeasure,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    EvidenceVariable_Characteristic newEvidenceVariable_Characteristic =
-        new EvidenceVariable_Characteristic(
-      id: id ?? await fhirDb.newResourceId('EvidenceVariable_Characteristic'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      description: description,
-      elementDescription: elementDescription,
-      definitionReference: definitionReference,
-      definitionCanonical: definitionCanonical,
-      elementDefinitionCanonical: elementDefinitionCanonical,
-      definitionCodeableConcept: definitionCodeableConcept,
-      definitionExpression: definitionExpression,
-      definitionDataRequirement: definitionDataRequirement,
-      definitionTriggerDefinition: definitionTriggerDefinition,
-      usageContext: usageContext,
-      exclude: exclude,
-      elementExclude: elementExclude,
-      participantEffectiveDateTime: participantEffectiveDateTime,
-      elementParticipantEffectiveDateTime: elementParticipantEffectiveDateTime,
-      participantEffectivePeriod: participantEffectivePeriod,
-      participantEffectiveDuration: participantEffectiveDuration,
-      participantEffectiveTiming: participantEffectiveTiming,
-      timeFromStart: timeFromStart,
-      groupMeasure: groupMeasure,
-      elementGroupMeasure: elementGroupMeasure,
-    );
-    return newEvidenceVariable_Characteristic;
-  }
+class EvidenceVariable_Characteristic{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String description;
-  Element elementDescription;
-  Reference definitionReference;
-  String definitionCanonical;
-  Element elementDefinitionCanonical;
-  CodeableConcept definitionCodeableConcept;
-  Expression definitionExpression;
-  DataRequirement definitionDataRequirement;
-  TriggerDefinition definitionTriggerDefinition;
-  List<UsageContext> usageContext;
-  bool exclude;
-  Element elementExclude;
-  String participantEffectiveDateTime;
-  Element elementParticipantEffectiveDateTime;
-  Period participantEffectivePeriod;
-  Duration participantEffectiveDuration;
-  Timing participantEffectiveTiming;
-  Duration timeFromStart;
-  String groupMeasure;
-  Element elementGroupMeasure;
-
-  EvidenceVariable_Characteristic({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.description,
-    this.elementDescription,
-    this.definitionReference,
-    this.definitionCanonical,
-    this.elementDefinitionCanonical,
-    this.definitionCodeableConcept,
-    this.definitionExpression,
-    this.definitionDataRequirement,
-    this.definitionTriggerDefinition,
-    this.usageContext,
-    this.exclude,
-    this.elementExclude,
-    this.participantEffectiveDateTime,
-    this.elementParticipantEffectiveDateTime,
-    this.participantEffectivePeriod,
-    this.participantEffectiveDuration,
-    this.participantEffectiveTiming,
-    this.timeFromStart,
-    this.groupMeasure,
-    this.elementGroupMeasure,
-  });
-
-  factory EvidenceVariable_Characteristic.fromJson(Map<String, dynamic> json) =>
-      _$EvidenceVariable_CharacteristicFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$EvidenceVariable_CharacteristicToJson(this);
+	static Future<EvidenceVariable_Characteristic> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String description,
+	Element elementDescription,
+	Reference definitionReference,
+	String definitionCanonical,
+	Element elementDefinitionCanonical,
+	CodeableConcept definitionCodeableConcept,
+	Expression definitionExpression,
+	DataRequirement definitionDataRequirement,
+	TriggerDefinition definitionTriggerDefinition,
+	List<UsageContext> usageContext,
+	bool exclude,
+	Element elementExclude,
+	String participantEffectiveDateTime,
+	Element elementParticipantEffectiveDateTime,
+	Period participantEffectivePeriod,
+	Duration participantEffectiveDuration,
+	Timing participantEffectiveTiming,
+	Duration timeFromStart,
+	String groupMeasure,
+	Element elementGroupMeasure,
+}) async {
+var fhirDb = new DatabaseHelper();
+EvidenceVariable_Characteristic newEvidenceVariable_Characteristic = new EvidenceVariable_Characteristic(
+	id: id ?? await fhirDb.newResourceId('EvidenceVariable_Characteristic'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	description: description,
+	elementDescription: elementDescription,
+	definitionReference: definitionReference,
+	definitionCanonical: definitionCanonical,
+	elementDefinitionCanonical: elementDefinitionCanonical,
+	definitionCodeableConcept: definitionCodeableConcept,
+	definitionExpression: definitionExpression,
+	definitionDataRequirement: definitionDataRequirement,
+	definitionTriggerDefinition: definitionTriggerDefinition,
+	usageContext: usageContext,
+	exclude: exclude,
+	elementExclude: elementExclude,
+	participantEffectiveDateTime: participantEffectiveDateTime,
+	elementParticipantEffectiveDateTime: elementParticipantEffectiveDateTime,
+	participantEffectivePeriod: participantEffectivePeriod,
+	participantEffectiveDuration: participantEffectiveDuration,
+	participantEffectiveTiming: participantEffectiveTiming,
+	timeFromStart: timeFromStart,
+	groupMeasure: groupMeasure,
+	elementGroupMeasure: elementGroupMeasure,
+);
+	return newEvidenceVariable_Characteristic;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String description;
+	Element elementDescription;
+	Reference definitionReference;
+	String definitionCanonical;
+	Element elementDefinitionCanonical;
+	CodeableConcept definitionCodeableConcept;
+	Expression definitionExpression;
+	DataRequirement definitionDataRequirement;
+	TriggerDefinition definitionTriggerDefinition;
+	List<UsageContext> usageContext;
+	bool exclude;
+	Element elementExclude;
+	String participantEffectiveDateTime;
+	Element elementParticipantEffectiveDateTime;
+	Period participantEffectivePeriod;
+	Duration participantEffectiveDuration;
+	Timing participantEffectiveTiming;
+	Duration timeFromStart;
+	String groupMeasure;
+	Element elementGroupMeasure;
+
+EvidenceVariable_Characteristic(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.description,
+this.elementDescription,
+this.definitionReference,
+this.definitionCanonical,
+this.elementDefinitionCanonical,
+this.definitionCodeableConcept,
+this.definitionExpression,
+this.definitionDataRequirement,
+this.definitionTriggerDefinition,
+this.usageContext,
+this.exclude,
+this.elementExclude,
+this.participantEffectiveDateTime,
+this.elementParticipantEffectiveDateTime,
+this.participantEffectivePeriod,
+this.participantEffectiveDuration,
+this.participantEffectiveTiming,
+this.timeFromStart,
+this.groupMeasure,
+this.elementGroupMeasure,
+});
+
+  factory EvidenceVariable_Characteristic.fromJson(Map<String, dynamic> json) => _$EvidenceVariable_CharacteristicFromJson(json);
+  Map<String, dynamic> toJson() => _$EvidenceVariable_CharacteristicToJson(this);
+}
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -394,9 +395,8 @@ EvidenceVariable _$EvidenceVariableFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

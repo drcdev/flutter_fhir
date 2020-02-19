@@ -1,16 +1,22 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
+import 'package:flutter_fhir/util/user.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter_fhir/fhirClasses/bundle.dart';
 
 sync(String action, {String resourceType, List<dynamic> resourceList}) async {
   Map<String, String> headers = {'Content-type': 'application/json'};
+
+  var fhirDb = DatabaseHelper();
+
   //Obtain authorization token
   String name = 'faulkenbej@chop.edu';
   String secret = 'chopchop';
   String clientSecret = 'chopchop';
-  String server = 'https://choptestpatients.aidbox.app';
-//  String server = 'https://dbhifhir.aidbox.app';
+//  String server = 'https://choptestpatients.aidbox.app';
+  String server = 'https://dbhifhir.aidbox.app';
 
   Response response = await post(
       '$server/auth/token?client_id=greyfhir&grant_type=password&username=$name&password=$secret&client_secret=$clientSecret',
@@ -27,14 +33,58 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
   switch (action) {
     case 'get':
       {
-        Response response =
-            await get('$server/Patient', headers: headers);
-        var myBundle = Bundle.fromJson(json.decode(response.body));
-        for (int i = 0; i < myBundle.total; i++) {
-          ResourceTypes(myBundle.entry[i].resource.resourceType,
-                  myBundle.entry[i].resource.toJson())
-              .save();
+//        int page = 1;
+//        while (true) {
+//          Response response = await get(
+//              '$server/Patient?page=${page.toString()}',
+//              headers: headers);
+//          var myBundle = Bundle.fromJson(json.decode(response.body));
+//          if (myBundle.entry.length == 0) {
+//            break;
+//          }
+//          page += 1;
+//          for (int i = 0; i < myBundle.entry.length; i++) {
+//            ResourceTypes(myBundle.entry[i].resource.resourceType,
+//                    myBundle.entry[i].resource.toJson())
+//                .save();
+//          }
+//        }
+        Bundle sendBundle = await Bundle.newInstance(
+            type: 'transaction', entry: [await Bundle_Entry.newInstance()]);
+        List classes = [
+          'Patient',
+          'Location',
+          'Encounter',
+          'Composition',
+          'MedicationAdministration'
+        ];
+        Server serverUpdated = await fhirDb.lastServerUpdate(server);
+        for (int i = 0; i < classes.length; i++) {
+          var lister = await fhirDb.getList(classes[i]);
+          for (int j = 0; j < lister.length; j++) {
+            if (lister[j]
+                .meta
+                .lastUpdated
+                .isAfter(DateTime.parse(serverUpdated.lastUpdated))) {
+              sendBundle.entry.add(Bundle_Entry(
+                  resource: lister[j].toJson(),
+                  request: Bundle_Request(
+                      method: 'PUT',
+                      url: '${lister[j].resourceType}/${lister[j].id}')));
+            }
+          }
         }
+        serverUpdated.lastUpdated = DateTime.now().toString();
+        fhirDb.saveServerUpdate(serverUpdated);
+        print(jsonEncode(sendBundle));
+        for(int k = 0; k < sendBundle.entry.length; k++) {
+          print(jsonEncode(sendBundle.entry[k]));
+        }
+
+//        var noIdea = await post('$server/fhir',
+//            headers: headers, body: jsonEncode(sendBundle).toString());
+//        print(noIdea.headers.toString());
+//        print(noIdea.body.toString());
       }
       break;
     case 'post':
@@ -42,21 +92,3 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
       break;
   }
 }
-
-//  } else if (action == 'post') {
-//    await post('https://dbhifhir.aidbox.app/Patient',
-//        headers: headers, body: json.encode(body));
-//    print('All sent.');
-//  } else {
-//    print('Well, that didn\'t work.');
-//  }
-//}
-//will use this eventually to sync with server
-// new RaisedButton(
-//   onPressed: () {
-//     Patient newpt = Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate);
-//     patientList('post', body: newpt);
-//   },
-//   //'{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + familyNameController.text + '",\n      "given": [\n        "' + givenNameController.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}'),
-//   child: Text('Press to Upload Patient'),
-// ),

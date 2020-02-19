@@ -17,265 +17,267 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Library {
-  static Future<Library> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String url,
-    Element elementUrl,
-    List<Identifier> identifier,
-    String version,
-    Element elementVersion,
-    String name,
-    Element elementName,
-    String title,
-    Element elementTitle,
-    String subtitle,
-    Element elementSubtitle,
-    String status,
-    Element elementStatus,
-    bool experimental,
-    Element elementExperimental,
-    CodeableConcept type,
-    CodeableConcept subjectCodeableConcept,
-    Reference subjectReference,
-    DateTime date,
-    Element elementDate,
-    String publisher,
-    Element elementPublisher,
-    List<ContactDetail> contact,
-    String description,
-    Element elementDescription,
-    List<UsageContext> useContext,
-    List<CodeableConcept> jurisdiction,
-    String purpose,
-    Element elementPurpose,
-    String usage,
-    Element elementUsage,
-    String copyright,
-    Element elementCopyright,
-    String approvalDate,
-    Element elementApprovalDate,
-    String lastReviewDate,
-    Element elementLastReviewDate,
-    Period effectivePeriod,
-    List<CodeableConcept> topic,
-    List<ContactDetail> author,
-    List<ContactDetail> editor,
-    List<ContactDetail> reviewer,
-    List<ContactDetail> endorser,
-    List<RelatedArtifact> relatedArtifact,
-    List<ParameterDefinition> parameter,
-    List<DataRequirement> dataRequirement,
-    List<Attachment> content,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Library newLibrary = new Library(
-      resourceType: 'Library',
-      id: id ?? await fhirDb.newResourceId('Library'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      url: url,
-      elementUrl: elementUrl,
-      identifier: identifier,
-      version: version,
-      elementVersion: elementVersion,
-      name: name,
-      elementName: elementName,
-      title: title,
-      elementTitle: elementTitle,
-      subtitle: subtitle,
-      elementSubtitle: elementSubtitle,
-      status: status,
-      elementStatus: elementStatus,
-      experimental: experimental,
-      elementExperimental: elementExperimental,
-      type: type,
-      subjectCodeableConcept: subjectCodeableConcept,
-      subjectReference: subjectReference,
-      date: date,
-      elementDate: elementDate,
-      publisher: publisher,
-      elementPublisher: elementPublisher,
-      contact: contact,
-      description: description,
-      elementDescription: elementDescription,
-      useContext: useContext,
-      jurisdiction: jurisdiction,
-      purpose: purpose,
-      elementPurpose: elementPurpose,
-      usage: usage,
-      elementUsage: elementUsage,
-      copyright: copyright,
-      elementCopyright: elementCopyright,
-      approvalDate: approvalDate,
-      elementApprovalDate: elementApprovalDate,
-      lastReviewDate: lastReviewDate,
-      elementLastReviewDate: elementLastReviewDate,
-      effectivePeriod: effectivePeriod,
-      topic: topic,
-      author: author,
-      editor: editor,
-      reviewer: reviewer,
-      endorser: endorser,
-      relatedArtifact: relatedArtifact,
-      parameter: parameter,
-      dataRequirement: dataRequirement,
-      content: content,
-    );
-    newLibrary.meta.createdAt = DateTime.now();
-    newLibrary.meta.lastUpdated = newLibrary.meta.createdAt;
-    int saved = await fhirDb.saveResource(newLibrary);
-    return newLibrary;
-  }
+class Library{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Library> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String url,
+	Element elementUrl,
+	List<Identifier> identifier,
+	String version,
+	Element elementVersion,
+	String name,
+	Element elementName,
+	String title,
+	Element elementTitle,
+	String subtitle,
+	Element elementSubtitle,
+	String status,
+	Element elementStatus,
+	bool experimental,
+	Element elementExperimental,
+	CodeableConcept type,
+	CodeableConcept subjectCodeableConcept,
+	Reference subjectReference,
+	DateTime date,
+	Element elementDate,
+	String publisher,
+	Element elementPublisher,
+	List<ContactDetail> contact,
+	String description,
+	Element elementDescription,
+	List<UsageContext> useContext,
+	List<CodeableConcept> jurisdiction,
+	String purpose,
+	Element elementPurpose,
+	String usage,
+	Element elementUsage,
+	String copyright,
+	Element elementCopyright,
+	String approvalDate,
+	Element elementApprovalDate,
+	String lastReviewDate,
+	Element elementLastReviewDate,
+	Period effectivePeriod,
+	List<CodeableConcept> topic,
+	List<ContactDetail> author,
+	List<ContactDetail> editor,
+	List<ContactDetail> reviewer,
+	List<ContactDetail> endorser,
+	List<RelatedArtifact> relatedArtifact,
+	List<ParameterDefinition> parameter,
+	List<DataRequirement> dataRequirement,
+	List<Attachment> content,
+}) async {
+var fhirDb = new DatabaseHelper();
+Library newLibrary = new Library(
+	resourceType: 'Library',
+	id: id ?? await fhirDb.newResourceId('Library'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	url: url,
+	elementUrl: elementUrl,
+	identifier: identifier,
+	version: version,
+	elementVersion: elementVersion,
+	name: name,
+	elementName: elementName,
+	title: title,
+	elementTitle: elementTitle,
+	subtitle: subtitle,
+	elementSubtitle: elementSubtitle,
+	status: status,
+	elementStatus: elementStatus,
+	experimental: experimental,
+	elementExperimental: elementExperimental,
+	type: type,
+	subjectCodeableConcept: subjectCodeableConcept,
+	subjectReference: subjectReference,
+	date: date,
+	elementDate: elementDate,
+	publisher: publisher,
+	elementPublisher: elementPublisher,
+	contact: contact,
+	description: description,
+	elementDescription: elementDescription,
+	useContext: useContext,
+	jurisdiction: jurisdiction,
+	purpose: purpose,
+	elementPurpose: elementPurpose,
+	usage: usage,
+	elementUsage: elementUsage,
+	copyright: copyright,
+	elementCopyright: elementCopyright,
+	approvalDate: approvalDate,
+	elementApprovalDate: elementApprovalDate,
+	lastReviewDate: lastReviewDate,
+	elementLastReviewDate: elementLastReviewDate,
+	effectivePeriod: effectivePeriod,
+	topic: topic,
+	author: author,
+	editor: editor,
+	reviewer: reviewer,
+	endorser: endorser,
+	relatedArtifact: relatedArtifact,
+	parameter: parameter,
+	dataRequirement: dataRequirement,
+	content: content,
+);
+	newLibrary.meta.createdAt = DateTime.now();
+	newLibrary.meta.lastUpdated = newLibrary.meta.createdAt;
+	int saved = await fhirDb.saveResource(newLibrary);
+	 return newLibrary;
+}
 
-  String resourceType = 'Library';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String url;
-  Element elementUrl;
-  List<Identifier> identifier;
-  String version;
-  Element elementVersion;
-  String name;
-  Element elementName;
-  String title;
-  Element elementTitle;
-  String subtitle;
-  Element elementSubtitle;
-  String status;
-  Element elementStatus;
-  bool experimental;
-  Element elementExperimental;
-  CodeableConcept type;
-  CodeableConcept subjectCodeableConcept;
-  Reference subjectReference;
-  DateTime date;
-  Element elementDate;
-  String publisher;
-  Element elementPublisher;
-  List<ContactDetail> contact;
-  String description;
-  Element elementDescription;
-  List<UsageContext> useContext;
-  List<CodeableConcept> jurisdiction;
-  String purpose;
-  Element elementPurpose;
-  String usage;
-  Element elementUsage;
-  String copyright;
-  Element elementCopyright;
-  String approvalDate;
-  Element elementApprovalDate;
-  String lastReviewDate;
-  Element elementLastReviewDate;
-  Period effectivePeriod;
-  List<CodeableConcept> topic;
-  List<ContactDetail> author;
-  List<ContactDetail> editor;
-  List<ContactDetail> reviewer;
-  List<ContactDetail> endorser;
-  List<RelatedArtifact> relatedArtifact;
-  List<ParameterDefinition> parameter;
-  List<DataRequirement> dataRequirement;
-  List<Attachment> content;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Library({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.identifier,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.subtitle,
-    this.elementSubtitle,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    @required this.type,
-    this.subjectCodeableConcept,
-    this.subjectReference,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.usage,
-    this.elementUsage,
-    this.copyright,
-    this.elementCopyright,
-    this.approvalDate,
-    this.elementApprovalDate,
-    this.lastReviewDate,
-    this.elementLastReviewDate,
-    this.effectivePeriod,
-    this.topic,
-    this.author,
-    this.editor,
-    this.reviewer,
-    this.endorser,
-    this.relatedArtifact,
-    this.parameter,
-    this.dataRequirement,
-    this.content,
-  });
+	String resourceType= 'Library';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String url;
+	Element elementUrl;
+	List<Identifier> identifier;
+	String version;
+	Element elementVersion;
+	String name;
+	Element elementName;
+	String title;
+	Element elementTitle;
+	String subtitle;
+	Element elementSubtitle;
+	String status;
+	Element elementStatus;
+	bool experimental;
+	Element elementExperimental;
+	CodeableConcept type;
+	CodeableConcept subjectCodeableConcept;
+	Reference subjectReference;
+	DateTime date;
+	Element elementDate;
+	String publisher;
+	Element elementPublisher;
+	List<ContactDetail> contact;
+	String description;
+	Element elementDescription;
+	List<UsageContext> useContext;
+	List<CodeableConcept> jurisdiction;
+	String purpose;
+	Element elementPurpose;
+	String usage;
+	Element elementUsage;
+	String copyright;
+	Element elementCopyright;
+	String approvalDate;
+	Element elementApprovalDate;
+	String lastReviewDate;
+	Element elementLastReviewDate;
+	Period effectivePeriod;
+	List<CodeableConcept> topic;
+	List<ContactDetail> author;
+	List<ContactDetail> editor;
+	List<ContactDetail> reviewer;
+	List<ContactDetail> endorser;
+	List<RelatedArtifact> relatedArtifact;
+	List<ParameterDefinition> parameter;
+	List<DataRequirement> dataRequirement;
+	List<Attachment> content;
 
-  factory Library.fromJson(Map<String, dynamic> json) =>
-      _$LibraryFromJson(json);
+Library(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.url,
+this.elementUrl,
+this.identifier,
+this.version,
+this.elementVersion,
+this.name,
+this.elementName,
+this.title,
+this.elementTitle,
+this.subtitle,
+this.elementSubtitle,
+this.status,
+this.elementStatus,
+this.experimental,
+this.elementExperimental,
+@required this.type,
+this.subjectCodeableConcept,
+this.subjectReference,
+this.date,
+this.elementDate,
+this.publisher,
+this.elementPublisher,
+this.contact,
+this.description,
+this.elementDescription,
+this.useContext,
+this.jurisdiction,
+this.purpose,
+this.elementPurpose,
+this.usage,
+this.elementUsage,
+this.copyright,
+this.elementCopyright,
+this.approvalDate,
+this.elementApprovalDate,
+this.lastReviewDate,
+this.elementLastReviewDate,
+this.effectivePeriod,
+this.topic,
+this.author,
+this.editor,
+this.reviewer,
+this.endorser,
+this.relatedArtifact,
+this.parameter,
+this.dataRequirement,
+this.content,
+});
+
+  factory Library.fromJson(Map<String, dynamic> json) => _$LibraryFromJson(json);
   Map<String, dynamic> toJson() => _$LibraryToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -302,9 +304,8 @@ Library _$LibraryFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

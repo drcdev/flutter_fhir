@@ -11,221 +11,223 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class EpisodeOfCare {
-  static Future<EpisodeOfCare> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    List<EpisodeOfCare_StatusHistory> statusHistory,
-    List<CodeableConcept> type,
-    List<EpisodeOfCare_Diagnosis> diagnosis,
-    Reference patient,
-    Reference managingOrganization,
-    Period period,
-    List<Reference> referralRequest,
-    Reference careManager,
-    List<Reference> team,
-    List<Reference> account,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    EpisodeOfCare newEpisodeOfCare = new EpisodeOfCare(
-      resourceType: 'EpisodeOfCare',
-      id: id ?? await fhirDb.newResourceId('EpisodeOfCare'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      statusHistory: statusHistory,
-      type: type,
-      diagnosis: diagnosis,
-      patient: patient,
-      managingOrganization: managingOrganization,
-      period: period,
-      referralRequest: referralRequest,
-      careManager: careManager,
-      team: team,
-      account: account,
-    );
-    newEpisodeOfCare.meta.createdAt = DateTime.now();
-    newEpisodeOfCare.meta.lastUpdated = newEpisodeOfCare.meta.createdAt;
-    int saved = await fhirDb.saveResource(newEpisodeOfCare);
-    return newEpisodeOfCare;
-  }
+class EpisodeOfCare{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<EpisodeOfCare> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	List<EpisodeOfCare_StatusHistory> statusHistory,
+	List<CodeableConcept> type,
+	List<EpisodeOfCare_Diagnosis> diagnosis,
+	Reference patient,
+	Reference managingOrganization,
+	Period period,
+	List<Reference> referralRequest,
+	Reference careManager,
+	List<Reference> team,
+	List<Reference> account,
+}) async {
+var fhirDb = new DatabaseHelper();
+EpisodeOfCare newEpisodeOfCare = new EpisodeOfCare(
+	resourceType: 'EpisodeOfCare',
+	id: id ?? await fhirDb.newResourceId('EpisodeOfCare'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	statusHistory: statusHistory,
+	type: type,
+	diagnosis: diagnosis,
+	patient: patient,
+	managingOrganization: managingOrganization,
+	period: period,
+	referralRequest: referralRequest,
+	careManager: careManager,
+	team: team,
+	account: account,
+);
+	newEpisodeOfCare.meta.createdAt = DateTime.now();
+	newEpisodeOfCare.meta.lastUpdated = newEpisodeOfCare.meta.createdAt;
+	int saved = await fhirDb.saveResource(newEpisodeOfCare);
+	 return newEpisodeOfCare;
+}
 
-  String resourceType = 'EpisodeOfCare';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  List<EpisodeOfCare_StatusHistory> statusHistory;
-  List<CodeableConcept> type;
-  List<EpisodeOfCare_Diagnosis> diagnosis;
-  Reference patient;
-  Reference managingOrganization;
-  Period period;
-  List<Reference> referralRequest;
-  Reference careManager;
-  List<Reference> team;
-  List<Reference> account;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  EpisodeOfCare({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.statusHistory,
-    this.type,
-    this.diagnosis,
-    @required this.patient,
-    this.managingOrganization,
-    this.period,
-    this.referralRequest,
-    this.careManager,
-    this.team,
-    this.account,
-  });
+	String resourceType= 'EpisodeOfCare';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	List<EpisodeOfCare_StatusHistory> statusHistory;
+	List<CodeableConcept> type;
+	List<EpisodeOfCare_Diagnosis> diagnosis;
+	Reference patient;
+	Reference managingOrganization;
+	Period period;
+	List<Reference> referralRequest;
+	Reference careManager;
+	List<Reference> team;
+	List<Reference> account;
 
-  factory EpisodeOfCare.fromJson(Map<String, dynamic> json) =>
-      _$EpisodeOfCareFromJson(json);
+EpisodeOfCare(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+this.statusHistory,
+this.type,
+this.diagnosis,
+@required this.patient,
+this.managingOrganization,
+this.period,
+this.referralRequest,
+this.careManager,
+this.team,
+this.account,
+});
+
+  factory EpisodeOfCare.fromJson(Map<String, dynamic> json) => _$EpisodeOfCareFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeOfCareToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class EpisodeOfCare_StatusHistory {
-  static Future<EpisodeOfCare_StatusHistory> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String status,
-    Element elementStatus,
-    Period period,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    EpisodeOfCare_StatusHistory newEpisodeOfCare_StatusHistory =
-        new EpisodeOfCare_StatusHistory(
-      id: id ?? await fhirDb.newResourceId('EpisodeOfCare_StatusHistory'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      status: status,
-      elementStatus: elementStatus,
-      period: period,
-    );
-    return newEpisodeOfCare_StatusHistory;
-  }
+class EpisodeOfCare_StatusHistory{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String status;
-  Element elementStatus;
-  Period period;
+	static Future<EpisodeOfCare_StatusHistory> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String status,
+	Element elementStatus,
+	Period period,
+}) async {
+var fhirDb = new DatabaseHelper();
+EpisodeOfCare_StatusHistory newEpisodeOfCare_StatusHistory = new EpisodeOfCare_StatusHistory(
+	id: id ?? await fhirDb.newResourceId('EpisodeOfCare_StatusHistory'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	status: status,
+	elementStatus: elementStatus,
+	period: period,
+);
+	return newEpisodeOfCare_StatusHistory;
+}
 
-  EpisodeOfCare_StatusHistory({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.status,
-    this.elementStatus,
-    @required this.period,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String status;
+	Element elementStatus;
+	Period period;
 
-  factory EpisodeOfCare_StatusHistory.fromJson(Map<String, dynamic> json) =>
-      _$EpisodeOfCare_StatusHistoryFromJson(json);
+EpisodeOfCare_StatusHistory(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.status,
+this.elementStatus,
+@required this.period,
+});
+
+  factory EpisodeOfCare_StatusHistory.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_StatusHistoryFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeOfCare_StatusHistoryToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class EpisodeOfCare_Diagnosis {
-  static Future<EpisodeOfCare_Diagnosis> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Reference condition,
-    CodeableConcept role,
-    int rank,
-    Element elementRank,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    EpisodeOfCare_Diagnosis newEpisodeOfCare_Diagnosis =
-        new EpisodeOfCare_Diagnosis(
-      id: id ?? await fhirDb.newResourceId('EpisodeOfCare_Diagnosis'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      condition: condition,
-      role: role,
-      rank: rank,
-      elementRank: elementRank,
-    );
-    return newEpisodeOfCare_Diagnosis;
-  }
+class EpisodeOfCare_Diagnosis{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Reference condition;
-  CodeableConcept role;
-  int rank;
-  Element elementRank;
+	static Future<EpisodeOfCare_Diagnosis> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Reference condition,
+	CodeableConcept role,
+	int rank,
+	Element elementRank,
+}) async {
+var fhirDb = new DatabaseHelper();
+EpisodeOfCare_Diagnosis newEpisodeOfCare_Diagnosis = new EpisodeOfCare_Diagnosis(
+	id: id ?? await fhirDb.newResourceId('EpisodeOfCare_Diagnosis'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	condition: condition,
+	role: role,
+	rank: rank,
+	elementRank: elementRank,
+);
+	return newEpisodeOfCare_Diagnosis;
+}
 
-  EpisodeOfCare_Diagnosis({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.condition,
-    this.role,
-    this.rank,
-    this.elementRank,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Reference condition;
+	CodeableConcept role;
+	int rank;
+	Element elementRank;
 
-  factory EpisodeOfCare_Diagnosis.fromJson(Map<String, dynamic> json) =>
-      _$EpisodeOfCare_DiagnosisFromJson(json);
+EpisodeOfCare_Diagnosis(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.condition,
+this.role,
+this.rank,
+this.elementRank,
+});
+
+  factory EpisodeOfCare_Diagnosis.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_DiagnosisFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeOfCare_DiagnosisToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -252,9 +254,8 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

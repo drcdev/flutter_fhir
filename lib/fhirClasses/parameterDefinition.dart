@@ -4,84 +4,86 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ParameterDefinition {
-  static Future<ParameterDefinition> newInstance({
-    String id,
-    List<Extension> extension,
-    String name,
-    Element elementName,
-    String use,
-    Element elementUse,
-    int min,
-    Element elementMin,
-    String max,
-    Element elementMax,
-    String documentation,
-    Element elementDocumentation,
-    String type,
-    Element elementType,
-    String profile,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ParameterDefinition newParameterDefinition = new ParameterDefinition(
-      id: id ?? await fhirDb.newResourceId('ParameterDefinition'),
-      extension: extension,
-      name: name,
-      elementName: elementName,
-      use: use,
-      elementUse: elementUse,
-      min: min,
-      elementMin: elementMin,
-      max: max,
-      elementMax: elementMax,
-      documentation: documentation,
-      elementDocumentation: elementDocumentation,
-      type: type,
-      elementType: elementType,
-      profile: profile,
-    );
-    return newParameterDefinition;
-  }
+class ParameterDefinition{
 
-  String id;
-  List<Extension> extension;
-  String name;
-  Element elementName;
-  String use;
-  Element elementUse;
-  int min;
-  Element elementMin;
-  String max;
-  Element elementMax;
-  String documentation;
-  Element elementDocumentation;
-  String type;
-  Element elementType;
-  String profile;
+	static Future<ParameterDefinition> newInstance(
+	{	String id,
+	List<Extension> extension,
+	String name,
+	Element elementName,
+	String use,
+	Element elementUse,
+	int min,
+	Element elementMin,
+	String max,
+	Element elementMax,
+	String documentation,
+	Element elementDocumentation,
+	String type,
+	Element elementType,
+	String profile,
+}) async {
+var fhirDb = new DatabaseHelper();
+ParameterDefinition newParameterDefinition = new ParameterDefinition(
+	id: id ?? await fhirDb.newResourceId('ParameterDefinition'),
+	extension: extension,
+	name: name,
+	elementName: elementName,
+	use: use,
+	elementUse: elementUse,
+	min: min,
+	elementMin: elementMin,
+	max: max,
+	elementMax: elementMax,
+	documentation: documentation,
+	elementDocumentation: elementDocumentation,
+	type: type,
+	elementType: elementType,
+	profile: profile,
+);
+	return newParameterDefinition;
+}
 
-  ParameterDefinition({
-    this.id,
-    this.extension,
-    this.name,
-    this.elementName,
-    this.use,
-    this.elementUse,
-    this.min,
-    this.elementMin,
-    this.max,
-    this.elementMax,
-    this.documentation,
-    this.elementDocumentation,
-    this.type,
-    this.elementType,
-    this.profile,
-  });
+	String id;
+	List<Extension> extension;
+	String name;
+	Element elementName;
+	String use;
+	Element elementUse;
+	int min;
+	Element elementMin;
+	String max;
+	Element elementMax;
+	String documentation;
+	Element elementDocumentation;
+	String type;
+	Element elementType;
+	String profile;
 
-  factory ParameterDefinition.fromJson(Map<String, dynamic> json) =>
-      _$ParameterDefinitionFromJson(json);
+ParameterDefinition(
+	{this.id,
+this.extension,
+this.name,
+this.elementName,
+this.use,
+this.elementUse,
+this.min,
+this.elementMin,
+this.max,
+this.elementMax,
+this.documentation,
+this.elementDocumentation,
+this.type,
+this.elementType,
+this.profile,
+});
+
+  factory ParameterDefinition.fromJson(Map<String, dynamic> json) => _$ParameterDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$ParameterDefinitionToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

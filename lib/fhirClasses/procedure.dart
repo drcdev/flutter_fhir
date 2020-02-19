@@ -14,303 +14,307 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Procedure {
-  static Future<Procedure> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    List<String> instantiatesCanonical,
-    List<String> instantiatesUri,
-    List<Element> elementInstantiatesUri,
-    List<Reference> basedOn,
-    List<Reference> partOf,
-    String status,
-    Element elementStatus,
-    CodeableConcept statusReason,
-    CodeableConcept category,
-    CodeableConcept code,
-    Reference subject,
-    Reference encounter,
-    String performedDateTime,
-    Element elementPerformedDateTime,
-    Period performedPeriod,
-    String performedString,
-    Element elementPerformedString,
-    Age performedAge,
-    Range performedRange,
-    Reference recorder,
-    Reference asserter,
-    List<Procedure_Performer> performer,
-    Reference location,
-    List<CodeableConcept> reasonCode,
-    List<Reference> reasonReference,
-    List<CodeableConcept> bodySite,
-    CodeableConcept outcome,
-    List<Reference> report,
-    List<CodeableConcept> complication,
-    List<Reference> complicationDetail,
-    List<CodeableConcept> followUp,
-    List<Annotation> note,
-    List<Procedure_FocalDevice> focalDevice,
-    List<Reference> usedReference,
-    List<CodeableConcept> usedCode,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Procedure newProcedure = new Procedure(
-      resourceType: 'Procedure',
-      id: id ?? await fhirDb.newResourceId('Procedure'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      instantiatesCanonical: instantiatesCanonical,
-      instantiatesUri: instantiatesUri,
-      elementInstantiatesUri: elementInstantiatesUri,
-      basedOn: basedOn,
-      partOf: partOf,
-      status: status,
-      elementStatus: elementStatus,
-      statusReason: statusReason,
-      category: category,
-      code: code,
-      subject: subject,
-      encounter: encounter,
-      performedDateTime: performedDateTime,
-      elementPerformedDateTime: elementPerformedDateTime,
-      performedPeriod: performedPeriod,
-      performedString: performedString,
-      elementPerformedString: elementPerformedString,
-      performedAge: performedAge,
-      performedRange: performedRange,
-      recorder: recorder,
-      asserter: asserter,
-      performer: performer,
-      location: location,
-      reasonCode: reasonCode,
-      reasonReference: reasonReference,
-      bodySite: bodySite,
-      outcome: outcome,
-      report: report,
-      complication: complication,
-      complicationDetail: complicationDetail,
-      followUp: followUp,
-      note: note,
-      focalDevice: focalDevice,
-      usedReference: usedReference,
-      usedCode: usedCode,
-    );
-    newProcedure.meta.createdAt = DateTime.now();
-    newProcedure.meta.lastUpdated = newProcedure.meta.createdAt;
-    int saved = await fhirDb.saveResource(newProcedure);
-    return newProcedure;
-  }
+class Procedure{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Procedure> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	List<String> instantiatesCanonical,
+	List<String> instantiatesUri,
+	List<Element> elementInstantiatesUri,
+	List<Reference> basedOn,
+	List<Reference> partOf,
+	String status,
+	Element elementStatus,
+	CodeableConcept statusReason,
+	CodeableConcept category,
+	CodeableConcept code,
+	Reference subject,
+	Reference encounter,
+	String performedDateTime,
+	Element elementPerformedDateTime,
+	Period performedPeriod,
+	String performedString,
+	Element elementPerformedString,
+	Age performedAge,
+	Range performedRange,
+	Reference recorder,
+	Reference asserter,
+	List<Procedure_Performer> performer,
+	Reference location,
+	List<CodeableConcept> reasonCode,
+	List<Reference> reasonReference,
+	List<CodeableConcept> bodySite,
+	CodeableConcept outcome,
+	List<Reference> report,
+	List<CodeableConcept> complication,
+	List<Reference> complicationDetail,
+	List<CodeableConcept> followUp,
+	List<Annotation> note,
+	List<Procedure_FocalDevice> focalDevice,
+	List<Reference> usedReference,
+	List<CodeableConcept> usedCode,
+}) async {
+var fhirDb = new DatabaseHelper();
+Procedure newProcedure = new Procedure(
+	resourceType: 'Procedure',
+	id: id ?? await fhirDb.newResourceId('Procedure'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	instantiatesCanonical: instantiatesCanonical,
+	instantiatesUri: instantiatesUri,
+	elementInstantiatesUri: elementInstantiatesUri,
+	basedOn: basedOn,
+	partOf: partOf,
+	status: status,
+	elementStatus: elementStatus,
+	statusReason: statusReason,
+	category: category,
+	code: code,
+	subject: subject,
+	encounter: encounter,
+	performedDateTime: performedDateTime,
+	elementPerformedDateTime: elementPerformedDateTime,
+	performedPeriod: performedPeriod,
+	performedString: performedString,
+	elementPerformedString: elementPerformedString,
+	performedAge: performedAge,
+	performedRange: performedRange,
+	recorder: recorder,
+	asserter: asserter,
+	performer: performer,
+	location: location,
+	reasonCode: reasonCode,
+	reasonReference: reasonReference,
+	bodySite: bodySite,
+	outcome: outcome,
+	report: report,
+	complication: complication,
+	complicationDetail: complicationDetail,
+	followUp: followUp,
+	note: note,
+	focalDevice: focalDevice,
+	usedReference: usedReference,
+	usedCode: usedCode,
+);
+	newProcedure.meta.createdAt = DateTime.now();
+	newProcedure.meta.lastUpdated = newProcedure.meta.createdAt;
+	int saved = await fhirDb.saveResource(newProcedure);
+	 return newProcedure;
+}
 
-  String resourceType = 'Procedure';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  List<String> instantiatesCanonical;
-  List<String> instantiatesUri;
-  List<Element> elementInstantiatesUri;
-  List<Reference> basedOn;
-  List<Reference> partOf;
-  String status;
-  Element elementStatus;
-  CodeableConcept statusReason;
-  CodeableConcept category;
-  CodeableConcept code;
-  Reference subject;
-  Reference encounter;
-  String performedDateTime;
-  Element elementPerformedDateTime;
-  Period performedPeriod;
-  String performedString;
-  Element elementPerformedString;
-  Age performedAge;
-  Range performedRange;
-  Reference recorder;
-  Reference asserter;
-  List<Procedure_Performer> performer;
-  Reference location;
-  List<CodeableConcept> reasonCode;
-  List<Reference> reasonReference;
-  List<CodeableConcept> bodySite;
-  CodeableConcept outcome;
-  List<Reference> report;
-  List<CodeableConcept> complication;
-  List<Reference> complicationDetail;
-  List<CodeableConcept> followUp;
-  List<Annotation> note;
-  List<Procedure_FocalDevice> focalDevice;
-  List<Reference> usedReference;
-  List<CodeableConcept> usedCode;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Procedure({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.instantiatesCanonical,
-    this.instantiatesUri,
-    this.elementInstantiatesUri,
-    this.basedOn,
-    this.partOf,
-    this.status,
-    this.elementStatus,
-    this.statusReason,
-    this.category,
-    this.code,
-    @required this.subject,
-    this.encounter,
-    this.performedDateTime,
-    this.elementPerformedDateTime,
-    this.performedPeriod,
-    this.performedString,
-    this.elementPerformedString,
-    this.performedAge,
-    this.performedRange,
-    this.recorder,
-    this.asserter,
-    this.performer,
-    this.location,
-    this.reasonCode,
-    this.reasonReference,
-    this.bodySite,
-    this.outcome,
-    this.report,
-    this.complication,
-    this.complicationDetail,
-    this.followUp,
-    this.note,
-    this.focalDevice,
-    this.usedReference,
-    this.usedCode,
-  });
+	String resourceType= 'Procedure';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	List<String> instantiatesCanonical;
+	List<String> instantiatesUri;
+	List<Element> elementInstantiatesUri;
+	List<Reference> basedOn;
+	List<Reference> partOf;
+	String status;
+	Element elementStatus;
+	CodeableConcept statusReason;
+	CodeableConcept category;
+	CodeableConcept code;
+	Reference subject;
+	Reference encounter;
+	String performedDateTime;
+	Element elementPerformedDateTime;
+	Period performedPeriod;
+	String performedString;
+	Element elementPerformedString;
+	Age performedAge;
+	Range performedRange;
+	Reference recorder;
+	Reference asserter;
+	List<Procedure_Performer> performer;
+	Reference location;
+	List<CodeableConcept> reasonCode;
+	List<Reference> reasonReference;
+	List<CodeableConcept> bodySite;
+	CodeableConcept outcome;
+	List<Reference> report;
+	List<CodeableConcept> complication;
+	List<Reference> complicationDetail;
+	List<CodeableConcept> followUp;
+	List<Annotation> note;
+	List<Procedure_FocalDevice> focalDevice;
+	List<Reference> usedReference;
+	List<CodeableConcept> usedCode;
 
-  factory Procedure.fromJson(Map<String, dynamic> json) =>
-      _$ProcedureFromJson(json);
+Procedure(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.instantiatesCanonical,
+this.instantiatesUri,
+this.elementInstantiatesUri,
+this.basedOn,
+this.partOf,
+this.status,
+this.elementStatus,
+this.statusReason,
+this.category,
+this.code,
+@required this.subject,
+this.encounter,
+this.performedDateTime,
+this.elementPerformedDateTime,
+this.performedPeriod,
+this.performedString,
+this.elementPerformedString,
+this.performedAge,
+this.performedRange,
+this.recorder,
+this.asserter,
+this.performer,
+this.location,
+this.reasonCode,
+this.reasonReference,
+this.bodySite,
+this.outcome,
+this.report,
+this.complication,
+this.complicationDetail,
+this.followUp,
+this.note,
+this.focalDevice,
+this.usedReference,
+this.usedCode,
+});
+
+  factory Procedure.fromJson(Map<String, dynamic> json) => _$ProcedureFromJson(json);
   Map<String, dynamic> toJson() => _$ProcedureToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Procedure_Performer {
-  static Future<Procedure_Performer> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept function,
-    Reference actor,
-    Reference onBehalfOf,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Procedure_Performer newProcedure_Performer = new Procedure_Performer(
-      id: id ?? await fhirDb.newResourceId('Procedure_Performer'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      function: function,
-      actor: actor,
-      onBehalfOf: onBehalfOf,
-    );
-    return newProcedure_Performer;
-  }
+class Procedure_Performer{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept function;
-  Reference actor;
-  Reference onBehalfOf;
+	static Future<Procedure_Performer> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept function,
+	Reference actor,
+	Reference onBehalfOf,
+}) async {
+var fhirDb = new DatabaseHelper();
+Procedure_Performer newProcedure_Performer = new Procedure_Performer(
+	id: id ?? await fhirDb.newResourceId('Procedure_Performer'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	function: function,
+	actor: actor,
+	onBehalfOf: onBehalfOf,
+);
+	return newProcedure_Performer;
+}
 
-  Procedure_Performer({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.function,
-    @required this.actor,
-    this.onBehalfOf,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept function;
+	Reference actor;
+	Reference onBehalfOf;
 
-  factory Procedure_Performer.fromJson(Map<String, dynamic> json) =>
-      _$Procedure_PerformerFromJson(json);
+Procedure_Performer(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.function,
+@required this.actor,
+this.onBehalfOf,
+});
+
+  factory Procedure_Performer.fromJson(Map<String, dynamic> json) => _$Procedure_PerformerFromJson(json);
   Map<String, dynamic> toJson() => _$Procedure_PerformerToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Procedure_FocalDevice {
-  static Future<Procedure_FocalDevice> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept action,
-    Reference manipulated,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Procedure_FocalDevice newProcedure_FocalDevice = new Procedure_FocalDevice(
-      id: id ?? await fhirDb.newResourceId('Procedure_FocalDevice'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      action: action,
-      manipulated: manipulated,
-    );
-    return newProcedure_FocalDevice;
-  }
+class Procedure_FocalDevice{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept action;
-  Reference manipulated;
+	static Future<Procedure_FocalDevice> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept action,
+	Reference manipulated,
+}) async {
+var fhirDb = new DatabaseHelper();
+Procedure_FocalDevice newProcedure_FocalDevice = new Procedure_FocalDevice(
+	id: id ?? await fhirDb.newResourceId('Procedure_FocalDevice'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	action: action,
+	manipulated: manipulated,
+);
+	return newProcedure_FocalDevice;
+}
 
-  Procedure_FocalDevice({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.action,
-    @required this.manipulated,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept action;
+	Reference manipulated;
 
-  factory Procedure_FocalDevice.fromJson(Map<String, dynamic> json) =>
-      _$Procedure_FocalDeviceFromJson(json);
+Procedure_FocalDevice(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.action,
+@required this.manipulated,
+});
+
+  factory Procedure_FocalDevice.fromJson(Map<String, dynamic> json) => _$Procedure_FocalDeviceFromJson(json);
   Map<String, dynamic> toJson() => _$Procedure_FocalDeviceToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -337,9 +341,8 @@ Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

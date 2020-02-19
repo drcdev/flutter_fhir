@@ -12,236 +12,239 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Communication {
-  static Future<Communication> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    List<String> instantiatesCanonical,
-    List<String> instantiatesUri,
-    List<Element> elementInstantiatesUri,
-    List<Reference> basedOn,
-    List<Reference> partOf,
-    List<Reference> inResponseTo,
-    String status,
-    Element elementStatus,
-    CodeableConcept statusReason,
-    List<CodeableConcept> category,
-    String priority,
-    Element elementPriority,
-    List<CodeableConcept> medium,
-    Reference subject,
-    CodeableConcept topic,
-    List<Reference> about,
-    Reference encounter,
-    DateTime sent,
-    Element elementSent,
-    DateTime received,
-    Element elementReceived,
-    List<Reference> recipient,
-    Reference sender,
-    List<CodeableConcept> reasonCode,
-    List<Reference> reasonReference,
-    List<Communication_Payload> payload,
-    List<Annotation> note,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Communication newCommunication = new Communication(
-      resourceType: 'Communication',
-      id: id ?? await fhirDb.newResourceId('Communication'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      instantiatesCanonical: instantiatesCanonical,
-      instantiatesUri: instantiatesUri,
-      elementInstantiatesUri: elementInstantiatesUri,
-      basedOn: basedOn,
-      partOf: partOf,
-      inResponseTo: inResponseTo,
-      status: status,
-      elementStatus: elementStatus,
-      statusReason: statusReason,
-      category: category,
-      priority: priority,
-      elementPriority: elementPriority,
-      medium: medium,
-      subject: subject,
-      topic: topic,
-      about: about,
-      encounter: encounter,
-      sent: sent,
-      elementSent: elementSent,
-      received: received,
-      elementReceived: elementReceived,
-      recipient: recipient,
-      sender: sender,
-      reasonCode: reasonCode,
-      reasonReference: reasonReference,
-      payload: payload,
-      note: note,
-    );
-    newCommunication.meta.createdAt = DateTime.now();
-    newCommunication.meta.lastUpdated = newCommunication.meta.createdAt;
-    int saved = await fhirDb.saveResource(newCommunication);
-    return newCommunication;
-  }
+class Communication{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Communication> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	List<String> instantiatesCanonical,
+	List<String> instantiatesUri,
+	List<Element> elementInstantiatesUri,
+	List<Reference> basedOn,
+	List<Reference> partOf,
+	List<Reference> inResponseTo,
+	String status,
+	Element elementStatus,
+	CodeableConcept statusReason,
+	List<CodeableConcept> category,
+	String priority,
+	Element elementPriority,
+	List<CodeableConcept> medium,
+	Reference subject,
+	CodeableConcept topic,
+	List<Reference> about,
+	Reference encounter,
+	DateTime sent,
+	Element elementSent,
+	DateTime received,
+	Element elementReceived,
+	List<Reference> recipient,
+	Reference sender,
+	List<CodeableConcept> reasonCode,
+	List<Reference> reasonReference,
+	List<Communication_Payload> payload,
+	List<Annotation> note,
+}) async {
+var fhirDb = new DatabaseHelper();
+Communication newCommunication = new Communication(
+	resourceType: 'Communication',
+	id: id ?? await fhirDb.newResourceId('Communication'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	instantiatesCanonical: instantiatesCanonical,
+	instantiatesUri: instantiatesUri,
+	elementInstantiatesUri: elementInstantiatesUri,
+	basedOn: basedOn,
+	partOf: partOf,
+	inResponseTo: inResponseTo,
+	status: status,
+	elementStatus: elementStatus,
+	statusReason: statusReason,
+	category: category,
+	priority: priority,
+	elementPriority: elementPriority,
+	medium: medium,
+	subject: subject,
+	topic: topic,
+	about: about,
+	encounter: encounter,
+	sent: sent,
+	elementSent: elementSent,
+	received: received,
+	elementReceived: elementReceived,
+	recipient: recipient,
+	sender: sender,
+	reasonCode: reasonCode,
+	reasonReference: reasonReference,
+	payload: payload,
+	note: note,
+);
+	newCommunication.meta.createdAt = DateTime.now();
+	newCommunication.meta.lastUpdated = newCommunication.meta.createdAt;
+	int saved = await fhirDb.saveResource(newCommunication);
+	 return newCommunication;
+}
 
-  String resourceType = 'Communication';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  List<String> instantiatesCanonical;
-  List<String> instantiatesUri;
-  List<Element> elementInstantiatesUri;
-  List<Reference> basedOn;
-  List<Reference> partOf;
-  List<Reference> inResponseTo;
-  String status;
-  Element elementStatus;
-  CodeableConcept statusReason;
-  List<CodeableConcept> category;
-  String priority;
-  Element elementPriority;
-  List<CodeableConcept> medium;
-  Reference subject;
-  CodeableConcept topic;
-  List<Reference> about;
-  Reference encounter;
-  DateTime sent;
-  Element elementSent;
-  DateTime received;
-  Element elementReceived;
-  List<Reference> recipient;
-  Reference sender;
-  List<CodeableConcept> reasonCode;
-  List<Reference> reasonReference;
-  List<Communication_Payload> payload;
-  List<Annotation> note;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Communication({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.instantiatesCanonical,
-    this.instantiatesUri,
-    this.elementInstantiatesUri,
-    this.basedOn,
-    this.partOf,
-    this.inResponseTo,
-    this.status,
-    this.elementStatus,
-    this.statusReason,
-    this.category,
-    this.priority,
-    this.elementPriority,
-    this.medium,
-    this.subject,
-    this.topic,
-    this.about,
-    this.encounter,
-    this.sent,
-    this.elementSent,
-    this.received,
-    this.elementReceived,
-    this.recipient,
-    this.sender,
-    this.reasonCode,
-    this.reasonReference,
-    this.payload,
-    this.note,
-  });
+	String resourceType= 'Communication';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	List<String> instantiatesCanonical;
+	List<String> instantiatesUri;
+	List<Element> elementInstantiatesUri;
+	List<Reference> basedOn;
+	List<Reference> partOf;
+	List<Reference> inResponseTo;
+	String status;
+	Element elementStatus;
+	CodeableConcept statusReason;
+	List<CodeableConcept> category;
+	String priority;
+	Element elementPriority;
+	List<CodeableConcept> medium;
+	Reference subject;
+	CodeableConcept topic;
+	List<Reference> about;
+	Reference encounter;
+	DateTime sent;
+	Element elementSent;
+	DateTime received;
+	Element elementReceived;
+	List<Reference> recipient;
+	Reference sender;
+	List<CodeableConcept> reasonCode;
+	List<Reference> reasonReference;
+	List<Communication_Payload> payload;
+	List<Annotation> note;
 
-  factory Communication.fromJson(Map<String, dynamic> json) =>
-      _$CommunicationFromJson(json);
+Communication(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.instantiatesCanonical,
+this.instantiatesUri,
+this.elementInstantiatesUri,
+this.basedOn,
+this.partOf,
+this.inResponseTo,
+this.status,
+this.elementStatus,
+this.statusReason,
+this.category,
+this.priority,
+this.elementPriority,
+this.medium,
+this.subject,
+this.topic,
+this.about,
+this.encounter,
+this.sent,
+this.elementSent,
+this.received,
+this.elementReceived,
+this.recipient,
+this.sender,
+this.reasonCode,
+this.reasonReference,
+this.payload,
+this.note,
+});
+
+  factory Communication.fromJson(Map<String, dynamic> json) => _$CommunicationFromJson(json);
   Map<String, dynamic> toJson() => _$CommunicationToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Communication_Payload {
-  static Future<Communication_Payload> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String contentString,
-    Element elementContentString,
-    Attachment contentAttachment,
-    Reference contentReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Communication_Payload newCommunication_Payload = new Communication_Payload(
-      id: id ?? await fhirDb.newResourceId('Communication_Payload'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      contentString: contentString,
-      elementContentString: elementContentString,
-      contentAttachment: contentAttachment,
-      contentReference: contentReference,
-    );
-    return newCommunication_Payload;
-  }
+class Communication_Payload{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String contentString;
-  Element elementContentString;
-  Attachment contentAttachment;
-  Reference contentReference;
+	static Future<Communication_Payload> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String contentString,
+	Element elementContentString,
+	Attachment contentAttachment,
+	Reference contentReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Communication_Payload newCommunication_Payload = new Communication_Payload(
+	id: id ?? await fhirDb.newResourceId('Communication_Payload'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	contentString: contentString,
+	elementContentString: elementContentString,
+	contentAttachment: contentAttachment,
+	contentReference: contentReference,
+);
+	return newCommunication_Payload;
+}
 
-  Communication_Payload({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.contentString,
-    this.elementContentString,
-    this.contentAttachment,
-    this.contentReference,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String contentString;
+	Element elementContentString;
+	Attachment contentAttachment;
+	Reference contentReference;
 
-  factory Communication_Payload.fromJson(Map<String, dynamic> json) =>
-      _$Communication_PayloadFromJson(json);
+Communication_Payload(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.contentString,
+this.elementContentString,
+this.contentAttachment,
+this.contentReference,
+});
+
+  factory Communication_Payload.fromJson(Map<String, dynamic> json) => _$Communication_PayloadFromJson(json);
   Map<String, dynamic> toJson() => _$Communication_PayloadToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -268,9 +271,8 @@ Communication _$CommunicationFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -13,318 +13,295 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductPharmaceutical {
-  static Future<MedicinalProductPharmaceutical> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    CodeableConcept administrableDoseForm,
-    CodeableConcept unitOfPresentation,
-    List<Reference> ingredient,
-    List<Reference> device,
-    List<MedicinalProductPharmaceutical_Characteristics> characteristics,
-    List<MedicinalProductPharmaceutical_RouteOfAdministration>
-        routeOfAdministration,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductPharmaceutical newMedicinalProductPharmaceutical =
-        new MedicinalProductPharmaceutical(
-      resourceType: 'MedicinalProductPharmaceutical',
-      id: id ?? await fhirDb.newResourceId('MedicinalProductPharmaceutical'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      administrableDoseForm: administrableDoseForm,
-      unitOfPresentation: unitOfPresentation,
-      ingredient: ingredient,
-      device: device,
-      characteristics: characteristics,
-      routeOfAdministration: routeOfAdministration,
-    );
-    newMedicinalProductPharmaceutical.meta.createdAt = DateTime.now();
-    newMedicinalProductPharmaceutical.meta.lastUpdated =
-        newMedicinalProductPharmaceutical.meta.createdAt;
-    int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical);
-    return newMedicinalProductPharmaceutical;
-  }
+class MedicinalProductPharmaceutical{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<MedicinalProductPharmaceutical> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	CodeableConcept administrableDoseForm,
+	CodeableConcept unitOfPresentation,
+	List<Reference> ingredient,
+	List<Reference> device,
+	List<MedicinalProductPharmaceutical_Characteristics> characteristics,
+	List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductPharmaceutical newMedicinalProductPharmaceutical = new MedicinalProductPharmaceutical(
+	resourceType: 'MedicinalProductPharmaceutical',
+	id: id ?? await fhirDb.newResourceId('MedicinalProductPharmaceutical'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	administrableDoseForm: administrableDoseForm,
+	unitOfPresentation: unitOfPresentation,
+	ingredient: ingredient,
+	device: device,
+	characteristics: characteristics,
+	routeOfAdministration: routeOfAdministration,
+);
+	newMedicinalProductPharmaceutical.meta.createdAt = DateTime.now();
+	newMedicinalProductPharmaceutical.meta.lastUpdated = newMedicinalProductPharmaceutical.meta.createdAt;
+	int saved = await fhirDb.saveResource(newMedicinalProductPharmaceutical);
+	 return newMedicinalProductPharmaceutical;
+}
 
-  String resourceType = 'MedicinalProductPharmaceutical';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  CodeableConcept administrableDoseForm;
-  CodeableConcept unitOfPresentation;
-  List<Reference> ingredient;
-  List<Reference> device;
-  List<MedicinalProductPharmaceutical_Characteristics> characteristics;
-  List<MedicinalProductPharmaceutical_RouteOfAdministration>
-      routeOfAdministration;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  MedicinalProductPharmaceutical({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    @required this.administrableDoseForm,
-    this.unitOfPresentation,
-    this.ingredient,
-    this.device,
-    this.characteristics,
-    @required this.routeOfAdministration,
-  });
+	String resourceType= 'MedicinalProductPharmaceutical';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	CodeableConcept administrableDoseForm;
+	CodeableConcept unitOfPresentation;
+	List<Reference> ingredient;
+	List<Reference> device;
+	List<MedicinalProductPharmaceutical_Characteristics> characteristics;
+	List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration;
 
-  factory MedicinalProductPharmaceutical.fromJson(Map<String, dynamic> json) =>
-      _$MedicinalProductPharmaceuticalFromJson(json);
+MedicinalProductPharmaceutical(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+@required this.administrableDoseForm,
+this.unitOfPresentation,
+this.ingredient,
+this.device,
+this.characteristics,
+@required this.routeOfAdministration,
+});
+
+  factory MedicinalProductPharmaceutical.fromJson(Map<String, dynamic> json) => _$MedicinalProductPharmaceuticalFromJson(json);
   Map<String, dynamic> toJson() => _$MedicinalProductPharmaceuticalToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class MedicinalProductPharmaceutical_Characteristics {
-  static Future<MedicinalProductPharmaceutical_Characteristics> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    CodeableConcept status,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductPharmaceutical_Characteristics
-        newMedicinalProductPharmaceutical_Characteristics =
-        new MedicinalProductPharmaceutical_Characteristics(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductPharmaceutical_Characteristics'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      status: status,
-    );
-    return newMedicinalProductPharmaceutical_Characteristics;
-  }
-
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  CodeableConcept status;
-
-  MedicinalProductPharmaceutical_Characteristics({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.code,
-    this.status,
-  });
-
-  factory MedicinalProductPharmaceutical_Characteristics.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductPharmaceutical_CharacteristicsFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductPharmaceutical_CharacteristicsToJson(this);
-}
 
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductPharmaceutical_RouteOfAdministration {
-  static Future<MedicinalProductPharmaceutical_RouteOfAdministration>
-      newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    Quantity firstDose,
-    Quantity maxSingleDose,
-    Quantity maxDosePerDay,
-    Ratio maxDosePerTreatmentPeriod,
-    Duration maxTreatmentPeriod,
-    List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductPharmaceutical_RouteOfAdministration
-        newMedicinalProductPharmaceutical_RouteOfAdministration =
-        new MedicinalProductPharmaceutical_RouteOfAdministration(
-      id: id ??
-          await fhirDb.newResourceId(
-              'MedicinalProductPharmaceutical_RouteOfAdministration'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      firstDose: firstDose,
-      maxSingleDose: maxSingleDose,
-      maxDosePerDay: maxDosePerDay,
-      maxDosePerTreatmentPeriod: maxDosePerTreatmentPeriod,
-      maxTreatmentPeriod: maxTreatmentPeriod,
-      targetSpecies: targetSpecies,
-    );
-    return newMedicinalProductPharmaceutical_RouteOfAdministration;
-  }
+class MedicinalProductPharmaceutical_Characteristics{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  Quantity firstDose;
-  Quantity maxSingleDose;
-  Quantity maxDosePerDay;
-  Ratio maxDosePerTreatmentPeriod;
-  Duration maxTreatmentPeriod;
-  List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies;
-
-  MedicinalProductPharmaceutical_RouteOfAdministration({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.code,
-    this.firstDose,
-    this.maxSingleDose,
-    this.maxDosePerDay,
-    this.maxDosePerTreatmentPeriod,
-    this.maxTreatmentPeriod,
-    this.targetSpecies,
-  });
-
-  factory MedicinalProductPharmaceutical_RouteOfAdministration.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductPharmaceutical_RouteOfAdministrationFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductPharmaceutical_RouteOfAdministrationToJson(this);
+	static Future<MedicinalProductPharmaceutical_Characteristics> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	CodeableConcept status,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductPharmaceutical_Characteristics newMedicinalProductPharmaceutical_Characteristics = new MedicinalProductPharmaceutical_Characteristics(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductPharmaceutical_Characteristics'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	status: status,
+);
+	return newMedicinalProductPharmaceutical_Characteristics;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	CodeableConcept status;
+
+MedicinalProductPharmaceutical_Characteristics(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.code,
+this.status,
+});
+
+  factory MedicinalProductPharmaceutical_Characteristics.fromJson(Map<String, dynamic> json) => _$MedicinalProductPharmaceutical_CharacteristicsFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductPharmaceutical_CharacteristicsToJson(this);
+}
+
 
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductPharmaceutical_TargetSpecies {
-  static Future<MedicinalProductPharmaceutical_TargetSpecies> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductPharmaceutical_TargetSpecies
-        newMedicinalProductPharmaceutical_TargetSpecies =
-        new MedicinalProductPharmaceutical_TargetSpecies(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductPharmaceutical_TargetSpecies'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      withdrawalPeriod: withdrawalPeriod,
-    );
-    return newMedicinalProductPharmaceutical_TargetSpecies;
-  }
+class MedicinalProductPharmaceutical_RouteOfAdministration{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod;
-
-  MedicinalProductPharmaceutical_TargetSpecies({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.code,
-    this.withdrawalPeriod,
-  });
-
-  factory MedicinalProductPharmaceutical_TargetSpecies.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductPharmaceutical_TargetSpeciesFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductPharmaceutical_TargetSpeciesToJson(this);
+	static Future<MedicinalProductPharmaceutical_RouteOfAdministration> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	Quantity firstDose,
+	Quantity maxSingleDose,
+	Quantity maxDosePerDay,
+	Ratio maxDosePerTreatmentPeriod,
+	Duration maxTreatmentPeriod,
+	List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductPharmaceutical_RouteOfAdministration newMedicinalProductPharmaceutical_RouteOfAdministration = new MedicinalProductPharmaceutical_RouteOfAdministration(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductPharmaceutical_RouteOfAdministration'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	firstDose: firstDose,
+	maxSingleDose: maxSingleDose,
+	maxDosePerDay: maxDosePerDay,
+	maxDosePerTreatmentPeriod: maxDosePerTreatmentPeriod,
+	maxTreatmentPeriod: maxTreatmentPeriod,
+	targetSpecies: targetSpecies,
+);
+	return newMedicinalProductPharmaceutical_RouteOfAdministration;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	Quantity firstDose;
+	Quantity maxSingleDose;
+	Quantity maxDosePerDay;
+	Ratio maxDosePerTreatmentPeriod;
+	Duration maxTreatmentPeriod;
+	List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies;
+
+MedicinalProductPharmaceutical_RouteOfAdministration(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.code,
+this.firstDose,
+this.maxSingleDose,
+this.maxDosePerDay,
+this.maxDosePerTreatmentPeriod,
+this.maxTreatmentPeriod,
+this.targetSpecies,
+});
+
+  factory MedicinalProductPharmaceutical_RouteOfAdministration.fromJson(Map<String, dynamic> json) => _$MedicinalProductPharmaceutical_RouteOfAdministrationFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductPharmaceutical_RouteOfAdministrationToJson(this);
+}
+
 
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductPharmaceutical_WithdrawalPeriod {
-  static Future<MedicinalProductPharmaceutical_WithdrawalPeriod> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept tissue,
-    Quantity value,
-    String supportingInformation,
-    Element elementSupportingInformation,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductPharmaceutical_WithdrawalPeriod
-        newMedicinalProductPharmaceutical_WithdrawalPeriod =
-        new MedicinalProductPharmaceutical_WithdrawalPeriod(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductPharmaceutical_WithdrawalPeriod'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      tissue: tissue,
-      value: value,
-      supportingInformation: supportingInformation,
-      elementSupportingInformation: elementSupportingInformation,
-    );
-    return newMedicinalProductPharmaceutical_WithdrawalPeriod;
-  }
+class MedicinalProductPharmaceutical_TargetSpecies{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept tissue;
-  Quantity value;
-  String supportingInformation;
-  Element elementSupportingInformation;
-
-  MedicinalProductPharmaceutical_WithdrawalPeriod({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.tissue,
-    @required this.value,
-    this.supportingInformation,
-    this.elementSupportingInformation,
-  });
-
-  factory MedicinalProductPharmaceutical_WithdrawalPeriod.fromJson(
-          Map<String, dynamic> json) =>
-      _$MedicinalProductPharmaceutical_WithdrawalPeriodFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$MedicinalProductPharmaceutical_WithdrawalPeriodToJson(this);
+	static Future<MedicinalProductPharmaceutical_TargetSpecies> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductPharmaceutical_TargetSpecies newMedicinalProductPharmaceutical_TargetSpecies = new MedicinalProductPharmaceutical_TargetSpecies(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductPharmaceutical_TargetSpecies'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	withdrawalPeriod: withdrawalPeriod,
+);
+	return newMedicinalProductPharmaceutical_TargetSpecies;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod;
+
+MedicinalProductPharmaceutical_TargetSpecies(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.code,
+this.withdrawalPeriod,
+});
+
+  factory MedicinalProductPharmaceutical_TargetSpecies.fromJson(Map<String, dynamic> json) => _$MedicinalProductPharmaceutical_TargetSpeciesFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductPharmaceutical_TargetSpeciesToJson(this);
+}
+
+
+@JsonSerializable(explicitToJson: true)
+class MedicinalProductPharmaceutical_WithdrawalPeriod{
+
+	static Future<MedicinalProductPharmaceutical_WithdrawalPeriod> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept tissue,
+	Quantity value,
+	String supportingInformation,
+	Element elementSupportingInformation,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductPharmaceutical_WithdrawalPeriod newMedicinalProductPharmaceutical_WithdrawalPeriod = new MedicinalProductPharmaceutical_WithdrawalPeriod(
+	id: id ?? await fhirDb.newResourceId('MedicinalProductPharmaceutical_WithdrawalPeriod'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	tissue: tissue,
+	value: value,
+	supportingInformation: supportingInformation,
+	elementSupportingInformation: elementSupportingInformation,
+);
+	return newMedicinalProductPharmaceutical_WithdrawalPeriod;
+}
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept tissue;
+	Quantity value;
+	String supportingInformation;
+	Element elementSupportingInformation;
+
+MedicinalProductPharmaceutical_WithdrawalPeriod(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.tissue,
+@required this.value,
+this.supportingInformation,
+this.elementSupportingInformation,
+});
+
+  factory MedicinalProductPharmaceutical_WithdrawalPeriod.fromJson(Map<String, dynamic> json) => _$MedicinalProductPharmaceutical_WithdrawalPeriodFromJson(json);
+  Map<String, dynamic> toJson() => _$MedicinalProductPharmaceutical_WithdrawalPeriodToJson(this);
+}
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -352,9 +329,8 @@ MedicinalProductPharmaceutical _$MedicinalProductPharmaceuticalFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

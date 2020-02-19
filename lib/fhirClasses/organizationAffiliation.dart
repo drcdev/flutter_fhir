@@ -12,131 +12,131 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class OrganizationAffiliation {
-  static Future<OrganizationAffiliation> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    bool active,
-    Element elementActive,
-    Period period,
-    Reference organization,
-    Reference participatingOrganization,
-    List<Reference> network,
-    List<CodeableConcept> code,
-    List<CodeableConcept> specialty,
-    List<Reference> location,
-    List<Reference> healthcareService,
-    List<ContactPoint> telecom,
-    List<Reference> endpoint,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    OrganizationAffiliation newOrganizationAffiliation =
-        new OrganizationAffiliation(
-      resourceType: 'OrganizationAffiliation',
-      id: id ?? await fhirDb.newResourceId('OrganizationAffiliation'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      active: active,
-      elementActive: elementActive,
-      period: period,
-      organization: organization,
-      participatingOrganization: participatingOrganization,
-      network: network,
-      code: code,
-      specialty: specialty,
-      location: location,
-      healthcareService: healthcareService,
-      telecom: telecom,
-      endpoint: endpoint,
-    );
-    newOrganizationAffiliation.meta.createdAt = DateTime.now();
-    newOrganizationAffiliation.meta.lastUpdated =
-        newOrganizationAffiliation.meta.createdAt;
-    int saved = await fhirDb.saveResource(newOrganizationAffiliation);
-    return newOrganizationAffiliation;
-  }
+class OrganizationAffiliation{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<OrganizationAffiliation> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	bool active,
+	Element elementActive,
+	Period period,
+	Reference organization,
+	Reference participatingOrganization,
+	List<Reference> network,
+	List<CodeableConcept> code,
+	List<CodeableConcept> specialty,
+	List<Reference> location,
+	List<Reference> healthcareService,
+	List<ContactPoint> telecom,
+	List<Reference> endpoint,
+}) async {
+var fhirDb = new DatabaseHelper();
+OrganizationAffiliation newOrganizationAffiliation = new OrganizationAffiliation(
+	resourceType: 'OrganizationAffiliation',
+	id: id ?? await fhirDb.newResourceId('OrganizationAffiliation'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	active: active,
+	elementActive: elementActive,
+	period: period,
+	organization: organization,
+	participatingOrganization: participatingOrganization,
+	network: network,
+	code: code,
+	specialty: specialty,
+	location: location,
+	healthcareService: healthcareService,
+	telecom: telecom,
+	endpoint: endpoint,
+);
+	newOrganizationAffiliation.meta.createdAt = DateTime.now();
+	newOrganizationAffiliation.meta.lastUpdated = newOrganizationAffiliation.meta.createdAt;
+	int saved = await fhirDb.saveResource(newOrganizationAffiliation);
+	 return newOrganizationAffiliation;
+}
 
-  String resourceType = 'OrganizationAffiliation';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  bool active;
-  Element elementActive;
-  Period period;
-  Reference organization;
-  Reference participatingOrganization;
-  List<Reference> network;
-  List<CodeableConcept> code;
-  List<CodeableConcept> specialty;
-  List<Reference> location;
-  List<Reference> healthcareService;
-  List<ContactPoint> telecom;
-  List<Reference> endpoint;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  OrganizationAffiliation({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.active,
-    this.elementActive,
-    this.period,
-    this.organization,
-    this.participatingOrganization,
-    this.network,
-    this.code,
-    this.specialty,
-    this.location,
-    this.healthcareService,
-    this.telecom,
-    this.endpoint,
-  });
+	String resourceType= 'OrganizationAffiliation';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	bool active;
+	Element elementActive;
+	Period period;
+	Reference organization;
+	Reference participatingOrganization;
+	List<Reference> network;
+	List<CodeableConcept> code;
+	List<CodeableConcept> specialty;
+	List<Reference> location;
+	List<Reference> healthcareService;
+	List<ContactPoint> telecom;
+	List<Reference> endpoint;
 
-  factory OrganizationAffiliation.fromJson(Map<String, dynamic> json) =>
-      _$OrganizationAffiliationFromJson(json);
+OrganizationAffiliation(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.active,
+this.elementActive,
+this.period,
+this.organization,
+this.participatingOrganization,
+this.network,
+this.code,
+this.specialty,
+this.location,
+this.healthcareService,
+this.telecom,
+this.endpoint,
+});
+
+  factory OrganizationAffiliation.fromJson(Map<String, dynamic> json) => _$OrganizationAffiliationFromJson(json);
   Map<String, dynamic> toJson() => _$OrganizationAffiliationToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -164,9 +164,8 @@ OrganizationAffiliation _$OrganizationAffiliationFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

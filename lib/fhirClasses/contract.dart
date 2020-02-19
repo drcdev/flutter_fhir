@@ -18,1328 +18,1343 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract {
-  static Future<Contract> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String url,
-    Element elementUrl,
-    String version,
-    Element elementVersion,
-    String status,
-    Element elementStatus,
-    CodeableConcept legalState,
-    Reference instantiatesCanonical,
-    String instantiatesUri,
-    Element elementInstantiatesUri,
-    CodeableConcept contentDerivative,
-    DateTime issued,
-    Element elementIssued,
-    Period applies,
-    CodeableConcept expirationType,
-    List<Reference> subject,
-    List<Reference> authority,
-    List<Reference> domain,
-    List<Reference> site,
-    String name,
-    Element elementName,
-    String title,
-    Element elementTitle,
-    String subtitle,
-    Element elementSubtitle,
-    List<String> alias,
-    List<Element> elementAlias,
-    Reference author,
-    CodeableConcept scope,
-    CodeableConcept topicCodeableConcept,
-    Reference topicReference,
-    CodeableConcept type,
-    List<CodeableConcept> subType,
-    Contract_ContentDefinition contentDefinition,
-    List<Contract_Term> term,
-    List<Reference> supportingInfo,
-    List<Reference> relevantHistory,
-    List<Contract_Signer> signer,
-    List<Contract_Friendly> friendly,
-    List<Contract_Legal> legal,
-    List<Contract_Rule> rule,
-    Attachment legallyBindingAttachment,
-    Reference legallyBindingReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract newContract = new Contract(
-      resourceType: 'Contract',
-      id: id ?? await fhirDb.newResourceId('Contract'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      url: url,
-      elementUrl: elementUrl,
-      version: version,
-      elementVersion: elementVersion,
-      status: status,
-      elementStatus: elementStatus,
-      legalState: legalState,
-      instantiatesCanonical: instantiatesCanonical,
-      instantiatesUri: instantiatesUri,
-      elementInstantiatesUri: elementInstantiatesUri,
-      contentDerivative: contentDerivative,
-      issued: issued,
-      elementIssued: elementIssued,
-      applies: applies,
-      expirationType: expirationType,
-      subject: subject,
-      authority: authority,
-      domain: domain,
-      site: site,
-      name: name,
-      elementName: elementName,
-      title: title,
-      elementTitle: elementTitle,
-      subtitle: subtitle,
-      elementSubtitle: elementSubtitle,
-      alias: alias,
-      elementAlias: elementAlias,
-      author: author,
-      scope: scope,
-      topicCodeableConcept: topicCodeableConcept,
-      topicReference: topicReference,
-      type: type,
-      subType: subType,
-      contentDefinition: contentDefinition,
-      term: term,
-      supportingInfo: supportingInfo,
-      relevantHistory: relevantHistory,
-      signer: signer,
-      friendly: friendly,
-      legal: legal,
-      rule: rule,
-      legallyBindingAttachment: legallyBindingAttachment,
-      legallyBindingReference: legallyBindingReference,
-    );
-    newContract.meta.createdAt = DateTime.now();
-    newContract.meta.lastUpdated = newContract.meta.createdAt;
-    int saved = await fhirDb.saveResource(newContract);
-    return newContract;
-  }
+class Contract{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Contract> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String url,
+	Element elementUrl,
+	String version,
+	Element elementVersion,
+	String status,
+	Element elementStatus,
+	CodeableConcept legalState,
+	Reference instantiatesCanonical,
+	String instantiatesUri,
+	Element elementInstantiatesUri,
+	CodeableConcept contentDerivative,
+	DateTime issued,
+	Element elementIssued,
+	Period applies,
+	CodeableConcept expirationType,
+	List<Reference> subject,
+	List<Reference> authority,
+	List<Reference> domain,
+	List<Reference> site,
+	String name,
+	Element elementName,
+	String title,
+	Element elementTitle,
+	String subtitle,
+	Element elementSubtitle,
+	List<String> alias,
+	List<Element> elementAlias,
+	Reference author,
+	CodeableConcept scope,
+	CodeableConcept topicCodeableConcept,
+	Reference topicReference,
+	CodeableConcept type,
+	List<CodeableConcept> subType,
+	Contract_ContentDefinition contentDefinition,
+	List<Contract_Term> term,
+	List<Reference> supportingInfo,
+	List<Reference> relevantHistory,
+	List<Contract_Signer> signer,
+	List<Contract_Friendly> friendly,
+	List<Contract_Legal> legal,
+	List<Contract_Rule> rule,
+	Attachment legallyBindingAttachment,
+	Reference legallyBindingReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract newContract = new Contract(
+	resourceType: 'Contract',
+	id: id ?? await fhirDb.newResourceId('Contract'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	url: url,
+	elementUrl: elementUrl,
+	version: version,
+	elementVersion: elementVersion,
+	status: status,
+	elementStatus: elementStatus,
+	legalState: legalState,
+	instantiatesCanonical: instantiatesCanonical,
+	instantiatesUri: instantiatesUri,
+	elementInstantiatesUri: elementInstantiatesUri,
+	contentDerivative: contentDerivative,
+	issued: issued,
+	elementIssued: elementIssued,
+	applies: applies,
+	expirationType: expirationType,
+	subject: subject,
+	authority: authority,
+	domain: domain,
+	site: site,
+	name: name,
+	elementName: elementName,
+	title: title,
+	elementTitle: elementTitle,
+	subtitle: subtitle,
+	elementSubtitle: elementSubtitle,
+	alias: alias,
+	elementAlias: elementAlias,
+	author: author,
+	scope: scope,
+	topicCodeableConcept: topicCodeableConcept,
+	topicReference: topicReference,
+	type: type,
+	subType: subType,
+	contentDefinition: contentDefinition,
+	term: term,
+	supportingInfo: supportingInfo,
+	relevantHistory: relevantHistory,
+	signer: signer,
+	friendly: friendly,
+	legal: legal,
+	rule: rule,
+	legallyBindingAttachment: legallyBindingAttachment,
+	legallyBindingReference: legallyBindingReference,
+);
+	newContract.meta.createdAt = DateTime.now();
+	newContract.meta.lastUpdated = newContract.meta.createdAt;
+	int saved = await fhirDb.saveResource(newContract);
+	 return newContract;
+}
 
-  String resourceType = 'Contract';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String url;
-  Element elementUrl;
-  String version;
-  Element elementVersion;
-  String status;
-  Element elementStatus;
-  CodeableConcept legalState;
-  Reference instantiatesCanonical;
-  String instantiatesUri;
-  Element elementInstantiatesUri;
-  CodeableConcept contentDerivative;
-  DateTime issued;
-  Element elementIssued;
-  Period applies;
-  CodeableConcept expirationType;
-  List<Reference> subject;
-  List<Reference> authority;
-  List<Reference> domain;
-  List<Reference> site;
-  String name;
-  Element elementName;
-  String title;
-  Element elementTitle;
-  String subtitle;
-  Element elementSubtitle;
-  List<String> alias;
-  List<Element> elementAlias;
-  Reference author;
-  CodeableConcept scope;
-  CodeableConcept topicCodeableConcept;
-  Reference topicReference;
-  CodeableConcept type;
-  List<CodeableConcept> subType;
-  Contract_ContentDefinition contentDefinition;
-  List<Contract_Term> term;
-  List<Reference> supportingInfo;
-  List<Reference> relevantHistory;
-  List<Contract_Signer> signer;
-  List<Contract_Friendly> friendly;
-  List<Contract_Legal> legal;
-  List<Contract_Rule> rule;
-  Attachment legallyBindingAttachment;
-  Reference legallyBindingReference;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Contract({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.url,
-    this.elementUrl,
-    this.version,
-    this.elementVersion,
-    this.status,
-    this.elementStatus,
-    this.legalState,
-    this.instantiatesCanonical,
-    this.instantiatesUri,
-    this.elementInstantiatesUri,
-    this.contentDerivative,
-    this.issued,
-    this.elementIssued,
-    this.applies,
-    this.expirationType,
-    this.subject,
-    this.authority,
-    this.domain,
-    this.site,
-    this.name,
-    this.elementName,
-    this.title,
-    this.elementTitle,
-    this.subtitle,
-    this.elementSubtitle,
-    this.alias,
-    this.elementAlias,
-    this.author,
-    this.scope,
-    this.topicCodeableConcept,
-    this.topicReference,
-    this.type,
-    this.subType,
-    this.contentDefinition,
-    this.term,
-    this.supportingInfo,
-    this.relevantHistory,
-    this.signer,
-    this.friendly,
-    this.legal,
-    this.rule,
-    this.legallyBindingAttachment,
-    this.legallyBindingReference,
-  });
+	String resourceType= 'Contract';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String url;
+	Element elementUrl;
+	String version;
+	Element elementVersion;
+	String status;
+	Element elementStatus;
+	CodeableConcept legalState;
+	Reference instantiatesCanonical;
+	String instantiatesUri;
+	Element elementInstantiatesUri;
+	CodeableConcept contentDerivative;
+	DateTime issued;
+	Element elementIssued;
+	Period applies;
+	CodeableConcept expirationType;
+	List<Reference> subject;
+	List<Reference> authority;
+	List<Reference> domain;
+	List<Reference> site;
+	String name;
+	Element elementName;
+	String title;
+	Element elementTitle;
+	String subtitle;
+	Element elementSubtitle;
+	List<String> alias;
+	List<Element> elementAlias;
+	Reference author;
+	CodeableConcept scope;
+	CodeableConcept topicCodeableConcept;
+	Reference topicReference;
+	CodeableConcept type;
+	List<CodeableConcept> subType;
+	Contract_ContentDefinition contentDefinition;
+	List<Contract_Term> term;
+	List<Reference> supportingInfo;
+	List<Reference> relevantHistory;
+	List<Contract_Signer> signer;
+	List<Contract_Friendly> friendly;
+	List<Contract_Legal> legal;
+	List<Contract_Rule> rule;
+	Attachment legallyBindingAttachment;
+	Reference legallyBindingReference;
 
-  factory Contract.fromJson(Map<String, dynamic> json) =>
-      _$ContractFromJson(json);
+Contract(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.url,
+this.elementUrl,
+this.version,
+this.elementVersion,
+this.status,
+this.elementStatus,
+this.legalState,
+this.instantiatesCanonical,
+this.instantiatesUri,
+this.elementInstantiatesUri,
+this.contentDerivative,
+this.issued,
+this.elementIssued,
+this.applies,
+this.expirationType,
+this.subject,
+this.authority,
+this.domain,
+this.site,
+this.name,
+this.elementName,
+this.title,
+this.elementTitle,
+this.subtitle,
+this.elementSubtitle,
+this.alias,
+this.elementAlias,
+this.author,
+this.scope,
+this.topicCodeableConcept,
+this.topicReference,
+this.type,
+this.subType,
+this.contentDefinition,
+this.term,
+this.supportingInfo,
+this.relevantHistory,
+this.signer,
+this.friendly,
+this.legal,
+this.rule,
+this.legallyBindingAttachment,
+this.legallyBindingReference,
+});
+
+  factory Contract.fromJson(Map<String, dynamic> json) => _$ContractFromJson(json);
   Map<String, dynamic> toJson() => _$ContractToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_ContentDefinition {
-  static Future<Contract_ContentDefinition> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept type,
-    CodeableConcept subType,
-    Reference publisher,
-    DateTime publicationDate,
-    Element elementPublicationDate,
-    String publicationStatus,
-    Element elementPublicationStatus,
-    String copyright,
-    Element elementCopyright,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_ContentDefinition newContract_ContentDefinition =
-        new Contract_ContentDefinition(
-      id: id ?? await fhirDb.newResourceId('Contract_ContentDefinition'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      subType: subType,
-      publisher: publisher,
-      publicationDate: publicationDate,
-      elementPublicationDate: elementPublicationDate,
-      publicationStatus: publicationStatus,
-      elementPublicationStatus: elementPublicationStatus,
-      copyright: copyright,
-      elementCopyright: elementCopyright,
-    );
-    return newContract_ContentDefinition;
-  }
+class Contract_ContentDefinition{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept type;
-  CodeableConcept subType;
-  Reference publisher;
-  DateTime publicationDate;
-  Element elementPublicationDate;
-  String publicationStatus;
-  Element elementPublicationStatus;
-  String copyright;
-  Element elementCopyright;
+	static Future<Contract_ContentDefinition> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept type,
+	CodeableConcept subType,
+	Reference publisher,
+	DateTime publicationDate,
+	Element elementPublicationDate,
+	String publicationStatus,
+	Element elementPublicationStatus,
+	String copyright,
+	Element elementCopyright,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_ContentDefinition newContract_ContentDefinition = new Contract_ContentDefinition(
+	id: id ?? await fhirDb.newResourceId('Contract_ContentDefinition'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	subType: subType,
+	publisher: publisher,
+	publicationDate: publicationDate,
+	elementPublicationDate: elementPublicationDate,
+	publicationStatus: publicationStatus,
+	elementPublicationStatus: elementPublicationStatus,
+	copyright: copyright,
+	elementCopyright: elementCopyright,
+);
+	return newContract_ContentDefinition;
+}
 
-  Contract_ContentDefinition({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.type,
-    this.subType,
-    this.publisher,
-    this.publicationDate,
-    this.elementPublicationDate,
-    this.publicationStatus,
-    this.elementPublicationStatus,
-    this.copyright,
-    this.elementCopyright,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept type;
+	CodeableConcept subType;
+	Reference publisher;
+	DateTime publicationDate;
+	Element elementPublicationDate;
+	String publicationStatus;
+	Element elementPublicationStatus;
+	String copyright;
+	Element elementCopyright;
 
-  factory Contract_ContentDefinition.fromJson(Map<String, dynamic> json) =>
-      _$Contract_ContentDefinitionFromJson(json);
+Contract_ContentDefinition(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.type,
+this.subType,
+this.publisher,
+this.publicationDate,
+this.elementPublicationDate,
+this.publicationStatus,
+this.elementPublicationStatus,
+this.copyright,
+this.elementCopyright,
+});
+
+  factory Contract_ContentDefinition.fromJson(Map<String, dynamic> json) => _$Contract_ContentDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_ContentDefinitionToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Term {
-  static Future<Contract_Term> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Identifier identifier,
-    DateTime issued,
-    Element elementIssued,
-    Period applies,
-    CodeableConcept topicCodeableConcept,
-    Reference topicReference,
-    CodeableConcept type,
-    CodeableConcept subType,
-    String text,
-    Element elementText,
-    List<Contract_SecurityLabel> securityLabel,
-    Contract_Offer offer,
-    List<Contract_Asset> asset,
-    List<Contract_Action> action,
-    List<Contract_Term> group,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Term newContract_Term = new Contract_Term(
-      id: id ?? await fhirDb.newResourceId('Contract_Term'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      issued: issued,
-      elementIssued: elementIssued,
-      applies: applies,
-      topicCodeableConcept: topicCodeableConcept,
-      topicReference: topicReference,
-      type: type,
-      subType: subType,
-      text: text,
-      elementText: elementText,
-      securityLabel: securityLabel,
-      offer: offer,
-      asset: asset,
-      action: action,
-      group: group,
-    );
-    return newContract_Term;
-  }
+class Contract_Term{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Identifier identifier;
-  DateTime issued;
-  Element elementIssued;
-  Period applies;
-  CodeableConcept topicCodeableConcept;
-  Reference topicReference;
-  CodeableConcept type;
-  CodeableConcept subType;
-  String text;
-  Element elementText;
-  List<Contract_SecurityLabel> securityLabel;
-  Contract_Offer offer;
-  List<Contract_Asset> asset;
-  List<Contract_Action> action;
-  List<Contract_Term> group;
+	static Future<Contract_Term> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Identifier identifier,
+	DateTime issued,
+	Element elementIssued,
+	Period applies,
+	CodeableConcept topicCodeableConcept,
+	Reference topicReference,
+	CodeableConcept type,
+	CodeableConcept subType,
+	String text,
+	Element elementText,
+	List<Contract_SecurityLabel> securityLabel,
+	Contract_Offer offer,
+	List<Contract_Asset> asset,
+	List<Contract_Action> action,
+	List<Contract_Term> group,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Term newContract_Term = new Contract_Term(
+	id: id ?? await fhirDb.newResourceId('Contract_Term'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	issued: issued,
+	elementIssued: elementIssued,
+	applies: applies,
+	topicCodeableConcept: topicCodeableConcept,
+	topicReference: topicReference,
+	type: type,
+	subType: subType,
+	text: text,
+	elementText: elementText,
+	securityLabel: securityLabel,
+	offer: offer,
+	asset: asset,
+	action: action,
+	group: group,
+);
+	return newContract_Term;
+}
 
-  Contract_Term({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.issued,
-    this.elementIssued,
-    this.applies,
-    this.topicCodeableConcept,
-    this.topicReference,
-    this.type,
-    this.subType,
-    this.text,
-    this.elementText,
-    this.securityLabel,
-    @required this.offer,
-    this.asset,
-    this.action,
-    this.group,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Identifier identifier;
+	DateTime issued;
+	Element elementIssued;
+	Period applies;
+	CodeableConcept topicCodeableConcept;
+	Reference topicReference;
+	CodeableConcept type;
+	CodeableConcept subType;
+	String text;
+	Element elementText;
+	List<Contract_SecurityLabel> securityLabel;
+	Contract_Offer offer;
+	List<Contract_Asset> asset;
+	List<Contract_Action> action;
+	List<Contract_Term> group;
 
-  factory Contract_Term.fromJson(Map<String, dynamic> json) =>
-      _$Contract_TermFromJson(json);
+Contract_Term(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.issued,
+this.elementIssued,
+this.applies,
+this.topicCodeableConcept,
+this.topicReference,
+this.type,
+this.subType,
+this.text,
+this.elementText,
+this.securityLabel,
+@required this.offer,
+this.asset,
+this.action,
+this.group,
+});
+
+  factory Contract_Term.fromJson(Map<String, dynamic> json) => _$Contract_TermFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_TermToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_SecurityLabel {
-  static Future<Contract_SecurityLabel> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<int> number,
-    List<Element> elementNumber,
-    Coding classification,
-    List<Coding> category,
-    List<Coding> control,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_SecurityLabel newContract_SecurityLabel =
-        new Contract_SecurityLabel(
-      id: id ?? await fhirDb.newResourceId('Contract_SecurityLabel'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      number: number,
-      elementNumber: elementNumber,
-      classification: classification,
-      category: category,
-      control: control,
-    );
-    return newContract_SecurityLabel;
-  }
+class Contract_SecurityLabel{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<int> number;
-  List<Element> elementNumber;
-  Coding classification;
-  List<Coding> category;
-  List<Coding> control;
+	static Future<Contract_SecurityLabel> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<int> number,
+	List<Element> elementNumber,
+	Coding classification,
+	List<Coding> category,
+	List<Coding> control,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_SecurityLabel newContract_SecurityLabel = new Contract_SecurityLabel(
+	id: id ?? await fhirDb.newResourceId('Contract_SecurityLabel'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	number: number,
+	elementNumber: elementNumber,
+	classification: classification,
+	category: category,
+	control: control,
+);
+	return newContract_SecurityLabel;
+}
 
-  Contract_SecurityLabel({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.number,
-    this.elementNumber,
-    @required this.classification,
-    this.category,
-    this.control,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<int> number;
+	List<Element> elementNumber;
+	Coding classification;
+	List<Coding> category;
+	List<Coding> control;
 
-  factory Contract_SecurityLabel.fromJson(Map<String, dynamic> json) =>
-      _$Contract_SecurityLabelFromJson(json);
+Contract_SecurityLabel(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.number,
+this.elementNumber,
+@required this.classification,
+this.category,
+this.control,
+});
+
+  factory Contract_SecurityLabel.fromJson(Map<String, dynamic> json) => _$Contract_SecurityLabelFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_SecurityLabelToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Offer {
-  static Future<Contract_Offer> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    List<Contract_Party> party,
-    Reference topic,
-    CodeableConcept type,
-    CodeableConcept decision,
-    List<CodeableConcept> decisionMode,
-    List<Contract_Answer> answer,
-    String text,
-    Element elementText,
-    List<String> linkId,
-    List<Element> elementLinkId,
-    List<int> securityLabelNumber,
-    List<Element> elementSecurityLabelNumber,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Offer newContract_Offer = new Contract_Offer(
-      id: id ?? await fhirDb.newResourceId('Contract_Offer'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      party: party,
-      topic: topic,
-      type: type,
-      decision: decision,
-      decisionMode: decisionMode,
-      answer: answer,
-      text: text,
-      elementText: elementText,
-      linkId: linkId,
-      elementLinkId: elementLinkId,
-      securityLabelNumber: securityLabelNumber,
-      elementSecurityLabelNumber: elementSecurityLabelNumber,
-    );
-    return newContract_Offer;
-  }
+class Contract_Offer{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  List<Contract_Party> party;
-  Reference topic;
-  CodeableConcept type;
-  CodeableConcept decision;
-  List<CodeableConcept> decisionMode;
-  List<Contract_Answer> answer;
-  String text;
-  Element elementText;
-  List<String> linkId;
-  List<Element> elementLinkId;
-  List<int> securityLabelNumber;
-  List<Element> elementSecurityLabelNumber;
+	static Future<Contract_Offer> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	List<Contract_Party> party,
+	Reference topic,
+	CodeableConcept type,
+	CodeableConcept decision,
+	List<CodeableConcept> decisionMode,
+	List<Contract_Answer> answer,
+	String text,
+	Element elementText,
+	List<String> linkId,
+	List<Element> elementLinkId,
+	List<int> securityLabelNumber,
+	List<Element> elementSecurityLabelNumber,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Offer newContract_Offer = new Contract_Offer(
+	id: id ?? await fhirDb.newResourceId('Contract_Offer'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	party: party,
+	topic: topic,
+	type: type,
+	decision: decision,
+	decisionMode: decisionMode,
+	answer: answer,
+	text: text,
+	elementText: elementText,
+	linkId: linkId,
+	elementLinkId: elementLinkId,
+	securityLabelNumber: securityLabelNumber,
+	elementSecurityLabelNumber: elementSecurityLabelNumber,
+);
+	return newContract_Offer;
+}
 
-  Contract_Offer({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.party,
-    this.topic,
-    this.type,
-    this.decision,
-    this.decisionMode,
-    this.answer,
-    this.text,
-    this.elementText,
-    this.linkId,
-    this.elementLinkId,
-    this.securityLabelNumber,
-    this.elementSecurityLabelNumber,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	List<Contract_Party> party;
+	Reference topic;
+	CodeableConcept type;
+	CodeableConcept decision;
+	List<CodeableConcept> decisionMode;
+	List<Contract_Answer> answer;
+	String text;
+	Element elementText;
+	List<String> linkId;
+	List<Element> elementLinkId;
+	List<int> securityLabelNumber;
+	List<Element> elementSecurityLabelNumber;
 
-  factory Contract_Offer.fromJson(Map<String, dynamic> json) =>
-      _$Contract_OfferFromJson(json);
+Contract_Offer(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.party,
+this.topic,
+this.type,
+this.decision,
+this.decisionMode,
+this.answer,
+this.text,
+this.elementText,
+this.linkId,
+this.elementLinkId,
+this.securityLabelNumber,
+this.elementSecurityLabelNumber,
+});
+
+  factory Contract_Offer.fromJson(Map<String, dynamic> json) => _$Contract_OfferFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_OfferToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Party {
-  static Future<Contract_Party> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Reference> reference,
-    CodeableConcept role,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Party newContract_Party = new Contract_Party(
-      id: id ?? await fhirDb.newResourceId('Contract_Party'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      reference: reference,
-      role: role,
-    );
-    return newContract_Party;
-  }
+class Contract_Party{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Reference> reference;
-  CodeableConcept role;
+	static Future<Contract_Party> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Reference> reference,
+	CodeableConcept role,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Party newContract_Party = new Contract_Party(
+	id: id ?? await fhirDb.newResourceId('Contract_Party'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	reference: reference,
+	role: role,
+);
+	return newContract_Party;
+}
 
-  Contract_Party({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.reference,
-    @required this.role,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Reference> reference;
+	CodeableConcept role;
 
-  factory Contract_Party.fromJson(Map<String, dynamic> json) =>
-      _$Contract_PartyFromJson(json);
+Contract_Party(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.reference,
+@required this.role,
+});
+
+  factory Contract_Party.fromJson(Map<String, dynamic> json) => _$Contract_PartyFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_PartyToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Answer {
-  static Future<Contract_Answer> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    bool valueBoolean,
-    Element elementValueBoolean,
-    int valueDecimal,
-    Element elementValueDecimal,
-    int valueInteger,
-    Element elementValueInteger,
-    String valueDate,
-    Element elementValueDate,
-    String valueDateTime,
-    Element elementValueDateTime,
-    String valueTime,
-    Element elementValueTime,
-    String valueString,
-    Element elementValueString,
-    String valueUri,
-    Element elementValueUri,
-    Attachment valueAttachment,
-    Coding valueCoding,
-    Quantity valueQuantity,
-    Reference valueReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Answer newContract_Answer = new Contract_Answer(
-      id: id ?? await fhirDb.newResourceId('Contract_Answer'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      valueBoolean: valueBoolean,
-      elementValueBoolean: elementValueBoolean,
-      valueDecimal: valueDecimal,
-      elementValueDecimal: elementValueDecimal,
-      valueInteger: valueInteger,
-      elementValueInteger: elementValueInteger,
-      valueDate: valueDate,
-      elementValueDate: elementValueDate,
-      valueDateTime: valueDateTime,
-      elementValueDateTime: elementValueDateTime,
-      valueTime: valueTime,
-      elementValueTime: elementValueTime,
-      valueString: valueString,
-      elementValueString: elementValueString,
-      valueUri: valueUri,
-      elementValueUri: elementValueUri,
-      valueAttachment: valueAttachment,
-      valueCoding: valueCoding,
-      valueQuantity: valueQuantity,
-      valueReference: valueReference,
-    );
-    return newContract_Answer;
-  }
+class Contract_Answer{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  bool valueBoolean;
-  Element elementValueBoolean;
-  int valueDecimal;
-  Element elementValueDecimal;
-  int valueInteger;
-  Element elementValueInteger;
-  String valueDate;
-  Element elementValueDate;
-  String valueDateTime;
-  Element elementValueDateTime;
-  String valueTime;
-  Element elementValueTime;
-  String valueString;
-  Element elementValueString;
-  String valueUri;
-  Element elementValueUri;
-  Attachment valueAttachment;
-  Coding valueCoding;
-  Quantity valueQuantity;
-  Reference valueReference;
+	static Future<Contract_Answer> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	bool valueBoolean,
+	Element elementValueBoolean,
+	int valueDecimal,
+	Element elementValueDecimal,
+	int valueInteger,
+	Element elementValueInteger,
+	String valueDate,
+	Element elementValueDate,
+	String valueDateTime,
+	Element elementValueDateTime,
+	String valueTime,
+	Element elementValueTime,
+	String valueString,
+	Element elementValueString,
+	String valueUri,
+	Element elementValueUri,
+	Attachment valueAttachment,
+	Coding valueCoding,
+	Quantity valueQuantity,
+	Reference valueReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Answer newContract_Answer = new Contract_Answer(
+	id: id ?? await fhirDb.newResourceId('Contract_Answer'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	valueBoolean: valueBoolean,
+	elementValueBoolean: elementValueBoolean,
+	valueDecimal: valueDecimal,
+	elementValueDecimal: elementValueDecimal,
+	valueInteger: valueInteger,
+	elementValueInteger: elementValueInteger,
+	valueDate: valueDate,
+	elementValueDate: elementValueDate,
+	valueDateTime: valueDateTime,
+	elementValueDateTime: elementValueDateTime,
+	valueTime: valueTime,
+	elementValueTime: elementValueTime,
+	valueString: valueString,
+	elementValueString: elementValueString,
+	valueUri: valueUri,
+	elementValueUri: elementValueUri,
+	valueAttachment: valueAttachment,
+	valueCoding: valueCoding,
+	valueQuantity: valueQuantity,
+	valueReference: valueReference,
+);
+	return newContract_Answer;
+}
 
-  Contract_Answer({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.valueBoolean,
-    this.elementValueBoolean,
-    this.valueDecimal,
-    this.elementValueDecimal,
-    this.valueInteger,
-    this.elementValueInteger,
-    this.valueDate,
-    this.elementValueDate,
-    this.valueDateTime,
-    this.elementValueDateTime,
-    this.valueTime,
-    this.elementValueTime,
-    this.valueString,
-    this.elementValueString,
-    this.valueUri,
-    this.elementValueUri,
-    this.valueAttachment,
-    this.valueCoding,
-    this.valueQuantity,
-    this.valueReference,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	bool valueBoolean;
+	Element elementValueBoolean;
+	int valueDecimal;
+	Element elementValueDecimal;
+	int valueInteger;
+	Element elementValueInteger;
+	String valueDate;
+	Element elementValueDate;
+	String valueDateTime;
+	Element elementValueDateTime;
+	String valueTime;
+	Element elementValueTime;
+	String valueString;
+	Element elementValueString;
+	String valueUri;
+	Element elementValueUri;
+	Attachment valueAttachment;
+	Coding valueCoding;
+	Quantity valueQuantity;
+	Reference valueReference;
 
-  factory Contract_Answer.fromJson(Map<String, dynamic> json) =>
-      _$Contract_AnswerFromJson(json);
+Contract_Answer(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.valueBoolean,
+this.elementValueBoolean,
+this.valueDecimal,
+this.elementValueDecimal,
+this.valueInteger,
+this.elementValueInteger,
+this.valueDate,
+this.elementValueDate,
+this.valueDateTime,
+this.elementValueDateTime,
+this.valueTime,
+this.elementValueTime,
+this.valueString,
+this.elementValueString,
+this.valueUri,
+this.elementValueUri,
+this.valueAttachment,
+this.valueCoding,
+this.valueQuantity,
+this.valueReference,
+});
+
+  factory Contract_Answer.fromJson(Map<String, dynamic> json) => _$Contract_AnswerFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_AnswerToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Asset {
-  static Future<Contract_Asset> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept scope,
-    List<CodeableConcept> type,
-    List<Reference> typeReference,
-    List<CodeableConcept> subtype,
-    Coding relationship,
-    List<Contract_Context> context,
-    String condition,
-    Element elementCondition,
-    List<CodeableConcept> periodType,
-    List<Period> period,
-    List<Period> usePeriod,
-    String text,
-    Element elementText,
-    List<String> linkId,
-    List<Element> elementLinkId,
-    List<Contract_Answer> answer,
-    List<int> securityLabelNumber,
-    List<Element> elementSecurityLabelNumber,
-    List<Contract_ValuedItem> valuedItem,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Asset newContract_Asset = new Contract_Asset(
-      id: id ?? await fhirDb.newResourceId('Contract_Asset'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      scope: scope,
-      type: type,
-      typeReference: typeReference,
-      subtype: subtype,
-      relationship: relationship,
-      context: context,
-      condition: condition,
-      elementCondition: elementCondition,
-      periodType: periodType,
-      period: period,
-      usePeriod: usePeriod,
-      text: text,
-      elementText: elementText,
-      linkId: linkId,
-      elementLinkId: elementLinkId,
-      answer: answer,
-      securityLabelNumber: securityLabelNumber,
-      elementSecurityLabelNumber: elementSecurityLabelNumber,
-      valuedItem: valuedItem,
-    );
-    return newContract_Asset;
-  }
+class Contract_Asset{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept scope;
-  List<CodeableConcept> type;
-  List<Reference> typeReference;
-  List<CodeableConcept> subtype;
-  Coding relationship;
-  List<Contract_Context> context;
-  String condition;
-  Element elementCondition;
-  List<CodeableConcept> periodType;
-  List<Period> period;
-  List<Period> usePeriod;
-  String text;
-  Element elementText;
-  List<String> linkId;
-  List<Element> elementLinkId;
-  List<Contract_Answer> answer;
-  List<int> securityLabelNumber;
-  List<Element> elementSecurityLabelNumber;
-  List<Contract_ValuedItem> valuedItem;
+	static Future<Contract_Asset> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept scope,
+	List<CodeableConcept> type,
+	List<Reference> typeReference,
+	List<CodeableConcept> subtype,
+	Coding relationship,
+	List<Contract_Context> context,
+	String condition,
+	Element elementCondition,
+	List<CodeableConcept> periodType,
+	List<Period> period,
+	List<Period> usePeriod,
+	String text,
+	Element elementText,
+	List<String> linkId,
+	List<Element> elementLinkId,
+	List<Contract_Answer> answer,
+	List<int> securityLabelNumber,
+	List<Element> elementSecurityLabelNumber,
+	List<Contract_ValuedItem> valuedItem,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Asset newContract_Asset = new Contract_Asset(
+	id: id ?? await fhirDb.newResourceId('Contract_Asset'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	scope: scope,
+	type: type,
+	typeReference: typeReference,
+	subtype: subtype,
+	relationship: relationship,
+	context: context,
+	condition: condition,
+	elementCondition: elementCondition,
+	periodType: periodType,
+	period: period,
+	usePeriod: usePeriod,
+	text: text,
+	elementText: elementText,
+	linkId: linkId,
+	elementLinkId: elementLinkId,
+	answer: answer,
+	securityLabelNumber: securityLabelNumber,
+	elementSecurityLabelNumber: elementSecurityLabelNumber,
+	valuedItem: valuedItem,
+);
+	return newContract_Asset;
+}
 
-  Contract_Asset({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.scope,
-    this.type,
-    this.typeReference,
-    this.subtype,
-    this.relationship,
-    this.context,
-    this.condition,
-    this.elementCondition,
-    this.periodType,
-    this.period,
-    this.usePeriod,
-    this.text,
-    this.elementText,
-    this.linkId,
-    this.elementLinkId,
-    this.answer,
-    this.securityLabelNumber,
-    this.elementSecurityLabelNumber,
-    this.valuedItem,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept scope;
+	List<CodeableConcept> type;
+	List<Reference> typeReference;
+	List<CodeableConcept> subtype;
+	Coding relationship;
+	List<Contract_Context> context;
+	String condition;
+	Element elementCondition;
+	List<CodeableConcept> periodType;
+	List<Period> period;
+	List<Period> usePeriod;
+	String text;
+	Element elementText;
+	List<String> linkId;
+	List<Element> elementLinkId;
+	List<Contract_Answer> answer;
+	List<int> securityLabelNumber;
+	List<Element> elementSecurityLabelNumber;
+	List<Contract_ValuedItem> valuedItem;
 
-  factory Contract_Asset.fromJson(Map<String, dynamic> json) =>
-      _$Contract_AssetFromJson(json);
+Contract_Asset(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.scope,
+this.type,
+this.typeReference,
+this.subtype,
+this.relationship,
+this.context,
+this.condition,
+this.elementCondition,
+this.periodType,
+this.period,
+this.usePeriod,
+this.text,
+this.elementText,
+this.linkId,
+this.elementLinkId,
+this.answer,
+this.securityLabelNumber,
+this.elementSecurityLabelNumber,
+this.valuedItem,
+});
+
+  factory Contract_Asset.fromJson(Map<String, dynamic> json) => _$Contract_AssetFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_AssetToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Context {
-  static Future<Contract_Context> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Reference reference,
-    List<CodeableConcept> code,
-    String text,
-    Element elementText,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Context newContract_Context = new Contract_Context(
-      id: id ?? await fhirDb.newResourceId('Contract_Context'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      reference: reference,
-      code: code,
-      text: text,
-      elementText: elementText,
-    );
-    return newContract_Context;
-  }
+class Contract_Context{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Reference reference;
-  List<CodeableConcept> code;
-  String text;
-  Element elementText;
+	static Future<Contract_Context> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Reference reference,
+	List<CodeableConcept> code,
+	String text,
+	Element elementText,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Context newContract_Context = new Contract_Context(
+	id: id ?? await fhirDb.newResourceId('Contract_Context'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	reference: reference,
+	code: code,
+	text: text,
+	elementText: elementText,
+);
+	return newContract_Context;
+}
 
-  Contract_Context({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.reference,
-    this.code,
-    this.text,
-    this.elementText,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Reference reference;
+	List<CodeableConcept> code;
+	String text;
+	Element elementText;
 
-  factory Contract_Context.fromJson(Map<String, dynamic> json) =>
-      _$Contract_ContextFromJson(json);
+Contract_Context(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.reference,
+this.code,
+this.text,
+this.elementText,
+});
+
+  factory Contract_Context.fromJson(Map<String, dynamic> json) => _$Contract_ContextFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_ContextToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_ValuedItem {
-  static Future<Contract_ValuedItem> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept entityCodeableConcept,
-    Reference entityReference,
-    Identifier identifier,
-    DateTime effectiveTime,
-    Element elementEffectiveTime,
-    Quantity quantity,
-    Money unitPrice,
-    double factor,
-    Element elementFactor,
-    double points,
-    Element elementPoints,
-    Money net,
-    String payment,
-    Element elementPayment,
-    DateTime paymentDate,
-    Element elementPaymentDate,
-    Reference responsible,
-    Reference recipient,
-    List<String> linkId,
-    List<Element> elementLinkId,
-    List<int> securityLabelNumber,
-    List<Element> elementSecurityLabelNumber,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_ValuedItem newContract_ValuedItem = new Contract_ValuedItem(
-      id: id ?? await fhirDb.newResourceId('Contract_ValuedItem'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      entityCodeableConcept: entityCodeableConcept,
-      entityReference: entityReference,
-      identifier: identifier,
-      effectiveTime: effectiveTime,
-      elementEffectiveTime: elementEffectiveTime,
-      quantity: quantity,
-      unitPrice: unitPrice,
-      factor: factor,
-      elementFactor: elementFactor,
-      points: points,
-      elementPoints: elementPoints,
-      net: net,
-      payment: payment,
-      elementPayment: elementPayment,
-      paymentDate: paymentDate,
-      elementPaymentDate: elementPaymentDate,
-      responsible: responsible,
-      recipient: recipient,
-      linkId: linkId,
-      elementLinkId: elementLinkId,
-      securityLabelNumber: securityLabelNumber,
-      elementSecurityLabelNumber: elementSecurityLabelNumber,
-    );
-    return newContract_ValuedItem;
-  }
+class Contract_ValuedItem{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept entityCodeableConcept;
-  Reference entityReference;
-  Identifier identifier;
-  DateTime effectiveTime;
-  Element elementEffectiveTime;
-  Quantity quantity;
-  Money unitPrice;
-  double factor;
-  Element elementFactor;
-  double points;
-  Element elementPoints;
-  Money net;
-  String payment;
-  Element elementPayment;
-  DateTime paymentDate;
-  Element elementPaymentDate;
-  Reference responsible;
-  Reference recipient;
-  List<String> linkId;
-  List<Element> elementLinkId;
-  List<int> securityLabelNumber;
-  List<Element> elementSecurityLabelNumber;
+	static Future<Contract_ValuedItem> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept entityCodeableConcept,
+	Reference entityReference,
+	Identifier identifier,
+	DateTime effectiveTime,
+	Element elementEffectiveTime,
+	Quantity quantity,
+	Money unitPrice,
+	double factor,
+	Element elementFactor,
+	double points,
+	Element elementPoints,
+	Money net,
+	String payment,
+	Element elementPayment,
+	DateTime paymentDate,
+	Element elementPaymentDate,
+	Reference responsible,
+	Reference recipient,
+	List<String> linkId,
+	List<Element> elementLinkId,
+	List<int> securityLabelNumber,
+	List<Element> elementSecurityLabelNumber,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_ValuedItem newContract_ValuedItem = new Contract_ValuedItem(
+	id: id ?? await fhirDb.newResourceId('Contract_ValuedItem'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	entityCodeableConcept: entityCodeableConcept,
+	entityReference: entityReference,
+	identifier: identifier,
+	effectiveTime: effectiveTime,
+	elementEffectiveTime: elementEffectiveTime,
+	quantity: quantity,
+	unitPrice: unitPrice,
+	factor: factor,
+	elementFactor: elementFactor,
+	points: points,
+	elementPoints: elementPoints,
+	net: net,
+	payment: payment,
+	elementPayment: elementPayment,
+	paymentDate: paymentDate,
+	elementPaymentDate: elementPaymentDate,
+	responsible: responsible,
+	recipient: recipient,
+	linkId: linkId,
+	elementLinkId: elementLinkId,
+	securityLabelNumber: securityLabelNumber,
+	elementSecurityLabelNumber: elementSecurityLabelNumber,
+);
+	return newContract_ValuedItem;
+}
 
-  Contract_ValuedItem({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.entityCodeableConcept,
-    this.entityReference,
-    this.identifier,
-    this.effectiveTime,
-    this.elementEffectiveTime,
-    this.quantity,
-    this.unitPrice,
-    this.factor,
-    this.elementFactor,
-    this.points,
-    this.elementPoints,
-    this.net,
-    this.payment,
-    this.elementPayment,
-    this.paymentDate,
-    this.elementPaymentDate,
-    this.responsible,
-    this.recipient,
-    this.linkId,
-    this.elementLinkId,
-    this.securityLabelNumber,
-    this.elementSecurityLabelNumber,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept entityCodeableConcept;
+	Reference entityReference;
+	Identifier identifier;
+	DateTime effectiveTime;
+	Element elementEffectiveTime;
+	Quantity quantity;
+	Money unitPrice;
+	double factor;
+	Element elementFactor;
+	double points;
+	Element elementPoints;
+	Money net;
+	String payment;
+	Element elementPayment;
+	DateTime paymentDate;
+	Element elementPaymentDate;
+	Reference responsible;
+	Reference recipient;
+	List<String> linkId;
+	List<Element> elementLinkId;
+	List<int> securityLabelNumber;
+	List<Element> elementSecurityLabelNumber;
 
-  factory Contract_ValuedItem.fromJson(Map<String, dynamic> json) =>
-      _$Contract_ValuedItemFromJson(json);
+Contract_ValuedItem(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.entityCodeableConcept,
+this.entityReference,
+this.identifier,
+this.effectiveTime,
+this.elementEffectiveTime,
+this.quantity,
+this.unitPrice,
+this.factor,
+this.elementFactor,
+this.points,
+this.elementPoints,
+this.net,
+this.payment,
+this.elementPayment,
+this.paymentDate,
+this.elementPaymentDate,
+this.responsible,
+this.recipient,
+this.linkId,
+this.elementLinkId,
+this.securityLabelNumber,
+this.elementSecurityLabelNumber,
+});
+
+  factory Contract_ValuedItem.fromJson(Map<String, dynamic> json) => _$Contract_ValuedItemFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_ValuedItemToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Action {
-  static Future<Contract_Action> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    bool doNotPerform,
-    Element elementDoNotPerform,
-    CodeableConcept type,
-    List<Contract_Subject> subject,
-    CodeableConcept intent,
-    List<String> linkId,
-    List<Element> elementLinkId,
-    CodeableConcept status,
-    Reference context,
-    List<String> contextLinkId,
-    List<Element> elementContextLinkId,
-    String occurrenceDateTime,
-    Element elementOccurrenceDateTime,
-    Period occurrencePeriod,
-    Timing occurrenceTiming,
-    List<Reference> requester,
-    List<String> requesterLinkId,
-    List<Element> elementRequesterLinkId,
-    List<CodeableConcept> performerType,
-    CodeableConcept performerRole,
-    Reference performer,
-    List<String> performerLinkId,
-    List<Element> elementPerformerLinkId,
-    List<CodeableConcept> reasonCode,
-    List<Reference> reasonReference,
-    List<String> reason,
-    List<Element> elementReason,
-    List<String> reasonLinkId,
-    List<Element> elementReasonLinkId,
-    List<Annotation> note,
-    List<int> securityLabelNumber,
-    List<Element> elementSecurityLabelNumber,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Action newContract_Action = new Contract_Action(
-      id: id ?? await fhirDb.newResourceId('Contract_Action'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      doNotPerform: doNotPerform,
-      elementDoNotPerform: elementDoNotPerform,
-      type: type,
-      subject: subject,
-      intent: intent,
-      linkId: linkId,
-      elementLinkId: elementLinkId,
-      status: status,
-      context: context,
-      contextLinkId: contextLinkId,
-      elementContextLinkId: elementContextLinkId,
-      occurrenceDateTime: occurrenceDateTime,
-      elementOccurrenceDateTime: elementOccurrenceDateTime,
-      occurrencePeriod: occurrencePeriod,
-      occurrenceTiming: occurrenceTiming,
-      requester: requester,
-      requesterLinkId: requesterLinkId,
-      elementRequesterLinkId: elementRequesterLinkId,
-      performerType: performerType,
-      performerRole: performerRole,
-      performer: performer,
-      performerLinkId: performerLinkId,
-      elementPerformerLinkId: elementPerformerLinkId,
-      reasonCode: reasonCode,
-      reasonReference: reasonReference,
-      reason: reason,
-      elementReason: elementReason,
-      reasonLinkId: reasonLinkId,
-      elementReasonLinkId: elementReasonLinkId,
-      note: note,
-      securityLabelNumber: securityLabelNumber,
-      elementSecurityLabelNumber: elementSecurityLabelNumber,
-    );
-    return newContract_Action;
-  }
+class Contract_Action{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  bool doNotPerform;
-  Element elementDoNotPerform;
-  CodeableConcept type;
-  List<Contract_Subject> subject;
-  CodeableConcept intent;
-  List<String> linkId;
-  List<Element> elementLinkId;
-  CodeableConcept status;
-  Reference context;
-  List<String> contextLinkId;
-  List<Element> elementContextLinkId;
-  String occurrenceDateTime;
-  Element elementOccurrenceDateTime;
-  Period occurrencePeriod;
-  Timing occurrenceTiming;
-  List<Reference> requester;
-  List<String> requesterLinkId;
-  List<Element> elementRequesterLinkId;
-  List<CodeableConcept> performerType;
-  CodeableConcept performerRole;
-  Reference performer;
-  List<String> performerLinkId;
-  List<Element> elementPerformerLinkId;
-  List<CodeableConcept> reasonCode;
-  List<Reference> reasonReference;
-  List<String> reason;
-  List<Element> elementReason;
-  List<String> reasonLinkId;
-  List<Element> elementReasonLinkId;
-  List<Annotation> note;
-  List<int> securityLabelNumber;
-  List<Element> elementSecurityLabelNumber;
+	static Future<Contract_Action> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	bool doNotPerform,
+	Element elementDoNotPerform,
+	CodeableConcept type,
+	List<Contract_Subject> subject,
+	CodeableConcept intent,
+	List<String> linkId,
+	List<Element> elementLinkId,
+	CodeableConcept status,
+	Reference context,
+	List<String> contextLinkId,
+	List<Element> elementContextLinkId,
+	String occurrenceDateTime,
+	Element elementOccurrenceDateTime,
+	Period occurrencePeriod,
+	Timing occurrenceTiming,
+	List<Reference> requester,
+	List<String> requesterLinkId,
+	List<Element> elementRequesterLinkId,
+	List<CodeableConcept> performerType,
+	CodeableConcept performerRole,
+	Reference performer,
+	List<String> performerLinkId,
+	List<Element> elementPerformerLinkId,
+	List<CodeableConcept> reasonCode,
+	List<Reference> reasonReference,
+	List<String> reason,
+	List<Element> elementReason,
+	List<String> reasonLinkId,
+	List<Element> elementReasonLinkId,
+	List<Annotation> note,
+	List<int> securityLabelNumber,
+	List<Element> elementSecurityLabelNumber,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Action newContract_Action = new Contract_Action(
+	id: id ?? await fhirDb.newResourceId('Contract_Action'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	doNotPerform: doNotPerform,
+	elementDoNotPerform: elementDoNotPerform,
+	type: type,
+	subject: subject,
+	intent: intent,
+	linkId: linkId,
+	elementLinkId: elementLinkId,
+	status: status,
+	context: context,
+	contextLinkId: contextLinkId,
+	elementContextLinkId: elementContextLinkId,
+	occurrenceDateTime: occurrenceDateTime,
+	elementOccurrenceDateTime: elementOccurrenceDateTime,
+	occurrencePeriod: occurrencePeriod,
+	occurrenceTiming: occurrenceTiming,
+	requester: requester,
+	requesterLinkId: requesterLinkId,
+	elementRequesterLinkId: elementRequesterLinkId,
+	performerType: performerType,
+	performerRole: performerRole,
+	performer: performer,
+	performerLinkId: performerLinkId,
+	elementPerformerLinkId: elementPerformerLinkId,
+	reasonCode: reasonCode,
+	reasonReference: reasonReference,
+	reason: reason,
+	elementReason: elementReason,
+	reasonLinkId: reasonLinkId,
+	elementReasonLinkId: elementReasonLinkId,
+	note: note,
+	securityLabelNumber: securityLabelNumber,
+	elementSecurityLabelNumber: elementSecurityLabelNumber,
+);
+	return newContract_Action;
+}
 
-  Contract_Action({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.doNotPerform,
-    this.elementDoNotPerform,
-    @required this.type,
-    this.subject,
-    @required this.intent,
-    this.linkId,
-    this.elementLinkId,
-    @required this.status,
-    this.context,
-    this.contextLinkId,
-    this.elementContextLinkId,
-    this.occurrenceDateTime,
-    this.elementOccurrenceDateTime,
-    this.occurrencePeriod,
-    this.occurrenceTiming,
-    this.requester,
-    this.requesterLinkId,
-    this.elementRequesterLinkId,
-    this.performerType,
-    this.performerRole,
-    this.performer,
-    this.performerLinkId,
-    this.elementPerformerLinkId,
-    this.reasonCode,
-    this.reasonReference,
-    this.reason,
-    this.elementReason,
-    this.reasonLinkId,
-    this.elementReasonLinkId,
-    this.note,
-    this.securityLabelNumber,
-    this.elementSecurityLabelNumber,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	bool doNotPerform;
+	Element elementDoNotPerform;
+	CodeableConcept type;
+	List<Contract_Subject> subject;
+	CodeableConcept intent;
+	List<String> linkId;
+	List<Element> elementLinkId;
+	CodeableConcept status;
+	Reference context;
+	List<String> contextLinkId;
+	List<Element> elementContextLinkId;
+	String occurrenceDateTime;
+	Element elementOccurrenceDateTime;
+	Period occurrencePeriod;
+	Timing occurrenceTiming;
+	List<Reference> requester;
+	List<String> requesterLinkId;
+	List<Element> elementRequesterLinkId;
+	List<CodeableConcept> performerType;
+	CodeableConcept performerRole;
+	Reference performer;
+	List<String> performerLinkId;
+	List<Element> elementPerformerLinkId;
+	List<CodeableConcept> reasonCode;
+	List<Reference> reasonReference;
+	List<String> reason;
+	List<Element> elementReason;
+	List<String> reasonLinkId;
+	List<Element> elementReasonLinkId;
+	List<Annotation> note;
+	List<int> securityLabelNumber;
+	List<Element> elementSecurityLabelNumber;
 
-  factory Contract_Action.fromJson(Map<String, dynamic> json) =>
-      _$Contract_ActionFromJson(json);
+Contract_Action(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.doNotPerform,
+this.elementDoNotPerform,
+@required this.type,
+this.subject,
+@required this.intent,
+this.linkId,
+this.elementLinkId,
+@required this.status,
+this.context,
+this.contextLinkId,
+this.elementContextLinkId,
+this.occurrenceDateTime,
+this.elementOccurrenceDateTime,
+this.occurrencePeriod,
+this.occurrenceTiming,
+this.requester,
+this.requesterLinkId,
+this.elementRequesterLinkId,
+this.performerType,
+this.performerRole,
+this.performer,
+this.performerLinkId,
+this.elementPerformerLinkId,
+this.reasonCode,
+this.reasonReference,
+this.reason,
+this.elementReason,
+this.reasonLinkId,
+this.elementReasonLinkId,
+this.note,
+this.securityLabelNumber,
+this.elementSecurityLabelNumber,
+});
+
+  factory Contract_Action.fromJson(Map<String, dynamic> json) => _$Contract_ActionFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_ActionToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Subject {
-  static Future<Contract_Subject> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Reference> reference,
-    CodeableConcept role,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Subject newContract_Subject = new Contract_Subject(
-      id: id ?? await fhirDb.newResourceId('Contract_Subject'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      reference: reference,
-      role: role,
-    );
-    return newContract_Subject;
-  }
+class Contract_Subject{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Reference> reference;
-  CodeableConcept role;
+	static Future<Contract_Subject> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Reference> reference,
+	CodeableConcept role,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Subject newContract_Subject = new Contract_Subject(
+	id: id ?? await fhirDb.newResourceId('Contract_Subject'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	reference: reference,
+	role: role,
+);
+	return newContract_Subject;
+}
 
-  Contract_Subject({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.reference,
-    this.role,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Reference> reference;
+	CodeableConcept role;
 
-  factory Contract_Subject.fromJson(Map<String, dynamic> json) =>
-      _$Contract_SubjectFromJson(json);
+Contract_Subject(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.reference,
+this.role,
+});
+
+  factory Contract_Subject.fromJson(Map<String, dynamic> json) => _$Contract_SubjectFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_SubjectToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Signer {
-  static Future<Contract_Signer> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Coding type,
-    Reference party,
-    List<Signature> signature,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Signer newContract_Signer = new Contract_Signer(
-      id: id ?? await fhirDb.newResourceId('Contract_Signer'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      party: party,
-      signature: signature,
-    );
-    return newContract_Signer;
-  }
+class Contract_Signer{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Coding type;
-  Reference party;
-  List<Signature> signature;
+	static Future<Contract_Signer> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Coding type,
+	Reference party,
+	List<Signature> signature,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Signer newContract_Signer = new Contract_Signer(
+	id: id ?? await fhirDb.newResourceId('Contract_Signer'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	party: party,
+	signature: signature,
+);
+	return newContract_Signer;
+}
 
-  Contract_Signer({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.type,
-    @required this.party,
-    @required this.signature,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Coding type;
+	Reference party;
+	List<Signature> signature;
 
-  factory Contract_Signer.fromJson(Map<String, dynamic> json) =>
-      _$Contract_SignerFromJson(json);
+Contract_Signer(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.type,
+@required this.party,
+@required this.signature,
+});
+
+  factory Contract_Signer.fromJson(Map<String, dynamic> json) => _$Contract_SignerFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_SignerToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Friendly {
-  static Future<Contract_Friendly> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Attachment contentAttachment,
-    Reference contentReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Friendly newContract_Friendly = new Contract_Friendly(
-      id: id ?? await fhirDb.newResourceId('Contract_Friendly'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      contentAttachment: contentAttachment,
-      contentReference: contentReference,
-    );
-    return newContract_Friendly;
-  }
+class Contract_Friendly{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Attachment contentAttachment;
-  Reference contentReference;
+	static Future<Contract_Friendly> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Attachment contentAttachment,
+	Reference contentReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Friendly newContract_Friendly = new Contract_Friendly(
+	id: id ?? await fhirDb.newResourceId('Contract_Friendly'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	contentAttachment: contentAttachment,
+	contentReference: contentReference,
+);
+	return newContract_Friendly;
+}
 
-  Contract_Friendly({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.contentAttachment,
-    this.contentReference,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Attachment contentAttachment;
+	Reference contentReference;
 
-  factory Contract_Friendly.fromJson(Map<String, dynamic> json) =>
-      _$Contract_FriendlyFromJson(json);
+Contract_Friendly(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.contentAttachment,
+this.contentReference,
+});
+
+  factory Contract_Friendly.fromJson(Map<String, dynamic> json) => _$Contract_FriendlyFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_FriendlyToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Legal {
-  static Future<Contract_Legal> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Attachment contentAttachment,
-    Reference contentReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Legal newContract_Legal = new Contract_Legal(
-      id: id ?? await fhirDb.newResourceId('Contract_Legal'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      contentAttachment: contentAttachment,
-      contentReference: contentReference,
-    );
-    return newContract_Legal;
-  }
+class Contract_Legal{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Attachment contentAttachment;
-  Reference contentReference;
+	static Future<Contract_Legal> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Attachment contentAttachment,
+	Reference contentReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Legal newContract_Legal = new Contract_Legal(
+	id: id ?? await fhirDb.newResourceId('Contract_Legal'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	contentAttachment: contentAttachment,
+	contentReference: contentReference,
+);
+	return newContract_Legal;
+}
 
-  Contract_Legal({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.contentAttachment,
-    this.contentReference,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Attachment contentAttachment;
+	Reference contentReference;
 
-  factory Contract_Legal.fromJson(Map<String, dynamic> json) =>
-      _$Contract_LegalFromJson(json);
+Contract_Legal(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.contentAttachment,
+this.contentReference,
+});
+
+  factory Contract_Legal.fromJson(Map<String, dynamic> json) => _$Contract_LegalFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_LegalToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Contract_Rule {
-  static Future<Contract_Rule> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Attachment contentAttachment,
-    Reference contentReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Contract_Rule newContract_Rule = new Contract_Rule(
-      id: id ?? await fhirDb.newResourceId('Contract_Rule'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      contentAttachment: contentAttachment,
-      contentReference: contentReference,
-    );
-    return newContract_Rule;
-  }
+class Contract_Rule{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Attachment contentAttachment;
-  Reference contentReference;
+	static Future<Contract_Rule> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Attachment contentAttachment,
+	Reference contentReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Contract_Rule newContract_Rule = new Contract_Rule(
+	id: id ?? await fhirDb.newResourceId('Contract_Rule'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	contentAttachment: contentAttachment,
+	contentReference: contentReference,
+);
+	return newContract_Rule;
+}
 
-  Contract_Rule({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.contentAttachment,
-    this.contentReference,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Attachment contentAttachment;
+	Reference contentReference;
 
-  factory Contract_Rule.fromJson(Map<String, dynamic> json) =>
-      _$Contract_RuleFromJson(json);
+Contract_Rule(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.contentAttachment,
+this.contentReference,
+});
+
+  factory Contract_Rule.fromJson(Map<String, dynamic> json) => _$Contract_RuleFromJson(json);
   Map<String, dynamic> toJson() => _$Contract_RuleToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -1366,9 +1381,8 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -9,113 +9,115 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class EnrollmentRequest {
-  static Future<EnrollmentRequest> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    DateTime created,
-    Element elementCreated,
-    Reference insurer,
-    Reference provider,
-    Reference candidate,
-    Reference coverage,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    EnrollmentRequest newEnrollmentRequest = new EnrollmentRequest(
-      resourceType: 'EnrollmentRequest',
-      id: id ?? await fhirDb.newResourceId('EnrollmentRequest'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      created: created,
-      elementCreated: elementCreated,
-      insurer: insurer,
-      provider: provider,
-      candidate: candidate,
-      coverage: coverage,
-    );
-    newEnrollmentRequest.meta.createdAt = DateTime.now();
-    newEnrollmentRequest.meta.lastUpdated = newEnrollmentRequest.meta.createdAt;
-    int saved = await fhirDb.saveResource(newEnrollmentRequest);
-    return newEnrollmentRequest;
-  }
+class EnrollmentRequest{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<EnrollmentRequest> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	DateTime created,
+	Element elementCreated,
+	Reference insurer,
+	Reference provider,
+	Reference candidate,
+	Reference coverage,
+}) async {
+var fhirDb = new DatabaseHelper();
+EnrollmentRequest newEnrollmentRequest = new EnrollmentRequest(
+	resourceType: 'EnrollmentRequest',
+	id: id ?? await fhirDb.newResourceId('EnrollmentRequest'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	created: created,
+	elementCreated: elementCreated,
+	insurer: insurer,
+	provider: provider,
+	candidate: candidate,
+	coverage: coverage,
+);
+	newEnrollmentRequest.meta.createdAt = DateTime.now();
+	newEnrollmentRequest.meta.lastUpdated = newEnrollmentRequest.meta.createdAt;
+	int saved = await fhirDb.saveResource(newEnrollmentRequest);
+	 return newEnrollmentRequest;
+}
 
-  String resourceType = 'EnrollmentRequest';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  DateTime created;
-  Element elementCreated;
-  Reference insurer;
-  Reference provider;
-  Reference candidate;
-  Reference coverage;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  EnrollmentRequest({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.created,
-    this.elementCreated,
-    this.insurer,
-    this.provider,
-    this.candidate,
-    this.coverage,
-  });
+	String resourceType= 'EnrollmentRequest';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	DateTime created;
+	Element elementCreated;
+	Reference insurer;
+	Reference provider;
+	Reference candidate;
+	Reference coverage;
 
-  factory EnrollmentRequest.fromJson(Map<String, dynamic> json) =>
-      _$EnrollmentRequestFromJson(json);
+EnrollmentRequest(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+this.created,
+this.elementCreated,
+this.insurer,
+this.provider,
+this.candidate,
+this.coverage,
+});
+
+  factory EnrollmentRequest.fromJson(Map<String, dynamic> json) => _$EnrollmentRequestFromJson(json);
   Map<String, dynamic> toJson() => _$EnrollmentRequestToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -142,9 +144,8 @@ EnrollmentRequest _$EnrollmentRequestFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

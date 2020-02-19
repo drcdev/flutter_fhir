@@ -12,249 +12,251 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class PractitionerRole {
-  static Future<PractitionerRole> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    bool active,
-    Element elementActive,
-    Period period,
-    Reference practitioner,
-    Reference organization,
-    List<CodeableConcept> code,
-    List<CodeableConcept> specialty,
-    List<Reference> location,
-    List<Reference> healthcareService,
-    List<ContactPoint> telecom,
-    List<PractitionerRole_AvailableTime> availableTime,
-    List<PractitionerRole_NotAvailable> notAvailable,
-    String availabilityExceptions,
-    Element elementAvailabilityExceptions,
-    List<Reference> endpoint,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    PractitionerRole newPractitionerRole = new PractitionerRole(
-      resourceType: 'PractitionerRole',
-      id: id ?? await fhirDb.newResourceId('PractitionerRole'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      active: active,
-      elementActive: elementActive,
-      period: period,
-      practitioner: practitioner,
-      organization: organization,
-      code: code,
-      specialty: specialty,
-      location: location,
-      healthcareService: healthcareService,
-      telecom: telecom,
-      availableTime: availableTime,
-      notAvailable: notAvailable,
-      availabilityExceptions: availabilityExceptions,
-      elementAvailabilityExceptions: elementAvailabilityExceptions,
-      endpoint: endpoint,
-    );
-    newPractitionerRole.meta.createdAt = DateTime.now();
-    newPractitionerRole.meta.lastUpdated = newPractitionerRole.meta.createdAt;
-    int saved = await fhirDb.saveResource(newPractitionerRole);
-    return newPractitionerRole;
-  }
+class PractitionerRole{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<PractitionerRole> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	bool active,
+	Element elementActive,
+	Period period,
+	Reference practitioner,
+	Reference organization,
+	List<CodeableConcept> code,
+	List<CodeableConcept> specialty,
+	List<Reference> location,
+	List<Reference> healthcareService,
+	List<ContactPoint> telecom,
+	List<PractitionerRole_AvailableTime> availableTime,
+	List<PractitionerRole_NotAvailable> notAvailable,
+	String availabilityExceptions,
+	Element elementAvailabilityExceptions,
+	List<Reference> endpoint,
+}) async {
+var fhirDb = new DatabaseHelper();
+PractitionerRole newPractitionerRole = new PractitionerRole(
+	resourceType: 'PractitionerRole',
+	id: id ?? await fhirDb.newResourceId('PractitionerRole'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	active: active,
+	elementActive: elementActive,
+	period: period,
+	practitioner: practitioner,
+	organization: organization,
+	code: code,
+	specialty: specialty,
+	location: location,
+	healthcareService: healthcareService,
+	telecom: telecom,
+	availableTime: availableTime,
+	notAvailable: notAvailable,
+	availabilityExceptions: availabilityExceptions,
+	elementAvailabilityExceptions: elementAvailabilityExceptions,
+	endpoint: endpoint,
+);
+	newPractitionerRole.meta.createdAt = DateTime.now();
+	newPractitionerRole.meta.lastUpdated = newPractitionerRole.meta.createdAt;
+	int saved = await fhirDb.saveResource(newPractitionerRole);
+	 return newPractitionerRole;
+}
 
-  String resourceType = 'PractitionerRole';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  bool active;
-  Element elementActive;
-  Period period;
-  Reference practitioner;
-  Reference organization;
-  List<CodeableConcept> code;
-  List<CodeableConcept> specialty;
-  List<Reference> location;
-  List<Reference> healthcareService;
-  List<ContactPoint> telecom;
-  List<PractitionerRole_AvailableTime> availableTime;
-  List<PractitionerRole_NotAvailable> notAvailable;
-  String availabilityExceptions;
-  Element elementAvailabilityExceptions;
-  List<Reference> endpoint;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  PractitionerRole({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.active,
-    this.elementActive,
-    this.period,
-    this.practitioner,
-    this.organization,
-    this.code,
-    this.specialty,
-    this.location,
-    this.healthcareService,
-    this.telecom,
-    this.availableTime,
-    this.notAvailable,
-    this.availabilityExceptions,
-    this.elementAvailabilityExceptions,
-    this.endpoint,
-  });
+	String resourceType= 'PractitionerRole';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	bool active;
+	Element elementActive;
+	Period period;
+	Reference practitioner;
+	Reference organization;
+	List<CodeableConcept> code;
+	List<CodeableConcept> specialty;
+	List<Reference> location;
+	List<Reference> healthcareService;
+	List<ContactPoint> telecom;
+	List<PractitionerRole_AvailableTime> availableTime;
+	List<PractitionerRole_NotAvailable> notAvailable;
+	String availabilityExceptions;
+	Element elementAvailabilityExceptions;
+	List<Reference> endpoint;
 
-  factory PractitionerRole.fromJson(Map<String, dynamic> json) =>
-      _$PractitionerRoleFromJson(json);
+PractitionerRole(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.active,
+this.elementActive,
+this.period,
+this.practitioner,
+this.organization,
+this.code,
+this.specialty,
+this.location,
+this.healthcareService,
+this.telecom,
+this.availableTime,
+this.notAvailable,
+this.availabilityExceptions,
+this.elementAvailabilityExceptions,
+this.endpoint,
+});
+
+  factory PractitionerRole.fromJson(Map<String, dynamic> json) => _$PractitionerRoleFromJson(json);
   Map<String, dynamic> toJson() => _$PractitionerRoleToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class PractitionerRole_AvailableTime {
-  static Future<PractitionerRole_AvailableTime> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<String> daysOfWeek,
-    List<Element> elementDaysOfWeek,
-    bool allDay,
-    Element elementAllDay,
-    String availableStartTime,
-    Element elementAvailableStartTime,
-    String availableEndTime,
-    Element elementAvailableEndTime,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    PractitionerRole_AvailableTime newPractitionerRole_AvailableTime =
-        new PractitionerRole_AvailableTime(
-      id: id ?? await fhirDb.newResourceId('PractitionerRole_AvailableTime'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      daysOfWeek: daysOfWeek,
-      elementDaysOfWeek: elementDaysOfWeek,
-      allDay: allDay,
-      elementAllDay: elementAllDay,
-      availableStartTime: availableStartTime,
-      elementAvailableStartTime: elementAvailableStartTime,
-      availableEndTime: availableEndTime,
-      elementAvailableEndTime: elementAvailableEndTime,
-    );
-    return newPractitionerRole_AvailableTime;
-  }
+class PractitionerRole_AvailableTime{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<String> daysOfWeek;
-  List<Element> elementDaysOfWeek;
-  bool allDay;
-  Element elementAllDay;
-  String availableStartTime;
-  Element elementAvailableStartTime;
-  String availableEndTime;
-  Element elementAvailableEndTime;
+	static Future<PractitionerRole_AvailableTime> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<String> daysOfWeek,
+	List<Element> elementDaysOfWeek,
+	bool allDay,
+	Element elementAllDay,
+	String availableStartTime,
+	Element elementAvailableStartTime,
+	String availableEndTime,
+	Element elementAvailableEndTime,
+}) async {
+var fhirDb = new DatabaseHelper();
+PractitionerRole_AvailableTime newPractitionerRole_AvailableTime = new PractitionerRole_AvailableTime(
+	id: id ?? await fhirDb.newResourceId('PractitionerRole_AvailableTime'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	daysOfWeek: daysOfWeek,
+	elementDaysOfWeek: elementDaysOfWeek,
+	allDay: allDay,
+	elementAllDay: elementAllDay,
+	availableStartTime: availableStartTime,
+	elementAvailableStartTime: elementAvailableStartTime,
+	availableEndTime: availableEndTime,
+	elementAvailableEndTime: elementAvailableEndTime,
+);
+	return newPractitionerRole_AvailableTime;
+}
 
-  PractitionerRole_AvailableTime({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.daysOfWeek,
-    this.elementDaysOfWeek,
-    this.allDay,
-    this.elementAllDay,
-    this.availableStartTime,
-    this.elementAvailableStartTime,
-    this.availableEndTime,
-    this.elementAvailableEndTime,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<String> daysOfWeek;
+	List<Element> elementDaysOfWeek;
+	bool allDay;
+	Element elementAllDay;
+	String availableStartTime;
+	Element elementAvailableStartTime;
+	String availableEndTime;
+	Element elementAvailableEndTime;
 
-  factory PractitionerRole_AvailableTime.fromJson(Map<String, dynamic> json) =>
-      _$PractitionerRole_AvailableTimeFromJson(json);
+PractitionerRole_AvailableTime(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.daysOfWeek,
+this.elementDaysOfWeek,
+this.allDay,
+this.elementAllDay,
+this.availableStartTime,
+this.elementAvailableStartTime,
+this.availableEndTime,
+this.elementAvailableEndTime,
+});
+
+  factory PractitionerRole_AvailableTime.fromJson(Map<String, dynamic> json) => _$PractitionerRole_AvailableTimeFromJson(json);
   Map<String, dynamic> toJson() => _$PractitionerRole_AvailableTimeToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class PractitionerRole_NotAvailable {
-  static Future<PractitionerRole_NotAvailable> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String description,
-    Element elementDescription,
-    Period during,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    PractitionerRole_NotAvailable newPractitionerRole_NotAvailable =
-        new PractitionerRole_NotAvailable(
-      id: id ?? await fhirDb.newResourceId('PractitionerRole_NotAvailable'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      description: description,
-      elementDescription: elementDescription,
-      during: during,
-    );
-    return newPractitionerRole_NotAvailable;
-  }
+class PractitionerRole_NotAvailable{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String description;
-  Element elementDescription;
-  Period during;
+	static Future<PractitionerRole_NotAvailable> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String description,
+	Element elementDescription,
+	Period during,
+}) async {
+var fhirDb = new DatabaseHelper();
+PractitionerRole_NotAvailable newPractitionerRole_NotAvailable = new PractitionerRole_NotAvailable(
+	id: id ?? await fhirDb.newResourceId('PractitionerRole_NotAvailable'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	description: description,
+	elementDescription: elementDescription,
+	during: during,
+);
+	return newPractitionerRole_NotAvailable;
+}
 
-  PractitionerRole_NotAvailable({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.description,
-    this.elementDescription,
-    this.during,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String description;
+	Element elementDescription;
+	Period during;
 
-  factory PractitionerRole_NotAvailable.fromJson(Map<String, dynamic> json) =>
-      _$PractitionerRole_NotAvailableFromJson(json);
+PractitionerRole_NotAvailable(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.description,
+this.elementDescription,
+this.during,
+});
+
+  factory PractitionerRole_NotAvailable.fromJson(Map<String, dynamic> json) => _$PractitionerRole_NotAvailableFromJson(json);
   Map<String, dynamic> toJson() => _$PractitionerRole_NotAvailableToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -281,9 +283,8 @@ PractitionerRole _$PractitionerRoleFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -7,108 +7,110 @@ import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class SubstanceAmount {
-  static Future<SubstanceAmount> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Quantity amountQuantity,
-    Range amountRange,
-    String amountString,
-    Element elementAmountString,
-    CodeableConcept amountType,
-    String amountText,
-    Element elementAmountText,
-    SubstanceAmount_ReferenceRange referenceRange,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstanceAmount newSubstanceAmount = new SubstanceAmount(
-      id: id ?? await fhirDb.newResourceId('SubstanceAmount'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      amountQuantity: amountQuantity,
-      amountRange: amountRange,
-      amountString: amountString,
-      elementAmountString: elementAmountString,
-      amountType: amountType,
-      amountText: amountText,
-      elementAmountText: elementAmountText,
-      referenceRange: referenceRange,
-    );
-    return newSubstanceAmount;
-  }
+class SubstanceAmount{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Quantity amountQuantity;
-  Range amountRange;
-  String amountString;
-  Element elementAmountString;
-  CodeableConcept amountType;
-  String amountText;
-  Element elementAmountText;
-  SubstanceAmount_ReferenceRange referenceRange;
+	static Future<SubstanceAmount> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Quantity amountQuantity,
+	Range amountRange,
+	String amountString,
+	Element elementAmountString,
+	CodeableConcept amountType,
+	String amountText,
+	Element elementAmountText,
+	SubstanceAmount_ReferenceRange referenceRange,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstanceAmount newSubstanceAmount = new SubstanceAmount(
+	id: id ?? await fhirDb.newResourceId('SubstanceAmount'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	amountQuantity: amountQuantity,
+	amountRange: amountRange,
+	amountString: amountString,
+	elementAmountString: elementAmountString,
+	amountType: amountType,
+	amountText: amountText,
+	elementAmountText: elementAmountText,
+	referenceRange: referenceRange,
+);
+	return newSubstanceAmount;
+}
 
-  SubstanceAmount({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.amountQuantity,
-    this.amountRange,
-    this.amountString,
-    this.elementAmountString,
-    this.amountType,
-    this.amountText,
-    this.elementAmountText,
-    this.referenceRange,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Quantity amountQuantity;
+	Range amountRange;
+	String amountString;
+	Element elementAmountString;
+	CodeableConcept amountType;
+	String amountText;
+	Element elementAmountText;
+	SubstanceAmount_ReferenceRange referenceRange;
 
-  factory SubstanceAmount.fromJson(Map<String, dynamic> json) =>
-      _$SubstanceAmountFromJson(json);
+SubstanceAmount(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.amountQuantity,
+this.amountRange,
+this.amountString,
+this.elementAmountString,
+this.amountType,
+this.amountText,
+this.elementAmountText,
+this.referenceRange,
+});
+
+  factory SubstanceAmount.fromJson(Map<String, dynamic> json) => _$SubstanceAmountFromJson(json);
   Map<String, dynamic> toJson() => _$SubstanceAmountToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class SubstanceAmount_ReferenceRange {
-  static Future<SubstanceAmount_ReferenceRange> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Quantity lowLimit,
-    Quantity highLimit,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    SubstanceAmount_ReferenceRange newSubstanceAmount_ReferenceRange =
-        new SubstanceAmount_ReferenceRange(
-      id: id ?? await fhirDb.newResourceId('SubstanceAmount_ReferenceRange'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      lowLimit: lowLimit,
-      highLimit: highLimit,
-    );
-    return newSubstanceAmount_ReferenceRange;
-  }
+class SubstanceAmount_ReferenceRange{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Quantity lowLimit;
-  Quantity highLimit;
+	static Future<SubstanceAmount_ReferenceRange> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Quantity lowLimit,
+	Quantity highLimit,
+}) async {
+var fhirDb = new DatabaseHelper();
+SubstanceAmount_ReferenceRange newSubstanceAmount_ReferenceRange = new SubstanceAmount_ReferenceRange(
+	id: id ?? await fhirDb.newResourceId('SubstanceAmount_ReferenceRange'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	lowLimit: lowLimit,
+	highLimit: highLimit,
+);
+	return newSubstanceAmount_ReferenceRange;
+}
 
-  SubstanceAmount_ReferenceRange({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.lowLimit,
-    this.highLimit,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Quantity lowLimit;
+	Quantity highLimit;
 
-  factory SubstanceAmount_ReferenceRange.fromJson(Map<String, dynamic> json) =>
-      _$SubstanceAmount_ReferenceRangeFromJson(json);
+SubstanceAmount_ReferenceRange(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.lowLimit,
+this.highLimit,
+});
+
+  factory SubstanceAmount_ReferenceRange.fromJson(Map<String, dynamic> json) => _$SubstanceAmount_ReferenceRangeFromJson(json);
   Map<String, dynamic> toJson() => _$SubstanceAmount_ReferenceRangeToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

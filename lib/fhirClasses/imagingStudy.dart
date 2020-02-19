@@ -12,375 +12,379 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ImagingStudy {
-  static Future<ImagingStudy> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    List<Coding> modality,
-    Reference subject,
-    Reference encounter,
-    DateTime started,
-    Element elementStarted,
-    List<Reference> basedOn,
-    Reference referrer,
-    List<Reference> interpreter,
-    List<Reference> endpoint,
-    int numberOfSeries,
-    Element elementNumberOfSeries,
-    int numberOfInstances,
-    Element elementNumberOfInstances,
-    Reference procedureReference,
-    List<CodeableConcept> procedureCode,
-    Reference location,
-    List<CodeableConcept> reasonCode,
-    List<Reference> reasonReference,
-    List<Annotation> note,
-    String description,
-    Element elementDescription,
-    List<ImagingStudy_Series> series,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ImagingStudy newImagingStudy = new ImagingStudy(
-      resourceType: 'ImagingStudy',
-      id: id ?? await fhirDb.newResourceId('ImagingStudy'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      modality: modality,
-      subject: subject,
-      encounter: encounter,
-      started: started,
-      elementStarted: elementStarted,
-      basedOn: basedOn,
-      referrer: referrer,
-      interpreter: interpreter,
-      endpoint: endpoint,
-      numberOfSeries: numberOfSeries,
-      elementNumberOfSeries: elementNumberOfSeries,
-      numberOfInstances: numberOfInstances,
-      elementNumberOfInstances: elementNumberOfInstances,
-      procedureReference: procedureReference,
-      procedureCode: procedureCode,
-      location: location,
-      reasonCode: reasonCode,
-      reasonReference: reasonReference,
-      note: note,
-      description: description,
-      elementDescription: elementDescription,
-      series: series,
-    );
-    newImagingStudy.meta.createdAt = DateTime.now();
-    newImagingStudy.meta.lastUpdated = newImagingStudy.meta.createdAt;
-    int saved = await fhirDb.saveResource(newImagingStudy);
-    return newImagingStudy;
-  }
+class ImagingStudy{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<ImagingStudy> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	List<Coding> modality,
+	Reference subject,
+	Reference encounter,
+	DateTime started,
+	Element elementStarted,
+	List<Reference> basedOn,
+	Reference referrer,
+	List<Reference> interpreter,
+	List<Reference> endpoint,
+	int numberOfSeries,
+	Element elementNumberOfSeries,
+	int numberOfInstances,
+	Element elementNumberOfInstances,
+	Reference procedureReference,
+	List<CodeableConcept> procedureCode,
+	Reference location,
+	List<CodeableConcept> reasonCode,
+	List<Reference> reasonReference,
+	List<Annotation> note,
+	String description,
+	Element elementDescription,
+	List<ImagingStudy_Series> series,
+}) async {
+var fhirDb = new DatabaseHelper();
+ImagingStudy newImagingStudy = new ImagingStudy(
+	resourceType: 'ImagingStudy',
+	id: id ?? await fhirDb.newResourceId('ImagingStudy'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	modality: modality,
+	subject: subject,
+	encounter: encounter,
+	started: started,
+	elementStarted: elementStarted,
+	basedOn: basedOn,
+	referrer: referrer,
+	interpreter: interpreter,
+	endpoint: endpoint,
+	numberOfSeries: numberOfSeries,
+	elementNumberOfSeries: elementNumberOfSeries,
+	numberOfInstances: numberOfInstances,
+	elementNumberOfInstances: elementNumberOfInstances,
+	procedureReference: procedureReference,
+	procedureCode: procedureCode,
+	location: location,
+	reasonCode: reasonCode,
+	reasonReference: reasonReference,
+	note: note,
+	description: description,
+	elementDescription: elementDescription,
+	series: series,
+);
+	newImagingStudy.meta.createdAt = DateTime.now();
+	newImagingStudy.meta.lastUpdated = newImagingStudy.meta.createdAt;
+	int saved = await fhirDb.saveResource(newImagingStudy);
+	 return newImagingStudy;
+}
 
-  String resourceType = 'ImagingStudy';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  List<Coding> modality;
-  Reference subject;
-  Reference encounter;
-  DateTime started;
-  Element elementStarted;
-  List<Reference> basedOn;
-  Reference referrer;
-  List<Reference> interpreter;
-  List<Reference> endpoint;
-  int numberOfSeries;
-  Element elementNumberOfSeries;
-  int numberOfInstances;
-  Element elementNumberOfInstances;
-  Reference procedureReference;
-  List<CodeableConcept> procedureCode;
-  Reference location;
-  List<CodeableConcept> reasonCode;
-  List<Reference> reasonReference;
-  List<Annotation> note;
-  String description;
-  Element elementDescription;
-  List<ImagingStudy_Series> series;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  ImagingStudy({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.modality,
-    @required this.subject,
-    this.encounter,
-    this.started,
-    this.elementStarted,
-    this.basedOn,
-    this.referrer,
-    this.interpreter,
-    this.endpoint,
-    this.numberOfSeries,
-    this.elementNumberOfSeries,
-    this.numberOfInstances,
-    this.elementNumberOfInstances,
-    this.procedureReference,
-    this.procedureCode,
-    this.location,
-    this.reasonCode,
-    this.reasonReference,
-    this.note,
-    this.description,
-    this.elementDescription,
-    this.series,
-  });
+	String resourceType= 'ImagingStudy';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	List<Coding> modality;
+	Reference subject;
+	Reference encounter;
+	DateTime started;
+	Element elementStarted;
+	List<Reference> basedOn;
+	Reference referrer;
+	List<Reference> interpreter;
+	List<Reference> endpoint;
+	int numberOfSeries;
+	Element elementNumberOfSeries;
+	int numberOfInstances;
+	Element elementNumberOfInstances;
+	Reference procedureReference;
+	List<CodeableConcept> procedureCode;
+	Reference location;
+	List<CodeableConcept> reasonCode;
+	List<Reference> reasonReference;
+	List<Annotation> note;
+	String description;
+	Element elementDescription;
+	List<ImagingStudy_Series> series;
 
-  factory ImagingStudy.fromJson(Map<String, dynamic> json) =>
-      _$ImagingStudyFromJson(json);
+ImagingStudy(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+this.modality,
+@required this.subject,
+this.encounter,
+this.started,
+this.elementStarted,
+this.basedOn,
+this.referrer,
+this.interpreter,
+this.endpoint,
+this.numberOfSeries,
+this.elementNumberOfSeries,
+this.numberOfInstances,
+this.elementNumberOfInstances,
+this.procedureReference,
+this.procedureCode,
+this.location,
+this.reasonCode,
+this.reasonReference,
+this.note,
+this.description,
+this.elementDescription,
+this.series,
+});
+
+  factory ImagingStudy.fromJson(Map<String, dynamic> json) => _$ImagingStudyFromJson(json);
   Map<String, dynamic> toJson() => _$ImagingStudyToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ImagingStudy_Series {
-  static Future<ImagingStudy_Series> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String uid,
-    Element elementUid,
-    int number,
-    Element elementNumber,
-    Coding modality,
-    String description,
-    Element elementDescription,
-    int numberOfInstances,
-    Element elementNumberOfInstances,
-    List<Reference> endpoint,
-    Coding bodySite,
-    Coding laterality,
-    List<Reference> specimen,
-    DateTime started,
-    Element elementStarted,
-    List<ImagingStudy_Performer> performer,
-    List<ImagingStudy_Instance> instance,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ImagingStudy_Series newImagingStudy_Series = new ImagingStudy_Series(
-      id: id ?? await fhirDb.newResourceId('ImagingStudy_Series'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      uid: uid,
-      elementUid: elementUid,
-      number: number,
-      elementNumber: elementNumber,
-      modality: modality,
-      description: description,
-      elementDescription: elementDescription,
-      numberOfInstances: numberOfInstances,
-      elementNumberOfInstances: elementNumberOfInstances,
-      endpoint: endpoint,
-      bodySite: bodySite,
-      laterality: laterality,
-      specimen: specimen,
-      started: started,
-      elementStarted: elementStarted,
-      performer: performer,
-      instance: instance,
-    );
-    return newImagingStudy_Series;
-  }
+class ImagingStudy_Series{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String uid;
-  Element elementUid;
-  int number;
-  Element elementNumber;
-  Coding modality;
-  String description;
-  Element elementDescription;
-  int numberOfInstances;
-  Element elementNumberOfInstances;
-  List<Reference> endpoint;
-  Coding bodySite;
-  Coding laterality;
-  List<Reference> specimen;
-  DateTime started;
-  Element elementStarted;
-  List<ImagingStudy_Performer> performer;
-  List<ImagingStudy_Instance> instance;
+	static Future<ImagingStudy_Series> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String uid,
+	Element elementUid,
+	int number,
+	Element elementNumber,
+	Coding modality,
+	String description,
+	Element elementDescription,
+	int numberOfInstances,
+	Element elementNumberOfInstances,
+	List<Reference> endpoint,
+	Coding bodySite,
+	Coding laterality,
+	List<Reference> specimen,
+	DateTime started,
+	Element elementStarted,
+	List<ImagingStudy_Performer> performer,
+	List<ImagingStudy_Instance> instance,
+}) async {
+var fhirDb = new DatabaseHelper();
+ImagingStudy_Series newImagingStudy_Series = new ImagingStudy_Series(
+	id: id ?? await fhirDb.newResourceId('ImagingStudy_Series'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	uid: uid,
+	elementUid: elementUid,
+	number: number,
+	elementNumber: elementNumber,
+	modality: modality,
+	description: description,
+	elementDescription: elementDescription,
+	numberOfInstances: numberOfInstances,
+	elementNumberOfInstances: elementNumberOfInstances,
+	endpoint: endpoint,
+	bodySite: bodySite,
+	laterality: laterality,
+	specimen: specimen,
+	started: started,
+	elementStarted: elementStarted,
+	performer: performer,
+	instance: instance,
+);
+	return newImagingStudy_Series;
+}
 
-  ImagingStudy_Series({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.uid,
-    this.elementUid,
-    this.number,
-    this.elementNumber,
-    @required this.modality,
-    this.description,
-    this.elementDescription,
-    this.numberOfInstances,
-    this.elementNumberOfInstances,
-    this.endpoint,
-    this.bodySite,
-    this.laterality,
-    this.specimen,
-    this.started,
-    this.elementStarted,
-    this.performer,
-    this.instance,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String uid;
+	Element elementUid;
+	int number;
+	Element elementNumber;
+	Coding modality;
+	String description;
+	Element elementDescription;
+	int numberOfInstances;
+	Element elementNumberOfInstances;
+	List<Reference> endpoint;
+	Coding bodySite;
+	Coding laterality;
+	List<Reference> specimen;
+	DateTime started;
+	Element elementStarted;
+	List<ImagingStudy_Performer> performer;
+	List<ImagingStudy_Instance> instance;
 
-  factory ImagingStudy_Series.fromJson(Map<String, dynamic> json) =>
-      _$ImagingStudy_SeriesFromJson(json);
+ImagingStudy_Series(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.uid,
+this.elementUid,
+this.number,
+this.elementNumber,
+@required this.modality,
+this.description,
+this.elementDescription,
+this.numberOfInstances,
+this.elementNumberOfInstances,
+this.endpoint,
+this.bodySite,
+this.laterality,
+this.specimen,
+this.started,
+this.elementStarted,
+this.performer,
+this.instance,
+});
+
+  factory ImagingStudy_Series.fromJson(Map<String, dynamic> json) => _$ImagingStudy_SeriesFromJson(json);
   Map<String, dynamic> toJson() => _$ImagingStudy_SeriesToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ImagingStudy_Performer {
-  static Future<ImagingStudy_Performer> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept function,
-    Reference actor,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ImagingStudy_Performer newImagingStudy_Performer =
-        new ImagingStudy_Performer(
-      id: id ?? await fhirDb.newResourceId('ImagingStudy_Performer'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      function: function,
-      actor: actor,
-    );
-    return newImagingStudy_Performer;
-  }
+class ImagingStudy_Performer{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept function;
-  Reference actor;
+	static Future<ImagingStudy_Performer> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept function,
+	Reference actor,
+}) async {
+var fhirDb = new DatabaseHelper();
+ImagingStudy_Performer newImagingStudy_Performer = new ImagingStudy_Performer(
+	id: id ?? await fhirDb.newResourceId('ImagingStudy_Performer'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	function: function,
+	actor: actor,
+);
+	return newImagingStudy_Performer;
+}
 
-  ImagingStudy_Performer({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.function,
-    @required this.actor,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept function;
+	Reference actor;
 
-  factory ImagingStudy_Performer.fromJson(Map<String, dynamic> json) =>
-      _$ImagingStudy_PerformerFromJson(json);
+ImagingStudy_Performer(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.function,
+@required this.actor,
+});
+
+  factory ImagingStudy_Performer.fromJson(Map<String, dynamic> json) => _$ImagingStudy_PerformerFromJson(json);
   Map<String, dynamic> toJson() => _$ImagingStudy_PerformerToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class ImagingStudy_Instance {
-  static Future<ImagingStudy_Instance> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String uid,
-    Element elementUid,
-    Coding sopClass,
-    int number,
-    Element elementNumber,
-    String title,
-    Element elementTitle,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ImagingStudy_Instance newImagingStudy_Instance = new ImagingStudy_Instance(
-      id: id ?? await fhirDb.newResourceId('ImagingStudy_Instance'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      uid: uid,
-      elementUid: elementUid,
-      sopClass: sopClass,
-      number: number,
-      elementNumber: elementNumber,
-      title: title,
-      elementTitle: elementTitle,
-    );
-    return newImagingStudy_Instance;
-  }
+class ImagingStudy_Instance{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String uid;
-  Element elementUid;
-  Coding sopClass;
-  int number;
-  Element elementNumber;
-  String title;
-  Element elementTitle;
+	static Future<ImagingStudy_Instance> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String uid,
+	Element elementUid,
+	Coding sopClass,
+	int number,
+	Element elementNumber,
+	String title,
+	Element elementTitle,
+}) async {
+var fhirDb = new DatabaseHelper();
+ImagingStudy_Instance newImagingStudy_Instance = new ImagingStudy_Instance(
+	id: id ?? await fhirDb.newResourceId('ImagingStudy_Instance'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	uid: uid,
+	elementUid: elementUid,
+	sopClass: sopClass,
+	number: number,
+	elementNumber: elementNumber,
+	title: title,
+	elementTitle: elementTitle,
+);
+	return newImagingStudy_Instance;
+}
 
-  ImagingStudy_Instance({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.uid,
-    this.elementUid,
-    @required this.sopClass,
-    this.number,
-    this.elementNumber,
-    this.title,
-    this.elementTitle,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String uid;
+	Element elementUid;
+	Coding sopClass;
+	int number;
+	Element elementNumber;
+	String title;
+	Element elementTitle;
 
-  factory ImagingStudy_Instance.fromJson(Map<String, dynamic> json) =>
-      _$ImagingStudy_InstanceFromJson(json);
+ImagingStudy_Instance(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.uid,
+this.elementUid,
+@required this.sopClass,
+this.number,
+this.elementNumber,
+this.title,
+this.elementTitle,
+});
+
+  factory ImagingStudy_Instance.fromJson(Map<String, dynamic> json) => _$ImagingStudy_InstanceFromJson(json);
   Map<String, dynamic> toJson() => _$ImagingStudy_InstanceToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -407,9 +411,8 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

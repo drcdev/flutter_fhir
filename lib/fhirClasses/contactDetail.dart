@@ -5,44 +5,46 @@ import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class ContactDetail {
-  static Future<ContactDetail> newInstance({
-    String id,
-    List<Extension> extension,
-    String name,
-    Element elementName,
-    List<ContactPoint> telecom,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    ContactDetail newContactDetail = new ContactDetail(
-      id: id ?? await fhirDb.newResourceId('ContactDetail'),
-      extension: extension,
-      name: name,
-      elementName: elementName,
-      telecom: telecom,
-    );
-    return newContactDetail;
-  }
+class ContactDetail{
 
-  String id;
-  List<Extension> extension;
-  String name;
-  Element elementName;
-  List<ContactPoint> telecom;
+	static Future<ContactDetail> newInstance(
+	{	String id,
+	List<Extension> extension,
+	String name,
+	Element elementName,
+	List<ContactPoint> telecom,
+}) async {
+var fhirDb = new DatabaseHelper();
+ContactDetail newContactDetail = new ContactDetail(
+	id: id ?? await fhirDb.newResourceId('ContactDetail'),
+	extension: extension,
+	name: name,
+	elementName: elementName,
+	telecom: telecom,
+);
+	return newContactDetail;
+}
 
-  ContactDetail({
-    this.id,
-    this.extension,
-    this.name,
-    this.elementName,
-    this.telecom,
-  });
+	String id;
+	List<Extension> extension;
+	String name;
+	Element elementName;
+	List<ContactPoint> telecom;
 
-  factory ContactDetail.fromJson(Map<String, dynamic> json) =>
-      _$ContactDetailFromJson(json);
+ContactDetail(
+	{this.id,
+this.extension,
+this.name,
+this.elementName,
+this.telecom,
+});
+
+  factory ContactDetail.fromJson(Map<String, dynamic> json) => _$ContactDetailFromJson(json);
   Map<String, dynamic> toJson() => _$ContactDetailToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

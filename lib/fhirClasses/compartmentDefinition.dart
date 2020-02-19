@@ -9,234 +9,235 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class CompartmentDefinition {
-  static Future<CompartmentDefinition> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String url,
-    Element elementUrl,
-    String version,
-    Element elementVersion,
-    String name,
-    Element elementName,
-    String status,
-    Element elementStatus,
-    bool experimental,
-    Element elementExperimental,
-    DateTime date,
-    Element elementDate,
-    String publisher,
-    Element elementPublisher,
-    List<ContactDetail> contact,
-    String description,
-    Element elementDescription,
-    List<UsageContext> useContext,
-    String purpose,
-    Element elementPurpose,
-    String code,
-    Element elementCode,
-    bool search,
-    Element elementSearch,
-    List<CompartmentDefinition_Resource> resource,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CompartmentDefinition newCompartmentDefinition = new CompartmentDefinition(
-      resourceType: 'CompartmentDefinition',
-      id: id ?? await fhirDb.newResourceId('CompartmentDefinition'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      url: url,
-      elementUrl: elementUrl,
-      version: version,
-      elementVersion: elementVersion,
-      name: name,
-      elementName: elementName,
-      status: status,
-      elementStatus: elementStatus,
-      experimental: experimental,
-      elementExperimental: elementExperimental,
-      date: date,
-      elementDate: elementDate,
-      publisher: publisher,
-      elementPublisher: elementPublisher,
-      contact: contact,
-      description: description,
-      elementDescription: elementDescription,
-      useContext: useContext,
-      purpose: purpose,
-      elementPurpose: elementPurpose,
-      code: code,
-      elementCode: elementCode,
-      search: search,
-      elementSearch: elementSearch,
-      resource: resource,
-    );
-    newCompartmentDefinition.meta.createdAt = DateTime.now();
-    newCompartmentDefinition.meta.lastUpdated =
-        newCompartmentDefinition.meta.createdAt;
-    int saved = await fhirDb.saveResource(newCompartmentDefinition);
-    return newCompartmentDefinition;
-  }
+class CompartmentDefinition{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<CompartmentDefinition> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String url,
+	Element elementUrl,
+	String version,
+	Element elementVersion,
+	String name,
+	Element elementName,
+	String status,
+	Element elementStatus,
+	bool experimental,
+	Element elementExperimental,
+	DateTime date,
+	Element elementDate,
+	String publisher,
+	Element elementPublisher,
+	List<ContactDetail> contact,
+	String description,
+	Element elementDescription,
+	List<UsageContext> useContext,
+	String purpose,
+	Element elementPurpose,
+	String code,
+	Element elementCode,
+	bool search,
+	Element elementSearch,
+	List<CompartmentDefinition_Resource> resource,
+}) async {
+var fhirDb = new DatabaseHelper();
+CompartmentDefinition newCompartmentDefinition = new CompartmentDefinition(
+	resourceType: 'CompartmentDefinition',
+	id: id ?? await fhirDb.newResourceId('CompartmentDefinition'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	url: url,
+	elementUrl: elementUrl,
+	version: version,
+	elementVersion: elementVersion,
+	name: name,
+	elementName: elementName,
+	status: status,
+	elementStatus: elementStatus,
+	experimental: experimental,
+	elementExperimental: elementExperimental,
+	date: date,
+	elementDate: elementDate,
+	publisher: publisher,
+	elementPublisher: elementPublisher,
+	contact: contact,
+	description: description,
+	elementDescription: elementDescription,
+	useContext: useContext,
+	purpose: purpose,
+	elementPurpose: elementPurpose,
+	code: code,
+	elementCode: elementCode,
+	search: search,
+	elementSearch: elementSearch,
+	resource: resource,
+);
+	newCompartmentDefinition.meta.createdAt = DateTime.now();
+	newCompartmentDefinition.meta.lastUpdated = newCompartmentDefinition.meta.createdAt;
+	int saved = await fhirDb.saveResource(newCompartmentDefinition);
+	 return newCompartmentDefinition;
+}
 
-  String resourceType = 'CompartmentDefinition';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String url;
-  Element elementUrl;
-  String version;
-  Element elementVersion;
-  String name;
-  Element elementName;
-  String status;
-  Element elementStatus;
-  bool experimental;
-  Element elementExperimental;
-  DateTime date;
-  Element elementDate;
-  String publisher;
-  Element elementPublisher;
-  List<ContactDetail> contact;
-  String description;
-  Element elementDescription;
-  List<UsageContext> useContext;
-  String purpose;
-  Element elementPurpose;
-  String code;
-  Element elementCode;
-  bool search;
-  Element elementSearch;
-  List<CompartmentDefinition_Resource> resource;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  CompartmentDefinition({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.purpose,
-    this.elementPurpose,
-    this.code,
-    this.elementCode,
-    this.search,
-    this.elementSearch,
-    this.resource,
-  });
+	String resourceType= 'CompartmentDefinition';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String url;
+	Element elementUrl;
+	String version;
+	Element elementVersion;
+	String name;
+	Element elementName;
+	String status;
+	Element elementStatus;
+	bool experimental;
+	Element elementExperimental;
+	DateTime date;
+	Element elementDate;
+	String publisher;
+	Element elementPublisher;
+	List<ContactDetail> contact;
+	String description;
+	Element elementDescription;
+	List<UsageContext> useContext;
+	String purpose;
+	Element elementPurpose;
+	String code;
+	Element elementCode;
+	bool search;
+	Element elementSearch;
+	List<CompartmentDefinition_Resource> resource;
 
-  factory CompartmentDefinition.fromJson(Map<String, dynamic> json) =>
-      _$CompartmentDefinitionFromJson(json);
+CompartmentDefinition(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.url,
+this.elementUrl,
+this.version,
+this.elementVersion,
+this.name,
+this.elementName,
+this.status,
+this.elementStatus,
+this.experimental,
+this.elementExperimental,
+this.date,
+this.elementDate,
+this.publisher,
+this.elementPublisher,
+this.contact,
+this.description,
+this.elementDescription,
+this.useContext,
+this.purpose,
+this.elementPurpose,
+this.code,
+this.elementCode,
+this.search,
+this.elementSearch,
+this.resource,
+});
+
+  factory CompartmentDefinition.fromJson(Map<String, dynamic> json) => _$CompartmentDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$CompartmentDefinitionToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class CompartmentDefinition_Resource {
-  static Future<CompartmentDefinition_Resource> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String code,
-    Element elementCode,
-    List<String> param,
-    List<Element> elementParam,
-    String documentation,
-    Element elementDocumentation,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CompartmentDefinition_Resource newCompartmentDefinition_Resource =
-        new CompartmentDefinition_Resource(
-      id: id ?? await fhirDb.newResourceId('CompartmentDefinition_Resource'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      elementCode: elementCode,
-      param: param,
-      elementParam: elementParam,
-      documentation: documentation,
-      elementDocumentation: elementDocumentation,
-    );
-    return newCompartmentDefinition_Resource;
-  }
+class CompartmentDefinition_Resource{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String code;
-  Element elementCode;
-  List<String> param;
-  List<Element> elementParam;
-  String documentation;
-  Element elementDocumentation;
+	static Future<CompartmentDefinition_Resource> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String code,
+	Element elementCode,
+	List<String> param,
+	List<Element> elementParam,
+	String documentation,
+	Element elementDocumentation,
+}) async {
+var fhirDb = new DatabaseHelper();
+CompartmentDefinition_Resource newCompartmentDefinition_Resource = new CompartmentDefinition_Resource(
+	id: id ?? await fhirDb.newResourceId('CompartmentDefinition_Resource'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	elementCode: elementCode,
+	param: param,
+	elementParam: elementParam,
+	documentation: documentation,
+	elementDocumentation: elementDocumentation,
+);
+	return newCompartmentDefinition_Resource;
+}
 
-  CompartmentDefinition_Resource({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.code,
-    this.elementCode,
-    this.param,
-    this.elementParam,
-    this.documentation,
-    this.elementDocumentation,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String code;
+	Element elementCode;
+	List<String> param;
+	List<Element> elementParam;
+	String documentation;
+	Element elementDocumentation;
 
-  factory CompartmentDefinition_Resource.fromJson(Map<String, dynamic> json) =>
-      _$CompartmentDefinition_ResourceFromJson(json);
+CompartmentDefinition_Resource(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.code,
+this.elementCode,
+this.param,
+this.elementParam,
+this.documentation,
+this.elementDocumentation,
+});
+
+  factory CompartmentDefinition_Resource.fromJson(Map<String, dynamic> json) => _$CompartmentDefinition_ResourceFromJson(json);
   Map<String, dynamic> toJson() => _$CompartmentDefinition_ResourceToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -264,9 +265,8 @@ CompartmentDefinition _$CompartmentDefinitionFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -13,254 +13,259 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Group {
-  static Future<Group> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    bool active,
-    Element elementActive,
-    String type,
-    Element elementType,
-    bool actual,
-    Element elementActual,
-    CodeableConcept code,
-    String name,
-    Element elementName,
-    int quantity,
-    Element elementQuantity,
-    Reference managingEntity,
-    List<Group_Characteristic> characteristic,
-    List<Group_Member> member,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Group newGroup = new Group(
-      resourceType: 'Group',
-      id: id ?? await fhirDb.newResourceId('Group'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      active: active,
-      elementActive: elementActive,
-      type: type,
-      elementType: elementType,
-      actual: actual,
-      elementActual: elementActual,
-      code: code,
-      name: name,
-      elementName: elementName,
-      quantity: quantity,
-      elementQuantity: elementQuantity,
-      managingEntity: managingEntity,
-      characteristic: characteristic,
-      member: member,
-    );
-    newGroup.meta.createdAt = DateTime.now();
-    newGroup.meta.lastUpdated = newGroup.meta.createdAt;
-    int saved = await fhirDb.saveResource(newGroup);
-    return newGroup;
-  }
+class Group{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Group> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	bool active,
+	Element elementActive,
+	String type,
+	Element elementType,
+	bool actual,
+	Element elementActual,
+	CodeableConcept code,
+	String name,
+	Element elementName,
+	int quantity,
+	Element elementQuantity,
+	Reference managingEntity,
+	List<Group_Characteristic> characteristic,
+	List<Group_Member> member,
+}) async {
+var fhirDb = new DatabaseHelper();
+Group newGroup = new Group(
+	resourceType: 'Group',
+	id: id ?? await fhirDb.newResourceId('Group'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	active: active,
+	elementActive: elementActive,
+	type: type,
+	elementType: elementType,
+	actual: actual,
+	elementActual: elementActual,
+	code: code,
+	name: name,
+	elementName: elementName,
+	quantity: quantity,
+	elementQuantity: elementQuantity,
+	managingEntity: managingEntity,
+	characteristic: characteristic,
+	member: member,
+);
+	newGroup.meta.createdAt = DateTime.now();
+	newGroup.meta.lastUpdated = newGroup.meta.createdAt;
+	int saved = await fhirDb.saveResource(newGroup);
+	 return newGroup;
+}
 
-  String resourceType = 'Group';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  bool active;
-  Element elementActive;
-  String type;
-  Element elementType;
-  bool actual;
-  Element elementActual;
-  CodeableConcept code;
-  String name;
-  Element elementName;
-  int quantity;
-  Element elementQuantity;
-  Reference managingEntity;
-  List<Group_Characteristic> characteristic;
-  List<Group_Member> member;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Group({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.active,
-    this.elementActive,
-    this.type,
-    this.elementType,
-    this.actual,
-    this.elementActual,
-    this.code,
-    this.name,
-    this.elementName,
-    this.quantity,
-    this.elementQuantity,
-    this.managingEntity,
-    this.characteristic,
-    this.member,
-  });
+	String resourceType= 'Group';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	bool active;
+	Element elementActive;
+	String type;
+	Element elementType;
+	bool actual;
+	Element elementActual;
+	CodeableConcept code;
+	String name;
+	Element elementName;
+	int quantity;
+	Element elementQuantity;
+	Reference managingEntity;
+	List<Group_Characteristic> characteristic;
+	List<Group_Member> member;
+
+Group(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.active,
+this.elementActive,
+this.type,
+this.elementType,
+this.actual,
+this.elementActual,
+this.code,
+this.name,
+this.elementName,
+this.quantity,
+this.elementQuantity,
+this.managingEntity,
+this.characteristic,
+this.member,
+});
 
   factory Group.fromJson(Map<String, dynamic> json) => _$GroupFromJson(json);
   Map<String, dynamic> toJson() => _$GroupToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Group_Characteristic {
-  static Future<Group_Characteristic> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept code,
-    CodeableConcept valueCodeableConcept,
-    bool valueBoolean,
-    Element elementValueBoolean,
-    Quantity valueQuantity,
-    Range valueRange,
-    Reference valueReference,
-    bool exclude,
-    Element elementExclude,
-    Period period,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Group_Characteristic newGroup_Characteristic = new Group_Characteristic(
-      id: id ?? await fhirDb.newResourceId('Group_Characteristic'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      code: code,
-      valueCodeableConcept: valueCodeableConcept,
-      valueBoolean: valueBoolean,
-      elementValueBoolean: elementValueBoolean,
-      valueQuantity: valueQuantity,
-      valueRange: valueRange,
-      valueReference: valueReference,
-      exclude: exclude,
-      elementExclude: elementExclude,
-      period: period,
-    );
-    return newGroup_Characteristic;
-  }
+class Group_Characteristic{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept code;
-  CodeableConcept valueCodeableConcept;
-  bool valueBoolean;
-  Element elementValueBoolean;
-  Quantity valueQuantity;
-  Range valueRange;
-  Reference valueReference;
-  bool exclude;
-  Element elementExclude;
-  Period period;
+	static Future<Group_Characteristic> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept code,
+	CodeableConcept valueCodeableConcept,
+	bool valueBoolean,
+	Element elementValueBoolean,
+	Quantity valueQuantity,
+	Range valueRange,
+	Reference valueReference,
+	bool exclude,
+	Element elementExclude,
+	Period period,
+}) async {
+var fhirDb = new DatabaseHelper();
+Group_Characteristic newGroup_Characteristic = new Group_Characteristic(
+	id: id ?? await fhirDb.newResourceId('Group_Characteristic'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	code: code,
+	valueCodeableConcept: valueCodeableConcept,
+	valueBoolean: valueBoolean,
+	elementValueBoolean: elementValueBoolean,
+	valueQuantity: valueQuantity,
+	valueRange: valueRange,
+	valueReference: valueReference,
+	exclude: exclude,
+	elementExclude: elementExclude,
+	period: period,
+);
+	return newGroup_Characteristic;
+}
 
-  Group_Characteristic({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.code,
-    this.valueCodeableConcept,
-    this.valueBoolean,
-    this.elementValueBoolean,
-    this.valueQuantity,
-    this.valueRange,
-    this.valueReference,
-    this.exclude,
-    this.elementExclude,
-    this.period,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept code;
+	CodeableConcept valueCodeableConcept;
+	bool valueBoolean;
+	Element elementValueBoolean;
+	Quantity valueQuantity;
+	Range valueRange;
+	Reference valueReference;
+	bool exclude;
+	Element elementExclude;
+	Period period;
 
-  factory Group_Characteristic.fromJson(Map<String, dynamic> json) =>
-      _$Group_CharacteristicFromJson(json);
+Group_Characteristic(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.code,
+this.valueCodeableConcept,
+this.valueBoolean,
+this.elementValueBoolean,
+this.valueQuantity,
+this.valueRange,
+this.valueReference,
+this.exclude,
+this.elementExclude,
+this.period,
+});
+
+  factory Group_Characteristic.fromJson(Map<String, dynamic> json) => _$Group_CharacteristicFromJson(json);
   Map<String, dynamic> toJson() => _$Group_CharacteristicToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Group_Member {
-  static Future<Group_Member> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Reference entity,
-    Period period,
-    bool inactive,
-    Element elementInactive,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Group_Member newGroup_Member = new Group_Member(
-      id: id ?? await fhirDb.newResourceId('Group_Member'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      entity: entity,
-      period: period,
-      inactive: inactive,
-      elementInactive: elementInactive,
-    );
-    return newGroup_Member;
-  }
+class Group_Member{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Reference entity;
-  Period period;
-  bool inactive;
-  Element elementInactive;
+	static Future<Group_Member> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Reference entity,
+	Period period,
+	bool inactive,
+	Element elementInactive,
+}) async {
+var fhirDb = new DatabaseHelper();
+Group_Member newGroup_Member = new Group_Member(
+	id: id ?? await fhirDb.newResourceId('Group_Member'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	entity: entity,
+	period: period,
+	inactive: inactive,
+	elementInactive: elementInactive,
+);
+	return newGroup_Member;
+}
 
-  Group_Member({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    @required this.entity,
-    this.period,
-    this.inactive,
-    this.elementInactive,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Reference entity;
+	Period period;
+	bool inactive;
+	Element elementInactive;
 
-  factory Group_Member.fromJson(Map<String, dynamic> json) =>
-      _$Group_MemberFromJson(json);
+Group_Member(
+	{this.id,
+this.extension,
+this.modifierExtension,
+@required this.entity,
+this.period,
+this.inactive,
+this.elementInactive,
+});
+
+  factory Group_Member.fromJson(Map<String, dynamic> json) => _$Group_MemberFromJson(json);
   Map<String, dynamic> toJson() => _$Group_MemberToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -287,9 +292,8 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

@@ -15,247 +15,251 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Goal {
-  static Future<Goal> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String lifecycleStatus,
-    Element elementLifecycleStatus,
-    CodeableConcept achievementStatus,
-    List<CodeableConcept> category,
-    CodeableConcept priority,
-    CodeableConcept description,
-    Reference subject,
-    String startDate,
-    Element elementStartDate,
-    CodeableConcept startCodeableConcept,
-    List<Goal_Target> target,
-    String statusDate,
-    Element elementStatusDate,
-    String statusReason,
-    Element elementStatusReason,
-    Reference expressedBy,
-    List<Reference> addresses,
-    List<Annotation> note,
-    List<CodeableConcept> outcomeCode,
-    List<Reference> outcomeReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Goal newGoal = new Goal(
-      resourceType: 'Goal',
-      id: id ?? await fhirDb.newResourceId('Goal'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      lifecycleStatus: lifecycleStatus,
-      elementLifecycleStatus: elementLifecycleStatus,
-      achievementStatus: achievementStatus,
-      category: category,
-      priority: priority,
-      description: description,
-      subject: subject,
-      startDate: startDate,
-      elementStartDate: elementStartDate,
-      startCodeableConcept: startCodeableConcept,
-      target: target,
-      statusDate: statusDate,
-      elementStatusDate: elementStatusDate,
-      statusReason: statusReason,
-      elementStatusReason: elementStatusReason,
-      expressedBy: expressedBy,
-      addresses: addresses,
-      note: note,
-      outcomeCode: outcomeCode,
-      outcomeReference: outcomeReference,
-    );
-    newGoal.meta.createdAt = DateTime.now();
-    newGoal.meta.lastUpdated = newGoal.meta.createdAt;
-    int saved = await fhirDb.saveResource(newGoal);
-    return newGoal;
-  }
+class Goal{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Goal> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String lifecycleStatus,
+	Element elementLifecycleStatus,
+	CodeableConcept achievementStatus,
+	List<CodeableConcept> category,
+	CodeableConcept priority,
+	CodeableConcept description,
+	Reference subject,
+	String startDate,
+	Element elementStartDate,
+	CodeableConcept startCodeableConcept,
+	List<Goal_Target> target,
+	String statusDate,
+	Element elementStatusDate,
+	String statusReason,
+	Element elementStatusReason,
+	Reference expressedBy,
+	List<Reference> addresses,
+	List<Annotation> note,
+	List<CodeableConcept> outcomeCode,
+	List<Reference> outcomeReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+Goal newGoal = new Goal(
+	resourceType: 'Goal',
+	id: id ?? await fhirDb.newResourceId('Goal'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	lifecycleStatus: lifecycleStatus,
+	elementLifecycleStatus: elementLifecycleStatus,
+	achievementStatus: achievementStatus,
+	category: category,
+	priority: priority,
+	description: description,
+	subject: subject,
+	startDate: startDate,
+	elementStartDate: elementStartDate,
+	startCodeableConcept: startCodeableConcept,
+	target: target,
+	statusDate: statusDate,
+	elementStatusDate: elementStatusDate,
+	statusReason: statusReason,
+	elementStatusReason: elementStatusReason,
+	expressedBy: expressedBy,
+	addresses: addresses,
+	note: note,
+	outcomeCode: outcomeCode,
+	outcomeReference: outcomeReference,
+);
+	newGoal.meta.createdAt = DateTime.now();
+	newGoal.meta.lastUpdated = newGoal.meta.createdAt;
+	int saved = await fhirDb.saveResource(newGoal);
+	 return newGoal;
+}
 
-  String resourceType = 'Goal';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String lifecycleStatus;
-  Element elementLifecycleStatus;
-  CodeableConcept achievementStatus;
-  List<CodeableConcept> category;
-  CodeableConcept priority;
-  CodeableConcept description;
-  Reference subject;
-  String startDate;
-  Element elementStartDate;
-  CodeableConcept startCodeableConcept;
-  List<Goal_Target> target;
-  String statusDate;
-  Element elementStatusDate;
-  String statusReason;
-  Element elementStatusReason;
-  Reference expressedBy;
-  List<Reference> addresses;
-  List<Annotation> note;
-  List<CodeableConcept> outcomeCode;
-  List<Reference> outcomeReference;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Goal({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.lifecycleStatus,
-    this.elementLifecycleStatus,
-    this.achievementStatus,
-    this.category,
-    this.priority,
-    @required this.description,
-    @required this.subject,
-    this.startDate,
-    this.elementStartDate,
-    this.startCodeableConcept,
-    this.target,
-    this.statusDate,
-    this.elementStatusDate,
-    this.statusReason,
-    this.elementStatusReason,
-    this.expressedBy,
-    this.addresses,
-    this.note,
-    this.outcomeCode,
-    this.outcomeReference,
-  });
+	String resourceType= 'Goal';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String lifecycleStatus;
+	Element elementLifecycleStatus;
+	CodeableConcept achievementStatus;
+	List<CodeableConcept> category;
+	CodeableConcept priority;
+	CodeableConcept description;
+	Reference subject;
+	String startDate;
+	Element elementStartDate;
+	CodeableConcept startCodeableConcept;
+	List<Goal_Target> target;
+	String statusDate;
+	Element elementStatusDate;
+	String statusReason;
+	Element elementStatusReason;
+	Reference expressedBy;
+	List<Reference> addresses;
+	List<Annotation> note;
+	List<CodeableConcept> outcomeCode;
+	List<Reference> outcomeReference;
+
+Goal(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.lifecycleStatus,
+this.elementLifecycleStatus,
+this.achievementStatus,
+this.category,
+this.priority,
+@required this.description,
+@required this.subject,
+this.startDate,
+this.elementStartDate,
+this.startCodeableConcept,
+this.target,
+this.statusDate,
+this.elementStatusDate,
+this.statusReason,
+this.elementStatusReason,
+this.expressedBy,
+this.addresses,
+this.note,
+this.outcomeCode,
+this.outcomeReference,
+});
 
   factory Goal.fromJson(Map<String, dynamic> json) => _$GoalFromJson(json);
   Map<String, dynamic> toJson() => _$GoalToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Goal_Target {
-  static Future<Goal_Target> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept measure,
-    Quantity detailQuantity,
-    Range detailRange,
-    CodeableConcept detailCodeableConcept,
-    String detailString,
-    Element elementDetailString,
-    bool detailBoolean,
-    Element elementDetailBoolean,
-    int detailInteger,
-    Element elementDetailInteger,
-    Ratio detailRatio,
-    String dueDate,
-    Element elementDueDate,
-    Duration dueDuration,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Goal_Target newGoal_Target = new Goal_Target(
-      id: id ?? await fhirDb.newResourceId('Goal_Target'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      measure: measure,
-      detailQuantity: detailQuantity,
-      detailRange: detailRange,
-      detailCodeableConcept: detailCodeableConcept,
-      detailString: detailString,
-      elementDetailString: elementDetailString,
-      detailBoolean: detailBoolean,
-      elementDetailBoolean: elementDetailBoolean,
-      detailInteger: detailInteger,
-      elementDetailInteger: elementDetailInteger,
-      detailRatio: detailRatio,
-      dueDate: dueDate,
-      elementDueDate: elementDueDate,
-      dueDuration: dueDuration,
-    );
-    return newGoal_Target;
-  }
+class Goal_Target{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept measure;
-  Quantity detailQuantity;
-  Range detailRange;
-  CodeableConcept detailCodeableConcept;
-  String detailString;
-  Element elementDetailString;
-  bool detailBoolean;
-  Element elementDetailBoolean;
-  int detailInteger;
-  Element elementDetailInteger;
-  Ratio detailRatio;
-  String dueDate;
-  Element elementDueDate;
-  Duration dueDuration;
+	static Future<Goal_Target> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept measure,
+	Quantity detailQuantity,
+	Range detailRange,
+	CodeableConcept detailCodeableConcept,
+	String detailString,
+	Element elementDetailString,
+	bool detailBoolean,
+	Element elementDetailBoolean,
+	int detailInteger,
+	Element elementDetailInteger,
+	Ratio detailRatio,
+	String dueDate,
+	Element elementDueDate,
+	Duration dueDuration,
+}) async {
+var fhirDb = new DatabaseHelper();
+Goal_Target newGoal_Target = new Goal_Target(
+	id: id ?? await fhirDb.newResourceId('Goal_Target'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	measure: measure,
+	detailQuantity: detailQuantity,
+	detailRange: detailRange,
+	detailCodeableConcept: detailCodeableConcept,
+	detailString: detailString,
+	elementDetailString: elementDetailString,
+	detailBoolean: detailBoolean,
+	elementDetailBoolean: elementDetailBoolean,
+	detailInteger: detailInteger,
+	elementDetailInteger: elementDetailInteger,
+	detailRatio: detailRatio,
+	dueDate: dueDate,
+	elementDueDate: elementDueDate,
+	dueDuration: dueDuration,
+);
+	return newGoal_Target;
+}
 
-  Goal_Target({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.measure,
-    this.detailQuantity,
-    this.detailRange,
-    this.detailCodeableConcept,
-    this.detailString,
-    this.elementDetailString,
-    this.detailBoolean,
-    this.elementDetailBoolean,
-    this.detailInteger,
-    this.elementDetailInteger,
-    this.detailRatio,
-    this.dueDate,
-    this.elementDueDate,
-    this.dueDuration,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept measure;
+	Quantity detailQuantity;
+	Range detailRange;
+	CodeableConcept detailCodeableConcept;
+	String detailString;
+	Element elementDetailString;
+	bool detailBoolean;
+	Element elementDetailBoolean;
+	int detailInteger;
+	Element elementDetailInteger;
+	Ratio detailRatio;
+	String dueDate;
+	Element elementDueDate;
+	Duration dueDuration;
 
-  factory Goal_Target.fromJson(Map<String, dynamic> json) =>
-      _$Goal_TargetFromJson(json);
+Goal_Target(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.measure,
+this.detailQuantity,
+this.detailRange,
+this.detailCodeableConcept,
+this.detailString,
+this.elementDetailString,
+this.detailBoolean,
+this.elementDetailBoolean,
+this.detailInteger,
+this.elementDetailInteger,
+this.detailRatio,
+this.dueDate,
+this.elementDueDate,
+this.dueDuration,
+});
+
+  factory Goal_Target.fromJson(Map<String, dynamic> json) => _$Goal_TargetFromJson(json);
   Map<String, dynamic> toJson() => _$Goal_TargetToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -282,9 +286,8 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

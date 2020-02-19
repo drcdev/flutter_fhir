@@ -1,15 +1,14 @@
 import 'dart:io';
 
+import 'package:flutter_fhir/testingSettings/settings.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_fhir/util/sync.dart';
 import 'package:flutter_fhir/util/buttons.dart';
 import 'package:flutter_fhir/util/vaccineRules.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
-import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
-import 'package:flutter_fhir/mainMenu/testingSettings/testing.dart';
-
+import 'package:flutter_fhir/registerNew/register.dart';
+import 'package:flutter_fhir/providerActivities.dart';
 
 class MainMenu extends StatelessWidget {
   @override
@@ -41,30 +40,24 @@ class _MainMenuState extends State<_MainMenu> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             //calls MenuButton class for each one, passes image, text, and class to call
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  PageButton('assets/images/patient.png',
-                      'Register New Patient', Register()),
-                  ActionButton('assets/images/edit.png',
-                      'Edit Already Registered Patient', VaccineRules),
-                ]),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  PageButton('assets/images/activities.png',
-                      'Provider Activities', ProviderActivities()),
-                  ActionButton('assets/images/sync.png', 'Sync with server',
-                      sync, 'get'),
-                ]),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  PageButton('assets/images/testing.png', 'Testing/Settings',
-                      Testing()),
-                  ActionButton(
-                      'assets/images/trash.png', 'Delete Files', deleteFiles),
-                ]),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              PageButton('assets/images/patient.png', 'Register New Patient',
+                  Register()),
+              ActionButton('assets/images/edit.png',
+                  'Edit Already Registered Patient', VaccineRules),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              PageButton('assets/images/activities.png', 'Provider Activities',
+                  ProviderActivities()),
+              ActionButton(
+                  'assets/images/sync.png', 'Sync with server', sync, 'get'),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              PageButton(
+                  'assets/images/testing.png', 'Testing/Settings', Settings()),
+              ActionButton(
+                  'assets/images/trash.png', 'Delete Files', deleteFiles),
+            ]),
           ],
         ),
       ),

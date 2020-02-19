@@ -8,206 +8,210 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Timing {
-  static Future<Timing> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<DateTime> event,
-    List<Element> elementEvent,
-    Timing_Repeat repeat,
-    CodeableConcept code,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Timing newTiming = new Timing(
-      id: id ?? await fhirDb.newResourceId('Timing'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      event: event,
-      elementEvent: elementEvent,
-      repeat: repeat,
-      code: code,
-    );
-    return newTiming;
-  }
+class Timing{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<DateTime> event;
-  List<Element> elementEvent;
-  Timing_Repeat repeat;
-  CodeableConcept code;
+	static Future<Timing> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<DateTime> event,
+	List<Element> elementEvent,
+	Timing_Repeat repeat,
+	CodeableConcept code,
+}) async {
+var fhirDb = new DatabaseHelper();
+Timing newTiming = new Timing(
+	id: id ?? await fhirDb.newResourceId('Timing'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	event: event,
+	elementEvent: elementEvent,
+	repeat: repeat,
+	code: code,
+);
+	return newTiming;
+}
 
-  Timing({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.event,
-    this.elementEvent,
-    this.repeat,
-    this.code,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<DateTime> event;
+	List<Element> elementEvent;
+	Timing_Repeat repeat;
+	CodeableConcept code;
+
+Timing(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.event,
+this.elementEvent,
+this.repeat,
+this.code,
+});
 
   factory Timing.fromJson(Map<String, dynamic> json) => _$TimingFromJson(json);
   Map<String, dynamic> toJson() => _$TimingToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Timing_Repeat {
-  static Future<Timing_Repeat> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    Duration boundsDuration,
-    Range boundsRange,
-    Period boundsPeriod,
-    int count,
-    Element elementCount,
-    int countMax,
-    Element elementCountMax,
-    double duration,
-    Element elementDuration,
-    double durationMax,
-    Element elementDurationMax,
-    String durationUnit,
-    Element elementDurationUnit,
-    int frequency,
-    Element elementFrequency,
-    int frequencyMax,
-    Element elementFrequencyMax,
-    double period,
-    Element elementPeriod,
-    double periodMax,
-    Element elementPeriodMax,
-    String periodUnit,
-    Element elementPeriodUnit,
-    List<String> dayOfWeek,
-    List<Element> elementDayOfWeek,
-    List<String> timeOfDay,
-    List<Element> elementTimeOfDay,
-    String when,
-    List<Element> elementWhen,
-    int offset,
-    Element elementOffset,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Timing_Repeat newTiming_Repeat = new Timing_Repeat(
-      id: id ?? await fhirDb.newResourceId('Timing_Repeat'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      boundsDuration: boundsDuration,
-      boundsRange: boundsRange,
-      boundsPeriod: boundsPeriod,
-      count: count,
-      elementCount: elementCount,
-      countMax: countMax,
-      elementCountMax: elementCountMax,
-      duration: duration,
-      elementDuration: elementDuration,
-      durationMax: durationMax,
-      elementDurationMax: elementDurationMax,
-      durationUnit: durationUnit,
-      elementDurationUnit: elementDurationUnit,
-      frequency: frequency,
-      elementFrequency: elementFrequency,
-      frequencyMax: frequencyMax,
-      elementFrequencyMax: elementFrequencyMax,
-      period: period,
-      elementPeriod: elementPeriod,
-      periodMax: periodMax,
-      elementPeriodMax: elementPeriodMax,
-      periodUnit: periodUnit,
-      elementPeriodUnit: elementPeriodUnit,
-      dayOfWeek: dayOfWeek,
-      elementDayOfWeek: elementDayOfWeek,
-      timeOfDay: timeOfDay,
-      elementTimeOfDay: elementTimeOfDay,
-      when: when,
-      elementWhen: elementWhen,
-      offset: offset,
-      elementOffset: elementOffset,
-    );
-    return newTiming_Repeat;
-  }
+class Timing_Repeat{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  Duration boundsDuration;
-  Range boundsRange;
-  Period boundsPeriod;
-  int count;
-  Element elementCount;
-  int countMax;
-  Element elementCountMax;
-  double duration;
-  Element elementDuration;
-  double durationMax;
-  Element elementDurationMax;
-  String durationUnit;
-  Element elementDurationUnit;
-  int frequency;
-  Element elementFrequency;
-  int frequencyMax;
-  Element elementFrequencyMax;
-  double period;
-  Element elementPeriod;
-  double periodMax;
-  Element elementPeriodMax;
-  String periodUnit;
-  Element elementPeriodUnit;
-  List<String> dayOfWeek;
-  List<Element> elementDayOfWeek;
-  List<String> timeOfDay;
-  List<Element> elementTimeOfDay;
-  String when;
-  List<Element> elementWhen;
-  int offset;
-  Element elementOffset;
+	static Future<Timing_Repeat> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	Duration boundsDuration,
+	Range boundsRange,
+	Period boundsPeriod,
+	int count,
+	Element elementCount,
+	int countMax,
+	Element elementCountMax,
+	double duration,
+	Element elementDuration,
+	double durationMax,
+	Element elementDurationMax,
+	String durationUnit,
+	Element elementDurationUnit,
+	int frequency,
+	Element elementFrequency,
+	int frequencyMax,
+	Element elementFrequencyMax,
+	double period,
+	Element elementPeriod,
+	double periodMax,
+	Element elementPeriodMax,
+	String periodUnit,
+	Element elementPeriodUnit,
+	List<String> dayOfWeek,
+	List<Element> elementDayOfWeek,
+	List<String> timeOfDay,
+	List<Element> elementTimeOfDay,
+	String when,
+	List<Element> elementWhen,
+	int offset,
+	Element elementOffset,
+}) async {
+var fhirDb = new DatabaseHelper();
+Timing_Repeat newTiming_Repeat = new Timing_Repeat(
+	id: id ?? await fhirDb.newResourceId('Timing_Repeat'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	boundsDuration: boundsDuration,
+	boundsRange: boundsRange,
+	boundsPeriod: boundsPeriod,
+	count: count,
+	elementCount: elementCount,
+	countMax: countMax,
+	elementCountMax: elementCountMax,
+	duration: duration,
+	elementDuration: elementDuration,
+	durationMax: durationMax,
+	elementDurationMax: elementDurationMax,
+	durationUnit: durationUnit,
+	elementDurationUnit: elementDurationUnit,
+	frequency: frequency,
+	elementFrequency: elementFrequency,
+	frequencyMax: frequencyMax,
+	elementFrequencyMax: elementFrequencyMax,
+	period: period,
+	elementPeriod: elementPeriod,
+	periodMax: periodMax,
+	elementPeriodMax: elementPeriodMax,
+	periodUnit: periodUnit,
+	elementPeriodUnit: elementPeriodUnit,
+	dayOfWeek: dayOfWeek,
+	elementDayOfWeek: elementDayOfWeek,
+	timeOfDay: timeOfDay,
+	elementTimeOfDay: elementTimeOfDay,
+	when: when,
+	elementWhen: elementWhen,
+	offset: offset,
+	elementOffset: elementOffset,
+);
+	return newTiming_Repeat;
+}
 
-  Timing_Repeat({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.boundsDuration,
-    this.boundsRange,
-    this.boundsPeriod,
-    this.count,
-    this.elementCount,
-    this.countMax,
-    this.elementCountMax,
-    this.duration,
-    this.elementDuration,
-    this.durationMax,
-    this.elementDurationMax,
-    this.durationUnit,
-    this.elementDurationUnit,
-    this.frequency,
-    this.elementFrequency,
-    this.frequencyMax,
-    this.elementFrequencyMax,
-    this.period,
-    this.elementPeriod,
-    this.periodMax,
-    this.elementPeriodMax,
-    this.periodUnit,
-    this.elementPeriodUnit,
-    this.dayOfWeek,
-    this.elementDayOfWeek,
-    this.timeOfDay,
-    this.elementTimeOfDay,
-    this.when,
-    this.elementWhen,
-    this.offset,
-    this.elementOffset,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	Duration boundsDuration;
+	Range boundsRange;
+	Period boundsPeriod;
+	int count;
+	Element elementCount;
+	int countMax;
+	Element elementCountMax;
+	double duration;
+	Element elementDuration;
+	double durationMax;
+	Element elementDurationMax;
+	String durationUnit;
+	Element elementDurationUnit;
+	int frequency;
+	Element elementFrequency;
+	int frequencyMax;
+	Element elementFrequencyMax;
+	double period;
+	Element elementPeriod;
+	double periodMax;
+	Element elementPeriodMax;
+	String periodUnit;
+	Element elementPeriodUnit;
+	List<String> dayOfWeek;
+	List<Element> elementDayOfWeek;
+	List<String> timeOfDay;
+	List<Element> elementTimeOfDay;
+	String when;
+	List<Element> elementWhen;
+	int offset;
+	Element elementOffset;
 
-  factory Timing_Repeat.fromJson(Map<String, dynamic> json) =>
-      _$Timing_RepeatFromJson(json);
+Timing_Repeat(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.boundsDuration,
+this.boundsRange,
+this.boundsPeriod,
+this.count,
+this.elementCount,
+this.countMax,
+this.elementCountMax,
+this.duration,
+this.elementDuration,
+this.durationMax,
+this.elementDurationMax,
+this.durationUnit,
+this.elementDurationUnit,
+this.frequency,
+this.elementFrequency,
+this.frequencyMax,
+this.elementFrequencyMax,
+this.period,
+this.elementPeriod,
+this.periodMax,
+this.elementPeriodMax,
+this.periodUnit,
+this.elementPeriodUnit,
+this.dayOfWeek,
+this.elementDayOfWeek,
+this.timeOfDay,
+this.elementTimeOfDay,
+this.when,
+this.elementWhen,
+this.offset,
+this.elementOffset,
+});
+
+  factory Timing_Repeat.fromJson(Map<String, dynamic> json) => _$Timing_RepeatFromJson(json);
   Map<String, dynamic> toJson() => _$Timing_RepeatToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

@@ -10,384 +10,387 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class GraphDefinition {
-  static Future<GraphDefinition> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String url,
-    Element elementUrl,
-    String version,
-    Element elementVersion,
-    String name,
-    Element elementName,
-    String status,
-    Element elementStatus,
-    bool experimental,
-    Element elementExperimental,
-    DateTime date,
-    Element elementDate,
-    String publisher,
-    Element elementPublisher,
-    List<ContactDetail> contact,
-    String description,
-    Element elementDescription,
-    List<UsageContext> useContext,
-    List<CodeableConcept> jurisdiction,
-    String purpose,
-    Element elementPurpose,
-    String start,
-    Element elementStart,
-    String profile,
-    List<GraphDefinition_Link> link,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    GraphDefinition newGraphDefinition = new GraphDefinition(
-      resourceType: 'GraphDefinition',
-      id: id ?? await fhirDb.newResourceId('GraphDefinition'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      url: url,
-      elementUrl: elementUrl,
-      version: version,
-      elementVersion: elementVersion,
-      name: name,
-      elementName: elementName,
-      status: status,
-      elementStatus: elementStatus,
-      experimental: experimental,
-      elementExperimental: elementExperimental,
-      date: date,
-      elementDate: elementDate,
-      publisher: publisher,
-      elementPublisher: elementPublisher,
-      contact: contact,
-      description: description,
-      elementDescription: elementDescription,
-      useContext: useContext,
-      jurisdiction: jurisdiction,
-      purpose: purpose,
-      elementPurpose: elementPurpose,
-      start: start,
-      elementStart: elementStart,
-      profile: profile,
-      link: link,
-    );
-    newGraphDefinition.meta.createdAt = DateTime.now();
-    newGraphDefinition.meta.lastUpdated = newGraphDefinition.meta.createdAt;
-    int saved = await fhirDb.saveResource(newGraphDefinition);
-    return newGraphDefinition;
-  }
+class GraphDefinition{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<GraphDefinition> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String url,
+	Element elementUrl,
+	String version,
+	Element elementVersion,
+	String name,
+	Element elementName,
+	String status,
+	Element elementStatus,
+	bool experimental,
+	Element elementExperimental,
+	DateTime date,
+	Element elementDate,
+	String publisher,
+	Element elementPublisher,
+	List<ContactDetail> contact,
+	String description,
+	Element elementDescription,
+	List<UsageContext> useContext,
+	List<CodeableConcept> jurisdiction,
+	String purpose,
+	Element elementPurpose,
+	String start,
+	Element elementStart,
+	String profile,
+	List<GraphDefinition_Link> link,
+}) async {
+var fhirDb = new DatabaseHelper();
+GraphDefinition newGraphDefinition = new GraphDefinition(
+	resourceType: 'GraphDefinition',
+	id: id ?? await fhirDb.newResourceId('GraphDefinition'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	url: url,
+	elementUrl: elementUrl,
+	version: version,
+	elementVersion: elementVersion,
+	name: name,
+	elementName: elementName,
+	status: status,
+	elementStatus: elementStatus,
+	experimental: experimental,
+	elementExperimental: elementExperimental,
+	date: date,
+	elementDate: elementDate,
+	publisher: publisher,
+	elementPublisher: elementPublisher,
+	contact: contact,
+	description: description,
+	elementDescription: elementDescription,
+	useContext: useContext,
+	jurisdiction: jurisdiction,
+	purpose: purpose,
+	elementPurpose: elementPurpose,
+	start: start,
+	elementStart: elementStart,
+	profile: profile,
+	link: link,
+);
+	newGraphDefinition.meta.createdAt = DateTime.now();
+	newGraphDefinition.meta.lastUpdated = newGraphDefinition.meta.createdAt;
+	int saved = await fhirDb.saveResource(newGraphDefinition);
+	 return newGraphDefinition;
+}
 
-  String resourceType = 'GraphDefinition';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String url;
-  Element elementUrl;
-  String version;
-  Element elementVersion;
-  String name;
-  Element elementName;
-  String status;
-  Element elementStatus;
-  bool experimental;
-  Element elementExperimental;
-  DateTime date;
-  Element elementDate;
-  String publisher;
-  Element elementPublisher;
-  List<ContactDetail> contact;
-  String description;
-  Element elementDescription;
-  List<UsageContext> useContext;
-  List<CodeableConcept> jurisdiction;
-  String purpose;
-  Element elementPurpose;
-  String start;
-  Element elementStart;
-  String profile;
-  List<GraphDefinition_Link> link;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  GraphDefinition({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.url,
-    this.elementUrl,
-    this.version,
-    this.elementVersion,
-    this.name,
-    this.elementName,
-    this.status,
-    this.elementStatus,
-    this.experimental,
-    this.elementExperimental,
-    this.date,
-    this.elementDate,
-    this.publisher,
-    this.elementPublisher,
-    this.contact,
-    this.description,
-    this.elementDescription,
-    this.useContext,
-    this.jurisdiction,
-    this.purpose,
-    this.elementPurpose,
-    this.start,
-    this.elementStart,
-    this.profile,
-    this.link,
-  });
+	String resourceType= 'GraphDefinition';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String url;
+	Element elementUrl;
+	String version;
+	Element elementVersion;
+	String name;
+	Element elementName;
+	String status;
+	Element elementStatus;
+	bool experimental;
+	Element elementExperimental;
+	DateTime date;
+	Element elementDate;
+	String publisher;
+	Element elementPublisher;
+	List<ContactDetail> contact;
+	String description;
+	Element elementDescription;
+	List<UsageContext> useContext;
+	List<CodeableConcept> jurisdiction;
+	String purpose;
+	Element elementPurpose;
+	String start;
+	Element elementStart;
+	String profile;
+	List<GraphDefinition_Link> link;
 
-  factory GraphDefinition.fromJson(Map<String, dynamic> json) =>
-      _$GraphDefinitionFromJson(json);
+GraphDefinition(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.url,
+this.elementUrl,
+this.version,
+this.elementVersion,
+this.name,
+this.elementName,
+this.status,
+this.elementStatus,
+this.experimental,
+this.elementExperimental,
+this.date,
+this.elementDate,
+this.publisher,
+this.elementPublisher,
+this.contact,
+this.description,
+this.elementDescription,
+this.useContext,
+this.jurisdiction,
+this.purpose,
+this.elementPurpose,
+this.start,
+this.elementStart,
+this.profile,
+this.link,
+});
+
+  factory GraphDefinition.fromJson(Map<String, dynamic> json) => _$GraphDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$GraphDefinitionToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class GraphDefinition_Link {
-  static Future<GraphDefinition_Link> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String path,
-    Element elementPath,
-    String sliceName,
-    Element elementSliceName,
-    int min,
-    Element elementMin,
-    String max,
-    Element elementMax,
-    String description,
-    Element elementDescription,
-    List<GraphDefinition_Target> target,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    GraphDefinition_Link newGraphDefinition_Link = new GraphDefinition_Link(
-      id: id ?? await fhirDb.newResourceId('GraphDefinition_Link'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      path: path,
-      elementPath: elementPath,
-      sliceName: sliceName,
-      elementSliceName: elementSliceName,
-      min: min,
-      elementMin: elementMin,
-      max: max,
-      elementMax: elementMax,
-      description: description,
-      elementDescription: elementDescription,
-      target: target,
-    );
-    return newGraphDefinition_Link;
-  }
+class GraphDefinition_Link{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String path;
-  Element elementPath;
-  String sliceName;
-  Element elementSliceName;
-  int min;
-  Element elementMin;
-  String max;
-  Element elementMax;
-  String description;
-  Element elementDescription;
-  List<GraphDefinition_Target> target;
+	static Future<GraphDefinition_Link> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String path,
+	Element elementPath,
+	String sliceName,
+	Element elementSliceName,
+	int min,
+	Element elementMin,
+	String max,
+	Element elementMax,
+	String description,
+	Element elementDescription,
+	List<GraphDefinition_Target> target,
+}) async {
+var fhirDb = new DatabaseHelper();
+GraphDefinition_Link newGraphDefinition_Link = new GraphDefinition_Link(
+	id: id ?? await fhirDb.newResourceId('GraphDefinition_Link'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	path: path,
+	elementPath: elementPath,
+	sliceName: sliceName,
+	elementSliceName: elementSliceName,
+	min: min,
+	elementMin: elementMin,
+	max: max,
+	elementMax: elementMax,
+	description: description,
+	elementDescription: elementDescription,
+	target: target,
+);
+	return newGraphDefinition_Link;
+}
 
-  GraphDefinition_Link({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.path,
-    this.elementPath,
-    this.sliceName,
-    this.elementSliceName,
-    this.min,
-    this.elementMin,
-    this.max,
-    this.elementMax,
-    this.description,
-    this.elementDescription,
-    this.target,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String path;
+	Element elementPath;
+	String sliceName;
+	Element elementSliceName;
+	int min;
+	Element elementMin;
+	String max;
+	Element elementMax;
+	String description;
+	Element elementDescription;
+	List<GraphDefinition_Target> target;
 
-  factory GraphDefinition_Link.fromJson(Map<String, dynamic> json) =>
-      _$GraphDefinition_LinkFromJson(json);
+GraphDefinition_Link(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.path,
+this.elementPath,
+this.sliceName,
+this.elementSliceName,
+this.min,
+this.elementMin,
+this.max,
+this.elementMax,
+this.description,
+this.elementDescription,
+this.target,
+});
+
+  factory GraphDefinition_Link.fromJson(Map<String, dynamic> json) => _$GraphDefinition_LinkFromJson(json);
   Map<String, dynamic> toJson() => _$GraphDefinition_LinkToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class GraphDefinition_Target {
-  static Future<GraphDefinition_Target> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String type,
-    Element elementType,
-    String params,
-    Element elementParams,
-    String profile,
-    List<GraphDefinition_Compartment> compartment,
-    List<GraphDefinition_Link> link,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    GraphDefinition_Target newGraphDefinition_Target =
-        new GraphDefinition_Target(
-      id: id ?? await fhirDb.newResourceId('GraphDefinition_Target'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      elementType: elementType,
-      params: params,
-      elementParams: elementParams,
-      profile: profile,
-      compartment: compartment,
-      link: link,
-    );
-    return newGraphDefinition_Target;
-  }
+class GraphDefinition_Target{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String type;
-  Element elementType;
-  String params;
-  Element elementParams;
-  String profile;
-  List<GraphDefinition_Compartment> compartment;
-  List<GraphDefinition_Link> link;
+	static Future<GraphDefinition_Target> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String type,
+	Element elementType,
+	String params,
+	Element elementParams,
+	String profile,
+	List<GraphDefinition_Compartment> compartment,
+	List<GraphDefinition_Link> link,
+}) async {
+var fhirDb = new DatabaseHelper();
+GraphDefinition_Target newGraphDefinition_Target = new GraphDefinition_Target(
+	id: id ?? await fhirDb.newResourceId('GraphDefinition_Target'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	elementType: elementType,
+	params: params,
+	elementParams: elementParams,
+	profile: profile,
+	compartment: compartment,
+	link: link,
+);
+	return newGraphDefinition_Target;
+}
 
-  GraphDefinition_Target({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.elementType,
-    this.params,
-    this.elementParams,
-    this.profile,
-    this.compartment,
-    this.link,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String type;
+	Element elementType;
+	String params;
+	Element elementParams;
+	String profile;
+	List<GraphDefinition_Compartment> compartment;
+	List<GraphDefinition_Link> link;
 
-  factory GraphDefinition_Target.fromJson(Map<String, dynamic> json) =>
-      _$GraphDefinition_TargetFromJson(json);
+GraphDefinition_Target(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.type,
+this.elementType,
+this.params,
+this.elementParams,
+this.profile,
+this.compartment,
+this.link,
+});
+
+  factory GraphDefinition_Target.fromJson(Map<String, dynamic> json) => _$GraphDefinition_TargetFromJson(json);
   Map<String, dynamic> toJson() => _$GraphDefinition_TargetToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class GraphDefinition_Compartment {
-  static Future<GraphDefinition_Compartment> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String use,
-    Element elementUse,
-    String code,
-    Element elementCode,
-    String rule,
-    Element elementRule,
-    String expression,
-    Element elementExpression,
-    String description,
-    Element elementDescription,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    GraphDefinition_Compartment newGraphDefinition_Compartment =
-        new GraphDefinition_Compartment(
-      id: id ?? await fhirDb.newResourceId('GraphDefinition_Compartment'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      use: use,
-      elementUse: elementUse,
-      code: code,
-      elementCode: elementCode,
-      rule: rule,
-      elementRule: elementRule,
-      expression: expression,
-      elementExpression: elementExpression,
-      description: description,
-      elementDescription: elementDescription,
-    );
-    return newGraphDefinition_Compartment;
-  }
+class GraphDefinition_Compartment{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String use;
-  Element elementUse;
-  String code;
-  Element elementCode;
-  String rule;
-  Element elementRule;
-  String expression;
-  Element elementExpression;
-  String description;
-  Element elementDescription;
+	static Future<GraphDefinition_Compartment> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String use,
+	Element elementUse,
+	String code,
+	Element elementCode,
+	String rule,
+	Element elementRule,
+	String expression,
+	Element elementExpression,
+	String description,
+	Element elementDescription,
+}) async {
+var fhirDb = new DatabaseHelper();
+GraphDefinition_Compartment newGraphDefinition_Compartment = new GraphDefinition_Compartment(
+	id: id ?? await fhirDb.newResourceId('GraphDefinition_Compartment'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	use: use,
+	elementUse: elementUse,
+	code: code,
+	elementCode: elementCode,
+	rule: rule,
+	elementRule: elementRule,
+	expression: expression,
+	elementExpression: elementExpression,
+	description: description,
+	elementDescription: elementDescription,
+);
+	return newGraphDefinition_Compartment;
+}
 
-  GraphDefinition_Compartment({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.use,
-    this.elementUse,
-    this.code,
-    this.elementCode,
-    this.rule,
-    this.elementRule,
-    this.expression,
-    this.elementExpression,
-    this.description,
-    this.elementDescription,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String use;
+	Element elementUse;
+	String code;
+	Element elementCode;
+	String rule;
+	Element elementRule;
+	String expression;
+	Element elementExpression;
+	String description;
+	Element elementDescription;
 
-  factory GraphDefinition_Compartment.fromJson(Map<String, dynamic> json) =>
-      _$GraphDefinition_CompartmentFromJson(json);
+GraphDefinition_Compartment(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.use,
+this.elementUse,
+this.code,
+this.elementCode,
+this.rule,
+this.elementRule,
+this.expression,
+this.elementExpression,
+this.description,
+this.elementDescription,
+});
+
+  factory GraphDefinition_Compartment.fromJson(Map<String, dynamic> json) => _$GraphDefinition_CompartmentFromJson(json);
   Map<String, dynamic> toJson() => _$GraphDefinition_CompartmentToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -414,9 +417,8 @@ GraphDefinition _$GraphDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

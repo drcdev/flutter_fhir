@@ -11,227 +11,231 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class Provenance {
-  static Future<Provenance> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Reference> target,
-    Period occurredPeriod,
-    String occurredDateTime,
-    Element elementOccurredDateTime,
-    DateTime recorded,
-    Element elementRecorded,
-    List<String> policy,
-    List<Element> elementPolicy,
-    Reference location,
-    List<CodeableConcept> reason,
-    CodeableConcept activity,
-    List<Provenance_Agent> agent,
-    List<Provenance_Entity> entity,
-    List<Signature> signature,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Provenance newProvenance = new Provenance(
-      resourceType: 'Provenance',
-      id: id ?? await fhirDb.newResourceId('Provenance'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      target: target,
-      occurredPeriod: occurredPeriod,
-      occurredDateTime: occurredDateTime,
-      elementOccurredDateTime: elementOccurredDateTime,
-      recorded: recorded,
-      elementRecorded: elementRecorded,
-      policy: policy,
-      elementPolicy: elementPolicy,
-      location: location,
-      reason: reason,
-      activity: activity,
-      agent: agent,
-      entity: entity,
-      signature: signature,
-    );
-    newProvenance.meta.createdAt = DateTime.now();
-    newProvenance.meta.lastUpdated = newProvenance.meta.createdAt;
-    int saved = await fhirDb.saveResource(newProvenance);
-    return newProvenance;
-  }
+class Provenance{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<Provenance> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Reference> target,
+	Period occurredPeriod,
+	String occurredDateTime,
+	Element elementOccurredDateTime,
+	DateTime recorded,
+	Element elementRecorded,
+	List<String> policy,
+	List<Element> elementPolicy,
+	Reference location,
+	List<CodeableConcept> reason,
+	CodeableConcept activity,
+	List<Provenance_Agent> agent,
+	List<Provenance_Entity> entity,
+	List<Signature> signature,
+}) async {
+var fhirDb = new DatabaseHelper();
+Provenance newProvenance = new Provenance(
+	resourceType: 'Provenance',
+	id: id ?? await fhirDb.newResourceId('Provenance'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	target: target,
+	occurredPeriod: occurredPeriod,
+	occurredDateTime: occurredDateTime,
+	elementOccurredDateTime: elementOccurredDateTime,
+	recorded: recorded,
+	elementRecorded: elementRecorded,
+	policy: policy,
+	elementPolicy: elementPolicy,
+	location: location,
+	reason: reason,
+	activity: activity,
+	agent: agent,
+	entity: entity,
+	signature: signature,
+);
+	newProvenance.meta.createdAt = DateTime.now();
+	newProvenance.meta.lastUpdated = newProvenance.meta.createdAt;
+	int saved = await fhirDb.saveResource(newProvenance);
+	 return newProvenance;
+}
 
-  String resourceType = 'Provenance';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Reference> target;
-  Period occurredPeriod;
-  String occurredDateTime;
-  Element elementOccurredDateTime;
-  DateTime recorded;
-  Element elementRecorded;
-  List<String> policy;
-  List<Element> elementPolicy;
-  Reference location;
-  List<CodeableConcept> reason;
-  CodeableConcept activity;
-  List<Provenance_Agent> agent;
-  List<Provenance_Entity> entity;
-  List<Signature> signature;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  Provenance({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    @required this.target,
-    this.occurredPeriod,
-    this.occurredDateTime,
-    this.elementOccurredDateTime,
-    this.recorded,
-    this.elementRecorded,
-    this.policy,
-    this.elementPolicy,
-    this.location,
-    this.reason,
-    this.activity,
-    @required this.agent,
-    this.entity,
-    this.signature,
-  });
+	String resourceType= 'Provenance';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Reference> target;
+	Period occurredPeriod;
+	String occurredDateTime;
+	Element elementOccurredDateTime;
+	DateTime recorded;
+	Element elementRecorded;
+	List<String> policy;
+	List<Element> elementPolicy;
+	Reference location;
+	List<CodeableConcept> reason;
+	CodeableConcept activity;
+	List<Provenance_Agent> agent;
+	List<Provenance_Entity> entity;
+	List<Signature> signature;
 
-  factory Provenance.fromJson(Map<String, dynamic> json) =>
-      _$ProvenanceFromJson(json);
+Provenance(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+@required this.target,
+this.occurredPeriod,
+this.occurredDateTime,
+this.elementOccurredDateTime,
+this.recorded,
+this.elementRecorded,
+this.policy,
+this.elementPolicy,
+this.location,
+this.reason,
+this.activity,
+@required this.agent,
+this.entity,
+this.signature,
+});
+
+  factory Provenance.fromJson(Map<String, dynamic> json) => _$ProvenanceFromJson(json);
   Map<String, dynamic> toJson() => _$ProvenanceToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Provenance_Agent {
-  static Future<Provenance_Agent> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept type,
-    List<CodeableConcept> role,
-    Reference who,
-    Reference onBehalfOf,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Provenance_Agent newProvenance_Agent = new Provenance_Agent(
-      id: id ?? await fhirDb.newResourceId('Provenance_Agent'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      type: type,
-      role: role,
-      who: who,
-      onBehalfOf: onBehalfOf,
-    );
-    return newProvenance_Agent;
-  }
+class Provenance_Agent{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept type;
-  List<CodeableConcept> role;
-  Reference who;
-  Reference onBehalfOf;
+	static Future<Provenance_Agent> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept type,
+	List<CodeableConcept> role,
+	Reference who,
+	Reference onBehalfOf,
+}) async {
+var fhirDb = new DatabaseHelper();
+Provenance_Agent newProvenance_Agent = new Provenance_Agent(
+	id: id ?? await fhirDb.newResourceId('Provenance_Agent'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	type: type,
+	role: role,
+	who: who,
+	onBehalfOf: onBehalfOf,
+);
+	return newProvenance_Agent;
+}
 
-  Provenance_Agent({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.type,
-    this.role,
-    @required this.who,
-    this.onBehalfOf,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept type;
+	List<CodeableConcept> role;
+	Reference who;
+	Reference onBehalfOf;
 
-  factory Provenance_Agent.fromJson(Map<String, dynamic> json) =>
-      _$Provenance_AgentFromJson(json);
+Provenance_Agent(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.type,
+this.role,
+@required this.who,
+this.onBehalfOf,
+});
+
+  factory Provenance_Agent.fromJson(Map<String, dynamic> json) => _$Provenance_AgentFromJson(json);
   Map<String, dynamic> toJson() => _$Provenance_AgentToJson(this);
 }
 
+
 @JsonSerializable(explicitToJson: true)
-class Provenance_Entity {
-  static Future<Provenance_Entity> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    String role,
-    Element elementRole,
-    Reference what,
-    List<Provenance_Agent> agent,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    Provenance_Entity newProvenance_Entity = new Provenance_Entity(
-      id: id ?? await fhirDb.newResourceId('Provenance_Entity'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      role: role,
-      elementRole: elementRole,
-      what: what,
-      agent: agent,
-    );
-    return newProvenance_Entity;
-  }
+class Provenance_Entity{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  String role;
-  Element elementRole;
-  Reference what;
-  List<Provenance_Agent> agent;
+	static Future<Provenance_Entity> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	String role,
+	Element elementRole,
+	Reference what,
+	List<Provenance_Agent> agent,
+}) async {
+var fhirDb = new DatabaseHelper();
+Provenance_Entity newProvenance_Entity = new Provenance_Entity(
+	id: id ?? await fhirDb.newResourceId('Provenance_Entity'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	role: role,
+	elementRole: elementRole,
+	what: what,
+	agent: agent,
+);
+	return newProvenance_Entity;
+}
 
-  Provenance_Entity({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.role,
-    this.elementRole,
-    @required this.what,
-    this.agent,
-  });
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	String role;
+	Element elementRole;
+	Reference what;
+	List<Provenance_Agent> agent;
 
-  factory Provenance_Entity.fromJson(Map<String, dynamic> json) =>
-      _$Provenance_EntityFromJson(json);
+Provenance_Entity(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.role,
+this.elementRole,
+@required this.what,
+this.agent,
+});
+
+  factory Provenance_Entity.fromJson(Map<String, dynamic> json) => _$Provenance_EntityFromJson(json);
   Map<String, dynamic> toJson() => _$Provenance_EntityToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -258,9 +262,8 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

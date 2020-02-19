@@ -11,107 +11,107 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class MedicinalProductManufactured {
-  static Future<MedicinalProductManufactured> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept manufacturedDoseForm,
-    CodeableConcept unitOfPresentation,
-    Quantity quantity,
-    List<Reference> manufacturer,
-    List<Reference> ingredient,
-    ProdCharacteristic physicalCharacteristics,
-    List<CodeableConcept> otherCharacteristics,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    MedicinalProductManufactured newMedicinalProductManufactured =
-        new MedicinalProductManufactured(
-      resourceType: 'MedicinalProductManufactured',
-      id: id ?? await fhirDb.newResourceId('MedicinalProductManufactured'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      manufacturedDoseForm: manufacturedDoseForm,
-      unitOfPresentation: unitOfPresentation,
-      quantity: quantity,
-      manufacturer: manufacturer,
-      ingredient: ingredient,
-      physicalCharacteristics: physicalCharacteristics,
-      otherCharacteristics: otherCharacteristics,
-    );
-    newMedicinalProductManufactured.meta.createdAt = DateTime.now();
-    newMedicinalProductManufactured.meta.lastUpdated =
-        newMedicinalProductManufactured.meta.createdAt;
-    int saved = await fhirDb.saveResource(newMedicinalProductManufactured);
-    return newMedicinalProductManufactured;
-  }
+class MedicinalProductManufactured{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<MedicinalProductManufactured> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept manufacturedDoseForm,
+	CodeableConcept unitOfPresentation,
+	Quantity quantity,
+	List<Reference> manufacturer,
+	List<Reference> ingredient,
+	ProdCharacteristic physicalCharacteristics,
+	List<CodeableConcept> otherCharacteristics,
+}) async {
+var fhirDb = new DatabaseHelper();
+MedicinalProductManufactured newMedicinalProductManufactured = new MedicinalProductManufactured(
+	resourceType: 'MedicinalProductManufactured',
+	id: id ?? await fhirDb.newResourceId('MedicinalProductManufactured'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	manufacturedDoseForm: manufacturedDoseForm,
+	unitOfPresentation: unitOfPresentation,
+	quantity: quantity,
+	manufacturer: manufacturer,
+	ingredient: ingredient,
+	physicalCharacteristics: physicalCharacteristics,
+	otherCharacteristics: otherCharacteristics,
+);
+	newMedicinalProductManufactured.meta.createdAt = DateTime.now();
+	newMedicinalProductManufactured.meta.lastUpdated = newMedicinalProductManufactured.meta.createdAt;
+	int saved = await fhirDb.saveResource(newMedicinalProductManufactured);
+	 return newMedicinalProductManufactured;
+}
 
-  String resourceType = 'MedicinalProductManufactured';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept manufacturedDoseForm;
-  CodeableConcept unitOfPresentation;
-  Quantity quantity;
-  List<Reference> manufacturer;
-  List<Reference> ingredient;
-  ProdCharacteristic physicalCharacteristics;
-  List<CodeableConcept> otherCharacteristics;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  MedicinalProductManufactured({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    @required this.manufacturedDoseForm,
-    this.unitOfPresentation,
-    @required this.quantity,
-    this.manufacturer,
-    this.ingredient,
-    this.physicalCharacteristics,
-    this.otherCharacteristics,
-  });
+	String resourceType= 'MedicinalProductManufactured';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept manufacturedDoseForm;
+	CodeableConcept unitOfPresentation;
+	Quantity quantity;
+	List<Reference> manufacturer;
+	List<Reference> ingredient;
+	ProdCharacteristic physicalCharacteristics;
+	List<CodeableConcept> otherCharacteristics;
 
-  factory MedicinalProductManufactured.fromJson(Map<String, dynamic> json) =>
-      _$MedicinalProductManufacturedFromJson(json);
+MedicinalProductManufactured(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+@required this.manufacturedDoseForm,
+this.unitOfPresentation,
+@required this.quantity,
+this.manufacturer,
+this.ingredient,
+this.physicalCharacteristics,
+this.otherCharacteristics,
+});
+
+  factory MedicinalProductManufactured.fromJson(Map<String, dynamic> json) => _$MedicinalProductManufacturedFromJson(json);
   Map<String, dynamic> toJson() => _$MedicinalProductManufacturedToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -139,9 +139,8 @@ MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>

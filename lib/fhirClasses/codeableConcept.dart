@@ -5,44 +5,46 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class CodeableConcept {
-  static Future<CodeableConcept> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Coding> coding,
-    String text,
-    Element elementText,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CodeableConcept newCodeableConcept = new CodeableConcept(
-      id: id ?? await fhirDb.newResourceId('CodeableConcept'),
-      extension: extension,
-      coding: coding,
-      text: text,
-      elementText: elementText,
-    );
-    return newCodeableConcept;
-  }
+class CodeableConcept{
 
-  String id;
-  List<Extension> extension;
-  List<Coding> coding;
-  String text;
-  Element elementText;
+	static Future<CodeableConcept> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Coding> coding,
+	String text,
+	Element elementText,
+}) async {
+var fhirDb = new DatabaseHelper();
+CodeableConcept newCodeableConcept = new CodeableConcept(
+	id: id ?? await fhirDb.newResourceId('CodeableConcept'),
+	extension: extension,
+	coding: coding,
+	text: text,
+	elementText: elementText,
+);
+	return newCodeableConcept;
+}
 
-  CodeableConcept({
-    this.id,
-    this.extension,
-    this.coding,
-    this.text,
-    this.elementText,
-  });
+	String id;
+	List<Extension> extension;
+	List<Coding> coding;
+	String text;
+	Element elementText;
 
-  factory CodeableConcept.fromJson(Map<String, dynamic> json) =>
-      _$CodeableConceptFromJson(json);
+CodeableConcept(
+	{this.id,
+this.extension,
+this.coding,
+this.text,
+this.elementText,
+});
+
+  factory CodeableConcept.fromJson(Map<String, dynamic> json) => _$CodeableConceptFromJson(json);
   Map<String, dynamic> toJson() => _$CodeableConceptToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

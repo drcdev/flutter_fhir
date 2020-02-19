@@ -13,389 +13,375 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+
 @JsonSerializable(explicitToJson: true)
-class CoverageEligibilityRequest {
-  static Future<CoverageEligibilityRequest> newInstance({
-    String resourceType,
-    String id,
-    Meta meta,
-    String implicitRules,
-    Element elementImplicitRules,
-    String language,
-    Element elementLanguage,
-    Narrative text,
-    List<dynamic> contained,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<Identifier> identifier,
-    String status,
-    Element elementStatus,
-    CodeableConcept priority,
-    String purpose,
-    List<Element> elementPurpose,
-    Reference patient,
-    String servicedDate,
-    Element elementServicedDate,
-    Period servicedPeriod,
-    DateTime created,
-    Element elementCreated,
-    Reference enterer,
-    Reference provider,
-    Reference insurer,
-    Reference facility,
-    List<CoverageEligibilityRequest_SupportingInfo> supportingInfo,
-    List<CoverageEligibilityRequest_Insurance> insurance,
-    List<CoverageEligibilityRequest_Item> item,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CoverageEligibilityRequest newCoverageEligibilityRequest =
-        new CoverageEligibilityRequest(
-      resourceType: 'CoverageEligibilityRequest',
-      id: id ?? await fhirDb.newResourceId('CoverageEligibilityRequest'),
-      meta: meta ?? await Meta.newInstance(),
-      implicitRules: implicitRules,
-      elementImplicitRules: elementImplicitRules,
-      language: language,
-      elementLanguage: elementLanguage,
-      text: text,
-      contained: contained,
-      extension: extension,
-      modifierExtension: modifierExtension,
-      identifier: identifier,
-      status: status,
-      elementStatus: elementStatus,
-      priority: priority,
-      purpose: purpose,
-      elementPurpose: elementPurpose,
-      patient: patient,
-      servicedDate: servicedDate,
-      elementServicedDate: elementServicedDate,
-      servicedPeriod: servicedPeriod,
-      created: created,
-      elementCreated: elementCreated,
-      enterer: enterer,
-      provider: provider,
-      insurer: insurer,
-      facility: facility,
-      supportingInfo: supportingInfo,
-      insurance: insurance,
-      item: item,
-    );
-    newCoverageEligibilityRequest.meta.createdAt = DateTime.now();
-    newCoverageEligibilityRequest.meta.lastUpdated =
-        newCoverageEligibilityRequest.meta.createdAt;
-    int saved = await fhirDb.saveResource(newCoverageEligibilityRequest);
-    return newCoverageEligibilityRequest;
-  }
+class CoverageEligibilityRequest{
 
-  save() async {
-    this.meta.lastUpdated = DateTime.now();
-    var fhirDb = new DatabaseHelper();
-    int saveed = await fhirDb.saveResource(this);
-  }
+	static Future<CoverageEligibilityRequest> newInstance(
+	{	String resourceType,
+	String id,
+	Meta meta,
+	String implicitRules,
+	Element elementImplicitRules,
+	String language,
+	Element elementLanguage,
+	Narrative text,
+	List<dynamic> contained,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<Identifier> identifier,
+	String status,
+	Element elementStatus,
+	CodeableConcept priority,
+	String purpose,
+	List<Element> elementPurpose,
+	Reference patient,
+	String servicedDate,
+	Element elementServicedDate,
+	Period servicedPeriod,
+	DateTime created,
+	Element elementCreated,
+	Reference enterer,
+	Reference provider,
+	Reference insurer,
+	Reference facility,
+	List<CoverageEligibilityRequest_SupportingInfo> supportingInfo,
+	List<CoverageEligibilityRequest_Insurance> insurance,
+	List<CoverageEligibilityRequest_Item> item,
+}) async {
+var fhirDb = new DatabaseHelper();
+CoverageEligibilityRequest newCoverageEligibilityRequest = new CoverageEligibilityRequest(
+	resourceType: 'CoverageEligibilityRequest',
+	id: id ?? await fhirDb.newResourceId('CoverageEligibilityRequest'),
+	meta: meta ?? await Meta.newInstance(),
+	implicitRules: implicitRules,
+	elementImplicitRules: elementImplicitRules,
+	language: language,
+	elementLanguage: elementLanguage,
+	text: text,
+	contained: contained,
+	extension: extension,
+	modifierExtension: modifierExtension,
+	identifier: identifier,
+	status: status,
+	elementStatus: elementStatus,
+	priority: priority,
+	purpose: purpose,
+	elementPurpose: elementPurpose,
+	patient: patient,
+	servicedDate: servicedDate,
+	elementServicedDate: elementServicedDate,
+	servicedPeriod: servicedPeriod,
+	created: created,
+	elementCreated: elementCreated,
+	enterer: enterer,
+	provider: provider,
+	insurer: insurer,
+	facility: facility,
+	supportingInfo: supportingInfo,
+	insurance: insurance,
+	item: item,
+);
+	newCoverageEligibilityRequest.meta.createdAt = DateTime.now();
+	newCoverageEligibilityRequest.meta.lastUpdated = newCoverageEligibilityRequest.meta.createdAt;
+	int saved = await fhirDb.saveResource(newCoverageEligibilityRequest);
+	 return newCoverageEligibilityRequest;
+}
 
-  String resourceType = 'CoverageEligibilityRequest';
-  String id;
-  Meta meta;
-  String implicitRules;
-  Element elementImplicitRules;
-  String language;
-  Element elementLanguage;
-  Narrative text;
-  List<dynamic> contained;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<Identifier> identifier;
-  String status;
-  Element elementStatus;
-  CodeableConcept priority;
-  String purpose;
-  List<Element> elementPurpose;
-  Reference patient;
-  String servicedDate;
-  Element elementServicedDate;
-  Period servicedPeriod;
-  DateTime created;
-  Element elementCreated;
-  Reference enterer;
-  Reference provider;
-  Reference insurer;
-  Reference facility;
-  List<CoverageEligibilityRequest_SupportingInfo> supportingInfo;
-  List<CoverageEligibilityRequest_Insurance> insurance;
-  List<CoverageEligibilityRequest_Item> item;
+save() async {
+		this.meta.lastUpdated = DateTime.now();
+		var fhirDb = new DatabaseHelper();
+		int saved = await fhirDb.saveResource(this);
+}
 
-  CoverageEligibilityRequest({
-    @required this.resourceType,
-    this.id,
-    this.meta,
-    this.implicitRules,
-    this.elementImplicitRules,
-    this.language,
-    this.elementLanguage,
-    this.text,
-    this.contained,
-    this.extension,
-    this.modifierExtension,
-    this.identifier,
-    this.status,
-    this.elementStatus,
-    this.priority,
-    this.purpose,
-    this.elementPurpose,
-    @required this.patient,
-    this.servicedDate,
-    this.elementServicedDate,
-    this.servicedPeriod,
-    this.created,
-    this.elementCreated,
-    this.enterer,
-    this.provider,
-    @required this.insurer,
-    this.facility,
-    this.supportingInfo,
-    this.insurance,
-    this.item,
-  });
+	String resourceType= 'CoverageEligibilityRequest';
+	String id;
+	Meta meta;
+	String implicitRules;
+	Element elementImplicitRules;
+	String language;
+	Element elementLanguage;
+	Narrative text;
+	List<dynamic> contained;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<Identifier> identifier;
+	String status;
+	Element elementStatus;
+	CodeableConcept priority;
+	String purpose;
+	List<Element> elementPurpose;
+	Reference patient;
+	String servicedDate;
+	Element elementServicedDate;
+	Period servicedPeriod;
+	DateTime created;
+	Element elementCreated;
+	Reference enterer;
+	Reference provider;
+	Reference insurer;
+	Reference facility;
+	List<CoverageEligibilityRequest_SupportingInfo> supportingInfo;
+	List<CoverageEligibilityRequest_Insurance> insurance;
+	List<CoverageEligibilityRequest_Item> item;
 
-  factory CoverageEligibilityRequest.fromJson(Map<String, dynamic> json) =>
-      _$CoverageEligibilityRequestFromJson(json);
+CoverageEligibilityRequest(
+	{@required this.resourceType,
+this.id,
+this.meta,
+this.implicitRules,
+this.elementImplicitRules,
+this.language,
+this.elementLanguage,
+this.text,
+this.contained,
+this.extension,
+this.modifierExtension,
+this.identifier,
+this.status,
+this.elementStatus,
+this.priority,
+this.purpose,
+this.elementPurpose,
+@required this.patient,
+this.servicedDate,
+this.elementServicedDate,
+this.servicedPeriod,
+this.created,
+this.elementCreated,
+this.enterer,
+this.provider,
+@required this.insurer,
+this.facility,
+this.supportingInfo,
+this.insurance,
+this.item,
+});
+
+  factory CoverageEligibilityRequest.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequestFromJson(json);
   Map<String, dynamic> toJson() => _$CoverageEligibilityRequestToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-class CoverageEligibilityRequest_SupportingInfo {
-  static Future<CoverageEligibilityRequest_SupportingInfo> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    int sequence,
-    Element elementSequence,
-    Reference information,
-    bool appliesToAll,
-    Element elementAppliesToAll,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CoverageEligibilityRequest_SupportingInfo
-        newCoverageEligibilityRequest_SupportingInfo =
-        new CoverageEligibilityRequest_SupportingInfo(
-      id: id ??
-          await fhirDb
-              .newResourceId('CoverageEligibilityRequest_SupportingInfo'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      sequence: sequence,
-      elementSequence: elementSequence,
-      information: information,
-      appliesToAll: appliesToAll,
-      elementAppliesToAll: elementAppliesToAll,
-    );
-    return newCoverageEligibilityRequest_SupportingInfo;
-  }
-
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  int sequence;
-  Element elementSequence;
-  Reference information;
-  bool appliesToAll;
-  Element elementAppliesToAll;
-
-  CoverageEligibilityRequest_SupportingInfo({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.sequence,
-    this.elementSequence,
-    @required this.information,
-    this.appliesToAll,
-    this.elementAppliesToAll,
-  });
-
-  factory CoverageEligibilityRequest_SupportingInfo.fromJson(
-          Map<String, dynamic> json) =>
-      _$CoverageEligibilityRequest_SupportingInfoFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$CoverageEligibilityRequest_SupportingInfoToJson(this);
-}
 
 @JsonSerializable(explicitToJson: true)
-class CoverageEligibilityRequest_Insurance {
-  static Future<CoverageEligibilityRequest_Insurance> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    bool focal,
-    Element elementFocal,
-    Reference coverage,
-    String businessArrangement,
-    Element elementBusinessArrangement,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CoverageEligibilityRequest_Insurance
-        newCoverageEligibilityRequest_Insurance =
-        new CoverageEligibilityRequest_Insurance(
-      id: id ??
-          await fhirDb.newResourceId('CoverageEligibilityRequest_Insurance'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      focal: focal,
-      elementFocal: elementFocal,
-      coverage: coverage,
-      businessArrangement: businessArrangement,
-      elementBusinessArrangement: elementBusinessArrangement,
-    );
-    return newCoverageEligibilityRequest_Insurance;
-  }
+class CoverageEligibilityRequest_SupportingInfo{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  bool focal;
-  Element elementFocal;
-  Reference coverage;
-  String businessArrangement;
-  Element elementBusinessArrangement;
-
-  CoverageEligibilityRequest_Insurance({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.focal,
-    this.elementFocal,
-    @required this.coverage,
-    this.businessArrangement,
-    this.elementBusinessArrangement,
-  });
-
-  factory CoverageEligibilityRequest_Insurance.fromJson(
-          Map<String, dynamic> json) =>
-      _$CoverageEligibilityRequest_InsuranceFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$CoverageEligibilityRequest_InsuranceToJson(this);
+	static Future<CoverageEligibilityRequest_SupportingInfo> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	int sequence,
+	Element elementSequence,
+	Reference information,
+	bool appliesToAll,
+	Element elementAppliesToAll,
+}) async {
+var fhirDb = new DatabaseHelper();
+CoverageEligibilityRequest_SupportingInfo newCoverageEligibilityRequest_SupportingInfo = new CoverageEligibilityRequest_SupportingInfo(
+	id: id ?? await fhirDb.newResourceId('CoverageEligibilityRequest_SupportingInfo'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	sequence: sequence,
+	elementSequence: elementSequence,
+	information: information,
+	appliesToAll: appliesToAll,
+	elementAppliesToAll: elementAppliesToAll,
+);
+	return newCoverageEligibilityRequest_SupportingInfo;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	int sequence;
+	Element elementSequence;
+	Reference information;
+	bool appliesToAll;
+	Element elementAppliesToAll;
+
+CoverageEligibilityRequest_SupportingInfo(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.sequence,
+this.elementSequence,
+@required this.information,
+this.appliesToAll,
+this.elementAppliesToAll,
+});
+
+  factory CoverageEligibilityRequest_SupportingInfo.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_SupportingInfoFromJson(json);
+  Map<String, dynamic> toJson() => _$CoverageEligibilityRequest_SupportingInfoToJson(this);
+}
+
 
 @JsonSerializable(explicitToJson: true)
-class CoverageEligibilityRequest_Item {
-  static Future<CoverageEligibilityRequest_Item> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    List<int> supportingInfoSequence,
-    List<Element> elementSupportingInfoSequence,
-    CodeableConcept category,
-    CodeableConcept productOrService,
-    List<CodeableConcept> modifier,
-    Reference provider,
-    Quantity quantity,
-    Money unitPrice,
-    Reference facility,
-    List<CoverageEligibilityRequest_Diagnosis> diagnosis,
-    List<Reference> detail,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CoverageEligibilityRequest_Item newCoverageEligibilityRequest_Item =
-        new CoverageEligibilityRequest_Item(
-      id: id ?? await fhirDb.newResourceId('CoverageEligibilityRequest_Item'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      supportingInfoSequence: supportingInfoSequence,
-      elementSupportingInfoSequence: elementSupportingInfoSequence,
-      category: category,
-      productOrService: productOrService,
-      modifier: modifier,
-      provider: provider,
-      quantity: quantity,
-      unitPrice: unitPrice,
-      facility: facility,
-      diagnosis: diagnosis,
-      detail: detail,
-    );
-    return newCoverageEligibilityRequest_Item;
-  }
+class CoverageEligibilityRequest_Insurance{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  List<int> supportingInfoSequence;
-  List<Element> elementSupportingInfoSequence;
-  CodeableConcept category;
-  CodeableConcept productOrService;
-  List<CodeableConcept> modifier;
-  Reference provider;
-  Quantity quantity;
-  Money unitPrice;
-  Reference facility;
-  List<CoverageEligibilityRequest_Diagnosis> diagnosis;
-  List<Reference> detail;
-
-  CoverageEligibilityRequest_Item({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.supportingInfoSequence,
-    this.elementSupportingInfoSequence,
-    this.category,
-    this.productOrService,
-    this.modifier,
-    this.provider,
-    this.quantity,
-    this.unitPrice,
-    this.facility,
-    this.diagnosis,
-    this.detail,
-  });
-
-  factory CoverageEligibilityRequest_Item.fromJson(Map<String, dynamic> json) =>
-      _$CoverageEligibilityRequest_ItemFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$CoverageEligibilityRequest_ItemToJson(this);
+	static Future<CoverageEligibilityRequest_Insurance> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	bool focal,
+	Element elementFocal,
+	Reference coverage,
+	String businessArrangement,
+	Element elementBusinessArrangement,
+}) async {
+var fhirDb = new DatabaseHelper();
+CoverageEligibilityRequest_Insurance newCoverageEligibilityRequest_Insurance = new CoverageEligibilityRequest_Insurance(
+	id: id ?? await fhirDb.newResourceId('CoverageEligibilityRequest_Insurance'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	focal: focal,
+	elementFocal: elementFocal,
+	coverage: coverage,
+	businessArrangement: businessArrangement,
+	elementBusinessArrangement: elementBusinessArrangement,
+);
+	return newCoverageEligibilityRequest_Insurance;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	bool focal;
+	Element elementFocal;
+	Reference coverage;
+	String businessArrangement;
+	Element elementBusinessArrangement;
+
+CoverageEligibilityRequest_Insurance(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.focal,
+this.elementFocal,
+@required this.coverage,
+this.businessArrangement,
+this.elementBusinessArrangement,
+});
+
+  factory CoverageEligibilityRequest_Insurance.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_InsuranceFromJson(json);
+  Map<String, dynamic> toJson() => _$CoverageEligibilityRequest_InsuranceToJson(this);
+}
+
 
 @JsonSerializable(explicitToJson: true)
-class CoverageEligibilityRequest_Diagnosis {
-  static Future<CoverageEligibilityRequest_Diagnosis> newInstance({
-    String id,
-    List<Extension> extension,
-    List<Extension> modifierExtension,
-    CodeableConcept diagnosisCodeableConcept,
-    Reference diagnosisReference,
-  }) async {
-    var fhirDb = new DatabaseHelper();
-    CoverageEligibilityRequest_Diagnosis
-        newCoverageEligibilityRequest_Diagnosis =
-        new CoverageEligibilityRequest_Diagnosis(
-      id: id ??
-          await fhirDb.newResourceId('CoverageEligibilityRequest_Diagnosis'),
-      extension: extension,
-      modifierExtension: modifierExtension,
-      diagnosisCodeableConcept: diagnosisCodeableConcept,
-      diagnosisReference: diagnosisReference,
-    );
-    return newCoverageEligibilityRequest_Diagnosis;
-  }
+class CoverageEligibilityRequest_Item{
 
-  String id;
-  List<Extension> extension;
-  List<Extension> modifierExtension;
-  CodeableConcept diagnosisCodeableConcept;
-  Reference diagnosisReference;
-
-  CoverageEligibilityRequest_Diagnosis({
-    this.id,
-    this.extension,
-    this.modifierExtension,
-    this.diagnosisCodeableConcept,
-    this.diagnosisReference,
-  });
-
-  factory CoverageEligibilityRequest_Diagnosis.fromJson(
-          Map<String, dynamic> json) =>
-      _$CoverageEligibilityRequest_DiagnosisFromJson(json);
-  Map<String, dynamic> toJson() =>
-      _$CoverageEligibilityRequest_DiagnosisToJson(this);
+	static Future<CoverageEligibilityRequest_Item> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	List<int> supportingInfoSequence,
+	List<Element> elementSupportingInfoSequence,
+	CodeableConcept category,
+	CodeableConcept productOrService,
+	List<CodeableConcept> modifier,
+	Reference provider,
+	Quantity quantity,
+	Money unitPrice,
+	Reference facility,
+	List<CoverageEligibilityRequest_Diagnosis> diagnosis,
+	List<Reference> detail,
+}) async {
+var fhirDb = new DatabaseHelper();
+CoverageEligibilityRequest_Item newCoverageEligibilityRequest_Item = new CoverageEligibilityRequest_Item(
+	id: id ?? await fhirDb.newResourceId('CoverageEligibilityRequest_Item'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	supportingInfoSequence: supportingInfoSequence,
+	elementSupportingInfoSequence: elementSupportingInfoSequence,
+	category: category,
+	productOrService: productOrService,
+	modifier: modifier,
+	provider: provider,
+	quantity: quantity,
+	unitPrice: unitPrice,
+	facility: facility,
+	diagnosis: diagnosis,
+	detail: detail,
+);
+	return newCoverageEligibilityRequest_Item;
 }
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	List<int> supportingInfoSequence;
+	List<Element> elementSupportingInfoSequence;
+	CodeableConcept category;
+	CodeableConcept productOrService;
+	List<CodeableConcept> modifier;
+	Reference provider;
+	Quantity quantity;
+	Money unitPrice;
+	Reference facility;
+	List<CoverageEligibilityRequest_Diagnosis> diagnosis;
+	List<Reference> detail;
+
+CoverageEligibilityRequest_Item(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.supportingInfoSequence,
+this.elementSupportingInfoSequence,
+this.category,
+this.productOrService,
+this.modifier,
+this.provider,
+this.quantity,
+this.unitPrice,
+this.facility,
+this.diagnosis,
+this.detail,
+});
+
+  factory CoverageEligibilityRequest_Item.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_ItemFromJson(json);
+  Map<String, dynamic> toJson() => _$CoverageEligibilityRequest_ItemToJson(this);
+}
+
+
+@JsonSerializable(explicitToJson: true)
+class CoverageEligibilityRequest_Diagnosis{
+
+	static Future<CoverageEligibilityRequest_Diagnosis> newInstance(
+	{	String id,
+	List<Extension> extension,
+	List<Extension> modifierExtension,
+	CodeableConcept diagnosisCodeableConcept,
+	Reference diagnosisReference,
+}) async {
+var fhirDb = new DatabaseHelper();
+CoverageEligibilityRequest_Diagnosis newCoverageEligibilityRequest_Diagnosis = new CoverageEligibilityRequest_Diagnosis(
+	id: id ?? await fhirDb.newResourceId('CoverageEligibilityRequest_Diagnosis'),
+	extension: extension,
+	modifierExtension: modifierExtension,
+	diagnosisCodeableConcept: diagnosisCodeableConcept,
+	diagnosisReference: diagnosisReference,
+);
+	return newCoverageEligibilityRequest_Diagnosis;
+}
+
+	String id;
+	List<Extension> extension;
+	List<Extension> modifierExtension;
+	CodeableConcept diagnosisCodeableConcept;
+	Reference diagnosisReference;
+
+CoverageEligibilityRequest_Diagnosis(
+	{this.id,
+this.extension,
+this.modifierExtension,
+this.diagnosisCodeableConcept,
+this.diagnosisReference,
+});
+
+  factory CoverageEligibilityRequest_Diagnosis.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_DiagnosisFromJson(json);
+  Map<String, dynamic> toJson() => _$CoverageEligibilityRequest_DiagnosisToJson(this);
+}
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -423,9 +409,8 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
