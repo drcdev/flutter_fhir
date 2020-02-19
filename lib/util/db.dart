@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:core';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -82,7 +83,9 @@ class DatabaseHelper {
         where: 'resourceType = ?',
         whereArgs: [resource.runtimeType.toString()]);
 
-    int total = (rowNum != null && results.length <= 0) ? list[0]['total'] + 1: list[0]['total'];
+    int total = (rowNum != null && results.length <= 0)
+        ? list[0]['total'] + 1
+        : list[0]['total'];
     var count = await dbClient.rawUpdate(
         'UPDATE Classes SET total = ?, lastUpdated = ? WHERE resourceType = ?',
         [
@@ -101,23 +104,23 @@ class DatabaseHelper {
     if (list.length == 0) {
       return 'No matches';
     } else if (list.length == 1) {
-      dynamic query;
+      List<dynamic> search = new List<dynamic>();
       for (int i = 0; i < list.length; i++) {
-        query.add(ResourceTypes(resourceType,
+        search.add(ResourceTypes(resourceType,
             jsonDecode(list[i]['jsonResource']) as Map<String, dynamic>));
       }
-      return query[0];
+      return search[0];
     } else {
       return 'Too many matches';
     }
   }
 
-  Future<List<dynamic>> getList(String table) async {
+  Future<List<dynamic>> getList(String table, {List<dynamic> arguments}) async {
     var dbClient = await db;
 
     //gets list from table
-    List<Map> list = await dbClient.query(table, columns: ['jsonResource']);
-    //creates new list 'query' for returning the values, all of dynamic type
+    List<dynamic> list = await dbClient.query(table, columns: ['jsonResource']);
+    //creates new list 'search' for returning the values, all of dynamic type
     //to allow the list to be whatever the table is
     List<dynamic> search = List<dynamic>();
     for (int i = 0; i < list.length; i++) {

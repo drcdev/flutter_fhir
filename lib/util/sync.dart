@@ -30,7 +30,8 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
         var myBundle = Bundle.fromJson(json.decode(response.body));
         for (var i = 0; i < myBundle.total; i++) {
           ResourceTypes(myBundle.entry[i].resource.resourceType,
-              myBundle.entry[i].resource.toJson()).save();
+                  myBundle.entry[i].resource.toJson())
+              .save();
         }
       }
       break;

@@ -165,9 +165,9 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 RaisedButton(
                   onPressed: () async {
                     Patient pt = await Patient.newInstance(address: [
-                      Address(district: barrio)
+                      await Address.newInstance(district: barrio)
                     ], name: [
-                      HumanName(
+                      await HumanName.newInstance(
                           given: [givenNameController.text],
                           family: familyNameController.text)
                     ], birthDate: _birthDate.toString());
