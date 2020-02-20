@@ -95,8 +95,8 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
                     participant: [
                       await Encounter_Participant.newInstance(
                           individual: await Reference.newInstance(
-                              reference: 'Practitioner' + 'practitionerID',
-                              display: 'PractitionerName'))
+                              reference: 'Practitioner/84057017-f31d-4cfc-b2b3-c80e491875d6',
+                              display: 'Dr. Grey'))
                     ],
                     period: await Period.newInstance(start: DateTime.now()),
                     location: [
@@ -106,8 +106,8 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
                               display: "Patient's House"))
                     ],
                     serviceProvider: await Reference.newInstance(
-                        reference: 'Organization' + 'OrganizationID',
-                        display: 'DR Clinic'));
+                        reference: 'Organization/e4903137-2e9c-4a2d-8340-0ca7e89f203a',
+                        display: 'CHOP'));
                 composition = await Composition.newInstance(
                     subject: encounter.subject,
                     encounter: await Reference(

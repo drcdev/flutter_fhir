@@ -15,8 +15,8 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
   String name = 'faulkenbej@chop.edu';
   String secret = 'chopchop';
   String clientSecret = 'chopchop';
-  String server = 'https://choptestpatients.aidbox.app';
-//  String server = 'https://dbhifhir.aidbox.app';
+//  String server = 'https://choptestpatients.aidbox.app';
+  String server = 'https://dbhifhir.aidbox.app';
 
   Response response = await post(
       '$server/auth/token?client_id=greyfhir&grant_type=password&username=$name&password=$secret&client_secret=$clientSecret',
@@ -74,17 +74,13 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
             }
           }
         }
-        serverUpdated.lastUpdated = DateTime.now().toString();
-        fhirDb.saveServerUpdate(serverUpdated);
-        print(jsonEncode(sendBundle));
-        for (int k = 0; k < sendBundle.entry.length; k++) {
-          print(jsonEncode(sendBundle.entry[k]));
-        }
+//        serverUpdated.lastUpdated = DateTime.now().toString();
+//        fhirDb.saveServerUpdate(serverUpdated);
 
-//        var noIdea = await post('$server/fhir',
-//            headers: headers, body: jsonEncode(sendBundle).toString());
-//        print(noIdea.headers.toString());
-//        print(noIdea.body.toString());
+        var noIdea = await post('$server/fhir',
+            headers: headers, body: jsonEncode(sendBundle).toString());
+        print(noIdea.headers.toString());
+        print(noIdea.body.toString());
       }
       break;
     case 'post':
