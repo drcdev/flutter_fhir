@@ -4,74 +4,72 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Duration {
+  static Future<Duration> newInstance({
+    String id,
+    List<Extension> extension,
+    double value,
+    Element elementValue,
+    String comparator,
+    Element elementComparator,
+    String unit,
+    Element elementUnit,
+    String system,
+    Element elementSystem,
+    String code,
+    Element elementCode,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Duration newDuration = new Duration(
+      id: id ?? await fhirDb.newResourceId('Duration'),
+      extension: extension,
+      value: value,
+      elementValue: elementValue,
+      comparator: comparator,
+      elementComparator: elementComparator,
+      unit: unit,
+      elementUnit: elementUnit,
+      system: system,
+      elementSystem: elementSystem,
+      code: code,
+      elementCode: elementCode,
+    );
+    return newDuration;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Duration{
+  String id;
+  List<Extension> extension;
+  double value;
+  Element elementValue;
+  String comparator;
+  Element elementComparator;
+  String unit;
+  Element elementUnit;
+  String system;
+  Element elementSystem;
+  String code;
+  Element elementCode;
 
-	static Future<Duration> newInstance(
-	{	String id,
-	List<Extension> extension,
-	double value,
-	Element elementValue,
-	String comparator,
-	Element elementComparator,
-	String unit,
-	Element elementUnit,
-	String system,
-	Element elementSystem,
-	String code,
-	Element elementCode,
-}) async {
-var fhirDb = new DatabaseHelper();
-Duration newDuration = new Duration(
-	id: id ?? await fhirDb.newResourceId('Duration'),
-	extension: extension,
-	value: value,
-	elementValue: elementValue,
-	comparator: comparator,
-	elementComparator: elementComparator,
-	unit: unit,
-	elementUnit: elementUnit,
-	system: system,
-	elementSystem: elementSystem,
-	code: code,
-	elementCode: elementCode,
-);
-	return newDuration;
-}
+  Duration({
+    this.id,
+    this.extension,
+    this.value,
+    this.elementValue,
+    this.comparator,
+    this.elementComparator,
+    this.unit,
+    this.elementUnit,
+    this.system,
+    this.elementSystem,
+    this.code,
+    this.elementCode,
+  });
 
-	String id;
-	List<Extension> extension;
-	double value;
-	Element elementValue;
-	String comparator;
-	Element elementComparator;
-	String unit;
-	Element elementUnit;
-	String system;
-	Element elementSystem;
-	String code;
-	Element elementCode;
-
-Duration(
-	{this.id,
-this.extension,
-this.value,
-this.elementValue,
-this.comparator,
-this.elementComparator,
-this.unit,
-this.elementUnit,
-this.system,
-this.elementSystem,
-this.code,
-this.elementCode,
-});
-
-  factory Duration.fromJson(Map<String, dynamic> json) => _$DurationFromJson(json);
+  factory Duration.fromJson(Map<String, dynamic> json) =>
+      _$DurationFromJson(json);
   Map<String, dynamic> toJson() => _$DurationToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -108,17 +106,27 @@ Duration _$DurationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DurationToJson(Duration instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'comparator': instance.comparator,
-      'elementComparator': instance.elementComparator?.toJson(),
-      'unit': instance.unit,
-      'elementUnit': instance.elementUnit?.toJson(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-    };
+Map<String, dynamic> _$DurationToJson(Duration instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('comparator', instance.comparator);
+  writeNotNull('elementComparator', instance.elementComparator?.toJson());
+  writeNotNull('unit', instance.unit);
+  writeNotNull('elementUnit', instance.elementUnit?.toJson());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  return val;
+}

@@ -34,318 +34,316 @@ import 'package:flutter_fhir/fhirClasses/age.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Extension {
+  static Future<Extension> newInstance({
+    String id,
+    List<Extension> extension,
+    String url,
+    Element elementUrl,
+    String valueBase64Binary,
+    Element elementValueBase64Binary,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    String valueCanonical,
+    Element elementValueCanonical,
+    String valueCode,
+    Element elementValueCode,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    int valueDecimal,
+    Element elementValueDecimal,
+    String valueId,
+    Element elementValueId,
+    String valueInstant,
+    Element elementValueInstant,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueMarkdown,
+    Element elementValueMarkdown,
+    String valueOid,
+    Element elementValueOid,
+    int valuePositiveInt,
+    Element elementValuePositiveInt,
+    String valueString,
+    Element elementValueString,
+    String valueTime,
+    Element elementValueTime,
+    int valueUnsignedInt,
+    Element elementValueUnsignedInt,
+    String valueUri,
+    Element elementValueUri,
+    String valueUrl,
+    Element elementValueUrl,
+    String valueUuid,
+    Element elementValueUuid,
+    Address valueAddress,
+    Age valueAge,
+    Annotation valueAnnotation,
+    Attachment valueAttachment,
+    CodeableConcept valueCodeableConcept,
+    Coding valueCoding,
+    ContactPoint valueContactPoint,
+    Count valueCount,
+    Distance valueDistance,
+    Duration valueDuration,
+    HumanName valueHumanName,
+    Identifier valueIdentifier,
+    Money valueMoney,
+    Period valuePeriod,
+    Quantity valueQuantity,
+    Range valueRange,
+    Ratio valueRatio,
+    Reference valueReference,
+    SampledData valueSampledData,
+    Signature valueSignature,
+    Timing valueTiming,
+    ContactDetail valueContactDetail,
+    Contributor valueContributor,
+    DataRequirement valueDataRequirement,
+    Expression valueExpression,
+    ParameterDefinition valueParameterDefinition,
+    RelatedArtifact valueRelatedArtifact,
+    TriggerDefinition valueTriggerDefinition,
+    UsageContext valueUsageContext,
+    Dosage valueDosage,
+    Meta valueMeta,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Extension newExtension = new Extension(
+      id: id ?? await fhirDb.newResourceId('Extension'),
+      extension: extension,
+      url: url,
+      elementUrl: elementUrl,
+      valueBase64Binary: valueBase64Binary,
+      elementValueBase64Binary: elementValueBase64Binary,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+      valueCanonical: valueCanonical,
+      elementValueCanonical: elementValueCanonical,
+      valueCode: valueCode,
+      elementValueCode: elementValueCode,
+      valueDate: valueDate,
+      elementValueDate: elementValueDate,
+      valueDateTime: valueDateTime,
+      elementValueDateTime: elementValueDateTime,
+      valueDecimal: valueDecimal,
+      elementValueDecimal: elementValueDecimal,
+      valueId: valueId,
+      elementValueId: elementValueId,
+      valueInstant: valueInstant,
+      elementValueInstant: elementValueInstant,
+      valueInteger: valueInteger,
+      elementValueInteger: elementValueInteger,
+      valueMarkdown: valueMarkdown,
+      elementValueMarkdown: elementValueMarkdown,
+      valueOid: valueOid,
+      elementValueOid: elementValueOid,
+      valuePositiveInt: valuePositiveInt,
+      elementValuePositiveInt: elementValuePositiveInt,
+      valueString: valueString,
+      elementValueString: elementValueString,
+      valueTime: valueTime,
+      elementValueTime: elementValueTime,
+      valueUnsignedInt: valueUnsignedInt,
+      elementValueUnsignedInt: elementValueUnsignedInt,
+      valueUri: valueUri,
+      elementValueUri: elementValueUri,
+      valueUrl: valueUrl,
+      elementValueUrl: elementValueUrl,
+      valueUuid: valueUuid,
+      elementValueUuid: elementValueUuid,
+      valueAddress: valueAddress,
+      valueAge: valueAge,
+      valueAnnotation: valueAnnotation,
+      valueAttachment: valueAttachment,
+      valueCodeableConcept: valueCodeableConcept,
+      valueCoding: valueCoding,
+      valueContactPoint: valueContactPoint,
+      valueCount: valueCount,
+      valueDistance: valueDistance,
+      valueDuration: valueDuration,
+      valueHumanName: valueHumanName,
+      valueIdentifier: valueIdentifier,
+      valueMoney: valueMoney,
+      valuePeriod: valuePeriod,
+      valueQuantity: valueQuantity,
+      valueRange: valueRange,
+      valueRatio: valueRatio,
+      valueReference: valueReference,
+      valueSampledData: valueSampledData,
+      valueSignature: valueSignature,
+      valueTiming: valueTiming,
+      valueContactDetail: valueContactDetail,
+      valueContributor: valueContributor,
+      valueDataRequirement: valueDataRequirement,
+      valueExpression: valueExpression,
+      valueParameterDefinition: valueParameterDefinition,
+      valueRelatedArtifact: valueRelatedArtifact,
+      valueTriggerDefinition: valueTriggerDefinition,
+      valueUsageContext: valueUsageContext,
+      valueDosage: valueDosage,
+      valueMeta: valueMeta,
+    );
+    return newExtension;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Extension{
+  String id;
+  List<Extension> extension;
+  String url;
+  Element elementUrl;
+  String valueBase64Binary;
+  Element elementValueBase64Binary;
+  bool valueBoolean;
+  Element elementValueBoolean;
+  String valueCanonical;
+  Element elementValueCanonical;
+  String valueCode;
+  Element elementValueCode;
+  String valueDate;
+  Element elementValueDate;
+  String valueDateTime;
+  Element elementValueDateTime;
+  int valueDecimal;
+  Element elementValueDecimal;
+  String valueId;
+  Element elementValueId;
+  String valueInstant;
+  Element elementValueInstant;
+  int valueInteger;
+  Element elementValueInteger;
+  String valueMarkdown;
+  Element elementValueMarkdown;
+  String valueOid;
+  Element elementValueOid;
+  int valuePositiveInt;
+  Element elementValuePositiveInt;
+  String valueString;
+  Element elementValueString;
+  String valueTime;
+  Element elementValueTime;
+  int valueUnsignedInt;
+  Element elementValueUnsignedInt;
+  String valueUri;
+  Element elementValueUri;
+  String valueUrl;
+  Element elementValueUrl;
+  String valueUuid;
+  Element elementValueUuid;
+  Address valueAddress;
+  Age valueAge;
+  Annotation valueAnnotation;
+  Attachment valueAttachment;
+  CodeableConcept valueCodeableConcept;
+  Coding valueCoding;
+  ContactPoint valueContactPoint;
+  Count valueCount;
+  Distance valueDistance;
+  Duration valueDuration;
+  HumanName valueHumanName;
+  Identifier valueIdentifier;
+  Money valueMoney;
+  Period valuePeriod;
+  Quantity valueQuantity;
+  Range valueRange;
+  Ratio valueRatio;
+  Reference valueReference;
+  SampledData valueSampledData;
+  Signature valueSignature;
+  Timing valueTiming;
+  ContactDetail valueContactDetail;
+  Contributor valueContributor;
+  DataRequirement valueDataRequirement;
+  Expression valueExpression;
+  ParameterDefinition valueParameterDefinition;
+  RelatedArtifact valueRelatedArtifact;
+  TriggerDefinition valueTriggerDefinition;
+  UsageContext valueUsageContext;
+  Dosage valueDosage;
+  Meta valueMeta;
 
-	static Future<Extension> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String url,
-	Element elementUrl,
-	String valueBase64Binary,
-	Element elementValueBase64Binary,
-	bool valueBoolean,
-	Element elementValueBoolean,
-	String valueCanonical,
-	Element elementValueCanonical,
-	String valueCode,
-	Element elementValueCode,
-	String valueDate,
-	Element elementValueDate,
-	String valueDateTime,
-	Element elementValueDateTime,
-	int valueDecimal,
-	Element elementValueDecimal,
-	String valueId,
-	Element elementValueId,
-	String valueInstant,
-	Element elementValueInstant,
-	int valueInteger,
-	Element elementValueInteger,
-	String valueMarkdown,
-	Element elementValueMarkdown,
-	String valueOid,
-	Element elementValueOid,
-	int valuePositiveInt,
-	Element elementValuePositiveInt,
-	String valueString,
-	Element elementValueString,
-	String valueTime,
-	Element elementValueTime,
-	int valueUnsignedInt,
-	Element elementValueUnsignedInt,
-	String valueUri,
-	Element elementValueUri,
-	String valueUrl,
-	Element elementValueUrl,
-	String valueUuid,
-	Element elementValueUuid,
-	Address valueAddress,
-	Age valueAge,
-	Annotation valueAnnotation,
-	Attachment valueAttachment,
-	CodeableConcept valueCodeableConcept,
-	Coding valueCoding,
-	ContactPoint valueContactPoint,
-	Count valueCount,
-	Distance valueDistance,
-	Duration valueDuration,
-	HumanName valueHumanName,
-	Identifier valueIdentifier,
-	Money valueMoney,
-	Period valuePeriod,
-	Quantity valueQuantity,
-	Range valueRange,
-	Ratio valueRatio,
-	Reference valueReference,
-	SampledData valueSampledData,
-	Signature valueSignature,
-	Timing valueTiming,
-	ContactDetail valueContactDetail,
-	Contributor valueContributor,
-	DataRequirement valueDataRequirement,
-	Expression valueExpression,
-	ParameterDefinition valueParameterDefinition,
-	RelatedArtifact valueRelatedArtifact,
-	TriggerDefinition valueTriggerDefinition,
-	UsageContext valueUsageContext,
-	Dosage valueDosage,
-	Meta valueMeta,
-}) async {
-var fhirDb = new DatabaseHelper();
-Extension newExtension = new Extension(
-	id: id ?? await fhirDb.newResourceId('Extension'),
-	extension: extension,
-	url: url,
-	elementUrl: elementUrl,
-	valueBase64Binary: valueBase64Binary,
-	elementValueBase64Binary: elementValueBase64Binary,
-	valueBoolean: valueBoolean,
-	elementValueBoolean: elementValueBoolean,
-	valueCanonical: valueCanonical,
-	elementValueCanonical: elementValueCanonical,
-	valueCode: valueCode,
-	elementValueCode: elementValueCode,
-	valueDate: valueDate,
-	elementValueDate: elementValueDate,
-	valueDateTime: valueDateTime,
-	elementValueDateTime: elementValueDateTime,
-	valueDecimal: valueDecimal,
-	elementValueDecimal: elementValueDecimal,
-	valueId: valueId,
-	elementValueId: elementValueId,
-	valueInstant: valueInstant,
-	elementValueInstant: elementValueInstant,
-	valueInteger: valueInteger,
-	elementValueInteger: elementValueInteger,
-	valueMarkdown: valueMarkdown,
-	elementValueMarkdown: elementValueMarkdown,
-	valueOid: valueOid,
-	elementValueOid: elementValueOid,
-	valuePositiveInt: valuePositiveInt,
-	elementValuePositiveInt: elementValuePositiveInt,
-	valueString: valueString,
-	elementValueString: elementValueString,
-	valueTime: valueTime,
-	elementValueTime: elementValueTime,
-	valueUnsignedInt: valueUnsignedInt,
-	elementValueUnsignedInt: elementValueUnsignedInt,
-	valueUri: valueUri,
-	elementValueUri: elementValueUri,
-	valueUrl: valueUrl,
-	elementValueUrl: elementValueUrl,
-	valueUuid: valueUuid,
-	elementValueUuid: elementValueUuid,
-	valueAddress: valueAddress,
-	valueAge: valueAge,
-	valueAnnotation: valueAnnotation,
-	valueAttachment: valueAttachment,
-	valueCodeableConcept: valueCodeableConcept,
-	valueCoding: valueCoding,
-	valueContactPoint: valueContactPoint,
-	valueCount: valueCount,
-	valueDistance: valueDistance,
-	valueDuration: valueDuration,
-	valueHumanName: valueHumanName,
-	valueIdentifier: valueIdentifier,
-	valueMoney: valueMoney,
-	valuePeriod: valuePeriod,
-	valueQuantity: valueQuantity,
-	valueRange: valueRange,
-	valueRatio: valueRatio,
-	valueReference: valueReference,
-	valueSampledData: valueSampledData,
-	valueSignature: valueSignature,
-	valueTiming: valueTiming,
-	valueContactDetail: valueContactDetail,
-	valueContributor: valueContributor,
-	valueDataRequirement: valueDataRequirement,
-	valueExpression: valueExpression,
-	valueParameterDefinition: valueParameterDefinition,
-	valueRelatedArtifact: valueRelatedArtifact,
-	valueTriggerDefinition: valueTriggerDefinition,
-	valueUsageContext: valueUsageContext,
-	valueDosage: valueDosage,
-	valueMeta: valueMeta,
-);
-	return newExtension;
-}
+  Extension({
+    this.id,
+    this.extension,
+    this.url,
+    this.elementUrl,
+    this.valueBase64Binary,
+    this.elementValueBase64Binary,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueCanonical,
+    this.elementValueCanonical,
+    this.valueCode,
+    this.elementValueCode,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueId,
+    this.elementValueId,
+    this.valueInstant,
+    this.elementValueInstant,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueMarkdown,
+    this.elementValueMarkdown,
+    this.valueOid,
+    this.elementValueOid,
+    this.valuePositiveInt,
+    this.elementValuePositiveInt,
+    this.valueString,
+    this.elementValueString,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueUnsignedInt,
+    this.elementValueUnsignedInt,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueUrl,
+    this.elementValueUrl,
+    this.valueUuid,
+    this.elementValueUuid,
+    this.valueAddress,
+    this.valueAge,
+    this.valueAnnotation,
+    this.valueAttachment,
+    this.valueCodeableConcept,
+    this.valueCoding,
+    this.valueContactPoint,
+    this.valueCount,
+    this.valueDistance,
+    this.valueDuration,
+    this.valueHumanName,
+    this.valueIdentifier,
+    this.valueMoney,
+    this.valuePeriod,
+    this.valueQuantity,
+    this.valueRange,
+    this.valueRatio,
+    this.valueReference,
+    this.valueSampledData,
+    this.valueSignature,
+    this.valueTiming,
+    this.valueContactDetail,
+    this.valueContributor,
+    this.valueDataRequirement,
+    this.valueExpression,
+    this.valueParameterDefinition,
+    this.valueRelatedArtifact,
+    this.valueTriggerDefinition,
+    this.valueUsageContext,
+    this.valueDosage,
+    this.valueMeta,
+  });
 
-	String id;
-	List<Extension> extension;
-	String url;
-	Element elementUrl;
-	String valueBase64Binary;
-	Element elementValueBase64Binary;
-	bool valueBoolean;
-	Element elementValueBoolean;
-	String valueCanonical;
-	Element elementValueCanonical;
-	String valueCode;
-	Element elementValueCode;
-	String valueDate;
-	Element elementValueDate;
-	String valueDateTime;
-	Element elementValueDateTime;
-	int valueDecimal;
-	Element elementValueDecimal;
-	String valueId;
-	Element elementValueId;
-	String valueInstant;
-	Element elementValueInstant;
-	int valueInteger;
-	Element elementValueInteger;
-	String valueMarkdown;
-	Element elementValueMarkdown;
-	String valueOid;
-	Element elementValueOid;
-	int valuePositiveInt;
-	Element elementValuePositiveInt;
-	String valueString;
-	Element elementValueString;
-	String valueTime;
-	Element elementValueTime;
-	int valueUnsignedInt;
-	Element elementValueUnsignedInt;
-	String valueUri;
-	Element elementValueUri;
-	String valueUrl;
-	Element elementValueUrl;
-	String valueUuid;
-	Element elementValueUuid;
-	Address valueAddress;
-	Age valueAge;
-	Annotation valueAnnotation;
-	Attachment valueAttachment;
-	CodeableConcept valueCodeableConcept;
-	Coding valueCoding;
-	ContactPoint valueContactPoint;
-	Count valueCount;
-	Distance valueDistance;
-	Duration valueDuration;
-	HumanName valueHumanName;
-	Identifier valueIdentifier;
-	Money valueMoney;
-	Period valuePeriod;
-	Quantity valueQuantity;
-	Range valueRange;
-	Ratio valueRatio;
-	Reference valueReference;
-	SampledData valueSampledData;
-	Signature valueSignature;
-	Timing valueTiming;
-	ContactDetail valueContactDetail;
-	Contributor valueContributor;
-	DataRequirement valueDataRequirement;
-	Expression valueExpression;
-	ParameterDefinition valueParameterDefinition;
-	RelatedArtifact valueRelatedArtifact;
-	TriggerDefinition valueTriggerDefinition;
-	UsageContext valueUsageContext;
-	Dosage valueDosage;
-	Meta valueMeta;
-
-Extension(
-	{this.id,
-this.extension,
-this.url,
-this.elementUrl,
-this.valueBase64Binary,
-this.elementValueBase64Binary,
-this.valueBoolean,
-this.elementValueBoolean,
-this.valueCanonical,
-this.elementValueCanonical,
-this.valueCode,
-this.elementValueCode,
-this.valueDate,
-this.elementValueDate,
-this.valueDateTime,
-this.elementValueDateTime,
-this.valueDecimal,
-this.elementValueDecimal,
-this.valueId,
-this.elementValueId,
-this.valueInstant,
-this.elementValueInstant,
-this.valueInteger,
-this.elementValueInteger,
-this.valueMarkdown,
-this.elementValueMarkdown,
-this.valueOid,
-this.elementValueOid,
-this.valuePositiveInt,
-this.elementValuePositiveInt,
-this.valueString,
-this.elementValueString,
-this.valueTime,
-this.elementValueTime,
-this.valueUnsignedInt,
-this.elementValueUnsignedInt,
-this.valueUri,
-this.elementValueUri,
-this.valueUrl,
-this.elementValueUrl,
-this.valueUuid,
-this.elementValueUuid,
-this.valueAddress,
-this.valueAge,
-this.valueAnnotation,
-this.valueAttachment,
-this.valueCodeableConcept,
-this.valueCoding,
-this.valueContactPoint,
-this.valueCount,
-this.valueDistance,
-this.valueDuration,
-this.valueHumanName,
-this.valueIdentifier,
-this.valueMoney,
-this.valuePeriod,
-this.valueQuantity,
-this.valueRange,
-this.valueRatio,
-this.valueReference,
-this.valueSampledData,
-this.valueSignature,
-this.valueTiming,
-this.valueContactDetail,
-this.valueContributor,
-this.valueDataRequirement,
-this.valueExpression,
-this.valueParameterDefinition,
-this.valueRelatedArtifact,
-this.valueTriggerDefinition,
-this.valueUsageContext,
-this.valueDosage,
-this.valueMeta,
-});
-
-  factory Extension.fromJson(Map<String, dynamic> json) => _$ExtensionFromJson(json);
+  factory Extension.fromJson(Map<String, dynamic> json) =>
+      _$ExtensionFromJson(json);
   Map<String, dynamic> toJson() => _$ExtensionToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -551,78 +549,94 @@ Extension _$ExtensionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ExtensionToJson(Extension instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'valueBase64Binary': instance.valueBase64Binary,
-      'elementValueBase64Binary': instance.elementValueBase64Binary?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueCanonical': instance.valueCanonical,
-      'elementValueCanonical': instance.elementValueCanonical?.toJson(),
-      'valueCode': instance.valueCode,
-      'elementValueCode': instance.elementValueCode?.toJson(),
-      'valueDate': instance.valueDate,
-      'elementValueDate': instance.elementValueDate?.toJson(),
-      'valueDateTime': instance.valueDateTime,
-      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
-      'valueDecimal': instance.valueDecimal,
-      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
-      'valueId': instance.valueId,
-      'elementValueId': instance.elementValueId?.toJson(),
-      'valueInstant': instance.valueInstant,
-      'elementValueInstant': instance.elementValueInstant?.toJson(),
-      'valueInteger': instance.valueInteger,
-      'elementValueInteger': instance.elementValueInteger?.toJson(),
-      'valueMarkdown': instance.valueMarkdown,
-      'elementValueMarkdown': instance.elementValueMarkdown?.toJson(),
-      'valueOid': instance.valueOid,
-      'elementValueOid': instance.elementValueOid?.toJson(),
-      'valuePositiveInt': instance.valuePositiveInt,
-      'elementValuePositiveInt': instance.elementValuePositiveInt?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueTime': instance.valueTime,
-      'elementValueTime': instance.elementValueTime?.toJson(),
-      'valueUnsignedInt': instance.valueUnsignedInt,
-      'elementValueUnsignedInt': instance.elementValueUnsignedInt?.toJson(),
-      'valueUri': instance.valueUri,
-      'elementValueUri': instance.elementValueUri?.toJson(),
-      'valueUrl': instance.valueUrl,
-      'elementValueUrl': instance.elementValueUrl?.toJson(),
-      'valueUuid': instance.valueUuid,
-      'elementValueUuid': instance.elementValueUuid?.toJson(),
-      'valueAddress': instance.valueAddress?.toJson(),
-      'valueAge': instance.valueAge?.toJson(),
-      'valueAnnotation': instance.valueAnnotation?.toJson(),
-      'valueAttachment': instance.valueAttachment?.toJson(),
-      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
-      'valueCoding': instance.valueCoding?.toJson(),
-      'valueContactPoint': instance.valueContactPoint?.toJson(),
-      'valueCount': instance.valueCount?.toJson(),
-      'valueDistance': instance.valueDistance?.toJson(),
-      'valueDuration': instance.valueDuration?.toJson(),
-      'valueHumanName': instance.valueHumanName?.toJson(),
-      'valueIdentifier': instance.valueIdentifier?.toJson(),
-      'valueMoney': instance.valueMoney?.toJson(),
-      'valuePeriod': instance.valuePeriod?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueRange': instance.valueRange?.toJson(),
-      'valueRatio': instance.valueRatio?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-      'valueSampledData': instance.valueSampledData?.toJson(),
-      'valueSignature': instance.valueSignature?.toJson(),
-      'valueTiming': instance.valueTiming?.toJson(),
-      'valueContactDetail': instance.valueContactDetail?.toJson(),
-      'valueContributor': instance.valueContributor?.toJson(),
-      'valueDataRequirement': instance.valueDataRequirement?.toJson(),
-      'valueExpression': instance.valueExpression?.toJson(),
-      'valueParameterDefinition': instance.valueParameterDefinition?.toJson(),
-      'valueRelatedArtifact': instance.valueRelatedArtifact?.toJson(),
-      'valueTriggerDefinition': instance.valueTriggerDefinition?.toJson(),
-      'valueUsageContext': instance.valueUsageContext?.toJson(),
-      'valueDosage': instance.valueDosage?.toJson(),
-      'valueMeta': instance.valueMeta?.toJson(),
-    };
+Map<String, dynamic> _$ExtensionToJson(Extension instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('valueBase64Binary', instance.valueBase64Binary);
+  writeNotNull(
+      'elementValueBase64Binary', instance.elementValueBase64Binary?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueCanonical', instance.valueCanonical);
+  writeNotNull(
+      'elementValueCanonical', instance.elementValueCanonical?.toJson());
+  writeNotNull('valueCode', instance.valueCode);
+  writeNotNull('elementValueCode', instance.elementValueCode?.toJson());
+  writeNotNull('valueDate', instance.valueDate);
+  writeNotNull('elementValueDate', instance.elementValueDate?.toJson());
+  writeNotNull('valueDateTime', instance.valueDateTime);
+  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
+  writeNotNull('valueDecimal', instance.valueDecimal);
+  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
+  writeNotNull('valueId', instance.valueId);
+  writeNotNull('elementValueId', instance.elementValueId?.toJson());
+  writeNotNull('valueInstant', instance.valueInstant);
+  writeNotNull('elementValueInstant', instance.elementValueInstant?.toJson());
+  writeNotNull('valueInteger', instance.valueInteger);
+  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
+  writeNotNull('valueMarkdown', instance.valueMarkdown);
+  writeNotNull('elementValueMarkdown', instance.elementValueMarkdown?.toJson());
+  writeNotNull('valueOid', instance.valueOid);
+  writeNotNull('elementValueOid', instance.elementValueOid?.toJson());
+  writeNotNull('valuePositiveInt', instance.valuePositiveInt);
+  writeNotNull(
+      'elementValuePositiveInt', instance.elementValuePositiveInt?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueTime', instance.valueTime);
+  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
+  writeNotNull('valueUnsignedInt', instance.valueUnsignedInt);
+  writeNotNull(
+      'elementValueUnsignedInt', instance.elementValueUnsignedInt?.toJson());
+  writeNotNull('valueUri', instance.valueUri);
+  writeNotNull('elementValueUri', instance.elementValueUri?.toJson());
+  writeNotNull('valueUrl', instance.valueUrl);
+  writeNotNull('elementValueUrl', instance.elementValueUrl?.toJson());
+  writeNotNull('valueUuid', instance.valueUuid);
+  writeNotNull('elementValueUuid', instance.elementValueUuid?.toJson());
+  writeNotNull('valueAddress', instance.valueAddress?.toJson());
+  writeNotNull('valueAge', instance.valueAge?.toJson());
+  writeNotNull('valueAnnotation', instance.valueAnnotation?.toJson());
+  writeNotNull('valueAttachment', instance.valueAttachment?.toJson());
+  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
+  writeNotNull('valueCoding', instance.valueCoding?.toJson());
+  writeNotNull('valueContactPoint', instance.valueContactPoint?.toJson());
+  writeNotNull('valueCount', instance.valueCount?.toJson());
+  writeNotNull('valueDistance', instance.valueDistance?.toJson());
+  writeNotNull('valueDuration', instance.valueDuration?.toJson());
+  writeNotNull('valueHumanName', instance.valueHumanName?.toJson());
+  writeNotNull('valueIdentifier', instance.valueIdentifier?.toJson());
+  writeNotNull('valueMoney', instance.valueMoney?.toJson());
+  writeNotNull('valuePeriod', instance.valuePeriod?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueRange', instance.valueRange?.toJson());
+  writeNotNull('valueRatio', instance.valueRatio?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  writeNotNull('valueSampledData', instance.valueSampledData?.toJson());
+  writeNotNull('valueSignature', instance.valueSignature?.toJson());
+  writeNotNull('valueTiming', instance.valueTiming?.toJson());
+  writeNotNull('valueContactDetail', instance.valueContactDetail?.toJson());
+  writeNotNull('valueContributor', instance.valueContributor?.toJson());
+  writeNotNull('valueDataRequirement', instance.valueDataRequirement?.toJson());
+  writeNotNull('valueExpression', instance.valueExpression?.toJson());
+  writeNotNull(
+      'valueParameterDefinition', instance.valueParameterDefinition?.toJson());
+  writeNotNull('valueRelatedArtifact', instance.valueRelatedArtifact?.toJson());
+  writeNotNull(
+      'valueTriggerDefinition', instance.valueTriggerDefinition?.toJson());
+  writeNotNull('valueUsageContext', instance.valueUsageContext?.toJson());
+  writeNotNull('valueDosage', instance.valueDosage?.toJson());
+  writeNotNull('valueMeta', instance.valueMeta?.toJson());
+  return val;
+}

@@ -11,263 +11,265 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Appointment {
+  static Future<Appointment> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept cancelationReason,
+    List<CodeableConcept> serviceCategory,
+    List<CodeableConcept> serviceType,
+    List<CodeableConcept> specialty,
+    CodeableConcept appointmentType,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    int priority,
+    Element elementPriority,
+    String description,
+    Element elementDescription,
+    List<Reference> supportingInformation,
+    DateTime start,
+    Element elementStart,
+    DateTime end,
+    Element elementEnd,
+    int minutesDuration,
+    Element elementMinutesDuration,
+    List<Reference> slot,
+    DateTime created,
+    Element elementCreated,
+    String comment,
+    Element elementComment,
+    String patientInstruction,
+    Element elementPatientInstruction,
+    List<Reference> basedOn,
+    List<Appointment_Participant> participant,
+    List<Period> requestedPeriod,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Appointment newAppointment = new Appointment(
+      resourceType: 'Appointment',
+      id: id ?? await fhirDb.newResourceId('Appointment'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      cancelationReason: cancelationReason,
+      serviceCategory: serviceCategory,
+      serviceType: serviceType,
+      specialty: specialty,
+      appointmentType: appointmentType,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      priority: priority,
+      elementPriority: elementPriority,
+      description: description,
+      elementDescription: elementDescription,
+      supportingInformation: supportingInformation,
+      start: start,
+      elementStart: elementStart,
+      end: end,
+      elementEnd: elementEnd,
+      minutesDuration: minutesDuration,
+      elementMinutesDuration: elementMinutesDuration,
+      slot: slot,
+      created: created,
+      elementCreated: elementCreated,
+      comment: comment,
+      elementComment: elementComment,
+      patientInstruction: patientInstruction,
+      elementPatientInstruction: elementPatientInstruction,
+      basedOn: basedOn,
+      participant: participant,
+      requestedPeriod: requestedPeriod,
+    );
+    newAppointment.meta.createdAt = DateTime.now();
+    newAppointment.meta.lastUpdated = newAppointment.meta.createdAt;
+    int saved = await fhirDb.saveResource(newAppointment);
+    return newAppointment;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Appointment{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Appointment> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	CodeableConcept cancelationReason,
-	List<CodeableConcept> serviceCategory,
-	List<CodeableConcept> serviceType,
-	List<CodeableConcept> specialty,
-	CodeableConcept appointmentType,
-	List<CodeableConcept> reasonCode,
-	List<Reference> reasonReference,
-	int priority,
-	Element elementPriority,
-	String description,
-	Element elementDescription,
-	List<Reference> supportingInformation,
-	DateTime start,
-	Element elementStart,
-	DateTime end,
-	Element elementEnd,
-	int minutesDuration,
-	Element elementMinutesDuration,
-	List<Reference> slot,
-	DateTime created,
-	Element elementCreated,
-	String comment,
-	Element elementComment,
-	String patientInstruction,
-	Element elementPatientInstruction,
-	List<Reference> basedOn,
-	List<Appointment_Participant> participant,
-	List<Period> requestedPeriod,
-}) async {
-var fhirDb = new DatabaseHelper();
-Appointment newAppointment = new Appointment(
-	resourceType: 'Appointment',
-	id: id ?? await fhirDb.newResourceId('Appointment'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	cancelationReason: cancelationReason,
-	serviceCategory: serviceCategory,
-	serviceType: serviceType,
-	specialty: specialty,
-	appointmentType: appointmentType,
-	reasonCode: reasonCode,
-	reasonReference: reasonReference,
-	priority: priority,
-	elementPriority: elementPriority,
-	description: description,
-	elementDescription: elementDescription,
-	supportingInformation: supportingInformation,
-	start: start,
-	elementStart: elementStart,
-	end: end,
-	elementEnd: elementEnd,
-	minutesDuration: minutesDuration,
-	elementMinutesDuration: elementMinutesDuration,
-	slot: slot,
-	created: created,
-	elementCreated: elementCreated,
-	comment: comment,
-	elementComment: elementComment,
-	patientInstruction: patientInstruction,
-	elementPatientInstruction: elementPatientInstruction,
-	basedOn: basedOn,
-	participant: participant,
-	requestedPeriod: requestedPeriod,
-);
-	newAppointment.meta.createdAt = DateTime.now();
-	newAppointment.meta.lastUpdated = newAppointment.meta.createdAt;
-	int saved = await fhirDb.saveResource(newAppointment);
-	 return newAppointment;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Appointment';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  CodeableConcept cancelationReason;
+  List<CodeableConcept> serviceCategory;
+  List<CodeableConcept> serviceType;
+  List<CodeableConcept> specialty;
+  CodeableConcept appointmentType;
+  List<CodeableConcept> reasonCode;
+  List<Reference> reasonReference;
+  int priority;
+  Element elementPriority;
+  String description;
+  Element elementDescription;
+  List<Reference> supportingInformation;
+  DateTime start;
+  Element elementStart;
+  DateTime end;
+  Element elementEnd;
+  int minutesDuration;
+  Element elementMinutesDuration;
+  List<Reference> slot;
+  DateTime created;
+  Element elementCreated;
+  String comment;
+  Element elementComment;
+  String patientInstruction;
+  Element elementPatientInstruction;
+  List<Reference> basedOn;
+  List<Appointment_Participant> participant;
+  List<Period> requestedPeriod;
 
-	String resourceType= 'Appointment';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	CodeableConcept cancelationReason;
-	List<CodeableConcept> serviceCategory;
-	List<CodeableConcept> serviceType;
-	List<CodeableConcept> specialty;
-	CodeableConcept appointmentType;
-	List<CodeableConcept> reasonCode;
-	List<Reference> reasonReference;
-	int priority;
-	Element elementPriority;
-	String description;
-	Element elementDescription;
-	List<Reference> supportingInformation;
-	DateTime start;
-	Element elementStart;
-	DateTime end;
-	Element elementEnd;
-	int minutesDuration;
-	Element elementMinutesDuration;
-	List<Reference> slot;
-	DateTime created;
-	Element elementCreated;
-	String comment;
-	Element elementComment;
-	String patientInstruction;
-	Element elementPatientInstruction;
-	List<Reference> basedOn;
-	List<Appointment_Participant> participant;
-	List<Period> requestedPeriod;
+  Appointment({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.cancelationReason,
+    this.serviceCategory,
+    this.serviceType,
+    this.specialty,
+    this.appointmentType,
+    this.reasonCode,
+    this.reasonReference,
+    this.priority,
+    this.elementPriority,
+    this.description,
+    this.elementDescription,
+    this.supportingInformation,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+    this.minutesDuration,
+    this.elementMinutesDuration,
+    this.slot,
+    this.created,
+    this.elementCreated,
+    this.comment,
+    this.elementComment,
+    this.patientInstruction,
+    this.elementPatientInstruction,
+    this.basedOn,
+    @required this.participant,
+    this.requestedPeriod,
+  });
 
-Appointment(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.cancelationReason,
-this.serviceCategory,
-this.serviceType,
-this.specialty,
-this.appointmentType,
-this.reasonCode,
-this.reasonReference,
-this.priority,
-this.elementPriority,
-this.description,
-this.elementDescription,
-this.supportingInformation,
-this.start,
-this.elementStart,
-this.end,
-this.elementEnd,
-this.minutesDuration,
-this.elementMinutesDuration,
-this.slot,
-this.created,
-this.elementCreated,
-this.comment,
-this.elementComment,
-this.patientInstruction,
-this.elementPatientInstruction,
-this.basedOn,
-@required this.participant,
-this.requestedPeriod,
-});
-
-  factory Appointment.fromJson(Map<String, dynamic> json) => _$AppointmentFromJson(json);
+  factory Appointment.fromJson(Map<String, dynamic> json) =>
+      _$AppointmentFromJson(json);
   Map<String, dynamic> toJson() => _$AppointmentToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Appointment_Participant {
+  static Future<Appointment_Participant> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> type,
+    Reference actor,
+    String required,
+    Element elementRequired,
+    String status,
+    Element elementStatus,
+    Period period,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Appointment_Participant newAppointment_Participant =
+        new Appointment_Participant(
+      id: id ?? await fhirDb.newResourceId('Appointment_Participant'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      actor: actor,
+      required: required,
+      elementRequired: elementRequired,
+      status: status,
+      elementStatus: elementStatus,
+      period: period,
+    );
+    return newAppointment_Participant;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Appointment_Participant{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<CodeableConcept> type;
+  Reference actor;
+  String required;
+  Element elementRequired;
+  String status;
+  Element elementStatus;
+  Period period;
 
-	static Future<Appointment_Participant> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<CodeableConcept> type,
-	Reference actor,
-	String required,
-	Element elementRequired,
-	String status,
-	Element elementStatus,
-	Period period,
-}) async {
-var fhirDb = new DatabaseHelper();
-Appointment_Participant newAppointment_Participant = new Appointment_Participant(
-	id: id ?? await fhirDb.newResourceId('Appointment_Participant'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	actor: actor,
-	required: required,
-	elementRequired: elementRequired,
-	status: status,
-	elementStatus: elementStatus,
-	period: period,
-);
-	return newAppointment_Participant;
-}
+  Appointment_Participant({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.actor,
+    this.required,
+    this.elementRequired,
+    this.status,
+    this.elementStatus,
+    this.period,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<CodeableConcept> type;
-	Reference actor;
-	String required;
-	Element elementRequired;
-	String status;
-	Element elementStatus;
-	Period period;
-
-Appointment_Participant(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.actor,
-this.required,
-this.elementRequired,
-this.status,
-this.elementStatus,
-this.period,
-});
-
-  factory Appointment_Participant.fromJson(Map<String, dynamic> json) => _$Appointment_ParticipantFromJson(json);
+  factory Appointment_Participant.fromJson(Map<String, dynamic> json) =>
+      _$Appointment_ParticipantFromJson(json);
   Map<String, dynamic> toJson() => _$Appointment_ParticipantToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -294,8 +296,9 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -406,56 +409,72 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'cancelationReason': instance.cancelationReason?.toJson(),
-      'serviceCategory':
-          instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
-      'serviceType': instance.serviceType?.map((e) => e?.toJson())?.toList(),
-      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
-      'appointmentType': instance.appointmentType?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'supportingInformation':
-          instance.supportingInformation?.map((e) => e?.toJson())?.toList(),
-      'start': instance.start?.toIso8601String(),
-      'elementStart': instance.elementStart?.toJson(),
-      'end': instance.end?.toIso8601String(),
-      'elementEnd': instance.elementEnd?.toJson(),
-      'minutesDuration': instance.minutesDuration,
-      'elementMinutesDuration': instance.elementMinutesDuration?.toJson(),
-      'slot': instance.slot?.map((e) => e?.toJson())?.toList(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'patientInstruction': instance.patientInstruction,
-      'elementPatientInstruction': instance.elementPatientInstruction?.toJson(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'requestedPeriod':
-          instance.requestedPeriod?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$AppointmentToJson(Appointment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('cancelationReason', instance.cancelationReason?.toJson());
+  writeNotNull('serviceCategory',
+      instance.serviceCategory?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'serviceType', instance.serviceType?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
+  writeNotNull('appointmentType', instance.appointmentType?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('supportingInformation',
+      instance.supportingInformation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('start', instance.start?.toIso8601String());
+  writeNotNull('elementStart', instance.elementStart?.toJson());
+  writeNotNull('end', instance.end?.toIso8601String());
+  writeNotNull('elementEnd', instance.elementEnd?.toJson());
+  writeNotNull('minutesDuration', instance.minutesDuration);
+  writeNotNull(
+      'elementMinutesDuration', instance.elementMinutesDuration?.toJson());
+  writeNotNull('slot', instance.slot?.map((e) => e?.toJson())?.toList());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull('patientInstruction', instance.patientInstruction);
+  writeNotNull('elementPatientInstruction',
+      instance.elementPatientInstruction?.toJson());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
+  writeNotNull('requestedPeriod',
+      instance.requestedPeriod?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Appointment_Participant _$Appointment_ParticipantFromJson(
     Map<String, dynamic> json) {
@@ -492,17 +511,26 @@ Appointment_Participant _$Appointment_ParticipantFromJson(
 }
 
 Map<String, dynamic> _$Appointment_ParticipantToJson(
-        Appointment_Participant instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'actor': instance.actor?.toJson(),
-      'required': instance.required,
-      'elementRequired': instance.elementRequired?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+    Appointment_Participant instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('actor', instance.actor?.toJson());
+  writeNotNull('required', instance.required);
+  writeNotNull('elementRequired', instance.elementRequired?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}

@@ -11,191 +11,193 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CatalogEntry {
+  static Future<CatalogEntry> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    CodeableConcept type,
+    bool orderable,
+    Element elementOrderable,
+    Reference referencedItem,
+    List<Identifier> additionalIdentifier,
+    List<CodeableConcept> classification,
+    String status,
+    Element elementStatus,
+    Period validityPeriod,
+    DateTime validTo,
+    Element elementValidTo,
+    DateTime lastUpdated,
+    Element elementLastUpdated,
+    List<CodeableConcept> additionalCharacteristic,
+    List<CodeableConcept> additionalClassification,
+    List<CatalogEntry_RelatedEntry> relatedEntry,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CatalogEntry newCatalogEntry = new CatalogEntry(
+      resourceType: 'CatalogEntry',
+      id: id ?? await fhirDb.newResourceId('CatalogEntry'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      type: type,
+      orderable: orderable,
+      elementOrderable: elementOrderable,
+      referencedItem: referencedItem,
+      additionalIdentifier: additionalIdentifier,
+      classification: classification,
+      status: status,
+      elementStatus: elementStatus,
+      validityPeriod: validityPeriod,
+      validTo: validTo,
+      elementValidTo: elementValidTo,
+      lastUpdated: lastUpdated,
+      elementLastUpdated: elementLastUpdated,
+      additionalCharacteristic: additionalCharacteristic,
+      additionalClassification: additionalClassification,
+      relatedEntry: relatedEntry,
+    );
+    newCatalogEntry.meta.createdAt = DateTime.now();
+    newCatalogEntry.meta.lastUpdated = newCatalogEntry.meta.createdAt;
+    int saved = await fhirDb.saveResource(newCatalogEntry);
+    return newCatalogEntry;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class CatalogEntry{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<CatalogEntry> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	CodeableConcept type,
-	bool orderable,
-	Element elementOrderable,
-	Reference referencedItem,
-	List<Identifier> additionalIdentifier,
-	List<CodeableConcept> classification,
-	String status,
-	Element elementStatus,
-	Period validityPeriod,
-	DateTime validTo,
-	Element elementValidTo,
-	DateTime lastUpdated,
-	Element elementLastUpdated,
-	List<CodeableConcept> additionalCharacteristic,
-	List<CodeableConcept> additionalClassification,
-	List<CatalogEntry_RelatedEntry> relatedEntry,
-}) async {
-var fhirDb = new DatabaseHelper();
-CatalogEntry newCatalogEntry = new CatalogEntry(
-	resourceType: 'CatalogEntry',
-	id: id ?? await fhirDb.newResourceId('CatalogEntry'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	type: type,
-	orderable: orderable,
-	elementOrderable: elementOrderable,
-	referencedItem: referencedItem,
-	additionalIdentifier: additionalIdentifier,
-	classification: classification,
-	status: status,
-	elementStatus: elementStatus,
-	validityPeriod: validityPeriod,
-	validTo: validTo,
-	elementValidTo: elementValidTo,
-	lastUpdated: lastUpdated,
-	elementLastUpdated: elementLastUpdated,
-	additionalCharacteristic: additionalCharacteristic,
-	additionalClassification: additionalClassification,
-	relatedEntry: relatedEntry,
-);
-	newCatalogEntry.meta.createdAt = DateTime.now();
-	newCatalogEntry.meta.lastUpdated = newCatalogEntry.meta.createdAt;
-	int saved = await fhirDb.saveResource(newCatalogEntry);
-	 return newCatalogEntry;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'CatalogEntry';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  CodeableConcept type;
+  bool orderable;
+  Element elementOrderable;
+  Reference referencedItem;
+  List<Identifier> additionalIdentifier;
+  List<CodeableConcept> classification;
+  String status;
+  Element elementStatus;
+  Period validityPeriod;
+  DateTime validTo;
+  Element elementValidTo;
+  DateTime lastUpdated;
+  Element elementLastUpdated;
+  List<CodeableConcept> additionalCharacteristic;
+  List<CodeableConcept> additionalClassification;
+  List<CatalogEntry_RelatedEntry> relatedEntry;
 
-	String resourceType= 'CatalogEntry';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	CodeableConcept type;
-	bool orderable;
-	Element elementOrderable;
-	Reference referencedItem;
-	List<Identifier> additionalIdentifier;
-	List<CodeableConcept> classification;
-	String status;
-	Element elementStatus;
-	Period validityPeriod;
-	DateTime validTo;
-	Element elementValidTo;
-	DateTime lastUpdated;
-	Element elementLastUpdated;
-	List<CodeableConcept> additionalCharacteristic;
-	List<CodeableConcept> additionalClassification;
-	List<CatalogEntry_RelatedEntry> relatedEntry;
+  CatalogEntry({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.type,
+    this.orderable,
+    this.elementOrderable,
+    @required this.referencedItem,
+    this.additionalIdentifier,
+    this.classification,
+    this.status,
+    this.elementStatus,
+    this.validityPeriod,
+    this.validTo,
+    this.elementValidTo,
+    this.lastUpdated,
+    this.elementLastUpdated,
+    this.additionalCharacteristic,
+    this.additionalClassification,
+    this.relatedEntry,
+  });
 
-CatalogEntry(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.type,
-this.orderable,
-this.elementOrderable,
-@required this.referencedItem,
-this.additionalIdentifier,
-this.classification,
-this.status,
-this.elementStatus,
-this.validityPeriod,
-this.validTo,
-this.elementValidTo,
-this.lastUpdated,
-this.elementLastUpdated,
-this.additionalCharacteristic,
-this.additionalClassification,
-this.relatedEntry,
-});
-
-  factory CatalogEntry.fromJson(Map<String, dynamic> json) => _$CatalogEntryFromJson(json);
+  factory CatalogEntry.fromJson(Map<String, dynamic> json) =>
+      _$CatalogEntryFromJson(json);
   Map<String, dynamic> toJson() => _$CatalogEntryToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CatalogEntry_RelatedEntry {
+  static Future<CatalogEntry_RelatedEntry> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String relationtype,
+    Element elementRelationtype,
+    Reference item,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CatalogEntry_RelatedEntry newCatalogEntry_RelatedEntry =
+        new CatalogEntry_RelatedEntry(
+      id: id ?? await fhirDb.newResourceId('CatalogEntry_RelatedEntry'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      relationtype: relationtype,
+      elementRelationtype: elementRelationtype,
+      item: item,
+    );
+    return newCatalogEntry_RelatedEntry;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class CatalogEntry_RelatedEntry{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String relationtype;
+  Element elementRelationtype;
+  Reference item;
 
-	static Future<CatalogEntry_RelatedEntry> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String relationtype,
-	Element elementRelationtype,
-	Reference item,
-}) async {
-var fhirDb = new DatabaseHelper();
-CatalogEntry_RelatedEntry newCatalogEntry_RelatedEntry = new CatalogEntry_RelatedEntry(
-	id: id ?? await fhirDb.newResourceId('CatalogEntry_RelatedEntry'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	relationtype: relationtype,
-	elementRelationtype: elementRelationtype,
-	item: item,
-);
-	return newCatalogEntry_RelatedEntry;
-}
+  CatalogEntry_RelatedEntry({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.relationtype,
+    this.elementRelationtype,
+    @required this.item,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String relationtype;
-	Element elementRelationtype;
-	Reference item;
-
-CatalogEntry_RelatedEntry(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.relationtype,
-this.elementRelationtype,
-@required this.item,
-});
-
-  factory CatalogEntry_RelatedEntry.fromJson(Map<String, dynamic> json) => _$CatalogEntry_RelatedEntryFromJson(json);
+  factory CatalogEntry_RelatedEntry.fromJson(Map<String, dynamic> json) =>
+      _$CatalogEntry_RelatedEntryFromJson(json);
   Map<String, dynamic> toJson() => _$CatalogEntry_RelatedEntryToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -222,8 +224,9 @@ CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -293,42 +296,53 @@ CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'orderable': instance.orderable,
-      'elementOrderable': instance.elementOrderable?.toJson(),
-      'referencedItem': instance.referencedItem?.toJson(),
-      'additionalIdentifier':
-          instance.additionalIdentifier?.map((e) => e?.toJson())?.toList(),
-      'classification':
-          instance.classification?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'validityPeriod': instance.validityPeriod?.toJson(),
-      'validTo': instance.validTo?.toIso8601String(),
-      'elementValidTo': instance.elementValidTo?.toJson(),
-      'lastUpdated': instance.lastUpdated?.toIso8601String(),
-      'elementLastUpdated': instance.elementLastUpdated?.toJson(),
-      'additionalCharacteristic':
-          instance.additionalCharacteristic?.map((e) => e?.toJson())?.toList(),
-      'additionalClassification':
-          instance.additionalClassification?.map((e) => e?.toJson())?.toList(),
-      'relatedEntry': instance.relatedEntry?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('orderable', instance.orderable);
+  writeNotNull('elementOrderable', instance.elementOrderable?.toJson());
+  writeNotNull('referencedItem', instance.referencedItem?.toJson());
+  writeNotNull('additionalIdentifier',
+      instance.additionalIdentifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('classification',
+      instance.classification?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('validityPeriod', instance.validityPeriod?.toJson());
+  writeNotNull('validTo', instance.validTo?.toIso8601String());
+  writeNotNull('elementValidTo', instance.elementValidTo?.toJson());
+  writeNotNull('lastUpdated', instance.lastUpdated?.toIso8601String());
+  writeNotNull('elementLastUpdated', instance.elementLastUpdated?.toJson());
+  writeNotNull('additionalCharacteristic',
+      instance.additionalCharacteristic?.map((e) => e?.toJson())?.toList());
+  writeNotNull('additionalClassification',
+      instance.additionalClassification?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'relatedEntry', instance.relatedEntry?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
     Map<String, dynamic> json) {
@@ -353,13 +367,22 @@ CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
 }
 
 Map<String, dynamic> _$CatalogEntry_RelatedEntryToJson(
-        CatalogEntry_RelatedEntry instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'relationtype': instance.relationtype,
-      'elementRelationtype': instance.elementRelationtype?.toJson(),
-      'item': instance.item?.toJson(),
-    };
+    CatalogEntry_RelatedEntry instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relationtype', instance.relationtype);
+  writeNotNull('elementRelationtype', instance.elementRelationtype?.toJson());
+  writeNotNull('item', instance.item?.toJson());
+  return val;
+}

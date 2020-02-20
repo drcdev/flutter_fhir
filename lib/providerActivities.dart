@@ -52,10 +52,9 @@ class _ProviderActivitiesState extends State<_ProviderActivities> {
     List<dynamic> ptList = await fhirDb.getList('Patient');
     for (int i = 0; i < ptList.length; i++) {
       if (ptList[i].birthDate != null) {
-        double diff = DateTime
-            .now()
-            .difference(DateTime.parse(ptList[i].birthDate))
-            .inDays /
+        double diff = DateTime.now()
+                .difference(DateTime.parse(ptList[i].birthDate))
+                .inDays /
             365;
         if (ptList[i].address != null && 2 <= diff && diff <= 5) {
           if (locations.containsKey(ptList[i].address[0].district)) {

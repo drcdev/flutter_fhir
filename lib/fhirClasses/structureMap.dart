@@ -37,1055 +37,1052 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap {
+  static Future<StructureMap> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    List<StructureMap_Structure> structure,
+    List<String> import,
+    List<StructureMap_Group> group,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap newStructureMap = new StructureMap(
+      resourceType: 'StructureMap',
+      id: id ?? await fhirDb.newResourceId('StructureMap'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      structure: structure,
+      import: import,
+      group: group,
+    );
+    newStructureMap.meta.createdAt = DateTime.now();
+    newStructureMap.meta.lastUpdated = newStructureMap.meta.createdAt;
+    int saved = await fhirDb.saveResource(newStructureMap);
+    return newStructureMap;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<StructureMap> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	List<Identifier> identifier,
-	String version,
-	Element elementVersion,
-	String name,
-	Element elementName,
-	String title,
-	Element elementTitle,
-	String status,
-	Element elementStatus,
-	bool experimental,
-	Element elementExperimental,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String purpose,
-	Element elementPurpose,
-	String copyright,
-	Element elementCopyright,
-	List<StructureMap_Structure> structure,
-	List<String> import,
-	List<StructureMap_Group> group,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap newStructureMap = new StructureMap(
-	resourceType: 'StructureMap',
-	id: id ?? await fhirDb.newResourceId('StructureMap'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	identifier: identifier,
-	version: version,
-	elementVersion: elementVersion,
-	name: name,
-	elementName: elementName,
-	title: title,
-	elementTitle: elementTitle,
-	status: status,
-	elementStatus: elementStatus,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	copyright: copyright,
-	elementCopyright: elementCopyright,
-	structure: structure,
-	import: import,
-	group: group,
-);
-	newStructureMap.meta.createdAt = DateTime.now();
-	newStructureMap.meta.lastUpdated = newStructureMap.meta.createdAt;
-	int saved = await fhirDb.saveResource(newStructureMap);
-	 return newStructureMap;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'StructureMap';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  List<Identifier> identifier;
+  String version;
+  Element elementVersion;
+  String name;
+  Element elementName;
+  String title;
+  Element elementTitle;
+  String status;
+  Element elementStatus;
+  bool experimental;
+  Element elementExperimental;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String purpose;
+  Element elementPurpose;
+  String copyright;
+  Element elementCopyright;
+  List<StructureMap_Structure> structure;
+  List<String> import;
+  List<StructureMap_Group> group;
 
-	String resourceType= 'StructureMap';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	List<Identifier> identifier;
-	String version;
-	Element elementVersion;
-	String name;
-	Element elementName;
-	String title;
-	Element elementTitle;
-	String status;
-	Element elementStatus;
-	bool experimental;
-	Element elementExperimental;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String purpose;
-	Element elementPurpose;
-	String copyright;
-	Element elementCopyright;
-	List<StructureMap_Structure> structure;
-	List<String> import;
-	List<StructureMap_Group> group;
+  StructureMap({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.structure,
+    this.import,
+    @required this.group,
+  });
 
-StructureMap(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.identifier,
-this.version,
-this.elementVersion,
-this.name,
-this.elementName,
-this.title,
-this.elementTitle,
-this.status,
-this.elementStatus,
-this.experimental,
-this.elementExperimental,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.purpose,
-this.elementPurpose,
-this.copyright,
-this.elementCopyright,
-this.structure,
-this.import,
-@required this.group,
-});
-
-  factory StructureMap.fromJson(Map<String, dynamic> json) => _$StructureMapFromJson(json);
+  factory StructureMap.fromJson(Map<String, dynamic> json) =>
+      _$StructureMapFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMapToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Structure {
+  static Future<StructureMap_Structure> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    String mode,
+    Element elementMode,
+    String alias,
+    Element elementAlias,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Structure newStructureMap_Structure =
+        new StructureMap_Structure(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Structure'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      mode: mode,
+      elementMode: elementMode,
+      alias: alias,
+      elementAlias: elementAlias,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newStructureMap_Structure;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Structure{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  String mode;
+  Element elementMode;
+  String alias;
+  Element elementAlias;
+  String documentation;
+  Element elementDocumentation;
 
-	static Future<StructureMap_Structure> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	String mode,
-	Element elementMode,
-	String alias,
-	Element elementAlias,
-	String documentation,
-	Element elementDocumentation,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Structure newStructureMap_Structure = new StructureMap_Structure(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Structure'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	mode: mode,
-	elementMode: elementMode,
-	alias: alias,
-	elementAlias: elementAlias,
-	documentation: documentation,
-	elementDocumentation: elementDocumentation,
-);
-	return newStructureMap_Structure;
-}
+  StructureMap_Structure({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.url,
+    this.mode,
+    this.elementMode,
+    this.alias,
+    this.elementAlias,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	String mode;
-	Element elementMode;
-	String alias;
-	Element elementAlias;
-	String documentation;
-	Element elementDocumentation;
-
-StructureMap_Structure(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.url,
-this.mode,
-this.elementMode,
-this.alias,
-this.elementAlias,
-this.documentation,
-this.elementDocumentation,
-});
-
-  factory StructureMap_Structure.fromJson(Map<String, dynamic> json) => _$StructureMap_StructureFromJson(json);
+  factory StructureMap_Structure.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_StructureFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_StructureToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Group {
+  static Future<StructureMap_Group> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String extend,
+    Element elementExtends,
+    String typeMode,
+    Element elementTypeMode,
+    String documentation,
+    Element elementDocumentation,
+    List<StructureMap_Input> input,
+    List<StructureMap_Rule> rule,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Group newStructureMap_Group = new StructureMap_Group(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Group'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      extend: extend,
+      elementExtends: elementExtends,
+      typeMode: typeMode,
+      elementTypeMode: elementTypeMode,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+      input: input,
+      rule: rule,
+    );
+    return newStructureMap_Group;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Group{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  String extend;
+  Element elementExtends;
+  String typeMode;
+  Element elementTypeMode;
+  String documentation;
+  Element elementDocumentation;
+  List<StructureMap_Input> input;
+  List<StructureMap_Rule> rule;
 
-	static Future<StructureMap_Group> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	String extend,
-	Element elementExtends,
-	String typeMode,
-	Element elementTypeMode,
-	String documentation,
-	Element elementDocumentation,
-	List<StructureMap_Input> input,
-	List<StructureMap_Rule> rule,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Group newStructureMap_Group = new StructureMap_Group(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Group'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	extend: extend,
-	elementExtends: elementExtends,
-	typeMode: typeMode,
-	elementTypeMode: elementTypeMode,
-	documentation: documentation,
-	elementDocumentation: elementDocumentation,
-	input: input,
-	rule: rule,
-);
-	return newStructureMap_Group;
-}
+  StructureMap_Group({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.extend,
+    this.elementExtends,
+    this.typeMode,
+    this.elementTypeMode,
+    this.documentation,
+    this.elementDocumentation,
+    @required this.input,
+    @required this.rule,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	String extend;
-	Element elementExtends;
-	String typeMode;
-	Element elementTypeMode;
-	String documentation;
-	Element elementDocumentation;
-	List<StructureMap_Input> input;
-	List<StructureMap_Rule> rule;
-
-StructureMap_Group(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.extend,
-this.elementExtends,
-this.typeMode,
-this.elementTypeMode,
-this.documentation,
-this.elementDocumentation,
-@required this.input,
-@required this.rule,
-});
-
-  factory StructureMap_Group.fromJson(Map<String, dynamic> json) => _$StructureMap_GroupFromJson(json);
+  factory StructureMap_Group.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_GroupFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_GroupToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Input {
+  static Future<StructureMap_Input> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String type,
+    Element elementType,
+    String mode,
+    Element elementMode,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Input newStructureMap_Input = new StructureMap_Input(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Input'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      type: type,
+      elementType: elementType,
+      mode: mode,
+      elementMode: elementMode,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newStructureMap_Input;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Input{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  String type;
+  Element elementType;
+  String mode;
+  Element elementMode;
+  String documentation;
+  Element elementDocumentation;
 
-	static Future<StructureMap_Input> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	String type,
-	Element elementType,
-	String mode,
-	Element elementMode,
-	String documentation,
-	Element elementDocumentation,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Input newStructureMap_Input = new StructureMap_Input(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Input'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	type: type,
-	elementType: elementType,
-	mode: mode,
-	elementMode: elementMode,
-	documentation: documentation,
-	elementDocumentation: elementDocumentation,
-);
-	return newStructureMap_Input;
-}
+  StructureMap_Input({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.type,
+    this.elementType,
+    this.mode,
+    this.elementMode,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	String type;
-	Element elementType;
-	String mode;
-	Element elementMode;
-	String documentation;
-	Element elementDocumentation;
-
-StructureMap_Input(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.type,
-this.elementType,
-this.mode,
-this.elementMode,
-this.documentation,
-this.elementDocumentation,
-});
-
-  factory StructureMap_Input.fromJson(Map<String, dynamic> json) => _$StructureMap_InputFromJson(json);
+  factory StructureMap_Input.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_InputFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_InputToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Rule {
+  static Future<StructureMap_Rule> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    List<StructureMap_Source> source,
+    List<StructureMap_Target> target,
+    List<StructureMap_Rule> rule,
+    List<StructureMap_Dependent> dependent,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Rule newStructureMap_Rule = new StructureMap_Rule(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Rule'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      source: source,
+      target: target,
+      rule: rule,
+      dependent: dependent,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newStructureMap_Rule;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Rule{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  List<StructureMap_Source> source;
+  List<StructureMap_Target> target;
+  List<StructureMap_Rule> rule;
+  List<StructureMap_Dependent> dependent;
+  String documentation;
+  Element elementDocumentation;
 
-	static Future<StructureMap_Rule> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	List<StructureMap_Source> source,
-	List<StructureMap_Target> target,
-	List<StructureMap_Rule> rule,
-	List<StructureMap_Dependent> dependent,
-	String documentation,
-	Element elementDocumentation,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Rule newStructureMap_Rule = new StructureMap_Rule(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Rule'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	source: source,
-	target: target,
-	rule: rule,
-	dependent: dependent,
-	documentation: documentation,
-	elementDocumentation: elementDocumentation,
-);
-	return newStructureMap_Rule;
-}
+  StructureMap_Rule({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    @required this.source,
+    this.target,
+    this.rule,
+    this.dependent,
+    this.documentation,
+    this.elementDocumentation,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	List<StructureMap_Source> source;
-	List<StructureMap_Target> target;
-	List<StructureMap_Rule> rule;
-	List<StructureMap_Dependent> dependent;
-	String documentation;
-	Element elementDocumentation;
-
-StructureMap_Rule(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-@required this.source,
-this.target,
-this.rule,
-this.dependent,
-this.documentation,
-this.elementDocumentation,
-});
-
-  factory StructureMap_Rule.fromJson(Map<String, dynamic> json) => _$StructureMap_RuleFromJson(json);
+  factory StructureMap_Rule.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_RuleFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_RuleToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Source {
+  static Future<StructureMap_Source> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String context,
+    Element elementContext,
+    int min,
+    Element elementMin,
+    String max,
+    Element elementMax,
+    String type,
+    Element elementType,
+    String defaultValueBase64Binary,
+    Element elementDefaultValueBase64Binary,
+    bool defaultValueBoolean,
+    Element elementDefaultValueBoolean,
+    String defaultValueCanonical,
+    Element elementDefaultValueCanonical,
+    String defaultValueCode,
+    Element elementDefaultValueCode,
+    String defaultValueDate,
+    Element elementDefaultValueDate,
+    String defaultValueDateTime,
+    Element elementDefaultValueDateTime,
+    int defaultValueDecimal,
+    Element elementDefaultValueDecimal,
+    String defaultValueId,
+    Element elementDefaultValueId,
+    String defaultValueInstant,
+    Element elementDefaultValueInstant,
+    int defaultValueInteger,
+    Element elementDefaultValueInteger,
+    String defaultValueMarkdown,
+    Element elementDefaultValueMarkdown,
+    String defaultValueOid,
+    Element elementDefaultValueOid,
+    int defaultValuePositiveInt,
+    Element elementDefaultValuePositiveInt,
+    String defaultValueString,
+    Element elementDefaultValueString,
+    String defaultValueTime,
+    Element elementDefaultValueTime,
+    int defaultValueUnsignedInt,
+    Element elementDefaultValueUnsignedInt,
+    String defaultValueUri,
+    Element elementDefaultValueUri,
+    String defaultValueUrl,
+    Element elementDefaultValueUrl,
+    String defaultValueUuid,
+    Element elementDefaultValueUuid,
+    Address defaultValueAddress,
+    Age defaultValueAge,
+    Annotation defaultValueAnnotation,
+    Attachment defaultValueAttachment,
+    CodeableConcept defaultValueCodeableConcept,
+    Coding defaultValueCoding,
+    ContactPoint defaultValueContactPoint,
+    Count defaultValueCount,
+    Distance defaultValueDistance,
+    Duration defaultValueDuration,
+    HumanName defaultValueHumanName,
+    Identifier defaultValueIdentifier,
+    Money defaultValueMoney,
+    Period defaultValuePeriod,
+    Quantity defaultValueQuantity,
+    Range defaultValueRange,
+    Ratio defaultValueRatio,
+    Reference defaultValueReference,
+    SampledData defaultValueSampledData,
+    Signature defaultValueSignature,
+    Timing defaultValueTiming,
+    ContactDetail defaultValueContactDetail,
+    Contributor defaultValueContributor,
+    DataRequirement defaultValueDataRequirement,
+    Expression defaultValueExpression,
+    ParameterDefinition defaultValueParameterDefinition,
+    RelatedArtifact defaultValueRelatedArtifact,
+    TriggerDefinition defaultValueTriggerDefinition,
+    UsageContext defaultValueUsageContext,
+    Dosage defaultValueDosage,
+    Meta defaultValueMeta,
+    String element,
+    Element elementElement,
+    String listMode,
+    Element elementListMode,
+    String variable,
+    Element elementVariable,
+    String condition,
+    Element elementCondition,
+    String check,
+    Element elementCheck,
+    String logMessage,
+    Element elementLogMessage,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Source newStructureMap_Source = new StructureMap_Source(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Source'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      context: context,
+      elementContext: elementContext,
+      min: min,
+      elementMin: elementMin,
+      max: max,
+      elementMax: elementMax,
+      type: type,
+      elementType: elementType,
+      defaultValueBase64Binary: defaultValueBase64Binary,
+      elementDefaultValueBase64Binary: elementDefaultValueBase64Binary,
+      defaultValueBoolean: defaultValueBoolean,
+      elementDefaultValueBoolean: elementDefaultValueBoolean,
+      defaultValueCanonical: defaultValueCanonical,
+      elementDefaultValueCanonical: elementDefaultValueCanonical,
+      defaultValueCode: defaultValueCode,
+      elementDefaultValueCode: elementDefaultValueCode,
+      defaultValueDate: defaultValueDate,
+      elementDefaultValueDate: elementDefaultValueDate,
+      defaultValueDateTime: defaultValueDateTime,
+      elementDefaultValueDateTime: elementDefaultValueDateTime,
+      defaultValueDecimal: defaultValueDecimal,
+      elementDefaultValueDecimal: elementDefaultValueDecimal,
+      defaultValueId: defaultValueId,
+      elementDefaultValueId: elementDefaultValueId,
+      defaultValueInstant: defaultValueInstant,
+      elementDefaultValueInstant: elementDefaultValueInstant,
+      defaultValueInteger: defaultValueInteger,
+      elementDefaultValueInteger: elementDefaultValueInteger,
+      defaultValueMarkdown: defaultValueMarkdown,
+      elementDefaultValueMarkdown: elementDefaultValueMarkdown,
+      defaultValueOid: defaultValueOid,
+      elementDefaultValueOid: elementDefaultValueOid,
+      defaultValuePositiveInt: defaultValuePositiveInt,
+      elementDefaultValuePositiveInt: elementDefaultValuePositiveInt,
+      defaultValueString: defaultValueString,
+      elementDefaultValueString: elementDefaultValueString,
+      defaultValueTime: defaultValueTime,
+      elementDefaultValueTime: elementDefaultValueTime,
+      defaultValueUnsignedInt: defaultValueUnsignedInt,
+      elementDefaultValueUnsignedInt: elementDefaultValueUnsignedInt,
+      defaultValueUri: defaultValueUri,
+      elementDefaultValueUri: elementDefaultValueUri,
+      defaultValueUrl: defaultValueUrl,
+      elementDefaultValueUrl: elementDefaultValueUrl,
+      defaultValueUuid: defaultValueUuid,
+      elementDefaultValueUuid: elementDefaultValueUuid,
+      defaultValueAddress: defaultValueAddress,
+      defaultValueAge: defaultValueAge,
+      defaultValueAnnotation: defaultValueAnnotation,
+      defaultValueAttachment: defaultValueAttachment,
+      defaultValueCodeableConcept: defaultValueCodeableConcept,
+      defaultValueCoding: defaultValueCoding,
+      defaultValueContactPoint: defaultValueContactPoint,
+      defaultValueCount: defaultValueCount,
+      defaultValueDistance: defaultValueDistance,
+      defaultValueDuration: defaultValueDuration,
+      defaultValueHumanName: defaultValueHumanName,
+      defaultValueIdentifier: defaultValueIdentifier,
+      defaultValueMoney: defaultValueMoney,
+      defaultValuePeriod: defaultValuePeriod,
+      defaultValueQuantity: defaultValueQuantity,
+      defaultValueRange: defaultValueRange,
+      defaultValueRatio: defaultValueRatio,
+      defaultValueReference: defaultValueReference,
+      defaultValueSampledData: defaultValueSampledData,
+      defaultValueSignature: defaultValueSignature,
+      defaultValueTiming: defaultValueTiming,
+      defaultValueContactDetail: defaultValueContactDetail,
+      defaultValueContributor: defaultValueContributor,
+      defaultValueDataRequirement: defaultValueDataRequirement,
+      defaultValueExpression: defaultValueExpression,
+      defaultValueParameterDefinition: defaultValueParameterDefinition,
+      defaultValueRelatedArtifact: defaultValueRelatedArtifact,
+      defaultValueTriggerDefinition: defaultValueTriggerDefinition,
+      defaultValueUsageContext: defaultValueUsageContext,
+      defaultValueDosage: defaultValueDosage,
+      defaultValueMeta: defaultValueMeta,
+      element: element,
+      elementElement: elementElement,
+      listMode: listMode,
+      elementListMode: elementListMode,
+      variable: variable,
+      elementVariable: elementVariable,
+      condition: condition,
+      elementCondition: elementCondition,
+      check: check,
+      elementCheck: elementCheck,
+      logMessage: logMessage,
+      elementLogMessage: elementLogMessage,
+    );
+    return newStructureMap_Source;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Source{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String context;
+  Element elementContext;
+  int min;
+  Element elementMin;
+  String max;
+  Element elementMax;
+  String type;
+  Element elementType;
+  String defaultValueBase64Binary;
+  Element elementDefaultValueBase64Binary;
+  bool defaultValueBoolean;
+  Element elementDefaultValueBoolean;
+  String defaultValueCanonical;
+  Element elementDefaultValueCanonical;
+  String defaultValueCode;
+  Element elementDefaultValueCode;
+  String defaultValueDate;
+  Element elementDefaultValueDate;
+  String defaultValueDateTime;
+  Element elementDefaultValueDateTime;
+  int defaultValueDecimal;
+  Element elementDefaultValueDecimal;
+  String defaultValueId;
+  Element elementDefaultValueId;
+  String defaultValueInstant;
+  Element elementDefaultValueInstant;
+  int defaultValueInteger;
+  Element elementDefaultValueInteger;
+  String defaultValueMarkdown;
+  Element elementDefaultValueMarkdown;
+  String defaultValueOid;
+  Element elementDefaultValueOid;
+  int defaultValuePositiveInt;
+  Element elementDefaultValuePositiveInt;
+  String defaultValueString;
+  Element elementDefaultValueString;
+  String defaultValueTime;
+  Element elementDefaultValueTime;
+  int defaultValueUnsignedInt;
+  Element elementDefaultValueUnsignedInt;
+  String defaultValueUri;
+  Element elementDefaultValueUri;
+  String defaultValueUrl;
+  Element elementDefaultValueUrl;
+  String defaultValueUuid;
+  Element elementDefaultValueUuid;
+  Address defaultValueAddress;
+  Age defaultValueAge;
+  Annotation defaultValueAnnotation;
+  Attachment defaultValueAttachment;
+  CodeableConcept defaultValueCodeableConcept;
+  Coding defaultValueCoding;
+  ContactPoint defaultValueContactPoint;
+  Count defaultValueCount;
+  Distance defaultValueDistance;
+  Duration defaultValueDuration;
+  HumanName defaultValueHumanName;
+  Identifier defaultValueIdentifier;
+  Money defaultValueMoney;
+  Period defaultValuePeriod;
+  Quantity defaultValueQuantity;
+  Range defaultValueRange;
+  Ratio defaultValueRatio;
+  Reference defaultValueReference;
+  SampledData defaultValueSampledData;
+  Signature defaultValueSignature;
+  Timing defaultValueTiming;
+  ContactDetail defaultValueContactDetail;
+  Contributor defaultValueContributor;
+  DataRequirement defaultValueDataRequirement;
+  Expression defaultValueExpression;
+  ParameterDefinition defaultValueParameterDefinition;
+  RelatedArtifact defaultValueRelatedArtifact;
+  TriggerDefinition defaultValueTriggerDefinition;
+  UsageContext defaultValueUsageContext;
+  Dosage defaultValueDosage;
+  Meta defaultValueMeta;
+  String element;
+  Element elementElement;
+  String listMode;
+  Element elementListMode;
+  String variable;
+  Element elementVariable;
+  String condition;
+  Element elementCondition;
+  String check;
+  Element elementCheck;
+  String logMessage;
+  Element elementLogMessage;
 
-	static Future<StructureMap_Source> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String context,
-	Element elementContext,
-	int min,
-	Element elementMin,
-	String max,
-	Element elementMax,
-	String type,
-	Element elementType,
-	String defaultValueBase64Binary,
-	Element elementDefaultValueBase64Binary,
-	bool defaultValueBoolean,
-	Element elementDefaultValueBoolean,
-	String defaultValueCanonical,
-	Element elementDefaultValueCanonical,
-	String defaultValueCode,
-	Element elementDefaultValueCode,
-	String defaultValueDate,
-	Element elementDefaultValueDate,
-	String defaultValueDateTime,
-	Element elementDefaultValueDateTime,
-	int defaultValueDecimal,
-	Element elementDefaultValueDecimal,
-	String defaultValueId,
-	Element elementDefaultValueId,
-	String defaultValueInstant,
-	Element elementDefaultValueInstant,
-	int defaultValueInteger,
-	Element elementDefaultValueInteger,
-	String defaultValueMarkdown,
-	Element elementDefaultValueMarkdown,
-	String defaultValueOid,
-	Element elementDefaultValueOid,
-	int defaultValuePositiveInt,
-	Element elementDefaultValuePositiveInt,
-	String defaultValueString,
-	Element elementDefaultValueString,
-	String defaultValueTime,
-	Element elementDefaultValueTime,
-	int defaultValueUnsignedInt,
-	Element elementDefaultValueUnsignedInt,
-	String defaultValueUri,
-	Element elementDefaultValueUri,
-	String defaultValueUrl,
-	Element elementDefaultValueUrl,
-	String defaultValueUuid,
-	Element elementDefaultValueUuid,
-	Address defaultValueAddress,
-	Age defaultValueAge,
-	Annotation defaultValueAnnotation,
-	Attachment defaultValueAttachment,
-	CodeableConcept defaultValueCodeableConcept,
-	Coding defaultValueCoding,
-	ContactPoint defaultValueContactPoint,
-	Count defaultValueCount,
-	Distance defaultValueDistance,
-	Duration defaultValueDuration,
-	HumanName defaultValueHumanName,
-	Identifier defaultValueIdentifier,
-	Money defaultValueMoney,
-	Period defaultValuePeriod,
-	Quantity defaultValueQuantity,
-	Range defaultValueRange,
-	Ratio defaultValueRatio,
-	Reference defaultValueReference,
-	SampledData defaultValueSampledData,
-	Signature defaultValueSignature,
-	Timing defaultValueTiming,
-	ContactDetail defaultValueContactDetail,
-	Contributor defaultValueContributor,
-	DataRequirement defaultValueDataRequirement,
-	Expression defaultValueExpression,
-	ParameterDefinition defaultValueParameterDefinition,
-	RelatedArtifact defaultValueRelatedArtifact,
-	TriggerDefinition defaultValueTriggerDefinition,
-	UsageContext defaultValueUsageContext,
-	Dosage defaultValueDosage,
-	Meta defaultValueMeta,
-	String element,
-	Element elementElement,
-	String listMode,
-	Element elementListMode,
-	String variable,
-	Element elementVariable,
-	String condition,
-	Element elementCondition,
-	String check,
-	Element elementCheck,
-	String logMessage,
-	Element elementLogMessage,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Source newStructureMap_Source = new StructureMap_Source(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Source'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	context: context,
-	elementContext: elementContext,
-	min: min,
-	elementMin: elementMin,
-	max: max,
-	elementMax: elementMax,
-	type: type,
-	elementType: elementType,
-	defaultValueBase64Binary: defaultValueBase64Binary,
-	elementDefaultValueBase64Binary: elementDefaultValueBase64Binary,
-	defaultValueBoolean: defaultValueBoolean,
-	elementDefaultValueBoolean: elementDefaultValueBoolean,
-	defaultValueCanonical: defaultValueCanonical,
-	elementDefaultValueCanonical: elementDefaultValueCanonical,
-	defaultValueCode: defaultValueCode,
-	elementDefaultValueCode: elementDefaultValueCode,
-	defaultValueDate: defaultValueDate,
-	elementDefaultValueDate: elementDefaultValueDate,
-	defaultValueDateTime: defaultValueDateTime,
-	elementDefaultValueDateTime: elementDefaultValueDateTime,
-	defaultValueDecimal: defaultValueDecimal,
-	elementDefaultValueDecimal: elementDefaultValueDecimal,
-	defaultValueId: defaultValueId,
-	elementDefaultValueId: elementDefaultValueId,
-	defaultValueInstant: defaultValueInstant,
-	elementDefaultValueInstant: elementDefaultValueInstant,
-	defaultValueInteger: defaultValueInteger,
-	elementDefaultValueInteger: elementDefaultValueInteger,
-	defaultValueMarkdown: defaultValueMarkdown,
-	elementDefaultValueMarkdown: elementDefaultValueMarkdown,
-	defaultValueOid: defaultValueOid,
-	elementDefaultValueOid: elementDefaultValueOid,
-	defaultValuePositiveInt: defaultValuePositiveInt,
-	elementDefaultValuePositiveInt: elementDefaultValuePositiveInt,
-	defaultValueString: defaultValueString,
-	elementDefaultValueString: elementDefaultValueString,
-	defaultValueTime: defaultValueTime,
-	elementDefaultValueTime: elementDefaultValueTime,
-	defaultValueUnsignedInt: defaultValueUnsignedInt,
-	elementDefaultValueUnsignedInt: elementDefaultValueUnsignedInt,
-	defaultValueUri: defaultValueUri,
-	elementDefaultValueUri: elementDefaultValueUri,
-	defaultValueUrl: defaultValueUrl,
-	elementDefaultValueUrl: elementDefaultValueUrl,
-	defaultValueUuid: defaultValueUuid,
-	elementDefaultValueUuid: elementDefaultValueUuid,
-	defaultValueAddress: defaultValueAddress,
-	defaultValueAge: defaultValueAge,
-	defaultValueAnnotation: defaultValueAnnotation,
-	defaultValueAttachment: defaultValueAttachment,
-	defaultValueCodeableConcept: defaultValueCodeableConcept,
-	defaultValueCoding: defaultValueCoding,
-	defaultValueContactPoint: defaultValueContactPoint,
-	defaultValueCount: defaultValueCount,
-	defaultValueDistance: defaultValueDistance,
-	defaultValueDuration: defaultValueDuration,
-	defaultValueHumanName: defaultValueHumanName,
-	defaultValueIdentifier: defaultValueIdentifier,
-	defaultValueMoney: defaultValueMoney,
-	defaultValuePeriod: defaultValuePeriod,
-	defaultValueQuantity: defaultValueQuantity,
-	defaultValueRange: defaultValueRange,
-	defaultValueRatio: defaultValueRatio,
-	defaultValueReference: defaultValueReference,
-	defaultValueSampledData: defaultValueSampledData,
-	defaultValueSignature: defaultValueSignature,
-	defaultValueTiming: defaultValueTiming,
-	defaultValueContactDetail: defaultValueContactDetail,
-	defaultValueContributor: defaultValueContributor,
-	defaultValueDataRequirement: defaultValueDataRequirement,
-	defaultValueExpression: defaultValueExpression,
-	defaultValueParameterDefinition: defaultValueParameterDefinition,
-	defaultValueRelatedArtifact: defaultValueRelatedArtifact,
-	defaultValueTriggerDefinition: defaultValueTriggerDefinition,
-	defaultValueUsageContext: defaultValueUsageContext,
-	defaultValueDosage: defaultValueDosage,
-	defaultValueMeta: defaultValueMeta,
-	element: element,
-	elementElement: elementElement,
-	listMode: listMode,
-	elementListMode: elementListMode,
-	variable: variable,
-	elementVariable: elementVariable,
-	condition: condition,
-	elementCondition: elementCondition,
-	check: check,
-	elementCheck: elementCheck,
-	logMessage: logMessage,
-	elementLogMessage: elementLogMessage,
-);
-	return newStructureMap_Source;
-}
+  StructureMap_Source({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.context,
+    this.elementContext,
+    this.min,
+    this.elementMin,
+    this.max,
+    this.elementMax,
+    this.type,
+    this.elementType,
+    this.defaultValueBase64Binary,
+    this.elementDefaultValueBase64Binary,
+    this.defaultValueBoolean,
+    this.elementDefaultValueBoolean,
+    this.defaultValueCanonical,
+    this.elementDefaultValueCanonical,
+    this.defaultValueCode,
+    this.elementDefaultValueCode,
+    this.defaultValueDate,
+    this.elementDefaultValueDate,
+    this.defaultValueDateTime,
+    this.elementDefaultValueDateTime,
+    this.defaultValueDecimal,
+    this.elementDefaultValueDecimal,
+    this.defaultValueId,
+    this.elementDefaultValueId,
+    this.defaultValueInstant,
+    this.elementDefaultValueInstant,
+    this.defaultValueInteger,
+    this.elementDefaultValueInteger,
+    this.defaultValueMarkdown,
+    this.elementDefaultValueMarkdown,
+    this.defaultValueOid,
+    this.elementDefaultValueOid,
+    this.defaultValuePositiveInt,
+    this.elementDefaultValuePositiveInt,
+    this.defaultValueString,
+    this.elementDefaultValueString,
+    this.defaultValueTime,
+    this.elementDefaultValueTime,
+    this.defaultValueUnsignedInt,
+    this.elementDefaultValueUnsignedInt,
+    this.defaultValueUri,
+    this.elementDefaultValueUri,
+    this.defaultValueUrl,
+    this.elementDefaultValueUrl,
+    this.defaultValueUuid,
+    this.elementDefaultValueUuid,
+    this.defaultValueAddress,
+    this.defaultValueAge,
+    this.defaultValueAnnotation,
+    this.defaultValueAttachment,
+    this.defaultValueCodeableConcept,
+    this.defaultValueCoding,
+    this.defaultValueContactPoint,
+    this.defaultValueCount,
+    this.defaultValueDistance,
+    this.defaultValueDuration,
+    this.defaultValueHumanName,
+    this.defaultValueIdentifier,
+    this.defaultValueMoney,
+    this.defaultValuePeriod,
+    this.defaultValueQuantity,
+    this.defaultValueRange,
+    this.defaultValueRatio,
+    this.defaultValueReference,
+    this.defaultValueSampledData,
+    this.defaultValueSignature,
+    this.defaultValueTiming,
+    this.defaultValueContactDetail,
+    this.defaultValueContributor,
+    this.defaultValueDataRequirement,
+    this.defaultValueExpression,
+    this.defaultValueParameterDefinition,
+    this.defaultValueRelatedArtifact,
+    this.defaultValueTriggerDefinition,
+    this.defaultValueUsageContext,
+    this.defaultValueDosage,
+    this.defaultValueMeta,
+    this.element,
+    this.elementElement,
+    this.listMode,
+    this.elementListMode,
+    this.variable,
+    this.elementVariable,
+    this.condition,
+    this.elementCondition,
+    this.check,
+    this.elementCheck,
+    this.logMessage,
+    this.elementLogMessage,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String context;
-	Element elementContext;
-	int min;
-	Element elementMin;
-	String max;
-	Element elementMax;
-	String type;
-	Element elementType;
-	String defaultValueBase64Binary;
-	Element elementDefaultValueBase64Binary;
-	bool defaultValueBoolean;
-	Element elementDefaultValueBoolean;
-	String defaultValueCanonical;
-	Element elementDefaultValueCanonical;
-	String defaultValueCode;
-	Element elementDefaultValueCode;
-	String defaultValueDate;
-	Element elementDefaultValueDate;
-	String defaultValueDateTime;
-	Element elementDefaultValueDateTime;
-	int defaultValueDecimal;
-	Element elementDefaultValueDecimal;
-	String defaultValueId;
-	Element elementDefaultValueId;
-	String defaultValueInstant;
-	Element elementDefaultValueInstant;
-	int defaultValueInteger;
-	Element elementDefaultValueInteger;
-	String defaultValueMarkdown;
-	Element elementDefaultValueMarkdown;
-	String defaultValueOid;
-	Element elementDefaultValueOid;
-	int defaultValuePositiveInt;
-	Element elementDefaultValuePositiveInt;
-	String defaultValueString;
-	Element elementDefaultValueString;
-	String defaultValueTime;
-	Element elementDefaultValueTime;
-	int defaultValueUnsignedInt;
-	Element elementDefaultValueUnsignedInt;
-	String defaultValueUri;
-	Element elementDefaultValueUri;
-	String defaultValueUrl;
-	Element elementDefaultValueUrl;
-	String defaultValueUuid;
-	Element elementDefaultValueUuid;
-	Address defaultValueAddress;
-	Age defaultValueAge;
-	Annotation defaultValueAnnotation;
-	Attachment defaultValueAttachment;
-	CodeableConcept defaultValueCodeableConcept;
-	Coding defaultValueCoding;
-	ContactPoint defaultValueContactPoint;
-	Count defaultValueCount;
-	Distance defaultValueDistance;
-	Duration defaultValueDuration;
-	HumanName defaultValueHumanName;
-	Identifier defaultValueIdentifier;
-	Money defaultValueMoney;
-	Period defaultValuePeriod;
-	Quantity defaultValueQuantity;
-	Range defaultValueRange;
-	Ratio defaultValueRatio;
-	Reference defaultValueReference;
-	SampledData defaultValueSampledData;
-	Signature defaultValueSignature;
-	Timing defaultValueTiming;
-	ContactDetail defaultValueContactDetail;
-	Contributor defaultValueContributor;
-	DataRequirement defaultValueDataRequirement;
-	Expression defaultValueExpression;
-	ParameterDefinition defaultValueParameterDefinition;
-	RelatedArtifact defaultValueRelatedArtifact;
-	TriggerDefinition defaultValueTriggerDefinition;
-	UsageContext defaultValueUsageContext;
-	Dosage defaultValueDosage;
-	Meta defaultValueMeta;
-	String element;
-	Element elementElement;
-	String listMode;
-	Element elementListMode;
-	String variable;
-	Element elementVariable;
-	String condition;
-	Element elementCondition;
-	String check;
-	Element elementCheck;
-	String logMessage;
-	Element elementLogMessage;
-
-StructureMap_Source(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.context,
-this.elementContext,
-this.min,
-this.elementMin,
-this.max,
-this.elementMax,
-this.type,
-this.elementType,
-this.defaultValueBase64Binary,
-this.elementDefaultValueBase64Binary,
-this.defaultValueBoolean,
-this.elementDefaultValueBoolean,
-this.defaultValueCanonical,
-this.elementDefaultValueCanonical,
-this.defaultValueCode,
-this.elementDefaultValueCode,
-this.defaultValueDate,
-this.elementDefaultValueDate,
-this.defaultValueDateTime,
-this.elementDefaultValueDateTime,
-this.defaultValueDecimal,
-this.elementDefaultValueDecimal,
-this.defaultValueId,
-this.elementDefaultValueId,
-this.defaultValueInstant,
-this.elementDefaultValueInstant,
-this.defaultValueInteger,
-this.elementDefaultValueInteger,
-this.defaultValueMarkdown,
-this.elementDefaultValueMarkdown,
-this.defaultValueOid,
-this.elementDefaultValueOid,
-this.defaultValuePositiveInt,
-this.elementDefaultValuePositiveInt,
-this.defaultValueString,
-this.elementDefaultValueString,
-this.defaultValueTime,
-this.elementDefaultValueTime,
-this.defaultValueUnsignedInt,
-this.elementDefaultValueUnsignedInt,
-this.defaultValueUri,
-this.elementDefaultValueUri,
-this.defaultValueUrl,
-this.elementDefaultValueUrl,
-this.defaultValueUuid,
-this.elementDefaultValueUuid,
-this.defaultValueAddress,
-this.defaultValueAge,
-this.defaultValueAnnotation,
-this.defaultValueAttachment,
-this.defaultValueCodeableConcept,
-this.defaultValueCoding,
-this.defaultValueContactPoint,
-this.defaultValueCount,
-this.defaultValueDistance,
-this.defaultValueDuration,
-this.defaultValueHumanName,
-this.defaultValueIdentifier,
-this.defaultValueMoney,
-this.defaultValuePeriod,
-this.defaultValueQuantity,
-this.defaultValueRange,
-this.defaultValueRatio,
-this.defaultValueReference,
-this.defaultValueSampledData,
-this.defaultValueSignature,
-this.defaultValueTiming,
-this.defaultValueContactDetail,
-this.defaultValueContributor,
-this.defaultValueDataRequirement,
-this.defaultValueExpression,
-this.defaultValueParameterDefinition,
-this.defaultValueRelatedArtifact,
-this.defaultValueTriggerDefinition,
-this.defaultValueUsageContext,
-this.defaultValueDosage,
-this.defaultValueMeta,
-this.element,
-this.elementElement,
-this.listMode,
-this.elementListMode,
-this.variable,
-this.elementVariable,
-this.condition,
-this.elementCondition,
-this.check,
-this.elementCheck,
-this.logMessage,
-this.elementLogMessage,
-});
-
-  factory StructureMap_Source.fromJson(Map<String, dynamic> json) => _$StructureMap_SourceFromJson(json);
+  factory StructureMap_Source.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_SourceFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_SourceToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Target {
+  static Future<StructureMap_Target> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String context,
+    Element elementContext,
+    String contextType,
+    Element elementContextType,
+    String element,
+    Element elementElement,
+    String variable,
+    Element elementVariable,
+    String listMode,
+    List<Element> elementListMode,
+    String listRuleId,
+    Element elementListRuleId,
+    String transform,
+    Element elementTransform,
+    List<StructureMap_Parameter> parameter,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Target newStructureMap_Target = new StructureMap_Target(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Target'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      context: context,
+      elementContext: elementContext,
+      contextType: contextType,
+      elementContextType: elementContextType,
+      element: element,
+      elementElement: elementElement,
+      variable: variable,
+      elementVariable: elementVariable,
+      listMode: listMode,
+      elementListMode: elementListMode,
+      listRuleId: listRuleId,
+      elementListRuleId: elementListRuleId,
+      transform: transform,
+      elementTransform: elementTransform,
+      parameter: parameter,
+    );
+    return newStructureMap_Target;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Target{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String context;
+  Element elementContext;
+  String contextType;
+  Element elementContextType;
+  String element;
+  Element elementElement;
+  String variable;
+  Element elementVariable;
+  String listMode;
+  List<Element> elementListMode;
+  String listRuleId;
+  Element elementListRuleId;
+  String transform;
+  Element elementTransform;
+  List<StructureMap_Parameter> parameter;
 
-	static Future<StructureMap_Target> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String context,
-	Element elementContext,
-	String contextType,
-	Element elementContextType,
-	String element,
-	Element elementElement,
-	String variable,
-	Element elementVariable,
-	String listMode,
-	List<Element> elementListMode,
-	String listRuleId,
-	Element elementListRuleId,
-	String transform,
-	Element elementTransform,
-	List<StructureMap_Parameter> parameter,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Target newStructureMap_Target = new StructureMap_Target(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Target'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	context: context,
-	elementContext: elementContext,
-	contextType: contextType,
-	elementContextType: elementContextType,
-	element: element,
-	elementElement: elementElement,
-	variable: variable,
-	elementVariable: elementVariable,
-	listMode: listMode,
-	elementListMode: elementListMode,
-	listRuleId: listRuleId,
-	elementListRuleId: elementListRuleId,
-	transform: transform,
-	elementTransform: elementTransform,
-	parameter: parameter,
-);
-	return newStructureMap_Target;
-}
+  StructureMap_Target({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.context,
+    this.elementContext,
+    this.contextType,
+    this.elementContextType,
+    this.element,
+    this.elementElement,
+    this.variable,
+    this.elementVariable,
+    this.listMode,
+    this.elementListMode,
+    this.listRuleId,
+    this.elementListRuleId,
+    this.transform,
+    this.elementTransform,
+    this.parameter,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String context;
-	Element elementContext;
-	String contextType;
-	Element elementContextType;
-	String element;
-	Element elementElement;
-	String variable;
-	Element elementVariable;
-	String listMode;
-	List<Element> elementListMode;
-	String listRuleId;
-	Element elementListRuleId;
-	String transform;
-	Element elementTransform;
-	List<StructureMap_Parameter> parameter;
-
-StructureMap_Target(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.context,
-this.elementContext,
-this.contextType,
-this.elementContextType,
-this.element,
-this.elementElement,
-this.variable,
-this.elementVariable,
-this.listMode,
-this.elementListMode,
-this.listRuleId,
-this.elementListRuleId,
-this.transform,
-this.elementTransform,
-this.parameter,
-});
-
-  factory StructureMap_Target.fromJson(Map<String, dynamic> json) => _$StructureMap_TargetFromJson(json);
+  factory StructureMap_Target.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_TargetFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_TargetToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Parameter {
+  static Future<StructureMap_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String valueId,
+    Element elementValueId,
+    String valueString,
+    Element elementValueString,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueInteger,
+    Element elementValueInteger,
+    int valueDecimal,
+    Element elementValueDecimal,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Parameter newStructureMap_Parameter =
+        new StructureMap_Parameter(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Parameter'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      valueId: valueId,
+      elementValueId: elementValueId,
+      valueString: valueString,
+      elementValueString: elementValueString,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+      valueInteger: valueInteger,
+      elementValueInteger: elementValueInteger,
+      valueDecimal: valueDecimal,
+      elementValueDecimal: elementValueDecimal,
+    );
+    return newStructureMap_Parameter;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Parameter{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String valueId;
+  Element elementValueId;
+  String valueString;
+  Element elementValueString;
+  bool valueBoolean;
+  Element elementValueBoolean;
+  int valueInteger;
+  Element elementValueInteger;
+  int valueDecimal;
+  Element elementValueDecimal;
 
-	static Future<StructureMap_Parameter> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String valueId,
-	Element elementValueId,
-	String valueString,
-	Element elementValueString,
-	bool valueBoolean,
-	Element elementValueBoolean,
-	int valueInteger,
-	Element elementValueInteger,
-	int valueDecimal,
-	Element elementValueDecimal,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Parameter newStructureMap_Parameter = new StructureMap_Parameter(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Parameter'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	valueId: valueId,
-	elementValueId: elementValueId,
-	valueString: valueString,
-	elementValueString: elementValueString,
-	valueBoolean: valueBoolean,
-	elementValueBoolean: elementValueBoolean,
-	valueInteger: valueInteger,
-	elementValueInteger: elementValueInteger,
-	valueDecimal: valueDecimal,
-	elementValueDecimal: elementValueDecimal,
-);
-	return newStructureMap_Parameter;
-}
+  StructureMap_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueId,
+    this.elementValueId,
+    this.valueString,
+    this.elementValueString,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDecimal,
+    this.elementValueDecimal,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String valueId;
-	Element elementValueId;
-	String valueString;
-	Element elementValueString;
-	bool valueBoolean;
-	Element elementValueBoolean;
-	int valueInteger;
-	Element elementValueInteger;
-	int valueDecimal;
-	Element elementValueDecimal;
-
-StructureMap_Parameter(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.valueId,
-this.elementValueId,
-this.valueString,
-this.elementValueString,
-this.valueBoolean,
-this.elementValueBoolean,
-this.valueInteger,
-this.elementValueInteger,
-this.valueDecimal,
-this.elementValueDecimal,
-});
-
-  factory StructureMap_Parameter.fromJson(Map<String, dynamic> json) => _$StructureMap_ParameterFromJson(json);
+  factory StructureMap_Parameter.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_ParameterFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_ParameterToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class StructureMap_Dependent {
+  static Future<StructureMap_Dependent> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    List<String> variable,
+    List<Element> elementVariable,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    StructureMap_Dependent newStructureMap_Dependent =
+        new StructureMap_Dependent(
+      id: id ?? await fhirDb.newResourceId('StructureMap_Dependent'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      variable: variable,
+      elementVariable: elementVariable,
+    );
+    return newStructureMap_Dependent;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class StructureMap_Dependent{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  List<String> variable;
+  List<Element> elementVariable;
 
-	static Future<StructureMap_Dependent> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	List<String> variable,
-	List<Element> elementVariable,
-}) async {
-var fhirDb = new DatabaseHelper();
-StructureMap_Dependent newStructureMap_Dependent = new StructureMap_Dependent(
-	id: id ?? await fhirDb.newResourceId('StructureMap_Dependent'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	variable: variable,
-	elementVariable: elementVariable,
-);
-	return newStructureMap_Dependent;
-}
+  StructureMap_Dependent({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.variable,
+    this.elementVariable,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	List<String> variable;
-	List<Element> elementVariable;
-
-StructureMap_Dependent(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.variable,
-this.elementVariable,
-});
-
-  factory StructureMap_Dependent.fromJson(Map<String, dynamic> json) => _$StructureMap_DependentFromJson(json);
+  factory StructureMap_Dependent.fromJson(Map<String, dynamic> json) =>
+      _$StructureMap_DependentFromJson(json);
   Map<String, dynamic> toJson() => _$StructureMap_DependentToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -1112,8 +1109,9 @@ StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1199,50 +1197,63 @@ StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMapToJson(StructureMap instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'structure': instance.structure?.map((e) => e?.toJson())?.toList(),
-      'import': instance.import,
-      'group': instance.group?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$StructureMapToJson(StructureMap instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull(
+      'structure', instance.structure?.map((e) => e?.toJson())?.toList());
+  writeNotNull('import', instance.import);
+  writeNotNull('group', instance.group?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 StructureMap_Structure _$StructureMap_StructureFromJson(
     Map<String, dynamic> json) {
@@ -1274,20 +1285,29 @@ StructureMap_Structure _$StructureMap_StructureFromJson(
 }
 
 Map<String, dynamic> _$StructureMap_StructureToJson(
-        StructureMap_Structure instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'mode': instance.mode,
-      'elementMode': instance.elementMode?.toJson(),
-      'alias': instance.alias,
-      'elementAlias': instance.elementAlias?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-    };
+    StructureMap_Structure instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('mode', instance.mode);
+  writeNotNull('elementMode', instance.elementMode?.toJson());
+  writeNotNull('alias', instance.alias);
+  writeNotNull('elementAlias', instance.elementAlias?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  return val;
+}
 
 StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
   return StructureMap_Group(
@@ -1330,23 +1350,32 @@ StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_GroupToJson(StructureMap_Group instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'extend': instance.extend,
-      'elementExtends': instance.elementExtends?.toJson(),
-      'typeMode': instance.typeMode,
-      'elementTypeMode': instance.elementTypeMode?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-      'input': instance.input?.map((e) => e?.toJson())?.toList(),
-      'rule': instance.rule?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$StructureMap_GroupToJson(StructureMap_Group instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('extend', instance.extend);
+  writeNotNull('elementExtends', instance.elementExtends?.toJson());
+  writeNotNull('typeMode', instance.typeMode);
+  writeNotNull('elementTypeMode', instance.elementTypeMode?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  writeNotNull('input', instance.input?.map((e) => e?.toJson())?.toList());
+  writeNotNull('rule', instance.rule?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 StructureMap_Input _$StructureMap_InputFromJson(Map<String, dynamic> json) {
   return StructureMap_Input(
@@ -1379,21 +1408,30 @@ StructureMap_Input _$StructureMap_InputFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_InputToJson(StructureMap_Input instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'mode': instance.mode,
-      'elementMode': instance.elementMode?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-    };
+Map<String, dynamic> _$StructureMap_InputToJson(StructureMap_Input instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('mode', instance.mode);
+  writeNotNull('elementMode', instance.elementMode?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  return val;
+}
 
 StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
   return StructureMap_Rule(
@@ -1438,21 +1476,31 @@ StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_RuleToJson(StructureMap_Rule instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'source': instance.source?.map((e) => e?.toJson())?.toList(),
-      'target': instance.target?.map((e) => e?.toJson())?.toList(),
-      'rule': instance.rule?.map((e) => e?.toJson())?.toList(),
-      'dependent': instance.dependent?.map((e) => e?.toJson())?.toList(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-    };
+Map<String, dynamic> _$StructureMap_RuleToJson(StructureMap_Rule instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('source', instance.source?.map((e) => e?.toJson())?.toList());
+  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
+  writeNotNull('rule', instance.rule?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'dependent', instance.dependent?.map((e) => e?.toJson())?.toList());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  return val;
+}
 
 StructureMap_Source _$StructureMap_SourceFromJson(Map<String, dynamic> json) {
   return StructureMap_Source(
@@ -1720,118 +1768,147 @@ StructureMap_Source _$StructureMap_SourceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_SourceToJson(
-        StructureMap_Source instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'context': instance.context,
-      'elementContext': instance.elementContext?.toJson(),
-      'min': instance.min,
-      'elementMin': instance.elementMin?.toJson(),
-      'max': instance.max,
-      'elementMax': instance.elementMax?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'defaultValueBase64Binary': instance.defaultValueBase64Binary,
-      'elementDefaultValueBase64Binary':
-          instance.elementDefaultValueBase64Binary?.toJson(),
-      'defaultValueBoolean': instance.defaultValueBoolean,
-      'elementDefaultValueBoolean':
-          instance.elementDefaultValueBoolean?.toJson(),
-      'defaultValueCanonical': instance.defaultValueCanonical,
-      'elementDefaultValueCanonical':
-          instance.elementDefaultValueCanonical?.toJson(),
-      'defaultValueCode': instance.defaultValueCode,
-      'elementDefaultValueCode': instance.elementDefaultValueCode?.toJson(),
-      'defaultValueDate': instance.defaultValueDate,
-      'elementDefaultValueDate': instance.elementDefaultValueDate?.toJson(),
-      'defaultValueDateTime': instance.defaultValueDateTime,
-      'elementDefaultValueDateTime':
-          instance.elementDefaultValueDateTime?.toJson(),
-      'defaultValueDecimal': instance.defaultValueDecimal,
-      'elementDefaultValueDecimal':
-          instance.elementDefaultValueDecimal?.toJson(),
-      'defaultValueId': instance.defaultValueId,
-      'elementDefaultValueId': instance.elementDefaultValueId?.toJson(),
-      'defaultValueInstant': instance.defaultValueInstant,
-      'elementDefaultValueInstant':
-          instance.elementDefaultValueInstant?.toJson(),
-      'defaultValueInteger': instance.defaultValueInteger,
-      'elementDefaultValueInteger':
-          instance.elementDefaultValueInteger?.toJson(),
-      'defaultValueMarkdown': instance.defaultValueMarkdown,
-      'elementDefaultValueMarkdown':
-          instance.elementDefaultValueMarkdown?.toJson(),
-      'defaultValueOid': instance.defaultValueOid,
-      'elementDefaultValueOid': instance.elementDefaultValueOid?.toJson(),
-      'defaultValuePositiveInt': instance.defaultValuePositiveInt,
-      'elementDefaultValuePositiveInt':
-          instance.elementDefaultValuePositiveInt?.toJson(),
-      'defaultValueString': instance.defaultValueString,
-      'elementDefaultValueString': instance.elementDefaultValueString?.toJson(),
-      'defaultValueTime': instance.defaultValueTime,
-      'elementDefaultValueTime': instance.elementDefaultValueTime?.toJson(),
-      'defaultValueUnsignedInt': instance.defaultValueUnsignedInt,
-      'elementDefaultValueUnsignedInt':
-          instance.elementDefaultValueUnsignedInt?.toJson(),
-      'defaultValueUri': instance.defaultValueUri,
-      'elementDefaultValueUri': instance.elementDefaultValueUri?.toJson(),
-      'defaultValueUrl': instance.defaultValueUrl,
-      'elementDefaultValueUrl': instance.elementDefaultValueUrl?.toJson(),
-      'defaultValueUuid': instance.defaultValueUuid,
-      'elementDefaultValueUuid': instance.elementDefaultValueUuid?.toJson(),
-      'defaultValueAddress': instance.defaultValueAddress?.toJson(),
-      'defaultValueAge': instance.defaultValueAge?.toJson(),
-      'defaultValueAnnotation': instance.defaultValueAnnotation?.toJson(),
-      'defaultValueAttachment': instance.defaultValueAttachment?.toJson(),
-      'defaultValueCodeableConcept':
-          instance.defaultValueCodeableConcept?.toJson(),
-      'defaultValueCoding': instance.defaultValueCoding?.toJson(),
-      'defaultValueContactPoint': instance.defaultValueContactPoint?.toJson(),
-      'defaultValueCount': instance.defaultValueCount?.toJson(),
-      'defaultValueDistance': instance.defaultValueDistance?.toJson(),
-      'defaultValueDuration': instance.defaultValueDuration?.toJson(),
-      'defaultValueHumanName': instance.defaultValueHumanName?.toJson(),
-      'defaultValueIdentifier': instance.defaultValueIdentifier?.toJson(),
-      'defaultValueMoney': instance.defaultValueMoney?.toJson(),
-      'defaultValuePeriod': instance.defaultValuePeriod?.toJson(),
-      'defaultValueQuantity': instance.defaultValueQuantity?.toJson(),
-      'defaultValueRange': instance.defaultValueRange?.toJson(),
-      'defaultValueRatio': instance.defaultValueRatio?.toJson(),
-      'defaultValueReference': instance.defaultValueReference?.toJson(),
-      'defaultValueSampledData': instance.defaultValueSampledData?.toJson(),
-      'defaultValueSignature': instance.defaultValueSignature?.toJson(),
-      'defaultValueTiming': instance.defaultValueTiming?.toJson(),
-      'defaultValueContactDetail': instance.defaultValueContactDetail?.toJson(),
-      'defaultValueContributor': instance.defaultValueContributor?.toJson(),
-      'defaultValueDataRequirement':
-          instance.defaultValueDataRequirement?.toJson(),
-      'defaultValueExpression': instance.defaultValueExpression?.toJson(),
-      'defaultValueParameterDefinition':
-          instance.defaultValueParameterDefinition?.toJson(),
-      'defaultValueRelatedArtifact':
-          instance.defaultValueRelatedArtifact?.toJson(),
-      'defaultValueTriggerDefinition':
-          instance.defaultValueTriggerDefinition?.toJson(),
-      'defaultValueUsageContext': instance.defaultValueUsageContext?.toJson(),
-      'defaultValueDosage': instance.defaultValueDosage?.toJson(),
-      'defaultValueMeta': instance.defaultValueMeta?.toJson(),
-      'element': instance.element,
-      'elementElement': instance.elementElement?.toJson(),
-      'listMode': instance.listMode,
-      'elementListMode': instance.elementListMode?.toJson(),
-      'variable': instance.variable,
-      'elementVariable': instance.elementVariable?.toJson(),
-      'condition': instance.condition,
-      'elementCondition': instance.elementCondition?.toJson(),
-      'check': instance.check,
-      'elementCheck': instance.elementCheck?.toJson(),
-      'logMessage': instance.logMessage,
-      'elementLogMessage': instance.elementLogMessage?.toJson(),
-    };
+Map<String, dynamic> _$StructureMap_SourceToJson(StructureMap_Source instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('context', instance.context);
+  writeNotNull('elementContext', instance.elementContext?.toJson());
+  writeNotNull('min', instance.min);
+  writeNotNull('elementMin', instance.elementMin?.toJson());
+  writeNotNull('max', instance.max);
+  writeNotNull('elementMax', instance.elementMax?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('defaultValueBase64Binary', instance.defaultValueBase64Binary);
+  writeNotNull('elementDefaultValueBase64Binary',
+      instance.elementDefaultValueBase64Binary?.toJson());
+  writeNotNull('defaultValueBoolean', instance.defaultValueBoolean);
+  writeNotNull('elementDefaultValueBoolean',
+      instance.elementDefaultValueBoolean?.toJson());
+  writeNotNull('defaultValueCanonical', instance.defaultValueCanonical);
+  writeNotNull('elementDefaultValueCanonical',
+      instance.elementDefaultValueCanonical?.toJson());
+  writeNotNull('defaultValueCode', instance.defaultValueCode);
+  writeNotNull(
+      'elementDefaultValueCode', instance.elementDefaultValueCode?.toJson());
+  writeNotNull('defaultValueDate', instance.defaultValueDate);
+  writeNotNull(
+      'elementDefaultValueDate', instance.elementDefaultValueDate?.toJson());
+  writeNotNull('defaultValueDateTime', instance.defaultValueDateTime);
+  writeNotNull('elementDefaultValueDateTime',
+      instance.elementDefaultValueDateTime?.toJson());
+  writeNotNull('defaultValueDecimal', instance.defaultValueDecimal);
+  writeNotNull('elementDefaultValueDecimal',
+      instance.elementDefaultValueDecimal?.toJson());
+  writeNotNull('defaultValueId', instance.defaultValueId);
+  writeNotNull(
+      'elementDefaultValueId', instance.elementDefaultValueId?.toJson());
+  writeNotNull('defaultValueInstant', instance.defaultValueInstant);
+  writeNotNull('elementDefaultValueInstant',
+      instance.elementDefaultValueInstant?.toJson());
+  writeNotNull('defaultValueInteger', instance.defaultValueInteger);
+  writeNotNull('elementDefaultValueInteger',
+      instance.elementDefaultValueInteger?.toJson());
+  writeNotNull('defaultValueMarkdown', instance.defaultValueMarkdown);
+  writeNotNull('elementDefaultValueMarkdown',
+      instance.elementDefaultValueMarkdown?.toJson());
+  writeNotNull('defaultValueOid', instance.defaultValueOid);
+  writeNotNull(
+      'elementDefaultValueOid', instance.elementDefaultValueOid?.toJson());
+  writeNotNull('defaultValuePositiveInt', instance.defaultValuePositiveInt);
+  writeNotNull('elementDefaultValuePositiveInt',
+      instance.elementDefaultValuePositiveInt?.toJson());
+  writeNotNull('defaultValueString', instance.defaultValueString);
+  writeNotNull('elementDefaultValueString',
+      instance.elementDefaultValueString?.toJson());
+  writeNotNull('defaultValueTime', instance.defaultValueTime);
+  writeNotNull(
+      'elementDefaultValueTime', instance.elementDefaultValueTime?.toJson());
+  writeNotNull('defaultValueUnsignedInt', instance.defaultValueUnsignedInt);
+  writeNotNull('elementDefaultValueUnsignedInt',
+      instance.elementDefaultValueUnsignedInt?.toJson());
+  writeNotNull('defaultValueUri', instance.defaultValueUri);
+  writeNotNull(
+      'elementDefaultValueUri', instance.elementDefaultValueUri?.toJson());
+  writeNotNull('defaultValueUrl', instance.defaultValueUrl);
+  writeNotNull(
+      'elementDefaultValueUrl', instance.elementDefaultValueUrl?.toJson());
+  writeNotNull('defaultValueUuid', instance.defaultValueUuid);
+  writeNotNull(
+      'elementDefaultValueUuid', instance.elementDefaultValueUuid?.toJson());
+  writeNotNull('defaultValueAddress', instance.defaultValueAddress?.toJson());
+  writeNotNull('defaultValueAge', instance.defaultValueAge?.toJson());
+  writeNotNull(
+      'defaultValueAnnotation', instance.defaultValueAnnotation?.toJson());
+  writeNotNull(
+      'defaultValueAttachment', instance.defaultValueAttachment?.toJson());
+  writeNotNull('defaultValueCodeableConcept',
+      instance.defaultValueCodeableConcept?.toJson());
+  writeNotNull('defaultValueCoding', instance.defaultValueCoding?.toJson());
+  writeNotNull(
+      'defaultValueContactPoint', instance.defaultValueContactPoint?.toJson());
+  writeNotNull('defaultValueCount', instance.defaultValueCount?.toJson());
+  writeNotNull('defaultValueDistance', instance.defaultValueDistance?.toJson());
+  writeNotNull('defaultValueDuration', instance.defaultValueDuration?.toJson());
+  writeNotNull(
+      'defaultValueHumanName', instance.defaultValueHumanName?.toJson());
+  writeNotNull(
+      'defaultValueIdentifier', instance.defaultValueIdentifier?.toJson());
+  writeNotNull('defaultValueMoney', instance.defaultValueMoney?.toJson());
+  writeNotNull('defaultValuePeriod', instance.defaultValuePeriod?.toJson());
+  writeNotNull('defaultValueQuantity', instance.defaultValueQuantity?.toJson());
+  writeNotNull('defaultValueRange', instance.defaultValueRange?.toJson());
+  writeNotNull('defaultValueRatio', instance.defaultValueRatio?.toJson());
+  writeNotNull(
+      'defaultValueReference', instance.defaultValueReference?.toJson());
+  writeNotNull(
+      'defaultValueSampledData', instance.defaultValueSampledData?.toJson());
+  writeNotNull(
+      'defaultValueSignature', instance.defaultValueSignature?.toJson());
+  writeNotNull('defaultValueTiming', instance.defaultValueTiming?.toJson());
+  writeNotNull('defaultValueContactDetail',
+      instance.defaultValueContactDetail?.toJson());
+  writeNotNull(
+      'defaultValueContributor', instance.defaultValueContributor?.toJson());
+  writeNotNull('defaultValueDataRequirement',
+      instance.defaultValueDataRequirement?.toJson());
+  writeNotNull(
+      'defaultValueExpression', instance.defaultValueExpression?.toJson());
+  writeNotNull('defaultValueParameterDefinition',
+      instance.defaultValueParameterDefinition?.toJson());
+  writeNotNull('defaultValueRelatedArtifact',
+      instance.defaultValueRelatedArtifact?.toJson());
+  writeNotNull('defaultValueTriggerDefinition',
+      instance.defaultValueTriggerDefinition?.toJson());
+  writeNotNull(
+      'defaultValueUsageContext', instance.defaultValueUsageContext?.toJson());
+  writeNotNull('defaultValueDosage', instance.defaultValueDosage?.toJson());
+  writeNotNull('defaultValueMeta', instance.defaultValueMeta?.toJson());
+  writeNotNull('element', instance.element);
+  writeNotNull('elementElement', instance.elementElement?.toJson());
+  writeNotNull('listMode', instance.listMode);
+  writeNotNull('elementListMode', instance.elementListMode?.toJson());
+  writeNotNull('variable', instance.variable);
+  writeNotNull('elementVariable', instance.elementVariable?.toJson());
+  writeNotNull('condition', instance.condition);
+  writeNotNull('elementCondition', instance.elementCondition?.toJson());
+  writeNotNull('check', instance.check);
+  writeNotNull('elementCheck', instance.elementCheck?.toJson());
+  writeNotNull('logMessage', instance.logMessage);
+  writeNotNull('elementLogMessage', instance.elementLogMessage?.toJson());
+  return val;
+}
 
 StructureMap_Target _$StructureMap_TargetFromJson(Map<String, dynamic> json) {
   return StructureMap_Target(
@@ -1881,30 +1958,39 @@ StructureMap_Target _$StructureMap_TargetFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_TargetToJson(
-        StructureMap_Target instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'context': instance.context,
-      'elementContext': instance.elementContext?.toJson(),
-      'contextType': instance.contextType,
-      'elementContextType': instance.elementContextType?.toJson(),
-      'element': instance.element,
-      'elementElement': instance.elementElement?.toJson(),
-      'variable': instance.variable,
-      'elementVariable': instance.elementVariable?.toJson(),
-      'listMode': instance.listMode,
-      'elementListMode':
-          instance.elementListMode?.map((e) => e?.toJson())?.toList(),
-      'listRuleId': instance.listRuleId,
-      'elementListRuleId': instance.elementListRuleId?.toJson(),
-      'transform': instance.transform,
-      'elementTransform': instance.elementTransform?.toJson(),
-      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$StructureMap_TargetToJson(StructureMap_Target instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('context', instance.context);
+  writeNotNull('elementContext', instance.elementContext?.toJson());
+  writeNotNull('contextType', instance.contextType);
+  writeNotNull('elementContextType', instance.elementContextType?.toJson());
+  writeNotNull('element', instance.element);
+  writeNotNull('elementElement', instance.elementElement?.toJson());
+  writeNotNull('variable', instance.variable);
+  writeNotNull('elementVariable', instance.elementVariable?.toJson());
+  writeNotNull('listMode', instance.listMode);
+  writeNotNull('elementListMode',
+      instance.elementListMode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('listRuleId', instance.listRuleId);
+  writeNotNull('elementListRuleId', instance.elementListRuleId?.toJson());
+  writeNotNull('transform', instance.transform);
+  writeNotNull('elementTransform', instance.elementTransform?.toJson());
+  writeNotNull(
+      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 StructureMap_Parameter _$StructureMap_ParameterFromJson(
     Map<String, dynamic> json) {
@@ -1942,23 +2028,32 @@ StructureMap_Parameter _$StructureMap_ParameterFromJson(
 }
 
 Map<String, dynamic> _$StructureMap_ParameterToJson(
-        StructureMap_Parameter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'valueId': instance.valueId,
-      'elementValueId': instance.elementValueId?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueInteger': instance.valueInteger,
-      'elementValueInteger': instance.elementValueInteger?.toJson(),
-      'valueDecimal': instance.valueDecimal,
-      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
-    };
+    StructureMap_Parameter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('valueId', instance.valueId);
+  writeNotNull('elementValueId', instance.elementValueId?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueInteger', instance.valueInteger);
+  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
+  writeNotNull('valueDecimal', instance.valueDecimal);
+  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
+  return val;
+}
 
 StructureMap_Dependent _$StructureMap_DependentFromJson(
     Map<String, dynamic> json) {
@@ -1985,15 +2080,24 @@ StructureMap_Dependent _$StructureMap_DependentFromJson(
 }
 
 Map<String, dynamic> _$StructureMap_DependentToJson(
-        StructureMap_Dependent instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'variable': instance.variable,
-      'elementVariable':
-          instance.elementVariable?.map((e) => e?.toJson())?.toList(),
-    };
+    StructureMap_Dependent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('variable', instance.variable);
+  writeNotNull('elementVariable',
+      instance.elementVariable?.map((e) => e?.toJson())?.toList());
+  return val;
+}

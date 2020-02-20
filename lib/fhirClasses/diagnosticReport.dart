@@ -12,215 +12,217 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DiagnosticReport {
+  static Future<DiagnosticReport> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> category,
+    CodeableConcept code,
+    Reference subject,
+    Reference encounter,
+    String effectiveDateTime,
+    Element elementEffectiveDateTime,
+    Period effectivePeriod,
+    DateTime issued,
+    Element elementIssued,
+    List<Reference> performer,
+    List<Reference> resultsInterpreter,
+    List<Reference> specimen,
+    List<Reference> result,
+    List<Reference> imagingStudy,
+    List<DiagnosticReport_Media> media,
+    String conclusion,
+    Element elementConclusion,
+    List<CodeableConcept> conclusionCode,
+    List<Attachment> presentedForm,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    DiagnosticReport newDiagnosticReport = new DiagnosticReport(
+      resourceType: 'DiagnosticReport',
+      id: id ?? await fhirDb.newResourceId('DiagnosticReport'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      basedOn: basedOn,
+      status: status,
+      elementStatus: elementStatus,
+      category: category,
+      code: code,
+      subject: subject,
+      encounter: encounter,
+      effectiveDateTime: effectiveDateTime,
+      elementEffectiveDateTime: elementEffectiveDateTime,
+      effectivePeriod: effectivePeriod,
+      issued: issued,
+      elementIssued: elementIssued,
+      performer: performer,
+      resultsInterpreter: resultsInterpreter,
+      specimen: specimen,
+      result: result,
+      imagingStudy: imagingStudy,
+      media: media,
+      conclusion: conclusion,
+      elementConclusion: elementConclusion,
+      conclusionCode: conclusionCode,
+      presentedForm: presentedForm,
+    );
+    newDiagnosticReport.meta.createdAt = DateTime.now();
+    newDiagnosticReport.meta.lastUpdated = newDiagnosticReport.meta.createdAt;
+    int saved = await fhirDb.saveResource(newDiagnosticReport);
+    return newDiagnosticReport;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class DiagnosticReport{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<DiagnosticReport> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	List<Reference> basedOn,
-	String status,
-	Element elementStatus,
-	List<CodeableConcept> category,
-	CodeableConcept code,
-	Reference subject,
-	Reference encounter,
-	String effectiveDateTime,
-	Element elementEffectiveDateTime,
-	Period effectivePeriod,
-	DateTime issued,
-	Element elementIssued,
-	List<Reference> performer,
-	List<Reference> resultsInterpreter,
-	List<Reference> specimen,
-	List<Reference> result,
-	List<Reference> imagingStudy,
-	List<DiagnosticReport_Media> media,
-	String conclusion,
-	Element elementConclusion,
-	List<CodeableConcept> conclusionCode,
-	List<Attachment> presentedForm,
-}) async {
-var fhirDb = new DatabaseHelper();
-DiagnosticReport newDiagnosticReport = new DiagnosticReport(
-	resourceType: 'DiagnosticReport',
-	id: id ?? await fhirDb.newResourceId('DiagnosticReport'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	basedOn: basedOn,
-	status: status,
-	elementStatus: elementStatus,
-	category: category,
-	code: code,
-	subject: subject,
-	encounter: encounter,
-	effectiveDateTime: effectiveDateTime,
-	elementEffectiveDateTime: elementEffectiveDateTime,
-	effectivePeriod: effectivePeriod,
-	issued: issued,
-	elementIssued: elementIssued,
-	performer: performer,
-	resultsInterpreter: resultsInterpreter,
-	specimen: specimen,
-	result: result,
-	imagingStudy: imagingStudy,
-	media: media,
-	conclusion: conclusion,
-	elementConclusion: elementConclusion,
-	conclusionCode: conclusionCode,
-	presentedForm: presentedForm,
-);
-	newDiagnosticReport.meta.createdAt = DateTime.now();
-	newDiagnosticReport.meta.lastUpdated = newDiagnosticReport.meta.createdAt;
-	int saved = await fhirDb.saveResource(newDiagnosticReport);
-	 return newDiagnosticReport;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'DiagnosticReport';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  List<Reference> basedOn;
+  String status;
+  Element elementStatus;
+  List<CodeableConcept> category;
+  CodeableConcept code;
+  Reference subject;
+  Reference encounter;
+  String effectiveDateTime;
+  Element elementEffectiveDateTime;
+  Period effectivePeriod;
+  DateTime issued;
+  Element elementIssued;
+  List<Reference> performer;
+  List<Reference> resultsInterpreter;
+  List<Reference> specimen;
+  List<Reference> result;
+  List<Reference> imagingStudy;
+  List<DiagnosticReport_Media> media;
+  String conclusion;
+  Element elementConclusion;
+  List<CodeableConcept> conclusionCode;
+  List<Attachment> presentedForm;
 
-	String resourceType= 'DiagnosticReport';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	List<Reference> basedOn;
-	String status;
-	Element elementStatus;
-	List<CodeableConcept> category;
-	CodeableConcept code;
-	Reference subject;
-	Reference encounter;
-	String effectiveDateTime;
-	Element elementEffectiveDateTime;
-	Period effectivePeriod;
-	DateTime issued;
-	Element elementIssued;
-	List<Reference> performer;
-	List<Reference> resultsInterpreter;
-	List<Reference> specimen;
-	List<Reference> result;
-	List<Reference> imagingStudy;
-	List<DiagnosticReport_Media> media;
-	String conclusion;
-	Element elementConclusion;
-	List<CodeableConcept> conclusionCode;
-	List<Attachment> presentedForm;
+  DiagnosticReport({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.status,
+    this.elementStatus,
+    this.category,
+    @required this.code,
+    this.subject,
+    this.encounter,
+    this.effectiveDateTime,
+    this.elementEffectiveDateTime,
+    this.effectivePeriod,
+    this.issued,
+    this.elementIssued,
+    this.performer,
+    this.resultsInterpreter,
+    this.specimen,
+    this.result,
+    this.imagingStudy,
+    this.media,
+    this.conclusion,
+    this.elementConclusion,
+    this.conclusionCode,
+    this.presentedForm,
+  });
 
-DiagnosticReport(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.basedOn,
-this.status,
-this.elementStatus,
-this.category,
-@required this.code,
-this.subject,
-this.encounter,
-this.effectiveDateTime,
-this.elementEffectiveDateTime,
-this.effectivePeriod,
-this.issued,
-this.elementIssued,
-this.performer,
-this.resultsInterpreter,
-this.specimen,
-this.result,
-this.imagingStudy,
-this.media,
-this.conclusion,
-this.elementConclusion,
-this.conclusionCode,
-this.presentedForm,
-});
-
-  factory DiagnosticReport.fromJson(Map<String, dynamic> json) => _$DiagnosticReportFromJson(json);
+  factory DiagnosticReport.fromJson(Map<String, dynamic> json) =>
+      _$DiagnosticReportFromJson(json);
   Map<String, dynamic> toJson() => _$DiagnosticReportToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DiagnosticReport_Media {
+  static Future<DiagnosticReport_Media> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String comment,
+    Element elementComment,
+    Reference link,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    DiagnosticReport_Media newDiagnosticReport_Media =
+        new DiagnosticReport_Media(
+      id: id ?? await fhirDb.newResourceId('DiagnosticReport_Media'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      comment: comment,
+      elementComment: elementComment,
+      link: link,
+    );
+    return newDiagnosticReport_Media;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class DiagnosticReport_Media{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String comment;
+  Element elementComment;
+  Reference link;
 
-	static Future<DiagnosticReport_Media> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String comment,
-	Element elementComment,
-	Reference link,
-}) async {
-var fhirDb = new DatabaseHelper();
-DiagnosticReport_Media newDiagnosticReport_Media = new DiagnosticReport_Media(
-	id: id ?? await fhirDb.newResourceId('DiagnosticReport_Media'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	comment: comment,
-	elementComment: elementComment,
-	link: link,
-);
-	return newDiagnosticReport_Media;
-}
+  DiagnosticReport_Media({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.comment,
+    this.elementComment,
+    @required this.link,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String comment;
-	Element elementComment;
-	Reference link;
-
-DiagnosticReport_Media(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.comment,
-this.elementComment,
-@required this.link,
-});
-
-  factory DiagnosticReport_Media.fromJson(Map<String, dynamic> json) => _$DiagnosticReport_MediaFromJson(json);
+  factory DiagnosticReport_Media.fromJson(Map<String, dynamic> json) =>
+      _$DiagnosticReport_MediaFromJson(json);
   Map<String, dynamic> toJson() => _$DiagnosticReport_MediaToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -247,8 +249,9 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -339,47 +342,62 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'effectiveDateTime': instance.effectiveDateTime,
-      'elementEffectiveDateTime': instance.elementEffectiveDateTime?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'issued': instance.issued?.toIso8601String(),
-      'elementIssued': instance.elementIssued?.toJson(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'resultsInterpreter':
-          instance.resultsInterpreter?.map((e) => e?.toJson())?.toList(),
-      'specimen': instance.specimen?.map((e) => e?.toJson())?.toList(),
-      'result': instance.result?.map((e) => e?.toJson())?.toList(),
-      'imagingStudy': instance.imagingStudy?.map((e) => e?.toJson())?.toList(),
-      'media': instance.media?.map((e) => e?.toJson())?.toList(),
-      'conclusion': instance.conclusion,
-      'elementConclusion': instance.elementConclusion?.toJson(),
-      'conclusionCode':
-          instance.conclusionCode?.map((e) => e?.toJson())?.toList(),
-      'presentedForm':
-          instance.presentedForm?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('effectiveDateTime', instance.effectiveDateTime);
+  writeNotNull(
+      'elementEffectiveDateTime', instance.elementEffectiveDateTime?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('issued', instance.issued?.toIso8601String());
+  writeNotNull('elementIssued', instance.elementIssued?.toJson());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull('resultsInterpreter',
+      instance.resultsInterpreter?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specimen', instance.specimen?.map((e) => e?.toJson())?.toList());
+  writeNotNull('result', instance.result?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'imagingStudy', instance.imagingStudy?.map((e) => e?.toJson())?.toList());
+  writeNotNull('media', instance.media?.map((e) => e?.toJson())?.toList());
+  writeNotNull('conclusion', instance.conclusion);
+  writeNotNull('elementConclusion', instance.elementConclusion?.toJson());
+  writeNotNull('conclusionCode',
+      instance.conclusionCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('presentedForm',
+      instance.presentedForm?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
     Map<String, dynamic> json) {
@@ -404,13 +422,22 @@ DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
 }
 
 Map<String, dynamic> _$DiagnosticReport_MediaToJson(
-        DiagnosticReport_Media instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'link': instance.link?.toJson(),
-    };
+    DiagnosticReport_Media instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull('link', instance.link?.toJson());
+  return val;
+}

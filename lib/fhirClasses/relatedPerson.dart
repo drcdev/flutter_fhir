@@ -15,183 +15,185 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RelatedPerson {
+  static Future<RelatedPerson> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    Reference patient,
+    List<CodeableConcept> relationship,
+    List<HumanName> name,
+    List<ContactPoint> telecom,
+    String gender,
+    Element elementGender,
+    String birthDate,
+    Element elementBirthDate,
+    List<Address> address,
+    List<Attachment> photo,
+    Period period,
+    List<RelatedPerson_Communication> communication,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    RelatedPerson newRelatedPerson = new RelatedPerson(
+      resourceType: 'RelatedPerson',
+      id: id ?? await fhirDb.newResourceId('RelatedPerson'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      active: active,
+      elementActive: elementActive,
+      patient: patient,
+      relationship: relationship,
+      name: name,
+      telecom: telecom,
+      gender: gender,
+      elementGender: elementGender,
+      birthDate: birthDate,
+      elementBirthDate: elementBirthDate,
+      address: address,
+      photo: photo,
+      period: period,
+      communication: communication,
+    );
+    newRelatedPerson.meta.createdAt = DateTime.now();
+    newRelatedPerson.meta.lastUpdated = newRelatedPerson.meta.createdAt;
+    int saved = await fhirDb.saveResource(newRelatedPerson);
+    return newRelatedPerson;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class RelatedPerson{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<RelatedPerson> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	bool active,
-	Element elementActive,
-	Reference patient,
-	List<CodeableConcept> relationship,
-	List<HumanName> name,
-	List<ContactPoint> telecom,
-	String gender,
-	Element elementGender,
-	String birthDate,
-	Element elementBirthDate,
-	List<Address> address,
-	List<Attachment> photo,
-	Period period,
-	List<RelatedPerson_Communication> communication,
-}) async {
-var fhirDb = new DatabaseHelper();
-RelatedPerson newRelatedPerson = new RelatedPerson(
-	resourceType: 'RelatedPerson',
-	id: id ?? await fhirDb.newResourceId('RelatedPerson'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	active: active,
-	elementActive: elementActive,
-	patient: patient,
-	relationship: relationship,
-	name: name,
-	telecom: telecom,
-	gender: gender,
-	elementGender: elementGender,
-	birthDate: birthDate,
-	elementBirthDate: elementBirthDate,
-	address: address,
-	photo: photo,
-	period: period,
-	communication: communication,
-);
-	newRelatedPerson.meta.createdAt = DateTime.now();
-	newRelatedPerson.meta.lastUpdated = newRelatedPerson.meta.createdAt;
-	int saved = await fhirDb.saveResource(newRelatedPerson);
-	 return newRelatedPerson;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'RelatedPerson';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  bool active;
+  Element elementActive;
+  Reference patient;
+  List<CodeableConcept> relationship;
+  List<HumanName> name;
+  List<ContactPoint> telecom;
+  String gender;
+  Element elementGender;
+  String birthDate;
+  Element elementBirthDate;
+  List<Address> address;
+  List<Attachment> photo;
+  Period period;
+  List<RelatedPerson_Communication> communication;
 
-	String resourceType= 'RelatedPerson';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	bool active;
-	Element elementActive;
-	Reference patient;
-	List<CodeableConcept> relationship;
-	List<HumanName> name;
-	List<ContactPoint> telecom;
-	String gender;
-	Element elementGender;
-	String birthDate;
-	Element elementBirthDate;
-	List<Address> address;
-	List<Attachment> photo;
-	Period period;
-	List<RelatedPerson_Communication> communication;
+  RelatedPerson({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    @required this.patient,
+    this.relationship,
+    this.name,
+    this.telecom,
+    this.gender,
+    this.elementGender,
+    this.birthDate,
+    this.elementBirthDate,
+    this.address,
+    this.photo,
+    this.period,
+    this.communication,
+  });
 
-RelatedPerson(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.active,
-this.elementActive,
-@required this.patient,
-this.relationship,
-this.name,
-this.telecom,
-this.gender,
-this.elementGender,
-this.birthDate,
-this.elementBirthDate,
-this.address,
-this.photo,
-this.period,
-this.communication,
-});
-
-  factory RelatedPerson.fromJson(Map<String, dynamic> json) => _$RelatedPersonFromJson(json);
+  factory RelatedPerson.fromJson(Map<String, dynamic> json) =>
+      _$RelatedPersonFromJson(json);
   Map<String, dynamic> toJson() => _$RelatedPersonToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RelatedPerson_Communication {
+  static Future<RelatedPerson_Communication> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept language,
+    bool preferred,
+    Element elementPreferred,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    RelatedPerson_Communication newRelatedPerson_Communication =
+        new RelatedPerson_Communication(
+      id: id ?? await fhirDb.newResourceId('RelatedPerson_Communication'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      language: language,
+      preferred: preferred,
+      elementPreferred: elementPreferred,
+    );
+    return newRelatedPerson_Communication;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class RelatedPerson_Communication{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept language;
+  bool preferred;
+  Element elementPreferred;
 
-	static Future<RelatedPerson_Communication> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept language,
-	bool preferred,
-	Element elementPreferred,
-}) async {
-var fhirDb = new DatabaseHelper();
-RelatedPerson_Communication newRelatedPerson_Communication = new RelatedPerson_Communication(
-	id: id ?? await fhirDb.newResourceId('RelatedPerson_Communication'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	language: language,
-	preferred: preferred,
-	elementPreferred: elementPreferred,
-);
-	return newRelatedPerson_Communication;
-}
+  RelatedPerson_Communication({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.language,
+    this.preferred,
+    this.elementPreferred,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept language;
-	bool preferred;
-	Element elementPreferred;
-
-RelatedPerson_Communication(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.language,
-this.preferred,
-this.elementPreferred,
-});
-
-  factory RelatedPerson_Communication.fromJson(Map<String, dynamic> json) => _$RelatedPerson_CommunicationFromJson(json);
+  factory RelatedPerson_Communication.fromJson(Map<String, dynamic> json) =>
+      _$RelatedPerson_CommunicationFromJson(json);
   Map<String, dynamic> toJson() => _$RelatedPerson_CommunicationToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -218,8 +220,9 @@ RelatedPerson _$RelatedPersonFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -280,37 +283,48 @@ RelatedPerson _$RelatedPersonFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RelatedPersonToJson(RelatedPerson instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'patient': instance.patient?.toJson(),
-      'relationship': instance.relationship?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'gender': instance.gender,
-      'elementGender': instance.elementGender?.toJson(),
-      'birthDate': instance.birthDate,
-      'elementBirthDate': instance.elementBirthDate?.toJson(),
-      'address': instance.address?.map((e) => e?.toJson())?.toList(),
-      'photo': instance.photo?.map((e) => e?.toJson())?.toList(),
-      'period': instance.period?.toJson(),
-      'communication':
-          instance.communication?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$RelatedPersonToJson(RelatedPerson instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('patient', instance.patient?.toJson());
+  writeNotNull(
+      'relationship', instance.relationship?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name?.map((e) => e?.toJson())?.toList());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull('gender', instance.gender);
+  writeNotNull('elementGender', instance.elementGender?.toJson());
+  writeNotNull('birthDate', instance.birthDate);
+  writeNotNull('elementBirthDate', instance.elementBirthDate?.toJson());
+  writeNotNull('address', instance.address?.map((e) => e?.toJson())?.toList());
+  writeNotNull('photo', instance.photo?.map((e) => e?.toJson())?.toList());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('communication',
+      instance.communication?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 RelatedPerson_Communication _$RelatedPerson_CommunicationFromJson(
     Map<String, dynamic> json) {
@@ -335,13 +349,22 @@ RelatedPerson_Communication _$RelatedPerson_CommunicationFromJson(
 }
 
 Map<String, dynamic> _$RelatedPerson_CommunicationToJson(
-        RelatedPerson_Communication instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'language': instance.language?.toJson(),
-      'preferred': instance.preferred,
-      'elementPreferred': instance.elementPreferred?.toJson(),
-    };
+    RelatedPerson_Communication instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('language', instance.language?.toJson());
+  writeNotNull('preferred', instance.preferred);
+  writeNotNull('elementPreferred', instance.elementPreferred?.toJson());
+  return val;
+}

@@ -4,86 +4,84 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ParameterDefinition {
+  static Future<ParameterDefinition> newInstance({
+    String id,
+    List<Extension> extension,
+    String name,
+    Element elementName,
+    String use,
+    Element elementUse,
+    int min,
+    Element elementMin,
+    String max,
+    Element elementMax,
+    String documentation,
+    Element elementDocumentation,
+    String type,
+    Element elementType,
+    String profile,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ParameterDefinition newParameterDefinition = new ParameterDefinition(
+      id: id ?? await fhirDb.newResourceId('ParameterDefinition'),
+      extension: extension,
+      name: name,
+      elementName: elementName,
+      use: use,
+      elementUse: elementUse,
+      min: min,
+      elementMin: elementMin,
+      max: max,
+      elementMax: elementMax,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+      type: type,
+      elementType: elementType,
+      profile: profile,
+    );
+    return newParameterDefinition;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ParameterDefinition{
+  String id;
+  List<Extension> extension;
+  String name;
+  Element elementName;
+  String use;
+  Element elementUse;
+  int min;
+  Element elementMin;
+  String max;
+  Element elementMax;
+  String documentation;
+  Element elementDocumentation;
+  String type;
+  Element elementType;
+  String profile;
 
-	static Future<ParameterDefinition> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String name,
-	Element elementName,
-	String use,
-	Element elementUse,
-	int min,
-	Element elementMin,
-	String max,
-	Element elementMax,
-	String documentation,
-	Element elementDocumentation,
-	String type,
-	Element elementType,
-	String profile,
-}) async {
-var fhirDb = new DatabaseHelper();
-ParameterDefinition newParameterDefinition = new ParameterDefinition(
-	id: id ?? await fhirDb.newResourceId('ParameterDefinition'),
-	extension: extension,
-	name: name,
-	elementName: elementName,
-	use: use,
-	elementUse: elementUse,
-	min: min,
-	elementMin: elementMin,
-	max: max,
-	elementMax: elementMax,
-	documentation: documentation,
-	elementDocumentation: elementDocumentation,
-	type: type,
-	elementType: elementType,
-	profile: profile,
-);
-	return newParameterDefinition;
-}
+  ParameterDefinition({
+    this.id,
+    this.extension,
+    this.name,
+    this.elementName,
+    this.use,
+    this.elementUse,
+    this.min,
+    this.elementMin,
+    this.max,
+    this.elementMax,
+    this.documentation,
+    this.elementDocumentation,
+    this.type,
+    this.elementType,
+    this.profile,
+  });
 
-	String id;
-	List<Extension> extension;
-	String name;
-	Element elementName;
-	String use;
-	Element elementUse;
-	int min;
-	Element elementMin;
-	String max;
-	Element elementMax;
-	String documentation;
-	Element elementDocumentation;
-	String type;
-	Element elementType;
-	String profile;
-
-ParameterDefinition(
-	{this.id,
-this.extension,
-this.name,
-this.elementName,
-this.use,
-this.elementUse,
-this.min,
-this.elementMin,
-this.max,
-this.elementMax,
-this.documentation,
-this.elementDocumentation,
-this.type,
-this.elementType,
-this.profile,
-});
-
-  factory ParameterDefinition.fromJson(Map<String, dynamic> json) => _$ParameterDefinitionFromJson(json);
+  factory ParameterDefinition.fromJson(Map<String, dynamic> json) =>
+      _$ParameterDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$ParameterDefinitionToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -126,22 +124,30 @@ ParameterDefinition _$ParameterDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ParameterDefinitionToJson(
-        ParameterDefinition instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'min': instance.min,
-      'elementMin': instance.elementMin?.toJson(),
-      'max': instance.max,
-      'elementMax': instance.elementMax?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'profile': instance.profile,
-    };
+Map<String, dynamic> _$ParameterDefinitionToJson(ParameterDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('min', instance.min);
+  writeNotNull('elementMin', instance.elementMin?.toJson());
+  writeNotNull('max', instance.max);
+  writeNotNull('elementMax', instance.elementMax?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('profile', instance.profile);
+  return val;
+}

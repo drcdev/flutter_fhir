@@ -5,83 +5,84 @@ import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Binary {
+  static Future<Binary> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    String contentType,
+    Element elementContentType,
+    Reference securityContext,
+    String data,
+    Element elementData,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Binary newBinary = new Binary(
+      resourceType: 'Binary',
+      id: id ?? await fhirDb.newResourceId('Binary'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      contentType: contentType,
+      elementContentType: elementContentType,
+      securityContext: securityContext,
+      data: data,
+      elementData: elementData,
+    );
+    newBinary.meta.createdAt = DateTime.now();
+    newBinary.meta.lastUpdated = newBinary.meta.createdAt;
+    int saved = await fhirDb.saveResource(newBinary);
+    return newBinary;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Binary{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Binary> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	String contentType,
-	Element elementContentType,
-	Reference securityContext,
-	String data,
-	Element elementData,
-}) async {
-var fhirDb = new DatabaseHelper();
-Binary newBinary = new Binary(
-	resourceType: 'Binary',
-	id: id ?? await fhirDb.newResourceId('Binary'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	contentType: contentType,
-	elementContentType: elementContentType,
-	securityContext: securityContext,
-	data: data,
-	elementData: elementData,
-);
-	newBinary.meta.createdAt = DateTime.now();
-	newBinary.meta.lastUpdated = newBinary.meta.createdAt;
-	int saved = await fhirDb.saveResource(newBinary);
-	 return newBinary;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Binary';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  String contentType;
+  Element elementContentType;
+  Reference securityContext;
+  String data;
+  Element elementData;
 
-	String resourceType= 'Binary';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	String contentType;
-	Element elementContentType;
-	Reference securityContext;
-	String data;
-	Element elementData;
-
-Binary(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.contentType,
-this.elementContentType,
-this.securityContext,
-this.data,
-this.elementData,
-});
+  Binary({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.contentType,
+    this.elementContentType,
+    this.securityContext,
+    this.data,
+    this.elementData,
+  });
 
   factory Binary.fromJson(Map<String, dynamic> json) => _$BinaryFromJson(json);
   Map<String, dynamic> toJson() => _$BinaryToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -118,17 +119,26 @@ Binary _$BinaryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$BinaryToJson(Binary instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'contentType': instance.contentType,
-      'elementContentType': instance.elementContentType?.toJson(),
-      'securityContext': instance.securityContext?.toJson(),
-      'data': instance.data,
-      'elementData': instance.elementData?.toJson(),
-    };
+Map<String, dynamic> _$BinaryToJson(Binary instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('contentType', instance.contentType);
+  writeNotNull('elementContentType', instance.elementContentType?.toJson());
+  writeNotNull('securityContext', instance.securityContext?.toJson());
+  writeNotNull('data', instance.data);
+  writeNotNull('elementData', instance.elementData?.toJson());
+  return val;
+}

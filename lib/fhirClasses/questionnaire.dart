@@ -16,667 +16,667 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Questionnaire {
+  static Future<Questionnaire> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    List<String> derivedFrom,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    List<String> subjectType,
+    List<Element> elementSubjectType,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    List<Coding> code,
+    List<Questionnaire_Item> item,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Questionnaire newQuestionnaire = new Questionnaire(
+      resourceType: 'Questionnaire',
+      id: id ?? await fhirDb.newResourceId('Questionnaire'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      derivedFrom: derivedFrom,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      subjectType: subjectType,
+      elementSubjectType: elementSubjectType,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      approvalDate: approvalDate,
+      elementApprovalDate: elementApprovalDate,
+      lastReviewDate: lastReviewDate,
+      elementLastReviewDate: elementLastReviewDate,
+      effectivePeriod: effectivePeriod,
+      code: code,
+      item: item,
+    );
+    newQuestionnaire.meta.createdAt = DateTime.now();
+    newQuestionnaire.meta.lastUpdated = newQuestionnaire.meta.createdAt;
+    int saved = await fhirDb.saveResource(newQuestionnaire);
+    return newQuestionnaire;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Questionnaire{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Questionnaire> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	List<Identifier> identifier,
-	String version,
-	Element elementVersion,
-	String name,
-	Element elementName,
-	String title,
-	Element elementTitle,
-	List<String> derivedFrom,
-	String status,
-	Element elementStatus,
-	bool experimental,
-	Element elementExperimental,
-	List<String> subjectType,
-	List<Element> elementSubjectType,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String purpose,
-	Element elementPurpose,
-	String copyright,
-	Element elementCopyright,
-	String approvalDate,
-	Element elementApprovalDate,
-	String lastReviewDate,
-	Element elementLastReviewDate,
-	Period effectivePeriod,
-	List<Coding> code,
-	List<Questionnaire_Item> item,
-}) async {
-var fhirDb = new DatabaseHelper();
-Questionnaire newQuestionnaire = new Questionnaire(
-	resourceType: 'Questionnaire',
-	id: id ?? await fhirDb.newResourceId('Questionnaire'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	identifier: identifier,
-	version: version,
-	elementVersion: elementVersion,
-	name: name,
-	elementName: elementName,
-	title: title,
-	elementTitle: elementTitle,
-	derivedFrom: derivedFrom,
-	status: status,
-	elementStatus: elementStatus,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	subjectType: subjectType,
-	elementSubjectType: elementSubjectType,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	copyright: copyright,
-	elementCopyright: elementCopyright,
-	approvalDate: approvalDate,
-	elementApprovalDate: elementApprovalDate,
-	lastReviewDate: lastReviewDate,
-	elementLastReviewDate: elementLastReviewDate,
-	effectivePeriod: effectivePeriod,
-	code: code,
-	item: item,
-);
-	newQuestionnaire.meta.createdAt = DateTime.now();
-	newQuestionnaire.meta.lastUpdated = newQuestionnaire.meta.createdAt;
-	int saved = await fhirDb.saveResource(newQuestionnaire);
-	 return newQuestionnaire;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Questionnaire';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  List<Identifier> identifier;
+  String version;
+  Element elementVersion;
+  String name;
+  Element elementName;
+  String title;
+  Element elementTitle;
+  List<String> derivedFrom;
+  String status;
+  Element elementStatus;
+  bool experimental;
+  Element elementExperimental;
+  List<String> subjectType;
+  List<Element> elementSubjectType;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String purpose;
+  Element elementPurpose;
+  String copyright;
+  Element elementCopyright;
+  String approvalDate;
+  Element elementApprovalDate;
+  String lastReviewDate;
+  Element elementLastReviewDate;
+  Period effectivePeriod;
+  List<Coding> code;
+  List<Questionnaire_Item> item;
 
-	String resourceType= 'Questionnaire';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	List<Identifier> identifier;
-	String version;
-	Element elementVersion;
-	String name;
-	Element elementName;
-	String title;
-	Element elementTitle;
-	List<String> derivedFrom;
-	String status;
-	Element elementStatus;
-	bool experimental;
-	Element elementExperimental;
-	List<String> subjectType;
-	List<Element> elementSubjectType;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String purpose;
-	Element elementPurpose;
-	String copyright;
-	Element elementCopyright;
-	String approvalDate;
-	Element elementApprovalDate;
-	String lastReviewDate;
-	Element elementLastReviewDate;
-	Period effectivePeriod;
-	List<Coding> code;
-	List<Questionnaire_Item> item;
+  Questionnaire({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.derivedFrom,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.subjectType,
+    this.elementSubjectType,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.code,
+    this.item,
+  });
 
-Questionnaire(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.identifier,
-this.version,
-this.elementVersion,
-this.name,
-this.elementName,
-this.title,
-this.elementTitle,
-this.derivedFrom,
-this.status,
-this.elementStatus,
-this.experimental,
-this.elementExperimental,
-this.subjectType,
-this.elementSubjectType,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.purpose,
-this.elementPurpose,
-this.copyright,
-this.elementCopyright,
-this.approvalDate,
-this.elementApprovalDate,
-this.lastReviewDate,
-this.elementLastReviewDate,
-this.effectivePeriod,
-this.code,
-this.item,
-});
-
-  factory Questionnaire.fromJson(Map<String, dynamic> json) => _$QuestionnaireFromJson(json);
+  factory Questionnaire.fromJson(Map<String, dynamic> json) =>
+      _$QuestionnaireFromJson(json);
   Map<String, dynamic> toJson() => _$QuestionnaireToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Questionnaire_Item {
+  static Future<Questionnaire_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String linkId,
+    Element elementLinkId,
+    String definition,
+    Element elementDefinition,
+    List<Coding> code,
+    String prefix,
+    Element elementPrefix,
+    String text,
+    Element elementText,
+    String type,
+    Element elementType,
+    List<Questionnaire_EnableWhen> enableWhen,
+    String enableBehavior,
+    Element elementEnableBehavior,
+    bool required,
+    Element elementRequired,
+    bool repeats,
+    Element elementRepeats,
+    bool readOnly,
+    Element elementReadOnly,
+    int maxLength,
+    Element elementMaxLength,
+    String answerValueSet,
+    List<Questionnaire_AnswerOption> answerOption,
+    List<Questionnaire_Initial> initial,
+    List<Questionnaire_Item> item,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Questionnaire_Item newQuestionnaire_Item = new Questionnaire_Item(
+      id: id ?? await fhirDb.newResourceId('Questionnaire_Item'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      linkId: linkId,
+      elementLinkId: elementLinkId,
+      definition: definition,
+      elementDefinition: elementDefinition,
+      code: code,
+      prefix: prefix,
+      elementPrefix: elementPrefix,
+      text: text,
+      elementText: elementText,
+      type: type,
+      elementType: elementType,
+      enableWhen: enableWhen,
+      enableBehavior: enableBehavior,
+      elementEnableBehavior: elementEnableBehavior,
+      required: required,
+      elementRequired: elementRequired,
+      repeats: repeats,
+      elementRepeats: elementRepeats,
+      readOnly: readOnly,
+      elementReadOnly: elementReadOnly,
+      maxLength: maxLength,
+      elementMaxLength: elementMaxLength,
+      answerValueSet: answerValueSet,
+      answerOption: answerOption,
+      initial: initial,
+      item: item,
+    );
+    return newQuestionnaire_Item;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Questionnaire_Item{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String linkId;
+  Element elementLinkId;
+  String definition;
+  Element elementDefinition;
+  List<Coding> code;
+  String prefix;
+  Element elementPrefix;
+  String text;
+  Element elementText;
+  String type;
+  Element elementType;
+  List<Questionnaire_EnableWhen> enableWhen;
+  String enableBehavior;
+  Element elementEnableBehavior;
+  bool required;
+  Element elementRequired;
+  bool repeats;
+  Element elementRepeats;
+  bool readOnly;
+  Element elementReadOnly;
+  int maxLength;
+  Element elementMaxLength;
+  String answerValueSet;
+  List<Questionnaire_AnswerOption> answerOption;
+  List<Questionnaire_Initial> initial;
+  List<Questionnaire_Item> item;
 
-	static Future<Questionnaire_Item> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String linkId,
-	Element elementLinkId,
-	String definition,
-	Element elementDefinition,
-	List<Coding> code,
-	String prefix,
-	Element elementPrefix,
-	String text,
-	Element elementText,
-	String type,
-	Element elementType,
-	List<Questionnaire_EnableWhen> enableWhen,
-	String enableBehavior,
-	Element elementEnableBehavior,
-	bool required,
-	Element elementRequired,
-	bool repeats,
-	Element elementRepeats,
-	bool readOnly,
-	Element elementReadOnly,
-	int maxLength,
-	Element elementMaxLength,
-	String answerValueSet,
-	List<Questionnaire_AnswerOption> answerOption,
-	List<Questionnaire_Initial> initial,
-	List<Questionnaire_Item> item,
-}) async {
-var fhirDb = new DatabaseHelper();
-Questionnaire_Item newQuestionnaire_Item = new Questionnaire_Item(
-	id: id ?? await fhirDb.newResourceId('Questionnaire_Item'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	linkId: linkId,
-	elementLinkId: elementLinkId,
-	definition: definition,
-	elementDefinition: elementDefinition,
-	code: code,
-	prefix: prefix,
-	elementPrefix: elementPrefix,
-	text: text,
-	elementText: elementText,
-	type: type,
-	elementType: elementType,
-	enableWhen: enableWhen,
-	enableBehavior: enableBehavior,
-	elementEnableBehavior: elementEnableBehavior,
-	required: required,
-	elementRequired: elementRequired,
-	repeats: repeats,
-	elementRepeats: elementRepeats,
-	readOnly: readOnly,
-	elementReadOnly: elementReadOnly,
-	maxLength: maxLength,
-	elementMaxLength: elementMaxLength,
-	answerValueSet: answerValueSet,
-	answerOption: answerOption,
-	initial: initial,
-	item: item,
-);
-	return newQuestionnaire_Item;
-}
+  Questionnaire_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.linkId,
+    this.elementLinkId,
+    this.definition,
+    this.elementDefinition,
+    this.code,
+    this.prefix,
+    this.elementPrefix,
+    this.text,
+    this.elementText,
+    this.type,
+    this.elementType,
+    this.enableWhen,
+    this.enableBehavior,
+    this.elementEnableBehavior,
+    this.required,
+    this.elementRequired,
+    this.repeats,
+    this.elementRepeats,
+    this.readOnly,
+    this.elementReadOnly,
+    this.maxLength,
+    this.elementMaxLength,
+    this.answerValueSet,
+    this.answerOption,
+    this.initial,
+    this.item,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String linkId;
-	Element elementLinkId;
-	String definition;
-	Element elementDefinition;
-	List<Coding> code;
-	String prefix;
-	Element elementPrefix;
-	String text;
-	Element elementText;
-	String type;
-	Element elementType;
-	List<Questionnaire_EnableWhen> enableWhen;
-	String enableBehavior;
-	Element elementEnableBehavior;
-	bool required;
-	Element elementRequired;
-	bool repeats;
-	Element elementRepeats;
-	bool readOnly;
-	Element elementReadOnly;
-	int maxLength;
-	Element elementMaxLength;
-	String answerValueSet;
-	List<Questionnaire_AnswerOption> answerOption;
-	List<Questionnaire_Initial> initial;
-	List<Questionnaire_Item> item;
-
-Questionnaire_Item(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.linkId,
-this.elementLinkId,
-this.definition,
-this.elementDefinition,
-this.code,
-this.prefix,
-this.elementPrefix,
-this.text,
-this.elementText,
-this.type,
-this.elementType,
-this.enableWhen,
-this.enableBehavior,
-this.elementEnableBehavior,
-this.required,
-this.elementRequired,
-this.repeats,
-this.elementRepeats,
-this.readOnly,
-this.elementReadOnly,
-this.maxLength,
-this.elementMaxLength,
-this.answerValueSet,
-this.answerOption,
-this.initial,
-this.item,
-});
-
-  factory Questionnaire_Item.fromJson(Map<String, dynamic> json) => _$Questionnaire_ItemFromJson(json);
+  factory Questionnaire_Item.fromJson(Map<String, dynamic> json) =>
+      _$Questionnaire_ItemFromJson(json);
   Map<String, dynamic> toJson() => _$Questionnaire_ItemToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Questionnaire_EnableWhen {
+  static Future<Questionnaire_EnableWhen> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String question,
+    Element elementQuestion,
+    String operator,
+    Element elementOperator,
+    bool answerBoolean,
+    Element elementAnswerBoolean,
+    int answerDecimal,
+    Element elementAnswerDecimal,
+    int answerInteger,
+    Element elementAnswerInteger,
+    String answerDate,
+    Element elementAnswerDate,
+    String answerDateTime,
+    Element elementAnswerDateTime,
+    String answerTime,
+    Element elementAnswerTime,
+    String answerString,
+    Element elementAnswerString,
+    Coding answerCoding,
+    Quantity answerQuantity,
+    Reference answerReference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Questionnaire_EnableWhen newQuestionnaire_EnableWhen =
+        new Questionnaire_EnableWhen(
+      id: id ?? await fhirDb.newResourceId('Questionnaire_EnableWhen'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      question: question,
+      elementQuestion: elementQuestion,
+      operator: operator,
+      elementOperator: elementOperator,
+      answerBoolean: answerBoolean,
+      elementAnswerBoolean: elementAnswerBoolean,
+      answerDecimal: answerDecimal,
+      elementAnswerDecimal: elementAnswerDecimal,
+      answerInteger: answerInteger,
+      elementAnswerInteger: elementAnswerInteger,
+      answerDate: answerDate,
+      elementAnswerDate: elementAnswerDate,
+      answerDateTime: answerDateTime,
+      elementAnswerDateTime: elementAnswerDateTime,
+      answerTime: answerTime,
+      elementAnswerTime: elementAnswerTime,
+      answerString: answerString,
+      elementAnswerString: elementAnswerString,
+      answerCoding: answerCoding,
+      answerQuantity: answerQuantity,
+      answerReference: answerReference,
+    );
+    return newQuestionnaire_EnableWhen;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Questionnaire_EnableWhen{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String question;
+  Element elementQuestion;
+  String operator;
+  Element elementOperator;
+  bool answerBoolean;
+  Element elementAnswerBoolean;
+  int answerDecimal;
+  Element elementAnswerDecimal;
+  int answerInteger;
+  Element elementAnswerInteger;
+  String answerDate;
+  Element elementAnswerDate;
+  String answerDateTime;
+  Element elementAnswerDateTime;
+  String answerTime;
+  Element elementAnswerTime;
+  String answerString;
+  Element elementAnswerString;
+  Coding answerCoding;
+  Quantity answerQuantity;
+  Reference answerReference;
 
-	static Future<Questionnaire_EnableWhen> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String question,
-	Element elementQuestion,
-	String operator,
-	Element elementOperator,
-	bool answerBoolean,
-	Element elementAnswerBoolean,
-	int answerDecimal,
-	Element elementAnswerDecimal,
-	int answerInteger,
-	Element elementAnswerInteger,
-	String answerDate,
-	Element elementAnswerDate,
-	String answerDateTime,
-	Element elementAnswerDateTime,
-	String answerTime,
-	Element elementAnswerTime,
-	String answerString,
-	Element elementAnswerString,
-	Coding answerCoding,
-	Quantity answerQuantity,
-	Reference answerReference,
-}) async {
-var fhirDb = new DatabaseHelper();
-Questionnaire_EnableWhen newQuestionnaire_EnableWhen = new Questionnaire_EnableWhen(
-	id: id ?? await fhirDb.newResourceId('Questionnaire_EnableWhen'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	question: question,
-	elementQuestion: elementQuestion,
-	operator: operator,
-	elementOperator: elementOperator,
-	answerBoolean: answerBoolean,
-	elementAnswerBoolean: elementAnswerBoolean,
-	answerDecimal: answerDecimal,
-	elementAnswerDecimal: elementAnswerDecimal,
-	answerInteger: answerInteger,
-	elementAnswerInteger: elementAnswerInteger,
-	answerDate: answerDate,
-	elementAnswerDate: elementAnswerDate,
-	answerDateTime: answerDateTime,
-	elementAnswerDateTime: elementAnswerDateTime,
-	answerTime: answerTime,
-	elementAnswerTime: elementAnswerTime,
-	answerString: answerString,
-	elementAnswerString: elementAnswerString,
-	answerCoding: answerCoding,
-	answerQuantity: answerQuantity,
-	answerReference: answerReference,
-);
-	return newQuestionnaire_EnableWhen;
-}
+  Questionnaire_EnableWhen({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.question,
+    this.elementQuestion,
+    this.operator,
+    this.elementOperator,
+    this.answerBoolean,
+    this.elementAnswerBoolean,
+    this.answerDecimal,
+    this.elementAnswerDecimal,
+    this.answerInteger,
+    this.elementAnswerInteger,
+    this.answerDate,
+    this.elementAnswerDate,
+    this.answerDateTime,
+    this.elementAnswerDateTime,
+    this.answerTime,
+    this.elementAnswerTime,
+    this.answerString,
+    this.elementAnswerString,
+    this.answerCoding,
+    this.answerQuantity,
+    this.answerReference,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String question;
-	Element elementQuestion;
-	String operator;
-	Element elementOperator;
-	bool answerBoolean;
-	Element elementAnswerBoolean;
-	int answerDecimal;
-	Element elementAnswerDecimal;
-	int answerInteger;
-	Element elementAnswerInteger;
-	String answerDate;
-	Element elementAnswerDate;
-	String answerDateTime;
-	Element elementAnswerDateTime;
-	String answerTime;
-	Element elementAnswerTime;
-	String answerString;
-	Element elementAnswerString;
-	Coding answerCoding;
-	Quantity answerQuantity;
-	Reference answerReference;
-
-Questionnaire_EnableWhen(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.question,
-this.elementQuestion,
-this.operator,
-this.elementOperator,
-this.answerBoolean,
-this.elementAnswerBoolean,
-this.answerDecimal,
-this.elementAnswerDecimal,
-this.answerInteger,
-this.elementAnswerInteger,
-this.answerDate,
-this.elementAnswerDate,
-this.answerDateTime,
-this.elementAnswerDateTime,
-this.answerTime,
-this.elementAnswerTime,
-this.answerString,
-this.elementAnswerString,
-this.answerCoding,
-this.answerQuantity,
-this.answerReference,
-});
-
-  factory Questionnaire_EnableWhen.fromJson(Map<String, dynamic> json) => _$Questionnaire_EnableWhenFromJson(json);
+  factory Questionnaire_EnableWhen.fromJson(Map<String, dynamic> json) =>
+      _$Questionnaire_EnableWhenFromJson(json);
   Map<String, dynamic> toJson() => _$Questionnaire_EnableWhenToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Questionnaire_AnswerOption {
+  static Future<Questionnaire_AnswerOption> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueDate,
+    Element elementValueDate,
+    String valueTime,
+    Element elementValueTime,
+    String valueString,
+    Element elementValueString,
+    Coding valueCoding,
+    Reference valueReference,
+    bool initialSelected,
+    Element elementInitialSelected,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Questionnaire_AnswerOption newQuestionnaire_AnswerOption =
+        new Questionnaire_AnswerOption(
+      id: id ?? await fhirDb.newResourceId('Questionnaire_AnswerOption'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      valueInteger: valueInteger,
+      elementValueInteger: elementValueInteger,
+      valueDate: valueDate,
+      elementValueDate: elementValueDate,
+      valueTime: valueTime,
+      elementValueTime: elementValueTime,
+      valueString: valueString,
+      elementValueString: elementValueString,
+      valueCoding: valueCoding,
+      valueReference: valueReference,
+      initialSelected: initialSelected,
+      elementInitialSelected: elementInitialSelected,
+    );
+    return newQuestionnaire_AnswerOption;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Questionnaire_AnswerOption{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int valueInteger;
+  Element elementValueInteger;
+  String valueDate;
+  Element elementValueDate;
+  String valueTime;
+  Element elementValueTime;
+  String valueString;
+  Element elementValueString;
+  Coding valueCoding;
+  Reference valueReference;
+  bool initialSelected;
+  Element elementInitialSelected;
 
-	static Future<Questionnaire_AnswerOption> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int valueInteger,
-	Element elementValueInteger,
-	String valueDate,
-	Element elementValueDate,
-	String valueTime,
-	Element elementValueTime,
-	String valueString,
-	Element elementValueString,
-	Coding valueCoding,
-	Reference valueReference,
-	bool initialSelected,
-	Element elementInitialSelected,
-}) async {
-var fhirDb = new DatabaseHelper();
-Questionnaire_AnswerOption newQuestionnaire_AnswerOption = new Questionnaire_AnswerOption(
-	id: id ?? await fhirDb.newResourceId('Questionnaire_AnswerOption'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	valueInteger: valueInteger,
-	elementValueInteger: elementValueInteger,
-	valueDate: valueDate,
-	elementValueDate: elementValueDate,
-	valueTime: valueTime,
-	elementValueTime: elementValueTime,
-	valueString: valueString,
-	elementValueString: elementValueString,
-	valueCoding: valueCoding,
-	valueReference: valueReference,
-	initialSelected: initialSelected,
-	elementInitialSelected: elementInitialSelected,
-);
-	return newQuestionnaire_AnswerOption;
-}
+  Questionnaire_AnswerOption({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueString,
+    this.elementValueString,
+    this.valueCoding,
+    this.valueReference,
+    this.initialSelected,
+    this.elementInitialSelected,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int valueInteger;
-	Element elementValueInteger;
-	String valueDate;
-	Element elementValueDate;
-	String valueTime;
-	Element elementValueTime;
-	String valueString;
-	Element elementValueString;
-	Coding valueCoding;
-	Reference valueReference;
-	bool initialSelected;
-	Element elementInitialSelected;
-
-Questionnaire_AnswerOption(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.valueInteger,
-this.elementValueInteger,
-this.valueDate,
-this.elementValueDate,
-this.valueTime,
-this.elementValueTime,
-this.valueString,
-this.elementValueString,
-this.valueCoding,
-this.valueReference,
-this.initialSelected,
-this.elementInitialSelected,
-});
-
-  factory Questionnaire_AnswerOption.fromJson(Map<String, dynamic> json) => _$Questionnaire_AnswerOptionFromJson(json);
+  factory Questionnaire_AnswerOption.fromJson(Map<String, dynamic> json) =>
+      _$Questionnaire_AnswerOptionFromJson(json);
   Map<String, dynamic> toJson() => _$Questionnaire_AnswerOptionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Questionnaire_Initial {
+  static Future<Questionnaire_Initial> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    int valueDecimal,
+    Element elementValueDecimal,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    String valueTime,
+    Element elementValueTime,
+    String valueString,
+    Element elementValueString,
+    String valueUri,
+    Element elementValueUri,
+    Attachment valueAttachment,
+    Coding valueCoding,
+    Quantity valueQuantity,
+    Reference valueReference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Questionnaire_Initial newQuestionnaire_Initial = new Questionnaire_Initial(
+      id: id ?? await fhirDb.newResourceId('Questionnaire_Initial'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+      valueDecimal: valueDecimal,
+      elementValueDecimal: elementValueDecimal,
+      valueInteger: valueInteger,
+      elementValueInteger: elementValueInteger,
+      valueDate: valueDate,
+      elementValueDate: elementValueDate,
+      valueDateTime: valueDateTime,
+      elementValueDateTime: elementValueDateTime,
+      valueTime: valueTime,
+      elementValueTime: elementValueTime,
+      valueString: valueString,
+      elementValueString: elementValueString,
+      valueUri: valueUri,
+      elementValueUri: elementValueUri,
+      valueAttachment: valueAttachment,
+      valueCoding: valueCoding,
+      valueQuantity: valueQuantity,
+      valueReference: valueReference,
+    );
+    return newQuestionnaire_Initial;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Questionnaire_Initial{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool valueBoolean;
+  Element elementValueBoolean;
+  int valueDecimal;
+  Element elementValueDecimal;
+  int valueInteger;
+  Element elementValueInteger;
+  String valueDate;
+  Element elementValueDate;
+  String valueDateTime;
+  Element elementValueDateTime;
+  String valueTime;
+  Element elementValueTime;
+  String valueString;
+  Element elementValueString;
+  String valueUri;
+  Element elementValueUri;
+  Attachment valueAttachment;
+  Coding valueCoding;
+  Quantity valueQuantity;
+  Reference valueReference;
 
-	static Future<Questionnaire_Initial> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool valueBoolean,
-	Element elementValueBoolean,
-	int valueDecimal,
-	Element elementValueDecimal,
-	int valueInteger,
-	Element elementValueInteger,
-	String valueDate,
-	Element elementValueDate,
-	String valueDateTime,
-	Element elementValueDateTime,
-	String valueTime,
-	Element elementValueTime,
-	String valueString,
-	Element elementValueString,
-	String valueUri,
-	Element elementValueUri,
-	Attachment valueAttachment,
-	Coding valueCoding,
-	Quantity valueQuantity,
-	Reference valueReference,
-}) async {
-var fhirDb = new DatabaseHelper();
-Questionnaire_Initial newQuestionnaire_Initial = new Questionnaire_Initial(
-	id: id ?? await fhirDb.newResourceId('Questionnaire_Initial'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	valueBoolean: valueBoolean,
-	elementValueBoolean: elementValueBoolean,
-	valueDecimal: valueDecimal,
-	elementValueDecimal: elementValueDecimal,
-	valueInteger: valueInteger,
-	elementValueInteger: elementValueInteger,
-	valueDate: valueDate,
-	elementValueDate: elementValueDate,
-	valueDateTime: valueDateTime,
-	elementValueDateTime: elementValueDateTime,
-	valueTime: valueTime,
-	elementValueTime: elementValueTime,
-	valueString: valueString,
-	elementValueString: elementValueString,
-	valueUri: valueUri,
-	elementValueUri: elementValueUri,
-	valueAttachment: valueAttachment,
-	valueCoding: valueCoding,
-	valueQuantity: valueQuantity,
-	valueReference: valueReference,
-);
-	return newQuestionnaire_Initial;
-}
+  Questionnaire_Initial({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueString,
+    this.elementValueString,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueAttachment,
+    this.valueCoding,
+    this.valueQuantity,
+    this.valueReference,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool valueBoolean;
-	Element elementValueBoolean;
-	int valueDecimal;
-	Element elementValueDecimal;
-	int valueInteger;
-	Element elementValueInteger;
-	String valueDate;
-	Element elementValueDate;
-	String valueDateTime;
-	Element elementValueDateTime;
-	String valueTime;
-	Element elementValueTime;
-	String valueString;
-	Element elementValueString;
-	String valueUri;
-	Element elementValueUri;
-	Attachment valueAttachment;
-	Coding valueCoding;
-	Quantity valueQuantity;
-	Reference valueReference;
-
-Questionnaire_Initial(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.valueBoolean,
-this.elementValueBoolean,
-this.valueDecimal,
-this.elementValueDecimal,
-this.valueInteger,
-this.elementValueInteger,
-this.valueDate,
-this.elementValueDate,
-this.valueDateTime,
-this.elementValueDateTime,
-this.valueTime,
-this.elementValueTime,
-this.valueString,
-this.elementValueString,
-this.valueUri,
-this.elementValueUri,
-this.valueAttachment,
-this.valueCoding,
-this.valueQuantity,
-this.valueReference,
-});
-
-  factory Questionnaire_Initial.fromJson(Map<String, dynamic> json) => _$Questionnaire_InitialFromJson(json);
+  factory Questionnaire_Initial.fromJson(Map<String, dynamic> json) =>
+      _$Questionnaire_InitialFromJson(json);
   Map<String, dynamic> toJson() => _$Questionnaire_InitialToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -703,8 +703,9 @@ Questionnaire _$QuestionnaireFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -808,58 +809,71 @@ Questionnaire _$QuestionnaireFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$QuestionnaireToJson(Questionnaire instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'derivedFrom': instance.derivedFrom,
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'subjectType': instance.subjectType,
-      'elementSubjectType':
-          instance.elementSubjectType?.map((e) => e?.toJson())?.toList(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'approvalDate': instance.approvalDate,
-      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
-      'lastReviewDate': instance.lastReviewDate,
-      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'item': instance.item?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$QuestionnaireToJson(Questionnaire instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('derivedFrom', instance.derivedFrom);
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('subjectType', instance.subjectType);
+  writeNotNull('elementSubjectType',
+      instance.elementSubjectType?.map((e) => e?.toJson())?.toList());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('approvalDate', instance.approvalDate);
+  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
+  writeNotNull('lastReviewDate', instance.lastReviewDate);
+  writeNotNull(
+      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Questionnaire_Item _$Questionnaire_ItemFromJson(Map<String, dynamic> json) {
   return Questionnaire_Item(
@@ -941,39 +955,51 @@ Questionnaire_Item _$Questionnaire_ItemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Questionnaire_ItemToJson(Questionnaire_Item instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'linkId': instance.linkId,
-      'elementLinkId': instance.elementLinkId?.toJson(),
-      'definition': instance.definition,
-      'elementDefinition': instance.elementDefinition?.toJson(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'prefix': instance.prefix,
-      'elementPrefix': instance.elementPrefix?.toJson(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'enableWhen': instance.enableWhen?.map((e) => e?.toJson())?.toList(),
-      'enableBehavior': instance.enableBehavior,
-      'elementEnableBehavior': instance.elementEnableBehavior?.toJson(),
-      'required': instance.required,
-      'elementRequired': instance.elementRequired?.toJson(),
-      'repeats': instance.repeats,
-      'elementRepeats': instance.elementRepeats?.toJson(),
-      'readOnly': instance.readOnly,
-      'elementReadOnly': instance.elementReadOnly?.toJson(),
-      'maxLength': instance.maxLength,
-      'elementMaxLength': instance.elementMaxLength?.toJson(),
-      'answerValueSet': instance.answerValueSet,
-      'answerOption': instance.answerOption?.map((e) => e?.toJson())?.toList(),
-      'initial': instance.initial?.map((e) => e?.toJson())?.toList(),
-      'item': instance.item?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$Questionnaire_ItemToJson(Questionnaire_Item instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('linkId', instance.linkId);
+  writeNotNull('elementLinkId', instance.elementLinkId?.toJson());
+  writeNotNull('definition', instance.definition);
+  writeNotNull('elementDefinition', instance.elementDefinition?.toJson());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prefix', instance.prefix);
+  writeNotNull('elementPrefix', instance.elementPrefix?.toJson());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull(
+      'enableWhen', instance.enableWhen?.map((e) => e?.toJson())?.toList());
+  writeNotNull('enableBehavior', instance.enableBehavior);
+  writeNotNull(
+      'elementEnableBehavior', instance.elementEnableBehavior?.toJson());
+  writeNotNull('required', instance.required);
+  writeNotNull('elementRequired', instance.elementRequired?.toJson());
+  writeNotNull('repeats', instance.repeats);
+  writeNotNull('elementRepeats', instance.elementRepeats?.toJson());
+  writeNotNull('readOnly', instance.readOnly);
+  writeNotNull('elementReadOnly', instance.elementReadOnly?.toJson());
+  writeNotNull('maxLength', instance.maxLength);
+  writeNotNull('elementMaxLength', instance.elementMaxLength?.toJson());
+  writeNotNull('answerValueSet', instance.answerValueSet);
+  writeNotNull(
+      'answerOption', instance.answerOption?.map((e) => e?.toJson())?.toList());
+  writeNotNull('initial', instance.initial?.map((e) => e?.toJson())?.toList());
+  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Questionnaire_EnableWhen _$Questionnaire_EnableWhenFromJson(
     Map<String, dynamic> json) {
@@ -1040,34 +1066,44 @@ Questionnaire_EnableWhen _$Questionnaire_EnableWhenFromJson(
 }
 
 Map<String, dynamic> _$Questionnaire_EnableWhenToJson(
-        Questionnaire_EnableWhen instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'question': instance.question,
-      'elementQuestion': instance.elementQuestion?.toJson(),
-      'operator': instance.operator,
-      'elementOperator': instance.elementOperator?.toJson(),
-      'answerBoolean': instance.answerBoolean,
-      'elementAnswerBoolean': instance.elementAnswerBoolean?.toJson(),
-      'answerDecimal': instance.answerDecimal,
-      'elementAnswerDecimal': instance.elementAnswerDecimal?.toJson(),
-      'answerInteger': instance.answerInteger,
-      'elementAnswerInteger': instance.elementAnswerInteger?.toJson(),
-      'answerDate': instance.answerDate,
-      'elementAnswerDate': instance.elementAnswerDate?.toJson(),
-      'answerDateTime': instance.answerDateTime,
-      'elementAnswerDateTime': instance.elementAnswerDateTime?.toJson(),
-      'answerTime': instance.answerTime,
-      'elementAnswerTime': instance.elementAnswerTime?.toJson(),
-      'answerString': instance.answerString,
-      'elementAnswerString': instance.elementAnswerString?.toJson(),
-      'answerCoding': instance.answerCoding?.toJson(),
-      'answerQuantity': instance.answerQuantity?.toJson(),
-      'answerReference': instance.answerReference?.toJson(),
-    };
+    Questionnaire_EnableWhen instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('question', instance.question);
+  writeNotNull('elementQuestion', instance.elementQuestion?.toJson());
+  writeNotNull('operator', instance.operator);
+  writeNotNull('elementOperator', instance.elementOperator?.toJson());
+  writeNotNull('answerBoolean', instance.answerBoolean);
+  writeNotNull('elementAnswerBoolean', instance.elementAnswerBoolean?.toJson());
+  writeNotNull('answerDecimal', instance.answerDecimal);
+  writeNotNull('elementAnswerDecimal', instance.elementAnswerDecimal?.toJson());
+  writeNotNull('answerInteger', instance.answerInteger);
+  writeNotNull('elementAnswerInteger', instance.elementAnswerInteger?.toJson());
+  writeNotNull('answerDate', instance.answerDate);
+  writeNotNull('elementAnswerDate', instance.elementAnswerDate?.toJson());
+  writeNotNull('answerDateTime', instance.answerDateTime);
+  writeNotNull(
+      'elementAnswerDateTime', instance.elementAnswerDateTime?.toJson());
+  writeNotNull('answerTime', instance.answerTime);
+  writeNotNull('elementAnswerTime', instance.elementAnswerTime?.toJson());
+  writeNotNull('answerString', instance.answerString);
+  writeNotNull('elementAnswerString', instance.elementAnswerString?.toJson());
+  writeNotNull('answerCoding', instance.answerCoding?.toJson());
+  writeNotNull('answerQuantity', instance.answerQuantity?.toJson());
+  writeNotNull('answerReference', instance.answerReference?.toJson());
+  return val;
+}
 
 Questionnaire_AnswerOption _$Questionnaire_AnswerOptionFromJson(
     Map<String, dynamic> json) {
@@ -1112,25 +1148,35 @@ Questionnaire_AnswerOption _$Questionnaire_AnswerOptionFromJson(
 }
 
 Map<String, dynamic> _$Questionnaire_AnswerOptionToJson(
-        Questionnaire_AnswerOption instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'valueInteger': instance.valueInteger,
-      'elementValueInteger': instance.elementValueInteger?.toJson(),
-      'valueDate': instance.valueDate,
-      'elementValueDate': instance.elementValueDate?.toJson(),
-      'valueTime': instance.valueTime,
-      'elementValueTime': instance.elementValueTime?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueCoding': instance.valueCoding?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-      'initialSelected': instance.initialSelected,
-      'elementInitialSelected': instance.elementInitialSelected?.toJson(),
-    };
+    Questionnaire_AnswerOption instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('valueInteger', instance.valueInteger);
+  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
+  writeNotNull('valueDate', instance.valueDate);
+  writeNotNull('elementValueDate', instance.elementValueDate?.toJson());
+  writeNotNull('valueTime', instance.valueTime);
+  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueCoding', instance.valueCoding?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  writeNotNull('initialSelected', instance.initialSelected);
+  writeNotNull(
+      'elementInitialSelected', instance.elementInitialSelected?.toJson());
+  return val;
+}
 
 Questionnaire_Initial _$Questionnaire_InitialFromJson(
     Map<String, dynamic> json) {
@@ -1193,30 +1239,39 @@ Questionnaire_Initial _$Questionnaire_InitialFromJson(
 }
 
 Map<String, dynamic> _$Questionnaire_InitialToJson(
-        Questionnaire_Initial instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueDecimal': instance.valueDecimal,
-      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
-      'valueInteger': instance.valueInteger,
-      'elementValueInteger': instance.elementValueInteger?.toJson(),
-      'valueDate': instance.valueDate,
-      'elementValueDate': instance.elementValueDate?.toJson(),
-      'valueDateTime': instance.valueDateTime,
-      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
-      'valueTime': instance.valueTime,
-      'elementValueTime': instance.elementValueTime?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueUri': instance.valueUri,
-      'elementValueUri': instance.elementValueUri?.toJson(),
-      'valueAttachment': instance.valueAttachment?.toJson(),
-      'valueCoding': instance.valueCoding?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-    };
+    Questionnaire_Initial instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueDecimal', instance.valueDecimal);
+  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
+  writeNotNull('valueInteger', instance.valueInteger);
+  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
+  writeNotNull('valueDate', instance.valueDate);
+  writeNotNull('elementValueDate', instance.elementValueDate?.toJson());
+  writeNotNull('valueDateTime', instance.valueDateTime);
+  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
+  writeNotNull('valueTime', instance.valueTime);
+  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueUri', instance.valueUri);
+  writeNotNull('elementValueUri', instance.elementValueUri?.toJson());
+  writeNotNull('valueAttachment', instance.valueAttachment?.toJson());
+  writeNotNull('valueCoding', instance.valueCoding?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  return val;
+}

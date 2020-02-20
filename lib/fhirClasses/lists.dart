@@ -11,203 +11,203 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Lists {
+  static Future<Lists> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    String mode,
+    Element elementMode,
+    String title,
+    Element elementTitle,
+    CodeableConcept code,
+    Reference subject,
+    Reference encounter,
+    DateTime date,
+    Element elementDate,
+    Reference source,
+    CodeableConcept orderedBy,
+    List<Annotation> note,
+    List<List_Entry> entry,
+    CodeableConcept emptyReason,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Lists newLists = new Lists(
+      resourceType: 'List',
+      id: id ?? await fhirDb.newResourceId('List'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      mode: mode,
+      elementMode: elementMode,
+      title: title,
+      elementTitle: elementTitle,
+      code: code,
+      subject: subject,
+      encounter: encounter,
+      date: date,
+      elementDate: elementDate,
+      source: source,
+      orderedBy: orderedBy,
+      note: note,
+      entry: entry,
+      emptyReason: emptyReason,
+    );
+    newLists.meta.createdAt = DateTime.now();
+    newLists.meta.lastUpdated = newLists.meta.createdAt;
+    int saved = await fhirDb.saveResource(newLists);
+    return newLists;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Lists{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Lists> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	String mode,
-	Element elementMode,
-	String title,
-	Element elementTitle,
-	CodeableConcept code,
-	Reference subject,
-	Reference encounter,
-	DateTime date,
-	Element elementDate,
-	Reference source,
-	CodeableConcept orderedBy,
-	List<Annotation> note,
-	List<List_Entry> entry,
-	CodeableConcept emptyReason,
-}) async {
-var fhirDb = new DatabaseHelper();
-Lists newLists = new Lists(
-	resourceType: 'List',
-	id: id ?? await fhirDb.newResourceId('List'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	mode: mode,
-	elementMode: elementMode,
-	title: title,
-	elementTitle: elementTitle,
-	code: code,
-	subject: subject,
-	encounter: encounter,
-	date: date,
-	elementDate: elementDate,
-	source: source,
-	orderedBy: orderedBy,
-	note: note,
-	entry: entry,
-	emptyReason: emptyReason,
-);
-	newLists.meta.createdAt = DateTime.now();
-	newLists.meta.lastUpdated = newLists.meta.createdAt;
-	int saved = await fhirDb.saveResource(newLists);
-	 return newLists;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'List';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  String mode;
+  Element elementMode;
+  String title;
+  Element elementTitle;
+  CodeableConcept code;
+  Reference subject;
+  Reference encounter;
+  DateTime date;
+  Element elementDate;
+  Reference source;
+  CodeableConcept orderedBy;
+  List<Annotation> note;
+  List<List_Entry> entry;
+  CodeableConcept emptyReason;
 
-	String resourceType= 'List';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	String mode;
-	Element elementMode;
-	String title;
-	Element elementTitle;
-	CodeableConcept code;
-	Reference subject;
-	Reference encounter;
-	DateTime date;
-	Element elementDate;
-	Reference source;
-	CodeableConcept orderedBy;
-	List<Annotation> note;
-	List<List_Entry> entry;
-	CodeableConcept emptyReason;
-
-Lists(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.mode,
-this.elementMode,
-this.title,
-this.elementTitle,
-this.code,
-this.subject,
-this.encounter,
-this.date,
-this.elementDate,
-this.source,
-this.orderedBy,
-this.note,
-this.entry,
-this.emptyReason,
-});
+  Lists({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.mode,
+    this.elementMode,
+    this.title,
+    this.elementTitle,
+    this.code,
+    this.subject,
+    this.encounter,
+    this.date,
+    this.elementDate,
+    this.source,
+    this.orderedBy,
+    this.note,
+    this.entry,
+    this.emptyReason,
+  });
 
   factory Lists.fromJson(Map<String, dynamic> json) => _$ListsFromJson(json);
   Map<String, dynamic> toJson() => _$ListsToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class List_Entry {
+  static Future<List_Entry> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept flag,
+    bool deleted,
+    Element elementDeleted,
+    DateTime date,
+    Element elementDate,
+    Reference item,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    List_Entry newList_Entry = new List_Entry(
+      id: id ?? await fhirDb.newResourceId('List_Entry'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      flag: flag,
+      deleted: deleted,
+      elementDeleted: elementDeleted,
+      date: date,
+      elementDate: elementDate,
+      item: item,
+    );
+    return newList_Entry;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class List_Entry{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept flag;
+  bool deleted;
+  Element elementDeleted;
+  DateTime date;
+  Element elementDate;
+  Reference item;
 
-	static Future<List_Entry> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept flag,
-	bool deleted,
-	Element elementDeleted,
-	DateTime date,
-	Element elementDate,
-	Reference item,
-}) async {
-var fhirDb = new DatabaseHelper();
-List_Entry newList_Entry = new List_Entry(
-	id: id ?? await fhirDb.newResourceId('List_Entry'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	flag: flag,
-	deleted: deleted,
-	elementDeleted: elementDeleted,
-	date: date,
-	elementDate: elementDate,
-	item: item,
-);
-	return newList_Entry;
-}
+  List_Entry({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.flag,
+    this.deleted,
+    this.elementDeleted,
+    this.date,
+    this.elementDate,
+    @required this.item,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept flag;
-	bool deleted;
-	Element elementDeleted;
-	DateTime date;
-	Element elementDate;
-	Reference item;
-
-List_Entry(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.flag,
-this.deleted,
-this.elementDeleted,
-this.date,
-this.elementDate,
-@required this.item,
-});
-
-  factory List_Entry.fromJson(Map<String, dynamic> json) => _$List_EntryFromJson(json);
+  factory List_Entry.fromJson(Map<String, dynamic> json) =>
+      _$List_EntryFromJson(json);
   Map<String, dynamic> toJson() => _$List_EntryToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -234,8 +234,9 @@ Lists _$ListsFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -294,37 +295,48 @@ Lists _$ListsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ListsToJson(Lists instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'mode': instance.mode,
-      'elementMode': instance.elementMode?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'source': instance.source?.toJson(),
-      'orderedBy': instance.orderedBy?.toJson(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'entry': instance.entry?.map((e) => e?.toJson())?.toList(),
-      'emptyReason': instance.emptyReason?.toJson(),
-    };
+Map<String, dynamic> _$ListsToJson(Lists instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('mode', instance.mode);
+  writeNotNull('elementMode', instance.elementMode?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('orderedBy', instance.orderedBy?.toJson());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('entry', instance.entry?.map((e) => e?.toJson())?.toList());
+  writeNotNull('emptyReason', instance.emptyReason?.toJson());
+  return val;
+}
 
 List_Entry _$List_EntryFromJson(Map<String, dynamic> json) {
   return List_Entry(
@@ -354,16 +366,25 @@ List_Entry _$List_EntryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$List_EntryToJson(List_Entry instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'flag': instance.flag?.toJson(),
-      'deleted': instance.deleted,
-      'elementDeleted': instance.elementDeleted?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'item': instance.item?.toJson(),
-    };
+Map<String, dynamic> _$List_EntryToJson(List_Entry instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('flag', instance.flag?.toJson());
+  writeNotNull('deleted', instance.deleted);
+  writeNotNull('elementDeleted', instance.elementDeleted?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('item', instance.item?.toJson());
+  return val;
+}

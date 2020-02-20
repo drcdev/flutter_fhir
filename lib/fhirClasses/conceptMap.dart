@@ -11,535 +11,532 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ConceptMap {
+  static Future<ConceptMap> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    Identifier identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    String sourceUri,
+    Element elementSourceUri,
+    String sourceCanonical,
+    Element elementSourceCanonical,
+    String targetUri,
+    Element elementTargetUri,
+    String targetCanonical,
+    Element elementTargetCanonical,
+    List<ConceptMap_Group> group,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ConceptMap newConceptMap = new ConceptMap(
+      resourceType: 'ConceptMap',
+      id: id ?? await fhirDb.newResourceId('ConceptMap'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      sourceUri: sourceUri,
+      elementSourceUri: elementSourceUri,
+      sourceCanonical: sourceCanonical,
+      elementSourceCanonical: elementSourceCanonical,
+      targetUri: targetUri,
+      elementTargetUri: elementTargetUri,
+      targetCanonical: targetCanonical,
+      elementTargetCanonical: elementTargetCanonical,
+      group: group,
+    );
+    newConceptMap.meta.createdAt = DateTime.now();
+    newConceptMap.meta.lastUpdated = newConceptMap.meta.createdAt;
+    int saved = await fhirDb.saveResource(newConceptMap);
+    return newConceptMap;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ConceptMap{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ConceptMap> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	Identifier identifier,
-	String version,
-	Element elementVersion,
-	String name,
-	Element elementName,
-	String title,
-	Element elementTitle,
-	String status,
-	Element elementStatus,
-	bool experimental,
-	Element elementExperimental,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String purpose,
-	Element elementPurpose,
-	String copyright,
-	Element elementCopyright,
-	String sourceUri,
-	Element elementSourceUri,
-	String sourceCanonical,
-	Element elementSourceCanonical,
-	String targetUri,
-	Element elementTargetUri,
-	String targetCanonical,
-	Element elementTargetCanonical,
-	List<ConceptMap_Group> group,
-}) async {
-var fhirDb = new DatabaseHelper();
-ConceptMap newConceptMap = new ConceptMap(
-	resourceType: 'ConceptMap',
-	id: id ?? await fhirDb.newResourceId('ConceptMap'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	identifier: identifier,
-	version: version,
-	elementVersion: elementVersion,
-	name: name,
-	elementName: elementName,
-	title: title,
-	elementTitle: elementTitle,
-	status: status,
-	elementStatus: elementStatus,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	copyright: copyright,
-	elementCopyright: elementCopyright,
-	sourceUri: sourceUri,
-	elementSourceUri: elementSourceUri,
-	sourceCanonical: sourceCanonical,
-	elementSourceCanonical: elementSourceCanonical,
-	targetUri: targetUri,
-	elementTargetUri: elementTargetUri,
-	targetCanonical: targetCanonical,
-	elementTargetCanonical: elementTargetCanonical,
-	group: group,
-);
-	newConceptMap.meta.createdAt = DateTime.now();
-	newConceptMap.meta.lastUpdated = newConceptMap.meta.createdAt;
-	int saved = await fhirDb.saveResource(newConceptMap);
-	 return newConceptMap;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'ConceptMap';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  Identifier identifier;
+  String version;
+  Element elementVersion;
+  String name;
+  Element elementName;
+  String title;
+  Element elementTitle;
+  String status;
+  Element elementStatus;
+  bool experimental;
+  Element elementExperimental;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String purpose;
+  Element elementPurpose;
+  String copyright;
+  Element elementCopyright;
+  String sourceUri;
+  Element elementSourceUri;
+  String sourceCanonical;
+  Element elementSourceCanonical;
+  String targetUri;
+  Element elementTargetUri;
+  String targetCanonical;
+  Element elementTargetCanonical;
+  List<ConceptMap_Group> group;
 
-	String resourceType= 'ConceptMap';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	Identifier identifier;
-	String version;
-	Element elementVersion;
-	String name;
-	Element elementName;
-	String title;
-	Element elementTitle;
-	String status;
-	Element elementStatus;
-	bool experimental;
-	Element elementExperimental;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String purpose;
-	Element elementPurpose;
-	String copyright;
-	Element elementCopyright;
-	String sourceUri;
-	Element elementSourceUri;
-	String sourceCanonical;
-	Element elementSourceCanonical;
-	String targetUri;
-	Element elementTargetUri;
-	String targetCanonical;
-	Element elementTargetCanonical;
-	List<ConceptMap_Group> group;
+  ConceptMap({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.sourceUri,
+    this.elementSourceUri,
+    this.sourceCanonical,
+    this.elementSourceCanonical,
+    this.targetUri,
+    this.elementTargetUri,
+    this.targetCanonical,
+    this.elementTargetCanonical,
+    this.group,
+  });
 
-ConceptMap(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.identifier,
-this.version,
-this.elementVersion,
-this.name,
-this.elementName,
-this.title,
-this.elementTitle,
-this.status,
-this.elementStatus,
-this.experimental,
-this.elementExperimental,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.purpose,
-this.elementPurpose,
-this.copyright,
-this.elementCopyright,
-this.sourceUri,
-this.elementSourceUri,
-this.sourceCanonical,
-this.elementSourceCanonical,
-this.targetUri,
-this.elementTargetUri,
-this.targetCanonical,
-this.elementTargetCanonical,
-this.group,
-});
-
-  factory ConceptMap.fromJson(Map<String, dynamic> json) => _$ConceptMapFromJson(json);
+  factory ConceptMap.fromJson(Map<String, dynamic> json) =>
+      _$ConceptMapFromJson(json);
   Map<String, dynamic> toJson() => _$ConceptMapToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ConceptMap_Group {
+  static Future<ConceptMap_Group> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String source,
+    Element elementSource,
+    String sourceVersion,
+    Element elementSourceVersion,
+    String target,
+    Element elementTarget,
+    String targetVersion,
+    Element elementTargetVersion,
+    List<ConceptMap_Element> element,
+    ConceptMap_Unmapped unmapped,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ConceptMap_Group newConceptMap_Group = new ConceptMap_Group(
+      id: id ?? await fhirDb.newResourceId('ConceptMap_Group'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      source: source,
+      elementSource: elementSource,
+      sourceVersion: sourceVersion,
+      elementSourceVersion: elementSourceVersion,
+      target: target,
+      elementTarget: elementTarget,
+      targetVersion: targetVersion,
+      elementTargetVersion: elementTargetVersion,
+      element: element,
+      unmapped: unmapped,
+    );
+    return newConceptMap_Group;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ConceptMap_Group{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String source;
+  Element elementSource;
+  String sourceVersion;
+  Element elementSourceVersion;
+  String target;
+  Element elementTarget;
+  String targetVersion;
+  Element elementTargetVersion;
+  List<ConceptMap_Element> element;
+  ConceptMap_Unmapped unmapped;
 
-	static Future<ConceptMap_Group> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String source,
-	Element elementSource,
-	String sourceVersion,
-	Element elementSourceVersion,
-	String target,
-	Element elementTarget,
-	String targetVersion,
-	Element elementTargetVersion,
-	List<ConceptMap_Element> element,
-	ConceptMap_Unmapped unmapped,
-}) async {
-var fhirDb = new DatabaseHelper();
-ConceptMap_Group newConceptMap_Group = new ConceptMap_Group(
-	id: id ?? await fhirDb.newResourceId('ConceptMap_Group'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	source: source,
-	elementSource: elementSource,
-	sourceVersion: sourceVersion,
-	elementSourceVersion: elementSourceVersion,
-	target: target,
-	elementTarget: elementTarget,
-	targetVersion: targetVersion,
-	elementTargetVersion: elementTargetVersion,
-	element: element,
-	unmapped: unmapped,
-);
-	return newConceptMap_Group;
-}
+  ConceptMap_Group({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.source,
+    this.elementSource,
+    this.sourceVersion,
+    this.elementSourceVersion,
+    this.target,
+    this.elementTarget,
+    this.targetVersion,
+    this.elementTargetVersion,
+    @required this.element,
+    this.unmapped,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String source;
-	Element elementSource;
-	String sourceVersion;
-	Element elementSourceVersion;
-	String target;
-	Element elementTarget;
-	String targetVersion;
-	Element elementTargetVersion;
-	List<ConceptMap_Element> element;
-	ConceptMap_Unmapped unmapped;
-
-ConceptMap_Group(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.source,
-this.elementSource,
-this.sourceVersion,
-this.elementSourceVersion,
-this.target,
-this.elementTarget,
-this.targetVersion,
-this.elementTargetVersion,
-@required this.element,
-this.unmapped,
-});
-
-  factory ConceptMap_Group.fromJson(Map<String, dynamic> json) => _$ConceptMap_GroupFromJson(json);
+  factory ConceptMap_Group.fromJson(Map<String, dynamic> json) =>
+      _$ConceptMap_GroupFromJson(json);
   Map<String, dynamic> toJson() => _$ConceptMap_GroupToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ConceptMap_Element {
+  static Future<ConceptMap_Element> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String display,
+    Element elementDisplay,
+    List<ConceptMap_Target> target,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ConceptMap_Element newConceptMap_Element = new ConceptMap_Element(
+      id: id ?? await fhirDb.newResourceId('ConceptMap_Element'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      display: display,
+      elementDisplay: elementDisplay,
+      target: target,
+    );
+    return newConceptMap_Element;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ConceptMap_Element{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String code;
+  Element elementCode;
+  String display;
+  Element elementDisplay;
+  List<ConceptMap_Target> target;
 
-	static Future<ConceptMap_Element> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String code,
-	Element elementCode,
-	String display,
-	Element elementDisplay,
-	List<ConceptMap_Target> target,
-}) async {
-var fhirDb = new DatabaseHelper();
-ConceptMap_Element newConceptMap_Element = new ConceptMap_Element(
-	id: id ?? await fhirDb.newResourceId('ConceptMap_Element'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	elementCode: elementCode,
-	display: display,
-	elementDisplay: elementDisplay,
-	target: target,
-);
-	return newConceptMap_Element;
-}
+  ConceptMap_Element({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.display,
+    this.elementDisplay,
+    this.target,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String code;
-	Element elementCode;
-	String display;
-	Element elementDisplay;
-	List<ConceptMap_Target> target;
-
-ConceptMap_Element(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.elementCode,
-this.display,
-this.elementDisplay,
-this.target,
-});
-
-  factory ConceptMap_Element.fromJson(Map<String, dynamic> json) => _$ConceptMap_ElementFromJson(json);
+  factory ConceptMap_Element.fromJson(Map<String, dynamic> json) =>
+      _$ConceptMap_ElementFromJson(json);
   Map<String, dynamic> toJson() => _$ConceptMap_ElementToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ConceptMap_Target {
+  static Future<ConceptMap_Target> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    String display,
+    Element elementDisplay,
+    String equivalence,
+    Element elementEquivalence,
+    String comment,
+    Element elementComment,
+    List<ConceptMap_DependsOn> dependsOn,
+    List<ConceptMap_DependsOn> product,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ConceptMap_Target newConceptMap_Target = new ConceptMap_Target(
+      id: id ?? await fhirDb.newResourceId('ConceptMap_Target'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      display: display,
+      elementDisplay: elementDisplay,
+      equivalence: equivalence,
+      elementEquivalence: elementEquivalence,
+      comment: comment,
+      elementComment: elementComment,
+      dependsOn: dependsOn,
+      product: product,
+    );
+    return newConceptMap_Target;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ConceptMap_Target{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String code;
+  Element elementCode;
+  String display;
+  Element elementDisplay;
+  String equivalence;
+  Element elementEquivalence;
+  String comment;
+  Element elementComment;
+  List<ConceptMap_DependsOn> dependsOn;
+  List<ConceptMap_DependsOn> product;
 
-	static Future<ConceptMap_Target> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String code,
-	Element elementCode,
-	String display,
-	Element elementDisplay,
-	String equivalence,
-	Element elementEquivalence,
-	String comment,
-	Element elementComment,
-	List<ConceptMap_DependsOn> dependsOn,
-	List<ConceptMap_DependsOn> product,
-}) async {
-var fhirDb = new DatabaseHelper();
-ConceptMap_Target newConceptMap_Target = new ConceptMap_Target(
-	id: id ?? await fhirDb.newResourceId('ConceptMap_Target'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	elementCode: elementCode,
-	display: display,
-	elementDisplay: elementDisplay,
-	equivalence: equivalence,
-	elementEquivalence: elementEquivalence,
-	comment: comment,
-	elementComment: elementComment,
-	dependsOn: dependsOn,
-	product: product,
-);
-	return newConceptMap_Target;
-}
+  ConceptMap_Target({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.display,
+    this.elementDisplay,
+    this.equivalence,
+    this.elementEquivalence,
+    this.comment,
+    this.elementComment,
+    this.dependsOn,
+    this.product,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String code;
-	Element elementCode;
-	String display;
-	Element elementDisplay;
-	String equivalence;
-	Element elementEquivalence;
-	String comment;
-	Element elementComment;
-	List<ConceptMap_DependsOn> dependsOn;
-	List<ConceptMap_DependsOn> product;
-
-ConceptMap_Target(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.elementCode,
-this.display,
-this.elementDisplay,
-this.equivalence,
-this.elementEquivalence,
-this.comment,
-this.elementComment,
-this.dependsOn,
-this.product,
-});
-
-  factory ConceptMap_Target.fromJson(Map<String, dynamic> json) => _$ConceptMap_TargetFromJson(json);
+  factory ConceptMap_Target.fromJson(Map<String, dynamic> json) =>
+      _$ConceptMap_TargetFromJson(json);
   Map<String, dynamic> toJson() => _$ConceptMap_TargetToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ConceptMap_DependsOn {
+  static Future<ConceptMap_DependsOn> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String property,
+    Element elementProperty,
+    String system,
+    String value,
+    Element elementValue,
+    String display,
+    Element elementDisplay,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ConceptMap_DependsOn newConceptMap_DependsOn = new ConceptMap_DependsOn(
+      id: id ?? await fhirDb.newResourceId('ConceptMap_DependsOn'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      property: property,
+      elementProperty: elementProperty,
+      system: system,
+      value: value,
+      elementValue: elementValue,
+      display: display,
+      elementDisplay: elementDisplay,
+    );
+    return newConceptMap_DependsOn;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ConceptMap_DependsOn{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String property;
+  Element elementProperty;
+  String system;
+  String value;
+  Element elementValue;
+  String display;
+  Element elementDisplay;
 
-	static Future<ConceptMap_DependsOn> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String property,
-	Element elementProperty,
-	String system,
-	String value,
-	Element elementValue,
-	String display,
-	Element elementDisplay,
-}) async {
-var fhirDb = new DatabaseHelper();
-ConceptMap_DependsOn newConceptMap_DependsOn = new ConceptMap_DependsOn(
-	id: id ?? await fhirDb.newResourceId('ConceptMap_DependsOn'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	property: property,
-	elementProperty: elementProperty,
-	system: system,
-	value: value,
-	elementValue: elementValue,
-	display: display,
-	elementDisplay: elementDisplay,
-);
-	return newConceptMap_DependsOn;
-}
+  ConceptMap_DependsOn({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.property,
+    this.elementProperty,
+    this.system,
+    this.value,
+    this.elementValue,
+    this.display,
+    this.elementDisplay,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String property;
-	Element elementProperty;
-	String system;
-	String value;
-	Element elementValue;
-	String display;
-	Element elementDisplay;
-
-ConceptMap_DependsOn(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.property,
-this.elementProperty,
-this.system,
-this.value,
-this.elementValue,
-this.display,
-this.elementDisplay,
-});
-
-  factory ConceptMap_DependsOn.fromJson(Map<String, dynamic> json) => _$ConceptMap_DependsOnFromJson(json);
+  factory ConceptMap_DependsOn.fromJson(Map<String, dynamic> json) =>
+      _$ConceptMap_DependsOnFromJson(json);
   Map<String, dynamic> toJson() => _$ConceptMap_DependsOnToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ConceptMap_Unmapped {
+  static Future<ConceptMap_Unmapped> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String mode,
+    Element elementMode,
+    String code,
+    Element elementCode,
+    String display,
+    Element elementDisplay,
+    String url,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ConceptMap_Unmapped newConceptMap_Unmapped = new ConceptMap_Unmapped(
+      id: id ?? await fhirDb.newResourceId('ConceptMap_Unmapped'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      mode: mode,
+      elementMode: elementMode,
+      code: code,
+      elementCode: elementCode,
+      display: display,
+      elementDisplay: elementDisplay,
+      url: url,
+    );
+    return newConceptMap_Unmapped;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ConceptMap_Unmapped{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String mode;
+  Element elementMode;
+  String code;
+  Element elementCode;
+  String display;
+  Element elementDisplay;
+  String url;
 
-	static Future<ConceptMap_Unmapped> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String mode,
-	Element elementMode,
-	String code,
-	Element elementCode,
-	String display,
-	Element elementDisplay,
-	String url,
-}) async {
-var fhirDb = new DatabaseHelper();
-ConceptMap_Unmapped newConceptMap_Unmapped = new ConceptMap_Unmapped(
-	id: id ?? await fhirDb.newResourceId('ConceptMap_Unmapped'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	mode: mode,
-	elementMode: elementMode,
-	code: code,
-	elementCode: elementCode,
-	display: display,
-	elementDisplay: elementDisplay,
-	url: url,
-);
-	return newConceptMap_Unmapped;
-}
+  ConceptMap_Unmapped({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.mode,
+    this.elementMode,
+    this.code,
+    this.elementCode,
+    this.display,
+    this.elementDisplay,
+    this.url,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String mode;
-	Element elementMode;
-	String code;
-	Element elementCode;
-	String display;
-	Element elementDisplay;
-	String url;
-
-ConceptMap_Unmapped(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.mode,
-this.elementMode,
-this.code,
-this.elementCode,
-this.display,
-this.elementDisplay,
-this.url,
-});
-
-  factory ConceptMap_Unmapped.fromJson(Map<String, dynamic> json) => _$ConceptMap_UnmappedFromJson(json);
+  factory ConceptMap_Unmapped.fromJson(Map<String, dynamic> json) =>
+      _$ConceptMap_UnmappedFromJson(json);
   Map<String, dynamic> toJson() => _$ConceptMap_UnmappedToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -566,8 +563,9 @@ ConceptMap _$ConceptMapFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -664,56 +662,69 @@ ConceptMap _$ConceptMapFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'sourceUri': instance.sourceUri,
-      'elementSourceUri': instance.elementSourceUri?.toJson(),
-      'sourceCanonical': instance.sourceCanonical,
-      'elementSourceCanonical': instance.elementSourceCanonical?.toJson(),
-      'targetUri': instance.targetUri,
-      'elementTargetUri': instance.elementTargetUri?.toJson(),
-      'targetCanonical': instance.targetCanonical,
-      'elementTargetCanonical': instance.elementTargetCanonical?.toJson(),
-      'group': instance.group?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('sourceUri', instance.sourceUri);
+  writeNotNull('elementSourceUri', instance.elementSourceUri?.toJson());
+  writeNotNull('sourceCanonical', instance.sourceCanonical);
+  writeNotNull(
+      'elementSourceCanonical', instance.elementSourceCanonical?.toJson());
+  writeNotNull('targetUri', instance.targetUri);
+  writeNotNull('elementTargetUri', instance.elementTargetUri?.toJson());
+  writeNotNull('targetCanonical', instance.targetCanonical);
+  writeNotNull(
+      'elementTargetCanonical', instance.elementTargetCanonical?.toJson());
+  writeNotNull('group', instance.group?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
   return ConceptMap_Group(
@@ -756,23 +767,32 @@ ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_GroupToJson(ConceptMap_Group instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'source': instance.source,
-      'elementSource': instance.elementSource?.toJson(),
-      'sourceVersion': instance.sourceVersion,
-      'elementSourceVersion': instance.elementSourceVersion?.toJson(),
-      'target': instance.target,
-      'elementTarget': instance.elementTarget?.toJson(),
-      'targetVersion': instance.targetVersion,
-      'elementTargetVersion': instance.elementTargetVersion?.toJson(),
-      'element': instance.element?.map((e) => e?.toJson())?.toList(),
-      'unmapped': instance.unmapped?.toJson(),
-    };
+Map<String, dynamic> _$ConceptMap_GroupToJson(ConceptMap_Group instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('source', instance.source);
+  writeNotNull('elementSource', instance.elementSource?.toJson());
+  writeNotNull('sourceVersion', instance.sourceVersion);
+  writeNotNull('elementSourceVersion', instance.elementSourceVersion?.toJson());
+  writeNotNull('target', instance.target);
+  writeNotNull('elementTarget', instance.elementTarget?.toJson());
+  writeNotNull('targetVersion', instance.targetVersion);
+  writeNotNull('elementTargetVersion', instance.elementTargetVersion?.toJson());
+  writeNotNull('element', instance.element?.map((e) => e?.toJson())?.toList());
+  writeNotNull('unmapped', instance.unmapped?.toJson());
+  return val;
+}
 
 ConceptMap_Element _$ConceptMap_ElementFromJson(Map<String, dynamic> json) {
   return ConceptMap_Element(
@@ -801,18 +821,27 @@ ConceptMap_Element _$ConceptMap_ElementFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_ElementToJson(ConceptMap_Element instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'target': instance.target?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ConceptMap_ElementToJson(ConceptMap_Element instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ConceptMap_Target _$ConceptMap_TargetFromJson(Map<String, dynamic> json) {
   return ConceptMap_Target(
@@ -854,23 +883,33 @@ ConceptMap_Target _$ConceptMap_TargetFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_TargetToJson(ConceptMap_Target instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'equivalence': instance.equivalence,
-      'elementEquivalence': instance.elementEquivalence?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'dependsOn': instance.dependsOn?.map((e) => e?.toJson())?.toList(),
-      'product': instance.product?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ConceptMap_TargetToJson(ConceptMap_Target instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('equivalence', instance.equivalence);
+  writeNotNull('elementEquivalence', instance.elementEquivalence?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull(
+      'dependsOn', instance.dependsOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('product', instance.product?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ConceptMap_DependsOn _$ConceptMap_DependsOnFromJson(Map<String, dynamic> json) {
   return ConceptMap_DependsOn(
@@ -900,20 +939,29 @@ ConceptMap_DependsOn _$ConceptMap_DependsOnFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ConceptMap_DependsOnToJson(
-        ConceptMap_DependsOn instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'property': instance.property,
-      'elementProperty': instance.elementProperty?.toJson(),
-      'system': instance.system,
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-    };
+    ConceptMap_DependsOn instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('property', instance.property);
+  writeNotNull('elementProperty', instance.elementProperty?.toJson());
+  writeNotNull('system', instance.system);
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  return val;
+}
 
 ConceptMap_Unmapped _$ConceptMap_UnmappedFromJson(Map<String, dynamic> json) {
   return ConceptMap_Unmapped(
@@ -942,18 +990,26 @@ ConceptMap_Unmapped _$ConceptMap_UnmappedFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_UnmappedToJson(
-        ConceptMap_Unmapped instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'mode': instance.mode,
-      'elementMode': instance.elementMode?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'url': instance.url,
-    };
+Map<String, dynamic> _$ConceptMap_UnmappedToJson(ConceptMap_Unmapped instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('mode', instance.mode);
+  writeNotNull('elementMode', instance.elementMode?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('url', instance.url);
+  return val;
+}

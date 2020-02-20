@@ -10,187 +10,189 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class SubstanceProtein {
+  static Future<SubstanceProtein> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept sequenceType,
+    int numberOfSubunits,
+    Element elementNumberOfSubunits,
+    List<String> disulfideLinkage,
+    List<Element> elementDisulfideLinkage,
+    List<SubstanceProtein_Subunit> subunit,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceProtein newSubstanceProtein = new SubstanceProtein(
+      resourceType: 'SubstanceProtein',
+      id: id ?? await fhirDb.newResourceId('SubstanceProtein'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequenceType: sequenceType,
+      numberOfSubunits: numberOfSubunits,
+      elementNumberOfSubunits: elementNumberOfSubunits,
+      disulfideLinkage: disulfideLinkage,
+      elementDisulfideLinkage: elementDisulfideLinkage,
+      subunit: subunit,
+    );
+    newSubstanceProtein.meta.createdAt = DateTime.now();
+    newSubstanceProtein.meta.lastUpdated = newSubstanceProtein.meta.createdAt;
+    int saved = await fhirDb.saveResource(newSubstanceProtein);
+    return newSubstanceProtein;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class SubstanceProtein{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<SubstanceProtein> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept sequenceType,
-	int numberOfSubunits,
-	Element elementNumberOfSubunits,
-	List<String> disulfideLinkage,
-	List<Element> elementDisulfideLinkage,
-	List<SubstanceProtein_Subunit> subunit,
-}) async {
-var fhirDb = new DatabaseHelper();
-SubstanceProtein newSubstanceProtein = new SubstanceProtein(
-	resourceType: 'SubstanceProtein',
-	id: id ?? await fhirDb.newResourceId('SubstanceProtein'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequenceType: sequenceType,
-	numberOfSubunits: numberOfSubunits,
-	elementNumberOfSubunits: elementNumberOfSubunits,
-	disulfideLinkage: disulfideLinkage,
-	elementDisulfideLinkage: elementDisulfideLinkage,
-	subunit: subunit,
-);
-	newSubstanceProtein.meta.createdAt = DateTime.now();
-	newSubstanceProtein.meta.lastUpdated = newSubstanceProtein.meta.createdAt;
-	int saved = await fhirDb.saveResource(newSubstanceProtein);
-	 return newSubstanceProtein;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'SubstanceProtein';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept sequenceType;
+  int numberOfSubunits;
+  Element elementNumberOfSubunits;
+  List<String> disulfideLinkage;
+  List<Element> elementDisulfideLinkage;
+  List<SubstanceProtein_Subunit> subunit;
 
-	String resourceType= 'SubstanceProtein';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept sequenceType;
-	int numberOfSubunits;
-	Element elementNumberOfSubunits;
-	List<String> disulfideLinkage;
-	List<Element> elementDisulfideLinkage;
-	List<SubstanceProtein_Subunit> subunit;
+  SubstanceProtein({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.sequenceType,
+    this.numberOfSubunits,
+    this.elementNumberOfSubunits,
+    this.disulfideLinkage,
+    this.elementDisulfideLinkage,
+    this.subunit,
+  });
 
-SubstanceProtein(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.sequenceType,
-this.numberOfSubunits,
-this.elementNumberOfSubunits,
-this.disulfideLinkage,
-this.elementDisulfideLinkage,
-this.subunit,
-});
-
-  factory SubstanceProtein.fromJson(Map<String, dynamic> json) => _$SubstanceProteinFromJson(json);
+  factory SubstanceProtein.fromJson(Map<String, dynamic> json) =>
+      _$SubstanceProteinFromJson(json);
   Map<String, dynamic> toJson() => _$SubstanceProteinToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class SubstanceProtein_Subunit {
+  static Future<SubstanceProtein_Subunit> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int subunit,
+    Element elementSubunit,
+    String sequence,
+    Element elementSequence,
+    int length,
+    Element elementLength,
+    Attachment sequenceAttachment,
+    Identifier nTerminalModificationId,
+    String nTerminalModification,
+    Element elementNTerminalModification,
+    Identifier cTerminalModificationId,
+    String cTerminalModification,
+    Element elementCTerminalModification,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    SubstanceProtein_Subunit newSubstanceProtein_Subunit =
+        new SubstanceProtein_Subunit(
+      id: id ?? await fhirDb.newResourceId('SubstanceProtein_Subunit'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      subunit: subunit,
+      elementSubunit: elementSubunit,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      length: length,
+      elementLength: elementLength,
+      sequenceAttachment: sequenceAttachment,
+      nTerminalModificationId: nTerminalModificationId,
+      nTerminalModification: nTerminalModification,
+      elementNTerminalModification: elementNTerminalModification,
+      cTerminalModificationId: cTerminalModificationId,
+      cTerminalModification: cTerminalModification,
+      elementCTerminalModification: elementCTerminalModification,
+    );
+    return newSubstanceProtein_Subunit;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class SubstanceProtein_Subunit{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int subunit;
+  Element elementSubunit;
+  String sequence;
+  Element elementSequence;
+  int length;
+  Element elementLength;
+  Attachment sequenceAttachment;
+  Identifier nTerminalModificationId;
+  String nTerminalModification;
+  Element elementNTerminalModification;
+  Identifier cTerminalModificationId;
+  String cTerminalModification;
+  Element elementCTerminalModification;
 
-	static Future<SubstanceProtein_Subunit> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int subunit,
-	Element elementSubunit,
-	String sequence,
-	Element elementSequence,
-	int length,
-	Element elementLength,
-	Attachment sequenceAttachment,
-	Identifier nTerminalModificationId,
-	String nTerminalModification,
-	Element elementNTerminalModification,
-	Identifier cTerminalModificationId,
-	String cTerminalModification,
-	Element elementCTerminalModification,
-}) async {
-var fhirDb = new DatabaseHelper();
-SubstanceProtein_Subunit newSubstanceProtein_Subunit = new SubstanceProtein_Subunit(
-	id: id ?? await fhirDb.newResourceId('SubstanceProtein_Subunit'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	subunit: subunit,
-	elementSubunit: elementSubunit,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	length: length,
-	elementLength: elementLength,
-	sequenceAttachment: sequenceAttachment,
-	nTerminalModificationId: nTerminalModificationId,
-	nTerminalModification: nTerminalModification,
-	elementNTerminalModification: elementNTerminalModification,
-	cTerminalModificationId: cTerminalModificationId,
-	cTerminalModification: cTerminalModification,
-	elementCTerminalModification: elementCTerminalModification,
-);
-	return newSubstanceProtein_Subunit;
-}
+  SubstanceProtein_Subunit({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.subunit,
+    this.elementSubunit,
+    this.sequence,
+    this.elementSequence,
+    this.length,
+    this.elementLength,
+    this.sequenceAttachment,
+    this.nTerminalModificationId,
+    this.nTerminalModification,
+    this.elementNTerminalModification,
+    this.cTerminalModificationId,
+    this.cTerminalModification,
+    this.elementCTerminalModification,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int subunit;
-	Element elementSubunit;
-	String sequence;
-	Element elementSequence;
-	int length;
-	Element elementLength;
-	Attachment sequenceAttachment;
-	Identifier nTerminalModificationId;
-	String nTerminalModification;
-	Element elementNTerminalModification;
-	Identifier cTerminalModificationId;
-	String cTerminalModification;
-	Element elementCTerminalModification;
-
-SubstanceProtein_Subunit(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.subunit,
-this.elementSubunit,
-this.sequence,
-this.elementSequence,
-this.length,
-this.elementLength,
-this.sequenceAttachment,
-this.nTerminalModificationId,
-this.nTerminalModification,
-this.elementNTerminalModification,
-this.cTerminalModificationId,
-this.cTerminalModification,
-this.elementCTerminalModification,
-});
-
-  factory SubstanceProtein_Subunit.fromJson(Map<String, dynamic> json) => _$SubstanceProtein_SubunitFromJson(json);
+  factory SubstanceProtein_Subunit.fromJson(Map<String, dynamic> json) =>
+      _$SubstanceProtein_SubunitFromJson(json);
   Map<String, dynamic> toJson() => _$SubstanceProtein_SubunitToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -217,8 +219,9 @@ SubstanceProtein _$SubstanceProteinFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -251,28 +254,38 @@ SubstanceProtein _$SubstanceProteinFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SubstanceProteinToJson(SubstanceProtein instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequenceType': instance.sequenceType?.toJson(),
-      'numberOfSubunits': instance.numberOfSubunits,
-      'elementNumberOfSubunits': instance.elementNumberOfSubunits?.toJson(),
-      'disulfideLinkage': instance.disulfideLinkage,
-      'elementDisulfideLinkage':
-          instance.elementDisulfideLinkage?.map((e) => e?.toJson())?.toList(),
-      'subunit': instance.subunit?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$SubstanceProteinToJson(SubstanceProtein instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequenceType', instance.sequenceType?.toJson());
+  writeNotNull('numberOfSubunits', instance.numberOfSubunits);
+  writeNotNull(
+      'elementNumberOfSubunits', instance.elementNumberOfSubunits?.toJson());
+  writeNotNull('disulfideLinkage', instance.disulfideLinkage);
+  writeNotNull('elementDisulfideLinkage',
+      instance.elementDisulfideLinkage?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subunit', instance.subunit?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 SubstanceProtein_Subunit _$SubstanceProtein_SubunitFromJson(
     Map<String, dynamic> json) {
@@ -324,25 +337,36 @@ SubstanceProtein_Subunit _$SubstanceProtein_SubunitFromJson(
 }
 
 Map<String, dynamic> _$SubstanceProtein_SubunitToJson(
-        SubstanceProtein_Subunit instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'subunit': instance.subunit,
-      'elementSubunit': instance.elementSubunit?.toJson(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'length': instance.length,
-      'elementLength': instance.elementLength?.toJson(),
-      'sequenceAttachment': instance.sequenceAttachment?.toJson(),
-      'nTerminalModificationId': instance.nTerminalModificationId?.toJson(),
-      'nTerminalModification': instance.nTerminalModification,
-      'elementNTerminalModification':
-          instance.elementNTerminalModification?.toJson(),
-      'cTerminalModificationId': instance.cTerminalModificationId?.toJson(),
-      'cTerminalModification': instance.cTerminalModification,
-      'elementCTerminalModification':
-          instance.elementCTerminalModification?.toJson(),
-    };
+    SubstanceProtein_Subunit instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subunit', instance.subunit);
+  writeNotNull('elementSubunit', instance.elementSubunit?.toJson());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('length', instance.length);
+  writeNotNull('elementLength', instance.elementLength?.toJson());
+  writeNotNull('sequenceAttachment', instance.sequenceAttachment?.toJson());
+  writeNotNull(
+      'nTerminalModificationId', instance.nTerminalModificationId?.toJson());
+  writeNotNull('nTerminalModification', instance.nTerminalModification);
+  writeNotNull('elementNTerminalModification',
+      instance.elementNTerminalModification?.toJson());
+  writeNotNull(
+      'cTerminalModificationId', instance.cTerminalModificationId?.toJson());
+  writeNotNull('cTerminalModification', instance.cTerminalModification);
+  writeNotNull('elementCTerminalModification',
+      instance.elementCTerminalModification?.toJson());
+  return val;
+}

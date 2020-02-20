@@ -11,139 +11,141 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class PaymentNotice {
+  static Future<PaymentNotice> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Reference request,
+    Reference response,
+    DateTime created,
+    Element elementCreated,
+    Reference provider,
+    Reference payment,
+    String paymentDate,
+    Element elementPaymentDate,
+    Reference payee,
+    Reference recipient,
+    Money amount,
+    CodeableConcept paymentStatus,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    PaymentNotice newPaymentNotice = new PaymentNotice(
+      resourceType: 'PaymentNotice',
+      id: id ?? await fhirDb.newResourceId('PaymentNotice'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      request: request,
+      response: response,
+      created: created,
+      elementCreated: elementCreated,
+      provider: provider,
+      payment: payment,
+      paymentDate: paymentDate,
+      elementPaymentDate: elementPaymentDate,
+      payee: payee,
+      recipient: recipient,
+      amount: amount,
+      paymentStatus: paymentStatus,
+    );
+    newPaymentNotice.meta.createdAt = DateTime.now();
+    newPaymentNotice.meta.lastUpdated = newPaymentNotice.meta.createdAt;
+    int saved = await fhirDb.saveResource(newPaymentNotice);
+    return newPaymentNotice;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class PaymentNotice{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<PaymentNotice> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	Reference request,
-	Reference response,
-	DateTime created,
-	Element elementCreated,
-	Reference provider,
-	Reference payment,
-	String paymentDate,
-	Element elementPaymentDate,
-	Reference payee,
-	Reference recipient,
-	Money amount,
-	CodeableConcept paymentStatus,
-}) async {
-var fhirDb = new DatabaseHelper();
-PaymentNotice newPaymentNotice = new PaymentNotice(
-	resourceType: 'PaymentNotice',
-	id: id ?? await fhirDb.newResourceId('PaymentNotice'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	request: request,
-	response: response,
-	created: created,
-	elementCreated: elementCreated,
-	provider: provider,
-	payment: payment,
-	paymentDate: paymentDate,
-	elementPaymentDate: elementPaymentDate,
-	payee: payee,
-	recipient: recipient,
-	amount: amount,
-	paymentStatus: paymentStatus,
-);
-	newPaymentNotice.meta.createdAt = DateTime.now();
-	newPaymentNotice.meta.lastUpdated = newPaymentNotice.meta.createdAt;
-	int saved = await fhirDb.saveResource(newPaymentNotice);
-	 return newPaymentNotice;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'PaymentNotice';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  Reference request;
+  Reference response;
+  DateTime created;
+  Element elementCreated;
+  Reference provider;
+  Reference payment;
+  String paymentDate;
+  Element elementPaymentDate;
+  Reference payee;
+  Reference recipient;
+  Money amount;
+  CodeableConcept paymentStatus;
 
-	String resourceType= 'PaymentNotice';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	Reference request;
-	Reference response;
-	DateTime created;
-	Element elementCreated;
-	Reference provider;
-	Reference payment;
-	String paymentDate;
-	Element elementPaymentDate;
-	Reference payee;
-	Reference recipient;
-	Money amount;
-	CodeableConcept paymentStatus;
+  PaymentNotice({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.request,
+    this.response,
+    this.created,
+    this.elementCreated,
+    this.provider,
+    @required this.payment,
+    this.paymentDate,
+    this.elementPaymentDate,
+    this.payee,
+    @required this.recipient,
+    @required this.amount,
+    this.paymentStatus,
+  });
 
-PaymentNotice(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.request,
-this.response,
-this.created,
-this.elementCreated,
-this.provider,
-@required this.payment,
-this.paymentDate,
-this.elementPaymentDate,
-this.payee,
-@required this.recipient,
-@required this.amount,
-this.paymentStatus,
-});
-
-  factory PaymentNotice.fromJson(Map<String, dynamic> json) => _$PaymentNoticeFromJson(json);
+  factory PaymentNotice.fromJson(Map<String, dynamic> json) =>
+      _$PaymentNoticeFromJson(json);
   Map<String, dynamic> toJson() => _$PaymentNoticeToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -170,8 +172,9 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -227,33 +230,43 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PaymentNoticeToJson(PaymentNotice instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'request': instance.request?.toJson(),
-      'response': instance.response?.toJson(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'provider': instance.provider?.toJson(),
-      'payment': instance.payment?.toJson(),
-      'paymentDate': instance.paymentDate,
-      'elementPaymentDate': instance.elementPaymentDate?.toJson(),
-      'payee': instance.payee?.toJson(),
-      'recipient': instance.recipient?.toJson(),
-      'amount': instance.amount?.toJson(),
-      'paymentStatus': instance.paymentStatus?.toJson(),
-    };
+Map<String, dynamic> _$PaymentNoticeToJson(PaymentNotice instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('request', instance.request?.toJson());
+  writeNotNull('response', instance.response?.toJson());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('provider', instance.provider?.toJson());
+  writeNotNull('payment', instance.payment?.toJson());
+  writeNotNull('paymentDate', instance.paymentDate);
+  writeNotNull('elementPaymentDate', instance.elementPaymentDate?.toJson());
+  writeNotNull('payee', instance.payee?.toJson());
+  writeNotNull('recipient', instance.recipient?.toJson());
+  writeNotNull('amount', instance.amount?.toJson());
+  writeNotNull('paymentStatus', instance.paymentStatus?.toJson());
+  return val;
+}

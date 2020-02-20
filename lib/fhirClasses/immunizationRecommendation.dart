@@ -10,259 +10,273 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ImmunizationRecommendation {
+  static Future<ImmunizationRecommendation> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    Reference patient,
+    DateTime date,
+    Element elementDate,
+    Reference authority,
+    List<ImmunizationRecommendation_Recommendation> recommendation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ImmunizationRecommendation newImmunizationRecommendation =
+        new ImmunizationRecommendation(
+      resourceType: 'ImmunizationRecommendation',
+      id: id ?? await fhirDb.newResourceId('ImmunizationRecommendation'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      patient: patient,
+      date: date,
+      elementDate: elementDate,
+      authority: authority,
+      recommendation: recommendation,
+    );
+    newImmunizationRecommendation.meta.createdAt = DateTime.now();
+    newImmunizationRecommendation.meta.lastUpdated =
+        newImmunizationRecommendation.meta.createdAt;
+    int saved = await fhirDb.saveResource(newImmunizationRecommendation);
+    return newImmunizationRecommendation;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ImmunizationRecommendation{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ImmunizationRecommendation> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	Reference patient,
-	DateTime date,
-	Element elementDate,
-	Reference authority,
-	List<ImmunizationRecommendation_Recommendation> recommendation,
-}) async {
-var fhirDb = new DatabaseHelper();
-ImmunizationRecommendation newImmunizationRecommendation = new ImmunizationRecommendation(
-	resourceType: 'ImmunizationRecommendation',
-	id: id ?? await fhirDb.newResourceId('ImmunizationRecommendation'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	patient: patient,
-	date: date,
-	elementDate: elementDate,
-	authority: authority,
-	recommendation: recommendation,
-);
-	newImmunizationRecommendation.meta.createdAt = DateTime.now();
-	newImmunizationRecommendation.meta.lastUpdated = newImmunizationRecommendation.meta.createdAt;
-	int saved = await fhirDb.saveResource(newImmunizationRecommendation);
-	 return newImmunizationRecommendation;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'ImmunizationRecommendation';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  Reference patient;
+  DateTime date;
+  Element elementDate;
+  Reference authority;
+  List<ImmunizationRecommendation_Recommendation> recommendation;
 
-	String resourceType= 'ImmunizationRecommendation';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	Reference patient;
-	DateTime date;
-	Element elementDate;
-	Reference authority;
-	List<ImmunizationRecommendation_Recommendation> recommendation;
+  ImmunizationRecommendation({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    @required this.patient,
+    this.date,
+    this.elementDate,
+    this.authority,
+    @required this.recommendation,
+  });
 
-ImmunizationRecommendation(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-@required this.patient,
-this.date,
-this.elementDate,
-this.authority,
-@required this.recommendation,
-});
-
-  factory ImmunizationRecommendation.fromJson(Map<String, dynamic> json) => _$ImmunizationRecommendationFromJson(json);
+  factory ImmunizationRecommendation.fromJson(Map<String, dynamic> json) =>
+      _$ImmunizationRecommendationFromJson(json);
   Map<String, dynamic> toJson() => _$ImmunizationRecommendationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ImmunizationRecommendation_Recommendation {
+  static Future<ImmunizationRecommendation_Recommendation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> vaccineCode,
+    CodeableConcept targetDisease,
+    List<CodeableConcept> contraindicatedVaccineCode,
+    CodeableConcept forecastStatus,
+    List<CodeableConcept> forecastReason,
+    List<ImmunizationRecommendation_DateCriterion> dateCriterion,
+    String description,
+    Element elementDescription,
+    String series,
+    Element elementSeries,
+    int doseNumberPositiveInt,
+    Element elementDoseNumberPositiveInt,
+    String doseNumberString,
+    Element elementDoseNumberString,
+    int seriesDosesPositiveInt,
+    Element elementSeriesDosesPositiveInt,
+    String seriesDosesString,
+    Element elementSeriesDosesString,
+    List<Reference> supportingImmunization,
+    List<Reference> supportingPatientInformation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ImmunizationRecommendation_Recommendation
+        newImmunizationRecommendation_Recommendation =
+        new ImmunizationRecommendation_Recommendation(
+      id: id ??
+          await fhirDb
+              .newResourceId('ImmunizationRecommendation_Recommendation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      vaccineCode: vaccineCode,
+      targetDisease: targetDisease,
+      contraindicatedVaccineCode: contraindicatedVaccineCode,
+      forecastStatus: forecastStatus,
+      forecastReason: forecastReason,
+      dateCriterion: dateCriterion,
+      description: description,
+      elementDescription: elementDescription,
+      series: series,
+      elementSeries: elementSeries,
+      doseNumberPositiveInt: doseNumberPositiveInt,
+      elementDoseNumberPositiveInt: elementDoseNumberPositiveInt,
+      doseNumberString: doseNumberString,
+      elementDoseNumberString: elementDoseNumberString,
+      seriesDosesPositiveInt: seriesDosesPositiveInt,
+      elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
+      seriesDosesString: seriesDosesString,
+      elementSeriesDosesString: elementSeriesDosesString,
+      supportingImmunization: supportingImmunization,
+      supportingPatientInformation: supportingPatientInformation,
+    );
+    return newImmunizationRecommendation_Recommendation;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ImmunizationRecommendation_Recommendation{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<CodeableConcept> vaccineCode;
+  CodeableConcept targetDisease;
+  List<CodeableConcept> contraindicatedVaccineCode;
+  CodeableConcept forecastStatus;
+  List<CodeableConcept> forecastReason;
+  List<ImmunizationRecommendation_DateCriterion> dateCriterion;
+  String description;
+  Element elementDescription;
+  String series;
+  Element elementSeries;
+  int doseNumberPositiveInt;
+  Element elementDoseNumberPositiveInt;
+  String doseNumberString;
+  Element elementDoseNumberString;
+  int seriesDosesPositiveInt;
+  Element elementSeriesDosesPositiveInt;
+  String seriesDosesString;
+  Element elementSeriesDosesString;
+  List<Reference> supportingImmunization;
+  List<Reference> supportingPatientInformation;
 
-	static Future<ImmunizationRecommendation_Recommendation> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<CodeableConcept> vaccineCode,
-	CodeableConcept targetDisease,
-	List<CodeableConcept> contraindicatedVaccineCode,
-	CodeableConcept forecastStatus,
-	List<CodeableConcept> forecastReason,
-	List<ImmunizationRecommendation_DateCriterion> dateCriterion,
-	String description,
-	Element elementDescription,
-	String series,
-	Element elementSeries,
-	int doseNumberPositiveInt,
-	Element elementDoseNumberPositiveInt,
-	String doseNumberString,
-	Element elementDoseNumberString,
-	int seriesDosesPositiveInt,
-	Element elementSeriesDosesPositiveInt,
-	String seriesDosesString,
-	Element elementSeriesDosesString,
-	List<Reference> supportingImmunization,
-	List<Reference> supportingPatientInformation,
-}) async {
-var fhirDb = new DatabaseHelper();
-ImmunizationRecommendation_Recommendation newImmunizationRecommendation_Recommendation = new ImmunizationRecommendation_Recommendation(
-	id: id ?? await fhirDb.newResourceId('ImmunizationRecommendation_Recommendation'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	vaccineCode: vaccineCode,
-	targetDisease: targetDisease,
-	contraindicatedVaccineCode: contraindicatedVaccineCode,
-	forecastStatus: forecastStatus,
-	forecastReason: forecastReason,
-	dateCriterion: dateCriterion,
-	description: description,
-	elementDescription: elementDescription,
-	series: series,
-	elementSeries: elementSeries,
-	doseNumberPositiveInt: doseNumberPositiveInt,
-	elementDoseNumberPositiveInt: elementDoseNumberPositiveInt,
-	doseNumberString: doseNumberString,
-	elementDoseNumberString: elementDoseNumberString,
-	seriesDosesPositiveInt: seriesDosesPositiveInt,
-	elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
-	seriesDosesString: seriesDosesString,
-	elementSeriesDosesString: elementSeriesDosesString,
-	supportingImmunization: supportingImmunization,
-	supportingPatientInformation: supportingPatientInformation,
-);
-	return newImmunizationRecommendation_Recommendation;
+  ImmunizationRecommendation_Recommendation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.vaccineCode,
+    this.targetDisease,
+    this.contraindicatedVaccineCode,
+    @required this.forecastStatus,
+    this.forecastReason,
+    this.dateCriterion,
+    this.description,
+    this.elementDescription,
+    this.series,
+    this.elementSeries,
+    this.doseNumberPositiveInt,
+    this.elementDoseNumberPositiveInt,
+    this.doseNumberString,
+    this.elementDoseNumberString,
+    this.seriesDosesPositiveInt,
+    this.elementSeriesDosesPositiveInt,
+    this.seriesDosesString,
+    this.elementSeriesDosesString,
+    this.supportingImmunization,
+    this.supportingPatientInformation,
+  });
+
+  factory ImmunizationRecommendation_Recommendation.fromJson(
+          Map<String, dynamic> json) =>
+      _$ImmunizationRecommendation_RecommendationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ImmunizationRecommendation_RecommendationToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<CodeableConcept> vaccineCode;
-	CodeableConcept targetDisease;
-	List<CodeableConcept> contraindicatedVaccineCode;
-	CodeableConcept forecastStatus;
-	List<CodeableConcept> forecastReason;
-	List<ImmunizationRecommendation_DateCriterion> dateCriterion;
-	String description;
-	Element elementDescription;
-	String series;
-	Element elementSeries;
-	int doseNumberPositiveInt;
-	Element elementDoseNumberPositiveInt;
-	String doseNumberString;
-	Element elementDoseNumberString;
-	int seriesDosesPositiveInt;
-	Element elementSeriesDosesPositiveInt;
-	String seriesDosesString;
-	Element elementSeriesDosesString;
-	List<Reference> supportingImmunization;
-	List<Reference> supportingPatientInformation;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ImmunizationRecommendation_DateCriterion {
+  static Future<ImmunizationRecommendation_DateCriterion> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    DateTime value,
+    Element elementValue,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ImmunizationRecommendation_DateCriterion
+        newImmunizationRecommendation_DateCriterion =
+        new ImmunizationRecommendation_DateCriterion(
+      id: id ??
+          await fhirDb
+              .newResourceId('ImmunizationRecommendation_DateCriterion'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      value: value,
+      elementValue: elementValue,
+    );
+    return newImmunizationRecommendation_DateCriterion;
+  }
 
-ImmunizationRecommendation_Recommendation(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.vaccineCode,
-this.targetDisease,
-this.contraindicatedVaccineCode,
-@required this.forecastStatus,
-this.forecastReason,
-this.dateCriterion,
-this.description,
-this.elementDescription,
-this.series,
-this.elementSeries,
-this.doseNumberPositiveInt,
-this.elementDoseNumberPositiveInt,
-this.doseNumberString,
-this.elementDoseNumberString,
-this.seriesDosesPositiveInt,
-this.elementSeriesDosesPositiveInt,
-this.seriesDosesString,
-this.elementSeriesDosesString,
-this.supportingImmunization,
-this.supportingPatientInformation,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  DateTime value;
+  Element elementValue;
 
-  factory ImmunizationRecommendation_Recommendation.fromJson(Map<String, dynamic> json) => _$ImmunizationRecommendation_RecommendationFromJson(json);
-  Map<String, dynamic> toJson() => _$ImmunizationRecommendation_RecommendationToJson(this);
+  ImmunizationRecommendation_DateCriterion({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+    this.value,
+    this.elementValue,
+  });
+
+  factory ImmunizationRecommendation_DateCriterion.fromJson(
+          Map<String, dynamic> json) =>
+      _$ImmunizationRecommendation_DateCriterionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ImmunizationRecommendation_DateCriterionToJson(this);
 }
-
-
-@JsonSerializable(explicitToJson: true)
-class ImmunizationRecommendation_DateCriterion{
-
-	static Future<ImmunizationRecommendation_DateCriterion> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	DateTime value,
-	Element elementValue,
-}) async {
-var fhirDb = new DatabaseHelper();
-ImmunizationRecommendation_DateCriterion newImmunizationRecommendation_DateCriterion = new ImmunizationRecommendation_DateCriterion(
-	id: id ?? await fhirDb.newResourceId('ImmunizationRecommendation_DateCriterion'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	value: value,
-	elementValue: elementValue,
-);
-	return newImmunizationRecommendation_DateCriterion;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	DateTime value;
-	Element elementValue;
-
-ImmunizationRecommendation_DateCriterion(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.code,
-this.value,
-this.elementValue,
-});
-
-  factory ImmunizationRecommendation_DateCriterion.fromJson(Map<String, dynamic> json) => _$ImmunizationRecommendation_DateCriterionFromJson(json);
-  Map<String, dynamic> toJson() => _$ImmunizationRecommendation_DateCriterionToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -290,8 +304,9 @@ ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -325,28 +340,38 @@ ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
 }
 
 Map<String, dynamic> _$ImmunizationRecommendationToJson(
-        ImmunizationRecommendation instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'patient': instance.patient?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'authority': instance.authority?.toJson(),
-      'recommendation':
-          instance.recommendation?.map((e) => e?.toJson())?.toList(),
-    };
+    ImmunizationRecommendation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('patient', instance.patient?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('authority', instance.authority?.toJson());
+  writeNotNull('recommendation',
+      instance.recommendation?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ImmunizationRecommendation_Recommendation
     _$ImmunizationRecommendation_RecommendationFromJson(
@@ -430,42 +455,52 @@ ImmunizationRecommendation_Recommendation
 }
 
 Map<String, dynamic> _$ImmunizationRecommendation_RecommendationToJson(
-        ImmunizationRecommendation_Recommendation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'vaccineCode': instance.vaccineCode?.map((e) => e?.toJson())?.toList(),
-      'targetDisease': instance.targetDisease?.toJson(),
-      'contraindicatedVaccineCode': instance.contraindicatedVaccineCode
-          ?.map((e) => e?.toJson())
-          ?.toList(),
-      'forecastStatus': instance.forecastStatus?.toJson(),
-      'forecastReason':
-          instance.forecastReason?.map((e) => e?.toJson())?.toList(),
-      'dateCriterion':
-          instance.dateCriterion?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'series': instance.series,
-      'elementSeries': instance.elementSeries?.toJson(),
-      'doseNumberPositiveInt': instance.doseNumberPositiveInt,
-      'elementDoseNumberPositiveInt':
-          instance.elementDoseNumberPositiveInt?.toJson(),
-      'doseNumberString': instance.doseNumberString,
-      'elementDoseNumberString': instance.elementDoseNumberString?.toJson(),
-      'seriesDosesPositiveInt': instance.seriesDosesPositiveInt,
-      'elementSeriesDosesPositiveInt':
-          instance.elementSeriesDosesPositiveInt?.toJson(),
-      'seriesDosesString': instance.seriesDosesString,
-      'elementSeriesDosesString': instance.elementSeriesDosesString?.toJson(),
-      'supportingImmunization':
-          instance.supportingImmunization?.map((e) => e?.toJson())?.toList(),
-      'supportingPatientInformation': instance.supportingPatientInformation
-          ?.map((e) => e?.toJson())
-          ?.toList(),
-    };
+    ImmunizationRecommendation_Recommendation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'vaccineCode', instance.vaccineCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('targetDisease', instance.targetDisease?.toJson());
+  writeNotNull('contraindicatedVaccineCode',
+      instance.contraindicatedVaccineCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('forecastStatus', instance.forecastStatus?.toJson());
+  writeNotNull('forecastReason',
+      instance.forecastReason?.map((e) => e?.toJson())?.toList());
+  writeNotNull('dateCriterion',
+      instance.dateCriterion?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('series', instance.series);
+  writeNotNull('elementSeries', instance.elementSeries?.toJson());
+  writeNotNull('doseNumberPositiveInt', instance.doseNumberPositiveInt);
+  writeNotNull('elementDoseNumberPositiveInt',
+      instance.elementDoseNumberPositiveInt?.toJson());
+  writeNotNull('doseNumberString', instance.doseNumberString);
+  writeNotNull(
+      'elementDoseNumberString', instance.elementDoseNumberString?.toJson());
+  writeNotNull('seriesDosesPositiveInt', instance.seriesDosesPositiveInt);
+  writeNotNull('elementSeriesDosesPositiveInt',
+      instance.elementSeriesDosesPositiveInt?.toJson());
+  writeNotNull('seriesDosesString', instance.seriesDosesString);
+  writeNotNull(
+      'elementSeriesDosesString', instance.elementSeriesDosesString?.toJson());
+  writeNotNull('supportingImmunization',
+      instance.supportingImmunization?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supportingPatientInformation',
+      instance.supportingPatientInformation?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ImmunizationRecommendation_DateCriterion
     _$ImmunizationRecommendation_DateCriterionFromJson(
@@ -492,13 +527,22 @@ ImmunizationRecommendation_DateCriterion
 }
 
 Map<String, dynamic> _$ImmunizationRecommendation_DateCriterionToJson(
-        ImmunizationRecommendation_DateCriterion instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'value': instance.value?.toIso8601String(),
-      'elementValue': instance.elementValue?.toJson(),
-    };
+    ImmunizationRecommendation_DateCriterion instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('value', instance.value?.toIso8601String());
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  return val;
+}

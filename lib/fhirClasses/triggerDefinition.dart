@@ -8,82 +8,80 @@ import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TriggerDefinition {
+  static Future<TriggerDefinition> newInstance({
+    String id,
+    List<Extension> extension,
+    String type,
+    Element elementType,
+    String name,
+    Element elementName,
+    Timing timingTiming,
+    Reference timingReference,
+    String timingDate,
+    Element elementTimingDate,
+    String timingDateTime,
+    Element elementTimingDateTime,
+    List<DataRequirement> data,
+    Expression condition,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TriggerDefinition newTriggerDefinition = new TriggerDefinition(
+      id: id ?? await fhirDb.newResourceId('TriggerDefinition'),
+      extension: extension,
+      type: type,
+      elementType: elementType,
+      name: name,
+      elementName: elementName,
+      timingTiming: timingTiming,
+      timingReference: timingReference,
+      timingDate: timingDate,
+      elementTimingDate: elementTimingDate,
+      timingDateTime: timingDateTime,
+      elementTimingDateTime: elementTimingDateTime,
+      data: data,
+      condition: condition,
+    );
+    return newTriggerDefinition;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TriggerDefinition{
+  String id;
+  List<Extension> extension;
+  String type;
+  Element elementType;
+  String name;
+  Element elementName;
+  Timing timingTiming;
+  Reference timingReference;
+  String timingDate;
+  Element elementTimingDate;
+  String timingDateTime;
+  Element elementTimingDateTime;
+  List<DataRequirement> data;
+  Expression condition;
 
-	static Future<TriggerDefinition> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String type,
-	Element elementType,
-	String name,
-	Element elementName,
-	Timing timingTiming,
-	Reference timingReference,
-	String timingDate,
-	Element elementTimingDate,
-	String timingDateTime,
-	Element elementTimingDateTime,
-	List<DataRequirement> data,
-	Expression condition,
-}) async {
-var fhirDb = new DatabaseHelper();
-TriggerDefinition newTriggerDefinition = new TriggerDefinition(
-	id: id ?? await fhirDb.newResourceId('TriggerDefinition'),
-	extension: extension,
-	type: type,
-	elementType: elementType,
-	name: name,
-	elementName: elementName,
-	timingTiming: timingTiming,
-	timingReference: timingReference,
-	timingDate: timingDate,
-	elementTimingDate: elementTimingDate,
-	timingDateTime: timingDateTime,
-	elementTimingDateTime: elementTimingDateTime,
-	data: data,
-	condition: condition,
-);
-	return newTriggerDefinition;
-}
+  TriggerDefinition({
+    this.id,
+    this.extension,
+    this.type,
+    this.elementType,
+    this.name,
+    this.elementName,
+    this.timingTiming,
+    this.timingReference,
+    this.timingDate,
+    this.elementTimingDate,
+    this.timingDateTime,
+    this.elementTimingDateTime,
+    this.data,
+    this.condition,
+  });
 
-	String id;
-	List<Extension> extension;
-	String type;
-	Element elementType;
-	String name;
-	Element elementName;
-	Timing timingTiming;
-	Reference timingReference;
-	String timingDate;
-	Element elementTimingDate;
-	String timingDateTime;
-	Element elementTimingDateTime;
-	List<DataRequirement> data;
-	Expression condition;
-
-TriggerDefinition(
-	{this.id,
-this.extension,
-this.type,
-this.elementType,
-this.name,
-this.elementName,
-this.timingTiming,
-this.timingReference,
-this.timingDate,
-this.elementTimingDate,
-this.timingDateTime,
-this.elementTimingDateTime,
-this.data,
-this.condition,
-});
-
-  factory TriggerDefinition.fromJson(Map<String, dynamic> json) => _$TriggerDefinitionFromJson(json);
+  factory TriggerDefinition.fromJson(Map<String, dynamic> json) =>
+      _$TriggerDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$TriggerDefinitionToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -131,20 +129,30 @@ TriggerDefinition _$TriggerDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TriggerDefinitionToJson(TriggerDefinition instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'timingTiming': instance.timingTiming?.toJson(),
-      'timingReference': instance.timingReference?.toJson(),
-      'timingDate': instance.timingDate,
-      'elementTimingDate': instance.elementTimingDate?.toJson(),
-      'timingDateTime': instance.timingDateTime,
-      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
-      'data': instance.data?.map((e) => e?.toJson())?.toList(),
-      'condition': instance.condition?.toJson(),
-    };
+Map<String, dynamic> _$TriggerDefinitionToJson(TriggerDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('timingTiming', instance.timingTiming?.toJson());
+  writeNotNull('timingReference', instance.timingReference?.toJson());
+  writeNotNull('timingDate', instance.timingDate);
+  writeNotNull('elementTimingDate', instance.elementTimingDate?.toJson());
+  writeNotNull('timingDateTime', instance.timingDateTime);
+  writeNotNull(
+      'elementTimingDateTime', instance.elementTimingDateTime?.toJson());
+  writeNotNull('data', instance.data?.map((e) => e?.toJson())?.toList());
+  writeNotNull('condition', instance.condition?.toJson());
+  return val;
+}

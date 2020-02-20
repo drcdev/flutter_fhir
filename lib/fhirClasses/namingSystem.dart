@@ -11,231 +11,232 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class NamingSystem {
+  static Future<NamingSystem> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String status,
+    Element elementStatus,
+    String kind,
+    Element elementKind,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String responsible,
+    Element elementResponsible,
+    CodeableConcept type,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String usage,
+    Element elementUsage,
+    List<NamingSystem_UniqueId> uniqueId,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    NamingSystem newNamingSystem = new NamingSystem(
+      resourceType: 'NamingSystem',
+      id: id ?? await fhirDb.newResourceId('NamingSystem'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      status: status,
+      elementStatus: elementStatus,
+      kind: kind,
+      elementKind: elementKind,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      responsible: responsible,
+      elementResponsible: elementResponsible,
+      type: type,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      usage: usage,
+      elementUsage: elementUsage,
+      uniqueId: uniqueId,
+    );
+    newNamingSystem.meta.createdAt = DateTime.now();
+    newNamingSystem.meta.lastUpdated = newNamingSystem.meta.createdAt;
+    int saved = await fhirDb.saveResource(newNamingSystem);
+    return newNamingSystem;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class NamingSystem{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<NamingSystem> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	String status,
-	Element elementStatus,
-	String kind,
-	Element elementKind,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String responsible,
-	Element elementResponsible,
-	CodeableConcept type,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String usage,
-	Element elementUsage,
-	List<NamingSystem_UniqueId> uniqueId,
-}) async {
-var fhirDb = new DatabaseHelper();
-NamingSystem newNamingSystem = new NamingSystem(
-	resourceType: 'NamingSystem',
-	id: id ?? await fhirDb.newResourceId('NamingSystem'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	status: status,
-	elementStatus: elementStatus,
-	kind: kind,
-	elementKind: elementKind,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	responsible: responsible,
-	elementResponsible: elementResponsible,
-	type: type,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	usage: usage,
-	elementUsage: elementUsage,
-	uniqueId: uniqueId,
-);
-	newNamingSystem.meta.createdAt = DateTime.now();
-	newNamingSystem.meta.lastUpdated = newNamingSystem.meta.createdAt;
-	int saved = await fhirDb.saveResource(newNamingSystem);
-	 return newNamingSystem;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'NamingSystem';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  String status;
+  Element elementStatus;
+  String kind;
+  Element elementKind;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String responsible;
+  Element elementResponsible;
+  CodeableConcept type;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String usage;
+  Element elementUsage;
+  List<NamingSystem_UniqueId> uniqueId;
 
-	String resourceType= 'NamingSystem';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	String status;
-	Element elementStatus;
-	String kind;
-	Element elementKind;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String responsible;
-	Element elementResponsible;
-	CodeableConcept type;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String usage;
-	Element elementUsage;
-	List<NamingSystem_UniqueId> uniqueId;
+  NamingSystem({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.status,
+    this.elementStatus,
+    this.kind,
+    this.elementKind,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.responsible,
+    this.elementResponsible,
+    this.type,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.usage,
+    this.elementUsage,
+    @required this.uniqueId,
+  });
 
-NamingSystem(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.status,
-this.elementStatus,
-this.kind,
-this.elementKind,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.responsible,
-this.elementResponsible,
-this.type,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.usage,
-this.elementUsage,
-@required this.uniqueId,
-});
-
-  factory NamingSystem.fromJson(Map<String, dynamic> json) => _$NamingSystemFromJson(json);
+  factory NamingSystem.fromJson(Map<String, dynamic> json) =>
+      _$NamingSystemFromJson(json);
   Map<String, dynamic> toJson() => _$NamingSystemToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class NamingSystem_UniqueId {
+  static Future<NamingSystem_UniqueId> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String value,
+    Element elementValue,
+    bool preferred,
+    Element elementPreferred,
+    String comment,
+    Element elementComment,
+    Period period,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    NamingSystem_UniqueId newNamingSystem_UniqueId = new NamingSystem_UniqueId(
+      id: id ?? await fhirDb.newResourceId('NamingSystem_UniqueId'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      value: value,
+      elementValue: elementValue,
+      preferred: preferred,
+      elementPreferred: elementPreferred,
+      comment: comment,
+      elementComment: elementComment,
+      period: period,
+    );
+    return newNamingSystem_UniqueId;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class NamingSystem_UniqueId{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String type;
+  Element elementType;
+  String value;
+  Element elementValue;
+  bool preferred;
+  Element elementPreferred;
+  String comment;
+  Element elementComment;
+  Period period;
 
-	static Future<NamingSystem_UniqueId> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String type,
-	Element elementType,
-	String value,
-	Element elementValue,
-	bool preferred,
-	Element elementPreferred,
-	String comment,
-	Element elementComment,
-	Period period,
-}) async {
-var fhirDb = new DatabaseHelper();
-NamingSystem_UniqueId newNamingSystem_UniqueId = new NamingSystem_UniqueId(
-	id: id ?? await fhirDb.newResourceId('NamingSystem_UniqueId'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	elementType: elementType,
-	value: value,
-	elementValue: elementValue,
-	preferred: preferred,
-	elementPreferred: elementPreferred,
-	comment: comment,
-	elementComment: elementComment,
-	period: period,
-);
-	return newNamingSystem_UniqueId;
-}
+  NamingSystem_UniqueId({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.value,
+    this.elementValue,
+    this.preferred,
+    this.elementPreferred,
+    this.comment,
+    this.elementComment,
+    this.period,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String type;
-	Element elementType;
-	String value;
-	Element elementValue;
-	bool preferred;
-	Element elementPreferred;
-	String comment;
-	Element elementComment;
-	Period period;
-
-NamingSystem_UniqueId(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.elementType,
-this.value,
-this.elementValue,
-this.preferred,
-this.elementPreferred,
-this.comment,
-this.elementComment,
-this.period,
-});
-
-  factory NamingSystem_UniqueId.fromJson(Map<String, dynamic> json) => _$NamingSystem_UniqueIdFromJson(json);
+  factory NamingSystem_UniqueId.fromJson(Map<String, dynamic> json) =>
+      _$NamingSystem_UniqueIdFromJson(json);
   Map<String, dynamic> toJson() => _$NamingSystem_UniqueIdToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -262,8 +263,9 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -330,42 +332,54 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$NamingSystemToJson(NamingSystem instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'responsible': instance.responsible,
-      'elementResponsible': instance.elementResponsible?.toJson(),
-      'type': instance.type?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'usage': instance.usage,
-      'elementUsage': instance.elementUsage?.toJson(),
-      'uniqueId': instance.uniqueId?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$NamingSystemToJson(NamingSystem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('responsible', instance.responsible);
+  writeNotNull('elementResponsible', instance.elementResponsible?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('usage', instance.usage);
+  writeNotNull('elementUsage', instance.elementUsage?.toJson());
+  writeNotNull(
+      'uniqueId', instance.uniqueId?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 NamingSystem_UniqueId _$NamingSystem_UniqueIdFromJson(
     Map<String, dynamic> json) {
@@ -402,19 +416,28 @@ NamingSystem_UniqueId _$NamingSystem_UniqueIdFromJson(
 }
 
 Map<String, dynamic> _$NamingSystem_UniqueIdToJson(
-        NamingSystem_UniqueId instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'preferred': instance.preferred,
-      'elementPreferred': instance.elementPreferred?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+    NamingSystem_UniqueId instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('preferred', instance.preferred);
+  writeNotNull('elementPreferred', instance.elementPreferred?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}

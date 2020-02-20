@@ -11,115 +11,116 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Flag {
+  static Future<Flag> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> category,
+    CodeableConcept code,
+    Reference subject,
+    Period period,
+    Reference encounter,
+    Reference author,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Flag newFlag = new Flag(
+      resourceType: 'Flag',
+      id: id ?? await fhirDb.newResourceId('Flag'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      category: category,
+      code: code,
+      subject: subject,
+      period: period,
+      encounter: encounter,
+      author: author,
+    );
+    newFlag.meta.createdAt = DateTime.now();
+    newFlag.meta.lastUpdated = newFlag.meta.createdAt;
+    int saved = await fhirDb.saveResource(newFlag);
+    return newFlag;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Flag{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Flag> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	List<CodeableConcept> category,
-	CodeableConcept code,
-	Reference subject,
-	Period period,
-	Reference encounter,
-	Reference author,
-}) async {
-var fhirDb = new DatabaseHelper();
-Flag newFlag = new Flag(
-	resourceType: 'Flag',
-	id: id ?? await fhirDb.newResourceId('Flag'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	category: category,
-	code: code,
-	subject: subject,
-	period: period,
-	encounter: encounter,
-	author: author,
-);
-	newFlag.meta.createdAt = DateTime.now();
-	newFlag.meta.lastUpdated = newFlag.meta.createdAt;
-	int saved = await fhirDb.saveResource(newFlag);
-	 return newFlag;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Flag';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  List<CodeableConcept> category;
+  CodeableConcept code;
+  Reference subject;
+  Period period;
+  Reference encounter;
+  Reference author;
 
-	String resourceType= 'Flag';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	List<CodeableConcept> category;
-	CodeableConcept code;
-	Reference subject;
-	Period period;
-	Reference encounter;
-	Reference author;
-
-Flag(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.category,
-@required this.code,
-@required this.subject,
-this.period,
-this.encounter,
-this.author,
-});
+  Flag({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.category,
+    @required this.code,
+    @required this.subject,
+    this.period,
+    this.encounter,
+    this.author,
+  });
 
   factory Flag.fromJson(Map<String, dynamic> json) => _$FlagFromJson(json);
   Map<String, dynamic> toJson() => _$FlagToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -146,8 +147,9 @@ Flag _$FlagFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -188,26 +190,38 @@ Flag _$FlagFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$FlagToJson(Flag instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'period': instance.period?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'author': instance.author?.toJson(),
-    };
+Map<String, dynamic> _$FlagToJson(Flag instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('author', instance.author?.toJson());
+  return val;
+}

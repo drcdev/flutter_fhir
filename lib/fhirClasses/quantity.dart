@@ -4,74 +4,72 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Quantity {
+  static Future<Quantity> newInstance({
+    String id,
+    List<Extension> extension,
+    double value,
+    Element elementValue,
+    String comparator,
+    Element elementComparator,
+    String unit,
+    Element elementUnit,
+    String system,
+    Element elementSystem,
+    String code,
+    Element elementCode,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Quantity newQuantity = new Quantity(
+      id: id ?? await fhirDb.newResourceId('Quantity'),
+      extension: extension,
+      value: value,
+      elementValue: elementValue,
+      comparator: comparator,
+      elementComparator: elementComparator,
+      unit: unit,
+      elementUnit: elementUnit,
+      system: system,
+      elementSystem: elementSystem,
+      code: code,
+      elementCode: elementCode,
+    );
+    return newQuantity;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Quantity{
+  String id;
+  List<Extension> extension;
+  double value;
+  Element elementValue;
+  String comparator;
+  Element elementComparator;
+  String unit;
+  Element elementUnit;
+  String system;
+  Element elementSystem;
+  String code;
+  Element elementCode;
 
-	static Future<Quantity> newInstance(
-	{	String id,
-	List<Extension> extension,
-	double value,
-	Element elementValue,
-	String comparator,
-	Element elementComparator,
-	String unit,
-	Element elementUnit,
-	String system,
-	Element elementSystem,
-	String code,
-	Element elementCode,
-}) async {
-var fhirDb = new DatabaseHelper();
-Quantity newQuantity = new Quantity(
-	id: id ?? await fhirDb.newResourceId('Quantity'),
-	extension: extension,
-	value: value,
-	elementValue: elementValue,
-	comparator: comparator,
-	elementComparator: elementComparator,
-	unit: unit,
-	elementUnit: elementUnit,
-	system: system,
-	elementSystem: elementSystem,
-	code: code,
-	elementCode: elementCode,
-);
-	return newQuantity;
-}
+  Quantity({
+    this.id,
+    this.extension,
+    this.value,
+    this.elementValue,
+    this.comparator,
+    this.elementComparator,
+    this.unit,
+    this.elementUnit,
+    this.system,
+    this.elementSystem,
+    this.code,
+    this.elementCode,
+  });
 
-	String id;
-	List<Extension> extension;
-	double value;
-	Element elementValue;
-	String comparator;
-	Element elementComparator;
-	String unit;
-	Element elementUnit;
-	String system;
-	Element elementSystem;
-	String code;
-	Element elementCode;
-
-Quantity(
-	{this.id,
-this.extension,
-this.value,
-this.elementValue,
-this.comparator,
-this.elementComparator,
-this.unit,
-this.elementUnit,
-this.system,
-this.elementSystem,
-this.code,
-this.elementCode,
-});
-
-  factory Quantity.fromJson(Map<String, dynamic> json) => _$QuantityFromJson(json);
+  factory Quantity.fromJson(Map<String, dynamic> json) =>
+      _$QuantityFromJson(json);
   Map<String, dynamic> toJson() => _$QuantityToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -108,17 +106,27 @@ Quantity _$QuantityFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$QuantityToJson(Quantity instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'comparator': instance.comparator,
-      'elementComparator': instance.elementComparator?.toJson(),
-      'unit': instance.unit,
-      'elementUnit': instance.elementUnit?.toJson(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-    };
+Map<String, dynamic> _$QuantityToJson(Quantity instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('comparator', instance.comparator);
+  writeNotNull('elementComparator', instance.elementComparator?.toJson());
+  writeNotNull('unit', instance.unit);
+  writeNotNull('elementUnit', instance.elementUnit?.toJson());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  return val;
+}

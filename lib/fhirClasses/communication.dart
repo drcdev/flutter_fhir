@@ -12,239 +12,240 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Communication {
+  static Future<Communication> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> instantiatesCanonical,
+    List<String> instantiatesUri,
+    List<Element> elementInstantiatesUri,
+    List<Reference> basedOn,
+    List<Reference> partOf,
+    List<Reference> inResponseTo,
+    String status,
+    Element elementStatus,
+    CodeableConcept statusReason,
+    List<CodeableConcept> category,
+    String priority,
+    Element elementPriority,
+    List<CodeableConcept> medium,
+    Reference subject,
+    CodeableConcept topic,
+    List<Reference> about,
+    Reference encounter,
+    DateTime sent,
+    Element elementSent,
+    DateTime received,
+    Element elementReceived,
+    List<Reference> recipient,
+    Reference sender,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Communication_Payload> payload,
+    List<Annotation> note,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Communication newCommunication = new Communication(
+      resourceType: 'Communication',
+      id: id ?? await fhirDb.newResourceId('Communication'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      instantiatesCanonical: instantiatesCanonical,
+      instantiatesUri: instantiatesUri,
+      elementInstantiatesUri: elementInstantiatesUri,
+      basedOn: basedOn,
+      partOf: partOf,
+      inResponseTo: inResponseTo,
+      status: status,
+      elementStatus: elementStatus,
+      statusReason: statusReason,
+      category: category,
+      priority: priority,
+      elementPriority: elementPriority,
+      medium: medium,
+      subject: subject,
+      topic: topic,
+      about: about,
+      encounter: encounter,
+      sent: sent,
+      elementSent: elementSent,
+      received: received,
+      elementReceived: elementReceived,
+      recipient: recipient,
+      sender: sender,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      payload: payload,
+      note: note,
+    );
+    newCommunication.meta.createdAt = DateTime.now();
+    newCommunication.meta.lastUpdated = newCommunication.meta.createdAt;
+    int saved = await fhirDb.saveResource(newCommunication);
+    return newCommunication;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Communication{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Communication> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	List<String> instantiatesCanonical,
-	List<String> instantiatesUri,
-	List<Element> elementInstantiatesUri,
-	List<Reference> basedOn,
-	List<Reference> partOf,
-	List<Reference> inResponseTo,
-	String status,
-	Element elementStatus,
-	CodeableConcept statusReason,
-	List<CodeableConcept> category,
-	String priority,
-	Element elementPriority,
-	List<CodeableConcept> medium,
-	Reference subject,
-	CodeableConcept topic,
-	List<Reference> about,
-	Reference encounter,
-	DateTime sent,
-	Element elementSent,
-	DateTime received,
-	Element elementReceived,
-	List<Reference> recipient,
-	Reference sender,
-	List<CodeableConcept> reasonCode,
-	List<Reference> reasonReference,
-	List<Communication_Payload> payload,
-	List<Annotation> note,
-}) async {
-var fhirDb = new DatabaseHelper();
-Communication newCommunication = new Communication(
-	resourceType: 'Communication',
-	id: id ?? await fhirDb.newResourceId('Communication'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	instantiatesCanonical: instantiatesCanonical,
-	instantiatesUri: instantiatesUri,
-	elementInstantiatesUri: elementInstantiatesUri,
-	basedOn: basedOn,
-	partOf: partOf,
-	inResponseTo: inResponseTo,
-	status: status,
-	elementStatus: elementStatus,
-	statusReason: statusReason,
-	category: category,
-	priority: priority,
-	elementPriority: elementPriority,
-	medium: medium,
-	subject: subject,
-	topic: topic,
-	about: about,
-	encounter: encounter,
-	sent: sent,
-	elementSent: elementSent,
-	received: received,
-	elementReceived: elementReceived,
-	recipient: recipient,
-	sender: sender,
-	reasonCode: reasonCode,
-	reasonReference: reasonReference,
-	payload: payload,
-	note: note,
-);
-	newCommunication.meta.createdAt = DateTime.now();
-	newCommunication.meta.lastUpdated = newCommunication.meta.createdAt;
-	int saved = await fhirDb.saveResource(newCommunication);
-	 return newCommunication;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Communication';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  List<String> instantiatesCanonical;
+  List<String> instantiatesUri;
+  List<Element> elementInstantiatesUri;
+  List<Reference> basedOn;
+  List<Reference> partOf;
+  List<Reference> inResponseTo;
+  String status;
+  Element elementStatus;
+  CodeableConcept statusReason;
+  List<CodeableConcept> category;
+  String priority;
+  Element elementPriority;
+  List<CodeableConcept> medium;
+  Reference subject;
+  CodeableConcept topic;
+  List<Reference> about;
+  Reference encounter;
+  DateTime sent;
+  Element elementSent;
+  DateTime received;
+  Element elementReceived;
+  List<Reference> recipient;
+  Reference sender;
+  List<CodeableConcept> reasonCode;
+  List<Reference> reasonReference;
+  List<Communication_Payload> payload;
+  List<Annotation> note;
 
-	String resourceType= 'Communication';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	List<String> instantiatesCanonical;
-	List<String> instantiatesUri;
-	List<Element> elementInstantiatesUri;
-	List<Reference> basedOn;
-	List<Reference> partOf;
-	List<Reference> inResponseTo;
-	String status;
-	Element elementStatus;
-	CodeableConcept statusReason;
-	List<CodeableConcept> category;
-	String priority;
-	Element elementPriority;
-	List<CodeableConcept> medium;
-	Reference subject;
-	CodeableConcept topic;
-	List<Reference> about;
-	Reference encounter;
-	DateTime sent;
-	Element elementSent;
-	DateTime received;
-	Element elementReceived;
-	List<Reference> recipient;
-	Reference sender;
-	List<CodeableConcept> reasonCode;
-	List<Reference> reasonReference;
-	List<Communication_Payload> payload;
-	List<Annotation> note;
+  Communication({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.basedOn,
+    this.partOf,
+    this.inResponseTo,
+    this.status,
+    this.elementStatus,
+    this.statusReason,
+    this.category,
+    this.priority,
+    this.elementPriority,
+    this.medium,
+    this.subject,
+    this.topic,
+    this.about,
+    this.encounter,
+    this.sent,
+    this.elementSent,
+    this.received,
+    this.elementReceived,
+    this.recipient,
+    this.sender,
+    this.reasonCode,
+    this.reasonReference,
+    this.payload,
+    this.note,
+  });
 
-Communication(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.instantiatesCanonical,
-this.instantiatesUri,
-this.elementInstantiatesUri,
-this.basedOn,
-this.partOf,
-this.inResponseTo,
-this.status,
-this.elementStatus,
-this.statusReason,
-this.category,
-this.priority,
-this.elementPriority,
-this.medium,
-this.subject,
-this.topic,
-this.about,
-this.encounter,
-this.sent,
-this.elementSent,
-this.received,
-this.elementReceived,
-this.recipient,
-this.sender,
-this.reasonCode,
-this.reasonReference,
-this.payload,
-this.note,
-});
-
-  factory Communication.fromJson(Map<String, dynamic> json) => _$CommunicationFromJson(json);
+  factory Communication.fromJson(Map<String, dynamic> json) =>
+      _$CommunicationFromJson(json);
   Map<String, dynamic> toJson() => _$CommunicationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Communication_Payload {
+  static Future<Communication_Payload> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String contentString,
+    Element elementContentString,
+    Attachment contentAttachment,
+    Reference contentReference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Communication_Payload newCommunication_Payload = new Communication_Payload(
+      id: id ?? await fhirDb.newResourceId('Communication_Payload'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      contentString: contentString,
+      elementContentString: elementContentString,
+      contentAttachment: contentAttachment,
+      contentReference: contentReference,
+    );
+    return newCommunication_Payload;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Communication_Payload{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String contentString;
+  Element elementContentString;
+  Attachment contentAttachment;
+  Reference contentReference;
 
-	static Future<Communication_Payload> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String contentString,
-	Element elementContentString,
-	Attachment contentAttachment,
-	Reference contentReference,
-}) async {
-var fhirDb = new DatabaseHelper();
-Communication_Payload newCommunication_Payload = new Communication_Payload(
-	id: id ?? await fhirDb.newResourceId('Communication_Payload'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	contentString: contentString,
-	elementContentString: elementContentString,
-	contentAttachment: contentAttachment,
-	contentReference: contentReference,
-);
-	return newCommunication_Payload;
-}
+  Communication_Payload({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.contentString,
+    this.elementContentString,
+    this.contentAttachment,
+    this.contentReference,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String contentString;
-	Element elementContentString;
-	Attachment contentAttachment;
-	Reference contentReference;
-
-Communication_Payload(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.contentString,
-this.elementContentString,
-this.contentAttachment,
-this.contentReference,
-});
-
-  factory Communication_Payload.fromJson(Map<String, dynamic> json) => _$Communication_PayloadFromJson(json);
+  factory Communication_Payload.fromJson(Map<String, dynamic> json) =>
+      _$Communication_PayloadFromJson(json);
   Map<String, dynamic> toJson() => _$Communication_PayloadToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -271,8 +272,9 @@ Communication _$CommunicationFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -380,51 +382,65 @@ Communication _$CommunicationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CommunicationToJson(Communication instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'inResponseTo': instance.inResponseTo?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReason': instance.statusReason?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'medium': instance.medium?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.toJson(),
-      'topic': instance.topic?.toJson(),
-      'about': instance.about?.map((e) => e?.toJson())?.toList(),
-      'encounter': instance.encounter?.toJson(),
-      'sent': instance.sent?.toIso8601String(),
-      'elementSent': instance.elementSent?.toJson(),
-      'received': instance.received?.toIso8601String(),
-      'elementReceived': instance.elementReceived?.toJson(),
-      'recipient': instance.recipient?.map((e) => e?.toJson())?.toList(),
-      'sender': instance.sender?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'payload': instance.payload?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CommunicationToJson(Communication instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'inResponseTo', instance.inResponseTo?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusReason', instance.statusReason?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('medium', instance.medium?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('topic', instance.topic?.toJson());
+  writeNotNull('about', instance.about?.map((e) => e?.toJson())?.toList());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('sent', instance.sent?.toIso8601String());
+  writeNotNull('elementSent', instance.elementSent?.toJson());
+  writeNotNull('received', instance.received?.toIso8601String());
+  writeNotNull('elementReceived', instance.elementReceived?.toJson());
+  writeNotNull(
+      'recipient', instance.recipient?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sender', instance.sender?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('payload', instance.payload?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Communication_Payload _$Communication_PayloadFromJson(
     Map<String, dynamic> json) {
@@ -454,14 +470,23 @@ Communication_Payload _$Communication_PayloadFromJson(
 }
 
 Map<String, dynamic> _$Communication_PayloadToJson(
-        Communication_Payload instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'contentString': instance.contentString,
-      'elementContentString': instance.elementContentString?.toJson(),
-      'contentAttachment': instance.contentAttachment?.toJson(),
-      'contentReference': instance.contentReference?.toJson(),
-    };
+    Communication_Payload instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('contentString', instance.contentString);
+  writeNotNull('elementContentString', instance.elementContentString?.toJson());
+  writeNotNull('contentAttachment', instance.contentAttachment?.toJson());
+  writeNotNull('contentReference', instance.contentReference?.toJson());
+  return val;
+}

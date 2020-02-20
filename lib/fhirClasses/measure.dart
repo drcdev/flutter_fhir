@@ -15,587 +15,586 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Measure {
+  static Future<Measure> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String subtitle,
+    Element elementSubtitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    CodeableConcept subjectCodeableConcept,
+    Reference subjectReference,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String usage,
+    Element elementUsage,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    List<CodeableConcept> topic,
+    List<ContactDetail> author,
+    List<ContactDetail> editor,
+    List<ContactDetail> reviewer,
+    List<ContactDetail> endorser,
+    List<RelatedArtifact> relatedArtifact,
+    List<String> library,
+    String disclaimer,
+    Element elementDisclaimer,
+    CodeableConcept scoring,
+    CodeableConcept compositeScoring,
+    List<CodeableConcept> type,
+    String riskAdjustment,
+    Element elementRiskAdjustment,
+    String rateAggregation,
+    Element elementRateAggregation,
+    String rationale,
+    Element elementRationale,
+    String clinicalRecommendationStatement,
+    Element elementClinicalRecommendationStatement,
+    CodeableConcept improvementNotation,
+    List<String> definition,
+    List<Element> elementDefinition,
+    String guidance,
+    Element elementGuidance,
+    List<Measure_Group> group,
+    List<Measure_SupplementalData> supplementalData,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Measure newMeasure = new Measure(
+      resourceType: 'Measure',
+      id: id ?? await fhirDb.newResourceId('Measure'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      subtitle: subtitle,
+      elementSubtitle: elementSubtitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      subjectCodeableConcept: subjectCodeableConcept,
+      subjectReference: subjectReference,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      usage: usage,
+      elementUsage: elementUsage,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      approvalDate: approvalDate,
+      elementApprovalDate: elementApprovalDate,
+      lastReviewDate: lastReviewDate,
+      elementLastReviewDate: elementLastReviewDate,
+      effectivePeriod: effectivePeriod,
+      topic: topic,
+      author: author,
+      editor: editor,
+      reviewer: reviewer,
+      endorser: endorser,
+      relatedArtifact: relatedArtifact,
+      library: library,
+      disclaimer: disclaimer,
+      elementDisclaimer: elementDisclaimer,
+      scoring: scoring,
+      compositeScoring: compositeScoring,
+      type: type,
+      riskAdjustment: riskAdjustment,
+      elementRiskAdjustment: elementRiskAdjustment,
+      rateAggregation: rateAggregation,
+      elementRateAggregation: elementRateAggregation,
+      rationale: rationale,
+      elementRationale: elementRationale,
+      clinicalRecommendationStatement: clinicalRecommendationStatement,
+      elementClinicalRecommendationStatement:
+          elementClinicalRecommendationStatement,
+      improvementNotation: improvementNotation,
+      definition: definition,
+      elementDefinition: elementDefinition,
+      guidance: guidance,
+      elementGuidance: elementGuidance,
+      group: group,
+      supplementalData: supplementalData,
+    );
+    newMeasure.meta.createdAt = DateTime.now();
+    newMeasure.meta.lastUpdated = newMeasure.meta.createdAt;
+    int saved = await fhirDb.saveResource(newMeasure);
+    return newMeasure;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Measure{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Measure> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	List<Identifier> identifier,
-	String version,
-	Element elementVersion,
-	String name,
-	Element elementName,
-	String title,
-	Element elementTitle,
-	String subtitle,
-	Element elementSubtitle,
-	String status,
-	Element elementStatus,
-	bool experimental,
-	Element elementExperimental,
-	CodeableConcept subjectCodeableConcept,
-	Reference subjectReference,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String purpose,
-	Element elementPurpose,
-	String usage,
-	Element elementUsage,
-	String copyright,
-	Element elementCopyright,
-	String approvalDate,
-	Element elementApprovalDate,
-	String lastReviewDate,
-	Element elementLastReviewDate,
-	Period effectivePeriod,
-	List<CodeableConcept> topic,
-	List<ContactDetail> author,
-	List<ContactDetail> editor,
-	List<ContactDetail> reviewer,
-	List<ContactDetail> endorser,
-	List<RelatedArtifact> relatedArtifact,
-	List<String> library,
-	String disclaimer,
-	Element elementDisclaimer,
-	CodeableConcept scoring,
-	CodeableConcept compositeScoring,
-	List<CodeableConcept> type,
-	String riskAdjustment,
-	Element elementRiskAdjustment,
-	String rateAggregation,
-	Element elementRateAggregation,
-	String rationale,
-	Element elementRationale,
-	String clinicalRecommendationStatement,
-	Element elementClinicalRecommendationStatement,
-	CodeableConcept improvementNotation,
-	List<String> definition,
-	List<Element> elementDefinition,
-	String guidance,
-	Element elementGuidance,
-	List<Measure_Group> group,
-	List<Measure_SupplementalData> supplementalData,
-}) async {
-var fhirDb = new DatabaseHelper();
-Measure newMeasure = new Measure(
-	resourceType: 'Measure',
-	id: id ?? await fhirDb.newResourceId('Measure'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	identifier: identifier,
-	version: version,
-	elementVersion: elementVersion,
-	name: name,
-	elementName: elementName,
-	title: title,
-	elementTitle: elementTitle,
-	subtitle: subtitle,
-	elementSubtitle: elementSubtitle,
-	status: status,
-	elementStatus: elementStatus,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	subjectCodeableConcept: subjectCodeableConcept,
-	subjectReference: subjectReference,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	usage: usage,
-	elementUsage: elementUsage,
-	copyright: copyright,
-	elementCopyright: elementCopyright,
-	approvalDate: approvalDate,
-	elementApprovalDate: elementApprovalDate,
-	lastReviewDate: lastReviewDate,
-	elementLastReviewDate: elementLastReviewDate,
-	effectivePeriod: effectivePeriod,
-	topic: topic,
-	author: author,
-	editor: editor,
-	reviewer: reviewer,
-	endorser: endorser,
-	relatedArtifact: relatedArtifact,
-	library: library,
-	disclaimer: disclaimer,
-	elementDisclaimer: elementDisclaimer,
-	scoring: scoring,
-	compositeScoring: compositeScoring,
-	type: type,
-	riskAdjustment: riskAdjustment,
-	elementRiskAdjustment: elementRiskAdjustment,
-	rateAggregation: rateAggregation,
-	elementRateAggregation: elementRateAggregation,
-	rationale: rationale,
-	elementRationale: elementRationale,
-	clinicalRecommendationStatement: clinicalRecommendationStatement,
-	elementClinicalRecommendationStatement: elementClinicalRecommendationStatement,
-	improvementNotation: improvementNotation,
-	definition: definition,
-	elementDefinition: elementDefinition,
-	guidance: guidance,
-	elementGuidance: elementGuidance,
-	group: group,
-	supplementalData: supplementalData,
-);
-	newMeasure.meta.createdAt = DateTime.now();
-	newMeasure.meta.lastUpdated = newMeasure.meta.createdAt;
-	int saved = await fhirDb.saveResource(newMeasure);
-	 return newMeasure;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Measure';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  List<Identifier> identifier;
+  String version;
+  Element elementVersion;
+  String name;
+  Element elementName;
+  String title;
+  Element elementTitle;
+  String subtitle;
+  Element elementSubtitle;
+  String status;
+  Element elementStatus;
+  bool experimental;
+  Element elementExperimental;
+  CodeableConcept subjectCodeableConcept;
+  Reference subjectReference;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String purpose;
+  Element elementPurpose;
+  String usage;
+  Element elementUsage;
+  String copyright;
+  Element elementCopyright;
+  String approvalDate;
+  Element elementApprovalDate;
+  String lastReviewDate;
+  Element elementLastReviewDate;
+  Period effectivePeriod;
+  List<CodeableConcept> topic;
+  List<ContactDetail> author;
+  List<ContactDetail> editor;
+  List<ContactDetail> reviewer;
+  List<ContactDetail> endorser;
+  List<RelatedArtifact> relatedArtifact;
+  List<String> library;
+  String disclaimer;
+  Element elementDisclaimer;
+  CodeableConcept scoring;
+  CodeableConcept compositeScoring;
+  List<CodeableConcept> type;
+  String riskAdjustment;
+  Element elementRiskAdjustment;
+  String rateAggregation;
+  Element elementRateAggregation;
+  String rationale;
+  Element elementRationale;
+  String clinicalRecommendationStatement;
+  Element elementClinicalRecommendationStatement;
+  CodeableConcept improvementNotation;
+  List<String> definition;
+  List<Element> elementDefinition;
+  String guidance;
+  Element elementGuidance;
+  List<Measure_Group> group;
+  List<Measure_SupplementalData> supplementalData;
 
-	String resourceType= 'Measure';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	List<Identifier> identifier;
-	String version;
-	Element elementVersion;
-	String name;
-	Element elementName;
-	String title;
-	Element elementTitle;
-	String subtitle;
-	Element elementSubtitle;
-	String status;
-	Element elementStatus;
-	bool experimental;
-	Element elementExperimental;
-	CodeableConcept subjectCodeableConcept;
-	Reference subjectReference;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String purpose;
-	Element elementPurpose;
-	String usage;
-	Element elementUsage;
-	String copyright;
-	Element elementCopyright;
-	String approvalDate;
-	Element elementApprovalDate;
-	String lastReviewDate;
-	Element elementLastReviewDate;
-	Period effectivePeriod;
-	List<CodeableConcept> topic;
-	List<ContactDetail> author;
-	List<ContactDetail> editor;
-	List<ContactDetail> reviewer;
-	List<ContactDetail> endorser;
-	List<RelatedArtifact> relatedArtifact;
-	List<String> library;
-	String disclaimer;
-	Element elementDisclaimer;
-	CodeableConcept scoring;
-	CodeableConcept compositeScoring;
-	List<CodeableConcept> type;
-	String riskAdjustment;
-	Element elementRiskAdjustment;
-	String rateAggregation;
-	Element elementRateAggregation;
-	String rationale;
-	Element elementRationale;
-	String clinicalRecommendationStatement;
-	Element elementClinicalRecommendationStatement;
-	CodeableConcept improvementNotation;
-	List<String> definition;
-	List<Element> elementDefinition;
-	String guidance;
-	Element elementGuidance;
-	List<Measure_Group> group;
-	List<Measure_SupplementalData> supplementalData;
+  Measure({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.subtitle,
+    this.elementSubtitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.subjectCodeableConcept,
+    this.subjectReference,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.usage,
+    this.elementUsage,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.topic,
+    this.author,
+    this.editor,
+    this.reviewer,
+    this.endorser,
+    this.relatedArtifact,
+    this.library,
+    this.disclaimer,
+    this.elementDisclaimer,
+    this.scoring,
+    this.compositeScoring,
+    this.type,
+    this.riskAdjustment,
+    this.elementRiskAdjustment,
+    this.rateAggregation,
+    this.elementRateAggregation,
+    this.rationale,
+    this.elementRationale,
+    this.clinicalRecommendationStatement,
+    this.elementClinicalRecommendationStatement,
+    this.improvementNotation,
+    this.definition,
+    this.elementDefinition,
+    this.guidance,
+    this.elementGuidance,
+    this.group,
+    this.supplementalData,
+  });
 
-Measure(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.identifier,
-this.version,
-this.elementVersion,
-this.name,
-this.elementName,
-this.title,
-this.elementTitle,
-this.subtitle,
-this.elementSubtitle,
-this.status,
-this.elementStatus,
-this.experimental,
-this.elementExperimental,
-this.subjectCodeableConcept,
-this.subjectReference,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.purpose,
-this.elementPurpose,
-this.usage,
-this.elementUsage,
-this.copyright,
-this.elementCopyright,
-this.approvalDate,
-this.elementApprovalDate,
-this.lastReviewDate,
-this.elementLastReviewDate,
-this.effectivePeriod,
-this.topic,
-this.author,
-this.editor,
-this.reviewer,
-this.endorser,
-this.relatedArtifact,
-this.library,
-this.disclaimer,
-this.elementDisclaimer,
-this.scoring,
-this.compositeScoring,
-this.type,
-this.riskAdjustment,
-this.elementRiskAdjustment,
-this.rateAggregation,
-this.elementRateAggregation,
-this.rationale,
-this.elementRationale,
-this.clinicalRecommendationStatement,
-this.elementClinicalRecommendationStatement,
-this.improvementNotation,
-this.definition,
-this.elementDefinition,
-this.guidance,
-this.elementGuidance,
-this.group,
-this.supplementalData,
-});
-
-  factory Measure.fromJson(Map<String, dynamic> json) => _$MeasureFromJson(json);
+  factory Measure.fromJson(Map<String, dynamic> json) =>
+      _$MeasureFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Measure_Group {
+  static Future<Measure_Group> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    String description,
+    Element elementDescription,
+    List<Measure_Population> population,
+    List<Measure_Stratifier> stratifier,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Measure_Group newMeasure_Group = new Measure_Group(
+      id: id ?? await fhirDb.newResourceId('Measure_Group'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      description: description,
+      elementDescription: elementDescription,
+      population: population,
+      stratifier: stratifier,
+    );
+    return newMeasure_Group;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Measure_Group{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  String description;
+  Element elementDescription;
+  List<Measure_Population> population;
+  List<Measure_Stratifier> stratifier;
 
-	static Future<Measure_Group> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	String description,
-	Element elementDescription,
-	List<Measure_Population> population,
-	List<Measure_Stratifier> stratifier,
-}) async {
-var fhirDb = new DatabaseHelper();
-Measure_Group newMeasure_Group = new Measure_Group(
-	id: id ?? await fhirDb.newResourceId('Measure_Group'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	description: description,
-	elementDescription: elementDescription,
-	population: population,
-	stratifier: stratifier,
-);
-	return newMeasure_Group;
-}
+  Measure_Group({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.description,
+    this.elementDescription,
+    this.population,
+    this.stratifier,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	String description;
-	Element elementDescription;
-	List<Measure_Population> population;
-	List<Measure_Stratifier> stratifier;
-
-Measure_Group(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.description,
-this.elementDescription,
-this.population,
-this.stratifier,
-});
-
-  factory Measure_Group.fromJson(Map<String, dynamic> json) => _$Measure_GroupFromJson(json);
+  factory Measure_Group.fromJson(Map<String, dynamic> json) =>
+      _$Measure_GroupFromJson(json);
   Map<String, dynamic> toJson() => _$Measure_GroupToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Measure_Population {
+  static Future<Measure_Population> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    String description,
+    Element elementDescription,
+    Expression criteria,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Measure_Population newMeasure_Population = new Measure_Population(
+      id: id ?? await fhirDb.newResourceId('Measure_Population'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      description: description,
+      elementDescription: elementDescription,
+      criteria: criteria,
+    );
+    return newMeasure_Population;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Measure_Population{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  String description;
+  Element elementDescription;
+  Expression criteria;
 
-	static Future<Measure_Population> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	String description,
-	Element elementDescription,
-	Expression criteria,
-}) async {
-var fhirDb = new DatabaseHelper();
-Measure_Population newMeasure_Population = new Measure_Population(
-	id: id ?? await fhirDb.newResourceId('Measure_Population'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	description: description,
-	elementDescription: elementDescription,
-	criteria: criteria,
-);
-	return newMeasure_Population;
-}
+  Measure_Population({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.description,
+    this.elementDescription,
+    @required this.criteria,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	String description;
-	Element elementDescription;
-	Expression criteria;
-
-Measure_Population(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.description,
-this.elementDescription,
-@required this.criteria,
-});
-
-  factory Measure_Population.fromJson(Map<String, dynamic> json) => _$Measure_PopulationFromJson(json);
+  factory Measure_Population.fromJson(Map<String, dynamic> json) =>
+      _$Measure_PopulationFromJson(json);
   Map<String, dynamic> toJson() => _$Measure_PopulationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Measure_Stratifier {
+  static Future<Measure_Stratifier> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    String description,
+    Element elementDescription,
+    Expression criteria,
+    List<Measure_Component> component,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Measure_Stratifier newMeasure_Stratifier = new Measure_Stratifier(
+      id: id ?? await fhirDb.newResourceId('Measure_Stratifier'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      description: description,
+      elementDescription: elementDescription,
+      criteria: criteria,
+      component: component,
+    );
+    return newMeasure_Stratifier;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Measure_Stratifier{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  String description;
+  Element elementDescription;
+  Expression criteria;
+  List<Measure_Component> component;
 
-	static Future<Measure_Stratifier> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	String description,
-	Element elementDescription,
-	Expression criteria,
-	List<Measure_Component> component,
-}) async {
-var fhirDb = new DatabaseHelper();
-Measure_Stratifier newMeasure_Stratifier = new Measure_Stratifier(
-	id: id ?? await fhirDb.newResourceId('Measure_Stratifier'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	description: description,
-	elementDescription: elementDescription,
-	criteria: criteria,
-	component: component,
-);
-	return newMeasure_Stratifier;
-}
+  Measure_Stratifier({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.description,
+    this.elementDescription,
+    this.criteria,
+    this.component,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	String description;
-	Element elementDescription;
-	Expression criteria;
-	List<Measure_Component> component;
-
-Measure_Stratifier(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.description,
-this.elementDescription,
-this.criteria,
-this.component,
-});
-
-  factory Measure_Stratifier.fromJson(Map<String, dynamic> json) => _$Measure_StratifierFromJson(json);
+  factory Measure_Stratifier.fromJson(Map<String, dynamic> json) =>
+      _$Measure_StratifierFromJson(json);
   Map<String, dynamic> toJson() => _$Measure_StratifierToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Measure_Component {
+  static Future<Measure_Component> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    String description,
+    Element elementDescription,
+    Expression criteria,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Measure_Component newMeasure_Component = new Measure_Component(
+      id: id ?? await fhirDb.newResourceId('Measure_Component'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      description: description,
+      elementDescription: elementDescription,
+      criteria: criteria,
+    );
+    return newMeasure_Component;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Measure_Component{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  String description;
+  Element elementDescription;
+  Expression criteria;
 
-	static Future<Measure_Component> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	String description,
-	Element elementDescription,
-	Expression criteria,
-}) async {
-var fhirDb = new DatabaseHelper();
-Measure_Component newMeasure_Component = new Measure_Component(
-	id: id ?? await fhirDb.newResourceId('Measure_Component'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	description: description,
-	elementDescription: elementDescription,
-	criteria: criteria,
-);
-	return newMeasure_Component;
-}
+  Measure_Component({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.description,
+    this.elementDescription,
+    @required this.criteria,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	String description;
-	Element elementDescription;
-	Expression criteria;
-
-Measure_Component(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.description,
-this.elementDescription,
-@required this.criteria,
-});
-
-  factory Measure_Component.fromJson(Map<String, dynamic> json) => _$Measure_ComponentFromJson(json);
+  factory Measure_Component.fromJson(Map<String, dynamic> json) =>
+      _$Measure_ComponentFromJson(json);
   Map<String, dynamic> toJson() => _$Measure_ComponentToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Measure_SupplementalData {
+  static Future<Measure_SupplementalData> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    List<CodeableConcept> usage,
+    String description,
+    Element elementDescription,
+    Expression criteria,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Measure_SupplementalData newMeasure_SupplementalData =
+        new Measure_SupplementalData(
+      id: id ?? await fhirDb.newResourceId('Measure_SupplementalData'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      usage: usage,
+      description: description,
+      elementDescription: elementDescription,
+      criteria: criteria,
+    );
+    return newMeasure_SupplementalData;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Measure_SupplementalData{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  List<CodeableConcept> usage;
+  String description;
+  Element elementDescription;
+  Expression criteria;
 
-	static Future<Measure_SupplementalData> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	List<CodeableConcept> usage,
-	String description,
-	Element elementDescription,
-	Expression criteria,
-}) async {
-var fhirDb = new DatabaseHelper();
-Measure_SupplementalData newMeasure_SupplementalData = new Measure_SupplementalData(
-	id: id ?? await fhirDb.newResourceId('Measure_SupplementalData'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	usage: usage,
-	description: description,
-	elementDescription: elementDescription,
-	criteria: criteria,
-);
-	return newMeasure_SupplementalData;
-}
+  Measure_SupplementalData({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.usage,
+    this.description,
+    this.elementDescription,
+    @required this.criteria,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	List<CodeableConcept> usage;
-	String description;
-	Element elementDescription;
-	Expression criteria;
-
-Measure_SupplementalData(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.usage,
-this.description,
-this.elementDescription,
-@required this.criteria,
-});
-
-  factory Measure_SupplementalData.fromJson(Map<String, dynamic> json) => _$Measure_SupplementalDataFromJson(json);
+  factory Measure_SupplementalData.fromJson(Map<String, dynamic> json) =>
+      _$Measure_SupplementalDataFromJson(json);
   Map<String, dynamic> toJson() => _$Measure_SupplementalDataToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -622,8 +621,9 @@ Measure _$MeasureFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -816,89 +816,108 @@ Measure _$MeasureFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MeasureToJson(Measure instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'subtitle': instance.subtitle,
-      'elementSubtitle': instance.elementSubtitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
-      'subjectReference': instance.subjectReference?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'usage': instance.usage,
-      'elementUsage': instance.elementUsage?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'approvalDate': instance.approvalDate,
-      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
-      'lastReviewDate': instance.lastReviewDate,
-      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
-      'author': instance.author?.map((e) => e?.toJson())?.toList(),
-      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
-      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
-      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
-      'relatedArtifact':
-          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
-      'library': instance.library,
-      'disclaimer': instance.disclaimer,
-      'elementDisclaimer': instance.elementDisclaimer?.toJson(),
-      'scoring': instance.scoring?.toJson(),
-      'compositeScoring': instance.compositeScoring?.toJson(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'riskAdjustment': instance.riskAdjustment,
-      'elementRiskAdjustment': instance.elementRiskAdjustment?.toJson(),
-      'rateAggregation': instance.rateAggregation,
-      'elementRateAggregation': instance.elementRateAggregation?.toJson(),
-      'rationale': instance.rationale,
-      'elementRationale': instance.elementRationale?.toJson(),
-      'clinicalRecommendationStatement':
-          instance.clinicalRecommendationStatement,
-      'elementClinicalRecommendationStatement':
-          instance.elementClinicalRecommendationStatement?.toJson(),
-      'improvementNotation': instance.improvementNotation?.toJson(),
-      'definition': instance.definition,
-      'elementDefinition':
-          instance.elementDefinition?.map((e) => e?.toJson())?.toList(),
-      'guidance': instance.guidance,
-      'elementGuidance': instance.elementGuidance?.toJson(),
-      'group': instance.group?.map((e) => e?.toJson())?.toList(),
-      'supplementalData':
-          instance.supplementalData?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$MeasureToJson(Measure instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('subtitle', instance.subtitle);
+  writeNotNull('elementSubtitle', instance.elementSubtitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull(
+      'subjectCodeableConcept', instance.subjectCodeableConcept?.toJson());
+  writeNotNull('subjectReference', instance.subjectReference?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('usage', instance.usage);
+  writeNotNull('elementUsage', instance.elementUsage?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('approvalDate', instance.approvalDate);
+  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
+  writeNotNull('lastReviewDate', instance.lastReviewDate);
+  writeNotNull(
+      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('topic', instance.topic?.map((e) => e?.toJson())?.toList());
+  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
+  writeNotNull('editor', instance.editor?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reviewer', instance.reviewer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endorser', instance.endorser?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedArtifact',
+      instance.relatedArtifact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('library', instance.library);
+  writeNotNull('disclaimer', instance.disclaimer);
+  writeNotNull('elementDisclaimer', instance.elementDisclaimer?.toJson());
+  writeNotNull('scoring', instance.scoring?.toJson());
+  writeNotNull('compositeScoring', instance.compositeScoring?.toJson());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('riskAdjustment', instance.riskAdjustment);
+  writeNotNull(
+      'elementRiskAdjustment', instance.elementRiskAdjustment?.toJson());
+  writeNotNull('rateAggregation', instance.rateAggregation);
+  writeNotNull(
+      'elementRateAggregation', instance.elementRateAggregation?.toJson());
+  writeNotNull('rationale', instance.rationale);
+  writeNotNull('elementRationale', instance.elementRationale?.toJson());
+  writeNotNull('clinicalRecommendationStatement',
+      instance.clinicalRecommendationStatement);
+  writeNotNull('elementClinicalRecommendationStatement',
+      instance.elementClinicalRecommendationStatement?.toJson());
+  writeNotNull('improvementNotation', instance.improvementNotation?.toJson());
+  writeNotNull('definition', instance.definition);
+  writeNotNull('elementDefinition',
+      instance.elementDefinition?.map((e) => e?.toJson())?.toList());
+  writeNotNull('guidance', instance.guidance);
+  writeNotNull('elementGuidance', instance.elementGuidance?.toJson());
+  writeNotNull('group', instance.group?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supplementalData',
+      instance.supplementalData?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Measure_Group _$Measure_GroupFromJson(Map<String, dynamic> json) {
   return Measure_Group(
@@ -931,18 +950,29 @@ Measure_Group _$Measure_GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Measure_GroupToJson(Measure_Group instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'population': instance.population?.map((e) => e?.toJson())?.toList(),
-      'stratifier': instance.stratifier?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$Measure_GroupToJson(Measure_Group instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'population', instance.population?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'stratifier', instance.stratifier?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Measure_Population _$Measure_PopulationFromJson(Map<String, dynamic> json) {
   return Measure_Population(
@@ -968,17 +998,26 @@ Measure_Population _$Measure_PopulationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Measure_PopulationToJson(Measure_Population instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'criteria': instance.criteria?.toJson(),
-    };
+Map<String, dynamic> _$Measure_PopulationToJson(Measure_Population instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('criteria', instance.criteria?.toJson());
+  return val;
+}
 
 Measure_Stratifier _$Measure_StratifierFromJson(Map<String, dynamic> json) {
   return Measure_Stratifier(
@@ -1009,18 +1048,28 @@ Measure_Stratifier _$Measure_StratifierFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Measure_StratifierToJson(Measure_Stratifier instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'criteria': instance.criteria?.toJson(),
-      'component': instance.component?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$Measure_StratifierToJson(Measure_Stratifier instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('criteria', instance.criteria?.toJson());
+  writeNotNull(
+      'component', instance.component?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Measure_Component _$Measure_ComponentFromJson(Map<String, dynamic> json) {
   return Measure_Component(
@@ -1046,17 +1095,26 @@ Measure_Component _$Measure_ComponentFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Measure_ComponentToJson(Measure_Component instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'criteria': instance.criteria?.toJson(),
-    };
+Map<String, dynamic> _$Measure_ComponentToJson(Measure_Component instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('criteria', instance.criteria?.toJson());
+  return val;
+}
 
 Measure_SupplementalData _$Measure_SupplementalDataFromJson(
     Map<String, dynamic> json) {
@@ -1089,15 +1147,24 @@ Measure_SupplementalData _$Measure_SupplementalDataFromJson(
 }
 
 Map<String, dynamic> _$Measure_SupplementalDataToJson(
-        Measure_SupplementalData instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'usage': instance.usage?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'criteria': instance.criteria?.toJson(),
-    };
+    Measure_SupplementalData instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('usage', instance.usage?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('criteria', instance.criteria?.toJson());
+  return val;
+}

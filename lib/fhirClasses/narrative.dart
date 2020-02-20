@@ -4,46 +4,44 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Narrative {
+  static Future<Narrative> newInstance({
+    String id,
+    List<Extension> extension,
+    String status,
+    Element elementStatus,
+    String div,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Narrative newNarrative = new Narrative(
+      id: id ?? await fhirDb.newResourceId('Narrative'),
+      extension: extension,
+      status: status,
+      elementStatus: elementStatus,
+      div: div,
+    );
+    return newNarrative;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Narrative{
+  String id;
+  List<Extension> extension;
+  String status;
+  Element elementStatus;
+  String div;
 
-	static Future<Narrative> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String status,
-	Element elementStatus,
-	String div,
-}) async {
-var fhirDb = new DatabaseHelper();
-Narrative newNarrative = new Narrative(
-	id: id ?? await fhirDb.newResourceId('Narrative'),
-	extension: extension,
-	status: status,
-	elementStatus: elementStatus,
-	div: div,
-);
-	return newNarrative;
-}
+  Narrative({
+    this.id,
+    this.extension,
+    this.status,
+    this.elementStatus,
+    @required this.div,
+  });
 
-	String id;
-	List<Extension> extension;
-	String status;
-	Element elementStatus;
-	String div;
-
-Narrative(
-	{this.id,
-this.extension,
-this.status,
-this.elementStatus,
-@required this.div,
-});
-
-  factory Narrative.fromJson(Map<String, dynamic> json) => _$NarrativeFromJson(json);
+  factory Narrative.fromJson(Map<String, dynamic> json) =>
+      _$NarrativeFromJson(json);
   Map<String, dynamic> toJson() => _$NarrativeToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -65,10 +63,20 @@ Narrative _$NarrativeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$NarrativeToJson(Narrative instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'div': instance.div,
-    };
+Map<String, dynamic> _$NarrativeToJson(Narrative instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('div', instance.div);
+  return val;
+}

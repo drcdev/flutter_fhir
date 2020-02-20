@@ -13,179 +13,180 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Organization {
+  static Future<Organization> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    List<CodeableConcept> type,
+    String name,
+    Element elementName,
+    List<String> alias,
+    List<Element> elementAlias,
+    List<ContactPoint> telecom,
+    List<Address> address,
+    Reference partOf,
+    List<Organization_Contact> contact,
+    List<Reference> endpoint,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Organization newOrganization = new Organization(
+      resourceType: 'Organization',
+      id: id ?? await fhirDb.newResourceId('Organization'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      active: active,
+      elementActive: elementActive,
+      type: type,
+      name: name,
+      elementName: elementName,
+      alias: alias,
+      elementAlias: elementAlias,
+      telecom: telecom,
+      address: address,
+      partOf: partOf,
+      contact: contact,
+      endpoint: endpoint,
+    );
+    newOrganization.meta.createdAt = DateTime.now();
+    newOrganization.meta.lastUpdated = newOrganization.meta.createdAt;
+    int saved = await fhirDb.saveResource(newOrganization);
+    return newOrganization;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Organization{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Organization> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	bool active,
-	Element elementActive,
-	List<CodeableConcept> type,
-	String name,
-	Element elementName,
-	List<String> alias,
-	List<Element> elementAlias,
-	List<ContactPoint> telecom,
-	List<Address> address,
-	Reference partOf,
-	List<Organization_Contact> contact,
-	List<Reference> endpoint,
-}) async {
-var fhirDb = new DatabaseHelper();
-Organization newOrganization = new Organization(
-	resourceType: 'Organization',
-	id: id ?? await fhirDb.newResourceId('Organization'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	active: active,
-	elementActive: elementActive,
-	type: type,
-	name: name,
-	elementName: elementName,
-	alias: alias,
-	elementAlias: elementAlias,
-	telecom: telecom,
-	address: address,
-	partOf: partOf,
-	contact: contact,
-	endpoint: endpoint,
-);
-	newOrganization.meta.createdAt = DateTime.now();
-	newOrganization.meta.lastUpdated = newOrganization.meta.createdAt;
-	int saved = await fhirDb.saveResource(newOrganization);
-	 return newOrganization;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Organization';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  bool active;
+  Element elementActive;
+  List<CodeableConcept> type;
+  String name;
+  Element elementName;
+  List<String> alias;
+  List<Element> elementAlias;
+  List<ContactPoint> telecom;
+  List<Address> address;
+  Reference partOf;
+  List<Organization_Contact> contact;
+  List<Reference> endpoint;
 
-	String resourceType= 'Organization';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	bool active;
-	Element elementActive;
-	List<CodeableConcept> type;
-	String name;
-	Element elementName;
-	List<String> alias;
-	List<Element> elementAlias;
-	List<ContactPoint> telecom;
-	List<Address> address;
-	Reference partOf;
-	List<Organization_Contact> contact;
-	List<Reference> endpoint;
+  Organization({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    this.type,
+    this.name,
+    this.elementName,
+    this.alias,
+    this.elementAlias,
+    this.telecom,
+    this.address,
+    this.partOf,
+    this.contact,
+    this.endpoint,
+  });
 
-Organization(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.active,
-this.elementActive,
-this.type,
-this.name,
-this.elementName,
-this.alias,
-this.elementAlias,
-this.telecom,
-this.address,
-this.partOf,
-this.contact,
-this.endpoint,
-});
-
-  factory Organization.fromJson(Map<String, dynamic> json) => _$OrganizationFromJson(json);
+  factory Organization.fromJson(Map<String, dynamic> json) =>
+      _$OrganizationFromJson(json);
   Map<String, dynamic> toJson() => _$OrganizationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Organization_Contact {
+  static Future<Organization_Contact> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept purpose,
+    HumanName name,
+    List<ContactPoint> telecom,
+    Address address,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Organization_Contact newOrganization_Contact = new Organization_Contact(
+      id: id ?? await fhirDb.newResourceId('Organization_Contact'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      purpose: purpose,
+      name: name,
+      telecom: telecom,
+      address: address,
+    );
+    return newOrganization_Contact;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Organization_Contact{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept purpose;
+  HumanName name;
+  List<ContactPoint> telecom;
+  Address address;
 
-	static Future<Organization_Contact> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept purpose,
-	HumanName name,
-	List<ContactPoint> telecom,
-	Address address,
-}) async {
-var fhirDb = new DatabaseHelper();
-Organization_Contact newOrganization_Contact = new Organization_Contact(
-	id: id ?? await fhirDb.newResourceId('Organization_Contact'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	purpose: purpose,
-	name: name,
-	telecom: telecom,
-	address: address,
-);
-	return newOrganization_Contact;
-}
+  Organization_Contact({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.purpose,
+    this.name,
+    this.telecom,
+    this.address,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept purpose;
-	HumanName name;
-	List<ContactPoint> telecom;
-	Address address;
-
-Organization_Contact(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.purpose,
-this.name,
-this.telecom,
-this.address,
-});
-
-  factory Organization_Contact.fromJson(Map<String, dynamic> json) => _$Organization_ContactFromJson(json);
+  factory Organization_Contact.fromJson(Map<String, dynamic> json) =>
+      _$Organization_ContactFromJson(json);
   Map<String, dynamic> toJson() => _$Organization_ContactToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -212,8 +213,9 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -268,34 +270,46 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'alias': instance.alias,
-      'elementAlias': instance.elementAlias?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'address': instance.address?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$OrganizationToJson(Organization instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('alias', instance.alias);
+  writeNotNull(
+      'elementAlias', instance.elementAlias?.map((e) => e?.toJson())?.toList());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull('address', instance.address?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Organization_Contact _$Organization_ContactFromJson(Map<String, dynamic> json) {
   return Organization_Contact(
@@ -325,14 +339,23 @@ Organization_Contact _$Organization_ContactFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$Organization_ContactToJson(
-        Organization_Contact instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose?.toJson(),
-      'name': instance.name?.toJson(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'address': instance.address?.toJson(),
-    };
+    Organization_Contact instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose?.toJson());
+  writeNotNull('name', instance.name?.toJson());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull('address', instance.address?.toJson());
+  return val;
+}

@@ -12,407 +12,407 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MeasureReport {
+  static Future<MeasureReport> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    String type,
+    Element elementType,
+    String measure,
+    Reference subject,
+    DateTime date,
+    Element elementDate,
+    Reference reporter,
+    Period period,
+    CodeableConcept improvementNotation,
+    List<MeasureReport_Group> group,
+    List<Reference> evaluatedResource,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MeasureReport newMeasureReport = new MeasureReport(
+      resourceType: 'MeasureReport',
+      id: id ?? await fhirDb.newResourceId('MeasureReport'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      type: type,
+      elementType: elementType,
+      measure: measure,
+      subject: subject,
+      date: date,
+      elementDate: elementDate,
+      reporter: reporter,
+      period: period,
+      improvementNotation: improvementNotation,
+      group: group,
+      evaluatedResource: evaluatedResource,
+    );
+    newMeasureReport.meta.createdAt = DateTime.now();
+    newMeasureReport.meta.lastUpdated = newMeasureReport.meta.createdAt;
+    int saved = await fhirDb.saveResource(newMeasureReport);
+    return newMeasureReport;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MeasureReport{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<MeasureReport> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	String type,
-	Element elementType,
-	String measure,
-	Reference subject,
-	DateTime date,
-	Element elementDate,
-	Reference reporter,
-	Period period,
-	CodeableConcept improvementNotation,
-	List<MeasureReport_Group> group,
-	List<Reference> evaluatedResource,
-}) async {
-var fhirDb = new DatabaseHelper();
-MeasureReport newMeasureReport = new MeasureReport(
-	resourceType: 'MeasureReport',
-	id: id ?? await fhirDb.newResourceId('MeasureReport'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	type: type,
-	elementType: elementType,
-	measure: measure,
-	subject: subject,
-	date: date,
-	elementDate: elementDate,
-	reporter: reporter,
-	period: period,
-	improvementNotation: improvementNotation,
-	group: group,
-	evaluatedResource: evaluatedResource,
-);
-	newMeasureReport.meta.createdAt = DateTime.now();
-	newMeasureReport.meta.lastUpdated = newMeasureReport.meta.createdAt;
-	int saved = await fhirDb.saveResource(newMeasureReport);
-	 return newMeasureReport;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'MeasureReport';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  String type;
+  Element elementType;
+  String measure;
+  Reference subject;
+  DateTime date;
+  Element elementDate;
+  Reference reporter;
+  Period period;
+  CodeableConcept improvementNotation;
+  List<MeasureReport_Group> group;
+  List<Reference> evaluatedResource;
 
-	String resourceType= 'MeasureReport';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	String type;
-	Element elementType;
-	String measure;
-	Reference subject;
-	DateTime date;
-	Element elementDate;
-	Reference reporter;
-	Period period;
-	CodeableConcept improvementNotation;
-	List<MeasureReport_Group> group;
-	List<Reference> evaluatedResource;
+  MeasureReport({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.type,
+    this.elementType,
+    @required this.measure,
+    this.subject,
+    this.date,
+    this.elementDate,
+    this.reporter,
+    @required this.period,
+    this.improvementNotation,
+    this.group,
+    this.evaluatedResource,
+  });
 
-MeasureReport(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.type,
-this.elementType,
-@required this.measure,
-this.subject,
-this.date,
-this.elementDate,
-this.reporter,
-@required this.period,
-this.improvementNotation,
-this.group,
-this.evaluatedResource,
-});
-
-  factory MeasureReport.fromJson(Map<String, dynamic> json) => _$MeasureReportFromJson(json);
+  factory MeasureReport.fromJson(Map<String, dynamic> json) =>
+      _$MeasureReportFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReportToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MeasureReport_Group {
+  static Future<MeasureReport_Group> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    List<MeasureReport_Population> population,
+    Quantity measureScore,
+    List<MeasureReport_Stratifier> stratifier,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MeasureReport_Group newMeasureReport_Group = new MeasureReport_Group(
+      id: id ?? await fhirDb.newResourceId('MeasureReport_Group'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      population: population,
+      measureScore: measureScore,
+      stratifier: stratifier,
+    );
+    return newMeasureReport_Group;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MeasureReport_Group{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  List<MeasureReport_Population> population;
+  Quantity measureScore;
+  List<MeasureReport_Stratifier> stratifier;
 
-	static Future<MeasureReport_Group> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	List<MeasureReport_Population> population,
-	Quantity measureScore,
-	List<MeasureReport_Stratifier> stratifier,
-}) async {
-var fhirDb = new DatabaseHelper();
-MeasureReport_Group newMeasureReport_Group = new MeasureReport_Group(
-	id: id ?? await fhirDb.newResourceId('MeasureReport_Group'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	population: population,
-	measureScore: measureScore,
-	stratifier: stratifier,
-);
-	return newMeasureReport_Group;
-}
+  MeasureReport_Group({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.population,
+    this.measureScore,
+    this.stratifier,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	List<MeasureReport_Population> population;
-	Quantity measureScore;
-	List<MeasureReport_Stratifier> stratifier;
-
-MeasureReport_Group(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.population,
-this.measureScore,
-this.stratifier,
-});
-
-  factory MeasureReport_Group.fromJson(Map<String, dynamic> json) => _$MeasureReport_GroupFromJson(json);
+  factory MeasureReport_Group.fromJson(Map<String, dynamic> json) =>
+      _$MeasureReport_GroupFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_GroupToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MeasureReport_Population {
+  static Future<MeasureReport_Population> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    int count,
+    Element elementCount,
+    Reference subjectResults,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MeasureReport_Population newMeasureReport_Population =
+        new MeasureReport_Population(
+      id: id ?? await fhirDb.newResourceId('MeasureReport_Population'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      count: count,
+      elementCount: elementCount,
+      subjectResults: subjectResults,
+    );
+    return newMeasureReport_Population;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MeasureReport_Population{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  int count;
+  Element elementCount;
+  Reference subjectResults;
 
-	static Future<MeasureReport_Population> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	int count,
-	Element elementCount,
-	Reference subjectResults,
-}) async {
-var fhirDb = new DatabaseHelper();
-MeasureReport_Population newMeasureReport_Population = new MeasureReport_Population(
-	id: id ?? await fhirDb.newResourceId('MeasureReport_Population'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	count: count,
-	elementCount: elementCount,
-	subjectResults: subjectResults,
-);
-	return newMeasureReport_Population;
-}
+  MeasureReport_Population({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.count,
+    this.elementCount,
+    this.subjectResults,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	int count;
-	Element elementCount;
-	Reference subjectResults;
-
-MeasureReport_Population(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.count,
-this.elementCount,
-this.subjectResults,
-});
-
-  factory MeasureReport_Population.fromJson(Map<String, dynamic> json) => _$MeasureReport_PopulationFromJson(json);
+  factory MeasureReport_Population.fromJson(Map<String, dynamic> json) =>
+      _$MeasureReport_PopulationFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_PopulationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MeasureReport_Stratifier {
+  static Future<MeasureReport_Stratifier> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<CodeableConcept> code,
+    List<MeasureReport_Stratum> stratum,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MeasureReport_Stratifier newMeasureReport_Stratifier =
+        new MeasureReport_Stratifier(
+      id: id ?? await fhirDb.newResourceId('MeasureReport_Stratifier'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      stratum: stratum,
+    );
+    return newMeasureReport_Stratifier;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MeasureReport_Stratifier{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<CodeableConcept> code;
+  List<MeasureReport_Stratum> stratum;
 
-	static Future<MeasureReport_Stratifier> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<CodeableConcept> code,
-	List<MeasureReport_Stratum> stratum,
-}) async {
-var fhirDb = new DatabaseHelper();
-MeasureReport_Stratifier newMeasureReport_Stratifier = new MeasureReport_Stratifier(
-	id: id ?? await fhirDb.newResourceId('MeasureReport_Stratifier'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	stratum: stratum,
-);
-	return newMeasureReport_Stratifier;
-}
+  MeasureReport_Stratifier({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.stratum,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<CodeableConcept> code;
-	List<MeasureReport_Stratum> stratum;
-
-MeasureReport_Stratifier(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.stratum,
-});
-
-  factory MeasureReport_Stratifier.fromJson(Map<String, dynamic> json) => _$MeasureReport_StratifierFromJson(json);
+  factory MeasureReport_Stratifier.fromJson(Map<String, dynamic> json) =>
+      _$MeasureReport_StratifierFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_StratifierToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MeasureReport_Stratum {
+  static Future<MeasureReport_Stratum> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept value,
+    List<MeasureReport_Component> component,
+    List<MeasureReport_Population1> population,
+    Quantity measureScore,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MeasureReport_Stratum newMeasureReport_Stratum = new MeasureReport_Stratum(
+      id: id ?? await fhirDb.newResourceId('MeasureReport_Stratum'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      value: value,
+      component: component,
+      population: population,
+      measureScore: measureScore,
+    );
+    return newMeasureReport_Stratum;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MeasureReport_Stratum{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept value;
+  List<MeasureReport_Component> component;
+  List<MeasureReport_Population1> population;
+  Quantity measureScore;
 
-	static Future<MeasureReport_Stratum> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept value,
-	List<MeasureReport_Component> component,
-	List<MeasureReport_Population1> population,
-	Quantity measureScore,
-}) async {
-var fhirDb = new DatabaseHelper();
-MeasureReport_Stratum newMeasureReport_Stratum = new MeasureReport_Stratum(
-	id: id ?? await fhirDb.newResourceId('MeasureReport_Stratum'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	value: value,
-	component: component,
-	population: population,
-	measureScore: measureScore,
-);
-	return newMeasureReport_Stratum;
-}
+  MeasureReport_Stratum({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.value,
+    this.component,
+    this.population,
+    this.measureScore,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept value;
-	List<MeasureReport_Component> component;
-	List<MeasureReport_Population1> population;
-	Quantity measureScore;
-
-MeasureReport_Stratum(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.value,
-this.component,
-this.population,
-this.measureScore,
-});
-
-  factory MeasureReport_Stratum.fromJson(Map<String, dynamic> json) => _$MeasureReport_StratumFromJson(json);
+  factory MeasureReport_Stratum.fromJson(Map<String, dynamic> json) =>
+      _$MeasureReport_StratumFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_StratumToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MeasureReport_Component {
+  static Future<MeasureReport_Component> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    CodeableConcept value,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MeasureReport_Component newMeasureReport_Component =
+        new MeasureReport_Component(
+      id: id ?? await fhirDb.newResourceId('MeasureReport_Component'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      value: value,
+    );
+    return newMeasureReport_Component;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MeasureReport_Component{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  CodeableConcept value;
 
-	static Future<MeasureReport_Component> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	CodeableConcept value,
-}) async {
-var fhirDb = new DatabaseHelper();
-MeasureReport_Component newMeasureReport_Component = new MeasureReport_Component(
-	id: id ?? await fhirDb.newResourceId('MeasureReport_Component'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	value: value,
-);
-	return newMeasureReport_Component;
-}
+  MeasureReport_Component({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+    @required this.value,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	CodeableConcept value;
-
-MeasureReport_Component(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.code,
-@required this.value,
-});
-
-  factory MeasureReport_Component.fromJson(Map<String, dynamic> json) => _$MeasureReport_ComponentFromJson(json);
+  factory MeasureReport_Component.fromJson(Map<String, dynamic> json) =>
+      _$MeasureReport_ComponentFromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_ComponentToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MeasureReport_Population1 {
+  static Future<MeasureReport_Population1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    int count,
+    Element elementCount,
+    Reference subjectResults,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MeasureReport_Population1 newMeasureReport_Population1 =
+        new MeasureReport_Population1(
+      id: id ?? await fhirDb.newResourceId('MeasureReport_Population1'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      count: count,
+      elementCount: elementCount,
+      subjectResults: subjectResults,
+    );
+    return newMeasureReport_Population1;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MeasureReport_Population1{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  int count;
+  Element elementCount;
+  Reference subjectResults;
 
-	static Future<MeasureReport_Population1> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	int count,
-	Element elementCount,
-	Reference subjectResults,
-}) async {
-var fhirDb = new DatabaseHelper();
-MeasureReport_Population1 newMeasureReport_Population1 = new MeasureReport_Population1(
-	id: id ?? await fhirDb.newResourceId('MeasureReport_Population1'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	count: count,
-	elementCount: elementCount,
-	subjectResults: subjectResults,
-);
-	return newMeasureReport_Population1;
-}
+  MeasureReport_Population1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.count,
+    this.elementCount,
+    this.subjectResults,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	int count;
-	Element elementCount;
-	Reference subjectResults;
-
-MeasureReport_Population1(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.count,
-this.elementCount,
-this.subjectResults,
-});
-
-  factory MeasureReport_Population1.fromJson(Map<String, dynamic> json) => _$MeasureReport_Population1FromJson(json);
+  factory MeasureReport_Population1.fromJson(Map<String, dynamic> json) =>
+      _$MeasureReport_Population1FromJson(json);
   Map<String, dynamic> toJson() => _$MeasureReport_Population1ToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -439,8 +439,9 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -492,36 +493,46 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'measure': instance.measure,
-      'subject': instance.subject?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'reporter': instance.reporter?.toJson(),
-      'period': instance.period?.toJson(),
-      'improvementNotation': instance.improvementNotation?.toJson(),
-      'group': instance.group?.map((e) => e?.toJson())?.toList(),
-      'evaluatedResource':
-          instance.evaluatedResource?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('measure', instance.measure);
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('reporter', instance.reporter?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('improvementNotation', instance.improvementNotation?.toJson());
+  writeNotNull('group', instance.group?.map((e) => e?.toJson())?.toList());
+  writeNotNull('evaluatedResource',
+      instance.evaluatedResource?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 MeasureReport_Group _$MeasureReport_GroupFromJson(Map<String, dynamic> json) {
   return MeasureReport_Group(
@@ -553,18 +564,28 @@ MeasureReport_Group _$MeasureReport_GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MeasureReport_GroupToJson(
-        MeasureReport_Group instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'population': instance.population?.map((e) => e?.toJson())?.toList(),
-      'measureScore': instance.measureScore?.toJson(),
-      'stratifier': instance.stratifier?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$MeasureReport_GroupToJson(MeasureReport_Group instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull(
+      'population', instance.population?.map((e) => e?.toJson())?.toList());
+  writeNotNull('measureScore', instance.measureScore?.toJson());
+  writeNotNull(
+      'stratifier', instance.stratifier?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 MeasureReport_Population _$MeasureReport_PopulationFromJson(
     Map<String, dynamic> json) {
@@ -592,17 +613,26 @@ MeasureReport_Population _$MeasureReport_PopulationFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_PopulationToJson(
-        MeasureReport_Population instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'count': instance.count,
-      'elementCount': instance.elementCount?.toJson(),
-      'subjectResults': instance.subjectResults?.toJson(),
-    };
+    MeasureReport_Population instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('count', instance.count);
+  writeNotNull('elementCount', instance.elementCount?.toJson());
+  writeNotNull('subjectResults', instance.subjectResults?.toJson());
+  return val;
+}
 
 MeasureReport_Stratifier _$MeasureReport_StratifierFromJson(
     Map<String, dynamic> json) {
@@ -630,15 +660,24 @@ MeasureReport_Stratifier _$MeasureReport_StratifierFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_StratifierToJson(
-        MeasureReport_Stratifier instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'stratum': instance.stratum?.map((e) => e?.toJson())?.toList(),
-    };
+    MeasureReport_Stratifier instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('stratum', instance.stratum?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 MeasureReport_Stratum _$MeasureReport_StratumFromJson(
     Map<String, dynamic> json) {
@@ -672,17 +711,28 @@ MeasureReport_Stratum _$MeasureReport_StratumFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_StratumToJson(
-        MeasureReport_Stratum instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'value': instance.value?.toJson(),
-      'component': instance.component?.map((e) => e?.toJson())?.toList(),
-      'population': instance.population?.map((e) => e?.toJson())?.toList(),
-      'measureScore': instance.measureScore?.toJson(),
-    };
+    MeasureReport_Stratum instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('value', instance.value?.toJson());
+  writeNotNull(
+      'component', instance.component?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'population', instance.population?.map((e) => e?.toJson())?.toList());
+  writeNotNull('measureScore', instance.measureScore?.toJson());
+  return val;
+}
 
 MeasureReport_Component _$MeasureReport_ComponentFromJson(
     Map<String, dynamic> json) {
@@ -706,15 +756,24 @@ MeasureReport_Component _$MeasureReport_ComponentFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_ComponentToJson(
-        MeasureReport_Component instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'value': instance.value?.toJson(),
-    };
+    MeasureReport_Component instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('value', instance.value?.toJson());
+  return val;
+}
 
 MeasureReport_Population1 _$MeasureReport_Population1FromJson(
     Map<String, dynamic> json) {
@@ -742,14 +801,23 @@ MeasureReport_Population1 _$MeasureReport_Population1FromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_Population1ToJson(
-        MeasureReport_Population1 instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'count': instance.count,
-      'elementCount': instance.elementCount?.toJson(),
-      'subjectResults': instance.subjectResults?.toJson(),
-    };
+    MeasureReport_Population1 instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('count', instance.count);
+  writeNotNull('elementCount', instance.elementCount?.toJson());
+  writeNotNull('subjectResults', instance.subjectResults?.toJson());
+  return val;
+}

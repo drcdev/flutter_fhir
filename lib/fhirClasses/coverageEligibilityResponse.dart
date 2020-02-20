@@ -12,443 +12,458 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CoverageEligibilityResponse {
+  static Future<CoverageEligibilityResponse> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    String purpose,
+    List<Element> elementPurpose,
+    Reference patient,
+    String servicedDate,
+    Element elementServicedDate,
+    Period servicedPeriod,
+    DateTime created,
+    Element elementCreated,
+    Reference requestor,
+    Reference request,
+    String outcome,
+    Element elementOutcome,
+    String disposition,
+    Element elementDisposition,
+    Reference insurer,
+    List<CoverageEligibilityResponse_Insurance> insurance,
+    String preAuthRef,
+    Element elementPreAuthRef,
+    CodeableConcept form,
+    List<CoverageEligibilityResponse_Error> error,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CoverageEligibilityResponse newCoverageEligibilityResponse =
+        new CoverageEligibilityResponse(
+      resourceType: 'CoverageEligibilityResponse',
+      id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      patient: patient,
+      servicedDate: servicedDate,
+      elementServicedDate: elementServicedDate,
+      servicedPeriod: servicedPeriod,
+      created: created,
+      elementCreated: elementCreated,
+      requestor: requestor,
+      request: request,
+      outcome: outcome,
+      elementOutcome: elementOutcome,
+      disposition: disposition,
+      elementDisposition: elementDisposition,
+      insurer: insurer,
+      insurance: insurance,
+      preAuthRef: preAuthRef,
+      elementPreAuthRef: elementPreAuthRef,
+      form: form,
+      error: error,
+    );
+    newCoverageEligibilityResponse.meta.createdAt = DateTime.now();
+    newCoverageEligibilityResponse.meta.lastUpdated =
+        newCoverageEligibilityResponse.meta.createdAt;
+    int saved = await fhirDb.saveResource(newCoverageEligibilityResponse);
+    return newCoverageEligibilityResponse;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class CoverageEligibilityResponse{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<CoverageEligibilityResponse> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	String purpose,
-	List<Element> elementPurpose,
-	Reference patient,
-	String servicedDate,
-	Element elementServicedDate,
-	Period servicedPeriod,
-	DateTime created,
-	Element elementCreated,
-	Reference requestor,
-	Reference request,
-	String outcome,
-	Element elementOutcome,
-	String disposition,
-	Element elementDisposition,
-	Reference insurer,
-	List<CoverageEligibilityResponse_Insurance> insurance,
-	String preAuthRef,
-	Element elementPreAuthRef,
-	CodeableConcept form,
-	List<CoverageEligibilityResponse_Error> error,
-}) async {
-var fhirDb = new DatabaseHelper();
-CoverageEligibilityResponse newCoverageEligibilityResponse = new CoverageEligibilityResponse(
-	resourceType: 'CoverageEligibilityResponse',
-	id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	patient: patient,
-	servicedDate: servicedDate,
-	elementServicedDate: elementServicedDate,
-	servicedPeriod: servicedPeriod,
-	created: created,
-	elementCreated: elementCreated,
-	requestor: requestor,
-	request: request,
-	outcome: outcome,
-	elementOutcome: elementOutcome,
-	disposition: disposition,
-	elementDisposition: elementDisposition,
-	insurer: insurer,
-	insurance: insurance,
-	preAuthRef: preAuthRef,
-	elementPreAuthRef: elementPreAuthRef,
-	form: form,
-	error: error,
-);
-	newCoverageEligibilityResponse.meta.createdAt = DateTime.now();
-	newCoverageEligibilityResponse.meta.lastUpdated = newCoverageEligibilityResponse.meta.createdAt;
-	int saved = await fhirDb.saveResource(newCoverageEligibilityResponse);
-	 return newCoverageEligibilityResponse;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'CoverageEligibilityResponse';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  String purpose;
+  List<Element> elementPurpose;
+  Reference patient;
+  String servicedDate;
+  Element elementServicedDate;
+  Period servicedPeriod;
+  DateTime created;
+  Element elementCreated;
+  Reference requestor;
+  Reference request;
+  String outcome;
+  Element elementOutcome;
+  String disposition;
+  Element elementDisposition;
+  Reference insurer;
+  List<CoverageEligibilityResponse_Insurance> insurance;
+  String preAuthRef;
+  Element elementPreAuthRef;
+  CodeableConcept form;
+  List<CoverageEligibilityResponse_Error> error;
 
-	String resourceType= 'CoverageEligibilityResponse';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	String purpose;
-	List<Element> elementPurpose;
-	Reference patient;
-	String servicedDate;
-	Element elementServicedDate;
-	Period servicedPeriod;
-	DateTime created;
-	Element elementCreated;
-	Reference requestor;
-	Reference request;
-	String outcome;
-	Element elementOutcome;
-	String disposition;
-	Element elementDisposition;
-	Reference insurer;
-	List<CoverageEligibilityResponse_Insurance> insurance;
-	String preAuthRef;
-	Element elementPreAuthRef;
-	CodeableConcept form;
-	List<CoverageEligibilityResponse_Error> error;
+  CoverageEligibilityResponse({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.purpose,
+    this.elementPurpose,
+    @required this.patient,
+    this.servicedDate,
+    this.elementServicedDate,
+    this.servicedPeriod,
+    this.created,
+    this.elementCreated,
+    this.requestor,
+    @required this.request,
+    this.outcome,
+    this.elementOutcome,
+    this.disposition,
+    this.elementDisposition,
+    @required this.insurer,
+    this.insurance,
+    this.preAuthRef,
+    this.elementPreAuthRef,
+    this.form,
+    this.error,
+  });
 
-CoverageEligibilityResponse(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.purpose,
-this.elementPurpose,
-@required this.patient,
-this.servicedDate,
-this.elementServicedDate,
-this.servicedPeriod,
-this.created,
-this.elementCreated,
-this.requestor,
-@required this.request,
-this.outcome,
-this.elementOutcome,
-this.disposition,
-this.elementDisposition,
-@required this.insurer,
-this.insurance,
-this.preAuthRef,
-this.elementPreAuthRef,
-this.form,
-this.error,
-});
-
-  factory CoverageEligibilityResponse.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponseFromJson(json);
+  factory CoverageEligibilityResponse.fromJson(Map<String, dynamic> json) =>
+      _$CoverageEligibilityResponseFromJson(json);
   Map<String, dynamic> toJson() => _$CoverageEligibilityResponseToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CoverageEligibilityResponse_Insurance {
+  static Future<CoverageEligibilityResponse_Insurance> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference coverage,
+    bool inforce,
+    Element elementInforce,
+    Period benefitPeriod,
+    List<CoverageEligibilityResponse_Item> item,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CoverageEligibilityResponse_Insurance
+        newCoverageEligibilityResponse_Insurance =
+        new CoverageEligibilityResponse_Insurance(
+      id: id ??
+          await fhirDb.newResourceId('CoverageEligibilityResponse_Insurance'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      coverage: coverage,
+      inforce: inforce,
+      elementInforce: elementInforce,
+      benefitPeriod: benefitPeriod,
+      item: item,
+    );
+    return newCoverageEligibilityResponse_Insurance;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class CoverageEligibilityResponse_Insurance{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Reference coverage;
+  bool inforce;
+  Element elementInforce;
+  Period benefitPeriod;
+  List<CoverageEligibilityResponse_Item> item;
 
-	static Future<CoverageEligibilityResponse_Insurance> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Reference coverage,
-	bool inforce,
-	Element elementInforce,
-	Period benefitPeriod,
-	List<CoverageEligibilityResponse_Item> item,
-}) async {
-var fhirDb = new DatabaseHelper();
-CoverageEligibilityResponse_Insurance newCoverageEligibilityResponse_Insurance = new CoverageEligibilityResponse_Insurance(
-	id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Insurance'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	coverage: coverage,
-	inforce: inforce,
-	elementInforce: elementInforce,
-	benefitPeriod: benefitPeriod,
-	item: item,
-);
-	return newCoverageEligibilityResponse_Insurance;
+  CoverageEligibilityResponse_Insurance({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.coverage,
+    this.inforce,
+    this.elementInforce,
+    this.benefitPeriod,
+    this.item,
+  });
+
+  factory CoverageEligibilityResponse_Insurance.fromJson(
+          Map<String, dynamic> json) =>
+      _$CoverageEligibilityResponse_InsuranceFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CoverageEligibilityResponse_InsuranceToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Reference coverage;
-	bool inforce;
-	Element elementInforce;
-	Period benefitPeriod;
-	List<CoverageEligibilityResponse_Item> item;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CoverageEligibilityResponse_Item {
+  static Future<CoverageEligibilityResponse_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    Reference provider,
+    bool excluded,
+    Element elementExcluded,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+    CodeableConcept network,
+    CodeableConcept unit,
+    CodeableConcept term,
+    List<CoverageEligibilityResponse_Benefit> benefit,
+    bool authorizationRequired,
+    Element elementAuthorizationRequired,
+    List<CodeableConcept> authorizationSupporting,
+    String authorizationUrl,
+    Element elementAuthorizationUrl,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CoverageEligibilityResponse_Item newCoverageEligibilityResponse_Item =
+        new CoverageEligibilityResponse_Item(
+      id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Item'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      category: category,
+      productOrService: productOrService,
+      modifier: modifier,
+      provider: provider,
+      excluded: excluded,
+      elementExcluded: elementExcluded,
+      name: name,
+      elementName: elementName,
+      description: description,
+      elementDescription: elementDescription,
+      network: network,
+      unit: unit,
+      term: term,
+      benefit: benefit,
+      authorizationRequired: authorizationRequired,
+      elementAuthorizationRequired: elementAuthorizationRequired,
+      authorizationSupporting: authorizationSupporting,
+      authorizationUrl: authorizationUrl,
+      elementAuthorizationUrl: elementAuthorizationUrl,
+    );
+    return newCoverageEligibilityResponse_Item;
+  }
 
-CoverageEligibilityResponse_Insurance(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.coverage,
-this.inforce,
-this.elementInforce,
-this.benefitPeriod,
-this.item,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept category;
+  CodeableConcept productOrService;
+  List<CodeableConcept> modifier;
+  Reference provider;
+  bool excluded;
+  Element elementExcluded;
+  String name;
+  Element elementName;
+  String description;
+  Element elementDescription;
+  CodeableConcept network;
+  CodeableConcept unit;
+  CodeableConcept term;
+  List<CoverageEligibilityResponse_Benefit> benefit;
+  bool authorizationRequired;
+  Element elementAuthorizationRequired;
+  List<CodeableConcept> authorizationSupporting;
+  String authorizationUrl;
+  Element elementAuthorizationUrl;
 
-  factory CoverageEligibilityResponse_Insurance.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponse_InsuranceFromJson(json);
-  Map<String, dynamic> toJson() => _$CoverageEligibilityResponse_InsuranceToJson(this);
+  CoverageEligibilityResponse_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.category,
+    this.productOrService,
+    this.modifier,
+    this.provider,
+    this.excluded,
+    this.elementExcluded,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+    this.network,
+    this.unit,
+    this.term,
+    this.benefit,
+    this.authorizationRequired,
+    this.elementAuthorizationRequired,
+    this.authorizationSupporting,
+    this.authorizationUrl,
+    this.elementAuthorizationUrl,
+  });
+
+  factory CoverageEligibilityResponse_Item.fromJson(
+          Map<String, dynamic> json) =>
+      _$CoverageEligibilityResponse_ItemFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CoverageEligibilityResponse_ItemToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CoverageEligibilityResponse_Benefit {
+  static Future<CoverageEligibilityResponse_Benefit> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    int allowedUnsignedInt,
+    Element elementAllowedUnsignedInt,
+    String allowedString,
+    Element elementAllowedString,
+    Money allowedMoney,
+    int usedUnsignedInt,
+    Element elementUsedUnsignedInt,
+    String usedString,
+    Element elementUsedString,
+    Money usedMoney,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CoverageEligibilityResponse_Benefit newCoverageEligibilityResponse_Benefit =
+        new CoverageEligibilityResponse_Benefit(
+      id: id ??
+          await fhirDb.newResourceId('CoverageEligibilityResponse_Benefit'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      allowedUnsignedInt: allowedUnsignedInt,
+      elementAllowedUnsignedInt: elementAllowedUnsignedInt,
+      allowedString: allowedString,
+      elementAllowedString: elementAllowedString,
+      allowedMoney: allowedMoney,
+      usedUnsignedInt: usedUnsignedInt,
+      elementUsedUnsignedInt: elementUsedUnsignedInt,
+      usedString: usedString,
+      elementUsedString: elementUsedString,
+      usedMoney: usedMoney,
+    );
+    return newCoverageEligibilityResponse_Benefit;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class CoverageEligibilityResponse_Item{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept type;
+  int allowedUnsignedInt;
+  Element elementAllowedUnsignedInt;
+  String allowedString;
+  Element elementAllowedString;
+  Money allowedMoney;
+  int usedUnsignedInt;
+  Element elementUsedUnsignedInt;
+  String usedString;
+  Element elementUsedString;
+  Money usedMoney;
 
-	static Future<CoverageEligibilityResponse_Item> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept category,
-	CodeableConcept productOrService,
-	List<CodeableConcept> modifier,
-	Reference provider,
-	bool excluded,
-	Element elementExcluded,
-	String name,
-	Element elementName,
-	String description,
-	Element elementDescription,
-	CodeableConcept network,
-	CodeableConcept unit,
-	CodeableConcept term,
-	List<CoverageEligibilityResponse_Benefit> benefit,
-	bool authorizationRequired,
-	Element elementAuthorizationRequired,
-	List<CodeableConcept> authorizationSupporting,
-	String authorizationUrl,
-	Element elementAuthorizationUrl,
-}) async {
-var fhirDb = new DatabaseHelper();
-CoverageEligibilityResponse_Item newCoverageEligibilityResponse_Item = new CoverageEligibilityResponse_Item(
-	id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Item'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	category: category,
-	productOrService: productOrService,
-	modifier: modifier,
-	provider: provider,
-	excluded: excluded,
-	elementExcluded: elementExcluded,
-	name: name,
-	elementName: elementName,
-	description: description,
-	elementDescription: elementDescription,
-	network: network,
-	unit: unit,
-	term: term,
-	benefit: benefit,
-	authorizationRequired: authorizationRequired,
-	elementAuthorizationRequired: elementAuthorizationRequired,
-	authorizationSupporting: authorizationSupporting,
-	authorizationUrl: authorizationUrl,
-	elementAuthorizationUrl: elementAuthorizationUrl,
-);
-	return newCoverageEligibilityResponse_Item;
+  CoverageEligibilityResponse_Benefit({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.allowedUnsignedInt,
+    this.elementAllowedUnsignedInt,
+    this.allowedString,
+    this.elementAllowedString,
+    this.allowedMoney,
+    this.usedUnsignedInt,
+    this.elementUsedUnsignedInt,
+    this.usedString,
+    this.elementUsedString,
+    this.usedMoney,
+  });
+
+  factory CoverageEligibilityResponse_Benefit.fromJson(
+          Map<String, dynamic> json) =>
+      _$CoverageEligibilityResponse_BenefitFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CoverageEligibilityResponse_BenefitToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept category;
-	CodeableConcept productOrService;
-	List<CodeableConcept> modifier;
-	Reference provider;
-	bool excluded;
-	Element elementExcluded;
-	String name;
-	Element elementName;
-	String description;
-	Element elementDescription;
-	CodeableConcept network;
-	CodeableConcept unit;
-	CodeableConcept term;
-	List<CoverageEligibilityResponse_Benefit> benefit;
-	bool authorizationRequired;
-	Element elementAuthorizationRequired;
-	List<CodeableConcept> authorizationSupporting;
-	String authorizationUrl;
-	Element elementAuthorizationUrl;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CoverageEligibilityResponse_Error {
+  static Future<CoverageEligibilityResponse_Error> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CoverageEligibilityResponse_Error newCoverageEligibilityResponse_Error =
+        new CoverageEligibilityResponse_Error(
+      id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Error'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+    );
+    return newCoverageEligibilityResponse_Error;
+  }
 
-CoverageEligibilityResponse_Item(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.category,
-this.productOrService,
-this.modifier,
-this.provider,
-this.excluded,
-this.elementExcluded,
-this.name,
-this.elementName,
-this.description,
-this.elementDescription,
-this.network,
-this.unit,
-this.term,
-this.benefit,
-this.authorizationRequired,
-this.elementAuthorizationRequired,
-this.authorizationSupporting,
-this.authorizationUrl,
-this.elementAuthorizationUrl,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
 
-  factory CoverageEligibilityResponse_Item.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponse_ItemFromJson(json);
-  Map<String, dynamic> toJson() => _$CoverageEligibilityResponse_ItemToJson(this);
+  CoverageEligibilityResponse_Error({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.code,
+  });
+
+  factory CoverageEligibilityResponse_Error.fromJson(
+          Map<String, dynamic> json) =>
+      _$CoverageEligibilityResponse_ErrorFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$CoverageEligibilityResponse_ErrorToJson(this);
 }
-
-
-@JsonSerializable(explicitToJson: true)
-class CoverageEligibilityResponse_Benefit{
-
-	static Future<CoverageEligibilityResponse_Benefit> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept type,
-	int allowedUnsignedInt,
-	Element elementAllowedUnsignedInt,
-	String allowedString,
-	Element elementAllowedString,
-	Money allowedMoney,
-	int usedUnsignedInt,
-	Element elementUsedUnsignedInt,
-	String usedString,
-	Element elementUsedString,
-	Money usedMoney,
-}) async {
-var fhirDb = new DatabaseHelper();
-CoverageEligibilityResponse_Benefit newCoverageEligibilityResponse_Benefit = new CoverageEligibilityResponse_Benefit(
-	id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Benefit'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	allowedUnsignedInt: allowedUnsignedInt,
-	elementAllowedUnsignedInt: elementAllowedUnsignedInt,
-	allowedString: allowedString,
-	elementAllowedString: elementAllowedString,
-	allowedMoney: allowedMoney,
-	usedUnsignedInt: usedUnsignedInt,
-	elementUsedUnsignedInt: elementUsedUnsignedInt,
-	usedString: usedString,
-	elementUsedString: elementUsedString,
-	usedMoney: usedMoney,
-);
-	return newCoverageEligibilityResponse_Benefit;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept type;
-	int allowedUnsignedInt;
-	Element elementAllowedUnsignedInt;
-	String allowedString;
-	Element elementAllowedString;
-	Money allowedMoney;
-	int usedUnsignedInt;
-	Element elementUsedUnsignedInt;
-	String usedString;
-	Element elementUsedString;
-	Money usedMoney;
-
-CoverageEligibilityResponse_Benefit(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.type,
-this.allowedUnsignedInt,
-this.elementAllowedUnsignedInt,
-this.allowedString,
-this.elementAllowedString,
-this.allowedMoney,
-this.usedUnsignedInt,
-this.elementUsedUnsignedInt,
-this.usedString,
-this.elementUsedString,
-this.usedMoney,
-});
-
-  factory CoverageEligibilityResponse_Benefit.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponse_BenefitFromJson(json);
-  Map<String, dynamic> toJson() => _$CoverageEligibilityResponse_BenefitToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class CoverageEligibilityResponse_Error{
-
-	static Future<CoverageEligibilityResponse_Error> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-}) async {
-var fhirDb = new DatabaseHelper();
-CoverageEligibilityResponse_Error newCoverageEligibilityResponse_Error = new CoverageEligibilityResponse_Error(
-	id: id ?? await fhirDb.newResourceId('CoverageEligibilityResponse_Error'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-);
-	return newCoverageEligibilityResponse_Error;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-
-CoverageEligibilityResponse_Error(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.code,
-});
-
-  factory CoverageEligibilityResponse_Error.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponse_ErrorFromJson(json);
-  Map<String, dynamic> toJson() => _$CoverageEligibilityResponse_ErrorToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -476,8 +491,9 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -556,45 +572,56 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
 }
 
 Map<String, dynamic> _$CoverageEligibilityResponseToJson(
-        CoverageEligibilityResponse instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'purpose': instance.purpose,
-      'elementPurpose':
-          instance.elementPurpose?.map((e) => e?.toJson())?.toList(),
-      'patient': instance.patient?.toJson(),
-      'servicedDate': instance.servicedDate,
-      'elementServicedDate': instance.elementServicedDate?.toJson(),
-      'servicedPeriod': instance.servicedPeriod?.toJson(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'requestor': instance.requestor?.toJson(),
-      'request': instance.request?.toJson(),
-      'outcome': instance.outcome,
-      'elementOutcome': instance.elementOutcome?.toJson(),
-      'disposition': instance.disposition,
-      'elementDisposition': instance.elementDisposition?.toJson(),
-      'insurer': instance.insurer?.toJson(),
-      'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
-      'preAuthRef': instance.preAuthRef,
-      'elementPreAuthRef': instance.elementPreAuthRef?.toJson(),
-      'form': instance.form?.toJson(),
-      'error': instance.error?.map((e) => e?.toJson())?.toList(),
-    };
+    CoverageEligibilityResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose',
+      instance.elementPurpose?.map((e) => e?.toJson())?.toList());
+  writeNotNull('patient', instance.patient?.toJson());
+  writeNotNull('servicedDate', instance.servicedDate);
+  writeNotNull('elementServicedDate', instance.elementServicedDate?.toJson());
+  writeNotNull('servicedPeriod', instance.servicedPeriod?.toJson());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('requestor', instance.requestor?.toJson());
+  writeNotNull('request', instance.request?.toJson());
+  writeNotNull('outcome', instance.outcome);
+  writeNotNull('elementOutcome', instance.elementOutcome?.toJson());
+  writeNotNull('disposition', instance.disposition);
+  writeNotNull('elementDisposition', instance.elementDisposition?.toJson());
+  writeNotNull('insurer', instance.insurer?.toJson());
+  writeNotNull(
+      'insurance', instance.insurance?.map((e) => e?.toJson())?.toList());
+  writeNotNull('preAuthRef', instance.preAuthRef);
+  writeNotNull('elementPreAuthRef', instance.elementPreAuthRef?.toJson());
+  writeNotNull('form', instance.form?.toJson());
+  writeNotNull('error', instance.error?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CoverageEligibilityResponse_Insurance
     _$CoverageEligibilityResponse_InsuranceFromJson(Map<String, dynamic> json) {
@@ -628,18 +655,27 @@ CoverageEligibilityResponse_Insurance
 }
 
 Map<String, dynamic> _$CoverageEligibilityResponse_InsuranceToJson(
-        CoverageEligibilityResponse_Insurance instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'coverage': instance.coverage?.toJson(),
-      'inforce': instance.inforce,
-      'elementInforce': instance.elementInforce?.toJson(),
-      'benefitPeriod': instance.benefitPeriod?.toJson(),
-      'item': instance.item?.map((e) => e?.toJson())?.toList(),
-    };
+    CoverageEligibilityResponse_Insurance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('coverage', instance.coverage?.toJson());
+  writeNotNull('inforce', instance.inforce);
+  writeNotNull('elementInforce', instance.elementInforce?.toJson());
+  writeNotNull('benefitPeriod', instance.benefitPeriod?.toJson());
+  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CoverageEligibilityResponse_Item _$CoverageEligibilityResponse_ItemFromJson(
     Map<String, dynamic> json) {
@@ -714,34 +750,45 @@ CoverageEligibilityResponse_Item _$CoverageEligibilityResponse_ItemFromJson(
 }
 
 Map<String, dynamic> _$CoverageEligibilityResponse_ItemToJson(
-        CoverageEligibilityResponse_Item instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'category': instance.category?.toJson(),
-      'productOrService': instance.productOrService?.toJson(),
-      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
-      'provider': instance.provider?.toJson(),
-      'excluded': instance.excluded,
-      'elementExcluded': instance.elementExcluded?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'network': instance.network?.toJson(),
-      'unit': instance.unit?.toJson(),
-      'term': instance.term?.toJson(),
-      'benefit': instance.benefit?.map((e) => e?.toJson())?.toList(),
-      'authorizationRequired': instance.authorizationRequired,
-      'elementAuthorizationRequired':
-          instance.elementAuthorizationRequired?.toJson(),
-      'authorizationSupporting':
-          instance.authorizationSupporting?.map((e) => e?.toJson())?.toList(),
-      'authorizationUrl': instance.authorizationUrl,
-      'elementAuthorizationUrl': instance.elementAuthorizationUrl?.toJson(),
-    };
+    CoverageEligibilityResponse_Item instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('productOrService', instance.productOrService?.toJson());
+  writeNotNull(
+      'modifier', instance.modifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('provider', instance.provider?.toJson());
+  writeNotNull('excluded', instance.excluded);
+  writeNotNull('elementExcluded', instance.elementExcluded?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('network', instance.network?.toJson());
+  writeNotNull('unit', instance.unit?.toJson());
+  writeNotNull('term', instance.term?.toJson());
+  writeNotNull('benefit', instance.benefit?.map((e) => e?.toJson())?.toList());
+  writeNotNull('authorizationRequired', instance.authorizationRequired);
+  writeNotNull('elementAuthorizationRequired',
+      instance.elementAuthorizationRequired?.toJson());
+  writeNotNull('authorizationSupporting',
+      instance.authorizationSupporting?.map((e) => e?.toJson())?.toList());
+  writeNotNull('authorizationUrl', instance.authorizationUrl);
+  writeNotNull(
+      'elementAuthorizationUrl', instance.elementAuthorizationUrl?.toJson());
+  return val;
+}
 
 CoverageEligibilityResponse_Benefit
     _$CoverageEligibilityResponse_BenefitFromJson(Map<String, dynamic> json) {
@@ -787,24 +834,35 @@ CoverageEligibilityResponse_Benefit
 }
 
 Map<String, dynamic> _$CoverageEligibilityResponse_BenefitToJson(
-        CoverageEligibilityResponse_Benefit instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'allowedUnsignedInt': instance.allowedUnsignedInt,
-      'elementAllowedUnsignedInt': instance.elementAllowedUnsignedInt?.toJson(),
-      'allowedString': instance.allowedString,
-      'elementAllowedString': instance.elementAllowedString?.toJson(),
-      'allowedMoney': instance.allowedMoney?.toJson(),
-      'usedUnsignedInt': instance.usedUnsignedInt,
-      'elementUsedUnsignedInt': instance.elementUsedUnsignedInt?.toJson(),
-      'usedString': instance.usedString,
-      'elementUsedString': instance.elementUsedString?.toJson(),
-      'usedMoney': instance.usedMoney?.toJson(),
-    };
+    CoverageEligibilityResponse_Benefit instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('allowedUnsignedInt', instance.allowedUnsignedInt);
+  writeNotNull('elementAllowedUnsignedInt',
+      instance.elementAllowedUnsignedInt?.toJson());
+  writeNotNull('allowedString', instance.allowedString);
+  writeNotNull('elementAllowedString', instance.elementAllowedString?.toJson());
+  writeNotNull('allowedMoney', instance.allowedMoney?.toJson());
+  writeNotNull('usedUnsignedInt', instance.usedUnsignedInt);
+  writeNotNull(
+      'elementUsedUnsignedInt', instance.elementUsedUnsignedInt?.toJson());
+  writeNotNull('usedString', instance.usedString);
+  writeNotNull('elementUsedString', instance.elementUsedString?.toJson());
+  writeNotNull('usedMoney', instance.usedMoney?.toJson());
+  return val;
+}
 
 CoverageEligibilityResponse_Error _$CoverageEligibilityResponse_ErrorFromJson(
     Map<String, dynamic> json) {
@@ -825,11 +883,20 @@ CoverageEligibilityResponse_Error _$CoverageEligibilityResponse_ErrorFromJson(
 }
 
 Map<String, dynamic> _$CoverageEligibilityResponse_ErrorToJson(
-        CoverageEligibilityResponse_Error instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-    };
+    CoverageEligibilityResponse_Error instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  return val;
+}

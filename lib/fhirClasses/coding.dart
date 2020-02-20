@@ -4,74 +4,71 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Coding {
+  static Future<Coding> newInstance({
+    String id,
+    List<Extension> extension,
+    String system,
+    Element elementSystem,
+    String version,
+    Element elementVersion,
+    String code,
+    Element elementCode,
+    String display,
+    Element elementDisplay,
+    bool userSelected,
+    Element elementUserSelected,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Coding newCoding = new Coding(
+      id: id ?? await fhirDb.newResourceId('Coding'),
+      extension: extension,
+      system: system,
+      elementSystem: elementSystem,
+      version: version,
+      elementVersion: elementVersion,
+      code: code,
+      elementCode: elementCode,
+      display: display,
+      elementDisplay: elementDisplay,
+      userSelected: userSelected,
+      elementUserSelected: elementUserSelected,
+    );
+    return newCoding;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Coding{
+  String id;
+  List<Extension> extension;
+  String system;
+  Element elementSystem;
+  String version;
+  Element elementVersion;
+  String code;
+  Element elementCode;
+  String display;
+  Element elementDisplay;
+  bool userSelected;
+  Element elementUserSelected;
 
-	static Future<Coding> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String system,
-	Element elementSystem,
-	String version,
-	Element elementVersion,
-	String code,
-	Element elementCode,
-	String display,
-	Element elementDisplay,
-	bool userSelected,
-	Element elementUserSelected,
-}) async {
-var fhirDb = new DatabaseHelper();
-Coding newCoding = new Coding(
-	id: id ?? await fhirDb.newResourceId('Coding'),
-	extension: extension,
-	system: system,
-	elementSystem: elementSystem,
-	version: version,
-	elementVersion: elementVersion,
-	code: code,
-	elementCode: elementCode,
-	display: display,
-	elementDisplay: elementDisplay,
-	userSelected: userSelected,
-	elementUserSelected: elementUserSelected,
-);
-	return newCoding;
-}
-
-	String id;
-	List<Extension> extension;
-	String system;
-	Element elementSystem;
-	String version;
-	Element elementVersion;
-	String code;
-	Element elementCode;
-	String display;
-	Element elementDisplay;
-	bool userSelected;
-	Element elementUserSelected;
-
-Coding(
-	{this.id,
-this.extension,
-this.system,
-this.elementSystem,
-this.version,
-this.elementVersion,
-this.code,
-this.elementCode,
-this.display,
-this.elementDisplay,
-this.userSelected,
-this.elementUserSelected,
-});
+  Coding({
+    this.id,
+    this.extension,
+    this.system,
+    this.elementSystem,
+    this.version,
+    this.elementVersion,
+    this.code,
+    this.elementCode,
+    this.display,
+    this.elementDisplay,
+    this.userSelected,
+    this.elementUserSelected,
+  });
 
   factory Coding.fromJson(Map<String, dynamic> json) => _$CodingFromJson(json);
   Map<String, dynamic> toJson() => _$CodingToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -108,17 +105,27 @@ Coding _$CodingFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodingToJson(Coding instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'userSelected': instance.userSelected,
-      'elementUserSelected': instance.elementUserSelected?.toJson(),
-    };
+Map<String, dynamic> _$CodingToJson(Coding instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('userSelected', instance.userSelected);
+  writeNotNull('elementUserSelected', instance.elementUserSelected?.toJson());
+  return val;
+}

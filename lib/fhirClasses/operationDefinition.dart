@@ -10,499 +10,505 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OperationDefinition {
+  static Future<OperationDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    String kind,
+    Element elementKind,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    bool affectsState,
+    Element elementAffectsState,
+    String code,
+    Element elementCode,
+    String comment,
+    Element elementComment,
+    String base,
+    List<String> resource,
+    List<Element> elementResource,
+    bool system,
+    Element elementSystem,
+    bool type,
+    Element elementType,
+    bool instance,
+    Element elementInstance,
+    String inputProfile,
+    String outputProfile,
+    List<OperationDefinition_Parameter> parameter,
+    List<OperationDefinition_Overload> overload,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OperationDefinition newOperationDefinition = new OperationDefinition(
+      resourceType: 'OperationDefinition',
+      id: id ?? await fhirDb.newResourceId('OperationDefinition'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      status: status,
+      elementStatus: elementStatus,
+      kind: kind,
+      elementKind: elementKind,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      affectsState: affectsState,
+      elementAffectsState: elementAffectsState,
+      code: code,
+      elementCode: elementCode,
+      comment: comment,
+      elementComment: elementComment,
+      base: base,
+      resource: resource,
+      elementResource: elementResource,
+      system: system,
+      elementSystem: elementSystem,
+      type: type,
+      elementType: elementType,
+      instance: instance,
+      elementInstance: elementInstance,
+      inputProfile: inputProfile,
+      outputProfile: outputProfile,
+      parameter: parameter,
+      overload: overload,
+    );
+    newOperationDefinition.meta.createdAt = DateTime.now();
+    newOperationDefinition.meta.lastUpdated =
+        newOperationDefinition.meta.createdAt;
+    int saved = await fhirDb.saveResource(newOperationDefinition);
+    return newOperationDefinition;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class OperationDefinition{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<OperationDefinition> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	String version,
-	Element elementVersion,
-	String name,
-	Element elementName,
-	String title,
-	Element elementTitle,
-	String status,
-	Element elementStatus,
-	String kind,
-	Element elementKind,
-	bool experimental,
-	Element elementExperimental,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String purpose,
-	Element elementPurpose,
-	bool affectsState,
-	Element elementAffectsState,
-	String code,
-	Element elementCode,
-	String comment,
-	Element elementComment,
-	String base,
-	List<String> resource,
-	List<Element> elementResource,
-	bool system,
-	Element elementSystem,
-	bool type,
-	Element elementType,
-	bool instance,
-	Element elementInstance,
-	String inputProfile,
-	String outputProfile,
-	List<OperationDefinition_Parameter> parameter,
-	List<OperationDefinition_Overload> overload,
-}) async {
-var fhirDb = new DatabaseHelper();
-OperationDefinition newOperationDefinition = new OperationDefinition(
-	resourceType: 'OperationDefinition',
-	id: id ?? await fhirDb.newResourceId('OperationDefinition'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	version: version,
-	elementVersion: elementVersion,
-	name: name,
-	elementName: elementName,
-	title: title,
-	elementTitle: elementTitle,
-	status: status,
-	elementStatus: elementStatus,
-	kind: kind,
-	elementKind: elementKind,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	affectsState: affectsState,
-	elementAffectsState: elementAffectsState,
-	code: code,
-	elementCode: elementCode,
-	comment: comment,
-	elementComment: elementComment,
-	base: base,
-	resource: resource,
-	elementResource: elementResource,
-	system: system,
-	elementSystem: elementSystem,
-	type: type,
-	elementType: elementType,
-	instance: instance,
-	elementInstance: elementInstance,
-	inputProfile: inputProfile,
-	outputProfile: outputProfile,
-	parameter: parameter,
-	overload: overload,
-);
-	newOperationDefinition.meta.createdAt = DateTime.now();
-	newOperationDefinition.meta.lastUpdated = newOperationDefinition.meta.createdAt;
-	int saved = await fhirDb.saveResource(newOperationDefinition);
-	 return newOperationDefinition;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'OperationDefinition';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  String version;
+  Element elementVersion;
+  String name;
+  Element elementName;
+  String title;
+  Element elementTitle;
+  String status;
+  Element elementStatus;
+  String kind;
+  Element elementKind;
+  bool experimental;
+  Element elementExperimental;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String purpose;
+  Element elementPurpose;
+  bool affectsState;
+  Element elementAffectsState;
+  String code;
+  Element elementCode;
+  String comment;
+  Element elementComment;
+  String base;
+  List<String> resource;
+  List<Element> elementResource;
+  bool system;
+  Element elementSystem;
+  bool type;
+  Element elementType;
+  bool instance;
+  Element elementInstance;
+  String inputProfile;
+  String outputProfile;
+  List<OperationDefinition_Parameter> parameter;
+  List<OperationDefinition_Overload> overload;
 
-	String resourceType= 'OperationDefinition';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	String version;
-	Element elementVersion;
-	String name;
-	Element elementName;
-	String title;
-	Element elementTitle;
-	String status;
-	Element elementStatus;
-	String kind;
-	Element elementKind;
-	bool experimental;
-	Element elementExperimental;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String purpose;
-	Element elementPurpose;
-	bool affectsState;
-	Element elementAffectsState;
-	String code;
-	Element elementCode;
-	String comment;
-	Element elementComment;
-	String base;
-	List<String> resource;
-	List<Element> elementResource;
-	bool system;
-	Element elementSystem;
-	bool type;
-	Element elementType;
-	bool instance;
-	Element elementInstance;
-	String inputProfile;
-	String outputProfile;
-	List<OperationDefinition_Parameter> parameter;
-	List<OperationDefinition_Overload> overload;
+  OperationDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.kind,
+    this.elementKind,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.affectsState,
+    this.elementAffectsState,
+    this.code,
+    this.elementCode,
+    this.comment,
+    this.elementComment,
+    this.base,
+    this.resource,
+    this.elementResource,
+    this.system,
+    this.elementSystem,
+    this.type,
+    this.elementType,
+    this.instance,
+    this.elementInstance,
+    this.inputProfile,
+    this.outputProfile,
+    this.parameter,
+    this.overload,
+  });
 
-OperationDefinition(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.version,
-this.elementVersion,
-this.name,
-this.elementName,
-this.title,
-this.elementTitle,
-this.status,
-this.elementStatus,
-this.kind,
-this.elementKind,
-this.experimental,
-this.elementExperimental,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.purpose,
-this.elementPurpose,
-this.affectsState,
-this.elementAffectsState,
-this.code,
-this.elementCode,
-this.comment,
-this.elementComment,
-this.base,
-this.resource,
-this.elementResource,
-this.system,
-this.elementSystem,
-this.type,
-this.elementType,
-this.instance,
-this.elementInstance,
-this.inputProfile,
-this.outputProfile,
-this.parameter,
-this.overload,
-});
-
-  factory OperationDefinition.fromJson(Map<String, dynamic> json) => _$OperationDefinitionFromJson(json);
+  factory OperationDefinition.fromJson(Map<String, dynamic> json) =>
+      _$OperationDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$OperationDefinitionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OperationDefinition_Parameter {
+  static Future<OperationDefinition_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String use,
+    Element elementUse,
+    int min,
+    Element elementMin,
+    String max,
+    Element elementMax,
+    String documentation,
+    Element elementDocumentation,
+    String type,
+    Element elementType,
+    List<String> targetProfile,
+    String searchType,
+    Element elementSearchType,
+    OperationDefinition_Binding binding,
+    List<OperationDefinition_ReferencedFrom> referencedFrom,
+    List<OperationDefinition_Parameter> part,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OperationDefinition_Parameter newOperationDefinition_Parameter =
+        new OperationDefinition_Parameter(
+      id: id ?? await fhirDb.newResourceId('OperationDefinition_Parameter'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      use: use,
+      elementUse: elementUse,
+      min: min,
+      elementMin: elementMin,
+      max: max,
+      elementMax: elementMax,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+      type: type,
+      elementType: elementType,
+      targetProfile: targetProfile,
+      searchType: searchType,
+      elementSearchType: elementSearchType,
+      binding: binding,
+      referencedFrom: referencedFrom,
+      part: part,
+    );
+    return newOperationDefinition_Parameter;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class OperationDefinition_Parameter{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  String use;
+  Element elementUse;
+  int min;
+  Element elementMin;
+  String max;
+  Element elementMax;
+  String documentation;
+  Element elementDocumentation;
+  String type;
+  Element elementType;
+  List<String> targetProfile;
+  String searchType;
+  Element elementSearchType;
+  OperationDefinition_Binding binding;
+  List<OperationDefinition_ReferencedFrom> referencedFrom;
+  List<OperationDefinition_Parameter> part;
 
-	static Future<OperationDefinition_Parameter> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	String use,
-	Element elementUse,
-	int min,
-	Element elementMin,
-	String max,
-	Element elementMax,
-	String documentation,
-	Element elementDocumentation,
-	String type,
-	Element elementType,
-	List<String> targetProfile,
-	String searchType,
-	Element elementSearchType,
-	OperationDefinition_Binding binding,
-	List<OperationDefinition_ReferencedFrom> referencedFrom,
-	List<OperationDefinition_Parameter> part,
-}) async {
-var fhirDb = new DatabaseHelper();
-OperationDefinition_Parameter newOperationDefinition_Parameter = new OperationDefinition_Parameter(
-	id: id ?? await fhirDb.newResourceId('OperationDefinition_Parameter'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	use: use,
-	elementUse: elementUse,
-	min: min,
-	elementMin: elementMin,
-	max: max,
-	elementMax: elementMax,
-	documentation: documentation,
-	elementDocumentation: elementDocumentation,
-	type: type,
-	elementType: elementType,
-	targetProfile: targetProfile,
-	searchType: searchType,
-	elementSearchType: elementSearchType,
-	binding: binding,
-	referencedFrom: referencedFrom,
-	part: part,
-);
-	return newOperationDefinition_Parameter;
-}
+  OperationDefinition_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.use,
+    this.elementUse,
+    this.min,
+    this.elementMin,
+    this.max,
+    this.elementMax,
+    this.documentation,
+    this.elementDocumentation,
+    this.type,
+    this.elementType,
+    this.targetProfile,
+    this.searchType,
+    this.elementSearchType,
+    this.binding,
+    this.referencedFrom,
+    this.part,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	String use;
-	Element elementUse;
-	int min;
-	Element elementMin;
-	String max;
-	Element elementMax;
-	String documentation;
-	Element elementDocumentation;
-	String type;
-	Element elementType;
-	List<String> targetProfile;
-	String searchType;
-	Element elementSearchType;
-	OperationDefinition_Binding binding;
-	List<OperationDefinition_ReferencedFrom> referencedFrom;
-	List<OperationDefinition_Parameter> part;
-
-OperationDefinition_Parameter(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.use,
-this.elementUse,
-this.min,
-this.elementMin,
-this.max,
-this.elementMax,
-this.documentation,
-this.elementDocumentation,
-this.type,
-this.elementType,
-this.targetProfile,
-this.searchType,
-this.elementSearchType,
-this.binding,
-this.referencedFrom,
-this.part,
-});
-
-  factory OperationDefinition_Parameter.fromJson(Map<String, dynamic> json) => _$OperationDefinition_ParameterFromJson(json);
+  factory OperationDefinition_Parameter.fromJson(Map<String, dynamic> json) =>
+      _$OperationDefinition_ParameterFromJson(json);
   Map<String, dynamic> toJson() => _$OperationDefinition_ParameterToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OperationDefinition_Binding {
+  static Future<OperationDefinition_Binding> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String strength,
+    Element elementStrength,
+    String valueSet,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OperationDefinition_Binding newOperationDefinition_Binding =
+        new OperationDefinition_Binding(
+      id: id ?? await fhirDb.newResourceId('OperationDefinition_Binding'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      strength: strength,
+      elementStrength: elementStrength,
+      valueSet: valueSet,
+    );
+    return newOperationDefinition_Binding;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class OperationDefinition_Binding{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String strength;
+  Element elementStrength;
+  String valueSet;
 
-	static Future<OperationDefinition_Binding> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String strength,
-	Element elementStrength,
-	String valueSet,
-}) async {
-var fhirDb = new DatabaseHelper();
-OperationDefinition_Binding newOperationDefinition_Binding = new OperationDefinition_Binding(
-	id: id ?? await fhirDb.newResourceId('OperationDefinition_Binding'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	strength: strength,
-	elementStrength: elementStrength,
-	valueSet: valueSet,
-);
-	return newOperationDefinition_Binding;
-}
+  OperationDefinition_Binding({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.strength,
+    this.elementStrength,
+    @required this.valueSet,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String strength;
-	Element elementStrength;
-	String valueSet;
-
-OperationDefinition_Binding(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.strength,
-this.elementStrength,
-@required this.valueSet,
-});
-
-  factory OperationDefinition_Binding.fromJson(Map<String, dynamic> json) => _$OperationDefinition_BindingFromJson(json);
+  factory OperationDefinition_Binding.fromJson(Map<String, dynamic> json) =>
+      _$OperationDefinition_BindingFromJson(json);
   Map<String, dynamic> toJson() => _$OperationDefinition_BindingToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OperationDefinition_ReferencedFrom {
+  static Future<OperationDefinition_ReferencedFrom> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String source,
+    Element elementSource,
+    String sourceId,
+    Element elementSourceId,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OperationDefinition_ReferencedFrom newOperationDefinition_ReferencedFrom =
+        new OperationDefinition_ReferencedFrom(
+      id: id ??
+          await fhirDb.newResourceId('OperationDefinition_ReferencedFrom'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      source: source,
+      elementSource: elementSource,
+      sourceId: sourceId,
+      elementSourceId: elementSourceId,
+    );
+    return newOperationDefinition_ReferencedFrom;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class OperationDefinition_ReferencedFrom{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String source;
+  Element elementSource;
+  String sourceId;
+  Element elementSourceId;
 
-	static Future<OperationDefinition_ReferencedFrom> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String source,
-	Element elementSource,
-	String sourceId,
-	Element elementSourceId,
-}) async {
-var fhirDb = new DatabaseHelper();
-OperationDefinition_ReferencedFrom newOperationDefinition_ReferencedFrom = new OperationDefinition_ReferencedFrom(
-	id: id ?? await fhirDb.newResourceId('OperationDefinition_ReferencedFrom'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	source: source,
-	elementSource: elementSource,
-	sourceId: sourceId,
-	elementSourceId: elementSourceId,
-);
-	return newOperationDefinition_ReferencedFrom;
+  OperationDefinition_ReferencedFrom({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.source,
+    this.elementSource,
+    this.sourceId,
+    this.elementSourceId,
+  });
+
+  factory OperationDefinition_ReferencedFrom.fromJson(
+          Map<String, dynamic> json) =>
+      _$OperationDefinition_ReferencedFromFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$OperationDefinition_ReferencedFromToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String source;
-	Element elementSource;
-	String sourceId;
-	Element elementSourceId;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OperationDefinition_Overload {
+  static Future<OperationDefinition_Overload> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<String> parameterName,
+    List<Element> elementParameterName,
+    String comment,
+    Element elementComment,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OperationDefinition_Overload newOperationDefinition_Overload =
+        new OperationDefinition_Overload(
+      id: id ?? await fhirDb.newResourceId('OperationDefinition_Overload'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      parameterName: parameterName,
+      elementParameterName: elementParameterName,
+      comment: comment,
+      elementComment: elementComment,
+    );
+    return newOperationDefinition_Overload;
+  }
 
-OperationDefinition_ReferencedFrom(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.source,
-this.elementSource,
-this.sourceId,
-this.elementSourceId,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<String> parameterName;
+  List<Element> elementParameterName;
+  String comment;
+  Element elementComment;
 
-  factory OperationDefinition_ReferencedFrom.fromJson(Map<String, dynamic> json) => _$OperationDefinition_ReferencedFromFromJson(json);
-  Map<String, dynamic> toJson() => _$OperationDefinition_ReferencedFromToJson(this);
-}
+  OperationDefinition_Overload({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.parameterName,
+    this.elementParameterName,
+    this.comment,
+    this.elementComment,
+  });
 
-
-@JsonSerializable(explicitToJson: true)
-class OperationDefinition_Overload{
-
-	static Future<OperationDefinition_Overload> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<String> parameterName,
-	List<Element> elementParameterName,
-	String comment,
-	Element elementComment,
-}) async {
-var fhirDb = new DatabaseHelper();
-OperationDefinition_Overload newOperationDefinition_Overload = new OperationDefinition_Overload(
-	id: id ?? await fhirDb.newResourceId('OperationDefinition_Overload'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	parameterName: parameterName,
-	elementParameterName: elementParameterName,
-	comment: comment,
-	elementComment: elementComment,
-);
-	return newOperationDefinition_Overload;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<String> parameterName;
-	List<Element> elementParameterName;
-	String comment;
-	Element elementComment;
-
-OperationDefinition_Overload(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.parameterName,
-this.elementParameterName,
-this.comment,
-this.elementComment,
-});
-
-  factory OperationDefinition_Overload.fromJson(Map<String, dynamic> json) => _$OperationDefinition_OverloadFromJson(json);
+  factory OperationDefinition_Overload.fromJson(Map<String, dynamic> json) =>
+      _$OperationDefinition_OverloadFromJson(json);
   Map<String, dynamic> toJson() => _$OperationDefinition_OverloadToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -529,8 +535,9 @@ OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -643,67 +650,79 @@ OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$OperationDefinitionToJson(
-        OperationDefinition instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'affectsState': instance.affectsState,
-      'elementAffectsState': instance.elementAffectsState?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'base': instance.base,
-      'resource': instance.resource,
-      'elementResource':
-          instance.elementResource?.map((e) => e?.toJson())?.toList(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'instance': instance.instance,
-      'elementInstance': instance.elementInstance?.toJson(),
-      'inputProfile': instance.inputProfile,
-      'outputProfile': instance.outputProfile,
-      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
-      'overload': instance.overload?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$OperationDefinitionToJson(OperationDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('affectsState', instance.affectsState);
+  writeNotNull('elementAffectsState', instance.elementAffectsState?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull('base', instance.base);
+  writeNotNull('resource', instance.resource);
+  writeNotNull('elementResource',
+      instance.elementResource?.map((e) => e?.toJson())?.toList());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('instance', instance.instance);
+  writeNotNull('elementInstance', instance.elementInstance?.toJson());
+  writeNotNull('inputProfile', instance.inputProfile);
+  writeNotNull('outputProfile', instance.outputProfile);
+  writeNotNull(
+      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'overload', instance.overload?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 OperationDefinition_Parameter _$OperationDefinition_ParameterFromJson(
     Map<String, dynamic> json) {
@@ -767,32 +786,41 @@ OperationDefinition_Parameter _$OperationDefinition_ParameterFromJson(
 }
 
 Map<String, dynamic> _$OperationDefinition_ParameterToJson(
-        OperationDefinition_Parameter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'min': instance.min,
-      'elementMin': instance.elementMin?.toJson(),
-      'max': instance.max,
-      'elementMax': instance.elementMax?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'targetProfile': instance.targetProfile,
-      'searchType': instance.searchType,
-      'elementSearchType': instance.elementSearchType?.toJson(),
-      'binding': instance.binding?.toJson(),
-      'referencedFrom':
-          instance.referencedFrom?.map((e) => e?.toJson())?.toList(),
-      'part': instance.part?.map((e) => e?.toJson())?.toList(),
-    };
+    OperationDefinition_Parameter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('min', instance.min);
+  writeNotNull('elementMin', instance.elementMin?.toJson());
+  writeNotNull('max', instance.max);
+  writeNotNull('elementMax', instance.elementMax?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('targetProfile', instance.targetProfile);
+  writeNotNull('searchType', instance.searchType);
+  writeNotNull('elementSearchType', instance.elementSearchType?.toJson());
+  writeNotNull('binding', instance.binding?.toJson());
+  writeNotNull('referencedFrom',
+      instance.referencedFrom?.map((e) => e?.toJson())?.toList());
+  writeNotNull('part', instance.part?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 OperationDefinition_Binding _$OperationDefinition_BindingFromJson(
     Map<String, dynamic> json) {
@@ -815,16 +843,25 @@ OperationDefinition_Binding _$OperationDefinition_BindingFromJson(
 }
 
 Map<String, dynamic> _$OperationDefinition_BindingToJson(
-        OperationDefinition_Binding instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'strength': instance.strength,
-      'elementStrength': instance.elementStrength?.toJson(),
-      'valueSet': instance.valueSet,
-    };
+    OperationDefinition_Binding instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('strength', instance.strength);
+  writeNotNull('elementStrength', instance.elementStrength?.toJson());
+  writeNotNull('valueSet', instance.valueSet);
+  return val;
+}
 
 OperationDefinition_ReferencedFrom _$OperationDefinition_ReferencedFromFromJson(
     Map<String, dynamic> json) {
@@ -850,17 +887,26 @@ OperationDefinition_ReferencedFrom _$OperationDefinition_ReferencedFromFromJson(
 }
 
 Map<String, dynamic> _$OperationDefinition_ReferencedFromToJson(
-        OperationDefinition_ReferencedFrom instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'source': instance.source,
-      'elementSource': instance.elementSource?.toJson(),
-      'sourceId': instance.sourceId,
-      'elementSourceId': instance.elementSourceId?.toJson(),
-    };
+    OperationDefinition_ReferencedFrom instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('source', instance.source);
+  writeNotNull('elementSource', instance.elementSource?.toJson());
+  writeNotNull('sourceId', instance.sourceId);
+  writeNotNull('elementSourceId', instance.elementSourceId?.toJson());
+  return val;
+}
 
 OperationDefinition_Overload _$OperationDefinition_OverloadFromJson(
     Map<String, dynamic> json) {
@@ -888,15 +934,24 @@ OperationDefinition_Overload _$OperationDefinition_OverloadFromJson(
 }
 
 Map<String, dynamic> _$OperationDefinition_OverloadToJson(
-        OperationDefinition_Overload instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'parameterName': instance.parameterName,
-      'elementParameterName':
-          instance.elementParameterName?.map((e) => e?.toJson())?.toList(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-    };
+    OperationDefinition_Overload instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('parameterName', instance.parameterName);
+  writeNotNull('elementParameterName',
+      instance.elementParameterName?.map((e) => e?.toJson())?.toList());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  return val;
+}

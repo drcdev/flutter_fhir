@@ -16,1751 +16,1765 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit {
+  static Future<ExplanationOfBenefit> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept type,
+    CodeableConcept subType,
+    String use,
+    Element elementUse,
+    Reference patient,
+    Period billablePeriod,
+    DateTime created,
+    Element elementCreated,
+    Reference enterer,
+    Reference insurer,
+    Reference provider,
+    CodeableConcept priority,
+    CodeableConcept fundsReserveRequested,
+    CodeableConcept fundsReserve,
+    List<ExplanationOfBenefit_Related> related,
+    Reference prescription,
+    Reference originalPrescription,
+    ExplanationOfBenefit_Payee payee,
+    Reference referral,
+    Reference facility,
+    Reference claim,
+    Reference claimResponse,
+    String outcome,
+    Element elementOutcome,
+    String disposition,
+    Element elementDisposition,
+    List<String> preAuthRef,
+    List<Element> elementPreAuthRef,
+    List<Period> preAuthRefPeriod,
+    List<ExplanationOfBenefit_CareTeam> careTeam,
+    List<ExplanationOfBenefit_SupportingInfo> supportingInfo,
+    List<ExplanationOfBenefit_Diagnosis> diagnosis,
+    List<ExplanationOfBenefit_Procedure> procedure,
+    int precedence,
+    Element elementPrecedence,
+    List<ExplanationOfBenefit_Insurance> insurance,
+    ExplanationOfBenefit_Accident accident,
+    List<ExplanationOfBenefit_Item> item,
+    List<ExplanationOfBenefit_AddItem> addItem,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_Total> total,
+    ExplanationOfBenefit_Payment payment,
+    CodeableConcept formCode,
+    Attachment form,
+    List<ExplanationOfBenefit_ProcessNote> processNote,
+    Period benefitPeriod,
+    List<ExplanationOfBenefit_BenefitBalance> benefitBalance,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit newExplanationOfBenefit = new ExplanationOfBenefit(
+      resourceType: 'ExplanationOfBenefit',
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      type: type,
+      subType: subType,
+      use: use,
+      elementUse: elementUse,
+      patient: patient,
+      billablePeriod: billablePeriod,
+      created: created,
+      elementCreated: elementCreated,
+      enterer: enterer,
+      insurer: insurer,
+      provider: provider,
+      priority: priority,
+      fundsReserveRequested: fundsReserveRequested,
+      fundsReserve: fundsReserve,
+      related: related,
+      prescription: prescription,
+      originalPrescription: originalPrescription,
+      payee: payee,
+      referral: referral,
+      facility: facility,
+      claim: claim,
+      claimResponse: claimResponse,
+      outcome: outcome,
+      elementOutcome: elementOutcome,
+      disposition: disposition,
+      elementDisposition: elementDisposition,
+      preAuthRef: preAuthRef,
+      elementPreAuthRef: elementPreAuthRef,
+      preAuthRefPeriod: preAuthRefPeriod,
+      careTeam: careTeam,
+      supportingInfo: supportingInfo,
+      diagnosis: diagnosis,
+      procedure: procedure,
+      precedence: precedence,
+      elementPrecedence: elementPrecedence,
+      insurance: insurance,
+      accident: accident,
+      item: item,
+      addItem: addItem,
+      adjudication: adjudication,
+      total: total,
+      payment: payment,
+      formCode: formCode,
+      form: form,
+      processNote: processNote,
+      benefitPeriod: benefitPeriod,
+      benefitBalance: benefitBalance,
+    );
+    newExplanationOfBenefit.meta.createdAt = DateTime.now();
+    newExplanationOfBenefit.meta.lastUpdated =
+        newExplanationOfBenefit.meta.createdAt;
+    int saved = await fhirDb.saveResource(newExplanationOfBenefit);
+    return newExplanationOfBenefit;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ExplanationOfBenefit> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	CodeableConcept type,
-	CodeableConcept subType,
-	String use,
-	Element elementUse,
-	Reference patient,
-	Period billablePeriod,
-	DateTime created,
-	Element elementCreated,
-	Reference enterer,
-	Reference insurer,
-	Reference provider,
-	CodeableConcept priority,
-	CodeableConcept fundsReserveRequested,
-	CodeableConcept fundsReserve,
-	List<ExplanationOfBenefit_Related> related,
-	Reference prescription,
-	Reference originalPrescription,
-	ExplanationOfBenefit_Payee payee,
-	Reference referral,
-	Reference facility,
-	Reference claim,
-	Reference claimResponse,
-	String outcome,
-	Element elementOutcome,
-	String disposition,
-	Element elementDisposition,
-	List<String> preAuthRef,
-	List<Element> elementPreAuthRef,
-	List<Period> preAuthRefPeriod,
-	List<ExplanationOfBenefit_CareTeam> careTeam,
-	List<ExplanationOfBenefit_SupportingInfo> supportingInfo,
-	List<ExplanationOfBenefit_Diagnosis> diagnosis,
-	List<ExplanationOfBenefit_Procedure> procedure,
-	int precedence,
-	Element elementPrecedence,
-	List<ExplanationOfBenefit_Insurance> insurance,
-	ExplanationOfBenefit_Accident accident,
-	List<ExplanationOfBenefit_Item> item,
-	List<ExplanationOfBenefit_AddItem> addItem,
-	List<ExplanationOfBenefit_Adjudication> adjudication,
-	List<ExplanationOfBenefit_Total> total,
-	ExplanationOfBenefit_Payment payment,
-	CodeableConcept formCode,
-	Attachment form,
-	List<ExplanationOfBenefit_ProcessNote> processNote,
-	Period benefitPeriod,
-	List<ExplanationOfBenefit_BenefitBalance> benefitBalance,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit newExplanationOfBenefit = new ExplanationOfBenefit(
-	resourceType: 'ExplanationOfBenefit',
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	type: type,
-	subType: subType,
-	use: use,
-	elementUse: elementUse,
-	patient: patient,
-	billablePeriod: billablePeriod,
-	created: created,
-	elementCreated: elementCreated,
-	enterer: enterer,
-	insurer: insurer,
-	provider: provider,
-	priority: priority,
-	fundsReserveRequested: fundsReserveRequested,
-	fundsReserve: fundsReserve,
-	related: related,
-	prescription: prescription,
-	originalPrescription: originalPrescription,
-	payee: payee,
-	referral: referral,
-	facility: facility,
-	claim: claim,
-	claimResponse: claimResponse,
-	outcome: outcome,
-	elementOutcome: elementOutcome,
-	disposition: disposition,
-	elementDisposition: elementDisposition,
-	preAuthRef: preAuthRef,
-	elementPreAuthRef: elementPreAuthRef,
-	preAuthRefPeriod: preAuthRefPeriod,
-	careTeam: careTeam,
-	supportingInfo: supportingInfo,
-	diagnosis: diagnosis,
-	procedure: procedure,
-	precedence: precedence,
-	elementPrecedence: elementPrecedence,
-	insurance: insurance,
-	accident: accident,
-	item: item,
-	addItem: addItem,
-	adjudication: adjudication,
-	total: total,
-	payment: payment,
-	formCode: formCode,
-	form: form,
-	processNote: processNote,
-	benefitPeriod: benefitPeriod,
-	benefitBalance: benefitBalance,
-);
-	newExplanationOfBenefit.meta.createdAt = DateTime.now();
-	newExplanationOfBenefit.meta.lastUpdated = newExplanationOfBenefit.meta.createdAt;
-	int saved = await fhirDb.saveResource(newExplanationOfBenefit);
-	 return newExplanationOfBenefit;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'ExplanationOfBenefit';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  CodeableConcept type;
+  CodeableConcept subType;
+  String use;
+  Element elementUse;
+  Reference patient;
+  Period billablePeriod;
+  DateTime created;
+  Element elementCreated;
+  Reference enterer;
+  Reference insurer;
+  Reference provider;
+  CodeableConcept priority;
+  CodeableConcept fundsReserveRequested;
+  CodeableConcept fundsReserve;
+  List<ExplanationOfBenefit_Related> related;
+  Reference prescription;
+  Reference originalPrescription;
+  ExplanationOfBenefit_Payee payee;
+  Reference referral;
+  Reference facility;
+  Reference claim;
+  Reference claimResponse;
+  String outcome;
+  Element elementOutcome;
+  String disposition;
+  Element elementDisposition;
+  List<String> preAuthRef;
+  List<Element> elementPreAuthRef;
+  List<Period> preAuthRefPeriod;
+  List<ExplanationOfBenefit_CareTeam> careTeam;
+  List<ExplanationOfBenefit_SupportingInfo> supportingInfo;
+  List<ExplanationOfBenefit_Diagnosis> diagnosis;
+  List<ExplanationOfBenefit_Procedure> procedure;
+  int precedence;
+  Element elementPrecedence;
+  List<ExplanationOfBenefit_Insurance> insurance;
+  ExplanationOfBenefit_Accident accident;
+  List<ExplanationOfBenefit_Item> item;
+  List<ExplanationOfBenefit_AddItem> addItem;
+  List<ExplanationOfBenefit_Adjudication> adjudication;
+  List<ExplanationOfBenefit_Total> total;
+  ExplanationOfBenefit_Payment payment;
+  CodeableConcept formCode;
+  Attachment form;
+  List<ExplanationOfBenefit_ProcessNote> processNote;
+  Period benefitPeriod;
+  List<ExplanationOfBenefit_BenefitBalance> benefitBalance;
 
-	String resourceType= 'ExplanationOfBenefit';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	CodeableConcept type;
-	CodeableConcept subType;
-	String use;
-	Element elementUse;
-	Reference patient;
-	Period billablePeriod;
-	DateTime created;
-	Element elementCreated;
-	Reference enterer;
-	Reference insurer;
-	Reference provider;
-	CodeableConcept priority;
-	CodeableConcept fundsReserveRequested;
-	CodeableConcept fundsReserve;
-	List<ExplanationOfBenefit_Related> related;
-	Reference prescription;
-	Reference originalPrescription;
-	ExplanationOfBenefit_Payee payee;
-	Reference referral;
-	Reference facility;
-	Reference claim;
-	Reference claimResponse;
-	String outcome;
-	Element elementOutcome;
-	String disposition;
-	Element elementDisposition;
-	List<String> preAuthRef;
-	List<Element> elementPreAuthRef;
-	List<Period> preAuthRefPeriod;
-	List<ExplanationOfBenefit_CareTeam> careTeam;
-	List<ExplanationOfBenefit_SupportingInfo> supportingInfo;
-	List<ExplanationOfBenefit_Diagnosis> diagnosis;
-	List<ExplanationOfBenefit_Procedure> procedure;
-	int precedence;
-	Element elementPrecedence;
-	List<ExplanationOfBenefit_Insurance> insurance;
-	ExplanationOfBenefit_Accident accident;
-	List<ExplanationOfBenefit_Item> item;
-	List<ExplanationOfBenefit_AddItem> addItem;
-	List<ExplanationOfBenefit_Adjudication> adjudication;
-	List<ExplanationOfBenefit_Total> total;
-	ExplanationOfBenefit_Payment payment;
-	CodeableConcept formCode;
-	Attachment form;
-	List<ExplanationOfBenefit_ProcessNote> processNote;
-	Period benefitPeriod;
-	List<ExplanationOfBenefit_BenefitBalance> benefitBalance;
+  ExplanationOfBenefit({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.type,
+    this.subType,
+    this.use,
+    this.elementUse,
+    @required this.patient,
+    this.billablePeriod,
+    this.created,
+    this.elementCreated,
+    this.enterer,
+    @required this.insurer,
+    @required this.provider,
+    this.priority,
+    this.fundsReserveRequested,
+    this.fundsReserve,
+    this.related,
+    this.prescription,
+    this.originalPrescription,
+    this.payee,
+    this.referral,
+    this.facility,
+    this.claim,
+    this.claimResponse,
+    this.outcome,
+    this.elementOutcome,
+    this.disposition,
+    this.elementDisposition,
+    this.preAuthRef,
+    this.elementPreAuthRef,
+    this.preAuthRefPeriod,
+    this.careTeam,
+    this.supportingInfo,
+    this.diagnosis,
+    this.procedure,
+    this.precedence,
+    this.elementPrecedence,
+    @required this.insurance,
+    this.accident,
+    this.item,
+    this.addItem,
+    this.adjudication,
+    this.total,
+    this.payment,
+    this.formCode,
+    this.form,
+    this.processNote,
+    this.benefitPeriod,
+    this.benefitBalance,
+  });
 
-ExplanationOfBenefit(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-@required this.type,
-this.subType,
-this.use,
-this.elementUse,
-@required this.patient,
-this.billablePeriod,
-this.created,
-this.elementCreated,
-this.enterer,
-@required this.insurer,
-@required this.provider,
-this.priority,
-this.fundsReserveRequested,
-this.fundsReserve,
-this.related,
-this.prescription,
-this.originalPrescription,
-this.payee,
-this.referral,
-this.facility,
-this.claim,
-this.claimResponse,
-this.outcome,
-this.elementOutcome,
-this.disposition,
-this.elementDisposition,
-this.preAuthRef,
-this.elementPreAuthRef,
-this.preAuthRefPeriod,
-this.careTeam,
-this.supportingInfo,
-this.diagnosis,
-this.procedure,
-this.precedence,
-this.elementPrecedence,
-@required this.insurance,
-this.accident,
-this.item,
-this.addItem,
-this.adjudication,
-this.total,
-this.payment,
-this.formCode,
-this.form,
-this.processNote,
-this.benefitPeriod,
-this.benefitBalance,
-});
-
-  factory ExplanationOfBenefit.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefitFromJson(json);
+  factory ExplanationOfBenefit.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefitFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefitToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Related {
+  static Future<ExplanationOfBenefit_Related> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference claim,
+    CodeableConcept relationship,
+    Identifier reference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Related newExplanationOfBenefit_Related =
+        new ExplanationOfBenefit_Related(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Related'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      claim: claim,
+      relationship: relationship,
+      reference: reference,
+    );
+    return newExplanationOfBenefit_Related;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Related{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Reference claim;
+  CodeableConcept relationship;
+  Identifier reference;
 
-	static Future<ExplanationOfBenefit_Related> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Reference claim,
-	CodeableConcept relationship,
-	Identifier reference,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Related newExplanationOfBenefit_Related = new ExplanationOfBenefit_Related(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Related'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	claim: claim,
-	relationship: relationship,
-	reference: reference,
-);
-	return newExplanationOfBenefit_Related;
-}
+  ExplanationOfBenefit_Related({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.claim,
+    this.relationship,
+    this.reference,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Reference claim;
-	CodeableConcept relationship;
-	Identifier reference;
-
-ExplanationOfBenefit_Related(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.claim,
-this.relationship,
-this.reference,
-});
-
-  factory ExplanationOfBenefit_Related.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_RelatedFromJson(json);
+  factory ExplanationOfBenefit_Related.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_RelatedFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_RelatedToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Payee {
+  static Future<ExplanationOfBenefit_Payee> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Reference party,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Payee newExplanationOfBenefit_Payee =
+        new ExplanationOfBenefit_Payee(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Payee'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      party: party,
+    );
+    return newExplanationOfBenefit_Payee;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Payee{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept type;
+  Reference party;
 
-	static Future<ExplanationOfBenefit_Payee> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept type,
-	Reference party,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Payee newExplanationOfBenefit_Payee = new ExplanationOfBenefit_Payee(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Payee'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	party: party,
-);
-	return newExplanationOfBenefit_Payee;
-}
+  ExplanationOfBenefit_Payee({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.party,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept type;
-	Reference party;
-
-ExplanationOfBenefit_Payee(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.party,
-});
-
-  factory ExplanationOfBenefit_Payee.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_PayeeFromJson(json);
+  factory ExplanationOfBenefit_Payee.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_PayeeFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_PayeeToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_CareTeam {
+  static Future<ExplanationOfBenefit_CareTeam> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    Reference provider,
+    bool responsible,
+    Element elementResponsible,
+    CodeableConcept role,
+    CodeableConcept qualification,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_CareTeam newExplanationOfBenefit_CareTeam =
+        new ExplanationOfBenefit_CareTeam(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_CareTeam'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      provider: provider,
+      responsible: responsible,
+      elementResponsible: elementResponsible,
+      role: role,
+      qualification: qualification,
+    );
+    return newExplanationOfBenefit_CareTeam;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_CareTeam{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  Reference provider;
+  bool responsible;
+  Element elementResponsible;
+  CodeableConcept role;
+  CodeableConcept qualification;
 
-	static Future<ExplanationOfBenefit_CareTeam> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	Reference provider,
-	bool responsible,
-	Element elementResponsible,
-	CodeableConcept role,
-	CodeableConcept qualification,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_CareTeam newExplanationOfBenefit_CareTeam = new ExplanationOfBenefit_CareTeam(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_CareTeam'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	provider: provider,
-	responsible: responsible,
-	elementResponsible: elementResponsible,
-	role: role,
-	qualification: qualification,
-);
-	return newExplanationOfBenefit_CareTeam;
-}
+  ExplanationOfBenefit_CareTeam({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    @required this.provider,
+    this.responsible,
+    this.elementResponsible,
+    this.role,
+    this.qualification,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	Reference provider;
-	bool responsible;
-	Element elementResponsible;
-	CodeableConcept role;
-	CodeableConcept qualification;
-
-ExplanationOfBenefit_CareTeam(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-@required this.provider,
-this.responsible,
-this.elementResponsible,
-this.role,
-this.qualification,
-});
-
-  factory ExplanationOfBenefit_CareTeam.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_CareTeamFromJson(json);
+  factory ExplanationOfBenefit_CareTeam.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_CareTeamFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_CareTeamToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_SupportingInfo {
+  static Future<ExplanationOfBenefit_SupportingInfo> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept category,
+    CodeableConcept code,
+    String timingDate,
+    Element elementTimingDate,
+    Period timingPeriod,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    String valueString,
+    Element elementValueString,
+    Quantity valueQuantity,
+    Attachment valueAttachment,
+    Reference valueReference,
+    Coding reason,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_SupportingInfo newExplanationOfBenefit_SupportingInfo =
+        new ExplanationOfBenefit_SupportingInfo(
+      id: id ??
+          await fhirDb.newResourceId('ExplanationOfBenefit_SupportingInfo'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      category: category,
+      code: code,
+      timingDate: timingDate,
+      elementTimingDate: elementTimingDate,
+      timingPeriod: timingPeriod,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+      valueString: valueString,
+      elementValueString: elementValueString,
+      valueQuantity: valueQuantity,
+      valueAttachment: valueAttachment,
+      valueReference: valueReference,
+      reason: reason,
+    );
+    return newExplanationOfBenefit_SupportingInfo;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_SupportingInfo{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  CodeableConcept category;
+  CodeableConcept code;
+  String timingDate;
+  Element elementTimingDate;
+  Period timingPeriod;
+  bool valueBoolean;
+  Element elementValueBoolean;
+  String valueString;
+  Element elementValueString;
+  Quantity valueQuantity;
+  Attachment valueAttachment;
+  Reference valueReference;
+  Coding reason;
 
-	static Future<ExplanationOfBenefit_SupportingInfo> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	CodeableConcept category,
-	CodeableConcept code,
-	String timingDate,
-	Element elementTimingDate,
-	Period timingPeriod,
-	bool valueBoolean,
-	Element elementValueBoolean,
-	String valueString,
-	Element elementValueString,
-	Quantity valueQuantity,
-	Attachment valueAttachment,
-	Reference valueReference,
-	Coding reason,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_SupportingInfo newExplanationOfBenefit_SupportingInfo = new ExplanationOfBenefit_SupportingInfo(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_SupportingInfo'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	category: category,
-	code: code,
-	timingDate: timingDate,
-	elementTimingDate: elementTimingDate,
-	timingPeriod: timingPeriod,
-	valueBoolean: valueBoolean,
-	elementValueBoolean: elementValueBoolean,
-	valueString: valueString,
-	elementValueString: elementValueString,
-	valueQuantity: valueQuantity,
-	valueAttachment: valueAttachment,
-	valueReference: valueReference,
-	reason: reason,
-);
-	return newExplanationOfBenefit_SupportingInfo;
+  ExplanationOfBenefit_SupportingInfo({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    @required this.category,
+    this.code,
+    this.timingDate,
+    this.elementTimingDate,
+    this.timingPeriod,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueString,
+    this.elementValueString,
+    this.valueQuantity,
+    this.valueAttachment,
+    this.valueReference,
+    this.reason,
+  });
+
+  factory ExplanationOfBenefit_SupportingInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_SupportingInfoFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ExplanationOfBenefit_SupportingInfoToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	CodeableConcept category;
-	CodeableConcept code;
-	String timingDate;
-	Element elementTimingDate;
-	Period timingPeriod;
-	bool valueBoolean;
-	Element elementValueBoolean;
-	String valueString;
-	Element elementValueString;
-	Quantity valueQuantity;
-	Attachment valueAttachment;
-	Reference valueReference;
-	Coding reason;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Diagnosis {
+  static Future<ExplanationOfBenefit_Diagnosis> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept diagnosisCodeableConcept,
+    Reference diagnosisReference,
+    List<CodeableConcept> type,
+    CodeableConcept onAdmission,
+    CodeableConcept packageCode,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Diagnosis newExplanationOfBenefit_Diagnosis =
+        new ExplanationOfBenefit_Diagnosis(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Diagnosis'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      diagnosisCodeableConcept: diagnosisCodeableConcept,
+      diagnosisReference: diagnosisReference,
+      type: type,
+      onAdmission: onAdmission,
+      packageCode: packageCode,
+    );
+    return newExplanationOfBenefit_Diagnosis;
+  }
 
-ExplanationOfBenefit_SupportingInfo(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-@required this.category,
-this.code,
-this.timingDate,
-this.elementTimingDate,
-this.timingPeriod,
-this.valueBoolean,
-this.elementValueBoolean,
-this.valueString,
-this.elementValueString,
-this.valueQuantity,
-this.valueAttachment,
-this.valueReference,
-this.reason,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  CodeableConcept diagnosisCodeableConcept;
+  Reference diagnosisReference;
+  List<CodeableConcept> type;
+  CodeableConcept onAdmission;
+  CodeableConcept packageCode;
 
-  factory ExplanationOfBenefit_SupportingInfo.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_SupportingInfoFromJson(json);
-  Map<String, dynamic> toJson() => _$ExplanationOfBenefit_SupportingInfoToJson(this);
-}
+  ExplanationOfBenefit_Diagnosis({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.diagnosisCodeableConcept,
+    this.diagnosisReference,
+    this.type,
+    this.onAdmission,
+    this.packageCode,
+  });
 
-
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Diagnosis{
-
-	static Future<ExplanationOfBenefit_Diagnosis> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	CodeableConcept diagnosisCodeableConcept,
-	Reference diagnosisReference,
-	List<CodeableConcept> type,
-	CodeableConcept onAdmission,
-	CodeableConcept packageCode,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Diagnosis newExplanationOfBenefit_Diagnosis = new ExplanationOfBenefit_Diagnosis(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Diagnosis'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	diagnosisCodeableConcept: diagnosisCodeableConcept,
-	diagnosisReference: diagnosisReference,
-	type: type,
-	onAdmission: onAdmission,
-	packageCode: packageCode,
-);
-	return newExplanationOfBenefit_Diagnosis;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	CodeableConcept diagnosisCodeableConcept;
-	Reference diagnosisReference;
-	List<CodeableConcept> type;
-	CodeableConcept onAdmission;
-	CodeableConcept packageCode;
-
-ExplanationOfBenefit_Diagnosis(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-this.diagnosisCodeableConcept,
-this.diagnosisReference,
-this.type,
-this.onAdmission,
-this.packageCode,
-});
-
-  factory ExplanationOfBenefit_Diagnosis.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_DiagnosisFromJson(json);
+  factory ExplanationOfBenefit_Diagnosis.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_DiagnosisFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_DiagnosisToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Procedure {
+  static Future<ExplanationOfBenefit_Procedure> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    List<CodeableConcept> type,
+    DateTime date,
+    Element elementDate,
+    CodeableConcept procedureCodeableConcept,
+    Reference procedureReference,
+    List<Reference> udi,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Procedure newExplanationOfBenefit_Procedure =
+        new ExplanationOfBenefit_Procedure(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Procedure'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      type: type,
+      date: date,
+      elementDate: elementDate,
+      procedureCodeableConcept: procedureCodeableConcept,
+      procedureReference: procedureReference,
+      udi: udi,
+    );
+    return newExplanationOfBenefit_Procedure;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Procedure{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  List<CodeableConcept> type;
+  DateTime date;
+  Element elementDate;
+  CodeableConcept procedureCodeableConcept;
+  Reference procedureReference;
+  List<Reference> udi;
 
-	static Future<ExplanationOfBenefit_Procedure> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	List<CodeableConcept> type,
-	DateTime date,
-	Element elementDate,
-	CodeableConcept procedureCodeableConcept,
-	Reference procedureReference,
-	List<Reference> udi,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Procedure newExplanationOfBenefit_Procedure = new ExplanationOfBenefit_Procedure(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Procedure'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	type: type,
-	date: date,
-	elementDate: elementDate,
-	procedureCodeableConcept: procedureCodeableConcept,
-	procedureReference: procedureReference,
-	udi: udi,
-);
-	return newExplanationOfBenefit_Procedure;
-}
+  ExplanationOfBenefit_Procedure({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.type,
+    this.date,
+    this.elementDate,
+    this.procedureCodeableConcept,
+    this.procedureReference,
+    this.udi,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	List<CodeableConcept> type;
-	DateTime date;
-	Element elementDate;
-	CodeableConcept procedureCodeableConcept;
-	Reference procedureReference;
-	List<Reference> udi;
-
-ExplanationOfBenefit_Procedure(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-this.type,
-this.date,
-this.elementDate,
-this.procedureCodeableConcept,
-this.procedureReference,
-this.udi,
-});
-
-  factory ExplanationOfBenefit_Procedure.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_ProcedureFromJson(json);
+  factory ExplanationOfBenefit_Procedure.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_ProcedureFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_ProcedureToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Insurance {
+  static Future<ExplanationOfBenefit_Insurance> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool focal,
+    Element elementFocal,
+    Reference coverage,
+    List<String> preAuthRef,
+    List<Element> elementPreAuthRef,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Insurance newExplanationOfBenefit_Insurance =
+        new ExplanationOfBenefit_Insurance(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Insurance'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      focal: focal,
+      elementFocal: elementFocal,
+      coverage: coverage,
+      preAuthRef: preAuthRef,
+      elementPreAuthRef: elementPreAuthRef,
+    );
+    return newExplanationOfBenefit_Insurance;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Insurance{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool focal;
+  Element elementFocal;
+  Reference coverage;
+  List<String> preAuthRef;
+  List<Element> elementPreAuthRef;
 
-	static Future<ExplanationOfBenefit_Insurance> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool focal,
-	Element elementFocal,
-	Reference coverage,
-	List<String> preAuthRef,
-	List<Element> elementPreAuthRef,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Insurance newExplanationOfBenefit_Insurance = new ExplanationOfBenefit_Insurance(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Insurance'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	focal: focal,
-	elementFocal: elementFocal,
-	coverage: coverage,
-	preAuthRef: preAuthRef,
-	elementPreAuthRef: elementPreAuthRef,
-);
-	return newExplanationOfBenefit_Insurance;
-}
+  ExplanationOfBenefit_Insurance({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.focal,
+    this.elementFocal,
+    @required this.coverage,
+    this.preAuthRef,
+    this.elementPreAuthRef,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool focal;
-	Element elementFocal;
-	Reference coverage;
-	List<String> preAuthRef;
-	List<Element> elementPreAuthRef;
-
-ExplanationOfBenefit_Insurance(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.focal,
-this.elementFocal,
-@required this.coverage,
-this.preAuthRef,
-this.elementPreAuthRef,
-});
-
-  factory ExplanationOfBenefit_Insurance.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_InsuranceFromJson(json);
+  factory ExplanationOfBenefit_Insurance.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_InsuranceFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_InsuranceToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Accident {
+  static Future<ExplanationOfBenefit_Accident> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String date,
+    Element elementDate,
+    CodeableConcept type,
+    Address locationAddress,
+    Reference locationReference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Accident newExplanationOfBenefit_Accident =
+        new ExplanationOfBenefit_Accident(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Accident'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      date: date,
+      elementDate: elementDate,
+      type: type,
+      locationAddress: locationAddress,
+      locationReference: locationReference,
+    );
+    return newExplanationOfBenefit_Accident;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Accident{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String date;
+  Element elementDate;
+  CodeableConcept type;
+  Address locationAddress;
+  Reference locationReference;
 
-	static Future<ExplanationOfBenefit_Accident> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String date,
-	Element elementDate,
-	CodeableConcept type,
-	Address locationAddress,
-	Reference locationReference,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Accident newExplanationOfBenefit_Accident = new ExplanationOfBenefit_Accident(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Accident'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	date: date,
-	elementDate: elementDate,
-	type: type,
-	locationAddress: locationAddress,
-	locationReference: locationReference,
-);
-	return newExplanationOfBenefit_Accident;
-}
+  ExplanationOfBenefit_Accident({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.date,
+    this.elementDate,
+    this.type,
+    this.locationAddress,
+    this.locationReference,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String date;
-	Element elementDate;
-	CodeableConcept type;
-	Address locationAddress;
-	Reference locationReference;
-
-ExplanationOfBenefit_Accident(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.date,
-this.elementDate,
-this.type,
-this.locationAddress,
-this.locationReference,
-});
-
-  factory ExplanationOfBenefit_Accident.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_AccidentFromJson(json);
+  factory ExplanationOfBenefit_Accident.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_AccidentFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_AccidentToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Item {
+  static Future<ExplanationOfBenefit_Item> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    List<int> careTeamSequence,
+    List<Element> elementCareTeamSequence,
+    List<int> diagnosisSequence,
+    List<Element> elementDiagnosisSequence,
+    List<int> procedureSequence,
+    List<Element> elementProcedureSequence,
+    List<int> informationSequence,
+    List<Element> elementInformationSequence,
+    CodeableConcept revenue,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    String servicedDate,
+    Element elementServicedDate,
+    Period servicedPeriod,
+    CodeableConcept locationCodeableConcept,
+    Address locationAddress,
+    Reference locationReference,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<Reference> udi,
+    CodeableConcept bodySite,
+    List<CodeableConcept> subSite,
+    List<Reference> encounter,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_Detail> detail,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Item newExplanationOfBenefit_Item =
+        new ExplanationOfBenefit_Item(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Item'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      careTeamSequence: careTeamSequence,
+      elementCareTeamSequence: elementCareTeamSequence,
+      diagnosisSequence: diagnosisSequence,
+      elementDiagnosisSequence: elementDiagnosisSequence,
+      procedureSequence: procedureSequence,
+      elementProcedureSequence: elementProcedureSequence,
+      informationSequence: informationSequence,
+      elementInformationSequence: elementInformationSequence,
+      revenue: revenue,
+      category: category,
+      productOrService: productOrService,
+      modifier: modifier,
+      programCode: programCode,
+      servicedDate: servicedDate,
+      elementServicedDate: elementServicedDate,
+      servicedPeriod: servicedPeriod,
+      locationCodeableConcept: locationCodeableConcept,
+      locationAddress: locationAddress,
+      locationReference: locationReference,
+      quantity: quantity,
+      unitPrice: unitPrice,
+      factor: factor,
+      elementFactor: elementFactor,
+      net: net,
+      udi: udi,
+      bodySite: bodySite,
+      subSite: subSite,
+      encounter: encounter,
+      noteNumber: noteNumber,
+      elementNoteNumber: elementNoteNumber,
+      adjudication: adjudication,
+      detail: detail,
+    );
+    return newExplanationOfBenefit_Item;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Item{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  List<int> careTeamSequence;
+  List<Element> elementCareTeamSequence;
+  List<int> diagnosisSequence;
+  List<Element> elementDiagnosisSequence;
+  List<int> procedureSequence;
+  List<Element> elementProcedureSequence;
+  List<int> informationSequence;
+  List<Element> elementInformationSequence;
+  CodeableConcept revenue;
+  CodeableConcept category;
+  CodeableConcept productOrService;
+  List<CodeableConcept> modifier;
+  List<CodeableConcept> programCode;
+  String servicedDate;
+  Element elementServicedDate;
+  Period servicedPeriod;
+  CodeableConcept locationCodeableConcept;
+  Address locationAddress;
+  Reference locationReference;
+  Quantity quantity;
+  Money unitPrice;
+  double factor;
+  Element elementFactor;
+  Money net;
+  List<Reference> udi;
+  CodeableConcept bodySite;
+  List<CodeableConcept> subSite;
+  List<Reference> encounter;
+  List<int> noteNumber;
+  List<Element> elementNoteNumber;
+  List<ExplanationOfBenefit_Adjudication> adjudication;
+  List<ExplanationOfBenefit_Detail> detail;
 
-	static Future<ExplanationOfBenefit_Item> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	List<int> careTeamSequence,
-	List<Element> elementCareTeamSequence,
-	List<int> diagnosisSequence,
-	List<Element> elementDiagnosisSequence,
-	List<int> procedureSequence,
-	List<Element> elementProcedureSequence,
-	List<int> informationSequence,
-	List<Element> elementInformationSequence,
-	CodeableConcept revenue,
-	CodeableConcept category,
-	CodeableConcept productOrService,
-	List<CodeableConcept> modifier,
-	List<CodeableConcept> programCode,
-	String servicedDate,
-	Element elementServicedDate,
-	Period servicedPeriod,
-	CodeableConcept locationCodeableConcept,
-	Address locationAddress,
-	Reference locationReference,
-	Quantity quantity,
-	Money unitPrice,
-	double factor,
-	Element elementFactor,
-	Money net,
-	List<Reference> udi,
-	CodeableConcept bodySite,
-	List<CodeableConcept> subSite,
-	List<Reference> encounter,
-	List<int> noteNumber,
-	List<Element> elementNoteNumber,
-	List<ExplanationOfBenefit_Adjudication> adjudication,
-	List<ExplanationOfBenefit_Detail> detail,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Item newExplanationOfBenefit_Item = new ExplanationOfBenefit_Item(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Item'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	careTeamSequence: careTeamSequence,
-	elementCareTeamSequence: elementCareTeamSequence,
-	diagnosisSequence: diagnosisSequence,
-	elementDiagnosisSequence: elementDiagnosisSequence,
-	procedureSequence: procedureSequence,
-	elementProcedureSequence: elementProcedureSequence,
-	informationSequence: informationSequence,
-	elementInformationSequence: elementInformationSequence,
-	revenue: revenue,
-	category: category,
-	productOrService: productOrService,
-	modifier: modifier,
-	programCode: programCode,
-	servicedDate: servicedDate,
-	elementServicedDate: elementServicedDate,
-	servicedPeriod: servicedPeriod,
-	locationCodeableConcept: locationCodeableConcept,
-	locationAddress: locationAddress,
-	locationReference: locationReference,
-	quantity: quantity,
-	unitPrice: unitPrice,
-	factor: factor,
-	elementFactor: elementFactor,
-	net: net,
-	udi: udi,
-	bodySite: bodySite,
-	subSite: subSite,
-	encounter: encounter,
-	noteNumber: noteNumber,
-	elementNoteNumber: elementNoteNumber,
-	adjudication: adjudication,
-	detail: detail,
-);
-	return newExplanationOfBenefit_Item;
-}
+  ExplanationOfBenefit_Item({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.careTeamSequence,
+    this.elementCareTeamSequence,
+    this.diagnosisSequence,
+    this.elementDiagnosisSequence,
+    this.procedureSequence,
+    this.elementProcedureSequence,
+    this.informationSequence,
+    this.elementInformationSequence,
+    this.revenue,
+    this.category,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.servicedDate,
+    this.elementServicedDate,
+    this.servicedPeriod,
+    this.locationCodeableConcept,
+    this.locationAddress,
+    this.locationReference,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.udi,
+    this.bodySite,
+    this.subSite,
+    this.encounter,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.detail,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	List<int> careTeamSequence;
-	List<Element> elementCareTeamSequence;
-	List<int> diagnosisSequence;
-	List<Element> elementDiagnosisSequence;
-	List<int> procedureSequence;
-	List<Element> elementProcedureSequence;
-	List<int> informationSequence;
-	List<Element> elementInformationSequence;
-	CodeableConcept revenue;
-	CodeableConcept category;
-	CodeableConcept productOrService;
-	List<CodeableConcept> modifier;
-	List<CodeableConcept> programCode;
-	String servicedDate;
-	Element elementServicedDate;
-	Period servicedPeriod;
-	CodeableConcept locationCodeableConcept;
-	Address locationAddress;
-	Reference locationReference;
-	Quantity quantity;
-	Money unitPrice;
-	double factor;
-	Element elementFactor;
-	Money net;
-	List<Reference> udi;
-	CodeableConcept bodySite;
-	List<CodeableConcept> subSite;
-	List<Reference> encounter;
-	List<int> noteNumber;
-	List<Element> elementNoteNumber;
-	List<ExplanationOfBenefit_Adjudication> adjudication;
-	List<ExplanationOfBenefit_Detail> detail;
-
-ExplanationOfBenefit_Item(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-this.careTeamSequence,
-this.elementCareTeamSequence,
-this.diagnosisSequence,
-this.elementDiagnosisSequence,
-this.procedureSequence,
-this.elementProcedureSequence,
-this.informationSequence,
-this.elementInformationSequence,
-this.revenue,
-this.category,
-@required this.productOrService,
-this.modifier,
-this.programCode,
-this.servicedDate,
-this.elementServicedDate,
-this.servicedPeriod,
-this.locationCodeableConcept,
-this.locationAddress,
-this.locationReference,
-this.quantity,
-this.unitPrice,
-this.factor,
-this.elementFactor,
-this.net,
-this.udi,
-this.bodySite,
-this.subSite,
-this.encounter,
-this.noteNumber,
-this.elementNoteNumber,
-this.adjudication,
-this.detail,
-});
-
-  factory ExplanationOfBenefit_Item.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_ItemFromJson(json);
+  factory ExplanationOfBenefit_Item.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_ItemFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_ItemToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Adjudication {
+  static Future<ExplanationOfBenefit_Adjudication> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    CodeableConcept reason,
+    Money amount,
+    double value,
+    Element elementValue,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Adjudication newExplanationOfBenefit_Adjudication =
+        new ExplanationOfBenefit_Adjudication(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Adjudication'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      category: category,
+      reason: reason,
+      amount: amount,
+      value: value,
+      elementValue: elementValue,
+    );
+    return newExplanationOfBenefit_Adjudication;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Adjudication{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept category;
+  CodeableConcept reason;
+  Money amount;
+  double value;
+  Element elementValue;
 
-	static Future<ExplanationOfBenefit_Adjudication> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept category,
-	CodeableConcept reason,
-	Money amount,
-	double value,
-	Element elementValue,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Adjudication newExplanationOfBenefit_Adjudication = new ExplanationOfBenefit_Adjudication(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Adjudication'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	category: category,
-	reason: reason,
-	amount: amount,
-	value: value,
-	elementValue: elementValue,
-);
-	return newExplanationOfBenefit_Adjudication;
+  ExplanationOfBenefit_Adjudication({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.category,
+    this.reason,
+    this.amount,
+    this.value,
+    this.elementValue,
+  });
+
+  factory ExplanationOfBenefit_Adjudication.fromJson(
+          Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_AdjudicationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ExplanationOfBenefit_AdjudicationToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept category;
-	CodeableConcept reason;
-	Money amount;
-	double value;
-	Element elementValue;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Detail {
+  static Future<ExplanationOfBenefit_Detail> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept revenue,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<Reference> udi,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_SubDetail> subDetail,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Detail newExplanationOfBenefit_Detail =
+        new ExplanationOfBenefit_Detail(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Detail'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      revenue: revenue,
+      category: category,
+      productOrService: productOrService,
+      modifier: modifier,
+      programCode: programCode,
+      quantity: quantity,
+      unitPrice: unitPrice,
+      factor: factor,
+      elementFactor: elementFactor,
+      net: net,
+      udi: udi,
+      noteNumber: noteNumber,
+      elementNoteNumber: elementNoteNumber,
+      adjudication: adjudication,
+      subDetail: subDetail,
+    );
+    return newExplanationOfBenefit_Detail;
+  }
 
-ExplanationOfBenefit_Adjudication(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.category,
-this.reason,
-this.amount,
-this.value,
-this.elementValue,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  CodeableConcept revenue;
+  CodeableConcept category;
+  CodeableConcept productOrService;
+  List<CodeableConcept> modifier;
+  List<CodeableConcept> programCode;
+  Quantity quantity;
+  Money unitPrice;
+  double factor;
+  Element elementFactor;
+  Money net;
+  List<Reference> udi;
+  List<int> noteNumber;
+  List<Element> elementNoteNumber;
+  List<ExplanationOfBenefit_Adjudication> adjudication;
+  List<ExplanationOfBenefit_SubDetail> subDetail;
 
-  factory ExplanationOfBenefit_Adjudication.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_AdjudicationFromJson(json);
-  Map<String, dynamic> toJson() => _$ExplanationOfBenefit_AdjudicationToJson(this);
-}
+  ExplanationOfBenefit_Detail({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.revenue,
+    this.category,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.udi,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.subDetail,
+  });
 
-
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Detail{
-
-	static Future<ExplanationOfBenefit_Detail> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	CodeableConcept revenue,
-	CodeableConcept category,
-	CodeableConcept productOrService,
-	List<CodeableConcept> modifier,
-	List<CodeableConcept> programCode,
-	Quantity quantity,
-	Money unitPrice,
-	double factor,
-	Element elementFactor,
-	Money net,
-	List<Reference> udi,
-	List<int> noteNumber,
-	List<Element> elementNoteNumber,
-	List<ExplanationOfBenefit_Adjudication> adjudication,
-	List<ExplanationOfBenefit_SubDetail> subDetail,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Detail newExplanationOfBenefit_Detail = new ExplanationOfBenefit_Detail(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Detail'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	revenue: revenue,
-	category: category,
-	productOrService: productOrService,
-	modifier: modifier,
-	programCode: programCode,
-	quantity: quantity,
-	unitPrice: unitPrice,
-	factor: factor,
-	elementFactor: elementFactor,
-	net: net,
-	udi: udi,
-	noteNumber: noteNumber,
-	elementNoteNumber: elementNoteNumber,
-	adjudication: adjudication,
-	subDetail: subDetail,
-);
-	return newExplanationOfBenefit_Detail;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	CodeableConcept revenue;
-	CodeableConcept category;
-	CodeableConcept productOrService;
-	List<CodeableConcept> modifier;
-	List<CodeableConcept> programCode;
-	Quantity quantity;
-	Money unitPrice;
-	double factor;
-	Element elementFactor;
-	Money net;
-	List<Reference> udi;
-	List<int> noteNumber;
-	List<Element> elementNoteNumber;
-	List<ExplanationOfBenefit_Adjudication> adjudication;
-	List<ExplanationOfBenefit_SubDetail> subDetail;
-
-ExplanationOfBenefit_Detail(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-this.revenue,
-this.category,
-@required this.productOrService,
-this.modifier,
-this.programCode,
-this.quantity,
-this.unitPrice,
-this.factor,
-this.elementFactor,
-this.net,
-this.udi,
-this.noteNumber,
-this.elementNoteNumber,
-this.adjudication,
-this.subDetail,
-});
-
-  factory ExplanationOfBenefit_Detail.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_DetailFromJson(json);
+  factory ExplanationOfBenefit_Detail.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_DetailFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_DetailToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_SubDetail {
+  static Future<ExplanationOfBenefit_SubDetail> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    CodeableConcept revenue,
+    CodeableConcept category,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<Reference> udi,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_SubDetail newExplanationOfBenefit_SubDetail =
+        new ExplanationOfBenefit_SubDetail(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      revenue: revenue,
+      category: category,
+      productOrService: productOrService,
+      modifier: modifier,
+      programCode: programCode,
+      quantity: quantity,
+      unitPrice: unitPrice,
+      factor: factor,
+      elementFactor: elementFactor,
+      net: net,
+      udi: udi,
+      noteNumber: noteNumber,
+      elementNoteNumber: elementNoteNumber,
+      adjudication: adjudication,
+    );
+    return newExplanationOfBenefit_SubDetail;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_SubDetail{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  CodeableConcept revenue;
+  CodeableConcept category;
+  CodeableConcept productOrService;
+  List<CodeableConcept> modifier;
+  List<CodeableConcept> programCode;
+  Quantity quantity;
+  Money unitPrice;
+  double factor;
+  Element elementFactor;
+  Money net;
+  List<Reference> udi;
+  List<int> noteNumber;
+  List<Element> elementNoteNumber;
+  List<ExplanationOfBenefit_Adjudication> adjudication;
 
-	static Future<ExplanationOfBenefit_SubDetail> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	CodeableConcept revenue,
-	CodeableConcept category,
-	CodeableConcept productOrService,
-	List<CodeableConcept> modifier,
-	List<CodeableConcept> programCode,
-	Quantity quantity,
-	Money unitPrice,
-	double factor,
-	Element elementFactor,
-	Money net,
-	List<Reference> udi,
-	List<int> noteNumber,
-	List<Element> elementNoteNumber,
-	List<ExplanationOfBenefit_Adjudication> adjudication,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_SubDetail newExplanationOfBenefit_SubDetail = new ExplanationOfBenefit_SubDetail(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	revenue: revenue,
-	category: category,
-	productOrService: productOrService,
-	modifier: modifier,
-	programCode: programCode,
-	quantity: quantity,
-	unitPrice: unitPrice,
-	factor: factor,
-	elementFactor: elementFactor,
-	net: net,
-	udi: udi,
-	noteNumber: noteNumber,
-	elementNoteNumber: elementNoteNumber,
-	adjudication: adjudication,
-);
-	return newExplanationOfBenefit_SubDetail;
-}
+  ExplanationOfBenefit_SubDetail({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.revenue,
+    this.category,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.udi,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	CodeableConcept revenue;
-	CodeableConcept category;
-	CodeableConcept productOrService;
-	List<CodeableConcept> modifier;
-	List<CodeableConcept> programCode;
-	Quantity quantity;
-	Money unitPrice;
-	double factor;
-	Element elementFactor;
-	Money net;
-	List<Reference> udi;
-	List<int> noteNumber;
-	List<Element> elementNoteNumber;
-	List<ExplanationOfBenefit_Adjudication> adjudication;
-
-ExplanationOfBenefit_SubDetail(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-this.revenue,
-this.category,
-@required this.productOrService,
-this.modifier,
-this.programCode,
-this.quantity,
-this.unitPrice,
-this.factor,
-this.elementFactor,
-this.net,
-this.udi,
-this.noteNumber,
-this.elementNoteNumber,
-this.adjudication,
-});
-
-  factory ExplanationOfBenefit_SubDetail.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_SubDetailFromJson(json);
+  factory ExplanationOfBenefit_SubDetail.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_SubDetailFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_SubDetailToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_AddItem {
+  static Future<ExplanationOfBenefit_AddItem> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<int> itemSequence,
+    List<Element> elementItemSequence,
+    List<int> detailSequence,
+    List<Element> elementDetailSequence,
+    List<int> subDetailSequence,
+    List<Element> elementSubDetailSequence,
+    List<Reference> provider,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    List<CodeableConcept> programCode,
+    String servicedDate,
+    Element elementServicedDate,
+    Period servicedPeriod,
+    CodeableConcept locationCodeableConcept,
+    Address locationAddress,
+    Reference locationReference,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    CodeableConcept bodySite,
+    List<CodeableConcept> subSite,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_Detail1> detail,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_AddItem newExplanationOfBenefit_AddItem =
+        new ExplanationOfBenefit_AddItem(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_AddItem'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      itemSequence: itemSequence,
+      elementItemSequence: elementItemSequence,
+      detailSequence: detailSequence,
+      elementDetailSequence: elementDetailSequence,
+      subDetailSequence: subDetailSequence,
+      elementSubDetailSequence: elementSubDetailSequence,
+      provider: provider,
+      productOrService: productOrService,
+      modifier: modifier,
+      programCode: programCode,
+      servicedDate: servicedDate,
+      elementServicedDate: elementServicedDate,
+      servicedPeriod: servicedPeriod,
+      locationCodeableConcept: locationCodeableConcept,
+      locationAddress: locationAddress,
+      locationReference: locationReference,
+      quantity: quantity,
+      unitPrice: unitPrice,
+      factor: factor,
+      elementFactor: elementFactor,
+      net: net,
+      bodySite: bodySite,
+      subSite: subSite,
+      noteNumber: noteNumber,
+      elementNoteNumber: elementNoteNumber,
+      adjudication: adjudication,
+      detail: detail,
+    );
+    return newExplanationOfBenefit_AddItem;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_AddItem{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<int> itemSequence;
+  List<Element> elementItemSequence;
+  List<int> detailSequence;
+  List<Element> elementDetailSequence;
+  List<int> subDetailSequence;
+  List<Element> elementSubDetailSequence;
+  List<Reference> provider;
+  CodeableConcept productOrService;
+  List<CodeableConcept> modifier;
+  List<CodeableConcept> programCode;
+  String servicedDate;
+  Element elementServicedDate;
+  Period servicedPeriod;
+  CodeableConcept locationCodeableConcept;
+  Address locationAddress;
+  Reference locationReference;
+  Quantity quantity;
+  Money unitPrice;
+  double factor;
+  Element elementFactor;
+  Money net;
+  CodeableConcept bodySite;
+  List<CodeableConcept> subSite;
+  List<int> noteNumber;
+  List<Element> elementNoteNumber;
+  List<ExplanationOfBenefit_Adjudication> adjudication;
+  List<ExplanationOfBenefit_Detail1> detail;
 
-	static Future<ExplanationOfBenefit_AddItem> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<int> itemSequence,
-	List<Element> elementItemSequence,
-	List<int> detailSequence,
-	List<Element> elementDetailSequence,
-	List<int> subDetailSequence,
-	List<Element> elementSubDetailSequence,
-	List<Reference> provider,
-	CodeableConcept productOrService,
-	List<CodeableConcept> modifier,
-	List<CodeableConcept> programCode,
-	String servicedDate,
-	Element elementServicedDate,
-	Period servicedPeriod,
-	CodeableConcept locationCodeableConcept,
-	Address locationAddress,
-	Reference locationReference,
-	Quantity quantity,
-	Money unitPrice,
-	double factor,
-	Element elementFactor,
-	Money net,
-	CodeableConcept bodySite,
-	List<CodeableConcept> subSite,
-	List<int> noteNumber,
-	List<Element> elementNoteNumber,
-	List<ExplanationOfBenefit_Adjudication> adjudication,
-	List<ExplanationOfBenefit_Detail1> detail,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_AddItem newExplanationOfBenefit_AddItem = new ExplanationOfBenefit_AddItem(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_AddItem'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	itemSequence: itemSequence,
-	elementItemSequence: elementItemSequence,
-	detailSequence: detailSequence,
-	elementDetailSequence: elementDetailSequence,
-	subDetailSequence: subDetailSequence,
-	elementSubDetailSequence: elementSubDetailSequence,
-	provider: provider,
-	productOrService: productOrService,
-	modifier: modifier,
-	programCode: programCode,
-	servicedDate: servicedDate,
-	elementServicedDate: elementServicedDate,
-	servicedPeriod: servicedPeriod,
-	locationCodeableConcept: locationCodeableConcept,
-	locationAddress: locationAddress,
-	locationReference: locationReference,
-	quantity: quantity,
-	unitPrice: unitPrice,
-	factor: factor,
-	elementFactor: elementFactor,
-	net: net,
-	bodySite: bodySite,
-	subSite: subSite,
-	noteNumber: noteNumber,
-	elementNoteNumber: elementNoteNumber,
-	adjudication: adjudication,
-	detail: detail,
-);
-	return newExplanationOfBenefit_AddItem;
-}
+  ExplanationOfBenefit_AddItem({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.itemSequence,
+    this.elementItemSequence,
+    this.detailSequence,
+    this.elementDetailSequence,
+    this.subDetailSequence,
+    this.elementSubDetailSequence,
+    this.provider,
+    @required this.productOrService,
+    this.modifier,
+    this.programCode,
+    this.servicedDate,
+    this.elementServicedDate,
+    this.servicedPeriod,
+    this.locationCodeableConcept,
+    this.locationAddress,
+    this.locationReference,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.bodySite,
+    this.subSite,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.detail,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<int> itemSequence;
-	List<Element> elementItemSequence;
-	List<int> detailSequence;
-	List<Element> elementDetailSequence;
-	List<int> subDetailSequence;
-	List<Element> elementSubDetailSequence;
-	List<Reference> provider;
-	CodeableConcept productOrService;
-	List<CodeableConcept> modifier;
-	List<CodeableConcept> programCode;
-	String servicedDate;
-	Element elementServicedDate;
-	Period servicedPeriod;
-	CodeableConcept locationCodeableConcept;
-	Address locationAddress;
-	Reference locationReference;
-	Quantity quantity;
-	Money unitPrice;
-	double factor;
-	Element elementFactor;
-	Money net;
-	CodeableConcept bodySite;
-	List<CodeableConcept> subSite;
-	List<int> noteNumber;
-	List<Element> elementNoteNumber;
-	List<ExplanationOfBenefit_Adjudication> adjudication;
-	List<ExplanationOfBenefit_Detail1> detail;
-
-ExplanationOfBenefit_AddItem(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.itemSequence,
-this.elementItemSequence,
-this.detailSequence,
-this.elementDetailSequence,
-this.subDetailSequence,
-this.elementSubDetailSequence,
-this.provider,
-@required this.productOrService,
-this.modifier,
-this.programCode,
-this.servicedDate,
-this.elementServicedDate,
-this.servicedPeriod,
-this.locationCodeableConcept,
-this.locationAddress,
-this.locationReference,
-this.quantity,
-this.unitPrice,
-this.factor,
-this.elementFactor,
-this.net,
-this.bodySite,
-this.subSite,
-this.noteNumber,
-this.elementNoteNumber,
-this.adjudication,
-this.detail,
-});
-
-  factory ExplanationOfBenefit_AddItem.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_AddItemFromJson(json);
+  factory ExplanationOfBenefit_AddItem.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_AddItemFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_AddItemToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Detail1 {
+  static Future<ExplanationOfBenefit_Detail1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+    List<ExplanationOfBenefit_SubDetail1> subDetail,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Detail1 newExplanationOfBenefit_Detail1 =
+        new ExplanationOfBenefit_Detail1(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Detail1'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      productOrService: productOrService,
+      modifier: modifier,
+      quantity: quantity,
+      unitPrice: unitPrice,
+      factor: factor,
+      elementFactor: elementFactor,
+      net: net,
+      noteNumber: noteNumber,
+      elementNoteNumber: elementNoteNumber,
+      adjudication: adjudication,
+      subDetail: subDetail,
+    );
+    return newExplanationOfBenefit_Detail1;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Detail1{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept productOrService;
+  List<CodeableConcept> modifier;
+  Quantity quantity;
+  Money unitPrice;
+  double factor;
+  Element elementFactor;
+  Money net;
+  List<int> noteNumber;
+  List<Element> elementNoteNumber;
+  List<ExplanationOfBenefit_Adjudication> adjudication;
+  List<ExplanationOfBenefit_SubDetail1> subDetail;
 
-	static Future<ExplanationOfBenefit_Detail1> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept productOrService,
-	List<CodeableConcept> modifier,
-	Quantity quantity,
-	Money unitPrice,
-	double factor,
-	Element elementFactor,
-	Money net,
-	List<int> noteNumber,
-	List<Element> elementNoteNumber,
-	List<ExplanationOfBenefit_Adjudication> adjudication,
-	List<ExplanationOfBenefit_SubDetail1> subDetail,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Detail1 newExplanationOfBenefit_Detail1 = new ExplanationOfBenefit_Detail1(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Detail1'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	productOrService: productOrService,
-	modifier: modifier,
-	quantity: quantity,
-	unitPrice: unitPrice,
-	factor: factor,
-	elementFactor: elementFactor,
-	net: net,
-	noteNumber: noteNumber,
-	elementNoteNumber: elementNoteNumber,
-	adjudication: adjudication,
-	subDetail: subDetail,
-);
-	return newExplanationOfBenefit_Detail1;
-}
+  ExplanationOfBenefit_Detail1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.productOrService,
+    this.modifier,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+    this.subDetail,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept productOrService;
-	List<CodeableConcept> modifier;
-	Quantity quantity;
-	Money unitPrice;
-	double factor;
-	Element elementFactor;
-	Money net;
-	List<int> noteNumber;
-	List<Element> elementNoteNumber;
-	List<ExplanationOfBenefit_Adjudication> adjudication;
-	List<ExplanationOfBenefit_SubDetail1> subDetail;
-
-ExplanationOfBenefit_Detail1(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.productOrService,
-this.modifier,
-this.quantity,
-this.unitPrice,
-this.factor,
-this.elementFactor,
-this.net,
-this.noteNumber,
-this.elementNoteNumber,
-this.adjudication,
-this.subDetail,
-});
-
-  factory ExplanationOfBenefit_Detail1.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_Detail1FromJson(json);
+  factory ExplanationOfBenefit_Detail1.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_Detail1FromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_Detail1ToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_SubDetail1 {
+  static Future<ExplanationOfBenefit_SubDetail1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept productOrService,
+    List<CodeableConcept> modifier,
+    Quantity quantity,
+    Money unitPrice,
+    double factor,
+    Element elementFactor,
+    Money net,
+    List<int> noteNumber,
+    List<Element> elementNoteNumber,
+    List<ExplanationOfBenefit_Adjudication> adjudication,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_SubDetail1 newExplanationOfBenefit_SubDetail1 =
+        new ExplanationOfBenefit_SubDetail1(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail1'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      productOrService: productOrService,
+      modifier: modifier,
+      quantity: quantity,
+      unitPrice: unitPrice,
+      factor: factor,
+      elementFactor: elementFactor,
+      net: net,
+      noteNumber: noteNumber,
+      elementNoteNumber: elementNoteNumber,
+      adjudication: adjudication,
+    );
+    return newExplanationOfBenefit_SubDetail1;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_SubDetail1{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept productOrService;
+  List<CodeableConcept> modifier;
+  Quantity quantity;
+  Money unitPrice;
+  double factor;
+  Element elementFactor;
+  Money net;
+  List<int> noteNumber;
+  List<Element> elementNoteNumber;
+  List<ExplanationOfBenefit_Adjudication> adjudication;
 
-	static Future<ExplanationOfBenefit_SubDetail1> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept productOrService,
-	List<CodeableConcept> modifier,
-	Quantity quantity,
-	Money unitPrice,
-	double factor,
-	Element elementFactor,
-	Money net,
-	List<int> noteNumber,
-	List<Element> elementNoteNumber,
-	List<ExplanationOfBenefit_Adjudication> adjudication,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_SubDetail1 newExplanationOfBenefit_SubDetail1 = new ExplanationOfBenefit_SubDetail1(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_SubDetail1'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	productOrService: productOrService,
-	modifier: modifier,
-	quantity: quantity,
-	unitPrice: unitPrice,
-	factor: factor,
-	elementFactor: elementFactor,
-	net: net,
-	noteNumber: noteNumber,
-	elementNoteNumber: elementNoteNumber,
-	adjudication: adjudication,
-);
-	return newExplanationOfBenefit_SubDetail1;
+  ExplanationOfBenefit_SubDetail1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.productOrService,
+    this.modifier,
+    this.quantity,
+    this.unitPrice,
+    this.factor,
+    this.elementFactor,
+    this.net,
+    this.noteNumber,
+    this.elementNoteNumber,
+    this.adjudication,
+  });
+
+  factory ExplanationOfBenefit_SubDetail1.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_SubDetail1FromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ExplanationOfBenefit_SubDetail1ToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept productOrService;
-	List<CodeableConcept> modifier;
-	Quantity quantity;
-	Money unitPrice;
-	double factor;
-	Element elementFactor;
-	Money net;
-	List<int> noteNumber;
-	List<Element> elementNoteNumber;
-	List<ExplanationOfBenefit_Adjudication> adjudication;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Total {
+  static Future<ExplanationOfBenefit_Total> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    Money amount,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Total newExplanationOfBenefit_Total =
+        new ExplanationOfBenefit_Total(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Total'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      category: category,
+      amount: amount,
+    );
+    return newExplanationOfBenefit_Total;
+  }
 
-ExplanationOfBenefit_SubDetail1(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.productOrService,
-this.modifier,
-this.quantity,
-this.unitPrice,
-this.factor,
-this.elementFactor,
-this.net,
-this.noteNumber,
-this.elementNoteNumber,
-this.adjudication,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept category;
+  Money amount;
 
-  factory ExplanationOfBenefit_SubDetail1.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_SubDetail1FromJson(json);
-  Map<String, dynamic> toJson() => _$ExplanationOfBenefit_SubDetail1ToJson(this);
-}
+  ExplanationOfBenefit_Total({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.category,
+    @required this.amount,
+  });
 
-
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Total{
-
-	static Future<ExplanationOfBenefit_Total> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept category,
-	Money amount,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Total newExplanationOfBenefit_Total = new ExplanationOfBenefit_Total(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Total'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	category: category,
-	amount: amount,
-);
-	return newExplanationOfBenefit_Total;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept category;
-	Money amount;
-
-ExplanationOfBenefit_Total(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.category,
-@required this.amount,
-});
-
-  factory ExplanationOfBenefit_Total.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_TotalFromJson(json);
+  factory ExplanationOfBenefit_Total.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_TotalFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_TotalToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Payment {
+  static Future<ExplanationOfBenefit_Payment> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Money adjustment,
+    CodeableConcept adjustmentReason,
+    String date,
+    Element elementDate,
+    Money amount,
+    Identifier identifier,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Payment newExplanationOfBenefit_Payment =
+        new ExplanationOfBenefit_Payment(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Payment'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      adjustment: adjustment,
+      adjustmentReason: adjustmentReason,
+      date: date,
+      elementDate: elementDate,
+      amount: amount,
+      identifier: identifier,
+    );
+    return newExplanationOfBenefit_Payment;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Payment{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept type;
+  Money adjustment;
+  CodeableConcept adjustmentReason;
+  String date;
+  Element elementDate;
+  Money amount;
+  Identifier identifier;
 
-	static Future<ExplanationOfBenefit_Payment> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept type,
-	Money adjustment,
-	CodeableConcept adjustmentReason,
-	String date,
-	Element elementDate,
-	Money amount,
-	Identifier identifier,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Payment newExplanationOfBenefit_Payment = new ExplanationOfBenefit_Payment(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Payment'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	adjustment: adjustment,
-	adjustmentReason: adjustmentReason,
-	date: date,
-	elementDate: elementDate,
-	amount: amount,
-	identifier: identifier,
-);
-	return newExplanationOfBenefit_Payment;
-}
+  ExplanationOfBenefit_Payment({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.adjustment,
+    this.adjustmentReason,
+    this.date,
+    this.elementDate,
+    this.amount,
+    this.identifier,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept type;
-	Money adjustment;
-	CodeableConcept adjustmentReason;
-	String date;
-	Element elementDate;
-	Money amount;
-	Identifier identifier;
-
-ExplanationOfBenefit_Payment(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.adjustment,
-this.adjustmentReason,
-this.date,
-this.elementDate,
-this.amount,
-this.identifier,
-});
-
-  factory ExplanationOfBenefit_Payment.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_PaymentFromJson(json);
+  factory ExplanationOfBenefit_Payment.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_PaymentFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_PaymentToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_ProcessNote {
+  static Future<ExplanationOfBenefit_ProcessNote> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int number,
+    Element elementNumber,
+    String type,
+    Element elementType,
+    String text,
+    Element elementText,
+    CodeableConcept language,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_ProcessNote newExplanationOfBenefit_ProcessNote =
+        new ExplanationOfBenefit_ProcessNote(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_ProcessNote'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      number: number,
+      elementNumber: elementNumber,
+      type: type,
+      elementType: elementType,
+      text: text,
+      elementText: elementText,
+      language: language,
+    );
+    return newExplanationOfBenefit_ProcessNote;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_ProcessNote{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int number;
+  Element elementNumber;
+  String type;
+  Element elementType;
+  String text;
+  Element elementText;
+  CodeableConcept language;
 
-	static Future<ExplanationOfBenefit_ProcessNote> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int number,
-	Element elementNumber,
-	String type,
-	Element elementType,
-	String text,
-	Element elementText,
-	CodeableConcept language,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_ProcessNote newExplanationOfBenefit_ProcessNote = new ExplanationOfBenefit_ProcessNote(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_ProcessNote'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	number: number,
-	elementNumber: elementNumber,
-	type: type,
-	elementType: elementType,
-	text: text,
-	elementText: elementText,
-	language: language,
-);
-	return newExplanationOfBenefit_ProcessNote;
+  ExplanationOfBenefit_ProcessNote({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.number,
+    this.elementNumber,
+    this.type,
+    this.elementType,
+    this.text,
+    this.elementText,
+    this.language,
+  });
+
+  factory ExplanationOfBenefit_ProcessNote.fromJson(
+          Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_ProcessNoteFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ExplanationOfBenefit_ProcessNoteToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int number;
-	Element elementNumber;
-	String type;
-	Element elementType;
-	String text;
-	Element elementText;
-	CodeableConcept language;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_BenefitBalance {
+  static Future<ExplanationOfBenefit_BenefitBalance> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept category,
+    bool excluded,
+    Element elementExcluded,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+    CodeableConcept network,
+    CodeableConcept unit,
+    CodeableConcept term,
+    List<ExplanationOfBenefit_Financial> financial,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_BenefitBalance newExplanationOfBenefit_BenefitBalance =
+        new ExplanationOfBenefit_BenefitBalance(
+      id: id ??
+          await fhirDb.newResourceId('ExplanationOfBenefit_BenefitBalance'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      category: category,
+      excluded: excluded,
+      elementExcluded: elementExcluded,
+      name: name,
+      elementName: elementName,
+      description: description,
+      elementDescription: elementDescription,
+      network: network,
+      unit: unit,
+      term: term,
+      financial: financial,
+    );
+    return newExplanationOfBenefit_BenefitBalance;
+  }
 
-ExplanationOfBenefit_ProcessNote(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.number,
-this.elementNumber,
-this.type,
-this.elementType,
-this.text,
-this.elementText,
-this.language,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept category;
+  bool excluded;
+  Element elementExcluded;
+  String name;
+  Element elementName;
+  String description;
+  Element elementDescription;
+  CodeableConcept network;
+  CodeableConcept unit;
+  CodeableConcept term;
+  List<ExplanationOfBenefit_Financial> financial;
 
-  factory ExplanationOfBenefit_ProcessNote.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_ProcessNoteFromJson(json);
-  Map<String, dynamic> toJson() => _$ExplanationOfBenefit_ProcessNoteToJson(this);
+  ExplanationOfBenefit_BenefitBalance({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.category,
+    this.excluded,
+    this.elementExcluded,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+    this.network,
+    this.unit,
+    this.term,
+    this.financial,
+  });
+
+  factory ExplanationOfBenefit_BenefitBalance.fromJson(
+          Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_BenefitBalanceFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ExplanationOfBenefit_BenefitBalanceToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ExplanationOfBenefit_Financial {
+  static Future<ExplanationOfBenefit_Financial> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    int allowedUnsignedInt,
+    Element elementAllowedUnsignedInt,
+    String allowedString,
+    Element elementAllowedString,
+    Money allowedMoney,
+    int usedUnsignedInt,
+    Element elementUsedUnsignedInt,
+    Money usedMoney,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ExplanationOfBenefit_Financial newExplanationOfBenefit_Financial =
+        new ExplanationOfBenefit_Financial(
+      id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Financial'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      allowedUnsignedInt: allowedUnsignedInt,
+      elementAllowedUnsignedInt: elementAllowedUnsignedInt,
+      allowedString: allowedString,
+      elementAllowedString: elementAllowedString,
+      allowedMoney: allowedMoney,
+      usedUnsignedInt: usedUnsignedInt,
+      elementUsedUnsignedInt: elementUsedUnsignedInt,
+      usedMoney: usedMoney,
+    );
+    return newExplanationOfBenefit_Financial;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_BenefitBalance{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept type;
+  int allowedUnsignedInt;
+  Element elementAllowedUnsignedInt;
+  String allowedString;
+  Element elementAllowedString;
+  Money allowedMoney;
+  int usedUnsignedInt;
+  Element elementUsedUnsignedInt;
+  Money usedMoney;
 
-	static Future<ExplanationOfBenefit_BenefitBalance> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept category,
-	bool excluded,
-	Element elementExcluded,
-	String name,
-	Element elementName,
-	String description,
-	Element elementDescription,
-	CodeableConcept network,
-	CodeableConcept unit,
-	CodeableConcept term,
-	List<ExplanationOfBenefit_Financial> financial,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_BenefitBalance newExplanationOfBenefit_BenefitBalance = new ExplanationOfBenefit_BenefitBalance(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_BenefitBalance'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	category: category,
-	excluded: excluded,
-	elementExcluded: elementExcluded,
-	name: name,
-	elementName: elementName,
-	description: description,
-	elementDescription: elementDescription,
-	network: network,
-	unit: unit,
-	term: term,
-	financial: financial,
-);
-	return newExplanationOfBenefit_BenefitBalance;
-}
+  ExplanationOfBenefit_Financial({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.allowedUnsignedInt,
+    this.elementAllowedUnsignedInt,
+    this.allowedString,
+    this.elementAllowedString,
+    this.allowedMoney,
+    this.usedUnsignedInt,
+    this.elementUsedUnsignedInt,
+    this.usedMoney,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept category;
-	bool excluded;
-	Element elementExcluded;
-	String name;
-	Element elementName;
-	String description;
-	Element elementDescription;
-	CodeableConcept network;
-	CodeableConcept unit;
-	CodeableConcept term;
-	List<ExplanationOfBenefit_Financial> financial;
-
-ExplanationOfBenefit_BenefitBalance(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.category,
-this.excluded,
-this.elementExcluded,
-this.name,
-this.elementName,
-this.description,
-this.elementDescription,
-this.network,
-this.unit,
-this.term,
-this.financial,
-});
-
-  factory ExplanationOfBenefit_BenefitBalance.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_BenefitBalanceFromJson(json);
-  Map<String, dynamic> toJson() => _$ExplanationOfBenefit_BenefitBalanceToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class ExplanationOfBenefit_Financial{
-
-	static Future<ExplanationOfBenefit_Financial> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept type,
-	int allowedUnsignedInt,
-	Element elementAllowedUnsignedInt,
-	String allowedString,
-	Element elementAllowedString,
-	Money allowedMoney,
-	int usedUnsignedInt,
-	Element elementUsedUnsignedInt,
-	Money usedMoney,
-}) async {
-var fhirDb = new DatabaseHelper();
-ExplanationOfBenefit_Financial newExplanationOfBenefit_Financial = new ExplanationOfBenefit_Financial(
-	id: id ?? await fhirDb.newResourceId('ExplanationOfBenefit_Financial'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	allowedUnsignedInt: allowedUnsignedInt,
-	elementAllowedUnsignedInt: elementAllowedUnsignedInt,
-	allowedString: allowedString,
-	elementAllowedString: elementAllowedString,
-	allowedMoney: allowedMoney,
-	usedUnsignedInt: usedUnsignedInt,
-	elementUsedUnsignedInt: elementUsedUnsignedInt,
-	usedMoney: usedMoney,
-);
-	return newExplanationOfBenefit_Financial;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept type;
-	int allowedUnsignedInt;
-	Element elementAllowedUnsignedInt;
-	String allowedString;
-	Element elementAllowedString;
-	Money allowedMoney;
-	int usedUnsignedInt;
-	Element elementUsedUnsignedInt;
-	Money usedMoney;
-
-ExplanationOfBenefit_Financial(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.type,
-this.allowedUnsignedInt,
-this.elementAllowedUnsignedInt,
-this.allowedString,
-this.elementAllowedString,
-this.allowedMoney,
-this.usedUnsignedInt,
-this.elementUsedUnsignedInt,
-this.usedMoney,
-});
-
-  factory ExplanationOfBenefit_Financial.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_FinancialFromJson(json);
+  factory ExplanationOfBenefit_Financial.fromJson(Map<String, dynamic> json) =>
+      _$ExplanationOfBenefit_FinancialFromJson(json);
   Map<String, dynamic> toJson() => _$ExplanationOfBenefit_FinancialToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -1787,8 +1801,9 @@ ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1980,75 +1995,92 @@ ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ExplanationOfBenefitToJson(
-        ExplanationOfBenefit instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'type': instance.type?.toJson(),
-      'subType': instance.subType?.toJson(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'patient': instance.patient?.toJson(),
-      'billablePeriod': instance.billablePeriod?.toJson(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'enterer': instance.enterer?.toJson(),
-      'insurer': instance.insurer?.toJson(),
-      'provider': instance.provider?.toJson(),
-      'priority': instance.priority?.toJson(),
-      'fundsReserveRequested': instance.fundsReserveRequested?.toJson(),
-      'fundsReserve': instance.fundsReserve?.toJson(),
-      'related': instance.related?.map((e) => e?.toJson())?.toList(),
-      'prescription': instance.prescription?.toJson(),
-      'originalPrescription': instance.originalPrescription?.toJson(),
-      'payee': instance.payee?.toJson(),
-      'referral': instance.referral?.toJson(),
-      'facility': instance.facility?.toJson(),
-      'claim': instance.claim?.toJson(),
-      'claimResponse': instance.claimResponse?.toJson(),
-      'outcome': instance.outcome,
-      'elementOutcome': instance.elementOutcome?.toJson(),
-      'disposition': instance.disposition,
-      'elementDisposition': instance.elementDisposition?.toJson(),
-      'preAuthRef': instance.preAuthRef,
-      'elementPreAuthRef':
-          instance.elementPreAuthRef?.map((e) => e?.toJson())?.toList(),
-      'preAuthRefPeriod':
-          instance.preAuthRefPeriod?.map((e) => e?.toJson())?.toList(),
-      'careTeam': instance.careTeam?.map((e) => e?.toJson())?.toList(),
-      'supportingInfo':
-          instance.supportingInfo?.map((e) => e?.toJson())?.toList(),
-      'diagnosis': instance.diagnosis?.map((e) => e?.toJson())?.toList(),
-      'procedure': instance.procedure?.map((e) => e?.toJson())?.toList(),
-      'precedence': instance.precedence,
-      'elementPrecedence': instance.elementPrecedence?.toJson(),
-      'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
-      'accident': instance.accident?.toJson(),
-      'item': instance.item?.map((e) => e?.toJson())?.toList(),
-      'addItem': instance.addItem?.map((e) => e?.toJson())?.toList(),
-      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
-      'total': instance.total?.map((e) => e?.toJson())?.toList(),
-      'payment': instance.payment?.toJson(),
-      'formCode': instance.formCode?.toJson(),
-      'form': instance.form?.toJson(),
-      'processNote': instance.processNote?.map((e) => e?.toJson())?.toList(),
-      'benefitPeriod': instance.benefitPeriod?.toJson(),
-      'benefitBalance':
-          instance.benefitBalance?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('subType', instance.subType?.toJson());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('patient', instance.patient?.toJson());
+  writeNotNull('billablePeriod', instance.billablePeriod?.toJson());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('enterer', instance.enterer?.toJson());
+  writeNotNull('insurer', instance.insurer?.toJson());
+  writeNotNull('provider', instance.provider?.toJson());
+  writeNotNull('priority', instance.priority?.toJson());
+  writeNotNull(
+      'fundsReserveRequested', instance.fundsReserveRequested?.toJson());
+  writeNotNull('fundsReserve', instance.fundsReserve?.toJson());
+  writeNotNull('related', instance.related?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prescription', instance.prescription?.toJson());
+  writeNotNull('originalPrescription', instance.originalPrescription?.toJson());
+  writeNotNull('payee', instance.payee?.toJson());
+  writeNotNull('referral', instance.referral?.toJson());
+  writeNotNull('facility', instance.facility?.toJson());
+  writeNotNull('claim', instance.claim?.toJson());
+  writeNotNull('claimResponse', instance.claimResponse?.toJson());
+  writeNotNull('outcome', instance.outcome);
+  writeNotNull('elementOutcome', instance.elementOutcome?.toJson());
+  writeNotNull('disposition', instance.disposition);
+  writeNotNull('elementDisposition', instance.elementDisposition?.toJson());
+  writeNotNull('preAuthRef', instance.preAuthRef);
+  writeNotNull('elementPreAuthRef',
+      instance.elementPreAuthRef?.map((e) => e?.toJson())?.toList());
+  writeNotNull('preAuthRefPeriod',
+      instance.preAuthRefPeriod?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'careTeam', instance.careTeam?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supportingInfo',
+      instance.supportingInfo?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'diagnosis', instance.diagnosis?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'procedure', instance.procedure?.map((e) => e?.toJson())?.toList());
+  writeNotNull('precedence', instance.precedence);
+  writeNotNull('elementPrecedence', instance.elementPrecedence?.toJson());
+  writeNotNull(
+      'insurance', instance.insurance?.map((e) => e?.toJson())?.toList());
+  writeNotNull('accident', instance.accident?.toJson());
+  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
+  writeNotNull('addItem', instance.addItem?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'adjudication', instance.adjudication?.map((e) => e?.toJson())?.toList());
+  writeNotNull('total', instance.total?.map((e) => e?.toJson())?.toList());
+  writeNotNull('payment', instance.payment?.toJson());
+  writeNotNull('formCode', instance.formCode?.toJson());
+  writeNotNull('form', instance.form?.toJson());
+  writeNotNull(
+      'processNote', instance.processNote?.map((e) => e?.toJson())?.toList());
+  writeNotNull('benefitPeriod', instance.benefitPeriod?.toJson());
+  writeNotNull('benefitBalance',
+      instance.benefitBalance?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_Related _$ExplanationOfBenefit_RelatedFromJson(
     Map<String, dynamic> json) {
@@ -2076,16 +2108,25 @@ ExplanationOfBenefit_Related _$ExplanationOfBenefit_RelatedFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_RelatedToJson(
-        ExplanationOfBenefit_Related instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'claim': instance.claim?.toJson(),
-      'relationship': instance.relationship?.toJson(),
-      'reference': instance.reference?.toJson(),
-    };
+    ExplanationOfBenefit_Related instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('claim', instance.claim?.toJson());
+  writeNotNull('relationship', instance.relationship?.toJson());
+  writeNotNull('reference', instance.reference?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_Payee _$ExplanationOfBenefit_PayeeFromJson(
     Map<String, dynamic> json) {
@@ -2109,15 +2150,24 @@ ExplanationOfBenefit_Payee _$ExplanationOfBenefit_PayeeFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_PayeeToJson(
-        ExplanationOfBenefit_Payee instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'party': instance.party?.toJson(),
-    };
+    ExplanationOfBenefit_Payee instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('party', instance.party?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_CareTeam _$ExplanationOfBenefit_CareTeamFromJson(
     Map<String, dynamic> json) {
@@ -2153,20 +2203,29 @@ ExplanationOfBenefit_CareTeam _$ExplanationOfBenefit_CareTeamFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_CareTeamToJson(
-        ExplanationOfBenefit_CareTeam instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'provider': instance.provider?.toJson(),
-      'responsible': instance.responsible,
-      'elementResponsible': instance.elementResponsible?.toJson(),
-      'role': instance.role?.toJson(),
-      'qualification': instance.qualification?.toJson(),
-    };
+    ExplanationOfBenefit_CareTeam instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('provider', instance.provider?.toJson());
+  writeNotNull('responsible', instance.responsible);
+  writeNotNull('elementResponsible', instance.elementResponsible?.toJson());
+  writeNotNull('role', instance.role?.toJson());
+  writeNotNull('qualification', instance.qualification?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_SupportingInfo
     _$ExplanationOfBenefit_SupportingInfoFromJson(Map<String, dynamic> json) {
@@ -2221,28 +2280,37 @@ ExplanationOfBenefit_SupportingInfo
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_SupportingInfoToJson(
-        ExplanationOfBenefit_SupportingInfo instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'category': instance.category?.toJson(),
-      'code': instance.code?.toJson(),
-      'timingDate': instance.timingDate,
-      'elementTimingDate': instance.elementTimingDate?.toJson(),
-      'timingPeriod': instance.timingPeriod?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueAttachment': instance.valueAttachment?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-      'reason': instance.reason?.toJson(),
-    };
+    ExplanationOfBenefit_SupportingInfo instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('timingDate', instance.timingDate);
+  writeNotNull('elementTimingDate', instance.elementTimingDate?.toJson());
+  writeNotNull('timingPeriod', instance.timingPeriod?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueAttachment', instance.valueAttachment?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  writeNotNull('reason', instance.reason?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_Diagnosis _$ExplanationOfBenefit_DiagnosisFromJson(
     Map<String, dynamic> json) {
@@ -2283,20 +2351,30 @@ ExplanationOfBenefit_Diagnosis _$ExplanationOfBenefit_DiagnosisFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_DiagnosisToJson(
-        ExplanationOfBenefit_Diagnosis instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'diagnosisCodeableConcept': instance.diagnosisCodeableConcept?.toJson(),
-      'diagnosisReference': instance.diagnosisReference?.toJson(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'onAdmission': instance.onAdmission?.toJson(),
-      'packageCode': instance.packageCode?.toJson(),
-    };
+    ExplanationOfBenefit_Diagnosis instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull(
+      'diagnosisCodeableConcept', instance.diagnosisCodeableConcept?.toJson());
+  writeNotNull('diagnosisReference', instance.diagnosisReference?.toJson());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('onAdmission', instance.onAdmission?.toJson());
+  writeNotNull('packageCode', instance.packageCode?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_Procedure _$ExplanationOfBenefit_ProcedureFromJson(
     Map<String, dynamic> json) {
@@ -2339,21 +2417,31 @@ ExplanationOfBenefit_Procedure _$ExplanationOfBenefit_ProcedureFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_ProcedureToJson(
-        ExplanationOfBenefit_Procedure instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'procedureCodeableConcept': instance.procedureCodeableConcept?.toJson(),
-      'procedureReference': instance.procedureReference?.toJson(),
-      'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_Procedure instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull(
+      'procedureCodeableConcept', instance.procedureCodeableConcept?.toJson());
+  writeNotNull('procedureReference', instance.procedureReference?.toJson());
+  writeNotNull('udi', instance.udi?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_Insurance _$ExplanationOfBenefit_InsuranceFromJson(
     Map<String, dynamic> json) {
@@ -2383,19 +2471,28 @@ ExplanationOfBenefit_Insurance _$ExplanationOfBenefit_InsuranceFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_InsuranceToJson(
-        ExplanationOfBenefit_Insurance instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'focal': instance.focal,
-      'elementFocal': instance.elementFocal?.toJson(),
-      'coverage': instance.coverage?.toJson(),
-      'preAuthRef': instance.preAuthRef,
-      'elementPreAuthRef':
-          instance.elementPreAuthRef?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_Insurance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('focal', instance.focal);
+  writeNotNull('elementFocal', instance.elementFocal?.toJson());
+  writeNotNull('coverage', instance.coverage?.toJson());
+  writeNotNull('preAuthRef', instance.preAuthRef);
+  writeNotNull('elementPreAuthRef',
+      instance.elementPreAuthRef?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_Accident _$ExplanationOfBenefit_AccidentFromJson(
     Map<String, dynamic> json) {
@@ -2426,18 +2523,27 @@ ExplanationOfBenefit_Accident _$ExplanationOfBenefit_AccidentFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_AccidentToJson(
-        ExplanationOfBenefit_Accident instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'date': instance.date,
-      'elementDate': instance.elementDate?.toJson(),
-      'type': instance.type?.toJson(),
-      'locationAddress': instance.locationAddress?.toJson(),
-      'locationReference': instance.locationReference?.toJson(),
-    };
+    ExplanationOfBenefit_Accident instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('date', instance.date);
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('locationAddress', instance.locationAddress?.toJson());
+  writeNotNull('locationReference', instance.locationReference?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_Item _$ExplanationOfBenefit_ItemFromJson(
     Map<String, dynamic> json) {
@@ -2565,53 +2671,66 @@ ExplanationOfBenefit_Item _$ExplanationOfBenefit_ItemFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_ItemToJson(
-        ExplanationOfBenefit_Item instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'careTeamSequence': instance.careTeamSequence,
-      'elementCareTeamSequence':
-          instance.elementCareTeamSequence?.map((e) => e?.toJson())?.toList(),
-      'diagnosisSequence': instance.diagnosisSequence,
-      'elementDiagnosisSequence':
-          instance.elementDiagnosisSequence?.map((e) => e?.toJson())?.toList(),
-      'procedureSequence': instance.procedureSequence,
-      'elementProcedureSequence':
-          instance.elementProcedureSequence?.map((e) => e?.toJson())?.toList(),
-      'informationSequence': instance.informationSequence,
-      'elementInformationSequence': instance.elementInformationSequence
-          ?.map((e) => e?.toJson())
-          ?.toList(),
-      'revenue': instance.revenue?.toJson(),
-      'category': instance.category?.toJson(),
-      'productOrService': instance.productOrService?.toJson(),
-      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
-      'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
-      'servicedDate': instance.servicedDate,
-      'elementServicedDate': instance.elementServicedDate?.toJson(),
-      'servicedPeriod': instance.servicedPeriod?.toJson(),
-      'locationCodeableConcept': instance.locationCodeableConcept?.toJson(),
-      'locationAddress': instance.locationAddress?.toJson(),
-      'locationReference': instance.locationReference?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'unitPrice': instance.unitPrice?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'net': instance.net?.toJson(),
-      'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
-      'bodySite': instance.bodySite?.toJson(),
-      'subSite': instance.subSite?.map((e) => e?.toJson())?.toList(),
-      'encounter': instance.encounter?.map((e) => e?.toJson())?.toList(),
-      'noteNumber': instance.noteNumber,
-      'elementNoteNumber':
-          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
-      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
-      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_Item instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('careTeamSequence', instance.careTeamSequence);
+  writeNotNull('elementCareTeamSequence',
+      instance.elementCareTeamSequence?.map((e) => e?.toJson())?.toList());
+  writeNotNull('diagnosisSequence', instance.diagnosisSequence);
+  writeNotNull('elementDiagnosisSequence',
+      instance.elementDiagnosisSequence?.map((e) => e?.toJson())?.toList());
+  writeNotNull('procedureSequence', instance.procedureSequence);
+  writeNotNull('elementProcedureSequence',
+      instance.elementProcedureSequence?.map((e) => e?.toJson())?.toList());
+  writeNotNull('informationSequence', instance.informationSequence);
+  writeNotNull('elementInformationSequence',
+      instance.elementInformationSequence?.map((e) => e?.toJson())?.toList());
+  writeNotNull('revenue', instance.revenue?.toJson());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('productOrService', instance.productOrService?.toJson());
+  writeNotNull(
+      'modifier', instance.modifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'programCode', instance.programCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('servicedDate', instance.servicedDate);
+  writeNotNull('elementServicedDate', instance.elementServicedDate?.toJson());
+  writeNotNull('servicedPeriod', instance.servicedPeriod?.toJson());
+  writeNotNull(
+      'locationCodeableConcept', instance.locationCodeableConcept?.toJson());
+  writeNotNull('locationAddress', instance.locationAddress?.toJson());
+  writeNotNull('locationReference', instance.locationReference?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('unitPrice', instance.unitPrice?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('net', instance.net?.toJson());
+  writeNotNull('udi', instance.udi?.map((e) => e?.toJson())?.toList());
+  writeNotNull('bodySite', instance.bodySite?.toJson());
+  writeNotNull('subSite', instance.subSite?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'encounter', instance.encounter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('noteNumber', instance.noteNumber);
+  writeNotNull('elementNoteNumber',
+      instance.elementNoteNumber?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'adjudication', instance.adjudication?.map((e) => e?.toJson())?.toList());
+  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_Adjudication _$ExplanationOfBenefit_AdjudicationFromJson(
     Map<String, dynamic> json) {
@@ -2642,18 +2761,27 @@ ExplanationOfBenefit_Adjudication _$ExplanationOfBenefit_AdjudicationFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_AdjudicationToJson(
-        ExplanationOfBenefit_Adjudication instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'category': instance.category?.toJson(),
-      'reason': instance.reason?.toJson(),
-      'amount': instance.amount?.toJson(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-    };
+    ExplanationOfBenefit_Adjudication instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('reason', instance.reason?.toJson());
+  writeNotNull('amount', instance.amount?.toJson());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_Detail _$ExplanationOfBenefit_DetailFromJson(
     Map<String, dynamic> json) {
@@ -2729,31 +2857,44 @@ ExplanationOfBenefit_Detail _$ExplanationOfBenefit_DetailFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_DetailToJson(
-        ExplanationOfBenefit_Detail instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'revenue': instance.revenue?.toJson(),
-      'category': instance.category?.toJson(),
-      'productOrService': instance.productOrService?.toJson(),
-      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
-      'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
-      'quantity': instance.quantity?.toJson(),
-      'unitPrice': instance.unitPrice?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'net': instance.net?.toJson(),
-      'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
-      'noteNumber': instance.noteNumber,
-      'elementNoteNumber':
-          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
-      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
-      'subDetail': instance.subDetail?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_Detail instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('revenue', instance.revenue?.toJson());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('productOrService', instance.productOrService?.toJson());
+  writeNotNull(
+      'modifier', instance.modifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'programCode', instance.programCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('unitPrice', instance.unitPrice?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('net', instance.net?.toJson());
+  writeNotNull('udi', instance.udi?.map((e) => e?.toJson())?.toList());
+  writeNotNull('noteNumber', instance.noteNumber);
+  writeNotNull('elementNoteNumber',
+      instance.elementNoteNumber?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'adjudication', instance.adjudication?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'subDetail', instance.subDetail?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_SubDetail _$ExplanationOfBenefit_SubDetailFromJson(
     Map<String, dynamic> json) {
@@ -2823,30 +2964,42 @@ ExplanationOfBenefit_SubDetail _$ExplanationOfBenefit_SubDetailFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_SubDetailToJson(
-        ExplanationOfBenefit_SubDetail instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'revenue': instance.revenue?.toJson(),
-      'category': instance.category?.toJson(),
-      'productOrService': instance.productOrService?.toJson(),
-      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
-      'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
-      'quantity': instance.quantity?.toJson(),
-      'unitPrice': instance.unitPrice?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'net': instance.net?.toJson(),
-      'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
-      'noteNumber': instance.noteNumber,
-      'elementNoteNumber':
-          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
-      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_SubDetail instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('revenue', instance.revenue?.toJson());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('productOrService', instance.productOrService?.toJson());
+  writeNotNull(
+      'modifier', instance.modifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'programCode', instance.programCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('unitPrice', instance.unitPrice?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('net', instance.net?.toJson());
+  writeNotNull('udi', instance.udi?.map((e) => e?.toJson())?.toList());
+  writeNotNull('noteNumber', instance.noteNumber);
+  writeNotNull('elementNoteNumber',
+      instance.elementNoteNumber?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'adjudication', instance.adjudication?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_AddItem _$ExplanationOfBenefit_AddItemFromJson(
     Map<String, dynamic> json) {
@@ -2954,44 +3107,58 @@ ExplanationOfBenefit_AddItem _$ExplanationOfBenefit_AddItemFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_AddItemToJson(
-        ExplanationOfBenefit_AddItem instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'itemSequence': instance.itemSequence,
-      'elementItemSequence':
-          instance.elementItemSequence?.map((e) => e?.toJson())?.toList(),
-      'detailSequence': instance.detailSequence,
-      'elementDetailSequence':
-          instance.elementDetailSequence?.map((e) => e?.toJson())?.toList(),
-      'subDetailSequence': instance.subDetailSequence,
-      'elementSubDetailSequence':
-          instance.elementSubDetailSequence?.map((e) => e?.toJson())?.toList(),
-      'provider': instance.provider?.map((e) => e?.toJson())?.toList(),
-      'productOrService': instance.productOrService?.toJson(),
-      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
-      'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
-      'servicedDate': instance.servicedDate,
-      'elementServicedDate': instance.elementServicedDate?.toJson(),
-      'servicedPeriod': instance.servicedPeriod?.toJson(),
-      'locationCodeableConcept': instance.locationCodeableConcept?.toJson(),
-      'locationAddress': instance.locationAddress?.toJson(),
-      'locationReference': instance.locationReference?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'unitPrice': instance.unitPrice?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'net': instance.net?.toJson(),
-      'bodySite': instance.bodySite?.toJson(),
-      'subSite': instance.subSite?.map((e) => e?.toJson())?.toList(),
-      'noteNumber': instance.noteNumber,
-      'elementNoteNumber':
-          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
-      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
-      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_AddItem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('itemSequence', instance.itemSequence);
+  writeNotNull('elementItemSequence',
+      instance.elementItemSequence?.map((e) => e?.toJson())?.toList());
+  writeNotNull('detailSequence', instance.detailSequence);
+  writeNotNull('elementDetailSequence',
+      instance.elementDetailSequence?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subDetailSequence', instance.subDetailSequence);
+  writeNotNull('elementSubDetailSequence',
+      instance.elementSubDetailSequence?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'provider', instance.provider?.map((e) => e?.toJson())?.toList());
+  writeNotNull('productOrService', instance.productOrService?.toJson());
+  writeNotNull(
+      'modifier', instance.modifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'programCode', instance.programCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('servicedDate', instance.servicedDate);
+  writeNotNull('elementServicedDate', instance.elementServicedDate?.toJson());
+  writeNotNull('servicedPeriod', instance.servicedPeriod?.toJson());
+  writeNotNull(
+      'locationCodeableConcept', instance.locationCodeableConcept?.toJson());
+  writeNotNull('locationAddress', instance.locationAddress?.toJson());
+  writeNotNull('locationReference', instance.locationReference?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('unitPrice', instance.unitPrice?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('net', instance.net?.toJson());
+  writeNotNull('bodySite', instance.bodySite?.toJson());
+  writeNotNull('subSite', instance.subSite?.map((e) => e?.toJson())?.toList());
+  writeNotNull('noteNumber', instance.noteNumber);
+  writeNotNull('elementNoteNumber',
+      instance.elementNoteNumber?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'adjudication', instance.adjudication?.map((e) => e?.toJson())?.toList());
+  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_Detail1 _$ExplanationOfBenefit_Detail1FromJson(
     Map<String, dynamic> json) {
@@ -3048,25 +3215,37 @@ ExplanationOfBenefit_Detail1 _$ExplanationOfBenefit_Detail1FromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_Detail1ToJson(
-        ExplanationOfBenefit_Detail1 instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'productOrService': instance.productOrService?.toJson(),
-      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
-      'quantity': instance.quantity?.toJson(),
-      'unitPrice': instance.unitPrice?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'net': instance.net?.toJson(),
-      'noteNumber': instance.noteNumber,
-      'elementNoteNumber':
-          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
-      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
-      'subDetail': instance.subDetail?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_Detail1 instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('productOrService', instance.productOrService?.toJson());
+  writeNotNull(
+      'modifier', instance.modifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('unitPrice', instance.unitPrice?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('net', instance.net?.toJson());
+  writeNotNull('noteNumber', instance.noteNumber);
+  writeNotNull('elementNoteNumber',
+      instance.elementNoteNumber?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'adjudication', instance.adjudication?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'subDetail', instance.subDetail?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_SubDetail1 _$ExplanationOfBenefit_SubDetail1FromJson(
     Map<String, dynamic> json) {
@@ -3117,24 +3296,35 @@ ExplanationOfBenefit_SubDetail1 _$ExplanationOfBenefit_SubDetail1FromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_SubDetail1ToJson(
-        ExplanationOfBenefit_SubDetail1 instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'productOrService': instance.productOrService?.toJson(),
-      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
-      'quantity': instance.quantity?.toJson(),
-      'unitPrice': instance.unitPrice?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'net': instance.net?.toJson(),
-      'noteNumber': instance.noteNumber,
-      'elementNoteNumber':
-          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
-      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_SubDetail1 instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('productOrService', instance.productOrService?.toJson());
+  writeNotNull(
+      'modifier', instance.modifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('unitPrice', instance.unitPrice?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('net', instance.net?.toJson());
+  writeNotNull('noteNumber', instance.noteNumber);
+  writeNotNull('elementNoteNumber',
+      instance.elementNoteNumber?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'adjudication', instance.adjudication?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_Total _$ExplanationOfBenefit_TotalFromJson(
     Map<String, dynamic> json) {
@@ -3158,15 +3348,24 @@ ExplanationOfBenefit_Total _$ExplanationOfBenefit_TotalFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_TotalToJson(
-        ExplanationOfBenefit_Total instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'category': instance.category?.toJson(),
-      'amount': instance.amount?.toJson(),
-    };
+    ExplanationOfBenefit_Total instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('amount', instance.amount?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_Payment _$ExplanationOfBenefit_PaymentFromJson(
     Map<String, dynamic> json) {
@@ -3204,20 +3403,29 @@ ExplanationOfBenefit_Payment _$ExplanationOfBenefit_PaymentFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_PaymentToJson(
-        ExplanationOfBenefit_Payment instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'adjustment': instance.adjustment?.toJson(),
-      'adjustmentReason': instance.adjustmentReason?.toJson(),
-      'date': instance.date,
-      'elementDate': instance.elementDate?.toJson(),
-      'amount': instance.amount?.toJson(),
-      'identifier': instance.identifier?.toJson(),
-    };
+    ExplanationOfBenefit_Payment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('adjustment', instance.adjustment?.toJson());
+  writeNotNull('adjustmentReason', instance.adjustmentReason?.toJson());
+  writeNotNull('date', instance.date);
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('amount', instance.amount?.toJson());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_ProcessNote _$ExplanationOfBenefit_ProcessNoteFromJson(
     Map<String, dynamic> json) {
@@ -3250,20 +3458,29 @@ ExplanationOfBenefit_ProcessNote _$ExplanationOfBenefit_ProcessNoteFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_ProcessNoteToJson(
-        ExplanationOfBenefit_ProcessNote instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'number': instance.number,
-      'elementNumber': instance.elementNumber?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-      'language': instance.language?.toJson(),
-    };
+    ExplanationOfBenefit_ProcessNote instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('number', instance.number);
+  writeNotNull('elementNumber', instance.elementNumber?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  writeNotNull('language', instance.language?.toJson());
+  return val;
+}
 
 ExplanationOfBenefit_BenefitBalance
     _$ExplanationOfBenefit_BenefitBalanceFromJson(Map<String, dynamic> json) {
@@ -3311,24 +3528,34 @@ ExplanationOfBenefit_BenefitBalance
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_BenefitBalanceToJson(
-        ExplanationOfBenefit_BenefitBalance instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'category': instance.category?.toJson(),
-      'excluded': instance.excluded,
-      'elementExcluded': instance.elementExcluded?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'network': instance.network?.toJson(),
-      'unit': instance.unit?.toJson(),
-      'term': instance.term?.toJson(),
-      'financial': instance.financial?.map((e) => e?.toJson())?.toList(),
-    };
+    ExplanationOfBenefit_BenefitBalance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('excluded', instance.excluded);
+  writeNotNull('elementExcluded', instance.elementExcluded?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('network', instance.network?.toJson());
+  writeNotNull('unit', instance.unit?.toJson());
+  writeNotNull('term', instance.term?.toJson());
+  writeNotNull(
+      'financial', instance.financial?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ExplanationOfBenefit_Financial _$ExplanationOfBenefit_FinancialFromJson(
     Map<String, dynamic> json) {
@@ -3370,19 +3597,30 @@ ExplanationOfBenefit_Financial _$ExplanationOfBenefit_FinancialFromJson(
 }
 
 Map<String, dynamic> _$ExplanationOfBenefit_FinancialToJson(
-        ExplanationOfBenefit_Financial instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'allowedUnsignedInt': instance.allowedUnsignedInt,
-      'elementAllowedUnsignedInt': instance.elementAllowedUnsignedInt?.toJson(),
-      'allowedString': instance.allowedString,
-      'elementAllowedString': instance.elementAllowedString?.toJson(),
-      'allowedMoney': instance.allowedMoney?.toJson(),
-      'usedUnsignedInt': instance.usedUnsignedInt,
-      'elementUsedUnsignedInt': instance.elementUsedUnsignedInt?.toJson(),
-      'usedMoney': instance.usedMoney?.toJson(),
-    };
+    ExplanationOfBenefit_Financial instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('allowedUnsignedInt', instance.allowedUnsignedInt);
+  writeNotNull('elementAllowedUnsignedInt',
+      instance.elementAllowedUnsignedInt?.toJson());
+  writeNotNull('allowedString', instance.allowedString);
+  writeNotNull('elementAllowedString', instance.elementAllowedString?.toJson());
+  writeNotNull('allowedMoney', instance.allowedMoney?.toJson());
+  writeNotNull('usedUnsignedInt', instance.usedUnsignedInt);
+  writeNotNull(
+      'elementUsedUnsignedInt', instance.elementUsedUnsignedInt?.toJson());
+  writeNotNull('usedMoney', instance.usedMoney?.toJson());
+  return val;
+}

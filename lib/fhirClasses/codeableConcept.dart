@@ -5,46 +5,44 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class CodeableConcept {
+  static Future<CodeableConcept> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Coding> coding,
+    String text,
+    Element elementText,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    CodeableConcept newCodeableConcept = new CodeableConcept(
+      id: id ?? await fhirDb.newResourceId('CodeableConcept'),
+      extension: extension,
+      coding: coding,
+      text: text,
+      elementText: elementText,
+    );
+    return newCodeableConcept;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class CodeableConcept{
+  String id;
+  List<Extension> extension;
+  List<Coding> coding;
+  String text;
+  Element elementText;
 
-	static Future<CodeableConcept> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Coding> coding,
-	String text,
-	Element elementText,
-}) async {
-var fhirDb = new DatabaseHelper();
-CodeableConcept newCodeableConcept = new CodeableConcept(
-	id: id ?? await fhirDb.newResourceId('CodeableConcept'),
-	extension: extension,
-	coding: coding,
-	text: text,
-	elementText: elementText,
-);
-	return newCodeableConcept;
-}
+  CodeableConcept({
+    this.id,
+    this.extension,
+    this.coding,
+    this.text,
+    this.elementText,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Coding> coding;
-	String text;
-	Element elementText;
-
-CodeableConcept(
-	{this.id,
-this.extension,
-this.coding,
-this.text,
-this.elementText,
-});
-
-  factory CodeableConcept.fromJson(Map<String, dynamic> json) => _$CodeableConceptFromJson(json);
+  factory CodeableConcept.fromJson(Map<String, dynamic> json) =>
+      _$CodeableConceptFromJson(json);
   Map<String, dynamic> toJson() => _$CodeableConceptToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -69,11 +67,20 @@ CodeableConcept _$CodeableConceptFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodeableConceptToJson(CodeableConcept instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'coding': instance.coding?.map((e) => e?.toJson())?.toList(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-    };
+Map<String, dynamic> _$CodeableConceptToJson(CodeableConcept instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('coding', instance.coding?.map((e) => e?.toJson())?.toList());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  return val;
+}

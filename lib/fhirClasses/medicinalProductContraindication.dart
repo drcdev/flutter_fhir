@@ -10,151 +10,162 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicinalProductContraindication {
+  static Future<MedicinalProductContraindication> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> subject,
+    CodeableConcept disease,
+    CodeableConcept diseaseStatus,
+    List<CodeableConcept> comorbidity,
+    List<Reference> therapeuticIndication,
+    List<MedicinalProductContraindication_OtherTherapy> otherTherapy,
+    List<Population> population,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicinalProductContraindication newMedicinalProductContraindication =
+        new MedicinalProductContraindication(
+      resourceType: 'MedicinalProductContraindication',
+      id: id ?? await fhirDb.newResourceId('MedicinalProductContraindication'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      subject: subject,
+      disease: disease,
+      diseaseStatus: diseaseStatus,
+      comorbidity: comorbidity,
+      therapeuticIndication: therapeuticIndication,
+      otherTherapy: otherTherapy,
+      population: population,
+    );
+    newMedicinalProductContraindication.meta.createdAt = DateTime.now();
+    newMedicinalProductContraindication.meta.lastUpdated =
+        newMedicinalProductContraindication.meta.createdAt;
+    int saved = await fhirDb.saveResource(newMedicinalProductContraindication);
+    return newMedicinalProductContraindication;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MedicinalProductContraindication{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<MedicinalProductContraindication> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Reference> subject,
-	CodeableConcept disease,
-	CodeableConcept diseaseStatus,
-	List<CodeableConcept> comorbidity,
-	List<Reference> therapeuticIndication,
-	List<MedicinalProductContraindication_OtherTherapy> otherTherapy,
-	List<Population> population,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicinalProductContraindication newMedicinalProductContraindication = new MedicinalProductContraindication(
-	resourceType: 'MedicinalProductContraindication',
-	id: id ?? await fhirDb.newResourceId('MedicinalProductContraindication'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	subject: subject,
-	disease: disease,
-	diseaseStatus: diseaseStatus,
-	comorbidity: comorbidity,
-	therapeuticIndication: therapeuticIndication,
-	otherTherapy: otherTherapy,
-	population: population,
-);
-	newMedicinalProductContraindication.meta.createdAt = DateTime.now();
-	newMedicinalProductContraindication.meta.lastUpdated = newMedicinalProductContraindication.meta.createdAt;
-	int saved = await fhirDb.saveResource(newMedicinalProductContraindication);
-	 return newMedicinalProductContraindication;
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
+
+  String resourceType = 'MedicinalProductContraindication';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Reference> subject;
+  CodeableConcept disease;
+  CodeableConcept diseaseStatus;
+  List<CodeableConcept> comorbidity;
+  List<Reference> therapeuticIndication;
+  List<MedicinalProductContraindication_OtherTherapy> otherTherapy;
+  List<Population> population;
+
+  MedicinalProductContraindication({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.subject,
+    this.disease,
+    this.diseaseStatus,
+    this.comorbidity,
+    this.therapeuticIndication,
+    this.otherTherapy,
+    this.population,
+  });
+
+  factory MedicinalProductContraindication.fromJson(
+          Map<String, dynamic> json) =>
+      _$MedicinalProductContraindicationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$MedicinalProductContraindicationToJson(this);
 }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicinalProductContraindication_OtherTherapy {
+  static Future<MedicinalProductContraindication_OtherTherapy> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept therapyRelationshipType,
+    CodeableConcept medicationCodeableConcept,
+    Reference medicationReference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicinalProductContraindication_OtherTherapy
+        newMedicinalProductContraindication_OtherTherapy =
+        new MedicinalProductContraindication_OtherTherapy(
+      id: id ??
+          await fhirDb
+              .newResourceId('MedicinalProductContraindication_OtherTherapy'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      therapyRelationshipType: therapyRelationshipType,
+      medicationCodeableConcept: medicationCodeableConcept,
+      medicationReference: medicationReference,
+    );
+    return newMedicinalProductContraindication_OtherTherapy;
+  }
+
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept therapyRelationshipType;
+  CodeableConcept medicationCodeableConcept;
+  Reference medicationReference;
+
+  MedicinalProductContraindication_OtherTherapy({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.therapyRelationshipType,
+    this.medicationCodeableConcept,
+    this.medicationReference,
+  });
+
+  factory MedicinalProductContraindication_OtherTherapy.fromJson(
+          Map<String, dynamic> json) =>
+      _$MedicinalProductContraindication_OtherTherapyFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$MedicinalProductContraindication_OtherTherapyToJson(this);
 }
-
-	String resourceType= 'MedicinalProductContraindication';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Reference> subject;
-	CodeableConcept disease;
-	CodeableConcept diseaseStatus;
-	List<CodeableConcept> comorbidity;
-	List<Reference> therapeuticIndication;
-	List<MedicinalProductContraindication_OtherTherapy> otherTherapy;
-	List<Population> population;
-
-MedicinalProductContraindication(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.subject,
-this.disease,
-this.diseaseStatus,
-this.comorbidity,
-this.therapeuticIndication,
-this.otherTherapy,
-this.population,
-});
-
-  factory MedicinalProductContraindication.fromJson(Map<String, dynamic> json) => _$MedicinalProductContraindicationFromJson(json);
-  Map<String, dynamic> toJson() => _$MedicinalProductContraindicationToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class MedicinalProductContraindication_OtherTherapy{
-
-	static Future<MedicinalProductContraindication_OtherTherapy> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept therapyRelationshipType,
-	CodeableConcept medicationCodeableConcept,
-	Reference medicationReference,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicinalProductContraindication_OtherTherapy newMedicinalProductContraindication_OtherTherapy = new MedicinalProductContraindication_OtherTherapy(
-	id: id ?? await fhirDb.newResourceId('MedicinalProductContraindication_OtherTherapy'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	therapyRelationshipType: therapyRelationshipType,
-	medicationCodeableConcept: medicationCodeableConcept,
-	medicationReference: medicationReference,
-);
-	return newMedicinalProductContraindication_OtherTherapy;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept therapyRelationshipType;
-	CodeableConcept medicationCodeableConcept;
-	Reference medicationReference;
-
-MedicinalProductContraindication_OtherTherapy(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.therapyRelationshipType,
-this.medicationCodeableConcept,
-this.medicationReference,
-});
-
-  factory MedicinalProductContraindication_OtherTherapy.fromJson(Map<String, dynamic> json) => _$MedicinalProductContraindication_OtherTherapyFromJson(json);
-  Map<String, dynamic> toJson() => _$MedicinalProductContraindication_OtherTherapyToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -182,8 +193,9 @@ MedicinalProductContraindication _$MedicinalProductContraindicationFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -227,29 +239,41 @@ MedicinalProductContraindication _$MedicinalProductContraindicationFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductContraindicationToJson(
-        MedicinalProductContraindication instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
-      'disease': instance.disease?.toJson(),
-      'diseaseStatus': instance.diseaseStatus?.toJson(),
-      'comorbidity': instance.comorbidity?.map((e) => e?.toJson())?.toList(),
-      'therapeuticIndication':
-          instance.therapeuticIndication?.map((e) => e?.toJson())?.toList(),
-      'otherTherapy': instance.otherTherapy?.map((e) => e?.toJson())?.toList(),
-      'population': instance.population?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicinalProductContraindication instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.map((e) => e?.toJson())?.toList());
+  writeNotNull('disease', instance.disease?.toJson());
+  writeNotNull('diseaseStatus', instance.diseaseStatus?.toJson());
+  writeNotNull(
+      'comorbidity', instance.comorbidity?.map((e) => e?.toJson())?.toList());
+  writeNotNull('therapeuticIndication',
+      instance.therapeuticIndication?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'otherTherapy', instance.otherTherapy?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'population', instance.population?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 MedicinalProductContraindication_OtherTherapy
     _$MedicinalProductContraindication_OtherTherapyFromJson(
@@ -280,13 +304,24 @@ MedicinalProductContraindication_OtherTherapy
 }
 
 Map<String, dynamic> _$MedicinalProductContraindication_OtherTherapyToJson(
-        MedicinalProductContraindication_OtherTherapy instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'therapyRelationshipType': instance.therapyRelationshipType?.toJson(),
-      'medicationCodeableConcept': instance.medicationCodeableConcept?.toJson(),
-      'medicationReference': instance.medicationReference?.toJson(),
-    };
+    MedicinalProductContraindication_OtherTherapy instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'therapyRelationshipType', instance.therapyRelationshipType?.toJson());
+  writeNotNull('medicationCodeableConcept',
+      instance.medicationCodeableConcept?.toJson());
+  writeNotNull('medicationReference', instance.medicationReference?.toJson());
+  return val;
+}

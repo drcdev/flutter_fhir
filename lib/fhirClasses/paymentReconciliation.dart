@@ -12,283 +12,288 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class PaymentReconciliation {
+  static Future<PaymentReconciliation> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Period period,
+    DateTime created,
+    Element elementCreated,
+    Reference paymentIssuer,
+    Reference request,
+    Reference requestor,
+    String outcome,
+    Element elementOutcome,
+    String disposition,
+    Element elementDisposition,
+    String paymentDate,
+    Element elementPaymentDate,
+    Money paymentAmount,
+    Identifier paymentIdentifier,
+    List<PaymentReconciliation_Detail> detail,
+    CodeableConcept formCode,
+    List<PaymentReconciliation_ProcessNote> processNote,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    PaymentReconciliation newPaymentReconciliation = new PaymentReconciliation(
+      resourceType: 'PaymentReconciliation',
+      id: id ?? await fhirDb.newResourceId('PaymentReconciliation'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      period: period,
+      created: created,
+      elementCreated: elementCreated,
+      paymentIssuer: paymentIssuer,
+      request: request,
+      requestor: requestor,
+      outcome: outcome,
+      elementOutcome: elementOutcome,
+      disposition: disposition,
+      elementDisposition: elementDisposition,
+      paymentDate: paymentDate,
+      elementPaymentDate: elementPaymentDate,
+      paymentAmount: paymentAmount,
+      paymentIdentifier: paymentIdentifier,
+      detail: detail,
+      formCode: formCode,
+      processNote: processNote,
+    );
+    newPaymentReconciliation.meta.createdAt = DateTime.now();
+    newPaymentReconciliation.meta.lastUpdated =
+        newPaymentReconciliation.meta.createdAt;
+    int saved = await fhirDb.saveResource(newPaymentReconciliation);
+    return newPaymentReconciliation;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class PaymentReconciliation{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<PaymentReconciliation> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	Period period,
-	DateTime created,
-	Element elementCreated,
-	Reference paymentIssuer,
-	Reference request,
-	Reference requestor,
-	String outcome,
-	Element elementOutcome,
-	String disposition,
-	Element elementDisposition,
-	String paymentDate,
-	Element elementPaymentDate,
-	Money paymentAmount,
-	Identifier paymentIdentifier,
-	List<PaymentReconciliation_Detail> detail,
-	CodeableConcept formCode,
-	List<PaymentReconciliation_ProcessNote> processNote,
-}) async {
-var fhirDb = new DatabaseHelper();
-PaymentReconciliation newPaymentReconciliation = new PaymentReconciliation(
-	resourceType: 'PaymentReconciliation',
-	id: id ?? await fhirDb.newResourceId('PaymentReconciliation'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	period: period,
-	created: created,
-	elementCreated: elementCreated,
-	paymentIssuer: paymentIssuer,
-	request: request,
-	requestor: requestor,
-	outcome: outcome,
-	elementOutcome: elementOutcome,
-	disposition: disposition,
-	elementDisposition: elementDisposition,
-	paymentDate: paymentDate,
-	elementPaymentDate: elementPaymentDate,
-	paymentAmount: paymentAmount,
-	paymentIdentifier: paymentIdentifier,
-	detail: detail,
-	formCode: formCode,
-	processNote: processNote,
-);
-	newPaymentReconciliation.meta.createdAt = DateTime.now();
-	newPaymentReconciliation.meta.lastUpdated = newPaymentReconciliation.meta.createdAt;
-	int saved = await fhirDb.saveResource(newPaymentReconciliation);
-	 return newPaymentReconciliation;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'PaymentReconciliation';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  Period period;
+  DateTime created;
+  Element elementCreated;
+  Reference paymentIssuer;
+  Reference request;
+  Reference requestor;
+  String outcome;
+  Element elementOutcome;
+  String disposition;
+  Element elementDisposition;
+  String paymentDate;
+  Element elementPaymentDate;
+  Money paymentAmount;
+  Identifier paymentIdentifier;
+  List<PaymentReconciliation_Detail> detail;
+  CodeableConcept formCode;
+  List<PaymentReconciliation_ProcessNote> processNote;
 
-	String resourceType= 'PaymentReconciliation';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	Period period;
-	DateTime created;
-	Element elementCreated;
-	Reference paymentIssuer;
-	Reference request;
-	Reference requestor;
-	String outcome;
-	Element elementOutcome;
-	String disposition;
-	Element elementDisposition;
-	String paymentDate;
-	Element elementPaymentDate;
-	Money paymentAmount;
-	Identifier paymentIdentifier;
-	List<PaymentReconciliation_Detail> detail;
-	CodeableConcept formCode;
-	List<PaymentReconciliation_ProcessNote> processNote;
+  PaymentReconciliation({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.period,
+    this.created,
+    this.elementCreated,
+    this.paymentIssuer,
+    this.request,
+    this.requestor,
+    this.outcome,
+    this.elementOutcome,
+    this.disposition,
+    this.elementDisposition,
+    this.paymentDate,
+    this.elementPaymentDate,
+    @required this.paymentAmount,
+    this.paymentIdentifier,
+    this.detail,
+    this.formCode,
+    this.processNote,
+  });
 
-PaymentReconciliation(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.period,
-this.created,
-this.elementCreated,
-this.paymentIssuer,
-this.request,
-this.requestor,
-this.outcome,
-this.elementOutcome,
-this.disposition,
-this.elementDisposition,
-this.paymentDate,
-this.elementPaymentDate,
-@required this.paymentAmount,
-this.paymentIdentifier,
-this.detail,
-this.formCode,
-this.processNote,
-});
-
-  factory PaymentReconciliation.fromJson(Map<String, dynamic> json) => _$PaymentReconciliationFromJson(json);
+  factory PaymentReconciliation.fromJson(Map<String, dynamic> json) =>
+      _$PaymentReconciliationFromJson(json);
   Map<String, dynamic> toJson() => _$PaymentReconciliationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class PaymentReconciliation_Detail {
+  static Future<PaymentReconciliation_Detail> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    Identifier predecessor,
+    CodeableConcept type,
+    Reference request,
+    Reference submitter,
+    Reference response,
+    String date,
+    Element elementDate,
+    Reference responsible,
+    Reference payee,
+    Money amount,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    PaymentReconciliation_Detail newPaymentReconciliation_Detail =
+        new PaymentReconciliation_Detail(
+      id: id ?? await fhirDb.newResourceId('PaymentReconciliation_Detail'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      predecessor: predecessor,
+      type: type,
+      request: request,
+      submitter: submitter,
+      response: response,
+      date: date,
+      elementDate: elementDate,
+      responsible: responsible,
+      payee: payee,
+      amount: amount,
+    );
+    return newPaymentReconciliation_Detail;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class PaymentReconciliation_Detail{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Identifier identifier;
+  Identifier predecessor;
+  CodeableConcept type;
+  Reference request;
+  Reference submitter;
+  Reference response;
+  String date;
+  Element elementDate;
+  Reference responsible;
+  Reference payee;
+  Money amount;
 
-	static Future<PaymentReconciliation_Detail> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Identifier identifier,
-	Identifier predecessor,
-	CodeableConcept type,
-	Reference request,
-	Reference submitter,
-	Reference response,
-	String date,
-	Element elementDate,
-	Reference responsible,
-	Reference payee,
-	Money amount,
-}) async {
-var fhirDb = new DatabaseHelper();
-PaymentReconciliation_Detail newPaymentReconciliation_Detail = new PaymentReconciliation_Detail(
-	id: id ?? await fhirDb.newResourceId('PaymentReconciliation_Detail'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	predecessor: predecessor,
-	type: type,
-	request: request,
-	submitter: submitter,
-	response: response,
-	date: date,
-	elementDate: elementDate,
-	responsible: responsible,
-	payee: payee,
-	amount: amount,
-);
-	return newPaymentReconciliation_Detail;
-}
+  PaymentReconciliation_Detail({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.predecessor,
+    @required this.type,
+    this.request,
+    this.submitter,
+    this.response,
+    this.date,
+    this.elementDate,
+    this.responsible,
+    this.payee,
+    this.amount,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Identifier identifier;
-	Identifier predecessor;
-	CodeableConcept type;
-	Reference request;
-	Reference submitter;
-	Reference response;
-	String date;
-	Element elementDate;
-	Reference responsible;
-	Reference payee;
-	Money amount;
-
-PaymentReconciliation_Detail(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.predecessor,
-@required this.type,
-this.request,
-this.submitter,
-this.response,
-this.date,
-this.elementDate,
-this.responsible,
-this.payee,
-this.amount,
-});
-
-  factory PaymentReconciliation_Detail.fromJson(Map<String, dynamic> json) => _$PaymentReconciliation_DetailFromJson(json);
+  factory PaymentReconciliation_Detail.fromJson(Map<String, dynamic> json) =>
+      _$PaymentReconciliation_DetailFromJson(json);
   Map<String, dynamic> toJson() => _$PaymentReconciliation_DetailToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class PaymentReconciliation_ProcessNote {
+  static Future<PaymentReconciliation_ProcessNote> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String text,
+    Element elementText,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    PaymentReconciliation_ProcessNote newPaymentReconciliation_ProcessNote =
+        new PaymentReconciliation_ProcessNote(
+      id: id ?? await fhirDb.newResourceId('PaymentReconciliation_ProcessNote'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      text: text,
+      elementText: elementText,
+    );
+    return newPaymentReconciliation_ProcessNote;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class PaymentReconciliation_ProcessNote{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String type;
+  Element elementType;
+  String text;
+  Element elementText;
 
-	static Future<PaymentReconciliation_ProcessNote> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String type,
-	Element elementType,
-	String text,
-	Element elementText,
-}) async {
-var fhirDb = new DatabaseHelper();
-PaymentReconciliation_ProcessNote newPaymentReconciliation_ProcessNote = new PaymentReconciliation_ProcessNote(
-	id: id ?? await fhirDb.newResourceId('PaymentReconciliation_ProcessNote'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	elementType: elementType,
-	text: text,
-	elementText: elementText,
-);
-	return newPaymentReconciliation_ProcessNote;
+  PaymentReconciliation_ProcessNote({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.text,
+    this.elementText,
+  });
+
+  factory PaymentReconciliation_ProcessNote.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentReconciliation_ProcessNoteFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$PaymentReconciliation_ProcessNoteToJson(this);
 }
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String type;
-	Element elementType;
-	String text;
-	Element elementText;
-
-PaymentReconciliation_ProcessNote(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.elementType,
-this.text,
-this.elementText,
-});
-
-  factory PaymentReconciliation_ProcessNote.fromJson(Map<String, dynamic> json) => _$PaymentReconciliation_ProcessNoteFromJson(json);
-  Map<String, dynamic> toJson() => _$PaymentReconciliation_ProcessNoteToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -316,8 +321,9 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -390,41 +396,52 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
 }
 
 Map<String, dynamic> _$PaymentReconciliationToJson(
-        PaymentReconciliation instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'period': instance.period?.toJson(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'paymentIssuer': instance.paymentIssuer?.toJson(),
-      'request': instance.request?.toJson(),
-      'requestor': instance.requestor?.toJson(),
-      'outcome': instance.outcome,
-      'elementOutcome': instance.elementOutcome?.toJson(),
-      'disposition': instance.disposition,
-      'elementDisposition': instance.elementDisposition?.toJson(),
-      'paymentDate': instance.paymentDate,
-      'elementPaymentDate': instance.elementPaymentDate?.toJson(),
-      'paymentAmount': instance.paymentAmount?.toJson(),
-      'paymentIdentifier': instance.paymentIdentifier?.toJson(),
-      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
-      'formCode': instance.formCode?.toJson(),
-      'processNote': instance.processNote?.map((e) => e?.toJson())?.toList(),
-    };
+    PaymentReconciliation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('paymentIssuer', instance.paymentIssuer?.toJson());
+  writeNotNull('request', instance.request?.toJson());
+  writeNotNull('requestor', instance.requestor?.toJson());
+  writeNotNull('outcome', instance.outcome);
+  writeNotNull('elementOutcome', instance.elementOutcome?.toJson());
+  writeNotNull('disposition', instance.disposition);
+  writeNotNull('elementDisposition', instance.elementDisposition?.toJson());
+  writeNotNull('paymentDate', instance.paymentDate);
+  writeNotNull('elementPaymentDate', instance.elementPaymentDate?.toJson());
+  writeNotNull('paymentAmount', instance.paymentAmount?.toJson());
+  writeNotNull('paymentIdentifier', instance.paymentIdentifier?.toJson());
+  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
+  writeNotNull('formCode', instance.formCode?.toJson());
+  writeNotNull(
+      'processNote', instance.processNote?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 PaymentReconciliation_Detail _$PaymentReconciliation_DetailFromJson(
     Map<String, dynamic> json) {
@@ -473,24 +490,33 @@ PaymentReconciliation_Detail _$PaymentReconciliation_DetailFromJson(
 }
 
 Map<String, dynamic> _$PaymentReconciliation_DetailToJson(
-        PaymentReconciliation_Detail instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.toJson(),
-      'predecessor': instance.predecessor?.toJson(),
-      'type': instance.type?.toJson(),
-      'request': instance.request?.toJson(),
-      'submitter': instance.submitter?.toJson(),
-      'response': instance.response?.toJson(),
-      'date': instance.date,
-      'elementDate': instance.elementDate?.toJson(),
-      'responsible': instance.responsible?.toJson(),
-      'payee': instance.payee?.toJson(),
-      'amount': instance.amount?.toJson(),
-    };
+    PaymentReconciliation_Detail instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('predecessor', instance.predecessor?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('request', instance.request?.toJson());
+  writeNotNull('submitter', instance.submitter?.toJson());
+  writeNotNull('response', instance.response?.toJson());
+  writeNotNull('date', instance.date);
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('responsible', instance.responsible?.toJson());
+  writeNotNull('payee', instance.payee?.toJson());
+  writeNotNull('amount', instance.amount?.toJson());
+  return val;
+}
 
 PaymentReconciliation_ProcessNote _$PaymentReconciliation_ProcessNoteFromJson(
     Map<String, dynamic> json) {
@@ -516,14 +542,23 @@ PaymentReconciliation_ProcessNote _$PaymentReconciliation_ProcessNoteFromJson(
 }
 
 Map<String, dynamic> _$PaymentReconciliation_ProcessNoteToJson(
-        PaymentReconciliation_ProcessNote instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-    };
+    PaymentReconciliation_ProcessNote instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  return val;
+}

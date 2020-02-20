@@ -9,166 +9,162 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Dosage {
+  static Future<Dosage> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int sequence,
+    Element elementSequence,
+    String text,
+    Element elementText,
+    List<CodeableConcept> additionalInstruction,
+    String patientInstruction,
+    Element elementPatientInstruction,
+    Timing timing,
+    bool asNeededBoolean,
+    Element elementAsNeededBoolean,
+    CodeableConcept asNeededCodeableConcept,
+    CodeableConcept site,
+    CodeableConcept route,
+    CodeableConcept method,
+    List<Dosage_DoseAndRate> doseAndRate,
+    Ratio maxDosePerPeriod,
+    Quantity maxDosePerAdministration,
+    Quantity maxDosePerLifetime,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Dosage newDosage = new Dosage(
+      id: id ?? await fhirDb.newResourceId('Dosage'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      sequence: sequence,
+      elementSequence: elementSequence,
+      text: text,
+      elementText: elementText,
+      additionalInstruction: additionalInstruction,
+      patientInstruction: patientInstruction,
+      elementPatientInstruction: elementPatientInstruction,
+      timing: timing,
+      asNeededBoolean: asNeededBoolean,
+      elementAsNeededBoolean: elementAsNeededBoolean,
+      asNeededCodeableConcept: asNeededCodeableConcept,
+      site: site,
+      route: route,
+      method: method,
+      doseAndRate: doseAndRate,
+      maxDosePerPeriod: maxDosePerPeriod,
+      maxDosePerAdministration: maxDosePerAdministration,
+      maxDosePerLifetime: maxDosePerLifetime,
+    );
+    return newDosage;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Dosage{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int sequence;
+  Element elementSequence;
+  String text;
+  Element elementText;
+  List<CodeableConcept> additionalInstruction;
+  String patientInstruction;
+  Element elementPatientInstruction;
+  Timing timing;
+  bool asNeededBoolean;
+  Element elementAsNeededBoolean;
+  CodeableConcept asNeededCodeableConcept;
+  CodeableConcept site;
+  CodeableConcept route;
+  CodeableConcept method;
+  List<Dosage_DoseAndRate> doseAndRate;
+  Ratio maxDosePerPeriod;
+  Quantity maxDosePerAdministration;
+  Quantity maxDosePerLifetime;
 
-	static Future<Dosage> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int sequence,
-	Element elementSequence,
-	String text,
-	Element elementText,
-	List<CodeableConcept> additionalInstruction,
-	String patientInstruction,
-	Element elementPatientInstruction,
-	Timing timing,
-	bool asNeededBoolean,
-	Element elementAsNeededBoolean,
-	CodeableConcept asNeededCodeableConcept,
-	CodeableConcept site,
-	CodeableConcept route,
-	CodeableConcept method,
-	List<Dosage_DoseAndRate> doseAndRate,
-	Ratio maxDosePerPeriod,
-	Quantity maxDosePerAdministration,
-	Quantity maxDosePerLifetime,
-}) async {
-var fhirDb = new DatabaseHelper();
-Dosage newDosage = new Dosage(
-	id: id ?? await fhirDb.newResourceId('Dosage'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	sequence: sequence,
-	elementSequence: elementSequence,
-	text: text,
-	elementText: elementText,
-	additionalInstruction: additionalInstruction,
-	patientInstruction: patientInstruction,
-	elementPatientInstruction: elementPatientInstruction,
-	timing: timing,
-	asNeededBoolean: asNeededBoolean,
-	elementAsNeededBoolean: elementAsNeededBoolean,
-	asNeededCodeableConcept: asNeededCodeableConcept,
-	site: site,
-	route: route,
-	method: method,
-	doseAndRate: doseAndRate,
-	maxDosePerPeriod: maxDosePerPeriod,
-	maxDosePerAdministration: maxDosePerAdministration,
-	maxDosePerLifetime: maxDosePerLifetime,
-);
-	return newDosage;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int sequence;
-	Element elementSequence;
-	String text;
-	Element elementText;
-	List<CodeableConcept> additionalInstruction;
-	String patientInstruction;
-	Element elementPatientInstruction;
-	Timing timing;
-	bool asNeededBoolean;
-	Element elementAsNeededBoolean;
-	CodeableConcept asNeededCodeableConcept;
-	CodeableConcept site;
-	CodeableConcept route;
-	CodeableConcept method;
-	List<Dosage_DoseAndRate> doseAndRate;
-	Ratio maxDosePerPeriod;
-	Quantity maxDosePerAdministration;
-	Quantity maxDosePerLifetime;
-
-Dosage(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.sequence,
-this.elementSequence,
-this.text,
-this.elementText,
-this.additionalInstruction,
-this.patientInstruction,
-this.elementPatientInstruction,
-this.timing,
-this.asNeededBoolean,
-this.elementAsNeededBoolean,
-this.asNeededCodeableConcept,
-this.site,
-this.route,
-this.method,
-this.doseAndRate,
-this.maxDosePerPeriod,
-this.maxDosePerAdministration,
-this.maxDosePerLifetime,
-});
+  Dosage({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.sequence,
+    this.elementSequence,
+    this.text,
+    this.elementText,
+    this.additionalInstruction,
+    this.patientInstruction,
+    this.elementPatientInstruction,
+    this.timing,
+    this.asNeededBoolean,
+    this.elementAsNeededBoolean,
+    this.asNeededCodeableConcept,
+    this.site,
+    this.route,
+    this.method,
+    this.doseAndRate,
+    this.maxDosePerPeriod,
+    this.maxDosePerAdministration,
+    this.maxDosePerLifetime,
+  });
 
   factory Dosage.fromJson(Map<String, dynamic> json) => _$DosageFromJson(json);
   Map<String, dynamic> toJson() => _$DosageToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Dosage_DoseAndRate {
+  static Future<Dosage_DoseAndRate> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    Range doseRange,
+    Quantity doseQuantity,
+    Ratio rateRatio,
+    Range rateRange,
+    Quantity rateQuantity,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Dosage_DoseAndRate newDosage_DoseAndRate = new Dosage_DoseAndRate(
+      id: id ?? await fhirDb.newResourceId('Dosage_DoseAndRate'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      doseRange: doseRange,
+      doseQuantity: doseQuantity,
+      rateRatio: rateRatio,
+      rateRange: rateRange,
+      rateQuantity: rateQuantity,
+    );
+    return newDosage_DoseAndRate;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Dosage_DoseAndRate{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept type;
+  Range doseRange;
+  Quantity doseQuantity;
+  Ratio rateRatio;
+  Range rateRange;
+  Quantity rateQuantity;
 
-	static Future<Dosage_DoseAndRate> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept type,
-	Range doseRange,
-	Quantity doseQuantity,
-	Ratio rateRatio,
-	Range rateRange,
-	Quantity rateQuantity,
-}) async {
-var fhirDb = new DatabaseHelper();
-Dosage_DoseAndRate newDosage_DoseAndRate = new Dosage_DoseAndRate(
-	id: id ?? await fhirDb.newResourceId('Dosage_DoseAndRate'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	doseRange: doseRange,
-	doseQuantity: doseQuantity,
-	rateRatio: rateRatio,
-	rateRange: rateRange,
-	rateQuantity: rateQuantity,
-);
-	return newDosage_DoseAndRate;
-}
+  Dosage_DoseAndRate({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.doseRange,
+    this.doseQuantity,
+    this.rateRatio,
+    this.rateRange,
+    this.rateQuantity,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept type;
-	Range doseRange;
-	Quantity doseQuantity;
-	Ratio rateRatio;
-	Range rateRange;
-	Quantity rateQuantity;
-
-Dosage_DoseAndRate(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.doseRange,
-this.doseQuantity,
-this.rateRatio,
-this.rateRange,
-this.rateQuantity,
-});
-
-  factory Dosage_DoseAndRate.fromJson(Map<String, dynamic> json) => _$Dosage_DoseAndRateFromJson(json);
+  factory Dosage_DoseAndRate.fromJson(Map<String, dynamic> json) =>
+      _$Dosage_DoseAndRateFromJson(json);
   Map<String, dynamic> toJson() => _$Dosage_DoseAndRateToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -243,31 +239,46 @@ Dosage _$DosageFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DosageToJson(Dosage instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-      'additionalInstruction':
-          instance.additionalInstruction?.map((e) => e?.toJson())?.toList(),
-      'patientInstruction': instance.patientInstruction,
-      'elementPatientInstruction': instance.elementPatientInstruction?.toJson(),
-      'timing': instance.timing?.toJson(),
-      'asNeededBoolean': instance.asNeededBoolean,
-      'elementAsNeededBoolean': instance.elementAsNeededBoolean?.toJson(),
-      'asNeededCodeableConcept': instance.asNeededCodeableConcept?.toJson(),
-      'site': instance.site?.toJson(),
-      'route': instance.route?.toJson(),
-      'method': instance.method?.toJson(),
-      'doseAndRate': instance.doseAndRate?.map((e) => e?.toJson())?.toList(),
-      'maxDosePerPeriod': instance.maxDosePerPeriod?.toJson(),
-      'maxDosePerAdministration': instance.maxDosePerAdministration?.toJson(),
-      'maxDosePerLifetime': instance.maxDosePerLifetime?.toJson(),
-    };
+Map<String, dynamic> _$DosageToJson(Dosage instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  writeNotNull('additionalInstruction',
+      instance.additionalInstruction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('patientInstruction', instance.patientInstruction);
+  writeNotNull('elementPatientInstruction',
+      instance.elementPatientInstruction?.toJson());
+  writeNotNull('timing', instance.timing?.toJson());
+  writeNotNull('asNeededBoolean', instance.asNeededBoolean);
+  writeNotNull(
+      'elementAsNeededBoolean', instance.elementAsNeededBoolean?.toJson());
+  writeNotNull(
+      'asNeededCodeableConcept', instance.asNeededCodeableConcept?.toJson());
+  writeNotNull('site', instance.site?.toJson());
+  writeNotNull('route', instance.route?.toJson());
+  writeNotNull('method', instance.method?.toJson());
+  writeNotNull(
+      'doseAndRate', instance.doseAndRate?.map((e) => e?.toJson())?.toList());
+  writeNotNull('maxDosePerPeriod', instance.maxDosePerPeriod?.toJson());
+  writeNotNull(
+      'maxDosePerAdministration', instance.maxDosePerAdministration?.toJson());
+  writeNotNull('maxDosePerLifetime', instance.maxDosePerLifetime?.toJson());
+  return val;
+}
 
 Dosage_DoseAndRate _$Dosage_DoseAndRateFromJson(Map<String, dynamic> json) {
   return Dosage_DoseAndRate(
@@ -301,16 +312,25 @@ Dosage_DoseAndRate _$Dosage_DoseAndRateFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Dosage_DoseAndRateToJson(Dosage_DoseAndRate instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'doseRange': instance.doseRange?.toJson(),
-      'doseQuantity': instance.doseQuantity?.toJson(),
-      'rateRatio': instance.rateRatio?.toJson(),
-      'rateRange': instance.rateRange?.toJson(),
-      'rateQuantity': instance.rateQuantity?.toJson(),
-    };
+Map<String, dynamic> _$Dosage_DoseAndRateToJson(Dosage_DoseAndRate instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('doseRange', instance.doseRange?.toJson());
+  writeNotNull('doseQuantity', instance.doseQuantity?.toJson());
+  writeNotNull('rateRatio', instance.rateRatio?.toJson());
+  writeNotNull('rateRange', instance.rateRange?.toJson());
+  writeNotNull('rateQuantity', instance.rateQuantity?.toJson());
+  return val;
+}

@@ -11,107 +11,111 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicinalProductManufactured {
+  static Future<MedicinalProductManufactured> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept manufacturedDoseForm,
+    CodeableConcept unitOfPresentation,
+    Quantity quantity,
+    List<Reference> manufacturer,
+    List<Reference> ingredient,
+    ProdCharacteristic physicalCharacteristics,
+    List<CodeableConcept> otherCharacteristics,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicinalProductManufactured newMedicinalProductManufactured =
+        new MedicinalProductManufactured(
+      resourceType: 'MedicinalProductManufactured',
+      id: id ?? await fhirDb.newResourceId('MedicinalProductManufactured'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      manufacturedDoseForm: manufacturedDoseForm,
+      unitOfPresentation: unitOfPresentation,
+      quantity: quantity,
+      manufacturer: manufacturer,
+      ingredient: ingredient,
+      physicalCharacteristics: physicalCharacteristics,
+      otherCharacteristics: otherCharacteristics,
+    );
+    newMedicinalProductManufactured.meta.createdAt = DateTime.now();
+    newMedicinalProductManufactured.meta.lastUpdated =
+        newMedicinalProductManufactured.meta.createdAt;
+    int saved = await fhirDb.saveResource(newMedicinalProductManufactured);
+    return newMedicinalProductManufactured;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MedicinalProductManufactured{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<MedicinalProductManufactured> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept manufacturedDoseForm,
-	CodeableConcept unitOfPresentation,
-	Quantity quantity,
-	List<Reference> manufacturer,
-	List<Reference> ingredient,
-	ProdCharacteristic physicalCharacteristics,
-	List<CodeableConcept> otherCharacteristics,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicinalProductManufactured newMedicinalProductManufactured = new MedicinalProductManufactured(
-	resourceType: 'MedicinalProductManufactured',
-	id: id ?? await fhirDb.newResourceId('MedicinalProductManufactured'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	manufacturedDoseForm: manufacturedDoseForm,
-	unitOfPresentation: unitOfPresentation,
-	quantity: quantity,
-	manufacturer: manufacturer,
-	ingredient: ingredient,
-	physicalCharacteristics: physicalCharacteristics,
-	otherCharacteristics: otherCharacteristics,
-);
-	newMedicinalProductManufactured.meta.createdAt = DateTime.now();
-	newMedicinalProductManufactured.meta.lastUpdated = newMedicinalProductManufactured.meta.createdAt;
-	int saved = await fhirDb.saveResource(newMedicinalProductManufactured);
-	 return newMedicinalProductManufactured;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'MedicinalProductManufactured';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept manufacturedDoseForm;
+  CodeableConcept unitOfPresentation;
+  Quantity quantity;
+  List<Reference> manufacturer;
+  List<Reference> ingredient;
+  ProdCharacteristic physicalCharacteristics;
+  List<CodeableConcept> otherCharacteristics;
 
-	String resourceType= 'MedicinalProductManufactured';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept manufacturedDoseForm;
-	CodeableConcept unitOfPresentation;
-	Quantity quantity;
-	List<Reference> manufacturer;
-	List<Reference> ingredient;
-	ProdCharacteristic physicalCharacteristics;
-	List<CodeableConcept> otherCharacteristics;
+  MedicinalProductManufactured({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    @required this.manufacturedDoseForm,
+    this.unitOfPresentation,
+    @required this.quantity,
+    this.manufacturer,
+    this.ingredient,
+    this.physicalCharacteristics,
+    this.otherCharacteristics,
+  });
 
-MedicinalProductManufactured(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-@required this.manufacturedDoseForm,
-this.unitOfPresentation,
-@required this.quantity,
-this.manufacturer,
-this.ingredient,
-this.physicalCharacteristics,
-this.otherCharacteristics,
-});
-
-  factory MedicinalProductManufactured.fromJson(Map<String, dynamic> json) => _$MedicinalProductManufacturedFromJson(json);
+  factory MedicinalProductManufactured.fromJson(Map<String, dynamic> json) =>
+      _$MedicinalProductManufacturedFromJson(json);
   Map<String, dynamic> toJson() => _$MedicinalProductManufacturedToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -139,8 +143,9 @@ MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -182,26 +187,38 @@ MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductManufacturedToJson(
-        MedicinalProductManufactured instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'manufacturedDoseForm': instance.manufacturedDoseForm?.toJson(),
-      'unitOfPresentation': instance.unitOfPresentation?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
-      'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
-      'physicalCharacteristics': instance.physicalCharacteristics?.toJson(),
-      'otherCharacteristics':
-          instance.otherCharacteristics?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicinalProductManufactured instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('manufacturedDoseForm', instance.manufacturedDoseForm?.toJson());
+  writeNotNull('unitOfPresentation', instance.unitOfPresentation?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull(
+      'manufacturer', instance.manufacturer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'ingredient', instance.ingredient?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'physicalCharacteristics', instance.physicalCharacteristics?.toJson());
+  writeNotNull('otherCharacteristics',
+      instance.otherCharacteristics?.map((e) => e?.toJson())?.toList());
+  return val;
+}

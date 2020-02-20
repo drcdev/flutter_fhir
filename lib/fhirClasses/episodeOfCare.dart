@@ -11,223 +11,225 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class EpisodeOfCare {
+  static Future<EpisodeOfCare> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    List<EpisodeOfCare_StatusHistory> statusHistory,
+    List<CodeableConcept> type,
+    List<EpisodeOfCare_Diagnosis> diagnosis,
+    Reference patient,
+    Reference managingOrganization,
+    Period period,
+    List<Reference> referralRequest,
+    Reference careManager,
+    List<Reference> team,
+    List<Reference> account,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    EpisodeOfCare newEpisodeOfCare = new EpisodeOfCare(
+      resourceType: 'EpisodeOfCare',
+      id: id ?? await fhirDb.newResourceId('EpisodeOfCare'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      statusHistory: statusHistory,
+      type: type,
+      diagnosis: diagnosis,
+      patient: patient,
+      managingOrganization: managingOrganization,
+      period: period,
+      referralRequest: referralRequest,
+      careManager: careManager,
+      team: team,
+      account: account,
+    );
+    newEpisodeOfCare.meta.createdAt = DateTime.now();
+    newEpisodeOfCare.meta.lastUpdated = newEpisodeOfCare.meta.createdAt;
+    int saved = await fhirDb.saveResource(newEpisodeOfCare);
+    return newEpisodeOfCare;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class EpisodeOfCare{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<EpisodeOfCare> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	List<EpisodeOfCare_StatusHistory> statusHistory,
-	List<CodeableConcept> type,
-	List<EpisodeOfCare_Diagnosis> diagnosis,
-	Reference patient,
-	Reference managingOrganization,
-	Period period,
-	List<Reference> referralRequest,
-	Reference careManager,
-	List<Reference> team,
-	List<Reference> account,
-}) async {
-var fhirDb = new DatabaseHelper();
-EpisodeOfCare newEpisodeOfCare = new EpisodeOfCare(
-	resourceType: 'EpisodeOfCare',
-	id: id ?? await fhirDb.newResourceId('EpisodeOfCare'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	statusHistory: statusHistory,
-	type: type,
-	diagnosis: diagnosis,
-	patient: patient,
-	managingOrganization: managingOrganization,
-	period: period,
-	referralRequest: referralRequest,
-	careManager: careManager,
-	team: team,
-	account: account,
-);
-	newEpisodeOfCare.meta.createdAt = DateTime.now();
-	newEpisodeOfCare.meta.lastUpdated = newEpisodeOfCare.meta.createdAt;
-	int saved = await fhirDb.saveResource(newEpisodeOfCare);
-	 return newEpisodeOfCare;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'EpisodeOfCare';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  List<EpisodeOfCare_StatusHistory> statusHistory;
+  List<CodeableConcept> type;
+  List<EpisodeOfCare_Diagnosis> diagnosis;
+  Reference patient;
+  Reference managingOrganization;
+  Period period;
+  List<Reference> referralRequest;
+  Reference careManager;
+  List<Reference> team;
+  List<Reference> account;
 
-	String resourceType= 'EpisodeOfCare';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	List<EpisodeOfCare_StatusHistory> statusHistory;
-	List<CodeableConcept> type;
-	List<EpisodeOfCare_Diagnosis> diagnosis;
-	Reference patient;
-	Reference managingOrganization;
-	Period period;
-	List<Reference> referralRequest;
-	Reference careManager;
-	List<Reference> team;
-	List<Reference> account;
+  EpisodeOfCare({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.statusHistory,
+    this.type,
+    this.diagnosis,
+    @required this.patient,
+    this.managingOrganization,
+    this.period,
+    this.referralRequest,
+    this.careManager,
+    this.team,
+    this.account,
+  });
 
-EpisodeOfCare(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.statusHistory,
-this.type,
-this.diagnosis,
-@required this.patient,
-this.managingOrganization,
-this.period,
-this.referralRequest,
-this.careManager,
-this.team,
-this.account,
-});
-
-  factory EpisodeOfCare.fromJson(Map<String, dynamic> json) => _$EpisodeOfCareFromJson(json);
+  factory EpisodeOfCare.fromJson(Map<String, dynamic> json) =>
+      _$EpisodeOfCareFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeOfCareToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class EpisodeOfCare_StatusHistory {
+  static Future<EpisodeOfCare_StatusHistory> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String status,
+    Element elementStatus,
+    Period period,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    EpisodeOfCare_StatusHistory newEpisodeOfCare_StatusHistory =
+        new EpisodeOfCare_StatusHistory(
+      id: id ?? await fhirDb.newResourceId('EpisodeOfCare_StatusHistory'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      status: status,
+      elementStatus: elementStatus,
+      period: period,
+    );
+    return newEpisodeOfCare_StatusHistory;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class EpisodeOfCare_StatusHistory{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String status;
+  Element elementStatus;
+  Period period;
 
-	static Future<EpisodeOfCare_StatusHistory> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String status,
-	Element elementStatus,
-	Period period,
-}) async {
-var fhirDb = new DatabaseHelper();
-EpisodeOfCare_StatusHistory newEpisodeOfCare_StatusHistory = new EpisodeOfCare_StatusHistory(
-	id: id ?? await fhirDb.newResourceId('EpisodeOfCare_StatusHistory'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	status: status,
-	elementStatus: elementStatus,
-	period: period,
-);
-	return newEpisodeOfCare_StatusHistory;
-}
+  EpisodeOfCare_StatusHistory({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.status,
+    this.elementStatus,
+    @required this.period,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String status;
-	Element elementStatus;
-	Period period;
-
-EpisodeOfCare_StatusHistory(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.status,
-this.elementStatus,
-@required this.period,
-});
-
-  factory EpisodeOfCare_StatusHistory.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_StatusHistoryFromJson(json);
+  factory EpisodeOfCare_StatusHistory.fromJson(Map<String, dynamic> json) =>
+      _$EpisodeOfCare_StatusHistoryFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeOfCare_StatusHistoryToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class EpisodeOfCare_Diagnosis {
+  static Future<EpisodeOfCare_Diagnosis> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference condition,
+    CodeableConcept role,
+    int rank,
+    Element elementRank,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    EpisodeOfCare_Diagnosis newEpisodeOfCare_Diagnosis =
+        new EpisodeOfCare_Diagnosis(
+      id: id ?? await fhirDb.newResourceId('EpisodeOfCare_Diagnosis'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      condition: condition,
+      role: role,
+      rank: rank,
+      elementRank: elementRank,
+    );
+    return newEpisodeOfCare_Diagnosis;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class EpisodeOfCare_Diagnosis{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Reference condition;
+  CodeableConcept role;
+  int rank;
+  Element elementRank;
 
-	static Future<EpisodeOfCare_Diagnosis> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Reference condition,
-	CodeableConcept role,
-	int rank,
-	Element elementRank,
-}) async {
-var fhirDb = new DatabaseHelper();
-EpisodeOfCare_Diagnosis newEpisodeOfCare_Diagnosis = new EpisodeOfCare_Diagnosis(
-	id: id ?? await fhirDb.newResourceId('EpisodeOfCare_Diagnosis'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	condition: condition,
-	role: role,
-	rank: rank,
-	elementRank: elementRank,
-);
-	return newEpisodeOfCare_Diagnosis;
-}
+  EpisodeOfCare_Diagnosis({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.condition,
+    this.role,
+    this.rank,
+    this.elementRank,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Reference condition;
-	CodeableConcept role;
-	int rank;
-	Element elementRank;
-
-EpisodeOfCare_Diagnosis(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.condition,
-this.role,
-this.rank,
-this.elementRank,
-});
-
-  factory EpisodeOfCare_Diagnosis.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_DiagnosisFromJson(json);
+  factory EpisodeOfCare_Diagnosis.fromJson(Map<String, dynamic> json) =>
+      _$EpisodeOfCare_DiagnosisFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeOfCare_DiagnosisToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -254,8 +256,9 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -316,36 +319,47 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusHistory':
-          instance.statusHistory?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'diagnosis': instance.diagnosis?.map((e) => e?.toJson())?.toList(),
-      'patient': instance.patient?.toJson(),
-      'managingOrganization': instance.managingOrganization?.toJson(),
-      'period': instance.period?.toJson(),
-      'referralRequest':
-          instance.referralRequest?.map((e) => e?.toJson())?.toList(),
-      'careManager': instance.careManager?.toJson(),
-      'team': instance.team?.map((e) => e?.toJson())?.toList(),
-      'account': instance.account?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusHistory',
+      instance.statusHistory?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'diagnosis', instance.diagnosis?.map((e) => e?.toJson())?.toList());
+  writeNotNull('patient', instance.patient?.toJson());
+  writeNotNull('managingOrganization', instance.managingOrganization?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('referralRequest',
+      instance.referralRequest?.map((e) => e?.toJson())?.toList());
+  writeNotNull('careManager', instance.careManager?.toJson());
+  writeNotNull('team', instance.team?.map((e) => e?.toJson())?.toList());
+  writeNotNull('account', instance.account?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 EpisodeOfCare_StatusHistory _$EpisodeOfCare_StatusHistoryFromJson(
     Map<String, dynamic> json) {
@@ -370,16 +384,25 @@ EpisodeOfCare_StatusHistory _$EpisodeOfCare_StatusHistoryFromJson(
 }
 
 Map<String, dynamic> _$EpisodeOfCare_StatusHistoryToJson(
-        EpisodeOfCare_StatusHistory instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+    EpisodeOfCare_StatusHistory instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}
 
 EpisodeOfCare_Diagnosis _$EpisodeOfCare_DiagnosisFromJson(
     Map<String, dynamic> json) {
@@ -407,14 +430,23 @@ EpisodeOfCare_Diagnosis _$EpisodeOfCare_DiagnosisFromJson(
 }
 
 Map<String, dynamic> _$EpisodeOfCare_DiagnosisToJson(
-        EpisodeOfCare_Diagnosis instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'condition': instance.condition?.toJson(),
-      'role': instance.role?.toJson(),
-      'rank': instance.rank,
-      'elementRank': instance.elementRank?.toJson(),
-    };
+    EpisodeOfCare_Diagnosis instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('condition', instance.condition?.toJson());
+  writeNotNull('role', instance.role?.toJson());
+  writeNotNull('rank', instance.rank);
+  writeNotNull('elementRank', instance.elementRank?.toJson());
+  return val;
+}

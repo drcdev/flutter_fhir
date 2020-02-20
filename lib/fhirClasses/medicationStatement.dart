@@ -13,167 +13,170 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicationStatement {
+  static Future<MedicationStatement> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> basedOn,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    List<CodeableConcept> statusReason,
+    CodeableConcept category,
+    CodeableConcept medicationCodeableConcept,
+    Reference medicationReference,
+    Reference subject,
+    Reference context,
+    String effectiveDateTime,
+    Element elementEffectiveDateTime,
+    Period effectivePeriod,
+    DateTime dateAsserted,
+    Element elementDateAsserted,
+    Reference informationSource,
+    List<Reference> derivedFrom,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Annotation> note,
+    List<Dosage> dosage,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicationStatement newMedicationStatement = new MedicationStatement(
+      resourceType: 'MedicationStatement',
+      id: id ?? await fhirDb.newResourceId('MedicationStatement'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      basedOn: basedOn,
+      partOf: partOf,
+      status: status,
+      elementStatus: elementStatus,
+      statusReason: statusReason,
+      category: category,
+      medicationCodeableConcept: medicationCodeableConcept,
+      medicationReference: medicationReference,
+      subject: subject,
+      context: context,
+      effectiveDateTime: effectiveDateTime,
+      elementEffectiveDateTime: elementEffectiveDateTime,
+      effectivePeriod: effectivePeriod,
+      dateAsserted: dateAsserted,
+      elementDateAsserted: elementDateAsserted,
+      informationSource: informationSource,
+      derivedFrom: derivedFrom,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      note: note,
+      dosage: dosage,
+    );
+    newMedicationStatement.meta.createdAt = DateTime.now();
+    newMedicationStatement.meta.lastUpdated =
+        newMedicationStatement.meta.createdAt;
+    int saved = await fhirDb.saveResource(newMedicationStatement);
+    return newMedicationStatement;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MedicationStatement{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<MedicationStatement> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	List<Reference> basedOn,
-	List<Reference> partOf,
-	String status,
-	Element elementStatus,
-	List<CodeableConcept> statusReason,
-	CodeableConcept category,
-	CodeableConcept medicationCodeableConcept,
-	Reference medicationReference,
-	Reference subject,
-	Reference context,
-	String effectiveDateTime,
-	Element elementEffectiveDateTime,
-	Period effectivePeriod,
-	DateTime dateAsserted,
-	Element elementDateAsserted,
-	Reference informationSource,
-	List<Reference> derivedFrom,
-	List<CodeableConcept> reasonCode,
-	List<Reference> reasonReference,
-	List<Annotation> note,
-	List<Dosage> dosage,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicationStatement newMedicationStatement = new MedicationStatement(
-	resourceType: 'MedicationStatement',
-	id: id ?? await fhirDb.newResourceId('MedicationStatement'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	basedOn: basedOn,
-	partOf: partOf,
-	status: status,
-	elementStatus: elementStatus,
-	statusReason: statusReason,
-	category: category,
-	medicationCodeableConcept: medicationCodeableConcept,
-	medicationReference: medicationReference,
-	subject: subject,
-	context: context,
-	effectiveDateTime: effectiveDateTime,
-	elementEffectiveDateTime: elementEffectiveDateTime,
-	effectivePeriod: effectivePeriod,
-	dateAsserted: dateAsserted,
-	elementDateAsserted: elementDateAsserted,
-	informationSource: informationSource,
-	derivedFrom: derivedFrom,
-	reasonCode: reasonCode,
-	reasonReference: reasonReference,
-	note: note,
-	dosage: dosage,
-);
-	newMedicationStatement.meta.createdAt = DateTime.now();
-	newMedicationStatement.meta.lastUpdated = newMedicationStatement.meta.createdAt;
-	int saved = await fhirDb.saveResource(newMedicationStatement);
-	 return newMedicationStatement;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'MedicationStatement';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  List<Reference> basedOn;
+  List<Reference> partOf;
+  String status;
+  Element elementStatus;
+  List<CodeableConcept> statusReason;
+  CodeableConcept category;
+  CodeableConcept medicationCodeableConcept;
+  Reference medicationReference;
+  Reference subject;
+  Reference context;
+  String effectiveDateTime;
+  Element elementEffectiveDateTime;
+  Period effectivePeriod;
+  DateTime dateAsserted;
+  Element elementDateAsserted;
+  Reference informationSource;
+  List<Reference> derivedFrom;
+  List<CodeableConcept> reasonCode;
+  List<Reference> reasonReference;
+  List<Annotation> note;
+  List<Dosage> dosage;
 
-	String resourceType= 'MedicationStatement';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	List<Reference> basedOn;
-	List<Reference> partOf;
-	String status;
-	Element elementStatus;
-	List<CodeableConcept> statusReason;
-	CodeableConcept category;
-	CodeableConcept medicationCodeableConcept;
-	Reference medicationReference;
-	Reference subject;
-	Reference context;
-	String effectiveDateTime;
-	Element elementEffectiveDateTime;
-	Period effectivePeriod;
-	DateTime dateAsserted;
-	Element elementDateAsserted;
-	Reference informationSource;
-	List<Reference> derivedFrom;
-	List<CodeableConcept> reasonCode;
-	List<Reference> reasonReference;
-	List<Annotation> note;
-	List<Dosage> dosage;
+  MedicationStatement({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.basedOn,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.statusReason,
+    this.category,
+    this.medicationCodeableConcept,
+    this.medicationReference,
+    @required this.subject,
+    this.context,
+    this.effectiveDateTime,
+    this.elementEffectiveDateTime,
+    this.effectivePeriod,
+    this.dateAsserted,
+    this.elementDateAsserted,
+    this.informationSource,
+    this.derivedFrom,
+    this.reasonCode,
+    this.reasonReference,
+    this.note,
+    this.dosage,
+  });
 
-MedicationStatement(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.basedOn,
-this.partOf,
-this.status,
-this.elementStatus,
-this.statusReason,
-this.category,
-this.medicationCodeableConcept,
-this.medicationReference,
-@required this.subject,
-this.context,
-this.effectiveDateTime,
-this.elementEffectiveDateTime,
-this.effectivePeriod,
-this.dateAsserted,
-this.elementDateAsserted,
-this.informationSource,
-this.derivedFrom,
-this.reasonCode,
-this.reasonReference,
-this.note,
-this.dosage,
-});
-
-  factory MedicationStatement.fromJson(Map<String, dynamic> json) => _$MedicationStatementFromJson(json);
+  factory MedicationStatement.fromJson(Map<String, dynamic> json) =>
+      _$MedicationStatementFromJson(json);
   Map<String, dynamic> toJson() => _$MedicationStatementToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -200,8 +203,9 @@ MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -290,42 +294,56 @@ MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MedicationStatementToJson(
-        MedicationStatement instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReason': instance.statusReason?.map((e) => e?.toJson())?.toList(),
-      'category': instance.category?.toJson(),
-      'medicationCodeableConcept': instance.medicationCodeableConcept?.toJson(),
-      'medicationReference': instance.medicationReference?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'context': instance.context?.toJson(),
-      'effectiveDateTime': instance.effectiveDateTime,
-      'elementEffectiveDateTime': instance.elementEffectiveDateTime?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'dateAsserted': instance.dateAsserted?.toIso8601String(),
-      'elementDateAsserted': instance.elementDateAsserted?.toJson(),
-      'informationSource': instance.informationSource?.toJson(),
-      'derivedFrom': instance.derivedFrom?.map((e) => e?.toJson())?.toList(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'dosage': instance.dosage?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$MedicationStatementToJson(MedicationStatement instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull(
+      'statusReason', instance.statusReason?.map((e) => e?.toJson())?.toList());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('medicationCodeableConcept',
+      instance.medicationCodeableConcept?.toJson());
+  writeNotNull('medicationReference', instance.medicationReference?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('context', instance.context?.toJson());
+  writeNotNull('effectiveDateTime', instance.effectiveDateTime);
+  writeNotNull(
+      'elementEffectiveDateTime', instance.elementEffectiveDateTime?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('dateAsserted', instance.dateAsserted?.toIso8601String());
+  writeNotNull('elementDateAsserted', instance.elementDateAsserted?.toJson());
+  writeNotNull('informationSource', instance.informationSource?.toJson());
+  writeNotNull(
+      'derivedFrom', instance.derivedFrom?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('dosage', instance.dosage?.map((e) => e?.toJson())?.toList());
+  return val;
+}

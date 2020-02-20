@@ -5,86 +5,84 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class SampledData {
+  static Future<SampledData> newInstance({
+    String id,
+    List<Extension> extension,
+    Quantity origin,
+    double period,
+    Element elementPeriod,
+    double factor,
+    Element elementFactor,
+    double lowerLimit,
+    Element elementLowerLimit,
+    double upperLimit,
+    Element elementUpperLimit,
+    int dimensions,
+    Element elementDimensions,
+    String data,
+    Element elementData,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    SampledData newSampledData = new SampledData(
+      id: id ?? await fhirDb.newResourceId('SampledData'),
+      extension: extension,
+      origin: origin,
+      period: period,
+      elementPeriod: elementPeriod,
+      factor: factor,
+      elementFactor: elementFactor,
+      lowerLimit: lowerLimit,
+      elementLowerLimit: elementLowerLimit,
+      upperLimit: upperLimit,
+      elementUpperLimit: elementUpperLimit,
+      dimensions: dimensions,
+      elementDimensions: elementDimensions,
+      data: data,
+      elementData: elementData,
+    );
+    return newSampledData;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class SampledData{
+  String id;
+  List<Extension> extension;
+  Quantity origin;
+  double period;
+  Element elementPeriod;
+  double factor;
+  Element elementFactor;
+  double lowerLimit;
+  Element elementLowerLimit;
+  double upperLimit;
+  Element elementUpperLimit;
+  int dimensions;
+  Element elementDimensions;
+  String data;
+  Element elementData;
 
-	static Future<SampledData> newInstance(
-	{	String id,
-	List<Extension> extension,
-	Quantity origin,
-	double period,
-	Element elementPeriod,
-	double factor,
-	Element elementFactor,
-	double lowerLimit,
-	Element elementLowerLimit,
-	double upperLimit,
-	Element elementUpperLimit,
-	int dimensions,
-	Element elementDimensions,
-	String data,
-	Element elementData,
-}) async {
-var fhirDb = new DatabaseHelper();
-SampledData newSampledData = new SampledData(
-	id: id ?? await fhirDb.newResourceId('SampledData'),
-	extension: extension,
-	origin: origin,
-	period: period,
-	elementPeriod: elementPeriod,
-	factor: factor,
-	elementFactor: elementFactor,
-	lowerLimit: lowerLimit,
-	elementLowerLimit: elementLowerLimit,
-	upperLimit: upperLimit,
-	elementUpperLimit: elementUpperLimit,
-	dimensions: dimensions,
-	elementDimensions: elementDimensions,
-	data: data,
-	elementData: elementData,
-);
-	return newSampledData;
-}
+  SampledData({
+    this.id,
+    this.extension,
+    @required this.origin,
+    this.period,
+    this.elementPeriod,
+    this.factor,
+    this.elementFactor,
+    this.lowerLimit,
+    this.elementLowerLimit,
+    this.upperLimit,
+    this.elementUpperLimit,
+    this.dimensions,
+    this.elementDimensions,
+    this.data,
+    this.elementData,
+  });
 
-	String id;
-	List<Extension> extension;
-	Quantity origin;
-	double period;
-	Element elementPeriod;
-	double factor;
-	Element elementFactor;
-	double lowerLimit;
-	Element elementLowerLimit;
-	double upperLimit;
-	Element elementUpperLimit;
-	int dimensions;
-	Element elementDimensions;
-	String data;
-	Element elementData;
-
-SampledData(
-	{this.id,
-this.extension,
-@required this.origin,
-this.period,
-this.elementPeriod,
-this.factor,
-this.elementFactor,
-this.lowerLimit,
-this.elementLowerLimit,
-this.upperLimit,
-this.elementUpperLimit,
-this.dimensions,
-this.elementDimensions,
-this.data,
-this.elementData,
-});
-
-  factory SampledData.fromJson(Map<String, dynamic> json) => _$SampledDataFromJson(json);
+  factory SampledData.fromJson(Map<String, dynamic> json) =>
+      _$SampledDataFromJson(json);
   Map<String, dynamic> toJson() => _$SampledDataToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -128,21 +126,30 @@ SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SampledDataToJson(SampledData instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'origin': instance.origin?.toJson(),
-      'period': instance.period,
-      'elementPeriod': instance.elementPeriod?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'lowerLimit': instance.lowerLimit,
-      'elementLowerLimit': instance.elementLowerLimit?.toJson(),
-      'upperLimit': instance.upperLimit,
-      'elementUpperLimit': instance.elementUpperLimit?.toJson(),
-      'dimensions': instance.dimensions,
-      'elementDimensions': instance.elementDimensions?.toJson(),
-      'data': instance.data,
-      'elementData': instance.elementData?.toJson(),
-    };
+Map<String, dynamic> _$SampledDataToJson(SampledData instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('origin', instance.origin?.toJson());
+  writeNotNull('period', instance.period);
+  writeNotNull('elementPeriod', instance.elementPeriod?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('lowerLimit', instance.lowerLimit);
+  writeNotNull('elementLowerLimit', instance.elementLowerLimit?.toJson());
+  writeNotNull('upperLimit', instance.upperLimit);
+  writeNotNull('elementUpperLimit', instance.elementUpperLimit?.toJson());
+  writeNotNull('dimensions', instance.dimensions);
+  writeNotNull('elementDimensions', instance.elementDimensions?.toJson());
+  writeNotNull('data', instance.data);
+  writeNotNull('elementData', instance.elementData?.toJson());
+  return val;
+}

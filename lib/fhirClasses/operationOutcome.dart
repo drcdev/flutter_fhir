@@ -8,159 +8,161 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OperationOutcome {
+  static Future<OperationOutcome> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<OperationOutcome_Issue> issue,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OperationOutcome newOperationOutcome = new OperationOutcome(
+      resourceType: 'OperationOutcome',
+      id: id ?? await fhirDb.newResourceId('OperationOutcome'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      issue: issue,
+    );
+    newOperationOutcome.meta.createdAt = DateTime.now();
+    newOperationOutcome.meta.lastUpdated = newOperationOutcome.meta.createdAt;
+    int saved = await fhirDb.saveResource(newOperationOutcome);
+    return newOperationOutcome;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class OperationOutcome{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<OperationOutcome> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<OperationOutcome_Issue> issue,
-}) async {
-var fhirDb = new DatabaseHelper();
-OperationOutcome newOperationOutcome = new OperationOutcome(
-	resourceType: 'OperationOutcome',
-	id: id ?? await fhirDb.newResourceId('OperationOutcome'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	issue: issue,
-);
-	newOperationOutcome.meta.createdAt = DateTime.now();
-	newOperationOutcome.meta.lastUpdated = newOperationOutcome.meta.createdAt;
-	int saved = await fhirDb.saveResource(newOperationOutcome);
-	 return newOperationOutcome;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'OperationOutcome';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<OperationOutcome_Issue> issue;
 
-	String resourceType= 'OperationOutcome';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<OperationOutcome_Issue> issue;
+  OperationOutcome({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    @required this.issue,
+  });
 
-OperationOutcome(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-@required this.issue,
-});
-
-  factory OperationOutcome.fromJson(Map<String, dynamic> json) => _$OperationOutcomeFromJson(json);
+  factory OperationOutcome.fromJson(Map<String, dynamic> json) =>
+      _$OperationOutcomeFromJson(json);
   Map<String, dynamic> toJson() => _$OperationOutcomeToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OperationOutcome_Issue {
+  static Future<OperationOutcome_Issue> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String severity,
+    Element elementSeverity,
+    String code,
+    Element elementCode,
+    CodeableConcept details,
+    String diagnostics,
+    Element elementDiagnostics,
+    List<String> location,
+    List<Element> elementLocation,
+    List<String> expression,
+    List<Element> elementExpression,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OperationOutcome_Issue newOperationOutcome_Issue =
+        new OperationOutcome_Issue(
+      id: id ?? await fhirDb.newResourceId('OperationOutcome_Issue'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      severity: severity,
+      elementSeverity: elementSeverity,
+      code: code,
+      elementCode: elementCode,
+      details: details,
+      diagnostics: diagnostics,
+      elementDiagnostics: elementDiagnostics,
+      location: location,
+      elementLocation: elementLocation,
+      expression: expression,
+      elementExpression: elementExpression,
+    );
+    return newOperationOutcome_Issue;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class OperationOutcome_Issue{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String severity;
+  Element elementSeverity;
+  String code;
+  Element elementCode;
+  CodeableConcept details;
+  String diagnostics;
+  Element elementDiagnostics;
+  List<String> location;
+  List<Element> elementLocation;
+  List<String> expression;
+  List<Element> elementExpression;
 
-	static Future<OperationOutcome_Issue> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String severity,
-	Element elementSeverity,
-	String code,
-	Element elementCode,
-	CodeableConcept details,
-	String diagnostics,
-	Element elementDiagnostics,
-	List<String> location,
-	List<Element> elementLocation,
-	List<String> expression,
-	List<Element> elementExpression,
-}) async {
-var fhirDb = new DatabaseHelper();
-OperationOutcome_Issue newOperationOutcome_Issue = new OperationOutcome_Issue(
-	id: id ?? await fhirDb.newResourceId('OperationOutcome_Issue'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	severity: severity,
-	elementSeverity: elementSeverity,
-	code: code,
-	elementCode: elementCode,
-	details: details,
-	diagnostics: diagnostics,
-	elementDiagnostics: elementDiagnostics,
-	location: location,
-	elementLocation: elementLocation,
-	expression: expression,
-	elementExpression: elementExpression,
-);
-	return newOperationOutcome_Issue;
-}
+  OperationOutcome_Issue({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.severity,
+    this.elementSeverity,
+    this.code,
+    this.elementCode,
+    this.details,
+    this.diagnostics,
+    this.elementDiagnostics,
+    this.location,
+    this.elementLocation,
+    this.expression,
+    this.elementExpression,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String severity;
-	Element elementSeverity;
-	String code;
-	Element elementCode;
-	CodeableConcept details;
-	String diagnostics;
-	Element elementDiagnostics;
-	List<String> location;
-	List<Element> elementLocation;
-	List<String> expression;
-	List<Element> elementExpression;
-
-OperationOutcome_Issue(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.severity,
-this.elementSeverity,
-this.code,
-this.elementCode,
-this.details,
-this.diagnostics,
-this.elementDiagnostics,
-this.location,
-this.elementLocation,
-this.expression,
-this.elementExpression,
-});
-
-  factory OperationOutcome_Issue.fromJson(Map<String, dynamic> json) => _$OperationOutcome_IssueFromJson(json);
+  factory OperationOutcome_Issue.fromJson(Map<String, dynamic> json) =>
+      _$OperationOutcome_IssueFromJson(json);
   Map<String, dynamic> toJson() => _$OperationOutcome_IssueToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -187,8 +189,9 @@ OperationOutcome _$OperationOutcomeFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -206,22 +209,31 @@ OperationOutcome _$OperationOutcomeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$OperationOutcomeToJson(OperationOutcome instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'issue': instance.issue?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$OperationOutcomeToJson(OperationOutcome instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('issue', instance.issue?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 OperationOutcome_Issue _$OperationOutcome_IssueFromJson(
     Map<String, dynamic> json) {
@@ -264,23 +276,32 @@ OperationOutcome_Issue _$OperationOutcome_IssueFromJson(
 }
 
 Map<String, dynamic> _$OperationOutcome_IssueToJson(
-        OperationOutcome_Issue instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'severity': instance.severity,
-      'elementSeverity': instance.elementSeverity?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'details': instance.details?.toJson(),
-      'diagnostics': instance.diagnostics,
-      'elementDiagnostics': instance.elementDiagnostics?.toJson(),
-      'location': instance.location,
-      'elementLocation':
-          instance.elementLocation?.map((e) => e?.toJson())?.toList(),
-      'expression': instance.expression,
-      'elementExpression':
-          instance.elementExpression?.map((e) => e?.toJson())?.toList(),
-    };
+    OperationOutcome_Issue instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('severity', instance.severity);
+  writeNotNull('elementSeverity', instance.elementSeverity?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('details', instance.details?.toJson());
+  writeNotNull('diagnostics', instance.diagnostics);
+  writeNotNull('elementDiagnostics', instance.elementDiagnostics?.toJson());
+  writeNotNull('location', instance.location);
+  writeNotNull('elementLocation',
+      instance.elementLocation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression',
+      instance.elementExpression?.map((e) => e?.toJson())?.toList());
+  return val;
+}

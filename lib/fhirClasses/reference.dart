@@ -5,62 +5,60 @@ import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Reference {
+  static Future<Reference> newInstance({
+    String id,
+    List<Extension> extension,
+    String reference,
+    Element elementReference,
+    String type,
+    Element elementType,
+    Identifier identifier,
+    String display,
+    Element elementDisplay,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Reference newReference = new Reference(
+      id: id ?? await fhirDb.newResourceId('Reference'),
+      extension: extension,
+      reference: reference,
+      elementReference: elementReference,
+      type: type,
+      elementType: elementType,
+      identifier: identifier,
+      display: display,
+      elementDisplay: elementDisplay,
+    );
+    return newReference;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Reference{
+  String id;
+  List<Extension> extension;
+  String reference;
+  Element elementReference;
+  String type;
+  Element elementType;
+  Identifier identifier;
+  String display;
+  Element elementDisplay;
 
-	static Future<Reference> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String reference,
-	Element elementReference,
-	String type,
-	Element elementType,
-	Identifier identifier,
-	String display,
-	Element elementDisplay,
-}) async {
-var fhirDb = new DatabaseHelper();
-Reference newReference = new Reference(
-	id: id ?? await fhirDb.newResourceId('Reference'),
-	extension: extension,
-	reference: reference,
-	elementReference: elementReference,
-	type: type,
-	elementType: elementType,
-	identifier: identifier,
-	display: display,
-	elementDisplay: elementDisplay,
-);
-	return newReference;
-}
+  Reference({
+    this.id,
+    this.extension,
+    this.reference,
+    this.elementReference,
+    this.type,
+    this.elementType,
+    this.identifier,
+    this.display,
+    this.elementDisplay,
+  });
 
-	String id;
-	List<Extension> extension;
-	String reference;
-	Element elementReference;
-	String type;
-	Element elementType;
-	Identifier identifier;
-	String display;
-	Element elementDisplay;
-
-Reference(
-	{this.id,
-this.extension,
-this.reference,
-this.elementReference,
-this.type,
-this.elementType,
-this.identifier,
-this.display,
-this.elementDisplay,
-});
-
-  factory Reference.fromJson(Map<String, dynamic> json) => _$ReferenceFromJson(json);
+  factory Reference.fromJson(Map<String, dynamic> json) =>
+      _$ReferenceFromJson(json);
   Map<String, dynamic> toJson() => _$ReferenceToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -92,14 +90,24 @@ Reference _$ReferenceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ReferenceToJson(Reference instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'reference': instance.reference,
-      'elementReference': instance.elementReference?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'identifier': instance.identifier?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-    };
+Map<String, dynamic> _$ReferenceToJson(Reference instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reference', instance.reference);
+  writeNotNull('elementReference', instance.elementReference?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  return val;
+}

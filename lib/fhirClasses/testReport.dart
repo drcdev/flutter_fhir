@@ -9,559 +9,553 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport {
+  static Future<TestReport> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier identifier,
+    String name,
+    Element elementName,
+    String status,
+    Element elementStatus,
+    Reference testScript,
+    String result,
+    Element elementResult,
+    double score,
+    Element elementScore,
+    String tester,
+    Element elementTester,
+    DateTime issued,
+    Element elementIssued,
+    List<TestReport_Participant> participant,
+    TestReport_Setup setup,
+    List<TestReport_Test> test,
+    TestReport_Teardown teardown,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport newTestReport = new TestReport(
+      resourceType: 'TestReport',
+      id: id ?? await fhirDb.newResourceId('TestReport'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      name: name,
+      elementName: elementName,
+      status: status,
+      elementStatus: elementStatus,
+      testScript: testScript,
+      result: result,
+      elementResult: elementResult,
+      score: score,
+      elementScore: elementScore,
+      tester: tester,
+      elementTester: elementTester,
+      issued: issued,
+      elementIssued: elementIssued,
+      participant: participant,
+      setup: setup,
+      test: test,
+      teardown: teardown,
+    );
+    newTestReport.meta.createdAt = DateTime.now();
+    newTestReport.meta.lastUpdated = newTestReport.meta.createdAt;
+    int saved = await fhirDb.saveResource(newTestReport);
+    return newTestReport;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<TestReport> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Identifier identifier,
-	String name,
-	Element elementName,
-	String status,
-	Element elementStatus,
-	Reference testScript,
-	String result,
-	Element elementResult,
-	double score,
-	Element elementScore,
-	String tester,
-	Element elementTester,
-	DateTime issued,
-	Element elementIssued,
-	List<TestReport_Participant> participant,
-	TestReport_Setup setup,
-	List<TestReport_Test> test,
-	TestReport_Teardown teardown,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport newTestReport = new TestReport(
-	resourceType: 'TestReport',
-	id: id ?? await fhirDb.newResourceId('TestReport'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	name: name,
-	elementName: elementName,
-	status: status,
-	elementStatus: elementStatus,
-	testScript: testScript,
-	result: result,
-	elementResult: elementResult,
-	score: score,
-	elementScore: elementScore,
-	tester: tester,
-	elementTester: elementTester,
-	issued: issued,
-	elementIssued: elementIssued,
-	participant: participant,
-	setup: setup,
-	test: test,
-	teardown: teardown,
-);
-	newTestReport.meta.createdAt = DateTime.now();
-	newTestReport.meta.lastUpdated = newTestReport.meta.createdAt;
-	int saved = await fhirDb.saveResource(newTestReport);
-	 return newTestReport;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'TestReport';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Identifier identifier;
+  String name;
+  Element elementName;
+  String status;
+  Element elementStatus;
+  Reference testScript;
+  String result;
+  Element elementResult;
+  double score;
+  Element elementScore;
+  String tester;
+  Element elementTester;
+  DateTime issued;
+  Element elementIssued;
+  List<TestReport_Participant> participant;
+  TestReport_Setup setup;
+  List<TestReport_Test> test;
+  TestReport_Teardown teardown;
 
-	String resourceType= 'TestReport';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Identifier identifier;
-	String name;
-	Element elementName;
-	String status;
-	Element elementStatus;
-	Reference testScript;
-	String result;
-	Element elementResult;
-	double score;
-	Element elementScore;
-	String tester;
-	Element elementTester;
-	DateTime issued;
-	Element elementIssued;
-	List<TestReport_Participant> participant;
-	TestReport_Setup setup;
-	List<TestReport_Test> test;
-	TestReport_Teardown teardown;
+  TestReport({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.name,
+    this.elementName,
+    this.status,
+    this.elementStatus,
+    @required this.testScript,
+    this.result,
+    this.elementResult,
+    this.score,
+    this.elementScore,
+    this.tester,
+    this.elementTester,
+    this.issued,
+    this.elementIssued,
+    this.participant,
+    this.setup,
+    this.test,
+    this.teardown,
+  });
 
-TestReport(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.name,
-this.elementName,
-this.status,
-this.elementStatus,
-@required this.testScript,
-this.result,
-this.elementResult,
-this.score,
-this.elementScore,
-this.tester,
-this.elementTester,
-this.issued,
-this.elementIssued,
-this.participant,
-this.setup,
-this.test,
-this.teardown,
-});
-
-  factory TestReport.fromJson(Map<String, dynamic> json) => _$TestReportFromJson(json);
+  factory TestReport.fromJson(Map<String, dynamic> json) =>
+      _$TestReportFromJson(json);
   Map<String, dynamic> toJson() => _$TestReportToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Participant {
+  static Future<TestReport_Participant> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String uri,
+    Element elementUri,
+    String display,
+    Element elementDisplay,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Participant newTestReport_Participant =
+        new TestReport_Participant(
+      id: id ?? await fhirDb.newResourceId('TestReport_Participant'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      uri: uri,
+      elementUri: elementUri,
+      display: display,
+      elementDisplay: elementDisplay,
+    );
+    return newTestReport_Participant;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Participant{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String type;
+  Element elementType;
+  String uri;
+  Element elementUri;
+  String display;
+  Element elementDisplay;
 
-	static Future<TestReport_Participant> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String type,
-	Element elementType,
-	String uri,
-	Element elementUri,
-	String display,
-	Element elementDisplay,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Participant newTestReport_Participant = new TestReport_Participant(
-	id: id ?? await fhirDb.newResourceId('TestReport_Participant'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	elementType: elementType,
-	uri: uri,
-	elementUri: elementUri,
-	display: display,
-	elementDisplay: elementDisplay,
-);
-	return newTestReport_Participant;
-}
+  TestReport_Participant({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.uri,
+    this.elementUri,
+    this.display,
+    this.elementDisplay,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String type;
-	Element elementType;
-	String uri;
-	Element elementUri;
-	String display;
-	Element elementDisplay;
-
-TestReport_Participant(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.elementType,
-this.uri,
-this.elementUri,
-this.display,
-this.elementDisplay,
-});
-
-  factory TestReport_Participant.fromJson(Map<String, dynamic> json) => _$TestReport_ParticipantFromJson(json);
+  factory TestReport_Participant.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_ParticipantFromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_ParticipantToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Setup {
+  static Future<TestReport_Setup> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<TestReport_Action> action,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Setup newTestReport_Setup = new TestReport_Setup(
+      id: id ?? await fhirDb.newResourceId('TestReport_Setup'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      action: action,
+    );
+    return newTestReport_Setup;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Setup{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<TestReport_Action> action;
 
-	static Future<TestReport_Setup> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<TestReport_Action> action,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Setup newTestReport_Setup = new TestReport_Setup(
-	id: id ?? await fhirDb.newResourceId('TestReport_Setup'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	action: action,
-);
-	return newTestReport_Setup;
-}
+  TestReport_Setup({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.action,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<TestReport_Action> action;
-
-TestReport_Setup(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.action,
-});
-
-  factory TestReport_Setup.fromJson(Map<String, dynamic> json) => _$TestReport_SetupFromJson(json);
+  factory TestReport_Setup.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_SetupFromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_SetupToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Action {
+  static Future<TestReport_Action> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    TestReport_Operation operation,
+    TestReport_Assert asserts,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Action newTestReport_Action = new TestReport_Action(
+      id: id ?? await fhirDb.newResourceId('TestReport_Action'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      operation: operation,
+      asserts: asserts,
+    );
+    return newTestReport_Action;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Action{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  TestReport_Operation operation;
+  TestReport_Assert asserts;
 
-	static Future<TestReport_Action> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	TestReport_Operation operation,
-	TestReport_Assert asserts,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Action newTestReport_Action = new TestReport_Action(
-	id: id ?? await fhirDb.newResourceId('TestReport_Action'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	operation: operation,
-	asserts: asserts,
-);
-	return newTestReport_Action;
-}
+  TestReport_Action({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.operation,
+    this.asserts,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	TestReport_Operation operation;
-	TestReport_Assert asserts;
-
-TestReport_Action(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.operation,
-this.asserts,
-});
-
-  factory TestReport_Action.fromJson(Map<String, dynamic> json) => _$TestReport_ActionFromJson(json);
+  factory TestReport_Action.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_ActionFromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_ActionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Operation {
+  static Future<TestReport_Operation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String result,
+    Element elementResult,
+    String message,
+    Element elementMessage,
+    String detail,
+    Element elementDetail,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Operation newTestReport_Operation = new TestReport_Operation(
+      id: id ?? await fhirDb.newResourceId('TestReport_Operation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      result: result,
+      elementResult: elementResult,
+      message: message,
+      elementMessage: elementMessage,
+      detail: detail,
+      elementDetail: elementDetail,
+    );
+    return newTestReport_Operation;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Operation{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String result;
+  Element elementResult;
+  String message;
+  Element elementMessage;
+  String detail;
+  Element elementDetail;
 
-	static Future<TestReport_Operation> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String result,
-	Element elementResult,
-	String message,
-	Element elementMessage,
-	String detail,
-	Element elementDetail,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Operation newTestReport_Operation = new TestReport_Operation(
-	id: id ?? await fhirDb.newResourceId('TestReport_Operation'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	result: result,
-	elementResult: elementResult,
-	message: message,
-	elementMessage: elementMessage,
-	detail: detail,
-	elementDetail: elementDetail,
-);
-	return newTestReport_Operation;
-}
+  TestReport_Operation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.result,
+    this.elementResult,
+    this.message,
+    this.elementMessage,
+    this.detail,
+    this.elementDetail,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String result;
-	Element elementResult;
-	String message;
-	Element elementMessage;
-	String detail;
-	Element elementDetail;
-
-TestReport_Operation(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.result,
-this.elementResult,
-this.message,
-this.elementMessage,
-this.detail,
-this.elementDetail,
-});
-
-  factory TestReport_Operation.fromJson(Map<String, dynamic> json) => _$TestReport_OperationFromJson(json);
+  factory TestReport_Operation.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_OperationFromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_OperationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Assert {
+  static Future<TestReport_Assert> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String result,
+    Element elementResult,
+    String message,
+    Element elementMessage,
+    String detail,
+    Element elementDetail,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Assert newTestReport_Assert = new TestReport_Assert(
+      id: id ?? await fhirDb.newResourceId('TestReport_Assert'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      result: result,
+      elementResult: elementResult,
+      message: message,
+      elementMessage: elementMessage,
+      detail: detail,
+      elementDetail: elementDetail,
+    );
+    return newTestReport_Assert;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Assert{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String result;
+  Element elementResult;
+  String message;
+  Element elementMessage;
+  String detail;
+  Element elementDetail;
 
-	static Future<TestReport_Assert> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String result,
-	Element elementResult,
-	String message,
-	Element elementMessage,
-	String detail,
-	Element elementDetail,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Assert newTestReport_Assert = new TestReport_Assert(
-	id: id ?? await fhirDb.newResourceId('TestReport_Assert'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	result: result,
-	elementResult: elementResult,
-	message: message,
-	elementMessage: elementMessage,
-	detail: detail,
-	elementDetail: elementDetail,
-);
-	return newTestReport_Assert;
-}
+  TestReport_Assert({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.result,
+    this.elementResult,
+    this.message,
+    this.elementMessage,
+    this.detail,
+    this.elementDetail,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String result;
-	Element elementResult;
-	String message;
-	Element elementMessage;
-	String detail;
-	Element elementDetail;
-
-TestReport_Assert(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.result,
-this.elementResult,
-this.message,
-this.elementMessage,
-this.detail,
-this.elementDetail,
-});
-
-  factory TestReport_Assert.fromJson(Map<String, dynamic> json) => _$TestReport_AssertFromJson(json);
+  factory TestReport_Assert.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_AssertFromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_AssertToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Test {
+  static Future<TestReport_Test> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String description,
+    Element elementDescription,
+    List<TestReport_Action1> action,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Test newTestReport_Test = new TestReport_Test(
+      id: id ?? await fhirDb.newResourceId('TestReport_Test'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      description: description,
+      elementDescription: elementDescription,
+      action: action,
+    );
+    return newTestReport_Test;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Test{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  String description;
+  Element elementDescription;
+  List<TestReport_Action1> action;
 
-	static Future<TestReport_Test> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	String description,
-	Element elementDescription,
-	List<TestReport_Action1> action,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Test newTestReport_Test = new TestReport_Test(
-	id: id ?? await fhirDb.newResourceId('TestReport_Test'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	description: description,
-	elementDescription: elementDescription,
-	action: action,
-);
-	return newTestReport_Test;
-}
+  TestReport_Test({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.description,
+    this.elementDescription,
+    @required this.action,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	String description;
-	Element elementDescription;
-	List<TestReport_Action1> action;
-
-TestReport_Test(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.description,
-this.elementDescription,
-@required this.action,
-});
-
-  factory TestReport_Test.fromJson(Map<String, dynamic> json) => _$TestReport_TestFromJson(json);
+  factory TestReport_Test.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_TestFromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_TestToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Action1 {
+  static Future<TestReport_Action1> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    TestReport_Operation operation,
+    TestReport_Assert asserts,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Action1 newTestReport_Action1 = new TestReport_Action1(
+      id: id ?? await fhirDb.newResourceId('TestReport_Action1'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      operation: operation,
+      asserts: asserts,
+    );
+    return newTestReport_Action1;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Action1{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  TestReport_Operation operation;
+  TestReport_Assert asserts;
 
-	static Future<TestReport_Action1> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	TestReport_Operation operation,
-	TestReport_Assert asserts,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Action1 newTestReport_Action1 = new TestReport_Action1(
-	id: id ?? await fhirDb.newResourceId('TestReport_Action1'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	operation: operation,
-	asserts: asserts,
-);
-	return newTestReport_Action1;
-}
+  TestReport_Action1({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.operation,
+    this.asserts,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	TestReport_Operation operation;
-	TestReport_Assert asserts;
-
-TestReport_Action1(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.operation,
-this.asserts,
-});
-
-  factory TestReport_Action1.fromJson(Map<String, dynamic> json) => _$TestReport_Action1FromJson(json);
+  factory TestReport_Action1.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_Action1FromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_Action1ToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Teardown {
+  static Future<TestReport_Teardown> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<TestReport_Action2> action,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Teardown newTestReport_Teardown = new TestReport_Teardown(
+      id: id ?? await fhirDb.newResourceId('TestReport_Teardown'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      action: action,
+    );
+    return newTestReport_Teardown;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Teardown{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<TestReport_Action2> action;
 
-	static Future<TestReport_Teardown> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<TestReport_Action2> action,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Teardown newTestReport_Teardown = new TestReport_Teardown(
-	id: id ?? await fhirDb.newResourceId('TestReport_Teardown'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	action: action,
-);
-	return newTestReport_Teardown;
-}
+  TestReport_Teardown({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.action,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<TestReport_Action2> action;
-
-TestReport_Teardown(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.action,
-});
-
-  factory TestReport_Teardown.fromJson(Map<String, dynamic> json) => _$TestReport_TeardownFromJson(json);
+  factory TestReport_Teardown.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_TeardownFromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_TeardownToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TestReport_Action2 {
+  static Future<TestReport_Action2> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    TestReport_Operation operation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TestReport_Action2 newTestReport_Action2 = new TestReport_Action2(
+      id: id ?? await fhirDb.newResourceId('TestReport_Action2'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      operation: operation,
+    );
+    return newTestReport_Action2;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TestReport_Action2{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  TestReport_Operation operation;
 
-	static Future<TestReport_Action2> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	TestReport_Operation operation,
-}) async {
-var fhirDb = new DatabaseHelper();
-TestReport_Action2 newTestReport_Action2 = new TestReport_Action2(
-	id: id ?? await fhirDb.newResourceId('TestReport_Action2'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	operation: operation,
-);
-	return newTestReport_Action2;
-}
+  TestReport_Action2({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.operation,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	TestReport_Operation operation;
-
-TestReport_Action2(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.operation,
-});
-
-  factory TestReport_Action2.fromJson(Map<String, dynamic> json) => _$TestReport_Action2FromJson(json);
+  factory TestReport_Action2.fromJson(Map<String, dynamic> json) =>
+      _$TestReport_Action2FromJson(json);
   Map<String, dynamic> toJson() => _$TestReport_Action2ToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -588,8 +582,9 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -651,39 +646,49 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReportToJson(TestReport instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'testScript': instance.testScript?.toJson(),
-      'result': instance.result,
-      'elementResult': instance.elementResult?.toJson(),
-      'score': instance.score,
-      'elementScore': instance.elementScore?.toJson(),
-      'tester': instance.tester,
-      'elementTester': instance.elementTester?.toJson(),
-      'issued': instance.issued?.toIso8601String(),
-      'elementIssued': instance.elementIssued?.toJson(),
-      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'setup': instance.setup?.toJson(),
-      'test': instance.test?.map((e) => e?.toJson())?.toList(),
-      'teardown': instance.teardown?.toJson(),
-    };
+Map<String, dynamic> _$TestReportToJson(TestReport instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('testScript', instance.testScript?.toJson());
+  writeNotNull('result', instance.result);
+  writeNotNull('elementResult', instance.elementResult?.toJson());
+  writeNotNull('score', instance.score);
+  writeNotNull('elementScore', instance.elementScore?.toJson());
+  writeNotNull('tester', instance.tester);
+  writeNotNull('elementTester', instance.elementTester?.toJson());
+  writeNotNull('issued', instance.issued?.toIso8601String());
+  writeNotNull('elementIssued', instance.elementIssued?.toJson());
+  writeNotNull(
+      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
+  writeNotNull('setup', instance.setup?.toJson());
+  writeNotNull('test', instance.test?.map((e) => e?.toJson())?.toList());
+  writeNotNull('teardown', instance.teardown?.toJson());
+  return val;
+}
 
 TestReport_Participant _$TestReport_ParticipantFromJson(
     Map<String, dynamic> json) {
@@ -713,19 +718,28 @@ TestReport_Participant _$TestReport_ParticipantFromJson(
 }
 
 Map<String, dynamic> _$TestReport_ParticipantToJson(
-        TestReport_Participant instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'uri': instance.uri,
-      'elementUri': instance.elementUri?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-    };
+    TestReport_Participant instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('uri', instance.uri);
+  writeNotNull('elementUri', instance.elementUri?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  return val;
+}
 
 TestReport_Setup _$TestReport_SetupFromJson(Map<String, dynamic> json) {
   return TestReport_Setup(
@@ -746,14 +760,23 @@ TestReport_Setup _$TestReport_SetupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_SetupToJson(TestReport_Setup instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$TestReport_SetupToJson(TestReport_Setup instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 TestReport_Action _$TestReport_ActionFromJson(Map<String, dynamic> json) {
   return TestReport_Action(
@@ -776,15 +799,24 @@ TestReport_Action _$TestReport_ActionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_ActionToJson(TestReport_Action instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'operation': instance.operation?.toJson(),
-      'asserts': instance.asserts?.toJson(),
-    };
+Map<String, dynamic> _$TestReport_ActionToJson(TestReport_Action instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('operation', instance.operation?.toJson());
+  writeNotNull('asserts', instance.asserts?.toJson());
+  return val;
+}
 
 TestReport_Operation _$TestReport_OperationFromJson(Map<String, dynamic> json) {
   return TestReport_Operation(
@@ -813,19 +845,28 @@ TestReport_Operation _$TestReport_OperationFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$TestReport_OperationToJson(
-        TestReport_Operation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'result': instance.result,
-      'elementResult': instance.elementResult?.toJson(),
-      'message': instance.message,
-      'elementMessage': instance.elementMessage?.toJson(),
-      'detail': instance.detail,
-      'elementDetail': instance.elementDetail?.toJson(),
-    };
+    TestReport_Operation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('result', instance.result);
+  writeNotNull('elementResult', instance.elementResult?.toJson());
+  writeNotNull('message', instance.message);
+  writeNotNull('elementMessage', instance.elementMessage?.toJson());
+  writeNotNull('detail', instance.detail);
+  writeNotNull('elementDetail', instance.elementDetail?.toJson());
+  return val;
+}
 
 TestReport_Assert _$TestReport_AssertFromJson(Map<String, dynamic> json) {
   return TestReport_Assert(
@@ -853,19 +894,28 @@ TestReport_Assert _$TestReport_AssertFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_AssertToJson(TestReport_Assert instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'result': instance.result,
-      'elementResult': instance.elementResult?.toJson(),
-      'message': instance.message,
-      'elementMessage': instance.elementMessage?.toJson(),
-      'detail': instance.detail,
-      'elementDetail': instance.elementDetail?.toJson(),
-    };
+Map<String, dynamic> _$TestReport_AssertToJson(TestReport_Assert instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('result', instance.result);
+  writeNotNull('elementResult', instance.elementResult?.toJson());
+  writeNotNull('message', instance.message);
+  writeNotNull('elementMessage', instance.elementMessage?.toJson());
+  writeNotNull('detail', instance.detail);
+  writeNotNull('elementDetail', instance.elementDetail?.toJson());
+  return val;
+}
 
 TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
   return TestReport_Test(
@@ -894,18 +944,27 @@ TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_TestToJson(TestReport_Test instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$TestReport_TestToJson(TestReport_Test instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 TestReport_Action1 _$TestReport_Action1FromJson(Map<String, dynamic> json) {
   return TestReport_Action1(
@@ -928,15 +987,24 @@ TestReport_Action1 _$TestReport_Action1FromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_Action1ToJson(TestReport_Action1 instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'operation': instance.operation?.toJson(),
-      'asserts': instance.asserts?.toJson(),
-    };
+Map<String, dynamic> _$TestReport_Action1ToJson(TestReport_Action1 instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('operation', instance.operation?.toJson());
+  writeNotNull('asserts', instance.asserts?.toJson());
+  return val;
+}
 
 TestReport_Teardown _$TestReport_TeardownFromJson(Map<String, dynamic> json) {
   return TestReport_Teardown(
@@ -957,15 +1025,23 @@ TestReport_Teardown _$TestReport_TeardownFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_TeardownToJson(
-        TestReport_Teardown instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$TestReport_TeardownToJson(TestReport_Teardown instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 TestReport_Action2 _$TestReport_Action2FromJson(Map<String, dynamic> json) {
   return TestReport_Action2(
@@ -985,11 +1061,20 @@ TestReport_Action2 _$TestReport_Action2FromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_Action2ToJson(TestReport_Action2 instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'operation': instance.operation?.toJson(),
-    };
+Map<String, dynamic> _$TestReport_Action2ToJson(TestReport_Action2 instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('operation', instance.operation?.toJson());
+  return val;
+}

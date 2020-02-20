@@ -18,439 +18,450 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ResearchElementDefinition {
+  static Future<ResearchElementDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String shortTitle,
+    Element elementShortTitle,
+    String subtitle,
+    Element elementSubtitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    CodeableConcept subjectCodeableConcept,
+    Reference subjectReference,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<String> comment,
+    List<Element> elementComment,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String usage,
+    Element elementUsage,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    List<CodeableConcept> topic,
+    List<ContactDetail> author,
+    List<ContactDetail> editor,
+    List<ContactDetail> reviewer,
+    List<ContactDetail> endorser,
+    List<RelatedArtifact> relatedArtifact,
+    List<String> library,
+    String type,
+    Element elementType,
+    String variableType,
+    Element elementVariableType,
+    List<ResearchElementDefinition_Characteristic> characteristic,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ResearchElementDefinition newResearchElementDefinition =
+        new ResearchElementDefinition(
+      resourceType: 'ResearchElementDefinition',
+      id: id ?? await fhirDb.newResourceId('ResearchElementDefinition'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      shortTitle: shortTitle,
+      elementShortTitle: elementShortTitle,
+      subtitle: subtitle,
+      elementSubtitle: elementSubtitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      subjectCodeableConcept: subjectCodeableConcept,
+      subjectReference: subjectReference,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      comment: comment,
+      elementComment: elementComment,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      usage: usage,
+      elementUsage: elementUsage,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      approvalDate: approvalDate,
+      elementApprovalDate: elementApprovalDate,
+      lastReviewDate: lastReviewDate,
+      elementLastReviewDate: elementLastReviewDate,
+      effectivePeriod: effectivePeriod,
+      topic: topic,
+      author: author,
+      editor: editor,
+      reviewer: reviewer,
+      endorser: endorser,
+      relatedArtifact: relatedArtifact,
+      library: library,
+      type: type,
+      elementType: elementType,
+      variableType: variableType,
+      elementVariableType: elementVariableType,
+      characteristic: characteristic,
+    );
+    newResearchElementDefinition.meta.createdAt = DateTime.now();
+    newResearchElementDefinition.meta.lastUpdated =
+        newResearchElementDefinition.meta.createdAt;
+    int saved = await fhirDb.saveResource(newResearchElementDefinition);
+    return newResearchElementDefinition;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ResearchElementDefinition{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ResearchElementDefinition> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	List<Identifier> identifier,
-	String version,
-	Element elementVersion,
-	String name,
-	Element elementName,
-	String title,
-	Element elementTitle,
-	String shortTitle,
-	Element elementShortTitle,
-	String subtitle,
-	Element elementSubtitle,
-	String status,
-	Element elementStatus,
-	bool experimental,
-	Element elementExperimental,
-	CodeableConcept subjectCodeableConcept,
-	Reference subjectReference,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<String> comment,
-	List<Element> elementComment,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String purpose,
-	Element elementPurpose,
-	String usage,
-	Element elementUsage,
-	String copyright,
-	Element elementCopyright,
-	String approvalDate,
-	Element elementApprovalDate,
-	String lastReviewDate,
-	Element elementLastReviewDate,
-	Period effectivePeriod,
-	List<CodeableConcept> topic,
-	List<ContactDetail> author,
-	List<ContactDetail> editor,
-	List<ContactDetail> reviewer,
-	List<ContactDetail> endorser,
-	List<RelatedArtifact> relatedArtifact,
-	List<String> library,
-	String type,
-	Element elementType,
-	String variableType,
-	Element elementVariableType,
-	List<ResearchElementDefinition_Characteristic> characteristic,
-}) async {
-var fhirDb = new DatabaseHelper();
-ResearchElementDefinition newResearchElementDefinition = new ResearchElementDefinition(
-	resourceType: 'ResearchElementDefinition',
-	id: id ?? await fhirDb.newResourceId('ResearchElementDefinition'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	identifier: identifier,
-	version: version,
-	elementVersion: elementVersion,
-	name: name,
-	elementName: elementName,
-	title: title,
-	elementTitle: elementTitle,
-	shortTitle: shortTitle,
-	elementShortTitle: elementShortTitle,
-	subtitle: subtitle,
-	elementSubtitle: elementSubtitle,
-	status: status,
-	elementStatus: elementStatus,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	subjectCodeableConcept: subjectCodeableConcept,
-	subjectReference: subjectReference,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	comment: comment,
-	elementComment: elementComment,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	usage: usage,
-	elementUsage: elementUsage,
-	copyright: copyright,
-	elementCopyright: elementCopyright,
-	approvalDate: approvalDate,
-	elementApprovalDate: elementApprovalDate,
-	lastReviewDate: lastReviewDate,
-	elementLastReviewDate: elementLastReviewDate,
-	effectivePeriod: effectivePeriod,
-	topic: topic,
-	author: author,
-	editor: editor,
-	reviewer: reviewer,
-	endorser: endorser,
-	relatedArtifact: relatedArtifact,
-	library: library,
-	type: type,
-	elementType: elementType,
-	variableType: variableType,
-	elementVariableType: elementVariableType,
-	characteristic: characteristic,
-);
-	newResearchElementDefinition.meta.createdAt = DateTime.now();
-	newResearchElementDefinition.meta.lastUpdated = newResearchElementDefinition.meta.createdAt;
-	int saved = await fhirDb.saveResource(newResearchElementDefinition);
-	 return newResearchElementDefinition;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'ResearchElementDefinition';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  List<Identifier> identifier;
+  String version;
+  Element elementVersion;
+  String name;
+  Element elementName;
+  String title;
+  Element elementTitle;
+  String shortTitle;
+  Element elementShortTitle;
+  String subtitle;
+  Element elementSubtitle;
+  String status;
+  Element elementStatus;
+  bool experimental;
+  Element elementExperimental;
+  CodeableConcept subjectCodeableConcept;
+  Reference subjectReference;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<String> comment;
+  List<Element> elementComment;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String purpose;
+  Element elementPurpose;
+  String usage;
+  Element elementUsage;
+  String copyright;
+  Element elementCopyright;
+  String approvalDate;
+  Element elementApprovalDate;
+  String lastReviewDate;
+  Element elementLastReviewDate;
+  Period effectivePeriod;
+  List<CodeableConcept> topic;
+  List<ContactDetail> author;
+  List<ContactDetail> editor;
+  List<ContactDetail> reviewer;
+  List<ContactDetail> endorser;
+  List<RelatedArtifact> relatedArtifact;
+  List<String> library;
+  String type;
+  Element elementType;
+  String variableType;
+  Element elementVariableType;
+  List<ResearchElementDefinition_Characteristic> characteristic;
 
-	String resourceType= 'ResearchElementDefinition';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	List<Identifier> identifier;
-	String version;
-	Element elementVersion;
-	String name;
-	Element elementName;
-	String title;
-	Element elementTitle;
-	String shortTitle;
-	Element elementShortTitle;
-	String subtitle;
-	Element elementSubtitle;
-	String status;
-	Element elementStatus;
-	bool experimental;
-	Element elementExperimental;
-	CodeableConcept subjectCodeableConcept;
-	Reference subjectReference;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<String> comment;
-	List<Element> elementComment;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String purpose;
-	Element elementPurpose;
-	String usage;
-	Element elementUsage;
-	String copyright;
-	Element elementCopyright;
-	String approvalDate;
-	Element elementApprovalDate;
-	String lastReviewDate;
-	Element elementLastReviewDate;
-	Period effectivePeriod;
-	List<CodeableConcept> topic;
-	List<ContactDetail> author;
-	List<ContactDetail> editor;
-	List<ContactDetail> reviewer;
-	List<ContactDetail> endorser;
-	List<RelatedArtifact> relatedArtifact;
-	List<String> library;
-	String type;
-	Element elementType;
-	String variableType;
-	Element elementVariableType;
-	List<ResearchElementDefinition_Characteristic> characteristic;
+  ResearchElementDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.shortTitle,
+    this.elementShortTitle,
+    this.subtitle,
+    this.elementSubtitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.subjectCodeableConcept,
+    this.subjectReference,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.comment,
+    this.elementComment,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.usage,
+    this.elementUsage,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.topic,
+    this.author,
+    this.editor,
+    this.reviewer,
+    this.endorser,
+    this.relatedArtifact,
+    this.library,
+    this.type,
+    this.elementType,
+    this.variableType,
+    this.elementVariableType,
+    @required this.characteristic,
+  });
 
-ResearchElementDefinition(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.identifier,
-this.version,
-this.elementVersion,
-this.name,
-this.elementName,
-this.title,
-this.elementTitle,
-this.shortTitle,
-this.elementShortTitle,
-this.subtitle,
-this.elementSubtitle,
-this.status,
-this.elementStatus,
-this.experimental,
-this.elementExperimental,
-this.subjectCodeableConcept,
-this.subjectReference,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.comment,
-this.elementComment,
-this.useContext,
-this.jurisdiction,
-this.purpose,
-this.elementPurpose,
-this.usage,
-this.elementUsage,
-this.copyright,
-this.elementCopyright,
-this.approvalDate,
-this.elementApprovalDate,
-this.lastReviewDate,
-this.elementLastReviewDate,
-this.effectivePeriod,
-this.topic,
-this.author,
-this.editor,
-this.reviewer,
-this.endorser,
-this.relatedArtifact,
-this.library,
-this.type,
-this.elementType,
-this.variableType,
-this.elementVariableType,
-@required this.characteristic,
-});
-
-  factory ResearchElementDefinition.fromJson(Map<String, dynamic> json) => _$ResearchElementDefinitionFromJson(json);
+  factory ResearchElementDefinition.fromJson(Map<String, dynamic> json) =>
+      _$ResearchElementDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$ResearchElementDefinitionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ResearchElementDefinition_Characteristic {
+  static Future<ResearchElementDefinition_Characteristic> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept definitionCodeableConcept,
+    String definitionCanonical,
+    Element elementDefinitionCanonical,
+    Expression definitionExpression,
+    DataRequirement definitionDataRequirement,
+    List<UsageContext> usageContext,
+    bool exclude,
+    Element elementExclude,
+    CodeableConcept unitOfMeasure,
+    String studyEffectiveDescription,
+    Element elementStudyEffectiveDescription,
+    String studyEffectiveDateTime,
+    Element elementStudyEffectiveDateTime,
+    Period studyEffectivePeriod,
+    Duration studyEffectiveDuration,
+    Timing studyEffectiveTiming,
+    Duration studyEffectiveTimeFromStart,
+    String studyEffectiveGroupMeasure,
+    Element elementStudyEffectiveGroupMeasure,
+    String participantEffectiveDescription,
+    Element elementParticipantEffectiveDescription,
+    String participantEffectiveDateTime,
+    Element elementParticipantEffectiveDateTime,
+    Period participantEffectivePeriod,
+    Duration participantEffectiveDuration,
+    Timing participantEffectiveTiming,
+    Duration participantEffectiveTimeFromStart,
+    String participantEffectiveGroupMeasure,
+    Element elementParticipantEffectiveGroupMeasure,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ResearchElementDefinition_Characteristic
+        newResearchElementDefinition_Characteristic =
+        new ResearchElementDefinition_Characteristic(
+      id: id ??
+          await fhirDb
+              .newResourceId('ResearchElementDefinition_Characteristic'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      definitionCodeableConcept: definitionCodeableConcept,
+      definitionCanonical: definitionCanonical,
+      elementDefinitionCanonical: elementDefinitionCanonical,
+      definitionExpression: definitionExpression,
+      definitionDataRequirement: definitionDataRequirement,
+      usageContext: usageContext,
+      exclude: exclude,
+      elementExclude: elementExclude,
+      unitOfMeasure: unitOfMeasure,
+      studyEffectiveDescription: studyEffectiveDescription,
+      elementStudyEffectiveDescription: elementStudyEffectiveDescription,
+      studyEffectiveDateTime: studyEffectiveDateTime,
+      elementStudyEffectiveDateTime: elementStudyEffectiveDateTime,
+      studyEffectivePeriod: studyEffectivePeriod,
+      studyEffectiveDuration: studyEffectiveDuration,
+      studyEffectiveTiming: studyEffectiveTiming,
+      studyEffectiveTimeFromStart: studyEffectiveTimeFromStart,
+      studyEffectiveGroupMeasure: studyEffectiveGroupMeasure,
+      elementStudyEffectiveGroupMeasure: elementStudyEffectiveGroupMeasure,
+      participantEffectiveDescription: participantEffectiveDescription,
+      elementParticipantEffectiveDescription:
+          elementParticipantEffectiveDescription,
+      participantEffectiveDateTime: participantEffectiveDateTime,
+      elementParticipantEffectiveDateTime: elementParticipantEffectiveDateTime,
+      participantEffectivePeriod: participantEffectivePeriod,
+      participantEffectiveDuration: participantEffectiveDuration,
+      participantEffectiveTiming: participantEffectiveTiming,
+      participantEffectiveTimeFromStart: participantEffectiveTimeFromStart,
+      participantEffectiveGroupMeasure: participantEffectiveGroupMeasure,
+      elementParticipantEffectiveGroupMeasure:
+          elementParticipantEffectiveGroupMeasure,
+    );
+    return newResearchElementDefinition_Characteristic;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ResearchElementDefinition_Characteristic{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept definitionCodeableConcept;
+  String definitionCanonical;
+  Element elementDefinitionCanonical;
+  Expression definitionExpression;
+  DataRequirement definitionDataRequirement;
+  List<UsageContext> usageContext;
+  bool exclude;
+  Element elementExclude;
+  CodeableConcept unitOfMeasure;
+  String studyEffectiveDescription;
+  Element elementStudyEffectiveDescription;
+  String studyEffectiveDateTime;
+  Element elementStudyEffectiveDateTime;
+  Period studyEffectivePeriod;
+  Duration studyEffectiveDuration;
+  Timing studyEffectiveTiming;
+  Duration studyEffectiveTimeFromStart;
+  String studyEffectiveGroupMeasure;
+  Element elementStudyEffectiveGroupMeasure;
+  String participantEffectiveDescription;
+  Element elementParticipantEffectiveDescription;
+  String participantEffectiveDateTime;
+  Element elementParticipantEffectiveDateTime;
+  Period participantEffectivePeriod;
+  Duration participantEffectiveDuration;
+  Timing participantEffectiveTiming;
+  Duration participantEffectiveTimeFromStart;
+  String participantEffectiveGroupMeasure;
+  Element elementParticipantEffectiveGroupMeasure;
 
-	static Future<ResearchElementDefinition_Characteristic> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept definitionCodeableConcept,
-	String definitionCanonical,
-	Element elementDefinitionCanonical,
-	Expression definitionExpression,
-	DataRequirement definitionDataRequirement,
-	List<UsageContext> usageContext,
-	bool exclude,
-	Element elementExclude,
-	CodeableConcept unitOfMeasure,
-	String studyEffectiveDescription,
-	Element elementStudyEffectiveDescription,
-	String studyEffectiveDateTime,
-	Element elementStudyEffectiveDateTime,
-	Period studyEffectivePeriod,
-	Duration studyEffectiveDuration,
-	Timing studyEffectiveTiming,
-	Duration studyEffectiveTimeFromStart,
-	String studyEffectiveGroupMeasure,
-	Element elementStudyEffectiveGroupMeasure,
-	String participantEffectiveDescription,
-	Element elementParticipantEffectiveDescription,
-	String participantEffectiveDateTime,
-	Element elementParticipantEffectiveDateTime,
-	Period participantEffectivePeriod,
-	Duration participantEffectiveDuration,
-	Timing participantEffectiveTiming,
-	Duration participantEffectiveTimeFromStart,
-	String participantEffectiveGroupMeasure,
-	Element elementParticipantEffectiveGroupMeasure,
-}) async {
-var fhirDb = new DatabaseHelper();
-ResearchElementDefinition_Characteristic newResearchElementDefinition_Characteristic = new ResearchElementDefinition_Characteristic(
-	id: id ?? await fhirDb.newResourceId('ResearchElementDefinition_Characteristic'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	definitionCodeableConcept: definitionCodeableConcept,
-	definitionCanonical: definitionCanonical,
-	elementDefinitionCanonical: elementDefinitionCanonical,
-	definitionExpression: definitionExpression,
-	definitionDataRequirement: definitionDataRequirement,
-	usageContext: usageContext,
-	exclude: exclude,
-	elementExclude: elementExclude,
-	unitOfMeasure: unitOfMeasure,
-	studyEffectiveDescription: studyEffectiveDescription,
-	elementStudyEffectiveDescription: elementStudyEffectiveDescription,
-	studyEffectiveDateTime: studyEffectiveDateTime,
-	elementStudyEffectiveDateTime: elementStudyEffectiveDateTime,
-	studyEffectivePeriod: studyEffectivePeriod,
-	studyEffectiveDuration: studyEffectiveDuration,
-	studyEffectiveTiming: studyEffectiveTiming,
-	studyEffectiveTimeFromStart: studyEffectiveTimeFromStart,
-	studyEffectiveGroupMeasure: studyEffectiveGroupMeasure,
-	elementStudyEffectiveGroupMeasure: elementStudyEffectiveGroupMeasure,
-	participantEffectiveDescription: participantEffectiveDescription,
-	elementParticipantEffectiveDescription: elementParticipantEffectiveDescription,
-	participantEffectiveDateTime: participantEffectiveDateTime,
-	elementParticipantEffectiveDateTime: elementParticipantEffectiveDateTime,
-	participantEffectivePeriod: participantEffectivePeriod,
-	participantEffectiveDuration: participantEffectiveDuration,
-	participantEffectiveTiming: participantEffectiveTiming,
-	participantEffectiveTimeFromStart: participantEffectiveTimeFromStart,
-	participantEffectiveGroupMeasure: participantEffectiveGroupMeasure,
-	elementParticipantEffectiveGroupMeasure: elementParticipantEffectiveGroupMeasure,
-);
-	return newResearchElementDefinition_Characteristic;
+  ResearchElementDefinition_Characteristic({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.definitionCodeableConcept,
+    this.definitionCanonical,
+    this.elementDefinitionCanonical,
+    this.definitionExpression,
+    this.definitionDataRequirement,
+    this.usageContext,
+    this.exclude,
+    this.elementExclude,
+    this.unitOfMeasure,
+    this.studyEffectiveDescription,
+    this.elementStudyEffectiveDescription,
+    this.studyEffectiveDateTime,
+    this.elementStudyEffectiveDateTime,
+    this.studyEffectivePeriod,
+    this.studyEffectiveDuration,
+    this.studyEffectiveTiming,
+    this.studyEffectiveTimeFromStart,
+    this.studyEffectiveGroupMeasure,
+    this.elementStudyEffectiveGroupMeasure,
+    this.participantEffectiveDescription,
+    this.elementParticipantEffectiveDescription,
+    this.participantEffectiveDateTime,
+    this.elementParticipantEffectiveDateTime,
+    this.participantEffectivePeriod,
+    this.participantEffectiveDuration,
+    this.participantEffectiveTiming,
+    this.participantEffectiveTimeFromStart,
+    this.participantEffectiveGroupMeasure,
+    this.elementParticipantEffectiveGroupMeasure,
+  });
+
+  factory ResearchElementDefinition_Characteristic.fromJson(
+          Map<String, dynamic> json) =>
+      _$ResearchElementDefinition_CharacteristicFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ResearchElementDefinition_CharacteristicToJson(this);
 }
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept definitionCodeableConcept;
-	String definitionCanonical;
-	Element elementDefinitionCanonical;
-	Expression definitionExpression;
-	DataRequirement definitionDataRequirement;
-	List<UsageContext> usageContext;
-	bool exclude;
-	Element elementExclude;
-	CodeableConcept unitOfMeasure;
-	String studyEffectiveDescription;
-	Element elementStudyEffectiveDescription;
-	String studyEffectiveDateTime;
-	Element elementStudyEffectiveDateTime;
-	Period studyEffectivePeriod;
-	Duration studyEffectiveDuration;
-	Timing studyEffectiveTiming;
-	Duration studyEffectiveTimeFromStart;
-	String studyEffectiveGroupMeasure;
-	Element elementStudyEffectiveGroupMeasure;
-	String participantEffectiveDescription;
-	Element elementParticipantEffectiveDescription;
-	String participantEffectiveDateTime;
-	Element elementParticipantEffectiveDateTime;
-	Period participantEffectivePeriod;
-	Duration participantEffectiveDuration;
-	Timing participantEffectiveTiming;
-	Duration participantEffectiveTimeFromStart;
-	String participantEffectiveGroupMeasure;
-	Element elementParticipantEffectiveGroupMeasure;
-
-ResearchElementDefinition_Characteristic(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.definitionCodeableConcept,
-this.definitionCanonical,
-this.elementDefinitionCanonical,
-this.definitionExpression,
-this.definitionDataRequirement,
-this.usageContext,
-this.exclude,
-this.elementExclude,
-this.unitOfMeasure,
-this.studyEffectiveDescription,
-this.elementStudyEffectiveDescription,
-this.studyEffectiveDateTime,
-this.elementStudyEffectiveDateTime,
-this.studyEffectivePeriod,
-this.studyEffectiveDuration,
-this.studyEffectiveTiming,
-this.studyEffectiveTimeFromStart,
-this.studyEffectiveGroupMeasure,
-this.elementStudyEffectiveGroupMeasure,
-this.participantEffectiveDescription,
-this.elementParticipantEffectiveDescription,
-this.participantEffectiveDateTime,
-this.elementParticipantEffectiveDateTime,
-this.participantEffectivePeriod,
-this.participantEffectiveDuration,
-this.participantEffectiveTiming,
-this.participantEffectiveTimeFromStart,
-this.participantEffectiveGroupMeasure,
-this.elementParticipantEffectiveGroupMeasure,
-});
-
-  factory ResearchElementDefinition_Characteristic.fromJson(Map<String, dynamic> json) => _$ResearchElementDefinition_CharacteristicFromJson(json);
-  Map<String, dynamic> toJson() => _$ResearchElementDefinition_CharacteristicToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -478,8 +489,9 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -636,77 +648,93 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
 }
 
 Map<String, dynamic> _$ResearchElementDefinitionToJson(
-        ResearchElementDefinition instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'shortTitle': instance.shortTitle,
-      'elementShortTitle': instance.elementShortTitle?.toJson(),
-      'subtitle': instance.subtitle,
-      'elementSubtitle': instance.elementSubtitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
-      'subjectReference': instance.subjectReference?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'comment': instance.comment,
-      'elementComment':
-          instance.elementComment?.map((e) => e?.toJson())?.toList(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'usage': instance.usage,
-      'elementUsage': instance.elementUsage?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'approvalDate': instance.approvalDate,
-      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
-      'lastReviewDate': instance.lastReviewDate,
-      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
-      'author': instance.author?.map((e) => e?.toJson())?.toList(),
-      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
-      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
-      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
-      'relatedArtifact':
-          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
-      'library': instance.library,
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'variableType': instance.variableType,
-      'elementVariableType': instance.elementVariableType?.toJson(),
-      'characteristic':
-          instance.characteristic?.map((e) => e?.toJson())?.toList(),
-    };
+    ResearchElementDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('shortTitle', instance.shortTitle);
+  writeNotNull('elementShortTitle', instance.elementShortTitle?.toJson());
+  writeNotNull('subtitle', instance.subtitle);
+  writeNotNull('elementSubtitle', instance.elementSubtitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull(
+      'subjectCodeableConcept', instance.subjectCodeableConcept?.toJson());
+  writeNotNull('subjectReference', instance.subjectReference?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment',
+      instance.elementComment?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('usage', instance.usage);
+  writeNotNull('elementUsage', instance.elementUsage?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('approvalDate', instance.approvalDate);
+  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
+  writeNotNull('lastReviewDate', instance.lastReviewDate);
+  writeNotNull(
+      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('topic', instance.topic?.map((e) => e?.toJson())?.toList());
+  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
+  writeNotNull('editor', instance.editor?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reviewer', instance.reviewer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endorser', instance.endorser?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedArtifact',
+      instance.relatedArtifact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('library', instance.library);
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('variableType', instance.variableType);
+  writeNotNull('elementVariableType', instance.elementVariableType?.toJson());
+  writeNotNull('characteristic',
+      instance.characteristic?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ResearchElementDefinition_Characteristic
     _$ResearchElementDefinition_CharacteristicFromJson(
@@ -823,53 +851,68 @@ ResearchElementDefinition_Characteristic
 }
 
 Map<String, dynamic> _$ResearchElementDefinition_CharacteristicToJson(
-        ResearchElementDefinition_Characteristic instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'definitionCodeableConcept': instance.definitionCodeableConcept?.toJson(),
-      'definitionCanonical': instance.definitionCanonical,
-      'elementDefinitionCanonical':
-          instance.elementDefinitionCanonical?.toJson(),
-      'definitionExpression': instance.definitionExpression?.toJson(),
-      'definitionDataRequirement': instance.definitionDataRequirement?.toJson(),
-      'usageContext': instance.usageContext?.map((e) => e?.toJson())?.toList(),
-      'exclude': instance.exclude,
-      'elementExclude': instance.elementExclude?.toJson(),
-      'unitOfMeasure': instance.unitOfMeasure?.toJson(),
-      'studyEffectiveDescription': instance.studyEffectiveDescription,
-      'elementStudyEffectiveDescription':
-          instance.elementStudyEffectiveDescription?.toJson(),
-      'studyEffectiveDateTime': instance.studyEffectiveDateTime,
-      'elementStudyEffectiveDateTime':
-          instance.elementStudyEffectiveDateTime?.toJson(),
-      'studyEffectivePeriod': instance.studyEffectivePeriod?.toJson(),
-      'studyEffectiveDuration': instance.studyEffectiveDuration?.toJson(),
-      'studyEffectiveTiming': instance.studyEffectiveTiming?.toJson(),
-      'studyEffectiveTimeFromStart':
-          instance.studyEffectiveTimeFromStart?.toJson(),
-      'studyEffectiveGroupMeasure': instance.studyEffectiveGroupMeasure,
-      'elementStudyEffectiveGroupMeasure':
-          instance.elementStudyEffectiveGroupMeasure?.toJson(),
-      'participantEffectiveDescription':
-          instance.participantEffectiveDescription,
-      'elementParticipantEffectiveDescription':
-          instance.elementParticipantEffectiveDescription?.toJson(),
-      'participantEffectiveDateTime': instance.participantEffectiveDateTime,
-      'elementParticipantEffectiveDateTime':
-          instance.elementParticipantEffectiveDateTime?.toJson(),
-      'participantEffectivePeriod':
-          instance.participantEffectivePeriod?.toJson(),
-      'participantEffectiveDuration':
-          instance.participantEffectiveDuration?.toJson(),
-      'participantEffectiveTiming':
-          instance.participantEffectiveTiming?.toJson(),
-      'participantEffectiveTimeFromStart':
-          instance.participantEffectiveTimeFromStart?.toJson(),
-      'participantEffectiveGroupMeasure':
-          instance.participantEffectiveGroupMeasure,
-      'elementParticipantEffectiveGroupMeasure':
-          instance.elementParticipantEffectiveGroupMeasure?.toJson(),
-    };
+    ResearchElementDefinition_Characteristic instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('definitionCodeableConcept',
+      instance.definitionCodeableConcept?.toJson());
+  writeNotNull('definitionCanonical', instance.definitionCanonical);
+  writeNotNull('elementDefinitionCanonical',
+      instance.elementDefinitionCanonical?.toJson());
+  writeNotNull('definitionExpression', instance.definitionExpression?.toJson());
+  writeNotNull('definitionDataRequirement',
+      instance.definitionDataRequirement?.toJson());
+  writeNotNull(
+      'usageContext', instance.usageContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull('exclude', instance.exclude);
+  writeNotNull('elementExclude', instance.elementExclude?.toJson());
+  writeNotNull('unitOfMeasure', instance.unitOfMeasure?.toJson());
+  writeNotNull('studyEffectiveDescription', instance.studyEffectiveDescription);
+  writeNotNull('elementStudyEffectiveDescription',
+      instance.elementStudyEffectiveDescription?.toJson());
+  writeNotNull('studyEffectiveDateTime', instance.studyEffectiveDateTime);
+  writeNotNull('elementStudyEffectiveDateTime',
+      instance.elementStudyEffectiveDateTime?.toJson());
+  writeNotNull('studyEffectivePeriod', instance.studyEffectivePeriod?.toJson());
+  writeNotNull(
+      'studyEffectiveDuration', instance.studyEffectiveDuration?.toJson());
+  writeNotNull('studyEffectiveTiming', instance.studyEffectiveTiming?.toJson());
+  writeNotNull('studyEffectiveTimeFromStart',
+      instance.studyEffectiveTimeFromStart?.toJson());
+  writeNotNull(
+      'studyEffectiveGroupMeasure', instance.studyEffectiveGroupMeasure);
+  writeNotNull('elementStudyEffectiveGroupMeasure',
+      instance.elementStudyEffectiveGroupMeasure?.toJson());
+  writeNotNull('participantEffectiveDescription',
+      instance.participantEffectiveDescription);
+  writeNotNull('elementParticipantEffectiveDescription',
+      instance.elementParticipantEffectiveDescription?.toJson());
+  writeNotNull(
+      'participantEffectiveDateTime', instance.participantEffectiveDateTime);
+  writeNotNull('elementParticipantEffectiveDateTime',
+      instance.elementParticipantEffectiveDateTime?.toJson());
+  writeNotNull('participantEffectivePeriod',
+      instance.participantEffectivePeriod?.toJson());
+  writeNotNull('participantEffectiveDuration',
+      instance.participantEffectiveDuration?.toJson());
+  writeNotNull('participantEffectiveTiming',
+      instance.participantEffectiveTiming?.toJson());
+  writeNotNull('participantEffectiveTimeFromStart',
+      instance.participantEffectiveTimeFromStart?.toJson());
+  writeNotNull('participantEffectiveGroupMeasure',
+      instance.participantEffectiveGroupMeasure);
+  writeNotNull('elementParticipantEffectiveGroupMeasure',
+      instance.elementParticipantEffectiveGroupMeasure?.toJson());
+  return val;
+}

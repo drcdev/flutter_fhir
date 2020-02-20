@@ -10,735 +10,761 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities {
+  static Future<TerminologyCapabilities> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    String version,
+    Element elementVersion,
+    String name,
+    Element elementName,
+    String title,
+    Element elementTitle,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String purpose,
+    Element elementPurpose,
+    String copyright,
+    Element elementCopyright,
+    String kind,
+    Element elementKind,
+    TerminologyCapabilities_Software software,
+    TerminologyCapabilities_Implementation implementation,
+    bool lockedDate,
+    Element elementLockedDate,
+    List<TerminologyCapabilities_CodeSystem> codeSystem,
+    TerminologyCapabilities_Expansion expansion,
+    String codeSearch,
+    Element elementCodeSearch,
+    TerminologyCapabilities_ValidateCode validateCode,
+    TerminologyCapabilities_Translation translation,
+    TerminologyCapabilities_Closure closure,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities newTerminologyCapabilities =
+        new TerminologyCapabilities(
+      resourceType: 'TerminologyCapabilities',
+      id: id ?? await fhirDb.newResourceId('TerminologyCapabilities'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      version: version,
+      elementVersion: elementVersion,
+      name: name,
+      elementName: elementName,
+      title: title,
+      elementTitle: elementTitle,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      purpose: purpose,
+      elementPurpose: elementPurpose,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      kind: kind,
+      elementKind: elementKind,
+      software: software,
+      implementation: implementation,
+      lockedDate: lockedDate,
+      elementLockedDate: elementLockedDate,
+      codeSystem: codeSystem,
+      expansion: expansion,
+      codeSearch: codeSearch,
+      elementCodeSearch: elementCodeSearch,
+      validateCode: validateCode,
+      translation: translation,
+      closure: closure,
+    );
+    newTerminologyCapabilities.meta.createdAt = DateTime.now();
+    newTerminologyCapabilities.meta.lastUpdated =
+        newTerminologyCapabilities.meta.createdAt;
+    int saved = await fhirDb.saveResource(newTerminologyCapabilities);
+    return newTerminologyCapabilities;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<TerminologyCapabilities> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	String version,
-	Element elementVersion,
-	String name,
-	Element elementName,
-	String title,
-	Element elementTitle,
-	String status,
-	Element elementStatus,
-	bool experimental,
-	Element elementExperimental,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String purpose,
-	Element elementPurpose,
-	String copyright,
-	Element elementCopyright,
-	String kind,
-	Element elementKind,
-	TerminologyCapabilities_Software software,
-	TerminologyCapabilities_Implementation implementation,
-	bool lockedDate,
-	Element elementLockedDate,
-	List<TerminologyCapabilities_CodeSystem> codeSystem,
-	TerminologyCapabilities_Expansion expansion,
-	String codeSearch,
-	Element elementCodeSearch,
-	TerminologyCapabilities_ValidateCode validateCode,
-	TerminologyCapabilities_Translation translation,
-	TerminologyCapabilities_Closure closure,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities newTerminologyCapabilities = new TerminologyCapabilities(
-	resourceType: 'TerminologyCapabilities',
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	version: version,
-	elementVersion: elementVersion,
-	name: name,
-	elementName: elementName,
-	title: title,
-	elementTitle: elementTitle,
-	status: status,
-	elementStatus: elementStatus,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	purpose: purpose,
-	elementPurpose: elementPurpose,
-	copyright: copyright,
-	elementCopyright: elementCopyright,
-	kind: kind,
-	elementKind: elementKind,
-	software: software,
-	implementation: implementation,
-	lockedDate: lockedDate,
-	elementLockedDate: elementLockedDate,
-	codeSystem: codeSystem,
-	expansion: expansion,
-	codeSearch: codeSearch,
-	elementCodeSearch: elementCodeSearch,
-	validateCode: validateCode,
-	translation: translation,
-	closure: closure,
-);
-	newTerminologyCapabilities.meta.createdAt = DateTime.now();
-	newTerminologyCapabilities.meta.lastUpdated = newTerminologyCapabilities.meta.createdAt;
-	int saved = await fhirDb.saveResource(newTerminologyCapabilities);
-	 return newTerminologyCapabilities;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'TerminologyCapabilities';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  String version;
+  Element elementVersion;
+  String name;
+  Element elementName;
+  String title;
+  Element elementTitle;
+  String status;
+  Element elementStatus;
+  bool experimental;
+  Element elementExperimental;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String purpose;
+  Element elementPurpose;
+  String copyright;
+  Element elementCopyright;
+  String kind;
+  Element elementKind;
+  TerminologyCapabilities_Software software;
+  TerminologyCapabilities_Implementation implementation;
+  bool lockedDate;
+  Element elementLockedDate;
+  List<TerminologyCapabilities_CodeSystem> codeSystem;
+  TerminologyCapabilities_Expansion expansion;
+  String codeSearch;
+  Element elementCodeSearch;
+  TerminologyCapabilities_ValidateCode validateCode;
+  TerminologyCapabilities_Translation translation;
+  TerminologyCapabilities_Closure closure;
 
-	String resourceType= 'TerminologyCapabilities';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	String version;
-	Element elementVersion;
-	String name;
-	Element elementName;
-	String title;
-	Element elementTitle;
-	String status;
-	Element elementStatus;
-	bool experimental;
-	Element elementExperimental;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String purpose;
-	Element elementPurpose;
-	String copyright;
-	Element elementCopyright;
-	String kind;
-	Element elementKind;
-	TerminologyCapabilities_Software software;
-	TerminologyCapabilities_Implementation implementation;
-	bool lockedDate;
-	Element elementLockedDate;
-	List<TerminologyCapabilities_CodeSystem> codeSystem;
-	TerminologyCapabilities_Expansion expansion;
-	String codeSearch;
-	Element elementCodeSearch;
-	TerminologyCapabilities_ValidateCode validateCode;
-	TerminologyCapabilities_Translation translation;
-	TerminologyCapabilities_Closure closure;
+  TerminologyCapabilities({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.version,
+    this.elementVersion,
+    this.name,
+    this.elementName,
+    this.title,
+    this.elementTitle,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.purpose,
+    this.elementPurpose,
+    this.copyright,
+    this.elementCopyright,
+    this.kind,
+    this.elementKind,
+    this.software,
+    this.implementation,
+    this.lockedDate,
+    this.elementLockedDate,
+    this.codeSystem,
+    this.expansion,
+    this.codeSearch,
+    this.elementCodeSearch,
+    this.validateCode,
+    this.translation,
+    this.closure,
+  });
 
-TerminologyCapabilities(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.version,
-this.elementVersion,
-this.name,
-this.elementName,
-this.title,
-this.elementTitle,
-this.status,
-this.elementStatus,
-this.experimental,
-this.elementExperimental,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.purpose,
-this.elementPurpose,
-this.copyright,
-this.elementCopyright,
-this.kind,
-this.elementKind,
-this.software,
-this.implementation,
-this.lockedDate,
-this.elementLockedDate,
-this.codeSystem,
-this.expansion,
-this.codeSearch,
-this.elementCodeSearch,
-this.validateCode,
-this.translation,
-this.closure,
-});
-
-  factory TerminologyCapabilities.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilitiesFromJson(json);
+  factory TerminologyCapabilities.fromJson(Map<String, dynamic> json) =>
+      _$TerminologyCapabilitiesFromJson(json);
   Map<String, dynamic> toJson() => _$TerminologyCapabilitiesToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Software {
+  static Future<TerminologyCapabilities_Software> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String version,
+    Element elementVersion,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Software newTerminologyCapabilities_Software =
+        new TerminologyCapabilities_Software(
+      id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Software'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      version: version,
+      elementVersion: elementVersion,
+    );
+    return newTerminologyCapabilities_Software;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Software{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  String version;
+  Element elementVersion;
 
-	static Future<TerminologyCapabilities_Software> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	String version,
-	Element elementVersion,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Software newTerminologyCapabilities_Software = new TerminologyCapabilities_Software(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Software'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	version: version,
-	elementVersion: elementVersion,
-);
-	return newTerminologyCapabilities_Software;
+  TerminologyCapabilities_Software({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.version,
+    this.elementVersion,
+  });
+
+  factory TerminologyCapabilities_Software.fromJson(
+          Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_SoftwareFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_SoftwareToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	String version;
-	Element elementVersion;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Implementation {
+  static Future<TerminologyCapabilities_Implementation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    String url,
+    Element elementUrl,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Implementation
+        newTerminologyCapabilities_Implementation =
+        new TerminologyCapabilities_Implementation(
+      id: id ??
+          await fhirDb.newResourceId('TerminologyCapabilities_Implementation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      url: url,
+      elementUrl: elementUrl,
+    );
+    return newTerminologyCapabilities_Implementation;
+  }
 
-TerminologyCapabilities_Software(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.version,
-this.elementVersion,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String description;
+  Element elementDescription;
+  String url;
+  Element elementUrl;
 
-  factory TerminologyCapabilities_Software.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_SoftwareFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_SoftwareToJson(this);
+  TerminologyCapabilities_Implementation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.url,
+    this.elementUrl,
+  });
+
+  factory TerminologyCapabilities_Implementation.fromJson(
+          Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_ImplementationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_ImplementationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_CodeSystem {
+  static Future<TerminologyCapabilities_CodeSystem> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String uri,
+    List<TerminologyCapabilities_Version> version,
+    bool subsumption,
+    Element elementSubsumption,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_CodeSystem newTerminologyCapabilities_CodeSystem =
+        new TerminologyCapabilities_CodeSystem(
+      id: id ??
+          await fhirDb.newResourceId('TerminologyCapabilities_CodeSystem'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      uri: uri,
+      version: version,
+      subsumption: subsumption,
+      elementSubsumption: elementSubsumption,
+    );
+    return newTerminologyCapabilities_CodeSystem;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Implementation{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String uri;
+  List<TerminologyCapabilities_Version> version;
+  bool subsumption;
+  Element elementSubsumption;
 
-	static Future<TerminologyCapabilities_Implementation> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String description,
-	Element elementDescription,
-	String url,
-	Element elementUrl,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Implementation newTerminologyCapabilities_Implementation = new TerminologyCapabilities_Implementation(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Implementation'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	description: description,
-	elementDescription: elementDescription,
-	url: url,
-	elementUrl: elementUrl,
-);
-	return newTerminologyCapabilities_Implementation;
+  TerminologyCapabilities_CodeSystem({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.uri,
+    this.version,
+    this.subsumption,
+    this.elementSubsumption,
+  });
+
+  factory TerminologyCapabilities_CodeSystem.fromJson(
+          Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_CodeSystemFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_CodeSystemToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String description;
-	Element elementDescription;
-	String url;
-	Element elementUrl;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Version {
+  static Future<TerminologyCapabilities_Version> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    bool isDefault,
+    Element elementIsDefault,
+    bool compositional,
+    Element elementCompositional,
+    List<String> language,
+    List<Element> elementLanguage,
+    List<TerminologyCapabilities_Filter> filter,
+    List<String> property,
+    List<Element> elementProperty,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Version newTerminologyCapabilities_Version =
+        new TerminologyCapabilities_Version(
+      id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Version'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      isDefault: isDefault,
+      elementIsDefault: elementIsDefault,
+      compositional: compositional,
+      elementCompositional: elementCompositional,
+      language: language,
+      elementLanguage: elementLanguage,
+      filter: filter,
+      property: property,
+      elementProperty: elementProperty,
+    );
+    return newTerminologyCapabilities_Version;
+  }
 
-TerminologyCapabilities_Implementation(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.description,
-this.elementDescription,
-this.url,
-this.elementUrl,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String code;
+  Element elementCode;
+  bool isDefault;
+  Element elementIsDefault;
+  bool compositional;
+  Element elementCompositional;
+  List<String> language;
+  List<Element> elementLanguage;
+  List<TerminologyCapabilities_Filter> filter;
+  List<String> property;
+  List<Element> elementProperty;
 
-  factory TerminologyCapabilities_Implementation.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ImplementationFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_ImplementationToJson(this);
+  TerminologyCapabilities_Version({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.isDefault,
+    this.elementIsDefault,
+    this.compositional,
+    this.elementCompositional,
+    this.language,
+    this.elementLanguage,
+    this.filter,
+    this.property,
+    this.elementProperty,
+  });
+
+  factory TerminologyCapabilities_Version.fromJson(Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_VersionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_VersionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Filter {
+  static Future<TerminologyCapabilities_Filter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String code,
+    Element elementCode,
+    List<String> op,
+    List<Element> elementOp,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Filter newTerminologyCapabilities_Filter =
+        new TerminologyCapabilities_Filter(
+      id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Filter'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      elementCode: elementCode,
+      op: op,
+      elementOp: elementOp,
+    );
+    return newTerminologyCapabilities_Filter;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_CodeSystem{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String code;
+  Element elementCode;
+  List<String> op;
+  List<Element> elementOp;
 
-	static Future<TerminologyCapabilities_CodeSystem> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String uri,
-	List<TerminologyCapabilities_Version> version,
-	bool subsumption,
-	Element elementSubsumption,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_CodeSystem newTerminologyCapabilities_CodeSystem = new TerminologyCapabilities_CodeSystem(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_CodeSystem'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	uri: uri,
-	version: version,
-	subsumption: subsumption,
-	elementSubsumption: elementSubsumption,
-);
-	return newTerminologyCapabilities_CodeSystem;
-}
+  TerminologyCapabilities_Filter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.elementCode,
+    this.op,
+    this.elementOp,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String uri;
-	List<TerminologyCapabilities_Version> version;
-	bool subsumption;
-	Element elementSubsumption;
-
-TerminologyCapabilities_CodeSystem(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.uri,
-this.version,
-this.subsumption,
-this.elementSubsumption,
-});
-
-  factory TerminologyCapabilities_CodeSystem.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_CodeSystemFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_CodeSystemToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Version{
-
-	static Future<TerminologyCapabilities_Version> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String code,
-	Element elementCode,
-	bool isDefault,
-	Element elementIsDefault,
-	bool compositional,
-	Element elementCompositional,
-	List<String> language,
-	List<Element> elementLanguage,
-	List<TerminologyCapabilities_Filter> filter,
-	List<String> property,
-	List<Element> elementProperty,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Version newTerminologyCapabilities_Version = new TerminologyCapabilities_Version(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Version'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	elementCode: elementCode,
-	isDefault: isDefault,
-	elementIsDefault: elementIsDefault,
-	compositional: compositional,
-	elementCompositional: elementCompositional,
-	language: language,
-	elementLanguage: elementLanguage,
-	filter: filter,
-	property: property,
-	elementProperty: elementProperty,
-);
-	return newTerminologyCapabilities_Version;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String code;
-	Element elementCode;
-	bool isDefault;
-	Element elementIsDefault;
-	bool compositional;
-	Element elementCompositional;
-	List<String> language;
-	List<Element> elementLanguage;
-	List<TerminologyCapabilities_Filter> filter;
-	List<String> property;
-	List<Element> elementProperty;
-
-TerminologyCapabilities_Version(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.elementCode,
-this.isDefault,
-this.elementIsDefault,
-this.compositional,
-this.elementCompositional,
-this.language,
-this.elementLanguage,
-this.filter,
-this.property,
-this.elementProperty,
-});
-
-  factory TerminologyCapabilities_Version.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_VersionFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_VersionToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Filter{
-
-	static Future<TerminologyCapabilities_Filter> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String code,
-	Element elementCode,
-	List<String> op,
-	List<Element> elementOp,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Filter newTerminologyCapabilities_Filter = new TerminologyCapabilities_Filter(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Filter'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	elementCode: elementCode,
-	op: op,
-	elementOp: elementOp,
-);
-	return newTerminologyCapabilities_Filter;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String code;
-	Element elementCode;
-	List<String> op;
-	List<Element> elementOp;
-
-TerminologyCapabilities_Filter(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.elementCode,
-this.op,
-this.elementOp,
-});
-
-  factory TerminologyCapabilities_Filter.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_FilterFromJson(json);
+  factory TerminologyCapabilities_Filter.fromJson(Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_FilterFromJson(json);
   Map<String, dynamic> toJson() => _$TerminologyCapabilities_FilterToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Expansion {
+  static Future<TerminologyCapabilities_Expansion> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool hierarchical,
+    Element elementHierarchical,
+    bool paging,
+    Element elementPaging,
+    bool incomplete,
+    Element elementIncomplete,
+    List<TerminologyCapabilities_Parameter> parameter,
+    String textFilter,
+    Element elementTextFilter,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Expansion newTerminologyCapabilities_Expansion =
+        new TerminologyCapabilities_Expansion(
+      id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Expansion'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      hierarchical: hierarchical,
+      elementHierarchical: elementHierarchical,
+      paging: paging,
+      elementPaging: elementPaging,
+      incomplete: incomplete,
+      elementIncomplete: elementIncomplete,
+      parameter: parameter,
+      textFilter: textFilter,
+      elementTextFilter: elementTextFilter,
+    );
+    return newTerminologyCapabilities_Expansion;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Expansion{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool hierarchical;
+  Element elementHierarchical;
+  bool paging;
+  Element elementPaging;
+  bool incomplete;
+  Element elementIncomplete;
+  List<TerminologyCapabilities_Parameter> parameter;
+  String textFilter;
+  Element elementTextFilter;
 
-	static Future<TerminologyCapabilities_Expansion> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool hierarchical,
-	Element elementHierarchical,
-	bool paging,
-	Element elementPaging,
-	bool incomplete,
-	Element elementIncomplete,
-	List<TerminologyCapabilities_Parameter> parameter,
-	String textFilter,
-	Element elementTextFilter,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Expansion newTerminologyCapabilities_Expansion = new TerminologyCapabilities_Expansion(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Expansion'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	hierarchical: hierarchical,
-	elementHierarchical: elementHierarchical,
-	paging: paging,
-	elementPaging: elementPaging,
-	incomplete: incomplete,
-	elementIncomplete: elementIncomplete,
-	parameter: parameter,
-	textFilter: textFilter,
-	elementTextFilter: elementTextFilter,
-);
-	return newTerminologyCapabilities_Expansion;
+  TerminologyCapabilities_Expansion({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.hierarchical,
+    this.elementHierarchical,
+    this.paging,
+    this.elementPaging,
+    this.incomplete,
+    this.elementIncomplete,
+    this.parameter,
+    this.textFilter,
+    this.elementTextFilter,
+  });
+
+  factory TerminologyCapabilities_Expansion.fromJson(
+          Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_ExpansionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_ExpansionToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool hierarchical;
-	Element elementHierarchical;
-	bool paging;
-	Element elementPaging;
-	bool incomplete;
-	Element elementIncomplete;
-	List<TerminologyCapabilities_Parameter> parameter;
-	String textFilter;
-	Element elementTextFilter;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Parameter {
+  static Future<TerminologyCapabilities_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    String documentation,
+    Element elementDocumentation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Parameter newTerminologyCapabilities_Parameter =
+        new TerminologyCapabilities_Parameter(
+      id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Parameter'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      documentation: documentation,
+      elementDocumentation: elementDocumentation,
+    );
+    return newTerminologyCapabilities_Parameter;
+  }
 
-TerminologyCapabilities_Expansion(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.hierarchical,
-this.elementHierarchical,
-this.paging,
-this.elementPaging,
-this.incomplete,
-this.elementIncomplete,
-this.parameter,
-this.textFilter,
-this.elementTextFilter,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  String documentation;
+  Element elementDocumentation;
 
-  factory TerminologyCapabilities_Expansion.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ExpansionFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_ExpansionToJson(this);
+  TerminologyCapabilities_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.documentation,
+    this.elementDocumentation,
+  });
+
+  factory TerminologyCapabilities_Parameter.fromJson(
+          Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_ParameterFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_ParameterToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_ValidateCode {
+  static Future<TerminologyCapabilities_ValidateCode> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool translations,
+    Element elementTranslations,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_ValidateCode
+        newTerminologyCapabilities_ValidateCode =
+        new TerminologyCapabilities_ValidateCode(
+      id: id ??
+          await fhirDb.newResourceId('TerminologyCapabilities_ValidateCode'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      translations: translations,
+      elementTranslations: elementTranslations,
+    );
+    return newTerminologyCapabilities_ValidateCode;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Parameter{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool translations;
+  Element elementTranslations;
 
-	static Future<TerminologyCapabilities_Parameter> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	String documentation,
-	Element elementDocumentation,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Parameter newTerminologyCapabilities_Parameter = new TerminologyCapabilities_Parameter(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Parameter'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	documentation: documentation,
-	elementDocumentation: elementDocumentation,
-);
-	return newTerminologyCapabilities_Parameter;
+  TerminologyCapabilities_ValidateCode({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.translations,
+    this.elementTranslations,
+  });
+
+  factory TerminologyCapabilities_ValidateCode.fromJson(
+          Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_ValidateCodeFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_ValidateCodeToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	String documentation;
-	Element elementDocumentation;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Translation {
+  static Future<TerminologyCapabilities_Translation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool needsMap,
+    Element elementNeedsMap,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Translation newTerminologyCapabilities_Translation =
+        new TerminologyCapabilities_Translation(
+      id: id ??
+          await fhirDb.newResourceId('TerminologyCapabilities_Translation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      needsMap: needsMap,
+      elementNeedsMap: elementNeedsMap,
+    );
+    return newTerminologyCapabilities_Translation;
+  }
 
-TerminologyCapabilities_Parameter(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.documentation,
-this.elementDocumentation,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool needsMap;
+  Element elementNeedsMap;
 
-  factory TerminologyCapabilities_Parameter.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ParameterFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_ParameterToJson(this);
+  TerminologyCapabilities_Translation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.needsMap,
+    this.elementNeedsMap,
+  });
+
+  factory TerminologyCapabilities_Translation.fromJson(
+          Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_TranslationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_TranslationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class TerminologyCapabilities_Closure {
+  static Future<TerminologyCapabilities_Closure> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool translation,
+    Element elementTranslation,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    TerminologyCapabilities_Closure newTerminologyCapabilities_Closure =
+        new TerminologyCapabilities_Closure(
+      id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Closure'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      translation: translation,
+      elementTranslation: elementTranslation,
+    );
+    return newTerminologyCapabilities_Closure;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_ValidateCode{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool translation;
+  Element elementTranslation;
 
-	static Future<TerminologyCapabilities_ValidateCode> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool translations,
-	Element elementTranslations,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_ValidateCode newTerminologyCapabilities_ValidateCode = new TerminologyCapabilities_ValidateCode(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_ValidateCode'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	translations: translations,
-	elementTranslations: elementTranslations,
-);
-	return newTerminologyCapabilities_ValidateCode;
+  TerminologyCapabilities_Closure({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.translation,
+    this.elementTranslation,
+  });
+
+  factory TerminologyCapabilities_Closure.fromJson(Map<String, dynamic> json) =>
+      _$TerminologyCapabilities_ClosureFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TerminologyCapabilities_ClosureToJson(this);
 }
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool translations;
-	Element elementTranslations;
-
-TerminologyCapabilities_ValidateCode(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.translations,
-this.elementTranslations,
-});
-
-  factory TerminologyCapabilities_ValidateCode.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ValidateCodeFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_ValidateCodeToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Translation{
-
-	static Future<TerminologyCapabilities_Translation> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool needsMap,
-	Element elementNeedsMap,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Translation newTerminologyCapabilities_Translation = new TerminologyCapabilities_Translation(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Translation'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	needsMap: needsMap,
-	elementNeedsMap: elementNeedsMap,
-);
-	return newTerminologyCapabilities_Translation;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool needsMap;
-	Element elementNeedsMap;
-
-TerminologyCapabilities_Translation(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.needsMap,
-this.elementNeedsMap,
-});
-
-  factory TerminologyCapabilities_Translation.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_TranslationFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_TranslationToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class TerminologyCapabilities_Closure{
-
-	static Future<TerminologyCapabilities_Closure> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool translation,
-	Element elementTranslation,
-}) async {
-var fhirDb = new DatabaseHelper();
-TerminologyCapabilities_Closure newTerminologyCapabilities_Closure = new TerminologyCapabilities_Closure(
-	id: id ?? await fhirDb.newResourceId('TerminologyCapabilities_Closure'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	translation: translation,
-	elementTranslation: elementTranslation,
-);
-	return newTerminologyCapabilities_Closure;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool translation;
-	Element elementTranslation;
-
-TerminologyCapabilities_Closure(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.translation,
-this.elementTranslation,
-});
-
-  factory TerminologyCapabilities_Closure.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ClosureFromJson(json);
-  Map<String, dynamic> toJson() => _$TerminologyCapabilities_ClosureToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -766,8 +792,9 @@ TerminologyCapabilities _$TerminologyCapabilitiesFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -881,59 +908,71 @@ TerminologyCapabilities _$TerminologyCapabilitiesFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilitiesToJson(
-        TerminologyCapabilities instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'software': instance.software?.toJson(),
-      'implementation': instance.implementation?.toJson(),
-      'lockedDate': instance.lockedDate,
-      'elementLockedDate': instance.elementLockedDate?.toJson(),
-      'codeSystem': instance.codeSystem?.map((e) => e?.toJson())?.toList(),
-      'expansion': instance.expansion?.toJson(),
-      'codeSearch': instance.codeSearch,
-      'elementCodeSearch': instance.elementCodeSearch?.toJson(),
-      'validateCode': instance.validateCode?.toJson(),
-      'translation': instance.translation?.toJson(),
-      'closure': instance.closure?.toJson(),
-    };
+    TerminologyCapabilities instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('software', instance.software?.toJson());
+  writeNotNull('implementation', instance.implementation?.toJson());
+  writeNotNull('lockedDate', instance.lockedDate);
+  writeNotNull('elementLockedDate', instance.elementLockedDate?.toJson());
+  writeNotNull(
+      'codeSystem', instance.codeSystem?.map((e) => e?.toJson())?.toList());
+  writeNotNull('expansion', instance.expansion?.toJson());
+  writeNotNull('codeSearch', instance.codeSearch);
+  writeNotNull('elementCodeSearch', instance.elementCodeSearch?.toJson());
+  writeNotNull('validateCode', instance.validateCode?.toJson());
+  writeNotNull('translation', instance.translation?.toJson());
+  writeNotNull('closure', instance.closure?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Software _$TerminologyCapabilities_SoftwareFromJson(
     Map<String, dynamic> json) {
@@ -959,17 +998,26 @@ TerminologyCapabilities_Software _$TerminologyCapabilities_SoftwareFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_SoftwareToJson(
-        TerminologyCapabilities_Software instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-    };
+    TerminologyCapabilities_Software instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Implementation
     _$TerminologyCapabilities_ImplementationFromJson(
@@ -996,17 +1044,26 @@ TerminologyCapabilities_Implementation
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ImplementationToJson(
-        TerminologyCapabilities_Implementation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-    };
+    TerminologyCapabilities_Implementation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_CodeSystem _$TerminologyCapabilities_CodeSystemFromJson(
     Map<String, dynamic> json) {
@@ -1035,17 +1092,26 @@ TerminologyCapabilities_CodeSystem _$TerminologyCapabilities_CodeSystemFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_CodeSystemToJson(
-        TerminologyCapabilities_CodeSystem instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'uri': instance.uri,
-      'version': instance.version?.map((e) => e?.toJson())?.toList(),
-      'subsumption': instance.subsumption,
-      'elementSubsumption': instance.elementSubsumption?.toJson(),
-    };
+    TerminologyCapabilities_CodeSystem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('uri', instance.uri);
+  writeNotNull('version', instance.version?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subsumption', instance.subsumption);
+  writeNotNull('elementSubsumption', instance.elementSubsumption?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Version _$TerminologyCapabilities_VersionFromJson(
     Map<String, dynamic> json) {
@@ -1092,26 +1158,35 @@ TerminologyCapabilities_Version _$TerminologyCapabilities_VersionFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_VersionToJson(
-        TerminologyCapabilities_Version instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'isDefault': instance.isDefault,
-      'elementIsDefault': instance.elementIsDefault?.toJson(),
-      'compositional': instance.compositional,
-      'elementCompositional': instance.elementCompositional?.toJson(),
-      'language': instance.language,
-      'elementLanguage':
-          instance.elementLanguage?.map((e) => e?.toJson())?.toList(),
-      'filter': instance.filter?.map((e) => e?.toJson())?.toList(),
-      'property': instance.property,
-      'elementProperty':
-          instance.elementProperty?.map((e) => e?.toJson())?.toList(),
-    };
+    TerminologyCapabilities_Version instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('isDefault', instance.isDefault);
+  writeNotNull('elementIsDefault', instance.elementIsDefault?.toJson());
+  writeNotNull('compositional', instance.compositional);
+  writeNotNull('elementCompositional', instance.elementCompositional?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage',
+      instance.elementLanguage?.map((e) => e?.toJson())?.toList());
+  writeNotNull('filter', instance.filter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('property', instance.property);
+  writeNotNull('elementProperty',
+      instance.elementProperty?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 TerminologyCapabilities_Filter _$TerminologyCapabilities_FilterFromJson(
     Map<String, dynamic> json) {
@@ -1138,17 +1213,27 @@ TerminologyCapabilities_Filter _$TerminologyCapabilities_FilterFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_FilterToJson(
-        TerminologyCapabilities_Filter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'op': instance.op,
-      'elementOp': instance.elementOp?.map((e) => e?.toJson())?.toList(),
-    };
+    TerminologyCapabilities_Filter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('op', instance.op);
+  writeNotNull(
+      'elementOp', instance.elementOp?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 TerminologyCapabilities_Expansion _$TerminologyCapabilities_ExpansionFromJson(
     Map<String, dynamic> json) {
@@ -1188,22 +1273,32 @@ TerminologyCapabilities_Expansion _$TerminologyCapabilities_ExpansionFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ExpansionToJson(
-        TerminologyCapabilities_Expansion instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'hierarchical': instance.hierarchical,
-      'elementHierarchical': instance.elementHierarchical?.toJson(),
-      'paging': instance.paging,
-      'elementPaging': instance.elementPaging?.toJson(),
-      'incomplete': instance.incomplete,
-      'elementIncomplete': instance.elementIncomplete?.toJson(),
-      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
-      'textFilter': instance.textFilter,
-      'elementTextFilter': instance.elementTextFilter?.toJson(),
-    };
+    TerminologyCapabilities_Expansion instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('hierarchical', instance.hierarchical);
+  writeNotNull('elementHierarchical', instance.elementHierarchical?.toJson());
+  writeNotNull('paging', instance.paging);
+  writeNotNull('elementPaging', instance.elementPaging?.toJson());
+  writeNotNull('incomplete', instance.incomplete);
+  writeNotNull('elementIncomplete', instance.elementIncomplete?.toJson());
+  writeNotNull(
+      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('textFilter', instance.textFilter);
+  writeNotNull('elementTextFilter', instance.elementTextFilter?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Parameter _$TerminologyCapabilities_ParameterFromJson(
     Map<String, dynamic> json) {
@@ -1230,17 +1325,26 @@ TerminologyCapabilities_Parameter _$TerminologyCapabilities_ParameterFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ParameterToJson(
-        TerminologyCapabilities_Parameter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-    };
+    TerminologyCapabilities_Parameter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_ValidateCode
     _$TerminologyCapabilities_ValidateCodeFromJson(Map<String, dynamic> json) {
@@ -1262,15 +1366,24 @@ TerminologyCapabilities_ValidateCode
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ValidateCodeToJson(
-        TerminologyCapabilities_ValidateCode instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'translations': instance.translations,
-      'elementTranslations': instance.elementTranslations?.toJson(),
-    };
+    TerminologyCapabilities_ValidateCode instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('translations', instance.translations);
+  writeNotNull('elementTranslations', instance.elementTranslations?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Translation
     _$TerminologyCapabilities_TranslationFromJson(Map<String, dynamic> json) {
@@ -1292,15 +1405,24 @@ TerminologyCapabilities_Translation
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_TranslationToJson(
-        TerminologyCapabilities_Translation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'needsMap': instance.needsMap,
-      'elementNeedsMap': instance.elementNeedsMap?.toJson(),
-    };
+    TerminologyCapabilities_Translation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('needsMap', instance.needsMap);
+  writeNotNull('elementNeedsMap', instance.elementNeedsMap?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Closure _$TerminologyCapabilities_ClosureFromJson(
     Map<String, dynamic> json) {
@@ -1322,12 +1444,21 @@ TerminologyCapabilities_Closure _$TerminologyCapabilities_ClosureFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ClosureToJson(
-        TerminologyCapabilities_Closure instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'translation': instance.translation,
-      'elementTranslation': instance.elementTranslation?.toJson(),
-    };
+    TerminologyCapabilities_Closure instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('translation', instance.translation);
+  writeNotNull('elementTranslation', instance.elementTranslation?.toJson());
+  return val;
+}

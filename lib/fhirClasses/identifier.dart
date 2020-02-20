@@ -7,70 +7,68 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Identifier {
+  static Future<Identifier> newInstance({
+    String id,
+    List<Extension> extension,
+    String use,
+    Element elementUse,
+    CodeableConcept type,
+    String system,
+    Element elementSystem,
+    String value,
+    Element elementValue,
+    Period period,
+    Reference assigner,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Identifier newIdentifier = new Identifier(
+      id: id ?? await fhirDb.newResourceId('Identifier'),
+      extension: extension,
+      use: use,
+      elementUse: elementUse,
+      type: type,
+      system: system,
+      elementSystem: elementSystem,
+      value: value,
+      elementValue: elementValue,
+      period: period,
+      assigner: assigner,
+    );
+    return newIdentifier;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Identifier{
+  String id;
+  List<Extension> extension;
+  String use;
+  Element elementUse;
+  CodeableConcept type;
+  String system;
+  Element elementSystem;
+  String value;
+  Element elementValue;
+  Period period;
+  Reference assigner;
 
-	static Future<Identifier> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String use,
-	Element elementUse,
-	CodeableConcept type,
-	String system,
-	Element elementSystem,
-	String value,
-	Element elementValue,
-	Period period,
-	Reference assigner,
-}) async {
-var fhirDb = new DatabaseHelper();
-Identifier newIdentifier = new Identifier(
-	id: id ?? await fhirDb.newResourceId('Identifier'),
-	extension: extension,
-	use: use,
-	elementUse: elementUse,
-	type: type,
-	system: system,
-	elementSystem: elementSystem,
-	value: value,
-	elementValue: elementValue,
-	period: period,
-	assigner: assigner,
-);
-	return newIdentifier;
-}
+  Identifier({
+    this.id,
+    this.extension,
+    this.use,
+    this.elementUse,
+    this.type,
+    this.system,
+    this.elementSystem,
+    this.value,
+    this.elementValue,
+    this.period,
+    this.assigner,
+  });
 
-	String id;
-	List<Extension> extension;
-	String use;
-	Element elementUse;
-	CodeableConcept type;
-	String system;
-	Element elementSystem;
-	String value;
-	Element elementValue;
-	Period period;
-	Reference assigner;
-
-Identifier(
-	{this.id,
-this.extension,
-this.use,
-this.elementUse,
-this.type,
-this.system,
-this.elementSystem,
-this.value,
-this.elementValue,
-this.period,
-this.assigner,
-});
-
-  factory Identifier.fromJson(Map<String, dynamic> json) => _$IdentifierFromJson(json);
+  factory Identifier.fromJson(Map<String, dynamic> json) =>
+      _$IdentifierFromJson(json);
   Map<String, dynamic> toJson() => _$IdentifierToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -108,17 +106,26 @@ Identifier _$IdentifierFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$IdentifierToJson(Identifier instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'type': instance.type?.toJson(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'period': instance.period?.toJson(),
-      'assigner': instance.assigner?.toJson(),
-    };
+Map<String, dynamic> _$IdentifierToJson(Identifier instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('assigner', instance.assigner?.toJson());
+  return val;
+}

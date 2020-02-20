@@ -4,50 +4,47 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Money {
+  static Future<Money> newInstance({
+    String id,
+    List<Extension> extension,
+    double value,
+    Element elementValue,
+    String currency,
+    Element elementCurrency,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Money newMoney = new Money(
+      id: id ?? await fhirDb.newResourceId('Money'),
+      extension: extension,
+      value: value,
+      elementValue: elementValue,
+      currency: currency,
+      elementCurrency: elementCurrency,
+    );
+    return newMoney;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Money{
+  String id;
+  List<Extension> extension;
+  double value;
+  Element elementValue;
+  String currency;
+  Element elementCurrency;
 
-	static Future<Money> newInstance(
-	{	String id,
-	List<Extension> extension,
-	double value,
-	Element elementValue,
-	String currency,
-	Element elementCurrency,
-}) async {
-var fhirDb = new DatabaseHelper();
-Money newMoney = new Money(
-	id: id ?? await fhirDb.newResourceId('Money'),
-	extension: extension,
-	value: value,
-	elementValue: elementValue,
-	currency: currency,
-	elementCurrency: elementCurrency,
-);
-	return newMoney;
-}
-
-	String id;
-	List<Extension> extension;
-	double value;
-	Element elementValue;
-	String currency;
-	Element elementCurrency;
-
-Money(
-	{this.id,
-this.extension,
-this.value,
-this.elementValue,
-this.currency,
-this.elementCurrency,
-});
+  Money({
+    this.id,
+    this.extension,
+    this.value,
+    this.elementValue,
+    this.currency,
+    this.elementCurrency,
+  });
 
   factory Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);
   Map<String, dynamic> toJson() => _$MoneyToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -72,11 +69,21 @@ Money _$MoneyFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MoneyToJson(Money instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'currency': instance.currency,
-      'elementCurrency': instance.elementCurrency?.toJson(),
-    };
+Map<String, dynamic> _$MoneyToJson(Money instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('currency', instance.currency);
+  writeNotNull('elementCurrency', instance.elementCurrency?.toJson());
+  return val;
+}

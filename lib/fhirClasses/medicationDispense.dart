@@ -13,287 +13,291 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicationDispense {
+  static Future<MedicationDispense> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    CodeableConcept statusReasonCodeableConcept,
+    Reference statusReasonReference,
+    CodeableConcept category,
+    CodeableConcept medicationCodeableConcept,
+    Reference medicationReference,
+    Reference subject,
+    Reference context,
+    List<Reference> supportingInformation,
+    List<MedicationDispense_Performer> performer,
+    Reference location,
+    List<Reference> authorizingPrescription,
+    CodeableConcept type,
+    Quantity quantity,
+    Quantity daysSupply,
+    DateTime whenPrepared,
+    Element elementWhenPrepared,
+    DateTime whenHandedOver,
+    Element elementWhenHandedOver,
+    Reference destination,
+    List<Reference> receiver,
+    List<Annotation> note,
+    List<Dosage> dosageInstruction,
+    MedicationDispense_Substitution substitution,
+    List<Reference> detectedIssue,
+    List<Reference> eventHistory,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicationDispense newMedicationDispense = new MedicationDispense(
+      resourceType: 'MedicationDispense',
+      id: id ?? await fhirDb.newResourceId('MedicationDispense'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      partOf: partOf,
+      status: status,
+      elementStatus: elementStatus,
+      statusReasonCodeableConcept: statusReasonCodeableConcept,
+      statusReasonReference: statusReasonReference,
+      category: category,
+      medicationCodeableConcept: medicationCodeableConcept,
+      medicationReference: medicationReference,
+      subject: subject,
+      context: context,
+      supportingInformation: supportingInformation,
+      performer: performer,
+      location: location,
+      authorizingPrescription: authorizingPrescription,
+      type: type,
+      quantity: quantity,
+      daysSupply: daysSupply,
+      whenPrepared: whenPrepared,
+      elementWhenPrepared: elementWhenPrepared,
+      whenHandedOver: whenHandedOver,
+      elementWhenHandedOver: elementWhenHandedOver,
+      destination: destination,
+      receiver: receiver,
+      note: note,
+      dosageInstruction: dosageInstruction,
+      substitution: substitution,
+      detectedIssue: detectedIssue,
+      eventHistory: eventHistory,
+    );
+    newMedicationDispense.meta.createdAt = DateTime.now();
+    newMedicationDispense.meta.lastUpdated =
+        newMedicationDispense.meta.createdAt;
+    int saved = await fhirDb.saveResource(newMedicationDispense);
+    return newMedicationDispense;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MedicationDispense{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<MedicationDispense> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	List<Reference> partOf,
-	String status,
-	Element elementStatus,
-	CodeableConcept statusReasonCodeableConcept,
-	Reference statusReasonReference,
-	CodeableConcept category,
-	CodeableConcept medicationCodeableConcept,
-	Reference medicationReference,
-	Reference subject,
-	Reference context,
-	List<Reference> supportingInformation,
-	List<MedicationDispense_Performer> performer,
-	Reference location,
-	List<Reference> authorizingPrescription,
-	CodeableConcept type,
-	Quantity quantity,
-	Quantity daysSupply,
-	DateTime whenPrepared,
-	Element elementWhenPrepared,
-	DateTime whenHandedOver,
-	Element elementWhenHandedOver,
-	Reference destination,
-	List<Reference> receiver,
-	List<Annotation> note,
-	List<Dosage> dosageInstruction,
-	MedicationDispense_Substitution substitution,
-	List<Reference> detectedIssue,
-	List<Reference> eventHistory,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicationDispense newMedicationDispense = new MedicationDispense(
-	resourceType: 'MedicationDispense',
-	id: id ?? await fhirDb.newResourceId('MedicationDispense'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	partOf: partOf,
-	status: status,
-	elementStatus: elementStatus,
-	statusReasonCodeableConcept: statusReasonCodeableConcept,
-	statusReasonReference: statusReasonReference,
-	category: category,
-	medicationCodeableConcept: medicationCodeableConcept,
-	medicationReference: medicationReference,
-	subject: subject,
-	context: context,
-	supportingInformation: supportingInformation,
-	performer: performer,
-	location: location,
-	authorizingPrescription: authorizingPrescription,
-	type: type,
-	quantity: quantity,
-	daysSupply: daysSupply,
-	whenPrepared: whenPrepared,
-	elementWhenPrepared: elementWhenPrepared,
-	whenHandedOver: whenHandedOver,
-	elementWhenHandedOver: elementWhenHandedOver,
-	destination: destination,
-	receiver: receiver,
-	note: note,
-	dosageInstruction: dosageInstruction,
-	substitution: substitution,
-	detectedIssue: detectedIssue,
-	eventHistory: eventHistory,
-);
-	newMedicationDispense.meta.createdAt = DateTime.now();
-	newMedicationDispense.meta.lastUpdated = newMedicationDispense.meta.createdAt;
-	int saved = await fhirDb.saveResource(newMedicationDispense);
-	 return newMedicationDispense;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'MedicationDispense';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  List<Reference> partOf;
+  String status;
+  Element elementStatus;
+  CodeableConcept statusReasonCodeableConcept;
+  Reference statusReasonReference;
+  CodeableConcept category;
+  CodeableConcept medicationCodeableConcept;
+  Reference medicationReference;
+  Reference subject;
+  Reference context;
+  List<Reference> supportingInformation;
+  List<MedicationDispense_Performer> performer;
+  Reference location;
+  List<Reference> authorizingPrescription;
+  CodeableConcept type;
+  Quantity quantity;
+  Quantity daysSupply;
+  DateTime whenPrepared;
+  Element elementWhenPrepared;
+  DateTime whenHandedOver;
+  Element elementWhenHandedOver;
+  Reference destination;
+  List<Reference> receiver;
+  List<Annotation> note;
+  List<Dosage> dosageInstruction;
+  MedicationDispense_Substitution substitution;
+  List<Reference> detectedIssue;
+  List<Reference> eventHistory;
 
-	String resourceType= 'MedicationDispense';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	List<Reference> partOf;
-	String status;
-	Element elementStatus;
-	CodeableConcept statusReasonCodeableConcept;
-	Reference statusReasonReference;
-	CodeableConcept category;
-	CodeableConcept medicationCodeableConcept;
-	Reference medicationReference;
-	Reference subject;
-	Reference context;
-	List<Reference> supportingInformation;
-	List<MedicationDispense_Performer> performer;
-	Reference location;
-	List<Reference> authorizingPrescription;
-	CodeableConcept type;
-	Quantity quantity;
-	Quantity daysSupply;
-	DateTime whenPrepared;
-	Element elementWhenPrepared;
-	DateTime whenHandedOver;
-	Element elementWhenHandedOver;
-	Reference destination;
-	List<Reference> receiver;
-	List<Annotation> note;
-	List<Dosage> dosageInstruction;
-	MedicationDispense_Substitution substitution;
-	List<Reference> detectedIssue;
-	List<Reference> eventHistory;
+  MedicationDispense({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.statusReasonCodeableConcept,
+    this.statusReasonReference,
+    this.category,
+    this.medicationCodeableConcept,
+    this.medicationReference,
+    this.subject,
+    this.context,
+    this.supportingInformation,
+    this.performer,
+    this.location,
+    this.authorizingPrescription,
+    this.type,
+    this.quantity,
+    this.daysSupply,
+    this.whenPrepared,
+    this.elementWhenPrepared,
+    this.whenHandedOver,
+    this.elementWhenHandedOver,
+    this.destination,
+    this.receiver,
+    this.note,
+    this.dosageInstruction,
+    this.substitution,
+    this.detectedIssue,
+    this.eventHistory,
+  });
 
-MedicationDispense(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.partOf,
-this.status,
-this.elementStatus,
-this.statusReasonCodeableConcept,
-this.statusReasonReference,
-this.category,
-this.medicationCodeableConcept,
-this.medicationReference,
-this.subject,
-this.context,
-this.supportingInformation,
-this.performer,
-this.location,
-this.authorizingPrescription,
-this.type,
-this.quantity,
-this.daysSupply,
-this.whenPrepared,
-this.elementWhenPrepared,
-this.whenHandedOver,
-this.elementWhenHandedOver,
-this.destination,
-this.receiver,
-this.note,
-this.dosageInstruction,
-this.substitution,
-this.detectedIssue,
-this.eventHistory,
-});
-
-  factory MedicationDispense.fromJson(Map<String, dynamic> json) => _$MedicationDispenseFromJson(json);
+  factory MedicationDispense.fromJson(Map<String, dynamic> json) =>
+      _$MedicationDispenseFromJson(json);
   Map<String, dynamic> toJson() => _$MedicationDispenseToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicationDispense_Performer {
+  static Future<MedicationDispense_Performer> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept function,
+    Reference actor,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicationDispense_Performer newMedicationDispense_Performer =
+        new MedicationDispense_Performer(
+      id: id ?? await fhirDb.newResourceId('MedicationDispense_Performer'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      function: function,
+      actor: actor,
+    );
+    return newMedicationDispense_Performer;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MedicationDispense_Performer{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept function;
+  Reference actor;
 
-	static Future<MedicationDispense_Performer> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept function,
-	Reference actor,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicationDispense_Performer newMedicationDispense_Performer = new MedicationDispense_Performer(
-	id: id ?? await fhirDb.newResourceId('MedicationDispense_Performer'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	function: function,
-	actor: actor,
-);
-	return newMedicationDispense_Performer;
-}
+  MedicationDispense_Performer({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.function,
+    @required this.actor,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept function;
-	Reference actor;
-
-MedicationDispense_Performer(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.function,
-@required this.actor,
-});
-
-  factory MedicationDispense_Performer.fromJson(Map<String, dynamic> json) => _$MedicationDispense_PerformerFromJson(json);
+  factory MedicationDispense_Performer.fromJson(Map<String, dynamic> json) =>
+      _$MedicationDispense_PerformerFromJson(json);
   Map<String, dynamic> toJson() => _$MedicationDispense_PerformerToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicationDispense_Substitution {
+  static Future<MedicationDispense_Substitution> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool wasSubstituted,
+    Element elementWasSubstituted,
+    CodeableConcept type,
+    List<CodeableConcept> reason,
+    List<Reference> responsibleParty,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicationDispense_Substitution newMedicationDispense_Substitution =
+        new MedicationDispense_Substitution(
+      id: id ?? await fhirDb.newResourceId('MedicationDispense_Substitution'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      wasSubstituted: wasSubstituted,
+      elementWasSubstituted: elementWasSubstituted,
+      type: type,
+      reason: reason,
+      responsibleParty: responsibleParty,
+    );
+    return newMedicationDispense_Substitution;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MedicationDispense_Substitution{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool wasSubstituted;
+  Element elementWasSubstituted;
+  CodeableConcept type;
+  List<CodeableConcept> reason;
+  List<Reference> responsibleParty;
 
-	static Future<MedicationDispense_Substitution> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool wasSubstituted,
-	Element elementWasSubstituted,
-	CodeableConcept type,
-	List<CodeableConcept> reason,
-	List<Reference> responsibleParty,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicationDispense_Substitution newMedicationDispense_Substitution = new MedicationDispense_Substitution(
-	id: id ?? await fhirDb.newResourceId('MedicationDispense_Substitution'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	wasSubstituted: wasSubstituted,
-	elementWasSubstituted: elementWasSubstituted,
-	type: type,
-	reason: reason,
-	responsibleParty: responsibleParty,
-);
-	return newMedicationDispense_Substitution;
+  MedicationDispense_Substitution({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.wasSubstituted,
+    this.elementWasSubstituted,
+    this.type,
+    this.reason,
+    this.responsibleParty,
+  });
+
+  factory MedicationDispense_Substitution.fromJson(Map<String, dynamic> json) =>
+      _$MedicationDispense_SubstitutionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$MedicationDispense_SubstitutionToJson(this);
 }
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool wasSubstituted;
-	Element elementWasSubstituted;
-	CodeableConcept type;
-	List<CodeableConcept> reason;
-	List<Reference> responsibleParty;
-
-MedicationDispense_Substitution(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.wasSubstituted,
-this.elementWasSubstituted,
-this.type,
-this.reason,
-this.responsibleParty,
-});
-
-  factory MedicationDispense_Substitution.fromJson(Map<String, dynamic> json) => _$MedicationDispense_SubstitutionFromJson(json);
-  Map<String, dynamic> toJson() => _$MedicationDispense_SubstitutionToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -320,8 +324,9 @@ MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -436,55 +441,71 @@ MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReasonCodeableConcept':
-          instance.statusReasonCodeableConcept?.toJson(),
-      'statusReasonReference': instance.statusReasonReference?.toJson(),
-      'category': instance.category?.toJson(),
-      'medicationCodeableConcept': instance.medicationCodeableConcept?.toJson(),
-      'medicationReference': instance.medicationReference?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'context': instance.context?.toJson(),
-      'supportingInformation':
-          instance.supportingInformation?.map((e) => e?.toJson())?.toList(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'location': instance.location?.toJson(),
-      'authorizingPrescription':
-          instance.authorizingPrescription?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'daysSupply': instance.daysSupply?.toJson(),
-      'whenPrepared': instance.whenPrepared?.toIso8601String(),
-      'elementWhenPrepared': instance.elementWhenPrepared?.toJson(),
-      'whenHandedOver': instance.whenHandedOver?.toIso8601String(),
-      'elementWhenHandedOver': instance.elementWhenHandedOver?.toJson(),
-      'destination': instance.destination?.toJson(),
-      'receiver': instance.receiver?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'dosageInstruction':
-          instance.dosageInstruction?.map((e) => e?.toJson())?.toList(),
-      'substitution': instance.substitution?.toJson(),
-      'detectedIssue':
-          instance.detectedIssue?.map((e) => e?.toJson())?.toList(),
-      'eventHistory': instance.eventHistory?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusReasonCodeableConcept',
+      instance.statusReasonCodeableConcept?.toJson());
+  writeNotNull(
+      'statusReasonReference', instance.statusReasonReference?.toJson());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('medicationCodeableConcept',
+      instance.medicationCodeableConcept?.toJson());
+  writeNotNull('medicationReference', instance.medicationReference?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('context', instance.context?.toJson());
+  writeNotNull('supportingInformation',
+      instance.supportingInformation?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull('location', instance.location?.toJson());
+  writeNotNull('authorizingPrescription',
+      instance.authorizingPrescription?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('daysSupply', instance.daysSupply?.toJson());
+  writeNotNull('whenPrepared', instance.whenPrepared?.toIso8601String());
+  writeNotNull('elementWhenPrepared', instance.elementWhenPrepared?.toJson());
+  writeNotNull('whenHandedOver', instance.whenHandedOver?.toIso8601String());
+  writeNotNull(
+      'elementWhenHandedOver', instance.elementWhenHandedOver?.toJson());
+  writeNotNull('destination', instance.destination?.toJson());
+  writeNotNull(
+      'receiver', instance.receiver?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('dosageInstruction',
+      instance.dosageInstruction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('substitution', instance.substitution?.toJson());
+  writeNotNull('detectedIssue',
+      instance.detectedIssue?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'eventHistory', instance.eventHistory?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 MedicationDispense_Performer _$MedicationDispense_PerformerFromJson(
     Map<String, dynamic> json) {
@@ -508,15 +529,24 @@ MedicationDispense_Performer _$MedicationDispense_PerformerFromJson(
 }
 
 Map<String, dynamic> _$MedicationDispense_PerformerToJson(
-        MedicationDispense_Performer instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'function': instance.function?.toJson(),
-      'actor': instance.actor?.toJson(),
-    };
+    MedicationDispense_Performer instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('function', instance.function?.toJson());
+  writeNotNull('actor', instance.actor?.toJson());
+  return val;
+}
 
 MedicationDispense_Substitution _$MedicationDispense_SubstitutionFromJson(
     Map<String, dynamic> json) {
@@ -551,16 +581,26 @@ MedicationDispense_Substitution _$MedicationDispense_SubstitutionFromJson(
 }
 
 Map<String, dynamic> _$MedicationDispense_SubstitutionToJson(
-        MedicationDispense_Substitution instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'wasSubstituted': instance.wasSubstituted,
-      'elementWasSubstituted': instance.elementWasSubstituted?.toJson(),
-      'type': instance.type?.toJson(),
-      'reason': instance.reason?.map((e) => e?.toJson())?.toList(),
-      'responsibleParty':
-          instance.responsibleParty?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicationDispense_Substitution instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('wasSubstituted', instance.wasSubstituted);
+  writeNotNull(
+      'elementWasSubstituted', instance.elementWasSubstituted?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('reason', instance.reason?.map((e) => e?.toJson())?.toList());
+  writeNotNull('responsibleParty',
+      instance.responsibleParty?.map((e) => e?.toJson())?.toList());
+  return val;
+}

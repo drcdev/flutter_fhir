@@ -5,70 +5,68 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ContactPoint {
+  static Future<ContactPoint> newInstance({
+    String id,
+    List<Extension> extension,
+    String system,
+    Element elementSystem,
+    String value,
+    Element elementValue,
+    String use,
+    Element elementUse,
+    int rank,
+    Element elementRank,
+    Period period,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ContactPoint newContactPoint = new ContactPoint(
+      id: id ?? await fhirDb.newResourceId('ContactPoint'),
+      extension: extension,
+      system: system,
+      elementSystem: elementSystem,
+      value: value,
+      elementValue: elementValue,
+      use: use,
+      elementUse: elementUse,
+      rank: rank,
+      elementRank: elementRank,
+      period: period,
+    );
+    return newContactPoint;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ContactPoint{
+  String id;
+  List<Extension> extension;
+  String system;
+  Element elementSystem;
+  String value;
+  Element elementValue;
+  String use;
+  Element elementUse;
+  int rank;
+  Element elementRank;
+  Period period;
 
-	static Future<ContactPoint> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String system,
-	Element elementSystem,
-	String value,
-	Element elementValue,
-	String use,
-	Element elementUse,
-	int rank,
-	Element elementRank,
-	Period period,
-}) async {
-var fhirDb = new DatabaseHelper();
-ContactPoint newContactPoint = new ContactPoint(
-	id: id ?? await fhirDb.newResourceId('ContactPoint'),
-	extension: extension,
-	system: system,
-	elementSystem: elementSystem,
-	value: value,
-	elementValue: elementValue,
-	use: use,
-	elementUse: elementUse,
-	rank: rank,
-	elementRank: elementRank,
-	period: period,
-);
-	return newContactPoint;
-}
+  ContactPoint({
+    this.id,
+    this.extension,
+    this.system,
+    this.elementSystem,
+    this.value,
+    this.elementValue,
+    this.use,
+    this.elementUse,
+    this.rank,
+    this.elementRank,
+    this.period,
+  });
 
-	String id;
-	List<Extension> extension;
-	String system;
-	Element elementSystem;
-	String value;
-	Element elementValue;
-	String use;
-	Element elementUse;
-	int rank;
-	Element elementRank;
-	Period period;
-
-ContactPoint(
-	{this.id,
-this.extension,
-this.system,
-this.elementSystem,
-this.value,
-this.elementValue,
-this.use,
-this.elementUse,
-this.rank,
-this.elementRank,
-this.period,
-});
-
-  factory ContactPoint.fromJson(Map<String, dynamic> json) => _$ContactPointFromJson(json);
+  factory ContactPoint.fromJson(Map<String, dynamic> json) =>
+      _$ContactPointFromJson(json);
   Map<String, dynamic> toJson() => _$ContactPointToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -104,17 +102,26 @@ ContactPoint _$ContactPointFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ContactPointToJson(ContactPoint instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'rank': instance.rank,
-      'elementRank': instance.elementRank?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+Map<String, dynamic> _$ContactPointToJson(ContactPoint instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('rank', instance.rank);
+  writeNotNull('elementRank', instance.elementRank?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}

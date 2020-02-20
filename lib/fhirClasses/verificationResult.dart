@@ -11,343 +11,348 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class VerificationResult {
+  static Future<VerificationResult> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> target,
+    List<String> targetLocation,
+    List<Element> elementTargetLocation,
+    CodeableConcept need,
+    String status,
+    Element elementStatus,
+    DateTime statusDate,
+    Element elementStatusDate,
+    CodeableConcept validationType,
+    List<CodeableConcept> validationProcess,
+    Timing frequency,
+    DateTime lastPerformed,
+    Element elementLastPerformed,
+    String nextScheduled,
+    Element elementNextScheduled,
+    CodeableConcept failureAction,
+    List<VerificationResult_PrimarySource> primarySource,
+    VerificationResult_Attestation attestation,
+    List<VerificationResult_Validator> validator,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult newVerificationResult = new VerificationResult(
+      resourceType: 'VerificationResult',
+      id: id ?? await fhirDb.newResourceId('VerificationResult'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      target: target,
+      targetLocation: targetLocation,
+      elementTargetLocation: elementTargetLocation,
+      need: need,
+      status: status,
+      elementStatus: elementStatus,
+      statusDate: statusDate,
+      elementStatusDate: elementStatusDate,
+      validationType: validationType,
+      validationProcess: validationProcess,
+      frequency: frequency,
+      lastPerformed: lastPerformed,
+      elementLastPerformed: elementLastPerformed,
+      nextScheduled: nextScheduled,
+      elementNextScheduled: elementNextScheduled,
+      failureAction: failureAction,
+      primarySource: primarySource,
+      attestation: attestation,
+      validator: validator,
+    );
+    newVerificationResult.meta.createdAt = DateTime.now();
+    newVerificationResult.meta.lastUpdated =
+        newVerificationResult.meta.createdAt;
+    int saved = await fhirDb.saveResource(newVerificationResult);
+    return newVerificationResult;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class VerificationResult{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<VerificationResult> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Reference> target,
-	List<String> targetLocation,
-	List<Element> elementTargetLocation,
-	CodeableConcept need,
-	String status,
-	Element elementStatus,
-	DateTime statusDate,
-	Element elementStatusDate,
-	CodeableConcept validationType,
-	List<CodeableConcept> validationProcess,
-	Timing frequency,
-	DateTime lastPerformed,
-	Element elementLastPerformed,
-	String nextScheduled,
-	Element elementNextScheduled,
-	CodeableConcept failureAction,
-	List<VerificationResult_PrimarySource> primarySource,
-	VerificationResult_Attestation attestation,
-	List<VerificationResult_Validator> validator,
-}) async {
-var fhirDb = new DatabaseHelper();
-VerificationResult newVerificationResult = new VerificationResult(
-	resourceType: 'VerificationResult',
-	id: id ?? await fhirDb.newResourceId('VerificationResult'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	target: target,
-	targetLocation: targetLocation,
-	elementTargetLocation: elementTargetLocation,
-	need: need,
-	status: status,
-	elementStatus: elementStatus,
-	statusDate: statusDate,
-	elementStatusDate: elementStatusDate,
-	validationType: validationType,
-	validationProcess: validationProcess,
-	frequency: frequency,
-	lastPerformed: lastPerformed,
-	elementLastPerformed: elementLastPerformed,
-	nextScheduled: nextScheduled,
-	elementNextScheduled: elementNextScheduled,
-	failureAction: failureAction,
-	primarySource: primarySource,
-	attestation: attestation,
-	validator: validator,
-);
-	newVerificationResult.meta.createdAt = DateTime.now();
-	newVerificationResult.meta.lastUpdated = newVerificationResult.meta.createdAt;
-	int saved = await fhirDb.saveResource(newVerificationResult);
-	 return newVerificationResult;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'VerificationResult';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Reference> target;
+  List<String> targetLocation;
+  List<Element> elementTargetLocation;
+  CodeableConcept need;
+  String status;
+  Element elementStatus;
+  DateTime statusDate;
+  Element elementStatusDate;
+  CodeableConcept validationType;
+  List<CodeableConcept> validationProcess;
+  Timing frequency;
+  DateTime lastPerformed;
+  Element elementLastPerformed;
+  String nextScheduled;
+  Element elementNextScheduled;
+  CodeableConcept failureAction;
+  List<VerificationResult_PrimarySource> primarySource;
+  VerificationResult_Attestation attestation;
+  List<VerificationResult_Validator> validator;
 
-	String resourceType= 'VerificationResult';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Reference> target;
-	List<String> targetLocation;
-	List<Element> elementTargetLocation;
-	CodeableConcept need;
-	String status;
-	Element elementStatus;
-	DateTime statusDate;
-	Element elementStatusDate;
-	CodeableConcept validationType;
-	List<CodeableConcept> validationProcess;
-	Timing frequency;
-	DateTime lastPerformed;
-	Element elementLastPerformed;
-	String nextScheduled;
-	Element elementNextScheduled;
-	CodeableConcept failureAction;
-	List<VerificationResult_PrimarySource> primarySource;
-	VerificationResult_Attestation attestation;
-	List<VerificationResult_Validator> validator;
+  VerificationResult({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.target,
+    this.targetLocation,
+    this.elementTargetLocation,
+    this.need,
+    this.status,
+    this.elementStatus,
+    this.statusDate,
+    this.elementStatusDate,
+    this.validationType,
+    this.validationProcess,
+    this.frequency,
+    this.lastPerformed,
+    this.elementLastPerformed,
+    this.nextScheduled,
+    this.elementNextScheduled,
+    this.failureAction,
+    this.primarySource,
+    this.attestation,
+    this.validator,
+  });
 
-VerificationResult(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.target,
-this.targetLocation,
-this.elementTargetLocation,
-this.need,
-this.status,
-this.elementStatus,
-this.statusDate,
-this.elementStatusDate,
-this.validationType,
-this.validationProcess,
-this.frequency,
-this.lastPerformed,
-this.elementLastPerformed,
-this.nextScheduled,
-this.elementNextScheduled,
-this.failureAction,
-this.primarySource,
-this.attestation,
-this.validator,
-});
-
-  factory VerificationResult.fromJson(Map<String, dynamic> json) => _$VerificationResultFromJson(json);
+  factory VerificationResult.fromJson(Map<String, dynamic> json) =>
+      _$VerificationResultFromJson(json);
   Map<String, dynamic> toJson() => _$VerificationResultToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class VerificationResult_PrimarySource {
+  static Future<VerificationResult_PrimarySource> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference who,
+    List<CodeableConcept> type,
+    List<CodeableConcept> communicationMethod,
+    CodeableConcept validationStatus,
+    DateTime validationDate,
+    Element elementValidationDate,
+    CodeableConcept canPushUpdates,
+    List<CodeableConcept> pushTypeAvailable,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult_PrimarySource newVerificationResult_PrimarySource =
+        new VerificationResult_PrimarySource(
+      id: id ?? await fhirDb.newResourceId('VerificationResult_PrimarySource'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      who: who,
+      type: type,
+      communicationMethod: communicationMethod,
+      validationStatus: validationStatus,
+      validationDate: validationDate,
+      elementValidationDate: elementValidationDate,
+      canPushUpdates: canPushUpdates,
+      pushTypeAvailable: pushTypeAvailable,
+    );
+    return newVerificationResult_PrimarySource;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class VerificationResult_PrimarySource{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Reference who;
+  List<CodeableConcept> type;
+  List<CodeableConcept> communicationMethod;
+  CodeableConcept validationStatus;
+  DateTime validationDate;
+  Element elementValidationDate;
+  CodeableConcept canPushUpdates;
+  List<CodeableConcept> pushTypeAvailable;
 
-	static Future<VerificationResult_PrimarySource> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Reference who,
-	List<CodeableConcept> type,
-	List<CodeableConcept> communicationMethod,
-	CodeableConcept validationStatus,
-	DateTime validationDate,
-	Element elementValidationDate,
-	CodeableConcept canPushUpdates,
-	List<CodeableConcept> pushTypeAvailable,
-}) async {
-var fhirDb = new DatabaseHelper();
-VerificationResult_PrimarySource newVerificationResult_PrimarySource = new VerificationResult_PrimarySource(
-	id: id ?? await fhirDb.newResourceId('VerificationResult_PrimarySource'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	who: who,
-	type: type,
-	communicationMethod: communicationMethod,
-	validationStatus: validationStatus,
-	validationDate: validationDate,
-	elementValidationDate: elementValidationDate,
-	canPushUpdates: canPushUpdates,
-	pushTypeAvailable: pushTypeAvailable,
-);
-	return newVerificationResult_PrimarySource;
+  VerificationResult_PrimarySource({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.who,
+    this.type,
+    this.communicationMethod,
+    this.validationStatus,
+    this.validationDate,
+    this.elementValidationDate,
+    this.canPushUpdates,
+    this.pushTypeAvailable,
+  });
+
+  factory VerificationResult_PrimarySource.fromJson(
+          Map<String, dynamic> json) =>
+      _$VerificationResult_PrimarySourceFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$VerificationResult_PrimarySourceToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Reference who;
-	List<CodeableConcept> type;
-	List<CodeableConcept> communicationMethod;
-	CodeableConcept validationStatus;
-	DateTime validationDate;
-	Element elementValidationDate;
-	CodeableConcept canPushUpdates;
-	List<CodeableConcept> pushTypeAvailable;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class VerificationResult_Attestation {
+  static Future<VerificationResult_Attestation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference who,
+    Reference onBehalfOf,
+    CodeableConcept communicationMethod,
+    String date,
+    Element elementDate,
+    String sourceIdentityCertificate,
+    Element elementSourceIdentityCertificate,
+    String proxyIdentityCertificate,
+    Element elementProxyIdentityCertificate,
+    Signature proxySignature,
+    Signature sourceSignature,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult_Attestation newVerificationResult_Attestation =
+        new VerificationResult_Attestation(
+      id: id ?? await fhirDb.newResourceId('VerificationResult_Attestation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      who: who,
+      onBehalfOf: onBehalfOf,
+      communicationMethod: communicationMethod,
+      date: date,
+      elementDate: elementDate,
+      sourceIdentityCertificate: sourceIdentityCertificate,
+      elementSourceIdentityCertificate: elementSourceIdentityCertificate,
+      proxyIdentityCertificate: proxyIdentityCertificate,
+      elementProxyIdentityCertificate: elementProxyIdentityCertificate,
+      proxySignature: proxySignature,
+      sourceSignature: sourceSignature,
+    );
+    return newVerificationResult_Attestation;
+  }
 
-VerificationResult_PrimarySource(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.who,
-this.type,
-this.communicationMethod,
-this.validationStatus,
-this.validationDate,
-this.elementValidationDate,
-this.canPushUpdates,
-this.pushTypeAvailable,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Reference who;
+  Reference onBehalfOf;
+  CodeableConcept communicationMethod;
+  String date;
+  Element elementDate;
+  String sourceIdentityCertificate;
+  Element elementSourceIdentityCertificate;
+  String proxyIdentityCertificate;
+  Element elementProxyIdentityCertificate;
+  Signature proxySignature;
+  Signature sourceSignature;
 
-  factory VerificationResult_PrimarySource.fromJson(Map<String, dynamic> json) => _$VerificationResult_PrimarySourceFromJson(json);
-  Map<String, dynamic> toJson() => _$VerificationResult_PrimarySourceToJson(this);
-}
+  VerificationResult_Attestation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.who,
+    this.onBehalfOf,
+    this.communicationMethod,
+    this.date,
+    this.elementDate,
+    this.sourceIdentityCertificate,
+    this.elementSourceIdentityCertificate,
+    this.proxyIdentityCertificate,
+    this.elementProxyIdentityCertificate,
+    this.proxySignature,
+    this.sourceSignature,
+  });
 
-
-@JsonSerializable(explicitToJson: true)
-class VerificationResult_Attestation{
-
-	static Future<VerificationResult_Attestation> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Reference who,
-	Reference onBehalfOf,
-	CodeableConcept communicationMethod,
-	String date,
-	Element elementDate,
-	String sourceIdentityCertificate,
-	Element elementSourceIdentityCertificate,
-	String proxyIdentityCertificate,
-	Element elementProxyIdentityCertificate,
-	Signature proxySignature,
-	Signature sourceSignature,
-}) async {
-var fhirDb = new DatabaseHelper();
-VerificationResult_Attestation newVerificationResult_Attestation = new VerificationResult_Attestation(
-	id: id ?? await fhirDb.newResourceId('VerificationResult_Attestation'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	who: who,
-	onBehalfOf: onBehalfOf,
-	communicationMethod: communicationMethod,
-	date: date,
-	elementDate: elementDate,
-	sourceIdentityCertificate: sourceIdentityCertificate,
-	elementSourceIdentityCertificate: elementSourceIdentityCertificate,
-	proxyIdentityCertificate: proxyIdentityCertificate,
-	elementProxyIdentityCertificate: elementProxyIdentityCertificate,
-	proxySignature: proxySignature,
-	sourceSignature: sourceSignature,
-);
-	return newVerificationResult_Attestation;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Reference who;
-	Reference onBehalfOf;
-	CodeableConcept communicationMethod;
-	String date;
-	Element elementDate;
-	String sourceIdentityCertificate;
-	Element elementSourceIdentityCertificate;
-	String proxyIdentityCertificate;
-	Element elementProxyIdentityCertificate;
-	Signature proxySignature;
-	Signature sourceSignature;
-
-VerificationResult_Attestation(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.who,
-this.onBehalfOf,
-this.communicationMethod,
-this.date,
-this.elementDate,
-this.sourceIdentityCertificate,
-this.elementSourceIdentityCertificate,
-this.proxyIdentityCertificate,
-this.elementProxyIdentityCertificate,
-this.proxySignature,
-this.sourceSignature,
-});
-
-  factory VerificationResult_Attestation.fromJson(Map<String, dynamic> json) => _$VerificationResult_AttestationFromJson(json);
+  factory VerificationResult_Attestation.fromJson(Map<String, dynamic> json) =>
+      _$VerificationResult_AttestationFromJson(json);
   Map<String, dynamic> toJson() => _$VerificationResult_AttestationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class VerificationResult_Validator {
+  static Future<VerificationResult_Validator> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference organization,
+    String identityCertificate,
+    Element elementIdentityCertificate,
+    Signature attestationSignature,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    VerificationResult_Validator newVerificationResult_Validator =
+        new VerificationResult_Validator(
+      id: id ?? await fhirDb.newResourceId('VerificationResult_Validator'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      organization: organization,
+      identityCertificate: identityCertificate,
+      elementIdentityCertificate: elementIdentityCertificate,
+      attestationSignature: attestationSignature,
+    );
+    return newVerificationResult_Validator;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class VerificationResult_Validator{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Reference organization;
+  String identityCertificate;
+  Element elementIdentityCertificate;
+  Signature attestationSignature;
 
-	static Future<VerificationResult_Validator> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Reference organization,
-	String identityCertificate,
-	Element elementIdentityCertificate,
-	Signature attestationSignature,
-}) async {
-var fhirDb = new DatabaseHelper();
-VerificationResult_Validator newVerificationResult_Validator = new VerificationResult_Validator(
-	id: id ?? await fhirDb.newResourceId('VerificationResult_Validator'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	organization: organization,
-	identityCertificate: identityCertificate,
-	elementIdentityCertificate: elementIdentityCertificate,
-	attestationSignature: attestationSignature,
-);
-	return newVerificationResult_Validator;
-}
+  VerificationResult_Validator({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.organization,
+    this.identityCertificate,
+    this.elementIdentityCertificate,
+    this.attestationSignature,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Reference organization;
-	String identityCertificate;
-	Element elementIdentityCertificate;
-	Signature attestationSignature;
-
-VerificationResult_Validator(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.organization,
-this.identityCertificate,
-this.elementIdentityCertificate,
-this.attestationSignature,
-});
-
-  factory VerificationResult_Validator.fromJson(Map<String, dynamic> json) => _$VerificationResult_ValidatorFromJson(json);
+  factory VerificationResult_Validator.fromJson(Map<String, dynamic> json) =>
+      _$VerificationResult_ValidatorFromJson(json);
   Map<String, dynamic> toJson() => _$VerificationResult_ValidatorToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -374,8 +379,9 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -454,43 +460,53 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$VerificationResultToJson(VerificationResult instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'target': instance.target?.map((e) => e?.toJson())?.toList(),
-      'targetLocation': instance.targetLocation,
-      'elementTargetLocation':
-          instance.elementTargetLocation?.map((e) => e?.toJson())?.toList(),
-      'need': instance.need?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusDate': instance.statusDate?.toIso8601String(),
-      'elementStatusDate': instance.elementStatusDate?.toJson(),
-      'validationType': instance.validationType?.toJson(),
-      'validationProcess':
-          instance.validationProcess?.map((e) => e?.toJson())?.toList(),
-      'frequency': instance.frequency?.toJson(),
-      'lastPerformed': instance.lastPerformed?.toIso8601String(),
-      'elementLastPerformed': instance.elementLastPerformed?.toJson(),
-      'nextScheduled': instance.nextScheduled,
-      'elementNextScheduled': instance.elementNextScheduled?.toJson(),
-      'failureAction': instance.failureAction?.toJson(),
-      'primarySource':
-          instance.primarySource?.map((e) => e?.toJson())?.toList(),
-      'attestation': instance.attestation?.toJson(),
-      'validator': instance.validator?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$VerificationResultToJson(VerificationResult instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
+  writeNotNull('targetLocation', instance.targetLocation);
+  writeNotNull('elementTargetLocation',
+      instance.elementTargetLocation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('need', instance.need?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusDate', instance.statusDate?.toIso8601String());
+  writeNotNull('elementStatusDate', instance.elementStatusDate?.toJson());
+  writeNotNull('validationType', instance.validationType?.toJson());
+  writeNotNull('validationProcess',
+      instance.validationProcess?.map((e) => e?.toJson())?.toList());
+  writeNotNull('frequency', instance.frequency?.toJson());
+  writeNotNull('lastPerformed', instance.lastPerformed?.toIso8601String());
+  writeNotNull('elementLastPerformed', instance.elementLastPerformed?.toJson());
+  writeNotNull('nextScheduled', instance.nextScheduled);
+  writeNotNull('elementNextScheduled', instance.elementNextScheduled?.toJson());
+  writeNotNull('failureAction', instance.failureAction?.toJson());
+  writeNotNull('primarySource',
+      instance.primarySource?.map((e) => e?.toJson())?.toList());
+  writeNotNull('attestation', instance.attestation?.toJson());
+  writeNotNull(
+      'validator', instance.validator?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 VerificationResult_PrimarySource _$VerificationResult_PrimarySourceFromJson(
     Map<String, dynamic> json) {
@@ -541,23 +557,33 @@ VerificationResult_PrimarySource _$VerificationResult_PrimarySourceFromJson(
 }
 
 Map<String, dynamic> _$VerificationResult_PrimarySourceToJson(
-        VerificationResult_PrimarySource instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'who': instance.who?.toJson(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'communicationMethod':
-          instance.communicationMethod?.map((e) => e?.toJson())?.toList(),
-      'validationStatus': instance.validationStatus?.toJson(),
-      'validationDate': instance.validationDate?.toIso8601String(),
-      'elementValidationDate': instance.elementValidationDate?.toJson(),
-      'canPushUpdates': instance.canPushUpdates?.toJson(),
-      'pushTypeAvailable':
-          instance.pushTypeAvailable?.map((e) => e?.toJson())?.toList(),
-    };
+    VerificationResult_PrimarySource instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('who', instance.who?.toJson());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('communicationMethod',
+      instance.communicationMethod?.map((e) => e?.toJson())?.toList());
+  writeNotNull('validationStatus', instance.validationStatus?.toJson());
+  writeNotNull('validationDate', instance.validationDate?.toIso8601String());
+  writeNotNull(
+      'elementValidationDate', instance.elementValidationDate?.toJson());
+  writeNotNull('canPushUpdates', instance.canPushUpdates?.toJson());
+  writeNotNull('pushTypeAvailable',
+      instance.pushTypeAvailable?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 VerificationResult_Attestation _$VerificationResult_AttestationFromJson(
     Map<String, dynamic> json) {
@@ -607,26 +633,35 @@ VerificationResult_Attestation _$VerificationResult_AttestationFromJson(
 }
 
 Map<String, dynamic> _$VerificationResult_AttestationToJson(
-        VerificationResult_Attestation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'who': instance.who?.toJson(),
-      'onBehalfOf': instance.onBehalfOf?.toJson(),
-      'communicationMethod': instance.communicationMethod?.toJson(),
-      'date': instance.date,
-      'elementDate': instance.elementDate?.toJson(),
-      'sourceIdentityCertificate': instance.sourceIdentityCertificate,
-      'elementSourceIdentityCertificate':
-          instance.elementSourceIdentityCertificate?.toJson(),
-      'proxyIdentityCertificate': instance.proxyIdentityCertificate,
-      'elementProxyIdentityCertificate':
-          instance.elementProxyIdentityCertificate?.toJson(),
-      'proxySignature': instance.proxySignature?.toJson(),
-      'sourceSignature': instance.sourceSignature?.toJson(),
-    };
+    VerificationResult_Attestation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('who', instance.who?.toJson());
+  writeNotNull('onBehalfOf', instance.onBehalfOf?.toJson());
+  writeNotNull('communicationMethod', instance.communicationMethod?.toJson());
+  writeNotNull('date', instance.date);
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('sourceIdentityCertificate', instance.sourceIdentityCertificate);
+  writeNotNull('elementSourceIdentityCertificate',
+      instance.elementSourceIdentityCertificate?.toJson());
+  writeNotNull('proxyIdentityCertificate', instance.proxyIdentityCertificate);
+  writeNotNull('elementProxyIdentityCertificate',
+      instance.elementProxyIdentityCertificate?.toJson());
+  writeNotNull('proxySignature', instance.proxySignature?.toJson());
+  writeNotNull('sourceSignature', instance.sourceSignature?.toJson());
+  return val;
+}
 
 VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
     Map<String, dynamic> json) {
@@ -656,15 +691,24 @@ VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
 }
 
 Map<String, dynamic> _$VerificationResult_ValidatorToJson(
-        VerificationResult_Validator instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'organization': instance.organization?.toJson(),
-      'identityCertificate': instance.identityCertificate,
-      'elementIdentityCertificate':
-          instance.elementIdentityCertificate?.toJson(),
-      'attestationSignature': instance.attestationSignature?.toJson(),
-    };
+    VerificationResult_Validator instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('organization', instance.organization?.toJson());
+  writeNotNull('identityCertificate', instance.identityCertificate);
+  writeNotNull('elementIdentityCertificate',
+      instance.elementIdentityCertificate?.toJson());
+  writeNotNull('attestationSignature', instance.attestationSignature?.toJson());
+  return val;
+}

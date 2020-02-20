@@ -18,447 +18,448 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RequestGroup {
+  static Future<RequestGroup> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> instantiatesCanonical,
+    List<Element> elementInstantiatesCanonical,
+    List<String> instantiatesUri,
+    List<Element> elementInstantiatesUri,
+    List<Reference> basedOn,
+    List<Reference> replaces,
+    Identifier groupIdentifier,
+    String status,
+    Element elementStatus,
+    String intent,
+    Element elementIntent,
+    String priority,
+    Element elementPriority,
+    CodeableConcept code,
+    Reference subject,
+    Reference encounter,
+    DateTime authoredOn,
+    Element elementAuthoredOn,
+    Reference author,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Annotation> note,
+    List<RequestGroup_Action> action,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    RequestGroup newRequestGroup = new RequestGroup(
+      resourceType: 'RequestGroup',
+      id: id ?? await fhirDb.newResourceId('RequestGroup'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      instantiatesCanonical: instantiatesCanonical,
+      elementInstantiatesCanonical: elementInstantiatesCanonical,
+      instantiatesUri: instantiatesUri,
+      elementInstantiatesUri: elementInstantiatesUri,
+      basedOn: basedOn,
+      replaces: replaces,
+      groupIdentifier: groupIdentifier,
+      status: status,
+      elementStatus: elementStatus,
+      intent: intent,
+      elementIntent: elementIntent,
+      priority: priority,
+      elementPriority: elementPriority,
+      code: code,
+      subject: subject,
+      encounter: encounter,
+      authoredOn: authoredOn,
+      elementAuthoredOn: elementAuthoredOn,
+      author: author,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      note: note,
+      action: action,
+    );
+    newRequestGroup.meta.createdAt = DateTime.now();
+    newRequestGroup.meta.lastUpdated = newRequestGroup.meta.createdAt;
+    int saved = await fhirDb.saveResource(newRequestGroup);
+    return newRequestGroup;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class RequestGroup{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<RequestGroup> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	List<String> instantiatesCanonical,
-	List<Element> elementInstantiatesCanonical,
-	List<String> instantiatesUri,
-	List<Element> elementInstantiatesUri,
-	List<Reference> basedOn,
-	List<Reference> replaces,
-	Identifier groupIdentifier,
-	String status,
-	Element elementStatus,
-	String intent,
-	Element elementIntent,
-	String priority,
-	Element elementPriority,
-	CodeableConcept code,
-	Reference subject,
-	Reference encounter,
-	DateTime authoredOn,
-	Element elementAuthoredOn,
-	Reference author,
-	List<CodeableConcept> reasonCode,
-	List<Reference> reasonReference,
-	List<Annotation> note,
-	List<RequestGroup_Action> action,
-}) async {
-var fhirDb = new DatabaseHelper();
-RequestGroup newRequestGroup = new RequestGroup(
-	resourceType: 'RequestGroup',
-	id: id ?? await fhirDb.newResourceId('RequestGroup'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	instantiatesCanonical: instantiatesCanonical,
-	elementInstantiatesCanonical: elementInstantiatesCanonical,
-	instantiatesUri: instantiatesUri,
-	elementInstantiatesUri: elementInstantiatesUri,
-	basedOn: basedOn,
-	replaces: replaces,
-	groupIdentifier: groupIdentifier,
-	status: status,
-	elementStatus: elementStatus,
-	intent: intent,
-	elementIntent: elementIntent,
-	priority: priority,
-	elementPriority: elementPriority,
-	code: code,
-	subject: subject,
-	encounter: encounter,
-	authoredOn: authoredOn,
-	elementAuthoredOn: elementAuthoredOn,
-	author: author,
-	reasonCode: reasonCode,
-	reasonReference: reasonReference,
-	note: note,
-	action: action,
-);
-	newRequestGroup.meta.createdAt = DateTime.now();
-	newRequestGroup.meta.lastUpdated = newRequestGroup.meta.createdAt;
-	int saved = await fhirDb.saveResource(newRequestGroup);
-	 return newRequestGroup;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'RequestGroup';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  List<String> instantiatesCanonical;
+  List<Element> elementInstantiatesCanonical;
+  List<String> instantiatesUri;
+  List<Element> elementInstantiatesUri;
+  List<Reference> basedOn;
+  List<Reference> replaces;
+  Identifier groupIdentifier;
+  String status;
+  Element elementStatus;
+  String intent;
+  Element elementIntent;
+  String priority;
+  Element elementPriority;
+  CodeableConcept code;
+  Reference subject;
+  Reference encounter;
+  DateTime authoredOn;
+  Element elementAuthoredOn;
+  Reference author;
+  List<CodeableConcept> reasonCode;
+  List<Reference> reasonReference;
+  List<Annotation> note;
+  List<RequestGroup_Action> action;
 
-	String resourceType= 'RequestGroup';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	List<String> instantiatesCanonical;
-	List<Element> elementInstantiatesCanonical;
-	List<String> instantiatesUri;
-	List<Element> elementInstantiatesUri;
-	List<Reference> basedOn;
-	List<Reference> replaces;
-	Identifier groupIdentifier;
-	String status;
-	Element elementStatus;
-	String intent;
-	Element elementIntent;
-	String priority;
-	Element elementPriority;
-	CodeableConcept code;
-	Reference subject;
-	Reference encounter;
-	DateTime authoredOn;
-	Element elementAuthoredOn;
-	Reference author;
-	List<CodeableConcept> reasonCode;
-	List<Reference> reasonReference;
-	List<Annotation> note;
-	List<RequestGroup_Action> action;
+  RequestGroup({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.elementInstantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.basedOn,
+    this.replaces,
+    this.groupIdentifier,
+    this.status,
+    this.elementStatus,
+    this.intent,
+    this.elementIntent,
+    this.priority,
+    this.elementPriority,
+    this.code,
+    this.subject,
+    this.encounter,
+    this.authoredOn,
+    this.elementAuthoredOn,
+    this.author,
+    this.reasonCode,
+    this.reasonReference,
+    this.note,
+    this.action,
+  });
 
-RequestGroup(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.instantiatesCanonical,
-this.elementInstantiatesCanonical,
-this.instantiatesUri,
-this.elementInstantiatesUri,
-this.basedOn,
-this.replaces,
-this.groupIdentifier,
-this.status,
-this.elementStatus,
-this.intent,
-this.elementIntent,
-this.priority,
-this.elementPriority,
-this.code,
-this.subject,
-this.encounter,
-this.authoredOn,
-this.elementAuthoredOn,
-this.author,
-this.reasonCode,
-this.reasonReference,
-this.note,
-this.action,
-});
-
-  factory RequestGroup.fromJson(Map<String, dynamic> json) => _$RequestGroupFromJson(json);
+  factory RequestGroup.fromJson(Map<String, dynamic> json) =>
+      _$RequestGroupFromJson(json);
   Map<String, dynamic> toJson() => _$RequestGroupToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RequestGroup_Action {
+  static Future<RequestGroup_Action> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String prefix,
+    Element elementPrefix,
+    String title,
+    Element elementTitle,
+    String description,
+    Element elementDescription,
+    String textEquivalent,
+    Element elementTextEquivalent,
+    String priority,
+    Element elementPriority,
+    List<CodeableConcept> code,
+    List<RelatedArtifact> documentation,
+    List<RequestGroup_Condition> condition,
+    List<RequestGroup_RelatedAction> relatedAction,
+    String timingDateTime,
+    Element elementTimingDateTime,
+    Age timingAge,
+    Period timingPeriod,
+    Duration timingDuration,
+    Range timingRange,
+    Timing timingTiming,
+    List<Reference> participant,
+    CodeableConcept type,
+    String groupingBehavior,
+    Element elementGroupingBehavior,
+    String selectionBehavior,
+    Element elementSelectionBehavior,
+    String requiredBehavior,
+    Element elementRequiredBehavior,
+    String precheckBehavior,
+    Element elementPrecheckBehavior,
+    String cardinalityBehavior,
+    Element elementCardinalityBehavior,
+    Reference resource,
+    List<RequestGroup_Action> action,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    RequestGroup_Action newRequestGroup_Action = new RequestGroup_Action(
+      id: id ?? await fhirDb.newResourceId('RequestGroup_Action'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      prefix: prefix,
+      elementPrefix: elementPrefix,
+      title: title,
+      elementTitle: elementTitle,
+      description: description,
+      elementDescription: elementDescription,
+      textEquivalent: textEquivalent,
+      elementTextEquivalent: elementTextEquivalent,
+      priority: priority,
+      elementPriority: elementPriority,
+      code: code,
+      documentation: documentation,
+      condition: condition,
+      relatedAction: relatedAction,
+      timingDateTime: timingDateTime,
+      elementTimingDateTime: elementTimingDateTime,
+      timingAge: timingAge,
+      timingPeriod: timingPeriod,
+      timingDuration: timingDuration,
+      timingRange: timingRange,
+      timingTiming: timingTiming,
+      participant: participant,
+      type: type,
+      groupingBehavior: groupingBehavior,
+      elementGroupingBehavior: elementGroupingBehavior,
+      selectionBehavior: selectionBehavior,
+      elementSelectionBehavior: elementSelectionBehavior,
+      requiredBehavior: requiredBehavior,
+      elementRequiredBehavior: elementRequiredBehavior,
+      precheckBehavior: precheckBehavior,
+      elementPrecheckBehavior: elementPrecheckBehavior,
+      cardinalityBehavior: cardinalityBehavior,
+      elementCardinalityBehavior: elementCardinalityBehavior,
+      resource: resource,
+      action: action,
+    );
+    return newRequestGroup_Action;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class RequestGroup_Action{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String prefix;
+  Element elementPrefix;
+  String title;
+  Element elementTitle;
+  String description;
+  Element elementDescription;
+  String textEquivalent;
+  Element elementTextEquivalent;
+  String priority;
+  Element elementPriority;
+  List<CodeableConcept> code;
+  List<RelatedArtifact> documentation;
+  List<RequestGroup_Condition> condition;
+  List<RequestGroup_RelatedAction> relatedAction;
+  String timingDateTime;
+  Element elementTimingDateTime;
+  Age timingAge;
+  Period timingPeriod;
+  Duration timingDuration;
+  Range timingRange;
+  Timing timingTiming;
+  List<Reference> participant;
+  CodeableConcept type;
+  String groupingBehavior;
+  Element elementGroupingBehavior;
+  String selectionBehavior;
+  Element elementSelectionBehavior;
+  String requiredBehavior;
+  Element elementRequiredBehavior;
+  String precheckBehavior;
+  Element elementPrecheckBehavior;
+  String cardinalityBehavior;
+  Element elementCardinalityBehavior;
+  Reference resource;
+  List<RequestGroup_Action> action;
 
-	static Future<RequestGroup_Action> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String prefix,
-	Element elementPrefix,
-	String title,
-	Element elementTitle,
-	String description,
-	Element elementDescription,
-	String textEquivalent,
-	Element elementTextEquivalent,
-	String priority,
-	Element elementPriority,
-	List<CodeableConcept> code,
-	List<RelatedArtifact> documentation,
-	List<RequestGroup_Condition> condition,
-	List<RequestGroup_RelatedAction> relatedAction,
-	String timingDateTime,
-	Element elementTimingDateTime,
-	Age timingAge,
-	Period timingPeriod,
-	Duration timingDuration,
-	Range timingRange,
-	Timing timingTiming,
-	List<Reference> participant,
-	CodeableConcept type,
-	String groupingBehavior,
-	Element elementGroupingBehavior,
-	String selectionBehavior,
-	Element elementSelectionBehavior,
-	String requiredBehavior,
-	Element elementRequiredBehavior,
-	String precheckBehavior,
-	Element elementPrecheckBehavior,
-	String cardinalityBehavior,
-	Element elementCardinalityBehavior,
-	Reference resource,
-	List<RequestGroup_Action> action,
-}) async {
-var fhirDb = new DatabaseHelper();
-RequestGroup_Action newRequestGroup_Action = new RequestGroup_Action(
-	id: id ?? await fhirDb.newResourceId('RequestGroup_Action'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	prefix: prefix,
-	elementPrefix: elementPrefix,
-	title: title,
-	elementTitle: elementTitle,
-	description: description,
-	elementDescription: elementDescription,
-	textEquivalent: textEquivalent,
-	elementTextEquivalent: elementTextEquivalent,
-	priority: priority,
-	elementPriority: elementPriority,
-	code: code,
-	documentation: documentation,
-	condition: condition,
-	relatedAction: relatedAction,
-	timingDateTime: timingDateTime,
-	elementTimingDateTime: elementTimingDateTime,
-	timingAge: timingAge,
-	timingPeriod: timingPeriod,
-	timingDuration: timingDuration,
-	timingRange: timingRange,
-	timingTiming: timingTiming,
-	participant: participant,
-	type: type,
-	groupingBehavior: groupingBehavior,
-	elementGroupingBehavior: elementGroupingBehavior,
-	selectionBehavior: selectionBehavior,
-	elementSelectionBehavior: elementSelectionBehavior,
-	requiredBehavior: requiredBehavior,
-	elementRequiredBehavior: elementRequiredBehavior,
-	precheckBehavior: precheckBehavior,
-	elementPrecheckBehavior: elementPrecheckBehavior,
-	cardinalityBehavior: cardinalityBehavior,
-	elementCardinalityBehavior: elementCardinalityBehavior,
-	resource: resource,
-	action: action,
-);
-	return newRequestGroup_Action;
-}
+  RequestGroup_Action({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.prefix,
+    this.elementPrefix,
+    this.title,
+    this.elementTitle,
+    this.description,
+    this.elementDescription,
+    this.textEquivalent,
+    this.elementTextEquivalent,
+    this.priority,
+    this.elementPriority,
+    this.code,
+    this.documentation,
+    this.condition,
+    this.relatedAction,
+    this.timingDateTime,
+    this.elementTimingDateTime,
+    this.timingAge,
+    this.timingPeriod,
+    this.timingDuration,
+    this.timingRange,
+    this.timingTiming,
+    this.participant,
+    this.type,
+    this.groupingBehavior,
+    this.elementGroupingBehavior,
+    this.selectionBehavior,
+    this.elementSelectionBehavior,
+    this.requiredBehavior,
+    this.elementRequiredBehavior,
+    this.precheckBehavior,
+    this.elementPrecheckBehavior,
+    this.cardinalityBehavior,
+    this.elementCardinalityBehavior,
+    this.resource,
+    this.action,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String prefix;
-	Element elementPrefix;
-	String title;
-	Element elementTitle;
-	String description;
-	Element elementDescription;
-	String textEquivalent;
-	Element elementTextEquivalent;
-	String priority;
-	Element elementPriority;
-	List<CodeableConcept> code;
-	List<RelatedArtifact> documentation;
-	List<RequestGroup_Condition> condition;
-	List<RequestGroup_RelatedAction> relatedAction;
-	String timingDateTime;
-	Element elementTimingDateTime;
-	Age timingAge;
-	Period timingPeriod;
-	Duration timingDuration;
-	Range timingRange;
-	Timing timingTiming;
-	List<Reference> participant;
-	CodeableConcept type;
-	String groupingBehavior;
-	Element elementGroupingBehavior;
-	String selectionBehavior;
-	Element elementSelectionBehavior;
-	String requiredBehavior;
-	Element elementRequiredBehavior;
-	String precheckBehavior;
-	Element elementPrecheckBehavior;
-	String cardinalityBehavior;
-	Element elementCardinalityBehavior;
-	Reference resource;
-	List<RequestGroup_Action> action;
-
-RequestGroup_Action(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.prefix,
-this.elementPrefix,
-this.title,
-this.elementTitle,
-this.description,
-this.elementDescription,
-this.textEquivalent,
-this.elementTextEquivalent,
-this.priority,
-this.elementPriority,
-this.code,
-this.documentation,
-this.condition,
-this.relatedAction,
-this.timingDateTime,
-this.elementTimingDateTime,
-this.timingAge,
-this.timingPeriod,
-this.timingDuration,
-this.timingRange,
-this.timingTiming,
-this.participant,
-this.type,
-this.groupingBehavior,
-this.elementGroupingBehavior,
-this.selectionBehavior,
-this.elementSelectionBehavior,
-this.requiredBehavior,
-this.elementRequiredBehavior,
-this.precheckBehavior,
-this.elementPrecheckBehavior,
-this.cardinalityBehavior,
-this.elementCardinalityBehavior,
-this.resource,
-this.action,
-});
-
-  factory RequestGroup_Action.fromJson(Map<String, dynamic> json) => _$RequestGroup_ActionFromJson(json);
+  factory RequestGroup_Action.fromJson(Map<String, dynamic> json) =>
+      _$RequestGroup_ActionFromJson(json);
   Map<String, dynamic> toJson() => _$RequestGroup_ActionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RequestGroup_Condition {
+  static Future<RequestGroup_Condition> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String kind,
+    Element elementKind,
+    Expression expression,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    RequestGroup_Condition newRequestGroup_Condition =
+        new RequestGroup_Condition(
+      id: id ?? await fhirDb.newResourceId('RequestGroup_Condition'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      kind: kind,
+      elementKind: elementKind,
+      expression: expression,
+    );
+    return newRequestGroup_Condition;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class RequestGroup_Condition{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String kind;
+  Element elementKind;
+  Expression expression;
 
-	static Future<RequestGroup_Condition> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String kind,
-	Element elementKind,
-	Expression expression,
-}) async {
-var fhirDb = new DatabaseHelper();
-RequestGroup_Condition newRequestGroup_Condition = new RequestGroup_Condition(
-	id: id ?? await fhirDb.newResourceId('RequestGroup_Condition'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	kind: kind,
-	elementKind: elementKind,
-	expression: expression,
-);
-	return newRequestGroup_Condition;
-}
+  RequestGroup_Condition({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.kind,
+    this.elementKind,
+    this.expression,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String kind;
-	Element elementKind;
-	Expression expression;
-
-RequestGroup_Condition(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.kind,
-this.elementKind,
-this.expression,
-});
-
-  factory RequestGroup_Condition.fromJson(Map<String, dynamic> json) => _$RequestGroup_ConditionFromJson(json);
+  factory RequestGroup_Condition.fromJson(Map<String, dynamic> json) =>
+      _$RequestGroup_ConditionFromJson(json);
   Map<String, dynamic> toJson() => _$RequestGroup_ConditionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RequestGroup_RelatedAction {
+  static Future<RequestGroup_RelatedAction> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String actionId,
+    Element elementActionId,
+    String relationship,
+    Element elementRelationship,
+    Duration offsetDuration,
+    Range offsetRange,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    RequestGroup_RelatedAction newRequestGroup_RelatedAction =
+        new RequestGroup_RelatedAction(
+      id: id ?? await fhirDb.newResourceId('RequestGroup_RelatedAction'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      actionId: actionId,
+      elementActionId: elementActionId,
+      relationship: relationship,
+      elementRelationship: elementRelationship,
+      offsetDuration: offsetDuration,
+      offsetRange: offsetRange,
+    );
+    return newRequestGroup_RelatedAction;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class RequestGroup_RelatedAction{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String actionId;
+  Element elementActionId;
+  String relationship;
+  Element elementRelationship;
+  Duration offsetDuration;
+  Range offsetRange;
 
-	static Future<RequestGroup_RelatedAction> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String actionId,
-	Element elementActionId,
-	String relationship,
-	Element elementRelationship,
-	Duration offsetDuration,
-	Range offsetRange,
-}) async {
-var fhirDb = new DatabaseHelper();
-RequestGroup_RelatedAction newRequestGroup_RelatedAction = new RequestGroup_RelatedAction(
-	id: id ?? await fhirDb.newResourceId('RequestGroup_RelatedAction'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	actionId: actionId,
-	elementActionId: elementActionId,
-	relationship: relationship,
-	elementRelationship: elementRelationship,
-	offsetDuration: offsetDuration,
-	offsetRange: offsetRange,
-);
-	return newRequestGroup_RelatedAction;
-}
+  RequestGroup_RelatedAction({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.actionId,
+    this.elementActionId,
+    this.relationship,
+    this.elementRelationship,
+    this.offsetDuration,
+    this.offsetRange,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String actionId;
-	Element elementActionId;
-	String relationship;
-	Element elementRelationship;
-	Duration offsetDuration;
-	Range offsetRange;
-
-RequestGroup_RelatedAction(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.actionId,
-this.elementActionId,
-this.relationship,
-this.elementRelationship,
-this.offsetDuration,
-this.offsetRange,
-});
-
-  factory RequestGroup_RelatedAction.fromJson(Map<String, dynamic> json) => _$RequestGroup_RelatedActionFromJson(json);
+  factory RequestGroup_RelatedAction.fromJson(Map<String, dynamic> json) =>
+      _$RequestGroup_RelatedActionFromJson(json);
   Map<String, dynamic> toJson() => _$RequestGroup_RelatedActionToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -485,8 +486,9 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -575,49 +577,60 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'elementInstantiatesCanonical': instance.elementInstantiatesCanonical
-          ?.map((e) => e?.toJson())
-          ?.toList(),
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'replaces': instance.replaces?.map((e) => e?.toJson())?.toList(),
-      'groupIdentifier': instance.groupIdentifier?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'intent': instance.intent,
-      'elementIntent': instance.elementIntent?.toJson(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'authoredOn': instance.authoredOn?.toIso8601String(),
-      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
-      'author': instance.author?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('elementInstantiatesCanonical',
+      instance.elementInstantiatesCanonical?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'replaces', instance.replaces?.map((e) => e?.toJson())?.toList());
+  writeNotNull('groupIdentifier', instance.groupIdentifier?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('intent', instance.intent);
+  writeNotNull('elementIntent', instance.elementIntent?.toJson());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('authoredOn', instance.authoredOn?.toIso8601String());
+  writeNotNull('elementAuthoredOn', instance.elementAuthoredOn?.toJson());
+  writeNotNull('author', instance.author?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
   return RequestGroup_Action(
@@ -734,52 +747,68 @@ RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RequestGroup_ActionToJson(
-        RequestGroup_Action instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'prefix': instance.prefix,
-      'elementPrefix': instance.elementPrefix?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'textEquivalent': instance.textEquivalent,
-      'elementTextEquivalent': instance.elementTextEquivalent?.toJson(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'documentation':
-          instance.documentation?.map((e) => e?.toJson())?.toList(),
-      'condition': instance.condition?.map((e) => e?.toJson())?.toList(),
-      'relatedAction':
-          instance.relatedAction?.map((e) => e?.toJson())?.toList(),
-      'timingDateTime': instance.timingDateTime,
-      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
-      'timingAge': instance.timingAge?.toJson(),
-      'timingPeriod': instance.timingPeriod?.toJson(),
-      'timingDuration': instance.timingDuration?.toJson(),
-      'timingRange': instance.timingRange?.toJson(),
-      'timingTiming': instance.timingTiming?.toJson(),
-      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'groupingBehavior': instance.groupingBehavior,
-      'elementGroupingBehavior': instance.elementGroupingBehavior?.toJson(),
-      'selectionBehavior': instance.selectionBehavior,
-      'elementSelectionBehavior': instance.elementSelectionBehavior?.toJson(),
-      'requiredBehavior': instance.requiredBehavior,
-      'elementRequiredBehavior': instance.elementRequiredBehavior?.toJson(),
-      'precheckBehavior': instance.precheckBehavior,
-      'elementPrecheckBehavior': instance.elementPrecheckBehavior?.toJson(),
-      'cardinalityBehavior': instance.cardinalityBehavior,
-      'elementCardinalityBehavior':
-          instance.elementCardinalityBehavior?.toJson(),
-      'resource': instance.resource?.toJson(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$RequestGroup_ActionToJson(RequestGroup_Action instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prefix', instance.prefix);
+  writeNotNull('elementPrefix', instance.elementPrefix?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('textEquivalent', instance.textEquivalent);
+  writeNotNull(
+      'elementTextEquivalent', instance.elementTextEquivalent?.toJson());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('documentation',
+      instance.documentation?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'condition', instance.condition?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedAction',
+      instance.relatedAction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('timingDateTime', instance.timingDateTime);
+  writeNotNull(
+      'elementTimingDateTime', instance.elementTimingDateTime?.toJson());
+  writeNotNull('timingAge', instance.timingAge?.toJson());
+  writeNotNull('timingPeriod', instance.timingPeriod?.toJson());
+  writeNotNull('timingDuration', instance.timingDuration?.toJson());
+  writeNotNull('timingRange', instance.timingRange?.toJson());
+  writeNotNull('timingTiming', instance.timingTiming?.toJson());
+  writeNotNull(
+      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('groupingBehavior', instance.groupingBehavior);
+  writeNotNull(
+      'elementGroupingBehavior', instance.elementGroupingBehavior?.toJson());
+  writeNotNull('selectionBehavior', instance.selectionBehavior);
+  writeNotNull(
+      'elementSelectionBehavior', instance.elementSelectionBehavior?.toJson());
+  writeNotNull('requiredBehavior', instance.requiredBehavior);
+  writeNotNull(
+      'elementRequiredBehavior', instance.elementRequiredBehavior?.toJson());
+  writeNotNull('precheckBehavior', instance.precheckBehavior);
+  writeNotNull(
+      'elementPrecheckBehavior', instance.elementPrecheckBehavior?.toJson());
+  writeNotNull('cardinalityBehavior', instance.cardinalityBehavior);
+  writeNotNull('elementCardinalityBehavior',
+      instance.elementCardinalityBehavior?.toJson());
+  writeNotNull('resource', instance.resource?.toJson());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 RequestGroup_Condition _$RequestGroup_ConditionFromJson(
     Map<String, dynamic> json) {
@@ -804,16 +833,25 @@ RequestGroup_Condition _$RequestGroup_ConditionFromJson(
 }
 
 Map<String, dynamic> _$RequestGroup_ConditionToJson(
-        RequestGroup_Condition instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'expression': instance.expression?.toJson(),
-    };
+    RequestGroup_Condition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('expression', instance.expression?.toJson());
+  return val;
+}
 
 RequestGroup_RelatedAction _$RequestGroup_RelatedActionFromJson(
     Map<String, dynamic> json) {
@@ -845,16 +883,25 @@ RequestGroup_RelatedAction _$RequestGroup_RelatedActionFromJson(
 }
 
 Map<String, dynamic> _$RequestGroup_RelatedActionToJson(
-        RequestGroup_RelatedAction instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'actionId': instance.actionId,
-      'elementActionId': instance.elementActionId?.toJson(),
-      'relationship': instance.relationship,
-      'elementRelationship': instance.elementRelationship?.toJson(),
-      'offsetDuration': instance.offsetDuration?.toJson(),
-      'offsetRange': instance.offsetRange?.toJson(),
-    };
+    RequestGroup_RelatedAction instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('actionId', instance.actionId);
+  writeNotNull('elementActionId', instance.elementActionId?.toJson());
+  writeNotNull('relationship', instance.relationship);
+  writeNotNull('elementRelationship', instance.elementRelationship?.toJson());
+  writeNotNull('offsetDuration', instance.offsetDuration?.toJson());
+  writeNotNull('offsetRange', instance.offsetRange?.toJson());
+  return val;
+}

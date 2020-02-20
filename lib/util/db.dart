@@ -11,18 +11,17 @@ import 'package:device_info/device_info.dart';
 //ToDo: create ability to only edit one cell at a time
 
 class DatabaseHelper {
+  ///All code to create the initial database
   static final DatabaseHelper _instance = new DatabaseHelper.internal();
-
   factory DatabaseHelper() => _instance;
   static Database _db;
+  DatabaseHelper.internal();
 
   Future<Database> get db async {
     if (_db != null) return _db;
     _db = await initDb();
     return _db;
   }
-
-  DatabaseHelper.internal();
 
   initDb() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
@@ -31,20 +30,21 @@ class DatabaseHelper {
     return theDb;
   }
 
+  ///for new resources
   Future<String> newResourceId(String resource) async {
     var dbClient = await db;
     //get the info about the new resource
-    var classInfo = await dbClient.query('Classes',
+    var classInfo = await dbClient.query('Master',
         where: 'resourceType LIKE (?)',
         whereArgs: ['$resource'],
-        columns: ['id', 'deviceId', 'lastId', 'total', 'lastUpdated']);
+        columns: ['id', 'deviceId', 'lastId']);
 
     //Create it's new lastId
     String newNum =
         (int.parse(classInfo[0]['lastId']) + 1).toString().padLeft(4, '0');
     //update value in database in master table
     var count = await dbClient.rawUpdate(
-        'UPDATE Classes SET lastId = ? WHERE resourceType = ?',
+        'UPDATE Master SET lastId = ? WHERE resourceType = ?',
         ['$newNum', '$resource']);
 
     //return newId
@@ -55,19 +55,10 @@ class DatabaseHelper {
         newNum.toString());
   }
 
-  Future<int> updateServer(String url) async {
-    var dbClient = await db;
-    List<Map> results = await dbClient
-        .query('Server', where: 'serverUrl = ?', whereArgs: [url]);
-    Server server = Server.fromJson(results[0]);
-    server.lastUpdated = DateTime.now().toString();
-    return await dbClient.update('Server', server.toJson(),
-        where: 'serverUrl = ?', whereArgs: [url]);
-  }
-
   Future<int> saveResource(dynamic resource) async {
     var dbClient = await db;
 
+    //create the new row to store in the db
     var row = {
       'id': resource.id,
       'createdAt': resource.meta.createdAt.toString(),
@@ -75,60 +66,43 @@ class DatabaseHelper {
       'jsonResource': jsonEncode(resource)
     };
 
+    //query that specific row from the correct class table
     List<Map> results = await dbClient.query(resource.resourceType,
         columns: ['id'], where: 'id = ?', whereArgs: [resource.id]);
 
-    int rowNum;
-
-    if (results.length > 0) {
-      //if already exists in table, udpate the row
-      rowNum = await dbClient.update('${resource.runtimeType.toString()}', row,
-          where: 'id = ?', whereArgs: [resource.id]);
-    } else {
-      //inserts new row into db
-      rowNum = await dbClient.insert(resource.runtimeType.toString(), row);
-    }
-
-    List<Map<String, dynamic>> list = await dbClient.query('Classes',
+    //query that row in the Master table
+    List<Map<String, dynamic>> list = await dbClient.query('Master',
         where: 'resourceType = ?',
         whereArgs: [resource.runtimeType.toString()]);
 
-    int total = (rowNum != null && results.length <= 0)
-        ? list[0]['total'] + 1
-        : list[0]['total'];
+    int rowNum;
+    int total;
+    if (results.length > 0) {
+      //if already exists in table, update the row
+      rowNum = await dbClient.update('${resource.runtimeType.toString()}', row,
+          where: 'id = ?', whereArgs: [resource.id]);
+      //total count doesn't change
+      total = list[0]['total'];
+    } else {
+      //inserts new row into db
+      rowNum = await dbClient.insert(resource.runtimeType.toString(), row);
+      //increase total count by 1
+      total = list[0]['total'] + 1;
+    }
+
+    //if resource was updated after any other resources in its table, make a
+    //note of that in the Master table
+    String updated = DateTime.parse(list[0]['lastUpdated'])
+            .isAfter(resource.meta.lastUpdated)
+        ? list[0]['lastUpdated']
+        : resource.meta.lastUpdated.toString();
+
+    //Save result in master table
     var count = await dbClient.rawUpdate(
-        'UPDATE Classes SET total = ?, lastUpdated = ? WHERE resourceType = ?',
-        [
-          '${total}',
-          '${resource.meta.lastUpdated.toString()}',
-          '${resource.runtimeType.toString()}'
-        ]);
+        'UPDATE Master SET total = ?, lastUpdated = ? WHERE resourceType = ?',
+        ['$total', '$updated', '${resource.runtimeType.toString()}']);
 
     return rowNum;
-  }
-
-  Future<Server> lastServerUpdate(String url) async {
-    var dbClient = await db;
-    List<Map> list = await dbClient
-        .query('Server', where: 'serverUrl = ?', whereArgs: [url]);
-    return (Server(
-      serverUrl: list[0]['serverUrl'],
-      clientId: list[0]['clientId'],
-      secret: list[0]['secret'],
-      lastUpdated: list[0]['lastUpdated'],
-    ));
-  }
-
-  Future<int> saveServerUpdate(Server server) async {
-    var dbClient = await db;
-    var row = {
-      'serverUrl': server.serverUrl,
-      'clientId': server.clientId,
-      'secret': server.secret,
-      'lastUpdated': server.lastUpdated
-    };
-    return await dbClient.update('Server', row,
-        where: 'serverUrl = ?', whereArgs: [server.serverUrl]);
   }
 
   Future<dynamic> search(String resourceType, String id) async {
@@ -164,10 +138,44 @@ class DatabaseHelper {
     return search;
   }
 
+  Future<int> updateServer(String url) async {
+    var dbClient = await db;
+    List<Map> results = await dbClient
+        .query('Server', where: 'serverUrl = ?', whereArgs: [url]);
+    Server server = Server.fromJson(results[0]);
+    server.lastUpdated = DateTime.now().toString();
+    return await dbClient.update('Server', server.toJson(),
+        where: 'serverUrl = ?', whereArgs: [url]);
+  }
+
+  Future<Server> lastServerUpdate(String url) async {
+    var dbClient = await db;
+    List<Map> list = await dbClient
+        .query('Server', where: 'serverUrl = ?', whereArgs: [url]);
+    return (Server(
+      serverUrl: list[0]['serverUrl'],
+      clientId: list[0]['clientId'],
+      secret: list[0]['secret'],
+      lastUpdated: list[0]['lastUpdated'],
+    ));
+  }
+
+  Future<int> saveServerUpdate(Server server) async {
+    var dbClient = await db;
+    var row = {
+      'serverUrl': server.serverUrl,
+      'clientId': server.clientId,
+      'secret': server.secret,
+      'lastUpdated': server.lastUpdated
+    };
+    return await dbClient.update('Server', row,
+        where: 'serverUrl = ?', whereArgs: [server.serverUrl]);
+  }
+
   Future<int> deleteResource(dynamic resource) async {
     var dbClient = await db;
     int res = await dbClient.rawDelete(
-        'DELETE FROM Classes WHERE resourceType = "${resource.resourceType}"');
+        'DELETE FROM Master WHERE resourceType = "${resource.resourceType}"');
     return res;
   }
 
@@ -179,7 +187,7 @@ class DatabaseHelper {
     //id number for that resource from this device, also number of resources
     //total on this device
 
-    await db.execute('''CREATE TABLE Classes (
+    await db.execute('''CREATE TABLE Master (
 			resourceType TEXT PRIMARY KEY,
 			id TEXT,
 			deviceId TEXT,
@@ -970,9 +978,9 @@ class DatabaseHelper {
     await db.insert('Server', row);
 
     String time = DateTime.now().toString();
-//Insert the rest of the classes into the classes table
+//Insert the rest of the classes into the Master table
     await db.rawInsert(
-        '''INSERT INTO Classes (resourceType, id, deviceId, lastId, total, lastUpdated)
+        '''INSERT INTO Master (resourceType, id, deviceId, lastId, total, lastUpdated)
 			VALUES
 				('Element','010','$deviceId','0000',0,'$time'),
 				('Extension','011','$deviceId','0000',0,'$time'),

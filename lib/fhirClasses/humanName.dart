@@ -5,86 +5,84 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class HumanName {
+  static Future<HumanName> newInstance({
+    String id,
+    List<Extension> extension,
+    String use,
+    Element elementUse,
+    String text,
+    Element elementText,
+    String family,
+    Element elementFamily,
+    List<String> given,
+    List<Element> elementGiven,
+    List<String> prefix,
+    List<Element> elementPrefix,
+    List<String> suffix,
+    List<Element> elementSuffix,
+    Period period,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    HumanName newHumanName = new HumanName(
+      id: id ?? await fhirDb.newResourceId('HumanName'),
+      extension: extension,
+      use: use,
+      elementUse: elementUse,
+      text: text,
+      elementText: elementText,
+      family: family,
+      elementFamily: elementFamily,
+      given: given,
+      elementGiven: elementGiven,
+      prefix: prefix,
+      elementPrefix: elementPrefix,
+      suffix: suffix,
+      elementSuffix: elementSuffix,
+      period: period,
+    );
+    return newHumanName;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class HumanName{
+  String id;
+  List<Extension> extension;
+  String use;
+  Element elementUse;
+  String text;
+  Element elementText;
+  String family;
+  Element elementFamily;
+  List<String> given;
+  List<Element> elementGiven;
+  List<String> prefix;
+  List<Element> elementPrefix;
+  List<String> suffix;
+  List<Element> elementSuffix;
+  Period period;
 
-	static Future<HumanName> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String use,
-	Element elementUse,
-	String text,
-	Element elementText,
-	String family,
-	Element elementFamily,
-	List<String> given,
-	List<Element> elementGiven,
-	List<String> prefix,
-	List<Element> elementPrefix,
-	List<String> suffix,
-	List<Element> elementSuffix,
-	Period period,
-}) async {
-var fhirDb = new DatabaseHelper();
-HumanName newHumanName = new HumanName(
-	id: id ?? await fhirDb.newResourceId('HumanName'),
-	extension: extension,
-	use: use,
-	elementUse: elementUse,
-	text: text,
-	elementText: elementText,
-	family: family,
-	elementFamily: elementFamily,
-	given: given,
-	elementGiven: elementGiven,
-	prefix: prefix,
-	elementPrefix: elementPrefix,
-	suffix: suffix,
-	elementSuffix: elementSuffix,
-	period: period,
-);
-	return newHumanName;
-}
+  HumanName({
+    this.id,
+    this.extension,
+    this.use,
+    this.elementUse,
+    this.text,
+    this.elementText,
+    this.family,
+    this.elementFamily,
+    this.given,
+    this.elementGiven,
+    this.prefix,
+    this.elementPrefix,
+    this.suffix,
+    this.elementSuffix,
+    this.period,
+  });
 
-	String id;
-	List<Extension> extension;
-	String use;
-	Element elementUse;
-	String text;
-	Element elementText;
-	String family;
-	Element elementFamily;
-	List<String> given;
-	List<Element> elementGiven;
-	List<String> prefix;
-	List<Element> elementPrefix;
-	List<String> suffix;
-	List<Element> elementSuffix;
-	Period period;
-
-HumanName(
-	{this.id,
-this.extension,
-this.use,
-this.elementUse,
-this.text,
-this.elementText,
-this.family,
-this.elementFamily,
-this.given,
-this.elementGiven,
-this.prefix,
-this.elementPrefix,
-this.suffix,
-this.elementSuffix,
-this.period,
-});
-
-  factory HumanName.fromJson(Map<String, dynamic> json) => _$HumanNameFromJson(json);
+  factory HumanName.fromJson(Map<String, dynamic> json) =>
+      _$HumanNameFromJson(json);
   Map<String, dynamic> toJson() => _$HumanNameToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -131,22 +129,33 @@ HumanName _$HumanNameFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$HumanNameToJson(HumanName instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-      'family': instance.family,
-      'elementFamily': instance.elementFamily?.toJson(),
-      'given': instance.given,
-      'elementGiven': instance.elementGiven?.map((e) => e?.toJson())?.toList(),
-      'prefix': instance.prefix,
-      'elementPrefix':
-          instance.elementPrefix?.map((e) => e?.toJson())?.toList(),
-      'suffix': instance.suffix,
-      'elementSuffix':
-          instance.elementSuffix?.map((e) => e?.toJson())?.toList(),
-      'period': instance.period?.toJson(),
-    };
+Map<String, dynamic> _$HumanNameToJson(HumanName instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  writeNotNull('family', instance.family);
+  writeNotNull('elementFamily', instance.elementFamily?.toJson());
+  writeNotNull('given', instance.given);
+  writeNotNull(
+      'elementGiven', instance.elementGiven?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prefix', instance.prefix);
+  writeNotNull('elementPrefix',
+      instance.elementPrefix?.map((e) => e?.toJson())?.toList());
+  writeNotNull('suffix', instance.suffix);
+  writeNotNull('elementSuffix',
+      instance.elementSuffix?.map((e) => e?.toJson())?.toList());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}

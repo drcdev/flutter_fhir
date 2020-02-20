@@ -15,267 +15,269 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DeviceRequest {
+  static Future<DeviceRequest> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<String> instantiatesCanonical,
+    List<String> instantiatesUri,
+    List<Element> elementInstantiatesUri,
+    List<Reference> basedOn,
+    List<Reference> priorRequest,
+    Identifier groupIdentifier,
+    String status,
+    Element elementStatus,
+    String intent,
+    Element elementIntent,
+    String priority,
+    Element elementPriority,
+    Reference codeReference,
+    CodeableConcept codeCodeableConcept,
+    List<DeviceRequest_Parameter> parameter,
+    Reference subject,
+    Reference encounter,
+    String occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Period occurrencePeriod,
+    Timing occurrenceTiming,
+    DateTime authoredOn,
+    Element elementAuthoredOn,
+    Reference requester,
+    CodeableConcept performerType,
+    Reference performer,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Reference> insurance,
+    List<Reference> supportingInfo,
+    List<Annotation> note,
+    List<Reference> relevantHistory,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceRequest newDeviceRequest = new DeviceRequest(
+      resourceType: 'DeviceRequest',
+      id: id ?? await fhirDb.newResourceId('DeviceRequest'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      instantiatesCanonical: instantiatesCanonical,
+      instantiatesUri: instantiatesUri,
+      elementInstantiatesUri: elementInstantiatesUri,
+      basedOn: basedOn,
+      priorRequest: priorRequest,
+      groupIdentifier: groupIdentifier,
+      status: status,
+      elementStatus: elementStatus,
+      intent: intent,
+      elementIntent: elementIntent,
+      priority: priority,
+      elementPriority: elementPriority,
+      codeReference: codeReference,
+      codeCodeableConcept: codeCodeableConcept,
+      parameter: parameter,
+      subject: subject,
+      encounter: encounter,
+      occurrenceDateTime: occurrenceDateTime,
+      elementOccurrenceDateTime: elementOccurrenceDateTime,
+      occurrencePeriod: occurrencePeriod,
+      occurrenceTiming: occurrenceTiming,
+      authoredOn: authoredOn,
+      elementAuthoredOn: elementAuthoredOn,
+      requester: requester,
+      performerType: performerType,
+      performer: performer,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      insurance: insurance,
+      supportingInfo: supportingInfo,
+      note: note,
+      relevantHistory: relevantHistory,
+    );
+    newDeviceRequest.meta.createdAt = DateTime.now();
+    newDeviceRequest.meta.lastUpdated = newDeviceRequest.meta.createdAt;
+    int saved = await fhirDb.saveResource(newDeviceRequest);
+    return newDeviceRequest;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class DeviceRequest{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<DeviceRequest> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	List<String> instantiatesCanonical,
-	List<String> instantiatesUri,
-	List<Element> elementInstantiatesUri,
-	List<Reference> basedOn,
-	List<Reference> priorRequest,
-	Identifier groupIdentifier,
-	String status,
-	Element elementStatus,
-	String intent,
-	Element elementIntent,
-	String priority,
-	Element elementPriority,
-	Reference codeReference,
-	CodeableConcept codeCodeableConcept,
-	List<DeviceRequest_Parameter> parameter,
-	Reference subject,
-	Reference encounter,
-	String occurrenceDateTime,
-	Element elementOccurrenceDateTime,
-	Period occurrencePeriod,
-	Timing occurrenceTiming,
-	DateTime authoredOn,
-	Element elementAuthoredOn,
-	Reference requester,
-	CodeableConcept performerType,
-	Reference performer,
-	List<CodeableConcept> reasonCode,
-	List<Reference> reasonReference,
-	List<Reference> insurance,
-	List<Reference> supportingInfo,
-	List<Annotation> note,
-	List<Reference> relevantHistory,
-}) async {
-var fhirDb = new DatabaseHelper();
-DeviceRequest newDeviceRequest = new DeviceRequest(
-	resourceType: 'DeviceRequest',
-	id: id ?? await fhirDb.newResourceId('DeviceRequest'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	instantiatesCanonical: instantiatesCanonical,
-	instantiatesUri: instantiatesUri,
-	elementInstantiatesUri: elementInstantiatesUri,
-	basedOn: basedOn,
-	priorRequest: priorRequest,
-	groupIdentifier: groupIdentifier,
-	status: status,
-	elementStatus: elementStatus,
-	intent: intent,
-	elementIntent: elementIntent,
-	priority: priority,
-	elementPriority: elementPriority,
-	codeReference: codeReference,
-	codeCodeableConcept: codeCodeableConcept,
-	parameter: parameter,
-	subject: subject,
-	encounter: encounter,
-	occurrenceDateTime: occurrenceDateTime,
-	elementOccurrenceDateTime: elementOccurrenceDateTime,
-	occurrencePeriod: occurrencePeriod,
-	occurrenceTiming: occurrenceTiming,
-	authoredOn: authoredOn,
-	elementAuthoredOn: elementAuthoredOn,
-	requester: requester,
-	performerType: performerType,
-	performer: performer,
-	reasonCode: reasonCode,
-	reasonReference: reasonReference,
-	insurance: insurance,
-	supportingInfo: supportingInfo,
-	note: note,
-	relevantHistory: relevantHistory,
-);
-	newDeviceRequest.meta.createdAt = DateTime.now();
-	newDeviceRequest.meta.lastUpdated = newDeviceRequest.meta.createdAt;
-	int saved = await fhirDb.saveResource(newDeviceRequest);
-	 return newDeviceRequest;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'DeviceRequest';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  List<String> instantiatesCanonical;
+  List<String> instantiatesUri;
+  List<Element> elementInstantiatesUri;
+  List<Reference> basedOn;
+  List<Reference> priorRequest;
+  Identifier groupIdentifier;
+  String status;
+  Element elementStatus;
+  String intent;
+  Element elementIntent;
+  String priority;
+  Element elementPriority;
+  Reference codeReference;
+  CodeableConcept codeCodeableConcept;
+  List<DeviceRequest_Parameter> parameter;
+  Reference subject;
+  Reference encounter;
+  String occurrenceDateTime;
+  Element elementOccurrenceDateTime;
+  Period occurrencePeriod;
+  Timing occurrenceTiming;
+  DateTime authoredOn;
+  Element elementAuthoredOn;
+  Reference requester;
+  CodeableConcept performerType;
+  Reference performer;
+  List<CodeableConcept> reasonCode;
+  List<Reference> reasonReference;
+  List<Reference> insurance;
+  List<Reference> supportingInfo;
+  List<Annotation> note;
+  List<Reference> relevantHistory;
 
-	String resourceType= 'DeviceRequest';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	List<String> instantiatesCanonical;
-	List<String> instantiatesUri;
-	List<Element> elementInstantiatesUri;
-	List<Reference> basedOn;
-	List<Reference> priorRequest;
-	Identifier groupIdentifier;
-	String status;
-	Element elementStatus;
-	String intent;
-	Element elementIntent;
-	String priority;
-	Element elementPriority;
-	Reference codeReference;
-	CodeableConcept codeCodeableConcept;
-	List<DeviceRequest_Parameter> parameter;
-	Reference subject;
-	Reference encounter;
-	String occurrenceDateTime;
-	Element elementOccurrenceDateTime;
-	Period occurrencePeriod;
-	Timing occurrenceTiming;
-	DateTime authoredOn;
-	Element elementAuthoredOn;
-	Reference requester;
-	CodeableConcept performerType;
-	Reference performer;
-	List<CodeableConcept> reasonCode;
-	List<Reference> reasonReference;
-	List<Reference> insurance;
-	List<Reference> supportingInfo;
-	List<Annotation> note;
-	List<Reference> relevantHistory;
+  DeviceRequest({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.basedOn,
+    this.priorRequest,
+    this.groupIdentifier,
+    this.status,
+    this.elementStatus,
+    this.intent,
+    this.elementIntent,
+    this.priority,
+    this.elementPriority,
+    this.codeReference,
+    this.codeCodeableConcept,
+    this.parameter,
+    @required this.subject,
+    this.encounter,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.occurrencePeriod,
+    this.occurrenceTiming,
+    this.authoredOn,
+    this.elementAuthoredOn,
+    this.requester,
+    this.performerType,
+    this.performer,
+    this.reasonCode,
+    this.reasonReference,
+    this.insurance,
+    this.supportingInfo,
+    this.note,
+    this.relevantHistory,
+  });
 
-DeviceRequest(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.instantiatesCanonical,
-this.instantiatesUri,
-this.elementInstantiatesUri,
-this.basedOn,
-this.priorRequest,
-this.groupIdentifier,
-this.status,
-this.elementStatus,
-this.intent,
-this.elementIntent,
-this.priority,
-this.elementPriority,
-this.codeReference,
-this.codeCodeableConcept,
-this.parameter,
-@required this.subject,
-this.encounter,
-this.occurrenceDateTime,
-this.elementOccurrenceDateTime,
-this.occurrencePeriod,
-this.occurrenceTiming,
-this.authoredOn,
-this.elementAuthoredOn,
-this.requester,
-this.performerType,
-this.performer,
-this.reasonCode,
-this.reasonReference,
-this.insurance,
-this.supportingInfo,
-this.note,
-this.relevantHistory,
-});
-
-  factory DeviceRequest.fromJson(Map<String, dynamic> json) => _$DeviceRequestFromJson(json);
+  factory DeviceRequest.fromJson(Map<String, dynamic> json) =>
+      _$DeviceRequestFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceRequestToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DeviceRequest_Parameter {
+  static Future<DeviceRequest_Parameter> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept code,
+    CodeableConcept valueCodeableConcept,
+    Quantity valueQuantity,
+    Range valueRange,
+    bool valueBoolean,
+    Element elementValueBoolean,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceRequest_Parameter newDeviceRequest_Parameter =
+        new DeviceRequest_Parameter(
+      id: id ?? await fhirDb.newResourceId('DeviceRequest_Parameter'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      code: code,
+      valueCodeableConcept: valueCodeableConcept,
+      valueQuantity: valueQuantity,
+      valueRange: valueRange,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+    );
+    return newDeviceRequest_Parameter;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class DeviceRequest_Parameter{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept code;
+  CodeableConcept valueCodeableConcept;
+  Quantity valueQuantity;
+  Range valueRange;
+  bool valueBoolean;
+  Element elementValueBoolean;
 
-	static Future<DeviceRequest_Parameter> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept code,
-	CodeableConcept valueCodeableConcept,
-	Quantity valueQuantity,
-	Range valueRange,
-	bool valueBoolean,
-	Element elementValueBoolean,
-}) async {
-var fhirDb = new DatabaseHelper();
-DeviceRequest_Parameter newDeviceRequest_Parameter = new DeviceRequest_Parameter(
-	id: id ?? await fhirDb.newResourceId('DeviceRequest_Parameter'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	code: code,
-	valueCodeableConcept: valueCodeableConcept,
-	valueQuantity: valueQuantity,
-	valueRange: valueRange,
-	valueBoolean: valueBoolean,
-	elementValueBoolean: elementValueBoolean,
-);
-	return newDeviceRequest_Parameter;
-}
+  DeviceRequest_Parameter({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.code,
+    this.valueCodeableConcept,
+    this.valueQuantity,
+    this.valueRange,
+    this.valueBoolean,
+    this.elementValueBoolean,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept code;
-	CodeableConcept valueCodeableConcept;
-	Quantity valueQuantity;
-	Range valueRange;
-	bool valueBoolean;
-	Element elementValueBoolean;
-
-DeviceRequest_Parameter(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.code,
-this.valueCodeableConcept,
-this.valueQuantity,
-this.valueRange,
-this.valueBoolean,
-this.elementValueBoolean,
-});
-
-  factory DeviceRequest_Parameter.fromJson(Map<String, dynamic> json) => _$DeviceRequest_ParameterFromJson(json);
+  factory DeviceRequest_Parameter.fromJson(Map<String, dynamic> json) =>
+      _$DeviceRequest_ParameterFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceRequest_ParameterToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -302,8 +304,9 @@ DeviceRequest _$DeviceRequestFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -422,58 +425,73 @@ DeviceRequest _$DeviceRequestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DeviceRequestToJson(DeviceRequest instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'priorRequest': instance.priorRequest?.map((e) => e?.toJson())?.toList(),
-      'groupIdentifier': instance.groupIdentifier?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'intent': instance.intent,
-      'elementIntent': instance.elementIntent?.toJson(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'codeReference': instance.codeReference?.toJson(),
-      'codeCodeableConcept': instance.codeCodeableConcept?.toJson(),
-      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'occurrenceDateTime': instance.occurrenceDateTime,
-      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
-      'occurrencePeriod': instance.occurrencePeriod?.toJson(),
-      'occurrenceTiming': instance.occurrenceTiming?.toJson(),
-      'authoredOn': instance.authoredOn?.toIso8601String(),
-      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
-      'requester': instance.requester?.toJson(),
-      'performerType': instance.performerType?.toJson(),
-      'performer': instance.performer?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
-      'supportingInfo':
-          instance.supportingInfo?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'relevantHistory':
-          instance.relevantHistory?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$DeviceRequestToJson(DeviceRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'priorRequest', instance.priorRequest?.map((e) => e?.toJson())?.toList());
+  writeNotNull('groupIdentifier', instance.groupIdentifier?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('intent', instance.intent);
+  writeNotNull('elementIntent', instance.elementIntent?.toJson());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('codeReference', instance.codeReference?.toJson());
+  writeNotNull('codeCodeableConcept', instance.codeCodeableConcept?.toJson());
+  writeNotNull(
+      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('occurrenceDateTime', instance.occurrenceDateTime);
+  writeNotNull('elementOccurrenceDateTime',
+      instance.elementOccurrenceDateTime?.toJson());
+  writeNotNull('occurrencePeriod', instance.occurrencePeriod?.toJson());
+  writeNotNull('occurrenceTiming', instance.occurrenceTiming?.toJson());
+  writeNotNull('authoredOn', instance.authoredOn?.toIso8601String());
+  writeNotNull('elementAuthoredOn', instance.elementAuthoredOn?.toJson());
+  writeNotNull('requester', instance.requester?.toJson());
+  writeNotNull('performerType', instance.performerType?.toJson());
+  writeNotNull('performer', instance.performer?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'insurance', instance.insurance?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supportingInfo',
+      instance.supportingInfo?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relevantHistory',
+      instance.relevantHistory?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 DeviceRequest_Parameter _$DeviceRequest_ParameterFromJson(
     Map<String, dynamic> json) {
@@ -508,16 +526,25 @@ DeviceRequest_Parameter _$DeviceRequest_ParameterFromJson(
 }
 
 Map<String, dynamic> _$DeviceRequest_ParameterToJson(
-        DeviceRequest_Parameter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueRange': instance.valueRange?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-    };
+    DeviceRequest_Parameter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueRange', instance.valueRange?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  return val;
+}

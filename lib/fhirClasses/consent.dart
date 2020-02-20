@@ -13,407 +13,404 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Consent {
+  static Future<Consent> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    CodeableConcept scope,
+    List<CodeableConcept> category,
+    Reference patient,
+    DateTime dateTime,
+    Element elementDateTime,
+    List<Reference> performer,
+    List<Reference> organization,
+    Attachment sourceAttachment,
+    Reference sourceReference,
+    List<Consent_Policy> policy,
+    CodeableConcept policyRule,
+    List<Consent_Verification> verification,
+    Consent_Provision provision,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Consent newConsent = new Consent(
+      resourceType: 'Consent',
+      id: id ?? await fhirDb.newResourceId('Consent'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      scope: scope,
+      category: category,
+      patient: patient,
+      dateTime: dateTime,
+      elementDateTime: elementDateTime,
+      performer: performer,
+      organization: organization,
+      sourceAttachment: sourceAttachment,
+      sourceReference: sourceReference,
+      policy: policy,
+      policyRule: policyRule,
+      verification: verification,
+      provision: provision,
+    );
+    newConsent.meta.createdAt = DateTime.now();
+    newConsent.meta.lastUpdated = newConsent.meta.createdAt;
+    int saved = await fhirDb.saveResource(newConsent);
+    return newConsent;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Consent{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Consent> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	CodeableConcept scope,
-	List<CodeableConcept> category,
-	Reference patient,
-	DateTime dateTime,
-	Element elementDateTime,
-	List<Reference> performer,
-	List<Reference> organization,
-	Attachment sourceAttachment,
-	Reference sourceReference,
-	List<Consent_Policy> policy,
-	CodeableConcept policyRule,
-	List<Consent_Verification> verification,
-	Consent_Provision provision,
-}) async {
-var fhirDb = new DatabaseHelper();
-Consent newConsent = new Consent(
-	resourceType: 'Consent',
-	id: id ?? await fhirDb.newResourceId('Consent'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	scope: scope,
-	category: category,
-	patient: patient,
-	dateTime: dateTime,
-	elementDateTime: elementDateTime,
-	performer: performer,
-	organization: organization,
-	sourceAttachment: sourceAttachment,
-	sourceReference: sourceReference,
-	policy: policy,
-	policyRule: policyRule,
-	verification: verification,
-	provision: provision,
-);
-	newConsent.meta.createdAt = DateTime.now();
-	newConsent.meta.lastUpdated = newConsent.meta.createdAt;
-	int saved = await fhirDb.saveResource(newConsent);
-	 return newConsent;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Consent';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  CodeableConcept scope;
+  List<CodeableConcept> category;
+  Reference patient;
+  DateTime dateTime;
+  Element elementDateTime;
+  List<Reference> performer;
+  List<Reference> organization;
+  Attachment sourceAttachment;
+  Reference sourceReference;
+  List<Consent_Policy> policy;
+  CodeableConcept policyRule;
+  List<Consent_Verification> verification;
+  Consent_Provision provision;
 
-	String resourceType= 'Consent';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	CodeableConcept scope;
-	List<CodeableConcept> category;
-	Reference patient;
-	DateTime dateTime;
-	Element elementDateTime;
-	List<Reference> performer;
-	List<Reference> organization;
-	Attachment sourceAttachment;
-	Reference sourceReference;
-	List<Consent_Policy> policy;
-	CodeableConcept policyRule;
-	List<Consent_Verification> verification;
-	Consent_Provision provision;
+  Consent({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.scope,
+    @required this.category,
+    this.patient,
+    this.dateTime,
+    this.elementDateTime,
+    this.performer,
+    this.organization,
+    this.sourceAttachment,
+    this.sourceReference,
+    this.policy,
+    this.policyRule,
+    this.verification,
+    this.provision,
+  });
 
-Consent(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-@required this.scope,
-@required this.category,
-this.patient,
-this.dateTime,
-this.elementDateTime,
-this.performer,
-this.organization,
-this.sourceAttachment,
-this.sourceReference,
-this.policy,
-this.policyRule,
-this.verification,
-this.provision,
-});
-
-  factory Consent.fromJson(Map<String, dynamic> json) => _$ConsentFromJson(json);
+  factory Consent.fromJson(Map<String, dynamic> json) =>
+      _$ConsentFromJson(json);
   Map<String, dynamic> toJson() => _$ConsentToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Consent_Policy {
+  static Future<Consent_Policy> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String authority,
+    Element elementAuthority,
+    String uri,
+    Element elementUri,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Consent_Policy newConsent_Policy = new Consent_Policy(
+      id: id ?? await fhirDb.newResourceId('Consent_Policy'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      authority: authority,
+      elementAuthority: elementAuthority,
+      uri: uri,
+      elementUri: elementUri,
+    );
+    return newConsent_Policy;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Consent_Policy{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String authority;
+  Element elementAuthority;
+  String uri;
+  Element elementUri;
 
-	static Future<Consent_Policy> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String authority,
-	Element elementAuthority,
-	String uri,
-	Element elementUri,
-}) async {
-var fhirDb = new DatabaseHelper();
-Consent_Policy newConsent_Policy = new Consent_Policy(
-	id: id ?? await fhirDb.newResourceId('Consent_Policy'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	authority: authority,
-	elementAuthority: elementAuthority,
-	uri: uri,
-	elementUri: elementUri,
-);
-	return newConsent_Policy;
-}
+  Consent_Policy({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.authority,
+    this.elementAuthority,
+    this.uri,
+    this.elementUri,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String authority;
-	Element elementAuthority;
-	String uri;
-	Element elementUri;
-
-Consent_Policy(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.authority,
-this.elementAuthority,
-this.uri,
-this.elementUri,
-});
-
-  factory Consent_Policy.fromJson(Map<String, dynamic> json) => _$Consent_PolicyFromJson(json);
+  factory Consent_Policy.fromJson(Map<String, dynamic> json) =>
+      _$Consent_PolicyFromJson(json);
   Map<String, dynamic> toJson() => _$Consent_PolicyToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Consent_Verification {
+  static Future<Consent_Verification> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    bool verified,
+    Element elementVerified,
+    Reference verifiedWith,
+    DateTime verificationDate,
+    Element elementVerificationDate,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Consent_Verification newConsent_Verification = new Consent_Verification(
+      id: id ?? await fhirDb.newResourceId('Consent_Verification'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      verified: verified,
+      elementVerified: elementVerified,
+      verifiedWith: verifiedWith,
+      verificationDate: verificationDate,
+      elementVerificationDate: elementVerificationDate,
+    );
+    return newConsent_Verification;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Consent_Verification{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  bool verified;
+  Element elementVerified;
+  Reference verifiedWith;
+  DateTime verificationDate;
+  Element elementVerificationDate;
 
-	static Future<Consent_Verification> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	bool verified,
-	Element elementVerified,
-	Reference verifiedWith,
-	DateTime verificationDate,
-	Element elementVerificationDate,
-}) async {
-var fhirDb = new DatabaseHelper();
-Consent_Verification newConsent_Verification = new Consent_Verification(
-	id: id ?? await fhirDb.newResourceId('Consent_Verification'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	verified: verified,
-	elementVerified: elementVerified,
-	verifiedWith: verifiedWith,
-	verificationDate: verificationDate,
-	elementVerificationDate: elementVerificationDate,
-);
-	return newConsent_Verification;
-}
+  Consent_Verification({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.verified,
+    this.elementVerified,
+    this.verifiedWith,
+    this.verificationDate,
+    this.elementVerificationDate,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	bool verified;
-	Element elementVerified;
-	Reference verifiedWith;
-	DateTime verificationDate;
-	Element elementVerificationDate;
-
-Consent_Verification(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.verified,
-this.elementVerified,
-this.verifiedWith,
-this.verificationDate,
-this.elementVerificationDate,
-});
-
-  factory Consent_Verification.fromJson(Map<String, dynamic> json) => _$Consent_VerificationFromJson(json);
+  factory Consent_Verification.fromJson(Map<String, dynamic> json) =>
+      _$Consent_VerificationFromJson(json);
   Map<String, dynamic> toJson() => _$Consent_VerificationToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Consent_Provision {
+  static Future<Consent_Provision> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    Period period,
+    List<Consent_Actor> actor,
+    List<CodeableConcept> action,
+    List<Coding> securityLabel,
+    List<Coding> purpose,
+    List<Coding> classs,
+    List<CodeableConcept> code,
+    Period dataPeriod,
+    List<Consent_Data> data,
+    List<Consent_Provision> provision,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Consent_Provision newConsent_Provision = new Consent_Provision(
+      id: id ?? await fhirDb.newResourceId('Consent_Provision'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      period: period,
+      actor: actor,
+      action: action,
+      securityLabel: securityLabel,
+      purpose: purpose,
+      classs: classs,
+      code: code,
+      dataPeriod: dataPeriod,
+      data: data,
+      provision: provision,
+    );
+    return newConsent_Provision;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Consent_Provision{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String type;
+  Element elementType;
+  Period period;
+  List<Consent_Actor> actor;
+  List<CodeableConcept> action;
+  List<Coding> securityLabel;
+  List<Coding> purpose;
+  List<Coding> classs;
+  List<CodeableConcept> code;
+  Period dataPeriod;
+  List<Consent_Data> data;
+  List<Consent_Provision> provision;
 
-	static Future<Consent_Provision> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String type,
-	Element elementType,
-	Period period,
-	List<Consent_Actor> actor,
-	List<CodeableConcept> action,
-	List<Coding> securityLabel,
-	List<Coding> purpose,
-	List<Coding> classs,
-	List<CodeableConcept> code,
-	Period dataPeriod,
-	List<Consent_Data> data,
-	List<Consent_Provision> provision,
-}) async {
-var fhirDb = new DatabaseHelper();
-Consent_Provision newConsent_Provision = new Consent_Provision(
-	id: id ?? await fhirDb.newResourceId('Consent_Provision'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	elementType: elementType,
-	period: period,
-	actor: actor,
-	action: action,
-	securityLabel: securityLabel,
-	purpose: purpose,
-	classs: classs,
-	code: code,
-	dataPeriod: dataPeriod,
-	data: data,
-	provision: provision,
-);
-	return newConsent_Provision;
-}
+  Consent_Provision({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.period,
+    this.actor,
+    this.action,
+    this.securityLabel,
+    this.purpose,
+    this.classs,
+    this.code,
+    this.dataPeriod,
+    this.data,
+    this.provision,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String type;
-	Element elementType;
-	Period period;
-	List<Consent_Actor> actor;
-	List<CodeableConcept> action;
-	List<Coding> securityLabel;
-	List<Coding> purpose;
-	List<Coding> classs;
-	List<CodeableConcept> code;
-	Period dataPeriod;
-	List<Consent_Data> data;
-	List<Consent_Provision> provision;
-
-Consent_Provision(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.elementType,
-this.period,
-this.actor,
-this.action,
-this.securityLabel,
-this.purpose,
-this.classs,
-this.code,
-this.dataPeriod,
-this.data,
-this.provision,
-});
-
-  factory Consent_Provision.fromJson(Map<String, dynamic> json) => _$Consent_ProvisionFromJson(json);
+  factory Consent_Provision.fromJson(Map<String, dynamic> json) =>
+      _$Consent_ProvisionFromJson(json);
   Map<String, dynamic> toJson() => _$Consent_ProvisionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Consent_Actor {
+  static Future<Consent_Actor> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept role,
+    Reference reference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Consent_Actor newConsent_Actor = new Consent_Actor(
+      id: id ?? await fhirDb.newResourceId('Consent_Actor'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      role: role,
+      reference: reference,
+    );
+    return newConsent_Actor;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Consent_Actor{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept role;
+  Reference reference;
 
-	static Future<Consent_Actor> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept role,
-	Reference reference,
-}) async {
-var fhirDb = new DatabaseHelper();
-Consent_Actor newConsent_Actor = new Consent_Actor(
-	id: id ?? await fhirDb.newResourceId('Consent_Actor'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	role: role,
-	reference: reference,
-);
-	return newConsent_Actor;
-}
+  Consent_Actor({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.role,
+    @required this.reference,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept role;
-	Reference reference;
-
-Consent_Actor(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.role,
-@required this.reference,
-});
-
-  factory Consent_Actor.fromJson(Map<String, dynamic> json) => _$Consent_ActorFromJson(json);
+  factory Consent_Actor.fromJson(Map<String, dynamic> json) =>
+      _$Consent_ActorFromJson(json);
   Map<String, dynamic> toJson() => _$Consent_ActorToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Consent_Data {
+  static Future<Consent_Data> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String meaning,
+    Element elementMeaning,
+    Reference reference,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Consent_Data newConsent_Data = new Consent_Data(
+      id: id ?? await fhirDb.newResourceId('Consent_Data'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      meaning: meaning,
+      elementMeaning: elementMeaning,
+      reference: reference,
+    );
+    return newConsent_Data;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Consent_Data{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String meaning;
+  Element elementMeaning;
+  Reference reference;
 
-	static Future<Consent_Data> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String meaning,
-	Element elementMeaning,
-	Reference reference,
-}) async {
-var fhirDb = new DatabaseHelper();
-Consent_Data newConsent_Data = new Consent_Data(
-	id: id ?? await fhirDb.newResourceId('Consent_Data'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	meaning: meaning,
-	elementMeaning: elementMeaning,
-	reference: reference,
-);
-	return newConsent_Data;
-}
+  Consent_Data({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.meaning,
+    this.elementMeaning,
+    @required this.reference,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String meaning;
-	Element elementMeaning;
-	Reference reference;
-
-Consent_Data(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.meaning,
-this.elementMeaning,
-@required this.reference,
-});
-
-  factory Consent_Data.fromJson(Map<String, dynamic> json) => _$Consent_DataFromJson(json);
+  factory Consent_Data.fromJson(Map<String, dynamic> json) =>
+      _$Consent_DataFromJson(json);
   Map<String, dynamic> toJson() => _$Consent_DataToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -440,8 +437,9 @@ Consent _$ConsentFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -509,36 +507,51 @@ Consent _$ConsentFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConsentToJson(Consent instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'scope': instance.scope?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'patient': instance.patient?.toJson(),
-      'dateTime': instance.dateTime?.toIso8601String(),
-      'elementDateTime': instance.elementDateTime?.toJson(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'organization': instance.organization?.map((e) => e?.toJson())?.toList(),
-      'sourceAttachment': instance.sourceAttachment?.toJson(),
-      'sourceReference': instance.sourceReference?.toJson(),
-      'policy': instance.policy?.map((e) => e?.toJson())?.toList(),
-      'policyRule': instance.policyRule?.toJson(),
-      'verification': instance.verification?.map((e) => e?.toJson())?.toList(),
-      'provision': instance.provision?.toJson(),
-    };
+Map<String, dynamic> _$ConsentToJson(Consent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('scope', instance.scope?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('patient', instance.patient?.toJson());
+  writeNotNull('dateTime', instance.dateTime?.toIso8601String());
+  writeNotNull('elementDateTime', instance.elementDateTime?.toJson());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'organization', instance.organization?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sourceAttachment', instance.sourceAttachment?.toJson());
+  writeNotNull('sourceReference', instance.sourceReference?.toJson());
+  writeNotNull('policy', instance.policy?.map((e) => e?.toJson())?.toList());
+  writeNotNull('policyRule', instance.policyRule?.toJson());
+  writeNotNull(
+      'verification', instance.verification?.map((e) => e?.toJson())?.toList());
+  writeNotNull('provision', instance.provision?.toJson());
+  return val;
+}
 
 Consent_Policy _$Consent_PolicyFromJson(Map<String, dynamic> json) {
   return Consent_Policy(
@@ -562,17 +575,26 @@ Consent_Policy _$Consent_PolicyFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Consent_PolicyToJson(Consent_Policy instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'authority': instance.authority,
-      'elementAuthority': instance.elementAuthority?.toJson(),
-      'uri': instance.uri,
-      'elementUri': instance.elementUri?.toJson(),
-    };
+Map<String, dynamic> _$Consent_PolicyToJson(Consent_Policy instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('authority', instance.authority);
+  writeNotNull('elementAuthority', instance.elementAuthority?.toJson());
+  writeNotNull('uri', instance.uri);
+  writeNotNull('elementUri', instance.elementUri?.toJson());
+  return val;
+}
 
 Consent_Verification _$Consent_VerificationFromJson(Map<String, dynamic> json) {
   return Consent_Verification(
@@ -603,18 +625,29 @@ Consent_Verification _$Consent_VerificationFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$Consent_VerificationToJson(
-        Consent_Verification instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'verified': instance.verified,
-      'elementVerified': instance.elementVerified?.toJson(),
-      'verifiedWith': instance.verifiedWith?.toJson(),
-      'verificationDate': instance.verificationDate?.toIso8601String(),
-      'elementVerificationDate': instance.elementVerificationDate?.toJson(),
-    };
+    Consent_Verification instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('verified', instance.verified);
+  writeNotNull('elementVerified', instance.elementVerified?.toJson());
+  writeNotNull('verifiedWith', instance.verifiedWith?.toJson());
+  writeNotNull(
+      'verificationDate', instance.verificationDate?.toIso8601String());
+  writeNotNull(
+      'elementVerificationDate', instance.elementVerificationDate?.toJson());
+  return val;
+}
 
 Consent_Provision _$Consent_ProvisionFromJson(Map<String, dynamic> json) {
   return Consent_Provision(
@@ -676,26 +709,36 @@ Consent_Provision _$Consent_ProvisionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Consent_ProvisionToJson(Consent_Provision instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'period': instance.period?.toJson(),
-      'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-      'securityLabel':
-          instance.securityLabel?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose?.map((e) => e?.toJson())?.toList(),
-      'classs': instance.classs?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'dataPeriod': instance.dataPeriod?.toJson(),
-      'data': instance.data?.map((e) => e?.toJson())?.toList(),
-      'provision': instance.provision?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$Consent_ProvisionToJson(Consent_Provision instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('actor', instance.actor?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  writeNotNull('securityLabel',
+      instance.securityLabel?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose?.map((e) => e?.toJson())?.toList());
+  writeNotNull('classs', instance.classs?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('dataPeriod', instance.dataPeriod?.toJson());
+  writeNotNull('data', instance.data?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'provision', instance.provision?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Consent_Actor _$Consent_ActorFromJson(Map<String, dynamic> json) {
   return Consent_Actor(
@@ -717,15 +760,24 @@ Consent_Actor _$Consent_ActorFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Consent_ActorToJson(Consent_Actor instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'role': instance.role?.toJson(),
-      'reference': instance.reference?.toJson(),
-    };
+Map<String, dynamic> _$Consent_ActorToJson(Consent_Actor instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('role', instance.role?.toJson());
+  writeNotNull('reference', instance.reference?.toJson());
+  return val;
+}
 
 Consent_Data _$Consent_DataFromJson(Map<String, dynamic> json) {
   return Consent_Data(
@@ -748,13 +800,22 @@ Consent_Data _$Consent_DataFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Consent_DataToJson(Consent_Data instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'meaning': instance.meaning,
-      'elementMeaning': instance.elementMeaning?.toJson(),
-      'reference': instance.reference?.toJson(),
-    };
+Map<String, dynamic> _$Consent_DataToJson(Consent_Data instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('meaning', instance.meaning);
+  writeNotNull('elementMeaning', instance.elementMeaning?.toJson());
+  writeNotNull('reference', instance.reference?.toJson());
+  return val;
+}

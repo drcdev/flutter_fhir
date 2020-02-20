@@ -12,163 +12,165 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class GuidanceResponse {
+  static Future<GuidanceResponse> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Identifier requestIdentifier,
+    List<Identifier> identifier,
+    String moduleUri,
+    Element elementModuleUri,
+    String moduleCanonical,
+    Element elementModuleCanonical,
+    CodeableConcept moduleCodeableConcept,
+    String status,
+    Element elementStatus,
+    Reference subject,
+    Reference encounter,
+    DateTime occurrenceDateTime,
+    Element elementOccurrenceDateTime,
+    Reference performer,
+    List<CodeableConcept> reasonCode,
+    List<Reference> reasonReference,
+    List<Annotation> note,
+    List<Reference> evaluationMessage,
+    Reference outputParameters,
+    Reference result,
+    List<DataRequirement> dataRequirement,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    GuidanceResponse newGuidanceResponse = new GuidanceResponse(
+      resourceType: 'GuidanceResponse',
+      id: id ?? await fhirDb.newResourceId('GuidanceResponse'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      requestIdentifier: requestIdentifier,
+      identifier: identifier,
+      moduleUri: moduleUri,
+      elementModuleUri: elementModuleUri,
+      moduleCanonical: moduleCanonical,
+      elementModuleCanonical: elementModuleCanonical,
+      moduleCodeableConcept: moduleCodeableConcept,
+      status: status,
+      elementStatus: elementStatus,
+      subject: subject,
+      encounter: encounter,
+      occurrenceDateTime: occurrenceDateTime,
+      elementOccurrenceDateTime: elementOccurrenceDateTime,
+      performer: performer,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      note: note,
+      evaluationMessage: evaluationMessage,
+      outputParameters: outputParameters,
+      result: result,
+      dataRequirement: dataRequirement,
+    );
+    newGuidanceResponse.meta.createdAt = DateTime.now();
+    newGuidanceResponse.meta.lastUpdated = newGuidanceResponse.meta.createdAt;
+    int saved = await fhirDb.saveResource(newGuidanceResponse);
+    return newGuidanceResponse;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class GuidanceResponse{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<GuidanceResponse> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Identifier requestIdentifier,
-	List<Identifier> identifier,
-	String moduleUri,
-	Element elementModuleUri,
-	String moduleCanonical,
-	Element elementModuleCanonical,
-	CodeableConcept moduleCodeableConcept,
-	String status,
-	Element elementStatus,
-	Reference subject,
-	Reference encounter,
-	DateTime occurrenceDateTime,
-	Element elementOccurrenceDateTime,
-	Reference performer,
-	List<CodeableConcept> reasonCode,
-	List<Reference> reasonReference,
-	List<Annotation> note,
-	List<Reference> evaluationMessage,
-	Reference outputParameters,
-	Reference result,
-	List<DataRequirement> dataRequirement,
-}) async {
-var fhirDb = new DatabaseHelper();
-GuidanceResponse newGuidanceResponse = new GuidanceResponse(
-	resourceType: 'GuidanceResponse',
-	id: id ?? await fhirDb.newResourceId('GuidanceResponse'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	requestIdentifier: requestIdentifier,
-	identifier: identifier,
-	moduleUri: moduleUri,
-	elementModuleUri: elementModuleUri,
-	moduleCanonical: moduleCanonical,
-	elementModuleCanonical: elementModuleCanonical,
-	moduleCodeableConcept: moduleCodeableConcept,
-	status: status,
-	elementStatus: elementStatus,
-	subject: subject,
-	encounter: encounter,
-	occurrenceDateTime: occurrenceDateTime,
-	elementOccurrenceDateTime: elementOccurrenceDateTime,
-	performer: performer,
-	reasonCode: reasonCode,
-	reasonReference: reasonReference,
-	note: note,
-	evaluationMessage: evaluationMessage,
-	outputParameters: outputParameters,
-	result: result,
-	dataRequirement: dataRequirement,
-);
-	newGuidanceResponse.meta.createdAt = DateTime.now();
-	newGuidanceResponse.meta.lastUpdated = newGuidanceResponse.meta.createdAt;
-	int saved = await fhirDb.saveResource(newGuidanceResponse);
-	 return newGuidanceResponse;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'GuidanceResponse';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Identifier requestIdentifier;
+  List<Identifier> identifier;
+  String moduleUri;
+  Element elementModuleUri;
+  String moduleCanonical;
+  Element elementModuleCanonical;
+  CodeableConcept moduleCodeableConcept;
+  String status;
+  Element elementStatus;
+  Reference subject;
+  Reference encounter;
+  DateTime occurrenceDateTime;
+  Element elementOccurrenceDateTime;
+  Reference performer;
+  List<CodeableConcept> reasonCode;
+  List<Reference> reasonReference;
+  List<Annotation> note;
+  List<Reference> evaluationMessage;
+  Reference outputParameters;
+  Reference result;
+  List<DataRequirement> dataRequirement;
 
-	String resourceType= 'GuidanceResponse';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Identifier requestIdentifier;
-	List<Identifier> identifier;
-	String moduleUri;
-	Element elementModuleUri;
-	String moduleCanonical;
-	Element elementModuleCanonical;
-	CodeableConcept moduleCodeableConcept;
-	String status;
-	Element elementStatus;
-	Reference subject;
-	Reference encounter;
-	DateTime occurrenceDateTime;
-	Element elementOccurrenceDateTime;
-	Reference performer;
-	List<CodeableConcept> reasonCode;
-	List<Reference> reasonReference;
-	List<Annotation> note;
-	List<Reference> evaluationMessage;
-	Reference outputParameters;
-	Reference result;
-	List<DataRequirement> dataRequirement;
+  GuidanceResponse({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.requestIdentifier,
+    this.identifier,
+    this.moduleUri,
+    this.elementModuleUri,
+    this.moduleCanonical,
+    this.elementModuleCanonical,
+    this.moduleCodeableConcept,
+    this.status,
+    this.elementStatus,
+    this.subject,
+    this.encounter,
+    this.occurrenceDateTime,
+    this.elementOccurrenceDateTime,
+    this.performer,
+    this.reasonCode,
+    this.reasonReference,
+    this.note,
+    this.evaluationMessage,
+    this.outputParameters,
+    this.result,
+    this.dataRequirement,
+  });
 
-GuidanceResponse(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.requestIdentifier,
-this.identifier,
-this.moduleUri,
-this.elementModuleUri,
-this.moduleCanonical,
-this.elementModuleCanonical,
-this.moduleCodeableConcept,
-this.status,
-this.elementStatus,
-this.subject,
-this.encounter,
-this.occurrenceDateTime,
-this.elementOccurrenceDateTime,
-this.performer,
-this.reasonCode,
-this.reasonReference,
-this.note,
-this.evaluationMessage,
-this.outputParameters,
-this.result,
-this.dataRequirement,
-});
-
-  factory GuidanceResponse.fromJson(Map<String, dynamic> json) => _$GuidanceResponseFromJson(json);
+  factory GuidanceResponse.fromJson(Map<String, dynamic> json) =>
+      _$GuidanceResponseFromJson(json);
   Map<String, dynamic> toJson() => _$GuidanceResponseToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -195,8 +197,9 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -278,42 +281,57 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'requestIdentifier': instance.requestIdentifier?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'moduleUri': instance.moduleUri,
-      'elementModuleUri': instance.elementModuleUri?.toJson(),
-      'moduleCanonical': instance.moduleCanonical,
-      'elementModuleCanonical': instance.elementModuleCanonical?.toJson(),
-      'moduleCodeableConcept': instance.moduleCodeableConcept?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'occurrenceDateTime': instance.occurrenceDateTime?.toIso8601String(),
-      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
-      'performer': instance.performer?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'evaluationMessage':
-          instance.evaluationMessage?.map((e) => e?.toJson())?.toList(),
-      'outputParameters': instance.outputParameters?.toJson(),
-      'result': instance.result?.toJson(),
-      'dataRequirement':
-          instance.dataRequirement?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('requestIdentifier', instance.requestIdentifier?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('moduleUri', instance.moduleUri);
+  writeNotNull('elementModuleUri', instance.elementModuleUri?.toJson());
+  writeNotNull('moduleCanonical', instance.moduleCanonical);
+  writeNotNull(
+      'elementModuleCanonical', instance.elementModuleCanonical?.toJson());
+  writeNotNull(
+      'moduleCodeableConcept', instance.moduleCodeableConcept?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull(
+      'occurrenceDateTime', instance.occurrenceDateTime?.toIso8601String());
+  writeNotNull('elementOccurrenceDateTime',
+      instance.elementOccurrenceDateTime?.toJson());
+  writeNotNull('performer', instance.performer?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('evaluationMessage',
+      instance.evaluationMessage?.map((e) => e?.toJson())?.toList());
+  writeNotNull('outputParameters', instance.outputParameters?.toJson());
+  writeNotNull('result', instance.result?.toJson());
+  writeNotNull('dataRequirement',
+      instance.dataRequirement?.map((e) => e?.toJson())?.toList());
+  return val;
+}

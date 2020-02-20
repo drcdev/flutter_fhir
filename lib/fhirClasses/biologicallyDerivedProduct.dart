@@ -11,359 +11,378 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class BiologicallyDerivedProduct {
+  static Future<BiologicallyDerivedProduct> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String productCategory,
+    Element elementProductCategory,
+    CodeableConcept productCode,
+    String status,
+    Element elementStatus,
+    List<Reference> request,
+    int quantity,
+    Element elementQuantity,
+    List<Reference> parent,
+    BiologicallyDerivedProduct_Collection collection,
+    List<BiologicallyDerivedProduct_Processing> processing,
+    BiologicallyDerivedProduct_Manipulation manipulation,
+    List<BiologicallyDerivedProduct_Storage> storage,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    BiologicallyDerivedProduct newBiologicallyDerivedProduct =
+        new BiologicallyDerivedProduct(
+      resourceType: 'BiologicallyDerivedProduct',
+      id: id ?? await fhirDb.newResourceId('BiologicallyDerivedProduct'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      productCategory: productCategory,
+      elementProductCategory: elementProductCategory,
+      productCode: productCode,
+      status: status,
+      elementStatus: elementStatus,
+      request: request,
+      quantity: quantity,
+      elementQuantity: elementQuantity,
+      parent: parent,
+      collection: collection,
+      processing: processing,
+      manipulation: manipulation,
+      storage: storage,
+    );
+    newBiologicallyDerivedProduct.meta.createdAt = DateTime.now();
+    newBiologicallyDerivedProduct.meta.lastUpdated =
+        newBiologicallyDerivedProduct.meta.createdAt;
+    int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct);
+    return newBiologicallyDerivedProduct;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class BiologicallyDerivedProduct{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<BiologicallyDerivedProduct> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String productCategory,
-	Element elementProductCategory,
-	CodeableConcept productCode,
-	String status,
-	Element elementStatus,
-	List<Reference> request,
-	int quantity,
-	Element elementQuantity,
-	List<Reference> parent,
-	BiologicallyDerivedProduct_Collection collection,
-	List<BiologicallyDerivedProduct_Processing> processing,
-	BiologicallyDerivedProduct_Manipulation manipulation,
-	List<BiologicallyDerivedProduct_Storage> storage,
-}) async {
-var fhirDb = new DatabaseHelper();
-BiologicallyDerivedProduct newBiologicallyDerivedProduct = new BiologicallyDerivedProduct(
-	resourceType: 'BiologicallyDerivedProduct',
-	id: id ?? await fhirDb.newResourceId('BiologicallyDerivedProduct'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	productCategory: productCategory,
-	elementProductCategory: elementProductCategory,
-	productCode: productCode,
-	status: status,
-	elementStatus: elementStatus,
-	request: request,
-	quantity: quantity,
-	elementQuantity: elementQuantity,
-	parent: parent,
-	collection: collection,
-	processing: processing,
-	manipulation: manipulation,
-	storage: storage,
-);
-	newBiologicallyDerivedProduct.meta.createdAt = DateTime.now();
-	newBiologicallyDerivedProduct.meta.lastUpdated = newBiologicallyDerivedProduct.meta.createdAt;
-	int saved = await fhirDb.saveResource(newBiologicallyDerivedProduct);
-	 return newBiologicallyDerivedProduct;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'BiologicallyDerivedProduct';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String productCategory;
+  Element elementProductCategory;
+  CodeableConcept productCode;
+  String status;
+  Element elementStatus;
+  List<Reference> request;
+  int quantity;
+  Element elementQuantity;
+  List<Reference> parent;
+  BiologicallyDerivedProduct_Collection collection;
+  List<BiologicallyDerivedProduct_Processing> processing;
+  BiologicallyDerivedProduct_Manipulation manipulation;
+  List<BiologicallyDerivedProduct_Storage> storage;
 
-	String resourceType= 'BiologicallyDerivedProduct';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String productCategory;
-	Element elementProductCategory;
-	CodeableConcept productCode;
-	String status;
-	Element elementStatus;
-	List<Reference> request;
-	int quantity;
-	Element elementQuantity;
-	List<Reference> parent;
-	BiologicallyDerivedProduct_Collection collection;
-	List<BiologicallyDerivedProduct_Processing> processing;
-	BiologicallyDerivedProduct_Manipulation manipulation;
-	List<BiologicallyDerivedProduct_Storage> storage;
+  BiologicallyDerivedProduct({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.productCategory,
+    this.elementProductCategory,
+    this.productCode,
+    this.status,
+    this.elementStatus,
+    this.request,
+    this.quantity,
+    this.elementQuantity,
+    this.parent,
+    this.collection,
+    this.processing,
+    this.manipulation,
+    this.storage,
+  });
 
-BiologicallyDerivedProduct(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.productCategory,
-this.elementProductCategory,
-this.productCode,
-this.status,
-this.elementStatus,
-this.request,
-this.quantity,
-this.elementQuantity,
-this.parent,
-this.collection,
-this.processing,
-this.manipulation,
-this.storage,
-});
-
-  factory BiologicallyDerivedProduct.fromJson(Map<String, dynamic> json) => _$BiologicallyDerivedProductFromJson(json);
+  factory BiologicallyDerivedProduct.fromJson(Map<String, dynamic> json) =>
+      _$BiologicallyDerivedProductFromJson(json);
   Map<String, dynamic> toJson() => _$BiologicallyDerivedProductToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class BiologicallyDerivedProduct_Collection {
+  static Future<BiologicallyDerivedProduct_Collection> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    Reference collector,
+    Reference source,
+    String collectedDateTime,
+    Element elementCollectedDateTime,
+    Period collectedPeriod,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    BiologicallyDerivedProduct_Collection
+        newBiologicallyDerivedProduct_Collection =
+        new BiologicallyDerivedProduct_Collection(
+      id: id ??
+          await fhirDb.newResourceId('BiologicallyDerivedProduct_Collection'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      collector: collector,
+      source: source,
+      collectedDateTime: collectedDateTime,
+      elementCollectedDateTime: elementCollectedDateTime,
+      collectedPeriod: collectedPeriod,
+    );
+    return newBiologicallyDerivedProduct_Collection;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class BiologicallyDerivedProduct_Collection{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  Reference collector;
+  Reference source;
+  String collectedDateTime;
+  Element elementCollectedDateTime;
+  Period collectedPeriod;
 
-	static Future<BiologicallyDerivedProduct_Collection> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	Reference collector,
-	Reference source,
-	String collectedDateTime,
-	Element elementCollectedDateTime,
-	Period collectedPeriod,
-}) async {
-var fhirDb = new DatabaseHelper();
-BiologicallyDerivedProduct_Collection newBiologicallyDerivedProduct_Collection = new BiologicallyDerivedProduct_Collection(
-	id: id ?? await fhirDb.newResourceId('BiologicallyDerivedProduct_Collection'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	collector: collector,
-	source: source,
-	collectedDateTime: collectedDateTime,
-	elementCollectedDateTime: elementCollectedDateTime,
-	collectedPeriod: collectedPeriod,
-);
-	return newBiologicallyDerivedProduct_Collection;
+  BiologicallyDerivedProduct_Collection({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.collector,
+    this.source,
+    this.collectedDateTime,
+    this.elementCollectedDateTime,
+    this.collectedPeriod,
+  });
+
+  factory BiologicallyDerivedProduct_Collection.fromJson(
+          Map<String, dynamic> json) =>
+      _$BiologicallyDerivedProduct_CollectionFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$BiologicallyDerivedProduct_CollectionToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	Reference collector;
-	Reference source;
-	String collectedDateTime;
-	Element elementCollectedDateTime;
-	Period collectedPeriod;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class BiologicallyDerivedProduct_Processing {
+  static Future<BiologicallyDerivedProduct_Processing> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    CodeableConcept procedure,
+    Reference additive,
+    String timeDateTime,
+    Element elementTimeDateTime,
+    Period timePeriod,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    BiologicallyDerivedProduct_Processing
+        newBiologicallyDerivedProduct_Processing =
+        new BiologicallyDerivedProduct_Processing(
+      id: id ??
+          await fhirDb.newResourceId('BiologicallyDerivedProduct_Processing'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      procedure: procedure,
+      additive: additive,
+      timeDateTime: timeDateTime,
+      elementTimeDateTime: elementTimeDateTime,
+      timePeriod: timePeriod,
+    );
+    return newBiologicallyDerivedProduct_Processing;
+  }
 
-BiologicallyDerivedProduct_Collection(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.collector,
-this.source,
-this.collectedDateTime,
-this.elementCollectedDateTime,
-this.collectedPeriod,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String description;
+  Element elementDescription;
+  CodeableConcept procedure;
+  Reference additive;
+  String timeDateTime;
+  Element elementTimeDateTime;
+  Period timePeriod;
 
-  factory BiologicallyDerivedProduct_Collection.fromJson(Map<String, dynamic> json) => _$BiologicallyDerivedProduct_CollectionFromJson(json);
-  Map<String, dynamic> toJson() => _$BiologicallyDerivedProduct_CollectionToJson(this);
+  BiologicallyDerivedProduct_Processing({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.procedure,
+    this.additive,
+    this.timeDateTime,
+    this.elementTimeDateTime,
+    this.timePeriod,
+  });
+
+  factory BiologicallyDerivedProduct_Processing.fromJson(
+          Map<String, dynamic> json) =>
+      _$BiologicallyDerivedProduct_ProcessingFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$BiologicallyDerivedProduct_ProcessingToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class BiologicallyDerivedProduct_Manipulation {
+  static Future<BiologicallyDerivedProduct_Manipulation> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    String timeDateTime,
+    Element elementTimeDateTime,
+    Period timePeriod,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    BiologicallyDerivedProduct_Manipulation
+        newBiologicallyDerivedProduct_Manipulation =
+        new BiologicallyDerivedProduct_Manipulation(
+      id: id ??
+          await fhirDb.newResourceId('BiologicallyDerivedProduct_Manipulation'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      timeDateTime: timeDateTime,
+      elementTimeDateTime: elementTimeDateTime,
+      timePeriod: timePeriod,
+    );
+    return newBiologicallyDerivedProduct_Manipulation;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class BiologicallyDerivedProduct_Processing{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String description;
+  Element elementDescription;
+  String timeDateTime;
+  Element elementTimeDateTime;
+  Period timePeriod;
 
-	static Future<BiologicallyDerivedProduct_Processing> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String description,
-	Element elementDescription,
-	CodeableConcept procedure,
-	Reference additive,
-	String timeDateTime,
-	Element elementTimeDateTime,
-	Period timePeriod,
-}) async {
-var fhirDb = new DatabaseHelper();
-BiologicallyDerivedProduct_Processing newBiologicallyDerivedProduct_Processing = new BiologicallyDerivedProduct_Processing(
-	id: id ?? await fhirDb.newResourceId('BiologicallyDerivedProduct_Processing'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	description: description,
-	elementDescription: elementDescription,
-	procedure: procedure,
-	additive: additive,
-	timeDateTime: timeDateTime,
-	elementTimeDateTime: elementTimeDateTime,
-	timePeriod: timePeriod,
-);
-	return newBiologicallyDerivedProduct_Processing;
+  BiologicallyDerivedProduct_Manipulation({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.timeDateTime,
+    this.elementTimeDateTime,
+    this.timePeriod,
+  });
+
+  factory BiologicallyDerivedProduct_Manipulation.fromJson(
+          Map<String, dynamic> json) =>
+      _$BiologicallyDerivedProduct_ManipulationFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$BiologicallyDerivedProduct_ManipulationToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String description;
-	Element elementDescription;
-	CodeableConcept procedure;
-	Reference additive;
-	String timeDateTime;
-	Element elementTimeDateTime;
-	Period timePeriod;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class BiologicallyDerivedProduct_Storage {
+  static Future<BiologicallyDerivedProduct_Storage> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    double temperature,
+    Element elementTemperature,
+    String scale,
+    Element elementScale,
+    Period duration,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    BiologicallyDerivedProduct_Storage newBiologicallyDerivedProduct_Storage =
+        new BiologicallyDerivedProduct_Storage(
+      id: id ??
+          await fhirDb.newResourceId('BiologicallyDerivedProduct_Storage'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      temperature: temperature,
+      elementTemperature: elementTemperature,
+      scale: scale,
+      elementScale: elementScale,
+      duration: duration,
+    );
+    return newBiologicallyDerivedProduct_Storage;
+  }
 
-BiologicallyDerivedProduct_Processing(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.description,
-this.elementDescription,
-this.procedure,
-this.additive,
-this.timeDateTime,
-this.elementTimeDateTime,
-this.timePeriod,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String description;
+  Element elementDescription;
+  double temperature;
+  Element elementTemperature;
+  String scale;
+  Element elementScale;
+  Period duration;
 
-  factory BiologicallyDerivedProduct_Processing.fromJson(Map<String, dynamic> json) => _$BiologicallyDerivedProduct_ProcessingFromJson(json);
-  Map<String, dynamic> toJson() => _$BiologicallyDerivedProduct_ProcessingToJson(this);
+  BiologicallyDerivedProduct_Storage({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.temperature,
+    this.elementTemperature,
+    this.scale,
+    this.elementScale,
+    this.duration,
+  });
+
+  factory BiologicallyDerivedProduct_Storage.fromJson(
+          Map<String, dynamic> json) =>
+      _$BiologicallyDerivedProduct_StorageFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$BiologicallyDerivedProduct_StorageToJson(this);
 }
-
-
-@JsonSerializable(explicitToJson: true)
-class BiologicallyDerivedProduct_Manipulation{
-
-	static Future<BiologicallyDerivedProduct_Manipulation> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String description,
-	Element elementDescription,
-	String timeDateTime,
-	Element elementTimeDateTime,
-	Period timePeriod,
-}) async {
-var fhirDb = new DatabaseHelper();
-BiologicallyDerivedProduct_Manipulation newBiologicallyDerivedProduct_Manipulation = new BiologicallyDerivedProduct_Manipulation(
-	id: id ?? await fhirDb.newResourceId('BiologicallyDerivedProduct_Manipulation'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	description: description,
-	elementDescription: elementDescription,
-	timeDateTime: timeDateTime,
-	elementTimeDateTime: elementTimeDateTime,
-	timePeriod: timePeriod,
-);
-	return newBiologicallyDerivedProduct_Manipulation;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String description;
-	Element elementDescription;
-	String timeDateTime;
-	Element elementTimeDateTime;
-	Period timePeriod;
-
-BiologicallyDerivedProduct_Manipulation(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.description,
-this.elementDescription,
-this.timeDateTime,
-this.elementTimeDateTime,
-this.timePeriod,
-});
-
-  factory BiologicallyDerivedProduct_Manipulation.fromJson(Map<String, dynamic> json) => _$BiologicallyDerivedProduct_ManipulationFromJson(json);
-  Map<String, dynamic> toJson() => _$BiologicallyDerivedProduct_ManipulationToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class BiologicallyDerivedProduct_Storage{
-
-	static Future<BiologicallyDerivedProduct_Storage> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String description,
-	Element elementDescription,
-	double temperature,
-	Element elementTemperature,
-	String scale,
-	Element elementScale,
-	Period duration,
-}) async {
-var fhirDb = new DatabaseHelper();
-BiologicallyDerivedProduct_Storage newBiologicallyDerivedProduct_Storage = new BiologicallyDerivedProduct_Storage(
-	id: id ?? await fhirDb.newResourceId('BiologicallyDerivedProduct_Storage'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	description: description,
-	elementDescription: elementDescription,
-	temperature: temperature,
-	elementTemperature: elementTemperature,
-	scale: scale,
-	elementScale: elementScale,
-	duration: duration,
-);
-	return newBiologicallyDerivedProduct_Storage;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String description;
-	Element elementDescription;
-	double temperature;
-	Element elementTemperature;
-	String scale;
-	Element elementScale;
-	Period duration;
-
-BiologicallyDerivedProduct_Storage(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.description,
-this.elementDescription,
-this.temperature,
-this.elementTemperature,
-this.scale,
-this.elementScale,
-this.duration,
-});
-
-  factory BiologicallyDerivedProduct_Storage.fromJson(Map<String, dynamic> json) => _$BiologicallyDerivedProduct_StorageFromJson(json);
-  Map<String, dynamic> toJson() => _$BiologicallyDerivedProduct_StorageToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -391,8 +410,9 @@ BiologicallyDerivedProduct _$BiologicallyDerivedProductFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -454,35 +474,47 @@ BiologicallyDerivedProduct _$BiologicallyDerivedProductFromJson(
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProductToJson(
-        BiologicallyDerivedProduct instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'productCategory': instance.productCategory,
-      'elementProductCategory': instance.elementProductCategory?.toJson(),
-      'productCode': instance.productCode?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'request': instance.request?.map((e) => e?.toJson())?.toList(),
-      'quantity': instance.quantity,
-      'elementQuantity': instance.elementQuantity?.toJson(),
-      'parent': instance.parent?.map((e) => e?.toJson())?.toList(),
-      'collection': instance.collection?.toJson(),
-      'processing': instance.processing?.map((e) => e?.toJson())?.toList(),
-      'manipulation': instance.manipulation?.toJson(),
-      'storage': instance.storage?.map((e) => e?.toJson())?.toList(),
-    };
+    BiologicallyDerivedProduct instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('productCategory', instance.productCategory);
+  writeNotNull(
+      'elementProductCategory', instance.elementProductCategory?.toJson());
+  writeNotNull('productCode', instance.productCode?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('request', instance.request?.map((e) => e?.toJson())?.toList());
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('elementQuantity', instance.elementQuantity?.toJson());
+  writeNotNull('parent', instance.parent?.map((e) => e?.toJson())?.toList());
+  writeNotNull('collection', instance.collection?.toJson());
+  writeNotNull(
+      'processing', instance.processing?.map((e) => e?.toJson())?.toList());
+  writeNotNull('manipulation', instance.manipulation?.toJson());
+  writeNotNull('storage', instance.storage?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 BiologicallyDerivedProduct_Collection
     _$BiologicallyDerivedProduct_CollectionFromJson(Map<String, dynamic> json) {
@@ -514,18 +546,28 @@ BiologicallyDerivedProduct_Collection
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_CollectionToJson(
-        BiologicallyDerivedProduct_Collection instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'collector': instance.collector?.toJson(),
-      'source': instance.source?.toJson(),
-      'collectedDateTime': instance.collectedDateTime,
-      'elementCollectedDateTime': instance.elementCollectedDateTime?.toJson(),
-      'collectedPeriod': instance.collectedPeriod?.toJson(),
-    };
+    BiologicallyDerivedProduct_Collection instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('collector', instance.collector?.toJson());
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('collectedDateTime', instance.collectedDateTime);
+  writeNotNull(
+      'elementCollectedDateTime', instance.elementCollectedDateTime?.toJson());
+  writeNotNull('collectedPeriod', instance.collectedPeriod?.toJson());
+  return val;
+}
 
 BiologicallyDerivedProduct_Processing
     _$BiologicallyDerivedProduct_ProcessingFromJson(Map<String, dynamic> json) {
@@ -560,20 +602,29 @@ BiologicallyDerivedProduct_Processing
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_ProcessingToJson(
-        BiologicallyDerivedProduct_Processing instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'procedure': instance.procedure?.toJson(),
-      'additive': instance.additive?.toJson(),
-      'timeDateTime': instance.timeDateTime,
-      'elementTimeDateTime': instance.elementTimeDateTime?.toJson(),
-      'timePeriod': instance.timePeriod?.toJson(),
-    };
+    BiologicallyDerivedProduct_Processing instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('procedure', instance.procedure?.toJson());
+  writeNotNull('additive', instance.additive?.toJson());
+  writeNotNull('timeDateTime', instance.timeDateTime);
+  writeNotNull('elementTimeDateTime', instance.elementTimeDateTime?.toJson());
+  writeNotNull('timePeriod', instance.timePeriod?.toJson());
+  return val;
+}
 
 BiologicallyDerivedProduct_Manipulation
     _$BiologicallyDerivedProduct_ManipulationFromJson(
@@ -603,18 +654,27 @@ BiologicallyDerivedProduct_Manipulation
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_ManipulationToJson(
-        BiologicallyDerivedProduct_Manipulation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'timeDateTime': instance.timeDateTime,
-      'elementTimeDateTime': instance.elementTimeDateTime?.toJson(),
-      'timePeriod': instance.timePeriod?.toJson(),
-    };
+    BiologicallyDerivedProduct_Manipulation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('timeDateTime', instance.timeDateTime);
+  writeNotNull('elementTimeDateTime', instance.elementTimeDateTime?.toJson());
+  writeNotNull('timePeriod', instance.timePeriod?.toJson());
+  return val;
+}
 
 BiologicallyDerivedProduct_Storage _$BiologicallyDerivedProduct_StorageFromJson(
     Map<String, dynamic> json) {
@@ -647,17 +707,26 @@ BiologicallyDerivedProduct_Storage _$BiologicallyDerivedProduct_StorageFromJson(
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_StorageToJson(
-        BiologicallyDerivedProduct_Storage instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'temperature': instance.temperature,
-      'elementTemperature': instance.elementTemperature?.toJson(),
-      'scale': instance.scale,
-      'elementScale': instance.elementScale?.toJson(),
-      'duration': instance.duration?.toJson(),
-    };
+    BiologicallyDerivedProduct_Storage instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('temperature', instance.temperature);
+  writeNotNull('elementTemperature', instance.elementTemperature?.toJson());
+  writeNotNull('scale', instance.scale);
+  writeNotNull('elementScale', instance.elementScale?.toJson());
+  writeNotNull('duration', instance.duration?.toJson());
+  return val;
+}

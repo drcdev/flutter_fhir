@@ -5,82 +5,80 @@ import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class RelatedArtifact {
+  static Future<RelatedArtifact> newInstance({
+    String id,
+    List<Extension> extension,
+    String type,
+    Element elementType,
+    String label,
+    Element elementLabel,
+    String display,
+    Element elementDisplay,
+    String citation,
+    Element elementCitation,
+    String url,
+    Element elementUrl,
+    Attachment document,
+    String resource,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    RelatedArtifact newRelatedArtifact = new RelatedArtifact(
+      id: id ?? await fhirDb.newResourceId('RelatedArtifact'),
+      extension: extension,
+      type: type,
+      elementType: elementType,
+      label: label,
+      elementLabel: elementLabel,
+      display: display,
+      elementDisplay: elementDisplay,
+      citation: citation,
+      elementCitation: elementCitation,
+      url: url,
+      elementUrl: elementUrl,
+      document: document,
+      resource: resource,
+    );
+    return newRelatedArtifact;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class RelatedArtifact{
+  String id;
+  List<Extension> extension;
+  String type;
+  Element elementType;
+  String label;
+  Element elementLabel;
+  String display;
+  Element elementDisplay;
+  String citation;
+  Element elementCitation;
+  String url;
+  Element elementUrl;
+  Attachment document;
+  String resource;
 
-	static Future<RelatedArtifact> newInstance(
-	{	String id,
-	List<Extension> extension,
-	String type,
-	Element elementType,
-	String label,
-	Element elementLabel,
-	String display,
-	Element elementDisplay,
-	String citation,
-	Element elementCitation,
-	String url,
-	Element elementUrl,
-	Attachment document,
-	String resource,
-}) async {
-var fhirDb = new DatabaseHelper();
-RelatedArtifact newRelatedArtifact = new RelatedArtifact(
-	id: id ?? await fhirDb.newResourceId('RelatedArtifact'),
-	extension: extension,
-	type: type,
-	elementType: elementType,
-	label: label,
-	elementLabel: elementLabel,
-	display: display,
-	elementDisplay: elementDisplay,
-	citation: citation,
-	elementCitation: elementCitation,
-	url: url,
-	elementUrl: elementUrl,
-	document: document,
-	resource: resource,
-);
-	return newRelatedArtifact;
-}
+  RelatedArtifact({
+    this.id,
+    this.extension,
+    this.type,
+    this.elementType,
+    this.label,
+    this.elementLabel,
+    this.display,
+    this.elementDisplay,
+    this.citation,
+    this.elementCitation,
+    this.url,
+    this.elementUrl,
+    this.document,
+    this.resource,
+  });
 
-	String id;
-	List<Extension> extension;
-	String type;
-	Element elementType;
-	String label;
-	Element elementLabel;
-	String display;
-	Element elementDisplay;
-	String citation;
-	Element elementCitation;
-	String url;
-	Element elementUrl;
-	Attachment document;
-	String resource;
-
-RelatedArtifact(
-	{this.id,
-this.extension,
-this.type,
-this.elementType,
-this.label,
-this.elementLabel,
-this.display,
-this.elementDisplay,
-this.citation,
-this.elementCitation,
-this.url,
-this.elementUrl,
-this.document,
-this.resource,
-});
-
-  factory RelatedArtifact.fromJson(Map<String, dynamic> json) => _$RelatedArtifactFromJson(json);
+  factory RelatedArtifact.fromJson(Map<String, dynamic> json) =>
+      _$RelatedArtifactFromJson(json);
   Map<String, dynamic> toJson() => _$RelatedArtifactToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -121,20 +119,29 @@ RelatedArtifact _$RelatedArtifactFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RelatedArtifactToJson(RelatedArtifact instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'label': instance.label,
-      'elementLabel': instance.elementLabel?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'citation': instance.citation,
-      'elementCitation': instance.elementCitation?.toJson(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'document': instance.document?.toJson(),
-      'resource': instance.resource,
-    };
+Map<String, dynamic> _$RelatedArtifactToJson(RelatedArtifact instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('label', instance.label);
+  writeNotNull('elementLabel', instance.elementLabel?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('citation', instance.citation);
+  writeNotNull('elementCitation', instance.elementCitation?.toJson());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('document', instance.document?.toJson());
+  writeNotNull('resource', instance.resource);
+  return val;
+}

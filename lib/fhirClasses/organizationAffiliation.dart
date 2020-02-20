@@ -12,131 +12,135 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class OrganizationAffiliation {
+  static Future<OrganizationAffiliation> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    Period period,
+    Reference organization,
+    Reference participatingOrganization,
+    List<Reference> network,
+    List<CodeableConcept> code,
+    List<CodeableConcept> specialty,
+    List<Reference> location,
+    List<Reference> healthcareService,
+    List<ContactPoint> telecom,
+    List<Reference> endpoint,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    OrganizationAffiliation newOrganizationAffiliation =
+        new OrganizationAffiliation(
+      resourceType: 'OrganizationAffiliation',
+      id: id ?? await fhirDb.newResourceId('OrganizationAffiliation'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      active: active,
+      elementActive: elementActive,
+      period: period,
+      organization: organization,
+      participatingOrganization: participatingOrganization,
+      network: network,
+      code: code,
+      specialty: specialty,
+      location: location,
+      healthcareService: healthcareService,
+      telecom: telecom,
+      endpoint: endpoint,
+    );
+    newOrganizationAffiliation.meta.createdAt = DateTime.now();
+    newOrganizationAffiliation.meta.lastUpdated =
+        newOrganizationAffiliation.meta.createdAt;
+    int saved = await fhirDb.saveResource(newOrganizationAffiliation);
+    return newOrganizationAffiliation;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class OrganizationAffiliation{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<OrganizationAffiliation> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	bool active,
-	Element elementActive,
-	Period period,
-	Reference organization,
-	Reference participatingOrganization,
-	List<Reference> network,
-	List<CodeableConcept> code,
-	List<CodeableConcept> specialty,
-	List<Reference> location,
-	List<Reference> healthcareService,
-	List<ContactPoint> telecom,
-	List<Reference> endpoint,
-}) async {
-var fhirDb = new DatabaseHelper();
-OrganizationAffiliation newOrganizationAffiliation = new OrganizationAffiliation(
-	resourceType: 'OrganizationAffiliation',
-	id: id ?? await fhirDb.newResourceId('OrganizationAffiliation'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	active: active,
-	elementActive: elementActive,
-	period: period,
-	organization: organization,
-	participatingOrganization: participatingOrganization,
-	network: network,
-	code: code,
-	specialty: specialty,
-	location: location,
-	healthcareService: healthcareService,
-	telecom: telecom,
-	endpoint: endpoint,
-);
-	newOrganizationAffiliation.meta.createdAt = DateTime.now();
-	newOrganizationAffiliation.meta.lastUpdated = newOrganizationAffiliation.meta.createdAt;
-	int saved = await fhirDb.saveResource(newOrganizationAffiliation);
-	 return newOrganizationAffiliation;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'OrganizationAffiliation';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  bool active;
+  Element elementActive;
+  Period period;
+  Reference organization;
+  Reference participatingOrganization;
+  List<Reference> network;
+  List<CodeableConcept> code;
+  List<CodeableConcept> specialty;
+  List<Reference> location;
+  List<Reference> healthcareService;
+  List<ContactPoint> telecom;
+  List<Reference> endpoint;
 
-	String resourceType= 'OrganizationAffiliation';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	bool active;
-	Element elementActive;
-	Period period;
-	Reference organization;
-	Reference participatingOrganization;
-	List<Reference> network;
-	List<CodeableConcept> code;
-	List<CodeableConcept> specialty;
-	List<Reference> location;
-	List<Reference> healthcareService;
-	List<ContactPoint> telecom;
-	List<Reference> endpoint;
+  OrganizationAffiliation({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    this.period,
+    this.organization,
+    this.participatingOrganization,
+    this.network,
+    this.code,
+    this.specialty,
+    this.location,
+    this.healthcareService,
+    this.telecom,
+    this.endpoint,
+  });
 
-OrganizationAffiliation(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.active,
-this.elementActive,
-this.period,
-this.organization,
-this.participatingOrganization,
-this.network,
-this.code,
-this.specialty,
-this.location,
-this.healthcareService,
-this.telecom,
-this.endpoint,
-});
-
-  factory OrganizationAffiliation.fromJson(Map<String, dynamic> json) => _$OrganizationAffiliationFromJson(json);
+  factory OrganizationAffiliation.fromJson(Map<String, dynamic> json) =>
+      _$OrganizationAffiliationFromJson(json);
   Map<String, dynamic> toJson() => _$OrganizationAffiliationToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -164,8 +168,9 @@ OrganizationAffiliation _$OrganizationAffiliationFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -227,32 +232,46 @@ OrganizationAffiliation _$OrganizationAffiliationFromJson(
 }
 
 Map<String, dynamic> _$OrganizationAffiliationToJson(
-        OrganizationAffiliation instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'period': instance.period?.toJson(),
-      'organization': instance.organization?.toJson(),
-      'participatingOrganization': instance.participatingOrganization?.toJson(),
-      'network': instance.network?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
-      'location': instance.location?.map((e) => e?.toJson())?.toList(),
-      'healthcareService':
-          instance.healthcareService?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
-    };
+    OrganizationAffiliation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('organization', instance.organization?.toJson());
+  writeNotNull('participatingOrganization',
+      instance.participatingOrganization?.toJson());
+  writeNotNull('network', instance.network?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'location', instance.location?.map((e) => e?.toJson())?.toList());
+  writeNotNull('healthcareService',
+      instance.healthcareService?.map((e) => e?.toJson())?.toList());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
+  return val;
+}

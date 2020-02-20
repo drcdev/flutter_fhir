@@ -9,127 +9,130 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class EnrollmentResponse {
+  static Future<EnrollmentResponse> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Reference request,
+    String outcome,
+    Element elementOutcome,
+    String disposition,
+    Element elementDisposition,
+    DateTime created,
+    Element elementCreated,
+    Reference organization,
+    Reference requestProvider,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    EnrollmentResponse newEnrollmentResponse = new EnrollmentResponse(
+      resourceType: 'EnrollmentResponse',
+      id: id ?? await fhirDb.newResourceId('EnrollmentResponse'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      request: request,
+      outcome: outcome,
+      elementOutcome: elementOutcome,
+      disposition: disposition,
+      elementDisposition: elementDisposition,
+      created: created,
+      elementCreated: elementCreated,
+      organization: organization,
+      requestProvider: requestProvider,
+    );
+    newEnrollmentResponse.meta.createdAt = DateTime.now();
+    newEnrollmentResponse.meta.lastUpdated =
+        newEnrollmentResponse.meta.createdAt;
+    int saved = await fhirDb.saveResource(newEnrollmentResponse);
+    return newEnrollmentResponse;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class EnrollmentResponse{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<EnrollmentResponse> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	Reference request,
-	String outcome,
-	Element elementOutcome,
-	String disposition,
-	Element elementDisposition,
-	DateTime created,
-	Element elementCreated,
-	Reference organization,
-	Reference requestProvider,
-}) async {
-var fhirDb = new DatabaseHelper();
-EnrollmentResponse newEnrollmentResponse = new EnrollmentResponse(
-	resourceType: 'EnrollmentResponse',
-	id: id ?? await fhirDb.newResourceId('EnrollmentResponse'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	request: request,
-	outcome: outcome,
-	elementOutcome: elementOutcome,
-	disposition: disposition,
-	elementDisposition: elementDisposition,
-	created: created,
-	elementCreated: elementCreated,
-	organization: organization,
-	requestProvider: requestProvider,
-);
-	newEnrollmentResponse.meta.createdAt = DateTime.now();
-	newEnrollmentResponse.meta.lastUpdated = newEnrollmentResponse.meta.createdAt;
-	int saved = await fhirDb.saveResource(newEnrollmentResponse);
-	 return newEnrollmentResponse;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'EnrollmentResponse';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  Reference request;
+  String outcome;
+  Element elementOutcome;
+  String disposition;
+  Element elementDisposition;
+  DateTime created;
+  Element elementCreated;
+  Reference organization;
+  Reference requestProvider;
 
-	String resourceType= 'EnrollmentResponse';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	Reference request;
-	String outcome;
-	Element elementOutcome;
-	String disposition;
-	Element elementDisposition;
-	DateTime created;
-	Element elementCreated;
-	Reference organization;
-	Reference requestProvider;
+  EnrollmentResponse({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    this.request,
+    this.outcome,
+    this.elementOutcome,
+    this.disposition,
+    this.elementDisposition,
+    this.created,
+    this.elementCreated,
+    this.organization,
+    this.requestProvider,
+  });
 
-EnrollmentResponse(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-this.request,
-this.outcome,
-this.elementOutcome,
-this.disposition,
-this.elementDisposition,
-this.created,
-this.elementCreated,
-this.organization,
-this.requestProvider,
-});
-
-  factory EnrollmentResponse.fromJson(Map<String, dynamic> json) => _$EnrollmentResponseFromJson(json);
+  factory EnrollmentResponse.fromJson(Map<String, dynamic> json) =>
+      _$EnrollmentResponseFromJson(json);
   Map<String, dynamic> toJson() => _$EnrollmentResponseToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -156,8 +159,9 @@ EnrollmentResponse _$EnrollmentResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -201,30 +205,40 @@ EnrollmentResponse _$EnrollmentResponseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$EnrollmentResponseToJson(EnrollmentResponse instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'request': instance.request?.toJson(),
-      'outcome': instance.outcome,
-      'elementOutcome': instance.elementOutcome?.toJson(),
-      'disposition': instance.disposition,
-      'elementDisposition': instance.elementDisposition?.toJson(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'organization': instance.organization?.toJson(),
-      'requestProvider': instance.requestProvider?.toJson(),
-    };
+Map<String, dynamic> _$EnrollmentResponseToJson(EnrollmentResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('request', instance.request?.toJson());
+  writeNotNull('outcome', instance.outcome);
+  writeNotNull('elementOutcome', instance.elementOutcome?.toJson());
+  writeNotNull('disposition', instance.disposition);
+  writeNotNull('elementDisposition', instance.elementDisposition?.toJson());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('organization', instance.organization?.toJson());
+  writeNotNull('requestProvider', instance.requestProvider?.toJson());
+  return val;
+}

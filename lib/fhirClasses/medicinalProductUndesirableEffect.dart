@@ -10,99 +10,105 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class MedicinalProductUndesirableEffect {
+  static Future<MedicinalProductUndesirableEffect> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Reference> subject,
+    CodeableConcept symptomConditionEffect,
+    CodeableConcept classification,
+    CodeableConcept frequencyOfOccurrence,
+    List<Population> population,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    MedicinalProductUndesirableEffect newMedicinalProductUndesirableEffect =
+        new MedicinalProductUndesirableEffect(
+      resourceType: 'MedicinalProductUndesirableEffect',
+      id: id ?? await fhirDb.newResourceId('MedicinalProductUndesirableEffect'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      subject: subject,
+      symptomConditionEffect: symptomConditionEffect,
+      classification: classification,
+      frequencyOfOccurrence: frequencyOfOccurrence,
+      population: population,
+    );
+    newMedicinalProductUndesirableEffect.meta.createdAt = DateTime.now();
+    newMedicinalProductUndesirableEffect.meta.lastUpdated =
+        newMedicinalProductUndesirableEffect.meta.createdAt;
+    int saved = await fhirDb.saveResource(newMedicinalProductUndesirableEffect);
+    return newMedicinalProductUndesirableEffect;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class MedicinalProductUndesirableEffect{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<MedicinalProductUndesirableEffect> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Reference> subject,
-	CodeableConcept symptomConditionEffect,
-	CodeableConcept classification,
-	CodeableConcept frequencyOfOccurrence,
-	List<Population> population,
-}) async {
-var fhirDb = new DatabaseHelper();
-MedicinalProductUndesirableEffect newMedicinalProductUndesirableEffect = new MedicinalProductUndesirableEffect(
-	resourceType: 'MedicinalProductUndesirableEffect',
-	id: id ?? await fhirDb.newResourceId('MedicinalProductUndesirableEffect'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	subject: subject,
-	symptomConditionEffect: symptomConditionEffect,
-	classification: classification,
-	frequencyOfOccurrence: frequencyOfOccurrence,
-	population: population,
-);
-	newMedicinalProductUndesirableEffect.meta.createdAt = DateTime.now();
-	newMedicinalProductUndesirableEffect.meta.lastUpdated = newMedicinalProductUndesirableEffect.meta.createdAt;
-	int saved = await fhirDb.saveResource(newMedicinalProductUndesirableEffect);
-	 return newMedicinalProductUndesirableEffect;
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
+
+  String resourceType = 'MedicinalProductUndesirableEffect';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Reference> subject;
+  CodeableConcept symptomConditionEffect;
+  CodeableConcept classification;
+  CodeableConcept frequencyOfOccurrence;
+  List<Population> population;
+
+  MedicinalProductUndesirableEffect({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.subject,
+    this.symptomConditionEffect,
+    this.classification,
+    this.frequencyOfOccurrence,
+    this.population,
+  });
+
+  factory MedicinalProductUndesirableEffect.fromJson(
+          Map<String, dynamic> json) =>
+      _$MedicinalProductUndesirableEffectFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$MedicinalProductUndesirableEffectToJson(this);
 }
-
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
-
-	String resourceType= 'MedicinalProductUndesirableEffect';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Reference> subject;
-	CodeableConcept symptomConditionEffect;
-	CodeableConcept classification;
-	CodeableConcept frequencyOfOccurrence;
-	List<Population> population;
-
-MedicinalProductUndesirableEffect(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.subject,
-this.symptomConditionEffect,
-this.classification,
-this.frequencyOfOccurrence,
-this.population,
-});
-
-  factory MedicinalProductUndesirableEffect.fromJson(Map<String, dynamic> json) => _$MedicinalProductUndesirableEffectFromJson(json);
-  Map<String, dynamic> toJson() => _$MedicinalProductUndesirableEffectToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -130,8 +136,9 @@ MedicinalProductUndesirableEffect _$MedicinalProductUndesirableEffectFromJson(
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -165,23 +172,35 @@ MedicinalProductUndesirableEffect _$MedicinalProductUndesirableEffectFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductUndesirableEffectToJson(
-        MedicinalProductUndesirableEffect instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
-      'symptomConditionEffect': instance.symptomConditionEffect?.toJson(),
-      'classification': instance.classification?.toJson(),
-      'frequencyOfOccurrence': instance.frequencyOfOccurrence?.toJson(),
-      'population': instance.population?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicinalProductUndesirableEffect instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'symptomConditionEffect', instance.symptomConditionEffect?.toJson());
+  writeNotNull('classification', instance.classification?.toJson());
+  writeNotNull(
+      'frequencyOfOccurrence', instance.frequencyOfOccurrence?.toJson());
+  writeNotNull(
+      'population', instance.population?.map((e) => e?.toJson())?.toList());
+  return val;
+}

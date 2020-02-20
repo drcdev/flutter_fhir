@@ -14,283 +14,284 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ResearchStudy {
+  static Future<ResearchStudy> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String title,
+    Element elementTitle,
+    List<Reference> protocol,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    CodeableConcept primaryPurposeType,
+    CodeableConcept phase,
+    List<CodeableConcept> category,
+    List<CodeableConcept> focus,
+    List<CodeableConcept> condition,
+    List<ContactDetail> contact,
+    List<RelatedArtifact> relatedArtifact,
+    List<CodeableConcept> keyword,
+    List<CodeableConcept> location,
+    String description,
+    Element elementDescription,
+    List<Reference> enrollment,
+    Period period,
+    Reference sponsor,
+    Reference principalInvestigator,
+    List<Reference> site,
+    CodeableConcept reasonStopped,
+    List<Annotation> note,
+    List<ResearchStudy_Arm> arm,
+    List<ResearchStudy_Objective> objective,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ResearchStudy newResearchStudy = new ResearchStudy(
+      resourceType: 'ResearchStudy',
+      id: id ?? await fhirDb.newResourceId('ResearchStudy'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      title: title,
+      elementTitle: elementTitle,
+      protocol: protocol,
+      partOf: partOf,
+      status: status,
+      elementStatus: elementStatus,
+      primaryPurposeType: primaryPurposeType,
+      phase: phase,
+      category: category,
+      focus: focus,
+      condition: condition,
+      contact: contact,
+      relatedArtifact: relatedArtifact,
+      keyword: keyword,
+      location: location,
+      description: description,
+      elementDescription: elementDescription,
+      enrollment: enrollment,
+      period: period,
+      sponsor: sponsor,
+      principalInvestigator: principalInvestigator,
+      site: site,
+      reasonStopped: reasonStopped,
+      note: note,
+      arm: arm,
+      objective: objective,
+    );
+    newResearchStudy.meta.createdAt = DateTime.now();
+    newResearchStudy.meta.lastUpdated = newResearchStudy.meta.createdAt;
+    int saved = await fhirDb.saveResource(newResearchStudy);
+    return newResearchStudy;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ResearchStudy{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ResearchStudy> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String title,
-	Element elementTitle,
-	List<Reference> protocol,
-	List<Reference> partOf,
-	String status,
-	Element elementStatus,
-	CodeableConcept primaryPurposeType,
-	CodeableConcept phase,
-	List<CodeableConcept> category,
-	List<CodeableConcept> focus,
-	List<CodeableConcept> condition,
-	List<ContactDetail> contact,
-	List<RelatedArtifact> relatedArtifact,
-	List<CodeableConcept> keyword,
-	List<CodeableConcept> location,
-	String description,
-	Element elementDescription,
-	List<Reference> enrollment,
-	Period period,
-	Reference sponsor,
-	Reference principalInvestigator,
-	List<Reference> site,
-	CodeableConcept reasonStopped,
-	List<Annotation> note,
-	List<ResearchStudy_Arm> arm,
-	List<ResearchStudy_Objective> objective,
-}) async {
-var fhirDb = new DatabaseHelper();
-ResearchStudy newResearchStudy = new ResearchStudy(
-	resourceType: 'ResearchStudy',
-	id: id ?? await fhirDb.newResourceId('ResearchStudy'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	title: title,
-	elementTitle: elementTitle,
-	protocol: protocol,
-	partOf: partOf,
-	status: status,
-	elementStatus: elementStatus,
-	primaryPurposeType: primaryPurposeType,
-	phase: phase,
-	category: category,
-	focus: focus,
-	condition: condition,
-	contact: contact,
-	relatedArtifact: relatedArtifact,
-	keyword: keyword,
-	location: location,
-	description: description,
-	elementDescription: elementDescription,
-	enrollment: enrollment,
-	period: period,
-	sponsor: sponsor,
-	principalInvestigator: principalInvestigator,
-	site: site,
-	reasonStopped: reasonStopped,
-	note: note,
-	arm: arm,
-	objective: objective,
-);
-	newResearchStudy.meta.createdAt = DateTime.now();
-	newResearchStudy.meta.lastUpdated = newResearchStudy.meta.createdAt;
-	int saved = await fhirDb.saveResource(newResearchStudy);
-	 return newResearchStudy;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'ResearchStudy';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String title;
+  Element elementTitle;
+  List<Reference> protocol;
+  List<Reference> partOf;
+  String status;
+  Element elementStatus;
+  CodeableConcept primaryPurposeType;
+  CodeableConcept phase;
+  List<CodeableConcept> category;
+  List<CodeableConcept> focus;
+  List<CodeableConcept> condition;
+  List<ContactDetail> contact;
+  List<RelatedArtifact> relatedArtifact;
+  List<CodeableConcept> keyword;
+  List<CodeableConcept> location;
+  String description;
+  Element elementDescription;
+  List<Reference> enrollment;
+  Period period;
+  Reference sponsor;
+  Reference principalInvestigator;
+  List<Reference> site;
+  CodeableConcept reasonStopped;
+  List<Annotation> note;
+  List<ResearchStudy_Arm> arm;
+  List<ResearchStudy_Objective> objective;
 
-	String resourceType= 'ResearchStudy';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String title;
-	Element elementTitle;
-	List<Reference> protocol;
-	List<Reference> partOf;
-	String status;
-	Element elementStatus;
-	CodeableConcept primaryPurposeType;
-	CodeableConcept phase;
-	List<CodeableConcept> category;
-	List<CodeableConcept> focus;
-	List<CodeableConcept> condition;
-	List<ContactDetail> contact;
-	List<RelatedArtifact> relatedArtifact;
-	List<CodeableConcept> keyword;
-	List<CodeableConcept> location;
-	String description;
-	Element elementDescription;
-	List<Reference> enrollment;
-	Period period;
-	Reference sponsor;
-	Reference principalInvestigator;
-	List<Reference> site;
-	CodeableConcept reasonStopped;
-	List<Annotation> note;
-	List<ResearchStudy_Arm> arm;
-	List<ResearchStudy_Objective> objective;
+  ResearchStudy({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.title,
+    this.elementTitle,
+    this.protocol,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.primaryPurposeType,
+    this.phase,
+    this.category,
+    this.focus,
+    this.condition,
+    this.contact,
+    this.relatedArtifact,
+    this.keyword,
+    this.location,
+    this.description,
+    this.elementDescription,
+    this.enrollment,
+    this.period,
+    this.sponsor,
+    this.principalInvestigator,
+    this.site,
+    this.reasonStopped,
+    this.note,
+    this.arm,
+    this.objective,
+  });
 
-ResearchStudy(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.title,
-this.elementTitle,
-this.protocol,
-this.partOf,
-this.status,
-this.elementStatus,
-this.primaryPurposeType,
-this.phase,
-this.category,
-this.focus,
-this.condition,
-this.contact,
-this.relatedArtifact,
-this.keyword,
-this.location,
-this.description,
-this.elementDescription,
-this.enrollment,
-this.period,
-this.sponsor,
-this.principalInvestigator,
-this.site,
-this.reasonStopped,
-this.note,
-this.arm,
-this.objective,
-});
-
-  factory ResearchStudy.fromJson(Map<String, dynamic> json) => _$ResearchStudyFromJson(json);
+  factory ResearchStudy.fromJson(Map<String, dynamic> json) =>
+      _$ResearchStudyFromJson(json);
   Map<String, dynamic> toJson() => _$ResearchStudyToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ResearchStudy_Arm {
+  static Future<ResearchStudy_Arm> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    CodeableConcept type,
+    String description,
+    Element elementDescription,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ResearchStudy_Arm newResearchStudy_Arm = new ResearchStudy_Arm(
+      id: id ?? await fhirDb.newResourceId('ResearchStudy_Arm'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      type: type,
+      description: description,
+      elementDescription: elementDescription,
+    );
+    return newResearchStudy_Arm;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ResearchStudy_Arm{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  CodeableConcept type;
+  String description;
+  Element elementDescription;
 
-	static Future<ResearchStudy_Arm> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	CodeableConcept type,
-	String description,
-	Element elementDescription,
-}) async {
-var fhirDb = new DatabaseHelper();
-ResearchStudy_Arm newResearchStudy_Arm = new ResearchStudy_Arm(
-	id: id ?? await fhirDb.newResourceId('ResearchStudy_Arm'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	type: type,
-	description: description,
-	elementDescription: elementDescription,
-);
-	return newResearchStudy_Arm;
-}
+  ResearchStudy_Arm({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.type,
+    this.description,
+    this.elementDescription,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	CodeableConcept type;
-	String description;
-	Element elementDescription;
-
-ResearchStudy_Arm(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.type,
-this.description,
-this.elementDescription,
-});
-
-  factory ResearchStudy_Arm.fromJson(Map<String, dynamic> json) => _$ResearchStudy_ArmFromJson(json);
+  factory ResearchStudy_Arm.fromJson(Map<String, dynamic> json) =>
+      _$ResearchStudy_ArmFromJson(json);
   Map<String, dynamic> toJson() => _$ResearchStudy_ArmToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ResearchStudy_Objective {
+  static Future<ResearchStudy_Objective> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String name,
+    Element elementName,
+    CodeableConcept type,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ResearchStudy_Objective newResearchStudy_Objective =
+        new ResearchStudy_Objective(
+      id: id ?? await fhirDb.newResourceId('ResearchStudy_Objective'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      name: name,
+      elementName: elementName,
+      type: type,
+    );
+    return newResearchStudy_Objective;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ResearchStudy_Objective{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String name;
+  Element elementName;
+  CodeableConcept type;
 
-	static Future<ResearchStudy_Objective> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String name,
-	Element elementName,
-	CodeableConcept type,
-}) async {
-var fhirDb = new DatabaseHelper();
-ResearchStudy_Objective newResearchStudy_Objective = new ResearchStudy_Objective(
-	id: id ?? await fhirDb.newResourceId('ResearchStudy_Objective'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	name: name,
-	elementName: elementName,
-	type: type,
-);
-	return newResearchStudy_Objective;
-}
+  ResearchStudy_Objective({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.name,
+    this.elementName,
+    this.type,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String name;
-	Element elementName;
-	CodeableConcept type;
-
-ResearchStudy_Objective(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.name,
-this.elementName,
-this.type,
-});
-
-  factory ResearchStudy_Objective.fromJson(Map<String, dynamic> json) => _$ResearchStudy_ObjectiveFromJson(json);
+  factory ResearchStudy_Objective.fromJson(Map<String, dynamic> json) =>
+      _$ResearchStudy_ObjectiveFromJson(json);
   Map<String, dynamic> toJson() => _$ResearchStudy_ObjectiveToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -317,8 +318,9 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -433,49 +435,66 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ResearchStudyToJson(ResearchStudy instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'protocol': instance.protocol?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'primaryPurposeType': instance.primaryPurposeType?.toJson(),
-      'phase': instance.phase?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'focus': instance.focus?.map((e) => e?.toJson())?.toList(),
-      'condition': instance.condition?.map((e) => e?.toJson())?.toList(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'relatedArtifact':
-          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
-      'keyword': instance.keyword?.map((e) => e?.toJson())?.toList(),
-      'location': instance.location?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'enrollment': instance.enrollment?.map((e) => e?.toJson())?.toList(),
-      'period': instance.period?.toJson(),
-      'sponsor': instance.sponsor?.toJson(),
-      'principalInvestigator': instance.principalInvestigator?.toJson(),
-      'site': instance.site?.map((e) => e?.toJson())?.toList(),
-      'reasonStopped': instance.reasonStopped?.toJson(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'arm': instance.arm?.map((e) => e?.toJson())?.toList(),
-      'objective': instance.objective?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ResearchStudyToJson(ResearchStudy instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull(
+      'protocol', instance.protocol?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('primaryPurposeType', instance.primaryPurposeType?.toJson());
+  writeNotNull('phase', instance.phase?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('focus', instance.focus?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'condition', instance.condition?.map((e) => e?.toJson())?.toList());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedArtifact',
+      instance.relatedArtifact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('keyword', instance.keyword?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'location', instance.location?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'enrollment', instance.enrollment?.map((e) => e?.toJson())?.toList());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('sponsor', instance.sponsor?.toJson());
+  writeNotNull(
+      'principalInvestigator', instance.principalInvestigator?.toJson());
+  writeNotNull('site', instance.site?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonStopped', instance.reasonStopped?.toJson());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('arm', instance.arm?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'objective', instance.objective?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ResearchStudy_Arm _$ResearchStudy_ArmFromJson(Map<String, dynamic> json) {
   return ResearchStudy_Arm(
@@ -502,18 +521,27 @@ ResearchStudy_Arm _$ResearchStudy_ArmFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ResearchStudy_ArmToJson(ResearchStudy_Arm instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'type': instance.type?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-    };
+Map<String, dynamic> _$ResearchStudy_ArmToJson(ResearchStudy_Arm instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  return val;
+}
 
 ResearchStudy_Objective _$ResearchStudy_ObjectiveFromJson(
     Map<String, dynamic> json) {
@@ -538,13 +566,22 @@ ResearchStudy_Objective _$ResearchStudy_ObjectiveFromJson(
 }
 
 Map<String, dynamic> _$ResearchStudy_ObjectiveToJson(
-        ResearchStudy_Objective instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'type': instance.type?.toJson(),
-    };
+    ResearchStudy_Objective instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  return val;
+}

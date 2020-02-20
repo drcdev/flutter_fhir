@@ -37,903 +37,901 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Task {
+  static Future<Task> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String instantiatesCanonical,
+    String instantiatesUri,
+    Element elementInstantiatesUri,
+    List<Reference> basedOn,
+    Identifier groupIdentifier,
+    List<Reference> partOf,
+    String status,
+    Element elementStatus,
+    CodeableConcept statusReason,
+    CodeableConcept businessStatus,
+    String intent,
+    Element elementIntent,
+    String priority,
+    Element elementPriority,
+    CodeableConcept code,
+    String description,
+    Element elementDescription,
+    Reference focus,
+    Reference fore,
+    Reference encounter,
+    Period executionPeriod,
+    DateTime authoredOn,
+    Element elementAuthoredOn,
+    DateTime lastModified,
+    Element elementLastModified,
+    Reference requester,
+    List<CodeableConcept> performerType,
+    Reference owner,
+    Reference location,
+    CodeableConcept reasonCode,
+    Reference reasonReference,
+    List<Reference> insurance,
+    List<Annotation> note,
+    List<Reference> relevantHistory,
+    Task_Restriction restriction,
+    List<Task_Input> input,
+    List<Task_Output> output,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Task newTask = new Task(
+      resourceType: 'Task',
+      id: id ?? await fhirDb.newResourceId('Task'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      instantiatesCanonical: instantiatesCanonical,
+      instantiatesUri: instantiatesUri,
+      elementInstantiatesUri: elementInstantiatesUri,
+      basedOn: basedOn,
+      groupIdentifier: groupIdentifier,
+      partOf: partOf,
+      status: status,
+      elementStatus: elementStatus,
+      statusReason: statusReason,
+      businessStatus: businessStatus,
+      intent: intent,
+      elementIntent: elementIntent,
+      priority: priority,
+      elementPriority: elementPriority,
+      code: code,
+      description: description,
+      elementDescription: elementDescription,
+      focus: focus,
+      fore: fore,
+      encounter: encounter,
+      executionPeriod: executionPeriod,
+      authoredOn: authoredOn,
+      elementAuthoredOn: elementAuthoredOn,
+      lastModified: lastModified,
+      elementLastModified: elementLastModified,
+      requester: requester,
+      performerType: performerType,
+      owner: owner,
+      location: location,
+      reasonCode: reasonCode,
+      reasonReference: reasonReference,
+      insurance: insurance,
+      note: note,
+      relevantHistory: relevantHistory,
+      restriction: restriction,
+      input: input,
+      output: output,
+    );
+    newTask.meta.createdAt = DateTime.now();
+    newTask.meta.lastUpdated = newTask.meta.createdAt;
+    int saved = await fhirDb.saveResource(newTask);
+    return newTask;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Task{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Task> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String instantiatesCanonical,
-	String instantiatesUri,
-	Element elementInstantiatesUri,
-	List<Reference> basedOn,
-	Identifier groupIdentifier,
-	List<Reference> partOf,
-	String status,
-	Element elementStatus,
-	CodeableConcept statusReason,
-	CodeableConcept businessStatus,
-	String intent,
-	Element elementIntent,
-	String priority,
-	Element elementPriority,
-	CodeableConcept code,
-	String description,
-	Element elementDescription,
-	Reference focus,
-	Reference fore,
-	Reference encounter,
-	Period executionPeriod,
-	DateTime authoredOn,
-	Element elementAuthoredOn,
-	DateTime lastModified,
-	Element elementLastModified,
-	Reference requester,
-	List<CodeableConcept> performerType,
-	Reference owner,
-	Reference location,
-	CodeableConcept reasonCode,
-	Reference reasonReference,
-	List<Reference> insurance,
-	List<Annotation> note,
-	List<Reference> relevantHistory,
-	Task_Restriction restriction,
-	List<Task_Input> input,
-	List<Task_Output> output,
-}) async {
-var fhirDb = new DatabaseHelper();
-Task newTask = new Task(
-	resourceType: 'Task',
-	id: id ?? await fhirDb.newResourceId('Task'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	instantiatesCanonical: instantiatesCanonical,
-	instantiatesUri: instantiatesUri,
-	elementInstantiatesUri: elementInstantiatesUri,
-	basedOn: basedOn,
-	groupIdentifier: groupIdentifier,
-	partOf: partOf,
-	status: status,
-	elementStatus: elementStatus,
-	statusReason: statusReason,
-	businessStatus: businessStatus,
-	intent: intent,
-	elementIntent: elementIntent,
-	priority: priority,
-	elementPriority: elementPriority,
-	code: code,
-	description: description,
-	elementDescription: elementDescription,
-	focus: focus,
-	fore: fore,
-	encounter: encounter,
-	executionPeriod: executionPeriod,
-	authoredOn: authoredOn,
-	elementAuthoredOn: elementAuthoredOn,
-	lastModified: lastModified,
-	elementLastModified: elementLastModified,
-	requester: requester,
-	performerType: performerType,
-	owner: owner,
-	location: location,
-	reasonCode: reasonCode,
-	reasonReference: reasonReference,
-	insurance: insurance,
-	note: note,
-	relevantHistory: relevantHistory,
-	restriction: restriction,
-	input: input,
-	output: output,
-);
-	newTask.meta.createdAt = DateTime.now();
-	newTask.meta.lastUpdated = newTask.meta.createdAt;
-	int saved = await fhirDb.saveResource(newTask);
-	 return newTask;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Task';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String instantiatesCanonical;
+  String instantiatesUri;
+  Element elementInstantiatesUri;
+  List<Reference> basedOn;
+  Identifier groupIdentifier;
+  List<Reference> partOf;
+  String status;
+  Element elementStatus;
+  CodeableConcept statusReason;
+  CodeableConcept businessStatus;
+  String intent;
+  Element elementIntent;
+  String priority;
+  Element elementPriority;
+  CodeableConcept code;
+  String description;
+  Element elementDescription;
+  Reference focus;
+  Reference fore;
+  Reference encounter;
+  Period executionPeriod;
+  DateTime authoredOn;
+  Element elementAuthoredOn;
+  DateTime lastModified;
+  Element elementLastModified;
+  Reference requester;
+  List<CodeableConcept> performerType;
+  Reference owner;
+  Reference location;
+  CodeableConcept reasonCode;
+  Reference reasonReference;
+  List<Reference> insurance;
+  List<Annotation> note;
+  List<Reference> relevantHistory;
+  Task_Restriction restriction;
+  List<Task_Input> input;
+  List<Task_Output> output;
 
-	String resourceType= 'Task';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String instantiatesCanonical;
-	String instantiatesUri;
-	Element elementInstantiatesUri;
-	List<Reference> basedOn;
-	Identifier groupIdentifier;
-	List<Reference> partOf;
-	String status;
-	Element elementStatus;
-	CodeableConcept statusReason;
-	CodeableConcept businessStatus;
-	String intent;
-	Element elementIntent;
-	String priority;
-	Element elementPriority;
-	CodeableConcept code;
-	String description;
-	Element elementDescription;
-	Reference focus;
-	Reference fore;
-	Reference encounter;
-	Period executionPeriod;
-	DateTime authoredOn;
-	Element elementAuthoredOn;
-	DateTime lastModified;
-	Element elementLastModified;
-	Reference requester;
-	List<CodeableConcept> performerType;
-	Reference owner;
-	Reference location;
-	CodeableConcept reasonCode;
-	Reference reasonReference;
-	List<Reference> insurance;
-	List<Annotation> note;
-	List<Reference> relevantHistory;
-	Task_Restriction restriction;
-	List<Task_Input> input;
-	List<Task_Output> output;
-
-Task(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.instantiatesCanonical,
-this.instantiatesUri,
-this.elementInstantiatesUri,
-this.basedOn,
-this.groupIdentifier,
-this.partOf,
-this.status,
-this.elementStatus,
-this.statusReason,
-this.businessStatus,
-this.intent,
-this.elementIntent,
-this.priority,
-this.elementPriority,
-this.code,
-this.description,
-this.elementDescription,
-this.focus,
-this.fore,
-this.encounter,
-this.executionPeriod,
-this.authoredOn,
-this.elementAuthoredOn,
-this.lastModified,
-this.elementLastModified,
-this.requester,
-this.performerType,
-this.owner,
-this.location,
-this.reasonCode,
-this.reasonReference,
-this.insurance,
-this.note,
-this.relevantHistory,
-this.restriction,
-this.input,
-this.output,
-});
+  Task({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.instantiatesCanonical,
+    this.instantiatesUri,
+    this.elementInstantiatesUri,
+    this.basedOn,
+    this.groupIdentifier,
+    this.partOf,
+    this.status,
+    this.elementStatus,
+    this.statusReason,
+    this.businessStatus,
+    this.intent,
+    this.elementIntent,
+    this.priority,
+    this.elementPriority,
+    this.code,
+    this.description,
+    this.elementDescription,
+    this.focus,
+    this.fore,
+    this.encounter,
+    this.executionPeriod,
+    this.authoredOn,
+    this.elementAuthoredOn,
+    this.lastModified,
+    this.elementLastModified,
+    this.requester,
+    this.performerType,
+    this.owner,
+    this.location,
+    this.reasonCode,
+    this.reasonReference,
+    this.insurance,
+    this.note,
+    this.relevantHistory,
+    this.restriction,
+    this.input,
+    this.output,
+  });
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
   Map<String, dynamic> toJson() => _$TaskToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Task_Restriction {
+  static Future<Task_Restriction> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    int repetitions,
+    Element elementRepetitions,
+    Period period,
+    List<Reference> recipient,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Task_Restriction newTask_Restriction = new Task_Restriction(
+      id: id ?? await fhirDb.newResourceId('Task_Restriction'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      repetitions: repetitions,
+      elementRepetitions: elementRepetitions,
+      period: period,
+      recipient: recipient,
+    );
+    return newTask_Restriction;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Task_Restriction{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  int repetitions;
+  Element elementRepetitions;
+  Period period;
+  List<Reference> recipient;
 
-	static Future<Task_Restriction> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	int repetitions,
-	Element elementRepetitions,
-	Period period,
-	List<Reference> recipient,
-}) async {
-var fhirDb = new DatabaseHelper();
-Task_Restriction newTask_Restriction = new Task_Restriction(
-	id: id ?? await fhirDb.newResourceId('Task_Restriction'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	repetitions: repetitions,
-	elementRepetitions: elementRepetitions,
-	period: period,
-	recipient: recipient,
-);
-	return newTask_Restriction;
-}
+  Task_Restriction({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.repetitions,
+    this.elementRepetitions,
+    this.period,
+    this.recipient,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	int repetitions;
-	Element elementRepetitions;
-	Period period;
-	List<Reference> recipient;
-
-Task_Restriction(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.repetitions,
-this.elementRepetitions,
-this.period,
-this.recipient,
-});
-
-  factory Task_Restriction.fromJson(Map<String, dynamic> json) => _$Task_RestrictionFromJson(json);
+  factory Task_Restriction.fromJson(Map<String, dynamic> json) =>
+      _$Task_RestrictionFromJson(json);
   Map<String, dynamic> toJson() => _$Task_RestrictionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Task_Input {
+  static Future<Task_Input> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String valueBase64Binary,
+    Element elementValueBase64Binary,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    String valueCanonical,
+    Element elementValueCanonical,
+    String valueCode,
+    Element elementValueCode,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    int valueDecimal,
+    Element elementValueDecimal,
+    String valueId,
+    Element elementValueId,
+    String valueInstant,
+    Element elementValueInstant,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueMarkdown,
+    Element elementValueMarkdown,
+    String valueOid,
+    Element elementValueOid,
+    int valuePositiveInt,
+    Element elementValuePositiveInt,
+    String valueString,
+    Element elementValueString,
+    String valueTime,
+    Element elementValueTime,
+    int valueUnsignedInt,
+    Element elementValueUnsignedInt,
+    String valueUri,
+    Element elementValueUri,
+    String valueUrl,
+    Element elementValueUrl,
+    String valueUuid,
+    Element elementValueUuid,
+    Address valueAddress,
+    Age valueAge,
+    Annotation valueAnnotation,
+    Attachment valueAttachment,
+    CodeableConcept valueCodeableConcept,
+    Coding valueCoding,
+    ContactPoint valueContactPoint,
+    Count valueCount,
+    Distance valueDistance,
+    Duration valueDuration,
+    HumanName valueHumanName,
+    Identifier valueIdentifier,
+    Money valueMoney,
+    Period valuePeriod,
+    Quantity valueQuantity,
+    Range valueRange,
+    Ratio valueRatio,
+    Reference valueReference,
+    SampledData valueSampledData,
+    Signature valueSignature,
+    Timing valueTiming,
+    ContactDetail valueContactDetail,
+    Contributor valueContributor,
+    DataRequirement valueDataRequirement,
+    Expression valueExpression,
+    ParameterDefinition valueParameterDefinition,
+    RelatedArtifact valueRelatedArtifact,
+    TriggerDefinition valueTriggerDefinition,
+    UsageContext valueUsageContext,
+    Dosage valueDosage,
+    Meta valueMeta,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Task_Input newTask_Input = new Task_Input(
+      id: id ?? await fhirDb.newResourceId('Task_Input'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      valueBase64Binary: valueBase64Binary,
+      elementValueBase64Binary: elementValueBase64Binary,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+      valueCanonical: valueCanonical,
+      elementValueCanonical: elementValueCanonical,
+      valueCode: valueCode,
+      elementValueCode: elementValueCode,
+      valueDate: valueDate,
+      elementValueDate: elementValueDate,
+      valueDateTime: valueDateTime,
+      elementValueDateTime: elementValueDateTime,
+      valueDecimal: valueDecimal,
+      elementValueDecimal: elementValueDecimal,
+      valueId: valueId,
+      elementValueId: elementValueId,
+      valueInstant: valueInstant,
+      elementValueInstant: elementValueInstant,
+      valueInteger: valueInteger,
+      elementValueInteger: elementValueInteger,
+      valueMarkdown: valueMarkdown,
+      elementValueMarkdown: elementValueMarkdown,
+      valueOid: valueOid,
+      elementValueOid: elementValueOid,
+      valuePositiveInt: valuePositiveInt,
+      elementValuePositiveInt: elementValuePositiveInt,
+      valueString: valueString,
+      elementValueString: elementValueString,
+      valueTime: valueTime,
+      elementValueTime: elementValueTime,
+      valueUnsignedInt: valueUnsignedInt,
+      elementValueUnsignedInt: elementValueUnsignedInt,
+      valueUri: valueUri,
+      elementValueUri: elementValueUri,
+      valueUrl: valueUrl,
+      elementValueUrl: elementValueUrl,
+      valueUuid: valueUuid,
+      elementValueUuid: elementValueUuid,
+      valueAddress: valueAddress,
+      valueAge: valueAge,
+      valueAnnotation: valueAnnotation,
+      valueAttachment: valueAttachment,
+      valueCodeableConcept: valueCodeableConcept,
+      valueCoding: valueCoding,
+      valueContactPoint: valueContactPoint,
+      valueCount: valueCount,
+      valueDistance: valueDistance,
+      valueDuration: valueDuration,
+      valueHumanName: valueHumanName,
+      valueIdentifier: valueIdentifier,
+      valueMoney: valueMoney,
+      valuePeriod: valuePeriod,
+      valueQuantity: valueQuantity,
+      valueRange: valueRange,
+      valueRatio: valueRatio,
+      valueReference: valueReference,
+      valueSampledData: valueSampledData,
+      valueSignature: valueSignature,
+      valueTiming: valueTiming,
+      valueContactDetail: valueContactDetail,
+      valueContributor: valueContributor,
+      valueDataRequirement: valueDataRequirement,
+      valueExpression: valueExpression,
+      valueParameterDefinition: valueParameterDefinition,
+      valueRelatedArtifact: valueRelatedArtifact,
+      valueTriggerDefinition: valueTriggerDefinition,
+      valueUsageContext: valueUsageContext,
+      valueDosage: valueDosage,
+      valueMeta: valueMeta,
+    );
+    return newTask_Input;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Task_Input{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept type;
+  String valueBase64Binary;
+  Element elementValueBase64Binary;
+  bool valueBoolean;
+  Element elementValueBoolean;
+  String valueCanonical;
+  Element elementValueCanonical;
+  String valueCode;
+  Element elementValueCode;
+  String valueDate;
+  Element elementValueDate;
+  String valueDateTime;
+  Element elementValueDateTime;
+  int valueDecimal;
+  Element elementValueDecimal;
+  String valueId;
+  Element elementValueId;
+  String valueInstant;
+  Element elementValueInstant;
+  int valueInteger;
+  Element elementValueInteger;
+  String valueMarkdown;
+  Element elementValueMarkdown;
+  String valueOid;
+  Element elementValueOid;
+  int valuePositiveInt;
+  Element elementValuePositiveInt;
+  String valueString;
+  Element elementValueString;
+  String valueTime;
+  Element elementValueTime;
+  int valueUnsignedInt;
+  Element elementValueUnsignedInt;
+  String valueUri;
+  Element elementValueUri;
+  String valueUrl;
+  Element elementValueUrl;
+  String valueUuid;
+  Element elementValueUuid;
+  Address valueAddress;
+  Age valueAge;
+  Annotation valueAnnotation;
+  Attachment valueAttachment;
+  CodeableConcept valueCodeableConcept;
+  Coding valueCoding;
+  ContactPoint valueContactPoint;
+  Count valueCount;
+  Distance valueDistance;
+  Duration valueDuration;
+  HumanName valueHumanName;
+  Identifier valueIdentifier;
+  Money valueMoney;
+  Period valuePeriod;
+  Quantity valueQuantity;
+  Range valueRange;
+  Ratio valueRatio;
+  Reference valueReference;
+  SampledData valueSampledData;
+  Signature valueSignature;
+  Timing valueTiming;
+  ContactDetail valueContactDetail;
+  Contributor valueContributor;
+  DataRequirement valueDataRequirement;
+  Expression valueExpression;
+  ParameterDefinition valueParameterDefinition;
+  RelatedArtifact valueRelatedArtifact;
+  TriggerDefinition valueTriggerDefinition;
+  UsageContext valueUsageContext;
+  Dosage valueDosage;
+  Meta valueMeta;
 
-	static Future<Task_Input> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept type,
-	String valueBase64Binary,
-	Element elementValueBase64Binary,
-	bool valueBoolean,
-	Element elementValueBoolean,
-	String valueCanonical,
-	Element elementValueCanonical,
-	String valueCode,
-	Element elementValueCode,
-	String valueDate,
-	Element elementValueDate,
-	String valueDateTime,
-	Element elementValueDateTime,
-	int valueDecimal,
-	Element elementValueDecimal,
-	String valueId,
-	Element elementValueId,
-	String valueInstant,
-	Element elementValueInstant,
-	int valueInteger,
-	Element elementValueInteger,
-	String valueMarkdown,
-	Element elementValueMarkdown,
-	String valueOid,
-	Element elementValueOid,
-	int valuePositiveInt,
-	Element elementValuePositiveInt,
-	String valueString,
-	Element elementValueString,
-	String valueTime,
-	Element elementValueTime,
-	int valueUnsignedInt,
-	Element elementValueUnsignedInt,
-	String valueUri,
-	Element elementValueUri,
-	String valueUrl,
-	Element elementValueUrl,
-	String valueUuid,
-	Element elementValueUuid,
-	Address valueAddress,
-	Age valueAge,
-	Annotation valueAnnotation,
-	Attachment valueAttachment,
-	CodeableConcept valueCodeableConcept,
-	Coding valueCoding,
-	ContactPoint valueContactPoint,
-	Count valueCount,
-	Distance valueDistance,
-	Duration valueDuration,
-	HumanName valueHumanName,
-	Identifier valueIdentifier,
-	Money valueMoney,
-	Period valuePeriod,
-	Quantity valueQuantity,
-	Range valueRange,
-	Ratio valueRatio,
-	Reference valueReference,
-	SampledData valueSampledData,
-	Signature valueSignature,
-	Timing valueTiming,
-	ContactDetail valueContactDetail,
-	Contributor valueContributor,
-	DataRequirement valueDataRequirement,
-	Expression valueExpression,
-	ParameterDefinition valueParameterDefinition,
-	RelatedArtifact valueRelatedArtifact,
-	TriggerDefinition valueTriggerDefinition,
-	UsageContext valueUsageContext,
-	Dosage valueDosage,
-	Meta valueMeta,
-}) async {
-var fhirDb = new DatabaseHelper();
-Task_Input newTask_Input = new Task_Input(
-	id: id ?? await fhirDb.newResourceId('Task_Input'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	valueBase64Binary: valueBase64Binary,
-	elementValueBase64Binary: elementValueBase64Binary,
-	valueBoolean: valueBoolean,
-	elementValueBoolean: elementValueBoolean,
-	valueCanonical: valueCanonical,
-	elementValueCanonical: elementValueCanonical,
-	valueCode: valueCode,
-	elementValueCode: elementValueCode,
-	valueDate: valueDate,
-	elementValueDate: elementValueDate,
-	valueDateTime: valueDateTime,
-	elementValueDateTime: elementValueDateTime,
-	valueDecimal: valueDecimal,
-	elementValueDecimal: elementValueDecimal,
-	valueId: valueId,
-	elementValueId: elementValueId,
-	valueInstant: valueInstant,
-	elementValueInstant: elementValueInstant,
-	valueInteger: valueInteger,
-	elementValueInteger: elementValueInteger,
-	valueMarkdown: valueMarkdown,
-	elementValueMarkdown: elementValueMarkdown,
-	valueOid: valueOid,
-	elementValueOid: elementValueOid,
-	valuePositiveInt: valuePositiveInt,
-	elementValuePositiveInt: elementValuePositiveInt,
-	valueString: valueString,
-	elementValueString: elementValueString,
-	valueTime: valueTime,
-	elementValueTime: elementValueTime,
-	valueUnsignedInt: valueUnsignedInt,
-	elementValueUnsignedInt: elementValueUnsignedInt,
-	valueUri: valueUri,
-	elementValueUri: elementValueUri,
-	valueUrl: valueUrl,
-	elementValueUrl: elementValueUrl,
-	valueUuid: valueUuid,
-	elementValueUuid: elementValueUuid,
-	valueAddress: valueAddress,
-	valueAge: valueAge,
-	valueAnnotation: valueAnnotation,
-	valueAttachment: valueAttachment,
-	valueCodeableConcept: valueCodeableConcept,
-	valueCoding: valueCoding,
-	valueContactPoint: valueContactPoint,
-	valueCount: valueCount,
-	valueDistance: valueDistance,
-	valueDuration: valueDuration,
-	valueHumanName: valueHumanName,
-	valueIdentifier: valueIdentifier,
-	valueMoney: valueMoney,
-	valuePeriod: valuePeriod,
-	valueQuantity: valueQuantity,
-	valueRange: valueRange,
-	valueRatio: valueRatio,
-	valueReference: valueReference,
-	valueSampledData: valueSampledData,
-	valueSignature: valueSignature,
-	valueTiming: valueTiming,
-	valueContactDetail: valueContactDetail,
-	valueContributor: valueContributor,
-	valueDataRequirement: valueDataRequirement,
-	valueExpression: valueExpression,
-	valueParameterDefinition: valueParameterDefinition,
-	valueRelatedArtifact: valueRelatedArtifact,
-	valueTriggerDefinition: valueTriggerDefinition,
-	valueUsageContext: valueUsageContext,
-	valueDosage: valueDosage,
-	valueMeta: valueMeta,
-);
-	return newTask_Input;
-}
+  Task_Input({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.valueBase64Binary,
+    this.elementValueBase64Binary,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueCanonical,
+    this.elementValueCanonical,
+    this.valueCode,
+    this.elementValueCode,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueId,
+    this.elementValueId,
+    this.valueInstant,
+    this.elementValueInstant,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueMarkdown,
+    this.elementValueMarkdown,
+    this.valueOid,
+    this.elementValueOid,
+    this.valuePositiveInt,
+    this.elementValuePositiveInt,
+    this.valueString,
+    this.elementValueString,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueUnsignedInt,
+    this.elementValueUnsignedInt,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueUrl,
+    this.elementValueUrl,
+    this.valueUuid,
+    this.elementValueUuid,
+    this.valueAddress,
+    this.valueAge,
+    this.valueAnnotation,
+    this.valueAttachment,
+    this.valueCodeableConcept,
+    this.valueCoding,
+    this.valueContactPoint,
+    this.valueCount,
+    this.valueDistance,
+    this.valueDuration,
+    this.valueHumanName,
+    this.valueIdentifier,
+    this.valueMoney,
+    this.valuePeriod,
+    this.valueQuantity,
+    this.valueRange,
+    this.valueRatio,
+    this.valueReference,
+    this.valueSampledData,
+    this.valueSignature,
+    this.valueTiming,
+    this.valueContactDetail,
+    this.valueContributor,
+    this.valueDataRequirement,
+    this.valueExpression,
+    this.valueParameterDefinition,
+    this.valueRelatedArtifact,
+    this.valueTriggerDefinition,
+    this.valueUsageContext,
+    this.valueDosage,
+    this.valueMeta,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept type;
-	String valueBase64Binary;
-	Element elementValueBase64Binary;
-	bool valueBoolean;
-	Element elementValueBoolean;
-	String valueCanonical;
-	Element elementValueCanonical;
-	String valueCode;
-	Element elementValueCode;
-	String valueDate;
-	Element elementValueDate;
-	String valueDateTime;
-	Element elementValueDateTime;
-	int valueDecimal;
-	Element elementValueDecimal;
-	String valueId;
-	Element elementValueId;
-	String valueInstant;
-	Element elementValueInstant;
-	int valueInteger;
-	Element elementValueInteger;
-	String valueMarkdown;
-	Element elementValueMarkdown;
-	String valueOid;
-	Element elementValueOid;
-	int valuePositiveInt;
-	Element elementValuePositiveInt;
-	String valueString;
-	Element elementValueString;
-	String valueTime;
-	Element elementValueTime;
-	int valueUnsignedInt;
-	Element elementValueUnsignedInt;
-	String valueUri;
-	Element elementValueUri;
-	String valueUrl;
-	Element elementValueUrl;
-	String valueUuid;
-	Element elementValueUuid;
-	Address valueAddress;
-	Age valueAge;
-	Annotation valueAnnotation;
-	Attachment valueAttachment;
-	CodeableConcept valueCodeableConcept;
-	Coding valueCoding;
-	ContactPoint valueContactPoint;
-	Count valueCount;
-	Distance valueDistance;
-	Duration valueDuration;
-	HumanName valueHumanName;
-	Identifier valueIdentifier;
-	Money valueMoney;
-	Period valuePeriod;
-	Quantity valueQuantity;
-	Range valueRange;
-	Ratio valueRatio;
-	Reference valueReference;
-	SampledData valueSampledData;
-	Signature valueSignature;
-	Timing valueTiming;
-	ContactDetail valueContactDetail;
-	Contributor valueContributor;
-	DataRequirement valueDataRequirement;
-	Expression valueExpression;
-	ParameterDefinition valueParameterDefinition;
-	RelatedArtifact valueRelatedArtifact;
-	TriggerDefinition valueTriggerDefinition;
-	UsageContext valueUsageContext;
-	Dosage valueDosage;
-	Meta valueMeta;
-
-Task_Input(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.type,
-this.valueBase64Binary,
-this.elementValueBase64Binary,
-this.valueBoolean,
-this.elementValueBoolean,
-this.valueCanonical,
-this.elementValueCanonical,
-this.valueCode,
-this.elementValueCode,
-this.valueDate,
-this.elementValueDate,
-this.valueDateTime,
-this.elementValueDateTime,
-this.valueDecimal,
-this.elementValueDecimal,
-this.valueId,
-this.elementValueId,
-this.valueInstant,
-this.elementValueInstant,
-this.valueInteger,
-this.elementValueInteger,
-this.valueMarkdown,
-this.elementValueMarkdown,
-this.valueOid,
-this.elementValueOid,
-this.valuePositiveInt,
-this.elementValuePositiveInt,
-this.valueString,
-this.elementValueString,
-this.valueTime,
-this.elementValueTime,
-this.valueUnsignedInt,
-this.elementValueUnsignedInt,
-this.valueUri,
-this.elementValueUri,
-this.valueUrl,
-this.elementValueUrl,
-this.valueUuid,
-this.elementValueUuid,
-this.valueAddress,
-this.valueAge,
-this.valueAnnotation,
-this.valueAttachment,
-this.valueCodeableConcept,
-this.valueCoding,
-this.valueContactPoint,
-this.valueCount,
-this.valueDistance,
-this.valueDuration,
-this.valueHumanName,
-this.valueIdentifier,
-this.valueMoney,
-this.valuePeriod,
-this.valueQuantity,
-this.valueRange,
-this.valueRatio,
-this.valueReference,
-this.valueSampledData,
-this.valueSignature,
-this.valueTiming,
-this.valueContactDetail,
-this.valueContributor,
-this.valueDataRequirement,
-this.valueExpression,
-this.valueParameterDefinition,
-this.valueRelatedArtifact,
-this.valueTriggerDefinition,
-this.valueUsageContext,
-this.valueDosage,
-this.valueMeta,
-});
-
-  factory Task_Input.fromJson(Map<String, dynamic> json) => _$Task_InputFromJson(json);
+  factory Task_Input.fromJson(Map<String, dynamic> json) =>
+      _$Task_InputFromJson(json);
   Map<String, dynamic> toJson() => _$Task_InputToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Task_Output {
+  static Future<Task_Output> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    CodeableConcept type,
+    String valueBase64Binary,
+    Element elementValueBase64Binary,
+    bool valueBoolean,
+    Element elementValueBoolean,
+    String valueCanonical,
+    Element elementValueCanonical,
+    String valueCode,
+    Element elementValueCode,
+    String valueDate,
+    Element elementValueDate,
+    String valueDateTime,
+    Element elementValueDateTime,
+    int valueDecimal,
+    Element elementValueDecimal,
+    String valueId,
+    Element elementValueId,
+    String valueInstant,
+    Element elementValueInstant,
+    int valueInteger,
+    Element elementValueInteger,
+    String valueMarkdown,
+    Element elementValueMarkdown,
+    String valueOid,
+    Element elementValueOid,
+    int valuePositiveInt,
+    Element elementValuePositiveInt,
+    String valueString,
+    Element elementValueString,
+    String valueTime,
+    Element elementValueTime,
+    int valueUnsignedInt,
+    Element elementValueUnsignedInt,
+    String valueUri,
+    Element elementValueUri,
+    String valueUrl,
+    Element elementValueUrl,
+    String valueUuid,
+    Element elementValueUuid,
+    Address valueAddress,
+    Age valueAge,
+    Annotation valueAnnotation,
+    Attachment valueAttachment,
+    CodeableConcept valueCodeableConcept,
+    Coding valueCoding,
+    ContactPoint valueContactPoint,
+    Count valueCount,
+    Distance valueDistance,
+    Duration valueDuration,
+    HumanName valueHumanName,
+    Identifier valueIdentifier,
+    Money valueMoney,
+    Period valuePeriod,
+    Quantity valueQuantity,
+    Range valueRange,
+    Ratio valueRatio,
+    Reference valueReference,
+    SampledData valueSampledData,
+    Signature valueSignature,
+    Timing valueTiming,
+    ContactDetail valueContactDetail,
+    Contributor valueContributor,
+    DataRequirement valueDataRequirement,
+    Expression valueExpression,
+    ParameterDefinition valueParameterDefinition,
+    RelatedArtifact valueRelatedArtifact,
+    TriggerDefinition valueTriggerDefinition,
+    UsageContext valueUsageContext,
+    Dosage valueDosage,
+    Meta valueMeta,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Task_Output newTask_Output = new Task_Output(
+      id: id ?? await fhirDb.newResourceId('Task_Output'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      valueBase64Binary: valueBase64Binary,
+      elementValueBase64Binary: elementValueBase64Binary,
+      valueBoolean: valueBoolean,
+      elementValueBoolean: elementValueBoolean,
+      valueCanonical: valueCanonical,
+      elementValueCanonical: elementValueCanonical,
+      valueCode: valueCode,
+      elementValueCode: elementValueCode,
+      valueDate: valueDate,
+      elementValueDate: elementValueDate,
+      valueDateTime: valueDateTime,
+      elementValueDateTime: elementValueDateTime,
+      valueDecimal: valueDecimal,
+      elementValueDecimal: elementValueDecimal,
+      valueId: valueId,
+      elementValueId: elementValueId,
+      valueInstant: valueInstant,
+      elementValueInstant: elementValueInstant,
+      valueInteger: valueInteger,
+      elementValueInteger: elementValueInteger,
+      valueMarkdown: valueMarkdown,
+      elementValueMarkdown: elementValueMarkdown,
+      valueOid: valueOid,
+      elementValueOid: elementValueOid,
+      valuePositiveInt: valuePositiveInt,
+      elementValuePositiveInt: elementValuePositiveInt,
+      valueString: valueString,
+      elementValueString: elementValueString,
+      valueTime: valueTime,
+      elementValueTime: elementValueTime,
+      valueUnsignedInt: valueUnsignedInt,
+      elementValueUnsignedInt: elementValueUnsignedInt,
+      valueUri: valueUri,
+      elementValueUri: elementValueUri,
+      valueUrl: valueUrl,
+      elementValueUrl: elementValueUrl,
+      valueUuid: valueUuid,
+      elementValueUuid: elementValueUuid,
+      valueAddress: valueAddress,
+      valueAge: valueAge,
+      valueAnnotation: valueAnnotation,
+      valueAttachment: valueAttachment,
+      valueCodeableConcept: valueCodeableConcept,
+      valueCoding: valueCoding,
+      valueContactPoint: valueContactPoint,
+      valueCount: valueCount,
+      valueDistance: valueDistance,
+      valueDuration: valueDuration,
+      valueHumanName: valueHumanName,
+      valueIdentifier: valueIdentifier,
+      valueMoney: valueMoney,
+      valuePeriod: valuePeriod,
+      valueQuantity: valueQuantity,
+      valueRange: valueRange,
+      valueRatio: valueRatio,
+      valueReference: valueReference,
+      valueSampledData: valueSampledData,
+      valueSignature: valueSignature,
+      valueTiming: valueTiming,
+      valueContactDetail: valueContactDetail,
+      valueContributor: valueContributor,
+      valueDataRequirement: valueDataRequirement,
+      valueExpression: valueExpression,
+      valueParameterDefinition: valueParameterDefinition,
+      valueRelatedArtifact: valueRelatedArtifact,
+      valueTriggerDefinition: valueTriggerDefinition,
+      valueUsageContext: valueUsageContext,
+      valueDosage: valueDosage,
+      valueMeta: valueMeta,
+    );
+    return newTask_Output;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Task_Output{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  CodeableConcept type;
+  String valueBase64Binary;
+  Element elementValueBase64Binary;
+  bool valueBoolean;
+  Element elementValueBoolean;
+  String valueCanonical;
+  Element elementValueCanonical;
+  String valueCode;
+  Element elementValueCode;
+  String valueDate;
+  Element elementValueDate;
+  String valueDateTime;
+  Element elementValueDateTime;
+  int valueDecimal;
+  Element elementValueDecimal;
+  String valueId;
+  Element elementValueId;
+  String valueInstant;
+  Element elementValueInstant;
+  int valueInteger;
+  Element elementValueInteger;
+  String valueMarkdown;
+  Element elementValueMarkdown;
+  String valueOid;
+  Element elementValueOid;
+  int valuePositiveInt;
+  Element elementValuePositiveInt;
+  String valueString;
+  Element elementValueString;
+  String valueTime;
+  Element elementValueTime;
+  int valueUnsignedInt;
+  Element elementValueUnsignedInt;
+  String valueUri;
+  Element elementValueUri;
+  String valueUrl;
+  Element elementValueUrl;
+  String valueUuid;
+  Element elementValueUuid;
+  Address valueAddress;
+  Age valueAge;
+  Annotation valueAnnotation;
+  Attachment valueAttachment;
+  CodeableConcept valueCodeableConcept;
+  Coding valueCoding;
+  ContactPoint valueContactPoint;
+  Count valueCount;
+  Distance valueDistance;
+  Duration valueDuration;
+  HumanName valueHumanName;
+  Identifier valueIdentifier;
+  Money valueMoney;
+  Period valuePeriod;
+  Quantity valueQuantity;
+  Range valueRange;
+  Ratio valueRatio;
+  Reference valueReference;
+  SampledData valueSampledData;
+  Signature valueSignature;
+  Timing valueTiming;
+  ContactDetail valueContactDetail;
+  Contributor valueContributor;
+  DataRequirement valueDataRequirement;
+  Expression valueExpression;
+  ParameterDefinition valueParameterDefinition;
+  RelatedArtifact valueRelatedArtifact;
+  TriggerDefinition valueTriggerDefinition;
+  UsageContext valueUsageContext;
+  Dosage valueDosage;
+  Meta valueMeta;
 
-	static Future<Task_Output> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	CodeableConcept type,
-	String valueBase64Binary,
-	Element elementValueBase64Binary,
-	bool valueBoolean,
-	Element elementValueBoolean,
-	String valueCanonical,
-	Element elementValueCanonical,
-	String valueCode,
-	Element elementValueCode,
-	String valueDate,
-	Element elementValueDate,
-	String valueDateTime,
-	Element elementValueDateTime,
-	int valueDecimal,
-	Element elementValueDecimal,
-	String valueId,
-	Element elementValueId,
-	String valueInstant,
-	Element elementValueInstant,
-	int valueInteger,
-	Element elementValueInteger,
-	String valueMarkdown,
-	Element elementValueMarkdown,
-	String valueOid,
-	Element elementValueOid,
-	int valuePositiveInt,
-	Element elementValuePositiveInt,
-	String valueString,
-	Element elementValueString,
-	String valueTime,
-	Element elementValueTime,
-	int valueUnsignedInt,
-	Element elementValueUnsignedInt,
-	String valueUri,
-	Element elementValueUri,
-	String valueUrl,
-	Element elementValueUrl,
-	String valueUuid,
-	Element elementValueUuid,
-	Address valueAddress,
-	Age valueAge,
-	Annotation valueAnnotation,
-	Attachment valueAttachment,
-	CodeableConcept valueCodeableConcept,
-	Coding valueCoding,
-	ContactPoint valueContactPoint,
-	Count valueCount,
-	Distance valueDistance,
-	Duration valueDuration,
-	HumanName valueHumanName,
-	Identifier valueIdentifier,
-	Money valueMoney,
-	Period valuePeriod,
-	Quantity valueQuantity,
-	Range valueRange,
-	Ratio valueRatio,
-	Reference valueReference,
-	SampledData valueSampledData,
-	Signature valueSignature,
-	Timing valueTiming,
-	ContactDetail valueContactDetail,
-	Contributor valueContributor,
-	DataRequirement valueDataRequirement,
-	Expression valueExpression,
-	ParameterDefinition valueParameterDefinition,
-	RelatedArtifact valueRelatedArtifact,
-	TriggerDefinition valueTriggerDefinition,
-	UsageContext valueUsageContext,
-	Dosage valueDosage,
-	Meta valueMeta,
-}) async {
-var fhirDb = new DatabaseHelper();
-Task_Output newTask_Output = new Task_Output(
-	id: id ?? await fhirDb.newResourceId('Task_Output'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	valueBase64Binary: valueBase64Binary,
-	elementValueBase64Binary: elementValueBase64Binary,
-	valueBoolean: valueBoolean,
-	elementValueBoolean: elementValueBoolean,
-	valueCanonical: valueCanonical,
-	elementValueCanonical: elementValueCanonical,
-	valueCode: valueCode,
-	elementValueCode: elementValueCode,
-	valueDate: valueDate,
-	elementValueDate: elementValueDate,
-	valueDateTime: valueDateTime,
-	elementValueDateTime: elementValueDateTime,
-	valueDecimal: valueDecimal,
-	elementValueDecimal: elementValueDecimal,
-	valueId: valueId,
-	elementValueId: elementValueId,
-	valueInstant: valueInstant,
-	elementValueInstant: elementValueInstant,
-	valueInteger: valueInteger,
-	elementValueInteger: elementValueInteger,
-	valueMarkdown: valueMarkdown,
-	elementValueMarkdown: elementValueMarkdown,
-	valueOid: valueOid,
-	elementValueOid: elementValueOid,
-	valuePositiveInt: valuePositiveInt,
-	elementValuePositiveInt: elementValuePositiveInt,
-	valueString: valueString,
-	elementValueString: elementValueString,
-	valueTime: valueTime,
-	elementValueTime: elementValueTime,
-	valueUnsignedInt: valueUnsignedInt,
-	elementValueUnsignedInt: elementValueUnsignedInt,
-	valueUri: valueUri,
-	elementValueUri: elementValueUri,
-	valueUrl: valueUrl,
-	elementValueUrl: elementValueUrl,
-	valueUuid: valueUuid,
-	elementValueUuid: elementValueUuid,
-	valueAddress: valueAddress,
-	valueAge: valueAge,
-	valueAnnotation: valueAnnotation,
-	valueAttachment: valueAttachment,
-	valueCodeableConcept: valueCodeableConcept,
-	valueCoding: valueCoding,
-	valueContactPoint: valueContactPoint,
-	valueCount: valueCount,
-	valueDistance: valueDistance,
-	valueDuration: valueDuration,
-	valueHumanName: valueHumanName,
-	valueIdentifier: valueIdentifier,
-	valueMoney: valueMoney,
-	valuePeriod: valuePeriod,
-	valueQuantity: valueQuantity,
-	valueRange: valueRange,
-	valueRatio: valueRatio,
-	valueReference: valueReference,
-	valueSampledData: valueSampledData,
-	valueSignature: valueSignature,
-	valueTiming: valueTiming,
-	valueContactDetail: valueContactDetail,
-	valueContributor: valueContributor,
-	valueDataRequirement: valueDataRequirement,
-	valueExpression: valueExpression,
-	valueParameterDefinition: valueParameterDefinition,
-	valueRelatedArtifact: valueRelatedArtifact,
-	valueTriggerDefinition: valueTriggerDefinition,
-	valueUsageContext: valueUsageContext,
-	valueDosage: valueDosage,
-	valueMeta: valueMeta,
-);
-	return newTask_Output;
-}
+  Task_Output({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    @required this.type,
+    this.valueBase64Binary,
+    this.elementValueBase64Binary,
+    this.valueBoolean,
+    this.elementValueBoolean,
+    this.valueCanonical,
+    this.elementValueCanonical,
+    this.valueCode,
+    this.elementValueCode,
+    this.valueDate,
+    this.elementValueDate,
+    this.valueDateTime,
+    this.elementValueDateTime,
+    this.valueDecimal,
+    this.elementValueDecimal,
+    this.valueId,
+    this.elementValueId,
+    this.valueInstant,
+    this.elementValueInstant,
+    this.valueInteger,
+    this.elementValueInteger,
+    this.valueMarkdown,
+    this.elementValueMarkdown,
+    this.valueOid,
+    this.elementValueOid,
+    this.valuePositiveInt,
+    this.elementValuePositiveInt,
+    this.valueString,
+    this.elementValueString,
+    this.valueTime,
+    this.elementValueTime,
+    this.valueUnsignedInt,
+    this.elementValueUnsignedInt,
+    this.valueUri,
+    this.elementValueUri,
+    this.valueUrl,
+    this.elementValueUrl,
+    this.valueUuid,
+    this.elementValueUuid,
+    this.valueAddress,
+    this.valueAge,
+    this.valueAnnotation,
+    this.valueAttachment,
+    this.valueCodeableConcept,
+    this.valueCoding,
+    this.valueContactPoint,
+    this.valueCount,
+    this.valueDistance,
+    this.valueDuration,
+    this.valueHumanName,
+    this.valueIdentifier,
+    this.valueMoney,
+    this.valuePeriod,
+    this.valueQuantity,
+    this.valueRange,
+    this.valueRatio,
+    this.valueReference,
+    this.valueSampledData,
+    this.valueSignature,
+    this.valueTiming,
+    this.valueContactDetail,
+    this.valueContributor,
+    this.valueDataRequirement,
+    this.valueExpression,
+    this.valueParameterDefinition,
+    this.valueRelatedArtifact,
+    this.valueTriggerDefinition,
+    this.valueUsageContext,
+    this.valueDosage,
+    this.valueMeta,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	CodeableConcept type;
-	String valueBase64Binary;
-	Element elementValueBase64Binary;
-	bool valueBoolean;
-	Element elementValueBoolean;
-	String valueCanonical;
-	Element elementValueCanonical;
-	String valueCode;
-	Element elementValueCode;
-	String valueDate;
-	Element elementValueDate;
-	String valueDateTime;
-	Element elementValueDateTime;
-	int valueDecimal;
-	Element elementValueDecimal;
-	String valueId;
-	Element elementValueId;
-	String valueInstant;
-	Element elementValueInstant;
-	int valueInteger;
-	Element elementValueInteger;
-	String valueMarkdown;
-	Element elementValueMarkdown;
-	String valueOid;
-	Element elementValueOid;
-	int valuePositiveInt;
-	Element elementValuePositiveInt;
-	String valueString;
-	Element elementValueString;
-	String valueTime;
-	Element elementValueTime;
-	int valueUnsignedInt;
-	Element elementValueUnsignedInt;
-	String valueUri;
-	Element elementValueUri;
-	String valueUrl;
-	Element elementValueUrl;
-	String valueUuid;
-	Element elementValueUuid;
-	Address valueAddress;
-	Age valueAge;
-	Annotation valueAnnotation;
-	Attachment valueAttachment;
-	CodeableConcept valueCodeableConcept;
-	Coding valueCoding;
-	ContactPoint valueContactPoint;
-	Count valueCount;
-	Distance valueDistance;
-	Duration valueDuration;
-	HumanName valueHumanName;
-	Identifier valueIdentifier;
-	Money valueMoney;
-	Period valuePeriod;
-	Quantity valueQuantity;
-	Range valueRange;
-	Ratio valueRatio;
-	Reference valueReference;
-	SampledData valueSampledData;
-	Signature valueSignature;
-	Timing valueTiming;
-	ContactDetail valueContactDetail;
-	Contributor valueContributor;
-	DataRequirement valueDataRequirement;
-	Expression valueExpression;
-	ParameterDefinition valueParameterDefinition;
-	RelatedArtifact valueRelatedArtifact;
-	TriggerDefinition valueTriggerDefinition;
-	UsageContext valueUsageContext;
-	Dosage valueDosage;
-	Meta valueMeta;
-
-Task_Output(
-	{this.id,
-this.extension,
-this.modifierExtension,
-@required this.type,
-this.valueBase64Binary,
-this.elementValueBase64Binary,
-this.valueBoolean,
-this.elementValueBoolean,
-this.valueCanonical,
-this.elementValueCanonical,
-this.valueCode,
-this.elementValueCode,
-this.valueDate,
-this.elementValueDate,
-this.valueDateTime,
-this.elementValueDateTime,
-this.valueDecimal,
-this.elementValueDecimal,
-this.valueId,
-this.elementValueId,
-this.valueInstant,
-this.elementValueInstant,
-this.valueInteger,
-this.elementValueInteger,
-this.valueMarkdown,
-this.elementValueMarkdown,
-this.valueOid,
-this.elementValueOid,
-this.valuePositiveInt,
-this.elementValuePositiveInt,
-this.valueString,
-this.elementValueString,
-this.valueTime,
-this.elementValueTime,
-this.valueUnsignedInt,
-this.elementValueUnsignedInt,
-this.valueUri,
-this.elementValueUri,
-this.valueUrl,
-this.elementValueUrl,
-this.valueUuid,
-this.elementValueUuid,
-this.valueAddress,
-this.valueAge,
-this.valueAnnotation,
-this.valueAttachment,
-this.valueCodeableConcept,
-this.valueCoding,
-this.valueContactPoint,
-this.valueCount,
-this.valueDistance,
-this.valueDuration,
-this.valueHumanName,
-this.valueIdentifier,
-this.valueMoney,
-this.valuePeriod,
-this.valueQuantity,
-this.valueRange,
-this.valueRatio,
-this.valueReference,
-this.valueSampledData,
-this.valueSignature,
-this.valueTiming,
-this.valueContactDetail,
-this.valueContributor,
-this.valueDataRequirement,
-this.valueExpression,
-this.valueParameterDefinition,
-this.valueRelatedArtifact,
-this.valueTriggerDefinition,
-this.valueUsageContext,
-this.valueDosage,
-this.valueMeta,
-});
-
-  factory Task_Output.fromJson(Map<String, dynamic> json) => _$Task_OutputFromJson(json);
+  factory Task_Output.fromJson(Map<String, dynamic> json) =>
+      _$Task_OutputFromJson(json);
   Map<String, dynamic> toJson() => _$Task_OutputToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -960,8 +958,9 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1090,60 +1089,73 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri': instance.elementInstantiatesUri?.toJson(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'groupIdentifier': instance.groupIdentifier?.toJson(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReason': instance.statusReason?.toJson(),
-      'businessStatus': instance.businessStatus?.toJson(),
-      'intent': instance.intent,
-      'elementIntent': instance.elementIntent?.toJson(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'code': instance.code?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'focus': instance.focus?.toJson(),
-      'fore': instance.fore?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'executionPeriod': instance.executionPeriod?.toJson(),
-      'authoredOn': instance.authoredOn?.toIso8601String(),
-      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
-      'lastModified': instance.lastModified?.toIso8601String(),
-      'elementLastModified': instance.elementLastModified?.toJson(),
-      'requester': instance.requester?.toJson(),
-      'performerType':
-          instance.performerType?.map((e) => e?.toJson())?.toList(),
-      'owner': instance.owner?.toJson(),
-      'location': instance.location?.toJson(),
-      'reasonCode': instance.reasonCode?.toJson(),
-      'reasonReference': instance.reasonReference?.toJson(),
-      'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'relevantHistory':
-          instance.relevantHistory?.map((e) => e?.toJson())?.toList(),
-      'restriction': instance.restriction?.toJson(),
-      'input': instance.input?.map((e) => e?.toJson())?.toList(),
-      'output': instance.output?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$TaskToJson(Task instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull(
+      'elementInstantiatesUri', instance.elementInstantiatesUri?.toJson());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('groupIdentifier', instance.groupIdentifier?.toJson());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusReason', instance.statusReason?.toJson());
+  writeNotNull('businessStatus', instance.businessStatus?.toJson());
+  writeNotNull('intent', instance.intent);
+  writeNotNull('elementIntent', instance.elementIntent?.toJson());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('focus', instance.focus?.toJson());
+  writeNotNull('fore', instance.fore?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('executionPeriod', instance.executionPeriod?.toJson());
+  writeNotNull('authoredOn', instance.authoredOn?.toIso8601String());
+  writeNotNull('elementAuthoredOn', instance.elementAuthoredOn?.toJson());
+  writeNotNull('lastModified', instance.lastModified?.toIso8601String());
+  writeNotNull('elementLastModified', instance.elementLastModified?.toJson());
+  writeNotNull('requester', instance.requester?.toJson());
+  writeNotNull('performerType',
+      instance.performerType?.map((e) => e?.toJson())?.toList());
+  writeNotNull('owner', instance.owner?.toJson());
+  writeNotNull('location', instance.location?.toJson());
+  writeNotNull('reasonCode', instance.reasonCode?.toJson());
+  writeNotNull('reasonReference', instance.reasonReference?.toJson());
+  writeNotNull(
+      'insurance', instance.insurance?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relevantHistory',
+      instance.relevantHistory?.map((e) => e?.toJson())?.toList());
+  writeNotNull('restriction', instance.restriction?.toJson());
+  writeNotNull('input', instance.input?.map((e) => e?.toJson())?.toList());
+  writeNotNull('output', instance.output?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Task_Restriction _$Task_RestrictionFromJson(Map<String, dynamic> json) {
   return Task_Restriction(
@@ -1170,17 +1182,27 @@ Task_Restriction _$Task_RestrictionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Task_RestrictionToJson(Task_Restriction instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'repetitions': instance.repetitions,
-      'elementRepetitions': instance.elementRepetitions?.toJson(),
-      'period': instance.period?.toJson(),
-      'recipient': instance.recipient?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$Task_RestrictionToJson(Task_Restriction instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('repetitions', instance.repetitions);
+  writeNotNull('elementRepetitions', instance.elementRepetitions?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull(
+      'recipient', instance.recipient?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Task_Input _$Task_InputFromJson(Map<String, dynamic> json) {
   return Task_Input(
@@ -1384,83 +1406,98 @@ Task_Input _$Task_InputFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Task_InputToJson(Task_Input instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'valueBase64Binary': instance.valueBase64Binary,
-      'elementValueBase64Binary': instance.elementValueBase64Binary?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueCanonical': instance.valueCanonical,
-      'elementValueCanonical': instance.elementValueCanonical?.toJson(),
-      'valueCode': instance.valueCode,
-      'elementValueCode': instance.elementValueCode?.toJson(),
-      'valueDate': instance.valueDate,
-      'elementValueDate': instance.elementValueDate?.toJson(),
-      'valueDateTime': instance.valueDateTime,
-      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
-      'valueDecimal': instance.valueDecimal,
-      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
-      'valueId': instance.valueId,
-      'elementValueId': instance.elementValueId?.toJson(),
-      'valueInstant': instance.valueInstant,
-      'elementValueInstant': instance.elementValueInstant?.toJson(),
-      'valueInteger': instance.valueInteger,
-      'elementValueInteger': instance.elementValueInteger?.toJson(),
-      'valueMarkdown': instance.valueMarkdown,
-      'elementValueMarkdown': instance.elementValueMarkdown?.toJson(),
-      'valueOid': instance.valueOid,
-      'elementValueOid': instance.elementValueOid?.toJson(),
-      'valuePositiveInt': instance.valuePositiveInt,
-      'elementValuePositiveInt': instance.elementValuePositiveInt?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueTime': instance.valueTime,
-      'elementValueTime': instance.elementValueTime?.toJson(),
-      'valueUnsignedInt': instance.valueUnsignedInt,
-      'elementValueUnsignedInt': instance.elementValueUnsignedInt?.toJson(),
-      'valueUri': instance.valueUri,
-      'elementValueUri': instance.elementValueUri?.toJson(),
-      'valueUrl': instance.valueUrl,
-      'elementValueUrl': instance.elementValueUrl?.toJson(),
-      'valueUuid': instance.valueUuid,
-      'elementValueUuid': instance.elementValueUuid?.toJson(),
-      'valueAddress': instance.valueAddress?.toJson(),
-      'valueAge': instance.valueAge?.toJson(),
-      'valueAnnotation': instance.valueAnnotation?.toJson(),
-      'valueAttachment': instance.valueAttachment?.toJson(),
-      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
-      'valueCoding': instance.valueCoding?.toJson(),
-      'valueContactPoint': instance.valueContactPoint?.toJson(),
-      'valueCount': instance.valueCount?.toJson(),
-      'valueDistance': instance.valueDistance?.toJson(),
-      'valueDuration': instance.valueDuration?.toJson(),
-      'valueHumanName': instance.valueHumanName?.toJson(),
-      'valueIdentifier': instance.valueIdentifier?.toJson(),
-      'valueMoney': instance.valueMoney?.toJson(),
-      'valuePeriod': instance.valuePeriod?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueRange': instance.valueRange?.toJson(),
-      'valueRatio': instance.valueRatio?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-      'valueSampledData': instance.valueSampledData?.toJson(),
-      'valueSignature': instance.valueSignature?.toJson(),
-      'valueTiming': instance.valueTiming?.toJson(),
-      'valueContactDetail': instance.valueContactDetail?.toJson(),
-      'valueContributor': instance.valueContributor?.toJson(),
-      'valueDataRequirement': instance.valueDataRequirement?.toJson(),
-      'valueExpression': instance.valueExpression?.toJson(),
-      'valueParameterDefinition': instance.valueParameterDefinition?.toJson(),
-      'valueRelatedArtifact': instance.valueRelatedArtifact?.toJson(),
-      'valueTriggerDefinition': instance.valueTriggerDefinition?.toJson(),
-      'valueUsageContext': instance.valueUsageContext?.toJson(),
-      'valueDosage': instance.valueDosage?.toJson(),
-      'valueMeta': instance.valueMeta?.toJson(),
-    };
+Map<String, dynamic> _$Task_InputToJson(Task_Input instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('valueBase64Binary', instance.valueBase64Binary);
+  writeNotNull(
+      'elementValueBase64Binary', instance.elementValueBase64Binary?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueCanonical', instance.valueCanonical);
+  writeNotNull(
+      'elementValueCanonical', instance.elementValueCanonical?.toJson());
+  writeNotNull('valueCode', instance.valueCode);
+  writeNotNull('elementValueCode', instance.elementValueCode?.toJson());
+  writeNotNull('valueDate', instance.valueDate);
+  writeNotNull('elementValueDate', instance.elementValueDate?.toJson());
+  writeNotNull('valueDateTime', instance.valueDateTime);
+  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
+  writeNotNull('valueDecimal', instance.valueDecimal);
+  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
+  writeNotNull('valueId', instance.valueId);
+  writeNotNull('elementValueId', instance.elementValueId?.toJson());
+  writeNotNull('valueInstant', instance.valueInstant);
+  writeNotNull('elementValueInstant', instance.elementValueInstant?.toJson());
+  writeNotNull('valueInteger', instance.valueInteger);
+  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
+  writeNotNull('valueMarkdown', instance.valueMarkdown);
+  writeNotNull('elementValueMarkdown', instance.elementValueMarkdown?.toJson());
+  writeNotNull('valueOid', instance.valueOid);
+  writeNotNull('elementValueOid', instance.elementValueOid?.toJson());
+  writeNotNull('valuePositiveInt', instance.valuePositiveInt);
+  writeNotNull(
+      'elementValuePositiveInt', instance.elementValuePositiveInt?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueTime', instance.valueTime);
+  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
+  writeNotNull('valueUnsignedInt', instance.valueUnsignedInt);
+  writeNotNull(
+      'elementValueUnsignedInt', instance.elementValueUnsignedInt?.toJson());
+  writeNotNull('valueUri', instance.valueUri);
+  writeNotNull('elementValueUri', instance.elementValueUri?.toJson());
+  writeNotNull('valueUrl', instance.valueUrl);
+  writeNotNull('elementValueUrl', instance.elementValueUrl?.toJson());
+  writeNotNull('valueUuid', instance.valueUuid);
+  writeNotNull('elementValueUuid', instance.elementValueUuid?.toJson());
+  writeNotNull('valueAddress', instance.valueAddress?.toJson());
+  writeNotNull('valueAge', instance.valueAge?.toJson());
+  writeNotNull('valueAnnotation', instance.valueAnnotation?.toJson());
+  writeNotNull('valueAttachment', instance.valueAttachment?.toJson());
+  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
+  writeNotNull('valueCoding', instance.valueCoding?.toJson());
+  writeNotNull('valueContactPoint', instance.valueContactPoint?.toJson());
+  writeNotNull('valueCount', instance.valueCount?.toJson());
+  writeNotNull('valueDistance', instance.valueDistance?.toJson());
+  writeNotNull('valueDuration', instance.valueDuration?.toJson());
+  writeNotNull('valueHumanName', instance.valueHumanName?.toJson());
+  writeNotNull('valueIdentifier', instance.valueIdentifier?.toJson());
+  writeNotNull('valueMoney', instance.valueMoney?.toJson());
+  writeNotNull('valuePeriod', instance.valuePeriod?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueRange', instance.valueRange?.toJson());
+  writeNotNull('valueRatio', instance.valueRatio?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  writeNotNull('valueSampledData', instance.valueSampledData?.toJson());
+  writeNotNull('valueSignature', instance.valueSignature?.toJson());
+  writeNotNull('valueTiming', instance.valueTiming?.toJson());
+  writeNotNull('valueContactDetail', instance.valueContactDetail?.toJson());
+  writeNotNull('valueContributor', instance.valueContributor?.toJson());
+  writeNotNull('valueDataRequirement', instance.valueDataRequirement?.toJson());
+  writeNotNull('valueExpression', instance.valueExpression?.toJson());
+  writeNotNull(
+      'valueParameterDefinition', instance.valueParameterDefinition?.toJson());
+  writeNotNull('valueRelatedArtifact', instance.valueRelatedArtifact?.toJson());
+  writeNotNull(
+      'valueTriggerDefinition', instance.valueTriggerDefinition?.toJson());
+  writeNotNull('valueUsageContext', instance.valueUsageContext?.toJson());
+  writeNotNull('valueDosage', instance.valueDosage?.toJson());
+  writeNotNull('valueMeta', instance.valueMeta?.toJson());
+  return val;
+}
 
 Task_Output _$Task_OutputFromJson(Map<String, dynamic> json) {
   return Task_Output(
@@ -1664,80 +1701,95 @@ Task_Output _$Task_OutputFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Task_OutputToJson(Task_Output instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'valueBase64Binary': instance.valueBase64Binary,
-      'elementValueBase64Binary': instance.elementValueBase64Binary?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueCanonical': instance.valueCanonical,
-      'elementValueCanonical': instance.elementValueCanonical?.toJson(),
-      'valueCode': instance.valueCode,
-      'elementValueCode': instance.elementValueCode?.toJson(),
-      'valueDate': instance.valueDate,
-      'elementValueDate': instance.elementValueDate?.toJson(),
-      'valueDateTime': instance.valueDateTime,
-      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
-      'valueDecimal': instance.valueDecimal,
-      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
-      'valueId': instance.valueId,
-      'elementValueId': instance.elementValueId?.toJson(),
-      'valueInstant': instance.valueInstant,
-      'elementValueInstant': instance.elementValueInstant?.toJson(),
-      'valueInteger': instance.valueInteger,
-      'elementValueInteger': instance.elementValueInteger?.toJson(),
-      'valueMarkdown': instance.valueMarkdown,
-      'elementValueMarkdown': instance.elementValueMarkdown?.toJson(),
-      'valueOid': instance.valueOid,
-      'elementValueOid': instance.elementValueOid?.toJson(),
-      'valuePositiveInt': instance.valuePositiveInt,
-      'elementValuePositiveInt': instance.elementValuePositiveInt?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueTime': instance.valueTime,
-      'elementValueTime': instance.elementValueTime?.toJson(),
-      'valueUnsignedInt': instance.valueUnsignedInt,
-      'elementValueUnsignedInt': instance.elementValueUnsignedInt?.toJson(),
-      'valueUri': instance.valueUri,
-      'elementValueUri': instance.elementValueUri?.toJson(),
-      'valueUrl': instance.valueUrl,
-      'elementValueUrl': instance.elementValueUrl?.toJson(),
-      'valueUuid': instance.valueUuid,
-      'elementValueUuid': instance.elementValueUuid?.toJson(),
-      'valueAddress': instance.valueAddress?.toJson(),
-      'valueAge': instance.valueAge?.toJson(),
-      'valueAnnotation': instance.valueAnnotation?.toJson(),
-      'valueAttachment': instance.valueAttachment?.toJson(),
-      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
-      'valueCoding': instance.valueCoding?.toJson(),
-      'valueContactPoint': instance.valueContactPoint?.toJson(),
-      'valueCount': instance.valueCount?.toJson(),
-      'valueDistance': instance.valueDistance?.toJson(),
-      'valueDuration': instance.valueDuration?.toJson(),
-      'valueHumanName': instance.valueHumanName?.toJson(),
-      'valueIdentifier': instance.valueIdentifier?.toJson(),
-      'valueMoney': instance.valueMoney?.toJson(),
-      'valuePeriod': instance.valuePeriod?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueRange': instance.valueRange?.toJson(),
-      'valueRatio': instance.valueRatio?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-      'valueSampledData': instance.valueSampledData?.toJson(),
-      'valueSignature': instance.valueSignature?.toJson(),
-      'valueTiming': instance.valueTiming?.toJson(),
-      'valueContactDetail': instance.valueContactDetail?.toJson(),
-      'valueContributor': instance.valueContributor?.toJson(),
-      'valueDataRequirement': instance.valueDataRequirement?.toJson(),
-      'valueExpression': instance.valueExpression?.toJson(),
-      'valueParameterDefinition': instance.valueParameterDefinition?.toJson(),
-      'valueRelatedArtifact': instance.valueRelatedArtifact?.toJson(),
-      'valueTriggerDefinition': instance.valueTriggerDefinition?.toJson(),
-      'valueUsageContext': instance.valueUsageContext?.toJson(),
-      'valueDosage': instance.valueDosage?.toJson(),
-      'valueMeta': instance.valueMeta?.toJson(),
-    };
+Map<String, dynamic> _$Task_OutputToJson(Task_Output instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('valueBase64Binary', instance.valueBase64Binary);
+  writeNotNull(
+      'elementValueBase64Binary', instance.elementValueBase64Binary?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueCanonical', instance.valueCanonical);
+  writeNotNull(
+      'elementValueCanonical', instance.elementValueCanonical?.toJson());
+  writeNotNull('valueCode', instance.valueCode);
+  writeNotNull('elementValueCode', instance.elementValueCode?.toJson());
+  writeNotNull('valueDate', instance.valueDate);
+  writeNotNull('elementValueDate', instance.elementValueDate?.toJson());
+  writeNotNull('valueDateTime', instance.valueDateTime);
+  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
+  writeNotNull('valueDecimal', instance.valueDecimal);
+  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
+  writeNotNull('valueId', instance.valueId);
+  writeNotNull('elementValueId', instance.elementValueId?.toJson());
+  writeNotNull('valueInstant', instance.valueInstant);
+  writeNotNull('elementValueInstant', instance.elementValueInstant?.toJson());
+  writeNotNull('valueInteger', instance.valueInteger);
+  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
+  writeNotNull('valueMarkdown', instance.valueMarkdown);
+  writeNotNull('elementValueMarkdown', instance.elementValueMarkdown?.toJson());
+  writeNotNull('valueOid', instance.valueOid);
+  writeNotNull('elementValueOid', instance.elementValueOid?.toJson());
+  writeNotNull('valuePositiveInt', instance.valuePositiveInt);
+  writeNotNull(
+      'elementValuePositiveInt', instance.elementValuePositiveInt?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueTime', instance.valueTime);
+  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
+  writeNotNull('valueUnsignedInt', instance.valueUnsignedInt);
+  writeNotNull(
+      'elementValueUnsignedInt', instance.elementValueUnsignedInt?.toJson());
+  writeNotNull('valueUri', instance.valueUri);
+  writeNotNull('elementValueUri', instance.elementValueUri?.toJson());
+  writeNotNull('valueUrl', instance.valueUrl);
+  writeNotNull('elementValueUrl', instance.elementValueUrl?.toJson());
+  writeNotNull('valueUuid', instance.valueUuid);
+  writeNotNull('elementValueUuid', instance.elementValueUuid?.toJson());
+  writeNotNull('valueAddress', instance.valueAddress?.toJson());
+  writeNotNull('valueAge', instance.valueAge?.toJson());
+  writeNotNull('valueAnnotation', instance.valueAnnotation?.toJson());
+  writeNotNull('valueAttachment', instance.valueAttachment?.toJson());
+  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
+  writeNotNull('valueCoding', instance.valueCoding?.toJson());
+  writeNotNull('valueContactPoint', instance.valueContactPoint?.toJson());
+  writeNotNull('valueCount', instance.valueCount?.toJson());
+  writeNotNull('valueDistance', instance.valueDistance?.toJson());
+  writeNotNull('valueDuration', instance.valueDuration?.toJson());
+  writeNotNull('valueHumanName', instance.valueHumanName?.toJson());
+  writeNotNull('valueIdentifier', instance.valueIdentifier?.toJson());
+  writeNotNull('valueMoney', instance.valueMoney?.toJson());
+  writeNotNull('valuePeriod', instance.valuePeriod?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueRange', instance.valueRange?.toJson());
+  writeNotNull('valueRatio', instance.valueRatio?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  writeNotNull('valueSampledData', instance.valueSampledData?.toJson());
+  writeNotNull('valueSignature', instance.valueSignature?.toJson());
+  writeNotNull('valueTiming', instance.valueTiming?.toJson());
+  writeNotNull('valueContactDetail', instance.valueContactDetail?.toJson());
+  writeNotNull('valueContributor', instance.valueContributor?.toJson());
+  writeNotNull('valueDataRequirement', instance.valueDataRequirement?.toJson());
+  writeNotNull('valueExpression', instance.valueExpression?.toJson());
+  writeNotNull(
+      'valueParameterDefinition', instance.valueParameterDefinition?.toJson());
+  writeNotNull('valueRelatedArtifact', instance.valueRelatedArtifact?.toJson());
+  writeNotNull(
+      'valueTriggerDefinition', instance.valueTriggerDefinition?.toJson());
+  writeNotNull('valueUsageContext', instance.valueUsageContext?.toJson());
+  writeNotNull('valueDosage', instance.valueDosage?.toJson());
+  writeNotNull('valueMeta', instance.valueMeta?.toJson());
+  return val;
+}

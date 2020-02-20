@@ -14,371 +14,383 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ChargeItemDefinition {
+  static Future<ChargeItemDefinition> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String url,
+    Element elementUrl,
+    List<Identifier> identifier,
+    String version,
+    Element elementVersion,
+    String title,
+    Element elementTitle,
+    List<String> derivedFromUri,
+    List<Element> elementDerivedFromUri,
+    List<String> partOf,
+    List<String> replaces,
+    String status,
+    Element elementStatus,
+    bool experimental,
+    Element elementExperimental,
+    DateTime date,
+    Element elementDate,
+    String publisher,
+    Element elementPublisher,
+    List<ContactDetail> contact,
+    String description,
+    Element elementDescription,
+    List<UsageContext> useContext,
+    List<CodeableConcept> jurisdiction,
+    String copyright,
+    Element elementCopyright,
+    String approvalDate,
+    Element elementApprovalDate,
+    String lastReviewDate,
+    Element elementLastReviewDate,
+    Period effectivePeriod,
+    CodeableConcept code,
+    List<Reference> instance,
+    List<ChargeItemDefinition_Applicability> applicability,
+    List<ChargeItemDefinition_PropertyGroup> propertyGroup,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ChargeItemDefinition newChargeItemDefinition = new ChargeItemDefinition(
+      resourceType: 'ChargeItemDefinition',
+      id: id ?? await fhirDb.newResourceId('ChargeItemDefinition'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      url: url,
+      elementUrl: elementUrl,
+      identifier: identifier,
+      version: version,
+      elementVersion: elementVersion,
+      title: title,
+      elementTitle: elementTitle,
+      derivedFromUri: derivedFromUri,
+      elementDerivedFromUri: elementDerivedFromUri,
+      partOf: partOf,
+      replaces: replaces,
+      status: status,
+      elementStatus: elementStatus,
+      experimental: experimental,
+      elementExperimental: elementExperimental,
+      date: date,
+      elementDate: elementDate,
+      publisher: publisher,
+      elementPublisher: elementPublisher,
+      contact: contact,
+      description: description,
+      elementDescription: elementDescription,
+      useContext: useContext,
+      jurisdiction: jurisdiction,
+      copyright: copyright,
+      elementCopyright: elementCopyright,
+      approvalDate: approvalDate,
+      elementApprovalDate: elementApprovalDate,
+      lastReviewDate: lastReviewDate,
+      elementLastReviewDate: elementLastReviewDate,
+      effectivePeriod: effectivePeriod,
+      code: code,
+      instance: instance,
+      applicability: applicability,
+      propertyGroup: propertyGroup,
+    );
+    newChargeItemDefinition.meta.createdAt = DateTime.now();
+    newChargeItemDefinition.meta.lastUpdated =
+        newChargeItemDefinition.meta.createdAt;
+    int saved = await fhirDb.saveResource(newChargeItemDefinition);
+    return newChargeItemDefinition;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ChargeItemDefinition{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<ChargeItemDefinition> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String url,
-	Element elementUrl,
-	List<Identifier> identifier,
-	String version,
-	Element elementVersion,
-	String title,
-	Element elementTitle,
-	List<String> derivedFromUri,
-	List<Element> elementDerivedFromUri,
-	List<String> partOf,
-	List<String> replaces,
-	String status,
-	Element elementStatus,
-	bool experimental,
-	Element elementExperimental,
-	DateTime date,
-	Element elementDate,
-	String publisher,
-	Element elementPublisher,
-	List<ContactDetail> contact,
-	String description,
-	Element elementDescription,
-	List<UsageContext> useContext,
-	List<CodeableConcept> jurisdiction,
-	String copyright,
-	Element elementCopyright,
-	String approvalDate,
-	Element elementApprovalDate,
-	String lastReviewDate,
-	Element elementLastReviewDate,
-	Period effectivePeriod,
-	CodeableConcept code,
-	List<Reference> instance,
-	List<ChargeItemDefinition_Applicability> applicability,
-	List<ChargeItemDefinition_PropertyGroup> propertyGroup,
-}) async {
-var fhirDb = new DatabaseHelper();
-ChargeItemDefinition newChargeItemDefinition = new ChargeItemDefinition(
-	resourceType: 'ChargeItemDefinition',
-	id: id ?? await fhirDb.newResourceId('ChargeItemDefinition'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	url: url,
-	elementUrl: elementUrl,
-	identifier: identifier,
-	version: version,
-	elementVersion: elementVersion,
-	title: title,
-	elementTitle: elementTitle,
-	derivedFromUri: derivedFromUri,
-	elementDerivedFromUri: elementDerivedFromUri,
-	partOf: partOf,
-	replaces: replaces,
-	status: status,
-	elementStatus: elementStatus,
-	experimental: experimental,
-	elementExperimental: elementExperimental,
-	date: date,
-	elementDate: elementDate,
-	publisher: publisher,
-	elementPublisher: elementPublisher,
-	contact: contact,
-	description: description,
-	elementDescription: elementDescription,
-	useContext: useContext,
-	jurisdiction: jurisdiction,
-	copyright: copyright,
-	elementCopyright: elementCopyright,
-	approvalDate: approvalDate,
-	elementApprovalDate: elementApprovalDate,
-	lastReviewDate: lastReviewDate,
-	elementLastReviewDate: elementLastReviewDate,
-	effectivePeriod: effectivePeriod,
-	code: code,
-	instance: instance,
-	applicability: applicability,
-	propertyGroup: propertyGroup,
-);
-	newChargeItemDefinition.meta.createdAt = DateTime.now();
-	newChargeItemDefinition.meta.lastUpdated = newChargeItemDefinition.meta.createdAt;
-	int saved = await fhirDb.saveResource(newChargeItemDefinition);
-	 return newChargeItemDefinition;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'ChargeItemDefinition';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String url;
+  Element elementUrl;
+  List<Identifier> identifier;
+  String version;
+  Element elementVersion;
+  String title;
+  Element elementTitle;
+  List<String> derivedFromUri;
+  List<Element> elementDerivedFromUri;
+  List<String> partOf;
+  List<String> replaces;
+  String status;
+  Element elementStatus;
+  bool experimental;
+  Element elementExperimental;
+  DateTime date;
+  Element elementDate;
+  String publisher;
+  Element elementPublisher;
+  List<ContactDetail> contact;
+  String description;
+  Element elementDescription;
+  List<UsageContext> useContext;
+  List<CodeableConcept> jurisdiction;
+  String copyright;
+  Element elementCopyright;
+  String approvalDate;
+  Element elementApprovalDate;
+  String lastReviewDate;
+  Element elementLastReviewDate;
+  Period effectivePeriod;
+  CodeableConcept code;
+  List<Reference> instance;
+  List<ChargeItemDefinition_Applicability> applicability;
+  List<ChargeItemDefinition_PropertyGroup> propertyGroup;
 
-	String resourceType= 'ChargeItemDefinition';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String url;
-	Element elementUrl;
-	List<Identifier> identifier;
-	String version;
-	Element elementVersion;
-	String title;
-	Element elementTitle;
-	List<String> derivedFromUri;
-	List<Element> elementDerivedFromUri;
-	List<String> partOf;
-	List<String> replaces;
-	String status;
-	Element elementStatus;
-	bool experimental;
-	Element elementExperimental;
-	DateTime date;
-	Element elementDate;
-	String publisher;
-	Element elementPublisher;
-	List<ContactDetail> contact;
-	String description;
-	Element elementDescription;
-	List<UsageContext> useContext;
-	List<CodeableConcept> jurisdiction;
-	String copyright;
-	Element elementCopyright;
-	String approvalDate;
-	Element elementApprovalDate;
-	String lastReviewDate;
-	Element elementLastReviewDate;
-	Period effectivePeriod;
-	CodeableConcept code;
-	List<Reference> instance;
-	List<ChargeItemDefinition_Applicability> applicability;
-	List<ChargeItemDefinition_PropertyGroup> propertyGroup;
+  ChargeItemDefinition({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.url,
+    this.elementUrl,
+    this.identifier,
+    this.version,
+    this.elementVersion,
+    this.title,
+    this.elementTitle,
+    this.derivedFromUri,
+    this.elementDerivedFromUri,
+    this.partOf,
+    this.replaces,
+    this.status,
+    this.elementStatus,
+    this.experimental,
+    this.elementExperimental,
+    this.date,
+    this.elementDate,
+    this.publisher,
+    this.elementPublisher,
+    this.contact,
+    this.description,
+    this.elementDescription,
+    this.useContext,
+    this.jurisdiction,
+    this.copyright,
+    this.elementCopyright,
+    this.approvalDate,
+    this.elementApprovalDate,
+    this.lastReviewDate,
+    this.elementLastReviewDate,
+    this.effectivePeriod,
+    this.code,
+    this.instance,
+    this.applicability,
+    this.propertyGroup,
+  });
 
-ChargeItemDefinition(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.url,
-this.elementUrl,
-this.identifier,
-this.version,
-this.elementVersion,
-this.title,
-this.elementTitle,
-this.derivedFromUri,
-this.elementDerivedFromUri,
-this.partOf,
-this.replaces,
-this.status,
-this.elementStatus,
-this.experimental,
-this.elementExperimental,
-this.date,
-this.elementDate,
-this.publisher,
-this.elementPublisher,
-this.contact,
-this.description,
-this.elementDescription,
-this.useContext,
-this.jurisdiction,
-this.copyright,
-this.elementCopyright,
-this.approvalDate,
-this.elementApprovalDate,
-this.lastReviewDate,
-this.elementLastReviewDate,
-this.effectivePeriod,
-this.code,
-this.instance,
-this.applicability,
-this.propertyGroup,
-});
-
-  factory ChargeItemDefinition.fromJson(Map<String, dynamic> json) => _$ChargeItemDefinitionFromJson(json);
+  factory ChargeItemDefinition.fromJson(Map<String, dynamic> json) =>
+      _$ChargeItemDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$ChargeItemDefinitionToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ChargeItemDefinition_Applicability {
+  static Future<ChargeItemDefinition_Applicability> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String description,
+    Element elementDescription,
+    String language,
+    Element elementLanguage,
+    String expression,
+    Element elementExpression,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ChargeItemDefinition_Applicability newChargeItemDefinition_Applicability =
+        new ChargeItemDefinition_Applicability(
+      id: id ??
+          await fhirDb.newResourceId('ChargeItemDefinition_Applicability'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      description: description,
+      elementDescription: elementDescription,
+      language: language,
+      elementLanguage: elementLanguage,
+      expression: expression,
+      elementExpression: elementExpression,
+    );
+    return newChargeItemDefinition_Applicability;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ChargeItemDefinition_Applicability{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String description;
+  Element elementDescription;
+  String language;
+  Element elementLanguage;
+  String expression;
+  Element elementExpression;
 
-	static Future<ChargeItemDefinition_Applicability> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String description,
-	Element elementDescription,
-	String language,
-	Element elementLanguage,
-	String expression,
-	Element elementExpression,
-}) async {
-var fhirDb = new DatabaseHelper();
-ChargeItemDefinition_Applicability newChargeItemDefinition_Applicability = new ChargeItemDefinition_Applicability(
-	id: id ?? await fhirDb.newResourceId('ChargeItemDefinition_Applicability'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	description: description,
-	elementDescription: elementDescription,
-	language: language,
-	elementLanguage: elementLanguage,
-	expression: expression,
-	elementExpression: elementExpression,
-);
-	return newChargeItemDefinition_Applicability;
+  ChargeItemDefinition_Applicability({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.description,
+    this.elementDescription,
+    this.language,
+    this.elementLanguage,
+    this.expression,
+    this.elementExpression,
+  });
+
+  factory ChargeItemDefinition_Applicability.fromJson(
+          Map<String, dynamic> json) =>
+      _$ChargeItemDefinition_ApplicabilityFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ChargeItemDefinition_ApplicabilityToJson(this);
 }
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String description;
-	Element elementDescription;
-	String language;
-	Element elementLanguage;
-	String expression;
-	Element elementExpression;
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ChargeItemDefinition_PropertyGroup {
+  static Future<ChargeItemDefinition_PropertyGroup> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<ChargeItemDefinition_Applicability> applicability,
+    List<ChargeItemDefinition_PriceComponent> priceComponent,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ChargeItemDefinition_PropertyGroup newChargeItemDefinition_PropertyGroup =
+        new ChargeItemDefinition_PropertyGroup(
+      id: id ??
+          await fhirDb.newResourceId('ChargeItemDefinition_PropertyGroup'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      applicability: applicability,
+      priceComponent: priceComponent,
+    );
+    return newChargeItemDefinition_PropertyGroup;
+  }
 
-ChargeItemDefinition_Applicability(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.description,
-this.elementDescription,
-this.language,
-this.elementLanguage,
-this.expression,
-this.elementExpression,
-});
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<ChargeItemDefinition_Applicability> applicability;
+  List<ChargeItemDefinition_PriceComponent> priceComponent;
 
-  factory ChargeItemDefinition_Applicability.fromJson(Map<String, dynamic> json) => _$ChargeItemDefinition_ApplicabilityFromJson(json);
-  Map<String, dynamic> toJson() => _$ChargeItemDefinition_ApplicabilityToJson(this);
+  ChargeItemDefinition_PropertyGroup({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.applicability,
+    this.priceComponent,
+  });
+
+  factory ChargeItemDefinition_PropertyGroup.fromJson(
+          Map<String, dynamic> json) =>
+      _$ChargeItemDefinition_PropertyGroupFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ChargeItemDefinition_PropertyGroupToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class ChargeItemDefinition_PriceComponent {
+  static Future<ChargeItemDefinition_PriceComponent> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    CodeableConcept code,
+    double factor,
+    Element elementFactor,
+    Money amount,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    ChargeItemDefinition_PriceComponent newChargeItemDefinition_PriceComponent =
+        new ChargeItemDefinition_PriceComponent(
+      id: id ??
+          await fhirDb.newResourceId('ChargeItemDefinition_PriceComponent'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      code: code,
+      factor: factor,
+      elementFactor: elementFactor,
+      amount: amount,
+    );
+    return newChargeItemDefinition_PriceComponent;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class ChargeItemDefinition_PropertyGroup{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String type;
+  Element elementType;
+  CodeableConcept code;
+  double factor;
+  Element elementFactor;
+  Money amount;
 
-	static Future<ChargeItemDefinition_PropertyGroup> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<ChargeItemDefinition_Applicability> applicability,
-	List<ChargeItemDefinition_PriceComponent> priceComponent,
-}) async {
-var fhirDb = new DatabaseHelper();
-ChargeItemDefinition_PropertyGroup newChargeItemDefinition_PropertyGroup = new ChargeItemDefinition_PropertyGroup(
-	id: id ?? await fhirDb.newResourceId('ChargeItemDefinition_PropertyGroup'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	applicability: applicability,
-	priceComponent: priceComponent,
-);
-	return newChargeItemDefinition_PropertyGroup;
+  ChargeItemDefinition_PriceComponent({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.code,
+    this.factor,
+    this.elementFactor,
+    this.amount,
+  });
+
+  factory ChargeItemDefinition_PriceComponent.fromJson(
+          Map<String, dynamic> json) =>
+      _$ChargeItemDefinition_PriceComponentFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$ChargeItemDefinition_PriceComponentToJson(this);
 }
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<ChargeItemDefinition_Applicability> applicability;
-	List<ChargeItemDefinition_PriceComponent> priceComponent;
-
-ChargeItemDefinition_PropertyGroup(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.applicability,
-this.priceComponent,
-});
-
-  factory ChargeItemDefinition_PropertyGroup.fromJson(Map<String, dynamic> json) => _$ChargeItemDefinition_PropertyGroupFromJson(json);
-  Map<String, dynamic> toJson() => _$ChargeItemDefinition_PropertyGroupToJson(this);
-}
-
-
-@JsonSerializable(explicitToJson: true)
-class ChargeItemDefinition_PriceComponent{
-
-	static Future<ChargeItemDefinition_PriceComponent> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String type,
-	Element elementType,
-	CodeableConcept code,
-	double factor,
-	Element elementFactor,
-	Money amount,
-}) async {
-var fhirDb = new DatabaseHelper();
-ChargeItemDefinition_PriceComponent newChargeItemDefinition_PriceComponent = new ChargeItemDefinition_PriceComponent(
-	id: id ?? await fhirDb.newResourceId('ChargeItemDefinition_PriceComponent'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	elementType: elementType,
-	code: code,
-	factor: factor,
-	elementFactor: elementFactor,
-	amount: amount,
-);
-	return newChargeItemDefinition_PriceComponent;
-}
-
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String type;
-	Element elementType;
-	CodeableConcept code;
-	double factor;
-	Element elementFactor;
-	Money amount;
-
-ChargeItemDefinition_PriceComponent(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.elementType,
-this.code,
-this.factor,
-this.elementFactor,
-this.amount,
-});
-
-  factory ChargeItemDefinition_PriceComponent.fromJson(Map<String, dynamic> json) => _$ChargeItemDefinition_PriceComponentFromJson(json);
-  Map<String, dynamic> toJson() => _$ChargeItemDefinition_PriceComponentToJson(this);
-}
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -405,8 +417,9 @@ ChargeItemDefinition _$ChargeItemDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -513,59 +526,73 @@ ChargeItemDefinition _$ChargeItemDefinitionFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ChargeItemDefinitionToJson(
-        ChargeItemDefinition instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'derivedFromUri': instance.derivedFromUri,
-      'elementDerivedFromUri':
-          instance.elementDerivedFromUri?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf,
-      'replaces': instance.replaces,
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'approvalDate': instance.approvalDate,
-      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
-      'lastReviewDate': instance.lastReviewDate,
-      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'code': instance.code?.toJson(),
-      'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
-      'applicability':
-          instance.applicability?.map((e) => e?.toJson())?.toList(),
-      'propertyGroup':
-          instance.propertyGroup?.map((e) => e?.toJson())?.toList(),
-    };
+    ChargeItemDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('derivedFromUri', instance.derivedFromUri);
+  writeNotNull('elementDerivedFromUri',
+      instance.elementDerivedFromUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf);
+  writeNotNull('replaces', instance.replaces);
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('approvalDate', instance.approvalDate);
+  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
+  writeNotNull('lastReviewDate', instance.lastReviewDate);
+  writeNotNull(
+      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull(
+      'instance', instance.instance?.map((e) => e?.toJson())?.toList());
+  writeNotNull('applicability',
+      instance.applicability?.map((e) => e?.toJson())?.toList());
+  writeNotNull('propertyGroup',
+      instance.propertyGroup?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ChargeItemDefinition_Applicability _$ChargeItemDefinition_ApplicabilityFromJson(
     Map<String, dynamic> json) {
@@ -595,19 +622,28 @@ ChargeItemDefinition_Applicability _$ChargeItemDefinition_ApplicabilityFromJson(
 }
 
 Map<String, dynamic> _$ChargeItemDefinition_ApplicabilityToJson(
-        ChargeItemDefinition_Applicability instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'expression': instance.expression,
-      'elementExpression': instance.elementExpression?.toJson(),
-    };
+    ChargeItemDefinition_Applicability instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression', instance.elementExpression?.toJson());
+  return val;
+}
 
 ChargeItemDefinition_PropertyGroup _$ChargeItemDefinition_PropertyGroupFromJson(
     Map<String, dynamic> json) {
@@ -637,17 +673,26 @@ ChargeItemDefinition_PropertyGroup _$ChargeItemDefinition_PropertyGroupFromJson(
 }
 
 Map<String, dynamic> _$ChargeItemDefinition_PropertyGroupToJson(
-        ChargeItemDefinition_PropertyGroup instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'applicability':
-          instance.applicability?.map((e) => e?.toJson())?.toList(),
-      'priceComponent':
-          instance.priceComponent?.map((e) => e?.toJson())?.toList(),
-    };
+    ChargeItemDefinition_PropertyGroup instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('applicability',
+      instance.applicability?.map((e) => e?.toJson())?.toList());
+  writeNotNull('priceComponent',
+      instance.priceComponent?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ChargeItemDefinition_PriceComponent
     _$ChargeItemDefinition_PriceComponentFromJson(Map<String, dynamic> json) {
@@ -679,16 +724,25 @@ ChargeItemDefinition_PriceComponent
 }
 
 Map<String, dynamic> _$ChargeItemDefinition_PriceComponentToJson(
-        ChargeItemDefinition_PriceComponent instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'code': instance.code?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'amount': instance.amount?.toJson(),
-    };
+    ChargeItemDefinition_PriceComponent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('amount', instance.amount?.toJson());
+  return val;
+}

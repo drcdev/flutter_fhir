@@ -11,119 +11,121 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Schedule {
+  static Future<Schedule> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    bool active,
+    Element elementActive,
+    List<CodeableConcept> serviceCategory,
+    List<CodeableConcept> serviceType,
+    List<CodeableConcept> specialty,
+    List<Reference> actor,
+    Period planningHorizon,
+    String comment,
+    Element elementComment,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Schedule newSchedule = new Schedule(
+      resourceType: 'Schedule',
+      id: id ?? await fhirDb.newResourceId('Schedule'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      active: active,
+      elementActive: elementActive,
+      serviceCategory: serviceCategory,
+      serviceType: serviceType,
+      specialty: specialty,
+      actor: actor,
+      planningHorizon: planningHorizon,
+      comment: comment,
+      elementComment: elementComment,
+    );
+    newSchedule.meta.createdAt = DateTime.now();
+    newSchedule.meta.lastUpdated = newSchedule.meta.createdAt;
+    int saved = await fhirDb.saveResource(newSchedule);
+    return newSchedule;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Schedule{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Schedule> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	bool active,
-	Element elementActive,
-	List<CodeableConcept> serviceCategory,
-	List<CodeableConcept> serviceType,
-	List<CodeableConcept> specialty,
-	List<Reference> actor,
-	Period planningHorizon,
-	String comment,
-	Element elementComment,
-}) async {
-var fhirDb = new DatabaseHelper();
-Schedule newSchedule = new Schedule(
-	resourceType: 'Schedule',
-	id: id ?? await fhirDb.newResourceId('Schedule'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	active: active,
-	elementActive: elementActive,
-	serviceCategory: serviceCategory,
-	serviceType: serviceType,
-	specialty: specialty,
-	actor: actor,
-	planningHorizon: planningHorizon,
-	comment: comment,
-	elementComment: elementComment,
-);
-	newSchedule.meta.createdAt = DateTime.now();
-	newSchedule.meta.lastUpdated = newSchedule.meta.createdAt;
-	int saved = await fhirDb.saveResource(newSchedule);
-	 return newSchedule;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Schedule';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  bool active;
+  Element elementActive;
+  List<CodeableConcept> serviceCategory;
+  List<CodeableConcept> serviceType;
+  List<CodeableConcept> specialty;
+  List<Reference> actor;
+  Period planningHorizon;
+  String comment;
+  Element elementComment;
 
-	String resourceType= 'Schedule';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	bool active;
-	Element elementActive;
-	List<CodeableConcept> serviceCategory;
-	List<CodeableConcept> serviceType;
-	List<CodeableConcept> specialty;
-	List<Reference> actor;
-	Period planningHorizon;
-	String comment;
-	Element elementComment;
+  Schedule({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this.elementActive,
+    this.serviceCategory,
+    this.serviceType,
+    this.specialty,
+    @required this.actor,
+    this.planningHorizon,
+    this.comment,
+    this.elementComment,
+  });
 
-Schedule(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.active,
-this.elementActive,
-this.serviceCategory,
-this.serviceType,
-this.specialty,
-@required this.actor,
-this.planningHorizon,
-this.comment,
-this.elementComment,
-});
-
-  factory Schedule.fromJson(Map<String, dynamic> json) => _$ScheduleFromJson(json);
+  factory Schedule.fromJson(Map<String, dynamic> json) =>
+      _$ScheduleFromJson(json);
   Map<String, dynamic> toJson() => _$ScheduleToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -150,8 +152,9 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -198,28 +201,41 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'serviceCategory':
-          instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
-      'serviceType': instance.serviceType?.map((e) => e?.toJson())?.toList(),
-      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
-      'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
-      'planningHorizon': instance.planningHorizon?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-    };
+Map<String, dynamic> _$ScheduleToJson(Schedule instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('serviceCategory',
+      instance.serviceCategory?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'serviceType', instance.serviceType?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
+  writeNotNull('actor', instance.actor?.map((e) => e?.toJson())?.toList());
+  writeNotNull('planningHorizon', instance.planningHorizon?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  return val;
+}

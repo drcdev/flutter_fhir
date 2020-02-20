@@ -13,143 +13,145 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Endpoint {
+  static Future<Endpoint> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    String status,
+    Element elementStatus,
+    Coding connectionType,
+    String name,
+    Element elementName,
+    Reference managingOrganization,
+    List<ContactPoint> contact,
+    Period period,
+    List<CodeableConcept> payloadType,
+    List<String> payloadMimeType,
+    List<Element> elementPayloadMimeType,
+    String address,
+    Element elementAddress,
+    List<String> header,
+    List<Element> elementHeader,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Endpoint newEndpoint = new Endpoint(
+      resourceType: 'Endpoint',
+      id: id ?? await fhirDb.newResourceId('Endpoint'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      status: status,
+      elementStatus: elementStatus,
+      connectionType: connectionType,
+      name: name,
+      elementName: elementName,
+      managingOrganization: managingOrganization,
+      contact: contact,
+      period: period,
+      payloadType: payloadType,
+      payloadMimeType: payloadMimeType,
+      elementPayloadMimeType: elementPayloadMimeType,
+      address: address,
+      elementAddress: elementAddress,
+      header: header,
+      elementHeader: elementHeader,
+    );
+    newEndpoint.meta.createdAt = DateTime.now();
+    newEndpoint.meta.lastUpdated = newEndpoint.meta.createdAt;
+    int saved = await fhirDb.saveResource(newEndpoint);
+    return newEndpoint;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Endpoint{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Endpoint> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	String status,
-	Element elementStatus,
-	Coding connectionType,
-	String name,
-	Element elementName,
-	Reference managingOrganization,
-	List<ContactPoint> contact,
-	Period period,
-	List<CodeableConcept> payloadType,
-	List<String> payloadMimeType,
-	List<Element> elementPayloadMimeType,
-	String address,
-	Element elementAddress,
-	List<String> header,
-	List<Element> elementHeader,
-}) async {
-var fhirDb = new DatabaseHelper();
-Endpoint newEndpoint = new Endpoint(
-	resourceType: 'Endpoint',
-	id: id ?? await fhirDb.newResourceId('Endpoint'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	status: status,
-	elementStatus: elementStatus,
-	connectionType: connectionType,
-	name: name,
-	elementName: elementName,
-	managingOrganization: managingOrganization,
-	contact: contact,
-	period: period,
-	payloadType: payloadType,
-	payloadMimeType: payloadMimeType,
-	elementPayloadMimeType: elementPayloadMimeType,
-	address: address,
-	elementAddress: elementAddress,
-	header: header,
-	elementHeader: elementHeader,
-);
-	newEndpoint.meta.createdAt = DateTime.now();
-	newEndpoint.meta.lastUpdated = newEndpoint.meta.createdAt;
-	int saved = await fhirDb.saveResource(newEndpoint);
-	 return newEndpoint;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Endpoint';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  String status;
+  Element elementStatus;
+  Coding connectionType;
+  String name;
+  Element elementName;
+  Reference managingOrganization;
+  List<ContactPoint> contact;
+  Period period;
+  List<CodeableConcept> payloadType;
+  List<String> payloadMimeType;
+  List<Element> elementPayloadMimeType;
+  String address;
+  Element elementAddress;
+  List<String> header;
+  List<Element> elementHeader;
 
-	String resourceType= 'Endpoint';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	String status;
-	Element elementStatus;
-	Coding connectionType;
-	String name;
-	Element elementName;
-	Reference managingOrganization;
-	List<ContactPoint> contact;
-	Period period;
-	List<CodeableConcept> payloadType;
-	List<String> payloadMimeType;
-	List<Element> elementPayloadMimeType;
-	String address;
-	Element elementAddress;
-	List<String> header;
-	List<Element> elementHeader;
+  Endpoint({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.status,
+    this.elementStatus,
+    @required this.connectionType,
+    this.name,
+    this.elementName,
+    this.managingOrganization,
+    this.contact,
+    this.period,
+    @required this.payloadType,
+    this.payloadMimeType,
+    this.elementPayloadMimeType,
+    this.address,
+    this.elementAddress,
+    this.header,
+    this.elementHeader,
+  });
 
-Endpoint(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.status,
-this.elementStatus,
-@required this.connectionType,
-this.name,
-this.elementName,
-this.managingOrganization,
-this.contact,
-this.period,
-@required this.payloadType,
-this.payloadMimeType,
-this.elementPayloadMimeType,
-this.address,
-this.elementAddress,
-this.header,
-this.elementHeader,
-});
-
-  factory Endpoint.fromJson(Map<String, dynamic> json) => _$EndpointFromJson(json);
+  factory Endpoint.fromJson(Map<String, dynamic> json) =>
+      _$EndpointFromJson(json);
   Map<String, dynamic> toJson() => _$EndpointToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -176,8 +178,9 @@ Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -236,35 +239,47 @@ Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$EndpointToJson(Endpoint instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'connectionType': instance.connectionType?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'managingOrganization': instance.managingOrganization?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'period': instance.period?.toJson(),
-      'payloadType': instance.payloadType?.map((e) => e?.toJson())?.toList(),
-      'payloadMimeType': instance.payloadMimeType,
-      'elementPayloadMimeType':
-          instance.elementPayloadMimeType?.map((e) => e?.toJson())?.toList(),
-      'address': instance.address,
-      'elementAddress': instance.elementAddress?.toJson(),
-      'header': instance.header,
-      'elementHeader':
-          instance.elementHeader?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$EndpointToJson(Endpoint instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('connectionType', instance.connectionType?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('managingOrganization', instance.managingOrganization?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull(
+      'payloadType', instance.payloadType?.map((e) => e?.toJson())?.toList());
+  writeNotNull('payloadMimeType', instance.payloadMimeType);
+  writeNotNull('elementPayloadMimeType',
+      instance.elementPayloadMimeType?.map((e) => e?.toJson())?.toList());
+  writeNotNull('address', instance.address);
+  writeNotNull('elementAddress', instance.elementAddress?.toJson());
+  writeNotNull('header', instance.header);
+  writeNotNull('elementHeader',
+      instance.elementHeader?.map((e) => e?.toJson())?.toList());
+  return val;
+}

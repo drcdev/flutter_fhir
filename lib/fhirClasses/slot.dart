@@ -10,143 +10,144 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class Slot {
+  static Future<Slot> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    List<CodeableConcept> serviceCategory,
+    List<CodeableConcept> serviceType,
+    List<CodeableConcept> specialty,
+    CodeableConcept appointmentType,
+    Reference schedule,
+    String status,
+    Element elementStatus,
+    DateTime start,
+    Element elementStart,
+    DateTime end,
+    Element elementEnd,
+    bool overbooked,
+    Element elementOverbooked,
+    String comment,
+    Element elementComment,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    Slot newSlot = new Slot(
+      resourceType: 'Slot',
+      id: id ?? await fhirDb.newResourceId('Slot'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      serviceCategory: serviceCategory,
+      serviceType: serviceType,
+      specialty: specialty,
+      appointmentType: appointmentType,
+      schedule: schedule,
+      status: status,
+      elementStatus: elementStatus,
+      start: start,
+      elementStart: elementStart,
+      end: end,
+      elementEnd: elementEnd,
+      overbooked: overbooked,
+      elementOverbooked: elementOverbooked,
+      comment: comment,
+      elementComment: elementComment,
+    );
+    newSlot.meta.createdAt = DateTime.now();
+    newSlot.meta.lastUpdated = newSlot.meta.createdAt;
+    int saved = await fhirDb.saveResource(newSlot);
+    return newSlot;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class Slot{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<Slot> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	List<CodeableConcept> serviceCategory,
-	List<CodeableConcept> serviceType,
-	List<CodeableConcept> specialty,
-	CodeableConcept appointmentType,
-	Reference schedule,
-	String status,
-	Element elementStatus,
-	DateTime start,
-	Element elementStart,
-	DateTime end,
-	Element elementEnd,
-	bool overbooked,
-	Element elementOverbooked,
-	String comment,
-	Element elementComment,
-}) async {
-var fhirDb = new DatabaseHelper();
-Slot newSlot = new Slot(
-	resourceType: 'Slot',
-	id: id ?? await fhirDb.newResourceId('Slot'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	serviceCategory: serviceCategory,
-	serviceType: serviceType,
-	specialty: specialty,
-	appointmentType: appointmentType,
-	schedule: schedule,
-	status: status,
-	elementStatus: elementStatus,
-	start: start,
-	elementStart: elementStart,
-	end: end,
-	elementEnd: elementEnd,
-	overbooked: overbooked,
-	elementOverbooked: elementOverbooked,
-	comment: comment,
-	elementComment: elementComment,
-);
-	newSlot.meta.createdAt = DateTime.now();
-	newSlot.meta.lastUpdated = newSlot.meta.createdAt;
-	int saved = await fhirDb.saveResource(newSlot);
-	 return newSlot;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'Slot';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  List<CodeableConcept> serviceCategory;
+  List<CodeableConcept> serviceType;
+  List<CodeableConcept> specialty;
+  CodeableConcept appointmentType;
+  Reference schedule;
+  String status;
+  Element elementStatus;
+  DateTime start;
+  Element elementStart;
+  DateTime end;
+  Element elementEnd;
+  bool overbooked;
+  Element elementOverbooked;
+  String comment;
+  Element elementComment;
 
-	String resourceType= 'Slot';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	List<CodeableConcept> serviceCategory;
-	List<CodeableConcept> serviceType;
-	List<CodeableConcept> specialty;
-	CodeableConcept appointmentType;
-	Reference schedule;
-	String status;
-	Element elementStatus;
-	DateTime start;
-	Element elementStart;
-	DateTime end;
-	Element elementEnd;
-	bool overbooked;
-	Element elementOverbooked;
-	String comment;
-	Element elementComment;
-
-Slot(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-this.serviceCategory,
-this.serviceType,
-this.specialty,
-this.appointmentType,
-@required this.schedule,
-this.status,
-this.elementStatus,
-this.start,
-this.elementStart,
-this.end,
-this.elementEnd,
-this.overbooked,
-this.elementOverbooked,
-this.comment,
-this.elementComment,
-});
+  Slot({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.serviceCategory,
+    this.serviceType,
+    this.specialty,
+    this.appointmentType,
+    @required this.schedule,
+    this.status,
+    this.elementStatus,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd,
+    this.overbooked,
+    this.elementOverbooked,
+    this.comment,
+    this.elementComment,
+  });
 
   factory Slot.fromJson(Map<String, dynamic> json) => _$SlotFromJson(json);
   Map<String, dynamic> toJson() => _$SlotToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -173,8 +174,9 @@ Slot _$SlotFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -234,34 +236,47 @@ Slot _$SlotFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SlotToJson(Slot instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'serviceCategory':
-          instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
-      'serviceType': instance.serviceType?.map((e) => e?.toJson())?.toList(),
-      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
-      'appointmentType': instance.appointmentType?.toJson(),
-      'schedule': instance.schedule?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'start': instance.start?.toIso8601String(),
-      'elementStart': instance.elementStart?.toJson(),
-      'end': instance.end?.toIso8601String(),
-      'elementEnd': instance.elementEnd?.toJson(),
-      'overbooked': instance.overbooked,
-      'elementOverbooked': instance.elementOverbooked?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-    };
+Map<String, dynamic> _$SlotToJson(Slot instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('serviceCategory',
+      instance.serviceCategory?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'serviceType', instance.serviceType?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
+  writeNotNull('appointmentType', instance.appointmentType?.toJson());
+  writeNotNull('schedule', instance.schedule?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('start', instance.start?.toIso8601String());
+  writeNotNull('elementStart', instance.elementStart?.toJson());
+  writeNotNull('end', instance.end?.toIso8601String());
+  writeNotNull('elementEnd', instance.elementEnd?.toJson());
+  writeNotNull('overbooked', instance.overbooked);
+  writeNotNull('elementOverbooked', instance.elementOverbooked?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  return val;
+}

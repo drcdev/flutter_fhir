@@ -11,187 +11,189 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DeviceMetric {
+  static Future<DeviceMetric> newInstance({
+    String resourceType,
+    String id,
+    Meta meta,
+    String implicitRules,
+    Element elementImplicitRules,
+    String language,
+    Element elementLanguage,
+    Narrative text,
+    List<dynamic> contained,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    List<Identifier> identifier,
+    CodeableConcept type,
+    CodeableConcept unit,
+    Reference source,
+    Reference parent,
+    String operationalStatus,
+    Element elementOperationalStatus,
+    String color,
+    Element elementColor,
+    String category,
+    Element elementCategory,
+    Timing measurementPeriod,
+    List<DeviceMetric_Calibration> calibration,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceMetric newDeviceMetric = new DeviceMetric(
+      resourceType: 'DeviceMetric',
+      id: id ?? await fhirDb.newResourceId('DeviceMetric'),
+      meta: meta ?? await Meta.newInstance(),
+      implicitRules: implicitRules,
+      elementImplicitRules: elementImplicitRules,
+      language: language,
+      elementLanguage: elementLanguage,
+      text: text,
+      contained: contained,
+      extension: extension,
+      modifierExtension: modifierExtension,
+      identifier: identifier,
+      type: type,
+      unit: unit,
+      source: source,
+      parent: parent,
+      operationalStatus: operationalStatus,
+      elementOperationalStatus: elementOperationalStatus,
+      color: color,
+      elementColor: elementColor,
+      category: category,
+      elementCategory: elementCategory,
+      measurementPeriod: measurementPeriod,
+      calibration: calibration,
+    );
+    newDeviceMetric.meta.createdAt = DateTime.now();
+    newDeviceMetric.meta.lastUpdated = newDeviceMetric.meta.createdAt;
+    int saved = await fhirDb.saveResource(newDeviceMetric);
+    return newDeviceMetric;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class DeviceMetric{
+  save() async {
+    var fhirDb = new DatabaseHelper();
+    int saved = await fhirDb.saveResource(this);
+  }
 
-	static Future<DeviceMetric> newInstance(
-	{	String resourceType,
-	String id,
-	Meta meta,
-	String implicitRules,
-	Element elementImplicitRules,
-	String language,
-	Element elementLanguage,
-	Narrative text,
-	List<dynamic> contained,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	List<Identifier> identifier,
-	CodeableConcept type,
-	CodeableConcept unit,
-	Reference source,
-	Reference parent,
-	String operationalStatus,
-	Element elementOperationalStatus,
-	String color,
-	Element elementColor,
-	String category,
-	Element elementCategory,
-	Timing measurementPeriod,
-	List<DeviceMetric_Calibration> calibration,
-}) async {
-var fhirDb = new DatabaseHelper();
-DeviceMetric newDeviceMetric = new DeviceMetric(
-	resourceType: 'DeviceMetric',
-	id: id ?? await fhirDb.newResourceId('DeviceMetric'),
-	meta: meta ?? await Meta.newInstance(),
-	implicitRules: implicitRules,
-	elementImplicitRules: elementImplicitRules,
-	language: language,
-	elementLanguage: elementLanguage,
-	text: text,
-	contained: contained,
-	extension: extension,
-	modifierExtension: modifierExtension,
-	identifier: identifier,
-	type: type,
-	unit: unit,
-	source: source,
-	parent: parent,
-	operationalStatus: operationalStatus,
-	elementOperationalStatus: elementOperationalStatus,
-	color: color,
-	elementColor: elementColor,
-	category: category,
-	elementCategory: elementCategory,
-	measurementPeriod: measurementPeriod,
-	calibration: calibration,
-);
-	newDeviceMetric.meta.createdAt = DateTime.now();
-	newDeviceMetric.meta.lastUpdated = newDeviceMetric.meta.createdAt;
-	int saved = await fhirDb.saveResource(newDeviceMetric);
-	 return newDeviceMetric;
-}
+  update() {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
+  }
 
-save() async {
-		this.meta.lastUpdated = DateTime.now();
-		var fhirDb = new DatabaseHelper();
-		int saved = await fhirDb.saveResource(this);
-}
+  String resourceType = 'DeviceMetric';
+  String id;
+  Meta meta;
+  String implicitRules;
+  Element elementImplicitRules;
+  String language;
+  Element elementLanguage;
+  Narrative text;
+  List<dynamic> contained;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  List<Identifier> identifier;
+  CodeableConcept type;
+  CodeableConcept unit;
+  Reference source;
+  Reference parent;
+  String operationalStatus;
+  Element elementOperationalStatus;
+  String color;
+  Element elementColor;
+  String category;
+  Element elementCategory;
+  Timing measurementPeriod;
+  List<DeviceMetric_Calibration> calibration;
 
-	String resourceType= 'DeviceMetric';
-	String id;
-	Meta meta;
-	String implicitRules;
-	Element elementImplicitRules;
-	String language;
-	Element elementLanguage;
-	Narrative text;
-	List<dynamic> contained;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	List<Identifier> identifier;
-	CodeableConcept type;
-	CodeableConcept unit;
-	Reference source;
-	Reference parent;
-	String operationalStatus;
-	Element elementOperationalStatus;
-	String color;
-	Element elementColor;
-	String category;
-	Element elementCategory;
-	Timing measurementPeriod;
-	List<DeviceMetric_Calibration> calibration;
+  DeviceMetric({
+    @required this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this.elementImplicitRules,
+    this.language,
+    this.elementLanguage,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    @required this.type,
+    this.unit,
+    this.source,
+    this.parent,
+    this.operationalStatus,
+    this.elementOperationalStatus,
+    this.color,
+    this.elementColor,
+    this.category,
+    this.elementCategory,
+    this.measurementPeriod,
+    this.calibration,
+  });
 
-DeviceMetric(
-	{@required this.resourceType,
-this.id,
-this.meta,
-this.implicitRules,
-this.elementImplicitRules,
-this.language,
-this.elementLanguage,
-this.text,
-this.contained,
-this.extension,
-this.modifierExtension,
-this.identifier,
-@required this.type,
-this.unit,
-this.source,
-this.parent,
-this.operationalStatus,
-this.elementOperationalStatus,
-this.color,
-this.elementColor,
-this.category,
-this.elementCategory,
-this.measurementPeriod,
-this.calibration,
-});
-
-  factory DeviceMetric.fromJson(Map<String, dynamic> json) => _$DeviceMetricFromJson(json);
+  factory DeviceMetric.fromJson(Map<String, dynamic> json) =>
+      _$DeviceMetricFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceMetricToJson(this);
 }
 
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class DeviceMetric_Calibration {
+  static Future<DeviceMetric_Calibration> newInstance({
+    String id,
+    List<Extension> extension,
+    List<Extension> modifierExtension,
+    String type,
+    Element elementType,
+    String state,
+    Element elementState,
+    DateTime time,
+    Element elementTime,
+  }) async {
+    var fhirDb = new DatabaseHelper();
+    DeviceMetric_Calibration newDeviceMetric_Calibration =
+        new DeviceMetric_Calibration(
+      id: id ?? await fhirDb.newResourceId('DeviceMetric_Calibration'),
+      extension: extension,
+      modifierExtension: modifierExtension,
+      type: type,
+      elementType: elementType,
+      state: state,
+      elementState: elementState,
+      time: time,
+      elementTime: elementTime,
+    );
+    return newDeviceMetric_Calibration;
+  }
 
-@JsonSerializable(explicitToJson: true)
-class DeviceMetric_Calibration{
+  String id;
+  List<Extension> extension;
+  List<Extension> modifierExtension;
+  String type;
+  Element elementType;
+  String state;
+  Element elementState;
+  DateTime time;
+  Element elementTime;
 
-	static Future<DeviceMetric_Calibration> newInstance(
-	{	String id,
-	List<Extension> extension,
-	List<Extension> modifierExtension,
-	String type,
-	Element elementType,
-	String state,
-	Element elementState,
-	DateTime time,
-	Element elementTime,
-}) async {
-var fhirDb = new DatabaseHelper();
-DeviceMetric_Calibration newDeviceMetric_Calibration = new DeviceMetric_Calibration(
-	id: id ?? await fhirDb.newResourceId('DeviceMetric_Calibration'),
-	extension: extension,
-	modifierExtension: modifierExtension,
-	type: type,
-	elementType: elementType,
-	state: state,
-	elementState: elementState,
-	time: time,
-	elementTime: elementTime,
-);
-	return newDeviceMetric_Calibration;
-}
+  DeviceMetric_Calibration({
+    this.id,
+    this.extension,
+    this.modifierExtension,
+    this.type,
+    this.elementType,
+    this.state,
+    this.elementState,
+    this.time,
+    this.elementTime,
+  });
 
-	String id;
-	List<Extension> extension;
-	List<Extension> modifierExtension;
-	String type;
-	Element elementType;
-	String state;
-	Element elementState;
-	DateTime time;
-	Element elementTime;
-
-DeviceMetric_Calibration(
-	{this.id,
-this.extension,
-this.modifierExtension,
-this.type,
-this.elementType,
-this.state,
-this.elementState,
-this.time,
-this.elementTime,
-});
-
-  factory DeviceMetric_Calibration.fromJson(Map<String, dynamic> json) => _$DeviceMetric_CalibrationFromJson(json);
+  factory DeviceMetric_Calibration.fromJson(Map<String, dynamic> json) =>
+      _$DeviceMetric_CalibrationFromJson(json);
   Map<String, dynamic> toJson() => _$DeviceMetric_CalibrationToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -218,8 +220,9 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -269,34 +272,46 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'unit': instance.unit?.toJson(),
-      'source': instance.source?.toJson(),
-      'parent': instance.parent?.toJson(),
-      'operationalStatus': instance.operationalStatus,
-      'elementOperationalStatus': instance.elementOperationalStatus?.toJson(),
-      'color': instance.color,
-      'elementColor': instance.elementColor?.toJson(),
-      'category': instance.category,
-      'elementCategory': instance.elementCategory?.toJson(),
-      'measurementPeriod': instance.measurementPeriod?.toJson(),
-      'calibration': instance.calibration?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('unit', instance.unit?.toJson());
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('parent', instance.parent?.toJson());
+  writeNotNull('operationalStatus', instance.operationalStatus);
+  writeNotNull(
+      'elementOperationalStatus', instance.elementOperationalStatus?.toJson());
+  writeNotNull('color', instance.color);
+  writeNotNull('elementColor', instance.elementColor?.toJson());
+  writeNotNull('category', instance.category);
+  writeNotNull('elementCategory', instance.elementCategory?.toJson());
+  writeNotNull('measurementPeriod', instance.measurementPeriod?.toJson());
+  writeNotNull(
+      'calibration', instance.calibration?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 DeviceMetric_Calibration _$DeviceMetric_CalibrationFromJson(
     Map<String, dynamic> json) {
@@ -326,16 +341,25 @@ DeviceMetric_Calibration _$DeviceMetric_CalibrationFromJson(
 }
 
 Map<String, dynamic> _$DeviceMetric_CalibrationToJson(
-        DeviceMetric_Calibration instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'state': instance.state,
-      'elementState': instance.elementState?.toJson(),
-      'time': instance.time?.toIso8601String(),
-      'elementTime': instance.elementTime?.toJson(),
-    };
+    DeviceMetric_Calibration instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('state', instance.state);
+  writeNotNull('elementState', instance.elementState?.toJson());
+  writeNotNull('time', instance.time?.toIso8601String());
+  writeNotNull('elementTime', instance.elementTime?.toJson());
+  return val;
+}
