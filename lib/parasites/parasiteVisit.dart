@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -8,7 +6,6 @@ import 'package:flutter_fhir/fhirClasses/medicationAdministration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/mainMenu.dart';
-import 'package:flutter_fhir/util/db.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:flutter_fhir/fhirClasses/composition.dart';
@@ -41,6 +38,8 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
   Encounter encounter;
   List<Location> locations;
   MedicationAdministration medicationAdministration;
+  bool begin = false;
+  bool medicine = false;
 
   void _getLocation() async {
     final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
@@ -95,7 +94,8 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
                     participant: [
                       await Encounter_Participant.newInstance(
                           individual: await Reference.newInstance(
-                              reference: 'Practitioner/84057017-f31d-4cfc-b2b3-c80e491875d6',
+                              reference:
+                                  'Practitioner/84057017-f31d-4cfc-b2b3-c80e491875d6',
                               display: 'Dr. Grey'))
                     ],
                     period: await Period.newInstance(start: DateTime.now()),
@@ -106,7 +106,8 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
                               display: "Patient's House"))
                     ],
                     serviceProvider: await Reference.newInstance(
-                        reference: 'Organization/e4903137-2e9c-4a2d-8340-0ca7e89f203a',
+                        reference:
+                            'Organization/e4903137-2e9c-4a2d-8340-0ca7e89f203a',
                         display: 'CHOP'));
                 composition = await Composition.newInstance(
                     subject: encounter.subject,
@@ -118,10 +119,20 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
                             '${pt.printName()}'),
                     date: encounter.period.start,
                     author: [encounter.participant[0].individual],
-                    title: 'Biannual Deworming Campaign');
+                    title: 'Biannual Deworming Campaign',
+                    status: 'preliminary',
+                    type: await CodeableConcept.newInstance(coding: [
+                      await Coding.newInstance(
+                          system: 'http://loinc.org', id: '84027-2')
+                    ], text: 'Biannual Deworming Campaign Home Visit'));
+                setState(() => begin = true);
               },
               child: Text('Begin Visit'),
             ),
+            Visibility(
+                visible: begin,
+                child: Text('Visit has Begun!',
+                    style: TextStyle(color: Colors.green, fontSize: 20))),
             RaisedButton(
               onPressed: () async {
                 medicationAdministration =
@@ -149,10 +160,16 @@ class _ParasiteVisitState extends State<_ParasiteVisit> {
                         display: 'Albendazole Given')
                   ])
                 ];
+                composition.status = 'final';
                 composition.save();
+                setState(() => medicine = true);
               },
               child: Text('Medication Given'),
             ),
+            Visibility(
+                visible: medicine,
+                child: Text('Medication Given!',
+                    style: TextStyle(color: Colors.green, fontSize: 20))),
             RaisedButton(
               onPressed: () async {
                 encounter.period.end = DateTime.now();
