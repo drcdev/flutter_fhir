@@ -96,7 +96,8 @@ class _MainState extends State<_Main> {
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
 //            if (userName.text != 'drgrey' || password.text != 'chopchop') {
-//              setState(() => incorrect = true);
+//              er
+
 //            } else {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => MainMenu()));
