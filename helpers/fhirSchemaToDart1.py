@@ -262,7 +262,7 @@ for objects in definitions:
                 varDict[field] = 'String'
 
         dartCode = ''.join([dartCode, 
-                            '\n@JsonSerializable(explicitToJson: true)\nclass ',
+                            '\n@JsonSerializable(explicitToJson: true, includeIfNull: false)\nclass ',
                             lists(objects),
                             '{\n\n\tstatic Future<',
                             lists(objects),
