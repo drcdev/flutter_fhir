@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-
   //Allows initialization of the DB the first time
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();

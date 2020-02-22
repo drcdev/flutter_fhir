@@ -138,9 +138,13 @@ class EvidenceVariable {
   }
 
   save() async {
-    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
+  }
+
+  update() async {
+    this.meta.lastUpdated = DateTime.now();
+    this.save();
   }
 
   String resourceType = 'EvidenceVariable';
