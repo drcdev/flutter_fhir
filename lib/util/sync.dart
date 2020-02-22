@@ -33,22 +33,21 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
 
   switch (action) {
     case 'get':
-        int page = 1;
-        while (true) {
-          Response response = await get(
-              '$server/Patient?page=${page.toString()}',
-              headers: headers);
-          var myBundle = Bundle.fromJson(json.decode(response.body));
-          if (myBundle.entry.length == 0) {
-            break;
-          }
-          page += 1;
-          for (int i = 0; i < myBundle.entry.length; i++) {
-            ResourceTypes(myBundle.entry[i].resource.resourceType,
-                    myBundle.entry[i].resource.toJson())
-                .save();
-          }
+      int page = 1;
+      while (true) {
+        Response response = await get('$server/Patient?page=${page.toString()}',
+            headers: headers);
+        var myBundle = Bundle.fromJson(json.decode(response.body));
+        if (myBundle.entry.length == 0) {
+          break;
         }
+        page += 1;
+        for (int i = 0; i < myBundle.entry.length; i++) {
+          ResourceTypes(myBundle.entry[i].resource.resourceType,
+                  myBundle.entry[i].resource.toJson())
+              .save();
+        }
+      }
 //        Bundle sendBundle = await Bundle.newInstance(
 //            type: 'transaction', entry: [await Bundle_Entry.newInstance()]);
 //        List classes = [
@@ -87,7 +86,7 @@ sync(String action, {String resourceType, List<dynamic> resourceList}) async {
 //        print(noIdea.headers.toString());
 //        print(noIdea.body.toString());
 //      }
-    break;
+      break;
     case 'post':
       {}
       break;
@@ -99,7 +98,6 @@ abstract class Serializable {
 }
 
 class Model implements Serializable {
-
   int test;
   @override
   void fromJson(data) {

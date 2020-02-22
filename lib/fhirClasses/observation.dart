@@ -17,7 +17,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Observation {
   static Future<Observation> newInstance({
     String resourceType,
@@ -145,13 +145,9 @@ class Observation {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Observation';
@@ -277,7 +273,7 @@ class Observation {
   Map<String, dynamic> toJson() => _$ObservationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Observation_ReferenceRange {
   static Future<Observation_ReferenceRange> newInstance({
     String id,
@@ -294,7 +290,7 @@ class Observation_ReferenceRange {
     var fhirDb = new DatabaseHelper();
     Observation_ReferenceRange newObservation_ReferenceRange =
         new Observation_ReferenceRange(
-      id: id ?? await fhirDb.newResourceId('Observation_ReferenceRange'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       low: low,
@@ -337,7 +333,7 @@ class Observation_ReferenceRange {
   Map<String, dynamic> toJson() => _$Observation_ReferenceRangeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Observation_Component {
   static Future<Observation_Component> newInstance({
     String id,
@@ -366,7 +362,7 @@ class Observation_Component {
   }) async {
     var fhirDb = new DatabaseHelper();
     Observation_Component newObservation_Component = new Observation_Component(
-      id: id ?? await fhirDb.newResourceId('Observation_Component'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -632,86 +628,69 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ObservationToJson(Observation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
-  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull(
-      'category', instance.category?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('focus', instance.focus?.map((e) => e?.toJson())?.toList());
-  writeNotNull('encounter', instance.encounter?.toJson());
-  writeNotNull('effectiveDateTime', instance.effectiveDateTime);
-  writeNotNull(
-      'elementEffectiveDateTime', instance.elementEffectiveDateTime?.toJson());
-  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
-  writeNotNull('effectiveTiming', instance.effectiveTiming?.toJson());
-  writeNotNull('effectiveInstant', instance.effectiveInstant);
-  writeNotNull(
-      'elementEffectiveInstant', instance.elementEffectiveInstant?.toJson());
-  writeNotNull('issued', instance.issued?.toIso8601String());
-  writeNotNull('elementIssued', instance.elementIssued?.toJson());
-  writeNotNull(
-      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
-  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
-  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
-  writeNotNull('valueString', instance.valueString);
-  writeNotNull('elementValueString', instance.elementValueString?.toJson());
-  writeNotNull('valueBoolean', instance.valueBoolean);
-  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
-  writeNotNull('valueInteger', instance.valueInteger);
-  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
-  writeNotNull('valueRange', instance.valueRange?.toJson());
-  writeNotNull('valueRatio', instance.valueRatio?.toJson());
-  writeNotNull('valueSampledData', instance.valueSampledData?.toJson());
-  writeNotNull('valueTime', instance.valueTime);
-  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
-  writeNotNull('valueDateTime', instance.valueDateTime);
-  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
-  writeNotNull('valuePeriod', instance.valuePeriod?.toJson());
-  writeNotNull('dataAbsentReason', instance.dataAbsentReason?.toJson());
-  writeNotNull('interpretation',
-      instance.interpretation?.map((e) => e?.toJson())?.toList());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  writeNotNull('bodySite', instance.bodySite?.toJson());
-  writeNotNull('method', instance.method?.toJson());
-  writeNotNull('specimen', instance.specimen?.toJson());
-  writeNotNull('device', instance.device?.toJson());
-  writeNotNull('referenceRange',
-      instance.referenceRange?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'hasMember', instance.hasMember?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'derivedFrom', instance.derivedFrom?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'component', instance.component?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$ObservationToJson(Observation instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
+      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'category': instance.category?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'focus': instance.focus?.map((e) => e?.toJson())?.toList(),
+      'encounter': instance.encounter?.toJson(),
+      'effectiveDateTime': instance.effectiveDateTime,
+      'elementEffectiveDateTime': instance.elementEffectiveDateTime?.toJson(),
+      'effectivePeriod': instance.effectivePeriod?.toJson(),
+      'effectiveTiming': instance.effectiveTiming?.toJson(),
+      'effectiveInstant': instance.effectiveInstant,
+      'elementEffectiveInstant': instance.elementEffectiveInstant?.toJson(),
+      'issued': instance.issued?.toIso8601String(),
+      'elementIssued': instance.elementIssued?.toJson(),
+      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
+      'valueQuantity': instance.valueQuantity?.toJson(),
+      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueBoolean': instance.valueBoolean,
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
+      'valueInteger': instance.valueInteger,
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
+      'valueRange': instance.valueRange?.toJson(),
+      'valueRatio': instance.valueRatio?.toJson(),
+      'valueSampledData': instance.valueSampledData?.toJson(),
+      'valueTime': instance.valueTime,
+      'elementValueTime': instance.elementValueTime?.toJson(),
+      'valueDateTime': instance.valueDateTime,
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
+      'valuePeriod': instance.valuePeriod?.toJson(),
+      'dataAbsentReason': instance.dataAbsentReason?.toJson(),
+      'interpretation':
+          instance.interpretation?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'bodySite': instance.bodySite?.toJson(),
+      'method': instance.method?.toJson(),
+      'specimen': instance.specimen?.toJson(),
+      'device': instance.device?.toJson(),
+      'referenceRange':
+          instance.referenceRange?.map((e) => e?.toJson())?.toList(),
+      'hasMember': instance.hasMember?.map((e) => e?.toJson())?.toList(),
+      'derivedFrom': instance.derivedFrom?.map((e) => e?.toJson())?.toList(),
+      'component': instance.component?.map((e) => e?.toJson())?.toList(),
+    };
 
 Observation_ReferenceRange _$Observation_ReferenceRangeFromJson(
     Map<String, dynamic> json) {
@@ -750,30 +729,20 @@ Observation_ReferenceRange _$Observation_ReferenceRangeFromJson(
 }
 
 Map<String, dynamic> _$Observation_ReferenceRangeToJson(
-    Observation_ReferenceRange instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('low', instance.low?.toJson());
-  writeNotNull('high', instance.high?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull(
-      'appliesTo', instance.appliesTo?.map((e) => e?.toJson())?.toList());
-  writeNotNull('age', instance.age?.toJson());
-  writeNotNull('text', instance.text);
-  writeNotNull('elementText', instance.elementText?.toJson());
-  return val;
-}
+        Observation_ReferenceRange instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'low': instance.low?.toJson(),
+      'high': instance.high?.toJson(),
+      'type': instance.type?.toJson(),
+      'appliesTo': instance.appliesTo?.map((e) => e?.toJson())?.toList(),
+      'age': instance.age?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+    };
 
 Observation_Component _$Observation_ComponentFromJson(
     Map<String, dynamic> json) {
@@ -849,41 +818,32 @@ Observation_Component _$Observation_ComponentFromJson(
 }
 
 Map<String, dynamic> _$Observation_ComponentToJson(
-    Observation_Component instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
-  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
-  writeNotNull('valueString', instance.valueString);
-  writeNotNull('elementValueString', instance.elementValueString?.toJson());
-  writeNotNull('valueBoolean', instance.valueBoolean);
-  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
-  writeNotNull('valueInteger', instance.valueInteger);
-  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
-  writeNotNull('valueRange', instance.valueRange?.toJson());
-  writeNotNull('valueRatio', instance.valueRatio?.toJson());
-  writeNotNull('valueSampledData', instance.valueSampledData?.toJson());
-  writeNotNull('valueTime', instance.valueTime);
-  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
-  writeNotNull('valueDateTime', instance.valueDateTime);
-  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
-  writeNotNull('valuePeriod', instance.valuePeriod?.toJson());
-  writeNotNull('dataAbsentReason', instance.dataAbsentReason?.toJson());
-  writeNotNull('interpretation',
-      instance.interpretation?.map((e) => e?.toJson())?.toList());
-  writeNotNull('referenceRange',
-      instance.referenceRange?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        Observation_Component instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'valueQuantity': instance.valueQuantity?.toJson(),
+      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueBoolean': instance.valueBoolean,
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
+      'valueInteger': instance.valueInteger,
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
+      'valueRange': instance.valueRange?.toJson(),
+      'valueRatio': instance.valueRatio?.toJson(),
+      'valueSampledData': instance.valueSampledData?.toJson(),
+      'valueTime': instance.valueTime,
+      'elementValueTime': instance.elementValueTime?.toJson(),
+      'valueDateTime': instance.valueDateTime,
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
+      'valuePeriod': instance.valuePeriod?.toJson(),
+      'dataAbsentReason': instance.dataAbsentReason?.toJson(),
+      'interpretation':
+          instance.interpretation?.map((e) => e?.toJson())?.toList(),
+      'referenceRange':
+          instance.referenceRange?.map((e) => e?.toJson())?.toList(),
+    };

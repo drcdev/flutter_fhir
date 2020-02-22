@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis {
   static Future<EffectEvidenceSynthesis> newInstance({
     String resourceType,
@@ -141,13 +141,9 @@ class EffectEvidenceSynthesis {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'EffectEvidenceSynthesis';
@@ -269,7 +265,7 @@ class EffectEvidenceSynthesis {
   Map<String, dynamic> toJson() => _$EffectEvidenceSynthesisToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_SampleSize {
   static Future<EffectEvidenceSynthesis_SampleSize> newInstance({
     String id,
@@ -285,8 +281,7 @@ class EffectEvidenceSynthesis_SampleSize {
     var fhirDb = new DatabaseHelper();
     EffectEvidenceSynthesis_SampleSize newEffectEvidenceSynthesis_SampleSize =
         new EffectEvidenceSynthesis_SampleSize(
-      id: id ??
-          await fhirDb.newResourceId('EffectEvidenceSynthesis_SampleSize'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -328,7 +323,7 @@ class EffectEvidenceSynthesis_SampleSize {
       _$EffectEvidenceSynthesis_SampleSizeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_ResultsByExposure {
   static Future<EffectEvidenceSynthesis_ResultsByExposure> newInstance({
     String id,
@@ -345,9 +340,7 @@ class EffectEvidenceSynthesis_ResultsByExposure {
     EffectEvidenceSynthesis_ResultsByExposure
         newEffectEvidenceSynthesis_ResultsByExposure =
         new EffectEvidenceSynthesis_ResultsByExposure(
-      id: id ??
-          await fhirDb
-              .newResourceId('EffectEvidenceSynthesis_ResultsByExposure'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -389,7 +382,7 @@ class EffectEvidenceSynthesis_ResultsByExposure {
       _$EffectEvidenceSynthesis_ResultsByExposureToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_EffectEstimate {
   static Future<EffectEvidenceSynthesis_EffectEstimate> newInstance({
     String id,
@@ -408,8 +401,7 @@ class EffectEvidenceSynthesis_EffectEstimate {
     EffectEvidenceSynthesis_EffectEstimate
         newEffectEvidenceSynthesis_EffectEstimate =
         new EffectEvidenceSynthesis_EffectEstimate(
-      id: id ??
-          await fhirDb.newResourceId('EffectEvidenceSynthesis_EffectEstimate'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -457,7 +449,7 @@ class EffectEvidenceSynthesis_EffectEstimate {
       _$EffectEvidenceSynthesis_EffectEstimateToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_PrecisionEstimate {
   static Future<EffectEvidenceSynthesis_PrecisionEstimate> newInstance({
     String id,
@@ -475,9 +467,7 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
     EffectEvidenceSynthesis_PrecisionEstimate
         newEffectEvidenceSynthesis_PrecisionEstimate =
         new EffectEvidenceSynthesis_PrecisionEstimate(
-      id: id ??
-          await fhirDb
-              .newResourceId('EffectEvidenceSynthesis_PrecisionEstimate'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -522,7 +512,7 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
       _$EffectEvidenceSynthesis_PrecisionEstimateToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_Certainty {
   static Future<EffectEvidenceSynthesis_Certainty> newInstance({
     String id,
@@ -535,7 +525,7 @@ class EffectEvidenceSynthesis_Certainty {
     var fhirDb = new DatabaseHelper();
     EffectEvidenceSynthesis_Certainty newEffectEvidenceSynthesis_Certainty =
         new EffectEvidenceSynthesis_Certainty(
-      id: id ?? await fhirDb.newResourceId('EffectEvidenceSynthesis_Certainty'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       rating: rating,
@@ -568,7 +558,7 @@ class EffectEvidenceSynthesis_Certainty {
       _$EffectEvidenceSynthesis_CertaintyToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_CertaintySubcomponent {
   static Future<EffectEvidenceSynthesis_CertaintySubcomponent> newInstance({
     String id,
@@ -582,9 +572,7 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
     EffectEvidenceSynthesis_CertaintySubcomponent
         newEffectEvidenceSynthesis_CertaintySubcomponent =
         new EffectEvidenceSynthesis_CertaintySubcomponent(
-      id: id ??
-          await fhirDb
-              .newResourceId('EffectEvidenceSynthesis_CertaintySubcomponent'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -801,84 +789,68 @@ EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
 }
 
 Map<String, dynamic> _$EffectEvidenceSynthesisToJson(
-    EffectEvidenceSynthesis instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('copyright', instance.copyright);
-  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
-  writeNotNull('approvalDate', instance.approvalDate);
-  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
-  writeNotNull('lastReviewDate', instance.lastReviewDate);
-  writeNotNull(
-      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
-  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
-  writeNotNull('topic', instance.topic?.map((e) => e?.toJson())?.toList());
-  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
-  writeNotNull('editor', instance.editor?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'reviewer', instance.reviewer?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'endorser', instance.endorser?.map((e) => e?.toJson())?.toList());
-  writeNotNull('relatedArtifact',
-      instance.relatedArtifact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('synthesisType', instance.synthesisType?.toJson());
-  writeNotNull('studyType', instance.studyType?.toJson());
-  writeNotNull('population', instance.population?.toJson());
-  writeNotNull('exposure', instance.exposure?.toJson());
-  writeNotNull('exposureAlternative', instance.exposureAlternative?.toJson());
-  writeNotNull('outcome', instance.outcome?.toJson());
-  writeNotNull('sampleSize', instance.sampleSize?.toJson());
-  writeNotNull('resultsByExposure',
-      instance.resultsByExposure?.map((e) => e?.toJson())?.toList());
-  writeNotNull('effectEstimate',
-      instance.effectEstimate?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'certainty', instance.certainty?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        EffectEvidenceSynthesis instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'approvalDate': instance.approvalDate,
+      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
+      'lastReviewDate': instance.lastReviewDate,
+      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
+      'effectivePeriod': instance.effectivePeriod?.toJson(),
+      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
+      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
+      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
+      'relatedArtifact':
+          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
+      'synthesisType': instance.synthesisType?.toJson(),
+      'studyType': instance.studyType?.toJson(),
+      'population': instance.population?.toJson(),
+      'exposure': instance.exposure?.toJson(),
+      'exposureAlternative': instance.exposureAlternative?.toJson(),
+      'outcome': instance.outcome?.toJson(),
+      'sampleSize': instance.sampleSize?.toJson(),
+      'resultsByExposure':
+          instance.resultsByExposure?.map((e) => e?.toJson())?.toList(),
+      'effectEstimate':
+          instance.effectEstimate?.map((e) => e?.toJson())?.toList(),
+      'certainty': instance.certainty?.map((e) => e?.toJson())?.toList(),
+    };
 
 EffectEvidenceSynthesis_SampleSize _$EffectEvidenceSynthesis_SampleSizeFromJson(
     Map<String, dynamic> json) {
@@ -910,30 +882,20 @@ EffectEvidenceSynthesis_SampleSize _$EffectEvidenceSynthesis_SampleSizeFromJson(
 }
 
 Map<String, dynamic> _$EffectEvidenceSynthesis_SampleSizeToJson(
-    EffectEvidenceSynthesis_SampleSize instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('numberOfStudies', instance.numberOfStudies);
-  writeNotNull(
-      'elementNumberOfStudies', instance.elementNumberOfStudies?.toJson());
-  writeNotNull('numberOfParticipants', instance.numberOfParticipants);
-  writeNotNull('elementNumberOfParticipants',
-      instance.elementNumberOfParticipants?.toJson());
-  return val;
-}
+        EffectEvidenceSynthesis_SampleSize instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'numberOfStudies': instance.numberOfStudies,
+      'elementNumberOfStudies': instance.elementNumberOfStudies?.toJson(),
+      'numberOfParticipants': instance.numberOfParticipants,
+      'elementNumberOfParticipants':
+          instance.elementNumberOfParticipants?.toJson(),
+    };
 
 EffectEvidenceSynthesis_ResultsByExposure
     _$EffectEvidenceSynthesis_ResultsByExposureFromJson(
@@ -969,29 +931,19 @@ EffectEvidenceSynthesis_ResultsByExposure
 }
 
 Map<String, dynamic> _$EffectEvidenceSynthesis_ResultsByExposureToJson(
-    EffectEvidenceSynthesis_ResultsByExposure instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('exposureState', instance.exposureState);
-  writeNotNull('elementExposureState', instance.elementExposureState?.toJson());
-  writeNotNull('variantState', instance.variantState?.toJson());
-  writeNotNull(
-      'riskEvidenceSynthesis', instance.riskEvidenceSynthesis?.toJson());
-  return val;
-}
+        EffectEvidenceSynthesis_ResultsByExposure instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'exposureState': instance.exposureState,
+      'elementExposureState': instance.elementExposureState?.toJson(),
+      'variantState': instance.variantState?.toJson(),
+      'riskEvidenceSynthesis': instance.riskEvidenceSynthesis?.toJson(),
+    };
 
 EffectEvidenceSynthesis_EffectEstimate
     _$EffectEvidenceSynthesis_EffectEstimateFromJson(
@@ -1035,31 +987,22 @@ EffectEvidenceSynthesis_EffectEstimate
 }
 
 Map<String, dynamic> _$EffectEvidenceSynthesis_EffectEstimateToJson(
-    EffectEvidenceSynthesis_EffectEstimate instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('variantState', instance.variantState?.toJson());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  writeNotNull('unitOfMeasure', instance.unitOfMeasure?.toJson());
-  writeNotNull('precisionEstimate',
-      instance.precisionEstimate?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        EffectEvidenceSynthesis_EffectEstimate instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'type': instance.type?.toJson(),
+      'variantState': instance.variantState?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+      'unitOfMeasure': instance.unitOfMeasure?.toJson(),
+      'precisionEstimate':
+          instance.precisionEstimate?.map((e) => e?.toJson())?.toList(),
+    };
 
 EffectEvidenceSynthesis_PrecisionEstimate
     _$EffectEvidenceSynthesis_PrecisionEstimateFromJson(
@@ -1093,29 +1036,20 @@ EffectEvidenceSynthesis_PrecisionEstimate
 }
 
 Map<String, dynamic> _$EffectEvidenceSynthesis_PrecisionEstimateToJson(
-    EffectEvidenceSynthesis_PrecisionEstimate instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('level', instance.level);
-  writeNotNull('elementLevel', instance.elementLevel?.toJson());
-  writeNotNull('from', instance.from);
-  writeNotNull('elementFrom', instance.elementFrom?.toJson());
-  writeNotNull('to', instance.to);
-  writeNotNull('elementTo', instance.elementTo?.toJson());
-  return val;
-}
+        EffectEvidenceSynthesis_PrecisionEstimate instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'level': instance.level,
+      'elementLevel': instance.elementLevel?.toJson(),
+      'from': instance.from,
+      'elementFrom': instance.elementFrom?.toJson(),
+      'to': instance.to,
+      'elementTo': instance.elementTo?.toJson(),
+    };
 
 EffectEvidenceSynthesis_Certainty _$EffectEvidenceSynthesis_CertaintyFromJson(
     Map<String, dynamic> json) {
@@ -1148,26 +1082,17 @@ EffectEvidenceSynthesis_Certainty _$EffectEvidenceSynthesis_CertaintyFromJson(
 }
 
 Map<String, dynamic> _$EffectEvidenceSynthesis_CertaintyToJson(
-    EffectEvidenceSynthesis_Certainty instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('rating', instance.rating?.map((e) => e?.toJson())?.toList());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  writeNotNull('certaintySubcomponent',
-      instance.certaintySubcomponent?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        EffectEvidenceSynthesis_Certainty instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'rating': instance.rating?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'certaintySubcomponent':
+          instance.certaintySubcomponent?.map((e) => e?.toJson())?.toList(),
+    };
 
 EffectEvidenceSynthesis_CertaintySubcomponent
     _$EffectEvidenceSynthesis_CertaintySubcomponentFromJson(
@@ -1198,22 +1123,13 @@ EffectEvidenceSynthesis_CertaintySubcomponent
 }
 
 Map<String, dynamic> _$EffectEvidenceSynthesis_CertaintySubcomponentToJson(
-    EffectEvidenceSynthesis_CertaintySubcomponent instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('rating', instance.rating?.map((e) => e?.toJson())?.toList());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        EffectEvidenceSynthesis_CertaintySubcomponent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'rating': instance.rating?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+    };

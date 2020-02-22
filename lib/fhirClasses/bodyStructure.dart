@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class BodyStructure {
   static Future<BodyStructure> newInstance({
     String resourceType,
@@ -67,13 +67,9 @@ class BodyStructure {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'BodyStructure';
@@ -197,39 +193,29 @@ BodyStructure _$BodyStructureFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$BodyStructureToJson(BodyStructure instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('active', instance.active);
-  writeNotNull('elementActive', instance.elementActive?.toJson());
-  writeNotNull('morphology', instance.morphology?.toJson());
-  writeNotNull('location', instance.location?.toJson());
-  writeNotNull('locationQualifier',
-      instance.locationQualifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('image', instance.image?.map((e) => e?.toJson())?.toList());
-  writeNotNull('patient', instance.patient?.toJson());
-  return val;
-}
+Map<String, dynamic> _$BodyStructureToJson(BodyStructure instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'active': instance.active,
+      'elementActive': instance.elementActive?.toJson(),
+      'morphology': instance.morphology?.toJson(),
+      'location': instance.location?.toJson(),
+      'locationQualifier':
+          instance.locationQualifier?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'image': instance.image?.map((e) => e?.toJson())?.toList(),
+      'patient': instance.patient?.toJson(),
+    };

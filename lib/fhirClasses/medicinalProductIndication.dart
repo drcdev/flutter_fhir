@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductIndication {
   static Future<MedicinalProductIndication> newInstance({
     String resourceType,
@@ -67,13 +67,9 @@ class MedicinalProductIndication {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MedicinalProductIndication';
@@ -125,7 +121,7 @@ class MedicinalProductIndication {
   Map<String, dynamic> toJson() => _$MedicinalProductIndicationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductIndication_OtherTherapy {
   static Future<MedicinalProductIndication_OtherTherapy> newInstance({
     String id,
@@ -139,8 +135,7 @@ class MedicinalProductIndication_OtherTherapy {
     MedicinalProductIndication_OtherTherapy
         newMedicinalProductIndication_OtherTherapy =
         new MedicinalProductIndication_OtherTherapy(
-      id: id ??
-          await fhirDb.newResourceId('MedicinalProductIndication_OtherTherapy'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       therapyRelationshipType: therapyRelationshipType,
@@ -253,44 +248,31 @@ MedicinalProductIndication _$MedicinalProductIndicationFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductIndicationToJson(
-    MedicinalProductIndication instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('subject', instance.subject?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'diseaseSymptomProcedure', instance.diseaseSymptomProcedure?.toJson());
-  writeNotNull('diseaseStatus', instance.diseaseStatus?.toJson());
-  writeNotNull(
-      'comorbidity', instance.comorbidity?.map((e) => e?.toJson())?.toList());
-  writeNotNull('intendedEffect', instance.intendedEffect?.toJson());
-  writeNotNull('duration', instance.duration?.toJson());
-  writeNotNull(
-      'otherTherapy', instance.otherTherapy?.map((e) => e?.toJson())?.toList());
-  writeNotNull('undesirableEffect',
-      instance.undesirableEffect?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'population', instance.population?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicinalProductIndication instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
+      'diseaseSymptomProcedure': instance.diseaseSymptomProcedure?.toJson(),
+      'diseaseStatus': instance.diseaseStatus?.toJson(),
+      'comorbidity': instance.comorbidity?.map((e) => e?.toJson())?.toList(),
+      'intendedEffect': instance.intendedEffect?.toJson(),
+      'duration': instance.duration?.toJson(),
+      'otherTherapy': instance.otherTherapy?.map((e) => e?.toJson())?.toList(),
+      'undesirableEffect':
+          instance.undesirableEffect?.map((e) => e?.toJson())?.toList(),
+      'population': instance.population?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicinalProductIndication_OtherTherapy
     _$MedicinalProductIndication_OtherTherapyFromJson(
@@ -321,24 +303,13 @@ MedicinalProductIndication_OtherTherapy
 }
 
 Map<String, dynamic> _$MedicinalProductIndication_OtherTherapyToJson(
-    MedicinalProductIndication_OtherTherapy instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'therapyRelationshipType', instance.therapyRelationshipType?.toJson());
-  writeNotNull('medicationCodeableConcept',
-      instance.medicationCodeableConcept?.toJson());
-  writeNotNull('medicationReference', instance.medicationReference?.toJson());
-  return val;
-}
+        MedicinalProductIndication_OtherTherapy instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'therapyRelationshipType': instance.therapyRelationshipType?.toJson(),
+      'medicationCodeableConcept': instance.medicationCodeableConcept?.toJson(),
+      'medicationReference': instance.medicationReference?.toJson(),
+    };

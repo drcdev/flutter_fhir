@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Patient {
   static Future<Patient> newInstance({
     String resourceType,
@@ -101,13 +101,9 @@ class Patient {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Patient';
@@ -197,7 +193,7 @@ class Patient {
   Map<String, dynamic> toJson() => _$PatientToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Patient_Contact {
   static Future<Patient_Contact> newInstance({
     String id,
@@ -214,7 +210,7 @@ class Patient_Contact {
   }) async {
     var fhirDb = new DatabaseHelper();
     Patient_Contact newPatient_Contact = new Patient_Contact(
-      id: id ?? await fhirDb.newResourceId('Patient_Contact'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       relationship: relationship,
@@ -260,7 +256,7 @@ class Patient_Contact {
   Map<String, dynamic> toJson() => _$Patient_ContactToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Patient_Communication {
   static Future<Patient_Communication> newInstance({
     String id,
@@ -272,7 +268,7 @@ class Patient_Communication {
   }) async {
     var fhirDb = new DatabaseHelper();
     Patient_Communication newPatient_Communication = new Patient_Communication(
-      id: id ?? await fhirDb.newResourceId('Patient_Communication'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       language: language,
@@ -303,7 +299,7 @@ class Patient_Communication {
   Map<String, dynamic> toJson() => _$Patient_CommunicationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Patient_Link {
   static Future<Patient_Link> newInstance({
     String id,
@@ -315,7 +311,7 @@ class Patient_Link {
   }) async {
     var fhirDb = new DatabaseHelper();
     Patient_Link newPatient_Link = new Patient_Link(
-      id: id ?? await fhirDb.newResourceId('Patient_Link'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       other: other,
@@ -464,62 +460,49 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PatientToJson(Patient instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('active', instance.active);
-  writeNotNull('elementActive', instance.elementActive?.toJson());
-  writeNotNull('name', instance.name?.map((e) => e?.toJson())?.toList());
-  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
-  writeNotNull('gender', instance.gender);
-  writeNotNull('elementGender', instance.elementGender?.toJson());
-  writeNotNull('birthDate', instance.birthDate);
-  writeNotNull('elementBirthDate', instance.elementBirthDate?.toJson());
-  writeNotNull('deceasedBoolean', instance.deceasedBoolean);
-  writeNotNull(
-      'elementDeceasedBoolean', instance.elementDeceasedBoolean?.toJson());
-  writeNotNull('deceasedDateTime', instance.deceasedDateTime);
-  writeNotNull(
-      'elementDeceasedDateTime', instance.elementDeceasedDateTime?.toJson());
-  writeNotNull('address', instance.address?.map((e) => e?.toJson())?.toList());
-  writeNotNull('maritalStatus', instance.maritalStatus?.toJson());
-  writeNotNull('multipleBirthBoolean', instance.multipleBirthBoolean);
-  writeNotNull('elementMultipleBirthBoolean',
-      instance.elementMultipleBirthBoolean?.toJson());
-  writeNotNull('multipleBirthInteger', instance.multipleBirthInteger);
-  writeNotNull('elementMultipleBirthInteger',
-      instance.elementMultipleBirthInteger?.toJson());
-  writeNotNull('photo', instance.photo?.map((e) => e?.toJson())?.toList());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('communication',
-      instance.communication?.map((e) => e?.toJson())?.toList());
-  writeNotNull('generalPractitioner',
-      instance.generalPractitioner?.map((e) => e?.toJson())?.toList());
-  writeNotNull('managingOrganization', instance.managingOrganization?.toJson());
-  writeNotNull('link', instance.link?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'active': instance.active,
+      'elementActive': instance.elementActive?.toJson(),
+      'name': instance.name?.map((e) => e?.toJson())?.toList(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'gender': instance.gender,
+      'elementGender': instance.elementGender?.toJson(),
+      'birthDate': instance.birthDate,
+      'elementBirthDate': instance.elementBirthDate?.toJson(),
+      'deceasedBoolean': instance.deceasedBoolean,
+      'elementDeceasedBoolean': instance.elementDeceasedBoolean?.toJson(),
+      'deceasedDateTime': instance.deceasedDateTime,
+      'elementDeceasedDateTime': instance.elementDeceasedDateTime?.toJson(),
+      'address': instance.address?.map((e) => e?.toJson())?.toList(),
+      'maritalStatus': instance.maritalStatus?.toJson(),
+      'multipleBirthBoolean': instance.multipleBirthBoolean,
+      'elementMultipleBirthBoolean':
+          instance.elementMultipleBirthBoolean?.toJson(),
+      'multipleBirthInteger': instance.multipleBirthInteger,
+      'elementMultipleBirthInteger':
+          instance.elementMultipleBirthInteger?.toJson(),
+      'photo': instance.photo?.map((e) => e?.toJson())?.toList(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'communication':
+          instance.communication?.map((e) => e?.toJson())?.toList(),
+      'generalPractitioner':
+          instance.generalPractitioner?.map((e) => e?.toJson())?.toList(),
+      'managingOrganization': instance.managingOrganization?.toJson(),
+      'link': instance.link?.map((e) => e?.toJson())?.toList(),
+    };
 
 Patient_Contact _$Patient_ContactFromJson(Map<String, dynamic> json) {
   return Patient_Contact(
@@ -560,31 +543,21 @@ Patient_Contact _$Patient_ContactFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Patient_ContactToJson(Patient_Contact instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'relationship', instance.relationship?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name?.toJson());
-  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
-  writeNotNull('address', instance.address?.toJson());
-  writeNotNull('gender', instance.gender);
-  writeNotNull('elementGender', instance.elementGender?.toJson());
-  writeNotNull('organization', instance.organization?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Patient_ContactToJson(Patient_Contact instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'relationship': instance.relationship?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name?.toJson(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'address': instance.address?.toJson(),
+      'gender': instance.gender,
+      'elementGender': instance.elementGender?.toJson(),
+      'organization': instance.organization?.toJson(),
+      'period': instance.period?.toJson(),
+    };
 
 Patient_Communication _$Patient_CommunicationFromJson(
     Map<String, dynamic> json) {
@@ -609,25 +582,16 @@ Patient_Communication _$Patient_CommunicationFromJson(
 }
 
 Map<String, dynamic> _$Patient_CommunicationToJson(
-    Patient_Communication instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('language', instance.language?.toJson());
-  writeNotNull('preferred', instance.preferred);
-  writeNotNull('elementPreferred', instance.elementPreferred?.toJson());
-  return val;
-}
+        Patient_Communication instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'language': instance.language?.toJson(),
+      'preferred': instance.preferred,
+      'elementPreferred': instance.elementPreferred?.toJson(),
+    };
 
 Patient_Link _$Patient_LinkFromJson(Map<String, dynamic> json) {
   return Patient_Link(
@@ -650,22 +614,13 @@ Patient_Link _$Patient_LinkFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Patient_LinkToJson(Patient_Link instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('other', instance.other?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Patient_LinkToJson(Patient_Link instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'other': instance.other?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+    };

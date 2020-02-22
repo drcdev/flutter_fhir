@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet {
   static Future<ValueSet> newInstance({
     String resourceType,
@@ -108,13 +108,9 @@ class ValueSet {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'ValueSet';
@@ -208,7 +204,7 @@ class ValueSet {
   Map<String, dynamic> toJson() => _$ValueSetToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Compose {
   static Future<ValueSet_Compose> newInstance({
     String id,
@@ -223,7 +219,7 @@ class ValueSet_Compose {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Compose newValueSet_Compose = new ValueSet_Compose(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Compose'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       lockedDate: lockedDate,
@@ -263,7 +259,7 @@ class ValueSet_Compose {
   Map<String, dynamic> toJson() => _$ValueSet_ComposeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Include {
   static Future<ValueSet_Include> newInstance({
     String id,
@@ -279,7 +275,7 @@ class ValueSet_Include {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Include newValueSet_Include = new ValueSet_Include(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Include'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       system: system,
@@ -322,7 +318,7 @@ class ValueSet_Include {
   Map<String, dynamic> toJson() => _$ValueSet_IncludeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Concept {
   static Future<ValueSet_Concept> newInstance({
     String id,
@@ -336,7 +332,7 @@ class ValueSet_Concept {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Concept newValueSet_Concept = new ValueSet_Concept(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Concept'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -373,7 +369,7 @@ class ValueSet_Concept {
   Map<String, dynamic> toJson() => _$ValueSet_ConceptToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Designation {
   static Future<ValueSet_Designation> newInstance({
     String id,
@@ -387,7 +383,7 @@ class ValueSet_Designation {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Designation newValueSet_Designation = new ValueSet_Designation(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Designation'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       language: language,
@@ -424,7 +420,7 @@ class ValueSet_Designation {
   Map<String, dynamic> toJson() => _$ValueSet_DesignationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Filter {
   static Future<ValueSet_Filter> newInstance({
     String id,
@@ -439,7 +435,7 @@ class ValueSet_Filter {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Filter newValueSet_Filter = new ValueSet_Filter(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Filter'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       property: property,
@@ -479,7 +475,7 @@ class ValueSet_Filter {
   Map<String, dynamic> toJson() => _$ValueSet_FilterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Expansion {
   static Future<ValueSet_Expansion> newInstance({
     String id,
@@ -498,7 +494,7 @@ class ValueSet_Expansion {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Expansion newValueSet_Expansion = new ValueSet_Expansion(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Expansion'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -550,7 +546,7 @@ class ValueSet_Expansion {
   Map<String, dynamic> toJson() => _$ValueSet_ExpansionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Parameter {
   static Future<ValueSet_Parameter> newInstance({
     String id,
@@ -575,7 +571,7 @@ class ValueSet_Parameter {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Parameter newValueSet_Parameter = new ValueSet_Parameter(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Parameter'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -645,7 +641,7 @@ class ValueSet_Parameter {
   Map<String, dynamic> toJson() => _$ValueSet_ParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ValueSet_Contains {
   static Future<ValueSet_Contains> newInstance({
     String id,
@@ -668,7 +664,7 @@ class ValueSet_Contains {
   }) async {
     var fhirDb = new DatabaseHelper();
     ValueSet_Contains newValueSet_Contains = new ValueSet_Contains(
-      id: id ?? await fhirDb.newResourceId('ValueSet_Contains'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       system: system,
@@ -845,63 +841,50 @@ ValueSet _$ValueSetFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSetToJson(ValueSet instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('experimental', instance.experimental);
-  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('immutable', instance.immutable);
-  writeNotNull('elementImmutable', instance.elementImmutable?.toJson());
-  writeNotNull('purpose', instance.purpose);
-  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
-  writeNotNull('copyright', instance.copyright);
-  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
-  writeNotNull('compose', instance.compose?.toJson());
-  writeNotNull('expansion', instance.expansion?.toJson());
-  return val;
-}
+Map<String, dynamic> _$ValueSetToJson(ValueSet instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'immutable': instance.immutable,
+      'elementImmutable': instance.elementImmutable?.toJson(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'compose': instance.compose?.toJson(),
+      'expansion': instance.expansion?.toJson(),
+    };
 
 ValueSet_Compose _$ValueSet_ComposeFromJson(Map<String, dynamic> json) {
   return ValueSet_Compose(
@@ -935,28 +918,19 @@ ValueSet_Compose _$ValueSet_ComposeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSet_ComposeToJson(ValueSet_Compose instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('lockedDate', instance.lockedDate);
-  writeNotNull('elementLockedDate', instance.elementLockedDate?.toJson());
-  writeNotNull('inactive', instance.inactive);
-  writeNotNull('elementInactive', instance.elementInactive?.toJson());
-  writeNotNull('include', instance.include?.map((e) => e?.toJson())?.toList());
-  writeNotNull('exclude', instance.exclude?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$ValueSet_ComposeToJson(ValueSet_Compose instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'lockedDate': instance.lockedDate,
+      'elementLockedDate': instance.elementLockedDate?.toJson(),
+      'inactive': instance.inactive,
+      'elementInactive': instance.elementInactive?.toJson(),
+      'include': instance.include?.map((e) => e?.toJson())?.toList(),
+      'exclude': instance.exclude?.map((e) => e?.toJson())?.toList(),
+    };
 
 ValueSet_Include _$ValueSet_IncludeFromJson(Map<String, dynamic> json) {
   return ValueSet_Include(
@@ -991,29 +965,20 @@ ValueSet_Include _$ValueSet_IncludeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSet_IncludeToJson(ValueSet_Include instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('system', instance.system);
-  writeNotNull('elementSystem', instance.elementSystem?.toJson());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('concept', instance.concept?.map((e) => e?.toJson())?.toList());
-  writeNotNull('filter', instance.filter?.map((e) => e?.toJson())?.toList());
-  writeNotNull('valueSet', instance.valueSet);
-  return val;
-}
+Map<String, dynamic> _$ValueSet_IncludeToJson(ValueSet_Include instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'system': instance.system,
+      'elementSystem': instance.elementSystem?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'concept': instance.concept?.map((e) => e?.toJson())?.toList(),
+      'filter': instance.filter?.map((e) => e?.toJson())?.toList(),
+      'valueSet': instance.valueSet,
+    };
 
 ValueSet_Concept _$ValueSet_ConceptFromJson(Map<String, dynamic> json) {
   return ValueSet_Concept(
@@ -1042,28 +1007,18 @@ ValueSet_Concept _$ValueSet_ConceptFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSet_ConceptToJson(ValueSet_Concept instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('display', instance.display);
-  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
-  writeNotNull(
-      'designation', instance.designation?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$ValueSet_ConceptToJson(ValueSet_Concept instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'display': instance.display,
+      'elementDisplay': instance.elementDisplay?.toJson(),
+      'designation': instance.designation?.map((e) => e?.toJson())?.toList(),
+    };
 
 ValueSet_Designation _$ValueSet_DesignationFromJson(Map<String, dynamic> json) {
   return ValueSet_Designation(
@@ -1091,27 +1046,18 @@ ValueSet_Designation _$ValueSet_DesignationFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ValueSet_DesignationToJson(
-    ValueSet_Designation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('use', instance.use?.toJson());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  return val;
-}
+        ValueSet_Designation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'use': instance.use?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+    };
 
 ValueSet_Filter _$ValueSet_FilterFromJson(Map<String, dynamic> json) {
   return ValueSet_Filter(
@@ -1139,28 +1085,19 @@ ValueSet_Filter _$ValueSet_FilterFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSet_FilterToJson(ValueSet_Filter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('property', instance.property);
-  writeNotNull('elementProperty', instance.elementProperty?.toJson());
-  writeNotNull('op', instance.op);
-  writeNotNull('elementOp', instance.elementOp?.toJson());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  return val;
-}
+Map<String, dynamic> _$ValueSet_FilterToJson(ValueSet_Filter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'property': instance.property,
+      'elementProperty': instance.elementProperty?.toJson(),
+      'op': instance.op,
+      'elementOp': instance.elementOp?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+    };
 
 ValueSet_Expansion _$ValueSet_ExpansionFromJson(Map<String, dynamic> json) {
   return ValueSet_Expansion(
@@ -1204,34 +1141,23 @@ ValueSet_Expansion _$ValueSet_ExpansionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSet_ExpansionToJson(ValueSet_Expansion instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier);
-  writeNotNull('elementIdentifier', instance.elementIdentifier?.toJson());
-  writeNotNull('timestamp', instance.timestamp?.toIso8601String());
-  writeNotNull('elementTimestamp', instance.elementTimestamp?.toJson());
-  writeNotNull('total', instance.total);
-  writeNotNull('elementTotal', instance.elementTotal?.toJson());
-  writeNotNull('offset', instance.offset);
-  writeNotNull('elementOffset', instance.elementOffset?.toJson());
-  writeNotNull(
-      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'contains', instance.contains?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$ValueSet_ExpansionToJson(ValueSet_Expansion instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier,
+      'elementIdentifier': instance.elementIdentifier?.toJson(),
+      'timestamp': instance.timestamp?.toIso8601String(),
+      'elementTimestamp': instance.elementTimestamp?.toJson(),
+      'total': instance.total,
+      'elementTotal': instance.elementTotal?.toJson(),
+      'offset': instance.offset,
+      'elementOffset': instance.elementOffset?.toJson(),
+      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
+      'contains': instance.contains?.map((e) => e?.toJson())?.toList(),
+    };
 
 ValueSet_Parameter _$ValueSet_ParameterFromJson(Map<String, dynamic> json) {
   return ValueSet_Parameter(
@@ -1280,38 +1206,29 @@ ValueSet_Parameter _$ValueSet_ParameterFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSet_ParameterToJson(ValueSet_Parameter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('valueString', instance.valueString);
-  writeNotNull('elementValueString', instance.elementValueString?.toJson());
-  writeNotNull('valueBoolean', instance.valueBoolean);
-  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
-  writeNotNull('valueInteger', instance.valueInteger);
-  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
-  writeNotNull('valueDecimal', instance.valueDecimal);
-  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
-  writeNotNull('valueUri', instance.valueUri);
-  writeNotNull('elementValueUri', instance.elementValueUri?.toJson());
-  writeNotNull('valueCode', instance.valueCode);
-  writeNotNull('elementValueCode', instance.elementValueCode?.toJson());
-  writeNotNull('valueDateTime', instance.valueDateTime);
-  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
-  return val;
-}
+Map<String, dynamic> _$ValueSet_ParameterToJson(ValueSet_Parameter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueBoolean': instance.valueBoolean,
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
+      'valueInteger': instance.valueInteger,
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
+      'valueDecimal': instance.valueDecimal,
+      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
+      'valueUri': instance.valueUri,
+      'elementValueUri': instance.elementValueUri?.toJson(),
+      'valueCode': instance.valueCode,
+      'elementValueCode': instance.elementValueCode?.toJson(),
+      'valueDateTime': instance.valueDateTime,
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
+    };
 
 ValueSet_Contains _$ValueSet_ContainsFromJson(Map<String, dynamic> json) {
   return ValueSet_Contains(
@@ -1361,35 +1278,24 @@ ValueSet_Contains _$ValueSet_ContainsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ValueSet_ContainsToJson(ValueSet_Contains instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('system', instance.system);
-  writeNotNull('elementSystem', instance.elementSystem?.toJson());
-  writeNotNull('abstract', instance.abstract);
-  writeNotNull('elementAbstract', instance.elementAbstract?.toJson());
-  writeNotNull('inactive', instance.inactive);
-  writeNotNull('elementInactive', instance.elementInactive?.toJson());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('display', instance.display);
-  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
-  writeNotNull(
-      'designation', instance.designation?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'contains', instance.contains?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$ValueSet_ContainsToJson(ValueSet_Contains instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'system': instance.system,
+      'elementSystem': instance.elementSystem?.toJson(),
+      'abstract': instance.abstract,
+      'elementAbstract': instance.elementAbstract?.toJson(),
+      'inactive': instance.inactive,
+      'elementInactive': instance.elementInactive?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'display': instance.display,
+      'elementDisplay': instance.elementDisplay?.toJson(),
+      'designation': instance.designation?.map((e) => e?.toJson())?.toList(),
+      'contains': instance.contains?.map((e) => e?.toJson())?.toList(),
+    };

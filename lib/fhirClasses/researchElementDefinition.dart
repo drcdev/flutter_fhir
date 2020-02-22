@@ -18,7 +18,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ResearchElementDefinition {
   static Future<ResearchElementDefinition> newInstance({
     String resourceType,
@@ -162,13 +162,9 @@ class ResearchElementDefinition {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'ResearchElementDefinition';
@@ -308,7 +304,7 @@ class ResearchElementDefinition {
   Map<String, dynamic> toJson() => _$ResearchElementDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ResearchElementDefinition_Characteristic {
   static Future<ResearchElementDefinition_Characteristic> newInstance({
     String id,
@@ -348,9 +344,7 @@ class ResearchElementDefinition_Characteristic {
     ResearchElementDefinition_Characteristic
         newResearchElementDefinition_Characteristic =
         new ResearchElementDefinition_Characteristic(
-      id: id ??
-          await fhirDb
-              .newResourceId('ResearchElementDefinition_Characteristic'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       definitionCodeableConcept: definitionCodeableConcept,
@@ -648,93 +642,77 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
 }
 
 Map<String, dynamic> _$ResearchElementDefinitionToJson(
-    ResearchElementDefinition instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('shortTitle', instance.shortTitle);
-  writeNotNull('elementShortTitle', instance.elementShortTitle?.toJson());
-  writeNotNull('subtitle', instance.subtitle);
-  writeNotNull('elementSubtitle', instance.elementSubtitle?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('experimental', instance.experimental);
-  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
-  writeNotNull(
-      'subjectCodeableConcept', instance.subjectCodeableConcept?.toJson());
-  writeNotNull('subjectReference', instance.subjectReference?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment',
-      instance.elementComment?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('purpose', instance.purpose);
-  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
-  writeNotNull('usage', instance.usage);
-  writeNotNull('elementUsage', instance.elementUsage?.toJson());
-  writeNotNull('copyright', instance.copyright);
-  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
-  writeNotNull('approvalDate', instance.approvalDate);
-  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
-  writeNotNull('lastReviewDate', instance.lastReviewDate);
-  writeNotNull(
-      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
-  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
-  writeNotNull('topic', instance.topic?.map((e) => e?.toJson())?.toList());
-  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
-  writeNotNull('editor', instance.editor?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'reviewer', instance.reviewer?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'endorser', instance.endorser?.map((e) => e?.toJson())?.toList());
-  writeNotNull('relatedArtifact',
-      instance.relatedArtifact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('library', instance.library);
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('variableType', instance.variableType);
-  writeNotNull('elementVariableType', instance.elementVariableType?.toJson());
-  writeNotNull('characteristic',
-      instance.characteristic?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        ResearchElementDefinition instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'shortTitle': instance.shortTitle,
+      'elementShortTitle': instance.elementShortTitle?.toJson(),
+      'subtitle': instance.subtitle,
+      'elementSubtitle': instance.elementSubtitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
+      'subjectReference': instance.subjectReference?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'comment': instance.comment,
+      'elementComment':
+          instance.elementComment?.map((e) => e?.toJson())?.toList(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'usage': instance.usage,
+      'elementUsage': instance.elementUsage?.toJson(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'approvalDate': instance.approvalDate,
+      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
+      'lastReviewDate': instance.lastReviewDate,
+      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
+      'effectivePeriod': instance.effectivePeriod?.toJson(),
+      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
+      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
+      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
+      'relatedArtifact':
+          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
+      'library': instance.library,
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'variableType': instance.variableType,
+      'elementVariableType': instance.elementVariableType?.toJson(),
+      'characteristic':
+          instance.characteristic?.map((e) => e?.toJson())?.toList(),
+    };
 
 ResearchElementDefinition_Characteristic
     _$ResearchElementDefinition_CharacteristicFromJson(
@@ -851,68 +829,53 @@ ResearchElementDefinition_Characteristic
 }
 
 Map<String, dynamic> _$ResearchElementDefinition_CharacteristicToJson(
-    ResearchElementDefinition_Characteristic instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('definitionCodeableConcept',
-      instance.definitionCodeableConcept?.toJson());
-  writeNotNull('definitionCanonical', instance.definitionCanonical);
-  writeNotNull('elementDefinitionCanonical',
-      instance.elementDefinitionCanonical?.toJson());
-  writeNotNull('definitionExpression', instance.definitionExpression?.toJson());
-  writeNotNull('definitionDataRequirement',
-      instance.definitionDataRequirement?.toJson());
-  writeNotNull(
-      'usageContext', instance.usageContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull('exclude', instance.exclude);
-  writeNotNull('elementExclude', instance.elementExclude?.toJson());
-  writeNotNull('unitOfMeasure', instance.unitOfMeasure?.toJson());
-  writeNotNull('studyEffectiveDescription', instance.studyEffectiveDescription);
-  writeNotNull('elementStudyEffectiveDescription',
-      instance.elementStudyEffectiveDescription?.toJson());
-  writeNotNull('studyEffectiveDateTime', instance.studyEffectiveDateTime);
-  writeNotNull('elementStudyEffectiveDateTime',
-      instance.elementStudyEffectiveDateTime?.toJson());
-  writeNotNull('studyEffectivePeriod', instance.studyEffectivePeriod?.toJson());
-  writeNotNull(
-      'studyEffectiveDuration', instance.studyEffectiveDuration?.toJson());
-  writeNotNull('studyEffectiveTiming', instance.studyEffectiveTiming?.toJson());
-  writeNotNull('studyEffectiveTimeFromStart',
-      instance.studyEffectiveTimeFromStart?.toJson());
-  writeNotNull(
-      'studyEffectiveGroupMeasure', instance.studyEffectiveGroupMeasure);
-  writeNotNull('elementStudyEffectiveGroupMeasure',
-      instance.elementStudyEffectiveGroupMeasure?.toJson());
-  writeNotNull('participantEffectiveDescription',
-      instance.participantEffectiveDescription);
-  writeNotNull('elementParticipantEffectiveDescription',
-      instance.elementParticipantEffectiveDescription?.toJson());
-  writeNotNull(
-      'participantEffectiveDateTime', instance.participantEffectiveDateTime);
-  writeNotNull('elementParticipantEffectiveDateTime',
-      instance.elementParticipantEffectiveDateTime?.toJson());
-  writeNotNull('participantEffectivePeriod',
-      instance.participantEffectivePeriod?.toJson());
-  writeNotNull('participantEffectiveDuration',
-      instance.participantEffectiveDuration?.toJson());
-  writeNotNull('participantEffectiveTiming',
-      instance.participantEffectiveTiming?.toJson());
-  writeNotNull('participantEffectiveTimeFromStart',
-      instance.participantEffectiveTimeFromStart?.toJson());
-  writeNotNull('participantEffectiveGroupMeasure',
-      instance.participantEffectiveGroupMeasure);
-  writeNotNull('elementParticipantEffectiveGroupMeasure',
-      instance.elementParticipantEffectiveGroupMeasure?.toJson());
-  return val;
-}
+        ResearchElementDefinition_Characteristic instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'definitionCodeableConcept': instance.definitionCodeableConcept?.toJson(),
+      'definitionCanonical': instance.definitionCanonical,
+      'elementDefinitionCanonical':
+          instance.elementDefinitionCanonical?.toJson(),
+      'definitionExpression': instance.definitionExpression?.toJson(),
+      'definitionDataRequirement': instance.definitionDataRequirement?.toJson(),
+      'usageContext': instance.usageContext?.map((e) => e?.toJson())?.toList(),
+      'exclude': instance.exclude,
+      'elementExclude': instance.elementExclude?.toJson(),
+      'unitOfMeasure': instance.unitOfMeasure?.toJson(),
+      'studyEffectiveDescription': instance.studyEffectiveDescription,
+      'elementStudyEffectiveDescription':
+          instance.elementStudyEffectiveDescription?.toJson(),
+      'studyEffectiveDateTime': instance.studyEffectiveDateTime,
+      'elementStudyEffectiveDateTime':
+          instance.elementStudyEffectiveDateTime?.toJson(),
+      'studyEffectivePeriod': instance.studyEffectivePeriod?.toJson(),
+      'studyEffectiveDuration': instance.studyEffectiveDuration?.toJson(),
+      'studyEffectiveTiming': instance.studyEffectiveTiming?.toJson(),
+      'studyEffectiveTimeFromStart':
+          instance.studyEffectiveTimeFromStart?.toJson(),
+      'studyEffectiveGroupMeasure': instance.studyEffectiveGroupMeasure,
+      'elementStudyEffectiveGroupMeasure':
+          instance.elementStudyEffectiveGroupMeasure?.toJson(),
+      'participantEffectiveDescription':
+          instance.participantEffectiveDescription,
+      'elementParticipantEffectiveDescription':
+          instance.elementParticipantEffectiveDescription?.toJson(),
+      'participantEffectiveDateTime': instance.participantEffectiveDateTime,
+      'elementParticipantEffectiveDateTime':
+          instance.elementParticipantEffectiveDateTime?.toJson(),
+      'participantEffectivePeriod':
+          instance.participantEffectivePeriod?.toJson(),
+      'participantEffectiveDuration':
+          instance.participantEffectiveDuration?.toJson(),
+      'participantEffectiveTiming':
+          instance.participantEffectiveTiming?.toJson(),
+      'participantEffectiveTimeFromStart':
+          instance.participantEffectiveTimeFromStart?.toJson(),
+      'participantEffectiveGroupMeasure':
+          instance.participantEffectiveGroupMeasure,
+      'elementParticipantEffectiveGroupMeasure':
+          instance.elementParticipantEffectiveGroupMeasure?.toJson(),
+    };

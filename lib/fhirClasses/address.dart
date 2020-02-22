@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Address {
   static Future<Address> newInstance({
     String id,
@@ -32,7 +32,7 @@ class Address {
   }) async {
     var fhirDb = new DatabaseHelper();
     Address newAddress = new Address(
-      id: id ?? await fhirDb.newResourceId('Address'),
+      id: id,
       extension: extension,
       use: use,
       elementUse: elementUse,
@@ -163,37 +163,26 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AddressToJson(Address instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('use', instance.use);
-  writeNotNull('elementUse', instance.elementUse?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('text', instance.text);
-  writeNotNull('elementText', instance.elementText?.toJson());
-  writeNotNull('line', instance.line);
-  writeNotNull(
-      'elementLine', instance.elementLine?.map((e) => e?.toJson())?.toList());
-  writeNotNull('city', instance.city);
-  writeNotNull('elementCity', instance.elementCity?.toJson());
-  writeNotNull('district', instance.district);
-  writeNotNull('elementDistrict', instance.elementDistrict?.toJson());
-  writeNotNull('state', instance.state);
-  writeNotNull('elementState', instance.elementState?.toJson());
-  writeNotNull('postalCode', instance.postalCode);
-  writeNotNull('elementPostalCode', instance.elementPostalCode?.toJson());
-  writeNotNull('country', instance.country);
-  writeNotNull('elementCountry', instance.elementCountry?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  return val;
-}
+Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'use': instance.use,
+      'elementUse': instance.elementUse?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+      'line': instance.line,
+      'elementLine': instance.elementLine?.map((e) => e?.toJson())?.toList(),
+      'city': instance.city,
+      'elementCity': instance.elementCity?.toJson(),
+      'district': instance.district,
+      'elementDistrict': instance.elementDistrict?.toJson(),
+      'state': instance.state,
+      'elementState': instance.elementState?.toJson(),
+      'postalCode': instance.postalCode,
+      'elementPostalCode': instance.elementPostalCode?.toJson(),
+      'country': instance.country,
+      'elementCountry': instance.elementCountry?.toJson(),
+      'period': instance.period?.toJson(),
+    };

@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide {
   static Future<ImplementationGuide> newInstance({
     String resourceType,
@@ -114,13 +114,9 @@ class ImplementationGuide {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'ImplementationGuide';
@@ -220,7 +216,7 @@ class ImplementationGuide {
   Map<String, dynamic> toJson() => _$ImplementationGuideToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_DependsOn {
   static Future<ImplementationGuide_DependsOn> newInstance({
     String id,
@@ -235,7 +231,7 @@ class ImplementationGuide_DependsOn {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_DependsOn newImplementationGuide_DependsOn =
         new ImplementationGuide_DependsOn(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_DependsOn'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       uri: uri,
@@ -272,7 +268,7 @@ class ImplementationGuide_DependsOn {
   Map<String, dynamic> toJson() => _$ImplementationGuide_DependsOnToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Global {
   static Future<ImplementationGuide_Global> newInstance({
     String id,
@@ -285,7 +281,7 @@ class ImplementationGuide_Global {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Global newImplementationGuide_Global =
         new ImplementationGuide_Global(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Global'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -316,7 +312,7 @@ class ImplementationGuide_Global {
   Map<String, dynamic> toJson() => _$ImplementationGuide_GlobalToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Definition {
   static Future<ImplementationGuide_Definition> newInstance({
     String id,
@@ -331,7 +327,7 @@ class ImplementationGuide_Definition {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Definition newImplementationGuide_Definition =
         new ImplementationGuide_Definition(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Definition'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       grouping: grouping,
@@ -368,7 +364,7 @@ class ImplementationGuide_Definition {
   Map<String, dynamic> toJson() => _$ImplementationGuide_DefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Grouping {
   static Future<ImplementationGuide_Grouping> newInstance({
     String id,
@@ -382,7 +378,7 @@ class ImplementationGuide_Grouping {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Grouping newImplementationGuide_Grouping =
         new ImplementationGuide_Grouping(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Grouping'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -416,7 +412,7 @@ class ImplementationGuide_Grouping {
   Map<String, dynamic> toJson() => _$ImplementationGuide_GroupingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Resource {
   static Future<ImplementationGuide_Resource> newInstance({
     String id,
@@ -439,7 +435,7 @@ class ImplementationGuide_Resource {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Resource newImplementationGuide_Resource =
         new ImplementationGuide_Resource(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Resource'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       reference: reference,
@@ -500,7 +496,7 @@ class ImplementationGuide_Resource {
   Map<String, dynamic> toJson() => _$ImplementationGuide_ResourceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Page {
   static Future<ImplementationGuide_Page> newInstance({
     String id,
@@ -518,7 +514,7 @@ class ImplementationGuide_Page {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Page newImplementationGuide_Page =
         new ImplementationGuide_Page(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Page'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       nameUrl: nameUrl,
@@ -564,7 +560,7 @@ class ImplementationGuide_Page {
   Map<String, dynamic> toJson() => _$ImplementationGuide_PageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Parameter {
   static Future<ImplementationGuide_Parameter> newInstance({
     String id,
@@ -578,7 +574,7 @@ class ImplementationGuide_Parameter {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Parameter newImplementationGuide_Parameter =
         new ImplementationGuide_Parameter(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Parameter'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -612,7 +608,7 @@ class ImplementationGuide_Parameter {
   Map<String, dynamic> toJson() => _$ImplementationGuide_ParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Template {
   static Future<ImplementationGuide_Template> newInstance({
     String id,
@@ -628,7 +624,7 @@ class ImplementationGuide_Template {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Template newImplementationGuide_Template =
         new ImplementationGuide_Template(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Template'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -668,7 +664,7 @@ class ImplementationGuide_Template {
   Map<String, dynamic> toJson() => _$ImplementationGuide_TemplateToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Manifest {
   static Future<ImplementationGuide_Manifest> newInstance({
     String id,
@@ -686,7 +682,7 @@ class ImplementationGuide_Manifest {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Manifest newImplementationGuide_Manifest =
         new ImplementationGuide_Manifest(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Manifest'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       rendering: rendering,
@@ -732,7 +728,7 @@ class ImplementationGuide_Manifest {
   Map<String, dynamic> toJson() => _$ImplementationGuide_ManifestToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Resource1 {
   static Future<ImplementationGuide_Resource1> newInstance({
     String id,
@@ -749,7 +745,7 @@ class ImplementationGuide_Resource1 {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Resource1 newImplementationGuide_Resource1 =
         new ImplementationGuide_Resource1(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Resource1'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       reference: reference,
@@ -792,7 +788,7 @@ class ImplementationGuide_Resource1 {
   Map<String, dynamic> toJson() => _$ImplementationGuide_Resource1ToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ImplementationGuide_Page1 {
   static Future<ImplementationGuide_Page1> newInstance({
     String id,
@@ -808,7 +804,7 @@ class ImplementationGuide_Page1 {
     var fhirDb = new DatabaseHelper();
     ImplementationGuide_Page1 newImplementationGuide_Page1 =
         new ImplementationGuide_Page1(
-      id: id ?? await fhirDb.newResourceId('ImplementationGuide_Page1'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -973,67 +969,56 @@ ImplementationGuide _$ImplementationGuideFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ImplementationGuideToJson(ImplementationGuide instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('experimental', instance.experimental);
-  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('copyright', instance.copyright);
-  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
-  writeNotNull('packageId', instance.packageId);
-  writeNotNull('elementPackageId', instance.elementPackageId?.toJson());
-  writeNotNull('license', instance.license);
-  writeNotNull('elementLicense', instance.elementLicense?.toJson());
-  writeNotNull('fhirVersion', instance.fhirVersion);
-  writeNotNull('elementFhirVersion',
-      instance.elementFhirVersion?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'dependsOn', instance.dependsOn?.map((e) => e?.toJson())?.toList());
-  writeNotNull('global', instance.global?.map((e) => e?.toJson())?.toList());
-  writeNotNull('definition', instance.definition?.toJson());
-  writeNotNull('manifest', instance.manifest?.toJson());
-  return val;
-}
+Map<String, dynamic> _$ImplementationGuideToJson(
+        ImplementationGuide instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'packageId': instance.packageId,
+      'elementPackageId': instance.elementPackageId?.toJson(),
+      'license': instance.license,
+      'elementLicense': instance.elementLicense?.toJson(),
+      'fhirVersion': instance.fhirVersion,
+      'elementFhirVersion':
+          instance.elementFhirVersion?.map((e) => e?.toJson())?.toList(),
+      'dependsOn': instance.dependsOn?.map((e) => e?.toJson())?.toList(),
+      'global': instance.global?.map((e) => e?.toJson())?.toList(),
+      'definition': instance.definition?.toJson(),
+      'manifest': instance.manifest?.toJson(),
+    };
 
 ImplementationGuide_DependsOn _$ImplementationGuide_DependsOnFromJson(
     Map<String, dynamic> json) {
@@ -1060,27 +1045,18 @@ ImplementationGuide_DependsOn _$ImplementationGuide_DependsOnFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_DependsOnToJson(
-    ImplementationGuide_DependsOn instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('uri', instance.uri);
-  writeNotNull('packageId', instance.packageId);
-  writeNotNull('elementPackageId', instance.elementPackageId?.toJson());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  return val;
-}
+        ImplementationGuide_DependsOn instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'uri': instance.uri,
+      'packageId': instance.packageId,
+      'elementPackageId': instance.elementPackageId?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+    };
 
 ImplementationGuide_Global _$ImplementationGuide_GlobalFromJson(
     Map<String, dynamic> json) {
@@ -1103,25 +1079,16 @@ ImplementationGuide_Global _$ImplementationGuide_GlobalFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_GlobalToJson(
-    ImplementationGuide_Global instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('profile', instance.profile);
-  return val;
-}
+        ImplementationGuide_Global instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'profile': instance.profile,
+    };
 
 ImplementationGuide_Definition _$ImplementationGuide_DefinitionFromJson(
     Map<String, dynamic> json) {
@@ -1163,31 +1130,18 @@ ImplementationGuide_Definition _$ImplementationGuide_DefinitionFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_DefinitionToJson(
-    ImplementationGuide_Definition instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'grouping', instance.grouping?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'resource', instance.resource?.map((e) => e?.toJson())?.toList());
-  writeNotNull('page', instance.page?.toJson());
-  writeNotNull(
-      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'template', instance.template?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        ImplementationGuide_Definition instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'grouping': instance.grouping?.map((e) => e?.toJson())?.toList(),
+      'resource': instance.resource?.map((e) => e?.toJson())?.toList(),
+      'page': instance.page?.toJson(),
+      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
+      'template': instance.template?.map((e) => e?.toJson())?.toList(),
+    };
 
 ImplementationGuide_Grouping _$ImplementationGuide_GroupingFromJson(
     Map<String, dynamic> json) {
@@ -1213,26 +1167,17 @@ ImplementationGuide_Grouping _$ImplementationGuide_GroupingFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_GroupingToJson(
-    ImplementationGuide_Grouping instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  return val;
-}
+        ImplementationGuide_Grouping instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+    };
 
 ImplementationGuide_Resource _$ImplementationGuide_ResourceFromJson(
     Map<String, dynamic> json) {
@@ -1280,38 +1225,27 @@ ImplementationGuide_Resource _$ImplementationGuide_ResourceFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_ResourceToJson(
-    ImplementationGuide_Resource instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('reference', instance.reference?.toJson());
-  writeNotNull('fhirVersion', instance.fhirVersion);
-  writeNotNull('elementFhirVersion',
-      instance.elementFhirVersion?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('exampleBoolean', instance.exampleBoolean);
-  writeNotNull(
-      'elementExampleBoolean', instance.elementExampleBoolean?.toJson());
-  writeNotNull('exampleCanonical', instance.exampleCanonical);
-  writeNotNull(
-      'elementExampleCanonical', instance.elementExampleCanonical?.toJson());
-  writeNotNull('groupingId', instance.groupingId);
-  writeNotNull('elementGroupingId', instance.elementGroupingId?.toJson());
-  return val;
-}
+        ImplementationGuide_Resource instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'reference': instance.reference?.toJson(),
+      'fhirVersion': instance.fhirVersion,
+      'elementFhirVersion':
+          instance.elementFhirVersion?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'exampleBoolean': instance.exampleBoolean,
+      'elementExampleBoolean': instance.elementExampleBoolean?.toJson(),
+      'exampleCanonical': instance.exampleCanonical,
+      'elementExampleCanonical': instance.elementExampleCanonical?.toJson(),
+      'groupingId': instance.groupingId,
+      'elementGroupingId': instance.elementGroupingId?.toJson(),
+    };
 
 ImplementationGuide_Page _$ImplementationGuide_PageFromJson(
     Map<String, dynamic> json) {
@@ -1349,30 +1283,21 @@ ImplementationGuide_Page _$ImplementationGuide_PageFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_PageToJson(
-    ImplementationGuide_Page instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('nameUrl', instance.nameUrl);
-  writeNotNull('elementNameUrl', instance.elementNameUrl?.toJson());
-  writeNotNull('nameReference', instance.nameReference?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('generation', instance.generation);
-  writeNotNull('elementGeneration', instance.elementGeneration?.toJson());
-  writeNotNull('page', instance.page?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        ImplementationGuide_Page instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'nameUrl': instance.nameUrl,
+      'elementNameUrl': instance.elementNameUrl?.toJson(),
+      'nameReference': instance.nameReference?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'generation': instance.generation,
+      'elementGeneration': instance.elementGeneration?.toJson(),
+      'page': instance.page?.map((e) => e?.toJson())?.toList(),
+    };
 
 ImplementationGuide_Parameter _$ImplementationGuide_ParameterFromJson(
     Map<String, dynamic> json) {
@@ -1398,26 +1323,17 @@ ImplementationGuide_Parameter _$ImplementationGuide_ParameterFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_ParameterToJson(
-    ImplementationGuide_Parameter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  return val;
-}
+        ImplementationGuide_Parameter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+    };
 
 ImplementationGuide_Template _$ImplementationGuide_TemplateFromJson(
     Map<String, dynamic> json) {
@@ -1447,28 +1363,19 @@ ImplementationGuide_Template _$ImplementationGuide_TemplateFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_TemplateToJson(
-    ImplementationGuide_Template instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('source', instance.source);
-  writeNotNull('elementSource', instance.elementSource?.toJson());
-  writeNotNull('scope', instance.scope);
-  writeNotNull('elementScope', instance.elementScope?.toJson());
-  return val;
-}
+        ImplementationGuide_Template instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'source': instance.source,
+      'elementSource': instance.elementSource?.toJson(),
+      'scope': instance.scope,
+      'elementScope': instance.elementScope?.toJson(),
+    };
 
 ImplementationGuide_Manifest _$ImplementationGuide_ManifestFromJson(
     Map<String, dynamic> json) {
@@ -1510,33 +1417,21 @@ ImplementationGuide_Manifest _$ImplementationGuide_ManifestFromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_ManifestToJson(
-    ImplementationGuide_Manifest instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('rendering', instance.rendering);
-  writeNotNull('elementRendering', instance.elementRendering?.toJson());
-  writeNotNull(
-      'resource', instance.resource?.map((e) => e?.toJson())?.toList());
-  writeNotNull('page', instance.page?.map((e) => e?.toJson())?.toList());
-  writeNotNull('image', instance.image);
-  writeNotNull(
-      'elementImage', instance.elementImage?.map((e) => e?.toJson())?.toList());
-  writeNotNull('other', instance.other);
-  writeNotNull(
-      'elementOther', instance.elementOther?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        ImplementationGuide_Manifest instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'rendering': instance.rendering,
+      'elementRendering': instance.elementRendering?.toJson(),
+      'resource': instance.resource?.map((e) => e?.toJson())?.toList(),
+      'page': instance.page?.map((e) => e?.toJson())?.toList(),
+      'image': instance.image,
+      'elementImage': instance.elementImage?.map((e) => e?.toJson())?.toList(),
+      'other': instance.other,
+      'elementOther': instance.elementOther?.map((e) => e?.toJson())?.toList(),
+    };
 
 ImplementationGuide_Resource1 _$ImplementationGuide_Resource1FromJson(
     Map<String, dynamic> json) {
@@ -1571,31 +1466,20 @@ ImplementationGuide_Resource1 _$ImplementationGuide_Resource1FromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_Resource1ToJson(
-    ImplementationGuide_Resource1 instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('reference', instance.reference?.toJson());
-  writeNotNull('exampleBoolean', instance.exampleBoolean);
-  writeNotNull(
-      'elementExampleBoolean', instance.elementExampleBoolean?.toJson());
-  writeNotNull('exampleCanonical', instance.exampleCanonical);
-  writeNotNull(
-      'elementExampleCanonical', instance.elementExampleCanonical?.toJson());
-  writeNotNull('relativePath', instance.relativePath);
-  writeNotNull('elementRelativePath', instance.elementRelativePath?.toJson());
-  return val;
-}
+        ImplementationGuide_Resource1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'reference': instance.reference?.toJson(),
+      'exampleBoolean': instance.exampleBoolean,
+      'elementExampleBoolean': instance.elementExampleBoolean?.toJson(),
+      'exampleCanonical': instance.exampleCanonical,
+      'elementExampleCanonical': instance.elementExampleCanonical?.toJson(),
+      'relativePath': instance.relativePath,
+      'elementRelativePath': instance.elementRelativePath?.toJson(),
+    };
 
 ImplementationGuide_Page1 _$ImplementationGuide_Page1FromJson(
     Map<String, dynamic> json) {
@@ -1626,26 +1510,17 @@ ImplementationGuide_Page1 _$ImplementationGuide_Page1FromJson(
 }
 
 Map<String, dynamic> _$ImplementationGuide_Page1ToJson(
-    ImplementationGuide_Page1 instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('anchor', instance.anchor);
-  writeNotNull('elementAnchor',
-      instance.elementAnchor?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        ImplementationGuide_Page1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'anchor': instance.anchor,
+      'elementAnchor':
+          instance.elementAnchor?.map((e) => e?.toJson())?.toList(),
+    };

@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class GuidanceResponse {
   static Future<GuidanceResponse> newInstance({
     String resourceType,
@@ -90,13 +90,9 @@ class GuidanceResponse {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'GuidanceResponse';
@@ -281,57 +277,42 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('requestIdentifier', instance.requestIdentifier?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('moduleUri', instance.moduleUri);
-  writeNotNull('elementModuleUri', instance.elementModuleUri?.toJson());
-  writeNotNull('moduleCanonical', instance.moduleCanonical);
-  writeNotNull(
-      'elementModuleCanonical', instance.elementModuleCanonical?.toJson());
-  writeNotNull(
-      'moduleCodeableConcept', instance.moduleCodeableConcept?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('encounter', instance.encounter?.toJson());
-  writeNotNull(
-      'occurrenceDateTime', instance.occurrenceDateTime?.toIso8601String());
-  writeNotNull('elementOccurrenceDateTime',
-      instance.elementOccurrenceDateTime?.toJson());
-  writeNotNull('performer', instance.performer?.toJson());
-  writeNotNull(
-      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
-  writeNotNull('reasonReference',
-      instance.reasonReference?.map((e) => e?.toJson())?.toList());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  writeNotNull('evaluationMessage',
-      instance.evaluationMessage?.map((e) => e?.toJson())?.toList());
-  writeNotNull('outputParameters', instance.outputParameters?.toJson());
-  writeNotNull('result', instance.result?.toJson());
-  writeNotNull('dataRequirement',
-      instance.dataRequirement?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'requestIdentifier': instance.requestIdentifier?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'moduleUri': instance.moduleUri,
+      'elementModuleUri': instance.elementModuleUri?.toJson(),
+      'moduleCanonical': instance.moduleCanonical,
+      'elementModuleCanonical': instance.elementModuleCanonical?.toJson(),
+      'moduleCodeableConcept': instance.moduleCodeableConcept?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'encounter': instance.encounter?.toJson(),
+      'occurrenceDateTime': instance.occurrenceDateTime?.toIso8601String(),
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
+      'performer': instance.performer?.toJson(),
+      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
+      'reasonReference':
+          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'evaluationMessage':
+          instance.evaluationMessage?.map((e) => e?.toJson())?.toList(),
+      'outputParameters': instance.outputParameters?.toJson(),
+      'result': instance.result?.toJson(),
+      'dataRequirement':
+          instance.dataRequirement?.map((e) => e?.toJson())?.toList(),
+    };

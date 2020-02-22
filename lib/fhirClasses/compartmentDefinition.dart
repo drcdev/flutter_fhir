@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class CompartmentDefinition {
   static Future<CompartmentDefinition> newInstance({
     String resourceType,
@@ -96,13 +96,9 @@ class CompartmentDefinition {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'CompartmentDefinition';
@@ -186,7 +182,7 @@ class CompartmentDefinition {
   Map<String, dynamic> toJson() => _$CompartmentDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class CompartmentDefinition_Resource {
   static Future<CompartmentDefinition_Resource> newInstance({
     String id,
@@ -202,7 +198,7 @@ class CompartmentDefinition_Resource {
     var fhirDb = new DatabaseHelper();
     CompartmentDefinition_Resource newCompartmentDefinition_Resource =
         new CompartmentDefinition_Resource(
-      id: id ?? await fhirDb.newResourceId('CompartmentDefinition_Resource'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -343,57 +339,46 @@ CompartmentDefinition _$CompartmentDefinitionFromJson(
 }
 
 Map<String, dynamic> _$CompartmentDefinitionToJson(
-    CompartmentDefinition instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('experimental', instance.experimental);
-  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull('purpose', instance.purpose);
-  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('search', instance.search);
-  writeNotNull('elementSearch', instance.elementSearch?.toJson());
-  writeNotNull(
-      'resource', instance.resource?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        CompartmentDefinition instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'search': instance.search,
+      'elementSearch': instance.elementSearch?.toJson(),
+      'resource': instance.resource?.map((e) => e?.toJson())?.toList(),
+    };
 
 CompartmentDefinition_Resource _$CompartmentDefinition_ResourceFromJson(
     Map<String, dynamic> json) {
@@ -425,26 +410,16 @@ CompartmentDefinition_Resource _$CompartmentDefinition_ResourceFromJson(
 }
 
 Map<String, dynamic> _$CompartmentDefinition_ResourceToJson(
-    CompartmentDefinition_Resource instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('param', instance.param);
-  writeNotNull(
-      'elementParam', instance.elementParam?.map((e) => e?.toJson())?.toList());
-  writeNotNull('documentation', instance.documentation);
-  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
-  return val;
-}
+        CompartmentDefinition_Resource instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'param': instance.param,
+      'elementParam': instance.elementParam?.map((e) => e?.toJson())?.toList(),
+      'documentation': instance.documentation,
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
+    };

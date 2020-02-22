@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Ratio {
   static Future<Ratio> newInstance({
     String id,
@@ -14,7 +14,7 @@ class Ratio {
   }) async {
     var fhirDb = new DatabaseHelper();
     Ratio newRatio = new Ratio(
-      id: id ?? await fhirDb.newResourceId('Ratio'),
+      id: id,
       extension: extension,
       numerator: numerator,
       denominator: denominator,
@@ -59,19 +59,9 @@ Ratio _$RatioFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RatioToJson(Ratio instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('numerator', instance.numerator?.toJson());
-  writeNotNull('denominator', instance.denominator?.toJson());
-  return val;
-}
+Map<String, dynamic> _$RatioToJson(Ratio instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'numerator': instance.numerator?.toJson(),
+      'denominator': instance.denominator?.toJson(),
+    };

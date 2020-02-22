@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class PaymentReconciliation {
   static Future<PaymentReconciliation> newInstance({
     String resourceType,
@@ -89,13 +89,9 @@ class PaymentReconciliation {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'PaymentReconciliation';
@@ -169,7 +165,7 @@ class PaymentReconciliation {
   Map<String, dynamic> toJson() => _$PaymentReconciliationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class PaymentReconciliation_Detail {
   static Future<PaymentReconciliation_Detail> newInstance({
     String id,
@@ -190,7 +186,7 @@ class PaymentReconciliation_Detail {
     var fhirDb = new DatabaseHelper();
     PaymentReconciliation_Detail newPaymentReconciliation_Detail =
         new PaymentReconciliation_Detail(
-      id: id ?? await fhirDb.newResourceId('PaymentReconciliation_Detail'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -245,7 +241,7 @@ class PaymentReconciliation_Detail {
   Map<String, dynamic> toJson() => _$PaymentReconciliation_DetailToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class PaymentReconciliation_ProcessNote {
   static Future<PaymentReconciliation_ProcessNote> newInstance({
     String id,
@@ -259,7 +255,7 @@ class PaymentReconciliation_ProcessNote {
     var fhirDb = new DatabaseHelper();
     PaymentReconciliation_ProcessNote newPaymentReconciliation_ProcessNote =
         new PaymentReconciliation_ProcessNote(
-      id: id ?? await fhirDb.newResourceId('PaymentReconciliation_ProcessNote'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -396,52 +392,41 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
 }
 
 Map<String, dynamic> _$PaymentReconciliationToJson(
-    PaymentReconciliation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  writeNotNull('created', instance.created?.toIso8601String());
-  writeNotNull('elementCreated', instance.elementCreated?.toJson());
-  writeNotNull('paymentIssuer', instance.paymentIssuer?.toJson());
-  writeNotNull('request', instance.request?.toJson());
-  writeNotNull('requestor', instance.requestor?.toJson());
-  writeNotNull('outcome', instance.outcome);
-  writeNotNull('elementOutcome', instance.elementOutcome?.toJson());
-  writeNotNull('disposition', instance.disposition);
-  writeNotNull('elementDisposition', instance.elementDisposition?.toJson());
-  writeNotNull('paymentDate', instance.paymentDate);
-  writeNotNull('elementPaymentDate', instance.elementPaymentDate?.toJson());
-  writeNotNull('paymentAmount', instance.paymentAmount?.toJson());
-  writeNotNull('paymentIdentifier', instance.paymentIdentifier?.toJson());
-  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
-  writeNotNull('formCode', instance.formCode?.toJson());
-  writeNotNull(
-      'processNote', instance.processNote?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        PaymentReconciliation instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'period': instance.period?.toJson(),
+      'created': instance.created?.toIso8601String(),
+      'elementCreated': instance.elementCreated?.toJson(),
+      'paymentIssuer': instance.paymentIssuer?.toJson(),
+      'request': instance.request?.toJson(),
+      'requestor': instance.requestor?.toJson(),
+      'outcome': instance.outcome,
+      'elementOutcome': instance.elementOutcome?.toJson(),
+      'disposition': instance.disposition,
+      'elementDisposition': instance.elementDisposition?.toJson(),
+      'paymentDate': instance.paymentDate,
+      'elementPaymentDate': instance.elementPaymentDate?.toJson(),
+      'paymentAmount': instance.paymentAmount?.toJson(),
+      'paymentIdentifier': instance.paymentIdentifier?.toJson(),
+      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
+      'formCode': instance.formCode?.toJson(),
+      'processNote': instance.processNote?.map((e) => e?.toJson())?.toList(),
+    };
 
 PaymentReconciliation_Detail _$PaymentReconciliation_DetailFromJson(
     Map<String, dynamic> json) {
@@ -490,33 +475,24 @@ PaymentReconciliation_Detail _$PaymentReconciliation_DetailFromJson(
 }
 
 Map<String, dynamic> _$PaymentReconciliation_DetailToJson(
-    PaymentReconciliation_Detail instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('predecessor', instance.predecessor?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('request', instance.request?.toJson());
-  writeNotNull('submitter', instance.submitter?.toJson());
-  writeNotNull('response', instance.response?.toJson());
-  writeNotNull('date', instance.date);
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('responsible', instance.responsible?.toJson());
-  writeNotNull('payee', instance.payee?.toJson());
-  writeNotNull('amount', instance.amount?.toJson());
-  return val;
-}
+        PaymentReconciliation_Detail instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'predecessor': instance.predecessor?.toJson(),
+      'type': instance.type?.toJson(),
+      'request': instance.request?.toJson(),
+      'submitter': instance.submitter?.toJson(),
+      'response': instance.response?.toJson(),
+      'date': instance.date,
+      'elementDate': instance.elementDate?.toJson(),
+      'responsible': instance.responsible?.toJson(),
+      'payee': instance.payee?.toJson(),
+      'amount': instance.amount?.toJson(),
+    };
 
 PaymentReconciliation_ProcessNote _$PaymentReconciliation_ProcessNoteFromJson(
     Map<String, dynamic> json) {
@@ -542,23 +518,14 @@ PaymentReconciliation_ProcessNote _$PaymentReconciliation_ProcessNoteFromJson(
 }
 
 Map<String, dynamic> _$PaymentReconciliation_ProcessNoteToJson(
-    PaymentReconciliation_ProcessNote instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('text', instance.text);
-  writeNotNull('elementText', instance.elementText?.toJson());
-  return val;
-}
+        PaymentReconciliation_ProcessNote instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+    };

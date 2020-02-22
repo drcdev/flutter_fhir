@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class HumanName {
   static Future<HumanName> newInstance({
     String id,
@@ -26,7 +26,7 @@ class HumanName {
   }) async {
     var fhirDb = new DatabaseHelper();
     HumanName newHumanName = new HumanName(
-      id: id ?? await fhirDb.newResourceId('HumanName'),
+      id: id,
       extension: extension,
       use: use,
       elementUse: elementUse,
@@ -129,33 +129,22 @@ HumanName _$HumanNameFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$HumanNameToJson(HumanName instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('use', instance.use);
-  writeNotNull('elementUse', instance.elementUse?.toJson());
-  writeNotNull('text', instance.text);
-  writeNotNull('elementText', instance.elementText?.toJson());
-  writeNotNull('family', instance.family);
-  writeNotNull('elementFamily', instance.elementFamily?.toJson());
-  writeNotNull('given', instance.given);
-  writeNotNull(
-      'elementGiven', instance.elementGiven?.map((e) => e?.toJson())?.toList());
-  writeNotNull('prefix', instance.prefix);
-  writeNotNull('elementPrefix',
-      instance.elementPrefix?.map((e) => e?.toJson())?.toList());
-  writeNotNull('suffix', instance.suffix);
-  writeNotNull('elementSuffix',
-      instance.elementSuffix?.map((e) => e?.toJson())?.toList());
-  writeNotNull('period', instance.period?.toJson());
-  return val;
-}
+Map<String, dynamic> _$HumanNameToJson(HumanName instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'use': instance.use,
+      'elementUse': instance.elementUse?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+      'family': instance.family,
+      'elementFamily': instance.elementFamily?.toJson(),
+      'given': instance.given,
+      'elementGiven': instance.elementGiven?.map((e) => e?.toJson())?.toList(),
+      'prefix': instance.prefix,
+      'elementPrefix':
+          instance.elementPrefix?.map((e) => e?.toJson())?.toList(),
+      'suffix': instance.suffix,
+      'elementSuffix':
+          instance.elementSuffix?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+    };

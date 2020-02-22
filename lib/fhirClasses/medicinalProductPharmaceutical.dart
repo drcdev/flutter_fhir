@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical {
   static Future<MedicinalProductPharmaceutical> newInstance({
     String resourceType,
@@ -66,13 +66,9 @@ class MedicinalProductPharmaceutical {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MedicinalProductPharmaceutical';
@@ -121,7 +117,7 @@ class MedicinalProductPharmaceutical {
   Map<String, dynamic> toJson() => _$MedicinalProductPharmaceuticalToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_Characteristics {
   static Future<MedicinalProductPharmaceutical_Characteristics> newInstance({
     String id,
@@ -134,9 +130,7 @@ class MedicinalProductPharmaceutical_Characteristics {
     MedicinalProductPharmaceutical_Characteristics
         newMedicinalProductPharmaceutical_Characteristics =
         new MedicinalProductPharmaceutical_Characteristics(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductPharmaceutical_Characteristics'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -166,7 +160,7 @@ class MedicinalProductPharmaceutical_Characteristics {
       _$MedicinalProductPharmaceutical_CharacteristicsToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_RouteOfAdministration {
   static Future<MedicinalProductPharmaceutical_RouteOfAdministration>
       newInstance({
@@ -185,9 +179,7 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
     MedicinalProductPharmaceutical_RouteOfAdministration
         newMedicinalProductPharmaceutical_RouteOfAdministration =
         new MedicinalProductPharmaceutical_RouteOfAdministration(
-      id: id ??
-          await fhirDb.newResourceId(
-              'MedicinalProductPharmaceutical_RouteOfAdministration'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -232,7 +224,7 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
       _$MedicinalProductPharmaceutical_RouteOfAdministrationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_TargetSpecies {
   static Future<MedicinalProductPharmaceutical_TargetSpecies> newInstance({
     String id,
@@ -245,9 +237,7 @@ class MedicinalProductPharmaceutical_TargetSpecies {
     MedicinalProductPharmaceutical_TargetSpecies
         newMedicinalProductPharmaceutical_TargetSpecies =
         new MedicinalProductPharmaceutical_TargetSpecies(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductPharmaceutical_TargetSpecies'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -277,7 +267,7 @@ class MedicinalProductPharmaceutical_TargetSpecies {
       _$MedicinalProductPharmaceutical_TargetSpeciesToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductPharmaceutical_WithdrawalPeriod {
   static Future<MedicinalProductPharmaceutical_WithdrawalPeriod> newInstance({
     String id,
@@ -292,9 +282,7 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
     MedicinalProductPharmaceutical_WithdrawalPeriod
         newMedicinalProductPharmaceutical_WithdrawalPeriod =
         new MedicinalProductPharmaceutical_WithdrawalPeriod(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProductPharmaceutical_WithdrawalPeriod'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       tissue: tissue,
@@ -404,42 +392,30 @@ MedicinalProductPharmaceutical _$MedicinalProductPharmaceuticalFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductPharmaceuticalToJson(
-    MedicinalProductPharmaceutical instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'administrableDoseForm', instance.administrableDoseForm?.toJson());
-  writeNotNull('unitOfPresentation', instance.unitOfPresentation?.toJson());
-  writeNotNull(
-      'ingredient', instance.ingredient?.map((e) => e?.toJson())?.toList());
-  writeNotNull('device', instance.device?.map((e) => e?.toJson())?.toList());
-  writeNotNull('characteristics',
-      instance.characteristics?.map((e) => e?.toJson())?.toList());
-  writeNotNull('routeOfAdministration',
-      instance.routeOfAdministration?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicinalProductPharmaceutical instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'administrableDoseForm': instance.administrableDoseForm?.toJson(),
+      'unitOfPresentation': instance.unitOfPresentation?.toJson(),
+      'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
+      'device': instance.device?.map((e) => e?.toJson())?.toList(),
+      'characteristics':
+          instance.characteristics?.map((e) => e?.toJson())?.toList(),
+      'routeOfAdministration':
+          instance.routeOfAdministration?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicinalProductPharmaceutical_Characteristics
     _$MedicinalProductPharmaceutical_CharacteristicsFromJson(
@@ -464,24 +440,15 @@ MedicinalProductPharmaceutical_Characteristics
 }
 
 Map<String, dynamic> _$MedicinalProductPharmaceutical_CharacteristicsToJson(
-    MedicinalProductPharmaceutical_Characteristics instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('status', instance.status?.toJson());
-  return val;
-}
+        MedicinalProductPharmaceutical_Characteristics instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'status': instance.status?.toJson(),
+    };
 
 MedicinalProductPharmaceutical_RouteOfAdministration
     _$MedicinalProductPharmaceutical_RouteOfAdministrationFromJson(
@@ -526,31 +493,22 @@ MedicinalProductPharmaceutical_RouteOfAdministration
 
 Map<String, dynamic>
     _$MedicinalProductPharmaceutical_RouteOfAdministrationToJson(
-        MedicinalProductPharmaceutical_RouteOfAdministration instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('firstDose', instance.firstDose?.toJson());
-  writeNotNull('maxSingleDose', instance.maxSingleDose?.toJson());
-  writeNotNull('maxDosePerDay', instance.maxDosePerDay?.toJson());
-  writeNotNull('maxDosePerTreatmentPeriod',
-      instance.maxDosePerTreatmentPeriod?.toJson());
-  writeNotNull('maxTreatmentPeriod', instance.maxTreatmentPeriod?.toJson());
-  writeNotNull('targetSpecies',
-      instance.targetSpecies?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+            MedicinalProductPharmaceutical_RouteOfAdministration instance) =>
+        <String, dynamic>{
+          'id': instance.id,
+          'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+          'modifierExtension':
+              instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+          'code': instance.code?.toJson(),
+          'firstDose': instance.firstDose?.toJson(),
+          'maxSingleDose': instance.maxSingleDose?.toJson(),
+          'maxDosePerDay': instance.maxDosePerDay?.toJson(),
+          'maxDosePerTreatmentPeriod':
+              instance.maxDosePerTreatmentPeriod?.toJson(),
+          'maxTreatmentPeriod': instance.maxTreatmentPeriod?.toJson(),
+          'targetSpecies':
+              instance.targetSpecies?.map((e) => e?.toJson())?.toList(),
+        };
 
 MedicinalProductPharmaceutical_TargetSpecies
     _$MedicinalProductPharmaceutical_TargetSpeciesFromJson(
@@ -578,25 +536,16 @@ MedicinalProductPharmaceutical_TargetSpecies
 }
 
 Map<String, dynamic> _$MedicinalProductPharmaceutical_TargetSpeciesToJson(
-    MedicinalProductPharmaceutical_TargetSpecies instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('withdrawalPeriod',
-      instance.withdrawalPeriod?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicinalProductPharmaceutical_TargetSpecies instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'withdrawalPeriod':
+          instance.withdrawalPeriod?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicinalProductPharmaceutical_WithdrawalPeriod
     _$MedicinalProductPharmaceutical_WithdrawalPeriodFromJson(
@@ -626,24 +575,15 @@ MedicinalProductPharmaceutical_WithdrawalPeriod
 }
 
 Map<String, dynamic> _$MedicinalProductPharmaceutical_WithdrawalPeriodToJson(
-    MedicinalProductPharmaceutical_WithdrawalPeriod instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('tissue', instance.tissue?.toJson());
-  writeNotNull('value', instance.value?.toJson());
-  writeNotNull('supportingInformation', instance.supportingInformation);
-  writeNotNull('elementSupportingInformation',
-      instance.elementSupportingInformation?.toJson());
-  return val;
-}
+        MedicinalProductPharmaceutical_WithdrawalPeriod instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'tissue': instance.tissue?.toJson(),
+      'value': instance.value?.toJson(),
+      'supportingInformation': instance.supportingInformation,
+      'elementSupportingInformation':
+          instance.elementSupportingInformation?.toJson(),
+    };

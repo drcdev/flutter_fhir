@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Organization {
   static Future<Organization> newInstance({
     String resourceType,
@@ -75,13 +75,9 @@ class Organization {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Organization';
@@ -141,7 +137,7 @@ class Organization {
   Map<String, dynamic> toJson() => _$OrganizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Organization_Contact {
   static Future<Organization_Contact> newInstance({
     String id,
@@ -154,7 +150,7 @@ class Organization_Contact {
   }) async {
     var fhirDb = new DatabaseHelper();
     Organization_Contact newOrganization_Contact = new Organization_Contact(
-      id: id ?? await fhirDb.newResourceId('Organization_Contact'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       purpose: purpose,
@@ -270,46 +266,34 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$OrganizationToJson(Organization instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('active', instance.active);
-  writeNotNull('elementActive', instance.elementActive?.toJson());
-  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('alias', instance.alias);
-  writeNotNull(
-      'elementAlias', instance.elementAlias?.map((e) => e?.toJson())?.toList());
-  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
-  writeNotNull('address', instance.address?.map((e) => e?.toJson())?.toList());
-  writeNotNull('partOf', instance.partOf?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'active': instance.active,
+      'elementActive': instance.elementActive?.toJson(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'alias': instance.alias,
+      'elementAlias': instance.elementAlias?.map((e) => e?.toJson())?.toList(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'address': instance.address?.map((e) => e?.toJson())?.toList(),
+      'partOf': instance.partOf?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
+    };
 
 Organization_Contact _$Organization_ContactFromJson(Map<String, dynamic> json) {
   return Organization_Contact(
@@ -339,23 +323,14 @@ Organization_Contact _$Organization_ContactFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$Organization_ContactToJson(
-    Organization_Contact instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('purpose', instance.purpose?.toJson());
-  writeNotNull('name', instance.name?.toJson());
-  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
-  writeNotNull('address', instance.address?.toJson());
-  return val;
-}
+        Organization_Contact instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose?.toJson(),
+      'name': instance.name?.toJson(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'address': instance.address?.toJson(),
+    };

@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge {
   static Future<MedicationKnowledge> newInstance({
     String resourceType,
@@ -102,13 +102,9 @@ class MedicationKnowledge {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MedicationKnowledge';
@@ -193,7 +189,7 @@ class MedicationKnowledge {
   Map<String, dynamic> toJson() => _$MedicationKnowledgeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_RelatedMedicationKnowledge {
   static Future<MedicationKnowledge_RelatedMedicationKnowledge> newInstance({
     String id,
@@ -206,9 +202,7 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
     MedicationKnowledge_RelatedMedicationKnowledge
         newMedicationKnowledge_RelatedMedicationKnowledge =
         new MedicationKnowledge_RelatedMedicationKnowledge(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicationKnowledge_RelatedMedicationKnowledge'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -238,7 +232,7 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
       _$MedicationKnowledge_RelatedMedicationKnowledgeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Monograph {
   static Future<MedicationKnowledge_Monograph> newInstance({
     String id,
@@ -250,7 +244,7 @@ class MedicationKnowledge_Monograph {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Monograph newMedicationKnowledge_Monograph =
         new MedicationKnowledge_Monograph(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Monograph'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -278,7 +272,7 @@ class MedicationKnowledge_Monograph {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_MonographToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Ingredient {
   static Future<MedicationKnowledge_Ingredient> newInstance({
     String id,
@@ -293,7 +287,7 @@ class MedicationKnowledge_Ingredient {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Ingredient newMedicationKnowledge_Ingredient =
         new MedicationKnowledge_Ingredient(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Ingredient'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       itemCodeableConcept: itemCodeableConcept,
@@ -330,7 +324,7 @@ class MedicationKnowledge_Ingredient {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_IngredientToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Cost {
   static Future<MedicationKnowledge_Cost> newInstance({
     String id,
@@ -344,7 +338,7 @@ class MedicationKnowledge_Cost {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Cost newMedicationKnowledge_Cost =
         new MedicationKnowledge_Cost(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Cost'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -378,7 +372,7 @@ class MedicationKnowledge_Cost {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_CostToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MonitoringProgram {
   static Future<MedicationKnowledge_MonitoringProgram> newInstance({
     String id,
@@ -392,8 +386,7 @@ class MedicationKnowledge_MonitoringProgram {
     MedicationKnowledge_MonitoringProgram
         newMedicationKnowledge_MonitoringProgram =
         new MedicationKnowledge_MonitoringProgram(
-      id: id ??
-          await fhirDb.newResourceId('MedicationKnowledge_MonitoringProgram'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -426,7 +419,7 @@ class MedicationKnowledge_MonitoringProgram {
       _$MedicationKnowledge_MonitoringProgramToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_AdministrationGuidelines {
   static Future<MedicationKnowledge_AdministrationGuidelines> newInstance({
     String id,
@@ -441,9 +434,7 @@ class MedicationKnowledge_AdministrationGuidelines {
     MedicationKnowledge_AdministrationGuidelines
         newMedicationKnowledge_AdministrationGuidelines =
         new MedicationKnowledge_AdministrationGuidelines(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicationKnowledge_AdministrationGuidelines'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       dosage: dosage,
@@ -479,7 +470,7 @@ class MedicationKnowledge_AdministrationGuidelines {
       _$MedicationKnowledge_AdministrationGuidelinesToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Dosage {
   static Future<MedicationKnowledge_Dosage> newInstance({
     String id,
@@ -491,7 +482,7 @@ class MedicationKnowledge_Dosage {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Dosage newMedicationKnowledge_Dosage =
         new MedicationKnowledge_Dosage(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Dosage'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -519,7 +510,7 @@ class MedicationKnowledge_Dosage {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_DosageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_PatientCharacteristics {
   static Future<MedicationKnowledge_PatientCharacteristics> newInstance({
     String id,
@@ -534,9 +525,7 @@ class MedicationKnowledge_PatientCharacteristics {
     MedicationKnowledge_PatientCharacteristics
         newMedicationKnowledge_PatientCharacteristics =
         new MedicationKnowledge_PatientCharacteristics(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicationKnowledge_PatientCharacteristics'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       characteristicCodeableConcept: characteristicCodeableConcept,
@@ -572,7 +561,7 @@ class MedicationKnowledge_PatientCharacteristics {
       _$MedicationKnowledge_PatientCharacteristicsToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MedicineClassification {
   static Future<MedicationKnowledge_MedicineClassification> newInstance({
     String id,
@@ -585,9 +574,7 @@ class MedicationKnowledge_MedicineClassification {
     MedicationKnowledge_MedicineClassification
         newMedicationKnowledge_MedicineClassification =
         new MedicationKnowledge_MedicineClassification(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicationKnowledge_MedicineClassification'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -617,7 +604,7 @@ class MedicationKnowledge_MedicineClassification {
       _$MedicationKnowledge_MedicineClassificationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Packaging {
   static Future<MedicationKnowledge_Packaging> newInstance({
     String id,
@@ -629,7 +616,7 @@ class MedicationKnowledge_Packaging {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Packaging newMedicationKnowledge_Packaging =
         new MedicationKnowledge_Packaging(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Packaging'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -657,7 +644,7 @@ class MedicationKnowledge_Packaging {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_PackagingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_DrugCharacteristic {
   static Future<MedicationKnowledge_DrugCharacteristic> newInstance({
     String id,
@@ -675,8 +662,7 @@ class MedicationKnowledge_DrugCharacteristic {
     MedicationKnowledge_DrugCharacteristic
         newMedicationKnowledge_DrugCharacteristic =
         new MedicationKnowledge_DrugCharacteristic(
-      id: id ??
-          await fhirDb.newResourceId('MedicationKnowledge_DrugCharacteristic'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -721,7 +707,7 @@ class MedicationKnowledge_DrugCharacteristic {
       _$MedicationKnowledge_DrugCharacteristicToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Regulatory {
   static Future<MedicationKnowledge_Regulatory> newInstance({
     String id,
@@ -735,7 +721,7 @@ class MedicationKnowledge_Regulatory {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Regulatory newMedicationKnowledge_Regulatory =
         new MedicationKnowledge_Regulatory(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Regulatory'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       regulatoryAuthority: regulatoryAuthority,
@@ -769,7 +755,7 @@ class MedicationKnowledge_Regulatory {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_RegulatoryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Substitution {
   static Future<MedicationKnowledge_Substitution> newInstance({
     String id,
@@ -782,7 +768,7 @@ class MedicationKnowledge_Substitution {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Substitution newMedicationKnowledge_Substitution =
         new MedicationKnowledge_Substitution(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Substitution'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -815,7 +801,7 @@ class MedicationKnowledge_Substitution {
       _$MedicationKnowledge_SubstitutionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Schedule {
   static Future<MedicationKnowledge_Schedule> newInstance({
     String id,
@@ -826,7 +812,7 @@ class MedicationKnowledge_Schedule {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Schedule newMedicationKnowledge_Schedule =
         new MedicationKnowledge_Schedule(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Schedule'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       schedule: schedule,
@@ -851,7 +837,7 @@ class MedicationKnowledge_Schedule {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_ScheduleToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_MaxDispense {
   static Future<MedicationKnowledge_MaxDispense> newInstance({
     String id,
@@ -863,7 +849,7 @@ class MedicationKnowledge_MaxDispense {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_MaxDispense newMedicationKnowledge_MaxDispense =
         new MedicationKnowledge_MaxDispense(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_MaxDispense'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       quantity: quantity,
@@ -892,7 +878,7 @@ class MedicationKnowledge_MaxDispense {
       _$MedicationKnowledge_MaxDispenseToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationKnowledge_Kinetics {
   static Future<MedicationKnowledge_Kinetics> newInstance({
     String id,
@@ -905,7 +891,7 @@ class MedicationKnowledge_Kinetics {
     var fhirDb = new DatabaseHelper();
     MedicationKnowledge_Kinetics newMedicationKnowledge_Kinetics =
         new MedicationKnowledge_Kinetics(
-      id: id ?? await fhirDb.newResourceId('MedicationKnowledge_Kinetics'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       areaUnderCurve: areaUnderCurve,
@@ -1081,70 +1067,58 @@ MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MedicationKnowledgeToJson(MedicationKnowledge instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('manufacturer', instance.manufacturer?.toJson());
-  writeNotNull('doseForm', instance.doseForm?.toJson());
-  writeNotNull('amount', instance.amount?.toJson());
-  writeNotNull('synonym', instance.synonym);
-  writeNotNull('elementSynonym',
-      instance.elementSynonym?.map((e) => e?.toJson())?.toList());
-  writeNotNull('relatedMedicationKnowledge',
-      instance.relatedMedicationKnowledge?.map((e) => e?.toJson())?.toList());
-  writeNotNull('associatedMedication',
-      instance.associatedMedication?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'productType', instance.productType?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'monograph', instance.monograph?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'ingredient', instance.ingredient?.map((e) => e?.toJson())?.toList());
-  writeNotNull('preparationInstruction', instance.preparationInstruction);
-  writeNotNull('elementPreparationInstruction',
-      instance.elementPreparationInstruction?.toJson());
-  writeNotNull('intendedRoute',
-      instance.intendedRoute?.map((e) => e?.toJson())?.toList());
-  writeNotNull('cost', instance.cost?.map((e) => e?.toJson())?.toList());
-  writeNotNull('monitoringProgram',
-      instance.monitoringProgram?.map((e) => e?.toJson())?.toList());
-  writeNotNull('administrationGuidelines',
-      instance.administrationGuidelines?.map((e) => e?.toJson())?.toList());
-  writeNotNull('medicineClassification',
-      instance.medicineClassification?.map((e) => e?.toJson())?.toList());
-  writeNotNull('packaging', instance.packaging?.toJson());
-  writeNotNull('drugCharacteristic',
-      instance.drugCharacteristic?.map((e) => e?.toJson())?.toList());
-  writeNotNull('contraindication',
-      instance.contraindication?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'regulatory', instance.regulatory?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'kinetics', instance.kinetics?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$MedicationKnowledgeToJson(
+        MedicationKnowledge instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'manufacturer': instance.manufacturer?.toJson(),
+      'doseForm': instance.doseForm?.toJson(),
+      'amount': instance.amount?.toJson(),
+      'synonym': instance.synonym,
+      'elementSynonym':
+          instance.elementSynonym?.map((e) => e?.toJson())?.toList(),
+      'relatedMedicationKnowledge': instance.relatedMedicationKnowledge
+          ?.map((e) => e?.toJson())
+          ?.toList(),
+      'associatedMedication':
+          instance.associatedMedication?.map((e) => e?.toJson())?.toList(),
+      'productType': instance.productType?.map((e) => e?.toJson())?.toList(),
+      'monograph': instance.monograph?.map((e) => e?.toJson())?.toList(),
+      'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
+      'preparationInstruction': instance.preparationInstruction,
+      'elementPreparationInstruction':
+          instance.elementPreparationInstruction?.toJson(),
+      'intendedRoute':
+          instance.intendedRoute?.map((e) => e?.toJson())?.toList(),
+      'cost': instance.cost?.map((e) => e?.toJson())?.toList(),
+      'monitoringProgram':
+          instance.monitoringProgram?.map((e) => e?.toJson())?.toList(),
+      'administrationGuidelines':
+          instance.administrationGuidelines?.map((e) => e?.toJson())?.toList(),
+      'medicineClassification':
+          instance.medicineClassification?.map((e) => e?.toJson())?.toList(),
+      'packaging': instance.packaging?.toJson(),
+      'drugCharacteristic':
+          instance.drugCharacteristic?.map((e) => e?.toJson())?.toList(),
+      'contraindication':
+          instance.contraindication?.map((e) => e?.toJson())?.toList(),
+      'regulatory': instance.regulatory?.map((e) => e?.toJson())?.toList(),
+      'kinetics': instance.kinetics?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicationKnowledge_RelatedMedicationKnowledge
     _$MedicationKnowledge_RelatedMedicationKnowledgeFromJson(
@@ -1170,25 +1144,15 @@ MedicationKnowledge_RelatedMedicationKnowledge
 }
 
 Map<String, dynamic> _$MedicationKnowledge_RelatedMedicationKnowledgeToJson(
-    MedicationKnowledge_RelatedMedicationKnowledge instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull(
-      'reference', instance.reference?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicationKnowledge_RelatedMedicationKnowledge instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'reference': instance.reference?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicationKnowledge_Monograph _$MedicationKnowledge_MonographFromJson(
     Map<String, dynamic> json) {
@@ -1212,24 +1176,15 @@ MedicationKnowledge_Monograph _$MedicationKnowledge_MonographFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_MonographToJson(
-    MedicationKnowledge_Monograph instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('source', instance.source?.toJson());
-  return val;
-}
+        MedicationKnowledge_Monograph instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'source': instance.source?.toJson(),
+    };
 
 MedicationKnowledge_Ingredient _$MedicationKnowledge_IngredientFromJson(
     Map<String, dynamic> json) {
@@ -1261,27 +1216,18 @@ MedicationKnowledge_Ingredient _$MedicationKnowledge_IngredientFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_IngredientToJson(
-    MedicationKnowledge_Ingredient instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('itemCodeableConcept', instance.itemCodeableConcept?.toJson());
-  writeNotNull('itemReference', instance.itemReference?.toJson());
-  writeNotNull('isActive', instance.isActive);
-  writeNotNull('elementIsActive', instance.elementIsActive?.toJson());
-  writeNotNull('strength', instance.strength?.toJson());
-  return val;
-}
+        MedicationKnowledge_Ingredient instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'itemCodeableConcept': instance.itemCodeableConcept?.toJson(),
+      'itemReference': instance.itemReference?.toJson(),
+      'isActive': instance.isActive,
+      'elementIsActive': instance.elementIsActive?.toJson(),
+      'strength': instance.strength?.toJson(),
+    };
 
 MedicationKnowledge_Cost _$MedicationKnowledge_CostFromJson(
     Map<String, dynamic> json) {
@@ -1309,26 +1255,17 @@ MedicationKnowledge_Cost _$MedicationKnowledge_CostFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_CostToJson(
-    MedicationKnowledge_Cost instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('source', instance.source);
-  writeNotNull('elementSource', instance.elementSource?.toJson());
-  writeNotNull('cost', instance.cost?.toJson());
-  return val;
-}
+        MedicationKnowledge_Cost instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'source': instance.source,
+      'elementSource': instance.elementSource?.toJson(),
+      'cost': instance.cost?.toJson(),
+    };
 
 MedicationKnowledge_MonitoringProgram
     _$MedicationKnowledge_MonitoringProgramFromJson(Map<String, dynamic> json) {
@@ -1353,25 +1290,16 @@ MedicationKnowledge_MonitoringProgram
 }
 
 Map<String, dynamic> _$MedicationKnowledge_MonitoringProgramToJson(
-    MedicationKnowledge_MonitoringProgram instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  return val;
-}
+        MedicationKnowledge_MonitoringProgram instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+    };
 
 MedicationKnowledge_AdministrationGuidelines
     _$MedicationKnowledge_AdministrationGuidelinesFromJson(
@@ -1409,28 +1337,18 @@ MedicationKnowledge_AdministrationGuidelines
 }
 
 Map<String, dynamic> _$MedicationKnowledge_AdministrationGuidelinesToJson(
-    MedicationKnowledge_AdministrationGuidelines instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('dosage', instance.dosage?.map((e) => e?.toJson())?.toList());
-  writeNotNull('indicationCodeableConcept',
-      instance.indicationCodeableConcept?.toJson());
-  writeNotNull('indicationReference', instance.indicationReference?.toJson());
-  writeNotNull('patientCharacteristics',
-      instance.patientCharacteristics?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicationKnowledge_AdministrationGuidelines instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'dosage': instance.dosage?.map((e) => e?.toJson())?.toList(),
+      'indicationCodeableConcept': instance.indicationCodeableConcept?.toJson(),
+      'indicationReference': instance.indicationReference?.toJson(),
+      'patientCharacteristics':
+          instance.patientCharacteristics?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicationKnowledge_Dosage _$MedicationKnowledge_DosageFromJson(
     Map<String, dynamic> json) {
@@ -1455,24 +1373,15 @@ MedicationKnowledge_Dosage _$MedicationKnowledge_DosageFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_DosageToJson(
-    MedicationKnowledge_Dosage instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('dosage', instance.dosage?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicationKnowledge_Dosage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'dosage': instance.dosage?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicationKnowledge_PatientCharacteristics
     _$MedicationKnowledge_PatientCharacteristicsFromJson(
@@ -1504,29 +1413,18 @@ MedicationKnowledge_PatientCharacteristics
 }
 
 Map<String, dynamic> _$MedicationKnowledge_PatientCharacteristicsToJson(
-    MedicationKnowledge_PatientCharacteristics instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('characteristicCodeableConcept',
-      instance.characteristicCodeableConcept?.toJson());
-  writeNotNull(
-      'characteristicQuantity', instance.characteristicQuantity?.toJson());
-  writeNotNull('value', instance.value);
-  writeNotNull(
-      'elementValue', instance.elementValue?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicationKnowledge_PatientCharacteristics instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'characteristicCodeableConcept':
+          instance.characteristicCodeableConcept?.toJson(),
+      'characteristicQuantity': instance.characteristicQuantity?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicationKnowledge_MedicineClassification
     _$MedicationKnowledge_MedicineClassificationFromJson(
@@ -1553,25 +1451,16 @@ MedicationKnowledge_MedicineClassification
 }
 
 Map<String, dynamic> _$MedicationKnowledge_MedicineClassificationToJson(
-    MedicationKnowledge_MedicineClassification instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('classification',
-      instance.classification?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicationKnowledge_MedicineClassification instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'classification':
+          instance.classification?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicationKnowledge_Packaging _$MedicationKnowledge_PackagingFromJson(
     Map<String, dynamic> json) {
@@ -1595,24 +1484,15 @@ MedicationKnowledge_Packaging _$MedicationKnowledge_PackagingFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_PackagingToJson(
-    MedicationKnowledge_Packaging instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('quantity', instance.quantity?.toJson());
-  return val;
-}
+        MedicationKnowledge_Packaging instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'quantity': instance.quantity?.toJson(),
+    };
 
 MedicationKnowledge_DrugCharacteristic
     _$MedicationKnowledge_DrugCharacteristicFromJson(
@@ -1650,30 +1530,20 @@ MedicationKnowledge_DrugCharacteristic
 }
 
 Map<String, dynamic> _$MedicationKnowledge_DrugCharacteristicToJson(
-    MedicationKnowledge_DrugCharacteristic instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
-  writeNotNull('valueString', instance.valueString);
-  writeNotNull('elementValueString', instance.elementValueString?.toJson());
-  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
-  writeNotNull('valueBase64Binary', instance.valueBase64Binary);
-  writeNotNull(
-      'elementValueBase64Binary', instance.elementValueBase64Binary?.toJson());
-  return val;
-}
+        MedicationKnowledge_DrugCharacteristic instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueQuantity': instance.valueQuantity?.toJson(),
+      'valueBase64Binary': instance.valueBase64Binary,
+      'elementValueBase64Binary': instance.elementValueBase64Binary?.toJson(),
+    };
 
 MedicationKnowledge_Regulatory _$MedicationKnowledge_RegulatoryFromJson(
     Map<String, dynamic> json) {
@@ -1710,28 +1580,17 @@ MedicationKnowledge_Regulatory _$MedicationKnowledge_RegulatoryFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_RegulatoryToJson(
-    MedicationKnowledge_Regulatory instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('regulatoryAuthority', instance.regulatoryAuthority?.toJson());
-  writeNotNull(
-      'substitution', instance.substitution?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'schedule', instance.schedule?.map((e) => e?.toJson())?.toList());
-  writeNotNull('maxDispense', instance.maxDispense?.toJson());
-  return val;
-}
+        MedicationKnowledge_Regulatory instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'regulatoryAuthority': instance.regulatoryAuthority?.toJson(),
+      'substitution': instance.substitution?.map((e) => e?.toJson())?.toList(),
+      'schedule': instance.schedule?.map((e) => e?.toJson())?.toList(),
+      'maxDispense': instance.maxDispense?.toJson(),
+    };
 
 MedicationKnowledge_Substitution _$MedicationKnowledge_SubstitutionFromJson(
     Map<String, dynamic> json) {
@@ -1756,25 +1615,16 @@ MedicationKnowledge_Substitution _$MedicationKnowledge_SubstitutionFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_SubstitutionToJson(
-    MedicationKnowledge_Substitution instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('allowed', instance.allowed);
-  writeNotNull('elementAllowed', instance.elementAllowed?.toJson());
-  return val;
-}
+        MedicationKnowledge_Substitution instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'allowed': instance.allowed,
+      'elementAllowed': instance.elementAllowed?.toJson(),
+    };
 
 MedicationKnowledge_Schedule _$MedicationKnowledge_ScheduleFromJson(
     Map<String, dynamic> json) {
@@ -1795,23 +1645,14 @@ MedicationKnowledge_Schedule _$MedicationKnowledge_ScheduleFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_ScheduleToJson(
-    MedicationKnowledge_Schedule instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('schedule', instance.schedule?.toJson());
-  return val;
-}
+        MedicationKnowledge_Schedule instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'schedule': instance.schedule?.toJson(),
+    };
 
 MedicationKnowledge_MaxDispense _$MedicationKnowledge_MaxDispenseFromJson(
     Map<String, dynamic> json) {
@@ -1835,24 +1676,15 @@ MedicationKnowledge_MaxDispense _$MedicationKnowledge_MaxDispenseFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_MaxDispenseToJson(
-    MedicationKnowledge_MaxDispense instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('quantity', instance.quantity?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  return val;
-}
+        MedicationKnowledge_MaxDispense instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'quantity': instance.quantity?.toJson(),
+      'period': instance.period?.toJson(),
+    };
 
 MedicationKnowledge_Kinetics _$MedicationKnowledge_KineticsFromJson(
     Map<String, dynamic> json) {
@@ -1881,24 +1713,14 @@ MedicationKnowledge_Kinetics _$MedicationKnowledge_KineticsFromJson(
 }
 
 Map<String, dynamic> _$MedicationKnowledge_KineticsToJson(
-    MedicationKnowledge_Kinetics instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('areaUnderCurve',
-      instance.areaUnderCurve?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'lethalDose50', instance.lethalDose50?.map((e) => e?.toJson())?.toList());
-  writeNotNull('halfLifePeriod', instance.halfLifePeriod?.toJson());
-  return val;
-}
+        MedicationKnowledge_Kinetics instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'areaUnderCurve':
+          instance.areaUnderCurve?.map((e) => e?.toJson())?.toList(),
+      'lethalDose50': instance.lethalDose50?.map((e) => e?.toJson())?.toList(),
+      'halfLifePeriod': instance.halfLifePeriod?.toJson(),
+    };

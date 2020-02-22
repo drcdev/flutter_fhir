@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AuditEvent {
   static Future<AuditEvent> newInstance({
     String resourceType,
@@ -77,13 +77,9 @@ class AuditEvent {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'AuditEvent';
@@ -147,7 +143,7 @@ class AuditEvent {
   Map<String, dynamic> toJson() => _$AuditEventToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AuditEvent_Agent {
   static Future<AuditEvent_Agent> newInstance({
     String id,
@@ -171,7 +167,7 @@ class AuditEvent_Agent {
   }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Agent newAuditEvent_Agent = new AuditEvent_Agent(
-      id: id ?? await fhirDb.newResourceId('AuditEvent_Agent'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -238,7 +234,7 @@ class AuditEvent_Agent {
   Map<String, dynamic> toJson() => _$AuditEvent_AgentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AuditEvent_Network {
   static Future<AuditEvent_Network> newInstance({
     String id,
@@ -251,7 +247,7 @@ class AuditEvent_Network {
   }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Network newAuditEvent_Network = new AuditEvent_Network(
-      id: id ?? await fhirDb.newResourceId('AuditEvent_Network'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       address: address,
@@ -285,7 +281,7 @@ class AuditEvent_Network {
   Map<String, dynamic> toJson() => _$AuditEvent_NetworkToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AuditEvent_Source {
   static Future<AuditEvent_Source> newInstance({
     String id,
@@ -298,7 +294,7 @@ class AuditEvent_Source {
   }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Source newAuditEvent_Source = new AuditEvent_Source(
-      id: id ?? await fhirDb.newResourceId('AuditEvent_Source'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       site: site,
@@ -332,7 +328,7 @@ class AuditEvent_Source {
   Map<String, dynamic> toJson() => _$AuditEvent_SourceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AuditEvent_Entity {
   static Future<AuditEvent_Entity> newInstance({
     String id,
@@ -353,7 +349,7 @@ class AuditEvent_Entity {
   }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Entity newAuditEvent_Entity = new AuditEvent_Entity(
-      id: id ?? await fhirDb.newResourceId('AuditEvent_Entity'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       what: what,
@@ -411,7 +407,7 @@ class AuditEvent_Entity {
   Map<String, dynamic> toJson() => _$AuditEvent_EntityToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AuditEvent_Detail {
   static Future<AuditEvent_Detail> newInstance({
     String id,
@@ -426,7 +422,7 @@ class AuditEvent_Detail {
   }) async {
     var fhirDb = new DatabaseHelper();
     AuditEvent_Detail newAuditEvent_Detail = new AuditEvent_Detail(
-      id: id ?? await fhirDb.newResourceId('AuditEvent_Detail'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -552,46 +548,37 @@ AuditEvent _$AuditEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AuditEventToJson(AuditEvent instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('subtype', instance.subtype?.map((e) => e?.toJson())?.toList());
-  writeNotNull('action', instance.action);
-  writeNotNull('elementAction', instance.elementAction?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  writeNotNull('recorded', instance.recorded?.toIso8601String());
-  writeNotNull('elementRecorded', instance.elementRecorded?.toJson());
-  writeNotNull('outcome', instance.outcome);
-  writeNotNull('elementOutcome', instance.elementOutcome?.toJson());
-  writeNotNull('outcomeDesc', instance.outcomeDesc);
-  writeNotNull('elementOutcomeDesc', instance.elementOutcomeDesc?.toJson());
-  writeNotNull('purposeOfEvent',
-      instance.purposeOfEvent?.map((e) => e?.toJson())?.toList());
-  writeNotNull('agent', instance.agent?.map((e) => e?.toJson())?.toList());
-  writeNotNull('source', instance.source?.toJson());
-  writeNotNull('entity', instance.entity?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$AuditEventToJson(AuditEvent instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'subtype': instance.subtype?.map((e) => e?.toJson())?.toList(),
+      'action': instance.action,
+      'elementAction': instance.elementAction?.toJson(),
+      'period': instance.period?.toJson(),
+      'recorded': instance.recorded?.toIso8601String(),
+      'elementRecorded': instance.elementRecorded?.toJson(),
+      'outcome': instance.outcome,
+      'elementOutcome': instance.elementOutcome?.toJson(),
+      'outcomeDesc': instance.outcomeDesc,
+      'elementOutcomeDesc': instance.elementOutcomeDesc?.toJson(),
+      'purposeOfEvent':
+          instance.purposeOfEvent?.map((e) => e?.toJson())?.toList(),
+      'agent': instance.agent?.map((e) => e?.toJson())?.toList(),
+      'source': instance.source?.toJson(),
+      'entity': instance.entity?.map((e) => e?.toJson())?.toList(),
+    };
 
 AuditEvent_Agent _$AuditEvent_AgentFromJson(Map<String, dynamic> json) {
   return AuditEvent_Agent(
@@ -649,39 +636,29 @@ AuditEvent_Agent _$AuditEvent_AgentFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AuditEvent_AgentToJson(AuditEvent_Agent instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('role', instance.role?.map((e) => e?.toJson())?.toList());
-  writeNotNull('who', instance.who?.toJson());
-  writeNotNull('altId', instance.altId);
-  writeNotNull('elementAltId', instance.elementAltId?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('requestor', instance.requestor);
-  writeNotNull('elementRequestor', instance.elementRequestor?.toJson());
-  writeNotNull('location', instance.location?.toJson());
-  writeNotNull('policy', instance.policy);
-  writeNotNull('elementPolicy',
-      instance.elementPolicy?.map((e) => e?.toJson())?.toList());
-  writeNotNull('media', instance.media?.toJson());
-  writeNotNull('network', instance.network?.toJson());
-  writeNotNull(
-      'purposeOfUse', instance.purposeOfUse?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$AuditEvent_AgentToJson(AuditEvent_Agent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'role': instance.role?.map((e) => e?.toJson())?.toList(),
+      'who': instance.who?.toJson(),
+      'altId': instance.altId,
+      'elementAltId': instance.elementAltId?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'requestor': instance.requestor,
+      'elementRequestor': instance.elementRequestor?.toJson(),
+      'location': instance.location?.toJson(),
+      'policy': instance.policy,
+      'elementPolicy':
+          instance.elementPolicy?.map((e) => e?.toJson())?.toList(),
+      'media': instance.media?.toJson(),
+      'network': instance.network?.toJson(),
+      'purposeOfUse': instance.purposeOfUse?.map((e) => e?.toJson())?.toList(),
+    };
 
 AuditEvent_Network _$AuditEvent_NetworkFromJson(Map<String, dynamic> json) {
   return AuditEvent_Network(
@@ -705,26 +682,17 @@ AuditEvent_Network _$AuditEvent_NetworkFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AuditEvent_NetworkToJson(AuditEvent_Network instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('address', instance.address);
-  writeNotNull('elementAddress', instance.elementAddress?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  return val;
-}
+Map<String, dynamic> _$AuditEvent_NetworkToJson(AuditEvent_Network instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'address': instance.address,
+      'elementAddress': instance.elementAddress?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+    };
 
 AuditEvent_Source _$AuditEvent_SourceFromJson(Map<String, dynamic> json) {
   return AuditEvent_Source(
@@ -751,26 +719,17 @@ AuditEvent_Source _$AuditEvent_SourceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AuditEvent_SourceToJson(AuditEvent_Source instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('site', instance.site);
-  writeNotNull('elementSite', instance.elementSite?.toJson());
-  writeNotNull('observer', instance.observer?.toJson());
-  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$AuditEvent_SourceToJson(AuditEvent_Source instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'site': instance.site,
+      'elementSite': instance.elementSite?.toJson(),
+      'observer': instance.observer?.toJson(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+    };
 
 AuditEvent_Entity _$AuditEvent_EntityFromJson(Map<String, dynamic> json) {
   return AuditEvent_Entity(
@@ -819,35 +778,26 @@ AuditEvent_Entity _$AuditEvent_EntityFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AuditEvent_EntityToJson(AuditEvent_Entity instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('what', instance.what?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('role', instance.role?.toJson());
-  writeNotNull('lifecycle', instance.lifecycle?.toJson());
-  writeNotNull('securityLabel',
-      instance.securityLabel?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('query', instance.query);
-  writeNotNull('elementQuery', instance.elementQuery?.toJson());
-  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$AuditEvent_EntityToJson(AuditEvent_Entity instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'what': instance.what?.toJson(),
+      'type': instance.type?.toJson(),
+      'role': instance.role?.toJson(),
+      'lifecycle': instance.lifecycle?.toJson(),
+      'securityLabel':
+          instance.securityLabel?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'query': instance.query,
+      'elementQuery': instance.elementQuery?.toJson(),
+      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
+    };
 
 AuditEvent_Detail _$AuditEvent_DetailFromJson(Map<String, dynamic> json) {
   return AuditEvent_Detail(
@@ -876,26 +826,16 @@ AuditEvent_Detail _$AuditEvent_DetailFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AuditEvent_DetailToJson(AuditEvent_Detail instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('valueString', instance.valueString);
-  writeNotNull('elementValueString', instance.elementValueString?.toJson());
-  writeNotNull('valueBase64Binary', instance.valueBase64Binary);
-  writeNotNull(
-      'elementValueBase64Binary', instance.elementValueBase64Binary?.toJson());
-  return val;
-}
+Map<String, dynamic> _$AuditEvent_DetailToJson(AuditEvent_Detail instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueBase64Binary': instance.valueBase64Binary,
+      'elementValueBase64Binary': instance.elementValueBase64Binary?.toJson(),
+    };

@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Annotation {
   static Future<Annotation> newInstance({
     String id,
@@ -20,7 +20,7 @@ class Annotation {
   }) async {
     var fhirDb = new DatabaseHelper();
     Annotation newAnnotation = new Annotation(
-      id: id ?? await fhirDb.newResourceId('Annotation'),
+      id: id,
       extension: extension,
       authorReference: authorReference,
       authorString: authorString,
@@ -90,24 +90,15 @@ Annotation _$AnnotationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AnnotationToJson(Annotation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('authorReference', instance.authorReference?.toJson());
-  writeNotNull('authorString', instance.authorString);
-  writeNotNull('elementAuthorString', instance.elementAuthorString?.toJson());
-  writeNotNull('time', instance.time?.toIso8601String());
-  writeNotNull('elementTime', instance.elementTime?.toJson());
-  writeNotNull('text', instance.text);
-  writeNotNull('elementText', instance.elementText?.toJson());
-  return val;
-}
+Map<String, dynamic> _$AnnotationToJson(Annotation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'authorReference': instance.authorReference?.toJson(),
+      'authorString': instance.authorString,
+      'elementAuthorString': instance.elementAuthorString?.toJson(),
+      'time': instance.time?.toIso8601String(),
+      'elementTime': instance.elementTime?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+    };

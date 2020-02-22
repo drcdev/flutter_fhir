@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class QuestionnaireResponse {
   static Future<QuestionnaireResponse> newInstance({
     String resourceType,
@@ -75,13 +75,9 @@ class QuestionnaireResponse {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'QuestionnaireResponse';
@@ -141,7 +137,7 @@ class QuestionnaireResponse {
   Map<String, dynamic> toJson() => _$QuestionnaireResponseToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class QuestionnaireResponse_Item {
   static Future<QuestionnaireResponse_Item> newInstance({
     String id,
@@ -159,7 +155,7 @@ class QuestionnaireResponse_Item {
     var fhirDb = new DatabaseHelper();
     QuestionnaireResponse_Item newQuestionnaireResponse_Item =
         new QuestionnaireResponse_Item(
-      id: id ?? await fhirDb.newResourceId('QuestionnaireResponse_Item'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       linkId: linkId,
@@ -205,7 +201,7 @@ class QuestionnaireResponse_Item {
   Map<String, dynamic> toJson() => _$QuestionnaireResponse_ItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class QuestionnaireResponse_Answer {
   static Future<QuestionnaireResponse_Answer> newInstance({
     String id,
@@ -236,7 +232,7 @@ class QuestionnaireResponse_Answer {
     var fhirDb = new DatabaseHelper();
     QuestionnaireResponse_Answer newQuestionnaireResponse_Answer =
         new QuestionnaireResponse_Answer(
-      id: id ?? await fhirDb.newResourceId('QuestionnaireResponse_Answer'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       valueBoolean: valueBoolean,
@@ -402,43 +398,34 @@ QuestionnaireResponse _$QuestionnaireResponseFromJson(
 }
 
 Map<String, dynamic> _$QuestionnaireResponseToJson(
-    QuestionnaireResponse instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
-  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
-  writeNotNull('questionnaire', instance.questionnaire);
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('encounter', instance.encounter?.toJson());
-  writeNotNull('authored', instance.authored?.toIso8601String());
-  writeNotNull('elementAuthored', instance.elementAuthored?.toJson());
-  writeNotNull('author', instance.author?.toJson());
-  writeNotNull('source', instance.source?.toJson());
-  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        QuestionnaireResponse instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
+      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
+      'questionnaire': instance.questionnaire,
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'encounter': instance.encounter?.toJson(),
+      'authored': instance.authored?.toIso8601String(),
+      'elementAuthored': instance.elementAuthored?.toJson(),
+      'author': instance.author?.toJson(),
+      'source': instance.source?.toJson(),
+      'item': instance.item?.map((e) => e?.toJson())?.toList(),
+    };
 
 QuestionnaireResponse_Item _$QuestionnaireResponse_ItemFromJson(
     Map<String, dynamic> json) {
@@ -478,30 +465,21 @@ QuestionnaireResponse_Item _$QuestionnaireResponse_ItemFromJson(
 }
 
 Map<String, dynamic> _$QuestionnaireResponse_ItemToJson(
-    QuestionnaireResponse_Item instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('linkId', instance.linkId);
-  writeNotNull('elementLinkId', instance.elementLinkId?.toJson());
-  writeNotNull('definition', instance.definition);
-  writeNotNull('elementDefinition', instance.elementDefinition?.toJson());
-  writeNotNull('text', instance.text);
-  writeNotNull('elementText', instance.elementText?.toJson());
-  writeNotNull('answer', instance.answer?.map((e) => e?.toJson())?.toList());
-  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        QuestionnaireResponse_Item instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'linkId': instance.linkId,
+      'elementLinkId': instance.elementLinkId?.toJson(),
+      'definition': instance.definition,
+      'elementDefinition': instance.elementDefinition?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+      'answer': instance.answer?.map((e) => e?.toJson())?.toList(),
+      'item': instance.item?.map((e) => e?.toJson())?.toList(),
+    };
 
 QuestionnaireResponse_Answer _$QuestionnaireResponse_AnswerFromJson(
     Map<String, dynamic> json) {
@@ -569,40 +547,31 @@ QuestionnaireResponse_Answer _$QuestionnaireResponse_AnswerFromJson(
 }
 
 Map<String, dynamic> _$QuestionnaireResponse_AnswerToJson(
-    QuestionnaireResponse_Answer instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('valueBoolean', instance.valueBoolean);
-  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
-  writeNotNull('valueDecimal', instance.valueDecimal);
-  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
-  writeNotNull('valueInteger', instance.valueInteger);
-  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
-  writeNotNull('valueDate', instance.valueDate);
-  writeNotNull('elementValueDate', instance.elementValueDate?.toJson());
-  writeNotNull('valueDateTime', instance.valueDateTime);
-  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
-  writeNotNull('valueTime', instance.valueTime);
-  writeNotNull('elementValueTime', instance.elementValueTime?.toJson());
-  writeNotNull('valueString', instance.valueString);
-  writeNotNull('elementValueString', instance.elementValueString?.toJson());
-  writeNotNull('valueUri', instance.valueUri);
-  writeNotNull('elementValueUri', instance.elementValueUri?.toJson());
-  writeNotNull('valueAttachment', instance.valueAttachment?.toJson());
-  writeNotNull('valueCoding', instance.valueCoding?.toJson());
-  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
-  writeNotNull('valueReference', instance.valueReference?.toJson());
-  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        QuestionnaireResponse_Answer instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'valueBoolean': instance.valueBoolean,
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
+      'valueDecimal': instance.valueDecimal,
+      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
+      'valueInteger': instance.valueInteger,
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
+      'valueDate': instance.valueDate,
+      'elementValueDate': instance.elementValueDate?.toJson(),
+      'valueDateTime': instance.valueDateTime,
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
+      'valueTime': instance.valueTime,
+      'elementValueTime': instance.elementValueTime?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueUri': instance.valueUri,
+      'elementValueUri': instance.elementValueUri?.toJson(),
+      'valueAttachment': instance.valueAttachment?.toJson(),
+      'valueCoding': instance.valueCoding?.toJson(),
+      'valueQuantity': instance.valueQuantity?.toJson(),
+      'valueReference': instance.valueReference?.toJson(),
+      'item': instance.item?.map((e) => e?.toJson())?.toList(),
+    };

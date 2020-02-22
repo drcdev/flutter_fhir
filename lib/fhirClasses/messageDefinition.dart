@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MessageDefinition {
   static Future<MessageDefinition> newInstance({
     String resourceType,
@@ -126,13 +126,9 @@ class MessageDefinition {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MessageDefinition';
@@ -244,7 +240,7 @@ class MessageDefinition {
   Map<String, dynamic> toJson() => _$MessageDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MessageDefinition_Focus {
   static Future<MessageDefinition_Focus> newInstance({
     String id,
@@ -261,7 +257,7 @@ class MessageDefinition_Focus {
     var fhirDb = new DatabaseHelper();
     MessageDefinition_Focus newMessageDefinition_Focus =
         new MessageDefinition_Focus(
-      id: id ?? await fhirDb.newResourceId('MessageDefinition_Focus'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -304,7 +300,7 @@ class MessageDefinition_Focus {
   Map<String, dynamic> toJson() => _$MessageDefinition_FocusToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MessageDefinition_AllowedResponse {
   static Future<MessageDefinition_AllowedResponse> newInstance({
     String id,
@@ -317,7 +313,7 @@ class MessageDefinition_AllowedResponse {
     var fhirDb = new DatabaseHelper();
     MessageDefinition_AllowedResponse newMessageDefinition_AllowedResponse =
         new MessageDefinition_AllowedResponse(
-      id: id ?? await fhirDb.newResourceId('MessageDefinition_AllowedResponse'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       message: message,
@@ -483,74 +479,61 @@ MessageDefinition _$MessageDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MessageDefinitionToJson(MessageDefinition instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('replaces', instance.replaces);
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('experimental', instance.experimental);
-  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('purpose', instance.purpose);
-  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
-  writeNotNull('copyright', instance.copyright);
-  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
-  writeNotNull('base', instance.base);
-  writeNotNull('parent', instance.parent);
-  writeNotNull('eventCoding', instance.eventCoding?.toJson());
-  writeNotNull('eventUri', instance.eventUri);
-  writeNotNull('elementEventUri', instance.elementEventUri?.toJson());
-  writeNotNull('category', instance.category);
-  writeNotNull('elementCategory', instance.elementCategory?.toJson());
-  writeNotNull('focus', instance.focus?.map((e) => e?.toJson())?.toList());
-  writeNotNull('responseRequired', instance.responseRequired);
-  writeNotNull(
-      'elementResponseRequired', instance.elementResponseRequired?.toJson());
-  writeNotNull('allowedResponse',
-      instance.allowedResponse?.map((e) => e?.toJson())?.toList());
-  writeNotNull('graph', instance.graph);
-  return val;
-}
+Map<String, dynamic> _$MessageDefinitionToJson(MessageDefinition instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'replaces': instance.replaces,
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'base': instance.base,
+      'parent': instance.parent,
+      'eventCoding': instance.eventCoding?.toJson(),
+      'eventUri': instance.eventUri,
+      'elementEventUri': instance.elementEventUri?.toJson(),
+      'category': instance.category,
+      'elementCategory': instance.elementCategory?.toJson(),
+      'focus': instance.focus?.map((e) => e?.toJson())?.toList(),
+      'responseRequired': instance.responseRequired,
+      'elementResponseRequired': instance.elementResponseRequired?.toJson(),
+      'allowedResponse':
+          instance.allowedResponse?.map((e) => e?.toJson())?.toList(),
+      'graph': instance.graph,
+    };
 
 MessageDefinition_Focus _$MessageDefinition_FocusFromJson(
     Map<String, dynamic> json) {
@@ -581,29 +564,20 @@ MessageDefinition_Focus _$MessageDefinition_FocusFromJson(
 }
 
 Map<String, dynamic> _$MessageDefinition_FocusToJson(
-    MessageDefinition_Focus instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('profile', instance.profile);
-  writeNotNull('min', instance.min);
-  writeNotNull('elementMin', instance.elementMin?.toJson());
-  writeNotNull('max', instance.max);
-  writeNotNull('elementMax', instance.elementMax?.toJson());
-  return val;
-}
+        MessageDefinition_Focus instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'profile': instance.profile,
+      'min': instance.min,
+      'elementMin': instance.elementMin?.toJson(),
+      'max': instance.max,
+      'elementMax': instance.elementMax?.toJson(),
+    };
 
 MessageDefinition_AllowedResponse _$MessageDefinition_AllowedResponseFromJson(
     Map<String, dynamic> json) {
@@ -626,22 +600,13 @@ MessageDefinition_AllowedResponse _$MessageDefinition_AllowedResponseFromJson(
 }
 
 Map<String, dynamic> _$MessageDefinition_AllowedResponseToJson(
-    MessageDefinition_AllowedResponse instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('message', instance.message);
-  writeNotNull('situation', instance.situation);
-  writeNotNull('elementSituation', instance.elementSituation?.toJson());
-  return val;
-}
+        MessageDefinition_AllowedResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'message': instance.message,
+      'situation': instance.situation,
+      'elementSituation': instance.elementSituation?.toJson(),
+    };

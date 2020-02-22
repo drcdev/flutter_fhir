@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NutritionOrder {
   static Future<NutritionOrder> newInstance({
     String resourceType,
@@ -94,13 +94,9 @@ class NutritionOrder {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'NutritionOrder';
@@ -178,7 +174,7 @@ class NutritionOrder {
   Map<String, dynamic> toJson() => _$NutritionOrderToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NutritionOrder_OralDiet {
   static Future<NutritionOrder_OralDiet> newInstance({
     String id,
@@ -195,7 +191,7 @@ class NutritionOrder_OralDiet {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_OralDiet newNutritionOrder_OralDiet =
         new NutritionOrder_OralDiet(
-      id: id ?? await fhirDb.newResourceId('NutritionOrder_OralDiet'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -238,7 +234,7 @@ class NutritionOrder_OralDiet {
   Map<String, dynamic> toJson() => _$NutritionOrder_OralDietToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NutritionOrder_Nutrient {
   static Future<NutritionOrder_Nutrient> newInstance({
     String id,
@@ -250,7 +246,7 @@ class NutritionOrder_Nutrient {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Nutrient newNutritionOrder_Nutrient =
         new NutritionOrder_Nutrient(
-      id: id ?? await fhirDb.newResourceId('NutritionOrder_Nutrient'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       modifier: modifier,
@@ -278,7 +274,7 @@ class NutritionOrder_Nutrient {
   Map<String, dynamic> toJson() => _$NutritionOrder_NutrientToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NutritionOrder_Texture {
   static Future<NutritionOrder_Texture> newInstance({
     String id,
@@ -290,7 +286,7 @@ class NutritionOrder_Texture {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Texture newNutritionOrder_Texture =
         new NutritionOrder_Texture(
-      id: id ?? await fhirDb.newResourceId('NutritionOrder_Texture'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       modifier: modifier,
@@ -318,7 +314,7 @@ class NutritionOrder_Texture {
   Map<String, dynamic> toJson() => _$NutritionOrder_TextureToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NutritionOrder_Supplement {
   static Future<NutritionOrder_Supplement> newInstance({
     String id,
@@ -335,7 +331,7 @@ class NutritionOrder_Supplement {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Supplement newNutritionOrder_Supplement =
         new NutritionOrder_Supplement(
-      id: id ?? await fhirDb.newResourceId('NutritionOrder_Supplement'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -378,7 +374,7 @@ class NutritionOrder_Supplement {
   Map<String, dynamic> toJson() => _$NutritionOrder_SupplementToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NutritionOrder_EnteralFormula {
   static Future<NutritionOrder_EnteralFormula> newInstance({
     String id,
@@ -400,7 +396,7 @@ class NutritionOrder_EnteralFormula {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_EnteralFormula newNutritionOrder_EnteralFormula =
         new NutritionOrder_EnteralFormula(
-      id: id ?? await fhirDb.newResourceId('NutritionOrder_EnteralFormula'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       baseFormulaType: baseFormulaType,
@@ -458,7 +454,7 @@ class NutritionOrder_EnteralFormula {
   Map<String, dynamic> toJson() => _$NutritionOrder_EnteralFormulaToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NutritionOrder_Administration {
   static Future<NutritionOrder_Administration> newInstance({
     String id,
@@ -472,7 +468,7 @@ class NutritionOrder_Administration {
     var fhirDb = new DatabaseHelper();
     NutritionOrder_Administration newNutritionOrder_Administration =
         new NutritionOrder_Administration(
-      id: id ?? await fhirDb.newResourceId('NutritionOrder_Administration'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       schedule: schedule,
@@ -619,59 +615,48 @@ NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$NutritionOrderToJson(NutritionOrder instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
-  writeNotNull('instantiatesUri', instance.instantiatesUri);
-  writeNotNull('elementInstantiatesUri',
-      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
-  writeNotNull('instantiates', instance.instantiates);
-  writeNotNull('elementInstantiates',
-      instance.elementInstantiates?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('intent', instance.intent);
-  writeNotNull('elementIntent', instance.elementIntent?.toJson());
-  writeNotNull('patient', instance.patient?.toJson());
-  writeNotNull('encounter', instance.encounter?.toJson());
-  writeNotNull('dateTime', instance.dateTime?.toIso8601String());
-  writeNotNull('elementDateTime', instance.elementDateTime?.toJson());
-  writeNotNull('orderer', instance.orderer?.toJson());
-  writeNotNull('allergyIntolerance',
-      instance.allergyIntolerance?.map((e) => e?.toJson())?.toList());
-  writeNotNull('foodPreferenceModifier',
-      instance.foodPreferenceModifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('excludeFoodModifier',
-      instance.excludeFoodModifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('oralDiet', instance.oralDiet?.toJson());
-  writeNotNull(
-      'supplement', instance.supplement?.map((e) => e?.toJson())?.toList());
-  writeNotNull('enteralFormula', instance.enteralFormula?.toJson());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$NutritionOrderToJson(NutritionOrder instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'instantiatesCanonical': instance.instantiatesCanonical,
+      'instantiatesUri': instance.instantiatesUri,
+      'elementInstantiatesUri':
+          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
+      'instantiates': instance.instantiates,
+      'elementInstantiates':
+          instance.elementInstantiates?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'intent': instance.intent,
+      'elementIntent': instance.elementIntent?.toJson(),
+      'patient': instance.patient?.toJson(),
+      'encounter': instance.encounter?.toJson(),
+      'dateTime': instance.dateTime?.toIso8601String(),
+      'elementDateTime': instance.elementDateTime?.toJson(),
+      'orderer': instance.orderer?.toJson(),
+      'allergyIntolerance':
+          instance.allergyIntolerance?.map((e) => e?.toJson())?.toList(),
+      'foodPreferenceModifier':
+          instance.foodPreferenceModifier?.map((e) => e?.toJson())?.toList(),
+      'excludeFoodModifier':
+          instance.excludeFoodModifier?.map((e) => e?.toJson())?.toList(),
+      'oralDiet': instance.oralDiet?.toJson(),
+      'supplement': instance.supplement?.map((e) => e?.toJson())?.toList(),
+      'enteralFormula': instance.enteralFormula?.toJson(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+    };
 
 NutritionOrder_OralDiet _$NutritionOrder_OralDietFromJson(
     Map<String, dynamic> json) {
@@ -717,32 +702,21 @@ NutritionOrder_OralDiet _$NutritionOrder_OralDietFromJson(
 }
 
 Map<String, dynamic> _$NutritionOrder_OralDietToJson(
-    NutritionOrder_OralDiet instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'schedule', instance.schedule?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'nutrient', instance.nutrient?.map((e) => e?.toJson())?.toList());
-  writeNotNull('texture', instance.texture?.map((e) => e?.toJson())?.toList());
-  writeNotNull('fluidConsistencyType',
-      instance.fluidConsistencyType?.map((e) => e?.toJson())?.toList());
-  writeNotNull('instruction', instance.instruction);
-  writeNotNull('elementInstruction', instance.elementInstruction?.toJson());
-  return val;
-}
+        NutritionOrder_OralDiet instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'schedule': instance.schedule?.map((e) => e?.toJson())?.toList(),
+      'nutrient': instance.nutrient?.map((e) => e?.toJson())?.toList(),
+      'texture': instance.texture?.map((e) => e?.toJson())?.toList(),
+      'fluidConsistencyType':
+          instance.fluidConsistencyType?.map((e) => e?.toJson())?.toList(),
+      'instruction': instance.instruction,
+      'elementInstruction': instance.elementInstruction?.toJson(),
+    };
 
 NutritionOrder_Nutrient _$NutritionOrder_NutrientFromJson(
     Map<String, dynamic> json) {
@@ -766,24 +740,15 @@ NutritionOrder_Nutrient _$NutritionOrder_NutrientFromJson(
 }
 
 Map<String, dynamic> _$NutritionOrder_NutrientToJson(
-    NutritionOrder_Nutrient instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifier', instance.modifier?.toJson());
-  writeNotNull('amount', instance.amount?.toJson());
-  return val;
-}
+        NutritionOrder_Nutrient instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'modifier': instance.modifier?.toJson(),
+      'amount': instance.amount?.toJson(),
+    };
 
 NutritionOrder_Texture _$NutritionOrder_TextureFromJson(
     Map<String, dynamic> json) {
@@ -807,24 +772,15 @@ NutritionOrder_Texture _$NutritionOrder_TextureFromJson(
 }
 
 Map<String, dynamic> _$NutritionOrder_TextureToJson(
-    NutritionOrder_Texture instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifier', instance.modifier?.toJson());
-  writeNotNull('foodType', instance.foodType?.toJson());
-  return val;
-}
+        NutritionOrder_Texture instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'modifier': instance.modifier?.toJson(),
+      'foodType': instance.foodType?.toJson(),
+    };
 
 NutritionOrder_Supplement _$NutritionOrder_SupplementFromJson(
     Map<String, dynamic> json) {
@@ -860,30 +816,20 @@ NutritionOrder_Supplement _$NutritionOrder_SupplementFromJson(
 }
 
 Map<String, dynamic> _$NutritionOrder_SupplementToJson(
-    NutritionOrder_Supplement instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('productName', instance.productName);
-  writeNotNull('elementProductName', instance.elementProductName?.toJson());
-  writeNotNull(
-      'schedule', instance.schedule?.map((e) => e?.toJson())?.toList());
-  writeNotNull('quantity', instance.quantity?.toJson());
-  writeNotNull('instruction', instance.instruction);
-  writeNotNull('elementInstruction', instance.elementInstruction?.toJson());
-  return val;
-}
+        NutritionOrder_Supplement instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'productName': instance.productName,
+      'elementProductName': instance.elementProductName?.toJson(),
+      'schedule': instance.schedule?.map((e) => e?.toJson())?.toList(),
+      'quantity': instance.quantity?.toJson(),
+      'instruction': instance.instruction,
+      'elementInstruction': instance.elementInstruction?.toJson(),
+    };
 
 NutritionOrder_EnteralFormula _$NutritionOrder_EnteralFormulaFromJson(
     Map<String, dynamic> json) {
@@ -940,39 +886,29 @@ NutritionOrder_EnteralFormula _$NutritionOrder_EnteralFormulaFromJson(
 }
 
 Map<String, dynamic> _$NutritionOrder_EnteralFormulaToJson(
-    NutritionOrder_EnteralFormula instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('baseFormulaType', instance.baseFormulaType?.toJson());
-  writeNotNull('baseFormulaProductName', instance.baseFormulaProductName);
-  writeNotNull('elementBaseFormulaProductName',
-      instance.elementBaseFormulaProductName?.toJson());
-  writeNotNull('additiveType', instance.additiveType?.toJson());
-  writeNotNull('additiveProductName', instance.additiveProductName);
-  writeNotNull('elementAdditiveProductName',
-      instance.elementAdditiveProductName?.toJson());
-  writeNotNull('caloricDensity', instance.caloricDensity?.toJson());
-  writeNotNull(
-      'routeofAdministration', instance.routeofAdministration?.toJson());
-  writeNotNull('administration',
-      instance.administration?.map((e) => e?.toJson())?.toList());
-  writeNotNull('maxVolumeToDeliver', instance.maxVolumeToDeliver?.toJson());
-  writeNotNull('administrationInstruction', instance.administrationInstruction);
-  writeNotNull('elementAdministrationInstruction',
-      instance.elementAdministrationInstruction?.toJson());
-  return val;
-}
+        NutritionOrder_EnteralFormula instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'baseFormulaType': instance.baseFormulaType?.toJson(),
+      'baseFormulaProductName': instance.baseFormulaProductName,
+      'elementBaseFormulaProductName':
+          instance.elementBaseFormulaProductName?.toJson(),
+      'additiveType': instance.additiveType?.toJson(),
+      'additiveProductName': instance.additiveProductName,
+      'elementAdditiveProductName':
+          instance.elementAdditiveProductName?.toJson(),
+      'caloricDensity': instance.caloricDensity?.toJson(),
+      'routeofAdministration': instance.routeofAdministration?.toJson(),
+      'administration':
+          instance.administration?.map((e) => e?.toJson())?.toList(),
+      'maxVolumeToDeliver': instance.maxVolumeToDeliver?.toJson(),
+      'administrationInstruction': instance.administrationInstruction,
+      'elementAdministrationInstruction':
+          instance.elementAdministrationInstruction?.toJson(),
+    };
 
 NutritionOrder_Administration _$NutritionOrder_AdministrationFromJson(
     Map<String, dynamic> json) {
@@ -1002,23 +938,14 @@ NutritionOrder_Administration _$NutritionOrder_AdministrationFromJson(
 }
 
 Map<String, dynamic> _$NutritionOrder_AdministrationToJson(
-    NutritionOrder_Administration instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('schedule', instance.schedule?.toJson());
-  writeNotNull('quantity', instance.quantity?.toJson());
-  writeNotNull('rateQuantity', instance.rateQuantity?.toJson());
-  writeNotNull('rateRatio', instance.rateRatio?.toJson());
-  return val;
-}
+        NutritionOrder_Administration instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'schedule': instance.schedule?.toJson(),
+      'quantity': instance.quantity?.toJson(),
+      'rateQuantity': instance.rateQuantity?.toJson(),
+      'rateRatio': instance.rateRatio?.toJson(),
+    };

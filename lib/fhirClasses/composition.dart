@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Composition {
   static Future<Composition> newInstance({
     String resourceType,
@@ -85,13 +85,9 @@ class Composition {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Composition';
@@ -163,7 +159,7 @@ class Composition {
   Map<String, dynamic> toJson() => _$CompositionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Composition_Attester {
   static Future<Composition_Attester> newInstance({
     String id,
@@ -177,7 +173,7 @@ class Composition_Attester {
   }) async {
     var fhirDb = new DatabaseHelper();
     Composition_Attester newComposition_Attester = new Composition_Attester(
-      id: id ?? await fhirDb.newResourceId('Composition_Attester'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       mode: mode,
@@ -214,7 +210,7 @@ class Composition_Attester {
   Map<String, dynamic> toJson() => _$Composition_AttesterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Composition_RelatesTo {
   static Future<Composition_RelatesTo> newInstance({
     String id,
@@ -227,7 +223,7 @@ class Composition_RelatesTo {
   }) async {
     var fhirDb = new DatabaseHelper();
     Composition_RelatesTo newComposition_RelatesTo = new Composition_RelatesTo(
-      id: id ?? await fhirDb.newResourceId('Composition_RelatesTo'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -261,7 +257,7 @@ class Composition_RelatesTo {
   Map<String, dynamic> toJson() => _$Composition_RelatesToToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Composition_Event {
   static Future<Composition_Event> newInstance({
     String id,
@@ -273,7 +269,7 @@ class Composition_Event {
   }) async {
     var fhirDb = new DatabaseHelper();
     Composition_Event newComposition_Event = new Composition_Event(
-      id: id ?? await fhirDb.newResourceId('Composition_Event'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -304,7 +300,7 @@ class Composition_Event {
   Map<String, dynamic> toJson() => _$Composition_EventToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Composition_Section {
   static Future<Composition_Section> newInstance({
     String id,
@@ -325,7 +321,7 @@ class Composition_Section {
   }) async {
     var fhirDb = new DatabaseHelper();
     Composition_Section newComposition_Section = new Composition_Section(
-      id: id ?? await fhirDb.newResourceId('Composition_Section'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       title: title,
@@ -484,53 +480,40 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CompositionToJson(Composition instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull(
-      'category', instance.category?.map((e) => e?.toJson())?.toList());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('encounter', instance.encounter?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('confidentiality', instance.confidentiality);
-  writeNotNull(
-      'elementConfidentiality', instance.elementConfidentiality?.toJson());
-  writeNotNull(
-      'attester', instance.attester?.map((e) => e?.toJson())?.toList());
-  writeNotNull('custodian', instance.custodian?.toJson());
-  writeNotNull(
-      'relatesTo', instance.relatesTo?.map((e) => e?.toJson())?.toList());
-  writeNotNull('event', instance.event?.map((e) => e?.toJson())?.toList());
-  writeNotNull('section', instance.section?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$CompositionToJson(Composition instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type?.toJson(),
+      'category': instance.category?.map((e) => e?.toJson())?.toList(),
+      'subject': instance.subject?.toJson(),
+      'encounter': instance.encounter?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'confidentiality': instance.confidentiality,
+      'elementConfidentiality': instance.elementConfidentiality?.toJson(),
+      'attester': instance.attester?.map((e) => e?.toJson())?.toList(),
+      'custodian': instance.custodian?.toJson(),
+      'relatesTo': instance.relatesTo?.map((e) => e?.toJson())?.toList(),
+      'event': instance.event?.map((e) => e?.toJson())?.toList(),
+      'section': instance.section?.map((e) => e?.toJson())?.toList(),
+    };
 
 Composition_Attester _$Composition_AttesterFromJson(Map<String, dynamic> json) {
   return Composition_Attester(
@@ -558,27 +541,18 @@ Composition_Attester _$Composition_AttesterFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$Composition_AttesterToJson(
-    Composition_Attester instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('mode', instance.mode);
-  writeNotNull('elementMode', instance.elementMode?.toJson());
-  writeNotNull('time', instance.time?.toIso8601String());
-  writeNotNull('elementTime', instance.elementTime?.toJson());
-  writeNotNull('party', instance.party?.toJson());
-  return val;
-}
+        Composition_Attester instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'mode': instance.mode,
+      'elementMode': instance.elementMode?.toJson(),
+      'time': instance.time?.toIso8601String(),
+      'elementTime': instance.elementTime?.toJson(),
+      'party': instance.party?.toJson(),
+    };
 
 Composition_RelatesTo _$Composition_RelatesToFromJson(
     Map<String, dynamic> json) {
@@ -606,26 +580,17 @@ Composition_RelatesTo _$Composition_RelatesToFromJson(
 }
 
 Map<String, dynamic> _$Composition_RelatesToToJson(
-    Composition_RelatesTo instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('targetIdentifier', instance.targetIdentifier?.toJson());
-  writeNotNull('targetReference', instance.targetReference?.toJson());
-  return val;
-}
+        Composition_RelatesTo instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'targetIdentifier': instance.targetIdentifier?.toJson(),
+      'targetReference': instance.targetReference?.toJson(),
+    };
 
 Composition_Event _$Composition_EventFromJson(Map<String, dynamic> json) {
   return Composition_Event(
@@ -653,25 +618,16 @@ Composition_Event _$Composition_EventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Composition_EventToJson(Composition_Event instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
-  writeNotNull('period', instance.period?.toJson());
-  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$Composition_EventToJson(Composition_Event instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
+    };
 
 Composition_Section _$Composition_SectionFromJson(Map<String, dynamic> json) {
   return Composition_Section(
@@ -723,31 +679,23 @@ Composition_Section _$Composition_SectionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Composition_SectionToJson(Composition_Section instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
-  writeNotNull('focus', instance.focus?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('mode', instance.mode);
-  writeNotNull('elementMode', instance.elementMode?.toJson());
-  writeNotNull('orderedBy', instance.orderedBy?.toJson());
-  writeNotNull('entry', instance.entry?.map((e) => e?.toJson())?.toList());
-  writeNotNull('emptyReason', instance.emptyReason?.toJson());
-  writeNotNull('section', instance.section?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$Composition_SectionToJson(
+        Composition_Section instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'code': instance.code?.toJson(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'focus': instance.focus?.toJson(),
+      'text': instance.text?.toJson(),
+      'mode': instance.mode,
+      'elementMode': instance.elementMode?.toJson(),
+      'orderedBy': instance.orderedBy?.toJson(),
+      'entry': instance.entry?.map((e) => e?.toJson())?.toList(),
+      'emptyReason': instance.emptyReason?.toJson(),
+      'section': instance.section?.map((e) => e?.toJson())?.toList(),
+    };

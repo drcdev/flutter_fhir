@@ -345,7 +345,7 @@ class DatabaseHelper {
       'VisionPrescription'
     ];
 
-    for(var table in tables){
+    for (var table in tables) {
       await db.execute('''CREATE TABLE $table (
 			id TEXT PRIMARY KEY,
 			createdAt TEXT,
@@ -405,10 +405,9 @@ class DatabaseHelper {
   }
 }
 
-String MasterTable(String deviceId){
+String MasterTable(String deviceId) {
   String time = DateTime.now().toString();
-  return(
-  '''INSERT INTO Master (resourceType, id, deviceId, lastId, total, lastUpdated)
+  return ('''INSERT INTO Master (resourceType, id, deviceId, lastId, total, lastUpdated)
 			VALUES
 				('Element','010','$deviceId','0000',0,'$time'),
 				('Extension','011','$deviceId','0000',0,'$time'),

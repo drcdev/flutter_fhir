@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport {
   static Future<TestReport> newInstance({
     String resourceType,
@@ -81,13 +81,9 @@ class TestReport {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'TestReport';
@@ -157,7 +153,7 @@ class TestReport {
   Map<String, dynamic> toJson() => _$TestReportToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Participant {
   static Future<TestReport_Participant> newInstance({
     String id,
@@ -173,7 +169,7 @@ class TestReport_Participant {
     var fhirDb = new DatabaseHelper();
     TestReport_Participant newTestReport_Participant =
         new TestReport_Participant(
-      id: id ?? await fhirDb.newResourceId('TestReport_Participant'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -213,7 +209,7 @@ class TestReport_Participant {
   Map<String, dynamic> toJson() => _$TestReport_ParticipantToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Setup {
   static Future<TestReport_Setup> newInstance({
     String id,
@@ -223,7 +219,7 @@ class TestReport_Setup {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Setup newTestReport_Setup = new TestReport_Setup(
-      id: id ?? await fhirDb.newResourceId('TestReport_Setup'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       action: action,
@@ -248,7 +244,7 @@ class TestReport_Setup {
   Map<String, dynamic> toJson() => _$TestReport_SetupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Action {
   static Future<TestReport_Action> newInstance({
     String id,
@@ -259,7 +255,7 @@ class TestReport_Action {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Action newTestReport_Action = new TestReport_Action(
-      id: id ?? await fhirDb.newResourceId('TestReport_Action'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       operation: operation,
@@ -287,7 +283,7 @@ class TestReport_Action {
   Map<String, dynamic> toJson() => _$TestReport_ActionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Operation {
   static Future<TestReport_Operation> newInstance({
     String id,
@@ -302,7 +298,7 @@ class TestReport_Operation {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Operation newTestReport_Operation = new TestReport_Operation(
-      id: id ?? await fhirDb.newResourceId('TestReport_Operation'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       result: result,
@@ -342,7 +338,7 @@ class TestReport_Operation {
   Map<String, dynamic> toJson() => _$TestReport_OperationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Assert {
   static Future<TestReport_Assert> newInstance({
     String id,
@@ -357,7 +353,7 @@ class TestReport_Assert {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Assert newTestReport_Assert = new TestReport_Assert(
-      id: id ?? await fhirDb.newResourceId('TestReport_Assert'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       result: result,
@@ -397,7 +393,7 @@ class TestReport_Assert {
   Map<String, dynamic> toJson() => _$TestReport_AssertToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Test {
   static Future<TestReport_Test> newInstance({
     String id,
@@ -411,7 +407,7 @@ class TestReport_Test {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Test newTestReport_Test = new TestReport_Test(
-      id: id ?? await fhirDb.newResourceId('TestReport_Test'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -448,7 +444,7 @@ class TestReport_Test {
   Map<String, dynamic> toJson() => _$TestReport_TestToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Action1 {
   static Future<TestReport_Action1> newInstance({
     String id,
@@ -459,7 +455,7 @@ class TestReport_Action1 {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Action1 newTestReport_Action1 = new TestReport_Action1(
-      id: id ?? await fhirDb.newResourceId('TestReport_Action1'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       operation: operation,
@@ -487,7 +483,7 @@ class TestReport_Action1 {
   Map<String, dynamic> toJson() => _$TestReport_Action1ToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Teardown {
   static Future<TestReport_Teardown> newInstance({
     String id,
@@ -497,7 +493,7 @@ class TestReport_Teardown {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Teardown newTestReport_Teardown = new TestReport_Teardown(
-      id: id ?? await fhirDb.newResourceId('TestReport_Teardown'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       action: action,
@@ -522,7 +518,7 @@ class TestReport_Teardown {
   Map<String, dynamic> toJson() => _$TestReport_TeardownToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class TestReport_Action2 {
   static Future<TestReport_Action2> newInstance({
     String id,
@@ -532,7 +528,7 @@ class TestReport_Action2 {
   }) async {
     var fhirDb = new DatabaseHelper();
     TestReport_Action2 newTestReport_Action2 = new TestReport_Action2(
-      id: id ?? await fhirDb.newResourceId('TestReport_Action2'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       operation: operation,
@@ -646,49 +642,39 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReportToJson(TestReport instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('testScript', instance.testScript?.toJson());
-  writeNotNull('result', instance.result);
-  writeNotNull('elementResult', instance.elementResult?.toJson());
-  writeNotNull('score', instance.score);
-  writeNotNull('elementScore', instance.elementScore?.toJson());
-  writeNotNull('tester', instance.tester);
-  writeNotNull('elementTester', instance.elementTester?.toJson());
-  writeNotNull('issued', instance.issued?.toIso8601String());
-  writeNotNull('elementIssued', instance.elementIssued?.toJson());
-  writeNotNull(
-      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
-  writeNotNull('setup', instance.setup?.toJson());
-  writeNotNull('test', instance.test?.map((e) => e?.toJson())?.toList());
-  writeNotNull('teardown', instance.teardown?.toJson());
-  return val;
-}
+Map<String, dynamic> _$TestReportToJson(TestReport instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'testScript': instance.testScript?.toJson(),
+      'result': instance.result,
+      'elementResult': instance.elementResult?.toJson(),
+      'score': instance.score,
+      'elementScore': instance.elementScore?.toJson(),
+      'tester': instance.tester,
+      'elementTester': instance.elementTester?.toJson(),
+      'issued': instance.issued?.toIso8601String(),
+      'elementIssued': instance.elementIssued?.toJson(),
+      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
+      'setup': instance.setup?.toJson(),
+      'test': instance.test?.map((e) => e?.toJson())?.toList(),
+      'teardown': instance.teardown?.toJson(),
+    };
 
 TestReport_Participant _$TestReport_ParticipantFromJson(
     Map<String, dynamic> json) {
@@ -718,28 +704,19 @@ TestReport_Participant _$TestReport_ParticipantFromJson(
 }
 
 Map<String, dynamic> _$TestReport_ParticipantToJson(
-    TestReport_Participant instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('uri', instance.uri);
-  writeNotNull('elementUri', instance.elementUri?.toJson());
-  writeNotNull('display', instance.display);
-  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
-  return val;
-}
+        TestReport_Participant instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'uri': instance.uri,
+      'elementUri': instance.elementUri?.toJson(),
+      'display': instance.display,
+      'elementDisplay': instance.elementDisplay?.toJson(),
+    };
 
 TestReport_Setup _$TestReport_SetupFromJson(Map<String, dynamic> json) {
   return TestReport_Setup(
@@ -760,23 +737,14 @@ TestReport_Setup _$TestReport_SetupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_SetupToJson(TestReport_Setup instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$TestReport_SetupToJson(TestReport_Setup instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'action': instance.action?.map((e) => e?.toJson())?.toList(),
+    };
 
 TestReport_Action _$TestReport_ActionFromJson(Map<String, dynamic> json) {
   return TestReport_Action(
@@ -799,24 +767,15 @@ TestReport_Action _$TestReport_ActionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_ActionToJson(TestReport_Action instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('operation', instance.operation?.toJson());
-  writeNotNull('asserts', instance.asserts?.toJson());
-  return val;
-}
+Map<String, dynamic> _$TestReport_ActionToJson(TestReport_Action instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'operation': instance.operation?.toJson(),
+      'asserts': instance.asserts?.toJson(),
+    };
 
 TestReport_Operation _$TestReport_OperationFromJson(Map<String, dynamic> json) {
   return TestReport_Operation(
@@ -845,28 +804,19 @@ TestReport_Operation _$TestReport_OperationFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$TestReport_OperationToJson(
-    TestReport_Operation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('result', instance.result);
-  writeNotNull('elementResult', instance.elementResult?.toJson());
-  writeNotNull('message', instance.message);
-  writeNotNull('elementMessage', instance.elementMessage?.toJson());
-  writeNotNull('detail', instance.detail);
-  writeNotNull('elementDetail', instance.elementDetail?.toJson());
-  return val;
-}
+        TestReport_Operation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'result': instance.result,
+      'elementResult': instance.elementResult?.toJson(),
+      'message': instance.message,
+      'elementMessage': instance.elementMessage?.toJson(),
+      'detail': instance.detail,
+      'elementDetail': instance.elementDetail?.toJson(),
+    };
 
 TestReport_Assert _$TestReport_AssertFromJson(Map<String, dynamic> json) {
   return TestReport_Assert(
@@ -894,28 +844,19 @@ TestReport_Assert _$TestReport_AssertFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_AssertToJson(TestReport_Assert instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('result', instance.result);
-  writeNotNull('elementResult', instance.elementResult?.toJson());
-  writeNotNull('message', instance.message);
-  writeNotNull('elementMessage', instance.elementMessage?.toJson());
-  writeNotNull('detail', instance.detail);
-  writeNotNull('elementDetail', instance.elementDetail?.toJson());
-  return val;
-}
+Map<String, dynamic> _$TestReport_AssertToJson(TestReport_Assert instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'result': instance.result,
+      'elementResult': instance.elementResult?.toJson(),
+      'message': instance.message,
+      'elementMessage': instance.elementMessage?.toJson(),
+      'detail': instance.detail,
+      'elementDetail': instance.elementDetail?.toJson(),
+    };
 
 TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
   return TestReport_Test(
@@ -944,27 +885,18 @@ TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_TestToJson(TestReport_Test instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$TestReport_TestToJson(TestReport_Test instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'action': instance.action?.map((e) => e?.toJson())?.toList(),
+    };
 
 TestReport_Action1 _$TestReport_Action1FromJson(Map<String, dynamic> json) {
   return TestReport_Action1(
@@ -987,24 +919,15 @@ TestReport_Action1 _$TestReport_Action1FromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_Action1ToJson(TestReport_Action1 instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('operation', instance.operation?.toJson());
-  writeNotNull('asserts', instance.asserts?.toJson());
-  return val;
-}
+Map<String, dynamic> _$TestReport_Action1ToJson(TestReport_Action1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'operation': instance.operation?.toJson(),
+      'asserts': instance.asserts?.toJson(),
+    };
 
 TestReport_Teardown _$TestReport_TeardownFromJson(Map<String, dynamic> json) {
   return TestReport_Teardown(
@@ -1025,23 +948,15 @@ TestReport_Teardown _$TestReport_TeardownFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_TeardownToJson(TestReport_Teardown instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$TestReport_TeardownToJson(
+        TestReport_Teardown instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'action': instance.action?.map((e) => e?.toJson())?.toList(),
+    };
 
 TestReport_Action2 _$TestReport_Action2FromJson(Map<String, dynamic> json) {
   return TestReport_Action2(
@@ -1061,20 +976,11 @@ TestReport_Action2 _$TestReport_Action2FromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TestReport_Action2ToJson(TestReport_Action2 instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('operation', instance.operation?.toJson());
-  return val;
-}
+Map<String, dynamic> _$TestReport_Action2ToJson(TestReport_Action2 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'operation': instance.operation?.toJson(),
+    };

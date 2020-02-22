@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MarketingStatus {
   static Future<MarketingStatus> newInstance({
     String id,
@@ -21,7 +21,7 @@ class MarketingStatus {
   }) async {
     var fhirDb = new DatabaseHelper();
     MarketingStatus newMarketingStatus = new MarketingStatus(
-      id: id ?? await fhirDb.newResourceId('MarketingStatus'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       country: country,
@@ -99,25 +99,16 @@ MarketingStatus _$MarketingStatusFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MarketingStatusToJson(MarketingStatus instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('country', instance.country?.toJson());
-  writeNotNull('jurisdiction', instance.jurisdiction?.toJson());
-  writeNotNull('status', instance.status?.toJson());
-  writeNotNull('dateRange', instance.dateRange?.toJson());
-  writeNotNull('restoreDate', instance.restoreDate?.toIso8601String());
-  writeNotNull('elementRestoreDate', instance.elementRestoreDate?.toJson());
-  return val;
-}
+Map<String, dynamic> _$MarketingStatusToJson(MarketingStatus instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'country': instance.country?.toJson(),
+      'jurisdiction': instance.jurisdiction?.toJson(),
+      'status': instance.status?.toJson(),
+      'dateRange': instance.dateRange?.toJson(),
+      'restoreDate': instance.restoreDate?.toIso8601String(),
+      'elementRestoreDate': instance.elementRestoreDate?.toJson(),
+    };

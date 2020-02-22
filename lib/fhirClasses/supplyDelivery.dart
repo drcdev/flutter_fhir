@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SupplyDelivery {
   static Future<SupplyDelivery> newInstance({
     String resourceType,
@@ -79,13 +79,9 @@ class SupplyDelivery {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'SupplyDelivery';
@@ -149,7 +145,7 @@ class SupplyDelivery {
   Map<String, dynamic> toJson() => _$SupplyDeliveryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SupplyDelivery_SuppliedItem {
   static Future<SupplyDelivery_SuppliedItem> newInstance({
     String id,
@@ -162,7 +158,7 @@ class SupplyDelivery_SuppliedItem {
     var fhirDb = new DatabaseHelper();
     SupplyDelivery_SuppliedItem newSupplyDelivery_SuppliedItem =
         new SupplyDelivery_SuppliedItem(
-      id: id ?? await fhirDb.newResourceId('SupplyDelivery_SuppliedItem'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       quantity: quantity,
@@ -280,48 +276,36 @@ SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SupplyDeliveryToJson(SupplyDelivery instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
-  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('patient', instance.patient?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('suppliedItem', instance.suppliedItem?.toJson());
-  writeNotNull('occurrenceDateTime', instance.occurrenceDateTime);
-  writeNotNull('elementOccurrenceDateTime',
-      instance.elementOccurrenceDateTime?.toJson());
-  writeNotNull('occurrencePeriod', instance.occurrencePeriod?.toJson());
-  writeNotNull('occurrenceTiming', instance.occurrenceTiming?.toJson());
-  writeNotNull('supplier', instance.supplier?.toJson());
-  writeNotNull('destination', instance.destination?.toJson());
-  writeNotNull(
-      'receiver', instance.receiver?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$SupplyDeliveryToJson(SupplyDelivery instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
+      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'patient': instance.patient?.toJson(),
+      'type': instance.type?.toJson(),
+      'suppliedItem': instance.suppliedItem?.toJson(),
+      'occurrenceDateTime': instance.occurrenceDateTime,
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
+      'occurrencePeriod': instance.occurrencePeriod?.toJson(),
+      'occurrenceTiming': instance.occurrenceTiming?.toJson(),
+      'supplier': instance.supplier?.toJson(),
+      'destination': instance.destination?.toJson(),
+      'receiver': instance.receiver?.map((e) => e?.toJson())?.toList(),
+    };
 
 SupplyDelivery_SuppliedItem _$SupplyDelivery_SuppliedItemFromJson(
     Map<String, dynamic> json) {
@@ -349,22 +333,13 @@ SupplyDelivery_SuppliedItem _$SupplyDelivery_SuppliedItemFromJson(
 }
 
 Map<String, dynamic> _$SupplyDelivery_SuppliedItemToJson(
-    SupplyDelivery_SuppliedItem instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('quantity', instance.quantity?.toJson());
-  writeNotNull('itemCodeableConcept', instance.itemCodeableConcept?.toJson());
-  writeNotNull('itemReference', instance.itemReference?.toJson());
-  return val;
-}
+        SupplyDelivery_SuppliedItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'quantity': instance.quantity?.toJson(),
+      'itemCodeableConcept': instance.itemCodeableConcept?.toJson(),
+      'itemReference': instance.itemReference?.toJson(),
+    };

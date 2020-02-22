@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Account {
   static Future<Account> newInstance({
     String resourceType,
@@ -75,13 +75,9 @@ class Account {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Account';
@@ -143,7 +139,7 @@ class Account {
   Map<String, dynamic> toJson() => _$AccountToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Account_Coverage {
   static Future<Account_Coverage> newInstance({
     String id,
@@ -155,7 +151,7 @@ class Account_Coverage {
   }) async {
     var fhirDb = new DatabaseHelper();
     Account_Coverage newAccount_Coverage = new Account_Coverage(
-      id: id ?? await fhirDb.newResourceId('Account_Coverage'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       coverage: coverage,
@@ -186,7 +182,7 @@ class Account_Coverage {
   Map<String, dynamic> toJson() => _$Account_CoverageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Account_Guarantor {
   static Future<Account_Guarantor> newInstance({
     String id,
@@ -199,7 +195,7 @@ class Account_Guarantor {
   }) async {
     var fhirDb = new DatabaseHelper();
     Account_Guarantor newAccount_Guarantor = new Account_Guarantor(
-      id: id ?? await fhirDb.newResourceId('Account_Guarantor'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       party: party,
@@ -315,47 +311,34 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AccountToJson(Account instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('subject', instance.subject?.map((e) => e?.toJson())?.toList());
-  writeNotNull('servicePeriod', instance.servicePeriod?.toJson());
-  writeNotNull(
-      'coverage', instance.coverage?.map((e) => e?.toJson())?.toList());
-  writeNotNull('owner', instance.owner?.toJson());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'guarantor', instance.guarantor?.map((e) => e?.toJson())?.toList());
-  writeNotNull('partOf', instance.partOf?.toJson());
-  return val;
-}
+Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
+      'servicePeriod': instance.servicePeriod?.toJson(),
+      'coverage': instance.coverage?.map((e) => e?.toJson())?.toList(),
+      'owner': instance.owner?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'guarantor': instance.guarantor?.map((e) => e?.toJson())?.toList(),
+      'partOf': instance.partOf?.toJson(),
+    };
 
 Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
   return Account_Coverage(
@@ -378,25 +361,16 @@ Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Account_CoverageToJson(Account_Coverage instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('coverage', instance.coverage?.toJson());
-  writeNotNull('priority', instance.priority);
-  writeNotNull('elementPriority', instance.elementPriority?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Account_CoverageToJson(Account_Coverage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'coverage': instance.coverage?.toJson(),
+      'priority': instance.priority,
+      'elementPriority': instance.elementPriority?.toJson(),
+    };
 
 Account_Guarantor _$Account_GuarantorFromJson(Map<String, dynamic> json) {
   return Account_Guarantor(
@@ -422,23 +396,14 @@ Account_Guarantor _$Account_GuarantorFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Account_GuarantorToJson(Account_Guarantor instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('party', instance.party?.toJson());
-  writeNotNull('onHold', instance.onHold);
-  writeNotNull('elementOnHold', instance.elementOnHold?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Account_GuarantorToJson(Account_Guarantor instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'party': instance.party?.toJson(),
+      'onHold': instance.onHold,
+      'elementOnHold': instance.elementOnHold?.toJson(),
+      'period': instance.period?.toJson(),
+    };

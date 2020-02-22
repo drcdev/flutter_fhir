@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MeasureReport {
   static Future<MeasureReport> newInstance({
     String resourceType,
@@ -76,13 +76,9 @@ class MeasureReport {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MeasureReport';
@@ -144,7 +140,7 @@ class MeasureReport {
   Map<String, dynamic> toJson() => _$MeasureReportToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MeasureReport_Group {
   static Future<MeasureReport_Group> newInstance({
     String id,
@@ -157,7 +153,7 @@ class MeasureReport_Group {
   }) async {
     var fhirDb = new DatabaseHelper();
     MeasureReport_Group newMeasureReport_Group = new MeasureReport_Group(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Group'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -191,7 +187,7 @@ class MeasureReport_Group {
   Map<String, dynamic> toJson() => _$MeasureReport_GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MeasureReport_Population {
   static Future<MeasureReport_Population> newInstance({
     String id,
@@ -205,7 +201,7 @@ class MeasureReport_Population {
     var fhirDb = new DatabaseHelper();
     MeasureReport_Population newMeasureReport_Population =
         new MeasureReport_Population(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Population'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -239,7 +235,7 @@ class MeasureReport_Population {
   Map<String, dynamic> toJson() => _$MeasureReport_PopulationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MeasureReport_Stratifier {
   static Future<MeasureReport_Stratifier> newInstance({
     String id,
@@ -251,7 +247,7 @@ class MeasureReport_Stratifier {
     var fhirDb = new DatabaseHelper();
     MeasureReport_Stratifier newMeasureReport_Stratifier =
         new MeasureReport_Stratifier(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Stratifier'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -279,7 +275,7 @@ class MeasureReport_Stratifier {
   Map<String, dynamic> toJson() => _$MeasureReport_StratifierToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MeasureReport_Stratum {
   static Future<MeasureReport_Stratum> newInstance({
     String id,
@@ -292,7 +288,7 @@ class MeasureReport_Stratum {
   }) async {
     var fhirDb = new DatabaseHelper();
     MeasureReport_Stratum newMeasureReport_Stratum = new MeasureReport_Stratum(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Stratum'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       value: value,
@@ -326,7 +322,7 @@ class MeasureReport_Stratum {
   Map<String, dynamic> toJson() => _$MeasureReport_StratumToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MeasureReport_Component {
   static Future<MeasureReport_Component> newInstance({
     String id,
@@ -338,7 +334,7 @@ class MeasureReport_Component {
     var fhirDb = new DatabaseHelper();
     MeasureReport_Component newMeasureReport_Component =
         new MeasureReport_Component(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Component'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -366,7 +362,7 @@ class MeasureReport_Component {
   Map<String, dynamic> toJson() => _$MeasureReport_ComponentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MeasureReport_Population1 {
   static Future<MeasureReport_Population1> newInstance({
     String id,
@@ -380,7 +376,7 @@ class MeasureReport_Population1 {
     var fhirDb = new DatabaseHelper();
     MeasureReport_Population1 newMeasureReport_Population1 =
         new MeasureReport_Population1(
-      id: id ?? await fhirDb.newResourceId('MeasureReport_Population1'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -493,46 +489,36 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('measure', instance.measure);
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('reporter', instance.reporter?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  writeNotNull('improvementNotation', instance.improvementNotation?.toJson());
-  writeNotNull('group', instance.group?.map((e) => e?.toJson())?.toList());
-  writeNotNull('evaluatedResource',
-      instance.evaluatedResource?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'measure': instance.measure,
+      'subject': instance.subject?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'reporter': instance.reporter?.toJson(),
+      'period': instance.period?.toJson(),
+      'improvementNotation': instance.improvementNotation?.toJson(),
+      'group': instance.group?.map((e) => e?.toJson())?.toList(),
+      'evaluatedResource':
+          instance.evaluatedResource?.map((e) => e?.toJson())?.toList(),
+    };
 
 MeasureReport_Group _$MeasureReport_GroupFromJson(Map<String, dynamic> json) {
   return MeasureReport_Group(
@@ -564,28 +550,18 @@ MeasureReport_Group _$MeasureReport_GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MeasureReport_GroupToJson(MeasureReport_Group instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull(
-      'population', instance.population?.map((e) => e?.toJson())?.toList());
-  writeNotNull('measureScore', instance.measureScore?.toJson());
-  writeNotNull(
-      'stratifier', instance.stratifier?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$MeasureReport_GroupToJson(
+        MeasureReport_Group instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'population': instance.population?.map((e) => e?.toJson())?.toList(),
+      'measureScore': instance.measureScore?.toJson(),
+      'stratifier': instance.stratifier?.map((e) => e?.toJson())?.toList(),
+    };
 
 MeasureReport_Population _$MeasureReport_PopulationFromJson(
     Map<String, dynamic> json) {
@@ -613,26 +589,17 @@ MeasureReport_Population _$MeasureReport_PopulationFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_PopulationToJson(
-    MeasureReport_Population instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('count', instance.count);
-  writeNotNull('elementCount', instance.elementCount?.toJson());
-  writeNotNull('subjectResults', instance.subjectResults?.toJson());
-  return val;
-}
+        MeasureReport_Population instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'count': instance.count,
+      'elementCount': instance.elementCount?.toJson(),
+      'subjectResults': instance.subjectResults?.toJson(),
+    };
 
 MeasureReport_Stratifier _$MeasureReport_StratifierFromJson(
     Map<String, dynamic> json) {
@@ -660,24 +627,15 @@ MeasureReport_Stratifier _$MeasureReport_StratifierFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_StratifierToJson(
-    MeasureReport_Stratifier instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
-  writeNotNull('stratum', instance.stratum?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MeasureReport_Stratifier instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.map((e) => e?.toJson())?.toList(),
+      'stratum': instance.stratum?.map((e) => e?.toJson())?.toList(),
+    };
 
 MeasureReport_Stratum _$MeasureReport_StratumFromJson(
     Map<String, dynamic> json) {
@@ -711,28 +669,17 @@ MeasureReport_Stratum _$MeasureReport_StratumFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_StratumToJson(
-    MeasureReport_Stratum instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('value', instance.value?.toJson());
-  writeNotNull(
-      'component', instance.component?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'population', instance.population?.map((e) => e?.toJson())?.toList());
-  writeNotNull('measureScore', instance.measureScore?.toJson());
-  return val;
-}
+        MeasureReport_Stratum instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'value': instance.value?.toJson(),
+      'component': instance.component?.map((e) => e?.toJson())?.toList(),
+      'population': instance.population?.map((e) => e?.toJson())?.toList(),
+      'measureScore': instance.measureScore?.toJson(),
+    };
 
 MeasureReport_Component _$MeasureReport_ComponentFromJson(
     Map<String, dynamic> json) {
@@ -756,24 +703,15 @@ MeasureReport_Component _$MeasureReport_ComponentFromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_ComponentToJson(
-    MeasureReport_Component instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('value', instance.value?.toJson());
-  return val;
-}
+        MeasureReport_Component instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'value': instance.value?.toJson(),
+    };
 
 MeasureReport_Population1 _$MeasureReport_Population1FromJson(
     Map<String, dynamic> json) {
@@ -801,23 +739,14 @@ MeasureReport_Population1 _$MeasureReport_Population1FromJson(
 }
 
 Map<String, dynamic> _$MeasureReport_Population1ToJson(
-    MeasureReport_Population1 instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('count', instance.count);
-  writeNotNull('elementCount', instance.elementCount?.toJson());
-  writeNotNull('subjectResults', instance.subjectResults?.toJson());
-  return val;
-}
+        MeasureReport_Population1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'count': instance.count,
+      'elementCount': instance.elementCount?.toJson(),
+      'subjectResults': instance.subjectResults?.toJson(),
+    };

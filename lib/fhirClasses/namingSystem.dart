@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NamingSystem {
   static Future<NamingSystem> newInstance({
     String resourceType,
@@ -89,13 +89,9 @@ class NamingSystem {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'NamingSystem';
@@ -171,7 +167,7 @@ class NamingSystem {
   Map<String, dynamic> toJson() => _$NamingSystemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class NamingSystem_UniqueId {
   static Future<NamingSystem_UniqueId> newInstance({
     String id,
@@ -189,7 +185,7 @@ class NamingSystem_UniqueId {
   }) async {
     var fhirDb = new DatabaseHelper();
     NamingSystem_UniqueId newNamingSystem_UniqueId = new NamingSystem_UniqueId(
-      id: id ?? await fhirDb.newResourceId('NamingSystem_UniqueId'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -332,54 +328,42 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$NamingSystemToJson(NamingSystem instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('kind', instance.kind);
-  writeNotNull('elementKind', instance.elementKind?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('responsible', instance.responsible);
-  writeNotNull('elementResponsible', instance.elementResponsible?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('usage', instance.usage);
-  writeNotNull('elementUsage', instance.elementUsage?.toJson());
-  writeNotNull(
-      'uniqueId', instance.uniqueId?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$NamingSystemToJson(NamingSystem instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'kind': instance.kind,
+      'elementKind': instance.elementKind?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'responsible': instance.responsible,
+      'elementResponsible': instance.elementResponsible?.toJson(),
+      'type': instance.type?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'usage': instance.usage,
+      'elementUsage': instance.elementUsage?.toJson(),
+      'uniqueId': instance.uniqueId?.map((e) => e?.toJson())?.toList(),
+    };
 
 NamingSystem_UniqueId _$NamingSystem_UniqueIdFromJson(
     Map<String, dynamic> json) {
@@ -416,28 +400,19 @@ NamingSystem_UniqueId _$NamingSystem_UniqueIdFromJson(
 }
 
 Map<String, dynamic> _$NamingSystem_UniqueIdToJson(
-    NamingSystem_UniqueId instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  writeNotNull('preferred', instance.preferred);
-  writeNotNull('elementPreferred', instance.elementPreferred?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment', instance.elementComment?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  return val;
-}
+        NamingSystem_UniqueId instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+      'preferred': instance.preferred,
+      'elementPreferred': instance.elementPreferred?.toJson(),
+      'comment': instance.comment,
+      'elementComment': instance.elementComment?.toJson(),
+      'period': instance.period?.toJson(),
+    };

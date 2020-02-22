@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DocumentReference {
   static Future<DocumentReference> newInstance({
     String resourceType,
@@ -89,13 +89,9 @@ class DocumentReference {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'DocumentReference';
@@ -169,7 +165,7 @@ class DocumentReference {
   Map<String, dynamic> toJson() => _$DocumentReferenceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DocumentReference_RelatesTo {
   static Future<DocumentReference_RelatesTo> newInstance({
     String id,
@@ -182,7 +178,7 @@ class DocumentReference_RelatesTo {
     var fhirDb = new DatabaseHelper();
     DocumentReference_RelatesTo newDocumentReference_RelatesTo =
         new DocumentReference_RelatesTo(
-      id: id ?? await fhirDb.newResourceId('DocumentReference_RelatesTo'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -213,7 +209,7 @@ class DocumentReference_RelatesTo {
   Map<String, dynamic> toJson() => _$DocumentReference_RelatesToToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DocumentReference_Content {
   static Future<DocumentReference_Content> newInstance({
     String id,
@@ -225,7 +221,7 @@ class DocumentReference_Content {
     var fhirDb = new DatabaseHelper();
     DocumentReference_Content newDocumentReference_Content =
         new DocumentReference_Content(
-      id: id ?? await fhirDb.newResourceId('DocumentReference_Content'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       attachment: attachment,
@@ -253,7 +249,7 @@ class DocumentReference_Content {
   Map<String, dynamic> toJson() => _$DocumentReference_ContentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DocumentReference_Context {
   static Future<DocumentReference_Context> newInstance({
     String id,
@@ -270,7 +266,7 @@ class DocumentReference_Context {
     var fhirDb = new DatabaseHelper();
     DocumentReference_Context newDocumentReference_Context =
         new DocumentReference_Context(
-      id: id ?? await fhirDb.newResourceId('DocumentReference_Context'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       encounter: encounter,
@@ -416,54 +412,42 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('masterIdentifier', instance.masterIdentifier?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('docStatus', instance.docStatus);
-  writeNotNull('elementDocStatus', instance.elementDocStatus?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull(
-      'category', instance.category?.map((e) => e?.toJson())?.toList());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
-  writeNotNull('authenticator', instance.authenticator?.toJson());
-  writeNotNull('custodian', instance.custodian?.toJson());
-  writeNotNull(
-      'relatesTo', instance.relatesTo?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('securityLabel',
-      instance.securityLabel?.map((e) => e?.toJson())?.toList());
-  writeNotNull('content', instance.content?.map((e) => e?.toJson())?.toList());
-  writeNotNull('context', instance.context?.toJson());
-  return val;
-}
+Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'masterIdentifier': instance.masterIdentifier?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'docStatus': instance.docStatus,
+      'elementDocStatus': instance.elementDocStatus?.toJson(),
+      'type': instance.type?.toJson(),
+      'category': instance.category?.map((e) => e?.toJson())?.toList(),
+      'subject': instance.subject?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'authenticator': instance.authenticator?.toJson(),
+      'custodian': instance.custodian?.toJson(),
+      'relatesTo': instance.relatesTo?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'securityLabel':
+          instance.securityLabel?.map((e) => e?.toJson())?.toList(),
+      'content': instance.content?.map((e) => e?.toJson())?.toList(),
+      'context': instance.context?.toJson(),
+    };
 
 DocumentReference_RelatesTo _$DocumentReference_RelatesToFromJson(
     Map<String, dynamic> json) {
@@ -488,25 +472,16 @@ DocumentReference_RelatesTo _$DocumentReference_RelatesToFromJson(
 }
 
 Map<String, dynamic> _$DocumentReference_RelatesToToJson(
-    DocumentReference_RelatesTo instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('target', instance.target?.toJson());
-  return val;
-}
+        DocumentReference_RelatesTo instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'target': instance.target?.toJson(),
+    };
 
 DocumentReference_Content _$DocumentReference_ContentFromJson(
     Map<String, dynamic> json) {
@@ -530,24 +505,15 @@ DocumentReference_Content _$DocumentReference_ContentFromJson(
 }
 
 Map<String, dynamic> _$DocumentReference_ContentToJson(
-    DocumentReference_Content instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('attachment', instance.attachment?.toJson());
-  writeNotNull('format', instance.format?.toJson());
-  return val;
-}
+        DocumentReference_Content instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'attachment': instance.attachment?.toJson(),
+      'format': instance.format?.toJson(),
+    };
 
 DocumentReference_Context _$DocumentReference_ContextFromJson(
     Map<String, dynamic> json) {
@@ -592,27 +558,17 @@ DocumentReference_Context _$DocumentReference_ContextFromJson(
 }
 
 Map<String, dynamic> _$DocumentReference_ContextToJson(
-    DocumentReference_Context instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'encounter', instance.encounter?.map((e) => e?.toJson())?.toList());
-  writeNotNull('event', instance.event?.map((e) => e?.toJson())?.toList());
-  writeNotNull('period', instance.period?.toJson());
-  writeNotNull('facilityType', instance.facilityType?.toJson());
-  writeNotNull('practiceSetting', instance.practiceSetting?.toJson());
-  writeNotNull('sourcePatientInfo', instance.sourcePatientInfo?.toJson());
-  writeNotNull('related', instance.related?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        DocumentReference_Context instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'encounter': instance.encounter?.map((e) => e?.toJson())?.toList(),
+      'event': instance.event?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+      'facilityType': instance.facilityType?.toJson(),
+      'practiceSetting': instance.practiceSetting?.toJson(),
+      'sourcePatientInfo': instance.sourcePatientInfo?.toJson(),
+      'related': instance.related?.map((e) => e?.toJson())?.toList(),
+    };

@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DocumentManifest {
   static Future<DocumentManifest> newInstance({
     String resourceType,
@@ -78,13 +78,9 @@ class DocumentManifest {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'DocumentManifest';
@@ -150,7 +146,7 @@ class DocumentManifest {
   Map<String, dynamic> toJson() => _$DocumentManifestToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DocumentManifest_Related {
   static Future<DocumentManifest_Related> newInstance({
     String id,
@@ -162,7 +158,7 @@ class DocumentManifest_Related {
     var fhirDb = new DatabaseHelper();
     DocumentManifest_Related newDocumentManifest_Related =
         new DocumentManifest_Related(
-      id: id ?? await fhirDb.newResourceId('DocumentManifest_Related'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -278,48 +274,37 @@ DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DocumentManifestToJson(DocumentManifest instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('masterIdentifier', instance.masterIdentifier?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('created', instance.created?.toIso8601String());
-  writeNotNull('elementCreated', instance.elementCreated?.toJson());
-  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'recipient', instance.recipient?.map((e) => e?.toJson())?.toList());
-  writeNotNull('source', instance.source);
-  writeNotNull('elementSource', instance.elementSource?.toJson());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('content', instance.content?.map((e) => e?.toJson())?.toList());
-  writeNotNull('related', instance.related?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$DocumentManifestToJson(DocumentManifest instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'masterIdentifier': instance.masterIdentifier?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'created': instance.created?.toIso8601String(),
+      'elementCreated': instance.elementCreated?.toJson(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'recipient': instance.recipient?.map((e) => e?.toJson())?.toList(),
+      'source': instance.source,
+      'elementSource': instance.elementSource?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'content': instance.content?.map((e) => e?.toJson())?.toList(),
+      'related': instance.related?.map((e) => e?.toJson())?.toList(),
+    };
 
 DocumentManifest_Related _$DocumentManifest_RelatedFromJson(
     Map<String, dynamic> json) {
@@ -343,21 +328,12 @@ DocumentManifest_Related _$DocumentManifest_RelatedFromJson(
 }
 
 Map<String, dynamic> _$DocumentManifest_RelatedToJson(
-    DocumentManifest_Related instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('ref', instance.ref?.toJson());
-  return val;
-}
+        DocumentManifest_Related instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'ref': instance.ref?.toJson(),
+    };

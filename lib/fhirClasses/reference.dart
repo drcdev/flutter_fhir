@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Reference {
   static Future<Reference> newInstance({
     String id,
@@ -20,7 +20,7 @@ class Reference {
   }) async {
     var fhirDb = new DatabaseHelper();
     Reference newReference = new Reference(
-      id: id ?? await fhirDb.newResourceId('Reference'),
+      id: id,
       extension: extension,
       reference: reference,
       elementReference: elementReference,
@@ -90,24 +90,14 @@ Reference _$ReferenceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ReferenceToJson(Reference instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('reference', instance.reference);
-  writeNotNull('elementReference', instance.elementReference?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('display', instance.display);
-  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
-  return val;
-}
+Map<String, dynamic> _$ReferenceToJson(Reference instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'reference': instance.reference,
+      'elementReference': instance.elementReference?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'identifier': instance.identifier?.toJson(),
+      'display': instance.display,
+      'elementDisplay': instance.elementDisplay?.toJson(),
+    };

@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct {
   static Future<BiologicallyDerivedProduct> newInstance({
     String resourceType,
@@ -77,13 +77,9 @@ class BiologicallyDerivedProduct {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'BiologicallyDerivedProduct';
@@ -145,7 +141,7 @@ class BiologicallyDerivedProduct {
   Map<String, dynamic> toJson() => _$BiologicallyDerivedProductToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Collection {
   static Future<BiologicallyDerivedProduct_Collection> newInstance({
     String id,
@@ -161,8 +157,7 @@ class BiologicallyDerivedProduct_Collection {
     BiologicallyDerivedProduct_Collection
         newBiologicallyDerivedProduct_Collection =
         new BiologicallyDerivedProduct_Collection(
-      id: id ??
-          await fhirDb.newResourceId('BiologicallyDerivedProduct_Collection'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       collector: collector,
@@ -201,7 +196,7 @@ class BiologicallyDerivedProduct_Collection {
       _$BiologicallyDerivedProduct_CollectionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Processing {
   static Future<BiologicallyDerivedProduct_Processing> newInstance({
     String id,
@@ -219,8 +214,7 @@ class BiologicallyDerivedProduct_Processing {
     BiologicallyDerivedProduct_Processing
         newBiologicallyDerivedProduct_Processing =
         new BiologicallyDerivedProduct_Processing(
-      id: id ??
-          await fhirDb.newResourceId('BiologicallyDerivedProduct_Processing'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -265,7 +259,7 @@ class BiologicallyDerivedProduct_Processing {
       _$BiologicallyDerivedProduct_ProcessingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Manipulation {
   static Future<BiologicallyDerivedProduct_Manipulation> newInstance({
     String id,
@@ -281,8 +275,7 @@ class BiologicallyDerivedProduct_Manipulation {
     BiologicallyDerivedProduct_Manipulation
         newBiologicallyDerivedProduct_Manipulation =
         new BiologicallyDerivedProduct_Manipulation(
-      id: id ??
-          await fhirDb.newResourceId('BiologicallyDerivedProduct_Manipulation'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -321,7 +314,7 @@ class BiologicallyDerivedProduct_Manipulation {
       _$BiologicallyDerivedProduct_ManipulationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Storage {
   static Future<BiologicallyDerivedProduct_Storage> newInstance({
     String id,
@@ -338,8 +331,7 @@ class BiologicallyDerivedProduct_Storage {
     var fhirDb = new DatabaseHelper();
     BiologicallyDerivedProduct_Storage newBiologicallyDerivedProduct_Storage =
         new BiologicallyDerivedProduct_Storage(
-      id: id ??
-          await fhirDb.newResourceId('BiologicallyDerivedProduct_Storage'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -474,47 +466,35 @@ BiologicallyDerivedProduct _$BiologicallyDerivedProductFromJson(
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProductToJson(
-    BiologicallyDerivedProduct instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('productCategory', instance.productCategory);
-  writeNotNull(
-      'elementProductCategory', instance.elementProductCategory?.toJson());
-  writeNotNull('productCode', instance.productCode?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('request', instance.request?.map((e) => e?.toJson())?.toList());
-  writeNotNull('quantity', instance.quantity);
-  writeNotNull('elementQuantity', instance.elementQuantity?.toJson());
-  writeNotNull('parent', instance.parent?.map((e) => e?.toJson())?.toList());
-  writeNotNull('collection', instance.collection?.toJson());
-  writeNotNull(
-      'processing', instance.processing?.map((e) => e?.toJson())?.toList());
-  writeNotNull('manipulation', instance.manipulation?.toJson());
-  writeNotNull('storage', instance.storage?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        BiologicallyDerivedProduct instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'productCategory': instance.productCategory,
+      'elementProductCategory': instance.elementProductCategory?.toJson(),
+      'productCode': instance.productCode?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'request': instance.request?.map((e) => e?.toJson())?.toList(),
+      'quantity': instance.quantity,
+      'elementQuantity': instance.elementQuantity?.toJson(),
+      'parent': instance.parent?.map((e) => e?.toJson())?.toList(),
+      'collection': instance.collection?.toJson(),
+      'processing': instance.processing?.map((e) => e?.toJson())?.toList(),
+      'manipulation': instance.manipulation?.toJson(),
+      'storage': instance.storage?.map((e) => e?.toJson())?.toList(),
+    };
 
 BiologicallyDerivedProduct_Collection
     _$BiologicallyDerivedProduct_CollectionFromJson(Map<String, dynamic> json) {
@@ -546,28 +526,18 @@ BiologicallyDerivedProduct_Collection
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_CollectionToJson(
-    BiologicallyDerivedProduct_Collection instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('collector', instance.collector?.toJson());
-  writeNotNull('source', instance.source?.toJson());
-  writeNotNull('collectedDateTime', instance.collectedDateTime);
-  writeNotNull(
-      'elementCollectedDateTime', instance.elementCollectedDateTime?.toJson());
-  writeNotNull('collectedPeriod', instance.collectedPeriod?.toJson());
-  return val;
-}
+        BiologicallyDerivedProduct_Collection instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'collector': instance.collector?.toJson(),
+      'source': instance.source?.toJson(),
+      'collectedDateTime': instance.collectedDateTime,
+      'elementCollectedDateTime': instance.elementCollectedDateTime?.toJson(),
+      'collectedPeriod': instance.collectedPeriod?.toJson(),
+    };
 
 BiologicallyDerivedProduct_Processing
     _$BiologicallyDerivedProduct_ProcessingFromJson(Map<String, dynamic> json) {
@@ -602,29 +572,20 @@ BiologicallyDerivedProduct_Processing
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_ProcessingToJson(
-    BiologicallyDerivedProduct_Processing instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('procedure', instance.procedure?.toJson());
-  writeNotNull('additive', instance.additive?.toJson());
-  writeNotNull('timeDateTime', instance.timeDateTime);
-  writeNotNull('elementTimeDateTime', instance.elementTimeDateTime?.toJson());
-  writeNotNull('timePeriod', instance.timePeriod?.toJson());
-  return val;
-}
+        BiologicallyDerivedProduct_Processing instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'procedure': instance.procedure?.toJson(),
+      'additive': instance.additive?.toJson(),
+      'timeDateTime': instance.timeDateTime,
+      'elementTimeDateTime': instance.elementTimeDateTime?.toJson(),
+      'timePeriod': instance.timePeriod?.toJson(),
+    };
 
 BiologicallyDerivedProduct_Manipulation
     _$BiologicallyDerivedProduct_ManipulationFromJson(
@@ -654,27 +615,18 @@ BiologicallyDerivedProduct_Manipulation
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_ManipulationToJson(
-    BiologicallyDerivedProduct_Manipulation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('timeDateTime', instance.timeDateTime);
-  writeNotNull('elementTimeDateTime', instance.elementTimeDateTime?.toJson());
-  writeNotNull('timePeriod', instance.timePeriod?.toJson());
-  return val;
-}
+        BiologicallyDerivedProduct_Manipulation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'timeDateTime': instance.timeDateTime,
+      'elementTimeDateTime': instance.elementTimeDateTime?.toJson(),
+      'timePeriod': instance.timePeriod?.toJson(),
+    };
 
 BiologicallyDerivedProduct_Storage _$BiologicallyDerivedProduct_StorageFromJson(
     Map<String, dynamic> json) {
@@ -707,26 +659,17 @@ BiologicallyDerivedProduct_Storage _$BiologicallyDerivedProduct_StorageFromJson(
 }
 
 Map<String, dynamic> _$BiologicallyDerivedProduct_StorageToJson(
-    BiologicallyDerivedProduct_Storage instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('temperature', instance.temperature);
-  writeNotNull('elementTemperature', instance.elementTemperature?.toJson());
-  writeNotNull('scale', instance.scale);
-  writeNotNull('elementScale', instance.elementScale?.toJson());
-  writeNotNull('duration', instance.duration?.toJson());
-  return val;
-}
+        BiologicallyDerivedProduct_Storage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'temperature': instance.temperature,
+      'elementTemperature': instance.elementTemperature?.toJson(),
+      'scale': instance.scale,
+      'elementScale': instance.elementScale?.toJson(),
+      'duration': instance.duration?.toJson(),
+    };

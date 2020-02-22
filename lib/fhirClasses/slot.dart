@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Slot {
   static Future<Slot> newInstance({
     String resourceType,
@@ -78,13 +78,9 @@ class Slot {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Slot';
@@ -236,47 +232,34 @@ Slot _$SlotFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SlotToJson(Slot instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('serviceCategory',
-      instance.serviceCategory?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'serviceType', instance.serviceType?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
-  writeNotNull('appointmentType', instance.appointmentType?.toJson());
-  writeNotNull('schedule', instance.schedule?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('start', instance.start?.toIso8601String());
-  writeNotNull('elementStart', instance.elementStart?.toJson());
-  writeNotNull('end', instance.end?.toIso8601String());
-  writeNotNull('elementEnd', instance.elementEnd?.toJson());
-  writeNotNull('overbooked', instance.overbooked);
-  writeNotNull('elementOverbooked', instance.elementOverbooked?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment', instance.elementComment?.toJson());
-  return val;
-}
+Map<String, dynamic> _$SlotToJson(Slot instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'serviceCategory':
+          instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
+      'serviceType': instance.serviceType?.map((e) => e?.toJson())?.toList(),
+      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
+      'appointmentType': instance.appointmentType?.toJson(),
+      'schedule': instance.schedule?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'start': instance.start?.toIso8601String(),
+      'elementStart': instance.elementStart?.toJson(),
+      'end': instance.end?.toIso8601String(),
+      'elementEnd': instance.elementEnd?.toJson(),
+      'overbooked': instance.overbooked,
+      'elementOverbooked': instance.elementOverbooked?.toJson(),
+      'comment': instance.comment,
+      'elementComment': instance.elementComment?.toJson(),
+    };

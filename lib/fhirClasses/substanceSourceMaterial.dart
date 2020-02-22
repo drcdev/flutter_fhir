@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial {
   static Future<SubstanceSourceMaterial> newInstance({
     String resourceType,
@@ -79,13 +79,9 @@ class SubstanceSourceMaterial {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'SubstanceSourceMaterial';
@@ -151,7 +147,7 @@ class SubstanceSourceMaterial {
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterialToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_FractionDescription {
   static Future<SubstanceSourceMaterial_FractionDescription> newInstance({
     String id,
@@ -165,9 +161,7 @@ class SubstanceSourceMaterial_FractionDescription {
     SubstanceSourceMaterial_FractionDescription
         newSubstanceSourceMaterial_FractionDescription =
         new SubstanceSourceMaterial_FractionDescription(
-      id: id ??
-          await fhirDb
-              .newResourceId('SubstanceSourceMaterial_FractionDescription'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       fraction: fraction,
@@ -200,7 +194,7 @@ class SubstanceSourceMaterial_FractionDescription {
       _$SubstanceSourceMaterial_FractionDescriptionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Organism {
   static Future<SubstanceSourceMaterial_Organism> newInstance({
     String id,
@@ -219,7 +213,7 @@ class SubstanceSourceMaterial_Organism {
     var fhirDb = new DatabaseHelper();
     SubstanceSourceMaterial_Organism newSubstanceSourceMaterial_Organism =
         new SubstanceSourceMaterial_Organism(
-      id: id ?? await fhirDb.newResourceId('SubstanceSourceMaterial_Organism'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       family: family,
@@ -270,7 +264,7 @@ class SubstanceSourceMaterial_Organism {
       _$SubstanceSourceMaterial_OrganismToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Author {
   static Future<SubstanceSourceMaterial_Author> newInstance({
     String id,
@@ -283,7 +277,7 @@ class SubstanceSourceMaterial_Author {
     var fhirDb = new DatabaseHelper();
     SubstanceSourceMaterial_Author newSubstanceSourceMaterial_Author =
         new SubstanceSourceMaterial_Author(
-      id: id ?? await fhirDb.newResourceId('SubstanceSourceMaterial_Author'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       authorType: authorType,
@@ -314,7 +308,7 @@ class SubstanceSourceMaterial_Author {
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_AuthorToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_Hybrid {
   static Future<SubstanceSourceMaterial_Hybrid> newInstance({
     String id,
@@ -333,7 +327,7 @@ class SubstanceSourceMaterial_Hybrid {
     var fhirDb = new DatabaseHelper();
     SubstanceSourceMaterial_Hybrid newSubstanceSourceMaterial_Hybrid =
         new SubstanceSourceMaterial_Hybrid(
-      id: id ?? await fhirDb.newResourceId('SubstanceSourceMaterial_Hybrid'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       maternalOrganismId: maternalOrganismId,
@@ -382,7 +376,7 @@ class SubstanceSourceMaterial_Hybrid {
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_HybridToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_OrganismGeneral {
   static Future<SubstanceSourceMaterial_OrganismGeneral> newInstance({
     String id,
@@ -397,8 +391,7 @@ class SubstanceSourceMaterial_OrganismGeneral {
     SubstanceSourceMaterial_OrganismGeneral
         newSubstanceSourceMaterial_OrganismGeneral =
         new SubstanceSourceMaterial_OrganismGeneral(
-      id: id ??
-          await fhirDb.newResourceId('SubstanceSourceMaterial_OrganismGeneral'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       kingdom: kingdom,
@@ -434,7 +427,7 @@ class SubstanceSourceMaterial_OrganismGeneral {
       _$SubstanceSourceMaterial_OrganismGeneralToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceSourceMaterial_PartDescription {
   static Future<SubstanceSourceMaterial_PartDescription> newInstance({
     String id,
@@ -447,8 +440,7 @@ class SubstanceSourceMaterial_PartDescription {
     SubstanceSourceMaterial_PartDescription
         newSubstanceSourceMaterial_PartDescription =
         new SubstanceSourceMaterial_PartDescription(
-      id: id ??
-          await fhirDb.newResourceId('SubstanceSourceMaterial_PartDescription'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       part: part,
@@ -582,52 +574,45 @@ SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterialToJson(
-    SubstanceSourceMaterial instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('sourceMaterialClass', instance.sourceMaterialClass?.toJson());
-  writeNotNull('sourceMaterialType', instance.sourceMaterialType?.toJson());
-  writeNotNull('sourceMaterialState', instance.sourceMaterialState?.toJson());
-  writeNotNull('organismId', instance.organismId?.toJson());
-  writeNotNull('organismName', instance.organismName);
-  writeNotNull('elementOrganismName', instance.elementOrganismName?.toJson());
-  writeNotNull('parentSubstanceId',
-      instance.parentSubstanceId?.map((e) => e?.toJson())?.toList());
-  writeNotNull('parentSubstanceName', instance.parentSubstanceName);
-  writeNotNull('elementParentSubstanceName',
-      instance.elementParentSubstanceName?.map((e) => e?.toJson())?.toList());
-  writeNotNull('countryOfOrigin',
-      instance.countryOfOrigin?.map((e) => e?.toJson())?.toList());
-  writeNotNull('geographicalLocation', instance.geographicalLocation);
-  writeNotNull('elementGeographicalLocation',
-      instance.elementGeographicalLocation?.map((e) => e?.toJson())?.toList());
-  writeNotNull('developmentStage', instance.developmentStage?.toJson());
-  writeNotNull('fractionDescription',
-      instance.fractionDescription?.map((e) => e?.toJson())?.toList());
-  writeNotNull('organism', instance.organism?.toJson());
-  writeNotNull('partDescription',
-      instance.partDescription?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        SubstanceSourceMaterial instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'sourceMaterialClass': instance.sourceMaterialClass?.toJson(),
+      'sourceMaterialType': instance.sourceMaterialType?.toJson(),
+      'sourceMaterialState': instance.sourceMaterialState?.toJson(),
+      'organismId': instance.organismId?.toJson(),
+      'organismName': instance.organismName,
+      'elementOrganismName': instance.elementOrganismName?.toJson(),
+      'parentSubstanceId':
+          instance.parentSubstanceId?.map((e) => e?.toJson())?.toList(),
+      'parentSubstanceName': instance.parentSubstanceName,
+      'elementParentSubstanceName': instance.elementParentSubstanceName
+          ?.map((e) => e?.toJson())
+          ?.toList(),
+      'countryOfOrigin':
+          instance.countryOfOrigin?.map((e) => e?.toJson())?.toList(),
+      'geographicalLocation': instance.geographicalLocation,
+      'elementGeographicalLocation': instance.elementGeographicalLocation
+          ?.map((e) => e?.toJson())
+          ?.toList(),
+      'developmentStage': instance.developmentStage?.toJson(),
+      'fractionDescription':
+          instance.fractionDescription?.map((e) => e?.toJson())?.toList(),
+      'organism': instance.organism?.toJson(),
+      'partDescription':
+          instance.partDescription?.map((e) => e?.toJson())?.toList(),
+    };
 
 SubstanceSourceMaterial_FractionDescription
     _$SubstanceSourceMaterial_FractionDescriptionFromJson(
@@ -654,25 +639,16 @@ SubstanceSourceMaterial_FractionDescription
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterial_FractionDescriptionToJson(
-    SubstanceSourceMaterial_FractionDescription instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('fraction', instance.fraction);
-  writeNotNull('elementFraction', instance.elementFraction?.toJson());
-  writeNotNull('materialType', instance.materialType?.toJson());
-  return val;
-}
+        SubstanceSourceMaterial_FractionDescription instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'fraction': instance.fraction,
+      'elementFraction': instance.elementFraction?.toJson(),
+      'materialType': instance.materialType?.toJson(),
+    };
 
 SubstanceSourceMaterial_Organism _$SubstanceSourceMaterial_OrganismFromJson(
     Map<String, dynamic> json) {
@@ -723,32 +699,23 @@ SubstanceSourceMaterial_Organism _$SubstanceSourceMaterial_OrganismFromJson(
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterial_OrganismToJson(
-    SubstanceSourceMaterial_Organism instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('family', instance.family?.toJson());
-  writeNotNull('genus', instance.genus?.toJson());
-  writeNotNull('species', instance.species?.toJson());
-  writeNotNull('intraspecificType', instance.intraspecificType?.toJson());
-  writeNotNull('intraspecificDescription', instance.intraspecificDescription);
-  writeNotNull('elementIntraspecificDescription',
-      instance.elementIntraspecificDescription?.toJson());
-  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
-  writeNotNull('hybrid', instance.hybrid?.toJson());
-  writeNotNull('organismGeneral', instance.organismGeneral?.toJson());
-  return val;
-}
+        SubstanceSourceMaterial_Organism instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'family': instance.family?.toJson(),
+      'genus': instance.genus?.toJson(),
+      'species': instance.species?.toJson(),
+      'intraspecificType': instance.intraspecificType?.toJson(),
+      'intraspecificDescription': instance.intraspecificDescription,
+      'elementIntraspecificDescription':
+          instance.elementIntraspecificDescription?.toJson(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'hybrid': instance.hybrid?.toJson(),
+      'organismGeneral': instance.organismGeneral?.toJson(),
+    };
 
 SubstanceSourceMaterial_Author _$SubstanceSourceMaterial_AuthorFromJson(
     Map<String, dynamic> json) {
@@ -774,26 +741,16 @@ SubstanceSourceMaterial_Author _$SubstanceSourceMaterial_AuthorFromJson(
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterial_AuthorToJson(
-    SubstanceSourceMaterial_Author instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('authorType', instance.authorType?.toJson());
-  writeNotNull('authorDescription', instance.authorDescription);
-  writeNotNull(
-      'elementAuthorDescription', instance.elementAuthorDescription?.toJson());
-  return val;
-}
+        SubstanceSourceMaterial_Author instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'authorType': instance.authorType?.toJson(),
+      'authorDescription': instance.authorDescription,
+      'elementAuthorDescription': instance.elementAuthorDescription?.toJson(),
+    };
 
 SubstanceSourceMaterial_Hybrid _$SubstanceSourceMaterial_HybridFromJson(
     Map<String, dynamic> json) {
@@ -834,35 +791,24 @@ SubstanceSourceMaterial_Hybrid _$SubstanceSourceMaterial_HybridFromJson(
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterial_HybridToJson(
-    SubstanceSourceMaterial_Hybrid instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('maternalOrganismId', instance.maternalOrganismId);
-  writeNotNull('elementMaternalOrganismId',
-      instance.elementMaternalOrganismId?.toJson());
-  writeNotNull('maternalOrganismName', instance.maternalOrganismName);
-  writeNotNull('elementMaternalOrganismName',
-      instance.elementMaternalOrganismName?.toJson());
-  writeNotNull('paternalOrganismId', instance.paternalOrganismId);
-  writeNotNull('elementPaternalOrganismId',
-      instance.elementPaternalOrganismId?.toJson());
-  writeNotNull('paternalOrganismName', instance.paternalOrganismName);
-  writeNotNull('elementPaternalOrganismName',
-      instance.elementPaternalOrganismName?.toJson());
-  writeNotNull('hybridType', instance.hybridType?.toJson());
-  return val;
-}
+        SubstanceSourceMaterial_Hybrid instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'maternalOrganismId': instance.maternalOrganismId,
+      'elementMaternalOrganismId': instance.elementMaternalOrganismId?.toJson(),
+      'maternalOrganismName': instance.maternalOrganismName,
+      'elementMaternalOrganismName':
+          instance.elementMaternalOrganismName?.toJson(),
+      'paternalOrganismId': instance.paternalOrganismId,
+      'elementPaternalOrganismId': instance.elementPaternalOrganismId?.toJson(),
+      'paternalOrganismName': instance.paternalOrganismName,
+      'elementPaternalOrganismName':
+          instance.elementPaternalOrganismName?.toJson(),
+      'hybridType': instance.hybridType?.toJson(),
+    };
 
 SubstanceSourceMaterial_OrganismGeneral
     _$SubstanceSourceMaterial_OrganismGeneralFromJson(
@@ -893,26 +839,17 @@ SubstanceSourceMaterial_OrganismGeneral
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterial_OrganismGeneralToJson(
-    SubstanceSourceMaterial_OrganismGeneral instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('kingdom', instance.kingdom?.toJson());
-  writeNotNull('phylum', instance.phylum?.toJson());
-  writeNotNull('classs', instance.classs?.toJson());
-  writeNotNull('order', instance.order?.toJson());
-  return val;
-}
+        SubstanceSourceMaterial_OrganismGeneral instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'kingdom': instance.kingdom?.toJson(),
+      'phylum': instance.phylum?.toJson(),
+      'classs': instance.classs?.toJson(),
+      'order': instance.order?.toJson(),
+    };
 
 SubstanceSourceMaterial_PartDescription
     _$SubstanceSourceMaterial_PartDescriptionFromJson(
@@ -938,21 +875,12 @@ SubstanceSourceMaterial_PartDescription
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterial_PartDescriptionToJson(
-    SubstanceSourceMaterial_PartDescription instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('part', instance.part?.toJson());
-  writeNotNull('partLocation', instance.partLocation?.toJson());
-  return val;
-}
+        SubstanceSourceMaterial_PartDescription instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'part': instance.part?.toJson(),
+      'partLocation': instance.partLocation?.toJson(),
+    };

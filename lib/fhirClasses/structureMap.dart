@@ -37,7 +37,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap {
   static Future<StructureMap> newInstance({
     String resourceType,
@@ -131,13 +131,9 @@ class StructureMap {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'StructureMap';
@@ -229,7 +225,7 @@ class StructureMap {
   Map<String, dynamic> toJson() => _$StructureMapToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Structure {
   static Future<StructureMap_Structure> newInstance({
     String id,
@@ -246,7 +242,7 @@ class StructureMap_Structure {
     var fhirDb = new DatabaseHelper();
     StructureMap_Structure newStructureMap_Structure =
         new StructureMap_Structure(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Structure'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       url: url,
@@ -289,7 +285,7 @@ class StructureMap_Structure {
   Map<String, dynamic> toJson() => _$StructureMap_StructureToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Group {
   static Future<StructureMap_Group> newInstance({
     String id,
@@ -308,7 +304,7 @@ class StructureMap_Group {
   }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Group newStructureMap_Group = new StructureMap_Group(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Group'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -360,7 +356,7 @@ class StructureMap_Group {
   Map<String, dynamic> toJson() => _$StructureMap_GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Input {
   static Future<StructureMap_Input> newInstance({
     String id,
@@ -377,7 +373,7 @@ class StructureMap_Input {
   }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Input newStructureMap_Input = new StructureMap_Input(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Input'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -423,7 +419,7 @@ class StructureMap_Input {
   Map<String, dynamic> toJson() => _$StructureMap_InputToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Rule {
   static Future<StructureMap_Rule> newInstance({
     String id,
@@ -440,7 +436,7 @@ class StructureMap_Rule {
   }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Rule newStructureMap_Rule = new StructureMap_Rule(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Rule'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -486,7 +482,7 @@ class StructureMap_Rule {
   Map<String, dynamic> toJson() => _$StructureMap_RuleToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Source {
   static Future<StructureMap_Source> newInstance({
     String id,
@@ -584,7 +580,7 @@ class StructureMap_Source {
   }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Source newStructureMap_Source = new StructureMap_Source(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Source'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       context: context,
@@ -873,7 +869,7 @@ class StructureMap_Source {
   Map<String, dynamic> toJson() => _$StructureMap_SourceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Target {
   static Future<StructureMap_Target> newInstance({
     String id,
@@ -897,7 +893,7 @@ class StructureMap_Target {
   }) async {
     var fhirDb = new DatabaseHelper();
     StructureMap_Target newStructureMap_Target = new StructureMap_Target(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Target'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       context: context,
@@ -964,7 +960,7 @@ class StructureMap_Target {
   Map<String, dynamic> toJson() => _$StructureMap_TargetToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Parameter {
   static Future<StructureMap_Parameter> newInstance({
     String id,
@@ -984,7 +980,7 @@ class StructureMap_Parameter {
     var fhirDb = new DatabaseHelper();
     StructureMap_Parameter newStructureMap_Parameter =
         new StructureMap_Parameter(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Parameter'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       valueId: valueId,
@@ -1036,7 +1032,7 @@ class StructureMap_Parameter {
   Map<String, dynamic> toJson() => _$StructureMap_ParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureMap_Dependent {
   static Future<StructureMap_Dependent> newInstance({
     String id,
@@ -1050,7 +1046,7 @@ class StructureMap_Dependent {
     var fhirDb = new DatabaseHelper();
     StructureMap_Dependent newStructureMap_Dependent =
         new StructureMap_Dependent(
-      id: id ?? await fhirDb.newResourceId('StructureMap_Dependent'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -1197,63 +1193,50 @@ StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMapToJson(StructureMap instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('experimental', instance.experimental);
-  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('purpose', instance.purpose);
-  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
-  writeNotNull('copyright', instance.copyright);
-  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
-  writeNotNull(
-      'structure', instance.structure?.map((e) => e?.toJson())?.toList());
-  writeNotNull('import', instance.import);
-  writeNotNull('group', instance.group?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$StructureMapToJson(StructureMap instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'structure': instance.structure?.map((e) => e?.toJson())?.toList(),
+      'import': instance.import,
+      'group': instance.group?.map((e) => e?.toJson())?.toList(),
+    };
 
 StructureMap_Structure _$StructureMap_StructureFromJson(
     Map<String, dynamic> json) {
@@ -1285,29 +1268,20 @@ StructureMap_Structure _$StructureMap_StructureFromJson(
 }
 
 Map<String, dynamic> _$StructureMap_StructureToJson(
-    StructureMap_Structure instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('mode', instance.mode);
-  writeNotNull('elementMode', instance.elementMode?.toJson());
-  writeNotNull('alias', instance.alias);
-  writeNotNull('elementAlias', instance.elementAlias?.toJson());
-  writeNotNull('documentation', instance.documentation);
-  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
-  return val;
-}
+        StructureMap_Structure instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'mode': instance.mode,
+      'elementMode': instance.elementMode?.toJson(),
+      'alias': instance.alias,
+      'elementAlias': instance.elementAlias?.toJson(),
+      'documentation': instance.documentation,
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
+    };
 
 StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
   return StructureMap_Group(
@@ -1350,32 +1324,23 @@ StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_GroupToJson(StructureMap_Group instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('extend', instance.extend);
-  writeNotNull('elementExtends', instance.elementExtends?.toJson());
-  writeNotNull('typeMode', instance.typeMode);
-  writeNotNull('elementTypeMode', instance.elementTypeMode?.toJson());
-  writeNotNull('documentation', instance.documentation);
-  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
-  writeNotNull('input', instance.input?.map((e) => e?.toJson())?.toList());
-  writeNotNull('rule', instance.rule?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$StructureMap_GroupToJson(StructureMap_Group instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'extend': instance.extend,
+      'elementExtends': instance.elementExtends?.toJson(),
+      'typeMode': instance.typeMode,
+      'elementTypeMode': instance.elementTypeMode?.toJson(),
+      'documentation': instance.documentation,
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
+      'input': instance.input?.map((e) => e?.toJson())?.toList(),
+      'rule': instance.rule?.map((e) => e?.toJson())?.toList(),
+    };
 
 StructureMap_Input _$StructureMap_InputFromJson(Map<String, dynamic> json) {
   return StructureMap_Input(
@@ -1408,30 +1373,21 @@ StructureMap_Input _$StructureMap_InputFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_InputToJson(StructureMap_Input instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('mode', instance.mode);
-  writeNotNull('elementMode', instance.elementMode?.toJson());
-  writeNotNull('documentation', instance.documentation);
-  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
-  return val;
-}
+Map<String, dynamic> _$StructureMap_InputToJson(StructureMap_Input instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'mode': instance.mode,
+      'elementMode': instance.elementMode?.toJson(),
+      'documentation': instance.documentation,
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
+    };
 
 StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
   return StructureMap_Rule(
@@ -1476,31 +1432,21 @@ StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_RuleToJson(StructureMap_Rule instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('source', instance.source?.map((e) => e?.toJson())?.toList());
-  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
-  writeNotNull('rule', instance.rule?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'dependent', instance.dependent?.map((e) => e?.toJson())?.toList());
-  writeNotNull('documentation', instance.documentation);
-  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
-  return val;
-}
+Map<String, dynamic> _$StructureMap_RuleToJson(StructureMap_Rule instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'source': instance.source?.map((e) => e?.toJson())?.toList(),
+      'target': instance.target?.map((e) => e?.toJson())?.toList(),
+      'rule': instance.rule?.map((e) => e?.toJson())?.toList(),
+      'dependent': instance.dependent?.map((e) => e?.toJson())?.toList(),
+      'documentation': instance.documentation,
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
+    };
 
 StructureMap_Source _$StructureMap_SourceFromJson(Map<String, dynamic> json) {
   return StructureMap_Source(
@@ -1768,147 +1714,118 @@ StructureMap_Source _$StructureMap_SourceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_SourceToJson(StructureMap_Source instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('context', instance.context);
-  writeNotNull('elementContext', instance.elementContext?.toJson());
-  writeNotNull('min', instance.min);
-  writeNotNull('elementMin', instance.elementMin?.toJson());
-  writeNotNull('max', instance.max);
-  writeNotNull('elementMax', instance.elementMax?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('defaultValueBase64Binary', instance.defaultValueBase64Binary);
-  writeNotNull('elementDefaultValueBase64Binary',
-      instance.elementDefaultValueBase64Binary?.toJson());
-  writeNotNull('defaultValueBoolean', instance.defaultValueBoolean);
-  writeNotNull('elementDefaultValueBoolean',
-      instance.elementDefaultValueBoolean?.toJson());
-  writeNotNull('defaultValueCanonical', instance.defaultValueCanonical);
-  writeNotNull('elementDefaultValueCanonical',
-      instance.elementDefaultValueCanonical?.toJson());
-  writeNotNull('defaultValueCode', instance.defaultValueCode);
-  writeNotNull(
-      'elementDefaultValueCode', instance.elementDefaultValueCode?.toJson());
-  writeNotNull('defaultValueDate', instance.defaultValueDate);
-  writeNotNull(
-      'elementDefaultValueDate', instance.elementDefaultValueDate?.toJson());
-  writeNotNull('defaultValueDateTime', instance.defaultValueDateTime);
-  writeNotNull('elementDefaultValueDateTime',
-      instance.elementDefaultValueDateTime?.toJson());
-  writeNotNull('defaultValueDecimal', instance.defaultValueDecimal);
-  writeNotNull('elementDefaultValueDecimal',
-      instance.elementDefaultValueDecimal?.toJson());
-  writeNotNull('defaultValueId', instance.defaultValueId);
-  writeNotNull(
-      'elementDefaultValueId', instance.elementDefaultValueId?.toJson());
-  writeNotNull('defaultValueInstant', instance.defaultValueInstant);
-  writeNotNull('elementDefaultValueInstant',
-      instance.elementDefaultValueInstant?.toJson());
-  writeNotNull('defaultValueInteger', instance.defaultValueInteger);
-  writeNotNull('elementDefaultValueInteger',
-      instance.elementDefaultValueInteger?.toJson());
-  writeNotNull('defaultValueMarkdown', instance.defaultValueMarkdown);
-  writeNotNull('elementDefaultValueMarkdown',
-      instance.elementDefaultValueMarkdown?.toJson());
-  writeNotNull('defaultValueOid', instance.defaultValueOid);
-  writeNotNull(
-      'elementDefaultValueOid', instance.elementDefaultValueOid?.toJson());
-  writeNotNull('defaultValuePositiveInt', instance.defaultValuePositiveInt);
-  writeNotNull('elementDefaultValuePositiveInt',
-      instance.elementDefaultValuePositiveInt?.toJson());
-  writeNotNull('defaultValueString', instance.defaultValueString);
-  writeNotNull('elementDefaultValueString',
-      instance.elementDefaultValueString?.toJson());
-  writeNotNull('defaultValueTime', instance.defaultValueTime);
-  writeNotNull(
-      'elementDefaultValueTime', instance.elementDefaultValueTime?.toJson());
-  writeNotNull('defaultValueUnsignedInt', instance.defaultValueUnsignedInt);
-  writeNotNull('elementDefaultValueUnsignedInt',
-      instance.elementDefaultValueUnsignedInt?.toJson());
-  writeNotNull('defaultValueUri', instance.defaultValueUri);
-  writeNotNull(
-      'elementDefaultValueUri', instance.elementDefaultValueUri?.toJson());
-  writeNotNull('defaultValueUrl', instance.defaultValueUrl);
-  writeNotNull(
-      'elementDefaultValueUrl', instance.elementDefaultValueUrl?.toJson());
-  writeNotNull('defaultValueUuid', instance.defaultValueUuid);
-  writeNotNull(
-      'elementDefaultValueUuid', instance.elementDefaultValueUuid?.toJson());
-  writeNotNull('defaultValueAddress', instance.defaultValueAddress?.toJson());
-  writeNotNull('defaultValueAge', instance.defaultValueAge?.toJson());
-  writeNotNull(
-      'defaultValueAnnotation', instance.defaultValueAnnotation?.toJson());
-  writeNotNull(
-      'defaultValueAttachment', instance.defaultValueAttachment?.toJson());
-  writeNotNull('defaultValueCodeableConcept',
-      instance.defaultValueCodeableConcept?.toJson());
-  writeNotNull('defaultValueCoding', instance.defaultValueCoding?.toJson());
-  writeNotNull(
-      'defaultValueContactPoint', instance.defaultValueContactPoint?.toJson());
-  writeNotNull('defaultValueCount', instance.defaultValueCount?.toJson());
-  writeNotNull('defaultValueDistance', instance.defaultValueDistance?.toJson());
-  writeNotNull('defaultValueDuration', instance.defaultValueDuration?.toJson());
-  writeNotNull(
-      'defaultValueHumanName', instance.defaultValueHumanName?.toJson());
-  writeNotNull(
-      'defaultValueIdentifier', instance.defaultValueIdentifier?.toJson());
-  writeNotNull('defaultValueMoney', instance.defaultValueMoney?.toJson());
-  writeNotNull('defaultValuePeriod', instance.defaultValuePeriod?.toJson());
-  writeNotNull('defaultValueQuantity', instance.defaultValueQuantity?.toJson());
-  writeNotNull('defaultValueRange', instance.defaultValueRange?.toJson());
-  writeNotNull('defaultValueRatio', instance.defaultValueRatio?.toJson());
-  writeNotNull(
-      'defaultValueReference', instance.defaultValueReference?.toJson());
-  writeNotNull(
-      'defaultValueSampledData', instance.defaultValueSampledData?.toJson());
-  writeNotNull(
-      'defaultValueSignature', instance.defaultValueSignature?.toJson());
-  writeNotNull('defaultValueTiming', instance.defaultValueTiming?.toJson());
-  writeNotNull('defaultValueContactDetail',
-      instance.defaultValueContactDetail?.toJson());
-  writeNotNull(
-      'defaultValueContributor', instance.defaultValueContributor?.toJson());
-  writeNotNull('defaultValueDataRequirement',
-      instance.defaultValueDataRequirement?.toJson());
-  writeNotNull(
-      'defaultValueExpression', instance.defaultValueExpression?.toJson());
-  writeNotNull('defaultValueParameterDefinition',
-      instance.defaultValueParameterDefinition?.toJson());
-  writeNotNull('defaultValueRelatedArtifact',
-      instance.defaultValueRelatedArtifact?.toJson());
-  writeNotNull('defaultValueTriggerDefinition',
-      instance.defaultValueTriggerDefinition?.toJson());
-  writeNotNull(
-      'defaultValueUsageContext', instance.defaultValueUsageContext?.toJson());
-  writeNotNull('defaultValueDosage', instance.defaultValueDosage?.toJson());
-  writeNotNull('defaultValueMeta', instance.defaultValueMeta?.toJson());
-  writeNotNull('element', instance.element);
-  writeNotNull('elementElement', instance.elementElement?.toJson());
-  writeNotNull('listMode', instance.listMode);
-  writeNotNull('elementListMode', instance.elementListMode?.toJson());
-  writeNotNull('variable', instance.variable);
-  writeNotNull('elementVariable', instance.elementVariable?.toJson());
-  writeNotNull('condition', instance.condition);
-  writeNotNull('elementCondition', instance.elementCondition?.toJson());
-  writeNotNull('check', instance.check);
-  writeNotNull('elementCheck', instance.elementCheck?.toJson());
-  writeNotNull('logMessage', instance.logMessage);
-  writeNotNull('elementLogMessage', instance.elementLogMessage?.toJson());
-  return val;
-}
+Map<String, dynamic> _$StructureMap_SourceToJson(
+        StructureMap_Source instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'context': instance.context,
+      'elementContext': instance.elementContext?.toJson(),
+      'min': instance.min,
+      'elementMin': instance.elementMin?.toJson(),
+      'max': instance.max,
+      'elementMax': instance.elementMax?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'defaultValueBase64Binary': instance.defaultValueBase64Binary,
+      'elementDefaultValueBase64Binary':
+          instance.elementDefaultValueBase64Binary?.toJson(),
+      'defaultValueBoolean': instance.defaultValueBoolean,
+      'elementDefaultValueBoolean':
+          instance.elementDefaultValueBoolean?.toJson(),
+      'defaultValueCanonical': instance.defaultValueCanonical,
+      'elementDefaultValueCanonical':
+          instance.elementDefaultValueCanonical?.toJson(),
+      'defaultValueCode': instance.defaultValueCode,
+      'elementDefaultValueCode': instance.elementDefaultValueCode?.toJson(),
+      'defaultValueDate': instance.defaultValueDate,
+      'elementDefaultValueDate': instance.elementDefaultValueDate?.toJson(),
+      'defaultValueDateTime': instance.defaultValueDateTime,
+      'elementDefaultValueDateTime':
+          instance.elementDefaultValueDateTime?.toJson(),
+      'defaultValueDecimal': instance.defaultValueDecimal,
+      'elementDefaultValueDecimal':
+          instance.elementDefaultValueDecimal?.toJson(),
+      'defaultValueId': instance.defaultValueId,
+      'elementDefaultValueId': instance.elementDefaultValueId?.toJson(),
+      'defaultValueInstant': instance.defaultValueInstant,
+      'elementDefaultValueInstant':
+          instance.elementDefaultValueInstant?.toJson(),
+      'defaultValueInteger': instance.defaultValueInteger,
+      'elementDefaultValueInteger':
+          instance.elementDefaultValueInteger?.toJson(),
+      'defaultValueMarkdown': instance.defaultValueMarkdown,
+      'elementDefaultValueMarkdown':
+          instance.elementDefaultValueMarkdown?.toJson(),
+      'defaultValueOid': instance.defaultValueOid,
+      'elementDefaultValueOid': instance.elementDefaultValueOid?.toJson(),
+      'defaultValuePositiveInt': instance.defaultValuePositiveInt,
+      'elementDefaultValuePositiveInt':
+          instance.elementDefaultValuePositiveInt?.toJson(),
+      'defaultValueString': instance.defaultValueString,
+      'elementDefaultValueString': instance.elementDefaultValueString?.toJson(),
+      'defaultValueTime': instance.defaultValueTime,
+      'elementDefaultValueTime': instance.elementDefaultValueTime?.toJson(),
+      'defaultValueUnsignedInt': instance.defaultValueUnsignedInt,
+      'elementDefaultValueUnsignedInt':
+          instance.elementDefaultValueUnsignedInt?.toJson(),
+      'defaultValueUri': instance.defaultValueUri,
+      'elementDefaultValueUri': instance.elementDefaultValueUri?.toJson(),
+      'defaultValueUrl': instance.defaultValueUrl,
+      'elementDefaultValueUrl': instance.elementDefaultValueUrl?.toJson(),
+      'defaultValueUuid': instance.defaultValueUuid,
+      'elementDefaultValueUuid': instance.elementDefaultValueUuid?.toJson(),
+      'defaultValueAddress': instance.defaultValueAddress?.toJson(),
+      'defaultValueAge': instance.defaultValueAge?.toJson(),
+      'defaultValueAnnotation': instance.defaultValueAnnotation?.toJson(),
+      'defaultValueAttachment': instance.defaultValueAttachment?.toJson(),
+      'defaultValueCodeableConcept':
+          instance.defaultValueCodeableConcept?.toJson(),
+      'defaultValueCoding': instance.defaultValueCoding?.toJson(),
+      'defaultValueContactPoint': instance.defaultValueContactPoint?.toJson(),
+      'defaultValueCount': instance.defaultValueCount?.toJson(),
+      'defaultValueDistance': instance.defaultValueDistance?.toJson(),
+      'defaultValueDuration': instance.defaultValueDuration?.toJson(),
+      'defaultValueHumanName': instance.defaultValueHumanName?.toJson(),
+      'defaultValueIdentifier': instance.defaultValueIdentifier?.toJson(),
+      'defaultValueMoney': instance.defaultValueMoney?.toJson(),
+      'defaultValuePeriod': instance.defaultValuePeriod?.toJson(),
+      'defaultValueQuantity': instance.defaultValueQuantity?.toJson(),
+      'defaultValueRange': instance.defaultValueRange?.toJson(),
+      'defaultValueRatio': instance.defaultValueRatio?.toJson(),
+      'defaultValueReference': instance.defaultValueReference?.toJson(),
+      'defaultValueSampledData': instance.defaultValueSampledData?.toJson(),
+      'defaultValueSignature': instance.defaultValueSignature?.toJson(),
+      'defaultValueTiming': instance.defaultValueTiming?.toJson(),
+      'defaultValueContactDetail': instance.defaultValueContactDetail?.toJson(),
+      'defaultValueContributor': instance.defaultValueContributor?.toJson(),
+      'defaultValueDataRequirement':
+          instance.defaultValueDataRequirement?.toJson(),
+      'defaultValueExpression': instance.defaultValueExpression?.toJson(),
+      'defaultValueParameterDefinition':
+          instance.defaultValueParameterDefinition?.toJson(),
+      'defaultValueRelatedArtifact':
+          instance.defaultValueRelatedArtifact?.toJson(),
+      'defaultValueTriggerDefinition':
+          instance.defaultValueTriggerDefinition?.toJson(),
+      'defaultValueUsageContext': instance.defaultValueUsageContext?.toJson(),
+      'defaultValueDosage': instance.defaultValueDosage?.toJson(),
+      'defaultValueMeta': instance.defaultValueMeta?.toJson(),
+      'element': instance.element,
+      'elementElement': instance.elementElement?.toJson(),
+      'listMode': instance.listMode,
+      'elementListMode': instance.elementListMode?.toJson(),
+      'variable': instance.variable,
+      'elementVariable': instance.elementVariable?.toJson(),
+      'condition': instance.condition,
+      'elementCondition': instance.elementCondition?.toJson(),
+      'check': instance.check,
+      'elementCheck': instance.elementCheck?.toJson(),
+      'logMessage': instance.logMessage,
+      'elementLogMessage': instance.elementLogMessage?.toJson(),
+    };
 
 StructureMap_Target _$StructureMap_TargetFromJson(Map<String, dynamic> json) {
   return StructureMap_Target(
@@ -1958,39 +1875,30 @@ StructureMap_Target _$StructureMap_TargetFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureMap_TargetToJson(StructureMap_Target instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('context', instance.context);
-  writeNotNull('elementContext', instance.elementContext?.toJson());
-  writeNotNull('contextType', instance.contextType);
-  writeNotNull('elementContextType', instance.elementContextType?.toJson());
-  writeNotNull('element', instance.element);
-  writeNotNull('elementElement', instance.elementElement?.toJson());
-  writeNotNull('variable', instance.variable);
-  writeNotNull('elementVariable', instance.elementVariable?.toJson());
-  writeNotNull('listMode', instance.listMode);
-  writeNotNull('elementListMode',
-      instance.elementListMode?.map((e) => e?.toJson())?.toList());
-  writeNotNull('listRuleId', instance.listRuleId);
-  writeNotNull('elementListRuleId', instance.elementListRuleId?.toJson());
-  writeNotNull('transform', instance.transform);
-  writeNotNull('elementTransform', instance.elementTransform?.toJson());
-  writeNotNull(
-      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$StructureMap_TargetToJson(
+        StructureMap_Target instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'context': instance.context,
+      'elementContext': instance.elementContext?.toJson(),
+      'contextType': instance.contextType,
+      'elementContextType': instance.elementContextType?.toJson(),
+      'element': instance.element,
+      'elementElement': instance.elementElement?.toJson(),
+      'variable': instance.variable,
+      'elementVariable': instance.elementVariable?.toJson(),
+      'listMode': instance.listMode,
+      'elementListMode':
+          instance.elementListMode?.map((e) => e?.toJson())?.toList(),
+      'listRuleId': instance.listRuleId,
+      'elementListRuleId': instance.elementListRuleId?.toJson(),
+      'transform': instance.transform,
+      'elementTransform': instance.elementTransform?.toJson(),
+      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
+    };
 
 StructureMap_Parameter _$StructureMap_ParameterFromJson(
     Map<String, dynamic> json) {
@@ -2028,32 +1936,23 @@ StructureMap_Parameter _$StructureMap_ParameterFromJson(
 }
 
 Map<String, dynamic> _$StructureMap_ParameterToJson(
-    StructureMap_Parameter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('valueId', instance.valueId);
-  writeNotNull('elementValueId', instance.elementValueId?.toJson());
-  writeNotNull('valueString', instance.valueString);
-  writeNotNull('elementValueString', instance.elementValueString?.toJson());
-  writeNotNull('valueBoolean', instance.valueBoolean);
-  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
-  writeNotNull('valueInteger', instance.valueInteger);
-  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
-  writeNotNull('valueDecimal', instance.valueDecimal);
-  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
-  return val;
-}
+        StructureMap_Parameter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'valueId': instance.valueId,
+      'elementValueId': instance.elementValueId?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueBoolean': instance.valueBoolean,
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
+      'valueInteger': instance.valueInteger,
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
+      'valueDecimal': instance.valueDecimal,
+      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
+    };
 
 StructureMap_Dependent _$StructureMap_DependentFromJson(
     Map<String, dynamic> json) {
@@ -2080,24 +1979,15 @@ StructureMap_Dependent _$StructureMap_DependentFromJson(
 }
 
 Map<String, dynamic> _$StructureMap_DependentToJson(
-    StructureMap_Dependent instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('variable', instance.variable);
-  writeNotNull('elementVariable',
-      instance.elementVariable?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        StructureMap_Dependent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'variable': instance.variable,
+      'elementVariable':
+          instance.elementVariable?.map((e) => e?.toJson())?.toList(),
+    };

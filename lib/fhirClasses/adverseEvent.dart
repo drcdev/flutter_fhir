@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AdverseEvent {
   static Future<AdverseEvent> newInstance({
     String resourceType,
@@ -94,13 +94,9 @@ class AdverseEvent {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'AdverseEvent';
@@ -182,7 +178,7 @@ class AdverseEvent {
   Map<String, dynamic> toJson() => _$AdverseEventToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AdverseEvent_SuspectEntity {
   static Future<AdverseEvent_SuspectEntity> newInstance({
     String id,
@@ -194,7 +190,7 @@ class AdverseEvent_SuspectEntity {
     var fhirDb = new DatabaseHelper();
     AdverseEvent_SuspectEntity newAdverseEvent_SuspectEntity =
         new AdverseEvent_SuspectEntity(
-      id: id ?? await fhirDb.newResourceId('AdverseEvent_SuspectEntity'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       instance: instance,
@@ -222,7 +218,7 @@ class AdverseEvent_SuspectEntity {
   Map<String, dynamic> toJson() => _$AdverseEvent_SuspectEntityToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class AdverseEvent_Causality {
   static Future<AdverseEvent_Causality> newInstance({
     String id,
@@ -237,7 +233,7 @@ class AdverseEvent_Causality {
     var fhirDb = new DatabaseHelper();
     AdverseEvent_Causality newAdverseEvent_Causality =
         new AdverseEvent_Causality(
-      id: id ?? await fhirDb.newResourceId('AdverseEvent_Causality'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       assessment: assessment,
@@ -391,60 +387,49 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AdverseEventToJson(AdverseEvent instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('actuality', instance.actuality);
-  writeNotNull('elementActuality', instance.elementActuality?.toJson());
-  writeNotNull(
-      'category', instance.category?.map((e) => e?.toJson())?.toList());
-  writeNotNull('event', instance.event?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('encounter', instance.encounter?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('detected', instance.detected?.toIso8601String());
-  writeNotNull('elementDetected', instance.elementDetected?.toJson());
-  writeNotNull('recordedDate', instance.recordedDate?.toIso8601String());
-  writeNotNull('elementRecordedDate', instance.elementRecordedDate?.toJson());
-  writeNotNull('resultingCondition',
-      instance.resultingCondition?.map((e) => e?.toJson())?.toList());
-  writeNotNull('location', instance.location?.toJson());
-  writeNotNull('seriousness', instance.seriousness?.toJson());
-  writeNotNull('severity', instance.severity?.toJson());
-  writeNotNull('outcome', instance.outcome?.toJson());
-  writeNotNull('recorder', instance.recorder?.toJson());
-  writeNotNull(
-      'contributor', instance.contributor?.map((e) => e?.toJson())?.toList());
-  writeNotNull('suspectEntity',
-      instance.suspectEntity?.map((e) => e?.toJson())?.toList());
-  writeNotNull('subjectMedicalHistory',
-      instance.subjectMedicalHistory?.map((e) => e?.toJson())?.toList());
-  writeNotNull('referenceDocument',
-      instance.referenceDocument?.map((e) => e?.toJson())?.toList());
-  writeNotNull('study', instance.study?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$AdverseEventToJson(AdverseEvent instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'actuality': instance.actuality,
+      'elementActuality': instance.elementActuality?.toJson(),
+      'category': instance.category?.map((e) => e?.toJson())?.toList(),
+      'event': instance.event?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'encounter': instance.encounter?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'detected': instance.detected?.toIso8601String(),
+      'elementDetected': instance.elementDetected?.toJson(),
+      'recordedDate': instance.recordedDate?.toIso8601String(),
+      'elementRecordedDate': instance.elementRecordedDate?.toJson(),
+      'resultingCondition':
+          instance.resultingCondition?.map((e) => e?.toJson())?.toList(),
+      'location': instance.location?.toJson(),
+      'seriousness': instance.seriousness?.toJson(),
+      'severity': instance.severity?.toJson(),
+      'outcome': instance.outcome?.toJson(),
+      'recorder': instance.recorder?.toJson(),
+      'contributor': instance.contributor?.map((e) => e?.toJson())?.toList(),
+      'suspectEntity':
+          instance.suspectEntity?.map((e) => e?.toJson())?.toList(),
+      'subjectMedicalHistory':
+          instance.subjectMedicalHistory?.map((e) => e?.toJson())?.toList(),
+      'referenceDocument':
+          instance.referenceDocument?.map((e) => e?.toJson())?.toList(),
+      'study': instance.study?.map((e) => e?.toJson())?.toList(),
+    };
 
 AdverseEvent_SuspectEntity _$AdverseEvent_SuspectEntityFromJson(
     Map<String, dynamic> json) {
@@ -470,25 +455,15 @@ AdverseEvent_SuspectEntity _$AdverseEvent_SuspectEntityFromJson(
 }
 
 Map<String, dynamic> _$AdverseEvent_SuspectEntityToJson(
-    AdverseEvent_SuspectEntity instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('instance', instance.instance?.toJson());
-  writeNotNull(
-      'causality', instance.causality?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        AdverseEvent_SuspectEntity instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'instance': instance.instance?.toJson(),
+      'causality': instance.causality?.map((e) => e?.toJson())?.toList(),
+    };
 
 AdverseEvent_Causality _$AdverseEvent_CausalityFromJson(
     Map<String, dynamic> json) {
@@ -520,25 +495,15 @@ AdverseEvent_Causality _$AdverseEvent_CausalityFromJson(
 }
 
 Map<String, dynamic> _$AdverseEvent_CausalityToJson(
-    AdverseEvent_Causality instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('assessment', instance.assessment?.toJson());
-  writeNotNull('productRelatedness', instance.productRelatedness);
-  writeNotNull('elementProductRelatedness',
-      instance.elementProductRelatedness?.toJson());
-  writeNotNull('author', instance.author?.toJson());
-  writeNotNull('method', instance.method?.toJson());
-  return val;
-}
+        AdverseEvent_Causality instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'assessment': instance.assessment?.toJson(),
+      'productRelatedness': instance.productRelatedness,
+      'elementProductRelatedness': instance.elementProductRelatedness?.toJson(),
+      'author': instance.author?.toJson(),
+      'method': instance.method?.toJson(),
+    };

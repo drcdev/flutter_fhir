@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Device {
   static Future<Device> newInstance({
     String resourceType,
@@ -121,13 +121,9 @@ class Device {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Device';
@@ -232,7 +228,7 @@ class Device {
   Map<String, dynamic> toJson() => _$DeviceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Device_UdiCarrier {
   static Future<Device_UdiCarrier> newInstance({
     String id,
@@ -253,7 +249,7 @@ class Device_UdiCarrier {
   }) async {
     var fhirDb = new DatabaseHelper();
     Device_UdiCarrier newDevice_UdiCarrier = new Device_UdiCarrier(
-      id: id ?? await fhirDb.newResourceId('Device_UdiCarrier'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       deviceIdentifier: deviceIdentifier,
@@ -311,7 +307,7 @@ class Device_UdiCarrier {
   Map<String, dynamic> toJson() => _$Device_UdiCarrierToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Device_DeviceName {
   static Future<Device_DeviceName> newInstance({
     String id,
@@ -324,7 +320,7 @@ class Device_DeviceName {
   }) async {
     var fhirDb = new DatabaseHelper();
     Device_DeviceName newDevice_DeviceName = new Device_DeviceName(
-      id: id ?? await fhirDb.newResourceId('Device_DeviceName'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -358,7 +354,7 @@ class Device_DeviceName {
   Map<String, dynamic> toJson() => _$Device_DeviceNameToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Device_Specialization {
   static Future<Device_Specialization> newInstance({
     String id,
@@ -370,7 +366,7 @@ class Device_Specialization {
   }) async {
     var fhirDb = new DatabaseHelper();
     Device_Specialization newDevice_Specialization = new Device_Specialization(
-      id: id ?? await fhirDb.newResourceId('Device_Specialization'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       systemType: systemType,
@@ -401,7 +397,7 @@ class Device_Specialization {
   Map<String, dynamic> toJson() => _$Device_SpecializationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Device_Version {
   static Future<Device_Version> newInstance({
     String id,
@@ -414,7 +410,7 @@ class Device_Version {
   }) async {
     var fhirDb = new DatabaseHelper();
     Device_Version newDevice_Version = new Device_Version(
-      id: id ?? await fhirDb.newResourceId('Device_Version'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -448,7 +444,7 @@ class Device_Version {
   Map<String, dynamic> toJson() => _$Device_VersionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Device_Property {
   static Future<Device_Property> newInstance({
     String id,
@@ -460,7 +456,7 @@ class Device_Property {
   }) async {
     var fhirDb = new DatabaseHelper();
     Device_Property newDevice_Property = new Device_Property(
-      id: id ?? await fhirDb.newResourceId('Device_Property'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -643,75 +639,57 @@ Device _$DeviceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DeviceToJson(Device instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('definition', instance.definition?.toJson());
-  writeNotNull(
-      'udiCarrier', instance.udiCarrier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull(
-      'statusReason', instance.statusReason?.map((e) => e?.toJson())?.toList());
-  writeNotNull('distinctIdentifier', instance.distinctIdentifier);
-  writeNotNull('elementDistinctIdentifier',
-      instance.elementDistinctIdentifier?.toJson());
-  writeNotNull('manufacturer', instance.manufacturer);
-  writeNotNull('elementManufacturer', instance.elementManufacturer?.toJson());
-  writeNotNull('manufactureDate', instance.manufactureDate?.toIso8601String());
-  writeNotNull(
-      'elementManufactureDate', instance.elementManufactureDate?.toJson());
-  writeNotNull('expirationDate', instance.expirationDate?.toIso8601String());
-  writeNotNull(
-      'elementExpirationDate', instance.elementExpirationDate?.toJson());
-  writeNotNull('lotNumber', instance.lotNumber);
-  writeNotNull('elementLotNumber', instance.elementLotNumber?.toJson());
-  writeNotNull('serialNumber', instance.serialNumber);
-  writeNotNull('elementSerialNumber', instance.elementSerialNumber?.toJson());
-  writeNotNull(
-      'deviceName', instance.deviceName?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modelNumber', instance.modelNumber);
-  writeNotNull('elementModelNumber', instance.elementModelNumber?.toJson());
-  writeNotNull('partNumber', instance.partNumber);
-  writeNotNull('elementPartNumber', instance.elementPartNumber?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('specialization',
-      instance.specialization?.map((e) => e?.toJson())?.toList());
-  writeNotNull('version', instance.version?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'property', instance.property?.map((e) => e?.toJson())?.toList());
-  writeNotNull('patient', instance.patient?.toJson());
-  writeNotNull('owner', instance.owner?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('location', instance.location?.toJson());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  writeNotNull('safety', instance.safety?.map((e) => e?.toJson())?.toList());
-  writeNotNull('parent', instance.parent?.toJson());
-  return val;
-}
+Map<String, dynamic> _$DeviceToJson(Device instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'definition': instance.definition?.toJson(),
+      'udiCarrier': instance.udiCarrier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'statusReason': instance.statusReason?.map((e) => e?.toJson())?.toList(),
+      'distinctIdentifier': instance.distinctIdentifier,
+      'elementDistinctIdentifier': instance.elementDistinctIdentifier?.toJson(),
+      'manufacturer': instance.manufacturer,
+      'elementManufacturer': instance.elementManufacturer?.toJson(),
+      'manufactureDate': instance.manufactureDate?.toIso8601String(),
+      'elementManufactureDate': instance.elementManufactureDate?.toJson(),
+      'expirationDate': instance.expirationDate?.toIso8601String(),
+      'elementExpirationDate': instance.elementExpirationDate?.toJson(),
+      'lotNumber': instance.lotNumber,
+      'elementLotNumber': instance.elementLotNumber?.toJson(),
+      'serialNumber': instance.serialNumber,
+      'elementSerialNumber': instance.elementSerialNumber?.toJson(),
+      'deviceName': instance.deviceName?.map((e) => e?.toJson())?.toList(),
+      'modelNumber': instance.modelNumber,
+      'elementModelNumber': instance.elementModelNumber?.toJson(),
+      'partNumber': instance.partNumber,
+      'elementPartNumber': instance.elementPartNumber?.toJson(),
+      'type': instance.type?.toJson(),
+      'specialization':
+          instance.specialization?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version?.map((e) => e?.toJson())?.toList(),
+      'property': instance.property?.map((e) => e?.toJson())?.toList(),
+      'patient': instance.patient?.toJson(),
+      'owner': instance.owner?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'location': instance.location?.toJson(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'safety': instance.safety?.map((e) => e?.toJson())?.toList(),
+      'parent': instance.parent?.toJson(),
+    };
 
 Device_UdiCarrier _$Device_UdiCarrierFromJson(Map<String, dynamic> json) {
   return Device_UdiCarrier(
@@ -752,35 +730,25 @@ Device_UdiCarrier _$Device_UdiCarrierFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Device_UdiCarrierToJson(Device_UdiCarrier instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('deviceIdentifier', instance.deviceIdentifier);
-  writeNotNull(
-      'elementDeviceIdentifier', instance.elementDeviceIdentifier?.toJson());
-  writeNotNull('issuer', instance.issuer);
-  writeNotNull('elementIssuer', instance.elementIssuer?.toJson());
-  writeNotNull('jurisdiction', instance.jurisdiction);
-  writeNotNull('elementJurisdiction', instance.elementJurisdiction?.toJson());
-  writeNotNull('carrierAIDC', instance.carrierAIDC);
-  writeNotNull('elementCarrierAIDC', instance.elementCarrierAIDC?.toJson());
-  writeNotNull('carrierHRF', instance.carrierHRF);
-  writeNotNull('elementCarrierHRF', instance.elementCarrierHRF?.toJson());
-  writeNotNull('entryType', instance.entryType);
-  writeNotNull('elementEntryType', instance.elementEntryType?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Device_UdiCarrierToJson(Device_UdiCarrier instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'deviceIdentifier': instance.deviceIdentifier,
+      'elementDeviceIdentifier': instance.elementDeviceIdentifier?.toJson(),
+      'issuer': instance.issuer,
+      'elementIssuer': instance.elementIssuer?.toJson(),
+      'jurisdiction': instance.jurisdiction,
+      'elementJurisdiction': instance.elementJurisdiction?.toJson(),
+      'carrierAIDC': instance.carrierAIDC,
+      'elementCarrierAIDC': instance.elementCarrierAIDC?.toJson(),
+      'carrierHRF': instance.carrierHRF,
+      'elementCarrierHRF': instance.elementCarrierHRF?.toJson(),
+      'entryType': instance.entryType,
+      'elementEntryType': instance.elementEntryType?.toJson(),
+    };
 
 Device_DeviceName _$Device_DeviceNameFromJson(Map<String, dynamic> json) {
   return Device_DeviceName(
@@ -804,26 +772,17 @@ Device_DeviceName _$Device_DeviceNameFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Device_DeviceNameToJson(Device_DeviceName instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Device_DeviceNameToJson(Device_DeviceName instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+    };
 
 Device_Specialization _$Device_SpecializationFromJson(
     Map<String, dynamic> json) {
@@ -848,25 +807,16 @@ Device_Specialization _$Device_SpecializationFromJson(
 }
 
 Map<String, dynamic> _$Device_SpecializationToJson(
-    Device_Specialization instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('systemType', instance.systemType?.toJson());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  return val;
-}
+        Device_Specialization instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'systemType': instance.systemType?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+    };
 
 Device_Version _$Device_VersionFromJson(Map<String, dynamic> json) {
   return Device_Version(
@@ -892,26 +842,17 @@ Device_Version _$Device_VersionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Device_VersionToJson(Device_Version instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('component', instance.component?.toJson());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Device_VersionToJson(Device_Version instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'component': instance.component?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+    };
 
 Device_Property _$Device_PropertyFromJson(Map<String, dynamic> json) {
   return Device_Property(
@@ -939,24 +880,14 @@ Device_Property _$Device_PropertyFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Device_PropertyToJson(Device_Property instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('valueQuantity',
-      instance.valueQuantity?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'valueCode', instance.valueCode?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$Device_PropertyToJson(Device_Property instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'valueQuantity':
+          instance.valueQuantity?.map((e) => e?.toJson())?.toList(),
+      'valueCode': instance.valueCode?.map((e) => e?.toJson())?.toList(),
+    };

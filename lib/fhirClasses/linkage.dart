@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Linkage {
   static Future<Linkage> newInstance({
     String resourceType,
@@ -52,13 +52,9 @@ class Linkage {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Linkage';
@@ -100,7 +96,7 @@ class Linkage {
   Map<String, dynamic> toJson() => _$LinkageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Linkage_Item {
   static Future<Linkage_Item> newInstance({
     String id,
@@ -112,7 +108,7 @@ class Linkage_Item {
   }) async {
     var fhirDb = new DatabaseHelper();
     Linkage_Item newLinkage_Item = new Linkage_Item(
-      id: id ?? await fhirDb.newResourceId('Linkage_Item'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -194,34 +190,24 @@ Linkage _$LinkageFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$LinkageToJson(Linkage instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('active', instance.active);
-  writeNotNull('elementActive', instance.elementActive?.toJson());
-  writeNotNull('author', instance.author?.toJson());
-  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$LinkageToJson(Linkage instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'active': instance.active,
+      'elementActive': instance.elementActive?.toJson(),
+      'author': instance.author?.toJson(),
+      'item': instance.item?.map((e) => e?.toJson())?.toList(),
+    };
 
 Linkage_Item _$Linkage_ItemFromJson(Map<String, dynamic> json) {
   return Linkage_Item(
@@ -244,22 +230,13 @@ Linkage_Item _$Linkage_ItemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Linkage_ItemToJson(Linkage_Item instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('resource', instance.resource?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Linkage_ItemToJson(Linkage_Item instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'resource': instance.resource?.toJson(),
+    };

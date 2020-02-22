@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Schedule {
   static Future<Schedule> newInstance({
     String resourceType,
@@ -67,13 +67,9 @@ class Schedule {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Schedule';
@@ -201,41 +197,28 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ScheduleToJson(Schedule instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('active', instance.active);
-  writeNotNull('elementActive', instance.elementActive?.toJson());
-  writeNotNull('serviceCategory',
-      instance.serviceCategory?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'serviceType', instance.serviceType?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
-  writeNotNull('actor', instance.actor?.map((e) => e?.toJson())?.toList());
-  writeNotNull('planningHorizon', instance.planningHorizon?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment', instance.elementComment?.toJson());
-  return val;
-}
+Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'active': instance.active,
+      'elementActive': instance.elementActive?.toJson(),
+      'serviceCategory':
+          instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
+      'serviceType': instance.serviceType?.map((e) => e?.toJson())?.toList(),
+      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
+      'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
+      'planningHorizon': instance.planningHorizon?.toJson(),
+      'comment': instance.comment,
+      'elementComment': instance.elementComment?.toJson(),
+    };

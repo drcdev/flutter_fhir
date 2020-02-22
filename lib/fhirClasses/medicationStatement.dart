@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicationStatement {
   static Future<MedicationStatement> newInstance({
     String resourceType,
@@ -94,13 +94,9 @@ class MedicationStatement {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MedicationStatement';
@@ -294,56 +290,42 @@ MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MedicationStatementToJson(MedicationStatement instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
-  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull(
-      'statusReason', instance.statusReason?.map((e) => e?.toJson())?.toList());
-  writeNotNull('category', instance.category?.toJson());
-  writeNotNull('medicationCodeableConcept',
-      instance.medicationCodeableConcept?.toJson());
-  writeNotNull('medicationReference', instance.medicationReference?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('context', instance.context?.toJson());
-  writeNotNull('effectiveDateTime', instance.effectiveDateTime);
-  writeNotNull(
-      'elementEffectiveDateTime', instance.elementEffectiveDateTime?.toJson());
-  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
-  writeNotNull('dateAsserted', instance.dateAsserted?.toIso8601String());
-  writeNotNull('elementDateAsserted', instance.elementDateAsserted?.toJson());
-  writeNotNull('informationSource', instance.informationSource?.toJson());
-  writeNotNull(
-      'derivedFrom', instance.derivedFrom?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
-  writeNotNull('reasonReference',
-      instance.reasonReference?.map((e) => e?.toJson())?.toList());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  writeNotNull('dosage', instance.dosage?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$MedicationStatementToJson(
+        MedicationStatement instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
+      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'statusReason': instance.statusReason?.map((e) => e?.toJson())?.toList(),
+      'category': instance.category?.toJson(),
+      'medicationCodeableConcept': instance.medicationCodeableConcept?.toJson(),
+      'medicationReference': instance.medicationReference?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'context': instance.context?.toJson(),
+      'effectiveDateTime': instance.effectiveDateTime,
+      'elementEffectiveDateTime': instance.elementEffectiveDateTime?.toJson(),
+      'effectivePeriod': instance.effectivePeriod?.toJson(),
+      'dateAsserted': instance.dateAsserted?.toIso8601String(),
+      'elementDateAsserted': instance.elementDateAsserted?.toJson(),
+      'informationSource': instance.informationSource?.toJson(),
+      'derivedFrom': instance.derivedFrom?.map((e) => e?.toJson())?.toList(),
+      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
+      'reasonReference':
+          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'dosage': instance.dosage?.map((e) => e?.toJson())?.toList(),
+    };

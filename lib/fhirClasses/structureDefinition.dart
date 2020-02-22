@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureDefinition {
   static Future<StructureDefinition> newInstance({
     String resourceType,
@@ -138,13 +138,9 @@ class StructureDefinition {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'StructureDefinition';
@@ -266,7 +262,7 @@ class StructureDefinition {
   Map<String, dynamic> toJson() => _$StructureDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureDefinition_Mapping {
   static Future<StructureDefinition_Mapping> newInstance({
     String id,
@@ -284,7 +280,7 @@ class StructureDefinition_Mapping {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Mapping newStructureDefinition_Mapping =
         new StructureDefinition_Mapping(
-      id: id ?? await fhirDb.newResourceId('StructureDefinition_Mapping'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identity: identity,
@@ -330,7 +326,7 @@ class StructureDefinition_Mapping {
   Map<String, dynamic> toJson() => _$StructureDefinition_MappingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureDefinition_Context {
   static Future<StructureDefinition_Context> newInstance({
     String id,
@@ -344,7 +340,7 @@ class StructureDefinition_Context {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Context newStructureDefinition_Context =
         new StructureDefinition_Context(
-      id: id ?? await fhirDb.newResourceId('StructureDefinition_Context'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -378,7 +374,7 @@ class StructureDefinition_Context {
   Map<String, dynamic> toJson() => _$StructureDefinition_ContextToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureDefinition_Snapshot {
   static Future<StructureDefinition_Snapshot> newInstance({
     String id,
@@ -389,7 +385,7 @@ class StructureDefinition_Snapshot {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Snapshot newStructureDefinition_Snapshot =
         new StructureDefinition_Snapshot(
-      id: id ?? await fhirDb.newResourceId('StructureDefinition_Snapshot'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       element: element,
@@ -414,7 +410,7 @@ class StructureDefinition_Snapshot {
   Map<String, dynamic> toJson() => _$StructureDefinition_SnapshotToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StructureDefinition_Differential {
   static Future<StructureDefinition_Differential> newInstance({
     String id,
@@ -425,7 +421,7 @@ class StructureDefinition_Differential {
     var fhirDb = new DatabaseHelper();
     StructureDefinition_Differential newStructureDefinition_Differential =
         new StructureDefinition_Differential(
-      id: id ?? await fhirDb.newResourceId('StructureDefinition_Differential'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       element: element,
@@ -603,78 +599,67 @@ StructureDefinition _$StructureDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StructureDefinitionToJson(StructureDefinition instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('title', instance.title);
-  writeNotNull('elementTitle', instance.elementTitle?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('experimental', instance.experimental);
-  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('publisher', instance.publisher);
-  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull(
-      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('purpose', instance.purpose);
-  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
-  writeNotNull('copyright', instance.copyright);
-  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
-  writeNotNull('keyword', instance.keyword?.map((e) => e?.toJson())?.toList());
-  writeNotNull('fhirVersion', instance.fhirVersion);
-  writeNotNull('elementFhirVersion', instance.elementFhirVersion?.toJson());
-  writeNotNull('mapping', instance.mapping?.map((e) => e?.toJson())?.toList());
-  writeNotNull('kind', instance.kind);
-  writeNotNull('elementKind', instance.elementKind?.toJson());
-  writeNotNull('abstract', instance.abstract);
-  writeNotNull('elementAbstract', instance.elementAbstract?.toJson());
-  writeNotNull('context', instance.context?.map((e) => e?.toJson())?.toList());
-  writeNotNull('contextInvariant', instance.contextInvariant);
-  writeNotNull('elementContextInvariant',
-      instance.elementContextInvariant?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('baseDefinition', instance.baseDefinition);
-  writeNotNull('derivation', instance.derivation);
-  writeNotNull('elementDerivation', instance.elementDerivation?.toJson());
-  writeNotNull('snapshot', instance.snapshot?.toJson());
-  writeNotNull('differential', instance.differential?.toJson());
-  return val;
-}
+Map<String, dynamic> _$StructureDefinitionToJson(
+        StructureDefinition instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'keyword': instance.keyword?.map((e) => e?.toJson())?.toList(),
+      'fhirVersion': instance.fhirVersion,
+      'elementFhirVersion': instance.elementFhirVersion?.toJson(),
+      'mapping': instance.mapping?.map((e) => e?.toJson())?.toList(),
+      'kind': instance.kind,
+      'elementKind': instance.elementKind?.toJson(),
+      'abstract': instance.abstract,
+      'elementAbstract': instance.elementAbstract?.toJson(),
+      'context': instance.context?.map((e) => e?.toJson())?.toList(),
+      'contextInvariant': instance.contextInvariant,
+      'elementContextInvariant':
+          instance.elementContextInvariant?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'baseDefinition': instance.baseDefinition,
+      'derivation': instance.derivation,
+      'elementDerivation': instance.elementDerivation?.toJson(),
+      'snapshot': instance.snapshot?.toJson(),
+      'differential': instance.differential?.toJson(),
+    };
 
 StructureDefinition_Mapping _$StructureDefinition_MappingFromJson(
     Map<String, dynamic> json) {
@@ -708,30 +693,21 @@ StructureDefinition_Mapping _$StructureDefinition_MappingFromJson(
 }
 
 Map<String, dynamic> _$StructureDefinition_MappingToJson(
-    StructureDefinition_Mapping instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identity', instance.identity);
-  writeNotNull('elementIdentity', instance.elementIdentity?.toJson());
-  writeNotNull('uri', instance.uri);
-  writeNotNull('elementUri', instance.elementUri?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment', instance.elementComment?.toJson());
-  return val;
-}
+        StructureDefinition_Mapping instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identity': instance.identity,
+      'elementIdentity': instance.elementIdentity?.toJson(),
+      'uri': instance.uri,
+      'elementUri': instance.elementUri?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'comment': instance.comment,
+      'elementComment': instance.elementComment?.toJson(),
+    };
 
 StructureDefinition_Context _$StructureDefinition_ContextFromJson(
     Map<String, dynamic> json) {
@@ -757,26 +733,17 @@ StructureDefinition_Context _$StructureDefinition_ContextFromJson(
 }
 
 Map<String, dynamic> _$StructureDefinition_ContextToJson(
-    StructureDefinition_Context instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('expression', instance.expression);
-  writeNotNull('elementExpression', instance.elementExpression?.toJson());
-  return val;
-}
+        StructureDefinition_Context instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'expression': instance.expression,
+      'elementExpression': instance.elementExpression?.toJson(),
+    };
 
 StructureDefinition_Snapshot _$StructureDefinition_SnapshotFromJson(
     Map<String, dynamic> json) {
@@ -799,23 +766,14 @@ StructureDefinition_Snapshot _$StructureDefinition_SnapshotFromJson(
 }
 
 Map<String, dynamic> _$StructureDefinition_SnapshotToJson(
-    StructureDefinition_Snapshot instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('element', instance.element?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        StructureDefinition_Snapshot instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'element': instance.element?.map((e) => e?.toJson())?.toList(),
+    };
 
 StructureDefinition_Differential _$StructureDefinition_DifferentialFromJson(
     Map<String, dynamic> json) {
@@ -838,20 +796,11 @@ StructureDefinition_Differential _$StructureDefinition_DifferentialFromJson(
 }
 
 Map<String, dynamic> _$StructureDefinition_DifferentialToJson(
-    StructureDefinition_Differential instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('element', instance.element?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        StructureDefinition_Differential instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'element': instance.element?.map((e) => e?.toJson())?.toList(),
+    };

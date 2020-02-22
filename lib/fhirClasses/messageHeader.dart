@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MessageHeader {
   static Future<MessageHeader> newInstance({
     String resourceType,
@@ -73,13 +73,9 @@ class MessageHeader {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MessageHeader';
@@ -139,7 +135,7 @@ class MessageHeader {
   Map<String, dynamic> toJson() => _$MessageHeaderToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MessageHeader_Destination {
   static Future<MessageHeader_Destination> newInstance({
     String id,
@@ -155,7 +151,7 @@ class MessageHeader_Destination {
     var fhirDb = new DatabaseHelper();
     MessageHeader_Destination newMessageHeader_Destination =
         new MessageHeader_Destination(
-      id: id ?? await fhirDb.newResourceId('MessageHeader_Destination'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -195,7 +191,7 @@ class MessageHeader_Destination {
   Map<String, dynamic> toJson() => _$MessageHeader_DestinationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MessageHeader_Source {
   static Future<MessageHeader_Source> newInstance({
     String id,
@@ -213,7 +209,7 @@ class MessageHeader_Source {
   }) async {
     var fhirDb = new DatabaseHelper();
     MessageHeader_Source newMessageHeader_Source = new MessageHeader_Source(
-      id: id ?? await fhirDb.newResourceId('MessageHeader_Source'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       name: name,
@@ -262,7 +258,7 @@ class MessageHeader_Source {
   Map<String, dynamic> toJson() => _$MessageHeader_SourceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MessageHeader_Response {
   static Future<MessageHeader_Response> newInstance({
     String id,
@@ -277,7 +273,7 @@ class MessageHeader_Response {
     var fhirDb = new DatabaseHelper();
     MessageHeader_Response newMessageHeader_Response =
         new MessageHeader_Response(
-      id: id ?? await fhirDb.newResourceId('MessageHeader_Response'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -393,44 +389,34 @@ MessageHeader _$MessageHeaderFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MessageHeaderToJson(MessageHeader instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('eventCoding', instance.eventCoding?.toJson());
-  writeNotNull('eventUri', instance.eventUri);
-  writeNotNull('elementEventUri', instance.elementEventUri?.toJson());
-  writeNotNull(
-      'destination', instance.destination?.map((e) => e?.toJson())?.toList());
-  writeNotNull('sender', instance.sender?.toJson());
-  writeNotNull('enterer', instance.enterer?.toJson());
-  writeNotNull('author', instance.author?.toJson());
-  writeNotNull('source', instance.source?.toJson());
-  writeNotNull('responsible', instance.responsible?.toJson());
-  writeNotNull('reason', instance.reason?.toJson());
-  writeNotNull('response', instance.response?.toJson());
-  writeNotNull('focus', instance.focus?.map((e) => e?.toJson())?.toList());
-  writeNotNull('definition', instance.definition);
-  return val;
-}
+Map<String, dynamic> _$MessageHeaderToJson(MessageHeader instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'eventCoding': instance.eventCoding?.toJson(),
+      'eventUri': instance.eventUri,
+      'elementEventUri': instance.elementEventUri?.toJson(),
+      'destination': instance.destination?.map((e) => e?.toJson())?.toList(),
+      'sender': instance.sender?.toJson(),
+      'enterer': instance.enterer?.toJson(),
+      'author': instance.author?.toJson(),
+      'source': instance.source?.toJson(),
+      'responsible': instance.responsible?.toJson(),
+      'reason': instance.reason?.toJson(),
+      'response': instance.response?.toJson(),
+      'focus': instance.focus?.map((e) => e?.toJson())?.toList(),
+      'definition': instance.definition,
+    };
 
 MessageHeader_Destination _$MessageHeader_DestinationFromJson(
     Map<String, dynamic> json) {
@@ -462,28 +448,19 @@ MessageHeader_Destination _$MessageHeader_DestinationFromJson(
 }
 
 Map<String, dynamic> _$MessageHeader_DestinationToJson(
-    MessageHeader_Destination instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('target', instance.target?.toJson());
-  writeNotNull('endpoint', instance.endpoint);
-  writeNotNull('elementEndpoint', instance.elementEndpoint?.toJson());
-  writeNotNull('receiver', instance.receiver?.toJson());
-  return val;
-}
+        MessageHeader_Destination instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'target': instance.target?.toJson(),
+      'endpoint': instance.endpoint,
+      'elementEndpoint': instance.elementEndpoint?.toJson(),
+      'receiver': instance.receiver?.toJson(),
+    };
 
 MessageHeader_Source _$MessageHeader_SourceFromJson(Map<String, dynamic> json) {
   return MessageHeader_Source(
@@ -519,31 +496,22 @@ MessageHeader_Source _$MessageHeader_SourceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$MessageHeader_SourceToJson(
-    MessageHeader_Source instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('software', instance.software);
-  writeNotNull('elementSoftware', instance.elementSoftware?.toJson());
-  writeNotNull('version', instance.version);
-  writeNotNull('elementVersion', instance.elementVersion?.toJson());
-  writeNotNull('contact', instance.contact?.toJson());
-  writeNotNull('endpoint', instance.endpoint);
-  writeNotNull('elementEndpoint', instance.elementEndpoint?.toJson());
-  return val;
-}
+        MessageHeader_Source instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'software': instance.software,
+      'elementSoftware': instance.elementSoftware?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'contact': instance.contact?.toJson(),
+      'endpoint': instance.endpoint,
+      'elementEndpoint': instance.elementEndpoint?.toJson(),
+    };
 
 MessageHeader_Response _$MessageHeader_ResponseFromJson(
     Map<String, dynamic> json) {
@@ -572,24 +540,15 @@ MessageHeader_Response _$MessageHeader_ResponseFromJson(
 }
 
 Map<String, dynamic> _$MessageHeader_ResponseToJson(
-    MessageHeader_Response instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier);
-  writeNotNull('elementIdentifier', instance.elementIdentifier?.toJson());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  writeNotNull('details', instance.details?.toJson());
-  return val;
-}
+        MessageHeader_Response instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier,
+      'elementIdentifier': instance.elementIdentifier?.toJson(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'details': instance.details?.toJson(),
+    };

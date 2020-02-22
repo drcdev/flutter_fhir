@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Money {
   static Future<Money> newInstance({
     String id,
@@ -16,7 +16,7 @@ class Money {
   }) async {
     var fhirDb = new DatabaseHelper();
     Money newMoney = new Money(
-      id: id ?? await fhirDb.newResourceId('Money'),
+      id: id,
       extension: extension,
       value: value,
       elementValue: elementValue,
@@ -69,21 +69,11 @@ Money _$MoneyFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MoneyToJson(Money instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  writeNotNull('currency', instance.currency);
-  writeNotNull('elementCurrency', instance.elementCurrency?.toJson());
-  return val;
-}
+Map<String, dynamic> _$MoneyToJson(Money instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+      'currency': instance.currency,
+      'elementCurrency': instance.elementCurrency?.toJson(),
+    };

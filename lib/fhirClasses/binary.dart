@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Binary {
   static Future<Binary> newInstance({
     String resourceType,
@@ -43,13 +43,9 @@ class Binary {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Binary';
@@ -119,26 +115,17 @@ Binary _$BinaryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$BinaryToJson(Binary instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('contentType', instance.contentType);
-  writeNotNull('elementContentType', instance.elementContentType?.toJson());
-  writeNotNull('securityContext', instance.securityContext?.toJson());
-  writeNotNull('data', instance.data);
-  writeNotNull('elementData', instance.elementData?.toJson());
-  return val;
-}
+Map<String, dynamic> _$BinaryToJson(Binary instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'contentType': instance.contentType,
+      'elementContentType': instance.elementContentType?.toJson(),
+      'securityContext': instance.securityContext?.toJson(),
+      'data': instance.data,
+      'elementData': instance.elementData?.toJson(),
+    };

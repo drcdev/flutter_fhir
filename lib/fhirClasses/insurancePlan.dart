@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan {
   static Future<InsurancePlan> newInstance({
     String resourceType,
@@ -86,13 +86,9 @@ class InsurancePlan {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'InsurancePlan';
@@ -160,7 +156,7 @@ class InsurancePlan {
   Map<String, dynamic> toJson() => _$InsurancePlanToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_Contact {
   static Future<InsurancePlan_Contact> newInstance({
     String id,
@@ -173,7 +169,7 @@ class InsurancePlan_Contact {
   }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Contact newInsurancePlan_Contact = new InsurancePlan_Contact(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_Contact'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       purpose: purpose,
@@ -207,7 +203,7 @@ class InsurancePlan_Contact {
   Map<String, dynamic> toJson() => _$InsurancePlan_ContactToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_Coverage {
   static Future<InsurancePlan_Coverage> newInstance({
     String id,
@@ -220,7 +216,7 @@ class InsurancePlan_Coverage {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Coverage newInsurancePlan_Coverage =
         new InsurancePlan_Coverage(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_Coverage'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -251,7 +247,7 @@ class InsurancePlan_Coverage {
   Map<String, dynamic> toJson() => _$InsurancePlan_CoverageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit {
   static Future<InsurancePlan_Benefit> newInstance({
     String id,
@@ -264,7 +260,7 @@ class InsurancePlan_Benefit {
   }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Benefit newInsurancePlan_Benefit = new InsurancePlan_Benefit(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_Benefit'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -298,7 +294,7 @@ class InsurancePlan_Benefit {
   Map<String, dynamic> toJson() => _$InsurancePlan_BenefitToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_Limit {
   static Future<InsurancePlan_Limit> newInstance({
     String id,
@@ -309,7 +305,7 @@ class InsurancePlan_Limit {
   }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Limit newInsurancePlan_Limit = new InsurancePlan_Limit(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_Limit'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       value: value,
@@ -337,7 +333,7 @@ class InsurancePlan_Limit {
   Map<String, dynamic> toJson() => _$InsurancePlan_LimitToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_Plan {
   static Future<InsurancePlan_Plan> newInstance({
     String id,
@@ -352,7 +348,7 @@ class InsurancePlan_Plan {
   }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Plan newInsurancePlan_Plan = new InsurancePlan_Plan(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_Plan'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -392,7 +388,7 @@ class InsurancePlan_Plan {
   Map<String, dynamic> toJson() => _$InsurancePlan_PlanToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_GeneralCost {
   static Future<InsurancePlan_GeneralCost> newInstance({
     String id,
@@ -408,7 +404,7 @@ class InsurancePlan_GeneralCost {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_GeneralCost newInsurancePlan_GeneralCost =
         new InsurancePlan_GeneralCost(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_GeneralCost'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -448,7 +444,7 @@ class InsurancePlan_GeneralCost {
   Map<String, dynamic> toJson() => _$InsurancePlan_GeneralCostToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_SpecificCost {
   static Future<InsurancePlan_SpecificCost> newInstance({
     String id,
@@ -460,7 +456,7 @@ class InsurancePlan_SpecificCost {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_SpecificCost newInsurancePlan_SpecificCost =
         new InsurancePlan_SpecificCost(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_SpecificCost'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -488,7 +484,7 @@ class InsurancePlan_SpecificCost {
   Map<String, dynamic> toJson() => _$InsurancePlan_SpecificCostToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit1 {
   static Future<InsurancePlan_Benefit1> newInstance({
     String id,
@@ -500,7 +496,7 @@ class InsurancePlan_Benefit1 {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Benefit1 newInsurancePlan_Benefit1 =
         new InsurancePlan_Benefit1(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_Benefit1'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -528,7 +524,7 @@ class InsurancePlan_Benefit1 {
   Map<String, dynamic> toJson() => _$InsurancePlan_Benefit1ToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class InsurancePlan_Cost {
   static Future<InsurancePlan_Cost> newInstance({
     String id,
@@ -541,7 +537,7 @@ class InsurancePlan_Cost {
   }) async {
     var fhirDb = new DatabaseHelper();
     InsurancePlan_Cost newInsurancePlan_Cost = new InsurancePlan_Cost(
-      id: id ?? await fhirDb.newResourceId('InsurancePlan_Cost'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -673,52 +669,38 @@ InsurancePlan _$InsurancePlanFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$InsurancePlanToJson(InsurancePlan instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('alias', instance.alias);
-  writeNotNull(
-      'elementAlias', instance.elementAlias?.map((e) => e?.toJson())?.toList());
-  writeNotNull('period', instance.period?.toJson());
-  writeNotNull('ownedBy', instance.ownedBy?.toJson());
-  writeNotNull('administeredBy', instance.administeredBy?.toJson());
-  writeNotNull(
-      'coverageArea', instance.coverageArea?.map((e) => e?.toJson())?.toList());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
-  writeNotNull('network', instance.network?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'coverage', instance.coverage?.map((e) => e?.toJson())?.toList());
-  writeNotNull('plan', instance.plan?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$InsurancePlanToJson(InsurancePlan instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'alias': instance.alias,
+      'elementAlias': instance.elementAlias?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+      'ownedBy': instance.ownedBy?.toJson(),
+      'administeredBy': instance.administeredBy?.toJson(),
+      'coverageArea': instance.coverageArea?.map((e) => e?.toJson())?.toList(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
+      'network': instance.network?.map((e) => e?.toJson())?.toList(),
+      'coverage': instance.coverage?.map((e) => e?.toJson())?.toList(),
+      'plan': instance.plan?.map((e) => e?.toJson())?.toList(),
+    };
 
 InsurancePlan_Contact _$InsurancePlan_ContactFromJson(
     Map<String, dynamic> json) {
@@ -749,26 +731,17 @@ InsurancePlan_Contact _$InsurancePlan_ContactFromJson(
 }
 
 Map<String, dynamic> _$InsurancePlan_ContactToJson(
-    InsurancePlan_Contact instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('purpose', instance.purpose?.toJson());
-  writeNotNull('name', instance.name?.toJson());
-  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
-  writeNotNull('address', instance.address?.toJson());
-  return val;
-}
+        InsurancePlan_Contact instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose?.toJson(),
+      'name': instance.name?.toJson(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'address': instance.address?.toJson(),
+    };
 
 InsurancePlan_Coverage _$InsurancePlan_CoverageFromJson(
     Map<String, dynamic> json) {
@@ -798,25 +771,16 @@ InsurancePlan_Coverage _$InsurancePlan_CoverageFromJson(
 }
 
 Map<String, dynamic> _$InsurancePlan_CoverageToJson(
-    InsurancePlan_Coverage instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('network', instance.network?.map((e) => e?.toJson())?.toList());
-  writeNotNull('benefit', instance.benefit?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        InsurancePlan_Coverage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'network': instance.network?.map((e) => e?.toJson())?.toList(),
+      'benefit': instance.benefit?.map((e) => e?.toJson())?.toList(),
+    };
 
 InsurancePlan_Benefit _$InsurancePlan_BenefitFromJson(
     Map<String, dynamic> json) {
@@ -846,26 +810,17 @@ InsurancePlan_Benefit _$InsurancePlan_BenefitFromJson(
 }
 
 Map<String, dynamic> _$InsurancePlan_BenefitToJson(
-    InsurancePlan_Benefit instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('requirement', instance.requirement);
-  writeNotNull('elementRequirement', instance.elementRequirement?.toJson());
-  writeNotNull('limit', instance.limit?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        InsurancePlan_Benefit instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'requirement': instance.requirement,
+      'elementRequirement': instance.elementRequirement?.toJson(),
+      'limit': instance.limit?.map((e) => e?.toJson())?.toList(),
+    };
 
 InsurancePlan_Limit _$InsurancePlan_LimitFromJson(Map<String, dynamic> json) {
   return InsurancePlan_Limit(
@@ -887,24 +842,16 @@ InsurancePlan_Limit _$InsurancePlan_LimitFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$InsurancePlan_LimitToJson(InsurancePlan_Limit instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('value', instance.value?.toJson());
-  writeNotNull('code', instance.code?.toJson());
-  return val;
-}
+Map<String, dynamic> _$InsurancePlan_LimitToJson(
+        InsurancePlan_Limit instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'value': instance.value?.toJson(),
+      'code': instance.code?.toJson(),
+    };
 
 InsurancePlan_Plan _$InsurancePlan_PlanFromJson(Map<String, dynamic> json) {
   return InsurancePlan_Plan(
@@ -945,32 +892,19 @@ InsurancePlan_Plan _$InsurancePlan_PlanFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$InsurancePlan_PlanToJson(InsurancePlan_Plan instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull(
-      'coverageArea', instance.coverageArea?.map((e) => e?.toJson())?.toList());
-  writeNotNull('network', instance.network?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'generalCost', instance.generalCost?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'specificCost', instance.specificCost?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$InsurancePlan_PlanToJson(InsurancePlan_Plan instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'coverageArea': instance.coverageArea?.map((e) => e?.toJson())?.toList(),
+      'network': instance.network?.map((e) => e?.toJson())?.toList(),
+      'generalCost': instance.generalCost?.map((e) => e?.toJson())?.toList(),
+      'specificCost': instance.specificCost?.map((e) => e?.toJson())?.toList(),
+    };
 
 InsurancePlan_GeneralCost _$InsurancePlan_GeneralCostFromJson(
     Map<String, dynamic> json) {
@@ -1002,28 +936,19 @@ InsurancePlan_GeneralCost _$InsurancePlan_GeneralCostFromJson(
 }
 
 Map<String, dynamic> _$InsurancePlan_GeneralCostToJson(
-    InsurancePlan_GeneralCost instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('groupSize', instance.groupSize);
-  writeNotNull('elementGroupSize', instance.elementGroupSize?.toJson());
-  writeNotNull('cost', instance.cost?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment', instance.elementComment?.toJson());
-  return val;
-}
+        InsurancePlan_GeneralCost instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'groupSize': instance.groupSize,
+      'elementGroupSize': instance.elementGroupSize?.toJson(),
+      'cost': instance.cost?.toJson(),
+      'comment': instance.comment,
+      'elementComment': instance.elementComment?.toJson(),
+    };
 
 InsurancePlan_SpecificCost _$InsurancePlan_SpecificCostFromJson(
     Map<String, dynamic> json) {
@@ -1049,24 +974,15 @@ InsurancePlan_SpecificCost _$InsurancePlan_SpecificCostFromJson(
 }
 
 Map<String, dynamic> _$InsurancePlan_SpecificCostToJson(
-    InsurancePlan_SpecificCost instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('category', instance.category?.toJson());
-  writeNotNull('benefit', instance.benefit?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        InsurancePlan_SpecificCost instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'category': instance.category?.toJson(),
+      'benefit': instance.benefit?.map((e) => e?.toJson())?.toList(),
+    };
 
 InsurancePlan_Benefit1 _$InsurancePlan_Benefit1FromJson(
     Map<String, dynamic> json) {
@@ -1092,24 +1008,15 @@ InsurancePlan_Benefit1 _$InsurancePlan_Benefit1FromJson(
 }
 
 Map<String, dynamic> _$InsurancePlan_Benefit1ToJson(
-    InsurancePlan_Benefit1 instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('cost', instance.cost?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        InsurancePlan_Benefit1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'cost': instance.cost?.map((e) => e?.toJson())?.toList(),
+    };
 
 InsurancePlan_Cost _$InsurancePlan_CostFromJson(Map<String, dynamic> json) {
   return InsurancePlan_Cost(
@@ -1140,24 +1047,14 @@ InsurancePlan_Cost _$InsurancePlan_CostFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$InsurancePlan_CostToJson(InsurancePlan_Cost instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('applicability', instance.applicability?.toJson());
-  writeNotNull(
-      'qualifiers', instance.qualifiers?.map((e) => e?.toJson())?.toList());
-  writeNotNull('value', instance.value?.toJson());
-  return val;
-}
+Map<String, dynamic> _$InsurancePlan_CostToJson(InsurancePlan_Cost instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'applicability': instance.applicability?.toJson(),
+      'qualifiers': instance.qualifiers?.map((e) => e?.toJson())?.toList(),
+      'value': instance.value?.toJson(),
+    };

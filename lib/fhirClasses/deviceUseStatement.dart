@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DeviceUseStatement {
   static Future<DeviceUseStatement> newInstance({
     String resourceType,
@@ -86,13 +86,9 @@ class DeviceUseStatement {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'DeviceUseStatement';
@@ -260,50 +256,37 @@ DeviceUseStatement _$DeviceUseStatementFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DeviceUseStatementToJson(DeviceUseStatement instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull(
-      'derivedFrom', instance.derivedFrom?.map((e) => e?.toJson())?.toList());
-  writeNotNull('timingTiming', instance.timingTiming?.toJson());
-  writeNotNull('timingPeriod', instance.timingPeriod?.toJson());
-  writeNotNull('timingDateTime', instance.timingDateTime);
-  writeNotNull(
-      'elementTimingDateTime', instance.elementTimingDateTime?.toJson());
-  writeNotNull('recordedOn', instance.recordedOn?.toIso8601String());
-  writeNotNull('elementRecordedOn', instance.elementRecordedOn?.toJson());
-  writeNotNull('source', instance.source?.toJson());
-  writeNotNull('device', instance.device?.toJson());
-  writeNotNull(
-      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
-  writeNotNull('reasonReference',
-      instance.reasonReference?.map((e) => e?.toJson())?.toList());
-  writeNotNull('bodySite', instance.bodySite?.toJson());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$DeviceUseStatementToJson(DeviceUseStatement instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'derivedFrom': instance.derivedFrom?.map((e) => e?.toJson())?.toList(),
+      'timingTiming': instance.timingTiming?.toJson(),
+      'timingPeriod': instance.timingPeriod?.toJson(),
+      'timingDateTime': instance.timingDateTime,
+      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
+      'recordedOn': instance.recordedOn?.toIso8601String(),
+      'elementRecordedOn': instance.elementRecordedOn?.toJson(),
+      'source': instance.source?.toJson(),
+      'device': instance.device?.toJson(),
+      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
+      'reasonReference':
+          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
+      'bodySite': instance.bodySite?.toJson(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+    };

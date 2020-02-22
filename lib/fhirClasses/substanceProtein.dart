@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceProtein {
   static Future<SubstanceProtein> newInstance({
     String resourceType,
@@ -58,13 +58,9 @@ class SubstanceProtein {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'SubstanceProtein';
@@ -110,7 +106,7 @@ class SubstanceProtein {
   Map<String, dynamic> toJson() => _$SubstanceProteinToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SubstanceProtein_Subunit {
   static Future<SubstanceProtein_Subunit> newInstance({
     String id,
@@ -133,7 +129,7 @@ class SubstanceProtein_Subunit {
     var fhirDb = new DatabaseHelper();
     SubstanceProtein_Subunit newSubstanceProtein_Subunit =
         new SubstanceProtein_Subunit(
-      id: id ?? await fhirDb.newResourceId('SubstanceProtein_Subunit'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       subunit: subunit,
@@ -254,38 +250,28 @@ SubstanceProtein _$SubstanceProteinFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SubstanceProteinToJson(SubstanceProtein instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('sequenceType', instance.sequenceType?.toJson());
-  writeNotNull('numberOfSubunits', instance.numberOfSubunits);
-  writeNotNull(
-      'elementNumberOfSubunits', instance.elementNumberOfSubunits?.toJson());
-  writeNotNull('disulfideLinkage', instance.disulfideLinkage);
-  writeNotNull('elementDisulfideLinkage',
-      instance.elementDisulfideLinkage?.map((e) => e?.toJson())?.toList());
-  writeNotNull('subunit', instance.subunit?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$SubstanceProteinToJson(SubstanceProtein instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'sequenceType': instance.sequenceType?.toJson(),
+      'numberOfSubunits': instance.numberOfSubunits,
+      'elementNumberOfSubunits': instance.elementNumberOfSubunits?.toJson(),
+      'disulfideLinkage': instance.disulfideLinkage,
+      'elementDisulfideLinkage':
+          instance.elementDisulfideLinkage?.map((e) => e?.toJson())?.toList(),
+      'subunit': instance.subunit?.map((e) => e?.toJson())?.toList(),
+    };
 
 SubstanceProtein_Subunit _$SubstanceProtein_SubunitFromJson(
     Map<String, dynamic> json) {
@@ -337,36 +323,25 @@ SubstanceProtein_Subunit _$SubstanceProtein_SubunitFromJson(
 }
 
 Map<String, dynamic> _$SubstanceProtein_SubunitToJson(
-    SubstanceProtein_Subunit instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('subunit', instance.subunit);
-  writeNotNull('elementSubunit', instance.elementSubunit?.toJson());
-  writeNotNull('sequence', instance.sequence);
-  writeNotNull('elementSequence', instance.elementSequence?.toJson());
-  writeNotNull('length', instance.length);
-  writeNotNull('elementLength', instance.elementLength?.toJson());
-  writeNotNull('sequenceAttachment', instance.sequenceAttachment?.toJson());
-  writeNotNull(
-      'nTerminalModificationId', instance.nTerminalModificationId?.toJson());
-  writeNotNull('nTerminalModification', instance.nTerminalModification);
-  writeNotNull('elementNTerminalModification',
-      instance.elementNTerminalModification?.toJson());
-  writeNotNull(
-      'cTerminalModificationId', instance.cTerminalModificationId?.toJson());
-  writeNotNull('cTerminalModification', instance.cTerminalModification);
-  writeNotNull('elementCTerminalModification',
-      instance.elementCTerminalModification?.toJson());
-  return val;
-}
+        SubstanceProtein_Subunit instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'subunit': instance.subunit,
+      'elementSubunit': instance.elementSubunit?.toJson(),
+      'sequence': instance.sequence,
+      'elementSequence': instance.elementSequence?.toJson(),
+      'length': instance.length,
+      'elementLength': instance.elementLength?.toJson(),
+      'sequenceAttachment': instance.sequenceAttachment?.toJson(),
+      'nTerminalModificationId': instance.nTerminalModificationId?.toJson(),
+      'nTerminalModification': instance.nTerminalModification,
+      'elementNTerminalModification':
+          instance.elementNTerminalModification?.toJson(),
+      'cTerminalModificationId': instance.cTerminalModificationId?.toJson(),
+      'cTerminalModification': instance.cTerminalModification,
+      'elementCTerminalModification':
+          instance.elementCTerminalModification?.toJson(),
+    };

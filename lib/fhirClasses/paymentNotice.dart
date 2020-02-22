@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class PaymentNotice {
   static Future<PaymentNotice> newInstance({
     String resourceType,
@@ -77,13 +77,9 @@ class PaymentNotice {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'PaymentNotice';
@@ -230,43 +226,33 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PaymentNoticeToJson(PaymentNotice instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('request', instance.request?.toJson());
-  writeNotNull('response', instance.response?.toJson());
-  writeNotNull('created', instance.created?.toIso8601String());
-  writeNotNull('elementCreated', instance.elementCreated?.toJson());
-  writeNotNull('provider', instance.provider?.toJson());
-  writeNotNull('payment', instance.payment?.toJson());
-  writeNotNull('paymentDate', instance.paymentDate);
-  writeNotNull('elementPaymentDate', instance.elementPaymentDate?.toJson());
-  writeNotNull('payee', instance.payee?.toJson());
-  writeNotNull('recipient', instance.recipient?.toJson());
-  writeNotNull('amount', instance.amount?.toJson());
-  writeNotNull('paymentStatus', instance.paymentStatus?.toJson());
-  return val;
-}
+Map<String, dynamic> _$PaymentNoticeToJson(PaymentNotice instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'request': instance.request?.toJson(),
+      'response': instance.response?.toJson(),
+      'created': instance.created?.toIso8601String(),
+      'elementCreated': instance.elementCreated?.toJson(),
+      'provider': instance.provider?.toJson(),
+      'payment': instance.payment?.toJson(),
+      'paymentDate': instance.paymentDate,
+      'elementPaymentDate': instance.elementPaymentDate?.toJson(),
+      'payee': instance.payee?.toJson(),
+      'recipient': instance.recipient?.toJson(),
+      'amount': instance.amount?.toJson(),
+      'paymentStatus': instance.paymentStatus?.toJson(),
+    };

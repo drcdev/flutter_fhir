@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class HealthcareService {
   static Future<HealthcareService> newInstance({
     String resourceType,
@@ -109,13 +109,9 @@ class HealthcareService {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'HealthcareService';
@@ -209,7 +205,7 @@ class HealthcareService {
   Map<String, dynamic> toJson() => _$HealthcareServiceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class HealthcareService_Eligibility {
   static Future<HealthcareService_Eligibility> newInstance({
     String id,
@@ -222,7 +218,7 @@ class HealthcareService_Eligibility {
     var fhirDb = new DatabaseHelper();
     HealthcareService_Eligibility newHealthcareService_Eligibility =
         new HealthcareService_Eligibility(
-      id: id ?? await fhirDb.newResourceId('HealthcareService_Eligibility'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -253,7 +249,7 @@ class HealthcareService_Eligibility {
   Map<String, dynamic> toJson() => _$HealthcareService_EligibilityToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class HealthcareService_AvailableTime {
   static Future<HealthcareService_AvailableTime> newInstance({
     String id,
@@ -271,7 +267,7 @@ class HealthcareService_AvailableTime {
     var fhirDb = new DatabaseHelper();
     HealthcareService_AvailableTime newHealthcareService_AvailableTime =
         new HealthcareService_AvailableTime(
-      id: id ?? await fhirDb.newResourceId('HealthcareService_AvailableTime'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       daysOfWeek: daysOfWeek,
@@ -318,7 +314,7 @@ class HealthcareService_AvailableTime {
       _$HealthcareService_AvailableTimeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class HealthcareService_NotAvailable {
   static Future<HealthcareService_NotAvailable> newInstance({
     String id,
@@ -331,7 +327,7 @@ class HealthcareService_NotAvailable {
     var fhirDb = new DatabaseHelper();
     HealthcareService_NotAvailable newHealthcareService_NotAvailable =
         new HealthcareService_NotAvailable(
-      id: id ?? await fhirDb.newResourceId('HealthcareService_NotAvailable'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -511,75 +507,58 @@ HealthcareService _$HealthcareServiceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$HealthcareServiceToJson(HealthcareService instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('active', instance.active);
-  writeNotNull('elementActive', instance.elementActive?.toJson());
-  writeNotNull('providedBy', instance.providedBy?.toJson());
-  writeNotNull(
-      'category', instance.category?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'location', instance.location?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment', instance.elementComment?.toJson());
-  writeNotNull('extraDetails', instance.extraDetails);
-  writeNotNull('elementExtraDetails', instance.elementExtraDetails?.toJson());
-  writeNotNull('photo', instance.photo?.toJson());
-  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'coverageArea', instance.coverageArea?.map((e) => e?.toJson())?.toList());
-  writeNotNull('serviceProvisionCode',
-      instance.serviceProvisionCode?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'eligibility', instance.eligibility?.map((e) => e?.toJson())?.toList());
-  writeNotNull('program', instance.program?.map((e) => e?.toJson())?.toList());
-  writeNotNull('characteristic',
-      instance.characteristic?.map((e) => e?.toJson())?.toList());
-  writeNotNull('communication',
-      instance.communication?.map((e) => e?.toJson())?.toList());
-  writeNotNull('referralMethod',
-      instance.referralMethod?.map((e) => e?.toJson())?.toList());
-  writeNotNull('appointmentRequired', instance.appointmentRequired);
-  writeNotNull('elementAppointmentRequired',
-      instance.elementAppointmentRequired?.toJson());
-  writeNotNull('availableTime',
-      instance.availableTime?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'notAvailable', instance.notAvailable?.map((e) => e?.toJson())?.toList());
-  writeNotNull('availabilityExceptions', instance.availabilityExceptions);
-  writeNotNull('elementAvailabilityExceptions',
-      instance.elementAvailabilityExceptions?.toJson());
-  writeNotNull(
-      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$HealthcareServiceToJson(HealthcareService instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'active': instance.active,
+      'elementActive': instance.elementActive?.toJson(),
+      'providedBy': instance.providedBy?.toJson(),
+      'category': instance.category?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
+      'location': instance.location?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'comment': instance.comment,
+      'elementComment': instance.elementComment?.toJson(),
+      'extraDetails': instance.extraDetails,
+      'elementExtraDetails': instance.elementExtraDetails?.toJson(),
+      'photo': instance.photo?.toJson(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'coverageArea': instance.coverageArea?.map((e) => e?.toJson())?.toList(),
+      'serviceProvisionCode':
+          instance.serviceProvisionCode?.map((e) => e?.toJson())?.toList(),
+      'eligibility': instance.eligibility?.map((e) => e?.toJson())?.toList(),
+      'program': instance.program?.map((e) => e?.toJson())?.toList(),
+      'characteristic':
+          instance.characteristic?.map((e) => e?.toJson())?.toList(),
+      'communication':
+          instance.communication?.map((e) => e?.toJson())?.toList(),
+      'referralMethod':
+          instance.referralMethod?.map((e) => e?.toJson())?.toList(),
+      'appointmentRequired': instance.appointmentRequired,
+      'elementAppointmentRequired':
+          instance.elementAppointmentRequired?.toJson(),
+      'availableTime':
+          instance.availableTime?.map((e) => e?.toJson())?.toList(),
+      'notAvailable': instance.notAvailable?.map((e) => e?.toJson())?.toList(),
+      'availabilityExceptions': instance.availabilityExceptions,
+      'elementAvailabilityExceptions':
+          instance.elementAvailabilityExceptions?.toJson(),
+      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
+    };
 
 HealthcareService_Eligibility _$HealthcareService_EligibilityFromJson(
     Map<String, dynamic> json) {
@@ -604,25 +583,16 @@ HealthcareService_Eligibility _$HealthcareService_EligibilityFromJson(
 }
 
 Map<String, dynamic> _$HealthcareService_EligibilityToJson(
-    HealthcareService_Eligibility instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('comment', instance.comment);
-  writeNotNull('elementComment', instance.elementComment?.toJson());
-  return val;
-}
+        HealthcareService_Eligibility instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'comment': instance.comment,
+      'elementComment': instance.elementComment?.toJson(),
+    };
 
 HealthcareService_AvailableTime _$HealthcareService_AvailableTimeFromJson(
     Map<String, dynamic> json) {
@@ -659,33 +629,22 @@ HealthcareService_AvailableTime _$HealthcareService_AvailableTimeFromJson(
 }
 
 Map<String, dynamic> _$HealthcareService_AvailableTimeToJson(
-    HealthcareService_AvailableTime instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('daysOfWeek', instance.daysOfWeek);
-  writeNotNull('elementDaysOfWeek',
-      instance.elementDaysOfWeek?.map((e) => e?.toJson())?.toList());
-  writeNotNull('allDay', instance.allDay);
-  writeNotNull('elementAllDay', instance.elementAllDay?.toJson());
-  writeNotNull('availableStartTime', instance.availableStartTime);
-  writeNotNull('elementAvailableStartTime',
-      instance.elementAvailableStartTime?.toJson());
-  writeNotNull('availableEndTime', instance.availableEndTime);
-  writeNotNull(
-      'elementAvailableEndTime', instance.elementAvailableEndTime?.toJson());
-  return val;
-}
+        HealthcareService_AvailableTime instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'daysOfWeek': instance.daysOfWeek,
+      'elementDaysOfWeek':
+          instance.elementDaysOfWeek?.map((e) => e?.toJson())?.toList(),
+      'allDay': instance.allDay,
+      'elementAllDay': instance.elementAllDay?.toJson(),
+      'availableStartTime': instance.availableStartTime,
+      'elementAvailableStartTime': instance.elementAvailableStartTime?.toJson(),
+      'availableEndTime': instance.availableEndTime,
+      'elementAvailableEndTime': instance.elementAvailableEndTime?.toJson(),
+    };
 
 HealthcareService_NotAvailable _$HealthcareService_NotAvailableFromJson(
     Map<String, dynamic> json) {
@@ -710,22 +669,13 @@ HealthcareService_NotAvailable _$HealthcareService_NotAvailableFromJson(
 }
 
 Map<String, dynamic> _$HealthcareService_NotAvailableToJson(
-    HealthcareService_NotAvailable instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('during', instance.during?.toJson());
-  return val;
-}
+        HealthcareService_NotAvailable instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'during': instance.during?.toJson(),
+    };

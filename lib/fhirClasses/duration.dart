@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Duration {
   static Future<Duration> newInstance({
     String id,
@@ -22,7 +22,7 @@ class Duration {
   }) async {
     var fhirDb = new DatabaseHelper();
     Duration newDuration = new Duration(
-      id: id ?? await fhirDb.newResourceId('Duration'),
+      id: id,
       extension: extension,
       value: value,
       elementValue: elementValue,
@@ -106,27 +106,17 @@ Duration _$DurationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DurationToJson(Duration instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('value', instance.value);
-  writeNotNull('elementValue', instance.elementValue?.toJson());
-  writeNotNull('comparator', instance.comparator);
-  writeNotNull('elementComparator', instance.elementComparator?.toJson());
-  writeNotNull('unit', instance.unit);
-  writeNotNull('elementUnit', instance.elementUnit?.toJson());
-  writeNotNull('system', instance.system);
-  writeNotNull('elementSystem', instance.elementSystem?.toJson());
-  writeNotNull('code', instance.code);
-  writeNotNull('elementCode', instance.elementCode?.toJson());
-  return val;
-}
+Map<String, dynamic> _$DurationToJson(Duration instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+      'comparator': instance.comparator,
+      'elementComparator': instance.elementComparator?.toJson(),
+      'unit': instance.unit,
+      'elementUnit': instance.elementUnit?.toJson(),
+      'system': instance.system,
+      'elementSystem': instance.elementSystem?.toJson(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+    };

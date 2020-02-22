@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProductUndesirableEffect {
   static Future<MedicinalProductUndesirableEffect> newInstance({
     String resourceType,
@@ -58,13 +58,9 @@ class MedicinalProductUndesirableEffect {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MedicinalProductUndesirableEffect';
@@ -172,35 +168,23 @@ MedicinalProductUndesirableEffect _$MedicinalProductUndesirableEffectFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductUndesirableEffectToJson(
-    MedicinalProductUndesirableEffect instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('subject', instance.subject?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'symptomConditionEffect', instance.symptomConditionEffect?.toJson());
-  writeNotNull('classification', instance.classification?.toJson());
-  writeNotNull(
-      'frequencyOfOccurrence', instance.frequencyOfOccurrence?.toJson());
-  writeNotNull(
-      'population', instance.population?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicinalProductUndesirableEffect instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
+      'symptomConditionEffect': instance.symptomConditionEffect?.toJson(),
+      'classification': instance.classification?.toJson(),
+      'frequencyOfOccurrence': instance.frequencyOfOccurrence?.toJson(),
+      'population': instance.population?.map((e) => e?.toJson())?.toList(),
+    };

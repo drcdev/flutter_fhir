@@ -78,12 +78,10 @@ def allTogether(newInstance, objects, newResource, variables, constructor):
                            '\t return new',
                            lists(objects),
                            ';\n}\n\nsave() async {\n',
+                           '\t\tthis.meta.lastUpdated = DateTime.now();\n',
                            '\t\tvar fhirDb = new DatabaseHelper();\n',
                            '\t\tint saved = await fhirDb.saveResource(this);\n',
-                           '}\n\n',
-                           'update() {\n',
-                           'this.meta.lastUpdated = DateTime.now();\n',
-                           'this.save();\n}\n\n'])
+                           '}\n\n'])
     else:
         saveNew = ''.join(['\treturn new', lists(objects), ';\n}\n\n'])
     return(''.join([newInstance,
@@ -112,8 +110,8 @@ def imported():
                     "import 'package:flutter/foundation.dart';\n",
                      "import 'package:json_annotation/json_annotation.dart';\n"]))
 
-def idMetaResourceType(key, objects):
-    if(key == 'id'):
+def idMetaResourceType(key, objects, isResource):
+    if(key == 'id' and isResource):
         return(''.join(["id ?? await fhirDb.newResourceId('", objects, "')"]))
     elif(key == 'meta'):
         return(''.join(["meta ?? await Meta.newInstance()"]))
@@ -262,7 +260,7 @@ for objects in definitions:
                 varDict[field] = 'String'
 
         dartCode = ''.join([dartCode, 
-                            '\n@JsonSerializable(explicitToJson: true, includeIfNull: false)\nclass ',
+                            '\n@JsonSerializable(explicitToJson: true)\nclass ',
                             lists(objects),
                             '{\n\n\tstatic Future<',
                             lists(objects),
@@ -283,7 +281,7 @@ for objects in definitions:
                                    '\t',
                                    key,
                                    ': ',
-                                   idMetaResourceType(key, objects),
+                                   idMetaResourceType(key, objects, 'resourceType' in properties),
                                    ',\n'])
             variables = ''.join([variables, 
                                  "\t", 

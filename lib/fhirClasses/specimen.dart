@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Specimen {
   static Future<Specimen> newInstance({
     String resourceType,
@@ -80,13 +80,9 @@ class Specimen {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Specimen';
@@ -150,7 +146,7 @@ class Specimen {
   Map<String, dynamic> toJson() => _$SpecimenToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Specimen_Collection {
   static Future<Specimen_Collection> newInstance({
     String id,
@@ -169,7 +165,7 @@ class Specimen_Collection {
   }) async {
     var fhirDb = new DatabaseHelper();
     Specimen_Collection newSpecimen_Collection = new Specimen_Collection(
-      id: id ?? await fhirDb.newResourceId('Specimen_Collection'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       collector: collector,
@@ -221,7 +217,7 @@ class Specimen_Collection {
   Map<String, dynamic> toJson() => _$Specimen_CollectionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Specimen_Processing {
   static Future<Specimen_Processing> newInstance({
     String id,
@@ -237,7 +233,7 @@ class Specimen_Processing {
   }) async {
     var fhirDb = new DatabaseHelper();
     Specimen_Processing newSpecimen_Processing = new Specimen_Processing(
-      id: id ?? await fhirDb.newResourceId('Specimen_Processing'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       description: description,
@@ -280,7 +276,7 @@ class Specimen_Processing {
   Map<String, dynamic> toJson() => _$Specimen_ProcessingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Specimen_Container {
   static Future<Specimen_Container> newInstance({
     String id,
@@ -297,7 +293,7 @@ class Specimen_Container {
   }) async {
     var fhirDb = new DatabaseHelper();
     Specimen_Container newSpecimen_Container = new Specimen_Container(
-      id: id ?? await fhirDb.newResourceId('Specimen_Container'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -438,49 +434,35 @@ Specimen _$SpecimenFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SpecimenToJson(Specimen instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('accessionIdentifier', instance.accessionIdentifier?.toJson());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('receivedTime', instance.receivedTime?.toIso8601String());
-  writeNotNull('elementReceivedTime', instance.elementReceivedTime?.toJson());
-  writeNotNull('parent', instance.parent?.map((e) => e?.toJson())?.toList());
-  writeNotNull('request', instance.request?.map((e) => e?.toJson())?.toList());
-  writeNotNull('collection', instance.collection?.toJson());
-  writeNotNull(
-      'processing', instance.processing?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'container', instance.container?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'condition', instance.condition?.map((e) => e?.toJson())?.toList());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$SpecimenToJson(Specimen instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'accessionIdentifier': instance.accessionIdentifier?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'receivedTime': instance.receivedTime?.toIso8601String(),
+      'elementReceivedTime': instance.elementReceivedTime?.toJson(),
+      'parent': instance.parent?.map((e) => e?.toJson())?.toList(),
+      'request': instance.request?.map((e) => e?.toJson())?.toList(),
+      'collection': instance.collection?.toJson(),
+      'processing': instance.processing?.map((e) => e?.toJson())?.toList(),
+      'container': instance.container?.map((e) => e?.toJson())?.toList(),
+      'condition': instance.condition?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+    };
 
 Specimen_Collection _$Specimen_CollectionFromJson(Map<String, dynamic> json) {
   return Specimen_Collection(
@@ -527,35 +509,25 @@ Specimen_Collection _$Specimen_CollectionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Specimen_CollectionToJson(Specimen_Collection instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('collector', instance.collector?.toJson());
-  writeNotNull('collectedDateTime', instance.collectedDateTime);
-  writeNotNull(
-      'elementCollectedDateTime', instance.elementCollectedDateTime?.toJson());
-  writeNotNull('collectedPeriod', instance.collectedPeriod?.toJson());
-  writeNotNull('duration', instance.duration?.toJson());
-  writeNotNull('quantity', instance.quantity?.toJson());
-  writeNotNull('method', instance.method?.toJson());
-  writeNotNull('bodySite', instance.bodySite?.toJson());
-  writeNotNull('fastingStatusCodeableConcept',
-      instance.fastingStatusCodeableConcept?.toJson());
-  writeNotNull(
-      'fastingStatusDuration', instance.fastingStatusDuration?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Specimen_CollectionToJson(
+        Specimen_Collection instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'collector': instance.collector?.toJson(),
+      'collectedDateTime': instance.collectedDateTime,
+      'elementCollectedDateTime': instance.elementCollectedDateTime?.toJson(),
+      'collectedPeriod': instance.collectedPeriod?.toJson(),
+      'duration': instance.duration?.toJson(),
+      'quantity': instance.quantity?.toJson(),
+      'method': instance.method?.toJson(),
+      'bodySite': instance.bodySite?.toJson(),
+      'fastingStatusCodeableConcept':
+          instance.fastingStatusCodeableConcept?.toJson(),
+      'fastingStatusDuration': instance.fastingStatusDuration?.toJson(),
+    };
 
 Specimen_Processing _$Specimen_ProcessingFromJson(Map<String, dynamic> json) {
   return Specimen_Processing(
@@ -589,30 +561,21 @@ Specimen_Processing _$Specimen_ProcessingFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Specimen_ProcessingToJson(Specimen_Processing instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('procedure', instance.procedure?.toJson());
-  writeNotNull(
-      'additive', instance.additive?.map((e) => e?.toJson())?.toList());
-  writeNotNull('timeDateTime', instance.timeDateTime);
-  writeNotNull('elementTimeDateTime', instance.elementTimeDateTime?.toJson());
-  writeNotNull('timePeriod', instance.timePeriod?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Specimen_ProcessingToJson(
+        Specimen_Processing instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'procedure': instance.procedure?.toJson(),
+      'additive': instance.additive?.map((e) => e?.toJson())?.toList(),
+      'timeDateTime': instance.timeDateTime,
+      'elementTimeDateTime': instance.elementTimeDateTime?.toJson(),
+      'timePeriod': instance.timePeriod?.toJson(),
+    };
 
 Specimen_Container _$Specimen_ContainerFromJson(Map<String, dynamic> json) {
   return Specimen_Container(
@@ -652,29 +615,18 @@ Specimen_Container _$Specimen_ContainerFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Specimen_ContainerToJson(Specimen_Container instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('description', instance.description);
-  writeNotNull('elementDescription', instance.elementDescription?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('capacity', instance.capacity?.toJson());
-  writeNotNull('specimenQuantity', instance.specimenQuantity?.toJson());
-  writeNotNull(
-      'additiveCodeableConcept', instance.additiveCodeableConcept?.toJson());
-  writeNotNull('additiveReference', instance.additiveReference?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Specimen_ContainerToJson(Specimen_Container instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'type': instance.type?.toJson(),
+      'capacity': instance.capacity?.toJson(),
+      'specimenQuantity': instance.specimenQuantity?.toJson(),
+      'additiveCodeableConcept': instance.additiveCodeableConcept?.toJson(),
+      'additiveReference': instance.additiveReference?.toJson(),
+    };

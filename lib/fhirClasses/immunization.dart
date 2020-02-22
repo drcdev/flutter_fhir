@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Immunization {
   static Future<Immunization> newInstance({
     String resourceType,
@@ -122,13 +122,9 @@ class Immunization {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Immunization';
@@ -236,7 +232,7 @@ class Immunization {
   Map<String, dynamic> toJson() => _$ImmunizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Immunization_Performer {
   static Future<Immunization_Performer> newInstance({
     String id,
@@ -248,7 +244,7 @@ class Immunization_Performer {
     var fhirDb = new DatabaseHelper();
     Immunization_Performer newImmunization_Performer =
         new Immunization_Performer(
-      id: id ?? await fhirDb.newResourceId('Immunization_Performer'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       function: function,
@@ -276,7 +272,7 @@ class Immunization_Performer {
   Map<String, dynamic> toJson() => _$Immunization_PerformerToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Immunization_Education {
   static Future<Immunization_Education> newInstance({
     String id,
@@ -294,7 +290,7 @@ class Immunization_Education {
     var fhirDb = new DatabaseHelper();
     Immunization_Education newImmunization_Education =
         new Immunization_Education(
-      id: id ?? await fhirDb.newResourceId('Immunization_Education'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       documentType: documentType,
@@ -340,7 +336,7 @@ class Immunization_Education {
   Map<String, dynamic> toJson() => _$Immunization_EducationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Immunization_Reaction {
   static Future<Immunization_Reaction> newInstance({
     String id,
@@ -354,7 +350,7 @@ class Immunization_Reaction {
   }) async {
     var fhirDb = new DatabaseHelper();
     Immunization_Reaction newImmunization_Reaction = new Immunization_Reaction(
-      id: id ?? await fhirDb.newResourceId('Immunization_Reaction'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       date: date,
@@ -391,7 +387,7 @@ class Immunization_Reaction {
   Map<String, dynamic> toJson() => _$Immunization_ReactionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Immunization_ProtocolApplied {
   static Future<Immunization_ProtocolApplied> newInstance({
     String id,
@@ -413,7 +409,7 @@ class Immunization_ProtocolApplied {
     var fhirDb = new DatabaseHelper();
     Immunization_ProtocolApplied newImmunization_ProtocolApplied =
         new Immunization_ProtocolApplied(
-      id: id ?? await fhirDb.newResourceId('Immunization_ProtocolApplied'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       series: series,
@@ -632,79 +628,62 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ImmunizationToJson(Immunization instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('statusReason', instance.statusReason?.toJson());
-  writeNotNull('vaccineCode', instance.vaccineCode?.toJson());
-  writeNotNull('patient', instance.patient?.toJson());
-  writeNotNull('encounter', instance.encounter?.toJson());
-  writeNotNull('occurrenceDateTime', instance.occurrenceDateTime);
-  writeNotNull('elementOccurrenceDateTime',
-      instance.elementOccurrenceDateTime?.toJson());
-  writeNotNull('occurrenceString', instance.occurrenceString);
-  writeNotNull(
-      'elementOccurrenceString', instance.elementOccurrenceString?.toJson());
-  writeNotNull('recorded', instance.recorded?.toIso8601String());
-  writeNotNull('elementRecorded', instance.elementRecorded?.toJson());
-  writeNotNull('primarySource', instance.primarySource);
-  writeNotNull('elementPrimarySource', instance.elementPrimarySource?.toJson());
-  writeNotNull('reportOrigin', instance.reportOrigin?.toJson());
-  writeNotNull('location', instance.location?.toJson());
-  writeNotNull('manufacturer', instance.manufacturer?.toJson());
-  writeNotNull('lotNumber', instance.lotNumber);
-  writeNotNull('elementLotNumber', instance.elementLotNumber?.toJson());
-  writeNotNull('expirationDate', instance.expirationDate);
-  writeNotNull(
-      'elementExpirationDate', instance.elementExpirationDate?.toJson());
-  writeNotNull('site', instance.site?.toJson());
-  writeNotNull('route', instance.route?.toJson());
-  writeNotNull('doseQuantity', instance.doseQuantity?.toJson());
-  writeNotNull(
-      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
-  writeNotNull('reasonReference',
-      instance.reasonReference?.map((e) => e?.toJson())?.toList());
-  writeNotNull('isSubpotent', instance.isSubpotent);
-  writeNotNull('elementIsSubpotent', instance.elementIsSubpotent?.toJson());
-  writeNotNull('subpotentReason',
-      instance.subpotentReason?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'education', instance.education?.map((e) => e?.toJson())?.toList());
-  writeNotNull('programEligibility',
-      instance.programEligibility?.map((e) => e?.toJson())?.toList());
-  writeNotNull('fundingSource', instance.fundingSource?.toJson());
-  writeNotNull(
-      'reaction', instance.reaction?.map((e) => e?.toJson())?.toList());
-  writeNotNull('protocolApplied',
-      instance.protocolApplied?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'statusReason': instance.statusReason?.toJson(),
+      'vaccineCode': instance.vaccineCode?.toJson(),
+      'patient': instance.patient?.toJson(),
+      'encounter': instance.encounter?.toJson(),
+      'occurrenceDateTime': instance.occurrenceDateTime,
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
+      'occurrenceString': instance.occurrenceString,
+      'elementOccurrenceString': instance.elementOccurrenceString?.toJson(),
+      'recorded': instance.recorded?.toIso8601String(),
+      'elementRecorded': instance.elementRecorded?.toJson(),
+      'primarySource': instance.primarySource,
+      'elementPrimarySource': instance.elementPrimarySource?.toJson(),
+      'reportOrigin': instance.reportOrigin?.toJson(),
+      'location': instance.location?.toJson(),
+      'manufacturer': instance.manufacturer?.toJson(),
+      'lotNumber': instance.lotNumber,
+      'elementLotNumber': instance.elementLotNumber?.toJson(),
+      'expirationDate': instance.expirationDate,
+      'elementExpirationDate': instance.elementExpirationDate?.toJson(),
+      'site': instance.site?.toJson(),
+      'route': instance.route?.toJson(),
+      'doseQuantity': instance.doseQuantity?.toJson(),
+      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
+      'reasonReference':
+          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
+      'isSubpotent': instance.isSubpotent,
+      'elementIsSubpotent': instance.elementIsSubpotent?.toJson(),
+      'subpotentReason':
+          instance.subpotentReason?.map((e) => e?.toJson())?.toList(),
+      'education': instance.education?.map((e) => e?.toJson())?.toList(),
+      'programEligibility':
+          instance.programEligibility?.map((e) => e?.toJson())?.toList(),
+      'fundingSource': instance.fundingSource?.toJson(),
+      'reaction': instance.reaction?.map((e) => e?.toJson())?.toList(),
+      'protocolApplied':
+          instance.protocolApplied?.map((e) => e?.toJson())?.toList(),
+    };
 
 Immunization_Performer _$Immunization_PerformerFromJson(
     Map<String, dynamic> json) {
@@ -728,24 +707,15 @@ Immunization_Performer _$Immunization_PerformerFromJson(
 }
 
 Map<String, dynamic> _$Immunization_PerformerToJson(
-    Immunization_Performer instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('function', instance.function?.toJson());
-  writeNotNull('actor', instance.actor?.toJson());
-  return val;
-}
+        Immunization_Performer instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'function': instance.function?.toJson(),
+      'actor': instance.actor?.toJson(),
+    };
 
 Immunization_Education _$Immunization_EducationFromJson(
     Map<String, dynamic> json) {
@@ -785,33 +755,21 @@ Immunization_Education _$Immunization_EducationFromJson(
 }
 
 Map<String, dynamic> _$Immunization_EducationToJson(
-    Immunization_Education instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('documentType', instance.documentType);
-  writeNotNull('elementDocumentType', instance.elementDocumentType?.toJson());
-  writeNotNull('reference', instance.reference);
-  writeNotNull('elementReference', instance.elementReference?.toJson());
-  writeNotNull('publicationDate', instance.publicationDate?.toIso8601String());
-  writeNotNull(
-      'elementPublicationDate', instance.elementPublicationDate?.toJson());
-  writeNotNull(
-      'presentationDate', instance.presentationDate?.toIso8601String());
-  writeNotNull(
-      'elementPresentationDate', instance.elementPresentationDate?.toJson());
-  return val;
-}
+        Immunization_Education instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'documentType': instance.documentType,
+      'elementDocumentType': instance.elementDocumentType?.toJson(),
+      'reference': instance.reference,
+      'elementReference': instance.elementReference?.toJson(),
+      'publicationDate': instance.publicationDate?.toIso8601String(),
+      'elementPublicationDate': instance.elementPublicationDate?.toJson(),
+      'presentationDate': instance.presentationDate?.toIso8601String(),
+      'elementPresentationDate': instance.elementPresentationDate?.toJson(),
+    };
 
 Immunization_Reaction _$Immunization_ReactionFromJson(
     Map<String, dynamic> json) {
@@ -840,27 +798,18 @@ Immunization_Reaction _$Immunization_ReactionFromJson(
 }
 
 Map<String, dynamic> _$Immunization_ReactionToJson(
-    Immunization_Reaction instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('detail', instance.detail?.toJson());
-  writeNotNull('reported', instance.reported);
-  writeNotNull('elementReported', instance.elementReported?.toJson());
-  return val;
-}
+        Immunization_Reaction instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'detail': instance.detail?.toJson(),
+      'reported': instance.reported,
+      'elementReported': instance.elementReported?.toJson(),
+    };
 
 Immunization_ProtocolApplied _$Immunization_ProtocolAppliedFromJson(
     Map<String, dynamic> json) {
@@ -910,36 +859,25 @@ Immunization_ProtocolApplied _$Immunization_ProtocolAppliedFromJson(
 }
 
 Map<String, dynamic> _$Immunization_ProtocolAppliedToJson(
-    Immunization_ProtocolApplied instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('series', instance.series);
-  writeNotNull('elementSeries', instance.elementSeries?.toJson());
-  writeNotNull('authority', instance.authority?.toJson());
-  writeNotNull('targetDisease',
-      instance.targetDisease?.map((e) => e?.toJson())?.toList());
-  writeNotNull('doseNumberPositiveInt', instance.doseNumberPositiveInt);
-  writeNotNull('elementDoseNumberPositiveInt',
-      instance.elementDoseNumberPositiveInt?.toJson());
-  writeNotNull('doseNumberString', instance.doseNumberString);
-  writeNotNull(
-      'elementDoseNumberString', instance.elementDoseNumberString?.toJson());
-  writeNotNull('seriesDosesPositiveInt', instance.seriesDosesPositiveInt);
-  writeNotNull('elementSeriesDosesPositiveInt',
-      instance.elementSeriesDosesPositiveInt?.toJson());
-  writeNotNull('seriesDosesString', instance.seriesDosesString);
-  writeNotNull(
-      'elementSeriesDosesString', instance.elementSeriesDosesString?.toJson());
-  return val;
-}
+        Immunization_ProtocolApplied instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'series': instance.series,
+      'elementSeries': instance.elementSeries?.toJson(),
+      'authority': instance.authority?.toJson(),
+      'targetDisease':
+          instance.targetDisease?.map((e) => e?.toJson())?.toList(),
+      'doseNumberPositiveInt': instance.doseNumberPositiveInt,
+      'elementDoseNumberPositiveInt':
+          instance.elementDoseNumberPositiveInt?.toJson(),
+      'doseNumberString': instance.doseNumberString,
+      'elementDoseNumberString': instance.elementDoseNumberString?.toJson(),
+      'seriesDosesPositiveInt': instance.seriesDosesPositiveInt,
+      'elementSeriesDosesPositiveInt':
+          instance.elementSeriesDosesPositiveInt?.toJson(),
+      'seriesDosesString': instance.seriesDosesString,
+      'elementSeriesDosesString': instance.elementSeriesDosesString?.toJson(),
+    };

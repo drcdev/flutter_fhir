@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DetectedIssue {
   static Future<DetectedIssue> newInstance({
     String resourceType,
@@ -83,13 +83,9 @@ class DetectedIssue {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'DetectedIssue';
@@ -159,7 +155,7 @@ class DetectedIssue {
   Map<String, dynamic> toJson() => _$DetectedIssueToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DetectedIssue_Evidence {
   static Future<DetectedIssue_Evidence> newInstance({
     String id,
@@ -171,7 +167,7 @@ class DetectedIssue_Evidence {
     var fhirDb = new DatabaseHelper();
     DetectedIssue_Evidence newDetectedIssue_Evidence =
         new DetectedIssue_Evidence(
-      id: id ?? await fhirDb.newResourceId('DetectedIssue_Evidence'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       code: code,
@@ -199,7 +195,7 @@ class DetectedIssue_Evidence {
   Map<String, dynamic> toJson() => _$DetectedIssue_EvidenceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class DetectedIssue_Mitigation {
   static Future<DetectedIssue_Mitigation> newInstance({
     String id,
@@ -213,7 +209,7 @@ class DetectedIssue_Mitigation {
     var fhirDb = new DatabaseHelper();
     DetectedIssue_Mitigation newDetectedIssue_Mitigation =
         new DetectedIssue_Mitigation(
-      id: id ?? await fhirDb.newResourceId('DetectedIssue_Mitigation'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       action: action,
@@ -338,53 +334,39 @@ DetectedIssue _$DetectedIssueFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DetectedIssueToJson(DetectedIssue instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('severity', instance.severity);
-  writeNotNull('elementSeverity', instance.elementSeverity?.toJson());
-  writeNotNull('patient', instance.patient?.toJson());
-  writeNotNull('identifiedDateTime', instance.identifiedDateTime);
-  writeNotNull('elementIdentifiedDateTime',
-      instance.elementIdentifiedDateTime?.toJson());
-  writeNotNull('identifiedPeriod', instance.identifiedPeriod?.toJson());
-  writeNotNull('author', instance.author?.toJson());
-  writeNotNull(
-      'implicated', instance.implicated?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'evidence', instance.evidence?.map((e) => e?.toJson())?.toList());
-  writeNotNull('detail', instance.detail);
-  writeNotNull('elementDetail', instance.elementDetail?.toJson());
-  writeNotNull('reference', instance.reference);
-  writeNotNull('elementReference', instance.elementReference?.toJson());
-  writeNotNull(
-      'mitigation', instance.mitigation?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$DetectedIssueToJson(DetectedIssue instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'code': instance.code?.toJson(),
+      'severity': instance.severity,
+      'elementSeverity': instance.elementSeverity?.toJson(),
+      'patient': instance.patient?.toJson(),
+      'identifiedDateTime': instance.identifiedDateTime,
+      'elementIdentifiedDateTime': instance.elementIdentifiedDateTime?.toJson(),
+      'identifiedPeriod': instance.identifiedPeriod?.toJson(),
+      'author': instance.author?.toJson(),
+      'implicated': instance.implicated?.map((e) => e?.toJson())?.toList(),
+      'evidence': instance.evidence?.map((e) => e?.toJson())?.toList(),
+      'detail': instance.detail,
+      'elementDetail': instance.elementDetail?.toJson(),
+      'reference': instance.reference,
+      'elementReference': instance.elementReference?.toJson(),
+      'mitigation': instance.mitigation?.map((e) => e?.toJson())?.toList(),
+    };
 
 DetectedIssue_Evidence _$DetectedIssue_EvidenceFromJson(
     Map<String, dynamic> json) {
@@ -411,24 +393,15 @@ DetectedIssue_Evidence _$DetectedIssue_EvidenceFromJson(
 }
 
 Map<String, dynamic> _$DetectedIssue_EvidenceToJson(
-    DetectedIssue_Evidence instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
-  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        DetectedIssue_Evidence instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.map((e) => e?.toJson())?.toList(),
+      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
+    };
 
 DetectedIssue_Mitigation _$DetectedIssue_MitigationFromJson(
     Map<String, dynamic> json) {
@@ -456,23 +429,14 @@ DetectedIssue_Mitigation _$DetectedIssue_MitigationFromJson(
 }
 
 Map<String, dynamic> _$DetectedIssue_MitigationToJson(
-    DetectedIssue_Mitigation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('action', instance.action?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('author', instance.author?.toJson());
-  return val;
-}
+        DetectedIssue_Mitigation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'action': instance.action?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'author': instance.author?.toJson(),
+    };

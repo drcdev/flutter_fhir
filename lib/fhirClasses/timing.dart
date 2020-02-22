@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Timing {
   static Future<Timing> newInstance({
     String id,
@@ -21,7 +21,7 @@ class Timing {
   }) async {
     var fhirDb = new DatabaseHelper();
     Timing newTiming = new Timing(
-      id: id ?? await fhirDb.newResourceId('Timing'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       event: event,
@@ -54,7 +54,7 @@ class Timing {
   Map<String, dynamic> toJson() => _$TimingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Timing_Repeat {
   static Future<Timing_Repeat> newInstance({
     String id,
@@ -94,7 +94,7 @@ class Timing_Repeat {
   }) async {
     var fhirDb = new DatabaseHelper();
     Timing_Repeat newTiming_Repeat = new Timing_Repeat(
-      id: id ?? await fhirDb.newResourceId('Timing_Repeat'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       boundsDuration: boundsDuration,
@@ -241,28 +241,16 @@ Timing _$TimingFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TimingToJson(Timing instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'event', instance.event?.map((e) => e?.toIso8601String())?.toList());
-  writeNotNull(
-      'elementEvent', instance.elementEvent?.map((e) => e?.toJson())?.toList());
-  writeNotNull('repeat', instance.repeat?.toJson());
-  writeNotNull('code', instance.code?.toJson());
-  return val;
-}
+Map<String, dynamic> _$TimingToJson(Timing instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'event': instance.event?.map((e) => e?.toIso8601String())?.toList(),
+      'elementEvent': instance.elementEvent?.map((e) => e?.toJson())?.toList(),
+      'repeat': instance.repeat?.toJson(),
+      'code': instance.code?.toJson(),
+    };
 
 Timing_Repeat _$Timing_RepeatFromJson(Map<String, dynamic> json) {
   return Timing_Repeat(
@@ -346,53 +334,43 @@ Timing_Repeat _$Timing_RepeatFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Timing_RepeatToJson(Timing_Repeat instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('boundsDuration', instance.boundsDuration?.toJson());
-  writeNotNull('boundsRange', instance.boundsRange?.toJson());
-  writeNotNull('boundsPeriod', instance.boundsPeriod?.toJson());
-  writeNotNull('count', instance.count);
-  writeNotNull('elementCount', instance.elementCount?.toJson());
-  writeNotNull('countMax', instance.countMax);
-  writeNotNull('elementCountMax', instance.elementCountMax?.toJson());
-  writeNotNull('duration', instance.duration);
-  writeNotNull('elementDuration', instance.elementDuration?.toJson());
-  writeNotNull('durationMax', instance.durationMax);
-  writeNotNull('elementDurationMax', instance.elementDurationMax?.toJson());
-  writeNotNull('durationUnit', instance.durationUnit);
-  writeNotNull('elementDurationUnit', instance.elementDurationUnit?.toJson());
-  writeNotNull('frequency', instance.frequency);
-  writeNotNull('elementFrequency', instance.elementFrequency?.toJson());
-  writeNotNull('frequencyMax', instance.frequencyMax);
-  writeNotNull('elementFrequencyMax', instance.elementFrequencyMax?.toJson());
-  writeNotNull('period', instance.period);
-  writeNotNull('elementPeriod', instance.elementPeriod?.toJson());
-  writeNotNull('periodMax', instance.periodMax);
-  writeNotNull('elementPeriodMax', instance.elementPeriodMax?.toJson());
-  writeNotNull('periodUnit', instance.periodUnit);
-  writeNotNull('elementPeriodUnit', instance.elementPeriodUnit?.toJson());
-  writeNotNull('dayOfWeek', instance.dayOfWeek);
-  writeNotNull('elementDayOfWeek',
-      instance.elementDayOfWeek?.map((e) => e?.toJson())?.toList());
-  writeNotNull('timeOfDay', instance.timeOfDay);
-  writeNotNull('elementTimeOfDay',
-      instance.elementTimeOfDay?.map((e) => e?.toJson())?.toList());
-  writeNotNull('when', instance.when);
-  writeNotNull(
-      'elementWhen', instance.elementWhen?.map((e) => e?.toJson())?.toList());
-  writeNotNull('offset', instance.offset);
-  writeNotNull('elementOffset', instance.elementOffset?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Timing_RepeatToJson(Timing_Repeat instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'boundsDuration': instance.boundsDuration?.toJson(),
+      'boundsRange': instance.boundsRange?.toJson(),
+      'boundsPeriod': instance.boundsPeriod?.toJson(),
+      'count': instance.count,
+      'elementCount': instance.elementCount?.toJson(),
+      'countMax': instance.countMax,
+      'elementCountMax': instance.elementCountMax?.toJson(),
+      'duration': instance.duration,
+      'elementDuration': instance.elementDuration?.toJson(),
+      'durationMax': instance.durationMax,
+      'elementDurationMax': instance.elementDurationMax?.toJson(),
+      'durationUnit': instance.durationUnit,
+      'elementDurationUnit': instance.elementDurationUnit?.toJson(),
+      'frequency': instance.frequency,
+      'elementFrequency': instance.elementFrequency?.toJson(),
+      'frequencyMax': instance.frequencyMax,
+      'elementFrequencyMax': instance.elementFrequencyMax?.toJson(),
+      'period': instance.period,
+      'elementPeriod': instance.elementPeriod?.toJson(),
+      'periodMax': instance.periodMax,
+      'elementPeriodMax': instance.elementPeriodMax?.toJson(),
+      'periodUnit': instance.periodUnit,
+      'elementPeriodUnit': instance.elementPeriodUnit?.toJson(),
+      'dayOfWeek': instance.dayOfWeek,
+      'elementDayOfWeek':
+          instance.elementDayOfWeek?.map((e) => e?.toJson())?.toList(),
+      'timeOfDay': instance.timeOfDay,
+      'elementTimeOfDay':
+          instance.elementTimeOfDay?.map((e) => e?.toJson())?.toList(),
+      'when': instance.when,
+      'elementWhen': instance.elementWhen?.map((e) => e?.toJson())?.toList(),
+      'offset': instance.offset,
+      'elementOffset': instance.elementOffset?.toJson(),
+    };

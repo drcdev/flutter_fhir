@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProduct {
   static Future<MedicinalProduct> newInstance({
     String resourceType,
@@ -91,13 +91,9 @@ class MedicinalProduct {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MedicinalProduct';
@@ -174,7 +170,7 @@ class MedicinalProduct {
   Map<String, dynamic> toJson() => _$MedicinalProductToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProduct_Name {
   static Future<MedicinalProduct_Name> newInstance({
     String id,
@@ -187,7 +183,7 @@ class MedicinalProduct_Name {
   }) async {
     var fhirDb = new DatabaseHelper();
     MedicinalProduct_Name newMedicinalProduct_Name = new MedicinalProduct_Name(
-      id: id ?? await fhirDb.newResourceId('MedicinalProduct_Name'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       productName: productName,
@@ -221,7 +217,7 @@ class MedicinalProduct_Name {
   Map<String, dynamic> toJson() => _$MedicinalProduct_NameToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProduct_NamePart {
   static Future<MedicinalProduct_NamePart> newInstance({
     String id,
@@ -234,7 +230,7 @@ class MedicinalProduct_NamePart {
     var fhirDb = new DatabaseHelper();
     MedicinalProduct_NamePart newMedicinalProduct_NamePart =
         new MedicinalProduct_NamePart(
-      id: id ?? await fhirDb.newResourceId('MedicinalProduct_NamePart'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       part: part,
@@ -265,7 +261,7 @@ class MedicinalProduct_NamePart {
   Map<String, dynamic> toJson() => _$MedicinalProduct_NamePartToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProduct_CountryLanguage {
   static Future<MedicinalProduct_CountryLanguage> newInstance({
     String id,
@@ -278,7 +274,7 @@ class MedicinalProduct_CountryLanguage {
     var fhirDb = new DatabaseHelper();
     MedicinalProduct_CountryLanguage newMedicinalProduct_CountryLanguage =
         new MedicinalProduct_CountryLanguage(
-      id: id ?? await fhirDb.newResourceId('MedicinalProduct_CountryLanguage'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       country: country,
@@ -311,7 +307,7 @@ class MedicinalProduct_CountryLanguage {
       _$MedicinalProduct_CountryLanguageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProduct_ManufacturingBusinessOperation {
   static Future<MedicinalProduct_ManufacturingBusinessOperation> newInstance({
     String id,
@@ -329,9 +325,7 @@ class MedicinalProduct_ManufacturingBusinessOperation {
     MedicinalProduct_ManufacturingBusinessOperation
         newMedicinalProduct_ManufacturingBusinessOperation =
         new MedicinalProduct_ManufacturingBusinessOperation(
-      id: id ??
-          await fhirDb
-              .newResourceId('MedicinalProduct_ManufacturingBusinessOperation'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       operationType: operationType,
@@ -376,7 +370,7 @@ class MedicinalProduct_ManufacturingBusinessOperation {
       _$MedicinalProduct_ManufacturingBusinessOperationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MedicinalProduct_SpecialDesignation {
   static Future<MedicinalProduct_SpecialDesignation> newInstance({
     String id,
@@ -395,8 +389,7 @@ class MedicinalProduct_SpecialDesignation {
     var fhirDb = new DatabaseHelper();
     MedicinalProduct_SpecialDesignation newMedicinalProduct_SpecialDesignation =
         new MedicinalProduct_SpecialDesignation(
-      id: id ??
-          await fhirDb.newResourceId('MedicinalProduct_SpecialDesignation'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -576,69 +569,55 @@ MedicinalProduct _$MedicinalProductFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MedicinalProductToJson(MedicinalProduct instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('domain', instance.domain?.toJson());
-  writeNotNull('combinedPharmaceuticalDoseForm',
-      instance.combinedPharmaceuticalDoseForm?.toJson());
-  writeNotNull('legalStatusOfSupply', instance.legalStatusOfSupply?.toJson());
-  writeNotNull('additionalMonitoringIndicator',
-      instance.additionalMonitoringIndicator?.toJson());
-  writeNotNull('specialMeasures', instance.specialMeasures);
-  writeNotNull('elementSpecialMeasures',
-      instance.elementSpecialMeasures?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'paediatricUseIndicator', instance.paediatricUseIndicator?.toJson());
-  writeNotNull('productClassification',
-      instance.productClassification?.map((e) => e?.toJson())?.toList());
-  writeNotNull('marketingStatus',
-      instance.marketingStatus?.map((e) => e?.toJson())?.toList());
-  writeNotNull('pharmaceuticalProduct',
-      instance.pharmaceuticalProduct?.map((e) => e?.toJson())?.toList());
-  writeNotNull('packagedMedicinalProduct',
-      instance.packagedMedicinalProduct?.map((e) => e?.toJson())?.toList());
-  writeNotNull('attachedDocument',
-      instance.attachedDocument?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'masterFile', instance.masterFile?.map((e) => e?.toJson())?.toList());
-  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
-  writeNotNull('clinicalTrial',
-      instance.clinicalTrial?.map((e) => e?.toJson())?.toList());
-  writeNotNull('name', instance.name?.map((e) => e?.toJson())?.toList());
-  writeNotNull('crossReference',
-      instance.crossReference?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'manufacturingBusinessOperation',
-      instance.manufacturingBusinessOperation
+Map<String, dynamic> _$MedicinalProductToJson(MedicinalProduct instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'domain': instance.domain?.toJson(),
+      'combinedPharmaceuticalDoseForm':
+          instance.combinedPharmaceuticalDoseForm?.toJson(),
+      'legalStatusOfSupply': instance.legalStatusOfSupply?.toJson(),
+      'additionalMonitoringIndicator':
+          instance.additionalMonitoringIndicator?.toJson(),
+      'specialMeasures': instance.specialMeasures,
+      'elementSpecialMeasures':
+          instance.elementSpecialMeasures?.map((e) => e?.toJson())?.toList(),
+      'paediatricUseIndicator': instance.paediatricUseIndicator?.toJson(),
+      'productClassification':
+          instance.productClassification?.map((e) => e?.toJson())?.toList(),
+      'marketingStatus':
+          instance.marketingStatus?.map((e) => e?.toJson())?.toList(),
+      'pharmaceuticalProduct':
+          instance.pharmaceuticalProduct?.map((e) => e?.toJson())?.toList(),
+      'packagedMedicinalProduct':
+          instance.packagedMedicinalProduct?.map((e) => e?.toJson())?.toList(),
+      'attachedDocument':
+          instance.attachedDocument?.map((e) => e?.toJson())?.toList(),
+      'masterFile': instance.masterFile?.map((e) => e?.toJson())?.toList(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'clinicalTrial':
+          instance.clinicalTrial?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name?.map((e) => e?.toJson())?.toList(),
+      'crossReference':
+          instance.crossReference?.map((e) => e?.toJson())?.toList(),
+      'manufacturingBusinessOperation': instance.manufacturingBusinessOperation
           ?.map((e) => e?.toJson())
-          ?.toList());
-  writeNotNull('specialDesignation',
-      instance.specialDesignation?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+          ?.toList(),
+      'specialDesignation':
+          instance.specialDesignation?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicinalProduct_Name _$MedicinalProduct_NameFromJson(
     Map<String, dynamic> json) {
@@ -671,28 +650,18 @@ MedicinalProduct_Name _$MedicinalProduct_NameFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProduct_NameToJson(
-    MedicinalProduct_Name instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('productName', instance.productName);
-  writeNotNull('elementProductName', instance.elementProductName?.toJson());
-  writeNotNull(
-      'namePart', instance.namePart?.map((e) => e?.toJson())?.toList());
-  writeNotNull('countryLanguage',
-      instance.countryLanguage?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MedicinalProduct_Name instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'productName': instance.productName,
+      'elementProductName': instance.elementProductName?.toJson(),
+      'namePart': instance.namePart?.map((e) => e?.toJson())?.toList(),
+      'countryLanguage':
+          instance.countryLanguage?.map((e) => e?.toJson())?.toList(),
+    };
 
 MedicinalProduct_NamePart _$MedicinalProduct_NamePartFromJson(
     Map<String, dynamic> json) {
@@ -717,25 +686,16 @@ MedicinalProduct_NamePart _$MedicinalProduct_NamePartFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProduct_NamePartToJson(
-    MedicinalProduct_NamePart instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('part', instance.part);
-  writeNotNull('elementPart', instance.elementPart?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  return val;
-}
+        MedicinalProduct_NamePart instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'part': instance.part,
+      'elementPart': instance.elementPart?.toJson(),
+      'type': instance.type?.toJson(),
+    };
 
 MedicinalProduct_CountryLanguage _$MedicinalProduct_CountryLanguageFromJson(
     Map<String, dynamic> json) {
@@ -763,25 +723,16 @@ MedicinalProduct_CountryLanguage _$MedicinalProduct_CountryLanguageFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProduct_CountryLanguageToJson(
-    MedicinalProduct_CountryLanguage instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('country', instance.country?.toJson());
-  writeNotNull('jurisdiction', instance.jurisdiction?.toJson());
-  writeNotNull('language', instance.language?.toJson());
-  return val;
-}
+        MedicinalProduct_CountryLanguage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'country': instance.country?.toJson(),
+      'jurisdiction': instance.jurisdiction?.toJson(),
+      'language': instance.language?.toJson(),
+    };
 
 MedicinalProduct_ManufacturingBusinessOperation
     _$MedicinalProduct_ManufacturingBusinessOperationFromJson(
@@ -826,32 +777,21 @@ MedicinalProduct_ManufacturingBusinessOperation
 }
 
 Map<String, dynamic> _$MedicinalProduct_ManufacturingBusinessOperationToJson(
-    MedicinalProduct_ManufacturingBusinessOperation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('operationType', instance.operationType?.toJson());
-  writeNotNull('authorisationReferenceNumber',
-      instance.authorisationReferenceNumber?.toJson());
-  writeNotNull('effectiveDate', instance.effectiveDate?.toIso8601String());
-  writeNotNull('elementEffectiveDate', instance.elementEffectiveDate?.toJson());
-  writeNotNull(
-      'confidentialityIndicator', instance.confidentialityIndicator?.toJson());
-  writeNotNull(
-      'manufacturer', instance.manufacturer?.map((e) => e?.toJson())?.toList());
-  writeNotNull('regulator', instance.regulator?.toJson());
-  return val;
-}
+        MedicinalProduct_ManufacturingBusinessOperation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'operationType': instance.operationType?.toJson(),
+      'authorisationReferenceNumber':
+          instance.authorisationReferenceNumber?.toJson(),
+      'effectiveDate': instance.effectiveDate?.toIso8601String(),
+      'elementEffectiveDate': instance.elementEffectiveDate?.toJson(),
+      'confidentialityIndicator': instance.confidentialityIndicator?.toJson(),
+      'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
+      'regulator': instance.regulator?.toJson(),
+    };
 
 MedicinalProduct_SpecialDesignation
     _$MedicinalProduct_SpecialDesignationFromJson(Map<String, dynamic> json) {
@@ -897,30 +837,19 @@ MedicinalProduct_SpecialDesignation
 }
 
 Map<String, dynamic> _$MedicinalProduct_SpecialDesignationToJson(
-    MedicinalProduct_SpecialDesignation instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('intendedUse', instance.intendedUse?.toJson());
-  writeNotNull('indicationCodeableConcept',
-      instance.indicationCodeableConcept?.toJson());
-  writeNotNull('indicationReference', instance.indicationReference?.toJson());
-  writeNotNull('status', instance.status?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull('species', instance.species?.toJson());
-  return val;
-}
+        MedicinalProduct_SpecialDesignation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'intendedUse': instance.intendedUse?.toJson(),
+      'indicationCodeableConcept': instance.indicationCodeableConcept?.toJson(),
+      'indicationReference': instance.indicationReference?.toJson(),
+      'status': instance.status?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'species': instance.species?.toJson(),
+    };

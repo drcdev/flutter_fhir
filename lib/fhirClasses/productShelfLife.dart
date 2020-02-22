@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ProductShelfLife {
   static Future<ProductShelfLife> newInstance({
     String id,
@@ -19,7 +19,7 @@ class ProductShelfLife {
   }) async {
     var fhirDb = new DatabaseHelper();
     ProductShelfLife newProductShelfLife = new ProductShelfLife(
-      id: id ?? await fhirDb.newResourceId('ProductShelfLife'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       identifier: identifier,
@@ -86,24 +86,16 @@ ProductShelfLife _$ProductShelfLifeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ProductShelfLifeToJson(ProductShelfLife instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('identifier', instance.identifier?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('period', instance.period?.toJson());
-  writeNotNull('specialPrecautionsForStorage',
-      instance.specialPrecautionsForStorage?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$ProductShelfLifeToJson(ProductShelfLife instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'type': instance.type?.toJson(),
+      'period': instance.period?.toJson(),
+      'specialPrecautionsForStorage': instance.specialPrecautionsForStorage
+          ?.map((e) => e?.toJson())
+          ?.toList(),
+    };

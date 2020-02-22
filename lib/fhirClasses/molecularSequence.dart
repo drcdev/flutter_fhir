@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence {
   static Future<MolecularSequence> newInstance({
     String resourceType,
@@ -87,13 +87,9 @@ class MolecularSequence {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'MolecularSequence';
@@ -167,7 +163,7 @@ class MolecularSequence {
   Map<String, dynamic> toJson() => _$MolecularSequenceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_ReferenceSeq {
   static Future<MolecularSequence_ReferenceSeq> newInstance({
     String id,
@@ -192,7 +188,7 @@ class MolecularSequence_ReferenceSeq {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_ReferenceSeq newMolecularSequence_ReferenceSeq =
         new MolecularSequence_ReferenceSeq(
-      id: id ?? await fhirDb.newResourceId('MolecularSequence_ReferenceSeq'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       chromosome: chromosome,
@@ -259,7 +255,7 @@ class MolecularSequence_ReferenceSeq {
   Map<String, dynamic> toJson() => _$MolecularSequence_ReferenceSeqToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_Variant {
   static Future<MolecularSequence_Variant> newInstance({
     String id,
@@ -280,7 +276,7 @@ class MolecularSequence_Variant {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Variant newMolecularSequence_Variant =
         new MolecularSequence_Variant(
-      id: id ?? await fhirDb.newResourceId('MolecularSequence_Variant'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       start: start,
@@ -335,7 +331,7 @@ class MolecularSequence_Variant {
   Map<String, dynamic> toJson() => _$MolecularSequence_VariantToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_Quality {
   static Future<MolecularSequence_Quality> newInstance({
     String id,
@@ -371,7 +367,7 @@ class MolecularSequence_Quality {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Quality newMolecularSequence_Quality =
         new MolecularSequence_Quality(
-      id: id ?? await fhirDb.newResourceId('MolecularSequence_Quality'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -471,7 +467,7 @@ class MolecularSequence_Quality {
   Map<String, dynamic> toJson() => _$MolecularSequence_QualityToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_Roc {
   static Future<MolecularSequence_Roc> newInstance({
     String id,
@@ -494,7 +490,7 @@ class MolecularSequence_Roc {
   }) async {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Roc newMolecularSequence_Roc = new MolecularSequence_Roc(
-      id: id ?? await fhirDb.newResourceId('MolecularSequence_Roc'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       score: score,
@@ -558,7 +554,7 @@ class MolecularSequence_Roc {
   Map<String, dynamic> toJson() => _$MolecularSequence_RocToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_Repository {
   static Future<MolecularSequence_Repository> newInstance({
     String id,
@@ -580,7 +576,7 @@ class MolecularSequence_Repository {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Repository newMolecularSequence_Repository =
         new MolecularSequence_Repository(
-      id: id ?? await fhirDb.newResourceId('MolecularSequence_Repository'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -638,7 +634,7 @@ class MolecularSequence_Repository {
   Map<String, dynamic> toJson() => _$MolecularSequence_RepositoryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_StructureVariant {
   static Future<MolecularSequence_StructureVariant> newInstance({
     String id,
@@ -655,8 +651,7 @@ class MolecularSequence_StructureVariant {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_StructureVariant newMolecularSequence_StructureVariant =
         new MolecularSequence_StructureVariant(
-      id: id ??
-          await fhirDb.newResourceId('MolecularSequence_StructureVariant'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       variantType: variantType,
@@ -701,7 +696,7 @@ class MolecularSequence_StructureVariant {
       _$MolecularSequence_StructureVariantToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_Outer {
   static Future<MolecularSequence_Outer> newInstance({
     String id,
@@ -715,7 +710,7 @@ class MolecularSequence_Outer {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Outer newMolecularSequence_Outer =
         new MolecularSequence_Outer(
-      id: id ?? await fhirDb.newResourceId('MolecularSequence_Outer'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       start: start,
@@ -749,7 +744,7 @@ class MolecularSequence_Outer {
   Map<String, dynamic> toJson() => _$MolecularSequence_OuterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class MolecularSequence_Inner {
   static Future<MolecularSequence_Inner> newInstance({
     String id,
@@ -763,7 +758,7 @@ class MolecularSequence_Inner {
     var fhirDb = new DatabaseHelper();
     MolecularSequence_Inner newMolecularSequence_Inner =
         new MolecularSequence_Inner(
-      id: id ?? await fhirDb.newResourceId('MolecularSequence_Inner'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       start: start,
@@ -902,54 +897,42 @@ MolecularSequence _$MolecularSequenceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MolecularSequenceToJson(MolecularSequence instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('coordinateSystem', instance.coordinateSystem);
-  writeNotNull(
-      'elementCoordinateSystem', instance.elementCoordinateSystem?.toJson());
-  writeNotNull('patient', instance.patient?.toJson());
-  writeNotNull('specimen', instance.specimen?.toJson());
-  writeNotNull('device', instance.device?.toJson());
-  writeNotNull('performer', instance.performer?.toJson());
-  writeNotNull('quantity', instance.quantity?.toJson());
-  writeNotNull('referenceSeq', instance.referenceSeq?.toJson());
-  writeNotNull('variant', instance.variant?.map((e) => e?.toJson())?.toList());
-  writeNotNull('observedSeq', instance.observedSeq);
-  writeNotNull('elementObservedSeq', instance.elementObservedSeq?.toJson());
-  writeNotNull('quality', instance.quality?.map((e) => e?.toJson())?.toList());
-  writeNotNull('readCoverage', instance.readCoverage);
-  writeNotNull('elementReadCoverage', instance.elementReadCoverage?.toJson());
-  writeNotNull(
-      'repository', instance.repository?.map((e) => e?.toJson())?.toList());
-  writeNotNull('pointer', instance.pointer?.map((e) => e?.toJson())?.toList());
-  writeNotNull('structureVariant',
-      instance.structureVariant?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$MolecularSequenceToJson(MolecularSequence instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'coordinateSystem': instance.coordinateSystem,
+      'elementCoordinateSystem': instance.elementCoordinateSystem?.toJson(),
+      'patient': instance.patient?.toJson(),
+      'specimen': instance.specimen?.toJson(),
+      'device': instance.device?.toJson(),
+      'performer': instance.performer?.toJson(),
+      'quantity': instance.quantity?.toJson(),
+      'referenceSeq': instance.referenceSeq?.toJson(),
+      'variant': instance.variant?.map((e) => e?.toJson())?.toList(),
+      'observedSeq': instance.observedSeq,
+      'elementObservedSeq': instance.elementObservedSeq?.toJson(),
+      'quality': instance.quality?.map((e) => e?.toJson())?.toList(),
+      'readCoverage': instance.readCoverage,
+      'elementReadCoverage': instance.elementReadCoverage?.toJson(),
+      'repository': instance.repository?.map((e) => e?.toJson())?.toList(),
+      'pointer': instance.pointer?.map((e) => e?.toJson())?.toList(),
+      'structureVariant':
+          instance.structureVariant?.map((e) => e?.toJson())?.toList(),
+    };
 
 MolecularSequence_ReferenceSeq _$MolecularSequence_ReferenceSeqFromJson(
     Map<String, dynamic> json) {
@@ -1003,38 +986,28 @@ MolecularSequence_ReferenceSeq _$MolecularSequence_ReferenceSeqFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_ReferenceSeqToJson(
-    MolecularSequence_ReferenceSeq instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('chromosome', instance.chromosome?.toJson());
-  writeNotNull('genomeBuild', instance.genomeBuild);
-  writeNotNull('elementGenomeBuild', instance.elementGenomeBuild?.toJson());
-  writeNotNull('orientation', instance.orientation);
-  writeNotNull('elementOrientation', instance.elementOrientation?.toJson());
-  writeNotNull('referenceSeqId', instance.referenceSeqId?.toJson());
-  writeNotNull('referenceSeqPointer', instance.referenceSeqPointer?.toJson());
-  writeNotNull('referenceSeqString', instance.referenceSeqString);
-  writeNotNull('elementReferenceSeqString',
-      instance.elementReferenceSeqString?.toJson());
-  writeNotNull('strand', instance.strand);
-  writeNotNull('elementStrand', instance.elementStrand?.toJson());
-  writeNotNull('windowStart', instance.windowStart);
-  writeNotNull('elementWindowStart', instance.elementWindowStart?.toJson());
-  writeNotNull('windowEnd', instance.windowEnd);
-  writeNotNull('elementWindowEnd', instance.elementWindowEnd?.toJson());
-  return val;
-}
+        MolecularSequence_ReferenceSeq instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'chromosome': instance.chromosome?.toJson(),
+      'genomeBuild': instance.genomeBuild,
+      'elementGenomeBuild': instance.elementGenomeBuild?.toJson(),
+      'orientation': instance.orientation,
+      'elementOrientation': instance.elementOrientation?.toJson(),
+      'referenceSeqId': instance.referenceSeqId?.toJson(),
+      'referenceSeqPointer': instance.referenceSeqPointer?.toJson(),
+      'referenceSeqString': instance.referenceSeqString,
+      'elementReferenceSeqString': instance.elementReferenceSeqString?.toJson(),
+      'strand': instance.strand,
+      'elementStrand': instance.elementStrand?.toJson(),
+      'windowStart': instance.windowStart,
+      'elementWindowStart': instance.elementWindowStart?.toJson(),
+      'windowEnd': instance.windowEnd,
+      'elementWindowEnd': instance.elementWindowEnd?.toJson(),
+    };
 
 MolecularSequence_Variant _$MolecularSequence_VariantFromJson(
     Map<String, dynamic> json) {
@@ -1077,35 +1050,24 @@ MolecularSequence_Variant _$MolecularSequence_VariantFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_VariantToJson(
-    MolecularSequence_Variant instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('start', instance.start);
-  writeNotNull('elementStart', instance.elementStart?.toJson());
-  writeNotNull('end', instance.end);
-  writeNotNull('elementEnd', instance.elementEnd?.toJson());
-  writeNotNull('observedAllele', instance.observedAllele);
-  writeNotNull(
-      'elementObservedAllele', instance.elementObservedAllele?.toJson());
-  writeNotNull('referenceAllele', instance.referenceAllele);
-  writeNotNull(
-      'elementReferenceAllele', instance.elementReferenceAllele?.toJson());
-  writeNotNull('cigar', instance.cigar);
-  writeNotNull('elementCigar', instance.elementCigar?.toJson());
-  writeNotNull('variantPointer', instance.variantPointer?.toJson());
-  return val;
-}
+        MolecularSequence_Variant instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'start': instance.start,
+      'elementStart': instance.elementStart?.toJson(),
+      'end': instance.end,
+      'elementEnd': instance.elementEnd?.toJson(),
+      'observedAllele': instance.observedAllele,
+      'elementObservedAllele': instance.elementObservedAllele?.toJson(),
+      'referenceAllele': instance.referenceAllele,
+      'elementReferenceAllele': instance.elementReferenceAllele?.toJson(),
+      'cigar': instance.cigar,
+      'elementCigar': instance.elementCigar?.toJson(),
+      'variantPointer': instance.variantPointer?.toJson(),
+    };
 
 MolecularSequence_Quality _$MolecularSequence_QualityFromJson(
     Map<String, dynamic> json) {
@@ -1180,48 +1142,39 @@ MolecularSequence_Quality _$MolecularSequence_QualityFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_QualityToJson(
-    MolecularSequence_Quality instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('standardSequence', instance.standardSequence?.toJson());
-  writeNotNull('start', instance.start);
-  writeNotNull('elementStart', instance.elementStart?.toJson());
-  writeNotNull('end', instance.end);
-  writeNotNull('elementEnd', instance.elementEnd?.toJson());
-  writeNotNull('score', instance.score?.toJson());
-  writeNotNull('method', instance.method?.toJson());
-  writeNotNull('truthTP', instance.truthTP);
-  writeNotNull('elementTruthTP', instance.elementTruthTP?.toJson());
-  writeNotNull('queryTP', instance.queryTP);
-  writeNotNull('elementQueryTP', instance.elementQueryTP?.toJson());
-  writeNotNull('truthFN', instance.truthFN);
-  writeNotNull('elementTruthFN', instance.elementTruthFN?.toJson());
-  writeNotNull('queryFP', instance.queryFP);
-  writeNotNull('elementQueryFP', instance.elementQueryFP?.toJson());
-  writeNotNull('gtFP', instance.gtFP);
-  writeNotNull('elementGtFP', instance.elementGtFP?.toJson());
-  writeNotNull('precision', instance.precision);
-  writeNotNull('elementPrecision', instance.elementPrecision?.toJson());
-  writeNotNull('recall', instance.recall);
-  writeNotNull('elementRecall', instance.elementRecall?.toJson());
-  writeNotNull('fScore', instance.fScore);
-  writeNotNull('elementFScore', instance.elementFScore?.toJson());
-  writeNotNull('roc', instance.roc?.toJson());
-  return val;
-}
+        MolecularSequence_Quality instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'standardSequence': instance.standardSequence?.toJson(),
+      'start': instance.start,
+      'elementStart': instance.elementStart?.toJson(),
+      'end': instance.end,
+      'elementEnd': instance.elementEnd?.toJson(),
+      'score': instance.score?.toJson(),
+      'method': instance.method?.toJson(),
+      'truthTP': instance.truthTP,
+      'elementTruthTP': instance.elementTruthTP?.toJson(),
+      'queryTP': instance.queryTP,
+      'elementQueryTP': instance.elementQueryTP?.toJson(),
+      'truthFN': instance.truthFN,
+      'elementTruthFN': instance.elementTruthFN?.toJson(),
+      'queryFP': instance.queryFP,
+      'elementQueryFP': instance.elementQueryFP?.toJson(),
+      'gtFP': instance.gtFP,
+      'elementGtFP': instance.elementGtFP?.toJson(),
+      'precision': instance.precision,
+      'elementPrecision': instance.elementPrecision?.toJson(),
+      'recall': instance.recall,
+      'elementRecall': instance.elementRecall?.toJson(),
+      'fScore': instance.fScore,
+      'elementFScore': instance.elementFScore?.toJson(),
+      'roc': instance.roc?.toJson(),
+    };
 
 MolecularSequence_Roc _$MolecularSequence_RocFromJson(
     Map<String, dynamic> json) {
@@ -1280,43 +1233,30 @@ MolecularSequence_Roc _$MolecularSequence_RocFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_RocToJson(
-    MolecularSequence_Roc instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('score', instance.score);
-  writeNotNull(
-      'elementScore', instance.elementScore?.map((e) => e?.toJson())?.toList());
-  writeNotNull('numTP', instance.numTP);
-  writeNotNull(
-      'elementNumTP', instance.elementNumTP?.map((e) => e?.toJson())?.toList());
-  writeNotNull('numFP', instance.numFP);
-  writeNotNull(
-      'elementNumFP', instance.elementNumFP?.map((e) => e?.toJson())?.toList());
-  writeNotNull('numFN', instance.numFN);
-  writeNotNull(
-      'elementNumFN', instance.elementNumFN?.map((e) => e?.toJson())?.toList());
-  writeNotNull('precision', instance.precision);
-  writeNotNull('elementPrecision',
-      instance.elementPrecision?.map((e) => e?.toJson())?.toList());
-  writeNotNull('sensitivity', instance.sensitivity);
-  writeNotNull('elementSensitivity',
-      instance.elementSensitivity?.map((e) => e?.toJson())?.toList());
-  writeNotNull('fMeasure', instance.fMeasure);
-  writeNotNull('elementFMeasure',
-      instance.elementFMeasure?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+        MolecularSequence_Roc instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'score': instance.score,
+      'elementScore': instance.elementScore?.map((e) => e?.toJson())?.toList(),
+      'numTP': instance.numTP,
+      'elementNumTP': instance.elementNumTP?.map((e) => e?.toJson())?.toList(),
+      'numFP': instance.numFP,
+      'elementNumFP': instance.elementNumFP?.map((e) => e?.toJson())?.toList(),
+      'numFN': instance.numFN,
+      'elementNumFN': instance.elementNumFN?.map((e) => e?.toJson())?.toList(),
+      'precision': instance.precision,
+      'elementPrecision':
+          instance.elementPrecision?.map((e) => e?.toJson())?.toList(),
+      'sensitivity': instance.sensitivity,
+      'elementSensitivity':
+          instance.elementSensitivity?.map((e) => e?.toJson())?.toList(),
+      'fMeasure': instance.fMeasure,
+      'elementFMeasure':
+          instance.elementFMeasure?.map((e) => e?.toJson())?.toList(),
+    };
 
 MolecularSequence_Repository _$MolecularSequence_RepositoryFromJson(
     Map<String, dynamic> json) {
@@ -1358,34 +1298,25 @@ MolecularSequence_Repository _$MolecularSequence_RepositoryFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_RepositoryToJson(
-    MolecularSequence_Repository instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('url', instance.url);
-  writeNotNull('elementUrl', instance.elementUrl?.toJson());
-  writeNotNull('name', instance.name);
-  writeNotNull('elementName', instance.elementName?.toJson());
-  writeNotNull('datasetId', instance.datasetId);
-  writeNotNull('elementDatasetId', instance.elementDatasetId?.toJson());
-  writeNotNull('variantsetId', instance.variantsetId);
-  writeNotNull('elementVariantsetId', instance.elementVariantsetId?.toJson());
-  writeNotNull('readsetId', instance.readsetId);
-  writeNotNull('elementReadsetId', instance.elementReadsetId?.toJson());
-  return val;
-}
+        MolecularSequence_Repository instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'datasetId': instance.datasetId,
+      'elementDatasetId': instance.elementDatasetId?.toJson(),
+      'variantsetId': instance.variantsetId,
+      'elementVariantsetId': instance.elementVariantsetId?.toJson(),
+      'readsetId': instance.readsetId,
+      'elementReadsetId': instance.elementReadsetId?.toJson(),
+    };
 
 MolecularSequence_StructureVariant _$MolecularSequence_StructureVariantFromJson(
     Map<String, dynamic> json) {
@@ -1422,29 +1353,20 @@ MolecularSequence_StructureVariant _$MolecularSequence_StructureVariantFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_StructureVariantToJson(
-    MolecularSequence_StructureVariant instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('variantType', instance.variantType?.toJson());
-  writeNotNull('exact', instance.exact);
-  writeNotNull('elementExact', instance.elementExact?.toJson());
-  writeNotNull('length', instance.length);
-  writeNotNull('elementLength', instance.elementLength?.toJson());
-  writeNotNull('outer', instance.outer?.toJson());
-  writeNotNull('inner', instance.inner?.toJson());
-  return val;
-}
+        MolecularSequence_StructureVariant instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'variantType': instance.variantType?.toJson(),
+      'exact': instance.exact,
+      'elementExact': instance.elementExact?.toJson(),
+      'length': instance.length,
+      'elementLength': instance.elementLength?.toJson(),
+      'outer': instance.outer?.toJson(),
+      'inner': instance.inner?.toJson(),
+    };
 
 MolecularSequence_Outer _$MolecularSequence_OuterFromJson(
     Map<String, dynamic> json) {
@@ -1470,26 +1392,17 @@ MolecularSequence_Outer _$MolecularSequence_OuterFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_OuterToJson(
-    MolecularSequence_Outer instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('start', instance.start);
-  writeNotNull('elementStart', instance.elementStart?.toJson());
-  writeNotNull('end', instance.end);
-  writeNotNull('elementEnd', instance.elementEnd?.toJson());
-  return val;
-}
+        MolecularSequence_Outer instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'start': instance.start,
+      'elementStart': instance.elementStart?.toJson(),
+      'end': instance.end,
+      'elementEnd': instance.elementEnd?.toJson(),
+    };
 
 MolecularSequence_Inner _$MolecularSequence_InnerFromJson(
     Map<String, dynamic> json) {
@@ -1515,23 +1428,14 @@ MolecularSequence_Inner _$MolecularSequence_InnerFromJson(
 }
 
 Map<String, dynamic> _$MolecularSequence_InnerToJson(
-    MolecularSequence_Inner instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('start', instance.start);
-  writeNotNull('elementStart', instance.elementStart?.toJson());
-  writeNotNull('end', instance.end);
-  writeNotNull('elementEnd', instance.elementEnd?.toJson());
-  return val;
-}
+        MolecularSequence_Inner instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'start': instance.start,
+      'elementStart': instance.elementStart?.toJson(),
+      'end': instance.end,
+      'elementEnd': instance.elementEnd?.toJson(),
+    };

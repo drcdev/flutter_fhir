@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Invoice {
   static Future<Invoice> newInstance({
     String resourceType,
@@ -88,13 +88,9 @@ class Invoice {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'Invoice';
@@ -168,7 +164,7 @@ class Invoice {
   Map<String, dynamic> toJson() => _$InvoiceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Invoice_Participant {
   static Future<Invoice_Participant> newInstance({
     String id,
@@ -179,7 +175,7 @@ class Invoice_Participant {
   }) async {
     var fhirDb = new DatabaseHelper();
     Invoice_Participant newInvoice_Participant = new Invoice_Participant(
-      id: id ?? await fhirDb.newResourceId('Invoice_Participant'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       role: role,
@@ -207,7 +203,7 @@ class Invoice_Participant {
   Map<String, dynamic> toJson() => _$Invoice_ParticipantToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Invoice_LineItem {
   static Future<Invoice_LineItem> newInstance({
     String id,
@@ -221,7 +217,7 @@ class Invoice_LineItem {
   }) async {
     var fhirDb = new DatabaseHelper();
     Invoice_LineItem newInvoice_LineItem = new Invoice_LineItem(
-      id: id ?? await fhirDb.newResourceId('Invoice_LineItem'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       sequence: sequence,
@@ -258,7 +254,7 @@ class Invoice_LineItem {
   Map<String, dynamic> toJson() => _$Invoice_LineItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class Invoice_PriceComponent {
   static Future<Invoice_PriceComponent> newInstance({
     String id,
@@ -274,7 +270,7 @@ class Invoice_PriceComponent {
     var fhirDb = new DatabaseHelper();
     Invoice_PriceComponent newInvoice_PriceComponent =
         new Invoice_PriceComponent(
-      id: id ?? await fhirDb.newResourceId('Invoice_PriceComponent'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       type: type,
@@ -415,55 +411,41 @@ Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$InvoiceToJson(Invoice instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('status', instance.status);
-  writeNotNull('elementStatus', instance.elementStatus?.toJson());
-  writeNotNull('cancelledReason', instance.cancelledReason);
-  writeNotNull(
-      'elementCancelledReason', instance.elementCancelledReason?.toJson());
-  writeNotNull('type', instance.type?.toJson());
-  writeNotNull('subject', instance.subject?.toJson());
-  writeNotNull('recipient', instance.recipient?.toJson());
-  writeNotNull('date', instance.date?.toIso8601String());
-  writeNotNull('elementDate', instance.elementDate?.toJson());
-  writeNotNull(
-      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
-  writeNotNull('issuer', instance.issuer?.toJson());
-  writeNotNull('account', instance.account?.toJson());
-  writeNotNull(
-      'lineItem', instance.lineItem?.map((e) => e?.toJson())?.toList());
-  writeNotNull('totalPriceComponent',
-      instance.totalPriceComponent?.map((e) => e?.toJson())?.toList());
-  writeNotNull('totalNet', instance.totalNet?.toJson());
-  writeNotNull('totalGross', instance.totalGross?.toJson());
-  writeNotNull('paymentTerms', instance.paymentTerms);
-  writeNotNull('elementPaymentTerms', instance.elementPaymentTerms?.toJson());
-  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$InvoiceToJson(Invoice instance) => <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'cancelledReason': instance.cancelledReason,
+      'elementCancelledReason': instance.elementCancelledReason?.toJson(),
+      'type': instance.type?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'recipient': instance.recipient?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
+      'issuer': instance.issuer?.toJson(),
+      'account': instance.account?.toJson(),
+      'lineItem': instance.lineItem?.map((e) => e?.toJson())?.toList(),
+      'totalPriceComponent':
+          instance.totalPriceComponent?.map((e) => e?.toJson())?.toList(),
+      'totalNet': instance.totalNet?.toJson(),
+      'totalGross': instance.totalGross?.toJson(),
+      'paymentTerms': instance.paymentTerms,
+      'elementPaymentTerms': instance.elementPaymentTerms?.toJson(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+    };
 
 Invoice_Participant _$Invoice_ParticipantFromJson(Map<String, dynamic> json) {
   return Invoice_Participant(
@@ -485,24 +467,16 @@ Invoice_Participant _$Invoice_ParticipantFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Invoice_ParticipantToJson(Invoice_Participant instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('role', instance.role?.toJson());
-  writeNotNull('actor', instance.actor?.toJson());
-  return val;
-}
+Map<String, dynamic> _$Invoice_ParticipantToJson(
+        Invoice_Participant instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'role': instance.role?.toJson(),
+      'actor': instance.actor?.toJson(),
+    };
 
 Invoice_LineItem _$Invoice_LineItemFromJson(Map<String, dynamic> json) {
   return Invoice_LineItem(
@@ -535,29 +509,19 @@ Invoice_LineItem _$Invoice_LineItemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Invoice_LineItemToJson(Invoice_LineItem instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('sequence', instance.sequence);
-  writeNotNull('elementSequence', instance.elementSequence?.toJson());
-  writeNotNull('chargeItemReference', instance.chargeItemReference?.toJson());
-  writeNotNull('chargeItemCodeableConcept',
-      instance.chargeItemCodeableConcept?.toJson());
-  writeNotNull('priceComponent',
-      instance.priceComponent?.map((e) => e?.toJson())?.toList());
-  return val;
-}
+Map<String, dynamic> _$Invoice_LineItemToJson(Invoice_LineItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'sequence': instance.sequence,
+      'elementSequence': instance.elementSequence?.toJson(),
+      'chargeItemReference': instance.chargeItemReference?.toJson(),
+      'chargeItemCodeableConcept': instance.chargeItemCodeableConcept?.toJson(),
+      'priceComponent':
+          instance.priceComponent?.map((e) => e?.toJson())?.toList(),
+    };
 
 Invoice_PriceComponent _$Invoice_PriceComponentFromJson(
     Map<String, dynamic> json) {
@@ -589,25 +553,16 @@ Invoice_PriceComponent _$Invoice_PriceComponentFromJson(
 }
 
 Map<String, dynamic> _$Invoice_PriceComponentToJson(
-    Invoice_PriceComponent instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('type', instance.type);
-  writeNotNull('elementType', instance.elementType?.toJson());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull('factor', instance.factor);
-  writeNotNull('elementFactor', instance.elementFactor?.toJson());
-  writeNotNull('amount', instance.amount?.toJson());
-  return val;
-}
+        Invoice_PriceComponent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'code': instance.code?.toJson(),
+      'factor': instance.factor,
+      'elementFactor': instance.elementFactor?.toJson(),
+      'amount': instance.amount?.toJson(),
+    };

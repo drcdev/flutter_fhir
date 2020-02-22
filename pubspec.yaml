@@ -22,7 +22,6 @@ dependencies:
   geolocator: ^5.2.1
   google_fonts: ^0.3.7
   device_info: ^0.4.1+4
-
   flutter_localizations:
     sdk: flutter
 

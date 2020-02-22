@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class SampledData {
   static Future<SampledData> newInstance({
     String id,
@@ -26,7 +26,7 @@ class SampledData {
   }) async {
     var fhirDb = new DatabaseHelper();
     SampledData newSampledData = new SampledData(
-      id: id ?? await fhirDb.newResourceId('SampledData'),
+      id: id,
       extension: extension,
       origin: origin,
       period: period,
@@ -126,30 +126,21 @@ SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SampledDataToJson(SampledData instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('origin', instance.origin?.toJson());
-  writeNotNull('period', instance.period);
-  writeNotNull('elementPeriod', instance.elementPeriod?.toJson());
-  writeNotNull('factor', instance.factor);
-  writeNotNull('elementFactor', instance.elementFactor?.toJson());
-  writeNotNull('lowerLimit', instance.lowerLimit);
-  writeNotNull('elementLowerLimit', instance.elementLowerLimit?.toJson());
-  writeNotNull('upperLimit', instance.upperLimit);
-  writeNotNull('elementUpperLimit', instance.elementUpperLimit?.toJson());
-  writeNotNull('dimensions', instance.dimensions);
-  writeNotNull('elementDimensions', instance.elementDimensions?.toJson());
-  writeNotNull('data', instance.data);
-  writeNotNull('elementData', instance.elementData?.toJson());
-  return val;
-}
+Map<String, dynamic> _$SampledDataToJson(SampledData instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'origin': instance.origin?.toJson(),
+      'period': instance.period,
+      'elementPeriod': instance.elementPeriod?.toJson(),
+      'factor': instance.factor,
+      'elementFactor': instance.elementFactor?.toJson(),
+      'lowerLimit': instance.lowerLimit,
+      'elementLowerLimit': instance.elementLowerLimit?.toJson(),
+      'upperLimit': instance.upperLimit,
+      'elementUpperLimit': instance.elementUpperLimit?.toJson(),
+      'dimensions': instance.dimensions,
+      'elementDimensions': instance.elementDimensions?.toJson(),
+      'data': instance.data,
+      'elementData': instance.elementData?.toJson(),
+    };

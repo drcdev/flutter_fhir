@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ObservationDefinition {
   static Future<ObservationDefinition> newInstance({
     String resourceType,
@@ -80,13 +80,9 @@ class ObservationDefinition {
   }
 
   save() async {
+    this.meta.lastUpdated = DateTime.now();
     var fhirDb = new DatabaseHelper();
     int saved = await fhirDb.saveResource(this);
-  }
-
-  update() {
-    this.meta.lastUpdated = DateTime.now();
-    this.save();
   }
 
   String resourceType = 'ObservationDefinition';
@@ -152,7 +148,7 @@ class ObservationDefinition {
   Map<String, dynamic> toJson() => _$ObservationDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ObservationDefinition_QuantitativeDetails {
   static Future<ObservationDefinition_QuantitativeDetails> newInstance({
     String id,
@@ -169,9 +165,7 @@ class ObservationDefinition_QuantitativeDetails {
     ObservationDefinition_QuantitativeDetails
         newObservationDefinition_QuantitativeDetails =
         new ObservationDefinition_QuantitativeDetails(
-      id: id ??
-          await fhirDb
-              .newResourceId('ObservationDefinition_QuantitativeDetails'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       customaryUnit: customaryUnit,
@@ -213,7 +207,7 @@ class ObservationDefinition_QuantitativeDetails {
       _$ObservationDefinition_QuantitativeDetailsToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class ObservationDefinition_QualifiedInterval {
   static Future<ObservationDefinition_QualifiedInterval> newInstance({
     String id,
@@ -235,8 +229,7 @@ class ObservationDefinition_QualifiedInterval {
     ObservationDefinition_QualifiedInterval
         newObservationDefinition_QualifiedInterval =
         new ObservationDefinition_QualifiedInterval(
-      id: id ??
-          await fhirDb.newResourceId('ObservationDefinition_QualifiedInterval'),
+      id: id,
       extension: extension,
       modifierExtension: modifierExtension,
       category: category,
@@ -391,54 +384,41 @@ ObservationDefinition _$ObservationDefinitionFromJson(
 }
 
 Map<String, dynamic> _$ObservationDefinitionToJson(
-    ObservationDefinition instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('resourceType', instance.resourceType);
-  writeNotNull('id', instance.id);
-  writeNotNull('meta', instance.meta?.toJson());
-  writeNotNull('implicitRules', instance.implicitRules);
-  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
-  writeNotNull('language', instance.language);
-  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('contained', instance.contained);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull(
-      'category', instance.category?.map((e) => e?.toJson())?.toList());
-  writeNotNull('code', instance.code?.toJson());
-  writeNotNull(
-      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
-  writeNotNull('permittedDataType', instance.permittedDataType);
-  writeNotNull('elementPermittedDataType',
-      instance.elementPermittedDataType?.map((e) => e?.toJson())?.toList());
-  writeNotNull('multipleResultsAllowed', instance.multipleResultsAllowed);
-  writeNotNull('elementMultipleResultsAllowed',
-      instance.elementMultipleResultsAllowed?.toJson());
-  writeNotNull('method', instance.method?.toJson());
-  writeNotNull('preferredReportName', instance.preferredReportName);
-  writeNotNull('elementPreferredReportName',
-      instance.elementPreferredReportName?.toJson());
-  writeNotNull('quantitativeDetails', instance.quantitativeDetails?.toJson());
-  writeNotNull('qualifiedInterval',
-      instance.qualifiedInterval?.map((e) => e?.toJson())?.toList());
-  writeNotNull('validCodedValueSet', instance.validCodedValueSet?.toJson());
-  writeNotNull('normalCodedValueSet', instance.normalCodedValueSet?.toJson());
-  writeNotNull(
-      'abnormalCodedValueSet', instance.abnormalCodedValueSet?.toJson());
-  writeNotNull(
-      'criticalCodedValueSet', instance.criticalCodedValueSet?.toJson());
-  return val;
-}
+        ObservationDefinition instance) =>
+    <String, dynamic>{
+      'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'category': instance.category?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'permittedDataType': instance.permittedDataType,
+      'elementPermittedDataType':
+          instance.elementPermittedDataType?.map((e) => e?.toJson())?.toList(),
+      'multipleResultsAllowed': instance.multipleResultsAllowed,
+      'elementMultipleResultsAllowed':
+          instance.elementMultipleResultsAllowed?.toJson(),
+      'method': instance.method?.toJson(),
+      'preferredReportName': instance.preferredReportName,
+      'elementPreferredReportName':
+          instance.elementPreferredReportName?.toJson(),
+      'quantitativeDetails': instance.quantitativeDetails?.toJson(),
+      'qualifiedInterval':
+          instance.qualifiedInterval?.map((e) => e?.toJson())?.toList(),
+      'validCodedValueSet': instance.validCodedValueSet?.toJson(),
+      'normalCodedValueSet': instance.normalCodedValueSet?.toJson(),
+      'abnormalCodedValueSet': instance.abnormalCodedValueSet?.toJson(),
+      'criticalCodedValueSet': instance.criticalCodedValueSet?.toJson(),
+    };
 
 ObservationDefinition_QuantitativeDetails
     _$ObservationDefinition_QuantitativeDetailsFromJson(
@@ -474,30 +454,19 @@ ObservationDefinition_QuantitativeDetails
 }
 
 Map<String, dynamic> _$ObservationDefinition_QuantitativeDetailsToJson(
-    ObservationDefinition_QuantitativeDetails instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('customaryUnit', instance.customaryUnit?.toJson());
-  writeNotNull('unit', instance.unit?.toJson());
-  writeNotNull('conversionFactor', instance.conversionFactor);
-  writeNotNull(
-      'elementConversionFactor', instance.elementConversionFactor?.toJson());
-  writeNotNull('decimalPrecision', instance.decimalPrecision);
-  writeNotNull(
-      'elementDecimalPrecision', instance.elementDecimalPrecision?.toJson());
-  return val;
-}
+        ObservationDefinition_QuantitativeDetails instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'customaryUnit': instance.customaryUnit?.toJson(),
+      'unit': instance.unit?.toJson(),
+      'conversionFactor': instance.conversionFactor,
+      'elementConversionFactor': instance.elementConversionFactor?.toJson(),
+      'decimalPrecision': instance.decimalPrecision,
+      'elementDecimalPrecision': instance.elementDecimalPrecision?.toJson(),
+    };
 
 ObservationDefinition_QualifiedInterval
     _$ObservationDefinition_QualifiedIntervalFromJson(
@@ -545,31 +514,21 @@ ObservationDefinition_QualifiedInterval
 }
 
 Map<String, dynamic> _$ObservationDefinition_QualifiedIntervalToJson(
-    ObservationDefinition_QualifiedInterval instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull(
-      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('modifierExtension',
-      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
-  writeNotNull('category', instance.category);
-  writeNotNull('elementCategory', instance.elementCategory?.toJson());
-  writeNotNull('range', instance.range?.toJson());
-  writeNotNull('context', instance.context?.toJson());
-  writeNotNull(
-      'appliesTo', instance.appliesTo?.map((e) => e?.toJson())?.toList());
-  writeNotNull('gender', instance.gender);
-  writeNotNull('elementGender', instance.elementGender?.toJson());
-  writeNotNull('age', instance.age?.toJson());
-  writeNotNull('gestationalAge', instance.gestationalAge?.toJson());
-  writeNotNull('condition', instance.condition);
-  writeNotNull('elementCondition', instance.elementCondition?.toJson());
-  return val;
-}
+        ObservationDefinition_QualifiedInterval instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'category': instance.category,
+      'elementCategory': instance.elementCategory?.toJson(),
+      'range': instance.range?.toJson(),
+      'context': instance.context?.toJson(),
+      'appliesTo': instance.appliesTo?.map((e) => e?.toJson())?.toList(),
+      'gender': instance.gender,
+      'elementGender': instance.elementGender?.toJson(),
+      'age': instance.age?.toJson(),
+      'gestationalAge': instance.gestationalAge?.toJson(),
+      'condition': instance.condition,
+      'elementCondition': instance.elementCondition?.toJson(),
+    };
