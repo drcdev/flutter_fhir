@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -73,41 +72,23 @@ class SpecimenDefinition {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'SpecimenDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   CodeableConcept typeCollected;
-  @HiveField(13)
   List<CodeableConcept> patientPreparation;
-  @HiveField(14)
   String timeAspect;
-  @HiveField(15)
   Element elementTimeAspect;
-  @HiveField(16)
   List<CodeableConcept> collection;
-  @HiveField(17)
   List<SpecimenDefinition_TypeTested> typeTested;
 
   SpecimenDefinition({
@@ -174,33 +155,19 @@ class SpecimenDefinition_TypeTested {
     return newSpecimenDefinition_TypeTested;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool isDerived;
-  @HiveField(4)
   Element elementIsDerived;
-  @HiveField(5)
   CodeableConcept type;
-  @HiveField(6)
   String preference;
-  @HiveField(7)
   Element elementPreference;
-  @HiveField(8)
   SpecimenDefinition_Container container;
-  @HiveField(9)
   String requirement;
-  @HiveField(10)
   Element elementRequirement;
-  @HiveField(11)
   Duration retentionTime;
-  @HiveField(12)
   List<CodeableConcept> rejectionCriterion;
-  @HiveField(13)
   List<SpecimenDefinition_Handling> handling;
 
   SpecimenDefinition_TypeTested({
@@ -265,35 +232,20 @@ class SpecimenDefinition_Container {
     return newSpecimenDefinition_Container;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept material;
-  @HiveField(4)
   CodeableConcept type;
-  @HiveField(5)
   CodeableConcept cap;
-  @HiveField(6)
   String description;
-  @HiveField(7)
   Element elementDescription;
-  @HiveField(8)
   Quantity capacity;
-  @HiveField(9)
   Quantity minimumVolumeQuantity;
-  @HiveField(10)
   String minimumVolumeString;
-  @HiveField(11)
   Element elementMinimumVolumeString;
-  @HiveField(12)
   List<SpecimenDefinition_Additive> additive;
-  @HiveField(13)
   String preparation;
-  @HiveField(14)
   Element elementPreparation;
 
   SpecimenDefinition_Container({
@@ -339,15 +291,10 @@ class SpecimenDefinition_Additive {
     return newSpecimenDefinition_Additive;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept additiveCodeableConcept;
-  @HiveField(4)
   Reference additiveReference;
 
   SpecimenDefinition_Additive({
@@ -389,21 +336,13 @@ class SpecimenDefinition_Handling {
     return newSpecimenDefinition_Handling;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept temperatureQualifier;
-  @HiveField(4)
   Range temperatureRange;
-  @HiveField(5)
   Duration maxDuration;
-  @HiveField(6)
   String instruction;
-  @HiveField(7)
   Element elementInstruction;
 
   SpecimenDefinition_Handling({
@@ -776,283 +715,4 @@ Map<String, dynamic> _$SpecimenDefinition_HandlingToJson(
   writeNotNull('instruction', instance.instruction);
   writeNotNull('elementInstruction', instance.elementInstruction?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SpecimenDefinitionAdapter extends TypeAdapter<SpecimenDefinition> {
-  @override
-  SpecimenDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      typeCollected: fields[12] as CodeableConcept,
-      patientPreparation: (fields[13] as List)?.cast<CodeableConcept>(),
-      timeAspect: fields[14] as String,
-      elementTimeAspect: fields[15] as Element,
-      collection: (fields[16] as List)?.cast<CodeableConcept>(),
-      typeTested: (fields[17] as List)?.cast<SpecimenDefinition_TypeTested>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.typeCollected)
-      ..writeByte(13)
-      ..write(obj.patientPreparation)
-      ..writeByte(14)
-      ..write(obj.timeAspect)
-      ..writeByte(15)
-      ..write(obj.elementTimeAspect)
-      ..writeByte(16)
-      ..write(obj.collection)
-      ..writeByte(17)
-      ..write(obj.typeTested);
-  }
-}
-
-class SpecimenDefinition_TypeTestedAdapter
-    extends TypeAdapter<SpecimenDefinition_TypeTested> {
-  @override
-  SpecimenDefinition_TypeTested read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_TypeTested(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      isDerived: fields[3] as bool,
-      elementIsDerived: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      preference: fields[6] as String,
-      elementPreference: fields[7] as Element,
-      container: fields[8] as SpecimenDefinition_Container,
-      requirement: fields[9] as String,
-      elementRequirement: fields[10] as Element,
-      retentionTime: fields[11] as Duration,
-      rejectionCriterion: (fields[12] as List)?.cast<CodeableConcept>(),
-      handling: (fields[13] as List)?.cast<SpecimenDefinition_Handling>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_TypeTested obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.isDerived)
-      ..writeByte(4)
-      ..write(obj.elementIsDerived)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.preference)
-      ..writeByte(7)
-      ..write(obj.elementPreference)
-      ..writeByte(8)
-      ..write(obj.container)
-      ..writeByte(9)
-      ..write(obj.requirement)
-      ..writeByte(10)
-      ..write(obj.elementRequirement)
-      ..writeByte(11)
-      ..write(obj.retentionTime)
-      ..writeByte(12)
-      ..write(obj.rejectionCriterion)
-      ..writeByte(13)
-      ..write(obj.handling);
-  }
-}
-
-class SpecimenDefinition_ContainerAdapter
-    extends TypeAdapter<SpecimenDefinition_Container> {
-  @override
-  SpecimenDefinition_Container read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_Container(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      material: fields[3] as CodeableConcept,
-      type: fields[4] as CodeableConcept,
-      cap: fields[5] as CodeableConcept,
-      description: fields[6] as String,
-      elementDescription: fields[7] as Element,
-      capacity: fields[8] as Quantity,
-      minimumVolumeQuantity: fields[9] as Quantity,
-      minimumVolumeString: fields[10] as String,
-      elementMinimumVolumeString: fields[11] as Element,
-      additive: (fields[12] as List)?.cast<SpecimenDefinition_Additive>(),
-      preparation: fields[13] as String,
-      elementPreparation: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_Container obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.material)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.cap)
-      ..writeByte(6)
-      ..write(obj.description)
-      ..writeByte(7)
-      ..write(obj.elementDescription)
-      ..writeByte(8)
-      ..write(obj.capacity)
-      ..writeByte(9)
-      ..write(obj.minimumVolumeQuantity)
-      ..writeByte(10)
-      ..write(obj.minimumVolumeString)
-      ..writeByte(11)
-      ..write(obj.elementMinimumVolumeString)
-      ..writeByte(12)
-      ..write(obj.additive)
-      ..writeByte(13)
-      ..write(obj.preparation)
-      ..writeByte(14)
-      ..write(obj.elementPreparation);
-  }
-}
-
-class SpecimenDefinition_AdditiveAdapter
-    extends TypeAdapter<SpecimenDefinition_Additive> {
-  @override
-  SpecimenDefinition_Additive read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_Additive(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      additiveCodeableConcept: fields[3] as CodeableConcept,
-      additiveReference: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_Additive obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.additiveCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.additiveReference);
-  }
-}
-
-class SpecimenDefinition_HandlingAdapter
-    extends TypeAdapter<SpecimenDefinition_Handling> {
-  @override
-  SpecimenDefinition_Handling read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_Handling(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      temperatureQualifier: fields[3] as CodeableConcept,
-      temperatureRange: fields[4] as Range,
-      maxDuration: fields[5] as Duration,
-      instruction: fields[6] as String,
-      elementInstruction: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_Handling obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.temperatureQualifier)
-      ..writeByte(4)
-      ..write(obj.temperatureRange)
-      ..writeByte(5)
-      ..write(obj.maxDuration)
-      ..writeByte(6)
-      ..write(obj.instruction)
-      ..writeByte(7)
-      ..write(obj.elementInstruction);
-  }
 }

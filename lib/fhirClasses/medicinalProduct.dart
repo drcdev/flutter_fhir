@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/marketingStatus.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -100,70 +99,38 @@ class MedicinalProduct {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'MedicinalProduct';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   CodeableConcept type;
-  @HiveField(13)
   Coding domain;
-  @HiveField(14)
   CodeableConcept combinedPharmaceuticalDoseForm;
-  @HiveField(15)
   CodeableConcept legalStatusOfSupply;
-  @HiveField(16)
   CodeableConcept additionalMonitoringIndicator;
-  @HiveField(17)
   List<String> specialMeasures;
-  @HiveField(18)
   List<Element> elementSpecialMeasures;
-  @HiveField(19)
   CodeableConcept paediatricUseIndicator;
-  @HiveField(20)
   List<CodeableConcept> productClassification;
-  @HiveField(21)
   List<MarketingStatus> marketingStatus;
-  @HiveField(22)
   List<Reference> pharmaceuticalProduct;
-  @HiveField(23)
   List<Reference> packagedMedicinalProduct;
-  @HiveField(24)
   List<Reference> attachedDocument;
-  @HiveField(25)
   List<Reference> masterFile;
-  @HiveField(26)
   List<Reference> contact;
-  @HiveField(27)
   List<Reference> clinicalTrial;
-  @HiveField(28)
   List<MedicinalProduct_Name> name;
-  @HiveField(29)
   List<Identifier> crossReference;
-  @HiveField(30)
   List<MedicinalProduct_ManufacturingBusinessOperation>
       manufacturingBusinessOperation;
-  @HiveField(31)
   List<MedicinalProduct_SpecialDesignation> specialDesignation;
 
   MedicinalProduct({
@@ -229,19 +196,12 @@ class MedicinalProduct_Name {
     return newMedicinalProduct_Name;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String productName;
-  @HiveField(4)
   Element elementProductName;
-  @HiveField(5)
   List<MedicinalProduct_NamePart> namePart;
-  @HiveField(6)
   List<MedicinalProduct_CountryLanguage> countryLanguage;
 
   MedicinalProduct_Name({
@@ -281,17 +241,11 @@ class MedicinalProduct_NamePart {
     return newMedicinalProduct_NamePart;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String part;
-  @HiveField(4)
   Element elementPart;
-  @HiveField(5)
   Coding type;
 
   MedicinalProduct_NamePart({
@@ -330,17 +284,11 @@ class MedicinalProduct_CountryLanguage {
     return newMedicinalProduct_CountryLanguage;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept country;
-  @HiveField(4)
   CodeableConcept jurisdiction;
-  @HiveField(5)
   CodeableConcept language;
 
   MedicinalProduct_CountryLanguage({
@@ -390,25 +338,15 @@ class MedicinalProduct_ManufacturingBusinessOperation {
     return newMedicinalProduct_ManufacturingBusinessOperation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept operationType;
-  @HiveField(4)
   Identifier authorisationReferenceNumber;
-  @HiveField(5)
   DateTime effectiveDate;
-  @HiveField(6)
   Element elementEffectiveDate;
-  @HiveField(7)
   CodeableConcept confidentialityIndicator;
-  @HiveField(8)
   List<Reference> manufacturer;
-  @HiveField(9)
   Reference regulator;
 
   MedicinalProduct_ManufacturingBusinessOperation({
@@ -465,29 +403,17 @@ class MedicinalProduct_SpecialDesignation {
     return newMedicinalProduct_SpecialDesignation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<Identifier> identifier;
-  @HiveField(4)
   CodeableConcept type;
-  @HiveField(5)
   CodeableConcept intendedUse;
-  @HiveField(6)
   CodeableConcept indicationCodeableConcept;
-  @HiveField(7)
   Reference indicationReference;
-  @HiveField(8)
   CodeableConcept status;
-  @HiveField(9)
   DateTime date;
-  @HiveField(10)
   Element elementDate;
-  @HiveField(11)
   CodeableConcept species;
 
   MedicinalProduct_SpecialDesignation({
@@ -988,344 +914,4 @@ Map<String, dynamic> _$MedicinalProduct_SpecialDesignationToJson(
   writeNotNull('elementDate', instance.elementDate?.toJson());
   writeNotNull('species', instance.species?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductAdapter extends TypeAdapter<MedicinalProduct> {
-  @override
-  MedicinalProduct read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      type: fields[12] as CodeableConcept,
-      domain: fields[13] as Coding,
-      combinedPharmaceuticalDoseForm: fields[14] as CodeableConcept,
-      legalStatusOfSupply: fields[15] as CodeableConcept,
-      additionalMonitoringIndicator: fields[16] as CodeableConcept,
-      specialMeasures: (fields[17] as List)?.cast<String>(),
-      elementSpecialMeasures: (fields[18] as List)?.cast<Element>(),
-      paediatricUseIndicator: fields[19] as CodeableConcept,
-      productClassification: (fields[20] as List)?.cast<CodeableConcept>(),
-      marketingStatus: (fields[21] as List)?.cast<MarketingStatus>(),
-      pharmaceuticalProduct: (fields[22] as List)?.cast<Reference>(),
-      packagedMedicinalProduct: (fields[23] as List)?.cast<Reference>(),
-      attachedDocument: (fields[24] as List)?.cast<Reference>(),
-      masterFile: (fields[25] as List)?.cast<Reference>(),
-      contact: (fields[26] as List)?.cast<Reference>(),
-      clinicalTrial: (fields[27] as List)?.cast<Reference>(),
-      name: (fields[28] as List)?.cast<MedicinalProduct_Name>(),
-      crossReference: (fields[29] as List)?.cast<Identifier>(),
-      manufacturingBusinessOperation: (fields[30] as List)
-          ?.cast<MedicinalProduct_ManufacturingBusinessOperation>(),
-      specialDesignation:
-          (fields[31] as List)?.cast<MedicinalProduct_SpecialDesignation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.type)
-      ..writeByte(13)
-      ..write(obj.domain)
-      ..writeByte(14)
-      ..write(obj.combinedPharmaceuticalDoseForm)
-      ..writeByte(15)
-      ..write(obj.legalStatusOfSupply)
-      ..writeByte(16)
-      ..write(obj.additionalMonitoringIndicator)
-      ..writeByte(17)
-      ..write(obj.specialMeasures)
-      ..writeByte(18)
-      ..write(obj.elementSpecialMeasures)
-      ..writeByte(19)
-      ..write(obj.paediatricUseIndicator)
-      ..writeByte(20)
-      ..write(obj.productClassification)
-      ..writeByte(21)
-      ..write(obj.marketingStatus)
-      ..writeByte(22)
-      ..write(obj.pharmaceuticalProduct)
-      ..writeByte(23)
-      ..write(obj.packagedMedicinalProduct)
-      ..writeByte(24)
-      ..write(obj.attachedDocument)
-      ..writeByte(25)
-      ..write(obj.masterFile)
-      ..writeByte(26)
-      ..write(obj.contact)
-      ..writeByte(27)
-      ..write(obj.clinicalTrial)
-      ..writeByte(28)
-      ..write(obj.name)
-      ..writeByte(29)
-      ..write(obj.crossReference)
-      ..writeByte(30)
-      ..write(obj.manufacturingBusinessOperation)
-      ..writeByte(31)
-      ..write(obj.specialDesignation);
-  }
-}
-
-class MedicinalProduct_NameAdapter extends TypeAdapter<MedicinalProduct_Name> {
-  @override
-  MedicinalProduct_Name read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_Name(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      productName: fields[3] as String,
-      elementProductName: fields[4] as Element,
-      namePart: (fields[5] as List)?.cast<MedicinalProduct_NamePart>(),
-      countryLanguage:
-          (fields[6] as List)?.cast<MedicinalProduct_CountryLanguage>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_Name obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.productName)
-      ..writeByte(4)
-      ..write(obj.elementProductName)
-      ..writeByte(5)
-      ..write(obj.namePart)
-      ..writeByte(6)
-      ..write(obj.countryLanguage);
-  }
-}
-
-class MedicinalProduct_NamePartAdapter
-    extends TypeAdapter<MedicinalProduct_NamePart> {
-  @override
-  MedicinalProduct_NamePart read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_NamePart(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      part: fields[3] as String,
-      elementPart: fields[4] as Element,
-      type: fields[5] as Coding,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_NamePart obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.part)
-      ..writeByte(4)
-      ..write(obj.elementPart)
-      ..writeByte(5)
-      ..write(obj.type);
-  }
-}
-
-class MedicinalProduct_CountryLanguageAdapter
-    extends TypeAdapter<MedicinalProduct_CountryLanguage> {
-  @override
-  MedicinalProduct_CountryLanguage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_CountryLanguage(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      country: fields[3] as CodeableConcept,
-      jurisdiction: fields[4] as CodeableConcept,
-      language: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_CountryLanguage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.country)
-      ..writeByte(4)
-      ..write(obj.jurisdiction)
-      ..writeByte(5)
-      ..write(obj.language);
-  }
-}
-
-class MedicinalProduct_ManufacturingBusinessOperationAdapter
-    extends TypeAdapter<MedicinalProduct_ManufacturingBusinessOperation> {
-  @override
-  MedicinalProduct_ManufacturingBusinessOperation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_ManufacturingBusinessOperation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      operationType: fields[3] as CodeableConcept,
-      authorisationReferenceNumber: fields[4] as Identifier,
-      effectiveDate: fields[5] as DateTime,
-      elementEffectiveDate: fields[6] as Element,
-      confidentialityIndicator: fields[7] as CodeableConcept,
-      manufacturer: (fields[8] as List)?.cast<Reference>(),
-      regulator: fields[9] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer,
-      MedicinalProduct_ManufacturingBusinessOperation obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operationType)
-      ..writeByte(4)
-      ..write(obj.authorisationReferenceNumber)
-      ..writeByte(5)
-      ..write(obj.effectiveDate)
-      ..writeByte(6)
-      ..write(obj.elementEffectiveDate)
-      ..writeByte(7)
-      ..write(obj.confidentialityIndicator)
-      ..writeByte(8)
-      ..write(obj.manufacturer)
-      ..writeByte(9)
-      ..write(obj.regulator);
-  }
-}
-
-class MedicinalProduct_SpecialDesignationAdapter
-    extends TypeAdapter<MedicinalProduct_SpecialDesignation> {
-  @override
-  MedicinalProduct_SpecialDesignation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_SpecialDesignation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      type: fields[4] as CodeableConcept,
-      intendedUse: fields[5] as CodeableConcept,
-      indicationCodeableConcept: fields[6] as CodeableConcept,
-      indicationReference: fields[7] as Reference,
-      status: fields[8] as CodeableConcept,
-      date: fields[9] as DateTime,
-      elementDate: fields[10] as Element,
-      species: fields[11] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_SpecialDesignation obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.intendedUse)
-      ..writeByte(6)
-      ..write(obj.indicationCodeableConcept)
-      ..writeByte(7)
-      ..write(obj.indicationReference)
-      ..writeByte(8)
-      ..write(obj.status)
-      ..writeByte(9)
-      ..write(obj.date)
-      ..writeByte(10)
-      ..write(obj.elementDate)
-      ..writeByte(11)
-      ..write(obj.species);
-  }
 }

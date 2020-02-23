@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -133,103 +132,54 @@ class TerminologyCapabilities {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'TerminologyCapabilities';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   String version;
-  @HiveField(14)
   Element elementVersion;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   String title;
-  @HiveField(18)
   Element elementTitle;
-  @HiveField(19)
   String status;
-  @HiveField(20)
   Element elementStatus;
-  @HiveField(21)
   bool experimental;
-  @HiveField(22)
   Element elementExperimental;
-  @HiveField(23)
   DateTime date;
-  @HiveField(24)
   Element elementDate;
-  @HiveField(25)
   String publisher;
-  @HiveField(26)
   Element elementPublisher;
-  @HiveField(27)
   List<ContactDetail> contact;
-  @HiveField(28)
   String description;
-  @HiveField(29)
   Element elementDescription;
-  @HiveField(30)
   List<UsageContext> useContext;
-  @HiveField(31)
   List<CodeableConcept> jurisdiction;
-  @HiveField(32)
   String purpose;
-  @HiveField(33)
   Element elementPurpose;
-  @HiveField(34)
   String copyright;
-  @HiveField(35)
   Element elementCopyright;
-  @HiveField(36)
   String kind;
-  @HiveField(37)
   Element elementKind;
-  @HiveField(38)
   TerminologyCapabilities_Software software;
-  @HiveField(39)
   TerminologyCapabilities_Implementation implementation;
-  @HiveField(40)
   bool lockedDate;
-  @HiveField(41)
   Element elementLockedDate;
-  @HiveField(42)
   List<TerminologyCapabilities_CodeSystem> codeSystem;
-  @HiveField(43)
   TerminologyCapabilities_Expansion expansion;
-  @HiveField(44)
   String codeSearch;
-  @HiveField(45)
   Element elementCodeSearch;
-  @HiveField(46)
   TerminologyCapabilities_ValidateCode validateCode;
-  @HiveField(47)
   TerminologyCapabilities_Translation translation;
-  @HiveField(48)
   TerminologyCapabilities_Closure closure;
 
   TerminologyCapabilities({
@@ -313,19 +263,12 @@ class TerminologyCapabilities_Software {
     return newTerminologyCapabilities_Software;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String version;
-  @HiveField(6)
   Element elementVersion;
 
   TerminologyCapabilities_Software({
@@ -370,19 +313,12 @@ class TerminologyCapabilities_Implementation {
     return newTerminologyCapabilities_Implementation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String description;
-  @HiveField(4)
   Element elementDescription;
-  @HiveField(5)
   String url;
-  @HiveField(6)
   Element elementUrl;
 
   TerminologyCapabilities_Implementation({
@@ -426,19 +362,12 @@ class TerminologyCapabilities_CodeSystem {
     return newTerminologyCapabilities_CodeSystem;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String uri;
-  @HiveField(4)
   List<TerminologyCapabilities_Version> version;
-  @HiveField(5)
   bool subsumption;
-  @HiveField(6)
   Element elementSubsumption;
 
   TerminologyCapabilities_CodeSystem({
@@ -496,33 +425,19 @@ class TerminologyCapabilities_Version {
     return newTerminologyCapabilities_Version;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String code;
-  @HiveField(4)
   Element elementCode;
-  @HiveField(5)
   bool isDefault;
-  @HiveField(6)
   Element elementIsDefault;
-  @HiveField(7)
   bool compositional;
-  @HiveField(8)
   Element elementCompositional;
-  @HiveField(9)
   List<String> language;
-  @HiveField(10)
   List<Element> elementLanguage;
-  @HiveField(11)
   List<TerminologyCapabilities_Filter> filter;
-  @HiveField(12)
   List<String> property;
-  @HiveField(13)
   List<Element> elementProperty;
 
   TerminologyCapabilities_Version({
@@ -572,19 +487,12 @@ class TerminologyCapabilities_Filter {
     return newTerminologyCapabilities_Filter;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String code;
-  @HiveField(4)
   Element elementCode;
-  @HiveField(5)
   List<String> op;
-  @HiveField(6)
   List<Element> elementOp;
 
   TerminologyCapabilities_Filter({
@@ -636,29 +544,17 @@ class TerminologyCapabilities_Expansion {
     return newTerminologyCapabilities_Expansion;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool hierarchical;
-  @HiveField(4)
   Element elementHierarchical;
-  @HiveField(5)
   bool paging;
-  @HiveField(6)
   Element elementPaging;
-  @HiveField(7)
   bool incomplete;
-  @HiveField(8)
   Element elementIncomplete;
-  @HiveField(9)
   List<TerminologyCapabilities_Parameter> parameter;
-  @HiveField(10)
   String textFilter;
-  @HiveField(11)
   Element elementTextFilter;
 
   TerminologyCapabilities_Expansion({
@@ -707,19 +603,12 @@ class TerminologyCapabilities_Parameter {
     return newTerminologyCapabilities_Parameter;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String documentation;
-  @HiveField(6)
   Element elementDocumentation;
 
   TerminologyCapabilities_Parameter({
@@ -760,15 +649,10 @@ class TerminologyCapabilities_ValidateCode {
     return newTerminologyCapabilities_ValidateCode;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool translations;
-  @HiveField(4)
   Element elementTranslations;
 
   TerminologyCapabilities_ValidateCode({
@@ -806,15 +690,10 @@ class TerminologyCapabilities_Translation {
     return newTerminologyCapabilities_Translation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool needsMap;
-  @HiveField(4)
   Element elementNeedsMap;
 
   TerminologyCapabilities_Translation({
@@ -852,15 +731,10 @@ class TerminologyCapabilities_Closure {
     return newTerminologyCapabilities_Closure;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool translation;
-  @HiveField(4)
   Element elementTranslation;
 
   TerminologyCapabilities_Closure({
@@ -1572,594 +1446,4 @@ Map<String, dynamic> _$TerminologyCapabilities_ClosureToJson(
   writeNotNull('translation', instance.translation);
   writeNotNull('elementTranslation', instance.elementTranslation?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class TerminologyCapabilitiesAdapter
-    extends TypeAdapter<TerminologyCapabilities> {
-  @override
-  TerminologyCapabilities read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      version: fields[13] as String,
-      elementVersion: fields[14] as Element,
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      title: fields[17] as String,
-      elementTitle: fields[18] as Element,
-      status: fields[19] as String,
-      elementStatus: fields[20] as Element,
-      experimental: fields[21] as bool,
-      elementExperimental: fields[22] as Element,
-      date: fields[23] as DateTime,
-      elementDate: fields[24] as Element,
-      publisher: fields[25] as String,
-      elementPublisher: fields[26] as Element,
-      contact: (fields[27] as List)?.cast<ContactDetail>(),
-      description: fields[28] as String,
-      elementDescription: fields[29] as Element,
-      useContext: (fields[30] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[31] as List)?.cast<CodeableConcept>(),
-      purpose: fields[32] as String,
-      elementPurpose: fields[33] as Element,
-      copyright: fields[34] as String,
-      elementCopyright: fields[35] as Element,
-      kind: fields[36] as String,
-      elementKind: fields[37] as Element,
-      software: fields[38] as TerminologyCapabilities_Software,
-      implementation: fields[39] as TerminologyCapabilities_Implementation,
-      lockedDate: fields[40] as bool,
-      elementLockedDate: fields[41] as Element,
-      codeSystem:
-          (fields[42] as List)?.cast<TerminologyCapabilities_CodeSystem>(),
-      expansion: fields[43] as TerminologyCapabilities_Expansion,
-      codeSearch: fields[44] as String,
-      elementCodeSearch: fields[45] as Element,
-      validateCode: fields[46] as TerminologyCapabilities_ValidateCode,
-      translation: fields[47] as TerminologyCapabilities_Translation,
-      closure: fields[48] as TerminologyCapabilities_Closure,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities obj) {
-    writer
-      ..writeByte(49)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.version)
-      ..writeByte(14)
-      ..write(obj.elementVersion)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.title)
-      ..writeByte(18)
-      ..write(obj.elementTitle)
-      ..writeByte(19)
-      ..write(obj.status)
-      ..writeByte(20)
-      ..write(obj.elementStatus)
-      ..writeByte(21)
-      ..write(obj.experimental)
-      ..writeByte(22)
-      ..write(obj.elementExperimental)
-      ..writeByte(23)
-      ..write(obj.date)
-      ..writeByte(24)
-      ..write(obj.elementDate)
-      ..writeByte(25)
-      ..write(obj.publisher)
-      ..writeByte(26)
-      ..write(obj.elementPublisher)
-      ..writeByte(27)
-      ..write(obj.contact)
-      ..writeByte(28)
-      ..write(obj.description)
-      ..writeByte(29)
-      ..write(obj.elementDescription)
-      ..writeByte(30)
-      ..write(obj.useContext)
-      ..writeByte(31)
-      ..write(obj.jurisdiction)
-      ..writeByte(32)
-      ..write(obj.purpose)
-      ..writeByte(33)
-      ..write(obj.elementPurpose)
-      ..writeByte(34)
-      ..write(obj.copyright)
-      ..writeByte(35)
-      ..write(obj.elementCopyright)
-      ..writeByte(36)
-      ..write(obj.kind)
-      ..writeByte(37)
-      ..write(obj.elementKind)
-      ..writeByte(38)
-      ..write(obj.software)
-      ..writeByte(39)
-      ..write(obj.implementation)
-      ..writeByte(40)
-      ..write(obj.lockedDate)
-      ..writeByte(41)
-      ..write(obj.elementLockedDate)
-      ..writeByte(42)
-      ..write(obj.codeSystem)
-      ..writeByte(43)
-      ..write(obj.expansion)
-      ..writeByte(44)
-      ..write(obj.codeSearch)
-      ..writeByte(45)
-      ..write(obj.elementCodeSearch)
-      ..writeByte(46)
-      ..write(obj.validateCode)
-      ..writeByte(47)
-      ..write(obj.translation)
-      ..writeByte(48)
-      ..write(obj.closure);
-  }
-}
-
-class TerminologyCapabilities_SoftwareAdapter
-    extends TypeAdapter<TerminologyCapabilities_Software> {
-  @override
-  TerminologyCapabilities_Software read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Software(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      version: fields[5] as String,
-      elementVersion: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Software obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.version)
-      ..writeByte(6)
-      ..write(obj.elementVersion);
-  }
-}
-
-class TerminologyCapabilities_ImplementationAdapter
-    extends TypeAdapter<TerminologyCapabilities_Implementation> {
-  @override
-  TerminologyCapabilities_Implementation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Implementation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      url: fields[5] as String,
-      elementUrl: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Implementation obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.url)
-      ..writeByte(6)
-      ..write(obj.elementUrl);
-  }
-}
-
-class TerminologyCapabilities_CodeSystemAdapter
-    extends TypeAdapter<TerminologyCapabilities_CodeSystem> {
-  @override
-  TerminologyCapabilities_CodeSystem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_CodeSystem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      uri: fields[3] as String,
-      version: (fields[4] as List)?.cast<TerminologyCapabilities_Version>(),
-      subsumption: fields[5] as bool,
-      elementSubsumption: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_CodeSystem obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.uri)
-      ..writeByte(4)
-      ..write(obj.version)
-      ..writeByte(5)
-      ..write(obj.subsumption)
-      ..writeByte(6)
-      ..write(obj.elementSubsumption);
-  }
-}
-
-class TerminologyCapabilities_VersionAdapter
-    extends TypeAdapter<TerminologyCapabilities_Version> {
-  @override
-  TerminologyCapabilities_Version read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Version(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      isDefault: fields[5] as bool,
-      elementIsDefault: fields[6] as Element,
-      compositional: fields[7] as bool,
-      elementCompositional: fields[8] as Element,
-      language: (fields[9] as List)?.cast<String>(),
-      elementLanguage: (fields[10] as List)?.cast<Element>(),
-      filter: (fields[11] as List)?.cast<TerminologyCapabilities_Filter>(),
-      property: (fields[12] as List)?.cast<String>(),
-      elementProperty: (fields[13] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Version obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.isDefault)
-      ..writeByte(6)
-      ..write(obj.elementIsDefault)
-      ..writeByte(7)
-      ..write(obj.compositional)
-      ..writeByte(8)
-      ..write(obj.elementCompositional)
-      ..writeByte(9)
-      ..write(obj.language)
-      ..writeByte(10)
-      ..write(obj.elementLanguage)
-      ..writeByte(11)
-      ..write(obj.filter)
-      ..writeByte(12)
-      ..write(obj.property)
-      ..writeByte(13)
-      ..write(obj.elementProperty);
-  }
-}
-
-class TerminologyCapabilities_FilterAdapter
-    extends TypeAdapter<TerminologyCapabilities_Filter> {
-  @override
-  TerminologyCapabilities_Filter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Filter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      op: (fields[5] as List)?.cast<String>(),
-      elementOp: (fields[6] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Filter obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.op)
-      ..writeByte(6)
-      ..write(obj.elementOp);
-  }
-}
-
-class TerminologyCapabilities_ExpansionAdapter
-    extends TypeAdapter<TerminologyCapabilities_Expansion> {
-  @override
-  TerminologyCapabilities_Expansion read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Expansion(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      hierarchical: fields[3] as bool,
-      elementHierarchical: fields[4] as Element,
-      paging: fields[5] as bool,
-      elementPaging: fields[6] as Element,
-      incomplete: fields[7] as bool,
-      elementIncomplete: fields[8] as Element,
-      parameter: (fields[9] as List)?.cast<TerminologyCapabilities_Parameter>(),
-      textFilter: fields[10] as String,
-      elementTextFilter: fields[11] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Expansion obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.hierarchical)
-      ..writeByte(4)
-      ..write(obj.elementHierarchical)
-      ..writeByte(5)
-      ..write(obj.paging)
-      ..writeByte(6)
-      ..write(obj.elementPaging)
-      ..writeByte(7)
-      ..write(obj.incomplete)
-      ..writeByte(8)
-      ..write(obj.elementIncomplete)
-      ..writeByte(9)
-      ..write(obj.parameter)
-      ..writeByte(10)
-      ..write(obj.textFilter)
-      ..writeByte(11)
-      ..write(obj.elementTextFilter);
-  }
-}
-
-class TerminologyCapabilities_ParameterAdapter
-    extends TypeAdapter<TerminologyCapabilities_Parameter> {
-  @override
-  TerminologyCapabilities_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Parameter obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class TerminologyCapabilities_ValidateCodeAdapter
-    extends TypeAdapter<TerminologyCapabilities_ValidateCode> {
-  @override
-  TerminologyCapabilities_ValidateCode read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_ValidateCode(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      translations: fields[3] as bool,
-      elementTranslations: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_ValidateCode obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.translations)
-      ..writeByte(4)
-      ..write(obj.elementTranslations);
-  }
-}
-
-class TerminologyCapabilities_TranslationAdapter
-    extends TypeAdapter<TerminologyCapabilities_Translation> {
-  @override
-  TerminologyCapabilities_Translation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Translation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      needsMap: fields[3] as bool,
-      elementNeedsMap: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Translation obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.needsMap)
-      ..writeByte(4)
-      ..write(obj.elementNeedsMap);
-  }
-}
-
-class TerminologyCapabilities_ClosureAdapter
-    extends TypeAdapter<TerminologyCapabilities_Closure> {
-  @override
-  TerminologyCapabilities_Closure read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Closure(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      translation: fields[3] as bool,
-      elementTranslation: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Closure obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.translation)
-      ..writeByte(4)
-      ..write(obj.elementTranslation);
-  }
 }

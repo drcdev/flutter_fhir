@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/population.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -71,41 +70,23 @@ class MedicinalProductContraindication {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'MedicinalProductContraindication';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Reference> subject;
-  @HiveField(12)
   CodeableConcept disease;
-  @HiveField(13)
   CodeableConcept diseaseStatus;
-  @HiveField(14)
   List<CodeableConcept> comorbidity;
-  @HiveField(15)
   List<Reference> therapeuticIndication;
-  @HiveField(16)
   List<MedicinalProductContraindication_OtherTherapy> otherTherapy;
-  @HiveField(17)
   List<Population> population;
 
   MedicinalProductContraindication({
@@ -159,17 +140,11 @@ class MedicinalProductContraindication_OtherTherapy {
     return newMedicinalProductContraindication_OtherTherapy;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept therapyRelationshipType;
-  @HiveField(4)
   CodeableConcept medicationCodeableConcept;
-  @HiveField(5)
   Reference medicationReference;
 
   MedicinalProductContraindication_OtherTherapy({
@@ -345,121 +320,4 @@ Map<String, dynamic> _$MedicinalProductContraindication_OtherTherapyToJson(
       instance.medicationCodeableConcept?.toJson());
   writeNotNull('medicationReference', instance.medicationReference?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductContraindicationAdapter
-    extends TypeAdapter<MedicinalProductContraindication> {
-  @override
-  MedicinalProductContraindication read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductContraindication(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      subject: (fields[11] as List)?.cast<Reference>(),
-      disease: fields[12] as CodeableConcept,
-      diseaseStatus: fields[13] as CodeableConcept,
-      comorbidity: (fields[14] as List)?.cast<CodeableConcept>(),
-      therapeuticIndication: (fields[15] as List)?.cast<Reference>(),
-      otherTherapy: (fields[16] as List)
-          ?.cast<MedicinalProductContraindication_OtherTherapy>(),
-      population: (fields[17] as List)?.cast<Population>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductContraindication obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.subject)
-      ..writeByte(12)
-      ..write(obj.disease)
-      ..writeByte(13)
-      ..write(obj.diseaseStatus)
-      ..writeByte(14)
-      ..write(obj.comorbidity)
-      ..writeByte(15)
-      ..write(obj.therapeuticIndication)
-      ..writeByte(16)
-      ..write(obj.otherTherapy)
-      ..writeByte(17)
-      ..write(obj.population);
-  }
-}
-
-class MedicinalProductContraindication_OtherTherapyAdapter
-    extends TypeAdapter<MedicinalProductContraindication_OtherTherapy> {
-  @override
-  MedicinalProductContraindication_OtherTherapy read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductContraindication_OtherTherapy(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      therapyRelationshipType: fields[3] as CodeableConcept,
-      medicationCodeableConcept: fields[4] as CodeableConcept,
-      medicationReference: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductContraindication_OtherTherapy obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.therapyRelationshipType)
-      ..writeByte(4)
-      ..write(obj.medicationCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.medicationReference);
-  }
 }

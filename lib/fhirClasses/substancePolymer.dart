@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/substanceAmount.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -69,41 +68,23 @@ class SubstancePolymer {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'SubstancePolymer';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   CodeableConcept classs;
-  @HiveField(12)
   CodeableConcept geometry;
-  @HiveField(13)
   List<CodeableConcept> copolymerConnectivity;
-  @HiveField(14)
   List<String> modification;
-  @HiveField(15)
   List<Element> elementModification;
-  @HiveField(16)
   List<SubstancePolymer_MonomerSet> monomerSet;
-  @HiveField(17)
   List<SubstancePolymer_Repeat> repeat;
 
   SubstancePolymer({
@@ -152,15 +133,10 @@ class SubstancePolymer_MonomerSet {
     return newSubstancePolymer_MonomerSet;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept ratioType;
-  @HiveField(4)
   List<SubstancePolymer_StartingMaterial> startingMaterial;
 
   SubstancePolymer_MonomerSet({
@@ -202,21 +178,13 @@ class SubstancePolymer_StartingMaterial {
     return newSubstancePolymer_StartingMaterial;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept material;
-  @HiveField(4)
   CodeableConcept type;
-  @HiveField(5)
   bool isDefining;
-  @HiveField(6)
   Element elementIsDefining;
-  @HiveField(7)
   SubstanceAmount amount;
 
   SubstancePolymer_StartingMaterial({
@@ -265,23 +233,14 @@ class SubstancePolymer_Repeat {
     return newSubstancePolymer_Repeat;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int numberOfUnits;
-  @HiveField(4)
   Element elementNumberOfUnits;
-  @HiveField(5)
   String averageMolecularFormula;
-  @HiveField(6)
   Element elementAverageMolecularFormula;
-  @HiveField(7)
   CodeableConcept repeatUnitAmountType;
-  @HiveField(8)
   List<SubstancePolymer_RepeatUnit> repeatUnit;
 
   SubstancePolymer_Repeat({
@@ -329,23 +288,14 @@ class SubstancePolymer_RepeatUnit {
     return newSubstancePolymer_RepeatUnit;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept orientationOfPolymerisation;
-  @HiveField(4)
   String repeatUnit;
-  @HiveField(5)
   Element elementRepeatUnit;
-  @HiveField(6)
   SubstanceAmount amount;
-  @HiveField(7)
   List<SubstancePolymer_DegreeOfPolymerisation> degreeOfPolymerisation;
-  @HiveField(8)
   List<SubstancePolymer_StructuralRepresentation> structuralRepresentation;
 
   SubstancePolymer_RepeatUnit({
@@ -386,15 +336,10 @@ class SubstancePolymer_DegreeOfPolymerisation {
     return newSubstancePolymer_DegreeOfPolymerisation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept degree;
-  @HiveField(4)
   SubstanceAmount amount;
 
   SubstancePolymer_DegreeOfPolymerisation({
@@ -437,19 +382,12 @@ class SubstancePolymer_StructuralRepresentation {
     return newSubstancePolymer_StructuralRepresentation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   String representation;
-  @HiveField(5)
   Element elementRepresentation;
-  @HiveField(6)
   Attachment attachment;
 
   SubstancePolymer_StructuralRepresentation({
@@ -883,328 +821,4 @@ Map<String, dynamic> _$SubstancePolymer_StructuralRepresentationToJson(
       'elementRepresentation', instance.elementRepresentation?.toJson());
   writeNotNull('attachment', instance.attachment?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SubstancePolymerAdapter extends TypeAdapter<SubstancePolymer> {
-  @override
-  SubstancePolymer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstancePolymer(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      classs: fields[11] as CodeableConcept,
-      geometry: fields[12] as CodeableConcept,
-      copolymerConnectivity: (fields[13] as List)?.cast<CodeableConcept>(),
-      modification: (fields[14] as List)?.cast<String>(),
-      elementModification: (fields[15] as List)?.cast<Element>(),
-      monomerSet: (fields[16] as List)?.cast<SubstancePolymer_MonomerSet>(),
-      repeat: (fields[17] as List)?.cast<SubstancePolymer_Repeat>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstancePolymer obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.classs)
-      ..writeByte(12)
-      ..write(obj.geometry)
-      ..writeByte(13)
-      ..write(obj.copolymerConnectivity)
-      ..writeByte(14)
-      ..write(obj.modification)
-      ..writeByte(15)
-      ..write(obj.elementModification)
-      ..writeByte(16)
-      ..write(obj.monomerSet)
-      ..writeByte(17)
-      ..write(obj.repeat);
-  }
-}
-
-class SubstancePolymer_MonomerSetAdapter
-    extends TypeAdapter<SubstancePolymer_MonomerSet> {
-  @override
-  SubstancePolymer_MonomerSet read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstancePolymer_MonomerSet(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      ratioType: fields[3] as CodeableConcept,
-      startingMaterial:
-          (fields[4] as List)?.cast<SubstancePolymer_StartingMaterial>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstancePolymer_MonomerSet obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.ratioType)
-      ..writeByte(4)
-      ..write(obj.startingMaterial);
-  }
-}
-
-class SubstancePolymer_StartingMaterialAdapter
-    extends TypeAdapter<SubstancePolymer_StartingMaterial> {
-  @override
-  SubstancePolymer_StartingMaterial read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstancePolymer_StartingMaterial(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      material: fields[3] as CodeableConcept,
-      type: fields[4] as CodeableConcept,
-      isDefining: fields[5] as bool,
-      elementIsDefining: fields[6] as Element,
-      amount: fields[7] as SubstanceAmount,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstancePolymer_StartingMaterial obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.material)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.isDefining)
-      ..writeByte(6)
-      ..write(obj.elementIsDefining)
-      ..writeByte(7)
-      ..write(obj.amount);
-  }
-}
-
-class SubstancePolymer_RepeatAdapter
-    extends TypeAdapter<SubstancePolymer_Repeat> {
-  @override
-  SubstancePolymer_Repeat read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstancePolymer_Repeat(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      numberOfUnits: fields[3] as int,
-      elementNumberOfUnits: fields[4] as Element,
-      averageMolecularFormula: fields[5] as String,
-      elementAverageMolecularFormula: fields[6] as Element,
-      repeatUnitAmountType: fields[7] as CodeableConcept,
-      repeatUnit: (fields[8] as List)?.cast<SubstancePolymer_RepeatUnit>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstancePolymer_Repeat obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.numberOfUnits)
-      ..writeByte(4)
-      ..write(obj.elementNumberOfUnits)
-      ..writeByte(5)
-      ..write(obj.averageMolecularFormula)
-      ..writeByte(6)
-      ..write(obj.elementAverageMolecularFormula)
-      ..writeByte(7)
-      ..write(obj.repeatUnitAmountType)
-      ..writeByte(8)
-      ..write(obj.repeatUnit);
-  }
-}
-
-class SubstancePolymer_RepeatUnitAdapter
-    extends TypeAdapter<SubstancePolymer_RepeatUnit> {
-  @override
-  SubstancePolymer_RepeatUnit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstancePolymer_RepeatUnit(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      orientationOfPolymerisation: fields[3] as CodeableConcept,
-      repeatUnit: fields[4] as String,
-      elementRepeatUnit: fields[5] as Element,
-      amount: fields[6] as SubstanceAmount,
-      degreeOfPolymerisation:
-          (fields[7] as List)?.cast<SubstancePolymer_DegreeOfPolymerisation>(),
-      structuralRepresentation: (fields[8] as List)
-          ?.cast<SubstancePolymer_StructuralRepresentation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstancePolymer_RepeatUnit obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.orientationOfPolymerisation)
-      ..writeByte(4)
-      ..write(obj.repeatUnit)
-      ..writeByte(5)
-      ..write(obj.elementRepeatUnit)
-      ..writeByte(6)
-      ..write(obj.amount)
-      ..writeByte(7)
-      ..write(obj.degreeOfPolymerisation)
-      ..writeByte(8)
-      ..write(obj.structuralRepresentation);
-  }
-}
-
-class SubstancePolymer_DegreeOfPolymerisationAdapter
-    extends TypeAdapter<SubstancePolymer_DegreeOfPolymerisation> {
-  @override
-  SubstancePolymer_DegreeOfPolymerisation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstancePolymer_DegreeOfPolymerisation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      degree: fields[3] as CodeableConcept,
-      amount: fields[4] as SubstanceAmount,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstancePolymer_DegreeOfPolymerisation obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.degree)
-      ..writeByte(4)
-      ..write(obj.amount);
-  }
-}
-
-class SubstancePolymer_StructuralRepresentationAdapter
-    extends TypeAdapter<SubstancePolymer_StructuralRepresentation> {
-  @override
-  SubstancePolymer_StructuralRepresentation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstancePolymer_StructuralRepresentation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      representation: fields[4] as String,
-      elementRepresentation: fields[5] as Element,
-      attachment: fields[6] as Attachment,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, SubstancePolymer_StructuralRepresentation obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.representation)
-      ..writeByte(5)
-      ..write(obj.elementRepresentation)
-      ..writeByte(6)
-      ..write(obj.attachment);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -88,57 +87,31 @@ class SupplyDelivery {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'SupplyDelivery';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> basedOn;
-  @HiveField(13)
   List<Reference> partOf;
-  @HiveField(14)
   String status;
-  @HiveField(15)
   Element elementStatus;
-  @HiveField(16)
   Reference patient;
-  @HiveField(17)
   CodeableConcept type;
-  @HiveField(18)
   SupplyDelivery_SuppliedItem suppliedItem;
-  @HiveField(19)
   String occurrenceDateTime;
-  @HiveField(20)
   Element elementOccurrenceDateTime;
-  @HiveField(21)
   Period occurrencePeriod;
-  @HiveField(22)
   Timing occurrenceTiming;
-  @HiveField(23)
   Reference supplier;
-  @HiveField(24)
   Reference destination;
-  @HiveField(25)
   List<Reference> receiver;
 
   SupplyDelivery({
@@ -197,17 +170,11 @@ class SupplyDelivery_SuppliedItem {
     return newSupplyDelivery_SuppliedItem;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Quantity quantity;
-  @HiveField(4)
   CodeableConcept itemCodeableConcept;
-  @HiveField(5)
   Reference itemReference;
 
   SupplyDelivery_SuppliedItem({
@@ -398,142 +365,4 @@ Map<String, dynamic> _$SupplyDelivery_SuppliedItemToJson(
   writeNotNull('itemCodeableConcept', instance.itemCodeableConcept?.toJson());
   writeNotNull('itemReference', instance.itemReference?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SupplyDeliveryAdapter extends TypeAdapter<SupplyDelivery> {
-  @override
-  SupplyDelivery read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SupplyDelivery(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      basedOn: (fields[12] as List)?.cast<Reference>(),
-      partOf: (fields[13] as List)?.cast<Reference>(),
-      status: fields[14] as String,
-      elementStatus: fields[15] as Element,
-      patient: fields[16] as Reference,
-      type: fields[17] as CodeableConcept,
-      suppliedItem: fields[18] as SupplyDelivery_SuppliedItem,
-      occurrenceDateTime: fields[19] as String,
-      elementOccurrenceDateTime: fields[20] as Element,
-      occurrencePeriod: fields[21] as Period,
-      occurrenceTiming: fields[22] as Timing,
-      supplier: fields[23] as Reference,
-      destination: fields[24] as Reference,
-      receiver: (fields[25] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SupplyDelivery obj) {
-    writer
-      ..writeByte(26)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.basedOn)
-      ..writeByte(13)
-      ..write(obj.partOf)
-      ..writeByte(14)
-      ..write(obj.status)
-      ..writeByte(15)
-      ..write(obj.elementStatus)
-      ..writeByte(16)
-      ..write(obj.patient)
-      ..writeByte(17)
-      ..write(obj.type)
-      ..writeByte(18)
-      ..write(obj.suppliedItem)
-      ..writeByte(19)
-      ..write(obj.occurrenceDateTime)
-      ..writeByte(20)
-      ..write(obj.elementOccurrenceDateTime)
-      ..writeByte(21)
-      ..write(obj.occurrencePeriod)
-      ..writeByte(22)
-      ..write(obj.occurrenceTiming)
-      ..writeByte(23)
-      ..write(obj.supplier)
-      ..writeByte(24)
-      ..write(obj.destination)
-      ..writeByte(25)
-      ..write(obj.receiver);
-  }
-}
-
-class SupplyDelivery_SuppliedItemAdapter
-    extends TypeAdapter<SupplyDelivery_SuppliedItem> {
-  @override
-  SupplyDelivery_SuppliedItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SupplyDelivery_SuppliedItem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      quantity: fields[3] as Quantity,
-      itemCodeableConcept: fields[4] as CodeableConcept,
-      itemReference: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SupplyDelivery_SuppliedItem obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.quantity)
-      ..writeByte(4)
-      ..write(obj.itemCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.itemReference);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -103,75 +102,40 @@ class AdverseEvent {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'AdverseEvent';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   String actuality;
-  @HiveField(13)
   Element elementActuality;
-  @HiveField(14)
   List<CodeableConcept> category;
-  @HiveField(15)
   CodeableConcept event;
-  @HiveField(16)
   Reference subject;
-  @HiveField(17)
   Reference encounter;
-  @HiveField(18)
   DateTime date;
-  @HiveField(19)
   Element elementDate;
-  @HiveField(20)
   DateTime detected;
-  @HiveField(21)
   Element elementDetected;
-  @HiveField(22)
   DateTime recordedDate;
-  @HiveField(23)
   Element elementRecordedDate;
-  @HiveField(24)
   List<Reference> resultingCondition;
-  @HiveField(25)
   Reference location;
-  @HiveField(26)
   CodeableConcept seriousness;
-  @HiveField(27)
   CodeableConcept severity;
-  @HiveField(28)
   CodeableConcept outcome;
-  @HiveField(29)
   Reference recorder;
-  @HiveField(30)
   List<Reference> contributor;
-  @HiveField(31)
   List<AdverseEvent_SuspectEntity> suspectEntity;
-  @HiveField(32)
   List<Reference> subjectMedicalHistory;
-  @HiveField(33)
   List<Reference> referenceDocument;
-  @HiveField(34)
   List<Reference> study;
 
   AdverseEvent({
@@ -237,15 +201,10 @@ class AdverseEvent_SuspectEntity {
     return newAdverseEvent_SuspectEntity;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Reference instance;
-  @HiveField(4)
   List<AdverseEvent_Causality> causality;
 
   AdverseEvent_SuspectEntity({
@@ -287,21 +246,13 @@ class AdverseEvent_Causality {
     return newAdverseEvent_Causality;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept assessment;
-  @HiveField(4)
   String productRelatedness;
-  @HiveField(5)
   Element elementProductRelatedness;
-  @HiveField(6)
   Reference author;
-  @HiveField(7)
   CodeableConcept method;
 
   AdverseEvent_Causality({
@@ -587,209 +538,4 @@ Map<String, dynamic> _$AdverseEvent_CausalityToJson(
   writeNotNull('author', instance.author?.toJson());
   writeNotNull('method', instance.method?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class AdverseEventAdapter extends TypeAdapter<AdverseEvent> {
-  @override
-  AdverseEvent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AdverseEvent(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      actuality: fields[12] as String,
-      elementActuality: fields[13] as Element,
-      category: (fields[14] as List)?.cast<CodeableConcept>(),
-      event: fields[15] as CodeableConcept,
-      subject: fields[16] as Reference,
-      encounter: fields[17] as Reference,
-      date: fields[18] as DateTime,
-      elementDate: fields[19] as Element,
-      detected: fields[20] as DateTime,
-      elementDetected: fields[21] as Element,
-      recordedDate: fields[22] as DateTime,
-      elementRecordedDate: fields[23] as Element,
-      resultingCondition: (fields[24] as List)?.cast<Reference>(),
-      location: fields[25] as Reference,
-      seriousness: fields[26] as CodeableConcept,
-      severity: fields[27] as CodeableConcept,
-      outcome: fields[28] as CodeableConcept,
-      recorder: fields[29] as Reference,
-      contributor: (fields[30] as List)?.cast<Reference>(),
-      suspectEntity: (fields[31] as List)?.cast<AdverseEvent_SuspectEntity>(),
-      subjectMedicalHistory: (fields[32] as List)?.cast<Reference>(),
-      referenceDocument: (fields[33] as List)?.cast<Reference>(),
-      study: (fields[34] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AdverseEvent obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.actuality)
-      ..writeByte(13)
-      ..write(obj.elementActuality)
-      ..writeByte(14)
-      ..write(obj.category)
-      ..writeByte(15)
-      ..write(obj.event)
-      ..writeByte(16)
-      ..write(obj.subject)
-      ..writeByte(17)
-      ..write(obj.encounter)
-      ..writeByte(18)
-      ..write(obj.date)
-      ..writeByte(19)
-      ..write(obj.elementDate)
-      ..writeByte(20)
-      ..write(obj.detected)
-      ..writeByte(21)
-      ..write(obj.elementDetected)
-      ..writeByte(22)
-      ..write(obj.recordedDate)
-      ..writeByte(23)
-      ..write(obj.elementRecordedDate)
-      ..writeByte(24)
-      ..write(obj.resultingCondition)
-      ..writeByte(25)
-      ..write(obj.location)
-      ..writeByte(26)
-      ..write(obj.seriousness)
-      ..writeByte(27)
-      ..write(obj.severity)
-      ..writeByte(28)
-      ..write(obj.outcome)
-      ..writeByte(29)
-      ..write(obj.recorder)
-      ..writeByte(30)
-      ..write(obj.contributor)
-      ..writeByte(31)
-      ..write(obj.suspectEntity)
-      ..writeByte(32)
-      ..write(obj.subjectMedicalHistory)
-      ..writeByte(33)
-      ..write(obj.referenceDocument)
-      ..writeByte(34)
-      ..write(obj.study);
-  }
-}
-
-class AdverseEvent_SuspectEntityAdapter
-    extends TypeAdapter<AdverseEvent_SuspectEntity> {
-  @override
-  AdverseEvent_SuspectEntity read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AdverseEvent_SuspectEntity(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      instance: fields[3] as Reference,
-      causality: (fields[4] as List)?.cast<AdverseEvent_Causality>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AdverseEvent_SuspectEntity obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.instance)
-      ..writeByte(4)
-      ..write(obj.causality);
-  }
-}
-
-class AdverseEvent_CausalityAdapter
-    extends TypeAdapter<AdverseEvent_Causality> {
-  @override
-  AdverseEvent_Causality read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AdverseEvent_Causality(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      assessment: fields[3] as CodeableConcept,
-      productRelatedness: fields[4] as String,
-      elementProductRelatedness: fields[5] as Element,
-      author: fields[6] as Reference,
-      method: fields[7] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AdverseEvent_Causality obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.assessment)
-      ..writeByte(4)
-      ..write(obj.productRelatedness)
-      ..writeByte(5)
-      ..write(obj.elementProductRelatedness)
-      ..writeByte(6)
-      ..write(obj.author)
-      ..writeByte(7)
-      ..write(obj.method);
-  }
 }

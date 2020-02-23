@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -117,85 +116,45 @@ class MedicationDispense {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'MedicationDispense';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> partOf;
-  @HiveField(13)
   String status;
-  @HiveField(14)
   Element elementStatus;
-  @HiveField(15)
   CodeableConcept statusReasonCodeableConcept;
-  @HiveField(16)
   Reference statusReasonReference;
-  @HiveField(17)
   CodeableConcept category;
-  @HiveField(18)
   CodeableConcept medicationCodeableConcept;
-  @HiveField(19)
   Reference medicationReference;
-  @HiveField(20)
   Reference subject;
-  @HiveField(21)
   Reference context;
-  @HiveField(22)
   List<Reference> supportingInformation;
-  @HiveField(23)
   List<MedicationDispense_Performer> performer;
-  @HiveField(24)
   Reference location;
-  @HiveField(25)
   List<Reference> authorizingPrescription;
-  @HiveField(26)
   CodeableConcept type;
-  @HiveField(27)
   Quantity quantity;
-  @HiveField(28)
   Quantity daysSupply;
-  @HiveField(29)
   DateTime whenPrepared;
-  @HiveField(30)
   Element elementWhenPrepared;
-  @HiveField(31)
   DateTime whenHandedOver;
-  @HiveField(32)
   Element elementWhenHandedOver;
-  @HiveField(33)
   Reference destination;
-  @HiveField(34)
   List<Reference> receiver;
-  @HiveField(35)
   List<Annotation> note;
-  @HiveField(36)
   List<Dosage> dosageInstruction;
-  @HiveField(37)
   MedicationDispense_Substitution substitution;
-  @HiveField(38)
   List<Reference> detectedIssue;
-  @HiveField(39)
   List<Reference> eventHistory;
 
   MedicationDispense({
@@ -266,15 +225,10 @@ class MedicationDispense_Performer {
     return newMedicationDispense_Performer;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept function;
-  @HiveField(4)
   Reference actor;
 
   MedicationDispense_Performer({
@@ -316,21 +270,13 @@ class MedicationDispense_Substitution {
     return newMedicationDispense_Substitution;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool wasSubstituted;
-  @HiveField(4)
   Element elementWasSubstituted;
-  @HiveField(5)
   CodeableConcept type;
-  @HiveField(6)
   List<CodeableConcept> reason;
-  @HiveField(7)
   List<Reference> responsibleParty;
 
   MedicationDispense_Substitution({
@@ -654,224 +600,4 @@ Map<String, dynamic> _$MedicationDispense_SubstitutionToJson(
   writeNotNull('responsibleParty',
       instance.responsibleParty?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicationDispenseAdapter extends TypeAdapter<MedicationDispense> {
-  @override
-  MedicationDispense read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationDispense(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      partOf: (fields[12] as List)?.cast<Reference>(),
-      status: fields[13] as String,
-      elementStatus: fields[14] as Element,
-      statusReasonCodeableConcept: fields[15] as CodeableConcept,
-      statusReasonReference: fields[16] as Reference,
-      category: fields[17] as CodeableConcept,
-      medicationCodeableConcept: fields[18] as CodeableConcept,
-      medicationReference: fields[19] as Reference,
-      subject: fields[20] as Reference,
-      context: fields[21] as Reference,
-      supportingInformation: (fields[22] as List)?.cast<Reference>(),
-      performer: (fields[23] as List)?.cast<MedicationDispense_Performer>(),
-      location: fields[24] as Reference,
-      authorizingPrescription: (fields[25] as List)?.cast<Reference>(),
-      type: fields[26] as CodeableConcept,
-      quantity: fields[27] as Quantity,
-      daysSupply: fields[28] as Quantity,
-      whenPrepared: fields[29] as DateTime,
-      elementWhenPrepared: fields[30] as Element,
-      whenHandedOver: fields[31] as DateTime,
-      elementWhenHandedOver: fields[32] as Element,
-      destination: fields[33] as Reference,
-      receiver: (fields[34] as List)?.cast<Reference>(),
-      note: (fields[35] as List)?.cast<Annotation>(),
-      dosageInstruction: (fields[36] as List)?.cast<Dosage>(),
-      substitution: fields[37] as MedicationDispense_Substitution,
-      detectedIssue: (fields[38] as List)?.cast<Reference>(),
-      eventHistory: (fields[39] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationDispense obj) {
-    writer
-      ..writeByte(40)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.partOf)
-      ..writeByte(13)
-      ..write(obj.status)
-      ..writeByte(14)
-      ..write(obj.elementStatus)
-      ..writeByte(15)
-      ..write(obj.statusReasonCodeableConcept)
-      ..writeByte(16)
-      ..write(obj.statusReasonReference)
-      ..writeByte(17)
-      ..write(obj.category)
-      ..writeByte(18)
-      ..write(obj.medicationCodeableConcept)
-      ..writeByte(19)
-      ..write(obj.medicationReference)
-      ..writeByte(20)
-      ..write(obj.subject)
-      ..writeByte(21)
-      ..write(obj.context)
-      ..writeByte(22)
-      ..write(obj.supportingInformation)
-      ..writeByte(23)
-      ..write(obj.performer)
-      ..writeByte(24)
-      ..write(obj.location)
-      ..writeByte(25)
-      ..write(obj.authorizingPrescription)
-      ..writeByte(26)
-      ..write(obj.type)
-      ..writeByte(27)
-      ..write(obj.quantity)
-      ..writeByte(28)
-      ..write(obj.daysSupply)
-      ..writeByte(29)
-      ..write(obj.whenPrepared)
-      ..writeByte(30)
-      ..write(obj.elementWhenPrepared)
-      ..writeByte(31)
-      ..write(obj.whenHandedOver)
-      ..writeByte(32)
-      ..write(obj.elementWhenHandedOver)
-      ..writeByte(33)
-      ..write(obj.destination)
-      ..writeByte(34)
-      ..write(obj.receiver)
-      ..writeByte(35)
-      ..write(obj.note)
-      ..writeByte(36)
-      ..write(obj.dosageInstruction)
-      ..writeByte(37)
-      ..write(obj.substitution)
-      ..writeByte(38)
-      ..write(obj.detectedIssue)
-      ..writeByte(39)
-      ..write(obj.eventHistory);
-  }
-}
-
-class MedicationDispense_PerformerAdapter
-    extends TypeAdapter<MedicationDispense_Performer> {
-  @override
-  MedicationDispense_Performer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationDispense_Performer(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      function: fields[3] as CodeableConcept,
-      actor: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationDispense_Performer obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.function)
-      ..writeByte(4)
-      ..write(obj.actor);
-  }
-}
-
-class MedicationDispense_SubstitutionAdapter
-    extends TypeAdapter<MedicationDispense_Substitution> {
-  @override
-  MedicationDispense_Substitution read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationDispense_Substitution(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      wasSubstituted: fields[3] as bool,
-      elementWasSubstituted: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      reason: (fields[6] as List)?.cast<CodeableConcept>(),
-      responsibleParty: (fields[7] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationDispense_Substitution obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.wasSubstituted)
-      ..writeByte(4)
-      ..write(obj.elementWasSubstituted)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.reason)
-      ..writeByte(7)
-      ..write(obj.responsibleParty);
-  }
 }

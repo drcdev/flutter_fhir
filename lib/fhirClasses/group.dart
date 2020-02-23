@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -88,57 +87,31 @@ class Group {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Group';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   bool active;
-  @HiveField(13)
   Element elementActive;
-  @HiveField(14)
   String type;
-  @HiveField(15)
   Element elementType;
-  @HiveField(16)
   bool actual;
-  @HiveField(17)
   Element elementActual;
-  @HiveField(18)
   CodeableConcept code;
-  @HiveField(19)
   String name;
-  @HiveField(20)
   Element elementName;
-  @HiveField(21)
   int quantity;
-  @HiveField(22)
   Element elementQuantity;
-  @HiveField(23)
   Reference managingEntity;
-  @HiveField(24)
   List<Group_Characteristic> characteristic;
-  @HiveField(25)
   List<Group_Member> member;
 
   Group({
@@ -209,31 +182,18 @@ class Group_Characteristic {
     return newGroup_Characteristic;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept code;
-  @HiveField(4)
   CodeableConcept valueCodeableConcept;
-  @HiveField(5)
   bool valueBoolean;
-  @HiveField(6)
   Element elementValueBoolean;
-  @HiveField(7)
   Quantity valueQuantity;
-  @HiveField(8)
   Range valueRange;
-  @HiveField(9)
   Reference valueReference;
-  @HiveField(10)
   bool exclude;
-  @HiveField(11)
   Element elementExclude;
-  @HiveField(12)
   Period period;
 
   Group_Characteristic({
@@ -280,19 +240,12 @@ class Group_Member {
     return newGroup_Member;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Reference entity;
-  @HiveField(4)
   Period period;
-  @HiveField(5)
   bool inactive;
-  @HiveField(6)
   Element elementInactive;
 
   Group_Member({
@@ -543,201 +496,4 @@ Map<String, dynamic> _$Group_MemberToJson(Group_Member instance) {
   writeNotNull('inactive', instance.inactive);
   writeNotNull('elementInactive', instance.elementInactive?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class GroupAdapter extends TypeAdapter<Group> {
-  @override
-  Group read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Group(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      active: fields[12] as bool,
-      elementActive: fields[13] as Element,
-      type: fields[14] as String,
-      elementType: fields[15] as Element,
-      actual: fields[16] as bool,
-      elementActual: fields[17] as Element,
-      code: fields[18] as CodeableConcept,
-      name: fields[19] as String,
-      elementName: fields[20] as Element,
-      quantity: fields[21] as int,
-      elementQuantity: fields[22] as Element,
-      managingEntity: fields[23] as Reference,
-      characteristic: (fields[24] as List)?.cast<Group_Characteristic>(),
-      member: (fields[25] as List)?.cast<Group_Member>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Group obj) {
-    writer
-      ..writeByte(26)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.active)
-      ..writeByte(13)
-      ..write(obj.elementActive)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.elementType)
-      ..writeByte(16)
-      ..write(obj.actual)
-      ..writeByte(17)
-      ..write(obj.elementActual)
-      ..writeByte(18)
-      ..write(obj.code)
-      ..writeByte(19)
-      ..write(obj.name)
-      ..writeByte(20)
-      ..write(obj.elementName)
-      ..writeByte(21)
-      ..write(obj.quantity)
-      ..writeByte(22)
-      ..write(obj.elementQuantity)
-      ..writeByte(23)
-      ..write(obj.managingEntity)
-      ..writeByte(24)
-      ..write(obj.characteristic)
-      ..writeByte(25)
-      ..write(obj.member);
-  }
-}
-
-class Group_CharacteristicAdapter extends TypeAdapter<Group_Characteristic> {
-  @override
-  Group_Characteristic read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Group_Characteristic(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      valueCodeableConcept: fields[4] as CodeableConcept,
-      valueBoolean: fields[5] as bool,
-      elementValueBoolean: fields[6] as Element,
-      valueQuantity: fields[7] as Quantity,
-      valueRange: fields[8] as Range,
-      valueReference: fields[9] as Reference,
-      exclude: fields[10] as bool,
-      elementExclude: fields[11] as Element,
-      period: fields[12] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Group_Characteristic obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.valueCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.valueBoolean)
-      ..writeByte(6)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(7)
-      ..write(obj.valueQuantity)
-      ..writeByte(8)
-      ..write(obj.valueRange)
-      ..writeByte(9)
-      ..write(obj.valueReference)
-      ..writeByte(10)
-      ..write(obj.exclude)
-      ..writeByte(11)
-      ..write(obj.elementExclude)
-      ..writeByte(12)
-      ..write(obj.period);
-  }
-}
-
-class Group_MemberAdapter extends TypeAdapter<Group_Member> {
-  @override
-  Group_Member read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Group_Member(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      entity: fields[3] as Reference,
-      period: fields[4] as Period,
-      inactive: fields[5] as bool,
-      elementInactive: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Group_Member obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.entity)
-      ..writeByte(4)
-      ..write(obj.period)
-      ..writeByte(5)
-      ..write(obj.inactive)
-      ..writeByte(6)
-      ..write(obj.elementInactive);
-  }
 }

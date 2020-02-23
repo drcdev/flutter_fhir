@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -45,35 +44,20 @@ class SampledData {
     return newSampledData;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   Quantity origin;
-  @HiveField(3)
   double period;
-  @HiveField(4)
   Element elementPeriod;
-  @HiveField(5)
   double factor;
-  @HiveField(6)
   Element elementFactor;
-  @HiveField(7)
   double lowerLimit;
-  @HiveField(8)
   Element elementLowerLimit;
-  @HiveField(9)
   double upperLimit;
-  @HiveField(10)
   Element elementUpperLimit;
-  @HiveField(11)
   int dimensions;
-  @HiveField(12)
   Element elementDimensions;
-  @HiveField(13)
   String data;
-  @HiveField(14)
   Element elementData;
 
   SampledData({
@@ -167,72 +151,4 @@ Map<String, dynamic> _$SampledDataToJson(SampledData instance) {
   writeNotNull('data', instance.data);
   writeNotNull('elementData', instance.elementData?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SampledDataAdapter extends TypeAdapter<SampledData> {
-  @override
-  SampledData read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SampledData(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      origin: fields[2] as Quantity,
-      period: fields[3] as double,
-      elementPeriod: fields[4] as Element,
-      factor: fields[5] as double,
-      elementFactor: fields[6] as Element,
-      lowerLimit: fields[7] as double,
-      elementLowerLimit: fields[8] as Element,
-      upperLimit: fields[9] as double,
-      elementUpperLimit: fields[10] as Element,
-      dimensions: fields[11] as int,
-      elementDimensions: fields[12] as Element,
-      data: fields[13] as String,
-      elementData: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SampledData obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.origin)
-      ..writeByte(3)
-      ..write(obj.period)
-      ..writeByte(4)
-      ..write(obj.elementPeriod)
-      ..writeByte(5)
-      ..write(obj.factor)
-      ..writeByte(6)
-      ..write(obj.elementFactor)
-      ..writeByte(7)
-      ..write(obj.lowerLimit)
-      ..writeByte(8)
-      ..write(obj.elementLowerLimit)
-      ..writeByte(9)
-      ..write(obj.upperLimit)
-      ..writeByte(10)
-      ..write(obj.elementUpperLimit)
-      ..writeByte(11)
-      ..write(obj.dimensions)
-      ..writeByte(12)
-      ..write(obj.elementDimensions)
-      ..writeByte(13)
-      ..write(obj.data)
-      ..writeByte(14)
-      ..write(obj.elementData);
-  }
 }

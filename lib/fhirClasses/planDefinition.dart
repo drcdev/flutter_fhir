@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/age.dart';
@@ -161,121 +160,63 @@ class PlanDefinition {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'PlanDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String subtitle;
-  @HiveField(21)
   Element elementSubtitle;
-  @HiveField(22)
   CodeableConcept type;
-  @HiveField(23)
   String status;
-  @HiveField(24)
   Element elementStatus;
-  @HiveField(25)
   bool experimental;
-  @HiveField(26)
   Element elementExperimental;
-  @HiveField(27)
   CodeableConcept subjectCodeableConcept;
-  @HiveField(28)
   Reference subjectReference;
-  @HiveField(29)
   DateTime date;
-  @HiveField(30)
   Element elementDate;
-  @HiveField(31)
   String publisher;
-  @HiveField(32)
   Element elementPublisher;
-  @HiveField(33)
   List<ContactDetail> contact;
-  @HiveField(34)
   String description;
-  @HiveField(35)
   Element elementDescription;
-  @HiveField(36)
   List<UsageContext> useContext;
-  @HiveField(37)
   List<CodeableConcept> jurisdiction;
-  @HiveField(38)
   String purpose;
-  @HiveField(39)
   Element elementPurpose;
-  @HiveField(40)
   String usage;
-  @HiveField(41)
   Element elementUsage;
-  @HiveField(42)
   String copyright;
-  @HiveField(43)
   Element elementCopyright;
-  @HiveField(44)
   String approvalDate;
-  @HiveField(45)
   Element elementApprovalDate;
-  @HiveField(46)
   String lastReviewDate;
-  @HiveField(47)
   Element elementLastReviewDate;
-  @HiveField(48)
   Period effectivePeriod;
-  @HiveField(49)
   List<CodeableConcept> topic;
-  @HiveField(50)
   List<ContactDetail> author;
-  @HiveField(51)
   List<ContactDetail> editor;
-  @HiveField(52)
   List<ContactDetail> reviewer;
-  @HiveField(53)
   List<ContactDetail> endorser;
-  @HiveField(54)
   List<RelatedArtifact> relatedArtifact;
-  @HiveField(55)
   List<String> library;
-  @HiveField(56)
   List<PlanDefinition_Goal> goal;
-  @HiveField(57)
   List<PlanDefinition_Action> action;
 
   PlanDefinition({
@@ -373,25 +314,15 @@ class PlanDefinition_Goal {
     return newPlanDefinition_Goal;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   CodeableConcept description;
-  @HiveField(5)
   CodeableConcept priority;
-  @HiveField(6)
   CodeableConcept start;
-  @HiveField(7)
   List<CodeableConcept> addresses;
-  @HiveField(8)
   List<RelatedArtifact> documentation;
-  @HiveField(9)
   List<PlanDefinition_Target> target;
 
   PlanDefinition_Goal({
@@ -437,21 +368,13 @@ class PlanDefinition_Target {
     return newPlanDefinition_Target;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept measure;
-  @HiveField(4)
   Quantity detailQuantity;
-  @HiveField(5)
   Range detailRange;
-  @HiveField(6)
   CodeableConcept detailCodeableConcept;
-  @HiveField(7)
   Duration due;
 
   PlanDefinition_Target({
@@ -581,107 +504,56 @@ class PlanDefinition_Action {
     return newPlanDefinition_Action;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String prefix;
-  @HiveField(4)
   Element elementPrefix;
-  @HiveField(5)
   String title;
-  @HiveField(6)
   Element elementTitle;
-  @HiveField(7)
   String description;
-  @HiveField(8)
   Element elementDescription;
-  @HiveField(9)
   String textEquivalent;
-  @HiveField(10)
   Element elementTextEquivalent;
-  @HiveField(11)
   String priority;
-  @HiveField(12)
   Element elementPriority;
-  @HiveField(13)
   List<CodeableConcept> code;
-  @HiveField(14)
   List<CodeableConcept> reason;
-  @HiveField(15)
   List<RelatedArtifact> documentation;
-  @HiveField(16)
   List<String> goalId;
-  @HiveField(17)
   List<Element> elementGoalId;
-  @HiveField(18)
   CodeableConcept subjectCodeableConcept;
-  @HiveField(19)
   Reference subjectReference;
-  @HiveField(20)
   List<TriggerDefinition> trigger;
-  @HiveField(21)
   List<PlanDefinition_Condition> condition;
-  @HiveField(22)
   List<DataRequirement> input;
-  @HiveField(23)
   List<DataRequirement> output;
-  @HiveField(24)
   List<PlanDefinition_RelatedAction> relatedAction;
-  @HiveField(25)
   String timingDateTime;
-  @HiveField(26)
   Element elementTimingDateTime;
-  @HiveField(27)
   Age timingAge;
-  @HiveField(28)
   Period timingPeriod;
-  @HiveField(29)
   Duration timingDuration;
-  @HiveField(30)
   Range timingRange;
-  @HiveField(31)
   Timing timingTiming;
-  @HiveField(32)
   List<PlanDefinition_Participant> participant;
-  @HiveField(33)
   CodeableConcept type;
-  @HiveField(34)
   String groupingBehavior;
-  @HiveField(35)
   Element elementGroupingBehavior;
-  @HiveField(36)
   String selectionBehavior;
-  @HiveField(37)
   Element elementSelectionBehavior;
-  @HiveField(38)
   String requiredBehavior;
-  @HiveField(39)
   Element elementRequiredBehavior;
-  @HiveField(40)
   String precheckBehavior;
-  @HiveField(41)
   Element elementPrecheckBehavior;
-  @HiveField(42)
   String cardinalityBehavior;
-  @HiveField(43)
   Element elementCardinalityBehavior;
-  @HiveField(44)
   String definitionCanonical;
-  @HiveField(45)
   Element elementDefinitionCanonical;
-  @HiveField(46)
   String definitionUri;
-  @HiveField(47)
   Element elementDefinitionUri;
-  @HiveField(48)
   String transform;
-  @HiveField(49)
   List<PlanDefinition_DynamicValue> dynamicValue;
-  @HiveField(50)
   List<PlanDefinition_Action> action;
 
   PlanDefinition_Action({
@@ -765,17 +637,11 @@ class PlanDefinition_Condition {
     return newPlanDefinition_Condition;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String kind;
-  @HiveField(4)
   Element elementKind;
-  @HiveField(5)
   Expression expression;
 
   PlanDefinition_Condition({
@@ -820,23 +686,14 @@ class PlanDefinition_RelatedAction {
     return newPlanDefinition_RelatedAction;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String actionId;
-  @HiveField(4)
   Element elementActionId;
-  @HiveField(5)
   String relationship;
-  @HiveField(6)
   Element elementRelationship;
-  @HiveField(7)
   Duration offsetDuration;
-  @HiveField(8)
   Range offsetRange;
 
   PlanDefinition_RelatedAction({
@@ -878,17 +735,11 @@ class PlanDefinition_Participant {
     return newPlanDefinition_Participant;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   CodeableConcept role;
 
   PlanDefinition_Participant({
@@ -927,17 +778,11 @@ class PlanDefinition_DynamicValue {
     return newPlanDefinition_DynamicValue;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String path;
-  @HiveField(4)
   Element elementPath;
-  @HiveField(5)
   Expression expression;
 
   PlanDefinition_DynamicValue({
@@ -1752,619 +1597,4 @@ Map<String, dynamic> _$PlanDefinition_DynamicValueToJson(
   writeNotNull('elementPath', instance.elementPath?.toJson());
   writeNotNull('expression', instance.expression?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class PlanDefinitionAdapter extends TypeAdapter<PlanDefinition> {
-  @override
-  PlanDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      subtitle: fields[20] as String,
-      elementSubtitle: fields[21] as Element,
-      type: fields[22] as CodeableConcept,
-      status: fields[23] as String,
-      elementStatus: fields[24] as Element,
-      experimental: fields[25] as bool,
-      elementExperimental: fields[26] as Element,
-      subjectCodeableConcept: fields[27] as CodeableConcept,
-      subjectReference: fields[28] as Reference,
-      date: fields[29] as DateTime,
-      elementDate: fields[30] as Element,
-      publisher: fields[31] as String,
-      elementPublisher: fields[32] as Element,
-      contact: (fields[33] as List)?.cast<ContactDetail>(),
-      description: fields[34] as String,
-      elementDescription: fields[35] as Element,
-      useContext: (fields[36] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[37] as List)?.cast<CodeableConcept>(),
-      purpose: fields[38] as String,
-      elementPurpose: fields[39] as Element,
-      usage: fields[40] as String,
-      elementUsage: fields[41] as Element,
-      copyright: fields[42] as String,
-      elementCopyright: fields[43] as Element,
-      approvalDate: fields[44] as String,
-      elementApprovalDate: fields[45] as Element,
-      lastReviewDate: fields[46] as String,
-      elementLastReviewDate: fields[47] as Element,
-      effectivePeriod: fields[48] as Period,
-      topic: (fields[49] as List)?.cast<CodeableConcept>(),
-      author: (fields[50] as List)?.cast<ContactDetail>(),
-      editor: (fields[51] as List)?.cast<ContactDetail>(),
-      reviewer: (fields[52] as List)?.cast<ContactDetail>(),
-      endorser: (fields[53] as List)?.cast<ContactDetail>(),
-      relatedArtifact: (fields[54] as List)?.cast<RelatedArtifact>(),
-      library: (fields[55] as List)?.cast<String>(),
-      goal: (fields[56] as List)?.cast<PlanDefinition_Goal>(),
-      action: (fields[57] as List)?.cast<PlanDefinition_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition obj) {
-    writer
-      ..writeByte(58)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.subtitle)
-      ..writeByte(21)
-      ..write(obj.elementSubtitle)
-      ..writeByte(22)
-      ..write(obj.type)
-      ..writeByte(23)
-      ..write(obj.status)
-      ..writeByte(24)
-      ..write(obj.elementStatus)
-      ..writeByte(25)
-      ..write(obj.experimental)
-      ..writeByte(26)
-      ..write(obj.elementExperimental)
-      ..writeByte(27)
-      ..write(obj.subjectCodeableConcept)
-      ..writeByte(28)
-      ..write(obj.subjectReference)
-      ..writeByte(29)
-      ..write(obj.date)
-      ..writeByte(30)
-      ..write(obj.elementDate)
-      ..writeByte(31)
-      ..write(obj.publisher)
-      ..writeByte(32)
-      ..write(obj.elementPublisher)
-      ..writeByte(33)
-      ..write(obj.contact)
-      ..writeByte(34)
-      ..write(obj.description)
-      ..writeByte(35)
-      ..write(obj.elementDescription)
-      ..writeByte(36)
-      ..write(obj.useContext)
-      ..writeByte(37)
-      ..write(obj.jurisdiction)
-      ..writeByte(38)
-      ..write(obj.purpose)
-      ..writeByte(39)
-      ..write(obj.elementPurpose)
-      ..writeByte(40)
-      ..write(obj.usage)
-      ..writeByte(41)
-      ..write(obj.elementUsage)
-      ..writeByte(42)
-      ..write(obj.copyright)
-      ..writeByte(43)
-      ..write(obj.elementCopyright)
-      ..writeByte(44)
-      ..write(obj.approvalDate)
-      ..writeByte(45)
-      ..write(obj.elementApprovalDate)
-      ..writeByte(46)
-      ..write(obj.lastReviewDate)
-      ..writeByte(47)
-      ..write(obj.elementLastReviewDate)
-      ..writeByte(48)
-      ..write(obj.effectivePeriod)
-      ..writeByte(49)
-      ..write(obj.topic)
-      ..writeByte(50)
-      ..write(obj.author)
-      ..writeByte(51)
-      ..write(obj.editor)
-      ..writeByte(52)
-      ..write(obj.reviewer)
-      ..writeByte(53)
-      ..write(obj.endorser)
-      ..writeByte(54)
-      ..write(obj.relatedArtifact)
-      ..writeByte(55)
-      ..write(obj.library)
-      ..writeByte(56)
-      ..write(obj.goal)
-      ..writeByte(57)
-      ..write(obj.action);
-  }
-}
-
-class PlanDefinition_GoalAdapter extends TypeAdapter<PlanDefinition_Goal> {
-  @override
-  PlanDefinition_Goal read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Goal(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      description: fields[4] as CodeableConcept,
-      priority: fields[5] as CodeableConcept,
-      start: fields[6] as CodeableConcept,
-      addresses: (fields[7] as List)?.cast<CodeableConcept>(),
-      documentation: (fields[8] as List)?.cast<RelatedArtifact>(),
-      target: (fields[9] as List)?.cast<PlanDefinition_Target>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Goal obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.priority)
-      ..writeByte(6)
-      ..write(obj.start)
-      ..writeByte(7)
-      ..write(obj.addresses)
-      ..writeByte(8)
-      ..write(obj.documentation)
-      ..writeByte(9)
-      ..write(obj.target);
-  }
-}
-
-class PlanDefinition_TargetAdapter extends TypeAdapter<PlanDefinition_Target> {
-  @override
-  PlanDefinition_Target read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Target(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      measure: fields[3] as CodeableConcept,
-      detailQuantity: fields[4] as Quantity,
-      detailRange: fields[5] as Range,
-      detailCodeableConcept: fields[6] as CodeableConcept,
-      due: fields[7] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Target obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.measure)
-      ..writeByte(4)
-      ..write(obj.detailQuantity)
-      ..writeByte(5)
-      ..write(obj.detailRange)
-      ..writeByte(6)
-      ..write(obj.detailCodeableConcept)
-      ..writeByte(7)
-      ..write(obj.due);
-  }
-}
-
-class PlanDefinition_ActionAdapter extends TypeAdapter<PlanDefinition_Action> {
-  @override
-  PlanDefinition_Action read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Action(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      prefix: fields[3] as String,
-      elementPrefix: fields[4] as Element,
-      title: fields[5] as String,
-      elementTitle: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      textEquivalent: fields[9] as String,
-      elementTextEquivalent: fields[10] as Element,
-      priority: fields[11] as String,
-      elementPriority: fields[12] as Element,
-      code: (fields[13] as List)?.cast<CodeableConcept>(),
-      reason: (fields[14] as List)?.cast<CodeableConcept>(),
-      documentation: (fields[15] as List)?.cast<RelatedArtifact>(),
-      goalId: (fields[16] as List)?.cast<String>(),
-      elementGoalId: (fields[17] as List)?.cast<Element>(),
-      subjectCodeableConcept: fields[18] as CodeableConcept,
-      subjectReference: fields[19] as Reference,
-      trigger: (fields[20] as List)?.cast<TriggerDefinition>(),
-      condition: (fields[21] as List)?.cast<PlanDefinition_Condition>(),
-      input: (fields[22] as List)?.cast<DataRequirement>(),
-      output: (fields[23] as List)?.cast<DataRequirement>(),
-      relatedAction: (fields[24] as List)?.cast<PlanDefinition_RelatedAction>(),
-      timingDateTime: fields[25] as String,
-      elementTimingDateTime: fields[26] as Element,
-      timingAge: fields[27] as Age,
-      timingPeriod: fields[28] as Period,
-      timingDuration: fields[29] as Duration,
-      timingRange: fields[30] as Range,
-      timingTiming: fields[31] as Timing,
-      participant: (fields[32] as List)?.cast<PlanDefinition_Participant>(),
-      type: fields[33] as CodeableConcept,
-      groupingBehavior: fields[34] as String,
-      elementGroupingBehavior: fields[35] as Element,
-      selectionBehavior: fields[36] as String,
-      elementSelectionBehavior: fields[37] as Element,
-      requiredBehavior: fields[38] as String,
-      elementRequiredBehavior: fields[39] as Element,
-      precheckBehavior: fields[40] as String,
-      elementPrecheckBehavior: fields[41] as Element,
-      cardinalityBehavior: fields[42] as String,
-      elementCardinalityBehavior: fields[43] as Element,
-      definitionCanonical: fields[44] as String,
-      elementDefinitionCanonical: fields[45] as Element,
-      definitionUri: fields[46] as String,
-      elementDefinitionUri: fields[47] as Element,
-      transform: fields[48] as String,
-      dynamicValue: (fields[49] as List)?.cast<PlanDefinition_DynamicValue>(),
-      action: (fields[50] as List)?.cast<PlanDefinition_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Action obj) {
-    writer
-      ..writeByte(51)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.prefix)
-      ..writeByte(4)
-      ..write(obj.elementPrefix)
-      ..writeByte(5)
-      ..write(obj.title)
-      ..writeByte(6)
-      ..write(obj.elementTitle)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.textEquivalent)
-      ..writeByte(10)
-      ..write(obj.elementTextEquivalent)
-      ..writeByte(11)
-      ..write(obj.priority)
-      ..writeByte(12)
-      ..write(obj.elementPriority)
-      ..writeByte(13)
-      ..write(obj.code)
-      ..writeByte(14)
-      ..write(obj.reason)
-      ..writeByte(15)
-      ..write(obj.documentation)
-      ..writeByte(16)
-      ..write(obj.goalId)
-      ..writeByte(17)
-      ..write(obj.elementGoalId)
-      ..writeByte(18)
-      ..write(obj.subjectCodeableConcept)
-      ..writeByte(19)
-      ..write(obj.subjectReference)
-      ..writeByte(20)
-      ..write(obj.trigger)
-      ..writeByte(21)
-      ..write(obj.condition)
-      ..writeByte(22)
-      ..write(obj.input)
-      ..writeByte(23)
-      ..write(obj.output)
-      ..writeByte(24)
-      ..write(obj.relatedAction)
-      ..writeByte(25)
-      ..write(obj.timingDateTime)
-      ..writeByte(26)
-      ..write(obj.elementTimingDateTime)
-      ..writeByte(27)
-      ..write(obj.timingAge)
-      ..writeByte(28)
-      ..write(obj.timingPeriod)
-      ..writeByte(29)
-      ..write(obj.timingDuration)
-      ..writeByte(30)
-      ..write(obj.timingRange)
-      ..writeByte(31)
-      ..write(obj.timingTiming)
-      ..writeByte(32)
-      ..write(obj.participant)
-      ..writeByte(33)
-      ..write(obj.type)
-      ..writeByte(34)
-      ..write(obj.groupingBehavior)
-      ..writeByte(35)
-      ..write(obj.elementGroupingBehavior)
-      ..writeByte(36)
-      ..write(obj.selectionBehavior)
-      ..writeByte(37)
-      ..write(obj.elementSelectionBehavior)
-      ..writeByte(38)
-      ..write(obj.requiredBehavior)
-      ..writeByte(39)
-      ..write(obj.elementRequiredBehavior)
-      ..writeByte(40)
-      ..write(obj.precheckBehavior)
-      ..writeByte(41)
-      ..write(obj.elementPrecheckBehavior)
-      ..writeByte(42)
-      ..write(obj.cardinalityBehavior)
-      ..writeByte(43)
-      ..write(obj.elementCardinalityBehavior)
-      ..writeByte(44)
-      ..write(obj.definitionCanonical)
-      ..writeByte(45)
-      ..write(obj.elementDefinitionCanonical)
-      ..writeByte(46)
-      ..write(obj.definitionUri)
-      ..writeByte(47)
-      ..write(obj.elementDefinitionUri)
-      ..writeByte(48)
-      ..write(obj.transform)
-      ..writeByte(49)
-      ..write(obj.dynamicValue)
-      ..writeByte(50)
-      ..write(obj.action);
-  }
-}
-
-class PlanDefinition_ConditionAdapter
-    extends TypeAdapter<PlanDefinition_Condition> {
-  @override
-  PlanDefinition_Condition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Condition(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      kind: fields[3] as String,
-      elementKind: fields[4] as Element,
-      expression: fields[5] as Expression,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Condition obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.kind)
-      ..writeByte(4)
-      ..write(obj.elementKind)
-      ..writeByte(5)
-      ..write(obj.expression);
-  }
-}
-
-class PlanDefinition_RelatedActionAdapter
-    extends TypeAdapter<PlanDefinition_RelatedAction> {
-  @override
-  PlanDefinition_RelatedAction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_RelatedAction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      actionId: fields[3] as String,
-      elementActionId: fields[4] as Element,
-      relationship: fields[5] as String,
-      elementRelationship: fields[6] as Element,
-      offsetDuration: fields[7] as Duration,
-      offsetRange: fields[8] as Range,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_RelatedAction obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.actionId)
-      ..writeByte(4)
-      ..write(obj.elementActionId)
-      ..writeByte(5)
-      ..write(obj.relationship)
-      ..writeByte(6)
-      ..write(obj.elementRelationship)
-      ..writeByte(7)
-      ..write(obj.offsetDuration)
-      ..writeByte(8)
-      ..write(obj.offsetRange);
-  }
-}
-
-class PlanDefinition_ParticipantAdapter
-    extends TypeAdapter<PlanDefinition_Participant> {
-  @override
-  PlanDefinition_Participant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Participant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      role: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Participant obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.role);
-  }
-}
-
-class PlanDefinition_DynamicValueAdapter
-    extends TypeAdapter<PlanDefinition_DynamicValue> {
-  @override
-  PlanDefinition_DynamicValue read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_DynamicValue(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      expression: fields[5] as Expression,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_DynamicValue obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.expression);
-  }
 }

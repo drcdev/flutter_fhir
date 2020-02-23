@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -126,93 +125,49 @@ class ClaimResponse {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'ClaimResponse';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   CodeableConcept subType;
-  @HiveField(16)
   String use;
-  @HiveField(17)
   Element elementUse;
-  @HiveField(18)
   Reference patient;
-  @HiveField(19)
   DateTime created;
-  @HiveField(20)
   Element elementCreated;
-  @HiveField(21)
   Reference insurer;
-  @HiveField(22)
   Reference requestor;
-  @HiveField(23)
   Reference request;
-  @HiveField(24)
   String outcome;
-  @HiveField(25)
   Element elementOutcome;
-  @HiveField(26)
   String disposition;
-  @HiveField(27)
   Element elementDisposition;
-  @HiveField(28)
   String preAuthRef;
-  @HiveField(29)
   Element elementPreAuthRef;
-  @HiveField(30)
   Period preAuthPeriod;
-  @HiveField(31)
   CodeableConcept payeeType;
-  @HiveField(32)
   List<ClaimResponse_Item> item;
-  @HiveField(33)
   List<ClaimResponse_AddItem> addItem;
-  @HiveField(34)
   List<ClaimResponse_Adjudication> adjudication;
-  @HiveField(35)
   List<ClaimResponse_Total> total;
-  @HiveField(36)
   ClaimResponse_Payment payment;
-  @HiveField(37)
   CodeableConcept fundsReserve;
-  @HiveField(38)
   CodeableConcept formCode;
-  @HiveField(39)
   Attachment form;
-  @HiveField(40)
   List<ClaimResponse_ProcessNote> processNote;
-  @HiveField(41)
   List<Reference> communicationRequest;
-  @HiveField(42)
   List<ClaimResponse_Insurance> insurance;
-  @HiveField(43)
   List<ClaimResponse_Error> error;
 
   ClaimResponse({
@@ -294,23 +249,14 @@ class ClaimResponse_Item {
     return newClaimResponse_Item;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int itemSequence;
-  @HiveField(4)
   Element elementItemSequence;
-  @HiveField(5)
   List<int> noteNumber;
-  @HiveField(6)
   List<Element> elementNoteNumber;
-  @HiveField(7)
   List<ClaimResponse_Adjudication> adjudication;
-  @HiveField(8)
   List<ClaimResponse_Detail> detail;
 
   ClaimResponse_Item({
@@ -356,21 +302,13 @@ class ClaimResponse_Adjudication {
     return newClaimResponse_Adjudication;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   CodeableConcept reason;
-  @HiveField(5)
   Money amount;
-  @HiveField(6)
   double value;
-  @HiveField(7)
   Element elementValue;
 
   ClaimResponse_Adjudication({
@@ -416,23 +354,14 @@ class ClaimResponse_Detail {
     return newClaimResponse_Detail;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int detailSequence;
-  @HiveField(4)
   Element elementDetailSequence;
-  @HiveField(5)
   List<int> noteNumber;
-  @HiveField(6)
   List<Element> elementNoteNumber;
-  @HiveField(7)
   List<ClaimResponse_Adjudication> adjudication;
-  @HiveField(8)
   List<ClaimResponse_SubDetail> subDetail;
 
   ClaimResponse_Detail({
@@ -478,21 +407,13 @@ class ClaimResponse_SubDetail {
     return newClaimResponse_SubDetail;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int subDetailSequence;
-  @HiveField(4)
   Element elementSubDetailSequence;
-  @HiveField(5)
   List<int> noteNumber;
-  @HiveField(6)
   List<Element> elementNoteNumber;
-  @HiveField(7)
   List<ClaimResponse_Adjudication> adjudication;
 
   ClaimResponse_SubDetail({
@@ -580,65 +501,35 @@ class ClaimResponse_AddItem {
     return newClaimResponse_AddItem;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<int> itemSequence;
-  @HiveField(4)
   List<Element> elementItemSequence;
-  @HiveField(5)
   List<int> detailSequence;
-  @HiveField(6)
   List<Element> elementDetailSequence;
-  @HiveField(7)
   List<int> subdetailSequence;
-  @HiveField(8)
   List<Element> elementSubdetailSequence;
-  @HiveField(9)
   List<Reference> provider;
-  @HiveField(10)
   CodeableConcept productOrService;
-  @HiveField(11)
   List<CodeableConcept> modifier;
-  @HiveField(12)
   List<CodeableConcept> programCode;
-  @HiveField(13)
   String servicedDate;
-  @HiveField(14)
   Element elementServicedDate;
-  @HiveField(15)
   Period servicedPeriod;
-  @HiveField(16)
   CodeableConcept locationCodeableConcept;
-  @HiveField(17)
   Address locationAddress;
-  @HiveField(18)
   Reference locationReference;
-  @HiveField(19)
   Quantity quantity;
-  @HiveField(20)
   Money unitPrice;
-  @HiveField(21)
   double factor;
-  @HiveField(22)
   Element elementFactor;
-  @HiveField(23)
   Money net;
-  @HiveField(24)
   CodeableConcept bodySite;
-  @HiveField(25)
   List<CodeableConcept> subSite;
-  @HiveField(26)
   List<int> noteNumber;
-  @HiveField(27)
   List<Element> elementNoteNumber;
-  @HiveField(28)
   List<ClaimResponse_Adjudication> adjudication;
-  @HiveField(29)
   List<ClaimResponse_Detail1> detail;
 
   ClaimResponse_AddItem({
@@ -716,33 +607,19 @@ class ClaimResponse_Detail1 {
     return newClaimResponse_Detail1;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept productOrService;
-  @HiveField(4)
   List<CodeableConcept> modifier;
-  @HiveField(5)
   Quantity quantity;
-  @HiveField(6)
   Money unitPrice;
-  @HiveField(7)
   double factor;
-  @HiveField(8)
   Element elementFactor;
-  @HiveField(9)
   Money net;
-  @HiveField(10)
   List<int> noteNumber;
-  @HiveField(11)
   List<Element> elementNoteNumber;
-  @HiveField(12)
   List<ClaimResponse_Adjudication> adjudication;
-  @HiveField(13)
   List<ClaimResponse_SubDetail1> subDetail;
 
   ClaimResponse_Detail1({
@@ -803,31 +680,18 @@ class ClaimResponse_SubDetail1 {
     return newClaimResponse_SubDetail1;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept productOrService;
-  @HiveField(4)
   List<CodeableConcept> modifier;
-  @HiveField(5)
   Quantity quantity;
-  @HiveField(6)
   Money unitPrice;
-  @HiveField(7)
   double factor;
-  @HiveField(8)
   Element elementFactor;
-  @HiveField(9)
   Money net;
-  @HiveField(10)
   List<int> noteNumber;
-  @HiveField(11)
   List<Element> elementNoteNumber;
-  @HiveField(12)
   List<ClaimResponse_Adjudication> adjudication;
 
   ClaimResponse_SubDetail1({
@@ -870,15 +734,10 @@ class ClaimResponse_Total {
     return newClaimResponse_Total;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   Money amount;
 
   ClaimResponse_Total({
@@ -923,25 +782,15 @@ class ClaimResponse_Payment {
     return newClaimResponse_Payment;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   Money adjustment;
-  @HiveField(5)
   CodeableConcept adjustmentReason;
-  @HiveField(6)
   String date;
-  @HiveField(7)
   Element elementDate;
-  @HiveField(8)
   Money amount;
-  @HiveField(9)
   Identifier identifier;
 
   ClaimResponse_Payment({
@@ -992,25 +841,15 @@ class ClaimResponse_ProcessNote {
     return newClaimResponse_ProcessNote;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int number;
-  @HiveField(4)
   Element elementNumber;
-  @HiveField(5)
   String type;
-  @HiveField(6)
   Element elementType;
-  @HiveField(7)
   String text;
-  @HiveField(8)
   Element elementText;
-  @HiveField(9)
   CodeableConcept language;
 
   ClaimResponse_ProcessNote({
@@ -1063,27 +902,16 @@ class ClaimResponse_Insurance {
     return newClaimResponse_Insurance;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   bool focal;
-  @HiveField(6)
   Element elementFocal;
-  @HiveField(7)
   Reference coverage;
-  @HiveField(8)
   String businessArrangement;
-  @HiveField(9)
   Element elementBusinessArrangement;
-  @HiveField(10)
   Reference claimResponse;
 
   ClaimResponse_Insurance({
@@ -1134,25 +962,15 @@ class ClaimResponse_Error {
     return newClaimResponse_Error;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int itemSequence;
-  @HiveField(4)
   Element elementItemSequence;
-  @HiveField(5)
   int detailSequence;
-  @HiveField(6)
   Element elementDetailSequence;
-  @HiveField(7)
   int subDetailSequence;
-  @HiveField(8)
   Element elementSubDetailSequence;
-  @HiveField(9)
   CodeableConcept code;
 
   ClaimResponse_Error({
@@ -2201,791 +2019,4 @@ Map<String, dynamic> _$ClaimResponse_ErrorToJson(ClaimResponse_Error instance) {
       'elementSubDetailSequence', instance.elementSubDetailSequence?.toJson());
   writeNotNull('code', instance.code?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ClaimResponseAdapter extends TypeAdapter<ClaimResponse> {
-  @override
-  ClaimResponse read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      subType: fields[15] as CodeableConcept,
-      use: fields[16] as String,
-      elementUse: fields[17] as Element,
-      patient: fields[18] as Reference,
-      created: fields[19] as DateTime,
-      elementCreated: fields[20] as Element,
-      insurer: fields[21] as Reference,
-      requestor: fields[22] as Reference,
-      request: fields[23] as Reference,
-      outcome: fields[24] as String,
-      elementOutcome: fields[25] as Element,
-      disposition: fields[26] as String,
-      elementDisposition: fields[27] as Element,
-      preAuthRef: fields[28] as String,
-      elementPreAuthRef: fields[29] as Element,
-      preAuthPeriod: fields[30] as Period,
-      payeeType: fields[31] as CodeableConcept,
-      item: (fields[32] as List)?.cast<ClaimResponse_Item>(),
-      addItem: (fields[33] as List)?.cast<ClaimResponse_AddItem>(),
-      adjudication: (fields[34] as List)?.cast<ClaimResponse_Adjudication>(),
-      total: (fields[35] as List)?.cast<ClaimResponse_Total>(),
-      payment: fields[36] as ClaimResponse_Payment,
-      fundsReserve: fields[37] as CodeableConcept,
-      formCode: fields[38] as CodeableConcept,
-      form: fields[39] as Attachment,
-      processNote: (fields[40] as List)?.cast<ClaimResponse_ProcessNote>(),
-      communicationRequest: (fields[41] as List)?.cast<Reference>(),
-      insurance: (fields[42] as List)?.cast<ClaimResponse_Insurance>(),
-      error: (fields[43] as List)?.cast<ClaimResponse_Error>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse obj) {
-    writer
-      ..writeByte(44)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.subType)
-      ..writeByte(16)
-      ..write(obj.use)
-      ..writeByte(17)
-      ..write(obj.elementUse)
-      ..writeByte(18)
-      ..write(obj.patient)
-      ..writeByte(19)
-      ..write(obj.created)
-      ..writeByte(20)
-      ..write(obj.elementCreated)
-      ..writeByte(21)
-      ..write(obj.insurer)
-      ..writeByte(22)
-      ..write(obj.requestor)
-      ..writeByte(23)
-      ..write(obj.request)
-      ..writeByte(24)
-      ..write(obj.outcome)
-      ..writeByte(25)
-      ..write(obj.elementOutcome)
-      ..writeByte(26)
-      ..write(obj.disposition)
-      ..writeByte(27)
-      ..write(obj.elementDisposition)
-      ..writeByte(28)
-      ..write(obj.preAuthRef)
-      ..writeByte(29)
-      ..write(obj.elementPreAuthRef)
-      ..writeByte(30)
-      ..write(obj.preAuthPeriod)
-      ..writeByte(31)
-      ..write(obj.payeeType)
-      ..writeByte(32)
-      ..write(obj.item)
-      ..writeByte(33)
-      ..write(obj.addItem)
-      ..writeByte(34)
-      ..write(obj.adjudication)
-      ..writeByte(35)
-      ..write(obj.total)
-      ..writeByte(36)
-      ..write(obj.payment)
-      ..writeByte(37)
-      ..write(obj.fundsReserve)
-      ..writeByte(38)
-      ..write(obj.formCode)
-      ..writeByte(39)
-      ..write(obj.form)
-      ..writeByte(40)
-      ..write(obj.processNote)
-      ..writeByte(41)
-      ..write(obj.communicationRequest)
-      ..writeByte(42)
-      ..write(obj.insurance)
-      ..writeByte(43)
-      ..write(obj.error);
-  }
-}
-
-class ClaimResponse_ItemAdapter extends TypeAdapter<ClaimResponse_Item> {
-  @override
-  ClaimResponse_Item read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Item(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemSequence: fields[3] as int,
-      elementItemSequence: fields[4] as Element,
-      noteNumber: (fields[5] as List)?.cast<int>(),
-      elementNoteNumber: (fields[6] as List)?.cast<Element>(),
-      adjudication: (fields[7] as List)?.cast<ClaimResponse_Adjudication>(),
-      detail: (fields[8] as List)?.cast<ClaimResponse_Detail>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Item obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemSequence)
-      ..writeByte(4)
-      ..write(obj.elementItemSequence)
-      ..writeByte(5)
-      ..write(obj.noteNumber)
-      ..writeByte(6)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(7)
-      ..write(obj.adjudication)
-      ..writeByte(8)
-      ..write(obj.detail);
-  }
-}
-
-class ClaimResponse_AdjudicationAdapter
-    extends TypeAdapter<ClaimResponse_Adjudication> {
-  @override
-  ClaimResponse_Adjudication read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Adjudication(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      reason: fields[4] as CodeableConcept,
-      amount: fields[5] as Money,
-      value: fields[6] as double,
-      elementValue: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Adjudication obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.reason)
-      ..writeByte(5)
-      ..write(obj.amount)
-      ..writeByte(6)
-      ..write(obj.value)
-      ..writeByte(7)
-      ..write(obj.elementValue);
-  }
-}
-
-class ClaimResponse_DetailAdapter extends TypeAdapter<ClaimResponse_Detail> {
-  @override
-  ClaimResponse_Detail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Detail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      detailSequence: fields[3] as int,
-      elementDetailSequence: fields[4] as Element,
-      noteNumber: (fields[5] as List)?.cast<int>(),
-      elementNoteNumber: (fields[6] as List)?.cast<Element>(),
-      adjudication: (fields[7] as List)?.cast<ClaimResponse_Adjudication>(),
-      subDetail: (fields[8] as List)?.cast<ClaimResponse_SubDetail>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Detail obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.detailSequence)
-      ..writeByte(4)
-      ..write(obj.elementDetailSequence)
-      ..writeByte(5)
-      ..write(obj.noteNumber)
-      ..writeByte(6)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(7)
-      ..write(obj.adjudication)
-      ..writeByte(8)
-      ..write(obj.subDetail);
-  }
-}
-
-class ClaimResponse_SubDetailAdapter
-    extends TypeAdapter<ClaimResponse_SubDetail> {
-  @override
-  ClaimResponse_SubDetail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_SubDetail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      subDetailSequence: fields[3] as int,
-      elementSubDetailSequence: fields[4] as Element,
-      noteNumber: (fields[5] as List)?.cast<int>(),
-      elementNoteNumber: (fields[6] as List)?.cast<Element>(),
-      adjudication: (fields[7] as List)?.cast<ClaimResponse_Adjudication>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_SubDetail obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.subDetailSequence)
-      ..writeByte(4)
-      ..write(obj.elementSubDetailSequence)
-      ..writeByte(5)
-      ..write(obj.noteNumber)
-      ..writeByte(6)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(7)
-      ..write(obj.adjudication);
-  }
-}
-
-class ClaimResponse_AddItemAdapter extends TypeAdapter<ClaimResponse_AddItem> {
-  @override
-  ClaimResponse_AddItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_AddItem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemSequence: (fields[3] as List)?.cast<int>(),
-      elementItemSequence: (fields[4] as List)?.cast<Element>(),
-      detailSequence: (fields[5] as List)?.cast<int>(),
-      elementDetailSequence: (fields[6] as List)?.cast<Element>(),
-      subdetailSequence: (fields[7] as List)?.cast<int>(),
-      elementSubdetailSequence: (fields[8] as List)?.cast<Element>(),
-      provider: (fields[9] as List)?.cast<Reference>(),
-      productOrService: fields[10] as CodeableConcept,
-      modifier: (fields[11] as List)?.cast<CodeableConcept>(),
-      programCode: (fields[12] as List)?.cast<CodeableConcept>(),
-      servicedDate: fields[13] as String,
-      elementServicedDate: fields[14] as Element,
-      servicedPeriod: fields[15] as Period,
-      locationCodeableConcept: fields[16] as CodeableConcept,
-      locationAddress: fields[17] as Address,
-      locationReference: fields[18] as Reference,
-      quantity: fields[19] as Quantity,
-      unitPrice: fields[20] as Money,
-      factor: fields[21] as double,
-      elementFactor: fields[22] as Element,
-      net: fields[23] as Money,
-      bodySite: fields[24] as CodeableConcept,
-      subSite: (fields[25] as List)?.cast<CodeableConcept>(),
-      noteNumber: (fields[26] as List)?.cast<int>(),
-      elementNoteNumber: (fields[27] as List)?.cast<Element>(),
-      adjudication: (fields[28] as List)?.cast<ClaimResponse_Adjudication>(),
-      detail: (fields[29] as List)?.cast<ClaimResponse_Detail1>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_AddItem obj) {
-    writer
-      ..writeByte(30)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemSequence)
-      ..writeByte(4)
-      ..write(obj.elementItemSequence)
-      ..writeByte(5)
-      ..write(obj.detailSequence)
-      ..writeByte(6)
-      ..write(obj.elementDetailSequence)
-      ..writeByte(7)
-      ..write(obj.subdetailSequence)
-      ..writeByte(8)
-      ..write(obj.elementSubdetailSequence)
-      ..writeByte(9)
-      ..write(obj.provider)
-      ..writeByte(10)
-      ..write(obj.productOrService)
-      ..writeByte(11)
-      ..write(obj.modifier)
-      ..writeByte(12)
-      ..write(obj.programCode)
-      ..writeByte(13)
-      ..write(obj.servicedDate)
-      ..writeByte(14)
-      ..write(obj.elementServicedDate)
-      ..writeByte(15)
-      ..write(obj.servicedPeriod)
-      ..writeByte(16)
-      ..write(obj.locationCodeableConcept)
-      ..writeByte(17)
-      ..write(obj.locationAddress)
-      ..writeByte(18)
-      ..write(obj.locationReference)
-      ..writeByte(19)
-      ..write(obj.quantity)
-      ..writeByte(20)
-      ..write(obj.unitPrice)
-      ..writeByte(21)
-      ..write(obj.factor)
-      ..writeByte(22)
-      ..write(obj.elementFactor)
-      ..writeByte(23)
-      ..write(obj.net)
-      ..writeByte(24)
-      ..write(obj.bodySite)
-      ..writeByte(25)
-      ..write(obj.subSite)
-      ..writeByte(26)
-      ..write(obj.noteNumber)
-      ..writeByte(27)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(28)
-      ..write(obj.adjudication)
-      ..writeByte(29)
-      ..write(obj.detail);
-  }
-}
-
-class ClaimResponse_Detail1Adapter extends TypeAdapter<ClaimResponse_Detail1> {
-  @override
-  ClaimResponse_Detail1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Detail1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      productOrService: fields[3] as CodeableConcept,
-      modifier: (fields[4] as List)?.cast<CodeableConcept>(),
-      quantity: fields[5] as Quantity,
-      unitPrice: fields[6] as Money,
-      factor: fields[7] as double,
-      elementFactor: fields[8] as Element,
-      net: fields[9] as Money,
-      noteNumber: (fields[10] as List)?.cast<int>(),
-      elementNoteNumber: (fields[11] as List)?.cast<Element>(),
-      adjudication: (fields[12] as List)?.cast<ClaimResponse_Adjudication>(),
-      subDetail: (fields[13] as List)?.cast<ClaimResponse_SubDetail1>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Detail1 obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.productOrService)
-      ..writeByte(4)
-      ..write(obj.modifier)
-      ..writeByte(5)
-      ..write(obj.quantity)
-      ..writeByte(6)
-      ..write(obj.unitPrice)
-      ..writeByte(7)
-      ..write(obj.factor)
-      ..writeByte(8)
-      ..write(obj.elementFactor)
-      ..writeByte(9)
-      ..write(obj.net)
-      ..writeByte(10)
-      ..write(obj.noteNumber)
-      ..writeByte(11)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(12)
-      ..write(obj.adjudication)
-      ..writeByte(13)
-      ..write(obj.subDetail);
-  }
-}
-
-class ClaimResponse_SubDetail1Adapter
-    extends TypeAdapter<ClaimResponse_SubDetail1> {
-  @override
-  ClaimResponse_SubDetail1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_SubDetail1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      productOrService: fields[3] as CodeableConcept,
-      modifier: (fields[4] as List)?.cast<CodeableConcept>(),
-      quantity: fields[5] as Quantity,
-      unitPrice: fields[6] as Money,
-      factor: fields[7] as double,
-      elementFactor: fields[8] as Element,
-      net: fields[9] as Money,
-      noteNumber: (fields[10] as List)?.cast<int>(),
-      elementNoteNumber: (fields[11] as List)?.cast<Element>(),
-      adjudication: (fields[12] as List)?.cast<ClaimResponse_Adjudication>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_SubDetail1 obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.productOrService)
-      ..writeByte(4)
-      ..write(obj.modifier)
-      ..writeByte(5)
-      ..write(obj.quantity)
-      ..writeByte(6)
-      ..write(obj.unitPrice)
-      ..writeByte(7)
-      ..write(obj.factor)
-      ..writeByte(8)
-      ..write(obj.elementFactor)
-      ..writeByte(9)
-      ..write(obj.net)
-      ..writeByte(10)
-      ..write(obj.noteNumber)
-      ..writeByte(11)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(12)
-      ..write(obj.adjudication);
-  }
-}
-
-class ClaimResponse_TotalAdapter extends TypeAdapter<ClaimResponse_Total> {
-  @override
-  ClaimResponse_Total read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Total(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      amount: fields[4] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Total obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.amount);
-  }
-}
-
-class ClaimResponse_PaymentAdapter extends TypeAdapter<ClaimResponse_Payment> {
-  @override
-  ClaimResponse_Payment read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Payment(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      adjustment: fields[4] as Money,
-      adjustmentReason: fields[5] as CodeableConcept,
-      date: fields[6] as String,
-      elementDate: fields[7] as Element,
-      amount: fields[8] as Money,
-      identifier: fields[9] as Identifier,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Payment obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.adjustment)
-      ..writeByte(5)
-      ..write(obj.adjustmentReason)
-      ..writeByte(6)
-      ..write(obj.date)
-      ..writeByte(7)
-      ..write(obj.elementDate)
-      ..writeByte(8)
-      ..write(obj.amount)
-      ..writeByte(9)
-      ..write(obj.identifier);
-  }
-}
-
-class ClaimResponse_ProcessNoteAdapter
-    extends TypeAdapter<ClaimResponse_ProcessNote> {
-  @override
-  ClaimResponse_ProcessNote read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_ProcessNote(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      number: fields[3] as int,
-      elementNumber: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-      text: fields[7] as String,
-      elementText: fields[8] as Element,
-      language: fields[9] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_ProcessNote obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.number)
-      ..writeByte(4)
-      ..write(obj.elementNumber)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.elementText)
-      ..writeByte(9)
-      ..write(obj.language);
-  }
-}
-
-class ClaimResponse_InsuranceAdapter
-    extends TypeAdapter<ClaimResponse_Insurance> {
-  @override
-  ClaimResponse_Insurance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Insurance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      focal: fields[5] as bool,
-      elementFocal: fields[6] as Element,
-      coverage: fields[7] as Reference,
-      businessArrangement: fields[8] as String,
-      elementBusinessArrangement: fields[9] as Element,
-      claimResponse: fields[10] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Insurance obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.focal)
-      ..writeByte(6)
-      ..write(obj.elementFocal)
-      ..writeByte(7)
-      ..write(obj.coverage)
-      ..writeByte(8)
-      ..write(obj.businessArrangement)
-      ..writeByte(9)
-      ..write(obj.elementBusinessArrangement)
-      ..writeByte(10)
-      ..write(obj.claimResponse);
-  }
-}
-
-class ClaimResponse_ErrorAdapter extends TypeAdapter<ClaimResponse_Error> {
-  @override
-  ClaimResponse_Error read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse_Error(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemSequence: fields[3] as int,
-      elementItemSequence: fields[4] as Element,
-      detailSequence: fields[5] as int,
-      elementDetailSequence: fields[6] as Element,
-      subDetailSequence: fields[7] as int,
-      elementSubDetailSequence: fields[8] as Element,
-      code: fields[9] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse_Error obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemSequence)
-      ..writeByte(4)
-      ..write(obj.elementItemSequence)
-      ..writeByte(5)
-      ..write(obj.detailSequence)
-      ..writeByte(6)
-      ..write(obj.elementDetailSequence)
-      ..writeByte(7)
-      ..write(obj.subDetailSequence)
-      ..writeByte(8)
-      ..write(obj.elementSubDetailSequence)
-      ..writeByte(9)
-      ..write(obj.code);
-  }
 }

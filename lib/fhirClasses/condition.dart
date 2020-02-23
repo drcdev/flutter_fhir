@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -119,87 +118,46 @@ class Condition {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Condition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   CodeableConcept clinicalStatus;
-  @HiveField(13)
   CodeableConcept verificationStatus;
-  @HiveField(14)
   List<CodeableConcept> category;
-  @HiveField(15)
   CodeableConcept severity;
-  @HiveField(16)
   CodeableConcept code;
-  @HiveField(17)
   List<CodeableConcept> bodySite;
-  @HiveField(18)
   Reference subject;
-  @HiveField(19)
   Reference encounter;
-  @HiveField(20)
   String onsetDateTime;
-  @HiveField(21)
   Element elementOnsetDateTime;
-  @HiveField(22)
   Age onsetAge;
-  @HiveField(23)
   Period onsetPeriod;
-  @HiveField(24)
   Range onsetRange;
-  @HiveField(25)
   String onsetString;
-  @HiveField(26)
   Element elementOnsetString;
-  @HiveField(27)
   String abatementDateTime;
-  @HiveField(28)
   Element elementAbatementDateTime;
-  @HiveField(29)
   Age abatementAge;
-  @HiveField(30)
   Period abatementPeriod;
-  @HiveField(31)
   Range abatementRange;
-  @HiveField(32)
   String abatementString;
-  @HiveField(33)
   Element elementAbatementString;
-  @HiveField(34)
   DateTime recordedDate;
-  @HiveField(35)
   Element elementRecordedDate;
-  @HiveField(36)
   Reference recorder;
-  @HiveField(37)
   Reference asserter;
-  @HiveField(38)
   List<Condition_Stage> stage;
-  @HiveField(39)
   List<Condition_Evidence> evidence;
-  @HiveField(40)
   List<Annotation> note;
 
   Condition({
@@ -272,17 +230,11 @@ class Condition_Stage {
     return newCondition_Stage;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept summary;
-  @HiveField(4)
   List<Reference> assessment;
-  @HiveField(5)
   CodeableConcept type;
 
   Condition_Stage({
@@ -318,15 +270,10 @@ class Condition_Evidence {
     return newCondition_Evidence;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<CodeableConcept> code;
-  @HiveField(4)
   List<Reference> detail;
 
   Condition_Evidence({
@@ -625,219 +572,4 @@ Map<String, dynamic> _$Condition_EvidenceToJson(Condition_Evidence instance) {
   writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
   writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ConditionAdapter extends TypeAdapter<Condition> {
-  @override
-  Condition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Condition(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      clinicalStatus: fields[12] as CodeableConcept,
-      verificationStatus: fields[13] as CodeableConcept,
-      category: (fields[14] as List)?.cast<CodeableConcept>(),
-      severity: fields[15] as CodeableConcept,
-      code: fields[16] as CodeableConcept,
-      bodySite: (fields[17] as List)?.cast<CodeableConcept>(),
-      subject: fields[18] as Reference,
-      encounter: fields[19] as Reference,
-      onsetDateTime: fields[20] as String,
-      elementOnsetDateTime: fields[21] as Element,
-      onsetAge: fields[22] as Age,
-      onsetPeriod: fields[23] as Period,
-      onsetRange: fields[24] as Range,
-      onsetString: fields[25] as String,
-      elementOnsetString: fields[26] as Element,
-      abatementDateTime: fields[27] as String,
-      elementAbatementDateTime: fields[28] as Element,
-      abatementAge: fields[29] as Age,
-      abatementPeriod: fields[30] as Period,
-      abatementRange: fields[31] as Range,
-      abatementString: fields[32] as String,
-      elementAbatementString: fields[33] as Element,
-      recordedDate: fields[34] as DateTime,
-      elementRecordedDate: fields[35] as Element,
-      recorder: fields[36] as Reference,
-      asserter: fields[37] as Reference,
-      stage: (fields[38] as List)?.cast<Condition_Stage>(),
-      evidence: (fields[39] as List)?.cast<Condition_Evidence>(),
-      note: (fields[40] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Condition obj) {
-    writer
-      ..writeByte(41)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.clinicalStatus)
-      ..writeByte(13)
-      ..write(obj.verificationStatus)
-      ..writeByte(14)
-      ..write(obj.category)
-      ..writeByte(15)
-      ..write(obj.severity)
-      ..writeByte(16)
-      ..write(obj.code)
-      ..writeByte(17)
-      ..write(obj.bodySite)
-      ..writeByte(18)
-      ..write(obj.subject)
-      ..writeByte(19)
-      ..write(obj.encounter)
-      ..writeByte(20)
-      ..write(obj.onsetDateTime)
-      ..writeByte(21)
-      ..write(obj.elementOnsetDateTime)
-      ..writeByte(22)
-      ..write(obj.onsetAge)
-      ..writeByte(23)
-      ..write(obj.onsetPeriod)
-      ..writeByte(24)
-      ..write(obj.onsetRange)
-      ..writeByte(25)
-      ..write(obj.onsetString)
-      ..writeByte(26)
-      ..write(obj.elementOnsetString)
-      ..writeByte(27)
-      ..write(obj.abatementDateTime)
-      ..writeByte(28)
-      ..write(obj.elementAbatementDateTime)
-      ..writeByte(29)
-      ..write(obj.abatementAge)
-      ..writeByte(30)
-      ..write(obj.abatementPeriod)
-      ..writeByte(31)
-      ..write(obj.abatementRange)
-      ..writeByte(32)
-      ..write(obj.abatementString)
-      ..writeByte(33)
-      ..write(obj.elementAbatementString)
-      ..writeByte(34)
-      ..write(obj.recordedDate)
-      ..writeByte(35)
-      ..write(obj.elementRecordedDate)
-      ..writeByte(36)
-      ..write(obj.recorder)
-      ..writeByte(37)
-      ..write(obj.asserter)
-      ..writeByte(38)
-      ..write(obj.stage)
-      ..writeByte(39)
-      ..write(obj.evidence)
-      ..writeByte(40)
-      ..write(obj.note);
-  }
-}
-
-class Condition_StageAdapter extends TypeAdapter<Condition_Stage> {
-  @override
-  Condition_Stage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Condition_Stage(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      summary: fields[3] as CodeableConcept,
-      assessment: (fields[4] as List)?.cast<Reference>(),
-      type: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Condition_Stage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.summary)
-      ..writeByte(4)
-      ..write(obj.assessment)
-      ..writeByte(5)
-      ..write(obj.type);
-  }
-}
-
-class Condition_EvidenceAdapter extends TypeAdapter<Condition_Evidence> {
-  @override
-  Condition_Evidence read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Condition_Evidence(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: (fields[3] as List)?.cast<CodeableConcept>(),
-      detail: (fields[4] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Condition_Evidence obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.detail);
-  }
 }

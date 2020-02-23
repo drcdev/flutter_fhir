@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 class Element {
@@ -17,9 +16,7 @@ class Element {
     return newElement;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
 
   Element({
@@ -60,33 +57,4 @@ Map<String, dynamic> _$ElementToJson(Element instance) {
   writeNotNull(
       'extension', instance.extension?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ElementAdapter extends TypeAdapter<Element> {
-  @override
-  Element read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Element(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Element obj) {
-    writer
-      ..writeByte(2)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension);
-  }
 }

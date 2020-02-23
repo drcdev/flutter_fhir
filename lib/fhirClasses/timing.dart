@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -32,19 +31,12 @@ class Timing {
     return newTiming;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<DateTime> event;
-  @HiveField(4)
   List<Element> elementEvent;
-  @HiveField(5)
   Timing_Repeat repeat;
-  @HiveField(6)
   CodeableConcept code;
 
   Timing({
@@ -138,73 +130,39 @@ class Timing_Repeat {
     return newTiming_Repeat;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Duration boundsDuration;
-  @HiveField(4)
   Range boundsRange;
-  @HiveField(5)
   Period boundsPeriod;
-  @HiveField(6)
   int count;
-  @HiveField(7)
   Element elementCount;
-  @HiveField(8)
   int countMax;
-  @HiveField(9)
   Element elementCountMax;
-  @HiveField(10)
   double duration;
-  @HiveField(11)
   Element elementDuration;
-  @HiveField(12)
   double durationMax;
-  @HiveField(13)
   Element elementDurationMax;
-  @HiveField(14)
   String durationUnit;
-  @HiveField(15)
   Element elementDurationUnit;
-  @HiveField(16)
   int frequency;
-  @HiveField(17)
   Element elementFrequency;
-  @HiveField(18)
   int frequencyMax;
-  @HiveField(19)
   Element elementFrequencyMax;
-  @HiveField(20)
   double period;
-  @HiveField(21)
   Element elementPeriod;
-  @HiveField(22)
   double periodMax;
-  @HiveField(23)
   Element elementPeriodMax;
-  @HiveField(24)
   String periodUnit;
-  @HiveField(25)
   Element elementPeriodUnit;
-  @HiveField(26)
   List<String> dayOfWeek;
-  @HiveField(27)
   List<Element> elementDayOfWeek;
-  @HiveField(28)
   List<String> timeOfDay;
-  @HiveField(29)
   List<Element> elementTimeOfDay;
-  @HiveField(30)
   String when;
-  @HiveField(31)
   List<Element> elementWhen;
-  @HiveField(32)
   int offset;
-  @HiveField(33)
   Element elementOffset;
 
   Timing_Repeat({
@@ -435,168 +393,4 @@ Map<String, dynamic> _$Timing_RepeatToJson(Timing_Repeat instance) {
   writeNotNull('offset', instance.offset);
   writeNotNull('elementOffset', instance.elementOffset?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class TimingAdapter extends TypeAdapter<Timing> {
-  @override
-  Timing read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Timing(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      event: (fields[3] as List)?.cast<DateTime>(),
-      elementEvent: (fields[4] as List)?.cast<Element>(),
-      repeat: fields[5] as Timing_Repeat,
-      code: fields[6] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Timing obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.event)
-      ..writeByte(4)
-      ..write(obj.elementEvent)
-      ..writeByte(5)
-      ..write(obj.repeat)
-      ..writeByte(6)
-      ..write(obj.code);
-  }
-}
-
-class Timing_RepeatAdapter extends TypeAdapter<Timing_Repeat> {
-  @override
-  Timing_Repeat read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Timing_Repeat(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      boundsDuration: fields[3] as Duration,
-      boundsRange: fields[4] as Range,
-      boundsPeriod: fields[5] as Period,
-      count: fields[6] as int,
-      elementCount: fields[7] as Element,
-      countMax: fields[8] as int,
-      elementCountMax: fields[9] as Element,
-      duration: fields[10] as double,
-      elementDuration: fields[11] as Element,
-      durationMax: fields[12] as double,
-      elementDurationMax: fields[13] as Element,
-      durationUnit: fields[14] as String,
-      elementDurationUnit: fields[15] as Element,
-      frequency: fields[16] as int,
-      elementFrequency: fields[17] as Element,
-      frequencyMax: fields[18] as int,
-      elementFrequencyMax: fields[19] as Element,
-      period: fields[20] as double,
-      elementPeriod: fields[21] as Element,
-      periodMax: fields[22] as double,
-      elementPeriodMax: fields[23] as Element,
-      periodUnit: fields[24] as String,
-      elementPeriodUnit: fields[25] as Element,
-      dayOfWeek: (fields[26] as List)?.cast<String>(),
-      elementDayOfWeek: (fields[27] as List)?.cast<Element>(),
-      timeOfDay: (fields[28] as List)?.cast<String>(),
-      elementTimeOfDay: (fields[29] as List)?.cast<Element>(),
-      when: fields[30] as String,
-      elementWhen: (fields[31] as List)?.cast<Element>(),
-      offset: fields[32] as int,
-      elementOffset: fields[33] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Timing_Repeat obj) {
-    writer
-      ..writeByte(34)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.boundsDuration)
-      ..writeByte(4)
-      ..write(obj.boundsRange)
-      ..writeByte(5)
-      ..write(obj.boundsPeriod)
-      ..writeByte(6)
-      ..write(obj.count)
-      ..writeByte(7)
-      ..write(obj.elementCount)
-      ..writeByte(8)
-      ..write(obj.countMax)
-      ..writeByte(9)
-      ..write(obj.elementCountMax)
-      ..writeByte(10)
-      ..write(obj.duration)
-      ..writeByte(11)
-      ..write(obj.elementDuration)
-      ..writeByte(12)
-      ..write(obj.durationMax)
-      ..writeByte(13)
-      ..write(obj.elementDurationMax)
-      ..writeByte(14)
-      ..write(obj.durationUnit)
-      ..writeByte(15)
-      ..write(obj.elementDurationUnit)
-      ..writeByte(16)
-      ..write(obj.frequency)
-      ..writeByte(17)
-      ..write(obj.elementFrequency)
-      ..writeByte(18)
-      ..write(obj.frequencyMax)
-      ..writeByte(19)
-      ..write(obj.elementFrequencyMax)
-      ..writeByte(20)
-      ..write(obj.period)
-      ..writeByte(21)
-      ..write(obj.elementPeriod)
-      ..writeByte(22)
-      ..write(obj.periodMax)
-      ..writeByte(23)
-      ..write(obj.elementPeriodMax)
-      ..writeByte(24)
-      ..write(obj.periodUnit)
-      ..writeByte(25)
-      ..write(obj.elementPeriodUnit)
-      ..writeByte(26)
-      ..write(obj.dayOfWeek)
-      ..writeByte(27)
-      ..write(obj.elementDayOfWeek)
-      ..writeByte(28)
-      ..write(obj.timeOfDay)
-      ..writeByte(29)
-      ..write(obj.elementTimeOfDay)
-      ..writeByte(30)
-      ..write(obj.when)
-      ..writeByte(31)
-      ..write(obj.elementWhen)
-      ..writeByte(32)
-      ..write(obj.offset)
-      ..writeByte(33)
-      ..write(obj.elementOffset);
-  }
 }

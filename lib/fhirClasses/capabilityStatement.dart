@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -140,109 +139,57 @@ class CapabilityStatement {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'CapabilityStatement';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   String version;
-  @HiveField(14)
   Element elementVersion;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   String title;
-  @HiveField(18)
   Element elementTitle;
-  @HiveField(19)
   String status;
-  @HiveField(20)
   Element elementStatus;
-  @HiveField(21)
   bool experimental;
-  @HiveField(22)
   Element elementExperimental;
-  @HiveField(23)
   DateTime date;
-  @HiveField(24)
   Element elementDate;
-  @HiveField(25)
   String publisher;
-  @HiveField(26)
   Element elementPublisher;
-  @HiveField(27)
   List<ContactDetail> contact;
-  @HiveField(28)
   String description;
-  @HiveField(29)
   Element elementDescription;
-  @HiveField(30)
   List<UsageContext> useContext;
-  @HiveField(31)
   List<CodeableConcept> jurisdiction;
-  @HiveField(32)
   String purpose;
-  @HiveField(33)
   Element elementPurpose;
-  @HiveField(34)
   String copyright;
-  @HiveField(35)
   Element elementCopyright;
-  @HiveField(36)
   String kind;
-  @HiveField(37)
   Element elementKind;
-  @HiveField(38)
   List<String> instantiates;
-  @HiveField(39)
   List<String> imports;
-  @HiveField(40)
   CapabilityStatement_Software software;
-  @HiveField(41)
   CapabilityStatement_Implementation implementation;
-  @HiveField(42)
   String fhirVersion;
-  @HiveField(43)
   Element elementFhirVersion;
-  @HiveField(44)
   List<String> format;
-  @HiveField(45)
   List<Element> elementFormat;
-  @HiveField(46)
   List<String> patchFormat;
-  @HiveField(47)
   List<Element> elementPatchFormat;
-  @HiveField(48)
   List<String> implementationGuide;
-  @HiveField(49)
   List<CapabilityStatement_Rest> rest;
-  @HiveField(50)
   List<CapabilityStatement_Messaging> messaging;
-  @HiveField(51)
   List<CapabilityStatement_Document> document;
 
   CapabilityStatement({
@@ -333,23 +280,14 @@ class CapabilityStatement_Software {
     return newCapabilityStatement_Software;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String version;
-  @HiveField(6)
   Element elementVersion;
-  @HiveField(7)
   DateTime releaseDate;
-  @HiveField(8)
   Element elementReleaseDate;
 
   CapabilityStatement_Software({
@@ -395,21 +333,13 @@ class CapabilityStatement_Implementation {
     return newCapabilityStatement_Implementation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String description;
-  @HiveField(4)
   Element elementDescription;
-  @HiveField(5)
   String url;
-  @HiveField(6)
   Element elementUrl;
-  @HiveField(7)
   Reference custodian;
 
   CapabilityStatement_Implementation({
@@ -466,31 +396,18 @@ class CapabilityStatement_Rest {
     return newCapabilityStatement_Rest;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String mode;
-  @HiveField(4)
   Element elementMode;
-  @HiveField(5)
   String documentation;
-  @HiveField(6)
   Element elementDocumentation;
-  @HiveField(7)
   CapabilityStatement_Security security;
-  @HiveField(8)
   List<CapabilityStatement_Resource> resource;
-  @HiveField(9)
   List<CapabilityStatement_Interaction1> interaction;
-  @HiveField(10)
   List<CapabilityStatement_SearchParam> searchParam;
-  @HiveField(11)
   List<CapabilityStatement_Operation> operation;
-  @HiveField(12)
   List<String> compartment;
 
   CapabilityStatement_Rest({
@@ -540,21 +457,13 @@ class CapabilityStatement_Security {
     return newCapabilityStatement_Security;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool cors;
-  @HiveField(4)
   Element elementCors;
-  @HiveField(5)
   List<CodeableConcept> service;
-  @HiveField(6)
   String description;
-  @HiveField(7)
   Element elementDescription;
 
   CapabilityStatement_Security({
@@ -647,69 +556,37 @@ class CapabilityStatement_Resource {
     return newCapabilityStatement_Resource;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   String profile;
-  @HiveField(6)
   List<String> supportedProfile;
-  @HiveField(7)
   String documentation;
-  @HiveField(8)
   Element elementDocumentation;
-  @HiveField(9)
   List<CapabilityStatement_Interaction> interaction;
-  @HiveField(10)
   String versioning;
-  @HiveField(11)
   Element elementVersioning;
-  @HiveField(12)
   bool readHistory;
-  @HiveField(13)
   Element elementReadHistory;
-  @HiveField(14)
   bool updateCreate;
-  @HiveField(15)
   Element elementUpdateCreate;
-  @HiveField(16)
   bool conditionalCreate;
-  @HiveField(17)
   Element elementConditionalCreate;
-  @HiveField(18)
   String conditionalRead;
-  @HiveField(19)
   Element elementConditionalRead;
-  @HiveField(20)
   bool conditionalUpdate;
-  @HiveField(21)
   Element elementConditionalUpdate;
-  @HiveField(22)
   String conditionalDelete;
-  @HiveField(23)
   Element elementConditionalDelete;
-  @HiveField(24)
   String referencePolicy;
-  @HiveField(25)
   List<Element> elementReferencePolicy;
-  @HiveField(26)
   List<String> searchInclude;
-  @HiveField(27)
   List<Element> elementSearchInclude;
-  @HiveField(28)
   List<String> searchRevInclude;
-  @HiveField(29)
   List<Element> elementSearchRevInclude;
-  @HiveField(30)
   List<CapabilityStatement_SearchParam> searchParam;
-  @HiveField(31)
   List<CapabilityStatement_Operation> operation;
 
   CapabilityStatement_Resource({
@@ -776,19 +653,12 @@ class CapabilityStatement_Interaction {
     return newCapabilityStatement_Interaction;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String code;
-  @HiveField(4)
   Element elementCode;
-  @HiveField(5)
   String documentation;
-  @HiveField(6)
   Element elementDocumentation;
 
   CapabilityStatement_Interaction({
@@ -837,25 +707,15 @@ class CapabilityStatement_SearchParam {
     return newCapabilityStatement_SearchParam;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String definition;
-  @HiveField(6)
   String type;
-  @HiveField(7)
   Element elementType;
-  @HiveField(8)
   String documentation;
-  @HiveField(9)
   Element elementDocumentation;
 
   CapabilityStatement_SearchParam({
@@ -903,21 +763,13 @@ class CapabilityStatement_Operation {
     return newCapabilityStatement_Operation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String definition;
-  @HiveField(6)
   String documentation;
-  @HiveField(7)
   Element elementDocumentation;
 
   CapabilityStatement_Operation({
@@ -960,19 +812,12 @@ class CapabilityStatement_Interaction1 {
     return newCapabilityStatement_Interaction1;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String code;
-  @HiveField(4)
   Element elementCode;
-  @HiveField(5)
   String documentation;
-  @HiveField(6)
   Element elementDocumentation;
 
   CapabilityStatement_Interaction1({
@@ -1020,23 +865,14 @@ class CapabilityStatement_Messaging {
     return newCapabilityStatement_Messaging;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<CapabilityStatement_Endpoint> endpoint;
-  @HiveField(4)
   int reliableCache;
-  @HiveField(5)
   Element elementReliableCache;
-  @HiveField(6)
   String documentation;
-  @HiveField(7)
   Element elementDocumentation;
-  @HiveField(8)
   List<CapabilityStatement_SupportedMessage> supportedMessage;
 
   CapabilityStatement_Messaging({
@@ -1078,17 +914,11 @@ class CapabilityStatement_Endpoint {
     return newCapabilityStatement_Endpoint;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Coding protocol;
-  @HiveField(4)
   String address;
-  @HiveField(5)
   Element elementAddress;
 
   CapabilityStatement_Endpoint({
@@ -1128,17 +958,11 @@ class CapabilityStatement_SupportedMessage {
     return newCapabilityStatement_SupportedMessage;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String mode;
-  @HiveField(4)
   Element elementMode;
-  @HiveField(5)
   String definition;
 
   CapabilityStatement_SupportedMessage({
@@ -1183,21 +1007,13 @@ class CapabilityStatement_Document {
     return newCapabilityStatement_Document;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String mode;
-  @HiveField(4)
   Element elementMode;
-  @HiveField(5)
   String documentation;
-  @HiveField(6)
   Element elementDocumentation;
-  @HiveField(7)
   String profile;
 
   CapabilityStatement_Document({
@@ -2207,827 +2023,4 @@ Map<String, dynamic> _$CapabilityStatement_DocumentToJson(
   writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
   writeNotNull('profile', instance.profile);
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CapabilityStatementAdapter extends TypeAdapter<CapabilityStatement> {
-  @override
-  CapabilityStatement read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      version: fields[13] as String,
-      elementVersion: fields[14] as Element,
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      title: fields[17] as String,
-      elementTitle: fields[18] as Element,
-      status: fields[19] as String,
-      elementStatus: fields[20] as Element,
-      experimental: fields[21] as bool,
-      elementExperimental: fields[22] as Element,
-      date: fields[23] as DateTime,
-      elementDate: fields[24] as Element,
-      publisher: fields[25] as String,
-      elementPublisher: fields[26] as Element,
-      contact: (fields[27] as List)?.cast<ContactDetail>(),
-      description: fields[28] as String,
-      elementDescription: fields[29] as Element,
-      useContext: (fields[30] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[31] as List)?.cast<CodeableConcept>(),
-      purpose: fields[32] as String,
-      elementPurpose: fields[33] as Element,
-      copyright: fields[34] as String,
-      elementCopyright: fields[35] as Element,
-      kind: fields[36] as String,
-      elementKind: fields[37] as Element,
-      instantiates: (fields[38] as List)?.cast<String>(),
-      imports: (fields[39] as List)?.cast<String>(),
-      software: fields[40] as CapabilityStatement_Software,
-      implementation: fields[41] as CapabilityStatement_Implementation,
-      fhirVersion: fields[42] as String,
-      elementFhirVersion: fields[43] as Element,
-      format: (fields[44] as List)?.cast<String>(),
-      elementFormat: (fields[45] as List)?.cast<Element>(),
-      patchFormat: (fields[46] as List)?.cast<String>(),
-      elementPatchFormat: (fields[47] as List)?.cast<Element>(),
-      implementationGuide: (fields[48] as List)?.cast<String>(),
-      rest: (fields[49] as List)?.cast<CapabilityStatement_Rest>(),
-      messaging: (fields[50] as List)?.cast<CapabilityStatement_Messaging>(),
-      document: (fields[51] as List)?.cast<CapabilityStatement_Document>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement obj) {
-    writer
-      ..writeByte(52)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.version)
-      ..writeByte(14)
-      ..write(obj.elementVersion)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.title)
-      ..writeByte(18)
-      ..write(obj.elementTitle)
-      ..writeByte(19)
-      ..write(obj.status)
-      ..writeByte(20)
-      ..write(obj.elementStatus)
-      ..writeByte(21)
-      ..write(obj.experimental)
-      ..writeByte(22)
-      ..write(obj.elementExperimental)
-      ..writeByte(23)
-      ..write(obj.date)
-      ..writeByte(24)
-      ..write(obj.elementDate)
-      ..writeByte(25)
-      ..write(obj.publisher)
-      ..writeByte(26)
-      ..write(obj.elementPublisher)
-      ..writeByte(27)
-      ..write(obj.contact)
-      ..writeByte(28)
-      ..write(obj.description)
-      ..writeByte(29)
-      ..write(obj.elementDescription)
-      ..writeByte(30)
-      ..write(obj.useContext)
-      ..writeByte(31)
-      ..write(obj.jurisdiction)
-      ..writeByte(32)
-      ..write(obj.purpose)
-      ..writeByte(33)
-      ..write(obj.elementPurpose)
-      ..writeByte(34)
-      ..write(obj.copyright)
-      ..writeByte(35)
-      ..write(obj.elementCopyright)
-      ..writeByte(36)
-      ..write(obj.kind)
-      ..writeByte(37)
-      ..write(obj.elementKind)
-      ..writeByte(38)
-      ..write(obj.instantiates)
-      ..writeByte(39)
-      ..write(obj.imports)
-      ..writeByte(40)
-      ..write(obj.software)
-      ..writeByte(41)
-      ..write(obj.implementation)
-      ..writeByte(42)
-      ..write(obj.fhirVersion)
-      ..writeByte(43)
-      ..write(obj.elementFhirVersion)
-      ..writeByte(44)
-      ..write(obj.format)
-      ..writeByte(45)
-      ..write(obj.elementFormat)
-      ..writeByte(46)
-      ..write(obj.patchFormat)
-      ..writeByte(47)
-      ..write(obj.elementPatchFormat)
-      ..writeByte(48)
-      ..write(obj.implementationGuide)
-      ..writeByte(49)
-      ..write(obj.rest)
-      ..writeByte(50)
-      ..write(obj.messaging)
-      ..writeByte(51)
-      ..write(obj.document);
-  }
-}
-
-class CapabilityStatement_SoftwareAdapter
-    extends TypeAdapter<CapabilityStatement_Software> {
-  @override
-  CapabilityStatement_Software read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Software(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      version: fields[5] as String,
-      elementVersion: fields[6] as Element,
-      releaseDate: fields[7] as DateTime,
-      elementReleaseDate: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Software obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.version)
-      ..writeByte(6)
-      ..write(obj.elementVersion)
-      ..writeByte(7)
-      ..write(obj.releaseDate)
-      ..writeByte(8)
-      ..write(obj.elementReleaseDate);
-  }
-}
-
-class CapabilityStatement_ImplementationAdapter
-    extends TypeAdapter<CapabilityStatement_Implementation> {
-  @override
-  CapabilityStatement_Implementation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Implementation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      url: fields[5] as String,
-      elementUrl: fields[6] as Element,
-      custodian: fields[7] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Implementation obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.url)
-      ..writeByte(6)
-      ..write(obj.elementUrl)
-      ..writeByte(7)
-      ..write(obj.custodian);
-  }
-}
-
-class CapabilityStatement_RestAdapter
-    extends TypeAdapter<CapabilityStatement_Rest> {
-  @override
-  CapabilityStatement_Rest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Rest(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-      security: fields[7] as CapabilityStatement_Security,
-      resource: (fields[8] as List)?.cast<CapabilityStatement_Resource>(),
-      interaction:
-          (fields[9] as List)?.cast<CapabilityStatement_Interaction1>(),
-      searchParam:
-          (fields[10] as List)?.cast<CapabilityStatement_SearchParam>(),
-      operation: (fields[11] as List)?.cast<CapabilityStatement_Operation>(),
-      compartment: (fields[12] as List)?.cast<String>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Rest obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation)
-      ..writeByte(7)
-      ..write(obj.security)
-      ..writeByte(8)
-      ..write(obj.resource)
-      ..writeByte(9)
-      ..write(obj.interaction)
-      ..writeByte(10)
-      ..write(obj.searchParam)
-      ..writeByte(11)
-      ..write(obj.operation)
-      ..writeByte(12)
-      ..write(obj.compartment);
-  }
-}
-
-class CapabilityStatement_SecurityAdapter
-    extends TypeAdapter<CapabilityStatement_Security> {
-  @override
-  CapabilityStatement_Security read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Security(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      cors: fields[3] as bool,
-      elementCors: fields[4] as Element,
-      service: (fields[5] as List)?.cast<CodeableConcept>(),
-      description: fields[6] as String,
-      elementDescription: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Security obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.cors)
-      ..writeByte(4)
-      ..write(obj.elementCors)
-      ..writeByte(5)
-      ..write(obj.service)
-      ..writeByte(6)
-      ..write(obj.description)
-      ..writeByte(7)
-      ..write(obj.elementDescription);
-  }
-}
-
-class CapabilityStatement_ResourceAdapter
-    extends TypeAdapter<CapabilityStatement_Resource> {
-  @override
-  CapabilityStatement_Resource read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Resource(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      profile: fields[5] as String,
-      supportedProfile: (fields[6] as List)?.cast<String>(),
-      documentation: fields[7] as String,
-      elementDocumentation: fields[8] as Element,
-      interaction: (fields[9] as List)?.cast<CapabilityStatement_Interaction>(),
-      versioning: fields[10] as String,
-      elementVersioning: fields[11] as Element,
-      readHistory: fields[12] as bool,
-      elementReadHistory: fields[13] as Element,
-      updateCreate: fields[14] as bool,
-      elementUpdateCreate: fields[15] as Element,
-      conditionalCreate: fields[16] as bool,
-      elementConditionalCreate: fields[17] as Element,
-      conditionalRead: fields[18] as String,
-      elementConditionalRead: fields[19] as Element,
-      conditionalUpdate: fields[20] as bool,
-      elementConditionalUpdate: fields[21] as Element,
-      conditionalDelete: fields[22] as String,
-      elementConditionalDelete: fields[23] as Element,
-      referencePolicy: fields[24] as String,
-      elementReferencePolicy: (fields[25] as List)?.cast<Element>(),
-      searchInclude: (fields[26] as List)?.cast<String>(),
-      elementSearchInclude: (fields[27] as List)?.cast<Element>(),
-      searchRevInclude: (fields[28] as List)?.cast<String>(),
-      elementSearchRevInclude: (fields[29] as List)?.cast<Element>(),
-      searchParam:
-          (fields[30] as List)?.cast<CapabilityStatement_SearchParam>(),
-      operation: (fields[31] as List)?.cast<CapabilityStatement_Operation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Resource obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.profile)
-      ..writeByte(6)
-      ..write(obj.supportedProfile)
-      ..writeByte(7)
-      ..write(obj.documentation)
-      ..writeByte(8)
-      ..write(obj.elementDocumentation)
-      ..writeByte(9)
-      ..write(obj.interaction)
-      ..writeByte(10)
-      ..write(obj.versioning)
-      ..writeByte(11)
-      ..write(obj.elementVersioning)
-      ..writeByte(12)
-      ..write(obj.readHistory)
-      ..writeByte(13)
-      ..write(obj.elementReadHistory)
-      ..writeByte(14)
-      ..write(obj.updateCreate)
-      ..writeByte(15)
-      ..write(obj.elementUpdateCreate)
-      ..writeByte(16)
-      ..write(obj.conditionalCreate)
-      ..writeByte(17)
-      ..write(obj.elementConditionalCreate)
-      ..writeByte(18)
-      ..write(obj.conditionalRead)
-      ..writeByte(19)
-      ..write(obj.elementConditionalRead)
-      ..writeByte(20)
-      ..write(obj.conditionalUpdate)
-      ..writeByte(21)
-      ..write(obj.elementConditionalUpdate)
-      ..writeByte(22)
-      ..write(obj.conditionalDelete)
-      ..writeByte(23)
-      ..write(obj.elementConditionalDelete)
-      ..writeByte(24)
-      ..write(obj.referencePolicy)
-      ..writeByte(25)
-      ..write(obj.elementReferencePolicy)
-      ..writeByte(26)
-      ..write(obj.searchInclude)
-      ..writeByte(27)
-      ..write(obj.elementSearchInclude)
-      ..writeByte(28)
-      ..write(obj.searchRevInclude)
-      ..writeByte(29)
-      ..write(obj.elementSearchRevInclude)
-      ..writeByte(30)
-      ..write(obj.searchParam)
-      ..writeByte(31)
-      ..write(obj.operation);
-  }
-}
-
-class CapabilityStatement_InteractionAdapter
-    extends TypeAdapter<CapabilityStatement_Interaction> {
-  @override
-  CapabilityStatement_Interaction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Interaction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Interaction obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_SearchParamAdapter
-    extends TypeAdapter<CapabilityStatement_SearchParam> {
-  @override
-  CapabilityStatement_SearchParam read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_SearchParam(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      definition: fields[5] as String,
-      type: fields[6] as String,
-      elementType: fields[7] as Element,
-      documentation: fields[8] as String,
-      elementDocumentation: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_SearchParam obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.definition)
-      ..writeByte(6)
-      ..write(obj.type)
-      ..writeByte(7)
-      ..write(obj.elementType)
-      ..writeByte(8)
-      ..write(obj.documentation)
-      ..writeByte(9)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_OperationAdapter
-    extends TypeAdapter<CapabilityStatement_Operation> {
-  @override
-  CapabilityStatement_Operation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Operation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      definition: fields[5] as String,
-      documentation: fields[6] as String,
-      elementDocumentation: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Operation obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.definition)
-      ..writeByte(6)
-      ..write(obj.documentation)
-      ..writeByte(7)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_Interaction1Adapter
-    extends TypeAdapter<CapabilityStatement_Interaction1> {
-  @override
-  CapabilityStatement_Interaction1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Interaction1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Interaction1 obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_MessagingAdapter
-    extends TypeAdapter<CapabilityStatement_Messaging> {
-  @override
-  CapabilityStatement_Messaging read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Messaging(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      endpoint: (fields[3] as List)?.cast<CapabilityStatement_Endpoint>(),
-      reliableCache: fields[4] as int,
-      elementReliableCache: fields[5] as Element,
-      documentation: fields[6] as String,
-      elementDocumentation: fields[7] as Element,
-      supportedMessage:
-          (fields[8] as List)?.cast<CapabilityStatement_SupportedMessage>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Messaging obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.endpoint)
-      ..writeByte(4)
-      ..write(obj.reliableCache)
-      ..writeByte(5)
-      ..write(obj.elementReliableCache)
-      ..writeByte(6)
-      ..write(obj.documentation)
-      ..writeByte(7)
-      ..write(obj.elementDocumentation)
-      ..writeByte(8)
-      ..write(obj.supportedMessage);
-  }
-}
-
-class CapabilityStatement_EndpointAdapter
-    extends TypeAdapter<CapabilityStatement_Endpoint> {
-  @override
-  CapabilityStatement_Endpoint read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Endpoint(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      protocol: fields[3] as Coding,
-      address: fields[4] as String,
-      elementAddress: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Endpoint obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.protocol)
-      ..writeByte(4)
-      ..write(obj.address)
-      ..writeByte(5)
-      ..write(obj.elementAddress);
-  }
-}
-
-class CapabilityStatement_SupportedMessageAdapter
-    extends TypeAdapter<CapabilityStatement_SupportedMessage> {
-  @override
-  CapabilityStatement_SupportedMessage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_SupportedMessage(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-      definition: fields[5] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_SupportedMessage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.definition);
-  }
-}
-
-class CapabilityStatement_DocumentAdapter
-    extends TypeAdapter<CapabilityStatement_Document> {
-  @override
-  CapabilityStatement_Document read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Document(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-      profile: fields[7] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Document obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation)
-      ..writeByte(7)
-      ..write(obj.profile);
-  }
 }

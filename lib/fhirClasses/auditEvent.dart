@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -86,57 +85,31 @@ class AuditEvent {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'AuditEvent';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Coding type;
-  @HiveField(12)
   List<Coding> subtype;
-  @HiveField(13)
   String action;
-  @HiveField(14)
   Element elementAction;
-  @HiveField(15)
   Period period;
-  @HiveField(16)
   DateTime recorded;
-  @HiveField(17)
   Element elementRecorded;
-  @HiveField(18)
   String outcome;
-  @HiveField(19)
   Element elementOutcome;
-  @HiveField(20)
   String outcomeDesc;
-  @HiveField(21)
   Element elementOutcomeDesc;
-  @HiveField(22)
   List<CodeableConcept> purposeOfEvent;
-  @HiveField(23)
   List<AuditEvent_Agent> agent;
-  @HiveField(24)
   AuditEvent_Source source;
-  @HiveField(25)
   List<AuditEvent_Entity> entity;
 
   AuditEvent({
@@ -218,41 +191,23 @@ class AuditEvent_Agent {
     return newAuditEvent_Agent;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   List<CodeableConcept> role;
-  @HiveField(5)
   Reference who;
-  @HiveField(6)
   String altId;
-  @HiveField(7)
   Element elementAltId;
-  @HiveField(8)
   String name;
-  @HiveField(9)
   Element elementName;
-  @HiveField(10)
   bool requestor;
-  @HiveField(11)
   Element elementRequestor;
-  @HiveField(12)
   Reference location;
-  @HiveField(13)
   List<String> policy;
-  @HiveField(14)
   List<Element> elementPolicy;
-  @HiveField(15)
   Coding media;
-  @HiveField(16)
   AuditEvent_Network network;
-  @HiveField(17)
   List<CodeableConcept> purposeOfUse;
 
   AuditEvent_Agent({
@@ -304,19 +259,12 @@ class AuditEvent_Network {
     return newAuditEvent_Network;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String address;
-  @HiveField(4)
   Element elementAddress;
-  @HiveField(5)
   String type;
-  @HiveField(6)
   Element elementType;
 
   AuditEvent_Network({
@@ -357,19 +305,12 @@ class AuditEvent_Source {
     return newAuditEvent_Source;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String site;
-  @HiveField(4)
   Element elementSite;
-  @HiveField(5)
   Reference observer;
-  @HiveField(6)
   List<Coding> type;
 
   AuditEvent_Source({
@@ -426,35 +367,20 @@ class AuditEvent_Entity {
     return newAuditEvent_Entity;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Reference what;
-  @HiveField(4)
   Coding type;
-  @HiveField(5)
   Coding role;
-  @HiveField(6)
   Coding lifecycle;
-  @HiveField(7)
   List<Coding> securityLabel;
-  @HiveField(8)
   String name;
-  @HiveField(9)
   Element elementName;
-  @HiveField(10)
   String description;
-  @HiveField(11)
   Element elementDescription;
-  @HiveField(12)
   String query;
-  @HiveField(13)
   Element elementQuery;
-  @HiveField(14)
   List<AuditEvent_Detail> detail;
 
   AuditEvent_Entity({
@@ -507,23 +433,14 @@ class AuditEvent_Detail {
     return newAuditEvent_Detail;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   String valueString;
-  @HiveField(6)
   Element elementValueString;
-  @HiveField(7)
   String valueBase64Binary;
-  @HiveField(8)
   Element elementValueBase64Binary;
 
   AuditEvent_Detail({
@@ -975,363 +892,4 @@ Map<String, dynamic> _$AuditEvent_DetailToJson(AuditEvent_Detail instance) {
   writeNotNull(
       'elementValueBase64Binary', instance.elementValueBase64Binary?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class AuditEventAdapter extends TypeAdapter<AuditEvent> {
-  @override
-  AuditEvent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      type: fields[11] as Coding,
-      subtype: (fields[12] as List)?.cast<Coding>(),
-      action: fields[13] as String,
-      elementAction: fields[14] as Element,
-      period: fields[15] as Period,
-      recorded: fields[16] as DateTime,
-      elementRecorded: fields[17] as Element,
-      outcome: fields[18] as String,
-      elementOutcome: fields[19] as Element,
-      outcomeDesc: fields[20] as String,
-      elementOutcomeDesc: fields[21] as Element,
-      purposeOfEvent: (fields[22] as List)?.cast<CodeableConcept>(),
-      agent: (fields[23] as List)?.cast<AuditEvent_Agent>(),
-      source: fields[24] as AuditEvent_Source,
-      entity: (fields[25] as List)?.cast<AuditEvent_Entity>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent obj) {
-    writer
-      ..writeByte(26)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.type)
-      ..writeByte(12)
-      ..write(obj.subtype)
-      ..writeByte(13)
-      ..write(obj.action)
-      ..writeByte(14)
-      ..write(obj.elementAction)
-      ..writeByte(15)
-      ..write(obj.period)
-      ..writeByte(16)
-      ..write(obj.recorded)
-      ..writeByte(17)
-      ..write(obj.elementRecorded)
-      ..writeByte(18)
-      ..write(obj.outcome)
-      ..writeByte(19)
-      ..write(obj.elementOutcome)
-      ..writeByte(20)
-      ..write(obj.outcomeDesc)
-      ..writeByte(21)
-      ..write(obj.elementOutcomeDesc)
-      ..writeByte(22)
-      ..write(obj.purposeOfEvent)
-      ..writeByte(23)
-      ..write(obj.agent)
-      ..writeByte(24)
-      ..write(obj.source)
-      ..writeByte(25)
-      ..write(obj.entity);
-  }
-}
-
-class AuditEvent_AgentAdapter extends TypeAdapter<AuditEvent_Agent> {
-  @override
-  AuditEvent_Agent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Agent(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      role: (fields[4] as List)?.cast<CodeableConcept>(),
-      who: fields[5] as Reference,
-      altId: fields[6] as String,
-      elementAltId: fields[7] as Element,
-      name: fields[8] as String,
-      elementName: fields[9] as Element,
-      requestor: fields[10] as bool,
-      elementRequestor: fields[11] as Element,
-      location: fields[12] as Reference,
-      policy: (fields[13] as List)?.cast<String>(),
-      elementPolicy: (fields[14] as List)?.cast<Element>(),
-      media: fields[15] as Coding,
-      network: fields[16] as AuditEvent_Network,
-      purposeOfUse: (fields[17] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Agent obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.role)
-      ..writeByte(5)
-      ..write(obj.who)
-      ..writeByte(6)
-      ..write(obj.altId)
-      ..writeByte(7)
-      ..write(obj.elementAltId)
-      ..writeByte(8)
-      ..write(obj.name)
-      ..writeByte(9)
-      ..write(obj.elementName)
-      ..writeByte(10)
-      ..write(obj.requestor)
-      ..writeByte(11)
-      ..write(obj.elementRequestor)
-      ..writeByte(12)
-      ..write(obj.location)
-      ..writeByte(13)
-      ..write(obj.policy)
-      ..writeByte(14)
-      ..write(obj.elementPolicy)
-      ..writeByte(15)
-      ..write(obj.media)
-      ..writeByte(16)
-      ..write(obj.network)
-      ..writeByte(17)
-      ..write(obj.purposeOfUse);
-  }
-}
-
-class AuditEvent_NetworkAdapter extends TypeAdapter<AuditEvent_Network> {
-  @override
-  AuditEvent_Network read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Network(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      address: fields[3] as String,
-      elementAddress: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Network obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.address)
-      ..writeByte(4)
-      ..write(obj.elementAddress)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType);
-  }
-}
-
-class AuditEvent_SourceAdapter extends TypeAdapter<AuditEvent_Source> {
-  @override
-  AuditEvent_Source read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Source(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      site: fields[3] as String,
-      elementSite: fields[4] as Element,
-      observer: fields[5] as Reference,
-      type: (fields[6] as List)?.cast<Coding>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Source obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.site)
-      ..writeByte(4)
-      ..write(obj.elementSite)
-      ..writeByte(5)
-      ..write(obj.observer)
-      ..writeByte(6)
-      ..write(obj.type);
-  }
-}
-
-class AuditEvent_EntityAdapter extends TypeAdapter<AuditEvent_Entity> {
-  @override
-  AuditEvent_Entity read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Entity(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      what: fields[3] as Reference,
-      type: fields[4] as Coding,
-      role: fields[5] as Coding,
-      lifecycle: fields[6] as Coding,
-      securityLabel: (fields[7] as List)?.cast<Coding>(),
-      name: fields[8] as String,
-      elementName: fields[9] as Element,
-      description: fields[10] as String,
-      elementDescription: fields[11] as Element,
-      query: fields[12] as String,
-      elementQuery: fields[13] as Element,
-      detail: (fields[14] as List)?.cast<AuditEvent_Detail>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Entity obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.what)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.role)
-      ..writeByte(6)
-      ..write(obj.lifecycle)
-      ..writeByte(7)
-      ..write(obj.securityLabel)
-      ..writeByte(8)
-      ..write(obj.name)
-      ..writeByte(9)
-      ..write(obj.elementName)
-      ..writeByte(10)
-      ..write(obj.description)
-      ..writeByte(11)
-      ..write(obj.elementDescription)
-      ..writeByte(12)
-      ..write(obj.query)
-      ..writeByte(13)
-      ..write(obj.elementQuery)
-      ..writeByte(14)
-      ..write(obj.detail);
-  }
-}
-
-class AuditEvent_DetailAdapter extends TypeAdapter<AuditEvent_Detail> {
-  @override
-  AuditEvent_Detail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Detail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      valueString: fields[5] as String,
-      elementValueString: fields[6] as Element,
-      valueBase64Binary: fields[7] as String,
-      elementValueBase64Binary: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Detail obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.valueString)
-      ..writeByte(6)
-      ..write(obj.elementValueString)
-      ..writeByte(7)
-      ..write(obj.valueBase64Binary)
-      ..writeByte(8)
-      ..write(obj.elementValueBase64Binary);
-  }
 }

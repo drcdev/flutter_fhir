@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -22,13 +21,9 @@ class Ratio {
     return newRatio;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   Quantity numerator;
-  @HiveField(3)
   Quantity denominator;
 
   Ratio({
@@ -78,39 +73,4 @@ Map<String, dynamic> _$RatioToJson(Ratio instance) {
   writeNotNull('numerator', instance.numerator?.toJson());
   writeNotNull('denominator', instance.denominator?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class RatioAdapter extends TypeAdapter<Ratio> {
-  @override
-  Ratio read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Ratio(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      numerator: fields[2] as Quantity,
-      denominator: fields[3] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Ratio obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.numerator)
-      ..writeByte(3)
-      ..write(obj.denominator);
-  }
 }

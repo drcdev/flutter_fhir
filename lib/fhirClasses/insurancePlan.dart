@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -95,61 +94,33 @@ class InsurancePlan {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'InsurancePlan';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   List<CodeableConcept> type;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   List<String> alias;
-  @HiveField(18)
   List<Element> elementAlias;
-  @HiveField(19)
   Period period;
-  @HiveField(20)
   Reference ownedBy;
-  @HiveField(21)
   Reference administeredBy;
-  @HiveField(22)
   List<Reference> coverageArea;
-  @HiveField(23)
   List<InsurancePlan_Contact> contact;
-  @HiveField(24)
   List<Reference> endpoint;
-  @HiveField(25)
   List<Reference> network;
-  @HiveField(26)
   List<InsurancePlan_Coverage> coverage;
-  @HiveField(27)
   List<InsurancePlan_Plan> plan;
 
   InsurancePlan({
@@ -211,19 +182,12 @@ class InsurancePlan_Contact {
     return newInsurancePlan_Contact;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept purpose;
-  @HiveField(4)
   HumanName name;
-  @HiveField(5)
   List<ContactPoint> telecom;
-  @HiveField(6)
   Address address;
 
   InsurancePlan_Contact({
@@ -263,17 +227,11 @@ class InsurancePlan_Coverage {
     return newInsurancePlan_Coverage;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   List<Reference> network;
-  @HiveField(5)
   List<InsurancePlan_Benefit> benefit;
 
   InsurancePlan_Coverage({
@@ -313,19 +271,12 @@ class InsurancePlan_Benefit {
     return newInsurancePlan_Benefit;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   String requirement;
-  @HiveField(5)
   Element elementRequirement;
-  @HiveField(6)
   List<InsurancePlan_Limit> limit;
 
   InsurancePlan_Benefit({
@@ -362,15 +313,10 @@ class InsurancePlan_Limit {
     return newInsurancePlan_Limit;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Quantity value;
-  @HiveField(4)
   CodeableConcept code;
 
   InsurancePlan_Limit({
@@ -413,23 +359,14 @@ class InsurancePlan_Plan {
     return newInsurancePlan_Plan;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<Identifier> identifier;
-  @HiveField(4)
   CodeableConcept type;
-  @HiveField(5)
   List<Reference> coverageArea;
-  @HiveField(6)
   List<Reference> network;
-  @HiveField(7)
   List<InsurancePlan_GeneralCost> generalCost;
-  @HiveField(8)
   List<InsurancePlan_SpecificCost> specificCost;
 
   InsurancePlan_Plan({
@@ -477,23 +414,14 @@ class InsurancePlan_GeneralCost {
     return newInsurancePlan_GeneralCost;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   int groupSize;
-  @HiveField(5)
   Element elementGroupSize;
-  @HiveField(6)
   Money cost;
-  @HiveField(7)
   String comment;
-  @HiveField(8)
   Element elementComment;
 
   InsurancePlan_GeneralCost({
@@ -533,15 +461,10 @@ class InsurancePlan_SpecificCost {
     return newInsurancePlan_SpecificCost;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   List<InsurancePlan_Benefit1> benefit;
 
   InsurancePlan_SpecificCost({
@@ -577,15 +500,10 @@ class InsurancePlan_Benefit1 {
     return newInsurancePlan_Benefit1;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   List<InsurancePlan_Cost> cost;
 
   InsurancePlan_Benefit1({
@@ -624,19 +542,12 @@ class InsurancePlan_Cost {
     return newInsurancePlan_Cost;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   CodeableConcept applicability;
-  @HiveField(5)
   List<CodeableConcept> qualifiers;
-  @HiveField(6)
   Quantity value;
 
   InsurancePlan_Cost({
@@ -1239,457 +1150,4 @@ Map<String, dynamic> _$InsurancePlan_CostToJson(InsurancePlan_Cost instance) {
       'qualifiers', instance.qualifiers?.map((e) => e?.toJson())?.toList());
   writeNotNull('value', instance.value?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class InsurancePlanAdapter extends TypeAdapter<InsurancePlan> {
-  @override
-  InsurancePlan read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: (fields[14] as List)?.cast<CodeableConcept>(),
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      alias: (fields[17] as List)?.cast<String>(),
-      elementAlias: (fields[18] as List)?.cast<Element>(),
-      period: fields[19] as Period,
-      ownedBy: fields[20] as Reference,
-      administeredBy: fields[21] as Reference,
-      coverageArea: (fields[22] as List)?.cast<Reference>(),
-      contact: (fields[23] as List)?.cast<InsurancePlan_Contact>(),
-      endpoint: (fields[24] as List)?.cast<Reference>(),
-      network: (fields[25] as List)?.cast<Reference>(),
-      coverage: (fields[26] as List)?.cast<InsurancePlan_Coverage>(),
-      plan: (fields[27] as List)?.cast<InsurancePlan_Plan>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan obj) {
-    writer
-      ..writeByte(28)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.alias)
-      ..writeByte(18)
-      ..write(obj.elementAlias)
-      ..writeByte(19)
-      ..write(obj.period)
-      ..writeByte(20)
-      ..write(obj.ownedBy)
-      ..writeByte(21)
-      ..write(obj.administeredBy)
-      ..writeByte(22)
-      ..write(obj.coverageArea)
-      ..writeByte(23)
-      ..write(obj.contact)
-      ..writeByte(24)
-      ..write(obj.endpoint)
-      ..writeByte(25)
-      ..write(obj.network)
-      ..writeByte(26)
-      ..write(obj.coverage)
-      ..writeByte(27)
-      ..write(obj.plan);
-  }
-}
-
-class InsurancePlan_ContactAdapter extends TypeAdapter<InsurancePlan_Contact> {
-  @override
-  InsurancePlan_Contact read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Contact(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      purpose: fields[3] as CodeableConcept,
-      name: fields[4] as HumanName,
-      telecom: (fields[5] as List)?.cast<ContactPoint>(),
-      address: fields[6] as Address,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Contact obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.purpose)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.telecom)
-      ..writeByte(6)
-      ..write(obj.address);
-  }
-}
-
-class InsurancePlan_CoverageAdapter
-    extends TypeAdapter<InsurancePlan_Coverage> {
-  @override
-  InsurancePlan_Coverage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Coverage(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      network: (fields[4] as List)?.cast<Reference>(),
-      benefit: (fields[5] as List)?.cast<InsurancePlan_Benefit>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Coverage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.network)
-      ..writeByte(5)
-      ..write(obj.benefit);
-  }
-}
-
-class InsurancePlan_BenefitAdapter extends TypeAdapter<InsurancePlan_Benefit> {
-  @override
-  InsurancePlan_Benefit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Benefit(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      requirement: fields[4] as String,
-      elementRequirement: fields[5] as Element,
-      limit: (fields[6] as List)?.cast<InsurancePlan_Limit>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Benefit obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.requirement)
-      ..writeByte(5)
-      ..write(obj.elementRequirement)
-      ..writeByte(6)
-      ..write(obj.limit);
-  }
-}
-
-class InsurancePlan_LimitAdapter extends TypeAdapter<InsurancePlan_Limit> {
-  @override
-  InsurancePlan_Limit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Limit(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      value: fields[3] as Quantity,
-      code: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Limit obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.value)
-      ..writeByte(4)
-      ..write(obj.code);
-  }
-}
-
-class InsurancePlan_PlanAdapter extends TypeAdapter<InsurancePlan_Plan> {
-  @override
-  InsurancePlan_Plan read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Plan(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      type: fields[4] as CodeableConcept,
-      coverageArea: (fields[5] as List)?.cast<Reference>(),
-      network: (fields[6] as List)?.cast<Reference>(),
-      generalCost: (fields[7] as List)?.cast<InsurancePlan_GeneralCost>(),
-      specificCost: (fields[8] as List)?.cast<InsurancePlan_SpecificCost>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Plan obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.coverageArea)
-      ..writeByte(6)
-      ..write(obj.network)
-      ..writeByte(7)
-      ..write(obj.generalCost)
-      ..writeByte(8)
-      ..write(obj.specificCost);
-  }
-}
-
-class InsurancePlan_GeneralCostAdapter
-    extends TypeAdapter<InsurancePlan_GeneralCost> {
-  @override
-  InsurancePlan_GeneralCost read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_GeneralCost(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      groupSize: fields[4] as int,
-      elementGroupSize: fields[5] as Element,
-      cost: fields[6] as Money,
-      comment: fields[7] as String,
-      elementComment: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_GeneralCost obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.groupSize)
-      ..writeByte(5)
-      ..write(obj.elementGroupSize)
-      ..writeByte(6)
-      ..write(obj.cost)
-      ..writeByte(7)
-      ..write(obj.comment)
-      ..writeByte(8)
-      ..write(obj.elementComment);
-  }
-}
-
-class InsurancePlan_SpecificCostAdapter
-    extends TypeAdapter<InsurancePlan_SpecificCost> {
-  @override
-  InsurancePlan_SpecificCost read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_SpecificCost(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      benefit: (fields[4] as List)?.cast<InsurancePlan_Benefit1>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_SpecificCost obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.benefit);
-  }
-}
-
-class InsurancePlan_Benefit1Adapter
-    extends TypeAdapter<InsurancePlan_Benefit1> {
-  @override
-  InsurancePlan_Benefit1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Benefit1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      cost: (fields[4] as List)?.cast<InsurancePlan_Cost>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Benefit1 obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.cost);
-  }
-}
-
-class InsurancePlan_CostAdapter extends TypeAdapter<InsurancePlan_Cost> {
-  @override
-  InsurancePlan_Cost read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Cost(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      applicability: fields[4] as CodeableConcept,
-      qualifiers: (fields[5] as List)?.cast<CodeableConcept>(),
-      value: fields[6] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Cost obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.applicability)
-      ..writeByte(5)
-      ..write(obj.qualifiers)
-      ..writeByte(6)
-      ..write(obj.value);
-  }
 }

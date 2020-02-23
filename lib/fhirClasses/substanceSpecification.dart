@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -103,69 +102,37 @@ class SubstanceSpecification {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'SubstanceSpecification';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   CodeableConcept type;
-  @HiveField(13)
   CodeableConcept status;
-  @HiveField(14)
   CodeableConcept domain;
-  @HiveField(15)
   String description;
-  @HiveField(16)
   Element elementDescription;
-  @HiveField(17)
   List<Reference> source;
-  @HiveField(18)
   String comment;
-  @HiveField(19)
   Element elementComment;
-  @HiveField(20)
   List<SubstanceSpecification_Moiety> moiety;
-  @HiveField(21)
   List<SubstanceSpecification_Property> property;
-  @HiveField(22)
   Reference referenceInformation;
-  @HiveField(23)
   SubstanceSpecification_Structure structure;
-  @HiveField(24)
   List<SubstanceSpecification_Code> code;
-  @HiveField(25)
   List<SubstanceSpecification_Name> name;
-  @HiveField(26)
   List<SubstanceSpecification_MolecularWeight> molecularWeight;
-  @HiveField(27)
   List<SubstanceSpecification_Relationship> relationship;
-  @HiveField(28)
   Reference nucleicAcid;
-  @HiveField(29)
   Reference polymer;
-  @HiveField(30)
   Reference protein;
-  @HiveField(31)
   Reference sourceMaterial;
 
   SubstanceSpecification({
@@ -246,33 +213,19 @@ class SubstanceSpecification_Moiety {
     return newSubstanceSpecification_Moiety;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept role;
-  @HiveField(4)
   Identifier identifier;
-  @HiveField(5)
   String name;
-  @HiveField(6)
   Element elementName;
-  @HiveField(7)
   CodeableConcept stereochemistry;
-  @HiveField(8)
   CodeableConcept opticalActivity;
-  @HiveField(9)
   String molecularFormula;
-  @HiveField(10)
   Element elementMolecularFormula;
-  @HiveField(11)
   Quantity amountQuantity;
-  @HiveField(12)
   String amountString;
-  @HiveField(13)
   Element elementAmountString;
 
   SubstanceSpecification_Moiety({
@@ -331,29 +284,17 @@ class SubstanceSpecification_Property {
     return newSubstanceSpecification_Property;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   CodeableConcept code;
-  @HiveField(5)
   String parameters;
-  @HiveField(6)
   Element elementParameters;
-  @HiveField(7)
   Reference definingSubstanceReference;
-  @HiveField(8)
   CodeableConcept definingSubstanceCodeableConcept;
-  @HiveField(9)
   Quantity amountQuantity;
-  @HiveField(10)
   String amountString;
-  @HiveField(11)
   Element elementAmountString;
 
   SubstanceSpecification_Property({
@@ -413,31 +354,18 @@ class SubstanceSpecification_Structure {
     return newSubstanceSpecification_Structure;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept stereochemistry;
-  @HiveField(4)
   CodeableConcept opticalActivity;
-  @HiveField(5)
   String molecularFormula;
-  @HiveField(6)
   Element elementMolecularFormula;
-  @HiveField(7)
   String molecularFormulaByMoiety;
-  @HiveField(8)
   Element elementMolecularFormulaByMoiety;
-  @HiveField(9)
   List<SubstanceSpecification_Isotope> isotope;
-  @HiveField(10)
   SubstanceSpecification_MolecularWeight molecularWeight;
-  @HiveField(11)
   List<Reference> source;
-  @HiveField(12)
   List<SubstanceSpecification_Representation> representation;
 
   SubstanceSpecification_Structure({
@@ -489,21 +417,13 @@ class SubstanceSpecification_Isotope {
     return newSubstanceSpecification_Isotope;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Identifier identifier;
-  @HiveField(4)
   CodeableConcept name;
-  @HiveField(5)
   CodeableConcept substitution;
-  @HiveField(6)
   Quantity halfLife;
-  @HiveField(7)
   SubstanceSpecification_MolecularWeight molecularWeight;
 
   SubstanceSpecification_Isotope({
@@ -545,17 +465,11 @@ class SubstanceSpecification_MolecularWeight {
     return newSubstanceSpecification_MolecularWeight;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept method;
-  @HiveField(4)
   CodeableConcept type;
-  @HiveField(5)
   Quantity amount;
 
   SubstanceSpecification_MolecularWeight({
@@ -599,19 +513,12 @@ class SubstanceSpecification_Representation {
     return newSubstanceSpecification_Representation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   String representation;
-  @HiveField(5)
   Element elementRepresentation;
-  @HiveField(6)
   Attachment attachment;
 
   SubstanceSpecification_Representation({
@@ -661,25 +568,15 @@ class SubstanceSpecification_Code {
     return newSubstanceSpecification_Code;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept code;
-  @HiveField(4)
   CodeableConcept status;
-  @HiveField(5)
   DateTime statusDate;
-  @HiveField(6)
   Element elementStatusDate;
-  @HiveField(7)
   String comment;
-  @HiveField(8)
   Element elementComment;
-  @HiveField(9)
   List<Reference> source;
 
   SubstanceSpecification_Code({
@@ -742,37 +639,21 @@ class SubstanceSpecification_Name {
     return newSubstanceSpecification_Name;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   CodeableConcept type;
-  @HiveField(6)
   CodeableConcept status;
-  @HiveField(7)
   bool preferred;
-  @HiveField(8)
   Element elementPreferred;
-  @HiveField(9)
   List<CodeableConcept> language;
-  @HiveField(10)
   List<CodeableConcept> domain;
-  @HiveField(11)
   List<CodeableConcept> jurisdiction;
-  @HiveField(12)
   List<SubstanceSpecification_Name> synonym;
-  @HiveField(13)
   List<SubstanceSpecification_Name> translation;
-  @HiveField(14)
   List<SubstanceSpecification_Official> official;
-  @HiveField(15)
   List<Reference> source;
 
   SubstanceSpecification_Name({
@@ -823,19 +704,12 @@ class SubstanceSpecification_Official {
     return newSubstanceSpecification_Official;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept authority;
-  @HiveField(4)
   CodeableConcept status;
-  @HiveField(5)
   DateTime date;
-  @HiveField(6)
   Element elementDate;
 
   SubstanceSpecification_Official({
@@ -896,37 +770,21 @@ class SubstanceSpecification_Relationship {
     return newSubstanceSpecification_Relationship;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Reference substanceReference;
-  @HiveField(4)
   CodeableConcept substanceCodeableConcept;
-  @HiveField(5)
   CodeableConcept relationship;
-  @HiveField(6)
   bool isDefining;
-  @HiveField(7)
   Element elementIsDefining;
-  @HiveField(8)
   Quantity amountQuantity;
-  @HiveField(9)
   Range amountRange;
-  @HiveField(10)
   Ratio amountRatio;
-  @HiveField(11)
   String amountString;
-  @HiveField(12)
   Element elementAmountString;
-  @HiveField(13)
   Ratio amountRatioLowLimit;
-  @HiveField(14)
   CodeableConcept amountType;
-  @HiveField(15)
   List<Reference> source;
 
   SubstanceSpecification_Relationship({
@@ -1793,644 +1651,4 @@ Map<String, dynamic> _$SubstanceSpecification_RelationshipToJson(
   writeNotNull('amountType', instance.amountType?.toJson());
   writeNotNull('source', instance.source?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SubstanceSpecificationAdapter
-    extends TypeAdapter<SubstanceSpecification> {
-  @override
-  SubstanceSpecification read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      type: fields[12] as CodeableConcept,
-      status: fields[13] as CodeableConcept,
-      domain: fields[14] as CodeableConcept,
-      description: fields[15] as String,
-      elementDescription: fields[16] as Element,
-      source: (fields[17] as List)?.cast<Reference>(),
-      comment: fields[18] as String,
-      elementComment: fields[19] as Element,
-      moiety: (fields[20] as List)?.cast<SubstanceSpecification_Moiety>(),
-      property: (fields[21] as List)?.cast<SubstanceSpecification_Property>(),
-      referenceInformation: fields[22] as Reference,
-      structure: fields[23] as SubstanceSpecification_Structure,
-      code: (fields[24] as List)?.cast<SubstanceSpecification_Code>(),
-      name: (fields[25] as List)?.cast<SubstanceSpecification_Name>(),
-      molecularWeight:
-          (fields[26] as List)?.cast<SubstanceSpecification_MolecularWeight>(),
-      relationship:
-          (fields[27] as List)?.cast<SubstanceSpecification_Relationship>(),
-      nucleicAcid: fields[28] as Reference,
-      polymer: fields[29] as Reference,
-      protein: fields[30] as Reference,
-      sourceMaterial: fields[31] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.type)
-      ..writeByte(13)
-      ..write(obj.status)
-      ..writeByte(14)
-      ..write(obj.domain)
-      ..writeByte(15)
-      ..write(obj.description)
-      ..writeByte(16)
-      ..write(obj.elementDescription)
-      ..writeByte(17)
-      ..write(obj.source)
-      ..writeByte(18)
-      ..write(obj.comment)
-      ..writeByte(19)
-      ..write(obj.elementComment)
-      ..writeByte(20)
-      ..write(obj.moiety)
-      ..writeByte(21)
-      ..write(obj.property)
-      ..writeByte(22)
-      ..write(obj.referenceInformation)
-      ..writeByte(23)
-      ..write(obj.structure)
-      ..writeByte(24)
-      ..write(obj.code)
-      ..writeByte(25)
-      ..write(obj.name)
-      ..writeByte(26)
-      ..write(obj.molecularWeight)
-      ..writeByte(27)
-      ..write(obj.relationship)
-      ..writeByte(28)
-      ..write(obj.nucleicAcid)
-      ..writeByte(29)
-      ..write(obj.polymer)
-      ..writeByte(30)
-      ..write(obj.protein)
-      ..writeByte(31)
-      ..write(obj.sourceMaterial);
-  }
-}
-
-class SubstanceSpecification_MoietyAdapter
-    extends TypeAdapter<SubstanceSpecification_Moiety> {
-  @override
-  SubstanceSpecification_Moiety read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Moiety(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      role: fields[3] as CodeableConcept,
-      identifier: fields[4] as Identifier,
-      name: fields[5] as String,
-      elementName: fields[6] as Element,
-      stereochemistry: fields[7] as CodeableConcept,
-      opticalActivity: fields[8] as CodeableConcept,
-      molecularFormula: fields[9] as String,
-      elementMolecularFormula: fields[10] as Element,
-      amountQuantity: fields[11] as Quantity,
-      amountString: fields[12] as String,
-      elementAmountString: fields[13] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Moiety obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.role)
-      ..writeByte(4)
-      ..write(obj.identifier)
-      ..writeByte(5)
-      ..write(obj.name)
-      ..writeByte(6)
-      ..write(obj.elementName)
-      ..writeByte(7)
-      ..write(obj.stereochemistry)
-      ..writeByte(8)
-      ..write(obj.opticalActivity)
-      ..writeByte(9)
-      ..write(obj.molecularFormula)
-      ..writeByte(10)
-      ..write(obj.elementMolecularFormula)
-      ..writeByte(11)
-      ..write(obj.amountQuantity)
-      ..writeByte(12)
-      ..write(obj.amountString)
-      ..writeByte(13)
-      ..write(obj.elementAmountString);
-  }
-}
-
-class SubstanceSpecification_PropertyAdapter
-    extends TypeAdapter<SubstanceSpecification_Property> {
-  @override
-  SubstanceSpecification_Property read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Property(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      code: fields[4] as CodeableConcept,
-      parameters: fields[5] as String,
-      elementParameters: fields[6] as Element,
-      definingSubstanceReference: fields[7] as Reference,
-      definingSubstanceCodeableConcept: fields[8] as CodeableConcept,
-      amountQuantity: fields[9] as Quantity,
-      amountString: fields[10] as String,
-      elementAmountString: fields[11] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Property obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.code)
-      ..writeByte(5)
-      ..write(obj.parameters)
-      ..writeByte(6)
-      ..write(obj.elementParameters)
-      ..writeByte(7)
-      ..write(obj.definingSubstanceReference)
-      ..writeByte(8)
-      ..write(obj.definingSubstanceCodeableConcept)
-      ..writeByte(9)
-      ..write(obj.amountQuantity)
-      ..writeByte(10)
-      ..write(obj.amountString)
-      ..writeByte(11)
-      ..write(obj.elementAmountString);
-  }
-}
-
-class SubstanceSpecification_StructureAdapter
-    extends TypeAdapter<SubstanceSpecification_Structure> {
-  @override
-  SubstanceSpecification_Structure read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Structure(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      stereochemistry: fields[3] as CodeableConcept,
-      opticalActivity: fields[4] as CodeableConcept,
-      molecularFormula: fields[5] as String,
-      elementMolecularFormula: fields[6] as Element,
-      molecularFormulaByMoiety: fields[7] as String,
-      elementMolecularFormulaByMoiety: fields[8] as Element,
-      isotope: (fields[9] as List)?.cast<SubstanceSpecification_Isotope>(),
-      molecularWeight: fields[10] as SubstanceSpecification_MolecularWeight,
-      source: (fields[11] as List)?.cast<Reference>(),
-      representation:
-          (fields[12] as List)?.cast<SubstanceSpecification_Representation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Structure obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.stereochemistry)
-      ..writeByte(4)
-      ..write(obj.opticalActivity)
-      ..writeByte(5)
-      ..write(obj.molecularFormula)
-      ..writeByte(6)
-      ..write(obj.elementMolecularFormula)
-      ..writeByte(7)
-      ..write(obj.molecularFormulaByMoiety)
-      ..writeByte(8)
-      ..write(obj.elementMolecularFormulaByMoiety)
-      ..writeByte(9)
-      ..write(obj.isotope)
-      ..writeByte(10)
-      ..write(obj.molecularWeight)
-      ..writeByte(11)
-      ..write(obj.source)
-      ..writeByte(12)
-      ..write(obj.representation);
-  }
-}
-
-class SubstanceSpecification_IsotopeAdapter
-    extends TypeAdapter<SubstanceSpecification_Isotope> {
-  @override
-  SubstanceSpecification_Isotope read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Isotope(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as Identifier,
-      name: fields[4] as CodeableConcept,
-      substitution: fields[5] as CodeableConcept,
-      halfLife: fields[6] as Quantity,
-      molecularWeight: fields[7] as SubstanceSpecification_MolecularWeight,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Isotope obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.substitution)
-      ..writeByte(6)
-      ..write(obj.halfLife)
-      ..writeByte(7)
-      ..write(obj.molecularWeight);
-  }
-}
-
-class SubstanceSpecification_MolecularWeightAdapter
-    extends TypeAdapter<SubstanceSpecification_MolecularWeight> {
-  @override
-  SubstanceSpecification_MolecularWeight read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_MolecularWeight(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      method: fields[3] as CodeableConcept,
-      type: fields[4] as CodeableConcept,
-      amount: fields[5] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_MolecularWeight obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.method)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.amount);
-  }
-}
-
-class SubstanceSpecification_RepresentationAdapter
-    extends TypeAdapter<SubstanceSpecification_Representation> {
-  @override
-  SubstanceSpecification_Representation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Representation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      representation: fields[4] as String,
-      elementRepresentation: fields[5] as Element,
-      attachment: fields[6] as Attachment,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Representation obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.representation)
-      ..writeByte(5)
-      ..write(obj.elementRepresentation)
-      ..writeByte(6)
-      ..write(obj.attachment);
-  }
-}
-
-class SubstanceSpecification_CodeAdapter
-    extends TypeAdapter<SubstanceSpecification_Code> {
-  @override
-  SubstanceSpecification_Code read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Code(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      status: fields[4] as CodeableConcept,
-      statusDate: fields[5] as DateTime,
-      elementStatusDate: fields[6] as Element,
-      comment: fields[7] as String,
-      elementComment: fields[8] as Element,
-      source: (fields[9] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Code obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.status)
-      ..writeByte(5)
-      ..write(obj.statusDate)
-      ..writeByte(6)
-      ..write(obj.elementStatusDate)
-      ..writeByte(7)
-      ..write(obj.comment)
-      ..writeByte(8)
-      ..write(obj.elementComment)
-      ..writeByte(9)
-      ..write(obj.source);
-  }
-}
-
-class SubstanceSpecification_NameAdapter
-    extends TypeAdapter<SubstanceSpecification_Name> {
-  @override
-  SubstanceSpecification_Name read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Name(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      status: fields[6] as CodeableConcept,
-      preferred: fields[7] as bool,
-      elementPreferred: fields[8] as Element,
-      language: (fields[9] as List)?.cast<CodeableConcept>(),
-      domain: (fields[10] as List)?.cast<CodeableConcept>(),
-      jurisdiction: (fields[11] as List)?.cast<CodeableConcept>(),
-      synonym: (fields[12] as List)?.cast<SubstanceSpecification_Name>(),
-      translation: (fields[13] as List)?.cast<SubstanceSpecification_Name>(),
-      official: (fields[14] as List)?.cast<SubstanceSpecification_Official>(),
-      source: (fields[15] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Name obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.status)
-      ..writeByte(7)
-      ..write(obj.preferred)
-      ..writeByte(8)
-      ..write(obj.elementPreferred)
-      ..writeByte(9)
-      ..write(obj.language)
-      ..writeByte(10)
-      ..write(obj.domain)
-      ..writeByte(11)
-      ..write(obj.jurisdiction)
-      ..writeByte(12)
-      ..write(obj.synonym)
-      ..writeByte(13)
-      ..write(obj.translation)
-      ..writeByte(14)
-      ..write(obj.official)
-      ..writeByte(15)
-      ..write(obj.source);
-  }
-}
-
-class SubstanceSpecification_OfficialAdapter
-    extends TypeAdapter<SubstanceSpecification_Official> {
-  @override
-  SubstanceSpecification_Official read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Official(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      authority: fields[3] as CodeableConcept,
-      status: fields[4] as CodeableConcept,
-      date: fields[5] as DateTime,
-      elementDate: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Official obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.authority)
-      ..writeByte(4)
-      ..write(obj.status)
-      ..writeByte(5)
-      ..write(obj.date)
-      ..writeByte(6)
-      ..write(obj.elementDate);
-  }
-}
-
-class SubstanceSpecification_RelationshipAdapter
-    extends TypeAdapter<SubstanceSpecification_Relationship> {
-  @override
-  SubstanceSpecification_Relationship read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification_Relationship(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      substanceReference: fields[3] as Reference,
-      substanceCodeableConcept: fields[4] as CodeableConcept,
-      relationship: fields[5] as CodeableConcept,
-      isDefining: fields[6] as bool,
-      elementIsDefining: fields[7] as Element,
-      amountQuantity: fields[8] as Quantity,
-      amountRange: fields[9] as Range,
-      amountRatio: fields[10] as Ratio,
-      amountString: fields[11] as String,
-      elementAmountString: fields[12] as Element,
-      amountRatioLowLimit: fields[13] as Ratio,
-      amountType: fields[14] as CodeableConcept,
-      source: (fields[15] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification_Relationship obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.substanceReference)
-      ..writeByte(4)
-      ..write(obj.substanceCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.relationship)
-      ..writeByte(6)
-      ..write(obj.isDefining)
-      ..writeByte(7)
-      ..write(obj.elementIsDefining)
-      ..writeByte(8)
-      ..write(obj.amountQuantity)
-      ..writeByte(9)
-      ..write(obj.amountRange)
-      ..writeByte(10)
-      ..write(obj.amountRatio)
-      ..writeByte(11)
-      ..write(obj.amountString)
-      ..writeByte(12)
-      ..write(obj.elementAmountString)
-      ..writeByte(13)
-      ..write(obj.amountRatioLowLimit)
-      ..writeByte(14)
-      ..write(obj.amountType)
-      ..writeByte(15)
-      ..write(obj.source);
-  }
 }

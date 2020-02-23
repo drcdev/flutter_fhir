@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -151,115 +150,60 @@ class Contract {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Contract';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String url;
-  @HiveField(13)
   Element elementUrl;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String status;
-  @HiveField(17)
   Element elementStatus;
-  @HiveField(18)
   CodeableConcept legalState;
-  @HiveField(19)
   Reference instantiatesCanonical;
-  @HiveField(20)
   String instantiatesUri;
-  @HiveField(21)
   Element elementInstantiatesUri;
-  @HiveField(22)
   CodeableConcept contentDerivative;
-  @HiveField(23)
   DateTime issued;
-  @HiveField(24)
   Element elementIssued;
-  @HiveField(25)
   Period applies;
-  @HiveField(26)
   CodeableConcept expirationType;
-  @HiveField(27)
   List<Reference> subject;
-  @HiveField(28)
   List<Reference> authority;
-  @HiveField(29)
   List<Reference> domain;
-  @HiveField(30)
   List<Reference> site;
-  @HiveField(31)
   String name;
-  @HiveField(32)
   Element elementName;
-  @HiveField(33)
   String title;
-  @HiveField(34)
   Element elementTitle;
-  @HiveField(35)
   String subtitle;
-  @HiveField(36)
   Element elementSubtitle;
-  @HiveField(37)
   List<String> alias;
-  @HiveField(38)
   List<Element> elementAlias;
-  @HiveField(39)
   Reference author;
-  @HiveField(40)
   CodeableConcept scope;
-  @HiveField(41)
   CodeableConcept topicCodeableConcept;
-  @HiveField(42)
   Reference topicReference;
-  @HiveField(43)
   CodeableConcept type;
-  @HiveField(44)
   List<CodeableConcept> subType;
-  @HiveField(45)
   Contract_ContentDefinition contentDefinition;
-  @HiveField(46)
   List<Contract_Term> term;
-  @HiveField(47)
   List<Reference> supportingInfo;
-  @HiveField(48)
   List<Reference> relevantHistory;
-  @HiveField(49)
   List<Contract_Signer> signer;
-  @HiveField(50)
   List<Contract_Friendly> friendly;
-  @HiveField(51)
   List<Contract_Legal> legal;
-  @HiveField(52)
   List<Contract_Rule> rule;
-  @HiveField(53)
   Attachment legallyBindingAttachment;
-  @HiveField(54)
   Reference legallyBindingReference;
 
   Contract({
@@ -359,29 +303,17 @@ class Contract_ContentDefinition {
     return newContract_ContentDefinition;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   CodeableConcept subType;
-  @HiveField(5)
   Reference publisher;
-  @HiveField(6)
   DateTime publicationDate;
-  @HiveField(7)
   Element elementPublicationDate;
-  @HiveField(8)
   String publicationStatus;
-  @HiveField(9)
   Element elementPublicationStatus;
-  @HiveField(10)
   String copyright;
-  @HiveField(11)
   Element elementCopyright;
 
   Contract_ContentDefinition({
@@ -449,41 +381,23 @@ class Contract_Term {
     return newContract_Term;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Identifier identifier;
-  @HiveField(4)
   DateTime issued;
-  @HiveField(5)
   Element elementIssued;
-  @HiveField(6)
   Period applies;
-  @HiveField(7)
   CodeableConcept topicCodeableConcept;
-  @HiveField(8)
   Reference topicReference;
-  @HiveField(9)
   CodeableConcept type;
-  @HiveField(10)
   CodeableConcept subType;
-  @HiveField(11)
   String text;
-  @HiveField(12)
   Element elementText;
-  @HiveField(13)
   List<Contract_SecurityLabel> securityLabel;
-  @HiveField(14)
   Contract_Offer offer;
-  @HiveField(15)
   List<Contract_Asset> asset;
-  @HiveField(16)
   List<Contract_Action> action;
-  @HiveField(17)
   List<Contract_Term> group;
 
   Contract_Term({
@@ -538,21 +452,13 @@ class Contract_SecurityLabel {
     return newContract_SecurityLabel;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<int> number;
-  @HiveField(4)
   List<Element> elementNumber;
-  @HiveField(5)
   Coding classification;
-  @HiveField(6)
   List<Coding> category;
-  @HiveField(7)
   List<Coding> control;
 
   Contract_SecurityLabel({
@@ -612,37 +518,21 @@ class Contract_Offer {
     return newContract_Offer;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<Identifier> identifier;
-  @HiveField(4)
   List<Contract_Party> party;
-  @HiveField(5)
   Reference topic;
-  @HiveField(6)
   CodeableConcept type;
-  @HiveField(7)
   CodeableConcept decision;
-  @HiveField(8)
   List<CodeableConcept> decisionMode;
-  @HiveField(9)
   List<Contract_Answer> answer;
-  @HiveField(10)
   String text;
-  @HiveField(11)
   Element elementText;
-  @HiveField(12)
   List<String> linkId;
-  @HiveField(13)
   List<Element> elementLinkId;
-  @HiveField(14)
   List<int> securityLabelNumber;
-  @HiveField(15)
   List<Element> elementSecurityLabelNumber;
 
   Contract_Offer({
@@ -688,15 +578,10 @@ class Contract_Party {
     return newContract_Party;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<Reference> reference;
-  @HiveField(4)
   CodeableConcept role;
 
   Contract_Party({
@@ -767,51 +652,28 @@ class Contract_Answer {
     return newContract_Answer;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool valueBoolean;
-  @HiveField(4)
   Element elementValueBoolean;
-  @HiveField(5)
   int valueDecimal;
-  @HiveField(6)
   Element elementValueDecimal;
-  @HiveField(7)
   int valueInteger;
-  @HiveField(8)
   Element elementValueInteger;
-  @HiveField(9)
   String valueDate;
-  @HiveField(10)
   Element elementValueDate;
-  @HiveField(11)
   String valueDateTime;
-  @HiveField(12)
   Element elementValueDateTime;
-  @HiveField(13)
   String valueTime;
-  @HiveField(14)
   Element elementValueTime;
-  @HiveField(15)
   String valueString;
-  @HiveField(16)
   Element elementValueString;
-  @HiveField(17)
   String valueUri;
-  @HiveField(18)
   Element elementValueUri;
-  @HiveField(19)
   Attachment valueAttachment;
-  @HiveField(20)
   Coding valueCoding;
-  @HiveField(21)
   Quantity valueQuantity;
-  @HiveField(22)
   Reference valueReference;
 
   Contract_Answer({
@@ -898,49 +760,27 @@ class Contract_Asset {
     return newContract_Asset;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept scope;
-  @HiveField(4)
   List<CodeableConcept> type;
-  @HiveField(5)
   List<Reference> typeReference;
-  @HiveField(6)
   List<CodeableConcept> subtype;
-  @HiveField(7)
   Coding relationship;
-  @HiveField(8)
   List<Contract_Context> context;
-  @HiveField(9)
   String condition;
-  @HiveField(10)
   Element elementCondition;
-  @HiveField(11)
   List<CodeableConcept> periodType;
-  @HiveField(12)
   List<Period> period;
-  @HiveField(13)
   List<Period> usePeriod;
-  @HiveField(14)
   String text;
-  @HiveField(15)
   Element elementText;
-  @HiveField(16)
   List<String> linkId;
-  @HiveField(17)
   List<Element> elementLinkId;
-  @HiveField(18)
   List<Contract_Answer> answer;
-  @HiveField(19)
   List<int> securityLabelNumber;
-  @HiveField(20)
   List<Element> elementSecurityLabelNumber;
-  @HiveField(21)
   List<Contract_ValuedItem> valuedItem;
 
   Contract_Asset({
@@ -996,19 +836,12 @@ class Contract_Context {
     return newContract_Context;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Reference reference;
-  @HiveField(4)
   List<CodeableConcept> code;
-  @HiveField(5)
   String text;
-  @HiveField(6)
   Element elementText;
 
   Contract_Context({
@@ -1085,55 +918,30 @@ class Contract_ValuedItem {
     return newContract_ValuedItem;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept entityCodeableConcept;
-  @HiveField(4)
   Reference entityReference;
-  @HiveField(5)
   Identifier identifier;
-  @HiveField(6)
   DateTime effectiveTime;
-  @HiveField(7)
   Element elementEffectiveTime;
-  @HiveField(8)
   Quantity quantity;
-  @HiveField(9)
   Money unitPrice;
-  @HiveField(10)
   double factor;
-  @HiveField(11)
   Element elementFactor;
-  @HiveField(12)
   double points;
-  @HiveField(13)
   Element elementPoints;
-  @HiveField(14)
   Money net;
-  @HiveField(15)
   String payment;
-  @HiveField(16)
   Element elementPayment;
-  @HiveField(17)
   DateTime paymentDate;
-  @HiveField(18)
   Element elementPaymentDate;
-  @HiveField(19)
   Reference responsible;
-  @HiveField(20)
   Reference recipient;
-  @HiveField(21)
   List<String> linkId;
-  @HiveField(22)
   List<Element> elementLinkId;
-  @HiveField(23)
   List<int> securityLabelNumber;
-  @HiveField(24)
   List<Element> elementSecurityLabelNumber;
 
   Contract_ValuedItem({
@@ -1248,75 +1056,40 @@ class Contract_Action {
     return newContract_Action;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool doNotPerform;
-  @HiveField(4)
   Element elementDoNotPerform;
-  @HiveField(5)
   CodeableConcept type;
-  @HiveField(6)
   List<Contract_Subject> subject;
-  @HiveField(7)
   CodeableConcept intent;
-  @HiveField(8)
   List<String> linkId;
-  @HiveField(9)
   List<Element> elementLinkId;
-  @HiveField(10)
   CodeableConcept status;
-  @HiveField(11)
   Reference context;
-  @HiveField(12)
   List<String> contextLinkId;
-  @HiveField(13)
   List<Element> elementContextLinkId;
-  @HiveField(14)
   String occurrenceDateTime;
-  @HiveField(15)
   Element elementOccurrenceDateTime;
-  @HiveField(16)
   Period occurrencePeriod;
-  @HiveField(17)
   Timing occurrenceTiming;
-  @HiveField(18)
   List<Reference> requester;
-  @HiveField(19)
   List<String> requesterLinkId;
-  @HiveField(20)
   List<Element> elementRequesterLinkId;
-  @HiveField(21)
   List<CodeableConcept> performerType;
-  @HiveField(22)
   CodeableConcept performerRole;
-  @HiveField(23)
   Reference performer;
-  @HiveField(24)
   List<String> performerLinkId;
-  @HiveField(25)
   List<Element> elementPerformerLinkId;
-  @HiveField(26)
   List<CodeableConcept> reasonCode;
-  @HiveField(27)
   List<Reference> reasonReference;
-  @HiveField(28)
   List<String> reason;
-  @HiveField(29)
   List<Element> elementReason;
-  @HiveField(30)
   List<String> reasonLinkId;
-  @HiveField(31)
   List<Element> elementReasonLinkId;
-  @HiveField(32)
   List<Annotation> note;
-  @HiveField(33)
   List<int> securityLabelNumber;
-  @HiveField(34)
   List<Element> elementSecurityLabelNumber;
 
   Contract_Action({
@@ -1381,15 +1154,10 @@ class Contract_Subject {
     return newContract_Subject;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<Reference> reference;
-  @HiveField(4)
   CodeableConcept role;
 
   Contract_Subject({
@@ -1426,17 +1194,11 @@ class Contract_Signer {
     return newContract_Signer;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Coding type;
-  @HiveField(4)
   Reference party;
-  @HiveField(5)
   List<Signature> signature;
 
   Contract_Signer({
@@ -1472,15 +1234,10 @@ class Contract_Friendly {
     return newContract_Friendly;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Attachment contentAttachment;
-  @HiveField(4)
   Reference contentReference;
 
   Contract_Friendly({
@@ -1515,15 +1272,10 @@ class Contract_Legal {
     return newContract_Legal;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Attachment contentAttachment;
-  @HiveField(4)
   Reference contentReference;
 
   Contract_Legal({
@@ -1558,15 +1310,10 @@ class Contract_Rule {
     return newContract_Rule;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Attachment contentAttachment;
-  @HiveField(4)
   Reference contentReference;
 
   Contract_Rule({
@@ -2964,1055 +2711,4 @@ Map<String, dynamic> _$Contract_RuleToJson(Contract_Rule instance) {
   writeNotNull('contentAttachment', instance.contentAttachment?.toJson());
   writeNotNull('contentReference', instance.contentReference?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ContractAdapter extends TypeAdapter<Contract> {
-  @override
-  Contract read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      url: fields[12] as String,
-      elementUrl: fields[13] as Element,
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      status: fields[16] as String,
-      elementStatus: fields[17] as Element,
-      legalState: fields[18] as CodeableConcept,
-      instantiatesCanonical: fields[19] as Reference,
-      instantiatesUri: fields[20] as String,
-      elementInstantiatesUri: fields[21] as Element,
-      contentDerivative: fields[22] as CodeableConcept,
-      issued: fields[23] as DateTime,
-      elementIssued: fields[24] as Element,
-      applies: fields[25] as Period,
-      expirationType: fields[26] as CodeableConcept,
-      subject: (fields[27] as List)?.cast<Reference>(),
-      authority: (fields[28] as List)?.cast<Reference>(),
-      domain: (fields[29] as List)?.cast<Reference>(),
-      site: (fields[30] as List)?.cast<Reference>(),
-      name: fields[31] as String,
-      elementName: fields[32] as Element,
-      title: fields[33] as String,
-      elementTitle: fields[34] as Element,
-      subtitle: fields[35] as String,
-      elementSubtitle: fields[36] as Element,
-      alias: (fields[37] as List)?.cast<String>(),
-      elementAlias: (fields[38] as List)?.cast<Element>(),
-      author: fields[39] as Reference,
-      scope: fields[40] as CodeableConcept,
-      topicCodeableConcept: fields[41] as CodeableConcept,
-      topicReference: fields[42] as Reference,
-      type: fields[43] as CodeableConcept,
-      subType: (fields[44] as List)?.cast<CodeableConcept>(),
-      contentDefinition: fields[45] as Contract_ContentDefinition,
-      term: (fields[46] as List)?.cast<Contract_Term>(),
-      supportingInfo: (fields[47] as List)?.cast<Reference>(),
-      relevantHistory: (fields[48] as List)?.cast<Reference>(),
-      signer: (fields[49] as List)?.cast<Contract_Signer>(),
-      friendly: (fields[50] as List)?.cast<Contract_Friendly>(),
-      legal: (fields[51] as List)?.cast<Contract_Legal>(),
-      rule: (fields[52] as List)?.cast<Contract_Rule>(),
-      legallyBindingAttachment: fields[53] as Attachment,
-      legallyBindingReference: fields[54] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract obj) {
-    writer
-      ..writeByte(55)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.url)
-      ..writeByte(13)
-      ..write(obj.elementUrl)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.status)
-      ..writeByte(17)
-      ..write(obj.elementStatus)
-      ..writeByte(18)
-      ..write(obj.legalState)
-      ..writeByte(19)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(20)
-      ..write(obj.instantiatesUri)
-      ..writeByte(21)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(22)
-      ..write(obj.contentDerivative)
-      ..writeByte(23)
-      ..write(obj.issued)
-      ..writeByte(24)
-      ..write(obj.elementIssued)
-      ..writeByte(25)
-      ..write(obj.applies)
-      ..writeByte(26)
-      ..write(obj.expirationType)
-      ..writeByte(27)
-      ..write(obj.subject)
-      ..writeByte(28)
-      ..write(obj.authority)
-      ..writeByte(29)
-      ..write(obj.domain)
-      ..writeByte(30)
-      ..write(obj.site)
-      ..writeByte(31)
-      ..write(obj.name)
-      ..writeByte(32)
-      ..write(obj.elementName)
-      ..writeByte(33)
-      ..write(obj.title)
-      ..writeByte(34)
-      ..write(obj.elementTitle)
-      ..writeByte(35)
-      ..write(obj.subtitle)
-      ..writeByte(36)
-      ..write(obj.elementSubtitle)
-      ..writeByte(37)
-      ..write(obj.alias)
-      ..writeByte(38)
-      ..write(obj.elementAlias)
-      ..writeByte(39)
-      ..write(obj.author)
-      ..writeByte(40)
-      ..write(obj.scope)
-      ..writeByte(41)
-      ..write(obj.topicCodeableConcept)
-      ..writeByte(42)
-      ..write(obj.topicReference)
-      ..writeByte(43)
-      ..write(obj.type)
-      ..writeByte(44)
-      ..write(obj.subType)
-      ..writeByte(45)
-      ..write(obj.contentDefinition)
-      ..writeByte(46)
-      ..write(obj.term)
-      ..writeByte(47)
-      ..write(obj.supportingInfo)
-      ..writeByte(48)
-      ..write(obj.relevantHistory)
-      ..writeByte(49)
-      ..write(obj.signer)
-      ..writeByte(50)
-      ..write(obj.friendly)
-      ..writeByte(51)
-      ..write(obj.legal)
-      ..writeByte(52)
-      ..write(obj.rule)
-      ..writeByte(53)
-      ..write(obj.legallyBindingAttachment)
-      ..writeByte(54)
-      ..write(obj.legallyBindingReference);
-  }
-}
-
-class Contract_ContentDefinitionAdapter
-    extends TypeAdapter<Contract_ContentDefinition> {
-  @override
-  Contract_ContentDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_ContentDefinition(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      subType: fields[4] as CodeableConcept,
-      publisher: fields[5] as Reference,
-      publicationDate: fields[6] as DateTime,
-      elementPublicationDate: fields[7] as Element,
-      publicationStatus: fields[8] as String,
-      elementPublicationStatus: fields[9] as Element,
-      copyright: fields[10] as String,
-      elementCopyright: fields[11] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_ContentDefinition obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.subType)
-      ..writeByte(5)
-      ..write(obj.publisher)
-      ..writeByte(6)
-      ..write(obj.publicationDate)
-      ..writeByte(7)
-      ..write(obj.elementPublicationDate)
-      ..writeByte(8)
-      ..write(obj.publicationStatus)
-      ..writeByte(9)
-      ..write(obj.elementPublicationStatus)
-      ..writeByte(10)
-      ..write(obj.copyright)
-      ..writeByte(11)
-      ..write(obj.elementCopyright);
-  }
-}
-
-class Contract_TermAdapter extends TypeAdapter<Contract_Term> {
-  @override
-  Contract_Term read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Term(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as Identifier,
-      issued: fields[4] as DateTime,
-      elementIssued: fields[5] as Element,
-      applies: fields[6] as Period,
-      topicCodeableConcept: fields[7] as CodeableConcept,
-      topicReference: fields[8] as Reference,
-      type: fields[9] as CodeableConcept,
-      subType: fields[10] as CodeableConcept,
-      text: fields[11] as String,
-      elementText: fields[12] as Element,
-      securityLabel: (fields[13] as List)?.cast<Contract_SecurityLabel>(),
-      offer: fields[14] as Contract_Offer,
-      asset: (fields[15] as List)?.cast<Contract_Asset>(),
-      action: (fields[16] as List)?.cast<Contract_Action>(),
-      group: (fields[17] as List)?.cast<Contract_Term>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Term obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.issued)
-      ..writeByte(5)
-      ..write(obj.elementIssued)
-      ..writeByte(6)
-      ..write(obj.applies)
-      ..writeByte(7)
-      ..write(obj.topicCodeableConcept)
-      ..writeByte(8)
-      ..write(obj.topicReference)
-      ..writeByte(9)
-      ..write(obj.type)
-      ..writeByte(10)
-      ..write(obj.subType)
-      ..writeByte(11)
-      ..write(obj.text)
-      ..writeByte(12)
-      ..write(obj.elementText)
-      ..writeByte(13)
-      ..write(obj.securityLabel)
-      ..writeByte(14)
-      ..write(obj.offer)
-      ..writeByte(15)
-      ..write(obj.asset)
-      ..writeByte(16)
-      ..write(obj.action)
-      ..writeByte(17)
-      ..write(obj.group);
-  }
-}
-
-class Contract_SecurityLabelAdapter
-    extends TypeAdapter<Contract_SecurityLabel> {
-  @override
-  Contract_SecurityLabel read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_SecurityLabel(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      number: (fields[3] as List)?.cast<int>(),
-      elementNumber: (fields[4] as List)?.cast<Element>(),
-      classification: fields[5] as Coding,
-      category: (fields[6] as List)?.cast<Coding>(),
-      control: (fields[7] as List)?.cast<Coding>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_SecurityLabel obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.number)
-      ..writeByte(4)
-      ..write(obj.elementNumber)
-      ..writeByte(5)
-      ..write(obj.classification)
-      ..writeByte(6)
-      ..write(obj.category)
-      ..writeByte(7)
-      ..write(obj.control);
-  }
-}
-
-class Contract_OfferAdapter extends TypeAdapter<Contract_Offer> {
-  @override
-  Contract_Offer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Offer(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      party: (fields[4] as List)?.cast<Contract_Party>(),
-      topic: fields[5] as Reference,
-      type: fields[6] as CodeableConcept,
-      decision: fields[7] as CodeableConcept,
-      decisionMode: (fields[8] as List)?.cast<CodeableConcept>(),
-      answer: (fields[9] as List)?.cast<Contract_Answer>(),
-      text: fields[10] as String,
-      elementText: fields[11] as Element,
-      linkId: (fields[12] as List)?.cast<String>(),
-      elementLinkId: (fields[13] as List)?.cast<Element>(),
-      securityLabelNumber: (fields[14] as List)?.cast<int>(),
-      elementSecurityLabelNumber: (fields[15] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Offer obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.party)
-      ..writeByte(5)
-      ..write(obj.topic)
-      ..writeByte(6)
-      ..write(obj.type)
-      ..writeByte(7)
-      ..write(obj.decision)
-      ..writeByte(8)
-      ..write(obj.decisionMode)
-      ..writeByte(9)
-      ..write(obj.answer)
-      ..writeByte(10)
-      ..write(obj.text)
-      ..writeByte(11)
-      ..write(obj.elementText)
-      ..writeByte(12)
-      ..write(obj.linkId)
-      ..writeByte(13)
-      ..write(obj.elementLinkId)
-      ..writeByte(14)
-      ..write(obj.securityLabelNumber)
-      ..writeByte(15)
-      ..write(obj.elementSecurityLabelNumber);
-  }
-}
-
-class Contract_PartyAdapter extends TypeAdapter<Contract_Party> {
-  @override
-  Contract_Party read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Party(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      reference: (fields[3] as List)?.cast<Reference>(),
-      role: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Party obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.reference)
-      ..writeByte(4)
-      ..write(obj.role);
-  }
-}
-
-class Contract_AnswerAdapter extends TypeAdapter<Contract_Answer> {
-  @override
-  Contract_Answer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Answer(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      valueBoolean: fields[3] as bool,
-      elementValueBoolean: fields[4] as Element,
-      valueDecimal: fields[5] as int,
-      elementValueDecimal: fields[6] as Element,
-      valueInteger: fields[7] as int,
-      elementValueInteger: fields[8] as Element,
-      valueDate: fields[9] as String,
-      elementValueDate: fields[10] as Element,
-      valueDateTime: fields[11] as String,
-      elementValueDateTime: fields[12] as Element,
-      valueTime: fields[13] as String,
-      elementValueTime: fields[14] as Element,
-      valueString: fields[15] as String,
-      elementValueString: fields[16] as Element,
-      valueUri: fields[17] as String,
-      elementValueUri: fields[18] as Element,
-      valueAttachment: fields[19] as Attachment,
-      valueCoding: fields[20] as Coding,
-      valueQuantity: fields[21] as Quantity,
-      valueReference: fields[22] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Answer obj) {
-    writer
-      ..writeByte(23)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.valueBoolean)
-      ..writeByte(4)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(5)
-      ..write(obj.valueDecimal)
-      ..writeByte(6)
-      ..write(obj.elementValueDecimal)
-      ..writeByte(7)
-      ..write(obj.valueInteger)
-      ..writeByte(8)
-      ..write(obj.elementValueInteger)
-      ..writeByte(9)
-      ..write(obj.valueDate)
-      ..writeByte(10)
-      ..write(obj.elementValueDate)
-      ..writeByte(11)
-      ..write(obj.valueDateTime)
-      ..writeByte(12)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(13)
-      ..write(obj.valueTime)
-      ..writeByte(14)
-      ..write(obj.elementValueTime)
-      ..writeByte(15)
-      ..write(obj.valueString)
-      ..writeByte(16)
-      ..write(obj.elementValueString)
-      ..writeByte(17)
-      ..write(obj.valueUri)
-      ..writeByte(18)
-      ..write(obj.elementValueUri)
-      ..writeByte(19)
-      ..write(obj.valueAttachment)
-      ..writeByte(20)
-      ..write(obj.valueCoding)
-      ..writeByte(21)
-      ..write(obj.valueQuantity)
-      ..writeByte(22)
-      ..write(obj.valueReference);
-  }
-}
-
-class Contract_AssetAdapter extends TypeAdapter<Contract_Asset> {
-  @override
-  Contract_Asset read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Asset(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      scope: fields[3] as CodeableConcept,
-      type: (fields[4] as List)?.cast<CodeableConcept>(),
-      typeReference: (fields[5] as List)?.cast<Reference>(),
-      subtype: (fields[6] as List)?.cast<CodeableConcept>(),
-      relationship: fields[7] as Coding,
-      context: (fields[8] as List)?.cast<Contract_Context>(),
-      condition: fields[9] as String,
-      elementCondition: fields[10] as Element,
-      periodType: (fields[11] as List)?.cast<CodeableConcept>(),
-      period: (fields[12] as List)?.cast<Period>(),
-      usePeriod: (fields[13] as List)?.cast<Period>(),
-      text: fields[14] as String,
-      elementText: fields[15] as Element,
-      linkId: (fields[16] as List)?.cast<String>(),
-      elementLinkId: (fields[17] as List)?.cast<Element>(),
-      answer: (fields[18] as List)?.cast<Contract_Answer>(),
-      securityLabelNumber: (fields[19] as List)?.cast<int>(),
-      elementSecurityLabelNumber: (fields[20] as List)?.cast<Element>(),
-      valuedItem: (fields[21] as List)?.cast<Contract_ValuedItem>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Asset obj) {
-    writer
-      ..writeByte(22)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.scope)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.typeReference)
-      ..writeByte(6)
-      ..write(obj.subtype)
-      ..writeByte(7)
-      ..write(obj.relationship)
-      ..writeByte(8)
-      ..write(obj.context)
-      ..writeByte(9)
-      ..write(obj.condition)
-      ..writeByte(10)
-      ..write(obj.elementCondition)
-      ..writeByte(11)
-      ..write(obj.periodType)
-      ..writeByte(12)
-      ..write(obj.period)
-      ..writeByte(13)
-      ..write(obj.usePeriod)
-      ..writeByte(14)
-      ..write(obj.text)
-      ..writeByte(15)
-      ..write(obj.elementText)
-      ..writeByte(16)
-      ..write(obj.linkId)
-      ..writeByte(17)
-      ..write(obj.elementLinkId)
-      ..writeByte(18)
-      ..write(obj.answer)
-      ..writeByte(19)
-      ..write(obj.securityLabelNumber)
-      ..writeByte(20)
-      ..write(obj.elementSecurityLabelNumber)
-      ..writeByte(21)
-      ..write(obj.valuedItem);
-  }
-}
-
-class Contract_ContextAdapter extends TypeAdapter<Contract_Context> {
-  @override
-  Contract_Context read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Context(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      reference: fields[3] as Reference,
-      code: (fields[4] as List)?.cast<CodeableConcept>(),
-      text: fields[5] as String,
-      elementText: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Context obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.reference)
-      ..writeByte(4)
-      ..write(obj.code)
-      ..writeByte(5)
-      ..write(obj.text)
-      ..writeByte(6)
-      ..write(obj.elementText);
-  }
-}
-
-class Contract_ValuedItemAdapter extends TypeAdapter<Contract_ValuedItem> {
-  @override
-  Contract_ValuedItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_ValuedItem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      entityCodeableConcept: fields[3] as CodeableConcept,
-      entityReference: fields[4] as Reference,
-      identifier: fields[5] as Identifier,
-      effectiveTime: fields[6] as DateTime,
-      elementEffectiveTime: fields[7] as Element,
-      quantity: fields[8] as Quantity,
-      unitPrice: fields[9] as Money,
-      factor: fields[10] as double,
-      elementFactor: fields[11] as Element,
-      points: fields[12] as double,
-      elementPoints: fields[13] as Element,
-      net: fields[14] as Money,
-      payment: fields[15] as String,
-      elementPayment: fields[16] as Element,
-      paymentDate: fields[17] as DateTime,
-      elementPaymentDate: fields[18] as Element,
-      responsible: fields[19] as Reference,
-      recipient: fields[20] as Reference,
-      linkId: (fields[21] as List)?.cast<String>(),
-      elementLinkId: (fields[22] as List)?.cast<Element>(),
-      securityLabelNumber: (fields[23] as List)?.cast<int>(),
-      elementSecurityLabelNumber: (fields[24] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_ValuedItem obj) {
-    writer
-      ..writeByte(25)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.entityCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.entityReference)
-      ..writeByte(5)
-      ..write(obj.identifier)
-      ..writeByte(6)
-      ..write(obj.effectiveTime)
-      ..writeByte(7)
-      ..write(obj.elementEffectiveTime)
-      ..writeByte(8)
-      ..write(obj.quantity)
-      ..writeByte(9)
-      ..write(obj.unitPrice)
-      ..writeByte(10)
-      ..write(obj.factor)
-      ..writeByte(11)
-      ..write(obj.elementFactor)
-      ..writeByte(12)
-      ..write(obj.points)
-      ..writeByte(13)
-      ..write(obj.elementPoints)
-      ..writeByte(14)
-      ..write(obj.net)
-      ..writeByte(15)
-      ..write(obj.payment)
-      ..writeByte(16)
-      ..write(obj.elementPayment)
-      ..writeByte(17)
-      ..write(obj.paymentDate)
-      ..writeByte(18)
-      ..write(obj.elementPaymentDate)
-      ..writeByte(19)
-      ..write(obj.responsible)
-      ..writeByte(20)
-      ..write(obj.recipient)
-      ..writeByte(21)
-      ..write(obj.linkId)
-      ..writeByte(22)
-      ..write(obj.elementLinkId)
-      ..writeByte(23)
-      ..write(obj.securityLabelNumber)
-      ..writeByte(24)
-      ..write(obj.elementSecurityLabelNumber);
-  }
-}
-
-class Contract_ActionAdapter extends TypeAdapter<Contract_Action> {
-  @override
-  Contract_Action read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Action(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      doNotPerform: fields[3] as bool,
-      elementDoNotPerform: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      subject: (fields[6] as List)?.cast<Contract_Subject>(),
-      intent: fields[7] as CodeableConcept,
-      linkId: (fields[8] as List)?.cast<String>(),
-      elementLinkId: (fields[9] as List)?.cast<Element>(),
-      status: fields[10] as CodeableConcept,
-      context: fields[11] as Reference,
-      contextLinkId: (fields[12] as List)?.cast<String>(),
-      elementContextLinkId: (fields[13] as List)?.cast<Element>(),
-      occurrenceDateTime: fields[14] as String,
-      elementOccurrenceDateTime: fields[15] as Element,
-      occurrencePeriod: fields[16] as Period,
-      occurrenceTiming: fields[17] as Timing,
-      requester: (fields[18] as List)?.cast<Reference>(),
-      requesterLinkId: (fields[19] as List)?.cast<String>(),
-      elementRequesterLinkId: (fields[20] as List)?.cast<Element>(),
-      performerType: (fields[21] as List)?.cast<CodeableConcept>(),
-      performerRole: fields[22] as CodeableConcept,
-      performer: fields[23] as Reference,
-      performerLinkId: (fields[24] as List)?.cast<String>(),
-      elementPerformerLinkId: (fields[25] as List)?.cast<Element>(),
-      reasonCode: (fields[26] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[27] as List)?.cast<Reference>(),
-      reason: (fields[28] as List)?.cast<String>(),
-      elementReason: (fields[29] as List)?.cast<Element>(),
-      reasonLinkId: (fields[30] as List)?.cast<String>(),
-      elementReasonLinkId: (fields[31] as List)?.cast<Element>(),
-      note: (fields[32] as List)?.cast<Annotation>(),
-      securityLabelNumber: (fields[33] as List)?.cast<int>(),
-      elementSecurityLabelNumber: (fields[34] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Action obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.doNotPerform)
-      ..writeByte(4)
-      ..write(obj.elementDoNotPerform)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.subject)
-      ..writeByte(7)
-      ..write(obj.intent)
-      ..writeByte(8)
-      ..write(obj.linkId)
-      ..writeByte(9)
-      ..write(obj.elementLinkId)
-      ..writeByte(10)
-      ..write(obj.status)
-      ..writeByte(11)
-      ..write(obj.context)
-      ..writeByte(12)
-      ..write(obj.contextLinkId)
-      ..writeByte(13)
-      ..write(obj.elementContextLinkId)
-      ..writeByte(14)
-      ..write(obj.occurrenceDateTime)
-      ..writeByte(15)
-      ..write(obj.elementOccurrenceDateTime)
-      ..writeByte(16)
-      ..write(obj.occurrencePeriod)
-      ..writeByte(17)
-      ..write(obj.occurrenceTiming)
-      ..writeByte(18)
-      ..write(obj.requester)
-      ..writeByte(19)
-      ..write(obj.requesterLinkId)
-      ..writeByte(20)
-      ..write(obj.elementRequesterLinkId)
-      ..writeByte(21)
-      ..write(obj.performerType)
-      ..writeByte(22)
-      ..write(obj.performerRole)
-      ..writeByte(23)
-      ..write(obj.performer)
-      ..writeByte(24)
-      ..write(obj.performerLinkId)
-      ..writeByte(25)
-      ..write(obj.elementPerformerLinkId)
-      ..writeByte(26)
-      ..write(obj.reasonCode)
-      ..writeByte(27)
-      ..write(obj.reasonReference)
-      ..writeByte(28)
-      ..write(obj.reason)
-      ..writeByte(29)
-      ..write(obj.elementReason)
-      ..writeByte(30)
-      ..write(obj.reasonLinkId)
-      ..writeByte(31)
-      ..write(obj.elementReasonLinkId)
-      ..writeByte(32)
-      ..write(obj.note)
-      ..writeByte(33)
-      ..write(obj.securityLabelNumber)
-      ..writeByte(34)
-      ..write(obj.elementSecurityLabelNumber);
-  }
-}
-
-class Contract_SubjectAdapter extends TypeAdapter<Contract_Subject> {
-  @override
-  Contract_Subject read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Subject(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      reference: (fields[3] as List)?.cast<Reference>(),
-      role: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Subject obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.reference)
-      ..writeByte(4)
-      ..write(obj.role);
-  }
-}
-
-class Contract_SignerAdapter extends TypeAdapter<Contract_Signer> {
-  @override
-  Contract_Signer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Signer(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as Coding,
-      party: fields[4] as Reference,
-      signature: (fields[5] as List)?.cast<Signature>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Signer obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.party)
-      ..writeByte(5)
-      ..write(obj.signature);
-  }
-}
-
-class Contract_FriendlyAdapter extends TypeAdapter<Contract_Friendly> {
-  @override
-  Contract_Friendly read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Friendly(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      contentAttachment: fields[3] as Attachment,
-      contentReference: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Friendly obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.contentAttachment)
-      ..writeByte(4)
-      ..write(obj.contentReference);
-  }
-}
-
-class Contract_LegalAdapter extends TypeAdapter<Contract_Legal> {
-  @override
-  Contract_Legal read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Legal(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      contentAttachment: fields[3] as Attachment,
-      contentReference: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Legal obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.contentAttachment)
-      ..writeByte(4)
-      ..write(obj.contentReference);
-  }
-}
-
-class Contract_RuleAdapter extends TypeAdapter<Contract_Rule> {
-  @override
-  Contract_Rule read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract_Rule(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      contentAttachment: fields[3] as Attachment,
-      contentReference: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract_Rule obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.contentAttachment)
-      ..writeByte(4)
-      ..write(obj.contentReference);
-  }
 }

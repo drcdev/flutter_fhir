@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -105,77 +104,41 @@ class GraphDefinition {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'GraphDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   String version;
-  @HiveField(14)
   Element elementVersion;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   String status;
-  @HiveField(18)
   Element elementStatus;
-  @HiveField(19)
   bool experimental;
-  @HiveField(20)
   Element elementExperimental;
-  @HiveField(21)
   DateTime date;
-  @HiveField(22)
   Element elementDate;
-  @HiveField(23)
   String publisher;
-  @HiveField(24)
   Element elementPublisher;
-  @HiveField(25)
   List<ContactDetail> contact;
-  @HiveField(26)
   String description;
-  @HiveField(27)
   Element elementDescription;
-  @HiveField(28)
   List<UsageContext> useContext;
-  @HiveField(29)
   List<CodeableConcept> jurisdiction;
-  @HiveField(30)
   String purpose;
-  @HiveField(31)
   Element elementPurpose;
-  @HiveField(32)
   String start;
-  @HiveField(33)
   Element elementStart;
-  @HiveField(34)
   String profile;
-  @HiveField(35)
   List<GraphDefinition_Link> link;
 
   GraphDefinition({
@@ -259,33 +222,19 @@ class GraphDefinition_Link {
     return newGraphDefinition_Link;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String path;
-  @HiveField(4)
   Element elementPath;
-  @HiveField(5)
   String sliceName;
-  @HiveField(6)
   Element elementSliceName;
-  @HiveField(7)
   int min;
-  @HiveField(8)
   Element elementMin;
-  @HiveField(9)
   String max;
-  @HiveField(10)
   Element elementMax;
-  @HiveField(11)
   String description;
-  @HiveField(12)
   Element elementDescription;
-  @HiveField(13)
   List<GraphDefinition_Target> target;
 
   GraphDefinition_Link({
@@ -340,25 +289,15 @@ class GraphDefinition_Target {
     return newGraphDefinition_Target;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   String params;
-  @HiveField(6)
   Element elementParams;
-  @HiveField(7)
   String profile;
-  @HiveField(8)
   List<GraphDefinition_Compartment> compartment;
-  @HiveField(9)
   List<GraphDefinition_Link> link;
 
   GraphDefinition_Target({
@@ -415,31 +354,18 @@ class GraphDefinition_Compartment {
     return newGraphDefinition_Compartment;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String use;
-  @HiveField(4)
   Element elementUse;
-  @HiveField(5)
   String code;
-  @HiveField(6)
   Element elementCode;
-  @HiveField(7)
   String rule;
-  @HiveField(8)
   Element elementRule;
-  @HiveField(9)
   String expression;
-  @HiveField(10)
   Element elementExpression;
-  @HiveField(11)
   String description;
-  @HiveField(12)
   Element elementDescription;
 
   GraphDefinition_Compartment({
@@ -804,302 +730,4 @@ Map<String, dynamic> _$GraphDefinition_CompartmentToJson(
   writeNotNull('description', instance.description);
   writeNotNull('elementDescription', instance.elementDescription?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class GraphDefinitionAdapter extends TypeAdapter<GraphDefinition> {
-  @override
-  GraphDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return GraphDefinition(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      version: fields[13] as String,
-      elementVersion: fields[14] as Element,
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      status: fields[17] as String,
-      elementStatus: fields[18] as Element,
-      experimental: fields[19] as bool,
-      elementExperimental: fields[20] as Element,
-      date: fields[21] as DateTime,
-      elementDate: fields[22] as Element,
-      publisher: fields[23] as String,
-      elementPublisher: fields[24] as Element,
-      contact: (fields[25] as List)?.cast<ContactDetail>(),
-      description: fields[26] as String,
-      elementDescription: fields[27] as Element,
-      useContext: (fields[28] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[29] as List)?.cast<CodeableConcept>(),
-      purpose: fields[30] as String,
-      elementPurpose: fields[31] as Element,
-      start: fields[32] as String,
-      elementStart: fields[33] as Element,
-      profile: fields[34] as String,
-      link: (fields[35] as List)?.cast<GraphDefinition_Link>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, GraphDefinition obj) {
-    writer
-      ..writeByte(36)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.version)
-      ..writeByte(14)
-      ..write(obj.elementVersion)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.status)
-      ..writeByte(18)
-      ..write(obj.elementStatus)
-      ..writeByte(19)
-      ..write(obj.experimental)
-      ..writeByte(20)
-      ..write(obj.elementExperimental)
-      ..writeByte(21)
-      ..write(obj.date)
-      ..writeByte(22)
-      ..write(obj.elementDate)
-      ..writeByte(23)
-      ..write(obj.publisher)
-      ..writeByte(24)
-      ..write(obj.elementPublisher)
-      ..writeByte(25)
-      ..write(obj.contact)
-      ..writeByte(26)
-      ..write(obj.description)
-      ..writeByte(27)
-      ..write(obj.elementDescription)
-      ..writeByte(28)
-      ..write(obj.useContext)
-      ..writeByte(29)
-      ..write(obj.jurisdiction)
-      ..writeByte(30)
-      ..write(obj.purpose)
-      ..writeByte(31)
-      ..write(obj.elementPurpose)
-      ..writeByte(32)
-      ..write(obj.start)
-      ..writeByte(33)
-      ..write(obj.elementStart)
-      ..writeByte(34)
-      ..write(obj.profile)
-      ..writeByte(35)
-      ..write(obj.link);
-  }
-}
-
-class GraphDefinition_LinkAdapter extends TypeAdapter<GraphDefinition_Link> {
-  @override
-  GraphDefinition_Link read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return GraphDefinition_Link(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      sliceName: fields[5] as String,
-      elementSliceName: fields[6] as Element,
-      min: fields[7] as int,
-      elementMin: fields[8] as Element,
-      max: fields[9] as String,
-      elementMax: fields[10] as Element,
-      description: fields[11] as String,
-      elementDescription: fields[12] as Element,
-      target: (fields[13] as List)?.cast<GraphDefinition_Target>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, GraphDefinition_Link obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.sliceName)
-      ..writeByte(6)
-      ..write(obj.elementSliceName)
-      ..writeByte(7)
-      ..write(obj.min)
-      ..writeByte(8)
-      ..write(obj.elementMin)
-      ..writeByte(9)
-      ..write(obj.max)
-      ..writeByte(10)
-      ..write(obj.elementMax)
-      ..writeByte(11)
-      ..write(obj.description)
-      ..writeByte(12)
-      ..write(obj.elementDescription)
-      ..writeByte(13)
-      ..write(obj.target);
-  }
-}
-
-class GraphDefinition_TargetAdapter
-    extends TypeAdapter<GraphDefinition_Target> {
-  @override
-  GraphDefinition_Target read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return GraphDefinition_Target(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      params: fields[5] as String,
-      elementParams: fields[6] as Element,
-      profile: fields[7] as String,
-      compartment: (fields[8] as List)?.cast<GraphDefinition_Compartment>(),
-      link: (fields[9] as List)?.cast<GraphDefinition_Link>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, GraphDefinition_Target obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.params)
-      ..writeByte(6)
-      ..write(obj.elementParams)
-      ..writeByte(7)
-      ..write(obj.profile)
-      ..writeByte(8)
-      ..write(obj.compartment)
-      ..writeByte(9)
-      ..write(obj.link);
-  }
-}
-
-class GraphDefinition_CompartmentAdapter
-    extends TypeAdapter<GraphDefinition_Compartment> {
-  @override
-  GraphDefinition_Compartment read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return GraphDefinition_Compartment(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      use: fields[3] as String,
-      elementUse: fields[4] as Element,
-      code: fields[5] as String,
-      elementCode: fields[6] as Element,
-      rule: fields[7] as String,
-      elementRule: fields[8] as Element,
-      expression: fields[9] as String,
-      elementExpression: fields[10] as Element,
-      description: fields[11] as String,
-      elementDescription: fields[12] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, GraphDefinition_Compartment obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.use)
-      ..writeByte(4)
-      ..write(obj.elementUse)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.elementCode)
-      ..writeByte(7)
-      ..write(obj.rule)
-      ..writeByte(8)
-      ..write(obj.elementRule)
-      ..writeByte(9)
-      ..write(obj.expression)
-      ..writeByte(10)
-      ..write(obj.elementExpression)
-      ..writeByte(11)
-      ..write(obj.description)
-      ..writeByte(12)
-      ..write(obj.elementDescription);
-  }
 }

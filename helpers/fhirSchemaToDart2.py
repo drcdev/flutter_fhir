@@ -9,8 +9,9 @@ for filename in os.listdir(fhirDir):
     if('.g.dart' not in filename):
         with open(fhirDir + filename, encoding='utf8') as file1:
             code1 = file1.read()
-            code1 = code1.replace('@JsonSerializable(explicitToJson: true, includeIfNull: false)', 
-                                  '@HiveType()')
+            code1 = code1.replace('@JsonSerializable(explicitToJson: true, includeIfNull: false)','') 
+                                  # '@HiveType()')
+            code1 = code1.replace("\npart '" + filename.replace('.dart', '.g.dart') + "';","")
             code1 = code1.replace("import 'package:json_annotation/json_annotation.dart';", '')
             code1 = code1.replace('ResourceList resource', 'dynamic resource')
             code1 = code1.replace('ResourceList outcome', 'dynamic outcome')

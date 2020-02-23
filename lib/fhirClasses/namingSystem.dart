@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -98,69 +97,37 @@ class NamingSystem {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'NamingSystem';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String name;
-  @HiveField(12)
   Element elementName;
-  @HiveField(13)
   String status;
-  @HiveField(14)
   Element elementStatus;
-  @HiveField(15)
   String kind;
-  @HiveField(16)
   Element elementKind;
-  @HiveField(17)
   DateTime date;
-  @HiveField(18)
   Element elementDate;
-  @HiveField(19)
   String publisher;
-  @HiveField(20)
   Element elementPublisher;
-  @HiveField(21)
   List<ContactDetail> contact;
-  @HiveField(22)
   String responsible;
-  @HiveField(23)
   Element elementResponsible;
-  @HiveField(24)
   CodeableConcept type;
-  @HiveField(25)
   String description;
-  @HiveField(26)
   Element elementDescription;
-  @HiveField(27)
   List<UsageContext> useContext;
-  @HiveField(28)
   List<CodeableConcept> jurisdiction;
-  @HiveField(29)
   String usage;
-  @HiveField(30)
   Element elementUsage;
-  @HiveField(31)
   List<NamingSystem_UniqueId> uniqueId;
 
   NamingSystem({
@@ -236,29 +203,17 @@ class NamingSystem_UniqueId {
     return newNamingSystem_UniqueId;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   String value;
-  @HiveField(6)
   Element elementValue;
-  @HiveField(7)
   bool preferred;
-  @HiveField(8)
   Element elementPreferred;
-  @HiveField(9)
   String comment;
-  @HiveField(10)
   Element elementComment;
-  @HiveField(11)
   Period period;
 
   NamingSystem_UniqueId({
@@ -483,177 +438,4 @@ Map<String, dynamic> _$NamingSystem_UniqueIdToJson(
   writeNotNull('elementComment', instance.elementComment?.toJson());
   writeNotNull('period', instance.period?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class NamingSystemAdapter extends TypeAdapter<NamingSystem> {
-  @override
-  NamingSystem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NamingSystem(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      name: fields[11] as String,
-      elementName: fields[12] as Element,
-      status: fields[13] as String,
-      elementStatus: fields[14] as Element,
-      kind: fields[15] as String,
-      elementKind: fields[16] as Element,
-      date: fields[17] as DateTime,
-      elementDate: fields[18] as Element,
-      publisher: fields[19] as String,
-      elementPublisher: fields[20] as Element,
-      contact: (fields[21] as List)?.cast<ContactDetail>(),
-      responsible: fields[22] as String,
-      elementResponsible: fields[23] as Element,
-      type: fields[24] as CodeableConcept,
-      description: fields[25] as String,
-      elementDescription: fields[26] as Element,
-      useContext: (fields[27] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[28] as List)?.cast<CodeableConcept>(),
-      usage: fields[29] as String,
-      elementUsage: fields[30] as Element,
-      uniqueId: (fields[31] as List)?.cast<NamingSystem_UniqueId>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NamingSystem obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.name)
-      ..writeByte(12)
-      ..write(obj.elementName)
-      ..writeByte(13)
-      ..write(obj.status)
-      ..writeByte(14)
-      ..write(obj.elementStatus)
-      ..writeByte(15)
-      ..write(obj.kind)
-      ..writeByte(16)
-      ..write(obj.elementKind)
-      ..writeByte(17)
-      ..write(obj.date)
-      ..writeByte(18)
-      ..write(obj.elementDate)
-      ..writeByte(19)
-      ..write(obj.publisher)
-      ..writeByte(20)
-      ..write(obj.elementPublisher)
-      ..writeByte(21)
-      ..write(obj.contact)
-      ..writeByte(22)
-      ..write(obj.responsible)
-      ..writeByte(23)
-      ..write(obj.elementResponsible)
-      ..writeByte(24)
-      ..write(obj.type)
-      ..writeByte(25)
-      ..write(obj.description)
-      ..writeByte(26)
-      ..write(obj.elementDescription)
-      ..writeByte(27)
-      ..write(obj.useContext)
-      ..writeByte(28)
-      ..write(obj.jurisdiction)
-      ..writeByte(29)
-      ..write(obj.usage)
-      ..writeByte(30)
-      ..write(obj.elementUsage)
-      ..writeByte(31)
-      ..write(obj.uniqueId);
-  }
-}
-
-class NamingSystem_UniqueIdAdapter extends TypeAdapter<NamingSystem_UniqueId> {
-  @override
-  NamingSystem_UniqueId read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NamingSystem_UniqueId(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      value: fields[5] as String,
-      elementValue: fields[6] as Element,
-      preferred: fields[7] as bool,
-      elementPreferred: fields[8] as Element,
-      comment: fields[9] as String,
-      elementComment: fields[10] as Element,
-      period: fields[11] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NamingSystem_UniqueId obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.value)
-      ..writeByte(6)
-      ..write(obj.elementValue)
-      ..writeByte(7)
-      ..write(obj.preferred)
-      ..writeByte(8)
-      ..write(obj.elementPreferred)
-      ..writeByte(9)
-      ..write(obj.comment)
-      ..writeByte(10)
-      ..write(obj.elementComment)
-      ..writeByte(11)
-      ..write(obj.period);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -102,69 +101,37 @@ class Goal {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Goal';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String lifecycleStatus;
-  @HiveField(13)
   Element elementLifecycleStatus;
-  @HiveField(14)
   CodeableConcept achievementStatus;
-  @HiveField(15)
   List<CodeableConcept> category;
-  @HiveField(16)
   CodeableConcept priority;
-  @HiveField(17)
   CodeableConcept description;
-  @HiveField(18)
   Reference subject;
-  @HiveField(19)
   String startDate;
-  @HiveField(20)
   Element elementStartDate;
-  @HiveField(21)
   CodeableConcept startCodeableConcept;
-  @HiveField(22)
   List<Goal_Target> target;
-  @HiveField(23)
   String statusDate;
-  @HiveField(24)
   Element elementStatusDate;
-  @HiveField(25)
   String statusReason;
-  @HiveField(26)
   Element elementStatusReason;
-  @HiveField(27)
   Reference expressedBy;
-  @HiveField(28)
   List<Reference> addresses;
-  @HiveField(29)
   List<Annotation> note;
-  @HiveField(30)
   List<CodeableConcept> outcomeCode;
-  @HiveField(31)
   List<Reference> outcomeReference;
 
   Goal({
@@ -249,39 +216,22 @@ class Goal_Target {
     return newGoal_Target;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept measure;
-  @HiveField(4)
   Quantity detailQuantity;
-  @HiveField(5)
   Range detailRange;
-  @HiveField(6)
   CodeableConcept detailCodeableConcept;
-  @HiveField(7)
   String detailString;
-  @HiveField(8)
   Element elementDetailString;
-  @HiveField(9)
   bool detailBoolean;
-  @HiveField(10)
   Element elementDetailBoolean;
-  @HiveField(11)
   int detailInteger;
-  @HiveField(12)
   Element elementDetailInteger;
-  @HiveField(13)
   Ratio detailRatio;
-  @HiveField(14)
   String dueDate;
-  @HiveField(15)
   Element elementDueDate;
-  @HiveField(16)
   Duration dueDuration;
 
   Goal_Target({
@@ -549,192 +499,4 @@ Map<String, dynamic> _$Goal_TargetToJson(Goal_Target instance) {
   writeNotNull('elementDueDate', instance.elementDueDate?.toJson());
   writeNotNull('dueDuration', instance.dueDuration?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class GoalAdapter extends TypeAdapter<Goal> {
-  @override
-  Goal read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Goal(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      lifecycleStatus: fields[12] as String,
-      elementLifecycleStatus: fields[13] as Element,
-      achievementStatus: fields[14] as CodeableConcept,
-      category: (fields[15] as List)?.cast<CodeableConcept>(),
-      priority: fields[16] as CodeableConcept,
-      description: fields[17] as CodeableConcept,
-      subject: fields[18] as Reference,
-      startDate: fields[19] as String,
-      elementStartDate: fields[20] as Element,
-      startCodeableConcept: fields[21] as CodeableConcept,
-      target: (fields[22] as List)?.cast<Goal_Target>(),
-      statusDate: fields[23] as String,
-      elementStatusDate: fields[24] as Element,
-      statusReason: fields[25] as String,
-      elementStatusReason: fields[26] as Element,
-      expressedBy: fields[27] as Reference,
-      addresses: (fields[28] as List)?.cast<Reference>(),
-      note: (fields[29] as List)?.cast<Annotation>(),
-      outcomeCode: (fields[30] as List)?.cast<CodeableConcept>(),
-      outcomeReference: (fields[31] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Goal obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.lifecycleStatus)
-      ..writeByte(13)
-      ..write(obj.elementLifecycleStatus)
-      ..writeByte(14)
-      ..write(obj.achievementStatus)
-      ..writeByte(15)
-      ..write(obj.category)
-      ..writeByte(16)
-      ..write(obj.priority)
-      ..writeByte(17)
-      ..write(obj.description)
-      ..writeByte(18)
-      ..write(obj.subject)
-      ..writeByte(19)
-      ..write(obj.startDate)
-      ..writeByte(20)
-      ..write(obj.elementStartDate)
-      ..writeByte(21)
-      ..write(obj.startCodeableConcept)
-      ..writeByte(22)
-      ..write(obj.target)
-      ..writeByte(23)
-      ..write(obj.statusDate)
-      ..writeByte(24)
-      ..write(obj.elementStatusDate)
-      ..writeByte(25)
-      ..write(obj.statusReason)
-      ..writeByte(26)
-      ..write(obj.elementStatusReason)
-      ..writeByte(27)
-      ..write(obj.expressedBy)
-      ..writeByte(28)
-      ..write(obj.addresses)
-      ..writeByte(29)
-      ..write(obj.note)
-      ..writeByte(30)
-      ..write(obj.outcomeCode)
-      ..writeByte(31)
-      ..write(obj.outcomeReference);
-  }
-}
-
-class Goal_TargetAdapter extends TypeAdapter<Goal_Target> {
-  @override
-  Goal_Target read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Goal_Target(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      measure: fields[3] as CodeableConcept,
-      detailQuantity: fields[4] as Quantity,
-      detailRange: fields[5] as Range,
-      detailCodeableConcept: fields[6] as CodeableConcept,
-      detailString: fields[7] as String,
-      elementDetailString: fields[8] as Element,
-      detailBoolean: fields[9] as bool,
-      elementDetailBoolean: fields[10] as Element,
-      detailInteger: fields[11] as int,
-      elementDetailInteger: fields[12] as Element,
-      detailRatio: fields[13] as Ratio,
-      dueDate: fields[14] as String,
-      elementDueDate: fields[15] as Element,
-      dueDuration: fields[16] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Goal_Target obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.measure)
-      ..writeByte(4)
-      ..write(obj.detailQuantity)
-      ..writeByte(5)
-      ..write(obj.detailRange)
-      ..writeByte(6)
-      ..write(obj.detailCodeableConcept)
-      ..writeByte(7)
-      ..write(obj.detailString)
-      ..writeByte(8)
-      ..write(obj.elementDetailString)
-      ..writeByte(9)
-      ..write(obj.detailBoolean)
-      ..writeByte(10)
-      ..write(obj.elementDetailBoolean)
-      ..writeByte(11)
-      ..write(obj.detailInteger)
-      ..writeByte(12)
-      ..write(obj.elementDetailInteger)
-      ..writeByte(13)
-      ..write(obj.detailRatio)
-      ..writeByte(14)
-      ..write(obj.dueDate)
-      ..writeByte(15)
-      ..write(obj.elementDueDate)
-      ..writeByte(16)
-      ..write(obj.dueDuration);
-  }
 }

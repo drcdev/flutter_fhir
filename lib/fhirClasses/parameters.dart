@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -75,21 +74,13 @@ class Parameters {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Parameters';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   List<Parameters_Parameter> parameter;
 
   Parameters({
@@ -269,157 +260,81 @@ class Parameters_Parameter {
     return newParameters_Parameter;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String valueBase64Binary;
-  @HiveField(6)
   Element elementValueBase64Binary;
-  @HiveField(7)
   bool valueBoolean;
-  @HiveField(8)
   Element elementValueBoolean;
-  @HiveField(9)
   String valueCanonical;
-  @HiveField(10)
   Element elementValueCanonical;
-  @HiveField(11)
   String valueCode;
-  @HiveField(12)
   Element elementValueCode;
-  @HiveField(13)
   String valueDate;
-  @HiveField(14)
   Element elementValueDate;
-  @HiveField(15)
   String valueDateTime;
-  @HiveField(16)
   Element elementValueDateTime;
-  @HiveField(17)
   int valueDecimal;
-  @HiveField(18)
   Element elementValueDecimal;
-  @HiveField(19)
   String valueId;
-  @HiveField(20)
   Element elementValueId;
-  @HiveField(21)
   String valueInstant;
-  @HiveField(22)
   Element elementValueInstant;
-  @HiveField(23)
   int valueInteger;
-  @HiveField(24)
   Element elementValueInteger;
-  @HiveField(25)
   String valueMarkdown;
-  @HiveField(26)
   Element elementValueMarkdown;
-  @HiveField(27)
   String valueOid;
-  @HiveField(28)
   Element elementValueOid;
-  @HiveField(29)
   int valuePositiveInt;
-  @HiveField(30)
   Element elementValuePositiveInt;
-  @HiveField(31)
   String valueString;
-  @HiveField(32)
   Element elementValueString;
-  @HiveField(33)
   String valueTime;
-  @HiveField(34)
   Element elementValueTime;
-  @HiveField(35)
   int valueUnsignedInt;
-  @HiveField(36)
   Element elementValueUnsignedInt;
-  @HiveField(37)
   String valueUri;
-  @HiveField(38)
   Element elementValueUri;
-  @HiveField(39)
   String valueUrl;
-  @HiveField(40)
   Element elementValueUrl;
-  @HiveField(41)
   String valueUuid;
-  @HiveField(42)
   Element elementValueUuid;
-  @HiveField(43)
   Address valueAddress;
-  @HiveField(44)
   Age valueAge;
-  @HiveField(45)
   Annotation valueAnnotation;
-  @HiveField(46)
   Attachment valueAttachment;
-  @HiveField(47)
   CodeableConcept valueCodeableConcept;
-  @HiveField(48)
   Coding valueCoding;
-  @HiveField(49)
   ContactPoint valueContactPoint;
-  @HiveField(50)
   Count valueCount;
-  @HiveField(51)
   Distance valueDistance;
-  @HiveField(52)
   Duration valueDuration;
-  @HiveField(53)
   HumanName valueHumanName;
-  @HiveField(54)
   Identifier valueIdentifier;
-  @HiveField(55)
   Money valueMoney;
-  @HiveField(56)
   Period valuePeriod;
-  @HiveField(57)
   Quantity valueQuantity;
-  @HiveField(58)
   Range valueRange;
-  @HiveField(59)
   Ratio valueRatio;
-  @HiveField(60)
   Reference valueReference;
-  @HiveField(61)
   SampledData valueSampledData;
-  @HiveField(62)
   Signature valueSignature;
-  @HiveField(63)
   Timing valueTiming;
-  @HiveField(64)
   ContactDetail valueContactDetail;
-  @HiveField(65)
   Contributor valueContributor;
-  @HiveField(66)
   DataRequirement valueDataRequirement;
-  @HiveField(67)
   Expression valueExpression;
-  @HiveField(68)
   ParameterDefinition valueParameterDefinition;
-  @HiveField(69)
   RelatedArtifact valueRelatedArtifact;
-  @HiveField(70)
   TriggerDefinition valueTriggerDefinition;
-  @HiveField(71)
   UsageContext valueUsageContext;
-  @HiveField(72)
   Dosage valueDosage;
-  @HiveField(73)
   Meta valueMeta;
-  @HiveField(74)
   dynamic resource;
-  @HiveField(75)
   List<Parameters_Parameter> part;
 
   Parameters_Parameter({
@@ -863,297 +778,4 @@ Map<String, dynamic> _$Parameters_ParameterToJson(
   writeNotNull('resource', instance.resource);
   writeNotNull('part', instance.part?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ParametersAdapter extends TypeAdapter<Parameters> {
-  @override
-  Parameters read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Parameters(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      parameter: (fields[7] as List)?.cast<Parameters_Parameter>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Parameters obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.parameter);
-  }
-}
-
-class Parameters_ParameterAdapter extends TypeAdapter<Parameters_Parameter> {
-  @override
-  Parameters_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Parameters_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      valueBase64Binary: fields[5] as String,
-      elementValueBase64Binary: fields[6] as Element,
-      valueBoolean: fields[7] as bool,
-      elementValueBoolean: fields[8] as Element,
-      valueCanonical: fields[9] as String,
-      elementValueCanonical: fields[10] as Element,
-      valueCode: fields[11] as String,
-      elementValueCode: fields[12] as Element,
-      valueDate: fields[13] as String,
-      elementValueDate: fields[14] as Element,
-      valueDateTime: fields[15] as String,
-      elementValueDateTime: fields[16] as Element,
-      valueDecimal: fields[17] as int,
-      elementValueDecimal: fields[18] as Element,
-      valueId: fields[19] as String,
-      elementValueId: fields[20] as Element,
-      valueInstant: fields[21] as String,
-      elementValueInstant: fields[22] as Element,
-      valueInteger: fields[23] as int,
-      elementValueInteger: fields[24] as Element,
-      valueMarkdown: fields[25] as String,
-      elementValueMarkdown: fields[26] as Element,
-      valueOid: fields[27] as String,
-      elementValueOid: fields[28] as Element,
-      valuePositiveInt: fields[29] as int,
-      elementValuePositiveInt: fields[30] as Element,
-      valueString: fields[31] as String,
-      elementValueString: fields[32] as Element,
-      valueTime: fields[33] as String,
-      elementValueTime: fields[34] as Element,
-      valueUnsignedInt: fields[35] as int,
-      elementValueUnsignedInt: fields[36] as Element,
-      valueUri: fields[37] as String,
-      elementValueUri: fields[38] as Element,
-      valueUrl: fields[39] as String,
-      elementValueUrl: fields[40] as Element,
-      valueUuid: fields[41] as String,
-      elementValueUuid: fields[42] as Element,
-      valueAddress: fields[43] as Address,
-      valueAge: fields[44] as Age,
-      valueAnnotation: fields[45] as Annotation,
-      valueAttachment: fields[46] as Attachment,
-      valueCodeableConcept: fields[47] as CodeableConcept,
-      valueCoding: fields[48] as Coding,
-      valueContactPoint: fields[49] as ContactPoint,
-      valueCount: fields[50] as Count,
-      valueDistance: fields[51] as Distance,
-      valueDuration: fields[52] as Duration,
-      valueHumanName: fields[53] as HumanName,
-      valueIdentifier: fields[54] as Identifier,
-      valueMoney: fields[55] as Money,
-      valuePeriod: fields[56] as Period,
-      valueQuantity: fields[57] as Quantity,
-      valueRange: fields[58] as Range,
-      valueRatio: fields[59] as Ratio,
-      valueReference: fields[60] as Reference,
-      valueSampledData: fields[61] as SampledData,
-      valueSignature: fields[62] as Signature,
-      valueTiming: fields[63] as Timing,
-      valueContactDetail: fields[64] as ContactDetail,
-      valueContributor: fields[65] as Contributor,
-      valueDataRequirement: fields[66] as DataRequirement,
-      valueExpression: fields[67] as Expression,
-      valueParameterDefinition: fields[68] as ParameterDefinition,
-      valueRelatedArtifact: fields[69] as RelatedArtifact,
-      valueTriggerDefinition: fields[70] as TriggerDefinition,
-      valueUsageContext: fields[71] as UsageContext,
-      valueDosage: fields[72] as Dosage,
-      valueMeta: fields[73] as Meta,
-      resource: fields[74] as dynamic,
-      part: (fields[75] as List)?.cast<Parameters_Parameter>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Parameters_Parameter obj) {
-    writer
-      ..writeByte(76)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.valueBase64Binary)
-      ..writeByte(6)
-      ..write(obj.elementValueBase64Binary)
-      ..writeByte(7)
-      ..write(obj.valueBoolean)
-      ..writeByte(8)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(9)
-      ..write(obj.valueCanonical)
-      ..writeByte(10)
-      ..write(obj.elementValueCanonical)
-      ..writeByte(11)
-      ..write(obj.valueCode)
-      ..writeByte(12)
-      ..write(obj.elementValueCode)
-      ..writeByte(13)
-      ..write(obj.valueDate)
-      ..writeByte(14)
-      ..write(obj.elementValueDate)
-      ..writeByte(15)
-      ..write(obj.valueDateTime)
-      ..writeByte(16)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(17)
-      ..write(obj.valueDecimal)
-      ..writeByte(18)
-      ..write(obj.elementValueDecimal)
-      ..writeByte(19)
-      ..write(obj.valueId)
-      ..writeByte(20)
-      ..write(obj.elementValueId)
-      ..writeByte(21)
-      ..write(obj.valueInstant)
-      ..writeByte(22)
-      ..write(obj.elementValueInstant)
-      ..writeByte(23)
-      ..write(obj.valueInteger)
-      ..writeByte(24)
-      ..write(obj.elementValueInteger)
-      ..writeByte(25)
-      ..write(obj.valueMarkdown)
-      ..writeByte(26)
-      ..write(obj.elementValueMarkdown)
-      ..writeByte(27)
-      ..write(obj.valueOid)
-      ..writeByte(28)
-      ..write(obj.elementValueOid)
-      ..writeByte(29)
-      ..write(obj.valuePositiveInt)
-      ..writeByte(30)
-      ..write(obj.elementValuePositiveInt)
-      ..writeByte(31)
-      ..write(obj.valueString)
-      ..writeByte(32)
-      ..write(obj.elementValueString)
-      ..writeByte(33)
-      ..write(obj.valueTime)
-      ..writeByte(34)
-      ..write(obj.elementValueTime)
-      ..writeByte(35)
-      ..write(obj.valueUnsignedInt)
-      ..writeByte(36)
-      ..write(obj.elementValueUnsignedInt)
-      ..writeByte(37)
-      ..write(obj.valueUri)
-      ..writeByte(38)
-      ..write(obj.elementValueUri)
-      ..writeByte(39)
-      ..write(obj.valueUrl)
-      ..writeByte(40)
-      ..write(obj.elementValueUrl)
-      ..writeByte(41)
-      ..write(obj.valueUuid)
-      ..writeByte(42)
-      ..write(obj.elementValueUuid)
-      ..writeByte(43)
-      ..write(obj.valueAddress)
-      ..writeByte(44)
-      ..write(obj.valueAge)
-      ..writeByte(45)
-      ..write(obj.valueAnnotation)
-      ..writeByte(46)
-      ..write(obj.valueAttachment)
-      ..writeByte(47)
-      ..write(obj.valueCodeableConcept)
-      ..writeByte(48)
-      ..write(obj.valueCoding)
-      ..writeByte(49)
-      ..write(obj.valueContactPoint)
-      ..writeByte(50)
-      ..write(obj.valueCount)
-      ..writeByte(51)
-      ..write(obj.valueDistance)
-      ..writeByte(52)
-      ..write(obj.valueDuration)
-      ..writeByte(53)
-      ..write(obj.valueHumanName)
-      ..writeByte(54)
-      ..write(obj.valueIdentifier)
-      ..writeByte(55)
-      ..write(obj.valueMoney)
-      ..writeByte(56)
-      ..write(obj.valuePeriod)
-      ..writeByte(57)
-      ..write(obj.valueQuantity)
-      ..writeByte(58)
-      ..write(obj.valueRange)
-      ..writeByte(59)
-      ..write(obj.valueRatio)
-      ..writeByte(60)
-      ..write(obj.valueReference)
-      ..writeByte(61)
-      ..write(obj.valueSampledData)
-      ..writeByte(62)
-      ..write(obj.valueSignature)
-      ..writeByte(63)
-      ..write(obj.valueTiming)
-      ..writeByte(64)
-      ..write(obj.valueContactDetail)
-      ..writeByte(65)
-      ..write(obj.valueContributor)
-      ..writeByte(66)
-      ..write(obj.valueDataRequirement)
-      ..writeByte(67)
-      ..write(obj.valueExpression)
-      ..writeByte(68)
-      ..write(obj.valueParameterDefinition)
-      ..writeByte(69)
-      ..write(obj.valueRelatedArtifact)
-      ..writeByte(70)
-      ..write(obj.valueTriggerDefinition)
-      ..writeByte(71)
-      ..write(obj.valueUsageContext)
-      ..writeByte(72)
-      ..write(obj.valueDosage)
-      ..writeByte(73)
-      ..write(obj.valueMeta)
-      ..writeByte(74)
-      ..write(obj.resource)
-      ..writeByte(75)
-      ..write(obj.part);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -45,35 +44,20 @@ class HumanName {
     return newHumanName;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String use;
-  @HiveField(3)
   Element elementUse;
-  @HiveField(4)
   String text;
-  @HiveField(5)
   Element elementText;
-  @HiveField(6)
   String family;
-  @HiveField(7)
   Element elementFamily;
-  @HiveField(8)
   List<String> given;
-  @HiveField(9)
   List<Element> elementGiven;
-  @HiveField(10)
   List<String> prefix;
-  @HiveField(11)
   List<Element> elementPrefix;
-  @HiveField(12)
   List<String> suffix;
-  @HiveField(13)
   List<Element> elementSuffix;
-  @HiveField(14)
   Period period;
 
   HumanName({
@@ -173,72 +157,4 @@ Map<String, dynamic> _$HumanNameToJson(HumanName instance) {
       instance.elementSuffix?.map((e) => e?.toJson())?.toList());
   writeNotNull('period', instance.period?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class HumanNameAdapter extends TypeAdapter<HumanName> {
-  @override
-  HumanName read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return HumanName(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      use: fields[2] as String,
-      elementUse: fields[3] as Element,
-      text: fields[4] as String,
-      elementText: fields[5] as Element,
-      family: fields[6] as String,
-      elementFamily: fields[7] as Element,
-      given: (fields[8] as List)?.cast<String>(),
-      elementGiven: (fields[9] as List)?.cast<Element>(),
-      prefix: (fields[10] as List)?.cast<String>(),
-      elementPrefix: (fields[11] as List)?.cast<Element>(),
-      suffix: (fields[12] as List)?.cast<String>(),
-      elementSuffix: (fields[13] as List)?.cast<Element>(),
-      period: fields[14] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, HumanName obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.use)
-      ..writeByte(3)
-      ..write(obj.elementUse)
-      ..writeByte(4)
-      ..write(obj.text)
-      ..writeByte(5)
-      ..write(obj.elementText)
-      ..writeByte(6)
-      ..write(obj.family)
-      ..writeByte(7)
-      ..write(obj.elementFamily)
-      ..writeByte(8)
-      ..write(obj.given)
-      ..writeByte(9)
-      ..write(obj.elementGiven)
-      ..writeByte(10)
-      ..write(obj.prefix)
-      ..writeByte(11)
-      ..write(obj.elementPrefix)
-      ..writeByte(12)
-      ..write(obj.suffix)
-      ..writeByte(13)
-      ..write(obj.elementSuffix)
-      ..writeByte(14)
-      ..write(obj.period);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -105,77 +104,41 @@ class CompartmentDefinition {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'CompartmentDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   String version;
-  @HiveField(14)
   Element elementVersion;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   String status;
-  @HiveField(18)
   Element elementStatus;
-  @HiveField(19)
   bool experimental;
-  @HiveField(20)
   Element elementExperimental;
-  @HiveField(21)
   DateTime date;
-  @HiveField(22)
   Element elementDate;
-  @HiveField(23)
   String publisher;
-  @HiveField(24)
   Element elementPublisher;
-  @HiveField(25)
   List<ContactDetail> contact;
-  @HiveField(26)
   String description;
-  @HiveField(27)
   Element elementDescription;
-  @HiveField(28)
   List<UsageContext> useContext;
-  @HiveField(29)
   String purpose;
-  @HiveField(30)
   Element elementPurpose;
-  @HiveField(31)
   String code;
-  @HiveField(32)
   Element elementCode;
-  @HiveField(33)
   bool search;
-  @HiveField(34)
   Element elementSearch;
-  @HiveField(35)
   List<CompartmentDefinition_Resource> resource;
 
   CompartmentDefinition({
@@ -250,23 +213,14 @@ class CompartmentDefinition_Resource {
     return newCompartmentDefinition_Resource;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String code;
-  @HiveField(4)
   Element elementCode;
-  @HiveField(5)
   List<String> param;
-  @HiveField(6)
   List<Element> elementParam;
-  @HiveField(7)
   String documentation;
-  @HiveField(8)
   Element elementDocumentation;
 
   CompartmentDefinition_Resource({
@@ -491,181 +445,4 @@ Map<String, dynamic> _$CompartmentDefinition_ResourceToJson(
   writeNotNull('documentation', instance.documentation);
   writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CompartmentDefinitionAdapter extends TypeAdapter<CompartmentDefinition> {
-  @override
-  CompartmentDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CompartmentDefinition(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      version: fields[13] as String,
-      elementVersion: fields[14] as Element,
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      status: fields[17] as String,
-      elementStatus: fields[18] as Element,
-      experimental: fields[19] as bool,
-      elementExperimental: fields[20] as Element,
-      date: fields[21] as DateTime,
-      elementDate: fields[22] as Element,
-      publisher: fields[23] as String,
-      elementPublisher: fields[24] as Element,
-      contact: (fields[25] as List)?.cast<ContactDetail>(),
-      description: fields[26] as String,
-      elementDescription: fields[27] as Element,
-      useContext: (fields[28] as List)?.cast<UsageContext>(),
-      purpose: fields[29] as String,
-      elementPurpose: fields[30] as Element,
-      code: fields[31] as String,
-      elementCode: fields[32] as Element,
-      search: fields[33] as bool,
-      elementSearch: fields[34] as Element,
-      resource: (fields[35] as List)?.cast<CompartmentDefinition_Resource>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CompartmentDefinition obj) {
-    writer
-      ..writeByte(36)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.version)
-      ..writeByte(14)
-      ..write(obj.elementVersion)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.status)
-      ..writeByte(18)
-      ..write(obj.elementStatus)
-      ..writeByte(19)
-      ..write(obj.experimental)
-      ..writeByte(20)
-      ..write(obj.elementExperimental)
-      ..writeByte(21)
-      ..write(obj.date)
-      ..writeByte(22)
-      ..write(obj.elementDate)
-      ..writeByte(23)
-      ..write(obj.publisher)
-      ..writeByte(24)
-      ..write(obj.elementPublisher)
-      ..writeByte(25)
-      ..write(obj.contact)
-      ..writeByte(26)
-      ..write(obj.description)
-      ..writeByte(27)
-      ..write(obj.elementDescription)
-      ..writeByte(28)
-      ..write(obj.useContext)
-      ..writeByte(29)
-      ..write(obj.purpose)
-      ..writeByte(30)
-      ..write(obj.elementPurpose)
-      ..writeByte(31)
-      ..write(obj.code)
-      ..writeByte(32)
-      ..write(obj.elementCode)
-      ..writeByte(33)
-      ..write(obj.search)
-      ..writeByte(34)
-      ..write(obj.elementSearch)
-      ..writeByte(35)
-      ..write(obj.resource);
-  }
-}
-
-class CompartmentDefinition_ResourceAdapter
-    extends TypeAdapter<CompartmentDefinition_Resource> {
-  @override
-  CompartmentDefinition_Resource read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CompartmentDefinition_Resource(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      param: (fields[5] as List)?.cast<String>(),
-      elementParam: (fields[6] as List)?.cast<Element>(),
-      documentation: fields[7] as String,
-      elementDocumentation: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CompartmentDefinition_Resource obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.param)
-      ..writeByte(6)
-      ..write(obj.elementParam)
-      ..writeByte(7)
-      ..write(obj.documentation)
-      ..writeByte(8)
-      ..write(obj.elementDocumentation);
-  }
 }

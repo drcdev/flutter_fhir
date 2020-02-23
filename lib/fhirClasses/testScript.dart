@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -128,97 +127,51 @@ class TestScript {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'TestScript';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   Identifier identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String status;
-  @HiveField(21)
   Element elementStatus;
-  @HiveField(22)
   bool experimental;
-  @HiveField(23)
   Element elementExperimental;
-  @HiveField(24)
   DateTime date;
-  @HiveField(25)
   Element elementDate;
-  @HiveField(26)
   String publisher;
-  @HiveField(27)
   Element elementPublisher;
-  @HiveField(28)
   List<ContactDetail> contact;
-  @HiveField(29)
   String description;
-  @HiveField(30)
   Element elementDescription;
-  @HiveField(31)
   List<UsageContext> useContext;
-  @HiveField(32)
   List<CodeableConcept> jurisdiction;
-  @HiveField(33)
   String purpose;
-  @HiveField(34)
   Element elementPurpose;
-  @HiveField(35)
   String copyright;
-  @HiveField(36)
   Element elementCopyright;
-  @HiveField(37)
   List<TestScript_Origin> origin;
-  @HiveField(38)
   List<TestScript_Destination> destination;
-  @HiveField(39)
   TestScript_Metadata metadata;
-  @HiveField(40)
   List<TestScript_Fixture> fixture;
-  @HiveField(41)
   List<Reference> profile;
-  @HiveField(42)
   List<TestScript_Variable> variable;
-  @HiveField(43)
   TestScript_Setup setup;
-  @HiveField(44)
   List<TestScript_Test> test;
-  @HiveField(45)
   TestScript_Teardown teardown;
 
   TestScript({
@@ -296,17 +249,11 @@ class TestScript_Origin {
     return newTestScript_Origin;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int index;
-  @HiveField(4)
   Element elementIndex;
-  @HiveField(5)
   Coding profile;
 
   TestScript_Origin({
@@ -345,17 +292,11 @@ class TestScript_Destination {
     return newTestScript_Destination;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int index;
-  @HiveField(4)
   Element elementIndex;
-  @HiveField(5)
   Coding profile;
 
   TestScript_Destination({
@@ -391,15 +332,10 @@ class TestScript_Metadata {
     return newTestScript_Metadata;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<TestScript_Link> link;
-  @HiveField(4)
   List<TestScript_Capability> capability;
 
   TestScript_Metadata({
@@ -438,19 +374,12 @@ class TestScript_Link {
     return newTestScript_Link;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String url;
-  @HiveField(4)
   Element elementUrl;
-  @HiveField(5)
   String description;
-  @HiveField(6)
   Element elementDescription;
 
   TestScript_Link({
@@ -509,37 +438,21 @@ class TestScript_Capability {
     return newTestScript_Capability;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool require;
-  @HiveField(4)
   Element elementRequired;
-  @HiveField(5)
   bool validated;
-  @HiveField(6)
   Element elementValidated;
-  @HiveField(7)
   String description;
-  @HiveField(8)
   Element elementDescription;
-  @HiveField(9)
   List<int> origin;
-  @HiveField(10)
   List<Element> elementOrigin;
-  @HiveField(11)
   int destination;
-  @HiveField(12)
   Element elementDestination;
-  @HiveField(13)
   List<String> link;
-  @HiveField(14)
   List<Element> elementLink;
-  @HiveField(15)
   String capabilities;
 
   TestScript_Capability({
@@ -591,21 +504,13 @@ class TestScript_Fixture {
     return newTestScript_Fixture;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool autocreate;
-  @HiveField(4)
   Element elementAutocreate;
-  @HiveField(5)
   bool autodelete;
-  @HiveField(6)
   Element elementAutodelete;
-  @HiveField(7)
   Reference resource;
 
   TestScript_Fixture({
@@ -671,43 +576,24 @@ class TestScript_Variable {
     return newTestScript_Variable;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String defaultValue;
-  @HiveField(6)
   Element elementDefaultValue;
-  @HiveField(7)
   String description;
-  @HiveField(8)
   Element elementDescription;
-  @HiveField(9)
   String expression;
-  @HiveField(10)
   Element elementExpression;
-  @HiveField(11)
   String headerField;
-  @HiveField(12)
   Element elementHeaderField;
-  @HiveField(13)
   String hint;
-  @HiveField(14)
   Element elementHint;
-  @HiveField(15)
   String path;
-  @HiveField(16)
   Element elementPath;
-  @HiveField(17)
   String sourceId;
-  @HiveField(18)
   Element elementSourceId;
 
   TestScript_Variable({
@@ -754,13 +640,9 @@ class TestScript_Setup {
     return newTestScript_Setup;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<TestScript_Action> action;
 
   TestScript_Setup({
@@ -794,15 +676,10 @@ class TestScript_Action {
     return newTestScript_Action;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   TestScript_Operation operation;
-  @HiveField(4)
   TestScript_Assert asserts;
 
   TestScript_Action({
@@ -897,75 +774,40 @@ class TestScript_Operation {
     return newTestScript_Operation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Coding type;
-  @HiveField(4)
   String resource;
-  @HiveField(5)
   Element elementResource;
-  @HiveField(6)
   String label;
-  @HiveField(7)
   Element elementLabel;
-  @HiveField(8)
   String description;
-  @HiveField(9)
   Element elementDescription;
-  @HiveField(10)
   String accept;
-  @HiveField(11)
   Element elementAccept;
-  @HiveField(12)
   String contentType;
-  @HiveField(13)
   Element elementContentType;
-  @HiveField(14)
   int destination;
-  @HiveField(15)
   Element elementDestination;
-  @HiveField(16)
   bool encodeRequestUrl;
-  @HiveField(17)
   Element elementEncodeRequestUrl;
-  @HiveField(18)
   String method;
-  @HiveField(19)
   Element elementMethod;
-  @HiveField(20)
   int origin;
-  @HiveField(21)
   Element elementOrigin;
-  @HiveField(22)
   String params;
-  @HiveField(23)
   Element elementParams;
-  @HiveField(24)
   List<TestScript_RequestHeader> requestHeader;
-  @HiveField(25)
   String requestId;
-  @HiveField(26)
   Element elementRequestId;
-  @HiveField(27)
   String responseId;
-  @HiveField(28)
   Element elementResponseId;
-  @HiveField(29)
   String sourceId;
-  @HiveField(30)
   Element elementSourceId;
-  @HiveField(31)
   String targetId;
-  @HiveField(32)
   Element elementTargetId;
-  @HiveField(33)
   String url;
-  @HiveField(34)
   Element elementUrl;
 
   TestScript_Operation({
@@ -1035,19 +877,12 @@ class TestScript_RequestHeader {
     return newTestScript_RequestHeader;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String field;
-  @HiveField(4)
   Element elementField;
-  @HiveField(5)
   String value;
-  @HiveField(6)
   Element elementValue;
 
   TestScript_RequestHeader({
@@ -1168,99 +1003,52 @@ class TestScript_Assert {
     return newTestScript_Assert;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String label;
-  @HiveField(4)
   Element elementLabel;
-  @HiveField(5)
   String description;
-  @HiveField(6)
   Element elementDescription;
-  @HiveField(7)
   String direction;
-  @HiveField(8)
   Element elementDirection;
-  @HiveField(9)
   String compareToSourceId;
-  @HiveField(10)
   Element elementCompareToSourceId;
-  @HiveField(11)
   String compareToSourceExpression;
-  @HiveField(12)
   Element elementCompareToSourceExpression;
-  @HiveField(13)
   String compareToSourcePath;
-  @HiveField(14)
   Element elementCompareToSourcePath;
-  @HiveField(15)
   String contentType;
-  @HiveField(16)
   Element elementContentType;
-  @HiveField(17)
   String expression;
-  @HiveField(18)
   Element elementExpression;
-  @HiveField(19)
   String headerField;
-  @HiveField(20)
   Element elementHeaderField;
-  @HiveField(21)
   String minimumId;
-  @HiveField(22)
   Element elementMinimumId;
-  @HiveField(23)
   bool navigationLinks;
-  @HiveField(24)
   Element elementNavigationLinks;
-  @HiveField(25)
   String operator;
-  @HiveField(26)
   Element elementOperator;
-  @HiveField(27)
   String path;
-  @HiveField(28)
   Element elementPath;
-  @HiveField(29)
   String requestMethod;
-  @HiveField(30)
   Element elementRequestMethod;
-  @HiveField(31)
   String requestURL;
-  @HiveField(32)
   Element elementRequestURL;
-  @HiveField(33)
   String resource;
-  @HiveField(34)
   Element elementResource;
-  @HiveField(35)
   String response;
-  @HiveField(36)
   Element elementResponse;
-  @HiveField(37)
   String responseCode;
-  @HiveField(38)
   Element elementResponseCode;
-  @HiveField(39)
   String sourceId;
-  @HiveField(40)
   Element elementSourceId;
-  @HiveField(41)
   String validateProfileId;
-  @HiveField(42)
   Element elementValidateProfileId;
-  @HiveField(43)
   String value;
-  @HiveField(44)
   Element elementValue;
-  @HiveField(45)
   bool warningOnly;
-  @HiveField(46)
   Element elementWarningOnly;
 
   TestScript_Assert({
@@ -1343,21 +1131,13 @@ class TestScript_Test {
     return newTestScript_Test;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String description;
-  @HiveField(6)
   Element elementDescription;
-  @HiveField(7)
   List<TestScript_Action1> action;
 
   TestScript_Test({
@@ -1395,15 +1175,10 @@ class TestScript_Action1 {
     return newTestScript_Action1;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   TestScript_Operation operation;
-  @HiveField(4)
   TestScript_Assert asserts;
 
   TestScript_Action1({
@@ -1436,13 +1211,9 @@ class TestScript_Teardown {
     return newTestScript_Teardown;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<TestScript_Action2> action;
 
   TestScript_Teardown({
@@ -1474,13 +1245,9 @@ class TestScript_Action2 {
     return newTestScript_Action2;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   TestScript_Operation operation;
 
   TestScript_Action2({
@@ -2664,1013 +2431,4 @@ Map<String, dynamic> _$TestScript_Action2ToJson(TestScript_Action2 instance) {
       instance.modifierExtension?.map((e) => e?.toJson())?.toList());
   writeNotNull('operation', instance.operation?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class TestScriptAdapter extends TypeAdapter<TestScript> {
-  @override
-  TestScript read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: fields[13] as Identifier,
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      status: fields[20] as String,
-      elementStatus: fields[21] as Element,
-      experimental: fields[22] as bool,
-      elementExperimental: fields[23] as Element,
-      date: fields[24] as DateTime,
-      elementDate: fields[25] as Element,
-      publisher: fields[26] as String,
-      elementPublisher: fields[27] as Element,
-      contact: (fields[28] as List)?.cast<ContactDetail>(),
-      description: fields[29] as String,
-      elementDescription: fields[30] as Element,
-      useContext: (fields[31] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
-      purpose: fields[33] as String,
-      elementPurpose: fields[34] as Element,
-      copyright: fields[35] as String,
-      elementCopyright: fields[36] as Element,
-      origin: (fields[37] as List)?.cast<TestScript_Origin>(),
-      destination: (fields[38] as List)?.cast<TestScript_Destination>(),
-      metadata: fields[39] as TestScript_Metadata,
-      fixture: (fields[40] as List)?.cast<TestScript_Fixture>(),
-      profile: (fields[41] as List)?.cast<Reference>(),
-      variable: (fields[42] as List)?.cast<TestScript_Variable>(),
-      setup: fields[43] as TestScript_Setup,
-      test: (fields[44] as List)?.cast<TestScript_Test>(),
-      teardown: fields[45] as TestScript_Teardown,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript obj) {
-    writer
-      ..writeByte(46)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.status)
-      ..writeByte(21)
-      ..write(obj.elementStatus)
-      ..writeByte(22)
-      ..write(obj.experimental)
-      ..writeByte(23)
-      ..write(obj.elementExperimental)
-      ..writeByte(24)
-      ..write(obj.date)
-      ..writeByte(25)
-      ..write(obj.elementDate)
-      ..writeByte(26)
-      ..write(obj.publisher)
-      ..writeByte(27)
-      ..write(obj.elementPublisher)
-      ..writeByte(28)
-      ..write(obj.contact)
-      ..writeByte(29)
-      ..write(obj.description)
-      ..writeByte(30)
-      ..write(obj.elementDescription)
-      ..writeByte(31)
-      ..write(obj.useContext)
-      ..writeByte(32)
-      ..write(obj.jurisdiction)
-      ..writeByte(33)
-      ..write(obj.purpose)
-      ..writeByte(34)
-      ..write(obj.elementPurpose)
-      ..writeByte(35)
-      ..write(obj.copyright)
-      ..writeByte(36)
-      ..write(obj.elementCopyright)
-      ..writeByte(37)
-      ..write(obj.origin)
-      ..writeByte(38)
-      ..write(obj.destination)
-      ..writeByte(39)
-      ..write(obj.metadata)
-      ..writeByte(40)
-      ..write(obj.fixture)
-      ..writeByte(41)
-      ..write(obj.profile)
-      ..writeByte(42)
-      ..write(obj.variable)
-      ..writeByte(43)
-      ..write(obj.setup)
-      ..writeByte(44)
-      ..write(obj.test)
-      ..writeByte(45)
-      ..write(obj.teardown);
-  }
-}
-
-class TestScript_OriginAdapter extends TypeAdapter<TestScript_Origin> {
-  @override
-  TestScript_Origin read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Origin(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      index: fields[3] as int,
-      elementIndex: fields[4] as Element,
-      profile: fields[5] as Coding,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Origin obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.index)
-      ..writeByte(4)
-      ..write(obj.elementIndex)
-      ..writeByte(5)
-      ..write(obj.profile);
-  }
-}
-
-class TestScript_DestinationAdapter
-    extends TypeAdapter<TestScript_Destination> {
-  @override
-  TestScript_Destination read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Destination(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      index: fields[3] as int,
-      elementIndex: fields[4] as Element,
-      profile: fields[5] as Coding,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Destination obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.index)
-      ..writeByte(4)
-      ..write(obj.elementIndex)
-      ..writeByte(5)
-      ..write(obj.profile);
-  }
-}
-
-class TestScript_MetadataAdapter extends TypeAdapter<TestScript_Metadata> {
-  @override
-  TestScript_Metadata read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Metadata(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      link: (fields[3] as List)?.cast<TestScript_Link>(),
-      capability: (fields[4] as List)?.cast<TestScript_Capability>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Metadata obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.link)
-      ..writeByte(4)
-      ..write(obj.capability);
-  }
-}
-
-class TestScript_LinkAdapter extends TypeAdapter<TestScript_Link> {
-  @override
-  TestScript_Link read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Link(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      url: fields[3] as String,
-      elementUrl: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Link obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.url)
-      ..writeByte(4)
-      ..write(obj.elementUrl)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription);
-  }
-}
-
-class TestScript_CapabilityAdapter extends TypeAdapter<TestScript_Capability> {
-  @override
-  TestScript_Capability read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Capability(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      require: fields[3] as bool,
-      elementRequired: fields[4] as Element,
-      validated: fields[5] as bool,
-      elementValidated: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      origin: (fields[9] as List)?.cast<int>(),
-      elementOrigin: (fields[10] as List)?.cast<Element>(),
-      destination: fields[11] as int,
-      elementDestination: fields[12] as Element,
-      link: (fields[13] as List)?.cast<String>(),
-      elementLink: (fields[14] as List)?.cast<Element>(),
-      capabilities: fields[15] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Capability obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.require)
-      ..writeByte(4)
-      ..write(obj.elementRequired)
-      ..writeByte(5)
-      ..write(obj.validated)
-      ..writeByte(6)
-      ..write(obj.elementValidated)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.origin)
-      ..writeByte(10)
-      ..write(obj.elementOrigin)
-      ..writeByte(11)
-      ..write(obj.destination)
-      ..writeByte(12)
-      ..write(obj.elementDestination)
-      ..writeByte(13)
-      ..write(obj.link)
-      ..writeByte(14)
-      ..write(obj.elementLink)
-      ..writeByte(15)
-      ..write(obj.capabilities);
-  }
-}
-
-class TestScript_FixtureAdapter extends TypeAdapter<TestScript_Fixture> {
-  @override
-  TestScript_Fixture read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Fixture(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      autocreate: fields[3] as bool,
-      elementAutocreate: fields[4] as Element,
-      autodelete: fields[5] as bool,
-      elementAutodelete: fields[6] as Element,
-      resource: fields[7] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Fixture obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.autocreate)
-      ..writeByte(4)
-      ..write(obj.elementAutocreate)
-      ..writeByte(5)
-      ..write(obj.autodelete)
-      ..writeByte(6)
-      ..write(obj.elementAutodelete)
-      ..writeByte(7)
-      ..write(obj.resource);
-  }
-}
-
-class TestScript_VariableAdapter extends TypeAdapter<TestScript_Variable> {
-  @override
-  TestScript_Variable read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Variable(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      defaultValue: fields[5] as String,
-      elementDefaultValue: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      expression: fields[9] as String,
-      elementExpression: fields[10] as Element,
-      headerField: fields[11] as String,
-      elementHeaderField: fields[12] as Element,
-      hint: fields[13] as String,
-      elementHint: fields[14] as Element,
-      path: fields[15] as String,
-      elementPath: fields[16] as Element,
-      sourceId: fields[17] as String,
-      elementSourceId: fields[18] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Variable obj) {
-    writer
-      ..writeByte(19)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.defaultValue)
-      ..writeByte(6)
-      ..write(obj.elementDefaultValue)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.expression)
-      ..writeByte(10)
-      ..write(obj.elementExpression)
-      ..writeByte(11)
-      ..write(obj.headerField)
-      ..writeByte(12)
-      ..write(obj.elementHeaderField)
-      ..writeByte(13)
-      ..write(obj.hint)
-      ..writeByte(14)
-      ..write(obj.elementHint)
-      ..writeByte(15)
-      ..write(obj.path)
-      ..writeByte(16)
-      ..write(obj.elementPath)
-      ..writeByte(17)
-      ..write(obj.sourceId)
-      ..writeByte(18)
-      ..write(obj.elementSourceId);
-  }
-}
-
-class TestScript_SetupAdapter extends TypeAdapter<TestScript_Setup> {
-  @override
-  TestScript_Setup read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Setup(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      action: (fields[3] as List)?.cast<TestScript_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Setup obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.action);
-  }
-}
-
-class TestScript_ActionAdapter extends TypeAdapter<TestScript_Action> {
-  @override
-  TestScript_Action read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Action(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      operation: fields[3] as TestScript_Operation,
-      asserts: fields[4] as TestScript_Assert,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Action obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operation)
-      ..writeByte(4)
-      ..write(obj.asserts);
-  }
-}
-
-class TestScript_OperationAdapter extends TypeAdapter<TestScript_Operation> {
-  @override
-  TestScript_Operation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Operation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as Coding,
-      resource: fields[4] as String,
-      elementResource: fields[5] as Element,
-      label: fields[6] as String,
-      elementLabel: fields[7] as Element,
-      description: fields[8] as String,
-      elementDescription: fields[9] as Element,
-      accept: fields[10] as String,
-      elementAccept: fields[11] as Element,
-      contentType: fields[12] as String,
-      elementContentType: fields[13] as Element,
-      destination: fields[14] as int,
-      elementDestination: fields[15] as Element,
-      encodeRequestUrl: fields[16] as bool,
-      elementEncodeRequestUrl: fields[17] as Element,
-      method: fields[18] as String,
-      elementMethod: fields[19] as Element,
-      origin: fields[20] as int,
-      elementOrigin: fields[21] as Element,
-      params: fields[22] as String,
-      elementParams: fields[23] as Element,
-      requestHeader: (fields[24] as List)?.cast<TestScript_RequestHeader>(),
-      requestId: fields[25] as String,
-      elementRequestId: fields[26] as Element,
-      responseId: fields[27] as String,
-      elementResponseId: fields[28] as Element,
-      sourceId: fields[29] as String,
-      elementSourceId: fields[30] as Element,
-      targetId: fields[31] as String,
-      elementTargetId: fields[32] as Element,
-      url: fields[33] as String,
-      elementUrl: fields[34] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Operation obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.resource)
-      ..writeByte(5)
-      ..write(obj.elementResource)
-      ..writeByte(6)
-      ..write(obj.label)
-      ..writeByte(7)
-      ..write(obj.elementLabel)
-      ..writeByte(8)
-      ..write(obj.description)
-      ..writeByte(9)
-      ..write(obj.elementDescription)
-      ..writeByte(10)
-      ..write(obj.accept)
-      ..writeByte(11)
-      ..write(obj.elementAccept)
-      ..writeByte(12)
-      ..write(obj.contentType)
-      ..writeByte(13)
-      ..write(obj.elementContentType)
-      ..writeByte(14)
-      ..write(obj.destination)
-      ..writeByte(15)
-      ..write(obj.elementDestination)
-      ..writeByte(16)
-      ..write(obj.encodeRequestUrl)
-      ..writeByte(17)
-      ..write(obj.elementEncodeRequestUrl)
-      ..writeByte(18)
-      ..write(obj.method)
-      ..writeByte(19)
-      ..write(obj.elementMethod)
-      ..writeByte(20)
-      ..write(obj.origin)
-      ..writeByte(21)
-      ..write(obj.elementOrigin)
-      ..writeByte(22)
-      ..write(obj.params)
-      ..writeByte(23)
-      ..write(obj.elementParams)
-      ..writeByte(24)
-      ..write(obj.requestHeader)
-      ..writeByte(25)
-      ..write(obj.requestId)
-      ..writeByte(26)
-      ..write(obj.elementRequestId)
-      ..writeByte(27)
-      ..write(obj.responseId)
-      ..writeByte(28)
-      ..write(obj.elementResponseId)
-      ..writeByte(29)
-      ..write(obj.sourceId)
-      ..writeByte(30)
-      ..write(obj.elementSourceId)
-      ..writeByte(31)
-      ..write(obj.targetId)
-      ..writeByte(32)
-      ..write(obj.elementTargetId)
-      ..writeByte(33)
-      ..write(obj.url)
-      ..writeByte(34)
-      ..write(obj.elementUrl);
-  }
-}
-
-class TestScript_RequestHeaderAdapter
-    extends TypeAdapter<TestScript_RequestHeader> {
-  @override
-  TestScript_RequestHeader read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_RequestHeader(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      field: fields[3] as String,
-      elementField: fields[4] as Element,
-      value: fields[5] as String,
-      elementValue: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_RequestHeader obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.field)
-      ..writeByte(4)
-      ..write(obj.elementField)
-      ..writeByte(5)
-      ..write(obj.value)
-      ..writeByte(6)
-      ..write(obj.elementValue);
-  }
-}
-
-class TestScript_AssertAdapter extends TypeAdapter<TestScript_Assert> {
-  @override
-  TestScript_Assert read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Assert(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      label: fields[3] as String,
-      elementLabel: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      direction: fields[7] as String,
-      elementDirection: fields[8] as Element,
-      compareToSourceId: fields[9] as String,
-      elementCompareToSourceId: fields[10] as Element,
-      compareToSourceExpression: fields[11] as String,
-      elementCompareToSourceExpression: fields[12] as Element,
-      compareToSourcePath: fields[13] as String,
-      elementCompareToSourcePath: fields[14] as Element,
-      contentType: fields[15] as String,
-      elementContentType: fields[16] as Element,
-      expression: fields[17] as String,
-      elementExpression: fields[18] as Element,
-      headerField: fields[19] as String,
-      elementHeaderField: fields[20] as Element,
-      minimumId: fields[21] as String,
-      elementMinimumId: fields[22] as Element,
-      navigationLinks: fields[23] as bool,
-      elementNavigationLinks: fields[24] as Element,
-      operator: fields[25] as String,
-      elementOperator: fields[26] as Element,
-      path: fields[27] as String,
-      elementPath: fields[28] as Element,
-      requestMethod: fields[29] as String,
-      elementRequestMethod: fields[30] as Element,
-      requestURL: fields[31] as String,
-      elementRequestURL: fields[32] as Element,
-      resource: fields[33] as String,
-      elementResource: fields[34] as Element,
-      response: fields[35] as String,
-      elementResponse: fields[36] as Element,
-      responseCode: fields[37] as String,
-      elementResponseCode: fields[38] as Element,
-      sourceId: fields[39] as String,
-      elementSourceId: fields[40] as Element,
-      validateProfileId: fields[41] as String,
-      elementValidateProfileId: fields[42] as Element,
-      value: fields[43] as String,
-      elementValue: fields[44] as Element,
-      warningOnly: fields[45] as bool,
-      elementWarningOnly: fields[46] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Assert obj) {
-    writer
-      ..writeByte(47)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.label)
-      ..writeByte(4)
-      ..write(obj.elementLabel)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.direction)
-      ..writeByte(8)
-      ..write(obj.elementDirection)
-      ..writeByte(9)
-      ..write(obj.compareToSourceId)
-      ..writeByte(10)
-      ..write(obj.elementCompareToSourceId)
-      ..writeByte(11)
-      ..write(obj.compareToSourceExpression)
-      ..writeByte(12)
-      ..write(obj.elementCompareToSourceExpression)
-      ..writeByte(13)
-      ..write(obj.compareToSourcePath)
-      ..writeByte(14)
-      ..write(obj.elementCompareToSourcePath)
-      ..writeByte(15)
-      ..write(obj.contentType)
-      ..writeByte(16)
-      ..write(obj.elementContentType)
-      ..writeByte(17)
-      ..write(obj.expression)
-      ..writeByte(18)
-      ..write(obj.elementExpression)
-      ..writeByte(19)
-      ..write(obj.headerField)
-      ..writeByte(20)
-      ..write(obj.elementHeaderField)
-      ..writeByte(21)
-      ..write(obj.minimumId)
-      ..writeByte(22)
-      ..write(obj.elementMinimumId)
-      ..writeByte(23)
-      ..write(obj.navigationLinks)
-      ..writeByte(24)
-      ..write(obj.elementNavigationLinks)
-      ..writeByte(25)
-      ..write(obj.operator)
-      ..writeByte(26)
-      ..write(obj.elementOperator)
-      ..writeByte(27)
-      ..write(obj.path)
-      ..writeByte(28)
-      ..write(obj.elementPath)
-      ..writeByte(29)
-      ..write(obj.requestMethod)
-      ..writeByte(30)
-      ..write(obj.elementRequestMethod)
-      ..writeByte(31)
-      ..write(obj.requestURL)
-      ..writeByte(32)
-      ..write(obj.elementRequestURL)
-      ..writeByte(33)
-      ..write(obj.resource)
-      ..writeByte(34)
-      ..write(obj.elementResource)
-      ..writeByte(35)
-      ..write(obj.response)
-      ..writeByte(36)
-      ..write(obj.elementResponse)
-      ..writeByte(37)
-      ..write(obj.responseCode)
-      ..writeByte(38)
-      ..write(obj.elementResponseCode)
-      ..writeByte(39)
-      ..write(obj.sourceId)
-      ..writeByte(40)
-      ..write(obj.elementSourceId)
-      ..writeByte(41)
-      ..write(obj.validateProfileId)
-      ..writeByte(42)
-      ..write(obj.elementValidateProfileId)
-      ..writeByte(43)
-      ..write(obj.value)
-      ..writeByte(44)
-      ..write(obj.elementValue)
-      ..writeByte(45)
-      ..write(obj.warningOnly)
-      ..writeByte(46)
-      ..write(obj.elementWarningOnly);
-  }
-}
-
-class TestScript_TestAdapter extends TypeAdapter<TestScript_Test> {
-  @override
-  TestScript_Test read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Test(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      action: (fields[7] as List)?.cast<TestScript_Action1>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Test obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.action);
-  }
-}
-
-class TestScript_Action1Adapter extends TypeAdapter<TestScript_Action1> {
-  @override
-  TestScript_Action1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Action1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      operation: fields[3] as TestScript_Operation,
-      asserts: fields[4] as TestScript_Assert,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Action1 obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operation)
-      ..writeByte(4)
-      ..write(obj.asserts);
-  }
-}
-
-class TestScript_TeardownAdapter extends TypeAdapter<TestScript_Teardown> {
-  @override
-  TestScript_Teardown read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Teardown(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      action: (fields[3] as List)?.cast<TestScript_Action2>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Teardown obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.action);
-  }
-}
-
-class TestScript_Action2Adapter extends TypeAdapter<TestScript_Action2> {
-  @override
-  TestScript_Action2 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Action2(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      operation: fields[3] as TestScript_Operation,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Action2 obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operation);
-  }
 }

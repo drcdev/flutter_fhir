@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -38,29 +37,17 @@ class Expression {
     return newExpression;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String description;
-  @HiveField(3)
   Element elementDescription;
-  @HiveField(4)
   String name;
-  @HiveField(5)
   Element elementName;
-  @HiveField(6)
   String language;
-  @HiveField(7)
   Element elementLanguage;
-  @HiveField(8)
   String expression;
-  @HiveField(9)
   Element elementExpression;
-  @HiveField(10)
   String reference;
-  @HiveField(11)
   Element elementReference;
 
   Expression({
@@ -141,63 +128,4 @@ Map<String, dynamic> _$ExpressionToJson(Expression instance) {
   writeNotNull('reference', instance.reference);
   writeNotNull('elementReference', instance.elementReference?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ExpressionAdapter extends TypeAdapter<Expression> {
-  @override
-  Expression read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Expression(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      description: fields[2] as String,
-      elementDescription: fields[3] as Element,
-      name: fields[4] as String,
-      elementName: fields[5] as Element,
-      language: fields[6] as String,
-      elementLanguage: fields[7] as Element,
-      expression: fields[8] as String,
-      elementExpression: fields[9] as Element,
-      reference: fields[10] as String,
-      elementReference: fields[11] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Expression obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.description)
-      ..writeByte(3)
-      ..write(obj.elementDescription)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.elementName)
-      ..writeByte(6)
-      ..write(obj.language)
-      ..writeByte(7)
-      ..write(obj.elementLanguage)
-      ..writeByte(8)
-      ..write(obj.expression)
-      ..writeByte(9)
-      ..write(obj.elementExpression)
-      ..writeByte(10)
-      ..write(obj.reference)
-      ..writeByte(11)
-      ..write(obj.elementReference);
-  }
 }

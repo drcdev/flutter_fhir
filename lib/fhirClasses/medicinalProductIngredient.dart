@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -72,41 +71,23 @@ class MedicinalProductIngredient {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'MedicinalProductIngredient';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   CodeableConcept role;
-  @HiveField(13)
   bool allergenicIndicator;
-  @HiveField(14)
   Element elementAllergenicIndicator;
-  @HiveField(15)
   List<Reference> manufacturer;
-  @HiveField(16)
   List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance;
-  @HiveField(17)
   MedicinalProductIngredient_Substance substance;
 
   MedicinalProductIngredient({
@@ -160,19 +141,12 @@ class MedicinalProductIngredient_SpecifiedSubstance {
     return newMedicinalProductIngredient_SpecifiedSubstance;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept code;
-  @HiveField(4)
   CodeableConcept group;
-  @HiveField(5)
   CodeableConcept confidentiality;
-  @HiveField(6)
   List<MedicinalProductIngredient_Strength> strength;
 
   MedicinalProductIngredient_SpecifiedSubstance({
@@ -224,27 +198,16 @@ class MedicinalProductIngredient_Strength {
     return newMedicinalProductIngredient_Strength;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Ratio presentation;
-  @HiveField(4)
   Ratio presentationLowLimit;
-  @HiveField(5)
   Ratio concentration;
-  @HiveField(6)
   Ratio concentrationLowLimit;
-  @HiveField(7)
   String measurementPoint;
-  @HiveField(8)
   Element elementMeasurementPoint;
-  @HiveField(9)
   List<CodeableConcept> country;
-  @HiveField(10)
   List<MedicinalProductIngredient_ReferenceStrength> referenceStrength;
 
   MedicinalProductIngredient_Strength({
@@ -297,23 +260,14 @@ class MedicinalProductIngredient_ReferenceStrength {
     return newMedicinalProductIngredient_ReferenceStrength;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept substance;
-  @HiveField(4)
   Ratio strength;
-  @HiveField(5)
   Ratio strengthLowLimit;
-  @HiveField(6)
   String measurementPoint;
-  @HiveField(7)
   Element elementMeasurementPoint;
-  @HiveField(8)
   List<CodeableConcept> country;
 
   MedicinalProductIngredient_ReferenceStrength({
@@ -356,15 +310,10 @@ class MedicinalProductIngredient_Substance {
     return newMedicinalProductIngredient_Substance;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept code;
-  @HiveField(4)
   List<MedicinalProductIngredient_Strength> strength;
 
   MedicinalProductIngredient_Substance({
@@ -714,260 +663,4 @@ Map<String, dynamic> _$MedicinalProductIngredient_SubstanceToJson(
   writeNotNull(
       'strength', instance.strength?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductIngredientAdapter
-    extends TypeAdapter<MedicinalProductIngredient> {
-  @override
-  MedicinalProductIngredient read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      role: fields[12] as CodeableConcept,
-      allergenicIndicator: fields[13] as bool,
-      elementAllergenicIndicator: fields[14] as Element,
-      manufacturer: (fields[15] as List)?.cast<Reference>(),
-      specifiedSubstance: (fields[16] as List)
-          ?.cast<MedicinalProductIngredient_SpecifiedSubstance>(),
-      substance: fields[17] as MedicinalProductIngredient_Substance,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductIngredient obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.role)
-      ..writeByte(13)
-      ..write(obj.allergenicIndicator)
-      ..writeByte(14)
-      ..write(obj.elementAllergenicIndicator)
-      ..writeByte(15)
-      ..write(obj.manufacturer)
-      ..writeByte(16)
-      ..write(obj.specifiedSubstance)
-      ..writeByte(17)
-      ..write(obj.substance);
-  }
-}
-
-class MedicinalProductIngredient_SpecifiedSubstanceAdapter
-    extends TypeAdapter<MedicinalProductIngredient_SpecifiedSubstance> {
-  @override
-  MedicinalProductIngredient_SpecifiedSubstance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_SpecifiedSubstance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      group: fields[4] as CodeableConcept,
-      confidentiality: fields[5] as CodeableConcept,
-      strength:
-          (fields[6] as List)?.cast<MedicinalProductIngredient_Strength>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductIngredient_SpecifiedSubstance obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.group)
-      ..writeByte(5)
-      ..write(obj.confidentiality)
-      ..writeByte(6)
-      ..write(obj.strength);
-  }
-}
-
-class MedicinalProductIngredient_StrengthAdapter
-    extends TypeAdapter<MedicinalProductIngredient_Strength> {
-  @override
-  MedicinalProductIngredient_Strength read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_Strength(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      presentation: fields[3] as Ratio,
-      presentationLowLimit: fields[4] as Ratio,
-      concentration: fields[5] as Ratio,
-      concentrationLowLimit: fields[6] as Ratio,
-      measurementPoint: fields[7] as String,
-      elementMeasurementPoint: fields[8] as Element,
-      country: (fields[9] as List)?.cast<CodeableConcept>(),
-      referenceStrength: (fields[10] as List)
-          ?.cast<MedicinalProductIngredient_ReferenceStrength>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductIngredient_Strength obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.presentation)
-      ..writeByte(4)
-      ..write(obj.presentationLowLimit)
-      ..writeByte(5)
-      ..write(obj.concentration)
-      ..writeByte(6)
-      ..write(obj.concentrationLowLimit)
-      ..writeByte(7)
-      ..write(obj.measurementPoint)
-      ..writeByte(8)
-      ..write(obj.elementMeasurementPoint)
-      ..writeByte(9)
-      ..write(obj.country)
-      ..writeByte(10)
-      ..write(obj.referenceStrength);
-  }
-}
-
-class MedicinalProductIngredient_ReferenceStrengthAdapter
-    extends TypeAdapter<MedicinalProductIngredient_ReferenceStrength> {
-  @override
-  MedicinalProductIngredient_ReferenceStrength read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_ReferenceStrength(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      substance: fields[3] as CodeableConcept,
-      strength: fields[4] as Ratio,
-      strengthLowLimit: fields[5] as Ratio,
-      measurementPoint: fields[6] as String,
-      elementMeasurementPoint: fields[7] as Element,
-      country: (fields[8] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductIngredient_ReferenceStrength obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.substance)
-      ..writeByte(4)
-      ..write(obj.strength)
-      ..writeByte(5)
-      ..write(obj.strengthLowLimit)
-      ..writeByte(6)
-      ..write(obj.measurementPoint)
-      ..writeByte(7)
-      ..write(obj.elementMeasurementPoint)
-      ..writeByte(8)
-      ..write(obj.country);
-  }
-}
-
-class MedicinalProductIngredient_SubstanceAdapter
-    extends TypeAdapter<MedicinalProductIngredient_Substance> {
-  @override
-  MedicinalProductIngredient_Substance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_Substance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      strength:
-          (fields[4] as List)?.cast<MedicinalProductIngredient_Strength>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductIngredient_Substance obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.strength);
-  }
 }

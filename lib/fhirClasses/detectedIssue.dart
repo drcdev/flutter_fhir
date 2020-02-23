@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -92,63 +91,34 @@ class DetectedIssue {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'DetectedIssue';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept code;
-  @HiveField(15)
   String severity;
-  @HiveField(16)
   Element elementSeverity;
-  @HiveField(17)
   Reference patient;
-  @HiveField(18)
   String identifiedDateTime;
-  @HiveField(19)
   Element elementIdentifiedDateTime;
-  @HiveField(20)
   Period identifiedPeriod;
-  @HiveField(21)
   Reference author;
-  @HiveField(22)
   List<Reference> implicated;
-  @HiveField(23)
   List<DetectedIssue_Evidence> evidence;
-  @HiveField(24)
   String detail;
-  @HiveField(25)
   Element elementDetail;
-  @HiveField(26)
   String reference;
-  @HiveField(27)
   Element elementReference;
-  @HiveField(28)
   List<DetectedIssue_Mitigation> mitigation;
 
   DetectedIssue({
@@ -208,15 +178,10 @@ class DetectedIssue_Evidence {
     return newDetectedIssue_Evidence;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<CodeableConcept> code;
-  @HiveField(4)
   List<Reference> detail;
 
   DetectedIssue_Evidence({
@@ -256,19 +221,12 @@ class DetectedIssue_Mitigation {
     return newDetectedIssue_Mitigation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept action;
-  @HiveField(4)
   DateTime date;
-  @HiveField(5)
   Element elementDate;
-  @HiveField(6)
   Reference author;
 
   DetectedIssue_Mitigation({
@@ -514,188 +472,4 @@ Map<String, dynamic> _$DetectedIssue_MitigationToJson(
   writeNotNull('elementDate', instance.elementDate?.toJson());
   writeNotNull('author', instance.author?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DetectedIssueAdapter extends TypeAdapter<DetectedIssue> {
-  @override
-  DetectedIssue read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DetectedIssue(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      code: fields[14] as CodeableConcept,
-      severity: fields[15] as String,
-      elementSeverity: fields[16] as Element,
-      patient: fields[17] as Reference,
-      identifiedDateTime: fields[18] as String,
-      elementIdentifiedDateTime: fields[19] as Element,
-      identifiedPeriod: fields[20] as Period,
-      author: fields[21] as Reference,
-      implicated: (fields[22] as List)?.cast<Reference>(),
-      evidence: (fields[23] as List)?.cast<DetectedIssue_Evidence>(),
-      detail: fields[24] as String,
-      elementDetail: fields[25] as Element,
-      reference: fields[26] as String,
-      elementReference: fields[27] as Element,
-      mitigation: (fields[28] as List)?.cast<DetectedIssue_Mitigation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DetectedIssue obj) {
-    writer
-      ..writeByte(29)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.code)
-      ..writeByte(15)
-      ..write(obj.severity)
-      ..writeByte(16)
-      ..write(obj.elementSeverity)
-      ..writeByte(17)
-      ..write(obj.patient)
-      ..writeByte(18)
-      ..write(obj.identifiedDateTime)
-      ..writeByte(19)
-      ..write(obj.elementIdentifiedDateTime)
-      ..writeByte(20)
-      ..write(obj.identifiedPeriod)
-      ..writeByte(21)
-      ..write(obj.author)
-      ..writeByte(22)
-      ..write(obj.implicated)
-      ..writeByte(23)
-      ..write(obj.evidence)
-      ..writeByte(24)
-      ..write(obj.detail)
-      ..writeByte(25)
-      ..write(obj.elementDetail)
-      ..writeByte(26)
-      ..write(obj.reference)
-      ..writeByte(27)
-      ..write(obj.elementReference)
-      ..writeByte(28)
-      ..write(obj.mitigation);
-  }
-}
-
-class DetectedIssue_EvidenceAdapter
-    extends TypeAdapter<DetectedIssue_Evidence> {
-  @override
-  DetectedIssue_Evidence read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DetectedIssue_Evidence(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: (fields[3] as List)?.cast<CodeableConcept>(),
-      detail: (fields[4] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DetectedIssue_Evidence obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.detail);
-  }
-}
-
-class DetectedIssue_MitigationAdapter
-    extends TypeAdapter<DetectedIssue_Mitigation> {
-  @override
-  DetectedIssue_Mitigation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DetectedIssue_Mitigation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      action: fields[3] as CodeableConcept,
-      date: fields[4] as DateTime,
-      elementDate: fields[5] as Element,
-      author: fields[6] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DetectedIssue_Mitigation obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.action)
-      ..writeByte(4)
-      ..write(obj.date)
-      ..writeByte(5)
-      ..write(obj.elementDate)
-      ..writeByte(6)
-      ..write(obj.author);
-  }
 }

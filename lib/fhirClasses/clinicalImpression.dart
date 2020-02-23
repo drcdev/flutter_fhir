@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -112,81 +111,43 @@ class ClinicalImpression {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'ClinicalImpression';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept statusReason;
-  @HiveField(15)
   CodeableConcept code;
-  @HiveField(16)
   String description;
-  @HiveField(17)
   Element elementDescription;
-  @HiveField(18)
   Reference subject;
-  @HiveField(19)
   Reference encounter;
-  @HiveField(20)
   String effectiveDateTime;
-  @HiveField(21)
   Element elementEffectiveDateTime;
-  @HiveField(22)
   Period effectivePeriod;
-  @HiveField(23)
   DateTime date;
-  @HiveField(24)
   Element elementDate;
-  @HiveField(25)
   Reference assessor;
-  @HiveField(26)
   Reference previous;
-  @HiveField(27)
   List<Reference> problem;
-  @HiveField(28)
   List<ClinicalImpression_Investigation> investigation;
-  @HiveField(29)
   List<String> protocol;
-  @HiveField(30)
   List<Element> elementProtocol;
-  @HiveField(31)
   String summary;
-  @HiveField(32)
   Element elementSummary;
-  @HiveField(33)
   List<ClinicalImpression_Finding> finding;
-  @HiveField(34)
   List<CodeableConcept> prognosisCodeableConcept;
-  @HiveField(35)
   List<Reference> prognosisReference;
-  @HiveField(36)
   List<Reference> supportingInfo;
-  @HiveField(37)
   List<Annotation> note;
 
   ClinicalImpression({
@@ -255,15 +216,10 @@ class ClinicalImpression_Investigation {
     return newClinicalImpression_Investigation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept code;
-  @HiveField(4)
   List<Reference> item;
 
   ClinicalImpression_Investigation({
@@ -305,19 +261,12 @@ class ClinicalImpression_Finding {
     return newClinicalImpression_Finding;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept itemCodeableConcept;
-  @HiveField(4)
   Reference itemReference;
-  @HiveField(5)
   String basis;
-  @HiveField(6)
   Element elementBasis;
 
   ClinicalImpression_Finding({
@@ -606,216 +555,4 @@ Map<String, dynamic> _$ClinicalImpression_FindingToJson(
   writeNotNull('basis', instance.basis);
   writeNotNull('elementBasis', instance.elementBasis?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ClinicalImpressionAdapter extends TypeAdapter<ClinicalImpression> {
-  @override
-  ClinicalImpression read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClinicalImpression(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      statusReason: fields[14] as CodeableConcept,
-      code: fields[15] as CodeableConcept,
-      description: fields[16] as String,
-      elementDescription: fields[17] as Element,
-      subject: fields[18] as Reference,
-      encounter: fields[19] as Reference,
-      effectiveDateTime: fields[20] as String,
-      elementEffectiveDateTime: fields[21] as Element,
-      effectivePeriod: fields[22] as Period,
-      date: fields[23] as DateTime,
-      elementDate: fields[24] as Element,
-      assessor: fields[25] as Reference,
-      previous: fields[26] as Reference,
-      problem: (fields[27] as List)?.cast<Reference>(),
-      investigation:
-          (fields[28] as List)?.cast<ClinicalImpression_Investigation>(),
-      protocol: (fields[29] as List)?.cast<String>(),
-      elementProtocol: (fields[30] as List)?.cast<Element>(),
-      summary: fields[31] as String,
-      elementSummary: fields[32] as Element,
-      finding: (fields[33] as List)?.cast<ClinicalImpression_Finding>(),
-      prognosisCodeableConcept: (fields[34] as List)?.cast<CodeableConcept>(),
-      prognosisReference: (fields[35] as List)?.cast<Reference>(),
-      supportingInfo: (fields[36] as List)?.cast<Reference>(),
-      note: (fields[37] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClinicalImpression obj) {
-    writer
-      ..writeByte(38)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.statusReason)
-      ..writeByte(15)
-      ..write(obj.code)
-      ..writeByte(16)
-      ..write(obj.description)
-      ..writeByte(17)
-      ..write(obj.elementDescription)
-      ..writeByte(18)
-      ..write(obj.subject)
-      ..writeByte(19)
-      ..write(obj.encounter)
-      ..writeByte(20)
-      ..write(obj.effectiveDateTime)
-      ..writeByte(21)
-      ..write(obj.elementEffectiveDateTime)
-      ..writeByte(22)
-      ..write(obj.effectivePeriod)
-      ..writeByte(23)
-      ..write(obj.date)
-      ..writeByte(24)
-      ..write(obj.elementDate)
-      ..writeByte(25)
-      ..write(obj.assessor)
-      ..writeByte(26)
-      ..write(obj.previous)
-      ..writeByte(27)
-      ..write(obj.problem)
-      ..writeByte(28)
-      ..write(obj.investigation)
-      ..writeByte(29)
-      ..write(obj.protocol)
-      ..writeByte(30)
-      ..write(obj.elementProtocol)
-      ..writeByte(31)
-      ..write(obj.summary)
-      ..writeByte(32)
-      ..write(obj.elementSummary)
-      ..writeByte(33)
-      ..write(obj.finding)
-      ..writeByte(34)
-      ..write(obj.prognosisCodeableConcept)
-      ..writeByte(35)
-      ..write(obj.prognosisReference)
-      ..writeByte(36)
-      ..write(obj.supportingInfo)
-      ..writeByte(37)
-      ..write(obj.note);
-  }
-}
-
-class ClinicalImpression_InvestigationAdapter
-    extends TypeAdapter<ClinicalImpression_Investigation> {
-  @override
-  ClinicalImpression_Investigation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClinicalImpression_Investigation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      item: (fields[4] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClinicalImpression_Investigation obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.item);
-  }
-}
-
-class ClinicalImpression_FindingAdapter
-    extends TypeAdapter<ClinicalImpression_Finding> {
-  @override
-  ClinicalImpression_Finding read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClinicalImpression_Finding(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemCodeableConcept: fields[3] as CodeableConcept,
-      itemReference: fields[4] as Reference,
-      basis: fields[5] as String,
-      elementBasis: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClinicalImpression_Finding obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.itemReference)
-      ..writeByte(5)
-      ..write(obj.basis)
-      ..writeByte(6)
-      ..write(obj.elementBasis);
-  }
 }

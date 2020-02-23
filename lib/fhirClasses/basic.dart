@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -67,39 +66,22 @@ class Basic {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Basic';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   CodeableConcept code;
-  @HiveField(13)
   Reference subject;
-  @HiveField(14)
   String created;
-  @HiveField(15)
   Element elementCreated;
-  @HiveField(16)
   Reference author;
 
   Basic({
@@ -213,78 +195,4 @@ Map<String, dynamic> _$BasicToJson(Basic instance) {
   writeNotNull('elementCreated', instance.elementCreated?.toJson());
   writeNotNull('author', instance.author?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class BasicAdapter extends TypeAdapter<Basic> {
-  @override
-  Basic read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Basic(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      code: fields[12] as CodeableConcept,
-      subject: fields[13] as Reference,
-      created: fields[14] as String,
-      elementCreated: fields[15] as Element,
-      author: fields[16] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Basic obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.code)
-      ..writeByte(13)
-      ..write(obj.subject)
-      ..writeByte(14)
-      ..write(obj.created)
-      ..writeByte(15)
-      ..write(obj.elementCreated)
-      ..writeByte(16)
-      ..write(obj.author);
-  }
 }

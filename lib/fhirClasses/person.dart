@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -84,53 +83,29 @@ class Person {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Person';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<HumanName> name;
-  @HiveField(13)
   List<ContactPoint> telecom;
-  @HiveField(14)
   String gender;
-  @HiveField(15)
   Element elementGender;
-  @HiveField(16)
   String birthDate;
-  @HiveField(17)
   Element elementBirthDate;
-  @HiveField(18)
   List<Address> address;
-  @HiveField(19)
   Attachment photo;
-  @HiveField(20)
   Reference managingOrganization;
-  @HiveField(21)
   bool active;
-  @HiveField(22)
   Element elementActive;
-  @HiveField(23)
   List<Person_Link> link;
 
   Person({
@@ -185,17 +160,11 @@ class Person_Link {
     return newPerson_Link;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Reference target;
-  @HiveField(4)
   String assurance;
-  @HiveField(5)
   Element elementAssurance;
 
   Person_Link({
@@ -369,135 +338,4 @@ Map<String, dynamic> _$Person_LinkToJson(Person_Link instance) {
   writeNotNull('assurance', instance.assurance);
   writeNotNull('elementAssurance', instance.elementAssurance?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class PersonAdapter extends TypeAdapter<Person> {
-  @override
-  Person read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Person(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      name: (fields[12] as List)?.cast<HumanName>(),
-      telecom: (fields[13] as List)?.cast<ContactPoint>(),
-      gender: fields[14] as String,
-      elementGender: fields[15] as Element,
-      birthDate: fields[16] as String,
-      elementBirthDate: fields[17] as Element,
-      address: (fields[18] as List)?.cast<Address>(),
-      photo: fields[19] as Attachment,
-      managingOrganization: fields[20] as Reference,
-      active: fields[21] as bool,
-      elementActive: fields[22] as Element,
-      link: (fields[23] as List)?.cast<Person_Link>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Person obj) {
-    writer
-      ..writeByte(24)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.name)
-      ..writeByte(13)
-      ..write(obj.telecom)
-      ..writeByte(14)
-      ..write(obj.gender)
-      ..writeByte(15)
-      ..write(obj.elementGender)
-      ..writeByte(16)
-      ..write(obj.birthDate)
-      ..writeByte(17)
-      ..write(obj.elementBirthDate)
-      ..writeByte(18)
-      ..write(obj.address)
-      ..writeByte(19)
-      ..write(obj.photo)
-      ..writeByte(20)
-      ..write(obj.managingOrganization)
-      ..writeByte(21)
-      ..write(obj.active)
-      ..writeByte(22)
-      ..write(obj.elementActive)
-      ..writeByte(23)
-      ..write(obj.link);
-  }
-}
-
-class Person_LinkAdapter extends TypeAdapter<Person_Link> {
-  @override
-  Person_Link read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Person_Link(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      target: fields[3] as Reference,
-      assurance: fields[4] as String,
-      elementAssurance: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Person_Link obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.target)
-      ..writeByte(4)
-      ..write(obj.assurance)
-      ..writeByte(5)
-      ..write(obj.elementAssurance);
-  }
 }

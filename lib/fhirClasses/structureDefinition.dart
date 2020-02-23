@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/elementDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -147,115 +146,60 @@ class StructureDefinition {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'StructureDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String status;
-  @HiveField(21)
   Element elementStatus;
-  @HiveField(22)
   bool experimental;
-  @HiveField(23)
   Element elementExperimental;
-  @HiveField(24)
   DateTime date;
-  @HiveField(25)
   Element elementDate;
-  @HiveField(26)
   String publisher;
-  @HiveField(27)
   Element elementPublisher;
-  @HiveField(28)
   List<ContactDetail> contact;
-  @HiveField(29)
   String description;
-  @HiveField(30)
   Element elementDescription;
-  @HiveField(31)
   List<UsageContext> useContext;
-  @HiveField(32)
   List<CodeableConcept> jurisdiction;
-  @HiveField(33)
   String purpose;
-  @HiveField(34)
   Element elementPurpose;
-  @HiveField(35)
   String copyright;
-  @HiveField(36)
   Element elementCopyright;
-  @HiveField(37)
   List<Coding> keyword;
-  @HiveField(38)
   String fhirVersion;
-  @HiveField(39)
   Element elementFhirVersion;
-  @HiveField(40)
   List<StructureDefinition_Mapping> mapping;
-  @HiveField(41)
   String kind;
-  @HiveField(42)
   Element elementKind;
-  @HiveField(43)
   bool abstract;
-  @HiveField(44)
   Element elementAbstract;
-  @HiveField(45)
   List<StructureDefinition_Context> context;
-  @HiveField(46)
   List<String> contextInvariant;
-  @HiveField(47)
   List<Element> elementContextInvariant;
-  @HiveField(48)
   String type;
-  @HiveField(49)
   Element elementType;
-  @HiveField(50)
   String baseDefinition;
-  @HiveField(51)
   String derivation;
-  @HiveField(52)
   Element elementDerivation;
-  @HiveField(53)
   StructureDefinition_Snapshot snapshot;
-  @HiveField(54)
   StructureDefinition_Differential differential;
 
   StructureDefinition({
@@ -353,27 +297,16 @@ class StructureDefinition_Mapping {
     return newStructureDefinition_Mapping;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String identity;
-  @HiveField(4)
   Element elementIdentity;
-  @HiveField(5)
   String uri;
-  @HiveField(6)
   Element elementUri;
-  @HiveField(7)
   String name;
-  @HiveField(8)
   Element elementName;
-  @HiveField(9)
   String comment;
-  @HiveField(10)
   Element elementComment;
 
   StructureDefinition_Mapping({
@@ -419,19 +352,12 @@ class StructureDefinition_Context {
     return newStructureDefinition_Context;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   String expression;
-  @HiveField(6)
   Element elementExpression;
 
   StructureDefinition_Context({
@@ -467,13 +393,9 @@ class StructureDefinition_Snapshot {
     return newStructureDefinition_Snapshot;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<ElementDefinition> element;
 
   StructureDefinition_Snapshot({
@@ -506,13 +428,9 @@ class StructureDefinition_Differential {
     return newStructureDefinition_Differential;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<ElementDefinition> element;
 
   StructureDefinition_Differential({
@@ -931,346 +849,4 @@ Map<String, dynamic> _$StructureDefinition_DifferentialToJson(
       instance.modifierExtension?.map((e) => e?.toJson())?.toList());
   writeNotNull('element', instance.element?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class StructureDefinitionAdapter extends TypeAdapter<StructureDefinition> {
-  @override
-  StructureDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      status: fields[20] as String,
-      elementStatus: fields[21] as Element,
-      experimental: fields[22] as bool,
-      elementExperimental: fields[23] as Element,
-      date: fields[24] as DateTime,
-      elementDate: fields[25] as Element,
-      publisher: fields[26] as String,
-      elementPublisher: fields[27] as Element,
-      contact: (fields[28] as List)?.cast<ContactDetail>(),
-      description: fields[29] as String,
-      elementDescription: fields[30] as Element,
-      useContext: (fields[31] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
-      purpose: fields[33] as String,
-      elementPurpose: fields[34] as Element,
-      copyright: fields[35] as String,
-      elementCopyright: fields[36] as Element,
-      keyword: (fields[37] as List)?.cast<Coding>(),
-      fhirVersion: fields[38] as String,
-      elementFhirVersion: fields[39] as Element,
-      mapping: (fields[40] as List)?.cast<StructureDefinition_Mapping>(),
-      kind: fields[41] as String,
-      elementKind: fields[42] as Element,
-      abstract: fields[43] as bool,
-      elementAbstract: fields[44] as Element,
-      context: (fields[45] as List)?.cast<StructureDefinition_Context>(),
-      contextInvariant: (fields[46] as List)?.cast<String>(),
-      elementContextInvariant: (fields[47] as List)?.cast<Element>(),
-      type: fields[48] as String,
-      elementType: fields[49] as Element,
-      baseDefinition: fields[50] as String,
-      derivation: fields[51] as String,
-      elementDerivation: fields[52] as Element,
-      snapshot: fields[53] as StructureDefinition_Snapshot,
-      differential: fields[54] as StructureDefinition_Differential,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition obj) {
-    writer
-      ..writeByte(55)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.status)
-      ..writeByte(21)
-      ..write(obj.elementStatus)
-      ..writeByte(22)
-      ..write(obj.experimental)
-      ..writeByte(23)
-      ..write(obj.elementExperimental)
-      ..writeByte(24)
-      ..write(obj.date)
-      ..writeByte(25)
-      ..write(obj.elementDate)
-      ..writeByte(26)
-      ..write(obj.publisher)
-      ..writeByte(27)
-      ..write(obj.elementPublisher)
-      ..writeByte(28)
-      ..write(obj.contact)
-      ..writeByte(29)
-      ..write(obj.description)
-      ..writeByte(30)
-      ..write(obj.elementDescription)
-      ..writeByte(31)
-      ..write(obj.useContext)
-      ..writeByte(32)
-      ..write(obj.jurisdiction)
-      ..writeByte(33)
-      ..write(obj.purpose)
-      ..writeByte(34)
-      ..write(obj.elementPurpose)
-      ..writeByte(35)
-      ..write(obj.copyright)
-      ..writeByte(36)
-      ..write(obj.elementCopyright)
-      ..writeByte(37)
-      ..write(obj.keyword)
-      ..writeByte(38)
-      ..write(obj.fhirVersion)
-      ..writeByte(39)
-      ..write(obj.elementFhirVersion)
-      ..writeByte(40)
-      ..write(obj.mapping)
-      ..writeByte(41)
-      ..write(obj.kind)
-      ..writeByte(42)
-      ..write(obj.elementKind)
-      ..writeByte(43)
-      ..write(obj.abstract)
-      ..writeByte(44)
-      ..write(obj.elementAbstract)
-      ..writeByte(45)
-      ..write(obj.context)
-      ..writeByte(46)
-      ..write(obj.contextInvariant)
-      ..writeByte(47)
-      ..write(obj.elementContextInvariant)
-      ..writeByte(48)
-      ..write(obj.type)
-      ..writeByte(49)
-      ..write(obj.elementType)
-      ..writeByte(50)
-      ..write(obj.baseDefinition)
-      ..writeByte(51)
-      ..write(obj.derivation)
-      ..writeByte(52)
-      ..write(obj.elementDerivation)
-      ..writeByte(53)
-      ..write(obj.snapshot)
-      ..writeByte(54)
-      ..write(obj.differential);
-  }
-}
-
-class StructureDefinition_MappingAdapter
-    extends TypeAdapter<StructureDefinition_Mapping> {
-  @override
-  StructureDefinition_Mapping read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Mapping(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identity: fields[3] as String,
-      elementIdentity: fields[4] as Element,
-      uri: fields[5] as String,
-      elementUri: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      comment: fields[9] as String,
-      elementComment: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Mapping obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identity)
-      ..writeByte(4)
-      ..write(obj.elementIdentity)
-      ..writeByte(5)
-      ..write(obj.uri)
-      ..writeByte(6)
-      ..write(obj.elementUri)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.comment)
-      ..writeByte(10)
-      ..write(obj.elementComment);
-  }
-}
-
-class StructureDefinition_ContextAdapter
-    extends TypeAdapter<StructureDefinition_Context> {
-  @override
-  StructureDefinition_Context read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Context(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      expression: fields[5] as String,
-      elementExpression: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Context obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.expression)
-      ..writeByte(6)
-      ..write(obj.elementExpression);
-  }
-}
-
-class StructureDefinition_SnapshotAdapter
-    extends TypeAdapter<StructureDefinition_Snapshot> {
-  @override
-  StructureDefinition_Snapshot read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Snapshot(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      element: (fields[3] as List)?.cast<ElementDefinition>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Snapshot obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.element);
-  }
-}
-
-class StructureDefinition_DifferentialAdapter
-    extends TypeAdapter<StructureDefinition_Differential> {
-  @override
-  StructureDefinition_Differential read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Differential(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      element: (fields[3] as List)?.cast<ElementDefinition>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Differential obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.element);
-  }
 }

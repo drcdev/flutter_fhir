@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -90,59 +89,32 @@ class Consent {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Consent';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept scope;
-  @HiveField(15)
   List<CodeableConcept> category;
-  @HiveField(16)
   Reference patient;
-  @HiveField(17)
   DateTime dateTime;
-  @HiveField(18)
   Element elementDateTime;
-  @HiveField(19)
   List<Reference> performer;
-  @HiveField(20)
   List<Reference> organization;
-  @HiveField(21)
   Attachment sourceAttachment;
-  @HiveField(22)
   Reference sourceReference;
-  @HiveField(23)
   List<Consent_Policy> policy;
-  @HiveField(24)
   CodeableConcept policyRule;
-  @HiveField(25)
   List<Consent_Verification> verification;
-  @HiveField(26)
   Consent_Provision provision;
 
   Consent({
@@ -203,19 +175,12 @@ class Consent_Policy {
     return newConsent_Policy;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String authority;
-  @HiveField(4)
   Element elementAuthority;
-  @HiveField(5)
   String uri;
-  @HiveField(6)
   Element elementUri;
 
   Consent_Policy({
@@ -258,21 +223,13 @@ class Consent_Verification {
     return newConsent_Verification;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool verified;
-  @HiveField(4)
   Element elementVerified;
-  @HiveField(5)
   Reference verifiedWith;
-  @HiveField(6)
   DateTime verificationDate;
-  @HiveField(7)
   Element elementVerificationDate;
 
   Consent_Verification({
@@ -330,35 +287,20 @@ class Consent_Provision {
     return newConsent_Provision;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   Period period;
-  @HiveField(6)
   List<Consent_Actor> actor;
-  @HiveField(7)
   List<CodeableConcept> action;
-  @HiveField(8)
   List<Coding> securityLabel;
-  @HiveField(9)
   List<Coding> purpose;
-  @HiveField(10)
   List<Coding> classs;
-  @HiveField(11)
   List<CodeableConcept> code;
-  @HiveField(12)
   Period dataPeriod;
-  @HiveField(13)
   List<Consent_Data> data;
-  @HiveField(14)
   List<Consent_Provision> provision;
 
   Consent_Provision({
@@ -403,15 +345,10 @@ class Consent_Actor {
     return newConsent_Actor;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept role;
-  @HiveField(4)
   Reference reference;
 
   Consent_Actor({
@@ -448,17 +385,11 @@ class Consent_Data {
     return newConsent_Data;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String meaning;
-  @HiveField(4)
   Element elementMeaning;
-  @HiveField(5)
   Reference reference;
 
   Consent_Data({
@@ -881,321 +812,4 @@ Map<String, dynamic> _$Consent_DataToJson(Consent_Data instance) {
   writeNotNull('elementMeaning', instance.elementMeaning?.toJson());
   writeNotNull('reference', instance.reference?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ConsentAdapter extends TypeAdapter<Consent> {
-  @override
-  Consent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      scope: fields[14] as CodeableConcept,
-      category: (fields[15] as List)?.cast<CodeableConcept>(),
-      patient: fields[16] as Reference,
-      dateTime: fields[17] as DateTime,
-      elementDateTime: fields[18] as Element,
-      performer: (fields[19] as List)?.cast<Reference>(),
-      organization: (fields[20] as List)?.cast<Reference>(),
-      sourceAttachment: fields[21] as Attachment,
-      sourceReference: fields[22] as Reference,
-      policy: (fields[23] as List)?.cast<Consent_Policy>(),
-      policyRule: fields[24] as CodeableConcept,
-      verification: (fields[25] as List)?.cast<Consent_Verification>(),
-      provision: fields[26] as Consent_Provision,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent obj) {
-    writer
-      ..writeByte(27)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.scope)
-      ..writeByte(15)
-      ..write(obj.category)
-      ..writeByte(16)
-      ..write(obj.patient)
-      ..writeByte(17)
-      ..write(obj.dateTime)
-      ..writeByte(18)
-      ..write(obj.elementDateTime)
-      ..writeByte(19)
-      ..write(obj.performer)
-      ..writeByte(20)
-      ..write(obj.organization)
-      ..writeByte(21)
-      ..write(obj.sourceAttachment)
-      ..writeByte(22)
-      ..write(obj.sourceReference)
-      ..writeByte(23)
-      ..write(obj.policy)
-      ..writeByte(24)
-      ..write(obj.policyRule)
-      ..writeByte(25)
-      ..write(obj.verification)
-      ..writeByte(26)
-      ..write(obj.provision);
-  }
-}
-
-class Consent_PolicyAdapter extends TypeAdapter<Consent_Policy> {
-  @override
-  Consent_Policy read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Policy(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      authority: fields[3] as String,
-      elementAuthority: fields[4] as Element,
-      uri: fields[5] as String,
-      elementUri: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Policy obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.authority)
-      ..writeByte(4)
-      ..write(obj.elementAuthority)
-      ..writeByte(5)
-      ..write(obj.uri)
-      ..writeByte(6)
-      ..write(obj.elementUri);
-  }
-}
-
-class Consent_VerificationAdapter extends TypeAdapter<Consent_Verification> {
-  @override
-  Consent_Verification read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Verification(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      verified: fields[3] as bool,
-      elementVerified: fields[4] as Element,
-      verifiedWith: fields[5] as Reference,
-      verificationDate: fields[6] as DateTime,
-      elementVerificationDate: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Verification obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.verified)
-      ..writeByte(4)
-      ..write(obj.elementVerified)
-      ..writeByte(5)
-      ..write(obj.verifiedWith)
-      ..writeByte(6)
-      ..write(obj.verificationDate)
-      ..writeByte(7)
-      ..write(obj.elementVerificationDate);
-  }
-}
-
-class Consent_ProvisionAdapter extends TypeAdapter<Consent_Provision> {
-  @override
-  Consent_Provision read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Provision(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      period: fields[5] as Period,
-      actor: (fields[6] as List)?.cast<Consent_Actor>(),
-      action: (fields[7] as List)?.cast<CodeableConcept>(),
-      securityLabel: (fields[8] as List)?.cast<Coding>(),
-      purpose: (fields[9] as List)?.cast<Coding>(),
-      classs: (fields[10] as List)?.cast<Coding>(),
-      code: (fields[11] as List)?.cast<CodeableConcept>(),
-      dataPeriod: fields[12] as Period,
-      data: (fields[13] as List)?.cast<Consent_Data>(),
-      provision: (fields[14] as List)?.cast<Consent_Provision>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Provision obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.period)
-      ..writeByte(6)
-      ..write(obj.actor)
-      ..writeByte(7)
-      ..write(obj.action)
-      ..writeByte(8)
-      ..write(obj.securityLabel)
-      ..writeByte(9)
-      ..write(obj.purpose)
-      ..writeByte(10)
-      ..write(obj.classs)
-      ..writeByte(11)
-      ..write(obj.code)
-      ..writeByte(12)
-      ..write(obj.dataPeriod)
-      ..writeByte(13)
-      ..write(obj.data)
-      ..writeByte(14)
-      ..write(obj.provision);
-  }
-}
-
-class Consent_ActorAdapter extends TypeAdapter<Consent_Actor> {
-  @override
-  Consent_Actor read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Actor(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      role: fields[3] as CodeableConcept,
-      reference: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Actor obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.role)
-      ..writeByte(4)
-      ..write(obj.reference);
-  }
-}
-
-class Consent_DataAdapter extends TypeAdapter<Consent_Data> {
-  @override
-  Consent_Data read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Data(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      meaning: fields[3] as String,
-      elementMeaning: fields[4] as Element,
-      reference: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Data obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.meaning)
-      ..writeByte(4)
-      ..write(obj.elementMeaning)
-      ..writeByte(5)
-      ..write(obj.reference);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -120,89 +119,47 @@ class Media {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'Media';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> basedOn;
-  @HiveField(13)
   List<Reference> partOf;
-  @HiveField(14)
   String status;
-  @HiveField(15)
   Element elementStatus;
-  @HiveField(16)
   CodeableConcept type;
-  @HiveField(17)
   CodeableConcept modality;
-  @HiveField(18)
   CodeableConcept view;
-  @HiveField(19)
   Reference subject;
-  @HiveField(20)
   Reference encounter;
-  @HiveField(21)
   String createdDateTime;
-  @HiveField(22)
   Element elementCreatedDateTime;
-  @HiveField(23)
   Period createdPeriod;
-  @HiveField(24)
   DateTime issued;
-  @HiveField(25)
   Element elementIssued;
-  @HiveField(26)
   Reference operator;
-  @HiveField(27)
   List<CodeableConcept> reasonCode;
-  @HiveField(28)
   CodeableConcept bodySite;
-  @HiveField(29)
   String deviceName;
-  @HiveField(30)
   Element elementDeviceName;
-  @HiveField(31)
   Reference device;
-  @HiveField(32)
   int height;
-  @HiveField(33)
   Element elementHeight;
-  @HiveField(34)
   int width;
-  @HiveField(35)
   Element elementWidth;
-  @HiveField(36)
   int frames;
-  @HiveField(37)
   Element elementFrames;
-  @HiveField(38)
   double duration;
-  @HiveField(39)
   Element elementDuration;
-  @HiveField(40)
   Attachment content;
-  @HiveField(41)
   List<Annotation> note;
 
   Media({
@@ -437,153 +394,4 @@ Map<String, dynamic> _$MediaToJson(Media instance) {
   writeNotNull('content', instance.content?.toJson());
   writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MediaAdapter extends TypeAdapter<Media> {
-  @override
-  Media read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Media(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      basedOn: (fields[12] as List)?.cast<Reference>(),
-      partOf: (fields[13] as List)?.cast<Reference>(),
-      status: fields[14] as String,
-      elementStatus: fields[15] as Element,
-      type: fields[16] as CodeableConcept,
-      modality: fields[17] as CodeableConcept,
-      view: fields[18] as CodeableConcept,
-      subject: fields[19] as Reference,
-      encounter: fields[20] as Reference,
-      createdDateTime: fields[21] as String,
-      elementCreatedDateTime: fields[22] as Element,
-      createdPeriod: fields[23] as Period,
-      issued: fields[24] as DateTime,
-      elementIssued: fields[25] as Element,
-      operator: fields[26] as Reference,
-      reasonCode: (fields[27] as List)?.cast<CodeableConcept>(),
-      bodySite: fields[28] as CodeableConcept,
-      deviceName: fields[29] as String,
-      elementDeviceName: fields[30] as Element,
-      device: fields[31] as Reference,
-      height: fields[32] as int,
-      elementHeight: fields[33] as Element,
-      width: fields[34] as int,
-      elementWidth: fields[35] as Element,
-      frames: fields[36] as int,
-      elementFrames: fields[37] as Element,
-      duration: fields[38] as double,
-      elementDuration: fields[39] as Element,
-      content: fields[40] as Attachment,
-      note: (fields[41] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Media obj) {
-    writer
-      ..writeByte(42)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.basedOn)
-      ..writeByte(13)
-      ..write(obj.partOf)
-      ..writeByte(14)
-      ..write(obj.status)
-      ..writeByte(15)
-      ..write(obj.elementStatus)
-      ..writeByte(16)
-      ..write(obj.type)
-      ..writeByte(17)
-      ..write(obj.modality)
-      ..writeByte(18)
-      ..write(obj.view)
-      ..writeByte(19)
-      ..write(obj.subject)
-      ..writeByte(20)
-      ..write(obj.encounter)
-      ..writeByte(21)
-      ..write(obj.createdDateTime)
-      ..writeByte(22)
-      ..write(obj.elementCreatedDateTime)
-      ..writeByte(23)
-      ..write(obj.createdPeriod)
-      ..writeByte(24)
-      ..write(obj.issued)
-      ..writeByte(25)
-      ..write(obj.elementIssued)
-      ..writeByte(26)
-      ..write(obj.operator)
-      ..writeByte(27)
-      ..write(obj.reasonCode)
-      ..writeByte(28)
-      ..write(obj.bodySite)
-      ..writeByte(29)
-      ..write(obj.deviceName)
-      ..writeByte(30)
-      ..write(obj.elementDeviceName)
-      ..writeByte(31)
-      ..write(obj.device)
-      ..writeByte(32)
-      ..write(obj.height)
-      ..writeByte(33)
-      ..write(obj.elementHeight)
-      ..writeByte(34)
-      ..write(obj.width)
-      ..writeByte(35)
-      ..write(obj.elementWidth)
-      ..writeByte(36)
-      ..write(obj.frames)
-      ..writeByte(37)
-      ..write(obj.elementFrames)
-      ..writeByte(38)
-      ..write(obj.duration)
-      ..writeByte(39)
-      ..write(obj.elementDuration)
-      ..writeByte(40)
-      ..write(obj.content)
-      ..writeByte(41)
-      ..write(obj.note);
-  }
 }

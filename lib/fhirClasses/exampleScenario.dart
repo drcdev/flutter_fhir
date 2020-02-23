@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -108,79 +107,42 @@ class ExampleScenario {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'ExampleScenario';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String status;
-  @HiveField(19)
   Element elementStatus;
-  @HiveField(20)
   bool experimental;
-  @HiveField(21)
   Element elementExperimental;
-  @HiveField(22)
   DateTime date;
-  @HiveField(23)
   Element elementDate;
-  @HiveField(24)
   String publisher;
-  @HiveField(25)
   Element elementPublisher;
-  @HiveField(26)
   List<ContactDetail> contact;
-  @HiveField(27)
   List<UsageContext> useContext;
-  @HiveField(28)
   List<CodeableConcept> jurisdiction;
-  @HiveField(29)
   String copyright;
-  @HiveField(30)
   Element elementCopyright;
-  @HiveField(31)
   String purpose;
-  @HiveField(32)
   Element elementPurpose;
-  @HiveField(33)
   List<ExampleScenario_Actor> actor;
-  @HiveField(34)
   List<ExampleScenario_Instance> instance;
-  @HiveField(35)
   List<ExampleScenario_Process> process;
-  @HiveField(36)
   List<String> workflow;
 
   ExampleScenario({
@@ -259,27 +221,16 @@ class ExampleScenario_Actor {
     return newExampleScenario_Actor;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String actorId;
-  @HiveField(4)
   Element elementActorId;
-  @HiveField(5)
   String type;
-  @HiveField(6)
   Element elementType;
-  @HiveField(7)
   String name;
-  @HiveField(8)
   Element elementName;
-  @HiveField(9)
   String description;
-  @HiveField(10)
   Element elementDescription;
 
   ExampleScenario_Actor({
@@ -337,31 +288,18 @@ class ExampleScenario_Instance {
     return newExampleScenario_Instance;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String resourceId;
-  @HiveField(4)
   Element elementResourceId;
-  @HiveField(5)
   String resourceType = 'ExampleScenario_Instance';
-  @HiveField(6)
   Element elementResourceType;
-  @HiveField(7)
   String name;
-  @HiveField(8)
   Element elementName;
-  @HiveField(9)
   String description;
-  @HiveField(10)
   Element elementDescription;
-  @HiveField(11)
   List<ExampleScenario_Version> version;
-  @HiveField(12)
   List<ExampleScenario_ContainedInstance> containedInstance;
 
   ExampleScenario_Instance({
@@ -409,19 +347,12 @@ class ExampleScenario_Version {
     return newExampleScenario_Version;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String versionId;
-  @HiveField(4)
   Element elementVersionId;
-  @HiveField(5)
   String description;
-  @HiveField(6)
   Element elementDescription;
 
   ExampleScenario_Version({
@@ -463,19 +394,12 @@ class ExampleScenario_ContainedInstance {
     return newExampleScenario_ContainedInstance;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String resourceId;
-  @HiveField(4)
   Element elementResourceId;
-  @HiveField(5)
   String versionId;
-  @HiveField(6)
   Element elementVersionId;
 
   ExampleScenario_ContainedInstance({
@@ -529,29 +453,17 @@ class ExampleScenario_Process {
     return newExampleScenario_Process;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String title;
-  @HiveField(4)
   Element elementTitle;
-  @HiveField(5)
   String description;
-  @HiveField(6)
   Element elementDescription;
-  @HiveField(7)
   String preConditions;
-  @HiveField(8)
   Element elementPreConditions;
-  @HiveField(9)
   String postConditions;
-  @HiveField(10)
   Element elementPostConditions;
-  @HiveField(11)
   List<ExampleScenario_Step> step;
 
   ExampleScenario_Process({
@@ -599,21 +511,13 @@ class ExampleScenario_Step {
     return newExampleScenario_Step;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<ExampleScenario_Process> process;
-  @HiveField(4)
   bool pause;
-  @HiveField(5)
   Element elementPause;
-  @HiveField(6)
   ExampleScenario_Operation operation;
-  @HiveField(7)
   List<ExampleScenario_Alternative> alternative;
 
   ExampleScenario_Step({
@@ -684,47 +588,26 @@ class ExampleScenario_Operation {
     return newExampleScenario_Operation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String number;
-  @HiveField(4)
   Element elementNumber;
-  @HiveField(5)
   String type;
-  @HiveField(6)
   Element elementType;
-  @HiveField(7)
   String name;
-  @HiveField(8)
   Element elementName;
-  @HiveField(9)
   String initiator;
-  @HiveField(10)
   Element elementInitiator;
-  @HiveField(11)
   String receiver;
-  @HiveField(12)
   Element elementReceiver;
-  @HiveField(13)
   String description;
-  @HiveField(14)
   Element elementDescription;
-  @HiveField(15)
   bool initiatorActive;
-  @HiveField(16)
   Element elementInitiatorActive;
-  @HiveField(17)
   bool receiverActive;
-  @HiveField(18)
   Element elementReceiverActive;
-  @HiveField(19)
   ExampleScenario_ContainedInstance request;
-  @HiveField(20)
   ExampleScenario_ContainedInstance response;
 
   ExampleScenario_Operation({
@@ -782,21 +665,13 @@ class ExampleScenario_Alternative {
     return newExampleScenario_Alternative;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String title;
-  @HiveField(4)
   Element elementTitle;
-  @HiveField(5)
   String description;
-  @HiveField(6)
   Element elementDescription;
-  @HiveField(7)
   List<ExampleScenario_Step> step;
 
   ExampleScenario_Alternative({
@@ -1464,550 +1339,4 @@ Map<String, dynamic> _$ExampleScenario_AlternativeToJson(
   writeNotNull('elementDescription', instance.elementDescription?.toJson());
   writeNotNull('step', instance.step?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ExampleScenarioAdapter extends TypeAdapter<ExampleScenario> {
-  @override
-  ExampleScenario read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      status: fields[18] as String,
-      elementStatus: fields[19] as Element,
-      experimental: fields[20] as bool,
-      elementExperimental: fields[21] as Element,
-      date: fields[22] as DateTime,
-      elementDate: fields[23] as Element,
-      publisher: fields[24] as String,
-      elementPublisher: fields[25] as Element,
-      contact: (fields[26] as List)?.cast<ContactDetail>(),
-      useContext: (fields[27] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[28] as List)?.cast<CodeableConcept>(),
-      copyright: fields[29] as String,
-      elementCopyright: fields[30] as Element,
-      purpose: fields[31] as String,
-      elementPurpose: fields[32] as Element,
-      actor: (fields[33] as List)?.cast<ExampleScenario_Actor>(),
-      instance: (fields[34] as List)?.cast<ExampleScenario_Instance>(),
-      process: (fields[35] as List)?.cast<ExampleScenario_Process>(),
-      workflow: (fields[36] as List)?.cast<String>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario obj) {
-    writer
-      ..writeByte(37)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.status)
-      ..writeByte(19)
-      ..write(obj.elementStatus)
-      ..writeByte(20)
-      ..write(obj.experimental)
-      ..writeByte(21)
-      ..write(obj.elementExperimental)
-      ..writeByte(22)
-      ..write(obj.date)
-      ..writeByte(23)
-      ..write(obj.elementDate)
-      ..writeByte(24)
-      ..write(obj.publisher)
-      ..writeByte(25)
-      ..write(obj.elementPublisher)
-      ..writeByte(26)
-      ..write(obj.contact)
-      ..writeByte(27)
-      ..write(obj.useContext)
-      ..writeByte(28)
-      ..write(obj.jurisdiction)
-      ..writeByte(29)
-      ..write(obj.copyright)
-      ..writeByte(30)
-      ..write(obj.elementCopyright)
-      ..writeByte(31)
-      ..write(obj.purpose)
-      ..writeByte(32)
-      ..write(obj.elementPurpose)
-      ..writeByte(33)
-      ..write(obj.actor)
-      ..writeByte(34)
-      ..write(obj.instance)
-      ..writeByte(35)
-      ..write(obj.process)
-      ..writeByte(36)
-      ..write(obj.workflow);
-  }
-}
-
-class ExampleScenario_ActorAdapter extends TypeAdapter<ExampleScenario_Actor> {
-  @override
-  ExampleScenario_Actor read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Actor(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      actorId: fields[3] as String,
-      elementActorId: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      description: fields[9] as String,
-      elementDescription: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Actor obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.actorId)
-      ..writeByte(4)
-      ..write(obj.elementActorId)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.description)
-      ..writeByte(10)
-      ..write(obj.elementDescription);
-  }
-}
-
-class ExampleScenario_InstanceAdapter
-    extends TypeAdapter<ExampleScenario_Instance> {
-  @override
-  ExampleScenario_Instance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Instance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      resourceId: fields[3] as String,
-      elementResourceId: fields[4] as Element,
-      resourceType: fields[5] as String,
-      elementResourceType: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      description: fields[9] as String,
-      elementDescription: fields[10] as Element,
-      version: (fields[11] as List)?.cast<ExampleScenario_Version>(),
-      containedInstance:
-          (fields[12] as List)?.cast<ExampleScenario_ContainedInstance>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Instance obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.resourceId)
-      ..writeByte(4)
-      ..write(obj.elementResourceId)
-      ..writeByte(5)
-      ..write(obj.resourceType)
-      ..writeByte(6)
-      ..write(obj.elementResourceType)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.description)
-      ..writeByte(10)
-      ..write(obj.elementDescription)
-      ..writeByte(11)
-      ..write(obj.version)
-      ..writeByte(12)
-      ..write(obj.containedInstance);
-  }
-}
-
-class ExampleScenario_VersionAdapter
-    extends TypeAdapter<ExampleScenario_Version> {
-  @override
-  ExampleScenario_Version read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Version(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      versionId: fields[3] as String,
-      elementVersionId: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Version obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.versionId)
-      ..writeByte(4)
-      ..write(obj.elementVersionId)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription);
-  }
-}
-
-class ExampleScenario_ContainedInstanceAdapter
-    extends TypeAdapter<ExampleScenario_ContainedInstance> {
-  @override
-  ExampleScenario_ContainedInstance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_ContainedInstance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      resourceId: fields[3] as String,
-      elementResourceId: fields[4] as Element,
-      versionId: fields[5] as String,
-      elementVersionId: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_ContainedInstance obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.resourceId)
-      ..writeByte(4)
-      ..write(obj.elementResourceId)
-      ..writeByte(5)
-      ..write(obj.versionId)
-      ..writeByte(6)
-      ..write(obj.elementVersionId);
-  }
-}
-
-class ExampleScenario_ProcessAdapter
-    extends TypeAdapter<ExampleScenario_Process> {
-  @override
-  ExampleScenario_Process read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Process(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      title: fields[3] as String,
-      elementTitle: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      preConditions: fields[7] as String,
-      elementPreConditions: fields[8] as Element,
-      postConditions: fields[9] as String,
-      elementPostConditions: fields[10] as Element,
-      step: (fields[11] as List)?.cast<ExampleScenario_Step>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Process obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.title)
-      ..writeByte(4)
-      ..write(obj.elementTitle)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.preConditions)
-      ..writeByte(8)
-      ..write(obj.elementPreConditions)
-      ..writeByte(9)
-      ..write(obj.postConditions)
-      ..writeByte(10)
-      ..write(obj.elementPostConditions)
-      ..writeByte(11)
-      ..write(obj.step);
-  }
-}
-
-class ExampleScenario_StepAdapter extends TypeAdapter<ExampleScenario_Step> {
-  @override
-  ExampleScenario_Step read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Step(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      process: (fields[3] as List)?.cast<ExampleScenario_Process>(),
-      pause: fields[4] as bool,
-      elementPause: fields[5] as Element,
-      operation: fields[6] as ExampleScenario_Operation,
-      alternative: (fields[7] as List)?.cast<ExampleScenario_Alternative>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Step obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.process)
-      ..writeByte(4)
-      ..write(obj.pause)
-      ..writeByte(5)
-      ..write(obj.elementPause)
-      ..writeByte(6)
-      ..write(obj.operation)
-      ..writeByte(7)
-      ..write(obj.alternative);
-  }
-}
-
-class ExampleScenario_OperationAdapter
-    extends TypeAdapter<ExampleScenario_Operation> {
-  @override
-  ExampleScenario_Operation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Operation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      number: fields[3] as String,
-      elementNumber: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      initiator: fields[9] as String,
-      elementInitiator: fields[10] as Element,
-      receiver: fields[11] as String,
-      elementReceiver: fields[12] as Element,
-      description: fields[13] as String,
-      elementDescription: fields[14] as Element,
-      initiatorActive: fields[15] as bool,
-      elementInitiatorActive: fields[16] as Element,
-      receiverActive: fields[17] as bool,
-      elementReceiverActive: fields[18] as Element,
-      request: fields[19] as ExampleScenario_ContainedInstance,
-      response: fields[20] as ExampleScenario_ContainedInstance,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Operation obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.number)
-      ..writeByte(4)
-      ..write(obj.elementNumber)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.initiator)
-      ..writeByte(10)
-      ..write(obj.elementInitiator)
-      ..writeByte(11)
-      ..write(obj.receiver)
-      ..writeByte(12)
-      ..write(obj.elementReceiver)
-      ..writeByte(13)
-      ..write(obj.description)
-      ..writeByte(14)
-      ..write(obj.elementDescription)
-      ..writeByte(15)
-      ..write(obj.initiatorActive)
-      ..writeByte(16)
-      ..write(obj.elementInitiatorActive)
-      ..writeByte(17)
-      ..write(obj.receiverActive)
-      ..writeByte(18)
-      ..write(obj.elementReceiverActive)
-      ..writeByte(19)
-      ..write(obj.request)
-      ..writeByte(20)
-      ..write(obj.response);
-  }
-}
-
-class ExampleScenario_AlternativeAdapter
-    extends TypeAdapter<ExampleScenario_Alternative> {
-  @override
-  ExampleScenario_Alternative read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Alternative(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      title: fields[3] as String,
-      elementTitle: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      step: (fields[7] as List)?.cast<ExampleScenario_Step>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Alternative obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.title)
-      ..writeByte(4)
-      ..write(obj.elementTitle)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.step);
-  }
 }

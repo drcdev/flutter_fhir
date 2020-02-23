@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -33,23 +32,14 @@ class Reference {
     return newReference;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String reference;
-  @HiveField(3)
   Element elementReference;
-  @HiveField(4)
   String type;
-  @HiveField(5)
   Element elementType;
-  @HiveField(6)
   Identifier identifier;
-  @HiveField(7)
   String display;
-  @HiveField(8)
   Element elementDisplay;
 
   Reference({
@@ -119,54 +109,4 @@ Map<String, dynamic> _$ReferenceToJson(Reference instance) {
   writeNotNull('display', instance.display);
   writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ReferenceAdapter extends TypeAdapter<Reference> {
-  @override
-  Reference read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Reference(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      reference: fields[2] as String,
-      elementReference: fields[3] as Element,
-      type: fields[4] as String,
-      elementType: fields[5] as Element,
-      identifier: fields[6] as Identifier,
-      display: fields[7] as String,
-      elementDisplay: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Reference obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.reference)
-      ..writeByte(3)
-      ..write(obj.elementReference)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.elementType)
-      ..writeByte(6)
-      ..write(obj.identifier)
-      ..writeByte(7)
-      ..write(obj.display)
-      ..writeByte(8)
-      ..write(obj.elementDisplay);
-  }
 }

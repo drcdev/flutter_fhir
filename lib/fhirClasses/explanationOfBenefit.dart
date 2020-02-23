@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -162,127 +161,66 @@ class ExplanationOfBenefit {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'ExplanationOfBenefit';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   CodeableConcept subType;
-  @HiveField(16)
   String use;
-  @HiveField(17)
   Element elementUse;
-  @HiveField(18)
   Reference patient;
-  @HiveField(19)
   Period billablePeriod;
-  @HiveField(20)
   DateTime created;
-  @HiveField(21)
   Element elementCreated;
-  @HiveField(22)
   Reference enterer;
-  @HiveField(23)
   Reference insurer;
-  @HiveField(24)
   Reference provider;
-  @HiveField(25)
   CodeableConcept priority;
-  @HiveField(26)
   CodeableConcept fundsReserveRequested;
-  @HiveField(27)
   CodeableConcept fundsReserve;
-  @HiveField(28)
   List<ExplanationOfBenefit_Related> related;
-  @HiveField(29)
   Reference prescription;
-  @HiveField(30)
   Reference originalPrescription;
-  @HiveField(31)
   ExplanationOfBenefit_Payee payee;
-  @HiveField(32)
   Reference referral;
-  @HiveField(33)
   Reference facility;
-  @HiveField(34)
   Reference claim;
-  @HiveField(35)
   Reference claimResponse;
-  @HiveField(36)
   String outcome;
-  @HiveField(37)
   Element elementOutcome;
-  @HiveField(38)
   String disposition;
-  @HiveField(39)
   Element elementDisposition;
-  @HiveField(40)
   List<String> preAuthRef;
-  @HiveField(41)
   List<Element> elementPreAuthRef;
-  @HiveField(42)
   List<Period> preAuthRefPeriod;
-  @HiveField(43)
   List<ExplanationOfBenefit_CareTeam> careTeam;
-  @HiveField(44)
   List<ExplanationOfBenefit_SupportingInfo> supportingInfo;
-  @HiveField(45)
   List<ExplanationOfBenefit_Diagnosis> diagnosis;
-  @HiveField(46)
   List<ExplanationOfBenefit_Procedure> procedure;
-  @HiveField(47)
   int precedence;
-  @HiveField(48)
   Element elementPrecedence;
-  @HiveField(49)
   List<ExplanationOfBenefit_Insurance> insurance;
-  @HiveField(50)
   ExplanationOfBenefit_Accident accident;
-  @HiveField(51)
   List<ExplanationOfBenefit_Item> item;
-  @HiveField(52)
   List<ExplanationOfBenefit_AddItem> addItem;
-  @HiveField(53)
   List<ExplanationOfBenefit_Adjudication> adjudication;
-  @HiveField(54)
   List<ExplanationOfBenefit_Total> total;
-  @HiveField(55)
   ExplanationOfBenefit_Payment payment;
-  @HiveField(56)
   CodeableConcept formCode;
-  @HiveField(57)
   Attachment form;
-  @HiveField(58)
   List<ExplanationOfBenefit_ProcessNote> processNote;
-  @HiveField(59)
   Period benefitPeriod;
-  @HiveField(60)
   List<ExplanationOfBenefit_BenefitBalance> benefitBalance;
 
   ExplanationOfBenefit({
@@ -376,17 +314,11 @@ class ExplanationOfBenefit_Related {
     return newExplanationOfBenefit_Related;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Reference claim;
-  @HiveField(4)
   CodeableConcept relationship;
-  @HiveField(5)
   Identifier reference;
 
   ExplanationOfBenefit_Related({
@@ -423,15 +355,10 @@ class ExplanationOfBenefit_Payee {
     return newExplanationOfBenefit_Payee;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   Reference party;
 
   ExplanationOfBenefit_Payee({
@@ -477,25 +404,15 @@ class ExplanationOfBenefit_CareTeam {
     return newExplanationOfBenefit_CareTeam;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   Reference provider;
-  @HiveField(6)
   bool responsible;
-  @HiveField(7)
   Element elementResponsible;
-  @HiveField(8)
   CodeableConcept role;
-  @HiveField(9)
   CodeableConcept qualification;
 
   ExplanationOfBenefit_CareTeam({
@@ -562,41 +479,23 @@ class ExplanationOfBenefit_SupportingInfo {
     return newExplanationOfBenefit_SupportingInfo;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   CodeableConcept category;
-  @HiveField(6)
   CodeableConcept code;
-  @HiveField(7)
   String timingDate;
-  @HiveField(8)
   Element elementTimingDate;
-  @HiveField(9)
   Period timingPeriod;
-  @HiveField(10)
   bool valueBoolean;
-  @HiveField(11)
   Element elementValueBoolean;
-  @HiveField(12)
   String valueString;
-  @HiveField(13)
   Element elementValueString;
-  @HiveField(14)
   Quantity valueQuantity;
-  @HiveField(15)
   Attachment valueAttachment;
-  @HiveField(16)
   Reference valueReference;
-  @HiveField(17)
   Coding reason;
 
   ExplanationOfBenefit_SupportingInfo({
@@ -657,25 +556,15 @@ class ExplanationOfBenefit_Diagnosis {
     return newExplanationOfBenefit_Diagnosis;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   CodeableConcept diagnosisCodeableConcept;
-  @HiveField(6)
   Reference diagnosisReference;
-  @HiveField(7)
   List<CodeableConcept> type;
-  @HiveField(8)
   CodeableConcept onAdmission;
-  @HiveField(9)
   CodeableConcept packageCode;
 
   ExplanationOfBenefit_Diagnosis({
@@ -728,27 +617,16 @@ class ExplanationOfBenefit_Procedure {
     return newExplanationOfBenefit_Procedure;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   List<CodeableConcept> type;
-  @HiveField(6)
   DateTime date;
-  @HiveField(7)
   Element elementDate;
-  @HiveField(8)
   CodeableConcept procedureCodeableConcept;
-  @HiveField(9)
   Reference procedureReference;
-  @HiveField(10)
   List<Reference> udi;
 
   ExplanationOfBenefit_Procedure({
@@ -796,21 +674,13 @@ class ExplanationOfBenefit_Insurance {
     return newExplanationOfBenefit_Insurance;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   bool focal;
-  @HiveField(4)
   Element elementFocal;
-  @HiveField(5)
   Reference coverage;
-  @HiveField(6)
   List<String> preAuthRef;
-  @HiveField(7)
   List<Element> elementPreAuthRef;
 
   ExplanationOfBenefit_Insurance({
@@ -855,21 +725,13 @@ class ExplanationOfBenefit_Accident {
     return newExplanationOfBenefit_Accident;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String date;
-  @HiveField(4)
   Element elementDate;
-  @HiveField(5)
   CodeableConcept type;
-  @HiveField(6)
   Address locationAddress;
-  @HiveField(7)
   Reference locationReference;
 
   ExplanationOfBenefit_Accident({
@@ -972,79 +834,42 @@ class ExplanationOfBenefit_Item {
     return newExplanationOfBenefit_Item;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   List<int> careTeamSequence;
-  @HiveField(6)
   List<Element> elementCareTeamSequence;
-  @HiveField(7)
   List<int> diagnosisSequence;
-  @HiveField(8)
   List<Element> elementDiagnosisSequence;
-  @HiveField(9)
   List<int> procedureSequence;
-  @HiveField(10)
   List<Element> elementProcedureSequence;
-  @HiveField(11)
   List<int> informationSequence;
-  @HiveField(12)
   List<Element> elementInformationSequence;
-  @HiveField(13)
   CodeableConcept revenue;
-  @HiveField(14)
   CodeableConcept category;
-  @HiveField(15)
   CodeableConcept productOrService;
-  @HiveField(16)
   List<CodeableConcept> modifier;
-  @HiveField(17)
   List<CodeableConcept> programCode;
-  @HiveField(18)
   String servicedDate;
-  @HiveField(19)
   Element elementServicedDate;
-  @HiveField(20)
   Period servicedPeriod;
-  @HiveField(21)
   CodeableConcept locationCodeableConcept;
-  @HiveField(22)
   Address locationAddress;
-  @HiveField(23)
   Reference locationReference;
-  @HiveField(24)
   Quantity quantity;
-  @HiveField(25)
   Money unitPrice;
-  @HiveField(26)
   double factor;
-  @HiveField(27)
   Element elementFactor;
-  @HiveField(28)
   Money net;
-  @HiveField(29)
   List<Reference> udi;
-  @HiveField(30)
   CodeableConcept bodySite;
-  @HiveField(31)
   List<CodeableConcept> subSite;
-  @HiveField(32)
   List<Reference> encounter;
-  @HiveField(33)
   List<int> noteNumber;
-  @HiveField(34)
   List<Element> elementNoteNumber;
-  @HiveField(35)
   List<ExplanationOfBenefit_Adjudication> adjudication;
-  @HiveField(36)
   List<ExplanationOfBenefit_Detail> detail;
 
   ExplanationOfBenefit_Item({
@@ -1118,21 +943,13 @@ class ExplanationOfBenefit_Adjudication {
     return newExplanationOfBenefit_Adjudication;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   CodeableConcept reason;
-  @HiveField(5)
   Money amount;
-  @HiveField(6)
   double value;
-  @HiveField(7)
   Element elementValue;
 
   ExplanationOfBenefit_Adjudication({
@@ -1203,45 +1020,25 @@ class ExplanationOfBenefit_Detail {
     return newExplanationOfBenefit_Detail;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   CodeableConcept revenue;
-  @HiveField(6)
   CodeableConcept category;
-  @HiveField(7)
   CodeableConcept productOrService;
-  @HiveField(8)
   List<CodeableConcept> modifier;
-  @HiveField(9)
   List<CodeableConcept> programCode;
-  @HiveField(10)
   Quantity quantity;
-  @HiveField(11)
   Money unitPrice;
-  @HiveField(12)
   double factor;
-  @HiveField(13)
   Element elementFactor;
-  @HiveField(14)
   Money net;
-  @HiveField(15)
   List<Reference> udi;
-  @HiveField(16)
   List<int> noteNumber;
-  @HiveField(17)
   List<Element> elementNoteNumber;
-  @HiveField(18)
   List<ExplanationOfBenefit_Adjudication> adjudication;
-  @HiveField(19)
   List<ExplanationOfBenefit_SubDetail> subDetail;
 
   ExplanationOfBenefit_Detail({
@@ -1320,43 +1117,24 @@ class ExplanationOfBenefit_SubDetail {
     return newExplanationOfBenefit_SubDetail;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   CodeableConcept revenue;
-  @HiveField(6)
   CodeableConcept category;
-  @HiveField(7)
   CodeableConcept productOrService;
-  @HiveField(8)
   List<CodeableConcept> modifier;
-  @HiveField(9)
   List<CodeableConcept> programCode;
-  @HiveField(10)
   Quantity quantity;
-  @HiveField(11)
   Money unitPrice;
-  @HiveField(12)
   double factor;
-  @HiveField(13)
   Element elementFactor;
-  @HiveField(14)
   Money net;
-  @HiveField(15)
   List<Reference> udi;
-  @HiveField(16)
   List<int> noteNumber;
-  @HiveField(17)
   List<Element> elementNoteNumber;
-  @HiveField(18)
   List<ExplanationOfBenefit_Adjudication> adjudication;
 
   ExplanationOfBenefit_SubDetail({
@@ -1456,65 +1234,35 @@ class ExplanationOfBenefit_AddItem {
     return newExplanationOfBenefit_AddItem;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<int> itemSequence;
-  @HiveField(4)
   List<Element> elementItemSequence;
-  @HiveField(5)
   List<int> detailSequence;
-  @HiveField(6)
   List<Element> elementDetailSequence;
-  @HiveField(7)
   List<int> subDetailSequence;
-  @HiveField(8)
   List<Element> elementSubDetailSequence;
-  @HiveField(9)
   List<Reference> provider;
-  @HiveField(10)
   CodeableConcept productOrService;
-  @HiveField(11)
   List<CodeableConcept> modifier;
-  @HiveField(12)
   List<CodeableConcept> programCode;
-  @HiveField(13)
   String servicedDate;
-  @HiveField(14)
   Element elementServicedDate;
-  @HiveField(15)
   Period servicedPeriod;
-  @HiveField(16)
   CodeableConcept locationCodeableConcept;
-  @HiveField(17)
   Address locationAddress;
-  @HiveField(18)
   Reference locationReference;
-  @HiveField(19)
   Quantity quantity;
-  @HiveField(20)
   Money unitPrice;
-  @HiveField(21)
   double factor;
-  @HiveField(22)
   Element elementFactor;
-  @HiveField(23)
   Money net;
-  @HiveField(24)
   CodeableConcept bodySite;
-  @HiveField(25)
   List<CodeableConcept> subSite;
-  @HiveField(26)
   List<int> noteNumber;
-  @HiveField(27)
   List<Element> elementNoteNumber;
-  @HiveField(28)
   List<ExplanationOfBenefit_Adjudication> adjudication;
-  @HiveField(29)
   List<ExplanationOfBenefit_Detail1> detail;
 
   ExplanationOfBenefit_AddItem({
@@ -1593,33 +1341,19 @@ class ExplanationOfBenefit_Detail1 {
     return newExplanationOfBenefit_Detail1;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept productOrService;
-  @HiveField(4)
   List<CodeableConcept> modifier;
-  @HiveField(5)
   Quantity quantity;
-  @HiveField(6)
   Money unitPrice;
-  @HiveField(7)
   double factor;
-  @HiveField(8)
   Element elementFactor;
-  @HiveField(9)
   Money net;
-  @HiveField(10)
   List<int> noteNumber;
-  @HiveField(11)
   List<Element> elementNoteNumber;
-  @HiveField(12)
   List<ExplanationOfBenefit_Adjudication> adjudication;
-  @HiveField(13)
   List<ExplanationOfBenefit_SubDetail1> subDetail;
 
   ExplanationOfBenefit_Detail1({
@@ -1680,31 +1414,18 @@ class ExplanationOfBenefit_SubDetail1 {
     return newExplanationOfBenefit_SubDetail1;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept productOrService;
-  @HiveField(4)
   List<CodeableConcept> modifier;
-  @HiveField(5)
   Quantity quantity;
-  @HiveField(6)
   Money unitPrice;
-  @HiveField(7)
   double factor;
-  @HiveField(8)
   Element elementFactor;
-  @HiveField(9)
   Money net;
-  @HiveField(10)
   List<int> noteNumber;
-  @HiveField(11)
   List<Element> elementNoteNumber;
-  @HiveField(12)
   List<ExplanationOfBenefit_Adjudication> adjudication;
 
   ExplanationOfBenefit_SubDetail1({
@@ -1749,15 +1470,10 @@ class ExplanationOfBenefit_Total {
     return newExplanationOfBenefit_Total;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   Money amount;
 
   ExplanationOfBenefit_Total({
@@ -1803,25 +1519,15 @@ class ExplanationOfBenefit_Payment {
     return newExplanationOfBenefit_Payment;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   Money adjustment;
-  @HiveField(5)
   CodeableConcept adjustmentReason;
-  @HiveField(6)
   String date;
-  @HiveField(7)
   Element elementDate;
-  @HiveField(8)
   Money amount;
-  @HiveField(9)
   Identifier identifier;
 
   ExplanationOfBenefit_Payment({
@@ -1872,25 +1578,15 @@ class ExplanationOfBenefit_ProcessNote {
     return newExplanationOfBenefit_ProcessNote;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int number;
-  @HiveField(4)
   Element elementNumber;
-  @HiveField(5)
   String type;
-  @HiveField(6)
   Element elementType;
-  @HiveField(7)
   String text;
-  @HiveField(8)
   Element elementText;
-  @HiveField(9)
   CodeableConcept language;
 
   ExplanationOfBenefit_ProcessNote({
@@ -1951,33 +1647,19 @@ class ExplanationOfBenefit_BenefitBalance {
     return newExplanationOfBenefit_BenefitBalance;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept category;
-  @HiveField(4)
   bool excluded;
-  @HiveField(5)
   Element elementExcluded;
-  @HiveField(6)
   String name;
-  @HiveField(7)
   Element elementName;
-  @HiveField(8)
   String description;
-  @HiveField(9)
   Element elementDescription;
-  @HiveField(10)
   CodeableConcept network;
-  @HiveField(11)
   CodeableConcept unit;
-  @HiveField(12)
   CodeableConcept term;
-  @HiveField(13)
   List<ExplanationOfBenefit_Financial> financial;
 
   ExplanationOfBenefit_BenefitBalance({
@@ -2038,29 +1720,17 @@ class ExplanationOfBenefit_Financial {
     return newExplanationOfBenefit_Financial;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   int allowedUnsignedInt;
-  @HiveField(5)
   Element elementAllowedUnsignedInt;
-  @HiveField(6)
   String allowedString;
-  @HiveField(7)
   Element elementAllowedString;
-  @HiveField(8)
   Money allowedMoney;
-  @HiveField(9)
   int usedUnsignedInt;
-  @HiveField(10)
   Element elementUsedUnsignedInt;
-  @HiveField(11)
   Money usedMoney;
 
   ExplanationOfBenefit_Financial({
@@ -3930,1404 +3600,4 @@ Map<String, dynamic> _$ExplanationOfBenefit_FinancialToJson(
       'elementUsedUnsignedInt', instance.elementUsedUnsignedInt?.toJson());
   writeNotNull('usedMoney', instance.usedMoney?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ExplanationOfBenefitAdapter extends TypeAdapter<ExplanationOfBenefit> {
-  @override
-  ExplanationOfBenefit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      subType: fields[15] as CodeableConcept,
-      use: fields[16] as String,
-      elementUse: fields[17] as Element,
-      patient: fields[18] as Reference,
-      billablePeriod: fields[19] as Period,
-      created: fields[20] as DateTime,
-      elementCreated: fields[21] as Element,
-      enterer: fields[22] as Reference,
-      insurer: fields[23] as Reference,
-      provider: fields[24] as Reference,
-      priority: fields[25] as CodeableConcept,
-      fundsReserveRequested: fields[26] as CodeableConcept,
-      fundsReserve: fields[27] as CodeableConcept,
-      related: (fields[28] as List)?.cast<ExplanationOfBenefit_Related>(),
-      prescription: fields[29] as Reference,
-      originalPrescription: fields[30] as Reference,
-      payee: fields[31] as ExplanationOfBenefit_Payee,
-      referral: fields[32] as Reference,
-      facility: fields[33] as Reference,
-      claim: fields[34] as Reference,
-      claimResponse: fields[35] as Reference,
-      outcome: fields[36] as String,
-      elementOutcome: fields[37] as Element,
-      disposition: fields[38] as String,
-      elementDisposition: fields[39] as Element,
-      preAuthRef: (fields[40] as List)?.cast<String>(),
-      elementPreAuthRef: (fields[41] as List)?.cast<Element>(),
-      preAuthRefPeriod: (fields[42] as List)?.cast<Period>(),
-      careTeam: (fields[43] as List)?.cast<ExplanationOfBenefit_CareTeam>(),
-      supportingInfo:
-          (fields[44] as List)?.cast<ExplanationOfBenefit_SupportingInfo>(),
-      diagnosis: (fields[45] as List)?.cast<ExplanationOfBenefit_Diagnosis>(),
-      procedure: (fields[46] as List)?.cast<ExplanationOfBenefit_Procedure>(),
-      precedence: fields[47] as int,
-      elementPrecedence: fields[48] as Element,
-      insurance: (fields[49] as List)?.cast<ExplanationOfBenefit_Insurance>(),
-      accident: fields[50] as ExplanationOfBenefit_Accident,
-      item: (fields[51] as List)?.cast<ExplanationOfBenefit_Item>(),
-      addItem: (fields[52] as List)?.cast<ExplanationOfBenefit_AddItem>(),
-      adjudication:
-          (fields[53] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-      total: (fields[54] as List)?.cast<ExplanationOfBenefit_Total>(),
-      payment: fields[55] as ExplanationOfBenefit_Payment,
-      formCode: fields[56] as CodeableConcept,
-      form: fields[57] as Attachment,
-      processNote:
-          (fields[58] as List)?.cast<ExplanationOfBenefit_ProcessNote>(),
-      benefitPeriod: fields[59] as Period,
-      benefitBalance:
-          (fields[60] as List)?.cast<ExplanationOfBenefit_BenefitBalance>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit obj) {
-    writer
-      ..writeByte(61)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.subType)
-      ..writeByte(16)
-      ..write(obj.use)
-      ..writeByte(17)
-      ..write(obj.elementUse)
-      ..writeByte(18)
-      ..write(obj.patient)
-      ..writeByte(19)
-      ..write(obj.billablePeriod)
-      ..writeByte(20)
-      ..write(obj.created)
-      ..writeByte(21)
-      ..write(obj.elementCreated)
-      ..writeByte(22)
-      ..write(obj.enterer)
-      ..writeByte(23)
-      ..write(obj.insurer)
-      ..writeByte(24)
-      ..write(obj.provider)
-      ..writeByte(25)
-      ..write(obj.priority)
-      ..writeByte(26)
-      ..write(obj.fundsReserveRequested)
-      ..writeByte(27)
-      ..write(obj.fundsReserve)
-      ..writeByte(28)
-      ..write(obj.related)
-      ..writeByte(29)
-      ..write(obj.prescription)
-      ..writeByte(30)
-      ..write(obj.originalPrescription)
-      ..writeByte(31)
-      ..write(obj.payee)
-      ..writeByte(32)
-      ..write(obj.referral)
-      ..writeByte(33)
-      ..write(obj.facility)
-      ..writeByte(34)
-      ..write(obj.claim)
-      ..writeByte(35)
-      ..write(obj.claimResponse)
-      ..writeByte(36)
-      ..write(obj.outcome)
-      ..writeByte(37)
-      ..write(obj.elementOutcome)
-      ..writeByte(38)
-      ..write(obj.disposition)
-      ..writeByte(39)
-      ..write(obj.elementDisposition)
-      ..writeByte(40)
-      ..write(obj.preAuthRef)
-      ..writeByte(41)
-      ..write(obj.elementPreAuthRef)
-      ..writeByte(42)
-      ..write(obj.preAuthRefPeriod)
-      ..writeByte(43)
-      ..write(obj.careTeam)
-      ..writeByte(44)
-      ..write(obj.supportingInfo)
-      ..writeByte(45)
-      ..write(obj.diagnosis)
-      ..writeByte(46)
-      ..write(obj.procedure)
-      ..writeByte(47)
-      ..write(obj.precedence)
-      ..writeByte(48)
-      ..write(obj.elementPrecedence)
-      ..writeByte(49)
-      ..write(obj.insurance)
-      ..writeByte(50)
-      ..write(obj.accident)
-      ..writeByte(51)
-      ..write(obj.item)
-      ..writeByte(52)
-      ..write(obj.addItem)
-      ..writeByte(53)
-      ..write(obj.adjudication)
-      ..writeByte(54)
-      ..write(obj.total)
-      ..writeByte(55)
-      ..write(obj.payment)
-      ..writeByte(56)
-      ..write(obj.formCode)
-      ..writeByte(57)
-      ..write(obj.form)
-      ..writeByte(58)
-      ..write(obj.processNote)
-      ..writeByte(59)
-      ..write(obj.benefitPeriod)
-      ..writeByte(60)
-      ..write(obj.benefitBalance);
-  }
-}
-
-class ExplanationOfBenefit_RelatedAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Related> {
-  @override
-  ExplanationOfBenefit_Related read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Related(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      claim: fields[3] as Reference,
-      relationship: fields[4] as CodeableConcept,
-      reference: fields[5] as Identifier,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Related obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.claim)
-      ..writeByte(4)
-      ..write(obj.relationship)
-      ..writeByte(5)
-      ..write(obj.reference);
-  }
-}
-
-class ExplanationOfBenefit_PayeeAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Payee> {
-  @override
-  ExplanationOfBenefit_Payee read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Payee(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      party: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Payee obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.party);
-  }
-}
-
-class ExplanationOfBenefit_CareTeamAdapter
-    extends TypeAdapter<ExplanationOfBenefit_CareTeam> {
-  @override
-  ExplanationOfBenefit_CareTeam read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_CareTeam(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      provider: fields[5] as Reference,
-      responsible: fields[6] as bool,
-      elementResponsible: fields[7] as Element,
-      role: fields[8] as CodeableConcept,
-      qualification: fields[9] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_CareTeam obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.provider)
-      ..writeByte(6)
-      ..write(obj.responsible)
-      ..writeByte(7)
-      ..write(obj.elementResponsible)
-      ..writeByte(8)
-      ..write(obj.role)
-      ..writeByte(9)
-      ..write(obj.qualification);
-  }
-}
-
-class ExplanationOfBenefit_SupportingInfoAdapter
-    extends TypeAdapter<ExplanationOfBenefit_SupportingInfo> {
-  @override
-  ExplanationOfBenefit_SupportingInfo read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_SupportingInfo(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      category: fields[5] as CodeableConcept,
-      code: fields[6] as CodeableConcept,
-      timingDate: fields[7] as String,
-      elementTimingDate: fields[8] as Element,
-      timingPeriod: fields[9] as Period,
-      valueBoolean: fields[10] as bool,
-      elementValueBoolean: fields[11] as Element,
-      valueString: fields[12] as String,
-      elementValueString: fields[13] as Element,
-      valueQuantity: fields[14] as Quantity,
-      valueAttachment: fields[15] as Attachment,
-      valueReference: fields[16] as Reference,
-      reason: fields[17] as Coding,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_SupportingInfo obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.category)
-      ..writeByte(6)
-      ..write(obj.code)
-      ..writeByte(7)
-      ..write(obj.timingDate)
-      ..writeByte(8)
-      ..write(obj.elementTimingDate)
-      ..writeByte(9)
-      ..write(obj.timingPeriod)
-      ..writeByte(10)
-      ..write(obj.valueBoolean)
-      ..writeByte(11)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(12)
-      ..write(obj.valueString)
-      ..writeByte(13)
-      ..write(obj.elementValueString)
-      ..writeByte(14)
-      ..write(obj.valueQuantity)
-      ..writeByte(15)
-      ..write(obj.valueAttachment)
-      ..writeByte(16)
-      ..write(obj.valueReference)
-      ..writeByte(17)
-      ..write(obj.reason);
-  }
-}
-
-class ExplanationOfBenefit_DiagnosisAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Diagnosis> {
-  @override
-  ExplanationOfBenefit_Diagnosis read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Diagnosis(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      diagnosisCodeableConcept: fields[5] as CodeableConcept,
-      diagnosisReference: fields[6] as Reference,
-      type: (fields[7] as List)?.cast<CodeableConcept>(),
-      onAdmission: fields[8] as CodeableConcept,
-      packageCode: fields[9] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Diagnosis obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.diagnosisCodeableConcept)
-      ..writeByte(6)
-      ..write(obj.diagnosisReference)
-      ..writeByte(7)
-      ..write(obj.type)
-      ..writeByte(8)
-      ..write(obj.onAdmission)
-      ..writeByte(9)
-      ..write(obj.packageCode);
-  }
-}
-
-class ExplanationOfBenefit_ProcedureAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Procedure> {
-  @override
-  ExplanationOfBenefit_Procedure read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Procedure(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      type: (fields[5] as List)?.cast<CodeableConcept>(),
-      date: fields[6] as DateTime,
-      elementDate: fields[7] as Element,
-      procedureCodeableConcept: fields[8] as CodeableConcept,
-      procedureReference: fields[9] as Reference,
-      udi: (fields[10] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Procedure obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.date)
-      ..writeByte(7)
-      ..write(obj.elementDate)
-      ..writeByte(8)
-      ..write(obj.procedureCodeableConcept)
-      ..writeByte(9)
-      ..write(obj.procedureReference)
-      ..writeByte(10)
-      ..write(obj.udi);
-  }
-}
-
-class ExplanationOfBenefit_InsuranceAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Insurance> {
-  @override
-  ExplanationOfBenefit_Insurance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Insurance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      focal: fields[3] as bool,
-      elementFocal: fields[4] as Element,
-      coverage: fields[5] as Reference,
-      preAuthRef: (fields[6] as List)?.cast<String>(),
-      elementPreAuthRef: (fields[7] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Insurance obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.focal)
-      ..writeByte(4)
-      ..write(obj.elementFocal)
-      ..writeByte(5)
-      ..write(obj.coverage)
-      ..writeByte(6)
-      ..write(obj.preAuthRef)
-      ..writeByte(7)
-      ..write(obj.elementPreAuthRef);
-  }
-}
-
-class ExplanationOfBenefit_AccidentAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Accident> {
-  @override
-  ExplanationOfBenefit_Accident read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Accident(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      date: fields[3] as String,
-      elementDate: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      locationAddress: fields[6] as Address,
-      locationReference: fields[7] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Accident obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.date)
-      ..writeByte(4)
-      ..write(obj.elementDate)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.locationAddress)
-      ..writeByte(7)
-      ..write(obj.locationReference);
-  }
-}
-
-class ExplanationOfBenefit_ItemAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Item> {
-  @override
-  ExplanationOfBenefit_Item read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Item(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      careTeamSequence: (fields[5] as List)?.cast<int>(),
-      elementCareTeamSequence: (fields[6] as List)?.cast<Element>(),
-      diagnosisSequence: (fields[7] as List)?.cast<int>(),
-      elementDiagnosisSequence: (fields[8] as List)?.cast<Element>(),
-      procedureSequence: (fields[9] as List)?.cast<int>(),
-      elementProcedureSequence: (fields[10] as List)?.cast<Element>(),
-      informationSequence: (fields[11] as List)?.cast<int>(),
-      elementInformationSequence: (fields[12] as List)?.cast<Element>(),
-      revenue: fields[13] as CodeableConcept,
-      category: fields[14] as CodeableConcept,
-      productOrService: fields[15] as CodeableConcept,
-      modifier: (fields[16] as List)?.cast<CodeableConcept>(),
-      programCode: (fields[17] as List)?.cast<CodeableConcept>(),
-      servicedDate: fields[18] as String,
-      elementServicedDate: fields[19] as Element,
-      servicedPeriod: fields[20] as Period,
-      locationCodeableConcept: fields[21] as CodeableConcept,
-      locationAddress: fields[22] as Address,
-      locationReference: fields[23] as Reference,
-      quantity: fields[24] as Quantity,
-      unitPrice: fields[25] as Money,
-      factor: fields[26] as double,
-      elementFactor: fields[27] as Element,
-      net: fields[28] as Money,
-      udi: (fields[29] as List)?.cast<Reference>(),
-      bodySite: fields[30] as CodeableConcept,
-      subSite: (fields[31] as List)?.cast<CodeableConcept>(),
-      encounter: (fields[32] as List)?.cast<Reference>(),
-      noteNumber: (fields[33] as List)?.cast<int>(),
-      elementNoteNumber: (fields[34] as List)?.cast<Element>(),
-      adjudication:
-          (fields[35] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-      detail: (fields[36] as List)?.cast<ExplanationOfBenefit_Detail>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Item obj) {
-    writer
-      ..writeByte(37)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.careTeamSequence)
-      ..writeByte(6)
-      ..write(obj.elementCareTeamSequence)
-      ..writeByte(7)
-      ..write(obj.diagnosisSequence)
-      ..writeByte(8)
-      ..write(obj.elementDiagnosisSequence)
-      ..writeByte(9)
-      ..write(obj.procedureSequence)
-      ..writeByte(10)
-      ..write(obj.elementProcedureSequence)
-      ..writeByte(11)
-      ..write(obj.informationSequence)
-      ..writeByte(12)
-      ..write(obj.elementInformationSequence)
-      ..writeByte(13)
-      ..write(obj.revenue)
-      ..writeByte(14)
-      ..write(obj.category)
-      ..writeByte(15)
-      ..write(obj.productOrService)
-      ..writeByte(16)
-      ..write(obj.modifier)
-      ..writeByte(17)
-      ..write(obj.programCode)
-      ..writeByte(18)
-      ..write(obj.servicedDate)
-      ..writeByte(19)
-      ..write(obj.elementServicedDate)
-      ..writeByte(20)
-      ..write(obj.servicedPeriod)
-      ..writeByte(21)
-      ..write(obj.locationCodeableConcept)
-      ..writeByte(22)
-      ..write(obj.locationAddress)
-      ..writeByte(23)
-      ..write(obj.locationReference)
-      ..writeByte(24)
-      ..write(obj.quantity)
-      ..writeByte(25)
-      ..write(obj.unitPrice)
-      ..writeByte(26)
-      ..write(obj.factor)
-      ..writeByte(27)
-      ..write(obj.elementFactor)
-      ..writeByte(28)
-      ..write(obj.net)
-      ..writeByte(29)
-      ..write(obj.udi)
-      ..writeByte(30)
-      ..write(obj.bodySite)
-      ..writeByte(31)
-      ..write(obj.subSite)
-      ..writeByte(32)
-      ..write(obj.encounter)
-      ..writeByte(33)
-      ..write(obj.noteNumber)
-      ..writeByte(34)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(35)
-      ..write(obj.adjudication)
-      ..writeByte(36)
-      ..write(obj.detail);
-  }
-}
-
-class ExplanationOfBenefit_AdjudicationAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Adjudication> {
-  @override
-  ExplanationOfBenefit_Adjudication read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Adjudication(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      reason: fields[4] as CodeableConcept,
-      amount: fields[5] as Money,
-      value: fields[6] as double,
-      elementValue: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Adjudication obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.reason)
-      ..writeByte(5)
-      ..write(obj.amount)
-      ..writeByte(6)
-      ..write(obj.value)
-      ..writeByte(7)
-      ..write(obj.elementValue);
-  }
-}
-
-class ExplanationOfBenefit_DetailAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Detail> {
-  @override
-  ExplanationOfBenefit_Detail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Detail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      revenue: fields[5] as CodeableConcept,
-      category: fields[6] as CodeableConcept,
-      productOrService: fields[7] as CodeableConcept,
-      modifier: (fields[8] as List)?.cast<CodeableConcept>(),
-      programCode: (fields[9] as List)?.cast<CodeableConcept>(),
-      quantity: fields[10] as Quantity,
-      unitPrice: fields[11] as Money,
-      factor: fields[12] as double,
-      elementFactor: fields[13] as Element,
-      net: fields[14] as Money,
-      udi: (fields[15] as List)?.cast<Reference>(),
-      noteNumber: (fields[16] as List)?.cast<int>(),
-      elementNoteNumber: (fields[17] as List)?.cast<Element>(),
-      adjudication:
-          (fields[18] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-      subDetail: (fields[19] as List)?.cast<ExplanationOfBenefit_SubDetail>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Detail obj) {
-    writer
-      ..writeByte(20)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.revenue)
-      ..writeByte(6)
-      ..write(obj.category)
-      ..writeByte(7)
-      ..write(obj.productOrService)
-      ..writeByte(8)
-      ..write(obj.modifier)
-      ..writeByte(9)
-      ..write(obj.programCode)
-      ..writeByte(10)
-      ..write(obj.quantity)
-      ..writeByte(11)
-      ..write(obj.unitPrice)
-      ..writeByte(12)
-      ..write(obj.factor)
-      ..writeByte(13)
-      ..write(obj.elementFactor)
-      ..writeByte(14)
-      ..write(obj.net)
-      ..writeByte(15)
-      ..write(obj.udi)
-      ..writeByte(16)
-      ..write(obj.noteNumber)
-      ..writeByte(17)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(18)
-      ..write(obj.adjudication)
-      ..writeByte(19)
-      ..write(obj.subDetail);
-  }
-}
-
-class ExplanationOfBenefit_SubDetailAdapter
-    extends TypeAdapter<ExplanationOfBenefit_SubDetail> {
-  @override
-  ExplanationOfBenefit_SubDetail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_SubDetail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      revenue: fields[5] as CodeableConcept,
-      category: fields[6] as CodeableConcept,
-      productOrService: fields[7] as CodeableConcept,
-      modifier: (fields[8] as List)?.cast<CodeableConcept>(),
-      programCode: (fields[9] as List)?.cast<CodeableConcept>(),
-      quantity: fields[10] as Quantity,
-      unitPrice: fields[11] as Money,
-      factor: fields[12] as double,
-      elementFactor: fields[13] as Element,
-      net: fields[14] as Money,
-      udi: (fields[15] as List)?.cast<Reference>(),
-      noteNumber: (fields[16] as List)?.cast<int>(),
-      elementNoteNumber: (fields[17] as List)?.cast<Element>(),
-      adjudication:
-          (fields[18] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_SubDetail obj) {
-    writer
-      ..writeByte(19)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.revenue)
-      ..writeByte(6)
-      ..write(obj.category)
-      ..writeByte(7)
-      ..write(obj.productOrService)
-      ..writeByte(8)
-      ..write(obj.modifier)
-      ..writeByte(9)
-      ..write(obj.programCode)
-      ..writeByte(10)
-      ..write(obj.quantity)
-      ..writeByte(11)
-      ..write(obj.unitPrice)
-      ..writeByte(12)
-      ..write(obj.factor)
-      ..writeByte(13)
-      ..write(obj.elementFactor)
-      ..writeByte(14)
-      ..write(obj.net)
-      ..writeByte(15)
-      ..write(obj.udi)
-      ..writeByte(16)
-      ..write(obj.noteNumber)
-      ..writeByte(17)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(18)
-      ..write(obj.adjudication);
-  }
-}
-
-class ExplanationOfBenefit_AddItemAdapter
-    extends TypeAdapter<ExplanationOfBenefit_AddItem> {
-  @override
-  ExplanationOfBenefit_AddItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_AddItem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemSequence: (fields[3] as List)?.cast<int>(),
-      elementItemSequence: (fields[4] as List)?.cast<Element>(),
-      detailSequence: (fields[5] as List)?.cast<int>(),
-      elementDetailSequence: (fields[6] as List)?.cast<Element>(),
-      subDetailSequence: (fields[7] as List)?.cast<int>(),
-      elementSubDetailSequence: (fields[8] as List)?.cast<Element>(),
-      provider: (fields[9] as List)?.cast<Reference>(),
-      productOrService: fields[10] as CodeableConcept,
-      modifier: (fields[11] as List)?.cast<CodeableConcept>(),
-      programCode: (fields[12] as List)?.cast<CodeableConcept>(),
-      servicedDate: fields[13] as String,
-      elementServicedDate: fields[14] as Element,
-      servicedPeriod: fields[15] as Period,
-      locationCodeableConcept: fields[16] as CodeableConcept,
-      locationAddress: fields[17] as Address,
-      locationReference: fields[18] as Reference,
-      quantity: fields[19] as Quantity,
-      unitPrice: fields[20] as Money,
-      factor: fields[21] as double,
-      elementFactor: fields[22] as Element,
-      net: fields[23] as Money,
-      bodySite: fields[24] as CodeableConcept,
-      subSite: (fields[25] as List)?.cast<CodeableConcept>(),
-      noteNumber: (fields[26] as List)?.cast<int>(),
-      elementNoteNumber: (fields[27] as List)?.cast<Element>(),
-      adjudication:
-          (fields[28] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-      detail: (fields[29] as List)?.cast<ExplanationOfBenefit_Detail1>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_AddItem obj) {
-    writer
-      ..writeByte(30)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemSequence)
-      ..writeByte(4)
-      ..write(obj.elementItemSequence)
-      ..writeByte(5)
-      ..write(obj.detailSequence)
-      ..writeByte(6)
-      ..write(obj.elementDetailSequence)
-      ..writeByte(7)
-      ..write(obj.subDetailSequence)
-      ..writeByte(8)
-      ..write(obj.elementSubDetailSequence)
-      ..writeByte(9)
-      ..write(obj.provider)
-      ..writeByte(10)
-      ..write(obj.productOrService)
-      ..writeByte(11)
-      ..write(obj.modifier)
-      ..writeByte(12)
-      ..write(obj.programCode)
-      ..writeByte(13)
-      ..write(obj.servicedDate)
-      ..writeByte(14)
-      ..write(obj.elementServicedDate)
-      ..writeByte(15)
-      ..write(obj.servicedPeriod)
-      ..writeByte(16)
-      ..write(obj.locationCodeableConcept)
-      ..writeByte(17)
-      ..write(obj.locationAddress)
-      ..writeByte(18)
-      ..write(obj.locationReference)
-      ..writeByte(19)
-      ..write(obj.quantity)
-      ..writeByte(20)
-      ..write(obj.unitPrice)
-      ..writeByte(21)
-      ..write(obj.factor)
-      ..writeByte(22)
-      ..write(obj.elementFactor)
-      ..writeByte(23)
-      ..write(obj.net)
-      ..writeByte(24)
-      ..write(obj.bodySite)
-      ..writeByte(25)
-      ..write(obj.subSite)
-      ..writeByte(26)
-      ..write(obj.noteNumber)
-      ..writeByte(27)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(28)
-      ..write(obj.adjudication)
-      ..writeByte(29)
-      ..write(obj.detail);
-  }
-}
-
-class ExplanationOfBenefit_Detail1Adapter
-    extends TypeAdapter<ExplanationOfBenefit_Detail1> {
-  @override
-  ExplanationOfBenefit_Detail1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Detail1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      productOrService: fields[3] as CodeableConcept,
-      modifier: (fields[4] as List)?.cast<CodeableConcept>(),
-      quantity: fields[5] as Quantity,
-      unitPrice: fields[6] as Money,
-      factor: fields[7] as double,
-      elementFactor: fields[8] as Element,
-      net: fields[9] as Money,
-      noteNumber: (fields[10] as List)?.cast<int>(),
-      elementNoteNumber: (fields[11] as List)?.cast<Element>(),
-      adjudication:
-          (fields[12] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-      subDetail: (fields[13] as List)?.cast<ExplanationOfBenefit_SubDetail1>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Detail1 obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.productOrService)
-      ..writeByte(4)
-      ..write(obj.modifier)
-      ..writeByte(5)
-      ..write(obj.quantity)
-      ..writeByte(6)
-      ..write(obj.unitPrice)
-      ..writeByte(7)
-      ..write(obj.factor)
-      ..writeByte(8)
-      ..write(obj.elementFactor)
-      ..writeByte(9)
-      ..write(obj.net)
-      ..writeByte(10)
-      ..write(obj.noteNumber)
-      ..writeByte(11)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(12)
-      ..write(obj.adjudication)
-      ..writeByte(13)
-      ..write(obj.subDetail);
-  }
-}
-
-class ExplanationOfBenefit_SubDetail1Adapter
-    extends TypeAdapter<ExplanationOfBenefit_SubDetail1> {
-  @override
-  ExplanationOfBenefit_SubDetail1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_SubDetail1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      productOrService: fields[3] as CodeableConcept,
-      modifier: (fields[4] as List)?.cast<CodeableConcept>(),
-      quantity: fields[5] as Quantity,
-      unitPrice: fields[6] as Money,
-      factor: fields[7] as double,
-      elementFactor: fields[8] as Element,
-      net: fields[9] as Money,
-      noteNumber: (fields[10] as List)?.cast<int>(),
-      elementNoteNumber: (fields[11] as List)?.cast<Element>(),
-      adjudication:
-          (fields[12] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_SubDetail1 obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.productOrService)
-      ..writeByte(4)
-      ..write(obj.modifier)
-      ..writeByte(5)
-      ..write(obj.quantity)
-      ..writeByte(6)
-      ..write(obj.unitPrice)
-      ..writeByte(7)
-      ..write(obj.factor)
-      ..writeByte(8)
-      ..write(obj.elementFactor)
-      ..writeByte(9)
-      ..write(obj.net)
-      ..writeByte(10)
-      ..write(obj.noteNumber)
-      ..writeByte(11)
-      ..write(obj.elementNoteNumber)
-      ..writeByte(12)
-      ..write(obj.adjudication);
-  }
-}
-
-class ExplanationOfBenefit_TotalAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Total> {
-  @override
-  ExplanationOfBenefit_Total read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Total(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      amount: fields[4] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Total obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.amount);
-  }
-}
-
-class ExplanationOfBenefit_PaymentAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Payment> {
-  @override
-  ExplanationOfBenefit_Payment read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Payment(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      adjustment: fields[4] as Money,
-      adjustmentReason: fields[5] as CodeableConcept,
-      date: fields[6] as String,
-      elementDate: fields[7] as Element,
-      amount: fields[8] as Money,
-      identifier: fields[9] as Identifier,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Payment obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.adjustment)
-      ..writeByte(5)
-      ..write(obj.adjustmentReason)
-      ..writeByte(6)
-      ..write(obj.date)
-      ..writeByte(7)
-      ..write(obj.elementDate)
-      ..writeByte(8)
-      ..write(obj.amount)
-      ..writeByte(9)
-      ..write(obj.identifier);
-  }
-}
-
-class ExplanationOfBenefit_ProcessNoteAdapter
-    extends TypeAdapter<ExplanationOfBenefit_ProcessNote> {
-  @override
-  ExplanationOfBenefit_ProcessNote read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_ProcessNote(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      number: fields[3] as int,
-      elementNumber: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-      text: fields[7] as String,
-      elementText: fields[8] as Element,
-      language: fields[9] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_ProcessNote obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.number)
-      ..writeByte(4)
-      ..write(obj.elementNumber)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.elementText)
-      ..writeByte(9)
-      ..write(obj.language);
-  }
-}
-
-class ExplanationOfBenefit_BenefitBalanceAdapter
-    extends TypeAdapter<ExplanationOfBenefit_BenefitBalance> {
-  @override
-  ExplanationOfBenefit_BenefitBalance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_BenefitBalance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      excluded: fields[4] as bool,
-      elementExcluded: fields[5] as Element,
-      name: fields[6] as String,
-      elementName: fields[7] as Element,
-      description: fields[8] as String,
-      elementDescription: fields[9] as Element,
-      network: fields[10] as CodeableConcept,
-      unit: fields[11] as CodeableConcept,
-      term: fields[12] as CodeableConcept,
-      financial: (fields[13] as List)?.cast<ExplanationOfBenefit_Financial>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_BenefitBalance obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.excluded)
-      ..writeByte(5)
-      ..write(obj.elementExcluded)
-      ..writeByte(6)
-      ..write(obj.name)
-      ..writeByte(7)
-      ..write(obj.elementName)
-      ..writeByte(8)
-      ..write(obj.description)
-      ..writeByte(9)
-      ..write(obj.elementDescription)
-      ..writeByte(10)
-      ..write(obj.network)
-      ..writeByte(11)
-      ..write(obj.unit)
-      ..writeByte(12)
-      ..write(obj.term)
-      ..writeByte(13)
-      ..write(obj.financial);
-  }
-}
-
-class ExplanationOfBenefit_FinancialAdapter
-    extends TypeAdapter<ExplanationOfBenefit_Financial> {
-  @override
-  ExplanationOfBenefit_Financial read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit_Financial(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      allowedUnsignedInt: fields[4] as int,
-      elementAllowedUnsignedInt: fields[5] as Element,
-      allowedString: fields[6] as String,
-      elementAllowedString: fields[7] as Element,
-      allowedMoney: fields[8] as Money,
-      usedUnsignedInt: fields[9] as int,
-      elementUsedUnsignedInt: fields[10] as Element,
-      usedMoney: fields[11] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit_Financial obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.allowedUnsignedInt)
-      ..writeByte(5)
-      ..write(obj.elementAllowedUnsignedInt)
-      ..writeByte(6)
-      ..write(obj.allowedString)
-      ..writeByte(7)
-      ..write(obj.elementAllowedString)
-      ..writeByte(8)
-      ..write(obj.allowedMoney)
-      ..writeByte(9)
-      ..write(obj.usedUnsignedInt)
-      ..writeByte(10)
-      ..write(obj.elementUsedUnsignedInt)
-      ..writeByte(11)
-      ..write(obj.usedMoney);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
@@ -50,41 +49,23 @@ class Attachment {
     return newAttachment;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String contentType;
-  @HiveField(3)
   Element elementContentType;
-  @HiveField(4)
   String language;
-  @HiveField(5)
   Element elementLanguage;
-  @HiveField(6)
   String data;
-  @HiveField(7)
   Element elementData;
-  @HiveField(8)
   String url;
-  @HiveField(9)
   Element elementUrl;
-  @HiveField(10)
   int size;
-  @HiveField(11)
   Element elementSize;
-  @HiveField(12)
   String hash;
-  @HiveField(13)
   Element elementHash;
-  @HiveField(14)
   String title;
-  @HiveField(15)
   Element elementTitle;
-  @HiveField(16)
   DateTime creation;
-  @HiveField(17)
   Element elementCreation;
 
   Attachment({
@@ -191,81 +172,4 @@ Map<String, dynamic> _$AttachmentToJson(Attachment instance) {
   writeNotNull('creation', instance.creation?.toIso8601String());
   writeNotNull('elementCreation', instance.elementCreation?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class AttachmentAdapter extends TypeAdapter<Attachment> {
-  @override
-  Attachment read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Attachment(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      contentType: fields[2] as String,
-      elementContentType: fields[3] as Element,
-      language: fields[4] as String,
-      elementLanguage: fields[5] as Element,
-      data: fields[6] as String,
-      elementData: fields[7] as Element,
-      url: fields[8] as String,
-      elementUrl: fields[9] as Element,
-      size: fields[10] as int,
-      elementSize: fields[11] as Element,
-      hash: fields[12] as String,
-      elementHash: fields[13] as Element,
-      title: fields[14] as String,
-      elementTitle: fields[15] as Element,
-      creation: fields[16] as DateTime,
-      elementCreation: fields[17] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Attachment obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.contentType)
-      ..writeByte(3)
-      ..write(obj.elementContentType)
-      ..writeByte(4)
-      ..write(obj.language)
-      ..writeByte(5)
-      ..write(obj.elementLanguage)
-      ..writeByte(6)
-      ..write(obj.data)
-      ..writeByte(7)
-      ..write(obj.elementData)
-      ..writeByte(8)
-      ..write(obj.url)
-      ..writeByte(9)
-      ..write(obj.elementUrl)
-      ..writeByte(10)
-      ..write(obj.size)
-      ..writeByte(11)
-      ..write(obj.elementSize)
-      ..writeByte(12)
-      ..write(obj.hash)
-      ..writeByte(13)
-      ..write(obj.elementHash)
-      ..writeByte(14)
-      ..write(obj.title)
-      ..writeByte(15)
-      ..write(obj.elementTitle)
-      ..writeByte(16)
-      ..write(obj.creation)
-      ..writeByte(17)
-      ..write(obj.elementCreation);
-  }
 }

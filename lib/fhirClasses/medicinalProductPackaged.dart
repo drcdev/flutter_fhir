@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/productShelfLife.dart';
 import 'package:flutter_fhir/fhirClasses/prodCharacteristic.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -81,47 +80,26 @@ class MedicinalProductPackaged {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'MedicinalProductPackaged';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> subject;
-  @HiveField(13)
   String description;
-  @HiveField(14)
   Element elementDescription;
-  @HiveField(15)
   CodeableConcept legalStatusOfSupply;
-  @HiveField(16)
   List<MarketingStatus> marketingStatus;
-  @HiveField(17)
   Reference marketingAuthorization;
-  @HiveField(18)
   List<Reference> manufacturer;
-  @HiveField(19)
   List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier;
-  @HiveField(20)
   List<MedicinalProductPackaged_PackageItem> packageItem;
 
   MedicinalProductPackaged({
@@ -174,15 +152,10 @@ class MedicinalProductPackaged_BatchIdentifier {
     return newMedicinalProductPackaged_BatchIdentifier;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Identifier outerPackaging;
-  @HiveField(4)
   Identifier immediatePackaging;
 
   MedicinalProductPackaged_BatchIdentifier({
@@ -241,35 +214,20 @@ class MedicinalProductPackaged_PackageItem {
     return newMedicinalProductPackaged_PackageItem;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<Identifier> identifier;
-  @HiveField(4)
   CodeableConcept type;
-  @HiveField(5)
   Quantity quantity;
-  @HiveField(6)
   List<CodeableConcept> material;
-  @HiveField(7)
   List<CodeableConcept> alternateMaterial;
-  @HiveField(8)
   List<Reference> device;
-  @HiveField(9)
   List<Reference> manufacturedItem;
-  @HiveField(10)
   List<MedicinalProductPackaged_PackageItem> packageItem;
-  @HiveField(11)
   ProdCharacteristic physicalCharacteristics;
-  @HiveField(12)
   List<CodeableConcept> otherCharacteristics;
-  @HiveField(13)
   List<ProductShelfLife> shelfLifeStorage;
-  @HiveField(14)
   List<Reference> manufacturer;
 
   MedicinalProductPackaged_PackageItem({
@@ -568,193 +526,4 @@ Map<String, dynamic> _$MedicinalProductPackaged_PackageItemToJson(
   writeNotNull(
       'manufacturer', instance.manufacturer?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductPackagedAdapter
-    extends TypeAdapter<MedicinalProductPackaged> {
-  @override
-  MedicinalProductPackaged read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPackaged(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      subject: (fields[12] as List)?.cast<Reference>(),
-      description: fields[13] as String,
-      elementDescription: fields[14] as Element,
-      legalStatusOfSupply: fields[15] as CodeableConcept,
-      marketingStatus: (fields[16] as List)?.cast<MarketingStatus>(),
-      marketingAuthorization: fields[17] as Reference,
-      manufacturer: (fields[18] as List)?.cast<Reference>(),
-      batchIdentifier: (fields[19] as List)
-          ?.cast<MedicinalProductPackaged_BatchIdentifier>(),
-      packageItem:
-          (fields[20] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductPackaged obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.subject)
-      ..writeByte(13)
-      ..write(obj.description)
-      ..writeByte(14)
-      ..write(obj.elementDescription)
-      ..writeByte(15)
-      ..write(obj.legalStatusOfSupply)
-      ..writeByte(16)
-      ..write(obj.marketingStatus)
-      ..writeByte(17)
-      ..write(obj.marketingAuthorization)
-      ..writeByte(18)
-      ..write(obj.manufacturer)
-      ..writeByte(19)
-      ..write(obj.batchIdentifier)
-      ..writeByte(20)
-      ..write(obj.packageItem);
-  }
-}
-
-class MedicinalProductPackaged_BatchIdentifierAdapter
-    extends TypeAdapter<MedicinalProductPackaged_BatchIdentifier> {
-  @override
-  MedicinalProductPackaged_BatchIdentifier read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPackaged_BatchIdentifier(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      outerPackaging: fields[3] as Identifier,
-      immediatePackaging: fields[4] as Identifier,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductPackaged_BatchIdentifier obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.outerPackaging)
-      ..writeByte(4)
-      ..write(obj.immediatePackaging);
-  }
-}
-
-class MedicinalProductPackaged_PackageItemAdapter
-    extends TypeAdapter<MedicinalProductPackaged_PackageItem> {
-  @override
-  MedicinalProductPackaged_PackageItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPackaged_PackageItem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      type: fields[4] as CodeableConcept,
-      quantity: fields[5] as Quantity,
-      material: (fields[6] as List)?.cast<CodeableConcept>(),
-      alternateMaterial: (fields[7] as List)?.cast<CodeableConcept>(),
-      device: (fields[8] as List)?.cast<Reference>(),
-      manufacturedItem: (fields[9] as List)?.cast<Reference>(),
-      packageItem:
-          (fields[10] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
-      physicalCharacteristics: fields[11] as ProdCharacteristic,
-      otherCharacteristics: (fields[12] as List)?.cast<CodeableConcept>(),
-      shelfLifeStorage: (fields[13] as List)?.cast<ProductShelfLife>(),
-      manufacturer: (fields[14] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductPackaged_PackageItem obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.quantity)
-      ..writeByte(6)
-      ..write(obj.material)
-      ..writeByte(7)
-      ..write(obj.alternateMaterial)
-      ..writeByte(8)
-      ..write(obj.device)
-      ..writeByte(9)
-      ..write(obj.manufacturedItem)
-      ..writeByte(10)
-      ..write(obj.packageItem)
-      ..writeByte(11)
-      ..write(obj.physicalCharacteristics)
-      ..writeByte(12)
-      ..write(obj.otherCharacteristics)
-      ..writeByte(13)
-      ..write(obj.shelfLifeStorage)
-      ..writeByte(14)
-      ..write(obj.manufacturer);
-  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -103,71 +102,38 @@ class NutritionOrder {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'NutritionOrder';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<String> instantiatesCanonical;
-  @HiveField(13)
   List<String> instantiatesUri;
-  @HiveField(14)
   List<Element> elementInstantiatesUri;
-  @HiveField(15)
   List<String> instantiates;
-  @HiveField(16)
   List<Element> elementInstantiates;
-  @HiveField(17)
   String status;
-  @HiveField(18)
   Element elementStatus;
-  @HiveField(19)
   String intent;
-  @HiveField(20)
   Element elementIntent;
-  @HiveField(21)
   Reference patient;
-  @HiveField(22)
   Reference encounter;
-  @HiveField(23)
   DateTime dateTime;
-  @HiveField(24)
   Element elementDateTime;
-  @HiveField(25)
   Reference orderer;
-  @HiveField(26)
   List<Reference> allergyIntolerance;
-  @HiveField(27)
   List<CodeableConcept> foodPreferenceModifier;
-  @HiveField(28)
   List<CodeableConcept> excludeFoodModifier;
-  @HiveField(29)
   NutritionOrder_OralDiet oralDiet;
-  @HiveField(30)
   List<NutritionOrder_Supplement> supplement;
-  @HiveField(31)
   NutritionOrder_EnteralFormula enteralFormula;
-  @HiveField(32)
   List<Annotation> note;
 
   NutritionOrder({
@@ -241,25 +207,15 @@ class NutritionOrder_OralDiet {
     return newNutritionOrder_OralDiet;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<CodeableConcept> type;
-  @HiveField(4)
   List<Timing> schedule;
-  @HiveField(5)
   List<NutritionOrder_Nutrient> nutrient;
-  @HiveField(6)
   List<NutritionOrder_Texture> texture;
-  @HiveField(7)
   List<CodeableConcept> fluidConsistencyType;
-  @HiveField(8)
   String instruction;
-  @HiveField(9)
   Element elementInstruction;
 
   NutritionOrder_OralDiet({
@@ -300,15 +256,10 @@ class NutritionOrder_Nutrient {
     return newNutritionOrder_Nutrient;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept modifier;
-  @HiveField(4)
   Quantity amount;
 
   NutritionOrder_Nutrient({
@@ -344,15 +295,10 @@ class NutritionOrder_Texture {
     return newNutritionOrder_Texture;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept modifier;
-  @HiveField(4)
   CodeableConcept foodType;
 
   NutritionOrder_Texture({
@@ -398,25 +344,15 @@ class NutritionOrder_Supplement {
     return newNutritionOrder_Supplement;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept type;
-  @HiveField(4)
   String productName;
-  @HiveField(5)
   Element elementProductName;
-  @HiveField(6)
   List<Timing> schedule;
-  @HiveField(7)
   Quantity quantity;
-  @HiveField(8)
   String instruction;
-  @HiveField(9)
   Element elementInstruction;
 
   NutritionOrder_Supplement({
@@ -477,35 +413,20 @@ class NutritionOrder_EnteralFormula {
     return newNutritionOrder_EnteralFormula;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept baseFormulaType;
-  @HiveField(4)
   String baseFormulaProductName;
-  @HiveField(5)
   Element elementBaseFormulaProductName;
-  @HiveField(6)
   CodeableConcept additiveType;
-  @HiveField(7)
   String additiveProductName;
-  @HiveField(8)
   Element elementAdditiveProductName;
-  @HiveField(9)
   Quantity caloricDensity;
-  @HiveField(10)
   CodeableConcept routeofAdministration;
-  @HiveField(11)
   List<NutritionOrder_Administration> administration;
-  @HiveField(12)
   Quantity maxVolumeToDeliver;
-  @HiveField(13)
   String administrationInstruction;
-  @HiveField(14)
   Element elementAdministrationInstruction;
 
   NutritionOrder_EnteralFormula({
@@ -555,19 +476,12 @@ class NutritionOrder_Administration {
     return newNutritionOrder_Administration;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Timing schedule;
-  @HiveField(4)
   Quantity quantity;
-  @HiveField(5)
   Quantity rateQuantity;
-  @HiveField(6)
   Ratio rateRatio;
 
   NutritionOrder_Administration({
@@ -1100,397 +1014,4 @@ Map<String, dynamic> _$NutritionOrder_AdministrationToJson(
   writeNotNull('rateQuantity', instance.rateQuantity?.toJson());
   writeNotNull('rateRatio', instance.rateRatio?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class NutritionOrderAdapter extends TypeAdapter<NutritionOrder> {
-  @override
-  NutritionOrder read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      instantiatesCanonical: (fields[12] as List)?.cast<String>(),
-      instantiatesUri: (fields[13] as List)?.cast<String>(),
-      elementInstantiatesUri: (fields[14] as List)?.cast<Element>(),
-      instantiates: (fields[15] as List)?.cast<String>(),
-      elementInstantiates: (fields[16] as List)?.cast<Element>(),
-      status: fields[17] as String,
-      elementStatus: fields[18] as Element,
-      intent: fields[19] as String,
-      elementIntent: fields[20] as Element,
-      patient: fields[21] as Reference,
-      encounter: fields[22] as Reference,
-      dateTime: fields[23] as DateTime,
-      elementDateTime: fields[24] as Element,
-      orderer: fields[25] as Reference,
-      allergyIntolerance: (fields[26] as List)?.cast<Reference>(),
-      foodPreferenceModifier: (fields[27] as List)?.cast<CodeableConcept>(),
-      excludeFoodModifier: (fields[28] as List)?.cast<CodeableConcept>(),
-      oralDiet: fields[29] as NutritionOrder_OralDiet,
-      supplement: (fields[30] as List)?.cast<NutritionOrder_Supplement>(),
-      enteralFormula: fields[31] as NutritionOrder_EnteralFormula,
-      note: (fields[32] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder obj) {
-    writer
-      ..writeByte(33)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(13)
-      ..write(obj.instantiatesUri)
-      ..writeByte(14)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(15)
-      ..write(obj.instantiates)
-      ..writeByte(16)
-      ..write(obj.elementInstantiates)
-      ..writeByte(17)
-      ..write(obj.status)
-      ..writeByte(18)
-      ..write(obj.elementStatus)
-      ..writeByte(19)
-      ..write(obj.intent)
-      ..writeByte(20)
-      ..write(obj.elementIntent)
-      ..writeByte(21)
-      ..write(obj.patient)
-      ..writeByte(22)
-      ..write(obj.encounter)
-      ..writeByte(23)
-      ..write(obj.dateTime)
-      ..writeByte(24)
-      ..write(obj.elementDateTime)
-      ..writeByte(25)
-      ..write(obj.orderer)
-      ..writeByte(26)
-      ..write(obj.allergyIntolerance)
-      ..writeByte(27)
-      ..write(obj.foodPreferenceModifier)
-      ..writeByte(28)
-      ..write(obj.excludeFoodModifier)
-      ..writeByte(29)
-      ..write(obj.oralDiet)
-      ..writeByte(30)
-      ..write(obj.supplement)
-      ..writeByte(31)
-      ..write(obj.enteralFormula)
-      ..writeByte(32)
-      ..write(obj.note);
-  }
-}
-
-class NutritionOrder_OralDietAdapter
-    extends TypeAdapter<NutritionOrder_OralDiet> {
-  @override
-  NutritionOrder_OralDiet read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder_OralDiet(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: (fields[3] as List)?.cast<CodeableConcept>(),
-      schedule: (fields[4] as List)?.cast<Timing>(),
-      nutrient: (fields[5] as List)?.cast<NutritionOrder_Nutrient>(),
-      texture: (fields[6] as List)?.cast<NutritionOrder_Texture>(),
-      fluidConsistencyType: (fields[7] as List)?.cast<CodeableConcept>(),
-      instruction: fields[8] as String,
-      elementInstruction: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder_OralDiet obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.schedule)
-      ..writeByte(5)
-      ..write(obj.nutrient)
-      ..writeByte(6)
-      ..write(obj.texture)
-      ..writeByte(7)
-      ..write(obj.fluidConsistencyType)
-      ..writeByte(8)
-      ..write(obj.instruction)
-      ..writeByte(9)
-      ..write(obj.elementInstruction);
-  }
-}
-
-class NutritionOrder_NutrientAdapter
-    extends TypeAdapter<NutritionOrder_Nutrient> {
-  @override
-  NutritionOrder_Nutrient read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder_Nutrient(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      modifier: fields[3] as CodeableConcept,
-      amount: fields[4] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder_Nutrient obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.modifier)
-      ..writeByte(4)
-      ..write(obj.amount);
-  }
-}
-
-class NutritionOrder_TextureAdapter
-    extends TypeAdapter<NutritionOrder_Texture> {
-  @override
-  NutritionOrder_Texture read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder_Texture(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      modifier: fields[3] as CodeableConcept,
-      foodType: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder_Texture obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.modifier)
-      ..writeByte(4)
-      ..write(obj.foodType);
-  }
-}
-
-class NutritionOrder_SupplementAdapter
-    extends TypeAdapter<NutritionOrder_Supplement> {
-  @override
-  NutritionOrder_Supplement read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder_Supplement(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      productName: fields[4] as String,
-      elementProductName: fields[5] as Element,
-      schedule: (fields[6] as List)?.cast<Timing>(),
-      quantity: fields[7] as Quantity,
-      instruction: fields[8] as String,
-      elementInstruction: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder_Supplement obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.productName)
-      ..writeByte(5)
-      ..write(obj.elementProductName)
-      ..writeByte(6)
-      ..write(obj.schedule)
-      ..writeByte(7)
-      ..write(obj.quantity)
-      ..writeByte(8)
-      ..write(obj.instruction)
-      ..writeByte(9)
-      ..write(obj.elementInstruction);
-  }
-}
-
-class NutritionOrder_EnteralFormulaAdapter
-    extends TypeAdapter<NutritionOrder_EnteralFormula> {
-  @override
-  NutritionOrder_EnteralFormula read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder_EnteralFormula(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      baseFormulaType: fields[3] as CodeableConcept,
-      baseFormulaProductName: fields[4] as String,
-      elementBaseFormulaProductName: fields[5] as Element,
-      additiveType: fields[6] as CodeableConcept,
-      additiveProductName: fields[7] as String,
-      elementAdditiveProductName: fields[8] as Element,
-      caloricDensity: fields[9] as Quantity,
-      routeofAdministration: fields[10] as CodeableConcept,
-      administration:
-          (fields[11] as List)?.cast<NutritionOrder_Administration>(),
-      maxVolumeToDeliver: fields[12] as Quantity,
-      administrationInstruction: fields[13] as String,
-      elementAdministrationInstruction: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder_EnteralFormula obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.baseFormulaType)
-      ..writeByte(4)
-      ..write(obj.baseFormulaProductName)
-      ..writeByte(5)
-      ..write(obj.elementBaseFormulaProductName)
-      ..writeByte(6)
-      ..write(obj.additiveType)
-      ..writeByte(7)
-      ..write(obj.additiveProductName)
-      ..writeByte(8)
-      ..write(obj.elementAdditiveProductName)
-      ..writeByte(9)
-      ..write(obj.caloricDensity)
-      ..writeByte(10)
-      ..write(obj.routeofAdministration)
-      ..writeByte(11)
-      ..write(obj.administration)
-      ..writeByte(12)
-      ..write(obj.maxVolumeToDeliver)
-      ..writeByte(13)
-      ..write(obj.administrationInstruction)
-      ..writeByte(14)
-      ..write(obj.elementAdministrationInstruction);
-  }
-}
-
-class NutritionOrder_AdministrationAdapter
-    extends TypeAdapter<NutritionOrder_Administration> {
-  @override
-  NutritionOrder_Administration read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder_Administration(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      schedule: fields[3] as Timing,
-      quantity: fields[4] as Quantity,
-      rateQuantity: fields[5] as Quantity,
-      rateRatio: fields[6] as Ratio,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder_Administration obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.schedule)
-      ..writeByte(4)
-      ..write(obj.quantity)
-      ..writeByte(5)
-      ..write(obj.rateQuantity)
-      ..writeByte(6)
-      ..write(obj.rateRatio);
-  }
 }

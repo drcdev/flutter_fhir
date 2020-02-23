@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -164,131 +163,68 @@ class ResearchDefinition {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'ResearchDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String shortTitle;
-  @HiveField(21)
   Element elementShortTitle;
-  @HiveField(22)
   String subtitle;
-  @HiveField(23)
   Element elementSubtitle;
-  @HiveField(24)
   String status;
-  @HiveField(25)
   Element elementStatus;
-  @HiveField(26)
   bool experimental;
-  @HiveField(27)
   Element elementExperimental;
-  @HiveField(28)
   CodeableConcept subjectCodeableConcept;
-  @HiveField(29)
   Reference subjectReference;
-  @HiveField(30)
   DateTime date;
-  @HiveField(31)
   Element elementDate;
-  @HiveField(32)
   String publisher;
-  @HiveField(33)
   Element elementPublisher;
-  @HiveField(34)
   List<ContactDetail> contact;
-  @HiveField(35)
   String description;
-  @HiveField(36)
   Element elementDescription;
-  @HiveField(37)
   List<String> comment;
-  @HiveField(38)
   List<Element> elementComment;
-  @HiveField(39)
   List<UsageContext> useContext;
-  @HiveField(40)
   List<CodeableConcept> jurisdiction;
-  @HiveField(41)
   String purpose;
-  @HiveField(42)
   Element elementPurpose;
-  @HiveField(43)
   String usage;
-  @HiveField(44)
   Element elementUsage;
-  @HiveField(45)
   String copyright;
-  @HiveField(46)
   Element elementCopyright;
-  @HiveField(47)
   String approvalDate;
-  @HiveField(48)
   Element elementApprovalDate;
-  @HiveField(49)
   String lastReviewDate;
-  @HiveField(50)
   Element elementLastReviewDate;
-  @HiveField(51)
   Period effectivePeriod;
-  @HiveField(52)
   List<CodeableConcept> topic;
-  @HiveField(53)
   List<ContactDetail> author;
-  @HiveField(54)
   List<ContactDetail> editor;
-  @HiveField(55)
   List<ContactDetail> reviewer;
-  @HiveField(56)
   List<ContactDetail> endorser;
-  @HiveField(57)
   List<RelatedArtifact> relatedArtifact;
-  @HiveField(58)
   List<String> library;
-  @HiveField(59)
   Reference population;
-  @HiveField(60)
   Reference exposure;
-  @HiveField(61)
   Reference exposureAlternative;
-  @HiveField(62)
   Reference outcome;
 
   ResearchDefinition({
@@ -628,216 +564,4 @@ Map<String, dynamic> _$ResearchDefinitionToJson(ResearchDefinition instance) {
   writeNotNull('exposureAlternative', instance.exposureAlternative?.toJson());
   writeNotNull('outcome', instance.outcome?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ResearchDefinitionAdapter extends TypeAdapter<ResearchDefinition> {
-  @override
-  ResearchDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ResearchDefinition(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      shortTitle: fields[20] as String,
-      elementShortTitle: fields[21] as Element,
-      subtitle: fields[22] as String,
-      elementSubtitle: fields[23] as Element,
-      status: fields[24] as String,
-      elementStatus: fields[25] as Element,
-      experimental: fields[26] as bool,
-      elementExperimental: fields[27] as Element,
-      subjectCodeableConcept: fields[28] as CodeableConcept,
-      subjectReference: fields[29] as Reference,
-      date: fields[30] as DateTime,
-      elementDate: fields[31] as Element,
-      publisher: fields[32] as String,
-      elementPublisher: fields[33] as Element,
-      contact: (fields[34] as List)?.cast<ContactDetail>(),
-      description: fields[35] as String,
-      elementDescription: fields[36] as Element,
-      comment: (fields[37] as List)?.cast<String>(),
-      elementComment: (fields[38] as List)?.cast<Element>(),
-      useContext: (fields[39] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[40] as List)?.cast<CodeableConcept>(),
-      purpose: fields[41] as String,
-      elementPurpose: fields[42] as Element,
-      usage: fields[43] as String,
-      elementUsage: fields[44] as Element,
-      copyright: fields[45] as String,
-      elementCopyright: fields[46] as Element,
-      approvalDate: fields[47] as String,
-      elementApprovalDate: fields[48] as Element,
-      lastReviewDate: fields[49] as String,
-      elementLastReviewDate: fields[50] as Element,
-      effectivePeriod: fields[51] as Period,
-      topic: (fields[52] as List)?.cast<CodeableConcept>(),
-      author: (fields[53] as List)?.cast<ContactDetail>(),
-      editor: (fields[54] as List)?.cast<ContactDetail>(),
-      reviewer: (fields[55] as List)?.cast<ContactDetail>(),
-      endorser: (fields[56] as List)?.cast<ContactDetail>(),
-      relatedArtifact: (fields[57] as List)?.cast<RelatedArtifact>(),
-      library: (fields[58] as List)?.cast<String>(),
-      population: fields[59] as Reference,
-      exposure: fields[60] as Reference,
-      exposureAlternative: fields[61] as Reference,
-      outcome: fields[62] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ResearchDefinition obj) {
-    writer
-      ..writeByte(63)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.shortTitle)
-      ..writeByte(21)
-      ..write(obj.elementShortTitle)
-      ..writeByte(22)
-      ..write(obj.subtitle)
-      ..writeByte(23)
-      ..write(obj.elementSubtitle)
-      ..writeByte(24)
-      ..write(obj.status)
-      ..writeByte(25)
-      ..write(obj.elementStatus)
-      ..writeByte(26)
-      ..write(obj.experimental)
-      ..writeByte(27)
-      ..write(obj.elementExperimental)
-      ..writeByte(28)
-      ..write(obj.subjectCodeableConcept)
-      ..writeByte(29)
-      ..write(obj.subjectReference)
-      ..writeByte(30)
-      ..write(obj.date)
-      ..writeByte(31)
-      ..write(obj.elementDate)
-      ..writeByte(32)
-      ..write(obj.publisher)
-      ..writeByte(33)
-      ..write(obj.elementPublisher)
-      ..writeByte(34)
-      ..write(obj.contact)
-      ..writeByte(35)
-      ..write(obj.description)
-      ..writeByte(36)
-      ..write(obj.elementDescription)
-      ..writeByte(37)
-      ..write(obj.comment)
-      ..writeByte(38)
-      ..write(obj.elementComment)
-      ..writeByte(39)
-      ..write(obj.useContext)
-      ..writeByte(40)
-      ..write(obj.jurisdiction)
-      ..writeByte(41)
-      ..write(obj.purpose)
-      ..writeByte(42)
-      ..write(obj.elementPurpose)
-      ..writeByte(43)
-      ..write(obj.usage)
-      ..writeByte(44)
-      ..write(obj.elementUsage)
-      ..writeByte(45)
-      ..write(obj.copyright)
-      ..writeByte(46)
-      ..write(obj.elementCopyright)
-      ..writeByte(47)
-      ..write(obj.approvalDate)
-      ..writeByte(48)
-      ..write(obj.elementApprovalDate)
-      ..writeByte(49)
-      ..write(obj.lastReviewDate)
-      ..writeByte(50)
-      ..write(obj.elementLastReviewDate)
-      ..writeByte(51)
-      ..write(obj.effectivePeriod)
-      ..writeByte(52)
-      ..write(obj.topic)
-      ..writeByte(53)
-      ..write(obj.author)
-      ..writeByte(54)
-      ..write(obj.editor)
-      ..writeByte(55)
-      ..write(obj.reviewer)
-      ..writeByte(56)
-      ..write(obj.endorser)
-      ..writeByte(57)
-      ..write(obj.relatedArtifact)
-      ..writeByte(58)
-      ..write(obj.library)
-      ..writeByte(59)
-      ..write(obj.population)
-      ..writeByte(60)
-      ..write(obj.exposure)
-      ..writeByte(61)
-      ..write(obj.exposureAlternative)
-      ..writeByte(62)
-      ..write(obj.outcome);
-  }
 }

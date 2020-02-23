@@ -1,12 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/encounter.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/util/dbClasses/hiveResource.dart';
+import 'package:flutter_fhir/util/dbClasses/resourceRecord.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive/hive.dart';
@@ -17,6 +22,47 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();
   Hive.init((await getApplicationDocumentsDirectory()).path);
+  Patient pt = await Patient.newInstance();
+  Hive.registerAdapter(ResourceRecordAdapter(), 0);
+  Hive.registerAdapter(HiveResourceAdapter(), 1);
+  var box = await Hive.openBox<ResourceRecord>('resourceRecordBox');
+  var anotherBox = await Hive.openBox<HiveResource>('anotherBox');
+  Patient patient = await Patient.newInstance();
+
+
+  ResourceRecord resourceRecord = ResourceRecord(
+    resourceType: 'Patient',
+    id: '9696',
+      deviceId: "thisOne",
+      lastId: 'theonebefore',
+      total: 5,
+      lastUpdated: DateTime.now()
+  );
+//
+  box.put(resourceRecord.id, resourceRecord);
+
+  pt.id = '6969G';
+
+  HiveResource hiveResource = HiveResource(
+    id: 'new',
+    resourceType: 'Patient',
+    lastUpdated: DateTime.now(),
+    resource: pt,
+    createdAt: DateTime.now()
+  );
+
+  anotherBox.put(hiveResource.id, hiveResource);
+
+//  Patient antoherPt = Patient.fromJson(anotherBox.get(hiveResource.id).resource);
+//  print(antoherPt.id);
+
+
+//  var box = await Hive.openBox<HiveResource>('patientBox');
+//  final patientBox = Hive.box('patientBox');
+//  patientBox.put(pt.id, hiveResource);
+//
+//  Patient newPatient = patientBox.get(pt.id).resource;
+//  print(newPatient.id);
 
   runApp(MaterialApp(
       home: _Main(),

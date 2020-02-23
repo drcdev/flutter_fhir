@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -96,67 +95,36 @@ class MolecularSequence {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'MolecularSequence';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String type;
-  @HiveField(13)
   Element elementType;
-  @HiveField(14)
   int coordinateSystem;
-  @HiveField(15)
   Element elementCoordinateSystem;
-  @HiveField(16)
   Reference patient;
-  @HiveField(17)
   Reference specimen;
-  @HiveField(18)
   Reference device;
-  @HiveField(19)
   Reference performer;
-  @HiveField(20)
   Quantity quantity;
-  @HiveField(21)
   MolecularSequence_ReferenceSeq referenceSeq;
-  @HiveField(22)
   List<MolecularSequence_Variant> variant;
-  @HiveField(23)
   String observedSeq;
-  @HiveField(24)
   Element elementObservedSeq;
-  @HiveField(25)
   List<MolecularSequence_Quality> quality;
-  @HiveField(26)
   int readCoverage;
-  @HiveField(27)
   Element elementReadCoverage;
-  @HiveField(28)
   List<MolecularSequence_Repository> repository;
-  @HiveField(29)
   List<Reference> pointer;
-  @HiveField(30)
   List<MolecularSequence_StructureVariant> structureVariant;
 
   MolecularSequence({
@@ -244,41 +212,23 @@ class MolecularSequence_ReferenceSeq {
     return newMolecularSequence_ReferenceSeq;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept chromosome;
-  @HiveField(4)
   String genomeBuild;
-  @HiveField(5)
   Element elementGenomeBuild;
-  @HiveField(6)
   String orientation;
-  @HiveField(7)
   Element elementOrientation;
-  @HiveField(8)
   CodeableConcept referenceSeqId;
-  @HiveField(9)
   Reference referenceSeqPointer;
-  @HiveField(10)
   String referenceSeqString;
-  @HiveField(11)
   Element elementReferenceSeqString;
-  @HiveField(12)
   String strand;
-  @HiveField(13)
   Element elementStrand;
-  @HiveField(14)
   int windowStart;
-  @HiveField(15)
   Element elementWindowStart;
-  @HiveField(16)
   int windowEnd;
-  @HiveField(17)
   Element elementWindowEnd;
 
   MolecularSequence_ReferenceSeq({
@@ -345,33 +295,19 @@ class MolecularSequence_Variant {
     return newMolecularSequence_Variant;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int start;
-  @HiveField(4)
   Element elementStart;
-  @HiveField(5)
   int end;
-  @HiveField(6)
   Element elementEnd;
-  @HiveField(7)
   String observedAllele;
-  @HiveField(8)
   Element elementObservedAllele;
-  @HiveField(9)
   String referenceAllele;
-  @HiveField(10)
   Element elementReferenceAllele;
-  @HiveField(11)
   String cigar;
-  @HiveField(12)
   Element elementCigar;
-  @HiveField(13)
   Reference variantPointer;
 
   MolecularSequence_Variant({
@@ -464,63 +400,34 @@ class MolecularSequence_Quality {
     return newMolecularSequence_Quality;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   CodeableConcept standardSequence;
-  @HiveField(6)
   int start;
-  @HiveField(7)
   Element elementStart;
-  @HiveField(8)
   int end;
-  @HiveField(9)
   Element elementEnd;
-  @HiveField(10)
   Quantity score;
-  @HiveField(11)
   CodeableConcept method;
-  @HiveField(12)
   double truthTP;
-  @HiveField(13)
   Element elementTruthTP;
-  @HiveField(14)
   double queryTP;
-  @HiveField(15)
   Element elementQueryTP;
-  @HiveField(16)
   double truthFN;
-  @HiveField(17)
   Element elementTruthFN;
-  @HiveField(18)
   double queryFP;
-  @HiveField(19)
   Element elementQueryFP;
-  @HiveField(20)
   double gtFP;
-  @HiveField(21)
   Element elementGtFP;
-  @HiveField(22)
   double precision;
-  @HiveField(23)
   Element elementPrecision;
-  @HiveField(24)
   double recall;
-  @HiveField(25)
   Element elementRecall;
-  @HiveField(26)
   double fScore;
-  @HiveField(27)
   Element elementFScore;
-  @HiveField(28)
   MolecularSequence_Roc roc;
 
   MolecularSequence_Quality({
@@ -603,39 +510,22 @@ class MolecularSequence_Roc {
     return newMolecularSequence_Roc;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<int> score;
-  @HiveField(4)
   List<Element> elementScore;
-  @HiveField(5)
   List<int> numTP;
-  @HiveField(6)
   List<Element> elementNumTP;
-  @HiveField(7)
   List<int> numFP;
-  @HiveField(8)
   List<Element> elementNumFP;
-  @HiveField(9)
   List<int> numFN;
-  @HiveField(10)
   List<Element> elementNumFN;
-  @HiveField(11)
   List<double> precision;
-  @HiveField(12)
   List<Element> elementPrecision;
-  @HiveField(13)
   List<double> sensitivity;
-  @HiveField(14)
   List<Element> elementSensitivity;
-  @HiveField(15)
   List<double> fMeasure;
-  @HiveField(16)
   List<Element> elementFMeasure;
 
   MolecularSequence_Roc({
@@ -703,35 +593,20 @@ class MolecularSequence_Repository {
     return newMolecularSequence_Repository;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String type;
-  @HiveField(4)
   Element elementType;
-  @HiveField(5)
   String url;
-  @HiveField(6)
   Element elementUrl;
-  @HiveField(7)
   String name;
-  @HiveField(8)
   Element elementName;
-  @HiveField(9)
   String datasetId;
-  @HiveField(10)
   Element elementDatasetId;
-  @HiveField(11)
   String variantsetId;
-  @HiveField(12)
   Element elementVariantsetId;
-  @HiveField(13)
   String readsetId;
-  @HiveField(14)
   Element elementReadsetId;
 
   MolecularSequence_Repository({
@@ -787,25 +662,15 @@ class MolecularSequence_StructureVariant {
     return newMolecularSequence_StructureVariant;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept variantType;
-  @HiveField(4)
   bool exact;
-  @HiveField(5)
   Element elementExact;
-  @HiveField(6)
   int length;
-  @HiveField(7)
   Element elementLength;
-  @HiveField(8)
   MolecularSequence_Outer outer;
-  @HiveField(9)
   MolecularSequence_Inner inner;
 
   MolecularSequence_StructureVariant({
@@ -852,19 +717,12 @@ class MolecularSequence_Outer {
     return newMolecularSequence_Outer;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int start;
-  @HiveField(4)
   Element elementStart;
-  @HiveField(5)
   int end;
-  @HiveField(6)
   Element elementEnd;
 
   MolecularSequence_Outer({
@@ -906,19 +764,12 @@ class MolecularSequence_Inner {
     return newMolecularSequence_Inner;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int start;
-  @HiveField(4)
   Element elementStart;
-  @HiveField(5)
   int end;
-  @HiveField(6)
   Element elementEnd;
 
   MolecularSequence_Inner({
@@ -1673,623 +1524,4 @@ Map<String, dynamic> _$MolecularSequence_InnerToJson(
   writeNotNull('end', instance.end);
   writeNotNull('elementEnd', instance.elementEnd?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MolecularSequenceAdapter extends TypeAdapter<MolecularSequence> {
-  @override
-  MolecularSequence read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      type: fields[12] as String,
-      elementType: fields[13] as Element,
-      coordinateSystem: fields[14] as int,
-      elementCoordinateSystem: fields[15] as Element,
-      patient: fields[16] as Reference,
-      specimen: fields[17] as Reference,
-      device: fields[18] as Reference,
-      performer: fields[19] as Reference,
-      quantity: fields[20] as Quantity,
-      referenceSeq: fields[21] as MolecularSequence_ReferenceSeq,
-      variant: (fields[22] as List)?.cast<MolecularSequence_Variant>(),
-      observedSeq: fields[23] as String,
-      elementObservedSeq: fields[24] as Element,
-      quality: (fields[25] as List)?.cast<MolecularSequence_Quality>(),
-      readCoverage: fields[26] as int,
-      elementReadCoverage: fields[27] as Element,
-      repository: (fields[28] as List)?.cast<MolecularSequence_Repository>(),
-      pointer: (fields[29] as List)?.cast<Reference>(),
-      structureVariant:
-          (fields[30] as List)?.cast<MolecularSequence_StructureVariant>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence obj) {
-    writer
-      ..writeByte(31)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.type)
-      ..writeByte(13)
-      ..write(obj.elementType)
-      ..writeByte(14)
-      ..write(obj.coordinateSystem)
-      ..writeByte(15)
-      ..write(obj.elementCoordinateSystem)
-      ..writeByte(16)
-      ..write(obj.patient)
-      ..writeByte(17)
-      ..write(obj.specimen)
-      ..writeByte(18)
-      ..write(obj.device)
-      ..writeByte(19)
-      ..write(obj.performer)
-      ..writeByte(20)
-      ..write(obj.quantity)
-      ..writeByte(21)
-      ..write(obj.referenceSeq)
-      ..writeByte(22)
-      ..write(obj.variant)
-      ..writeByte(23)
-      ..write(obj.observedSeq)
-      ..writeByte(24)
-      ..write(obj.elementObservedSeq)
-      ..writeByte(25)
-      ..write(obj.quality)
-      ..writeByte(26)
-      ..write(obj.readCoverage)
-      ..writeByte(27)
-      ..write(obj.elementReadCoverage)
-      ..writeByte(28)
-      ..write(obj.repository)
-      ..writeByte(29)
-      ..write(obj.pointer)
-      ..writeByte(30)
-      ..write(obj.structureVariant);
-  }
-}
-
-class MolecularSequence_ReferenceSeqAdapter
-    extends TypeAdapter<MolecularSequence_ReferenceSeq> {
-  @override
-  MolecularSequence_ReferenceSeq read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_ReferenceSeq(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      chromosome: fields[3] as CodeableConcept,
-      genomeBuild: fields[4] as String,
-      elementGenomeBuild: fields[5] as Element,
-      orientation: fields[6] as String,
-      elementOrientation: fields[7] as Element,
-      referenceSeqId: fields[8] as CodeableConcept,
-      referenceSeqPointer: fields[9] as Reference,
-      referenceSeqString: fields[10] as String,
-      elementReferenceSeqString: fields[11] as Element,
-      strand: fields[12] as String,
-      elementStrand: fields[13] as Element,
-      windowStart: fields[14] as int,
-      elementWindowStart: fields[15] as Element,
-      windowEnd: fields[16] as int,
-      elementWindowEnd: fields[17] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_ReferenceSeq obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.chromosome)
-      ..writeByte(4)
-      ..write(obj.genomeBuild)
-      ..writeByte(5)
-      ..write(obj.elementGenomeBuild)
-      ..writeByte(6)
-      ..write(obj.orientation)
-      ..writeByte(7)
-      ..write(obj.elementOrientation)
-      ..writeByte(8)
-      ..write(obj.referenceSeqId)
-      ..writeByte(9)
-      ..write(obj.referenceSeqPointer)
-      ..writeByte(10)
-      ..write(obj.referenceSeqString)
-      ..writeByte(11)
-      ..write(obj.elementReferenceSeqString)
-      ..writeByte(12)
-      ..write(obj.strand)
-      ..writeByte(13)
-      ..write(obj.elementStrand)
-      ..writeByte(14)
-      ..write(obj.windowStart)
-      ..writeByte(15)
-      ..write(obj.elementWindowStart)
-      ..writeByte(16)
-      ..write(obj.windowEnd)
-      ..writeByte(17)
-      ..write(obj.elementWindowEnd);
-  }
-}
-
-class MolecularSequence_VariantAdapter
-    extends TypeAdapter<MolecularSequence_Variant> {
-  @override
-  MolecularSequence_Variant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Variant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      start: fields[3] as int,
-      elementStart: fields[4] as Element,
-      end: fields[5] as int,
-      elementEnd: fields[6] as Element,
-      observedAllele: fields[7] as String,
-      elementObservedAllele: fields[8] as Element,
-      referenceAllele: fields[9] as String,
-      elementReferenceAllele: fields[10] as Element,
-      cigar: fields[11] as String,
-      elementCigar: fields[12] as Element,
-      variantPointer: fields[13] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Variant obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.start)
-      ..writeByte(4)
-      ..write(obj.elementStart)
-      ..writeByte(5)
-      ..write(obj.end)
-      ..writeByte(6)
-      ..write(obj.elementEnd)
-      ..writeByte(7)
-      ..write(obj.observedAllele)
-      ..writeByte(8)
-      ..write(obj.elementObservedAllele)
-      ..writeByte(9)
-      ..write(obj.referenceAllele)
-      ..writeByte(10)
-      ..write(obj.elementReferenceAllele)
-      ..writeByte(11)
-      ..write(obj.cigar)
-      ..writeByte(12)
-      ..write(obj.elementCigar)
-      ..writeByte(13)
-      ..write(obj.variantPointer);
-  }
-}
-
-class MolecularSequence_QualityAdapter
-    extends TypeAdapter<MolecularSequence_Quality> {
-  @override
-  MolecularSequence_Quality read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Quality(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      standardSequence: fields[5] as CodeableConcept,
-      start: fields[6] as int,
-      elementStart: fields[7] as Element,
-      end: fields[8] as int,
-      elementEnd: fields[9] as Element,
-      score: fields[10] as Quantity,
-      method: fields[11] as CodeableConcept,
-      truthTP: fields[12] as double,
-      elementTruthTP: fields[13] as Element,
-      queryTP: fields[14] as double,
-      elementQueryTP: fields[15] as Element,
-      truthFN: fields[16] as double,
-      elementTruthFN: fields[17] as Element,
-      queryFP: fields[18] as double,
-      elementQueryFP: fields[19] as Element,
-      gtFP: fields[20] as double,
-      elementGtFP: fields[21] as Element,
-      precision: fields[22] as double,
-      elementPrecision: fields[23] as Element,
-      recall: fields[24] as double,
-      elementRecall: fields[25] as Element,
-      fScore: fields[26] as double,
-      elementFScore: fields[27] as Element,
-      roc: fields[28] as MolecularSequence_Roc,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Quality obj) {
-    writer
-      ..writeByte(29)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.standardSequence)
-      ..writeByte(6)
-      ..write(obj.start)
-      ..writeByte(7)
-      ..write(obj.elementStart)
-      ..writeByte(8)
-      ..write(obj.end)
-      ..writeByte(9)
-      ..write(obj.elementEnd)
-      ..writeByte(10)
-      ..write(obj.score)
-      ..writeByte(11)
-      ..write(obj.method)
-      ..writeByte(12)
-      ..write(obj.truthTP)
-      ..writeByte(13)
-      ..write(obj.elementTruthTP)
-      ..writeByte(14)
-      ..write(obj.queryTP)
-      ..writeByte(15)
-      ..write(obj.elementQueryTP)
-      ..writeByte(16)
-      ..write(obj.truthFN)
-      ..writeByte(17)
-      ..write(obj.elementTruthFN)
-      ..writeByte(18)
-      ..write(obj.queryFP)
-      ..writeByte(19)
-      ..write(obj.elementQueryFP)
-      ..writeByte(20)
-      ..write(obj.gtFP)
-      ..writeByte(21)
-      ..write(obj.elementGtFP)
-      ..writeByte(22)
-      ..write(obj.precision)
-      ..writeByte(23)
-      ..write(obj.elementPrecision)
-      ..writeByte(24)
-      ..write(obj.recall)
-      ..writeByte(25)
-      ..write(obj.elementRecall)
-      ..writeByte(26)
-      ..write(obj.fScore)
-      ..writeByte(27)
-      ..write(obj.elementFScore)
-      ..writeByte(28)
-      ..write(obj.roc);
-  }
-}
-
-class MolecularSequence_RocAdapter extends TypeAdapter<MolecularSequence_Roc> {
-  @override
-  MolecularSequence_Roc read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Roc(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      score: (fields[3] as List)?.cast<int>(),
-      elementScore: (fields[4] as List)?.cast<Element>(),
-      numTP: (fields[5] as List)?.cast<int>(),
-      elementNumTP: (fields[6] as List)?.cast<Element>(),
-      numFP: (fields[7] as List)?.cast<int>(),
-      elementNumFP: (fields[8] as List)?.cast<Element>(),
-      numFN: (fields[9] as List)?.cast<int>(),
-      elementNumFN: (fields[10] as List)?.cast<Element>(),
-      precision: (fields[11] as List)?.cast<double>(),
-      elementPrecision: (fields[12] as List)?.cast<Element>(),
-      sensitivity: (fields[13] as List)?.cast<double>(),
-      elementSensitivity: (fields[14] as List)?.cast<Element>(),
-      fMeasure: (fields[15] as List)?.cast<double>(),
-      elementFMeasure: (fields[16] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Roc obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.score)
-      ..writeByte(4)
-      ..write(obj.elementScore)
-      ..writeByte(5)
-      ..write(obj.numTP)
-      ..writeByte(6)
-      ..write(obj.elementNumTP)
-      ..writeByte(7)
-      ..write(obj.numFP)
-      ..writeByte(8)
-      ..write(obj.elementNumFP)
-      ..writeByte(9)
-      ..write(obj.numFN)
-      ..writeByte(10)
-      ..write(obj.elementNumFN)
-      ..writeByte(11)
-      ..write(obj.precision)
-      ..writeByte(12)
-      ..write(obj.elementPrecision)
-      ..writeByte(13)
-      ..write(obj.sensitivity)
-      ..writeByte(14)
-      ..write(obj.elementSensitivity)
-      ..writeByte(15)
-      ..write(obj.fMeasure)
-      ..writeByte(16)
-      ..write(obj.elementFMeasure);
-  }
-}
-
-class MolecularSequence_RepositoryAdapter
-    extends TypeAdapter<MolecularSequence_Repository> {
-  @override
-  MolecularSequence_Repository read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Repository(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      url: fields[5] as String,
-      elementUrl: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      datasetId: fields[9] as String,
-      elementDatasetId: fields[10] as Element,
-      variantsetId: fields[11] as String,
-      elementVariantsetId: fields[12] as Element,
-      readsetId: fields[13] as String,
-      elementReadsetId: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Repository obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.url)
-      ..writeByte(6)
-      ..write(obj.elementUrl)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.datasetId)
-      ..writeByte(10)
-      ..write(obj.elementDatasetId)
-      ..writeByte(11)
-      ..write(obj.variantsetId)
-      ..writeByte(12)
-      ..write(obj.elementVariantsetId)
-      ..writeByte(13)
-      ..write(obj.readsetId)
-      ..writeByte(14)
-      ..write(obj.elementReadsetId);
-  }
-}
-
-class MolecularSequence_StructureVariantAdapter
-    extends TypeAdapter<MolecularSequence_StructureVariant> {
-  @override
-  MolecularSequence_StructureVariant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_StructureVariant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      variantType: fields[3] as CodeableConcept,
-      exact: fields[4] as bool,
-      elementExact: fields[5] as Element,
-      length: fields[6] as int,
-      elementLength: fields[7] as Element,
-      outer: fields[8] as MolecularSequence_Outer,
-      inner: fields[9] as MolecularSequence_Inner,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_StructureVariant obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.variantType)
-      ..writeByte(4)
-      ..write(obj.exact)
-      ..writeByte(5)
-      ..write(obj.elementExact)
-      ..writeByte(6)
-      ..write(obj.length)
-      ..writeByte(7)
-      ..write(obj.elementLength)
-      ..writeByte(8)
-      ..write(obj.outer)
-      ..writeByte(9)
-      ..write(obj.inner);
-  }
-}
-
-class MolecularSequence_OuterAdapter
-    extends TypeAdapter<MolecularSequence_Outer> {
-  @override
-  MolecularSequence_Outer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Outer(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      start: fields[3] as int,
-      elementStart: fields[4] as Element,
-      end: fields[5] as int,
-      elementEnd: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Outer obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.start)
-      ..writeByte(4)
-      ..write(obj.elementStart)
-      ..writeByte(5)
-      ..write(obj.end)
-      ..writeByte(6)
-      ..write(obj.elementEnd);
-  }
-}
-
-class MolecularSequence_InnerAdapter
-    extends TypeAdapter<MolecularSequence_Inner> {
-  @override
-  MolecularSequence_Inner read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Inner(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      start: fields[3] as int,
-      elementStart: fields[4] as Element,
-      end: fields[5] as int,
-      elementEnd: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Inner obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.start)
-      ..writeByte(4)
-      ..write(obj.elementStart)
-      ..writeByte(5)
-      ..write(obj.end)
-      ..writeByte(6)
-      ..write(obj.elementEnd);
-  }
 }

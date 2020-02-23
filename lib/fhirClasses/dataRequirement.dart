@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -47,33 +46,19 @@ class DataRequirement {
     return newDataRequirement;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String type;
-  @HiveField(3)
   Element elementType;
-  @HiveField(4)
   List<String> profile;
-  @HiveField(5)
   CodeableConcept subjectCodeableConcept;
-  @HiveField(6)
   Reference subjectReference;
-  @HiveField(7)
   List<String> mustSupport;
-  @HiveField(8)
   List<Element> elementMustSupport;
-  @HiveField(9)
   List<DataRequirement_CodeFilter> codeFilter;
-  @HiveField(10)
   List<DataRequirement_DateFilter> dateFilter;
-  @HiveField(11)
   int limit;
-  @HiveField(12)
   Element elementLimit;
-  @HiveField(13)
   List<DataRequirement_Sort> sort;
 
   DataRequirement({
@@ -126,23 +111,14 @@ class DataRequirement_CodeFilter {
     return newDataRequirement_CodeFilter;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String path;
-  @HiveField(4)
   Element elementPath;
-  @HiveField(5)
   String searchParam;
-  @HiveField(6)
   Element elementSearchParam;
-  @HiveField(7)
   String valueSet;
-  @HiveField(8)
   List<Coding> code;
 
   DataRequirement_CodeFilter({
@@ -194,27 +170,16 @@ class DataRequirement_DateFilter {
     return newDataRequirement_DateFilter;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String path;
-  @HiveField(4)
   Element elementPath;
-  @HiveField(5)
   String searchParam;
-  @HiveField(6)
   Element elementSearchParam;
-  @HiveField(7)
   String valueDateTime;
-  @HiveField(8)
   Element elementValueDateTime;
-  @HiveField(9)
   Period valuePeriod;
-  @HiveField(10)
   Duration valueDuration;
 
   DataRequirement_DateFilter({
@@ -259,19 +224,12 @@ class DataRequirement_Sort {
     return newDataRequirement_Sort;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String path;
-  @HiveField(4)
   Element elementPath;
-  @HiveField(5)
   String direction;
-  @HiveField(6)
   Element elementDirection;
 
   DataRequirement_Sort({
@@ -526,206 +484,4 @@ Map<String, dynamic> _$DataRequirement_SortToJson(
   writeNotNull('direction', instance.direction);
   writeNotNull('elementDirection', instance.elementDirection?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DataRequirementAdapter extends TypeAdapter<DataRequirement> {
-  @override
-  DataRequirement read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      type: fields[2] as String,
-      elementType: fields[3] as Element,
-      profile: (fields[4] as List)?.cast<String>(),
-      subjectCodeableConcept: fields[5] as CodeableConcept,
-      subjectReference: fields[6] as Reference,
-      mustSupport: (fields[7] as List)?.cast<String>(),
-      elementMustSupport: (fields[8] as List)?.cast<Element>(),
-      codeFilter: (fields[9] as List)?.cast<DataRequirement_CodeFilter>(),
-      dateFilter: (fields[10] as List)?.cast<DataRequirement_DateFilter>(),
-      limit: fields[11] as int,
-      elementLimit: fields[12] as Element,
-      sort: (fields[13] as List)?.cast<DataRequirement_Sort>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.type)
-      ..writeByte(3)
-      ..write(obj.elementType)
-      ..writeByte(4)
-      ..write(obj.profile)
-      ..writeByte(5)
-      ..write(obj.subjectCodeableConcept)
-      ..writeByte(6)
-      ..write(obj.subjectReference)
-      ..writeByte(7)
-      ..write(obj.mustSupport)
-      ..writeByte(8)
-      ..write(obj.elementMustSupport)
-      ..writeByte(9)
-      ..write(obj.codeFilter)
-      ..writeByte(10)
-      ..write(obj.dateFilter)
-      ..writeByte(11)
-      ..write(obj.limit)
-      ..writeByte(12)
-      ..write(obj.elementLimit)
-      ..writeByte(13)
-      ..write(obj.sort);
-  }
-}
-
-class DataRequirement_CodeFilterAdapter
-    extends TypeAdapter<DataRequirement_CodeFilter> {
-  @override
-  DataRequirement_CodeFilter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement_CodeFilter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      searchParam: fields[5] as String,
-      elementSearchParam: fields[6] as Element,
-      valueSet: fields[7] as String,
-      code: (fields[8] as List)?.cast<Coding>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement_CodeFilter obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.searchParam)
-      ..writeByte(6)
-      ..write(obj.elementSearchParam)
-      ..writeByte(7)
-      ..write(obj.valueSet)
-      ..writeByte(8)
-      ..write(obj.code);
-  }
-}
-
-class DataRequirement_DateFilterAdapter
-    extends TypeAdapter<DataRequirement_DateFilter> {
-  @override
-  DataRequirement_DateFilter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement_DateFilter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      searchParam: fields[5] as String,
-      elementSearchParam: fields[6] as Element,
-      valueDateTime: fields[7] as String,
-      elementValueDateTime: fields[8] as Element,
-      valuePeriod: fields[9] as Period,
-      valueDuration: fields[10] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement_DateFilter obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.searchParam)
-      ..writeByte(6)
-      ..write(obj.elementSearchParam)
-      ..writeByte(7)
-      ..write(obj.valueDateTime)
-      ..writeByte(8)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(9)
-      ..write(obj.valuePeriod)
-      ..writeByte(10)
-      ..write(obj.valueDuration);
-  }
-}
-
-class DataRequirement_SortAdapter extends TypeAdapter<DataRequirement_Sort> {
-  @override
-  DataRequirement_Sort read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement_Sort(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      direction: fields[5] as String,
-      elementDirection: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement_Sort obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.direction)
-      ..writeByte(6)
-      ..write(obj.elementDirection);
-  }
 }

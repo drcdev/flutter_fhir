@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -111,75 +110,40 @@ class RequestGroup {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'RequestGroup';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<String> instantiatesCanonical;
-  @HiveField(13)
   List<Element> elementInstantiatesCanonical;
-  @HiveField(14)
   List<String> instantiatesUri;
-  @HiveField(15)
   List<Element> elementInstantiatesUri;
-  @HiveField(16)
   List<Reference> basedOn;
-  @HiveField(17)
   List<Reference> replaces;
-  @HiveField(18)
   Identifier groupIdentifier;
-  @HiveField(19)
   String status;
-  @HiveField(20)
   Element elementStatus;
-  @HiveField(21)
   String intent;
-  @HiveField(22)
   Element elementIntent;
-  @HiveField(23)
   String priority;
-  @HiveField(24)
   Element elementPriority;
-  @HiveField(25)
   CodeableConcept code;
-  @HiveField(26)
   Reference subject;
-  @HiveField(27)
   Reference encounter;
-  @HiveField(28)
   DateTime authoredOn;
-  @HiveField(29)
   Element elementAuthoredOn;
-  @HiveField(30)
   Reference author;
-  @HiveField(31)
   List<CodeableConcept> reasonCode;
-  @HiveField(32)
   List<Reference> reasonReference;
-  @HiveField(33)
   List<Annotation> note;
-  @HiveField(34)
   List<RequestGroup_Action> action;
 
   RequestGroup({
@@ -310,81 +274,43 @@ class RequestGroup_Action {
     return newRequestGroup_Action;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String prefix;
-  @HiveField(4)
   Element elementPrefix;
-  @HiveField(5)
   String title;
-  @HiveField(6)
   Element elementTitle;
-  @HiveField(7)
   String description;
-  @HiveField(8)
   Element elementDescription;
-  @HiveField(9)
   String textEquivalent;
-  @HiveField(10)
   Element elementTextEquivalent;
-  @HiveField(11)
   String priority;
-  @HiveField(12)
   Element elementPriority;
-  @HiveField(13)
   List<CodeableConcept> code;
-  @HiveField(14)
   List<RelatedArtifact> documentation;
-  @HiveField(15)
   List<RequestGroup_Condition> condition;
-  @HiveField(16)
   List<RequestGroup_RelatedAction> relatedAction;
-  @HiveField(17)
   String timingDateTime;
-  @HiveField(18)
   Element elementTimingDateTime;
-  @HiveField(19)
   Age timingAge;
-  @HiveField(20)
   Period timingPeriod;
-  @HiveField(21)
   Duration timingDuration;
-  @HiveField(22)
   Range timingRange;
-  @HiveField(23)
   Timing timingTiming;
-  @HiveField(24)
   List<Reference> participant;
-  @HiveField(25)
   CodeableConcept type;
-  @HiveField(26)
   String groupingBehavior;
-  @HiveField(27)
   Element elementGroupingBehavior;
-  @HiveField(28)
   String selectionBehavior;
-  @HiveField(29)
   Element elementSelectionBehavior;
-  @HiveField(30)
   String requiredBehavior;
-  @HiveField(31)
   Element elementRequiredBehavior;
-  @HiveField(32)
   String precheckBehavior;
-  @HiveField(33)
   Element elementPrecheckBehavior;
-  @HiveField(34)
   String cardinalityBehavior;
-  @HiveField(35)
   Element elementCardinalityBehavior;
-  @HiveField(36)
   Reference resource;
-  @HiveField(37)
   List<RequestGroup_Action> action;
 
   RequestGroup_Action({
@@ -455,17 +381,11 @@ class RequestGroup_Condition {
     return newRequestGroup_Condition;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String kind;
-  @HiveField(4)
   Element elementKind;
-  @HiveField(5)
   Expression expression;
 
   RequestGroup_Condition({
@@ -510,23 +430,14 @@ class RequestGroup_RelatedAction {
     return newRequestGroup_RelatedAction;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String actionId;
-  @HiveField(4)
   Element elementActionId;
-  @HiveField(5)
   String relationship;
-  @HiveField(6)
   Element elementRelationship;
-  @HiveField(7)
   Duration offsetDuration;
-  @HiveField(8)
   Range offsetRange;
 
   RequestGroup_RelatedAction({
@@ -989,347 +900,4 @@ Map<String, dynamic> _$RequestGroup_RelatedActionToJson(
   writeNotNull('offsetDuration', instance.offsetDuration?.toJson());
   writeNotNull('offsetRange', instance.offsetRange?.toJson());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class RequestGroupAdapter extends TypeAdapter<RequestGroup> {
-  @override
-  RequestGroup read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      instantiatesCanonical: (fields[12] as List)?.cast<String>(),
-      elementInstantiatesCanonical: (fields[13] as List)?.cast<Element>(),
-      instantiatesUri: (fields[14] as List)?.cast<String>(),
-      elementInstantiatesUri: (fields[15] as List)?.cast<Element>(),
-      basedOn: (fields[16] as List)?.cast<Reference>(),
-      replaces: (fields[17] as List)?.cast<Reference>(),
-      groupIdentifier: fields[18] as Identifier,
-      status: fields[19] as String,
-      elementStatus: fields[20] as Element,
-      intent: fields[21] as String,
-      elementIntent: fields[22] as Element,
-      priority: fields[23] as String,
-      elementPriority: fields[24] as Element,
-      code: fields[25] as CodeableConcept,
-      subject: fields[26] as Reference,
-      encounter: fields[27] as Reference,
-      authoredOn: fields[28] as DateTime,
-      elementAuthoredOn: fields[29] as Element,
-      author: fields[30] as Reference,
-      reasonCode: (fields[31] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[32] as List)?.cast<Reference>(),
-      note: (fields[33] as List)?.cast<Annotation>(),
-      action: (fields[34] as List)?.cast<RequestGroup_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(13)
-      ..write(obj.elementInstantiatesCanonical)
-      ..writeByte(14)
-      ..write(obj.instantiatesUri)
-      ..writeByte(15)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(16)
-      ..write(obj.basedOn)
-      ..writeByte(17)
-      ..write(obj.replaces)
-      ..writeByte(18)
-      ..write(obj.groupIdentifier)
-      ..writeByte(19)
-      ..write(obj.status)
-      ..writeByte(20)
-      ..write(obj.elementStatus)
-      ..writeByte(21)
-      ..write(obj.intent)
-      ..writeByte(22)
-      ..write(obj.elementIntent)
-      ..writeByte(23)
-      ..write(obj.priority)
-      ..writeByte(24)
-      ..write(obj.elementPriority)
-      ..writeByte(25)
-      ..write(obj.code)
-      ..writeByte(26)
-      ..write(obj.subject)
-      ..writeByte(27)
-      ..write(obj.encounter)
-      ..writeByte(28)
-      ..write(obj.authoredOn)
-      ..writeByte(29)
-      ..write(obj.elementAuthoredOn)
-      ..writeByte(30)
-      ..write(obj.author)
-      ..writeByte(31)
-      ..write(obj.reasonCode)
-      ..writeByte(32)
-      ..write(obj.reasonReference)
-      ..writeByte(33)
-      ..write(obj.note)
-      ..writeByte(34)
-      ..write(obj.action);
-  }
-}
-
-class RequestGroup_ActionAdapter extends TypeAdapter<RequestGroup_Action> {
-  @override
-  RequestGroup_Action read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup_Action(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      prefix: fields[3] as String,
-      elementPrefix: fields[4] as Element,
-      title: fields[5] as String,
-      elementTitle: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      textEquivalent: fields[9] as String,
-      elementTextEquivalent: fields[10] as Element,
-      priority: fields[11] as String,
-      elementPriority: fields[12] as Element,
-      code: (fields[13] as List)?.cast<CodeableConcept>(),
-      documentation: (fields[14] as List)?.cast<RelatedArtifact>(),
-      condition: (fields[15] as List)?.cast<RequestGroup_Condition>(),
-      relatedAction: (fields[16] as List)?.cast<RequestGroup_RelatedAction>(),
-      timingDateTime: fields[17] as String,
-      elementTimingDateTime: fields[18] as Element,
-      timingAge: fields[19] as Age,
-      timingPeriod: fields[20] as Period,
-      timingDuration: fields[21] as Duration,
-      timingRange: fields[22] as Range,
-      timingTiming: fields[23] as Timing,
-      participant: (fields[24] as List)?.cast<Reference>(),
-      type: fields[25] as CodeableConcept,
-      groupingBehavior: fields[26] as String,
-      elementGroupingBehavior: fields[27] as Element,
-      selectionBehavior: fields[28] as String,
-      elementSelectionBehavior: fields[29] as Element,
-      requiredBehavior: fields[30] as String,
-      elementRequiredBehavior: fields[31] as Element,
-      precheckBehavior: fields[32] as String,
-      elementPrecheckBehavior: fields[33] as Element,
-      cardinalityBehavior: fields[34] as String,
-      elementCardinalityBehavior: fields[35] as Element,
-      resource: fields[36] as Reference,
-      action: (fields[37] as List)?.cast<RequestGroup_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup_Action obj) {
-    writer
-      ..writeByte(38)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.prefix)
-      ..writeByte(4)
-      ..write(obj.elementPrefix)
-      ..writeByte(5)
-      ..write(obj.title)
-      ..writeByte(6)
-      ..write(obj.elementTitle)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.textEquivalent)
-      ..writeByte(10)
-      ..write(obj.elementTextEquivalent)
-      ..writeByte(11)
-      ..write(obj.priority)
-      ..writeByte(12)
-      ..write(obj.elementPriority)
-      ..writeByte(13)
-      ..write(obj.code)
-      ..writeByte(14)
-      ..write(obj.documentation)
-      ..writeByte(15)
-      ..write(obj.condition)
-      ..writeByte(16)
-      ..write(obj.relatedAction)
-      ..writeByte(17)
-      ..write(obj.timingDateTime)
-      ..writeByte(18)
-      ..write(obj.elementTimingDateTime)
-      ..writeByte(19)
-      ..write(obj.timingAge)
-      ..writeByte(20)
-      ..write(obj.timingPeriod)
-      ..writeByte(21)
-      ..write(obj.timingDuration)
-      ..writeByte(22)
-      ..write(obj.timingRange)
-      ..writeByte(23)
-      ..write(obj.timingTiming)
-      ..writeByte(24)
-      ..write(obj.participant)
-      ..writeByte(25)
-      ..write(obj.type)
-      ..writeByte(26)
-      ..write(obj.groupingBehavior)
-      ..writeByte(27)
-      ..write(obj.elementGroupingBehavior)
-      ..writeByte(28)
-      ..write(obj.selectionBehavior)
-      ..writeByte(29)
-      ..write(obj.elementSelectionBehavior)
-      ..writeByte(30)
-      ..write(obj.requiredBehavior)
-      ..writeByte(31)
-      ..write(obj.elementRequiredBehavior)
-      ..writeByte(32)
-      ..write(obj.precheckBehavior)
-      ..writeByte(33)
-      ..write(obj.elementPrecheckBehavior)
-      ..writeByte(34)
-      ..write(obj.cardinalityBehavior)
-      ..writeByte(35)
-      ..write(obj.elementCardinalityBehavior)
-      ..writeByte(36)
-      ..write(obj.resource)
-      ..writeByte(37)
-      ..write(obj.action);
-  }
-}
-
-class RequestGroup_ConditionAdapter
-    extends TypeAdapter<RequestGroup_Condition> {
-  @override
-  RequestGroup_Condition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup_Condition(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      kind: fields[3] as String,
-      elementKind: fields[4] as Element,
-      expression: fields[5] as Expression,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup_Condition obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.kind)
-      ..writeByte(4)
-      ..write(obj.elementKind)
-      ..writeByte(5)
-      ..write(obj.expression);
-  }
-}
-
-class RequestGroup_RelatedActionAdapter
-    extends TypeAdapter<RequestGroup_RelatedAction> {
-  @override
-  RequestGroup_RelatedAction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup_RelatedAction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      actionId: fields[3] as String,
-      elementActionId: fields[4] as Element,
-      relationship: fields[5] as String,
-      elementRelationship: fields[6] as Element,
-      offsetDuration: fields[7] as Duration,
-      offsetRange: fields[8] as Range,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup_RelatedAction obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.actionId)
-      ..writeByte(4)
-      ..write(obj.elementActionId)
-      ..writeByte(5)
-      ..write(obj.relationship)
-      ..writeByte(6)
-      ..write(obj.elementRelationship)
-      ..writeByte(7)
-      ..write(obj.offsetDuration)
-      ..writeByte(8)
-      ..write(obj.offsetRange);
-  }
 }

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:hive/hive.dart';
 
+@HiveType()
 class HiveResource {
   @HiveField(0)
   String resourceType;
@@ -14,8 +17,8 @@ class HiveResource {
   @HiveField(3)
   DateTime lastUpdated;
 
-  @HiveField(5)
-  String resource;
+  @HiveField(4)
+  dynamic resource;
 
   HiveResource(
       {this.resourceType,
@@ -35,8 +38,7 @@ class HiveResource {
         : DateTime.parse(json['lastUpdated'] as String);
     resource = json['resource'] == null
         ? null
-        : ResourceTypes(json['resource']['resourceType'],
-            json['resource'] as Map<String, dynamic>);
+        : ResourceTypes(json['resourceType'], json['resource'].toJson());
   }
 
   Map<String, dynamic> toJson() {
@@ -61,6 +63,7 @@ class HiveResource {
 // TypeAdapterGenerator
 // **************************************************************************
 
+
 class HiveResourceAdapter extends TypeAdapter<HiveResource> {
   @override
   HiveResource read(BinaryReader reader) {
@@ -73,7 +76,7 @@ class HiveResourceAdapter extends TypeAdapter<HiveResource> {
       id: fields[1] as String,
       createdAt: fields[2] as DateTime,
       lastUpdated: fields[3] as DateTime,
-      resource: fields[5] as dynamic,
+      resource: ResourceTypes(fields[0] as String, jsonDecode(json.encode(fields[4])) as Map<String, dynamic>)
     );
   }
 
@@ -89,7 +92,7 @@ class HiveResourceAdapter extends TypeAdapter<HiveResource> {
       ..write(obj.createdAt)
       ..writeByte(3)
       ..write(obj.lastUpdated)
-      ..writeByte(5)
+      ..writeByte(4)
       ..write(obj.resource);
   }
 }

@@ -110,8 +110,8 @@ def allTogether(newInstance, objects, newResource, variables, constructor):
 def imported():
     return(''.join(["import 'package:flutter_fhir/util/db.dart';\n",
                     "import 'package:flutter/foundation.dart';\n",
-                     "import 'package:json_annotation/json_annotation.dart';\n",
-                     "import 'package:hive/hive.dart';"]))
+                     "import 'package:json_annotation/json_annotation.dart';\n"]))
+                     # "import 'package:hive/hive.dart';"]))
 
 def idMetaResourceType(key, objects, isResource):
     if(key == 'id' and isResource):
@@ -290,7 +290,7 @@ for objects in definitions:
                                    idMetaResourceType(key, objects, 'resourceType' in properties),
                                    ',\n'])
             variables = ''.join([variables,
-                                 f'\t@HiveField({hiveField})\n',
+                                 # f'\t@HiveField({hiveField})\n',
                                  "\t", 
                                  primitiveDart(val), 
                                  " ", 

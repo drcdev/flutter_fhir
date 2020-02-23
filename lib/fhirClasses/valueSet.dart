@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -117,87 +116,46 @@ class ValueSet {
     this.save();
   }
 
-  @HiveField(0)
   String resourceType = 'ValueSet';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String status;
-  @HiveField(21)
   Element elementStatus;
-  @HiveField(22)
   bool experimental;
-  @HiveField(23)
   Element elementExperimental;
-  @HiveField(24)
   DateTime date;
-  @HiveField(25)
   Element elementDate;
-  @HiveField(26)
   String publisher;
-  @HiveField(27)
   Element elementPublisher;
-  @HiveField(28)
   List<ContactDetail> contact;
-  @HiveField(29)
   String description;
-  @HiveField(30)
   Element elementDescription;
-  @HiveField(31)
   List<UsageContext> useContext;
-  @HiveField(32)
   List<CodeableConcept> jurisdiction;
-  @HiveField(33)
   bool immutable;
-  @HiveField(34)
   Element elementImmutable;
-  @HiveField(35)
   String purpose;
-  @HiveField(36)
   Element elementPurpose;
-  @HiveField(37)
   String copyright;
-  @HiveField(38)
   Element elementCopyright;
-  @HiveField(39)
   ValueSet_Compose compose;
-  @HiveField(40)
   ValueSet_Expansion expansion;
 
   ValueSet({
@@ -276,23 +234,14 @@ class ValueSet_Compose {
     return newValueSet_Compose;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String lockedDate;
-  @HiveField(4)
   Element elementLockedDate;
-  @HiveField(5)
   bool inactive;
-  @HiveField(6)
   Element elementInactive;
-  @HiveField(7)
   List<ValueSet_Include> include;
-  @HiveField(8)
   List<ValueSet_Include> exclude;
 
   ValueSet_Compose({
@@ -341,25 +290,15 @@ class ValueSet_Include {
     return newValueSet_Include;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String system;
-  @HiveField(4)
   Element elementSystem;
-  @HiveField(5)
   String version;
-  @HiveField(6)
   Element elementVersion;
-  @HiveField(7)
   List<ValueSet_Concept> concept;
-  @HiveField(8)
   List<ValueSet_Filter> filter;
-  @HiveField(9)
   List<String> valueSet;
 
   ValueSet_Include({
@@ -405,21 +344,13 @@ class ValueSet_Concept {
     return newValueSet_Concept;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String code;
-  @HiveField(4)
   Element elementCode;
-  @HiveField(5)
   String display;
-  @HiveField(6)
   Element elementDisplay;
-  @HiveField(7)
   List<ValueSet_Designation> designation;
 
   ValueSet_Concept({
@@ -463,21 +394,13 @@ class ValueSet_Designation {
     return newValueSet_Designation;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String language;
-  @HiveField(4)
   Element elementLanguage;
-  @HiveField(5)
   Coding use;
-  @HiveField(6)
   String value;
-  @HiveField(7)
   Element elementValue;
 
   ValueSet_Designation({
@@ -523,23 +446,14 @@ class ValueSet_Filter {
     return newValueSet_Filter;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String property;
-  @HiveField(4)
   Element elementProperty;
-  @HiveField(5)
   String op;
-  @HiveField(6)
   Element elementOp;
-  @HiveField(7)
   String value;
-  @HiveField(8)
   Element elementValue;
 
   ValueSet_Filter({
@@ -594,31 +508,18 @@ class ValueSet_Expansion {
     return newValueSet_Expansion;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String identifier;
-  @HiveField(4)
   Element elementIdentifier;
-  @HiveField(5)
   DateTime timestamp;
-  @HiveField(6)
   Element elementTimestamp;
-  @HiveField(7)
   int total;
-  @HiveField(8)
   Element elementTotal;
-  @HiveField(9)
   int offset;
-  @HiveField(10)
   Element elementOffset;
-  @HiveField(11)
   List<ValueSet_Parameter> parameter;
-  @HiveField(12)
   List<ValueSet_Contains> contains;
 
   ValueSet_Expansion({
@@ -689,43 +590,24 @@ class ValueSet_Parameter {
     return newValueSet_Parameter;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String name;
-  @HiveField(4)
   Element elementName;
-  @HiveField(5)
   String valueString;
-  @HiveField(6)
   Element elementValueString;
-  @HiveField(7)
   bool valueBoolean;
-  @HiveField(8)
   Element elementValueBoolean;
-  @HiveField(9)
   int valueInteger;
-  @HiveField(10)
   Element elementValueInteger;
-  @HiveField(11)
   int valueDecimal;
-  @HiveField(12)
   Element elementValueDecimal;
-  @HiveField(13)
   String valueUri;
-  @HiveField(14)
   Element elementValueUri;
-  @HiveField(15)
   String valueCode;
-  @HiveField(16)
   Element elementValueCode;
-  @HiveField(17)
   String valueDateTime;
-  @HiveField(18)
   Element elementValueDateTime;
 
   ValueSet_Parameter({
@@ -798,39 +680,22 @@ class ValueSet_Contains {
     return newValueSet_Contains;
   }
 
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String system;
-  @HiveField(4)
   Element elementSystem;
-  @HiveField(5)
   bool abstract;
-  @HiveField(6)
   Element elementAbstract;
-  @HiveField(7)
   bool inactive;
-  @HiveField(8)
   Element elementInactive;
-  @HiveField(9)
   String version;
-  @HiveField(10)
   Element elementVersion;
-  @HiveField(11)
   String code;
-  @HiveField(12)
   Element elementCode;
-  @HiveField(13)
   String display;
-  @HiveField(14)
   Element elementDisplay;
-  @HiveField(15)
   List<ValueSet_Designation> designation;
-  @HiveField(16)
   List<ValueSet_Contains> contains;
 
   ValueSet_Contains({
@@ -1518,573 +1383,4 @@ Map<String, dynamic> _$ValueSet_ContainsToJson(ValueSet_Contains instance) {
   writeNotNull(
       'contains', instance.contains?.map((e) => e?.toJson())?.toList());
   return val;
-}
-
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ValueSetAdapter extends TypeAdapter<ValueSet> {
-  @override
-  ValueSet read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet(
-      resourceType: fields[0] as String,
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      status: fields[20] as String,
-      elementStatus: fields[21] as Element,
-      experimental: fields[22] as bool,
-      elementExperimental: fields[23] as Element,
-      date: fields[24] as DateTime,
-      elementDate: fields[25] as Element,
-      publisher: fields[26] as String,
-      elementPublisher: fields[27] as Element,
-      contact: (fields[28] as List)?.cast<ContactDetail>(),
-      description: fields[29] as String,
-      elementDescription: fields[30] as Element,
-      useContext: (fields[31] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
-      immutable: fields[33] as bool,
-      elementImmutable: fields[34] as Element,
-      purpose: fields[35] as String,
-      elementPurpose: fields[36] as Element,
-      copyright: fields[37] as String,
-      elementCopyright: fields[38] as Element,
-      compose: fields[39] as ValueSet_Compose,
-      expansion: fields[40] as ValueSet_Expansion,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet obj) {
-    writer
-      ..writeByte(41)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.status)
-      ..writeByte(21)
-      ..write(obj.elementStatus)
-      ..writeByte(22)
-      ..write(obj.experimental)
-      ..writeByte(23)
-      ..write(obj.elementExperimental)
-      ..writeByte(24)
-      ..write(obj.date)
-      ..writeByte(25)
-      ..write(obj.elementDate)
-      ..writeByte(26)
-      ..write(obj.publisher)
-      ..writeByte(27)
-      ..write(obj.elementPublisher)
-      ..writeByte(28)
-      ..write(obj.contact)
-      ..writeByte(29)
-      ..write(obj.description)
-      ..writeByte(30)
-      ..write(obj.elementDescription)
-      ..writeByte(31)
-      ..write(obj.useContext)
-      ..writeByte(32)
-      ..write(obj.jurisdiction)
-      ..writeByte(33)
-      ..write(obj.immutable)
-      ..writeByte(34)
-      ..write(obj.elementImmutable)
-      ..writeByte(35)
-      ..write(obj.purpose)
-      ..writeByte(36)
-      ..write(obj.elementPurpose)
-      ..writeByte(37)
-      ..write(obj.copyright)
-      ..writeByte(38)
-      ..write(obj.elementCopyright)
-      ..writeByte(39)
-      ..write(obj.compose)
-      ..writeByte(40)
-      ..write(obj.expansion);
-  }
-}
-
-class ValueSet_ComposeAdapter extends TypeAdapter<ValueSet_Compose> {
-  @override
-  ValueSet_Compose read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Compose(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      lockedDate: fields[3] as String,
-      elementLockedDate: fields[4] as Element,
-      inactive: fields[5] as bool,
-      elementInactive: fields[6] as Element,
-      include: (fields[7] as List)?.cast<ValueSet_Include>(),
-      exclude: (fields[8] as List)?.cast<ValueSet_Include>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Compose obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.lockedDate)
-      ..writeByte(4)
-      ..write(obj.elementLockedDate)
-      ..writeByte(5)
-      ..write(obj.inactive)
-      ..writeByte(6)
-      ..write(obj.elementInactive)
-      ..writeByte(7)
-      ..write(obj.include)
-      ..writeByte(8)
-      ..write(obj.exclude);
-  }
-}
-
-class ValueSet_IncludeAdapter extends TypeAdapter<ValueSet_Include> {
-  @override
-  ValueSet_Include read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Include(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      system: fields[3] as String,
-      elementSystem: fields[4] as Element,
-      version: fields[5] as String,
-      elementVersion: fields[6] as Element,
-      concept: (fields[7] as List)?.cast<ValueSet_Concept>(),
-      filter: (fields[8] as List)?.cast<ValueSet_Filter>(),
-      valueSet: (fields[9] as List)?.cast<String>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Include obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.system)
-      ..writeByte(4)
-      ..write(obj.elementSystem)
-      ..writeByte(5)
-      ..write(obj.version)
-      ..writeByte(6)
-      ..write(obj.elementVersion)
-      ..writeByte(7)
-      ..write(obj.concept)
-      ..writeByte(8)
-      ..write(obj.filter)
-      ..writeByte(9)
-      ..write(obj.valueSet);
-  }
-}
-
-class ValueSet_ConceptAdapter extends TypeAdapter<ValueSet_Concept> {
-  @override
-  ValueSet_Concept read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Concept(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      display: fields[5] as String,
-      elementDisplay: fields[6] as Element,
-      designation: (fields[7] as List)?.cast<ValueSet_Designation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Concept obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.display)
-      ..writeByte(6)
-      ..write(obj.elementDisplay)
-      ..writeByte(7)
-      ..write(obj.designation);
-  }
-}
-
-class ValueSet_DesignationAdapter extends TypeAdapter<ValueSet_Designation> {
-  @override
-  ValueSet_Designation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Designation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      language: fields[3] as String,
-      elementLanguage: fields[4] as Element,
-      use: fields[5] as Coding,
-      value: fields[6] as String,
-      elementValue: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Designation obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.language)
-      ..writeByte(4)
-      ..write(obj.elementLanguage)
-      ..writeByte(5)
-      ..write(obj.use)
-      ..writeByte(6)
-      ..write(obj.value)
-      ..writeByte(7)
-      ..write(obj.elementValue);
-  }
-}
-
-class ValueSet_FilterAdapter extends TypeAdapter<ValueSet_Filter> {
-  @override
-  ValueSet_Filter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Filter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      property: fields[3] as String,
-      elementProperty: fields[4] as Element,
-      op: fields[5] as String,
-      elementOp: fields[6] as Element,
-      value: fields[7] as String,
-      elementValue: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Filter obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.property)
-      ..writeByte(4)
-      ..write(obj.elementProperty)
-      ..writeByte(5)
-      ..write(obj.op)
-      ..writeByte(6)
-      ..write(obj.elementOp)
-      ..writeByte(7)
-      ..write(obj.value)
-      ..writeByte(8)
-      ..write(obj.elementValue);
-  }
-}
-
-class ValueSet_ExpansionAdapter extends TypeAdapter<ValueSet_Expansion> {
-  @override
-  ValueSet_Expansion read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Expansion(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as String,
-      elementIdentifier: fields[4] as Element,
-      timestamp: fields[5] as DateTime,
-      elementTimestamp: fields[6] as Element,
-      total: fields[7] as int,
-      elementTotal: fields[8] as Element,
-      offset: fields[9] as int,
-      elementOffset: fields[10] as Element,
-      parameter: (fields[11] as List)?.cast<ValueSet_Parameter>(),
-      contains: (fields[12] as List)?.cast<ValueSet_Contains>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Expansion obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.elementIdentifier)
-      ..writeByte(5)
-      ..write(obj.timestamp)
-      ..writeByte(6)
-      ..write(obj.elementTimestamp)
-      ..writeByte(7)
-      ..write(obj.total)
-      ..writeByte(8)
-      ..write(obj.elementTotal)
-      ..writeByte(9)
-      ..write(obj.offset)
-      ..writeByte(10)
-      ..write(obj.elementOffset)
-      ..writeByte(11)
-      ..write(obj.parameter)
-      ..writeByte(12)
-      ..write(obj.contains);
-  }
-}
-
-class ValueSet_ParameterAdapter extends TypeAdapter<ValueSet_Parameter> {
-  @override
-  ValueSet_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      valueString: fields[5] as String,
-      elementValueString: fields[6] as Element,
-      valueBoolean: fields[7] as bool,
-      elementValueBoolean: fields[8] as Element,
-      valueInteger: fields[9] as int,
-      elementValueInteger: fields[10] as Element,
-      valueDecimal: fields[11] as int,
-      elementValueDecimal: fields[12] as Element,
-      valueUri: fields[13] as String,
-      elementValueUri: fields[14] as Element,
-      valueCode: fields[15] as String,
-      elementValueCode: fields[16] as Element,
-      valueDateTime: fields[17] as String,
-      elementValueDateTime: fields[18] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Parameter obj) {
-    writer
-      ..writeByte(19)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.valueString)
-      ..writeByte(6)
-      ..write(obj.elementValueString)
-      ..writeByte(7)
-      ..write(obj.valueBoolean)
-      ..writeByte(8)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(9)
-      ..write(obj.valueInteger)
-      ..writeByte(10)
-      ..write(obj.elementValueInteger)
-      ..writeByte(11)
-      ..write(obj.valueDecimal)
-      ..writeByte(12)
-      ..write(obj.elementValueDecimal)
-      ..writeByte(13)
-      ..write(obj.valueUri)
-      ..writeByte(14)
-      ..write(obj.elementValueUri)
-      ..writeByte(15)
-      ..write(obj.valueCode)
-      ..writeByte(16)
-      ..write(obj.elementValueCode)
-      ..writeByte(17)
-      ..write(obj.valueDateTime)
-      ..writeByte(18)
-      ..write(obj.elementValueDateTime);
-  }
-}
-
-class ValueSet_ContainsAdapter extends TypeAdapter<ValueSet_Contains> {
-  @override
-  ValueSet_Contains read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Contains(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      system: fields[3] as String,
-      elementSystem: fields[4] as Element,
-      abstract: fields[5] as bool,
-      elementAbstract: fields[6] as Element,
-      inactive: fields[7] as bool,
-      elementInactive: fields[8] as Element,
-      version: fields[9] as String,
-      elementVersion: fields[10] as Element,
-      code: fields[11] as String,
-      elementCode: fields[12] as Element,
-      display: fields[13] as String,
-      elementDisplay: fields[14] as Element,
-      designation: (fields[15] as List)?.cast<ValueSet_Designation>(),
-      contains: (fields[16] as List)?.cast<ValueSet_Contains>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Contains obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.system)
-      ..writeByte(4)
-      ..write(obj.elementSystem)
-      ..writeByte(5)
-      ..write(obj.abstract)
-      ..writeByte(6)
-      ..write(obj.elementAbstract)
-      ..writeByte(7)
-      ..write(obj.inactive)
-      ..writeByte(8)
-      ..write(obj.elementInactive)
-      ..writeByte(9)
-      ..write(obj.version)
-      ..writeByte(10)
-      ..write(obj.elementVersion)
-      ..writeByte(11)
-      ..write(obj.code)
-      ..writeByte(12)
-      ..write(obj.elementCode)
-      ..writeByte(13)
-      ..write(obj.display)
-      ..writeByte(14)
-      ..write(obj.elementDisplay)
-      ..writeByte(15)
-      ..write(obj.designation)
-      ..writeByte(16)
-      ..write(obj.contains);
-  }
 }
