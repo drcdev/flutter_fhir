@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Signature {
   static Future<Signature> newInstance({
     String id,
@@ -118,18 +118,28 @@ Signature _$SignatureFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SignatureToJson(Signature instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'when': instance.when?.toIso8601String(),
-      'elementWhen': instance.elementWhen?.toJson(),
-      'who': instance.who?.toJson(),
-      'onBehalfOf': instance.onBehalfOf?.toJson(),
-      'targetFormat': instance.targetFormat,
-      'elementTargetFormat': instance.elementTargetFormat?.toJson(),
-      'sigFormat': instance.sigFormat,
-      'elementSigFormat': instance.elementSigFormat?.toJson(),
-      'data': instance.data,
-      'elementData': instance.elementData?.toJson(),
-    };
+Map<String, dynamic> _$SignatureToJson(Signature instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('when', instance.when?.toIso8601String());
+  writeNotNull('elementWhen', instance.elementWhen?.toJson());
+  writeNotNull('who', instance.who?.toJson());
+  writeNotNull('onBehalfOf', instance.onBehalfOf?.toJson());
+  writeNotNull('targetFormat', instance.targetFormat);
+  writeNotNull('elementTargetFormat', instance.elementTargetFormat?.toJson());
+  writeNotNull('sigFormat', instance.sigFormat);
+  writeNotNull('elementSigFormat', instance.elementSigFormat?.toJson());
+  writeNotNull('data', instance.data);
+  writeNotNull('elementData', instance.elementData?.toJson());
+  return val;
+}

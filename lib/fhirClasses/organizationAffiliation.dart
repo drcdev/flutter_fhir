@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OrganizationAffiliation {
   static Future<OrganizationAffiliation> newInstance({
     String resourceType,
@@ -232,32 +232,46 @@ OrganizationAffiliation _$OrganizationAffiliationFromJson(
 }
 
 Map<String, dynamic> _$OrganizationAffiliationToJson(
-        OrganizationAffiliation instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'period': instance.period?.toJson(),
-      'organization': instance.organization?.toJson(),
-      'participatingOrganization': instance.participatingOrganization?.toJson(),
-      'network': instance.network?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
-      'location': instance.location?.map((e) => e?.toJson())?.toList(),
-      'healthcareService':
-          instance.healthcareService?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
-    };
+    OrganizationAffiliation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('organization', instance.organization?.toJson());
+  writeNotNull('participatingOrganization',
+      instance.participatingOrganization?.toJson());
+  writeNotNull('network', instance.network?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'location', instance.location?.map((e) => e?.toJson())?.toList());
+  writeNotNull('healthcareService',
+      instance.healthcareService?.map((e) => e?.toJson())?.toList());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
+  return val;
+}

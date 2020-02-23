@@ -22,7 +22,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition {
   static Future<PlanDefinition> newInstance({
     String resourceType,
@@ -286,7 +286,7 @@ class PlanDefinition {
   Map<String, dynamic> toJson() => _$PlanDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition_Goal {
   static Future<PlanDefinition_Goal> newInstance({
     String id,
@@ -345,7 +345,7 @@ class PlanDefinition_Goal {
   Map<String, dynamic> toJson() => _$PlanDefinition_GoalToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition_Target {
   static Future<PlanDefinition_Target> newInstance({
     String id,
@@ -396,7 +396,7 @@ class PlanDefinition_Target {
   Map<String, dynamic> toJson() => _$PlanDefinition_TargetToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition_Action {
   static Future<PlanDefinition_Action> newInstance({
     String id,
@@ -619,7 +619,7 @@ class PlanDefinition_Action {
   Map<String, dynamic> toJson() => _$PlanDefinition_ActionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition_Condition {
   static Future<PlanDefinition_Condition> newInstance({
     String id,
@@ -663,7 +663,7 @@ class PlanDefinition_Condition {
   Map<String, dynamic> toJson() => _$PlanDefinition_ConditionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition_RelatedAction {
   static Future<PlanDefinition_RelatedAction> newInstance({
     String id,
@@ -719,7 +719,7 @@ class PlanDefinition_RelatedAction {
   Map<String, dynamic> toJson() => _$PlanDefinition_RelatedActionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition_Participant {
   static Future<PlanDefinition_Participant> newInstance({
     String id,
@@ -763,7 +763,7 @@ class PlanDefinition_Participant {
   Map<String, dynamic> toJson() => _$PlanDefinition_ParticipantToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PlanDefinition_DynamicValue {
   static Future<PlanDefinition_DynamicValue> newInstance({
     String id,
@@ -980,69 +980,85 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PlanDefinitionToJson(PlanDefinition instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'subtitle': instance.subtitle,
-      'elementSubtitle': instance.elementSubtitle?.toJson(),
-      'type': instance.type?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
-      'subjectReference': instance.subjectReference?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'usage': instance.usage,
-      'elementUsage': instance.elementUsage?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'approvalDate': instance.approvalDate,
-      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
-      'lastReviewDate': instance.lastReviewDate,
-      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
-      'author': instance.author?.map((e) => e?.toJson())?.toList(),
-      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
-      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
-      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
-      'relatedArtifact':
-          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
-      'library': instance.library,
-      'goal': instance.goal?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$PlanDefinitionToJson(PlanDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('subtitle', instance.subtitle);
+  writeNotNull('elementSubtitle', instance.elementSubtitle?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull(
+      'subjectCodeableConcept', instance.subjectCodeableConcept?.toJson());
+  writeNotNull('subjectReference', instance.subjectReference?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('usage', instance.usage);
+  writeNotNull('elementUsage', instance.elementUsage?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('approvalDate', instance.approvalDate);
+  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
+  writeNotNull('lastReviewDate', instance.lastReviewDate);
+  writeNotNull(
+      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('topic', instance.topic?.map((e) => e?.toJson())?.toList());
+  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
+  writeNotNull('editor', instance.editor?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reviewer', instance.reviewer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endorser', instance.endorser?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedArtifact',
+      instance.relatedArtifact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('library', instance.library);
+  writeNotNull('goal', instance.goal?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 PlanDefinition_Goal _$PlanDefinition_GoalFromJson(Map<String, dynamic> json) {
   return PlanDefinition_Goal(
@@ -1085,22 +1101,31 @@ PlanDefinition_Goal _$PlanDefinition_GoalFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PlanDefinition_GoalToJson(
-        PlanDefinition_Goal instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'category': instance.category?.toJson(),
-      'description': instance.description?.toJson(),
-      'priority': instance.priority?.toJson(),
-      'start': instance.start?.toJson(),
-      'addresses': instance.addresses?.map((e) => e?.toJson())?.toList(),
-      'documentation':
-          instance.documentation?.map((e) => e?.toJson())?.toList(),
-      'target': instance.target?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$PlanDefinition_GoalToJson(PlanDefinition_Goal instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('description', instance.description?.toJson());
+  writeNotNull('priority', instance.priority?.toJson());
+  writeNotNull('start', instance.start?.toJson());
+  writeNotNull(
+      'addresses', instance.addresses?.map((e) => e?.toJson())?.toList());
+  writeNotNull('documentation',
+      instance.documentation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 PlanDefinition_Target _$PlanDefinition_TargetFromJson(
     Map<String, dynamic> json) {
@@ -1134,18 +1159,28 @@ PlanDefinition_Target _$PlanDefinition_TargetFromJson(
 }
 
 Map<String, dynamic> _$PlanDefinition_TargetToJson(
-        PlanDefinition_Target instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'measure': instance.measure?.toJson(),
-      'detailQuantity': instance.detailQuantity?.toJson(),
-      'detailRange': instance.detailRange?.toJson(),
-      'detailCodeableConcept': instance.detailCodeableConcept?.toJson(),
-      'due': instance.due?.toJson(),
-    };
+    PlanDefinition_Target instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('measure', instance.measure?.toJson());
+  writeNotNull('detailQuantity', instance.detailQuantity?.toJson());
+  writeNotNull('detailRange', instance.detailRange?.toJson());
+  writeNotNull(
+      'detailCodeableConcept', instance.detailCodeableConcept?.toJson());
+  writeNotNull('due', instance.due?.toJson());
+  return val;
+}
 
 PlanDefinition_Action _$PlanDefinition_ActionFromJson(
     Map<String, dynamic> json) {
@@ -1310,66 +1345,85 @@ PlanDefinition_Action _$PlanDefinition_ActionFromJson(
 }
 
 Map<String, dynamic> _$PlanDefinition_ActionToJson(
-        PlanDefinition_Action instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'prefix': instance.prefix,
-      'elementPrefix': instance.elementPrefix?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'textEquivalent': instance.textEquivalent,
-      'elementTextEquivalent': instance.elementTextEquivalent?.toJson(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'reason': instance.reason?.map((e) => e?.toJson())?.toList(),
-      'documentation':
-          instance.documentation?.map((e) => e?.toJson())?.toList(),
-      'goalId': instance.goalId,
-      'elementGoalId':
-          instance.elementGoalId?.map((e) => e?.toJson())?.toList(),
-      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
-      'subjectReference': instance.subjectReference?.toJson(),
-      'trigger': instance.trigger?.map((e) => e?.toJson())?.toList(),
-      'condition': instance.condition?.map((e) => e?.toJson())?.toList(),
-      'input': instance.input?.map((e) => e?.toJson())?.toList(),
-      'output': instance.output?.map((e) => e?.toJson())?.toList(),
-      'relatedAction':
-          instance.relatedAction?.map((e) => e?.toJson())?.toList(),
-      'timingDateTime': instance.timingDateTime,
-      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
-      'timingAge': instance.timingAge?.toJson(),
-      'timingPeriod': instance.timingPeriod?.toJson(),
-      'timingDuration': instance.timingDuration?.toJson(),
-      'timingRange': instance.timingRange?.toJson(),
-      'timingTiming': instance.timingTiming?.toJson(),
-      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'groupingBehavior': instance.groupingBehavior,
-      'elementGroupingBehavior': instance.elementGroupingBehavior?.toJson(),
-      'selectionBehavior': instance.selectionBehavior,
-      'elementSelectionBehavior': instance.elementSelectionBehavior?.toJson(),
-      'requiredBehavior': instance.requiredBehavior,
-      'elementRequiredBehavior': instance.elementRequiredBehavior?.toJson(),
-      'precheckBehavior': instance.precheckBehavior,
-      'elementPrecheckBehavior': instance.elementPrecheckBehavior?.toJson(),
-      'cardinalityBehavior': instance.cardinalityBehavior,
-      'elementCardinalityBehavior':
-          instance.elementCardinalityBehavior?.toJson(),
-      'definitionCanonical': instance.definitionCanonical,
-      'elementDefinitionCanonical':
-          instance.elementDefinitionCanonical?.toJson(),
-      'definitionUri': instance.definitionUri,
-      'elementDefinitionUri': instance.elementDefinitionUri?.toJson(),
-      'transform': instance.transform,
-      'dynamicValue': instance.dynamicValue?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+    PlanDefinition_Action instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prefix', instance.prefix);
+  writeNotNull('elementPrefix', instance.elementPrefix?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('textEquivalent', instance.textEquivalent);
+  writeNotNull(
+      'elementTextEquivalent', instance.elementTextEquivalent?.toJson());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reason', instance.reason?.map((e) => e?.toJson())?.toList());
+  writeNotNull('documentation',
+      instance.documentation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('goalId', instance.goalId);
+  writeNotNull('elementGoalId',
+      instance.elementGoalId?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'subjectCodeableConcept', instance.subjectCodeableConcept?.toJson());
+  writeNotNull('subjectReference', instance.subjectReference?.toJson());
+  writeNotNull('trigger', instance.trigger?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'condition', instance.condition?.map((e) => e?.toJson())?.toList());
+  writeNotNull('input', instance.input?.map((e) => e?.toJson())?.toList());
+  writeNotNull('output', instance.output?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedAction',
+      instance.relatedAction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('timingDateTime', instance.timingDateTime);
+  writeNotNull(
+      'elementTimingDateTime', instance.elementTimingDateTime?.toJson());
+  writeNotNull('timingAge', instance.timingAge?.toJson());
+  writeNotNull('timingPeriod', instance.timingPeriod?.toJson());
+  writeNotNull('timingDuration', instance.timingDuration?.toJson());
+  writeNotNull('timingRange', instance.timingRange?.toJson());
+  writeNotNull('timingTiming', instance.timingTiming?.toJson());
+  writeNotNull(
+      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('groupingBehavior', instance.groupingBehavior);
+  writeNotNull(
+      'elementGroupingBehavior', instance.elementGroupingBehavior?.toJson());
+  writeNotNull('selectionBehavior', instance.selectionBehavior);
+  writeNotNull(
+      'elementSelectionBehavior', instance.elementSelectionBehavior?.toJson());
+  writeNotNull('requiredBehavior', instance.requiredBehavior);
+  writeNotNull(
+      'elementRequiredBehavior', instance.elementRequiredBehavior?.toJson());
+  writeNotNull('precheckBehavior', instance.precheckBehavior);
+  writeNotNull(
+      'elementPrecheckBehavior', instance.elementPrecheckBehavior?.toJson());
+  writeNotNull('cardinalityBehavior', instance.cardinalityBehavior);
+  writeNotNull('elementCardinalityBehavior',
+      instance.elementCardinalityBehavior?.toJson());
+  writeNotNull('definitionCanonical', instance.definitionCanonical);
+  writeNotNull('elementDefinitionCanonical',
+      instance.elementDefinitionCanonical?.toJson());
+  writeNotNull('definitionUri', instance.definitionUri);
+  writeNotNull('elementDefinitionUri', instance.elementDefinitionUri?.toJson());
+  writeNotNull('transform', instance.transform);
+  writeNotNull(
+      'dynamicValue', instance.dynamicValue?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 PlanDefinition_Condition _$PlanDefinition_ConditionFromJson(
     Map<String, dynamic> json) {
@@ -1394,16 +1448,25 @@ PlanDefinition_Condition _$PlanDefinition_ConditionFromJson(
 }
 
 Map<String, dynamic> _$PlanDefinition_ConditionToJson(
-        PlanDefinition_Condition instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'expression': instance.expression?.toJson(),
-    };
+    PlanDefinition_Condition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('expression', instance.expression?.toJson());
+  return val;
+}
 
 PlanDefinition_RelatedAction _$PlanDefinition_RelatedActionFromJson(
     Map<String, dynamic> json) {
@@ -1435,19 +1498,28 @@ PlanDefinition_RelatedAction _$PlanDefinition_RelatedActionFromJson(
 }
 
 Map<String, dynamic> _$PlanDefinition_RelatedActionToJson(
-        PlanDefinition_RelatedAction instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'actionId': instance.actionId,
-      'elementActionId': instance.elementActionId?.toJson(),
-      'relationship': instance.relationship,
-      'elementRelationship': instance.elementRelationship?.toJson(),
-      'offsetDuration': instance.offsetDuration?.toJson(),
-      'offsetRange': instance.offsetRange?.toJson(),
-    };
+    PlanDefinition_RelatedAction instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('actionId', instance.actionId);
+  writeNotNull('elementActionId', instance.elementActionId?.toJson());
+  writeNotNull('relationship', instance.relationship);
+  writeNotNull('elementRelationship', instance.elementRelationship?.toJson());
+  writeNotNull('offsetDuration', instance.offsetDuration?.toJson());
+  writeNotNull('offsetRange', instance.offsetRange?.toJson());
+  return val;
+}
 
 PlanDefinition_Participant _$PlanDefinition_ParticipantFromJson(
     Map<String, dynamic> json) {
@@ -1472,16 +1544,25 @@ PlanDefinition_Participant _$PlanDefinition_ParticipantFromJson(
 }
 
 Map<String, dynamic> _$PlanDefinition_ParticipantToJson(
-        PlanDefinition_Participant instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'role': instance.role?.toJson(),
-    };
+    PlanDefinition_Participant instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('role', instance.role?.toJson());
+  return val;
+}
 
 PlanDefinition_DynamicValue _$PlanDefinition_DynamicValueFromJson(
     Map<String, dynamic> json) {
@@ -1506,13 +1587,22 @@ PlanDefinition_DynamicValue _$PlanDefinition_DynamicValueFromJson(
 }
 
 Map<String, dynamic> _$PlanDefinition_DynamicValueToJson(
-        PlanDefinition_DynamicValue instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'path': instance.path,
-      'elementPath': instance.elementPath?.toJson(),
-      'expression': instance.expression?.toJson(),
-    };
+    PlanDefinition_DynamicValue instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('path', instance.path);
+  writeNotNull('elementPath', instance.elementPath?.toJson());
+  writeNotNull('expression', instance.expression?.toJson());
+  return val;
+}

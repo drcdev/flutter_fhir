@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities {
   static Future<TerminologyCapabilities> newInstance({
     String resourceType,
@@ -240,7 +240,7 @@ class TerminologyCapabilities {
   Map<String, dynamic> toJson() => _$TerminologyCapabilitiesToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Software {
   static Future<TerminologyCapabilities_Software> newInstance({
     String id,
@@ -290,7 +290,7 @@ class TerminologyCapabilities_Software {
       _$TerminologyCapabilities_SoftwareToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Implementation {
   static Future<TerminologyCapabilities_Implementation> newInstance({
     String id,
@@ -341,7 +341,7 @@ class TerminologyCapabilities_Implementation {
       _$TerminologyCapabilities_ImplementationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_CodeSystem {
   static Future<TerminologyCapabilities_CodeSystem> newInstance({
     String id,
@@ -391,7 +391,7 @@ class TerminologyCapabilities_CodeSystem {
       _$TerminologyCapabilities_CodeSystemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Version {
   static Future<TerminologyCapabilities_Version> newInstance({
     String id,
@@ -468,7 +468,7 @@ class TerminologyCapabilities_Version {
       _$TerminologyCapabilities_VersionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Filter {
   static Future<TerminologyCapabilities_Filter> newInstance({
     String id,
@@ -516,7 +516,7 @@ class TerminologyCapabilities_Filter {
   Map<String, dynamic> toJson() => _$TerminologyCapabilities_FilterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Expansion {
   static Future<TerminologyCapabilities_Expansion> newInstance({
     String id,
@@ -586,7 +586,7 @@ class TerminologyCapabilities_Expansion {
       _$TerminologyCapabilities_ExpansionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Parameter {
   static Future<TerminologyCapabilities_Parameter> newInstance({
     String id,
@@ -636,7 +636,7 @@ class TerminologyCapabilities_Parameter {
       _$TerminologyCapabilities_ParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_ValidateCode {
   static Future<TerminologyCapabilities_ValidateCode> newInstance({
     String id,
@@ -679,7 +679,7 @@ class TerminologyCapabilities_ValidateCode {
       _$TerminologyCapabilities_ValidateCodeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Translation {
   static Future<TerminologyCapabilities_Translation> newInstance({
     String id,
@@ -721,7 +721,7 @@ class TerminologyCapabilities_Translation {
       _$TerminologyCapabilities_TranslationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class TerminologyCapabilities_Closure {
   static Future<TerminologyCapabilities_Closure> newInstance({
     String id,
@@ -904,59 +904,71 @@ TerminologyCapabilities _$TerminologyCapabilitiesFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilitiesToJson(
-        TerminologyCapabilities instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'software': instance.software?.toJson(),
-      'implementation': instance.implementation?.toJson(),
-      'lockedDate': instance.lockedDate,
-      'elementLockedDate': instance.elementLockedDate?.toJson(),
-      'codeSystem': instance.codeSystem?.map((e) => e?.toJson())?.toList(),
-      'expansion': instance.expansion?.toJson(),
-      'codeSearch': instance.codeSearch,
-      'elementCodeSearch': instance.elementCodeSearch?.toJson(),
-      'validateCode': instance.validateCode?.toJson(),
-      'translation': instance.translation?.toJson(),
-      'closure': instance.closure?.toJson(),
-    };
+    TerminologyCapabilities instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('software', instance.software?.toJson());
+  writeNotNull('implementation', instance.implementation?.toJson());
+  writeNotNull('lockedDate', instance.lockedDate);
+  writeNotNull('elementLockedDate', instance.elementLockedDate?.toJson());
+  writeNotNull(
+      'codeSystem', instance.codeSystem?.map((e) => e?.toJson())?.toList());
+  writeNotNull('expansion', instance.expansion?.toJson());
+  writeNotNull('codeSearch', instance.codeSearch);
+  writeNotNull('elementCodeSearch', instance.elementCodeSearch?.toJson());
+  writeNotNull('validateCode', instance.validateCode?.toJson());
+  writeNotNull('translation', instance.translation?.toJson());
+  writeNotNull('closure', instance.closure?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Software _$TerminologyCapabilities_SoftwareFromJson(
     Map<String, dynamic> json) {
@@ -982,17 +994,26 @@ TerminologyCapabilities_Software _$TerminologyCapabilities_SoftwareFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_SoftwareToJson(
-        TerminologyCapabilities_Software instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-    };
+    TerminologyCapabilities_Software instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Implementation
     _$TerminologyCapabilities_ImplementationFromJson(
@@ -1019,17 +1040,26 @@ TerminologyCapabilities_Implementation
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ImplementationToJson(
-        TerminologyCapabilities_Implementation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-    };
+    TerminologyCapabilities_Implementation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_CodeSystem _$TerminologyCapabilities_CodeSystemFromJson(
     Map<String, dynamic> json) {
@@ -1058,17 +1088,26 @@ TerminologyCapabilities_CodeSystem _$TerminologyCapabilities_CodeSystemFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_CodeSystemToJson(
-        TerminologyCapabilities_CodeSystem instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'uri': instance.uri,
-      'version': instance.version?.map((e) => e?.toJson())?.toList(),
-      'subsumption': instance.subsumption,
-      'elementSubsumption': instance.elementSubsumption?.toJson(),
-    };
+    TerminologyCapabilities_CodeSystem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('uri', instance.uri);
+  writeNotNull('version', instance.version?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subsumption', instance.subsumption);
+  writeNotNull('elementSubsumption', instance.elementSubsumption?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Version _$TerminologyCapabilities_VersionFromJson(
     Map<String, dynamic> json) {
@@ -1115,26 +1154,35 @@ TerminologyCapabilities_Version _$TerminologyCapabilities_VersionFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_VersionToJson(
-        TerminologyCapabilities_Version instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'isDefault': instance.isDefault,
-      'elementIsDefault': instance.elementIsDefault?.toJson(),
-      'compositional': instance.compositional,
-      'elementCompositional': instance.elementCompositional?.toJson(),
-      'language': instance.language,
-      'elementLanguage':
-          instance.elementLanguage?.map((e) => e?.toJson())?.toList(),
-      'filter': instance.filter?.map((e) => e?.toJson())?.toList(),
-      'property': instance.property,
-      'elementProperty':
-          instance.elementProperty?.map((e) => e?.toJson())?.toList(),
-    };
+    TerminologyCapabilities_Version instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('isDefault', instance.isDefault);
+  writeNotNull('elementIsDefault', instance.elementIsDefault?.toJson());
+  writeNotNull('compositional', instance.compositional);
+  writeNotNull('elementCompositional', instance.elementCompositional?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage',
+      instance.elementLanguage?.map((e) => e?.toJson())?.toList());
+  writeNotNull('filter', instance.filter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('property', instance.property);
+  writeNotNull('elementProperty',
+      instance.elementProperty?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 TerminologyCapabilities_Filter _$TerminologyCapabilities_FilterFromJson(
     Map<String, dynamic> json) {
@@ -1161,17 +1209,27 @@ TerminologyCapabilities_Filter _$TerminologyCapabilities_FilterFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_FilterToJson(
-        TerminologyCapabilities_Filter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'op': instance.op,
-      'elementOp': instance.elementOp?.map((e) => e?.toJson())?.toList(),
-    };
+    TerminologyCapabilities_Filter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('op', instance.op);
+  writeNotNull(
+      'elementOp', instance.elementOp?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 TerminologyCapabilities_Expansion _$TerminologyCapabilities_ExpansionFromJson(
     Map<String, dynamic> json) {
@@ -1211,22 +1269,32 @@ TerminologyCapabilities_Expansion _$TerminologyCapabilities_ExpansionFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ExpansionToJson(
-        TerminologyCapabilities_Expansion instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'hierarchical': instance.hierarchical,
-      'elementHierarchical': instance.elementHierarchical?.toJson(),
-      'paging': instance.paging,
-      'elementPaging': instance.elementPaging?.toJson(),
-      'incomplete': instance.incomplete,
-      'elementIncomplete': instance.elementIncomplete?.toJson(),
-      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
-      'textFilter': instance.textFilter,
-      'elementTextFilter': instance.elementTextFilter?.toJson(),
-    };
+    TerminologyCapabilities_Expansion instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('hierarchical', instance.hierarchical);
+  writeNotNull('elementHierarchical', instance.elementHierarchical?.toJson());
+  writeNotNull('paging', instance.paging);
+  writeNotNull('elementPaging', instance.elementPaging?.toJson());
+  writeNotNull('incomplete', instance.incomplete);
+  writeNotNull('elementIncomplete', instance.elementIncomplete?.toJson());
+  writeNotNull(
+      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('textFilter', instance.textFilter);
+  writeNotNull('elementTextFilter', instance.elementTextFilter?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Parameter _$TerminologyCapabilities_ParameterFromJson(
     Map<String, dynamic> json) {
@@ -1253,17 +1321,26 @@ TerminologyCapabilities_Parameter _$TerminologyCapabilities_ParameterFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ParameterToJson(
-        TerminologyCapabilities_Parameter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-    };
+    TerminologyCapabilities_Parameter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_ValidateCode
     _$TerminologyCapabilities_ValidateCodeFromJson(Map<String, dynamic> json) {
@@ -1285,15 +1362,24 @@ TerminologyCapabilities_ValidateCode
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ValidateCodeToJson(
-        TerminologyCapabilities_ValidateCode instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'translations': instance.translations,
-      'elementTranslations': instance.elementTranslations?.toJson(),
-    };
+    TerminologyCapabilities_ValidateCode instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('translations', instance.translations);
+  writeNotNull('elementTranslations', instance.elementTranslations?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Translation
     _$TerminologyCapabilities_TranslationFromJson(Map<String, dynamic> json) {
@@ -1315,15 +1401,24 @@ TerminologyCapabilities_Translation
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_TranslationToJson(
-        TerminologyCapabilities_Translation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'needsMap': instance.needsMap,
-      'elementNeedsMap': instance.elementNeedsMap?.toJson(),
-    };
+    TerminologyCapabilities_Translation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('needsMap', instance.needsMap);
+  writeNotNull('elementNeedsMap', instance.elementNeedsMap?.toJson());
+  return val;
+}
 
 TerminologyCapabilities_Closure _$TerminologyCapabilities_ClosureFromJson(
     Map<String, dynamic> json) {
@@ -1345,12 +1440,21 @@ TerminologyCapabilities_Closure _$TerminologyCapabilities_ClosureFromJson(
 }
 
 Map<String, dynamic> _$TerminologyCapabilities_ClosureToJson(
-        TerminologyCapabilities_Closure instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'translation': instance.translation,
-      'elementTranslation': instance.elementTranslation?.toJson(),
-    };
+    TerminologyCapabilities_Closure instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('translation', instance.translation);
+  writeNotNull('elementTranslation', instance.elementTranslation?.toJson());
+  return val;
+}

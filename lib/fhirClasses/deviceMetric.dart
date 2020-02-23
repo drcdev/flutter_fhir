@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DeviceMetric {
   static Future<DeviceMetric> newInstance({
     String resourceType,
@@ -139,7 +139,7 @@ class DeviceMetric {
   Map<String, dynamic> toJson() => _$DeviceMetricToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DeviceMetric_Calibration {
   static Future<DeviceMetric_Calibration> newInstance({
     String id,
@@ -272,34 +272,46 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'unit': instance.unit?.toJson(),
-      'source': instance.source?.toJson(),
-      'parent': instance.parent?.toJson(),
-      'operationalStatus': instance.operationalStatus,
-      'elementOperationalStatus': instance.elementOperationalStatus?.toJson(),
-      'color': instance.color,
-      'elementColor': instance.elementColor?.toJson(),
-      'category': instance.category,
-      'elementCategory': instance.elementCategory?.toJson(),
-      'measurementPeriod': instance.measurementPeriod?.toJson(),
-      'calibration': instance.calibration?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('unit', instance.unit?.toJson());
+  writeNotNull('source', instance.source?.toJson());
+  writeNotNull('parent', instance.parent?.toJson());
+  writeNotNull('operationalStatus', instance.operationalStatus);
+  writeNotNull(
+      'elementOperationalStatus', instance.elementOperationalStatus?.toJson());
+  writeNotNull('color', instance.color);
+  writeNotNull('elementColor', instance.elementColor?.toJson());
+  writeNotNull('category', instance.category);
+  writeNotNull('elementCategory', instance.elementCategory?.toJson());
+  writeNotNull('measurementPeriod', instance.measurementPeriod?.toJson());
+  writeNotNull(
+      'calibration', instance.calibration?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 DeviceMetric_Calibration _$DeviceMetric_CalibrationFromJson(
     Map<String, dynamic> json) {
@@ -329,16 +341,25 @@ DeviceMetric_Calibration _$DeviceMetric_CalibrationFromJson(
 }
 
 Map<String, dynamic> _$DeviceMetric_CalibrationToJson(
-        DeviceMetric_Calibration instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'state': instance.state,
-      'elementState': instance.elementState?.toJson(),
-      'time': instance.time?.toIso8601String(),
-      'elementTime': instance.elementTime?.toJson(),
-    };
+    DeviceMetric_Calibration instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('state', instance.state);
+  writeNotNull('elementState', instance.elementState?.toJson());
+  writeNotNull('time', instance.time?.toIso8601String());
+  writeNotNull('elementTime', instance.elementTime?.toJson());
+  return val;
+}

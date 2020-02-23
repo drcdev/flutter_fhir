@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DataRequirement {
   static Future<DataRequirement> newInstance({
     String id,
@@ -84,7 +84,7 @@ class DataRequirement {
   Map<String, dynamic> toJson() => _$DataRequirementToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DataRequirement_CodeFilter {
   static Future<DataRequirement_CodeFilter> newInstance({
     String id,
@@ -140,7 +140,7 @@ class DataRequirement_CodeFilter {
   Map<String, dynamic> toJson() => _$DataRequirement_CodeFilterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DataRequirement_DateFilter {
   static Future<DataRequirement_DateFilter> newInstance({
     String id,
@@ -204,7 +204,7 @@ class DataRequirement_DateFilter {
   Map<String, dynamic> toJson() => _$DataRequirement_DateFilterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DataRequirement_Sort {
   static Future<DataRequirement_Sort> newInstance({
     String id,
@@ -303,24 +303,36 @@ DataRequirement _$DataRequirementFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DataRequirementToJson(DataRequirement instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'profile': instance.profile,
-      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
-      'subjectReference': instance.subjectReference?.toJson(),
-      'mustSupport': instance.mustSupport,
-      'elementMustSupport':
-          instance.elementMustSupport?.map((e) => e?.toJson())?.toList(),
-      'codeFilter': instance.codeFilter?.map((e) => e?.toJson())?.toList(),
-      'dateFilter': instance.dateFilter?.map((e) => e?.toJson())?.toList(),
-      'limit': instance.limit,
-      'elementLimit': instance.elementLimit?.toJson(),
-      'sort': instance.sort?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$DataRequirementToJson(DataRequirement instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('profile', instance.profile);
+  writeNotNull(
+      'subjectCodeableConcept', instance.subjectCodeableConcept?.toJson());
+  writeNotNull('subjectReference', instance.subjectReference?.toJson());
+  writeNotNull('mustSupport', instance.mustSupport);
+  writeNotNull('elementMustSupport',
+      instance.elementMustSupport?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'codeFilter', instance.codeFilter?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'dateFilter', instance.dateFilter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('limit', instance.limit);
+  writeNotNull('elementLimit', instance.elementLimit?.toJson());
+  writeNotNull('sort', instance.sort?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 DataRequirement_CodeFilter _$DataRequirement_CodeFilterFromJson(
     Map<String, dynamic> json) {
@@ -351,19 +363,28 @@ DataRequirement_CodeFilter _$DataRequirement_CodeFilterFromJson(
 }
 
 Map<String, dynamic> _$DataRequirement_CodeFilterToJson(
-        DataRequirement_CodeFilter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'path': instance.path,
-      'elementPath': instance.elementPath?.toJson(),
-      'searchParam': instance.searchParam,
-      'elementSearchParam': instance.elementSearchParam?.toJson(),
-      'valueSet': instance.valueSet,
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-    };
+    DataRequirement_CodeFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('path', instance.path);
+  writeNotNull('elementPath', instance.elementPath?.toJson());
+  writeNotNull('searchParam', instance.searchParam);
+  writeNotNull('elementSearchParam', instance.elementSearchParam?.toJson());
+  writeNotNull('valueSet', instance.valueSet);
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 DataRequirement_DateFilter _$DataRequirement_DateFilterFromJson(
     Map<String, dynamic> json) {
@@ -400,21 +421,30 @@ DataRequirement_DateFilter _$DataRequirement_DateFilterFromJson(
 }
 
 Map<String, dynamic> _$DataRequirement_DateFilterToJson(
-        DataRequirement_DateFilter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'path': instance.path,
-      'elementPath': instance.elementPath?.toJson(),
-      'searchParam': instance.searchParam,
-      'elementSearchParam': instance.elementSearchParam?.toJson(),
-      'valueDateTime': instance.valueDateTime,
-      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
-      'valuePeriod': instance.valuePeriod?.toJson(),
-      'valueDuration': instance.valueDuration?.toJson(),
-    };
+    DataRequirement_DateFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('path', instance.path);
+  writeNotNull('elementPath', instance.elementPath?.toJson());
+  writeNotNull('searchParam', instance.searchParam);
+  writeNotNull('elementSearchParam', instance.elementSearchParam?.toJson());
+  writeNotNull('valueDateTime', instance.valueDateTime);
+  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
+  writeNotNull('valuePeriod', instance.valuePeriod?.toJson());
+  writeNotNull('valueDuration', instance.valueDuration?.toJson());
+  return val;
+}
 
 DataRequirement_Sort _$DataRequirement_SortFromJson(Map<String, dynamic> json) {
   return DataRequirement_Sort(
@@ -439,14 +469,23 @@ DataRequirement_Sort _$DataRequirement_SortFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$DataRequirement_SortToJson(
-        DataRequirement_Sort instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'path': instance.path,
-      'elementPath': instance.elementPath?.toJson(),
-      'direction': instance.direction,
-      'elementDirection': instance.elementDirection?.toJson(),
-    };
+    DataRequirement_Sort instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('path', instance.path);
+  writeNotNull('elementPath', instance.elementPath?.toJson());
+  writeNotNull('direction', instance.direction);
+  writeNotNull('elementDirection', instance.elementDirection?.toJson());
+  return val;
+}

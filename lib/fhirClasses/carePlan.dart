@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CarePlan {
   static Future<CarePlan> newInstance({
     String resourceType,
@@ -206,7 +206,7 @@ class CarePlan {
   Map<String, dynamic> toJson() => _$CarePlanToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CarePlan_Activity {
   static Future<CarePlan_Activity> newInstance({
     String id,
@@ -257,7 +257,7 @@ class CarePlan_Activity {
   Map<String, dynamic> toJson() => _$CarePlan_ActivityToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CarePlan_Detail {
   static Future<CarePlan_Detail> newInstance({
     String id,
@@ -525,51 +525,68 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CarePlanToJson(CarePlan instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'replaces': instance.replaces?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'intent': instance.intent,
-      'elementIntent': instance.elementIntent?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'period': instance.period?.toJson(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'author': instance.author?.toJson(),
-      'contributor': instance.contributor?.map((e) => e?.toJson())?.toList(),
-      'careTeam': instance.careTeam?.map((e) => e?.toJson())?.toList(),
-      'addresses': instance.addresses?.map((e) => e?.toJson())?.toList(),
-      'supportingInfo':
-          instance.supportingInfo?.map((e) => e?.toJson())?.toList(),
-      'goal': instance.goal?.map((e) => e?.toJson())?.toList(),
-      'activity': instance.activity?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CarePlanToJson(CarePlan instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'replaces', instance.replaces?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('intent', instance.intent);
+  writeNotNull('elementIntent', instance.elementIntent?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('author', instance.author?.toJson());
+  writeNotNull(
+      'contributor', instance.contributor?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'careTeam', instance.careTeam?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'addresses', instance.addresses?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supportingInfo',
+      instance.supportingInfo?.map((e) => e?.toJson())?.toList());
+  writeNotNull('goal', instance.goal?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'activity', instance.activity?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CarePlan_Activity _$CarePlan_ActivityFromJson(Map<String, dynamic> json) {
   return CarePlan_Activity(
@@ -604,20 +621,30 @@ CarePlan_Activity _$CarePlan_ActivityFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CarePlan_ActivityToJson(CarePlan_Activity instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'outcomeCodeableConcept':
-          instance.outcomeCodeableConcept?.map((e) => e?.toJson())?.toList(),
-      'outcomeReference':
-          instance.outcomeReference?.map((e) => e?.toJson())?.toList(),
-      'progress': instance.progress?.map((e) => e?.toJson())?.toList(),
-      'reference': instance.reference?.toJson(),
-      'detail': instance.detail?.toJson(),
-    };
+Map<String, dynamic> _$CarePlan_ActivityToJson(CarePlan_Activity instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('outcomeCodeableConcept',
+      instance.outcomeCodeableConcept?.map((e) => e?.toJson())?.toList());
+  writeNotNull('outcomeReference',
+      instance.outcomeReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'progress', instance.progress?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reference', instance.reference?.toJson());
+  writeNotNull('detail', instance.detail?.toJson());
+  return val;
+}
 
 CarePlan_Detail _$CarePlan_DetailFromJson(Map<String, dynamic> json) {
   return CarePlan_Detail(
@@ -709,38 +736,51 @@ CarePlan_Detail _$CarePlan_DetailFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CarePlan_DetailToJson(CarePlan_Detail instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'goal': instance.goal?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReason': instance.statusReason?.toJson(),
-      'doNotPerform': instance.doNotPerform,
-      'elementDoNotPerform': instance.elementDoNotPerform?.toJson(),
-      'scheduledTiming': instance.scheduledTiming?.toJson(),
-      'scheduledPeriod': instance.scheduledPeriod?.toJson(),
-      'scheduledString': instance.scheduledString,
-      'elementScheduledString': instance.elementScheduledString?.toJson(),
-      'location': instance.location?.toJson(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'productCodeableConcept': instance.productCodeableConcept?.toJson(),
-      'productReference': instance.productReference?.toJson(),
-      'dailyAmount': instance.dailyAmount?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-    };
+Map<String, dynamic> _$CarePlan_DetailToJson(CarePlan_Detail instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('goal', instance.goal?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusReason', instance.statusReason?.toJson());
+  writeNotNull('doNotPerform', instance.doNotPerform);
+  writeNotNull('elementDoNotPerform', instance.elementDoNotPerform?.toJson());
+  writeNotNull('scheduledTiming', instance.scheduledTiming?.toJson());
+  writeNotNull('scheduledPeriod', instance.scheduledPeriod?.toJson());
+  writeNotNull('scheduledString', instance.scheduledString);
+  writeNotNull(
+      'elementScheduledString', instance.elementScheduledString?.toJson());
+  writeNotNull('location', instance.location?.toJson());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'productCodeableConcept', instance.productCodeableConcept?.toJson());
+  writeNotNull('productReference', instance.productReference?.toJson());
+  writeNotNull('dailyAmount', instance.dailyAmount?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  return val;
+}

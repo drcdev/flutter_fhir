@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Population {
   static Future<Population> newInstance({
     String id,
@@ -92,15 +92,25 @@ Population _$PopulationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PopulationToJson(Population instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'ageRange': instance.ageRange?.toJson(),
-      'ageCodeableConcept': instance.ageCodeableConcept?.toJson(),
-      'gender': instance.gender?.toJson(),
-      'race': instance.race?.toJson(),
-      'physiologicalCondition': instance.physiologicalCondition?.toJson(),
-    };
+Map<String, dynamic> _$PopulationToJson(Population instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('ageRange', instance.ageRange?.toJson());
+  writeNotNull('ageCodeableConcept', instance.ageCodeableConcept?.toJson());
+  writeNotNull('gender', instance.gender?.toJson());
+  writeNotNull('race', instance.race?.toJson());
+  writeNotNull(
+      'physiologicalCondition', instance.physiologicalCondition?.toJson());
+  return val;
+}

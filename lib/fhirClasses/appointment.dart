@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Appointment {
   static Future<Appointment> newInstance({
     String resourceType,
@@ -211,7 +211,7 @@ class Appointment {
   Map<String, dynamic> toJson() => _$AppointmentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Appointment_Participant {
   static Future<Appointment_Participant> newInstance({
     String id,
@@ -409,56 +409,72 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'cancelationReason': instance.cancelationReason?.toJson(),
-      'serviceCategory':
-          instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
-      'serviceType': instance.serviceType?.map((e) => e?.toJson())?.toList(),
-      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
-      'appointmentType': instance.appointmentType?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'supportingInformation':
-          instance.supportingInformation?.map((e) => e?.toJson())?.toList(),
-      'start': instance.start?.toIso8601String(),
-      'elementStart': instance.elementStart?.toJson(),
-      'end': instance.end?.toIso8601String(),
-      'elementEnd': instance.elementEnd?.toJson(),
-      'minutesDuration': instance.minutesDuration,
-      'elementMinutesDuration': instance.elementMinutesDuration?.toJson(),
-      'slot': instance.slot?.map((e) => e?.toJson())?.toList(),
-      'created': instance.created?.toIso8601String(),
-      'elementCreated': instance.elementCreated?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'patientInstruction': instance.patientInstruction,
-      'elementPatientInstruction': instance.elementPatientInstruction?.toJson(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'requestedPeriod':
-          instance.requestedPeriod?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$AppointmentToJson(Appointment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('cancelationReason', instance.cancelationReason?.toJson());
+  writeNotNull('serviceCategory',
+      instance.serviceCategory?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'serviceType', instance.serviceType?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
+  writeNotNull('appointmentType', instance.appointmentType?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('supportingInformation',
+      instance.supportingInformation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('start', instance.start?.toIso8601String());
+  writeNotNull('elementStart', instance.elementStart?.toJson());
+  writeNotNull('end', instance.end?.toIso8601String());
+  writeNotNull('elementEnd', instance.elementEnd?.toJson());
+  writeNotNull('minutesDuration', instance.minutesDuration);
+  writeNotNull(
+      'elementMinutesDuration', instance.elementMinutesDuration?.toJson());
+  writeNotNull('slot', instance.slot?.map((e) => e?.toJson())?.toList());
+  writeNotNull('created', instance.created?.toIso8601String());
+  writeNotNull('elementCreated', instance.elementCreated?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull('patientInstruction', instance.patientInstruction);
+  writeNotNull('elementPatientInstruction',
+      instance.elementPatientInstruction?.toJson());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
+  writeNotNull('requestedPeriod',
+      instance.requestedPeriod?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Appointment_Participant _$Appointment_ParticipantFromJson(
     Map<String, dynamic> json) {
@@ -495,17 +511,26 @@ Appointment_Participant _$Appointment_ParticipantFromJson(
 }
 
 Map<String, dynamic> _$Appointment_ParticipantToJson(
-        Appointment_Participant instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'actor': instance.actor?.toJson(),
-      'required': instance.required,
-      'elementRequired': instance.elementRequired?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+    Appointment_Participant instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.map((e) => e?.toJson())?.toList());
+  writeNotNull('actor', instance.actor?.toJson());
+  writeNotNull('required', instance.required);
+  writeNotNull('elementRequired', instance.elementRequired?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}

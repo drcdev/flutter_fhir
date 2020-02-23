@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ImagingStudy {
   static Future<ImagingStudy> newInstance({
     String resourceType,
@@ -188,7 +188,7 @@ class ImagingStudy {
   Map<String, dynamic> toJson() => _$ImagingStudyToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ImagingStudy_Series {
   static Future<ImagingStudy_Series> newInstance({
     String id,
@@ -287,7 +287,7 @@ class ImagingStudy_Series {
   Map<String, dynamic> toJson() => _$ImagingStudy_SeriesToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ImagingStudy_Performer {
   static Future<ImagingStudy_Performer> newInstance({
     String id,
@@ -327,7 +327,7 @@ class ImagingStudy_Performer {
   Map<String, dynamic> toJson() => _$ImagingStudy_PerformerToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ImagingStudy_Instance {
   static Future<ImagingStudy_Instance> newInstance({
     String id,
@@ -509,48 +509,64 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'modality': instance.modality?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'started': instance.started?.toIso8601String(),
-      'elementStarted': instance.elementStarted?.toJson(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'referrer': instance.referrer?.toJson(),
-      'interpreter': instance.interpreter?.map((e) => e?.toJson())?.toList(),
-      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
-      'numberOfSeries': instance.numberOfSeries,
-      'elementNumberOfSeries': instance.elementNumberOfSeries?.toJson(),
-      'numberOfInstances': instance.numberOfInstances,
-      'elementNumberOfInstances': instance.elementNumberOfInstances?.toJson(),
-      'procedureReference': instance.procedureReference?.toJson(),
-      'procedureCode':
-          instance.procedureCode?.map((e) => e?.toJson())?.toList(),
-      'location': instance.location?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'series': instance.series?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull(
+      'modality', instance.modality?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('started', instance.started?.toIso8601String());
+  writeNotNull('elementStarted', instance.elementStarted?.toJson());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('referrer', instance.referrer?.toJson());
+  writeNotNull(
+      'interpreter', instance.interpreter?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
+  writeNotNull('numberOfSeries', instance.numberOfSeries);
+  writeNotNull(
+      'elementNumberOfSeries', instance.elementNumberOfSeries?.toJson());
+  writeNotNull('numberOfInstances', instance.numberOfInstances);
+  writeNotNull(
+      'elementNumberOfInstances', instance.elementNumberOfInstances?.toJson());
+  writeNotNull('procedureReference', instance.procedureReference?.toJson());
+  writeNotNull('procedureCode',
+      instance.procedureCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('location', instance.location?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('series', instance.series?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
   return ImagingStudy_Series(
@@ -616,31 +632,44 @@ ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ImagingStudy_SeriesToJson(
-        ImagingStudy_Series instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'uid': instance.uid,
-      'elementUid': instance.elementUid?.toJson(),
-      'number': instance.number,
-      'elementNumber': instance.elementNumber?.toJson(),
-      'modality': instance.modality?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'numberOfInstances': instance.numberOfInstances,
-      'elementNumberOfInstances': instance.elementNumberOfInstances?.toJson(),
-      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
-      'bodySite': instance.bodySite?.toJson(),
-      'laterality': instance.laterality?.toJson(),
-      'specimen': instance.specimen?.map((e) => e?.toJson())?.toList(),
-      'started': instance.started?.toIso8601String(),
-      'elementStarted': instance.elementStarted?.toJson(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ImagingStudy_SeriesToJson(ImagingStudy_Series instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('uid', instance.uid);
+  writeNotNull('elementUid', instance.elementUid?.toJson());
+  writeNotNull('number', instance.number);
+  writeNotNull('elementNumber', instance.elementNumber?.toJson());
+  writeNotNull('modality', instance.modality?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('numberOfInstances', instance.numberOfInstances);
+  writeNotNull(
+      'elementNumberOfInstances', instance.elementNumberOfInstances?.toJson());
+  writeNotNull(
+      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
+  writeNotNull('bodySite', instance.bodySite?.toJson());
+  writeNotNull('laterality', instance.laterality?.toJson());
+  writeNotNull(
+      'specimen', instance.specimen?.map((e) => e?.toJson())?.toList());
+  writeNotNull('started', instance.started?.toIso8601String());
+  writeNotNull('elementStarted', instance.elementStarted?.toJson());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'instance', instance.instance?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ImagingStudy_Performer _$ImagingStudy_PerformerFromJson(
     Map<String, dynamic> json) {
@@ -664,15 +693,24 @@ ImagingStudy_Performer _$ImagingStudy_PerformerFromJson(
 }
 
 Map<String, dynamic> _$ImagingStudy_PerformerToJson(
-        ImagingStudy_Performer instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'function': instance.function?.toJson(),
-      'actor': instance.actor?.toJson(),
-    };
+    ImagingStudy_Performer instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('function', instance.function?.toJson());
+  writeNotNull('actor', instance.actor?.toJson());
+  return val;
+}
 
 ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
     Map<String, dynamic> json) {
@@ -705,17 +743,26 @@ ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
 }
 
 Map<String, dynamic> _$ImagingStudy_InstanceToJson(
-        ImagingStudy_Instance instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'uid': instance.uid,
-      'elementUid': instance.elementUid?.toJson(),
-      'sopClass': instance.sopClass?.toJson(),
-      'number': instance.number,
-      'elementNumber': instance.elementNumber?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-    };
+    ImagingStudy_Instance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('uid', instance.uid);
+  writeNotNull('elementUid', instance.elementUid?.toJson());
+  writeNotNull('sopClass', instance.sopClass?.toJson());
+  writeNotNull('number', instance.number);
+  writeNotNull('elementNumber', instance.elementNumber?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  return val;
+}

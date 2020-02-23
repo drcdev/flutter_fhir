@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductAuthorization {
   static Future<MedicinalProductAuthorization> newInstance({
     String resourceType,
@@ -171,7 +171,7 @@ class MedicinalProductAuthorization {
   Map<String, dynamic> toJson() => _$MedicinalProductAuthorizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductAuthorization_JurisdictionalAuthorization {
   static Future<MedicinalProductAuthorization_JurisdictionalAuthorization>
       newInstance({
@@ -227,7 +227,7 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
       _$MedicinalProductAuthorization_JurisdictionalAuthorizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductAuthorization_Procedure {
   static Future<MedicinalProductAuthorization_Procedure> newInstance({
     String id,
@@ -401,47 +401,58 @@ MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductAuthorizationToJson(
-        MedicinalProductAuthorization instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.toJson(),
-      'country': instance.country?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status?.toJson(),
-      'statusDate': instance.statusDate?.toIso8601String(),
-      'elementStatusDate': instance.elementStatusDate?.toJson(),
-      'restoreDate': instance.restoreDate?.toIso8601String(),
-      'elementRestoreDate': instance.elementRestoreDate?.toJson(),
-      'validityPeriod': instance.validityPeriod?.toJson(),
-      'dataExclusivityPeriod': instance.dataExclusivityPeriod?.toJson(),
-      'dateOfFirstAuthorization':
-          instance.dateOfFirstAuthorization?.toIso8601String(),
-      'elementDateOfFirstAuthorization':
-          instance.elementDateOfFirstAuthorization?.toJson(),
-      'internationalBirthDate':
-          instance.internationalBirthDate?.toIso8601String(),
-      'elementInternationalBirthDate':
-          instance.elementInternationalBirthDate?.toJson(),
-      'legalBasis': instance.legalBasis?.toJson(),
-      'jurisdictionalAuthorization': instance.jurisdictionalAuthorization
-          ?.map((e) => e?.toJson())
-          ?.toList(),
-      'holder': instance.holder?.toJson(),
-      'regulator': instance.regulator?.toJson(),
-      'procedure': instance.procedure?.toJson(),
-    };
+    MedicinalProductAuthorization instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('country', instance.country?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status?.toJson());
+  writeNotNull('statusDate', instance.statusDate?.toIso8601String());
+  writeNotNull('elementStatusDate', instance.elementStatusDate?.toJson());
+  writeNotNull('restoreDate', instance.restoreDate?.toIso8601String());
+  writeNotNull('elementRestoreDate', instance.elementRestoreDate?.toJson());
+  writeNotNull('validityPeriod', instance.validityPeriod?.toJson());
+  writeNotNull(
+      'dataExclusivityPeriod', instance.dataExclusivityPeriod?.toJson());
+  writeNotNull('dateOfFirstAuthorization',
+      instance.dateOfFirstAuthorization?.toIso8601String());
+  writeNotNull('elementDateOfFirstAuthorization',
+      instance.elementDateOfFirstAuthorization?.toJson());
+  writeNotNull('internationalBirthDate',
+      instance.internationalBirthDate?.toIso8601String());
+  writeNotNull('elementInternationalBirthDate',
+      instance.elementInternationalBirthDate?.toJson());
+  writeNotNull('legalBasis', instance.legalBasis?.toJson());
+  writeNotNull('jurisdictionalAuthorization',
+      instance.jurisdictionalAuthorization?.map((e) => e?.toJson())?.toList());
+  writeNotNull('holder', instance.holder?.toJson());
+  writeNotNull('regulator', instance.regulator?.toJson());
+  writeNotNull('procedure', instance.procedure?.toJson());
+  return val;
+}
 
 MedicinalProductAuthorization_JurisdictionalAuthorization
     _$MedicinalProductAuthorization_JurisdictionalAuthorizationFromJson(
@@ -478,20 +489,31 @@ MedicinalProductAuthorization_JurisdictionalAuthorization
   );
 }
 
-Map<String,
-    dynamic> _$MedicinalProductAuthorization_JurisdictionalAuthorizationToJson(
-        MedicinalProductAuthorization_JurisdictionalAuthorization instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'country': instance.country?.toJson(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'legalStatusOfSupply': instance.legalStatusOfSupply?.toJson(),
-      'validityPeriod': instance.validityPeriod?.toJson(),
-    };
+Map<String, dynamic>
+    _$MedicinalProductAuthorization_JurisdictionalAuthorizationToJson(
+        MedicinalProductAuthorization_JurisdictionalAuthorization instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('country', instance.country?.toJson());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('legalStatusOfSupply', instance.legalStatusOfSupply?.toJson());
+  writeNotNull('validityPeriod', instance.validityPeriod?.toJson());
+  return val;
+}
 
 MedicinalProductAuthorization_Procedure
     _$MedicinalProductAuthorization_ProcedureFromJson(
@@ -529,16 +551,26 @@ MedicinalProductAuthorization_Procedure
 }
 
 Map<String, dynamic> _$MedicinalProductAuthorization_ProcedureToJson(
-        MedicinalProductAuthorization_Procedure instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.toJson(),
-      'type': instance.type?.toJson(),
-      'datePeriod': instance.datePeriod?.toJson(),
-      'dateDateTime': instance.dateDateTime,
-      'elementDateDateTime': instance.elementDateDateTime?.toJson(),
-      'application': instance.application?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicinalProductAuthorization_Procedure instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('datePeriod', instance.datePeriod?.toJson());
+  writeNotNull('dateDateTime', instance.dateDateTime);
+  writeNotNull('elementDateDateTime', instance.elementDateDateTime?.toJson());
+  writeNotNull(
+      'application', instance.application?.map((e) => e?.toJson())?.toList());
+  return val;
+}

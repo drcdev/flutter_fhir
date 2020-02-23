@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OperationOutcome {
   static Future<OperationOutcome> newInstance({
     String resourceType,
@@ -88,7 +88,7 @@ class OperationOutcome {
   Map<String, dynamic> toJson() => _$OperationOutcomeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OperationOutcome_Issue {
   static Future<OperationOutcome_Issue> newInstance({
     String id,
@@ -209,22 +209,31 @@ OperationOutcome _$OperationOutcomeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$OperationOutcomeToJson(OperationOutcome instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'issue': instance.issue?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$OperationOutcomeToJson(OperationOutcome instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('issue', instance.issue?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 OperationOutcome_Issue _$OperationOutcome_IssueFromJson(
     Map<String, dynamic> json) {
@@ -267,23 +276,32 @@ OperationOutcome_Issue _$OperationOutcome_IssueFromJson(
 }
 
 Map<String, dynamic> _$OperationOutcome_IssueToJson(
-        OperationOutcome_Issue instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'severity': instance.severity,
-      'elementSeverity': instance.elementSeverity?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'details': instance.details?.toJson(),
-      'diagnostics': instance.diagnostics,
-      'elementDiagnostics': instance.elementDiagnostics?.toJson(),
-      'location': instance.location,
-      'elementLocation':
-          instance.elementLocation?.map((e) => e?.toJson())?.toList(),
-      'expression': instance.expression,
-      'elementExpression':
-          instance.elementExpression?.map((e) => e?.toJson())?.toList(),
-    };
+    OperationOutcome_Issue instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('severity', instance.severity);
+  writeNotNull('elementSeverity', instance.elementSeverity?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('details', instance.details?.toJson());
+  writeNotNull('diagnostics', instance.diagnostics);
+  writeNotNull('elementDiagnostics', instance.elementDiagnostics?.toJson());
+  writeNotNull('location', instance.location);
+  writeNotNull('elementLocation',
+      instance.elementLocation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression',
+      instance.elementExpression?.map((e) => e?.toJson())?.toList());
+  return val;
+}

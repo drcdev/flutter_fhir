@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Coding {
   static Future<Coding> newInstance({
     String id,
@@ -105,17 +105,27 @@ Coding _$CodingFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodingToJson(Coding instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'userSelected': instance.userSelected,
-      'elementUserSelected': instance.elementUserSelected?.toJson(),
-    };
+Map<String, dynamic> _$CodingToJson(Coding instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('userSelected', instance.userSelected);
+  writeNotNull('elementUserSelected', instance.elementUserSelected?.toJson());
+  return val;
+}

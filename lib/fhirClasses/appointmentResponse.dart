@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class AppointmentResponse {
   static Future<AppointmentResponse> newInstance({
     String resourceType,
@@ -208,32 +208,42 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AppointmentResponseToJson(
-        AppointmentResponse instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'appointment': instance.appointment?.toJson(),
-      'start': instance.start?.toIso8601String(),
-      'elementStart': instance.elementStart?.toJson(),
-      'end': instance.end?.toIso8601String(),
-      'elementEnd': instance.elementEnd?.toJson(),
-      'participantType':
-          instance.participantType?.map((e) => e?.toJson())?.toList(),
-      'actor': instance.actor?.toJson(),
-      'participantStatus': instance.participantStatus,
-      'elementParticipantStatus': instance.elementParticipantStatus?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-    };
+Map<String, dynamic> _$AppointmentResponseToJson(AppointmentResponse instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('appointment', instance.appointment?.toJson());
+  writeNotNull('start', instance.start?.toIso8601String());
+  writeNotNull('elementStart', instance.elementStart?.toJson());
+  writeNotNull('end', instance.end?.toIso8601String());
+  writeNotNull('elementEnd', instance.elementEnd?.toJson());
+  writeNotNull('participantType',
+      instance.participantType?.map((e) => e?.toJson())?.toList());
+  writeNotNull('actor', instance.actor?.toJson());
+  writeNotNull('participantStatus', instance.participantStatus);
+  writeNotNull(
+      'elementParticipantStatus', instance.elementParticipantStatus?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  return val;
+}

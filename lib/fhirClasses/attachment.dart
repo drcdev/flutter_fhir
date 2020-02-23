@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Attachment {
   static Future<Attachment> newInstance({
     String id,
@@ -144,24 +144,33 @@ Attachment _$AttachmentFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AttachmentToJson(Attachment instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'contentType': instance.contentType,
-      'elementContentType': instance.elementContentType?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'data': instance.data,
-      'elementData': instance.elementData?.toJson(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'size': instance.size,
-      'elementSize': instance.elementSize?.toJson(),
-      'hash': instance.hash,
-      'elementHash': instance.elementHash?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'creation': instance.creation?.toIso8601String(),
-      'elementCreation': instance.elementCreation?.toJson(),
-    };
+Map<String, dynamic> _$AttachmentToJson(Attachment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('contentType', instance.contentType);
+  writeNotNull('elementContentType', instance.elementContentType?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('data', instance.data);
+  writeNotNull('elementData', instance.elementData?.toJson());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('size', instance.size);
+  writeNotNull('elementSize', instance.elementSize?.toJson());
+  writeNotNull('hash', instance.hash);
+  writeNotNull('elementHash', instance.elementHash?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('creation', instance.creation?.toIso8601String());
+  writeNotNull('elementCreation', instance.elementCreation?.toJson());
+  return val;
+}

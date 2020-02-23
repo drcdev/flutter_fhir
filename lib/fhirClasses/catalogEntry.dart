@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CatalogEntry {
   static Future<CatalogEntry> newInstance({
     String resourceType,
@@ -155,7 +155,7 @@ class CatalogEntry {
   Map<String, dynamic> toJson() => _$CatalogEntryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CatalogEntry_RelatedEntry {
   static Future<CatalogEntry_RelatedEntry> newInstance({
     String id,
@@ -296,42 +296,53 @@ CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'orderable': instance.orderable,
-      'elementOrderable': instance.elementOrderable?.toJson(),
-      'referencedItem': instance.referencedItem?.toJson(),
-      'additionalIdentifier':
-          instance.additionalIdentifier?.map((e) => e?.toJson())?.toList(),
-      'classification':
-          instance.classification?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'validityPeriod': instance.validityPeriod?.toJson(),
-      'validTo': instance.validTo?.toIso8601String(),
-      'elementValidTo': instance.elementValidTo?.toJson(),
-      'lastUpdated': instance.lastUpdated?.toIso8601String(),
-      'elementLastUpdated': instance.elementLastUpdated?.toJson(),
-      'additionalCharacteristic':
-          instance.additionalCharacteristic?.map((e) => e?.toJson())?.toList(),
-      'additionalClassification':
-          instance.additionalClassification?.map((e) => e?.toJson())?.toList(),
-      'relatedEntry': instance.relatedEntry?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('orderable', instance.orderable);
+  writeNotNull('elementOrderable', instance.elementOrderable?.toJson());
+  writeNotNull('referencedItem', instance.referencedItem?.toJson());
+  writeNotNull('additionalIdentifier',
+      instance.additionalIdentifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('classification',
+      instance.classification?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('validityPeriod', instance.validityPeriod?.toJson());
+  writeNotNull('validTo', instance.validTo?.toIso8601String());
+  writeNotNull('elementValidTo', instance.elementValidTo?.toJson());
+  writeNotNull('lastUpdated', instance.lastUpdated?.toIso8601String());
+  writeNotNull('elementLastUpdated', instance.elementLastUpdated?.toJson());
+  writeNotNull('additionalCharacteristic',
+      instance.additionalCharacteristic?.map((e) => e?.toJson())?.toList());
+  writeNotNull('additionalClassification',
+      instance.additionalClassification?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'relatedEntry', instance.relatedEntry?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
     Map<String, dynamic> json) {
@@ -356,13 +367,22 @@ CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
 }
 
 Map<String, dynamic> _$CatalogEntry_RelatedEntryToJson(
-        CatalogEntry_RelatedEntry instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'relationtype': instance.relationtype,
-      'elementRelationtype': instance.elementRelationtype?.toJson(),
-      'item': instance.item?.toJson(),
-    };
+    CatalogEntry_RelatedEntry instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relationtype', instance.relationtype);
+  writeNotNull('elementRelationtype', instance.elementRelationtype?.toJson());
+  writeNotNull('item', instance.item?.toJson());
+  return val;
+}

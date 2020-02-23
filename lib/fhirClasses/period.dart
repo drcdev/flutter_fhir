@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Period {
   static Future<Period> newInstance({
     String id,
@@ -70,11 +70,21 @@ Period _$PeriodFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PeriodToJson(Period instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'start': instance.start?.toIso8601String(),
-      'elementStart': instance.elementStart?.toJson(),
-      'end': instance.end?.toIso8601String(),
-      'elementEnd': instance.elementEnd?.toJson(),
-    };
+Map<String, dynamic> _$PeriodToJson(Period instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('start', instance.start?.toIso8601String());
+  writeNotNull('elementStart', instance.elementStart?.toJson());
+  writeNotNull('end', instance.end?.toIso8601String());
+  writeNotNull('elementEnd', instance.elementEnd?.toJson());
+  return val;
+}

@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap {
   static Future<ConceptMap> newInstance({
     String resourceType,
@@ -227,7 +227,7 @@ class ConceptMap {
   Map<String, dynamic> toJson() => _$ConceptMapToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Group {
   static Future<ConceptMap_Group> newInstance({
     String id,
@@ -298,7 +298,7 @@ class ConceptMap_Group {
   Map<String, dynamic> toJson() => _$ConceptMap_GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Element {
   static Future<ConceptMap_Element> newInstance({
     String id,
@@ -349,7 +349,7 @@ class ConceptMap_Element {
   Map<String, dynamic> toJson() => _$ConceptMap_ElementToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Target {
   static Future<ConceptMap_Target> newInstance({
     String id,
@@ -420,7 +420,7 @@ class ConceptMap_Target {
   Map<String, dynamic> toJson() => _$ConceptMap_TargetToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_DependsOn {
   static Future<ConceptMap_DependsOn> newInstance({
     String id,
@@ -479,7 +479,7 @@ class ConceptMap_DependsOn {
   Map<String, dynamic> toJson() => _$ConceptMap_DependsOnToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Unmapped {
   static Future<ConceptMap_Unmapped> newInstance({
     String id,
@@ -662,56 +662,69 @@ ConceptMap _$ConceptMapFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'sourceUri': instance.sourceUri,
-      'elementSourceUri': instance.elementSourceUri?.toJson(),
-      'sourceCanonical': instance.sourceCanonical,
-      'elementSourceCanonical': instance.elementSourceCanonical?.toJson(),
-      'targetUri': instance.targetUri,
-      'elementTargetUri': instance.elementTargetUri?.toJson(),
-      'targetCanonical': instance.targetCanonical,
-      'elementTargetCanonical': instance.elementTargetCanonical?.toJson(),
-      'group': instance.group?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('sourceUri', instance.sourceUri);
+  writeNotNull('elementSourceUri', instance.elementSourceUri?.toJson());
+  writeNotNull('sourceCanonical', instance.sourceCanonical);
+  writeNotNull(
+      'elementSourceCanonical', instance.elementSourceCanonical?.toJson());
+  writeNotNull('targetUri', instance.targetUri);
+  writeNotNull('elementTargetUri', instance.elementTargetUri?.toJson());
+  writeNotNull('targetCanonical', instance.targetCanonical);
+  writeNotNull(
+      'elementTargetCanonical', instance.elementTargetCanonical?.toJson());
+  writeNotNull('group', instance.group?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
   return ConceptMap_Group(
@@ -754,23 +767,32 @@ ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_GroupToJson(ConceptMap_Group instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'source': instance.source,
-      'elementSource': instance.elementSource?.toJson(),
-      'sourceVersion': instance.sourceVersion,
-      'elementSourceVersion': instance.elementSourceVersion?.toJson(),
-      'target': instance.target,
-      'elementTarget': instance.elementTarget?.toJson(),
-      'targetVersion': instance.targetVersion,
-      'elementTargetVersion': instance.elementTargetVersion?.toJson(),
-      'element': instance.element?.map((e) => e?.toJson())?.toList(),
-      'unmapped': instance.unmapped?.toJson(),
-    };
+Map<String, dynamic> _$ConceptMap_GroupToJson(ConceptMap_Group instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('source', instance.source);
+  writeNotNull('elementSource', instance.elementSource?.toJson());
+  writeNotNull('sourceVersion', instance.sourceVersion);
+  writeNotNull('elementSourceVersion', instance.elementSourceVersion?.toJson());
+  writeNotNull('target', instance.target);
+  writeNotNull('elementTarget', instance.elementTarget?.toJson());
+  writeNotNull('targetVersion', instance.targetVersion);
+  writeNotNull('elementTargetVersion', instance.elementTargetVersion?.toJson());
+  writeNotNull('element', instance.element?.map((e) => e?.toJson())?.toList());
+  writeNotNull('unmapped', instance.unmapped?.toJson());
+  return val;
+}
 
 ConceptMap_Element _$ConceptMap_ElementFromJson(Map<String, dynamic> json) {
   return ConceptMap_Element(
@@ -799,18 +821,27 @@ ConceptMap_Element _$ConceptMap_ElementFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_ElementToJson(ConceptMap_Element instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'target': instance.target?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ConceptMap_ElementToJson(ConceptMap_Element instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ConceptMap_Target _$ConceptMap_TargetFromJson(Map<String, dynamic> json) {
   return ConceptMap_Target(
@@ -852,23 +883,33 @@ ConceptMap_Target _$ConceptMap_TargetFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_TargetToJson(ConceptMap_Target instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'equivalence': instance.equivalence,
-      'elementEquivalence': instance.elementEquivalence?.toJson(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'dependsOn': instance.dependsOn?.map((e) => e?.toJson())?.toList(),
-      'product': instance.product?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ConceptMap_TargetToJson(ConceptMap_Target instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('equivalence', instance.equivalence);
+  writeNotNull('elementEquivalence', instance.elementEquivalence?.toJson());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull(
+      'dependsOn', instance.dependsOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('product', instance.product?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ConceptMap_DependsOn _$ConceptMap_DependsOnFromJson(Map<String, dynamic> json) {
   return ConceptMap_DependsOn(
@@ -898,20 +939,29 @@ ConceptMap_DependsOn _$ConceptMap_DependsOnFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ConceptMap_DependsOnToJson(
-        ConceptMap_DependsOn instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'property': instance.property,
-      'elementProperty': instance.elementProperty?.toJson(),
-      'system': instance.system,
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-    };
+    ConceptMap_DependsOn instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('property', instance.property);
+  writeNotNull('elementProperty', instance.elementProperty?.toJson());
+  writeNotNull('system', instance.system);
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  return val;
+}
 
 ConceptMap_Unmapped _$ConceptMap_UnmappedFromJson(Map<String, dynamic> json) {
   return ConceptMap_Unmapped(
@@ -940,18 +990,26 @@ ConceptMap_Unmapped _$ConceptMap_UnmappedFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConceptMap_UnmappedToJson(
-        ConceptMap_Unmapped instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'mode': instance.mode,
-      'elementMode': instance.elementMode?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'url': instance.url,
-    };
+Map<String, dynamic> _$ConceptMap_UnmappedToJson(ConceptMap_Unmapped instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('mode', instance.mode);
+  writeNotNull('elementMode', instance.elementMode?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('url', instance.url);
+  return val;
+}

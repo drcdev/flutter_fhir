@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class UsageContext {
   static Future<UsageContext> newInstance({
     String id,
@@ -86,13 +86,22 @@ UsageContext _$UsageContextFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$UsageContextToJson(UsageContext instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueRange': instance.valueRange?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-    };
+Map<String, dynamic> _$UsageContextToJson(UsageContext instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueRange', instance.valueRange?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  return val;
+}

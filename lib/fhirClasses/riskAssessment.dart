@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskAssessment {
   static Future<RiskAssessment> newInstance({
     String resourceType,
@@ -173,7 +173,7 @@ class RiskAssessment {
   Map<String, dynamic> toJson() => _$RiskAssessmentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskAssessment_Prediction {
   static Future<RiskAssessment_Prediction> newInstance({
     String id,
@@ -355,43 +355,56 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RiskAssessmentToJson(RiskAssessment instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.toJson(),
-      'parent': instance.parent?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'method': instance.method?.toJson(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'occurrenceDateTime': instance.occurrenceDateTime,
-      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
-      'occurrencePeriod': instance.occurrencePeriod?.toJson(),
-      'condition': instance.condition?.toJson(),
-      'performer': instance.performer?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'basis': instance.basis?.map((e) => e?.toJson())?.toList(),
-      'prediction': instance.prediction?.map((e) => e?.toJson())?.toList(),
-      'mitigation': instance.mitigation,
-      'elementMitigation': instance.elementMitigation?.toJson(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$RiskAssessmentToJson(RiskAssessment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.toJson());
+  writeNotNull('parent', instance.parent?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('method', instance.method?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('occurrenceDateTime', instance.occurrenceDateTime);
+  writeNotNull('elementOccurrenceDateTime',
+      instance.elementOccurrenceDateTime?.toJson());
+  writeNotNull('occurrencePeriod', instance.occurrencePeriod?.toJson());
+  writeNotNull('condition', instance.condition?.toJson());
+  writeNotNull('performer', instance.performer?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basis', instance.basis?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'prediction', instance.prediction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('mitigation', instance.mitigation);
+  writeNotNull('elementMitigation', instance.elementMitigation?.toJson());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 RiskAssessment_Prediction _$RiskAssessment_PredictionFromJson(
     Map<String, dynamic> json) {
@@ -438,21 +451,31 @@ RiskAssessment_Prediction _$RiskAssessment_PredictionFromJson(
 }
 
 Map<String, dynamic> _$RiskAssessment_PredictionToJson(
-        RiskAssessment_Prediction instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'outcome': instance.outcome?.toJson(),
-      'probabilityDecimal': instance.probabilityDecimal,
-      'elementProbabilityDecimal': instance.elementProbabilityDecimal?.toJson(),
-      'probabilityRange': instance.probabilityRange?.toJson(),
-      'qualitativeRisk': instance.qualitativeRisk?.toJson(),
-      'relativeRisk': instance.relativeRisk,
-      'elementRelativeRisk': instance.elementRelativeRisk?.toJson(),
-      'whenPeriod': instance.whenPeriod?.toJson(),
-      'whenRange': instance.whenRange?.toJson(),
-      'rationale': instance.rationale,
-      'elementRationale': instance.elementRationale?.toJson(),
-    };
+    RiskAssessment_Prediction instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('outcome', instance.outcome?.toJson());
+  writeNotNull('probabilityDecimal', instance.probabilityDecimal);
+  writeNotNull('elementProbabilityDecimal',
+      instance.elementProbabilityDecimal?.toJson());
+  writeNotNull('probabilityRange', instance.probabilityRange?.toJson());
+  writeNotNull('qualitativeRisk', instance.qualitativeRisk?.toJson());
+  writeNotNull('relativeRisk', instance.relativeRisk);
+  writeNotNull('elementRelativeRisk', instance.elementRelativeRisk?.toJson());
+  writeNotNull('whenPeriod', instance.whenPeriod?.toJson());
+  writeNotNull('whenRange', instance.whenRange?.toJson());
+  writeNotNull('rationale', instance.rationale);
+  writeNotNull('elementRationale', instance.elementRationale?.toJson());
+  return val;
+}

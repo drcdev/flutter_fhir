@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ResearchSubject {
   static Future<ResearchSubject> newInstance({
     String resourceType,
@@ -198,29 +198,39 @@ ResearchSubject _$ResearchSubjectFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ResearchSubjectToJson(ResearchSubject instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'period': instance.period?.toJson(),
-      'study': instance.study?.toJson(),
-      'individual': instance.individual?.toJson(),
-      'assignedArm': instance.assignedArm,
-      'elementAssignedArm': instance.elementAssignedArm?.toJson(),
-      'actualArm': instance.actualArm,
-      'elementActualArm': instance.elementActualArm?.toJson(),
-      'consent': instance.consent?.toJson(),
-    };
+Map<String, dynamic> _$ResearchSubjectToJson(ResearchSubject instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('study', instance.study?.toJson());
+  writeNotNull('individual', instance.individual?.toJson());
+  writeNotNull('assignedArm', instance.assignedArm);
+  writeNotNull('elementAssignedArm', instance.elementAssignedArm?.toJson());
+  writeNotNull('actualArm', instance.actualArm);
+  writeNotNull('elementActualArm', instance.elementActualArm?.toJson());
+  writeNotNull('consent', instance.consent?.toJson());
+  return val;
+}

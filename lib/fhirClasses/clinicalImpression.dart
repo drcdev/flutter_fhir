@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ClinicalImpression {
   static Future<ClinicalImpression> newInstance({
     String resourceType,
@@ -197,7 +197,7 @@ class ClinicalImpression {
   Map<String, dynamic> toJson() => _$ClinicalImpressionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ClinicalImpression_Investigation {
   static Future<ClinicalImpression_Investigation> newInstance({
     String id,
@@ -239,7 +239,7 @@ class ClinicalImpression_Investigation {
       _$ClinicalImpression_InvestigationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ClinicalImpression_Finding {
   static Future<ClinicalImpression_Finding> newInstance({
     String id,
@@ -411,53 +411,64 @@ ClinicalImpression _$ClinicalImpressionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ClinicalImpressionToJson(ClinicalImpression instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReason': instance.statusReason?.toJson(),
-      'code': instance.code?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'effectiveDateTime': instance.effectiveDateTime,
-      'elementEffectiveDateTime': instance.elementEffectiveDateTime?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'assessor': instance.assessor?.toJson(),
-      'previous': instance.previous?.toJson(),
-      'problem': instance.problem?.map((e) => e?.toJson())?.toList(),
-      'investigation':
-          instance.investigation?.map((e) => e?.toJson())?.toList(),
-      'protocol': instance.protocol,
-      'elementProtocol':
-          instance.elementProtocol?.map((e) => e?.toJson())?.toList(),
-      'summary': instance.summary,
-      'elementSummary': instance.elementSummary?.toJson(),
-      'finding': instance.finding?.map((e) => e?.toJson())?.toList(),
-      'prognosisCodeableConcept':
-          instance.prognosisCodeableConcept?.map((e) => e?.toJson())?.toList(),
-      'prognosisReference':
-          instance.prognosisReference?.map((e) => e?.toJson())?.toList(),
-      'supportingInfo':
-          instance.supportingInfo?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ClinicalImpressionToJson(ClinicalImpression instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusReason', instance.statusReason?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('effectiveDateTime', instance.effectiveDateTime);
+  writeNotNull(
+      'elementEffectiveDateTime', instance.elementEffectiveDateTime?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('assessor', instance.assessor?.toJson());
+  writeNotNull('previous', instance.previous?.toJson());
+  writeNotNull('problem', instance.problem?.map((e) => e?.toJson())?.toList());
+  writeNotNull('investigation',
+      instance.investigation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('protocol', instance.protocol);
+  writeNotNull('elementProtocol',
+      instance.elementProtocol?.map((e) => e?.toJson())?.toList());
+  writeNotNull('summary', instance.summary);
+  writeNotNull('elementSummary', instance.elementSummary?.toJson());
+  writeNotNull('finding', instance.finding?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prognosisCodeableConcept',
+      instance.prognosisCodeableConcept?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prognosisReference',
+      instance.prognosisReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supportingInfo',
+      instance.supportingInfo?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ClinicalImpression_Investigation _$ClinicalImpression_InvestigationFromJson(
     Map<String, dynamic> json) {
@@ -482,15 +493,24 @@ ClinicalImpression_Investigation _$ClinicalImpression_InvestigationFromJson(
 }
 
 Map<String, dynamic> _$ClinicalImpression_InvestigationToJson(
-        ClinicalImpression_Investigation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'item': instance.item?.map((e) => e?.toJson())?.toList(),
-    };
+    ClinicalImpression_Investigation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ClinicalImpression_Finding _$ClinicalImpression_FindingFromJson(
     Map<String, dynamic> json) {
@@ -519,14 +539,23 @@ ClinicalImpression_Finding _$ClinicalImpression_FindingFromJson(
 }
 
 Map<String, dynamic> _$ClinicalImpression_FindingToJson(
-        ClinicalImpression_Finding instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'itemCodeableConcept': instance.itemCodeableConcept?.toJson(),
-      'itemReference': instance.itemReference?.toJson(),
-      'basis': instance.basis,
-      'elementBasis': instance.elementBasis?.toJson(),
-    };
+    ClinicalImpression_Finding instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('itemCodeableConcept', instance.itemCodeableConcept?.toJson());
+  writeNotNull('itemReference', instance.itemReference?.toJson());
+  writeNotNull('basis', instance.basis);
+  writeNotNull('elementBasis', instance.elementBasis?.toJson());
+  return val;
+}

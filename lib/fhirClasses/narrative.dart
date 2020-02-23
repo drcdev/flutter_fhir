@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Narrative {
   static Future<Narrative> newInstance({
     String id,
@@ -63,10 +63,20 @@ Narrative _$NarrativeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$NarrativeToJson(Narrative instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'div': instance.div,
-    };
+Map<String, dynamic> _$NarrativeToJson(Narrative instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('div', instance.div);
+  return val;
+}

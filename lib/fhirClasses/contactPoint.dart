@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ContactPoint {
   static Future<ContactPoint> newInstance({
     String id,
@@ -102,17 +102,26 @@ ContactPoint _$ContactPointFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ContactPointToJson(ContactPoint instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'system': instance.system,
-      'elementSystem': instance.elementSystem?.toJson(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'rank': instance.rank,
-      'elementRank': instance.elementRank?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+Map<String, dynamic> _$ContactPointToJson(ContactPoint instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('system', instance.system);
+  writeNotNull('elementSystem', instance.elementSystem?.toJson());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('rank', instance.rank);
+  writeNotNull('elementRank', instance.elementRank?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}

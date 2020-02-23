@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle {
   static Future<Bundle> newInstance({
     String resourceType,
@@ -107,7 +107,7 @@ class Bundle {
   Map<String, dynamic> toJson() => _$BundleToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Link {
   static Future<Bundle_Link> newInstance({
     String id,
@@ -154,7 +154,7 @@ class Bundle_Link {
   Map<String, dynamic> toJson() => _$Bundle_LinkToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Entry {
   static Future<Bundle_Entry> newInstance({
     String id,
@@ -213,7 +213,7 @@ class Bundle_Entry {
   Map<String, dynamic> toJson() => _$Bundle_EntryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Search {
   static Future<Bundle_Search> newInstance({
     String id,
@@ -260,7 +260,7 @@ class Bundle_Search {
   Map<String, dynamic> toJson() => _$Bundle_SearchToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Request {
   static Future<Bundle_Request> newInstance({
     String id,
@@ -339,7 +339,7 @@ class Bundle_Request {
   Map<String, dynamic> toJson() => _$Bundle_RequestToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Response {
   static Future<Bundle_Response> newInstance({
     String id,
@@ -458,25 +458,34 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'identifier': instance.identifier?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'timestamp': instance.timestamp?.toIso8601String(),
-      'elementTimestamp': instance.elementTimestamp?.toJson(),
-      'total': instance.total,
-      'elementTotal': instance.elementTotal?.toJson(),
-      'link': instance.link?.map((e) => e?.toJson())?.toList(),
-      'entry': instance.entry?.map((e) => e?.toJson())?.toList(),
-      'signature': instance.signature?.toJson(),
-    };
+Map<String, dynamic> _$BundleToJson(Bundle instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('timestamp', instance.timestamp?.toIso8601String());
+  writeNotNull('elementTimestamp', instance.elementTimestamp?.toJson());
+  writeNotNull('total', instance.total);
+  writeNotNull('elementTotal', instance.elementTotal?.toJson());
+  writeNotNull('link', instance.link?.map((e) => e?.toJson())?.toList());
+  writeNotNull('entry', instance.entry?.map((e) => e?.toJson())?.toList());
+  writeNotNull('signature', instance.signature?.toJson());
+  return val;
+}
 
 Bundle_Link _$Bundle_LinkFromJson(Map<String, dynamic> json) {
   return Bundle_Link(
@@ -500,17 +509,26 @@ Bundle_Link _$Bundle_LinkFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Bundle_LinkToJson(Bundle_Link instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'relation': instance.relation,
-      'elementRelation': instance.elementRelation?.toJson(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-    };
+Map<String, dynamic> _$Bundle_LinkToJson(Bundle_Link instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relation', instance.relation);
+  writeNotNull('elementRelation', instance.elementRelation?.toJson());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  return val;
+}
 
 Bundle_Entry _$Bundle_EntryFromJson(Map<String, dynamic> json) {
   return Bundle_Entry(
@@ -547,20 +565,29 @@ Bundle_Entry _$Bundle_EntryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Bundle_EntryToJson(Bundle_Entry instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'link': instance.link?.map((e) => e?.toJson())?.toList(),
-      'fullUrl': instance.fullUrl,
-      'elementFullUrl': instance.elementFullUrl?.toJson(),
-      'resource': instance.resource,
-      'search': instance.search?.toJson(),
-      'request': instance.request?.toJson(),
-      'response': instance.response?.toJson(),
-    };
+Map<String, dynamic> _$Bundle_EntryToJson(Bundle_Entry instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('link', instance.link?.map((e) => e?.toJson())?.toList());
+  writeNotNull('fullUrl', instance.fullUrl);
+  writeNotNull('elementFullUrl', instance.elementFullUrl?.toJson());
+  writeNotNull('resource', instance.resource);
+  writeNotNull('search', instance.search?.toJson());
+  writeNotNull('request', instance.request?.toJson());
+  writeNotNull('response', instance.response?.toJson());
+  return val;
+}
 
 Bundle_Search _$Bundle_SearchFromJson(Map<String, dynamic> json) {
   return Bundle_Search(
@@ -584,17 +611,26 @@ Bundle_Search _$Bundle_SearchFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Bundle_SearchToJson(Bundle_Search instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'mode': instance.mode,
-      'elementMode': instance.elementMode?.toJson(),
-      'score': instance.score,
-      'elementScore': instance.elementScore?.toJson(),
-    };
+Map<String, dynamic> _$Bundle_SearchToJson(Bundle_Search instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('mode', instance.mode);
+  writeNotNull('elementMode', instance.elementMode?.toJson());
+  writeNotNull('score', instance.score);
+  writeNotNull('elementScore', instance.elementScore?.toJson());
+  return val;
+}
 
 Bundle_Request _$Bundle_RequestFromJson(Map<String, dynamic> json) {
   return Bundle_Request(
@@ -637,25 +673,35 @@ Bundle_Request _$Bundle_RequestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Bundle_RequestToJson(Bundle_Request instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'method': instance.method,
-      'elementMethod': instance.elementMethod?.toJson(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'ifNoneMatch': instance.ifNoneMatch,
-      'elementIfNoneMatch': instance.elementIfNoneMatch?.toJson(),
-      'ifModifiedSince': instance.ifModifiedSince?.toIso8601String(),
-      'elementIfModifiedSince': instance.elementIfModifiedSince?.toJson(),
-      'ifMatch': instance.ifMatch,
-      'elementIfMatch': instance.elementIfMatch?.toJson(),
-      'ifNoneExist': instance.ifNoneExist,
-      'elementIfNoneExist': instance.elementIfNoneExist?.toJson(),
-    };
+Map<String, dynamic> _$Bundle_RequestToJson(Bundle_Request instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('method', instance.method);
+  writeNotNull('elementMethod', instance.elementMethod?.toJson());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('ifNoneMatch', instance.ifNoneMatch);
+  writeNotNull('elementIfNoneMatch', instance.elementIfNoneMatch?.toJson());
+  writeNotNull('ifModifiedSince', instance.ifModifiedSince?.toIso8601String());
+  writeNotNull(
+      'elementIfModifiedSince', instance.elementIfModifiedSince?.toJson());
+  writeNotNull('ifMatch', instance.ifMatch);
+  writeNotNull('elementIfMatch', instance.elementIfMatch?.toJson());
+  writeNotNull('ifNoneExist', instance.ifNoneExist);
+  writeNotNull('elementIfNoneExist', instance.elementIfNoneExist?.toJson());
+  return val;
+}
 
 Bundle_Response _$Bundle_ResponseFromJson(Map<String, dynamic> json) {
   return Bundle_Response(
@@ -693,19 +739,28 @@ Bundle_Response _$Bundle_ResponseFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Bundle_ResponseToJson(Bundle_Response instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'location': instance.location,
-      'elementLocation': instance.elementLocation?.toJson(),
-      'etag': instance.etag,
-      'elementEtag': instance.elementEtag?.toJson(),
-      'lastModified': instance.lastModified?.toIso8601String(),
-      'elementLastModified': instance.elementLastModified?.toJson(),
-      'outcome': instance.outcome,
-    };
+Map<String, dynamic> _$Bundle_ResponseToJson(Bundle_Response instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('location', instance.location);
+  writeNotNull('elementLocation', instance.elementLocation?.toJson());
+  writeNotNull('etag', instance.etag);
+  writeNotNull('elementEtag', instance.elementEtag?.toJson());
+  writeNotNull('lastModified', instance.lastModified?.toIso8601String());
+  writeNotNull('elementLastModified', instance.elementLastModified?.toJson());
+  writeNotNull('outcome', instance.outcome);
+  return val;
+}

@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class GraphDefinition {
   static Future<GraphDefinition> newInstance({
     String resourceType,
@@ -186,7 +186,7 @@ class GraphDefinition {
   Map<String, dynamic> toJson() => _$GraphDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class GraphDefinition_Link {
   static Future<GraphDefinition_Link> newInstance({
     String id,
@@ -261,7 +261,7 @@ class GraphDefinition_Link {
   Map<String, dynamic> toJson() => _$GraphDefinition_LinkToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class GraphDefinition_Target {
   static Future<GraphDefinition_Target> newInstance({
     String id,
@@ -321,7 +321,7 @@ class GraphDefinition_Target {
   Map<String, dynamic> toJson() => _$GraphDefinition_TargetToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class GraphDefinition_Compartment {
   static Future<GraphDefinition_Compartment> newInstance({
     String id,
@@ -493,46 +493,57 @@ GraphDefinition _$GraphDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$GraphDefinitionToJson(GraphDefinition instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'start': instance.start,
-      'elementStart': instance.elementStart?.toJson(),
-      'profile': instance.profile,
-      'link': instance.link?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$GraphDefinitionToJson(GraphDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('start', instance.start);
+  writeNotNull('elementStart', instance.elementStart?.toJson());
+  writeNotNull('profile', instance.profile);
+  writeNotNull('link', instance.link?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 GraphDefinition_Link _$GraphDefinition_LinkFromJson(Map<String, dynamic> json) {
   return GraphDefinition_Link(
@@ -574,24 +585,33 @@ GraphDefinition_Link _$GraphDefinition_LinkFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$GraphDefinition_LinkToJson(
-        GraphDefinition_Link instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'path': instance.path,
-      'elementPath': instance.elementPath?.toJson(),
-      'sliceName': instance.sliceName,
-      'elementSliceName': instance.elementSliceName?.toJson(),
-      'min': instance.min,
-      'elementMin': instance.elementMin?.toJson(),
-      'max': instance.max,
-      'elementMax': instance.elementMax?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'target': instance.target?.map((e) => e?.toJson())?.toList(),
-    };
+    GraphDefinition_Link instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('path', instance.path);
+  writeNotNull('elementPath', instance.elementPath?.toJson());
+  writeNotNull('sliceName', instance.sliceName);
+  writeNotNull('elementSliceName', instance.elementSliceName?.toJson());
+  writeNotNull('min', instance.min);
+  writeNotNull('elementMin', instance.elementMin?.toJson());
+  writeNotNull('max', instance.max);
+  writeNotNull('elementMax', instance.elementMax?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 GraphDefinition_Target _$GraphDefinition_TargetFromJson(
     Map<String, dynamic> json) {
@@ -628,20 +648,30 @@ GraphDefinition_Target _$GraphDefinition_TargetFromJson(
 }
 
 Map<String, dynamic> _$GraphDefinition_TargetToJson(
-        GraphDefinition_Target instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'params': instance.params,
-      'elementParams': instance.elementParams?.toJson(),
-      'profile': instance.profile,
-      'compartment': instance.compartment?.map((e) => e?.toJson())?.toList(),
-      'link': instance.link?.map((e) => e?.toJson())?.toList(),
-    };
+    GraphDefinition_Target instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('params', instance.params);
+  writeNotNull('elementParams', instance.elementParams?.toJson());
+  writeNotNull('profile', instance.profile);
+  writeNotNull(
+      'compartment', instance.compartment?.map((e) => e?.toJson())?.toList());
+  writeNotNull('link', instance.link?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 GraphDefinition_Compartment _$GraphDefinition_CompartmentFromJson(
     Map<String, dynamic> json) {
@@ -679,20 +709,29 @@ GraphDefinition_Compartment _$GraphDefinition_CompartmentFromJson(
 }
 
 Map<String, dynamic> _$GraphDefinition_CompartmentToJson(
-        GraphDefinition_Compartment instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'rule': instance.rule,
-      'elementRule': instance.elementRule?.toJson(),
-      'expression': instance.expression,
-      'elementExpression': instance.elementExpression?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-    };
+    GraphDefinition_Compartment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('rule', instance.rule);
+  writeNotNull('elementRule', instance.elementRule?.toJson());
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression', instance.elementExpression?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  return val;
+}

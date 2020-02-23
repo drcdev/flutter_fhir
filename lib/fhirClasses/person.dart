@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Person {
   static Future<Person> newInstance({
     String resourceType,
@@ -140,7 +140,7 @@ class Person {
   Map<String, dynamic> toJson() => _$PersonToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Person_Link {
   static Future<Person_Link> newInstance({
     String id,
@@ -262,33 +262,44 @@ Person _$PersonFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'gender': instance.gender,
-      'elementGender': instance.elementGender?.toJson(),
-      'birthDate': instance.birthDate,
-      'elementBirthDate': instance.elementBirthDate?.toJson(),
-      'address': instance.address?.map((e) => e?.toJson())?.toList(),
-      'photo': instance.photo?.toJson(),
-      'managingOrganization': instance.managingOrganization?.toJson(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'link': instance.link?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$PersonToJson(Person instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name?.map((e) => e?.toJson())?.toList());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull('gender', instance.gender);
+  writeNotNull('elementGender', instance.elementGender?.toJson());
+  writeNotNull('birthDate', instance.birthDate);
+  writeNotNull('elementBirthDate', instance.elementBirthDate?.toJson());
+  writeNotNull('address', instance.address?.map((e) => e?.toJson())?.toList());
+  writeNotNull('photo', instance.photo?.toJson());
+  writeNotNull('managingOrganization', instance.managingOrganization?.toJson());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('link', instance.link?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Person_Link _$Person_LinkFromJson(Map<String, dynamic> json) {
   return Person_Link(
@@ -311,13 +322,22 @@ Person_Link _$Person_LinkFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Person_LinkToJson(Person_Link instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'target': instance.target?.toJson(),
-      'assurance': instance.assurance,
-      'elementAssurance': instance.elementAssurance?.toJson(),
-    };
+Map<String, dynamic> _$Person_LinkToJson(Person_Link instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('target', instance.target?.toJson());
+  writeNotNull('assurance', instance.assurance);
+  writeNotNull('elementAssurance', instance.elementAssurance?.toJson());
+  return val;
+}

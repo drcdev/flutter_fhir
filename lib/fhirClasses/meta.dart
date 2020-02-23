@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Meta {
   static Future<Meta> newInstance({
     String id,
@@ -112,17 +112,28 @@ Meta _$MetaFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'versionId': instance.versionId,
-      'elementVersionId': instance.elementVersionId?.toJson(),
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'lastUpdated': instance.lastUpdated?.toIso8601String(),
-      'elementLastUpdated': instance.elementLastUpdated?.toJson(),
-      'source': instance.source,
-      'elementSource': instance.elementSource?.toJson(),
-      'profile': instance.profile,
-      'security': instance.security?.map((e) => e?.toJson())?.toList(),
-      'tag': instance.tag?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$MetaToJson(Meta instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('versionId', instance.versionId);
+  writeNotNull('elementVersionId', instance.elementVersionId?.toJson());
+  writeNotNull('createdAt', instance.createdAt?.toIso8601String());
+  writeNotNull('lastUpdated', instance.lastUpdated?.toIso8601String());
+  writeNotNull('elementLastUpdated', instance.elementLastUpdated?.toJson());
+  writeNotNull('source', instance.source);
+  writeNotNull('elementSource', instance.elementSource?.toJson());
+  writeNotNull('profile', instance.profile);
+  writeNotNull(
+      'security', instance.security?.map((e) => e?.toJson())?.toList());
+  writeNotNull('tag', instance.tag?.map((e) => e?.toJson())?.toList());
+  return val;
+}

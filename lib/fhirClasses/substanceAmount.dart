@@ -7,7 +7,7 @@ import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceAmount {
   static Future<SubstanceAmount> newInstance({
     String id,
@@ -70,7 +70,7 @@ class SubstanceAmount {
   Map<String, dynamic> toJson() => _$SubstanceAmountToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceAmount_ReferenceRange {
   static Future<SubstanceAmount_ReferenceRange> newInstance({
     String id,
@@ -150,21 +150,30 @@ SubstanceAmount _$SubstanceAmountFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SubstanceAmountToJson(SubstanceAmount instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'amountQuantity': instance.amountQuantity?.toJson(),
-      'amountRange': instance.amountRange?.toJson(),
-      'amountString': instance.amountString,
-      'elementAmountString': instance.elementAmountString?.toJson(),
-      'amountType': instance.amountType?.toJson(),
-      'amountText': instance.amountText,
-      'elementAmountText': instance.elementAmountText?.toJson(),
-      'referenceRange': instance.referenceRange?.toJson(),
-    };
+Map<String, dynamic> _$SubstanceAmountToJson(SubstanceAmount instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('amountQuantity', instance.amountQuantity?.toJson());
+  writeNotNull('amountRange', instance.amountRange?.toJson());
+  writeNotNull('amountString', instance.amountString);
+  writeNotNull('elementAmountString', instance.elementAmountString?.toJson());
+  writeNotNull('amountType', instance.amountType?.toJson());
+  writeNotNull('amountText', instance.amountText);
+  writeNotNull('elementAmountText', instance.elementAmountText?.toJson());
+  writeNotNull('referenceRange', instance.referenceRange?.toJson());
+  return val;
+}
 
 SubstanceAmount_ReferenceRange _$SubstanceAmount_ReferenceRangeFromJson(
     Map<String, dynamic> json) {
@@ -188,12 +197,21 @@ SubstanceAmount_ReferenceRange _$SubstanceAmount_ReferenceRangeFromJson(
 }
 
 Map<String, dynamic> _$SubstanceAmount_ReferenceRangeToJson(
-        SubstanceAmount_ReferenceRange instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'lowLimit': instance.lowLimit?.toJson(),
-      'highLimit': instance.highLimit?.toJson(),
-    };
+    SubstanceAmount_ReferenceRange instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('lowLimit', instance.lowLimit?.toJson());
+  writeNotNull('highLimit', instance.highLimit?.toJson());
+  return val;
+}

@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ServiceRequest {
   static Future<ServiceRequest> newInstance({
     String resourceType,
@@ -473,70 +473,93 @@ ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ServiceRequestToJson(ServiceRequest instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'replaces': instance.replaces?.map((e) => e?.toJson())?.toList(),
-      'requisition': instance.requisition?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'intent': instance.intent,
-      'elementIntent': instance.elementIntent?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'doNotPerform': instance.doNotPerform,
-      'elementDoNotPerform': instance.elementDoNotPerform?.toJson(),
-      'code': instance.code?.toJson(),
-      'orderDetail': instance.orderDetail?.map((e) => e?.toJson())?.toList(),
-      'quantityQuantity': instance.quantityQuantity?.toJson(),
-      'quantityRatio': instance.quantityRatio?.toJson(),
-      'quantityRange': instance.quantityRange?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'occurrenceDateTime': instance.occurrenceDateTime,
-      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
-      'occurrencePeriod': instance.occurrencePeriod?.toJson(),
-      'occurrenceTiming': instance.occurrenceTiming?.toJson(),
-      'asNeededBoolean': instance.asNeededBoolean,
-      'elementAsNeededBoolean': instance.elementAsNeededBoolean?.toJson(),
-      'asNeededCodeableConcept': instance.asNeededCodeableConcept?.toJson(),
-      'authoredOn': instance.authoredOn?.toIso8601String(),
-      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
-      'requester': instance.requester?.toJson(),
-      'performerType': instance.performerType?.toJson(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'locationCode': instance.locationCode?.map((e) => e?.toJson())?.toList(),
-      'locationReference':
-          instance.locationReference?.map((e) => e?.toJson())?.toList(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
-      'supportingInfo':
-          instance.supportingInfo?.map((e) => e?.toJson())?.toList(),
-      'specimen': instance.specimen?.map((e) => e?.toJson())?.toList(),
-      'bodySite': instance.bodySite?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'patientInstruction': instance.patientInstruction,
-      'elementPatientInstruction': instance.elementPatientInstruction?.toJson(),
-      'relevantHistory':
-          instance.relevantHistory?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ServiceRequestToJson(ServiceRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'replaces', instance.replaces?.map((e) => e?.toJson())?.toList());
+  writeNotNull('requisition', instance.requisition?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('intent', instance.intent);
+  writeNotNull('elementIntent', instance.elementIntent?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('doNotPerform', instance.doNotPerform);
+  writeNotNull('elementDoNotPerform', instance.elementDoNotPerform?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull(
+      'orderDetail', instance.orderDetail?.map((e) => e?.toJson())?.toList());
+  writeNotNull('quantityQuantity', instance.quantityQuantity?.toJson());
+  writeNotNull('quantityRatio', instance.quantityRatio?.toJson());
+  writeNotNull('quantityRange', instance.quantityRange?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('occurrenceDateTime', instance.occurrenceDateTime);
+  writeNotNull('elementOccurrenceDateTime',
+      instance.elementOccurrenceDateTime?.toJson());
+  writeNotNull('occurrencePeriod', instance.occurrencePeriod?.toJson());
+  writeNotNull('occurrenceTiming', instance.occurrenceTiming?.toJson());
+  writeNotNull('asNeededBoolean', instance.asNeededBoolean);
+  writeNotNull(
+      'elementAsNeededBoolean', instance.elementAsNeededBoolean?.toJson());
+  writeNotNull(
+      'asNeededCodeableConcept', instance.asNeededCodeableConcept?.toJson());
+  writeNotNull('authoredOn', instance.authoredOn?.toIso8601String());
+  writeNotNull('elementAuthoredOn', instance.elementAuthoredOn?.toJson());
+  writeNotNull('requester', instance.requester?.toJson());
+  writeNotNull('performerType', instance.performerType?.toJson());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'locationCode', instance.locationCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('locationReference',
+      instance.locationReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'insurance', instance.insurance?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supportingInfo',
+      instance.supportingInfo?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specimen', instance.specimen?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'bodySite', instance.bodySite?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('patientInstruction', instance.patientInstruction);
+  writeNotNull('elementPatientInstruction',
+      instance.elementPatientInstruction?.toJson());
+  writeNotNull('relevantHistory',
+      instance.relevantHistory?.map((e) => e?.toJson())?.toList());
+  return val;
+}

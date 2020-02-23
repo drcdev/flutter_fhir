@@ -22,7 +22,7 @@ dependencies:
   geolocator: ^5.2.1
   google_fonts: ^0.3.7
   device_info: ^0.4.1+4
-  hive: ^1.0.0
+  hive: 1.2.0
   hive_flutter: ^0.2.1
   flutter_localizations:
     sdk: flutter

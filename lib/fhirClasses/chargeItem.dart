@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ChargeItem {
   static Future<ChargeItem> newInstance({
     String resourceType,
@@ -231,7 +231,7 @@ class ChargeItem {
   Map<String, dynamic> toJson() => _$ChargeItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ChargeItem_Performer {
   static Future<ChargeItem_Performer> newInstance({
     String id,
@@ -425,58 +425,76 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'definitionUri': instance.definitionUri,
-      'elementDefinitionUri':
-          instance.elementDefinitionUri?.map((e) => e?.toJson())?.toList(),
-      'definitionCanonical': instance.definitionCanonical,
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'context': instance.context?.toJson(),
-      'occurrenceDateTime': instance.occurrenceDateTime,
-      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
-      'occurrencePeriod': instance.occurrencePeriod?.toJson(),
-      'occurrenceTiming': instance.occurrenceTiming?.toJson(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'performingOrganization': instance.performingOrganization?.toJson(),
-      'requestingOrganization': instance.requestingOrganization?.toJson(),
-      'costCenter': instance.costCenter?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'bodysite': instance.bodysite?.map((e) => e?.toJson())?.toList(),
-      'factorOverride': instance.factorOverride,
-      'elementFactorOverride': instance.elementFactorOverride?.toJson(),
-      'priceOverride': instance.priceOverride?.toJson(),
-      'overrideReason': instance.overrideReason,
-      'elementOverrideReason': instance.elementOverrideReason?.toJson(),
-      'enterer': instance.enterer?.toJson(),
-      'enteredDate': instance.enteredDate?.toIso8601String(),
-      'elementEnteredDate': instance.elementEnteredDate?.toJson(),
-      'reason': instance.reason?.map((e) => e?.toJson())?.toList(),
-      'service': instance.service?.map((e) => e?.toJson())?.toList(),
-      'productReference': instance.productReference?.toJson(),
-      'productCodeableConcept': instance.productCodeableConcept?.toJson(),
-      'account': instance.account?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'supportingInformation':
-          instance.supportingInformation?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('definitionUri', instance.definitionUri);
+  writeNotNull('elementDefinitionUri',
+      instance.elementDefinitionUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('definitionCanonical', instance.definitionCanonical);
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('context', instance.context?.toJson());
+  writeNotNull('occurrenceDateTime', instance.occurrenceDateTime);
+  writeNotNull('elementOccurrenceDateTime',
+      instance.elementOccurrenceDateTime?.toJson());
+  writeNotNull('occurrencePeriod', instance.occurrencePeriod?.toJson());
+  writeNotNull('occurrenceTiming', instance.occurrenceTiming?.toJson());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'performingOrganization', instance.performingOrganization?.toJson());
+  writeNotNull(
+      'requestingOrganization', instance.requestingOrganization?.toJson());
+  writeNotNull('costCenter', instance.costCenter?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull(
+      'bodysite', instance.bodysite?.map((e) => e?.toJson())?.toList());
+  writeNotNull('factorOverride', instance.factorOverride);
+  writeNotNull(
+      'elementFactorOverride', instance.elementFactorOverride?.toJson());
+  writeNotNull('priceOverride', instance.priceOverride?.toJson());
+  writeNotNull('overrideReason', instance.overrideReason);
+  writeNotNull(
+      'elementOverrideReason', instance.elementOverrideReason?.toJson());
+  writeNotNull('enterer', instance.enterer?.toJson());
+  writeNotNull('enteredDate', instance.enteredDate?.toIso8601String());
+  writeNotNull('elementEnteredDate', instance.elementEnteredDate?.toJson());
+  writeNotNull('reason', instance.reason?.map((e) => e?.toJson())?.toList());
+  writeNotNull('service', instance.service?.map((e) => e?.toJson())?.toList());
+  writeNotNull('productReference', instance.productReference?.toJson());
+  writeNotNull(
+      'productCodeableConcept', instance.productCodeableConcept?.toJson());
+  writeNotNull('account', instance.account?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('supportingInformation',
+      instance.supportingInformation?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ChargeItem_Performer _$ChargeItem_PerformerFromJson(Map<String, dynamic> json) {
   return ChargeItem_Performer(
@@ -499,12 +517,21 @@ ChargeItem_Performer _$ChargeItem_PerformerFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ChargeItem_PerformerToJson(
-        ChargeItem_Performer instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'function': instance.function?.toJson(),
-      'actor': instance.actor?.toJson(),
-    };
+    ChargeItem_Performer instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('function', instance.function?.toJson());
+  writeNotNull('actor', instance.actor?.toJson());
+  return val;
+}

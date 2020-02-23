@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class AllergyIntolerance {
   static Future<AllergyIntolerance> newInstance({
     String resourceType,
@@ -199,7 +199,7 @@ class AllergyIntolerance {
   Map<String, dynamic> toJson() => _$AllergyIntoleranceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class AllergyIntolerance_Reaction {
   static Future<AllergyIntolerance_Reaction> newInstance({
     String id,
@@ -391,49 +391,61 @@ AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AllergyIntoleranceToJson(AllergyIntolerance instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'clinicalStatus': instance.clinicalStatus?.toJson(),
-      'verificationStatus': instance.verificationStatus?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'category': instance.category,
-      'elementCategory':
-          instance.elementCategory?.map((e) => e?.toJson())?.toList(),
-      'criticality': instance.criticality,
-      'elementCriticality': instance.elementCriticality?.toJson(),
-      'code': instance.code?.toJson(),
-      'patient': instance.patient?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'onsetDateTime': instance.onsetDateTime,
-      'elementOnsetDateTime': instance.elementOnsetDateTime?.toJson(),
-      'onsetAge': instance.onsetAge?.toJson(),
-      'onsetPeriod': instance.onsetPeriod?.toJson(),
-      'onsetRange': instance.onsetRange?.toJson(),
-      'onsetString': instance.onsetString,
-      'elementOnsetString': instance.elementOnsetString?.toJson(),
-      'recordedDate': instance.recordedDate?.toIso8601String(),
-      'elementRecordedDate': instance.elementRecordedDate?.toJson(),
-      'recorder': instance.recorder?.toJson(),
-      'asserter': instance.asserter?.toJson(),
-      'lastOccurrence': instance.lastOccurrence?.toIso8601String(),
-      'elementLastOccurrence': instance.elementLastOccurrence?.toJson(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'reaction': instance.reaction?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$AllergyIntoleranceToJson(AllergyIntolerance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('clinicalStatus', instance.clinicalStatus?.toJson());
+  writeNotNull('verificationStatus', instance.verificationStatus?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('category', instance.category);
+  writeNotNull('elementCategory',
+      instance.elementCategory?.map((e) => e?.toJson())?.toList());
+  writeNotNull('criticality', instance.criticality);
+  writeNotNull('elementCriticality', instance.elementCriticality?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('patient', instance.patient?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('onsetDateTime', instance.onsetDateTime);
+  writeNotNull('elementOnsetDateTime', instance.elementOnsetDateTime?.toJson());
+  writeNotNull('onsetAge', instance.onsetAge?.toJson());
+  writeNotNull('onsetPeriod', instance.onsetPeriod?.toJson());
+  writeNotNull('onsetRange', instance.onsetRange?.toJson());
+  writeNotNull('onsetString', instance.onsetString);
+  writeNotNull('elementOnsetString', instance.elementOnsetString?.toJson());
+  writeNotNull('recordedDate', instance.recordedDate?.toIso8601String());
+  writeNotNull('elementRecordedDate', instance.elementRecordedDate?.toJson());
+  writeNotNull('recorder', instance.recorder?.toJson());
+  writeNotNull('asserter', instance.asserter?.toJson());
+  writeNotNull('lastOccurrence', instance.lastOccurrence?.toIso8601String());
+  writeNotNull(
+      'elementLastOccurrence', instance.elementLastOccurrence?.toJson());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reaction', instance.reaction?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 AllergyIntolerance_Reaction _$AllergyIntolerance_ReactionFromJson(
     Map<String, dynamic> json) {
@@ -480,21 +492,30 @@ AllergyIntolerance_Reaction _$AllergyIntolerance_ReactionFromJson(
 }
 
 Map<String, dynamic> _$AllergyIntolerance_ReactionToJson(
-        AllergyIntolerance_Reaction instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'substance': instance.substance?.toJson(),
-      'manifestation':
-          instance.manifestation?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'onset': instance.onset?.toIso8601String(),
-      'elementOnset': instance.elementOnset?.toJson(),
-      'severity': instance.severity,
-      'elementSeverity': instance.elementSeverity?.toJson(),
-      'exposureRoute': instance.exposureRoute?.toJson(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+    AllergyIntolerance_Reaction instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('substance', instance.substance?.toJson());
+  writeNotNull('manifestation',
+      instance.manifestation?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('onset', instance.onset?.toIso8601String());
+  writeNotNull('elementOnset', instance.elementOnset?.toJson());
+  writeNotNull('severity', instance.severity);
+  writeNotNull('elementSeverity', instance.elementSeverity?.toJson());
+  writeNotNull('exposureRoute', instance.exposureRoute?.toJson());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}

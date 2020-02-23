@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CareTeam {
   static Future<CareTeam> newInstance({
     String resourceType,
@@ -149,7 +149,7 @@ class CareTeam {
   Map<String, dynamic> toJson() => _$CareTeamToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CareTeam_Participant {
   static Future<CareTeam_Participant> newInstance({
     String id,
@@ -288,37 +288,51 @@ CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CareTeamToJson(CareTeam instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'period': instance.period?.toJson(),
-      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'managingOrganization':
-          instance.managingOrganization?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CareTeamToJson(CareTeam instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull(
+      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('managingOrganization',
+      instance.managingOrganization?.map((e) => e?.toJson())?.toList());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CareTeam_Participant _$CareTeam_ParticipantFromJson(Map<String, dynamic> json) {
   return CareTeam_Participant(
@@ -349,14 +363,23 @@ CareTeam_Participant _$CareTeam_ParticipantFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CareTeam_ParticipantToJson(
-        CareTeam_Participant instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'role': instance.role?.map((e) => e?.toJson())?.toList(),
-      'member': instance.member?.toJson(),
-      'onBehalfOf': instance.onBehalfOf?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+    CareTeam_Participant instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('role', instance.role?.map((e) => e?.toJson())?.toList());
+  writeNotNull('member', instance.member?.toJson());
+  writeNotNull('onBehalfOf', instance.onBehalfOf?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}

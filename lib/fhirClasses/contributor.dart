@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Contributor {
   static Future<Contributor> newInstance({
     String id,
@@ -80,13 +80,22 @@ Contributor _$ContributorFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ContributorToJson(Contributor instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ContributorToJson(Contributor instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  return val;
+}

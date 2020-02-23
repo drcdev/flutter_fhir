@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductInteraction {
   static Future<MedicinalProductInteraction> newInstance({
     String resourceType,
@@ -119,7 +119,7 @@ class MedicinalProductInteraction {
   Map<String, dynamic> toJson() => _$MedicinalProductInteractionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductInteraction_Interactant {
   static Future<MedicinalProductInteraction_Interactant> newInstance({
     String id,
@@ -230,29 +230,39 @@ MedicinalProductInteraction _$MedicinalProductInteractionFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductInteractionToJson(
-        MedicinalProductInteraction instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'interactant': instance.interactant?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'effect': instance.effect?.toJson(),
-      'incidence': instance.incidence?.toJson(),
-      'management': instance.management?.toJson(),
-    };
+    MedicinalProductInteraction instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'interactant', instance.interactant?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('effect', instance.effect?.toJson());
+  writeNotNull('incidence', instance.incidence?.toJson());
+  writeNotNull('management', instance.management?.toJson());
+  return val;
+}
 
 MedicinalProductInteraction_Interactant
     _$MedicinalProductInteraction_InteractantFromJson(
@@ -278,12 +288,21 @@ MedicinalProductInteraction_Interactant
 }
 
 Map<String, dynamic> _$MedicinalProductInteraction_InteractantToJson(
-        MedicinalProductInteraction_Interactant instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'itemReference': instance.itemReference?.toJson(),
-      'itemCodeableConcept': instance.itemCodeableConcept?.toJson(),
-    };
+    MedicinalProductInteraction_Interactant instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('itemReference', instance.itemReference?.toJson());
+  writeNotNull('itemCodeableConcept', instance.itemCodeableConcept?.toJson());
+  return val;
+}

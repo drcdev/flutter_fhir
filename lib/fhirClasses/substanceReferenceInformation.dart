@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceReferenceInformation {
   static Future<SubstanceReferenceInformation> newInstance({
     String resourceType,
@@ -114,7 +114,7 @@ class SubstanceReferenceInformation {
   Map<String, dynamic> toJson() => _$SubstanceReferenceInformationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceReferenceInformation_Gene {
   static Future<SubstanceReferenceInformation_Gene> newInstance({
     String id,
@@ -160,7 +160,7 @@ class SubstanceReferenceInformation_Gene {
       _$SubstanceReferenceInformation_GeneToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceReferenceInformation_GeneElement {
   static Future<SubstanceReferenceInformation_GeneElement> newInstance({
     String id,
@@ -207,7 +207,7 @@ class SubstanceReferenceInformation_GeneElement {
       _$SubstanceReferenceInformation_GeneElementToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceReferenceInformation_Classification {
   static Future<SubstanceReferenceInformation_Classification> newInstance({
     String id,
@@ -258,7 +258,7 @@ class SubstanceReferenceInformation_Classification {
       _$SubstanceReferenceInformation_ClassificationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceReferenceInformation_Target {
   static Future<SubstanceReferenceInformation_Target> newInstance({
     String id,
@@ -407,28 +407,38 @@ SubstanceReferenceInformation _$SubstanceReferenceInformationFromJson(
 }
 
 Map<String, dynamic> _$SubstanceReferenceInformationToJson(
-        SubstanceReferenceInformation instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'comment': instance.comment,
-      'elementComment': instance.elementComment?.toJson(),
-      'gene': instance.gene?.map((e) => e?.toJson())?.toList(),
-      'geneElement': instance.geneElement?.map((e) => e?.toJson())?.toList(),
-      'classification':
-          instance.classification?.map((e) => e?.toJson())?.toList(),
-      'target': instance.target?.map((e) => e?.toJson())?.toList(),
-    };
+    SubstanceReferenceInformation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('comment', instance.comment);
+  writeNotNull('elementComment', instance.elementComment?.toJson());
+  writeNotNull('gene', instance.gene?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'geneElement', instance.geneElement?.map((e) => e?.toJson())?.toList());
+  writeNotNull('classification',
+      instance.classification?.map((e) => e?.toJson())?.toList());
+  writeNotNull('target', instance.target?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 SubstanceReferenceInformation_Gene _$SubstanceReferenceInformation_GeneFromJson(
     Map<String, dynamic> json) {
@@ -457,16 +467,25 @@ SubstanceReferenceInformation_Gene _$SubstanceReferenceInformation_GeneFromJson(
 }
 
 Map<String, dynamic> _$SubstanceReferenceInformation_GeneToJson(
-        SubstanceReferenceInformation_Gene instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'geneSequenceOrigin': instance.geneSequenceOrigin?.toJson(),
-      'gene': instance.gene?.toJson(),
-      'source': instance.source?.map((e) => e?.toJson())?.toList(),
-    };
+    SubstanceReferenceInformation_Gene instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('geneSequenceOrigin', instance.geneSequenceOrigin?.toJson());
+  writeNotNull('gene', instance.gene?.toJson());
+  writeNotNull('source', instance.source?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 SubstanceReferenceInformation_GeneElement
     _$SubstanceReferenceInformation_GeneElementFromJson(
@@ -495,16 +514,25 @@ SubstanceReferenceInformation_GeneElement
 }
 
 Map<String, dynamic> _$SubstanceReferenceInformation_GeneElementToJson(
-        SubstanceReferenceInformation_GeneElement instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'element': instance.element?.toJson(),
-      'source': instance.source?.map((e) => e?.toJson())?.toList(),
-    };
+    SubstanceReferenceInformation_GeneElement instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('element', instance.element?.toJson());
+  writeNotNull('source', instance.source?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 SubstanceReferenceInformation_Classification
     _$SubstanceReferenceInformation_ClassificationFromJson(
@@ -539,17 +567,26 @@ SubstanceReferenceInformation_Classification
 }
 
 Map<String, dynamic> _$SubstanceReferenceInformation_ClassificationToJson(
-        SubstanceReferenceInformation_Classification instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'domain': instance.domain?.toJson(),
-      'classification': instance.classification?.toJson(),
-      'subtype': instance.subtype?.map((e) => e?.toJson())?.toList(),
-      'source': instance.source?.map((e) => e?.toJson())?.toList(),
-    };
+    SubstanceReferenceInformation_Classification instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('domain', instance.domain?.toJson());
+  writeNotNull('classification', instance.classification?.toJson());
+  writeNotNull('subtype', instance.subtype?.map((e) => e?.toJson())?.toList());
+  writeNotNull('source', instance.source?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 SubstanceReferenceInformation_Target
     _$SubstanceReferenceInformation_TargetFromJson(Map<String, dynamic> json) {
@@ -600,21 +637,30 @@ SubstanceReferenceInformation_Target
 }
 
 Map<String, dynamic> _$SubstanceReferenceInformation_TargetToJson(
-        SubstanceReferenceInformation_Target instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'target': instance.target?.toJson(),
-      'type': instance.type?.toJson(),
-      'interaction': instance.interaction?.toJson(),
-      'organism': instance.organism?.toJson(),
-      'organismType': instance.organismType?.toJson(),
-      'amountQuantity': instance.amountQuantity?.toJson(),
-      'amountRange': instance.amountRange?.toJson(),
-      'amountString': instance.amountString,
-      'elementAmountString': instance.elementAmountString?.toJson(),
-      'amountType': instance.amountType?.toJson(),
-      'source': instance.source?.map((e) => e?.toJson())?.toList(),
-    };
+    SubstanceReferenceInformation_Target instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('target', instance.target?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('interaction', instance.interaction?.toJson());
+  writeNotNull('organism', instance.organism?.toJson());
+  writeNotNull('organismType', instance.organismType?.toJson());
+  writeNotNull('amountQuantity', instance.amountQuantity?.toJson());
+  writeNotNull('amountRange', instance.amountRange?.toJson());
+  writeNotNull('amountString', instance.amountString);
+  writeNotNull('elementAmountString', instance.elementAmountString?.toJson());
+  writeNotNull('amountType', instance.amountType?.toJson());
+  writeNotNull('source', instance.source?.map((e) => e?.toJson())?.toList());
+  return val;
+}

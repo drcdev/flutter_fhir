@@ -7,7 +7,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ProdCharacteristic {
   static Future<ProdCharacteristic> newInstance({
     String id,
@@ -152,25 +152,35 @@ ProdCharacteristic _$ProdCharacteristicFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ProdCharacteristicToJson(ProdCharacteristic instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'height': instance.height?.toJson(),
-      'width': instance.width?.toJson(),
-      'depth': instance.depth?.toJson(),
-      'weight': instance.weight?.toJson(),
-      'nominalVolume': instance.nominalVolume?.toJson(),
-      'externalDiameter': instance.externalDiameter?.toJson(),
-      'shape': instance.shape,
-      'elementShape': instance.elementShape?.toJson(),
-      'color': instance.color,
-      'elementColor': instance.elementColor?.map((e) => e?.toJson())?.toList(),
-      'imprint': instance.imprint,
-      'elementImprint':
-          instance.elementImprint?.map((e) => e?.toJson())?.toList(),
-      'image': instance.image?.map((e) => e?.toJson())?.toList(),
-      'scoring': instance.scoring?.toJson(),
-    };
+Map<String, dynamic> _$ProdCharacteristicToJson(ProdCharacteristic instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('height', instance.height?.toJson());
+  writeNotNull('width', instance.width?.toJson());
+  writeNotNull('depth', instance.depth?.toJson());
+  writeNotNull('weight', instance.weight?.toJson());
+  writeNotNull('nominalVolume', instance.nominalVolume?.toJson());
+  writeNotNull('externalDiameter', instance.externalDiameter?.toJson());
+  writeNotNull('shape', instance.shape);
+  writeNotNull('elementShape', instance.elementShape?.toJson());
+  writeNotNull('color', instance.color);
+  writeNotNull(
+      'elementColor', instance.elementColor?.map((e) => e?.toJson())?.toList());
+  writeNotNull('imprint', instance.imprint);
+  writeNotNull('elementImprint',
+      instance.elementImprint?.map((e) => e?.toJson())?.toList());
+  writeNotNull('image', instance.image?.map((e) => e?.toJson())?.toList());
+  writeNotNull('scoring', instance.scoring?.toJson());
+  return val;
+}

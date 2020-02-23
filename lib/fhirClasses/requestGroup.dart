@@ -18,7 +18,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RequestGroup {
   static Future<RequestGroup> newInstance({
     String resourceType,
@@ -190,7 +190,7 @@ class RequestGroup {
   Map<String, dynamic> toJson() => _$RequestGroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RequestGroup_Action {
   static Future<RequestGroup_Action> newInstance({
     String id,
@@ -361,7 +361,7 @@ class RequestGroup_Action {
   Map<String, dynamic> toJson() => _$RequestGroup_ActionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RequestGroup_Condition {
   static Future<RequestGroup_Condition> newInstance({
     String id,
@@ -405,7 +405,7 @@ class RequestGroup_Condition {
   Map<String, dynamic> toJson() => _$RequestGroup_ConditionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RequestGroup_RelatedAction {
   static Future<RequestGroup_RelatedAction> newInstance({
     String id,
@@ -577,49 +577,60 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'elementInstantiatesCanonical': instance.elementInstantiatesCanonical
-          ?.map((e) => e?.toJson())
-          ?.toList(),
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'replaces': instance.replaces?.map((e) => e?.toJson())?.toList(),
-      'groupIdentifier': instance.groupIdentifier?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'intent': instance.intent,
-      'elementIntent': instance.elementIntent?.toJson(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'authoredOn': instance.authoredOn?.toIso8601String(),
-      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
-      'author': instance.author?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('elementInstantiatesCanonical',
+      instance.elementInstantiatesCanonical?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'replaces', instance.replaces?.map((e) => e?.toJson())?.toList());
+  writeNotNull('groupIdentifier', instance.groupIdentifier?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('intent', instance.intent);
+  writeNotNull('elementIntent', instance.elementIntent?.toJson());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('authoredOn', instance.authoredOn?.toIso8601String());
+  writeNotNull('elementAuthoredOn', instance.elementAuthoredOn?.toJson());
+  writeNotNull('author', instance.author?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
   return RequestGroup_Action(
@@ -736,52 +747,68 @@ RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RequestGroup_ActionToJson(
-        RequestGroup_Action instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'prefix': instance.prefix,
-      'elementPrefix': instance.elementPrefix?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'textEquivalent': instance.textEquivalent,
-      'elementTextEquivalent': instance.elementTextEquivalent?.toJson(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'documentation':
-          instance.documentation?.map((e) => e?.toJson())?.toList(),
-      'condition': instance.condition?.map((e) => e?.toJson())?.toList(),
-      'relatedAction':
-          instance.relatedAction?.map((e) => e?.toJson())?.toList(),
-      'timingDateTime': instance.timingDateTime,
-      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
-      'timingAge': instance.timingAge?.toJson(),
-      'timingPeriod': instance.timingPeriod?.toJson(),
-      'timingDuration': instance.timingDuration?.toJson(),
-      'timingRange': instance.timingRange?.toJson(),
-      'timingTiming': instance.timingTiming?.toJson(),
-      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'groupingBehavior': instance.groupingBehavior,
-      'elementGroupingBehavior': instance.elementGroupingBehavior?.toJson(),
-      'selectionBehavior': instance.selectionBehavior,
-      'elementSelectionBehavior': instance.elementSelectionBehavior?.toJson(),
-      'requiredBehavior': instance.requiredBehavior,
-      'elementRequiredBehavior': instance.elementRequiredBehavior?.toJson(),
-      'precheckBehavior': instance.precheckBehavior,
-      'elementPrecheckBehavior': instance.elementPrecheckBehavior?.toJson(),
-      'cardinalityBehavior': instance.cardinalityBehavior,
-      'elementCardinalityBehavior':
-          instance.elementCardinalityBehavior?.toJson(),
-      'resource': instance.resource?.toJson(),
-      'action': instance.action?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$RequestGroup_ActionToJson(RequestGroup_Action instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('prefix', instance.prefix);
+  writeNotNull('elementPrefix', instance.elementPrefix?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('textEquivalent', instance.textEquivalent);
+  writeNotNull(
+      'elementTextEquivalent', instance.elementTextEquivalent?.toJson());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('documentation',
+      instance.documentation?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'condition', instance.condition?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedAction',
+      instance.relatedAction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('timingDateTime', instance.timingDateTime);
+  writeNotNull(
+      'elementTimingDateTime', instance.elementTimingDateTime?.toJson());
+  writeNotNull('timingAge', instance.timingAge?.toJson());
+  writeNotNull('timingPeriod', instance.timingPeriod?.toJson());
+  writeNotNull('timingDuration', instance.timingDuration?.toJson());
+  writeNotNull('timingRange', instance.timingRange?.toJson());
+  writeNotNull('timingTiming', instance.timingTiming?.toJson());
+  writeNotNull(
+      'participant', instance.participant?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('groupingBehavior', instance.groupingBehavior);
+  writeNotNull(
+      'elementGroupingBehavior', instance.elementGroupingBehavior?.toJson());
+  writeNotNull('selectionBehavior', instance.selectionBehavior);
+  writeNotNull(
+      'elementSelectionBehavior', instance.elementSelectionBehavior?.toJson());
+  writeNotNull('requiredBehavior', instance.requiredBehavior);
+  writeNotNull(
+      'elementRequiredBehavior', instance.elementRequiredBehavior?.toJson());
+  writeNotNull('precheckBehavior', instance.precheckBehavior);
+  writeNotNull(
+      'elementPrecheckBehavior', instance.elementPrecheckBehavior?.toJson());
+  writeNotNull('cardinalityBehavior', instance.cardinalityBehavior);
+  writeNotNull('elementCardinalityBehavior',
+      instance.elementCardinalityBehavior?.toJson());
+  writeNotNull('resource', instance.resource?.toJson());
+  writeNotNull('action', instance.action?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 RequestGroup_Condition _$RequestGroup_ConditionFromJson(
     Map<String, dynamic> json) {
@@ -806,16 +833,25 @@ RequestGroup_Condition _$RequestGroup_ConditionFromJson(
 }
 
 Map<String, dynamic> _$RequestGroup_ConditionToJson(
-        RequestGroup_Condition instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'kind': instance.kind,
-      'elementKind': instance.elementKind?.toJson(),
-      'expression': instance.expression?.toJson(),
-    };
+    RequestGroup_Condition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('kind', instance.kind);
+  writeNotNull('elementKind', instance.elementKind?.toJson());
+  writeNotNull('expression', instance.expression?.toJson());
+  return val;
+}
 
 RequestGroup_RelatedAction _$RequestGroup_RelatedActionFromJson(
     Map<String, dynamic> json) {
@@ -847,16 +883,25 @@ RequestGroup_RelatedAction _$RequestGroup_RelatedActionFromJson(
 }
 
 Map<String, dynamic> _$RequestGroup_RelatedActionToJson(
-        RequestGroup_RelatedAction instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'actionId': instance.actionId,
-      'elementActionId': instance.elementActionId?.toJson(),
-      'relationship': instance.relationship,
-      'elementRelationship': instance.elementRelationship?.toJson(),
-      'offsetDuration': instance.offsetDuration?.toJson(),
-      'offsetRange': instance.offsetRange?.toJson(),
-    };
+    RequestGroup_RelatedAction instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('actionId', instance.actionId);
+  writeNotNull('elementActionId', instance.elementActionId?.toJson());
+  writeNotNull('relationship', instance.relationship);
+  writeNotNull('elementRelationship', instance.elementRelationship?.toJson());
+  writeNotNull('offsetDuration', instance.offsetDuration?.toJson());
+  writeNotNull('offsetRange', instance.offsetRange?.toJson());
+  return val;
+}

@@ -17,7 +17,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Library {
   static Future<Library> newInstance({
     String resourceType,
@@ -457,66 +457,84 @@ Library _$LibraryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$LibraryToJson(Library instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'subtitle': instance.subtitle,
-      'elementSubtitle': instance.elementSubtitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'type': instance.type?.toJson(),
-      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
-      'subjectReference': instance.subjectReference?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'usage': instance.usage,
-      'elementUsage': instance.elementUsage?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'approvalDate': instance.approvalDate,
-      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
-      'lastReviewDate': instance.lastReviewDate,
-      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
-      'author': instance.author?.map((e) => e?.toJson())?.toList(),
-      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
-      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
-      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
-      'relatedArtifact':
-          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
-      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
-      'dataRequirement':
-          instance.dataRequirement?.map((e) => e?.toJson())?.toList(),
-      'content': instance.content?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$LibraryToJson(Library instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('subtitle', instance.subtitle);
+  writeNotNull('elementSubtitle', instance.elementSubtitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull(
+      'subjectCodeableConcept', instance.subjectCodeableConcept?.toJson());
+  writeNotNull('subjectReference', instance.subjectReference?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('usage', instance.usage);
+  writeNotNull('elementUsage', instance.elementUsage?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('approvalDate', instance.approvalDate);
+  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
+  writeNotNull('lastReviewDate', instance.lastReviewDate);
+  writeNotNull(
+      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('topic', instance.topic?.map((e) => e?.toJson())?.toList());
+  writeNotNull('author', instance.author?.map((e) => e?.toJson())?.toList());
+  writeNotNull('editor', instance.editor?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'reviewer', instance.reviewer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'endorser', instance.endorser?.map((e) => e?.toJson())?.toList());
+  writeNotNull('relatedArtifact',
+      instance.relatedArtifact?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'parameter', instance.parameter?.map((e) => e?.toJson())?.toList());
+  writeNotNull('dataRequirement',
+      instance.dataRequirement?.map((e) => e?.toJson())?.toList());
+  writeNotNull('content', instance.content?.map((e) => e?.toJson())?.toList());
+  return val;
+}

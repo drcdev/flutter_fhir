@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Condition {
   static Future<Condition> newInstance({
     String resourceType,
@@ -210,7 +210,7 @@ class Condition {
   Map<String, dynamic> toJson() => _$ConditionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Condition_Stage {
   static Future<Condition_Stage> newInstance({
     String id,
@@ -253,7 +253,7 @@ class Condition_Stage {
   Map<String, dynamic> toJson() => _$Condition_StageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Condition_Evidence {
   static Future<Condition_Evidence> newInstance({
     String id,
@@ -429,50 +429,66 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'clinicalStatus': instance.clinicalStatus?.toJson(),
-      'verificationStatus': instance.verificationStatus?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'severity': instance.severity?.toJson(),
-      'code': instance.code?.toJson(),
-      'bodySite': instance.bodySite?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'onsetDateTime': instance.onsetDateTime,
-      'elementOnsetDateTime': instance.elementOnsetDateTime?.toJson(),
-      'onsetAge': instance.onsetAge?.toJson(),
-      'onsetPeriod': instance.onsetPeriod?.toJson(),
-      'onsetRange': instance.onsetRange?.toJson(),
-      'onsetString': instance.onsetString,
-      'elementOnsetString': instance.elementOnsetString?.toJson(),
-      'abatementDateTime': instance.abatementDateTime,
-      'elementAbatementDateTime': instance.elementAbatementDateTime?.toJson(),
-      'abatementAge': instance.abatementAge?.toJson(),
-      'abatementPeriod': instance.abatementPeriod?.toJson(),
-      'abatementRange': instance.abatementRange?.toJson(),
-      'abatementString': instance.abatementString,
-      'elementAbatementString': instance.elementAbatementString?.toJson(),
-      'recordedDate': instance.recordedDate?.toIso8601String(),
-      'elementRecordedDate': instance.elementRecordedDate?.toJson(),
-      'recorder': instance.recorder?.toJson(),
-      'asserter': instance.asserter?.toJson(),
-      'stage': instance.stage?.map((e) => e?.toJson())?.toList(),
-      'evidence': instance.evidence?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ConditionToJson(Condition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('clinicalStatus', instance.clinicalStatus?.toJson());
+  writeNotNull('verificationStatus', instance.verificationStatus?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('severity', instance.severity?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull(
+      'bodySite', instance.bodySite?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('onsetDateTime', instance.onsetDateTime);
+  writeNotNull('elementOnsetDateTime', instance.elementOnsetDateTime?.toJson());
+  writeNotNull('onsetAge', instance.onsetAge?.toJson());
+  writeNotNull('onsetPeriod', instance.onsetPeriod?.toJson());
+  writeNotNull('onsetRange', instance.onsetRange?.toJson());
+  writeNotNull('onsetString', instance.onsetString);
+  writeNotNull('elementOnsetString', instance.elementOnsetString?.toJson());
+  writeNotNull('abatementDateTime', instance.abatementDateTime);
+  writeNotNull(
+      'elementAbatementDateTime', instance.elementAbatementDateTime?.toJson());
+  writeNotNull('abatementAge', instance.abatementAge?.toJson());
+  writeNotNull('abatementPeriod', instance.abatementPeriod?.toJson());
+  writeNotNull('abatementRange', instance.abatementRange?.toJson());
+  writeNotNull('abatementString', instance.abatementString);
+  writeNotNull(
+      'elementAbatementString', instance.elementAbatementString?.toJson());
+  writeNotNull('recordedDate', instance.recordedDate?.toIso8601String());
+  writeNotNull('elementRecordedDate', instance.elementRecordedDate?.toJson());
+  writeNotNull('recorder', instance.recorder?.toJson());
+  writeNotNull('asserter', instance.asserter?.toJson());
+  writeNotNull('stage', instance.stage?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'evidence', instance.evidence?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Condition_Stage _$Condition_StageFromJson(Map<String, dynamic> json) {
   return Condition_Stage(
@@ -498,16 +514,26 @@ Condition_Stage _$Condition_StageFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Condition_StageToJson(Condition_Stage instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'summary': instance.summary?.toJson(),
-      'assessment': instance.assessment?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-    };
+Map<String, dynamic> _$Condition_StageToJson(Condition_Stage instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('summary', instance.summary?.toJson());
+  writeNotNull(
+      'assessment', instance.assessment?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  return val;
+}
 
 Condition_Evidence _$Condition_EvidenceFromJson(Map<String, dynamic> json) {
   return Condition_Evidence(
@@ -532,12 +558,21 @@ Condition_Evidence _$Condition_EvidenceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Condition_EvidenceToJson(Condition_Evidence instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$Condition_EvidenceToJson(Condition_Evidence instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull('detail', instance.detail?.map((e) => e?.toJson())?.toList());
+  return val;
+}

@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Group {
   static Future<Group> newInstance({
     String resourceType,
@@ -148,7 +148,7 @@ class Group {
   Map<String, dynamic> toJson() => _$GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Group_Characteristic {
   static Future<Group_Characteristic> newInstance({
     String id,
@@ -219,7 +219,7 @@ class Group_Characteristic {
   Map<String, dynamic> toJson() => _$Group_CharacteristicToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Group_Member {
   static Future<Group_Member> newInstance({
     String id,
@@ -345,36 +345,47 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'actual': instance.actual,
-      'elementActual': instance.elementActual?.toJson(),
-      'code': instance.code?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'quantity': instance.quantity,
-      'elementQuantity': instance.elementQuantity?.toJson(),
-      'managingEntity': instance.managingEntity?.toJson(),
-      'characteristic':
-          instance.characteristic?.map((e) => e?.toJson())?.toList(),
-      'member': instance.member?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$GroupToJson(Group instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('actual', instance.actual);
+  writeNotNull('elementActual', instance.elementActual?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('elementQuantity', instance.elementQuantity?.toJson());
+  writeNotNull('managingEntity', instance.managingEntity?.toJson());
+  writeNotNull('characteristic',
+      instance.characteristic?.map((e) => e?.toJson())?.toList());
+  writeNotNull('member', instance.member?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Group_Characteristic _$Group_CharacteristicFromJson(Map<String, dynamic> json) {
   return Group_Characteristic(
@@ -418,23 +429,32 @@ Group_Characteristic _$Group_CharacteristicFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$Group_CharacteristicToJson(
-        Group_Characteristic instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueQuantity': instance.valueQuantity?.toJson(),
-      'valueRange': instance.valueRange?.toJson(),
-      'valueReference': instance.valueReference?.toJson(),
-      'exclude': instance.exclude,
-      'elementExclude': instance.elementExclude?.toJson(),
-      'period': instance.period?.toJson(),
-    };
+    Group_Characteristic instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('valueCodeableConcept', instance.valueCodeableConcept?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
+  writeNotNull('valueRange', instance.valueRange?.toJson());
+  writeNotNull('valueReference', instance.valueReference?.toJson());
+  writeNotNull('exclude', instance.exclude);
+  writeNotNull('elementExclude', instance.elementExclude?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  return val;
+}
 
 Group_Member _$Group_MemberFromJson(Map<String, dynamic> json) {
   return Group_Member(
@@ -460,14 +480,23 @@ Group_Member _$Group_MemberFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Group_MemberToJson(Group_Member instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'entity': instance.entity?.toJson(),
-      'period': instance.period?.toJson(),
-      'inactive': instance.inactive,
-      'elementInactive': instance.elementInactive?.toJson(),
-    };
+Map<String, dynamic> _$Group_MemberToJson(Group_Member instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('entity', instance.entity?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('inactive', instance.inactive);
+  writeNotNull('elementInactive', instance.elementInactive?.toJson());
+  return val;
+}

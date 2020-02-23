@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ChargeItemDefinition {
   static Future<ChargeItemDefinition> newInstance({
     String resourceType,
@@ -231,7 +231,7 @@ class ChargeItemDefinition {
   Map<String, dynamic> toJson() => _$ChargeItemDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ChargeItemDefinition_Applicability {
   static Future<ChargeItemDefinition_Applicability> newInstance({
     String id,
@@ -289,7 +289,7 @@ class ChargeItemDefinition_Applicability {
       _$ChargeItemDefinition_ApplicabilityToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ChargeItemDefinition_PropertyGroup {
   static Future<ChargeItemDefinition_PropertyGroup> newInstance({
     String id,
@@ -331,7 +331,7 @@ class ChargeItemDefinition_PropertyGroup {
       _$ChargeItemDefinition_PropertyGroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ChargeItemDefinition_PriceComponent {
   static Future<ChargeItemDefinition_PriceComponent> newInstance({
     String id,
@@ -523,59 +523,73 @@ ChargeItemDefinition _$ChargeItemDefinitionFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ChargeItemDefinitionToJson(
-        ChargeItemDefinition instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'derivedFromUri': instance.derivedFromUri,
-      'elementDerivedFromUri':
-          instance.elementDerivedFromUri?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf,
-      'replaces': instance.replaces,
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'approvalDate': instance.approvalDate,
-      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
-      'lastReviewDate': instance.lastReviewDate,
-      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
-      'effectivePeriod': instance.effectivePeriod?.toJson(),
-      'code': instance.code?.toJson(),
-      'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
-      'applicability':
-          instance.applicability?.map((e) => e?.toJson())?.toList(),
-      'propertyGroup':
-          instance.propertyGroup?.map((e) => e?.toJson())?.toList(),
-    };
+    ChargeItemDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('derivedFromUri', instance.derivedFromUri);
+  writeNotNull('elementDerivedFromUri',
+      instance.elementDerivedFromUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf);
+  writeNotNull('replaces', instance.replaces);
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('approvalDate', instance.approvalDate);
+  writeNotNull('elementApprovalDate', instance.elementApprovalDate?.toJson());
+  writeNotNull('lastReviewDate', instance.lastReviewDate);
+  writeNotNull(
+      'elementLastReviewDate', instance.elementLastReviewDate?.toJson());
+  writeNotNull('effectivePeriod', instance.effectivePeriod?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull(
+      'instance', instance.instance?.map((e) => e?.toJson())?.toList());
+  writeNotNull('applicability',
+      instance.applicability?.map((e) => e?.toJson())?.toList());
+  writeNotNull('propertyGroup',
+      instance.propertyGroup?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ChargeItemDefinition_Applicability _$ChargeItemDefinition_ApplicabilityFromJson(
     Map<String, dynamic> json) {
@@ -605,19 +619,28 @@ ChargeItemDefinition_Applicability _$ChargeItemDefinition_ApplicabilityFromJson(
 }
 
 Map<String, dynamic> _$ChargeItemDefinition_ApplicabilityToJson(
-        ChargeItemDefinition_Applicability instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'expression': instance.expression,
-      'elementExpression': instance.elementExpression?.toJson(),
-    };
+    ChargeItemDefinition_Applicability instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression', instance.elementExpression?.toJson());
+  return val;
+}
 
 ChargeItemDefinition_PropertyGroup _$ChargeItemDefinition_PropertyGroupFromJson(
     Map<String, dynamic> json) {
@@ -647,17 +670,26 @@ ChargeItemDefinition_PropertyGroup _$ChargeItemDefinition_PropertyGroupFromJson(
 }
 
 Map<String, dynamic> _$ChargeItemDefinition_PropertyGroupToJson(
-        ChargeItemDefinition_PropertyGroup instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'applicability':
-          instance.applicability?.map((e) => e?.toJson())?.toList(),
-      'priceComponent':
-          instance.priceComponent?.map((e) => e?.toJson())?.toList(),
-    };
+    ChargeItemDefinition_PropertyGroup instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('applicability',
+      instance.applicability?.map((e) => e?.toJson())?.toList());
+  writeNotNull('priceComponent',
+      instance.priceComponent?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 ChargeItemDefinition_PriceComponent
     _$ChargeItemDefinition_PriceComponentFromJson(Map<String, dynamic> json) {
@@ -689,16 +721,25 @@ ChargeItemDefinition_PriceComponent
 }
 
 Map<String, dynamic> _$ChargeItemDefinition_PriceComponentToJson(
-        ChargeItemDefinition_PriceComponent instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'code': instance.code?.toJson(),
-      'factor': instance.factor,
-      'elementFactor': instance.elementFactor?.toJson(),
-      'amount': instance.amount?.toJson(),
-    };
+    ChargeItemDefinition_PriceComponent instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('factor', instance.factor);
+  writeNotNull('elementFactor', instance.elementFactor?.toJson());
+  writeNotNull('amount', instance.amount?.toJson());
+  return val;
+}

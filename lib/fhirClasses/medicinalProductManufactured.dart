@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductManufactured {
   static Future<MedicinalProductManufactured> newInstance({
     String resourceType,
@@ -187,26 +187,38 @@ MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductManufacturedToJson(
-        MedicinalProductManufactured instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'manufacturedDoseForm': instance.manufacturedDoseForm?.toJson(),
-      'unitOfPresentation': instance.unitOfPresentation?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
-      'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
-      'physicalCharacteristics': instance.physicalCharacteristics?.toJson(),
-      'otherCharacteristics':
-          instance.otherCharacteristics?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicinalProductManufactured instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('manufacturedDoseForm', instance.manufacturedDoseForm?.toJson());
+  writeNotNull('unitOfPresentation', instance.unitOfPresentation?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull(
+      'manufacturer', instance.manufacturer?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'ingredient', instance.ingredient?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'physicalCharacteristics', instance.physicalCharacteristics?.toJson());
+  writeNotNull('otherCharacteristics',
+      instance.otherCharacteristics?.map((e) => e?.toJson())?.toList());
+  return val;
+}

@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ContactDetail {
   static Future<ContactDetail> newInstance({
     String id,
@@ -67,11 +67,20 @@ ContactDetail _$ContactDetailFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ContactDetailToJson(ContactDetail instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ContactDetailToJson(ContactDetail instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  return val;
+}

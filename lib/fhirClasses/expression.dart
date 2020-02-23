@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Expression {
   static Future<Expression> newInstance({
     String id,
@@ -106,18 +106,27 @@ Expression _$ExpressionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ExpressionToJson(Expression instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'expression': instance.expression,
-      'elementExpression': instance.elementExpression?.toJson(),
-      'reference': instance.reference,
-      'elementReference': instance.elementReference?.toJson(),
-    };
+Map<String, dynamic> _$ExpressionToJson(Expression instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression', instance.elementExpression?.toJson());
+  writeNotNull('reference', instance.reference);
+  writeNotNull('elementReference', instance.elementReference?.toJson());
+  return val;
+}

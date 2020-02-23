@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Dosage {
   static Future<Dosage> newInstance({
     String id,
@@ -111,7 +111,7 @@ class Dosage {
   Map<String, dynamic> toJson() => _$DosageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Dosage_DoseAndRate {
   static Future<Dosage_DoseAndRate> newInstance({
     String id,
@@ -239,31 +239,46 @@ Dosage _$DosageFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DosageToJson(Dosage instance) => <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'sequence': instance.sequence,
-      'elementSequence': instance.elementSequence?.toJson(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-      'additionalInstruction':
-          instance.additionalInstruction?.map((e) => e?.toJson())?.toList(),
-      'patientInstruction': instance.patientInstruction,
-      'elementPatientInstruction': instance.elementPatientInstruction?.toJson(),
-      'timing': instance.timing?.toJson(),
-      'asNeededBoolean': instance.asNeededBoolean,
-      'elementAsNeededBoolean': instance.elementAsNeededBoolean?.toJson(),
-      'asNeededCodeableConcept': instance.asNeededCodeableConcept?.toJson(),
-      'site': instance.site?.toJson(),
-      'route': instance.route?.toJson(),
-      'method': instance.method?.toJson(),
-      'doseAndRate': instance.doseAndRate?.map((e) => e?.toJson())?.toList(),
-      'maxDosePerPeriod': instance.maxDosePerPeriod?.toJson(),
-      'maxDosePerAdministration': instance.maxDosePerAdministration?.toJson(),
-      'maxDosePerLifetime': instance.maxDosePerLifetime?.toJson(),
-    };
+Map<String, dynamic> _$DosageToJson(Dosage instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sequence', instance.sequence);
+  writeNotNull('elementSequence', instance.elementSequence?.toJson());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  writeNotNull('additionalInstruction',
+      instance.additionalInstruction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('patientInstruction', instance.patientInstruction);
+  writeNotNull('elementPatientInstruction',
+      instance.elementPatientInstruction?.toJson());
+  writeNotNull('timing', instance.timing?.toJson());
+  writeNotNull('asNeededBoolean', instance.asNeededBoolean);
+  writeNotNull(
+      'elementAsNeededBoolean', instance.elementAsNeededBoolean?.toJson());
+  writeNotNull(
+      'asNeededCodeableConcept', instance.asNeededCodeableConcept?.toJson());
+  writeNotNull('site', instance.site?.toJson());
+  writeNotNull('route', instance.route?.toJson());
+  writeNotNull('method', instance.method?.toJson());
+  writeNotNull(
+      'doseAndRate', instance.doseAndRate?.map((e) => e?.toJson())?.toList());
+  writeNotNull('maxDosePerPeriod', instance.maxDosePerPeriod?.toJson());
+  writeNotNull(
+      'maxDosePerAdministration', instance.maxDosePerAdministration?.toJson());
+  writeNotNull('maxDosePerLifetime', instance.maxDosePerLifetime?.toJson());
+  return val;
+}
 
 Dosage_DoseAndRate _$Dosage_DoseAndRateFromJson(Map<String, dynamic> json) {
   return Dosage_DoseAndRate(
@@ -297,16 +312,25 @@ Dosage_DoseAndRate _$Dosage_DoseAndRateFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Dosage_DoseAndRateToJson(Dosage_DoseAndRate instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'doseRange': instance.doseRange?.toJson(),
-      'doseQuantity': instance.doseQuantity?.toJson(),
-      'rateRatio': instance.rateRatio?.toJson(),
-      'rateRange': instance.rateRange?.toJson(),
-      'rateQuantity': instance.rateQuantity?.toJson(),
-    };
+Map<String, dynamic> _$Dosage_DoseAndRateToJson(Dosage_DoseAndRate instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('doseRange', instance.doseRange?.toJson());
+  writeNotNull('doseQuantity', instance.doseQuantity?.toJson());
+  writeNotNull('rateRatio', instance.rateRatio?.toJson());
+  writeNotNull('rateRange', instance.rateRange?.toJson());
+  writeNotNull('rateQuantity', instance.rateQuantity?.toJson());
+  return val;
+}

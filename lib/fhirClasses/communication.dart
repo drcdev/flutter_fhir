@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Communication {
   static Future<Communication> newInstance({
     String resourceType,
@@ -200,7 +200,7 @@ class Communication {
   Map<String, dynamic> toJson() => _$CommunicationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Communication_Payload {
   static Future<Communication_Payload> newInstance({
     String id,
@@ -382,51 +382,65 @@ Communication _$CommunicationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CommunicationToJson(Communication instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'inResponseTo': instance.inResponseTo?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReason': instance.statusReason?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'priority': instance.priority,
-      'elementPriority': instance.elementPriority?.toJson(),
-      'medium': instance.medium?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.toJson(),
-      'topic': instance.topic?.toJson(),
-      'about': instance.about?.map((e) => e?.toJson())?.toList(),
-      'encounter': instance.encounter?.toJson(),
-      'sent': instance.sent?.toIso8601String(),
-      'elementSent': instance.elementSent?.toJson(),
-      'received': instance.received?.toIso8601String(),
-      'elementReceived': instance.elementReceived?.toJson(),
-      'recipient': instance.recipient?.map((e) => e?.toJson())?.toList(),
-      'sender': instance.sender?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'payload': instance.payload?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CommunicationToJson(Communication instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'inResponseTo', instance.inResponseTo?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusReason', instance.statusReason?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('priority', instance.priority);
+  writeNotNull('elementPriority', instance.elementPriority?.toJson());
+  writeNotNull('medium', instance.medium?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('topic', instance.topic?.toJson());
+  writeNotNull('about', instance.about?.map((e) => e?.toJson())?.toList());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('sent', instance.sent?.toIso8601String());
+  writeNotNull('elementSent', instance.elementSent?.toJson());
+  writeNotNull('received', instance.received?.toIso8601String());
+  writeNotNull('elementReceived', instance.elementReceived?.toJson());
+  writeNotNull(
+      'recipient', instance.recipient?.map((e) => e?.toJson())?.toList());
+  writeNotNull('sender', instance.sender?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull('payload', instance.payload?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Communication_Payload _$Communication_PayloadFromJson(
     Map<String, dynamic> json) {
@@ -456,14 +470,23 @@ Communication_Payload _$Communication_PayloadFromJson(
 }
 
 Map<String, dynamic> _$Communication_PayloadToJson(
-        Communication_Payload instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'contentString': instance.contentString,
-      'elementContentString': instance.elementContentString?.toJson(),
-      'contentAttachment': instance.contentAttachment?.toJson(),
-      'contentReference': instance.contentReference?.toJson(),
-    };
+    Communication_Payload instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('contentString', instance.contentString);
+  writeNotNull('elementContentString', instance.elementContentString?.toJson());
+  writeNotNull('contentAttachment', instance.contentAttachment?.toJson());
+  writeNotNull('contentReference', instance.contentReference?.toJson());
+  return val;
+}

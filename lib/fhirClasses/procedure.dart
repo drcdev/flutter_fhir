@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Procedure {
   static Future<Procedure> newInstance({
     String resourceType,
@@ -234,7 +234,7 @@ class Procedure {
   Map<String, dynamic> toJson() => _$ProcedureToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Procedure_Performer {
   static Future<Procedure_Performer> newInstance({
     String id,
@@ -277,7 +277,7 @@ class Procedure_Performer {
   Map<String, dynamic> toJson() => _$Procedure_PerformerToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Procedure_FocalDevice {
   static Future<Procedure_FocalDevice> newInstance({
     String id,
@@ -483,60 +483,80 @@ Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ProcedureToJson(Procedure instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'instantiatesCanonical': instance.instantiatesCanonical,
-      'instantiatesUri': instance.instantiatesUri,
-      'elementInstantiatesUri':
-          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
-      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
-      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'statusReason': instance.statusReason?.toJson(),
-      'category': instance.category?.toJson(),
-      'code': instance.code?.toJson(),
-      'subject': instance.subject?.toJson(),
-      'encounter': instance.encounter?.toJson(),
-      'performedDateTime': instance.performedDateTime,
-      'elementPerformedDateTime': instance.elementPerformedDateTime?.toJson(),
-      'performedPeriod': instance.performedPeriod?.toJson(),
-      'performedString': instance.performedString,
-      'elementPerformedString': instance.elementPerformedString?.toJson(),
-      'performedAge': instance.performedAge?.toJson(),
-      'performedRange': instance.performedRange?.toJson(),
-      'recorder': instance.recorder?.toJson(),
-      'asserter': instance.asserter?.toJson(),
-      'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
-      'location': instance.location?.toJson(),
-      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
-      'reasonReference':
-          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
-      'bodySite': instance.bodySite?.map((e) => e?.toJson())?.toList(),
-      'outcome': instance.outcome?.toJson(),
-      'report': instance.report?.map((e) => e?.toJson())?.toList(),
-      'complication': instance.complication?.map((e) => e?.toJson())?.toList(),
-      'complicationDetail':
-          instance.complicationDetail?.map((e) => e?.toJson())?.toList(),
-      'followUp': instance.followUp?.map((e) => e?.toJson())?.toList(),
-      'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'focalDevice': instance.focalDevice?.map((e) => e?.toJson())?.toList(),
-      'usedReference':
-          instance.usedReference?.map((e) => e?.toJson())?.toList(),
-      'usedCode': instance.usedCode?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$ProcedureToJson(Procedure instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('instantiatesCanonical', instance.instantiatesCanonical);
+  writeNotNull('instantiatesUri', instance.instantiatesUri);
+  writeNotNull('elementInstantiatesUri',
+      instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList());
+  writeNotNull('basedOn', instance.basedOn?.map((e) => e?.toJson())?.toList());
+  writeNotNull('partOf', instance.partOf?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('statusReason', instance.statusReason?.toJson());
+  writeNotNull('category', instance.category?.toJson());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('subject', instance.subject?.toJson());
+  writeNotNull('encounter', instance.encounter?.toJson());
+  writeNotNull('performedDateTime', instance.performedDateTime);
+  writeNotNull(
+      'elementPerformedDateTime', instance.elementPerformedDateTime?.toJson());
+  writeNotNull('performedPeriod', instance.performedPeriod?.toJson());
+  writeNotNull('performedString', instance.performedString);
+  writeNotNull(
+      'elementPerformedString', instance.elementPerformedString?.toJson());
+  writeNotNull('performedAge', instance.performedAge?.toJson());
+  writeNotNull('performedRange', instance.performedRange?.toJson());
+  writeNotNull('recorder', instance.recorder?.toJson());
+  writeNotNull('asserter', instance.asserter?.toJson());
+  writeNotNull(
+      'performer', instance.performer?.map((e) => e?.toJson())?.toList());
+  writeNotNull('location', instance.location?.toJson());
+  writeNotNull(
+      'reasonCode', instance.reasonCode?.map((e) => e?.toJson())?.toList());
+  writeNotNull('reasonReference',
+      instance.reasonReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'bodySite', instance.bodySite?.map((e) => e?.toJson())?.toList());
+  writeNotNull('outcome', instance.outcome?.toJson());
+  writeNotNull('report', instance.report?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'complication', instance.complication?.map((e) => e?.toJson())?.toList());
+  writeNotNull('complicationDetail',
+      instance.complicationDetail?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'followUp', instance.followUp?.map((e) => e?.toJson())?.toList());
+  writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'focalDevice', instance.focalDevice?.map((e) => e?.toJson())?.toList());
+  writeNotNull('usedReference',
+      instance.usedReference?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'usedCode', instance.usedCode?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Procedure_Performer _$Procedure_PerformerFromJson(Map<String, dynamic> json) {
   return Procedure_Performer(
@@ -561,17 +581,25 @@ Procedure_Performer _$Procedure_PerformerFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Procedure_PerformerToJson(
-        Procedure_Performer instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'function': instance.function?.toJson(),
-      'actor': instance.actor?.toJson(),
-      'onBehalfOf': instance.onBehalfOf?.toJson(),
-    };
+Map<String, dynamic> _$Procedure_PerformerToJson(Procedure_Performer instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('function', instance.function?.toJson());
+  writeNotNull('actor', instance.actor?.toJson());
+  writeNotNull('onBehalfOf', instance.onBehalfOf?.toJson());
+  return val;
+}
 
 Procedure_FocalDevice _$Procedure_FocalDeviceFromJson(
     Map<String, dynamic> json) {
@@ -595,12 +623,21 @@ Procedure_FocalDevice _$Procedure_FocalDeviceFromJson(
 }
 
 Map<String, dynamic> _$Procedure_FocalDeviceToJson(
-        Procedure_FocalDevice instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'action': instance.action?.toJson(),
-      'manipulated': instance.manipulated?.toJson(),
-    };
+    Procedure_FocalDevice instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('action', instance.action?.toJson());
+  writeNotNull('manipulated', instance.manipulated?.toJson());
+  return val;
+}

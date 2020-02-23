@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RelatedArtifact {
   static Future<RelatedArtifact> newInstance({
     String id,
@@ -119,20 +119,29 @@ RelatedArtifact _$RelatedArtifactFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RelatedArtifactToJson(RelatedArtifact instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'label': instance.label,
-      'elementLabel': instance.elementLabel?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'citation': instance.citation,
-      'elementCitation': instance.elementCitation?.toJson(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'document': instance.document?.toJson(),
-      'resource': instance.resource,
-    };
+Map<String, dynamic> _$RelatedArtifactToJson(RelatedArtifact instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('label', instance.label);
+  writeNotNull('elementLabel', instance.elementLabel?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('citation', instance.citation);
+  writeNotNull('elementCitation', instance.elementCitation?.toJson());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('document', instance.document?.toJson());
+  writeNotNull('resource', instance.resource);
+  return val;
+}

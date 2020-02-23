@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeableConcept {
   static Future<CodeableConcept> newInstance({
     String id,
@@ -67,11 +67,20 @@ CodeableConcept _$CodeableConceptFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodeableConceptToJson(CodeableConcept instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'coding': instance.coding?.map((e) => e?.toJson())?.toList(),
-      'text': instance.text,
-      'elementText': instance.elementText?.toJson(),
-    };
+Map<String, dynamic> _$CodeableConceptToJson(CodeableConcept instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('coding', instance.coding?.map((e) => e?.toJson())?.toList());
+  writeNotNull('text', instance.text);
+  writeNotNull('elementText', instance.elementText?.toJson());
+  return val;
+}

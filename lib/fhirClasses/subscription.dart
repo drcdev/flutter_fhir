@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Subscription {
   static Future<Subscription> newInstance({
     String resourceType,
@@ -132,7 +132,7 @@ class Subscription {
   Map<String, dynamic> toJson() => _$SubscriptionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Subscription_Channel {
   static Future<Subscription_Channel> newInstance({
     String id,
@@ -263,33 +263,42 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'end': instance.end?.toIso8601String(),
-      'elementEnd': instance.elementEnd?.toJson(),
-      'reason': instance.reason,
-      'elementReason': instance.elementReason?.toJson(),
-      'criteria': instance.criteria,
-      'elementCriteria': instance.elementCriteria?.toJson(),
-      'error': instance.error,
-      'elementError': instance.elementError?.toJson(),
-      'channel': instance.channel?.toJson(),
-    };
+Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('end', instance.end?.toIso8601String());
+  writeNotNull('elementEnd', instance.elementEnd?.toJson());
+  writeNotNull('reason', instance.reason);
+  writeNotNull('elementReason', instance.elementReason?.toJson());
+  writeNotNull('criteria', instance.criteria);
+  writeNotNull('elementCriteria', instance.elementCriteria?.toJson());
+  writeNotNull('error', instance.error);
+  writeNotNull('elementError', instance.elementError?.toJson());
+  writeNotNull('channel', instance.channel?.toJson());
+  return val;
+}
 
 Subscription_Channel _$Subscription_ChannelFromJson(Map<String, dynamic> json) {
   return Subscription_Channel(
@@ -323,19 +332,28 @@ Subscription_Channel _$Subscription_ChannelFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$Subscription_ChannelToJson(
-        Subscription_Channel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'endpoint': instance.endpoint,
-      'elementEndpoint': instance.elementEndpoint?.toJson(),
-      'payload': instance.payload,
-      'elementPayload': instance.elementPayload?.toJson(),
-      'header': instance.header,
-      'elementHeader':
-          instance.elementHeader?.map((e) => e?.toJson())?.toList(),
-    };
+    Subscription_Channel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('endpoint', instance.endpoint);
+  writeNotNull('elementEndpoint', instance.elementEndpoint?.toJson());
+  writeNotNull('payload', instance.payload);
+  writeNotNull('elementPayload', instance.elementPayload?.toJson());
+  writeNotNull('header', instance.header);
+  writeNotNull('elementHeader',
+      instance.elementHeader?.map((e) => e?.toJson())?.toList());
+  return val;
+}

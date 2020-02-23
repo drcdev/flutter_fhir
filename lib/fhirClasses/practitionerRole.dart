@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PractitionerRole {
   static Future<PractitionerRole> newInstance({
     String resourceType,
@@ -152,7 +152,7 @@ class PractitionerRole {
   Map<String, dynamic> toJson() => _$PractitionerRoleToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PractitionerRole_AvailableTime {
   static Future<PractitionerRole_AvailableTime> newInstance({
     String id,
@@ -216,7 +216,7 @@ class PractitionerRole_AvailableTime {
   Map<String, dynamic> toJson() => _$PractitionerRole_AvailableTimeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class PractitionerRole_NotAvailable {
   static Future<PractitionerRole_NotAvailable> newInstance({
     String id,
@@ -359,40 +359,54 @@ PractitionerRole _$PractitionerRoleFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PractitionerRoleToJson(PractitionerRole instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'active': instance.active,
-      'elementActive': instance.elementActive?.toJson(),
-      'period': instance.period?.toJson(),
-      'practitioner': instance.practitioner?.toJson(),
-      'organization': instance.organization?.toJson(),
-      'code': instance.code?.map((e) => e?.toJson())?.toList(),
-      'specialty': instance.specialty?.map((e) => e?.toJson())?.toList(),
-      'location': instance.location?.map((e) => e?.toJson())?.toList(),
-      'healthcareService':
-          instance.healthcareService?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'availableTime':
-          instance.availableTime?.map((e) => e?.toJson())?.toList(),
-      'notAvailable': instance.notAvailable?.map((e) => e?.toJson())?.toList(),
-      'availabilityExceptions': instance.availabilityExceptions,
-      'elementAvailabilityExceptions':
-          instance.elementAvailabilityExceptions?.toJson(),
-      'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$PractitionerRoleToJson(PractitionerRole instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('active', instance.active);
+  writeNotNull('elementActive', instance.elementActive?.toJson());
+  writeNotNull('period', instance.period?.toJson());
+  writeNotNull('practitioner', instance.practitioner?.toJson());
+  writeNotNull('organization', instance.organization?.toJson());
+  writeNotNull('code', instance.code?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'specialty', instance.specialty?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'location', instance.location?.map((e) => e?.toJson())?.toList());
+  writeNotNull('healthcareService',
+      instance.healthcareService?.map((e) => e?.toJson())?.toList());
+  writeNotNull('telecom', instance.telecom?.map((e) => e?.toJson())?.toList());
+  writeNotNull('availableTime',
+      instance.availableTime?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'notAvailable', instance.notAvailable?.map((e) => e?.toJson())?.toList());
+  writeNotNull('availabilityExceptions', instance.availabilityExceptions);
+  writeNotNull('elementAvailabilityExceptions',
+      instance.elementAvailabilityExceptions?.toJson());
+  writeNotNull(
+      'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 PractitionerRole_AvailableTime _$PractitionerRole_AvailableTimeFromJson(
     Map<String, dynamic> json) {
@@ -429,22 +443,33 @@ PractitionerRole_AvailableTime _$PractitionerRole_AvailableTimeFromJson(
 }
 
 Map<String, dynamic> _$PractitionerRole_AvailableTimeToJson(
-        PractitionerRole_AvailableTime instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'daysOfWeek': instance.daysOfWeek,
-      'elementDaysOfWeek':
-          instance.elementDaysOfWeek?.map((e) => e?.toJson())?.toList(),
-      'allDay': instance.allDay,
-      'elementAllDay': instance.elementAllDay?.toJson(),
-      'availableStartTime': instance.availableStartTime,
-      'elementAvailableStartTime': instance.elementAvailableStartTime?.toJson(),
-      'availableEndTime': instance.availableEndTime,
-      'elementAvailableEndTime': instance.elementAvailableEndTime?.toJson(),
-    };
+    PractitionerRole_AvailableTime instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('daysOfWeek', instance.daysOfWeek);
+  writeNotNull('elementDaysOfWeek',
+      instance.elementDaysOfWeek?.map((e) => e?.toJson())?.toList());
+  writeNotNull('allDay', instance.allDay);
+  writeNotNull('elementAllDay', instance.elementAllDay?.toJson());
+  writeNotNull('availableStartTime', instance.availableStartTime);
+  writeNotNull('elementAvailableStartTime',
+      instance.elementAvailableStartTime?.toJson());
+  writeNotNull('availableEndTime', instance.availableEndTime);
+  writeNotNull(
+      'elementAvailableEndTime', instance.elementAvailableEndTime?.toJson());
+  return val;
+}
 
 PractitionerRole_NotAvailable _$PractitionerRole_NotAvailableFromJson(
     Map<String, dynamic> json) {
@@ -469,13 +494,22 @@ PractitionerRole_NotAvailable _$PractitionerRole_NotAvailableFromJson(
 }
 
 Map<String, dynamic> _$PractitionerRole_NotAvailableToJson(
-        PractitionerRole_NotAvailable instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'during': instance.during?.toJson(),
-    };
+    PractitionerRole_NotAvailable instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('during', instance.during?.toJson());
+  return val;
+}

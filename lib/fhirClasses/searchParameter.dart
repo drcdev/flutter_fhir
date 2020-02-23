@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SearchParameter {
   static Future<SearchParameter> newInstance({
     String resourceType,
@@ -274,7 +274,7 @@ class SearchParameter {
   Map<String, dynamic> toJson() => _$SearchParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SearchParameter_Component {
   static Future<SearchParameter_Component> newInstance({
     String id,
@@ -467,71 +467,85 @@ SearchParameter _$SearchParameterFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SearchParameterToJson(SearchParameter instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'derivedFrom': instance.derivedFrom,
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'base': instance.base,
-      'elementBase': instance.elementBase?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'expression': instance.expression,
-      'elementExpression': instance.elementExpression?.toJson(),
-      'xpath': instance.xpath,
-      'elementXpath': instance.elementXpath?.toJson(),
-      'xpathUsage': instance.xpathUsage,
-      'elementXpathUsage': instance.elementXpathUsage?.toJson(),
-      'target': instance.target,
-      'elementTarget':
-          instance.elementTarget?.map((e) => e?.toJson())?.toList(),
-      'multipleOr': instance.multipleOr,
-      'elementMultipleOr': instance.elementMultipleOr?.toJson(),
-      'multipleAnd': instance.multipleAnd,
-      'elementMultipleAnd': instance.elementMultipleAnd?.toJson(),
-      'comparator': instance.comparator,
-      'elementComparator':
-          instance.elementComparator?.map((e) => e?.toJson())?.toList(),
-      'modifier': instance.modifier,
-      'elementModifier':
-          instance.elementModifier?.map((e) => e?.toJson())?.toList(),
-      'chain': instance.chain,
-      'elementChain': instance.elementChain?.map((e) => e?.toJson())?.toList(),
-      'component': instance.component?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$SearchParameterToJson(SearchParameter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('derivedFrom', instance.derivedFrom);
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('base', instance.base);
+  writeNotNull(
+      'elementBase', instance.elementBase?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression', instance.elementExpression?.toJson());
+  writeNotNull('xpath', instance.xpath);
+  writeNotNull('elementXpath', instance.elementXpath?.toJson());
+  writeNotNull('xpathUsage', instance.xpathUsage);
+  writeNotNull('elementXpathUsage', instance.elementXpathUsage?.toJson());
+  writeNotNull('target', instance.target);
+  writeNotNull('elementTarget',
+      instance.elementTarget?.map((e) => e?.toJson())?.toList());
+  writeNotNull('multipleOr', instance.multipleOr);
+  writeNotNull('elementMultipleOr', instance.elementMultipleOr?.toJson());
+  writeNotNull('multipleAnd', instance.multipleAnd);
+  writeNotNull('elementMultipleAnd', instance.elementMultipleAnd?.toJson());
+  writeNotNull('comparator', instance.comparator);
+  writeNotNull('elementComparator',
+      instance.elementComparator?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifier', instance.modifier);
+  writeNotNull('elementModifier',
+      instance.elementModifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('chain', instance.chain);
+  writeNotNull(
+      'elementChain', instance.elementChain?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'component', instance.component?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 SearchParameter_Component _$SearchParameter_ComponentFromJson(
     Map<String, dynamic> json) {
@@ -554,13 +568,22 @@ SearchParameter_Component _$SearchParameter_ComponentFromJson(
 }
 
 Map<String, dynamic> _$SearchParameter_ComponentToJson(
-        SearchParameter_Component instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'definition': instance.definition,
-      'expression': instance.expression,
-      'elementExpression': instance.elementExpression?.toJson(),
-    };
+    SearchParameter_Component instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('definition', instance.definition);
+  writeNotNull('expression', instance.expression);
+  writeNotNull('elementExpression', instance.elementExpression?.toJson());
+  return val;
+}

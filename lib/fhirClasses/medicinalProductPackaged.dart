@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPackaged {
   static Future<MedicinalProductPackaged> newInstance({
     String resourceType,
@@ -132,7 +132,7 @@ class MedicinalProductPackaged {
   Map<String, dynamic> toJson() => _$MedicinalProductPackagedToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPackaged_BatchIdentifier {
   static Future<MedicinalProductPackaged_BatchIdentifier> newInstance({
     String id,
@@ -175,7 +175,7 @@ class MedicinalProductPackaged_BatchIdentifier {
       _$MedicinalProductPackaged_BatchIdentifierToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPackaged_PackageItem {
   static Future<MedicinalProductPackaged_PackageItem> newInstance({
     String id,
@@ -341,33 +341,46 @@ MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
 }
 
 Map<String, dynamic> _$MedicinalProductPackagedToJson(
-        MedicinalProductPackaged instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'legalStatusOfSupply': instance.legalStatusOfSupply?.toJson(),
-      'marketingStatus':
-          instance.marketingStatus?.map((e) => e?.toJson())?.toList(),
-      'marketingAuthorization': instance.marketingAuthorization?.toJson(),
-      'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
-      'batchIdentifier':
-          instance.batchIdentifier?.map((e) => e?.toJson())?.toList(),
-      'packageItem': instance.packageItem?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicinalProductPackaged instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('subject', instance.subject?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('legalStatusOfSupply', instance.legalStatusOfSupply?.toJson());
+  writeNotNull('marketingStatus',
+      instance.marketingStatus?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'marketingAuthorization', instance.marketingAuthorization?.toJson());
+  writeNotNull(
+      'manufacturer', instance.manufacturer?.map((e) => e?.toJson())?.toList());
+  writeNotNull('batchIdentifier',
+      instance.batchIdentifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'packageItem', instance.packageItem?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 MedicinalProductPackaged_BatchIdentifier
     _$MedicinalProductPackaged_BatchIdentifierFromJson(
@@ -393,15 +406,24 @@ MedicinalProductPackaged_BatchIdentifier
 }
 
 Map<String, dynamic> _$MedicinalProductPackaged_BatchIdentifierToJson(
-        MedicinalProductPackaged_BatchIdentifier instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'outerPackaging': instance.outerPackaging?.toJson(),
-      'immediatePackaging': instance.immediatePackaging?.toJson(),
-    };
+    MedicinalProductPackaged_BatchIdentifier instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('outerPackaging', instance.outerPackaging?.toJson());
+  writeNotNull('immediatePackaging', instance.immediatePackaging?.toJson());
+  return val;
+}
 
 MedicinalProductPackaged_PackageItem
     _$MedicinalProductPackaged_PackageItemFromJson(Map<String, dynamic> json) {
@@ -471,26 +493,40 @@ MedicinalProductPackaged_PackageItem
 }
 
 Map<String, dynamic> _$MedicinalProductPackaged_PackageItemToJson(
-        MedicinalProductPackaged_PackageItem instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'type': instance.type?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-      'material': instance.material?.map((e) => e?.toJson())?.toList(),
-      'alternateMaterial':
-          instance.alternateMaterial?.map((e) => e?.toJson())?.toList(),
-      'device': instance.device?.map((e) => e?.toJson())?.toList(),
-      'manufacturedItem':
-          instance.manufacturedItem?.map((e) => e?.toJson())?.toList(),
-      'packageItem': instance.packageItem?.map((e) => e?.toJson())?.toList(),
-      'physicalCharacteristics': instance.physicalCharacteristics?.toJson(),
-      'otherCharacteristics':
-          instance.otherCharacteristics?.map((e) => e?.toJson())?.toList(),
-      'shelfLifeStorage':
-          instance.shelfLifeStorage?.map((e) => e?.toJson())?.toList(),
-      'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
-    };
+    MedicinalProductPackaged_PackageItem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('type', instance.type?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull(
+      'material', instance.material?.map((e) => e?.toJson())?.toList());
+  writeNotNull('alternateMaterial',
+      instance.alternateMaterial?.map((e) => e?.toJson())?.toList());
+  writeNotNull('device', instance.device?.map((e) => e?.toJson())?.toList());
+  writeNotNull('manufacturedItem',
+      instance.manufacturedItem?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'packageItem', instance.packageItem?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'physicalCharacteristics', instance.physicalCharacteristics?.toJson());
+  writeNotNull('otherCharacteristics',
+      instance.otherCharacteristics?.map((e) => e?.toJson())?.toList());
+  writeNotNull('shelfLifeStorage',
+      instance.shelfLifeStorage?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'manufacturer', instance.manufacturer?.map((e) => e?.toJson())?.toList());
+  return val;
+}

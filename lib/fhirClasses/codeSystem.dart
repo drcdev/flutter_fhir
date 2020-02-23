@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem {
   static Future<CodeSystem> newInstance({
     String resourceType,
@@ -260,7 +260,7 @@ class CodeSystem {
   Map<String, dynamic> toJson() => _$CodeSystemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Filter {
   static Future<CodeSystem_Filter> newInstance({
     String id,
@@ -323,7 +323,7 @@ class CodeSystem_Filter {
   Map<String, dynamic> toJson() => _$CodeSystem_FilterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Property {
   static Future<CodeSystem_Property> newInstance({
     String id,
@@ -386,7 +386,7 @@ class CodeSystem_Property {
   Map<String, dynamic> toJson() => _$CodeSystem_PropertyToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Concept {
   static Future<CodeSystem_Concept> newInstance({
     String id,
@@ -453,7 +453,7 @@ class CodeSystem_Concept {
   Map<String, dynamic> toJson() => _$CodeSystem_ConceptToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Designation {
   static Future<CodeSystem_Designation> newInstance({
     String id,
@@ -505,7 +505,7 @@ class CodeSystem_Designation {
   Map<String, dynamic> toJson() => _$CodeSystem_DesignationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Property1 {
   static Future<CodeSystem_Property1> newInstance({
     String id,
@@ -743,64 +743,78 @@ CodeSystem _$CodeSystemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodeSystemToJson(CodeSystem instance) =>
-    <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'url': instance.url,
-      'elementUrl': instance.elementUrl?.toJson(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'version': instance.version,
-      'elementVersion': instance.elementVersion?.toJson(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'title': instance.title,
-      'elementTitle': instance.elementTitle?.toJson(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'experimental': instance.experimental,
-      'elementExperimental': instance.elementExperimental?.toJson(),
-      'date': instance.date?.toIso8601String(),
-      'elementDate': instance.elementDate?.toJson(),
-      'publisher': instance.publisher,
-      'elementPublisher': instance.elementPublisher?.toJson(),
-      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
-      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
-      'purpose': instance.purpose,
-      'elementPurpose': instance.elementPurpose?.toJson(),
-      'copyright': instance.copyright,
-      'elementCopyright': instance.elementCopyright?.toJson(),
-      'caseSensitive': instance.caseSensitive,
-      'elementCaseSensitive': instance.elementCaseSensitive?.toJson(),
-      'valueSet': instance.valueSet,
-      'hierarchyMeaning': instance.hierarchyMeaning,
-      'elementHierarchyMeaning': instance.elementHierarchyMeaning?.toJson(),
-      'compositional': instance.compositional,
-      'elementCompositional': instance.elementCompositional?.toJson(),
-      'versionNeeded': instance.versionNeeded,
-      'elementVersionNeeded': instance.elementVersionNeeded?.toJson(),
-      'content': instance.content,
-      'elementContent': instance.elementContent?.toJson(),
-      'supplements': instance.supplements,
-      'count': instance.count,
-      'elementCount': instance.elementCount?.toJson(),
-      'filter': instance.filter?.map((e) => e?.toJson())?.toList(),
-      'property': instance.property?.map((e) => e?.toJson())?.toList(),
-      'concept': instance.concept?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CodeSystemToJson(CodeSystem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('url', instance.url);
+  writeNotNull('elementUrl', instance.elementUrl?.toJson());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('version', instance.version);
+  writeNotNull('elementVersion', instance.elementVersion?.toJson());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('title', instance.title);
+  writeNotNull('elementTitle', instance.elementTitle?.toJson());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull('experimental', instance.experimental);
+  writeNotNull('elementExperimental', instance.elementExperimental?.toJson());
+  writeNotNull('date', instance.date?.toIso8601String());
+  writeNotNull('elementDate', instance.elementDate?.toJson());
+  writeNotNull('publisher', instance.publisher);
+  writeNotNull('elementPublisher', instance.elementPublisher?.toJson());
+  writeNotNull('contact', instance.contact?.map((e) => e?.toJson())?.toList());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'useContext', instance.useContext?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'jurisdiction', instance.jurisdiction?.map((e) => e?.toJson())?.toList());
+  writeNotNull('purpose', instance.purpose);
+  writeNotNull('elementPurpose', instance.elementPurpose?.toJson());
+  writeNotNull('copyright', instance.copyright);
+  writeNotNull('elementCopyright', instance.elementCopyright?.toJson());
+  writeNotNull('caseSensitive', instance.caseSensitive);
+  writeNotNull('elementCaseSensitive', instance.elementCaseSensitive?.toJson());
+  writeNotNull('valueSet', instance.valueSet);
+  writeNotNull('hierarchyMeaning', instance.hierarchyMeaning);
+  writeNotNull(
+      'elementHierarchyMeaning', instance.elementHierarchyMeaning?.toJson());
+  writeNotNull('compositional', instance.compositional);
+  writeNotNull('elementCompositional', instance.elementCompositional?.toJson());
+  writeNotNull('versionNeeded', instance.versionNeeded);
+  writeNotNull('elementVersionNeeded', instance.elementVersionNeeded?.toJson());
+  writeNotNull('content', instance.content);
+  writeNotNull('elementContent', instance.elementContent?.toJson());
+  writeNotNull('supplements', instance.supplements);
+  writeNotNull('count', instance.count);
+  writeNotNull('elementCount', instance.elementCount?.toJson());
+  writeNotNull('filter', instance.filter?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'property', instance.property?.map((e) => e?.toJson())?.toList());
+  writeNotNull('concept', instance.concept?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CodeSystem_Filter _$CodeSystem_FilterFromJson(Map<String, dynamic> json) {
   return CodeSystem_Filter(
@@ -833,22 +847,31 @@ CodeSystem_Filter _$CodeSystem_FilterFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodeSystem_FilterToJson(CodeSystem_Filter instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'operator': instance.operator,
-      'elementOperator':
-          instance.elementOperator?.map((e) => e?.toJson())?.toList(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-    };
+Map<String, dynamic> _$CodeSystem_FilterToJson(CodeSystem_Filter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('operator', instance.operator);
+  writeNotNull('elementOperator',
+      instance.elementOperator?.map((e) => e?.toJson())?.toList());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  return val;
+}
 
 CodeSystem_Property _$CodeSystem_PropertyFromJson(Map<String, dynamic> json) {
   return CodeSystem_Property(
@@ -880,22 +903,30 @@ CodeSystem_Property _$CodeSystem_PropertyFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodeSystem_PropertyToJson(
-        CodeSystem_Property instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'uri': instance.uri,
-      'elementUri': instance.elementUri?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-    };
+Map<String, dynamic> _$CodeSystem_PropertyToJson(CodeSystem_Property instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('uri', instance.uri);
+  writeNotNull('elementUri', instance.elementUri?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  return val;
+}
 
 CodeSystem_Concept _$CodeSystem_ConceptFromJson(Map<String, dynamic> json) {
   return CodeSystem_Concept(
@@ -938,22 +969,33 @@ CodeSystem_Concept _$CodeSystem_ConceptFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CodeSystem_ConceptToJson(CodeSystem_Concept instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'display': instance.display,
-      'elementDisplay': instance.elementDisplay?.toJson(),
-      'definition': instance.definition,
-      'elementDefinition': instance.elementDefinition?.toJson(),
-      'designation': instance.designation?.map((e) => e?.toJson())?.toList(),
-      'property': instance.property?.map((e) => e?.toJson())?.toList(),
-      'concept': instance.concept?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$CodeSystem_ConceptToJson(CodeSystem_Concept instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('display', instance.display);
+  writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
+  writeNotNull('definition', instance.definition);
+  writeNotNull('elementDefinition', instance.elementDefinition?.toJson());
+  writeNotNull(
+      'designation', instance.designation?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'property', instance.property?.map((e) => e?.toJson())?.toList());
+  writeNotNull('concept', instance.concept?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 CodeSystem_Designation _$CodeSystem_DesignationFromJson(
     Map<String, dynamic> json) {
@@ -982,18 +1024,27 @@ CodeSystem_Designation _$CodeSystem_DesignationFromJson(
 }
 
 Map<String, dynamic> _$CodeSystem_DesignationToJson(
-        CodeSystem_Designation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'use': instance.use?.toJson(),
-      'value': instance.value,
-      'elementValue': instance.elementValue?.toJson(),
-    };
+    CodeSystem_Designation instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('use', instance.use?.toJson());
+  writeNotNull('value', instance.value);
+  writeNotNull('elementValue', instance.elementValue?.toJson());
+  return val;
+}
 
 CodeSystem_Property1 _$CodeSystem_Property1FromJson(Map<String, dynamic> json) {
   return CodeSystem_Property1(
@@ -1042,25 +1093,34 @@ CodeSystem_Property1 _$CodeSystem_Property1FromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CodeSystem_Property1ToJson(
-        CodeSystem_Property1 instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code,
-      'elementCode': instance.elementCode?.toJson(),
-      'valueCode': instance.valueCode,
-      'elementValueCode': instance.elementValueCode?.toJson(),
-      'valueCoding': instance.valueCoding?.toJson(),
-      'valueString': instance.valueString,
-      'elementValueString': instance.elementValueString?.toJson(),
-      'valueInteger': instance.valueInteger,
-      'elementValueInteger': instance.elementValueInteger?.toJson(),
-      'valueBoolean': instance.valueBoolean,
-      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
-      'valueDateTime': instance.valueDateTime,
-      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
-      'valueDecimal': instance.valueDecimal,
-      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
-    };
+    CodeSystem_Property1 instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code);
+  writeNotNull('elementCode', instance.elementCode?.toJson());
+  writeNotNull('valueCode', instance.valueCode);
+  writeNotNull('elementValueCode', instance.elementValueCode?.toJson());
+  writeNotNull('valueCoding', instance.valueCoding?.toJson());
+  writeNotNull('valueString', instance.valueString);
+  writeNotNull('elementValueString', instance.elementValueString?.toJson());
+  writeNotNull('valueInteger', instance.valueInteger);
+  writeNotNull('elementValueInteger', instance.elementValueInteger?.toJson());
+  writeNotNull('valueBoolean', instance.valueBoolean);
+  writeNotNull('elementValueBoolean', instance.elementValueBoolean?.toJson());
+  writeNotNull('valueDateTime', instance.valueDateTime);
+  writeNotNull('elementValueDateTime', instance.elementValueDateTime?.toJson());
+  writeNotNull('valueDecimal', instance.valueDecimal);
+  writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
+  return val;
+}

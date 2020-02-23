@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Substance {
   static Future<Substance> newInstance({
     String resourceType,
@@ -124,7 +124,7 @@ class Substance {
   Map<String, dynamic> toJson() => _$SubstanceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Substance_Instance {
   static Future<Substance_Instance> newInstance({
     String id,
@@ -171,7 +171,7 @@ class Substance_Instance {
   Map<String, dynamic> toJson() => _$Substance_InstanceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Substance_Ingredient {
   static Future<Substance_Ingredient> newInstance({
     String id,
@@ -284,29 +284,43 @@ Substance _$SubstanceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SubstanceToJson(Substance instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
-      'id': instance.id,
-      'meta': instance.meta?.toJson(),
-      'implicitRules': instance.implicitRules,
-      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
-      'language': instance.language,
-      'elementLanguage': instance.elementLanguage?.toJson(),
-      'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
-      'status': instance.status,
-      'elementStatus': instance.elementStatus?.toJson(),
-      'category': instance.category?.map((e) => e?.toJson())?.toList(),
-      'code': instance.code?.toJson(),
-      'description': instance.description,
-      'elementDescription': instance.elementDescription?.toJson(),
-      'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
-      'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
-    };
+Map<String, dynamic> _$SubstanceToJson(Substance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('resourceType', instance.resourceType);
+  writeNotNull('id', instance.id);
+  writeNotNull('meta', instance.meta?.toJson());
+  writeNotNull('implicitRules', instance.implicitRules);
+  writeNotNull('elementImplicitRules', instance.elementImplicitRules?.toJson());
+  writeNotNull('language', instance.language);
+  writeNotNull('elementLanguage', instance.elementLanguage?.toJson());
+  writeNotNull('text', instance.text?.toJson());
+  writeNotNull('contained', instance.contained);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'identifier', instance.identifier?.map((e) => e?.toJson())?.toList());
+  writeNotNull('status', instance.status);
+  writeNotNull('elementStatus', instance.elementStatus?.toJson());
+  writeNotNull(
+      'category', instance.category?.map((e) => e?.toJson())?.toList());
+  writeNotNull('code', instance.code?.toJson());
+  writeNotNull('description', instance.description);
+  writeNotNull('elementDescription', instance.elementDescription?.toJson());
+  writeNotNull(
+      'instance', instance.instance?.map((e) => e?.toJson())?.toList());
+  writeNotNull(
+      'ingredient', instance.ingredient?.map((e) => e?.toJson())?.toList());
+  return val;
+}
 
 Substance_Instance _$Substance_InstanceFromJson(Map<String, dynamic> json) {
   return Substance_Instance(
@@ -334,17 +348,26 @@ Substance_Instance _$Substance_InstanceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$Substance_InstanceToJson(Substance_Instance instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.toJson(),
-      'expiry': instance.expiry?.toIso8601String(),
-      'elementExpiry': instance.elementExpiry?.toJson(),
-      'quantity': instance.quantity?.toJson(),
-    };
+Map<String, dynamic> _$Substance_InstanceToJson(Substance_Instance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('identifier', instance.identifier?.toJson());
+  writeNotNull('expiry', instance.expiry?.toIso8601String());
+  writeNotNull('elementExpiry', instance.elementExpiry?.toJson());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  return val;
+}
 
 Substance_Ingredient _$Substance_IngredientFromJson(Map<String, dynamic> json) {
   return Substance_Ingredient(
@@ -372,13 +395,23 @@ Substance_Ingredient _$Substance_IngredientFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$Substance_IngredientToJson(
-        Substance_Ingredient instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'modifierExtension':
-          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'quantity': instance.quantity?.toJson(),
-      'substanceCodeableConcept': instance.substanceCodeableConcept?.toJson(),
-      'substanceReference': instance.substanceReference?.toJson(),
-    };
+    Substance_Ingredient instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('modifierExtension',
+      instance.modifierExtension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('quantity', instance.quantity?.toJson());
+  writeNotNull(
+      'substanceCodeableConcept', instance.substanceCodeableConcept?.toJson());
+  writeNotNull('substanceReference', instance.substanceReference?.toJson());
+  return val;
+}

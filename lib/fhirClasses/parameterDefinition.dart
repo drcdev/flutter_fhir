@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ParameterDefinition {
   static Future<ParameterDefinition> newInstance({
     String id,
@@ -124,22 +124,30 @@ ParameterDefinition _$ParameterDefinitionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ParameterDefinitionToJson(
-        ParameterDefinition instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'name': instance.name,
-      'elementName': instance.elementName?.toJson(),
-      'use': instance.use,
-      'elementUse': instance.elementUse?.toJson(),
-      'min': instance.min,
-      'elementMin': instance.elementMin?.toJson(),
-      'max': instance.max,
-      'elementMax': instance.elementMax?.toJson(),
-      'documentation': instance.documentation,
-      'elementDocumentation': instance.elementDocumentation?.toJson(),
-      'type': instance.type,
-      'elementType': instance.elementType?.toJson(),
-      'profile': instance.profile,
-    };
+Map<String, dynamic> _$ParameterDefinitionToJson(ParameterDefinition instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'extension', instance.extension?.map((e) => e?.toJson())?.toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('elementName', instance.elementName?.toJson());
+  writeNotNull('use', instance.use);
+  writeNotNull('elementUse', instance.elementUse?.toJson());
+  writeNotNull('min', instance.min);
+  writeNotNull('elementMin', instance.elementMin?.toJson());
+  writeNotNull('max', instance.max);
+  writeNotNull('elementMax', instance.elementMax?.toJson());
+  writeNotNull('documentation', instance.documentation);
+  writeNotNull('elementDocumentation', instance.elementDocumentation?.toJson());
+  writeNotNull('type', instance.type);
+  writeNotNull('elementType', instance.elementType?.toJson());
+  writeNotNull('profile', instance.profile);
+  return val;
+}
