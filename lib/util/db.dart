@@ -254,7 +254,7 @@ class DatabaseHelper {
       'Flag',
       'Goal',
       'GraphDefinition',
-      '"Group"',
+      "Group'",
       'GuidanceResponse',
       'HealthcareService',
       'ImagingStudy',
