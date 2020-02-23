@@ -85,7 +85,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               if (contact != null) {
                 pt.contact.add(contact);
               }
-              pt.update();
+              pt.save();
               print(pt.meta.lastUpdated);
               Navigator.push(
                 context,
@@ -109,7 +109,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               if (contact != null) {
                 pt.contact.add(contact);
               }
-              pt.update();
+              pt.save();
               Navigator.push(
                 context,
                 MaterialPageRoute(

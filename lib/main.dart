@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_fhir/fhirClasses/coding.dart';
-import 'package:flutter_fhir/fhirClasses/encounter.dart';
-import 'package:flutter_fhir/fhirClasses/period.dart';
-import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter_fhir/util/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() async {
+void main() {
+
   //Allows initialization of the DB the first time
   WidgetsFlutterBinding.ensureInitialized();
   var fhirDb = new DatabaseHelper();
@@ -152,29 +149,4 @@ class _MainState extends State<_Main> {
       ),
     );
   }
-}
-
-Future<Encounter> getEncounter() async {
-  return (await Encounter.newInstance(
-      status: 'in-progress',
-      classs: await Coding.newInstance(
-          system: 'http://hl7.org/fhir/v3/ActCode',
-          code: 'HH',
-          display: 'Home Health'),
-      subject: await Reference.newInstance(),
-      participant: [
-        await Encounter_Participant.newInstance(
-            individual: await Reference.newInstance(
-                reference: 'Practitioner/84057017-f31d-4cfc-b2b3-c80e491875d6',
-                display: 'Dr. Grey'))
-      ],
-      period: await Period.newInstance(start: DateTime.now()),
-      location: [
-        await Encounter_Location.newInstance(
-            location: await Reference.newInstance(
-                reference: 'Location/', display: "Patient's House"))
-      ],
-      serviceProvider: await Reference.newInstance(
-          reference: 'Organization/e4903137-2e9c-4a2d-8340-0ca7e89f203a',
-          display: 'CHOP')));
 }
