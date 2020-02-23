@@ -49,7 +49,7 @@ ToDo: define canonical types\n
 Todo: understand initstate better, learn Future, async, await
 
 #DB - SQLITE (for now)
-1. Gone back to SQLite after hive only let me open 233 boxes.
+1. Gone back to SQLite after hive only let me open 233 boxes (it also doesn't seem to like complex json).
 2. Not sure if it would be fast enough for a real app, but I'm sure it's more than enough for what
     I'm currently doing.
 3. Has the following structure:
