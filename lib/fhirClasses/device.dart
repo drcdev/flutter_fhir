@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Device {
   static Future<Device> newInstance({
     String resourceType,
@@ -130,52 +130,99 @@ class Device {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Device';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   Reference definition;
+  @HiveField(13)
   List<Device_UdiCarrier> udiCarrier;
+  @HiveField(14)
   String status;
+  @HiveField(15)
   Element elementStatus;
+  @HiveField(16)
   List<CodeableConcept> statusReason;
+  @HiveField(17)
   String distinctIdentifier;
+  @HiveField(18)
   Element elementDistinctIdentifier;
+  @HiveField(19)
   String manufacturer;
+  @HiveField(20)
   Element elementManufacturer;
+  @HiveField(21)
   DateTime manufactureDate;
+  @HiveField(22)
   Element elementManufactureDate;
+  @HiveField(23)
   DateTime expirationDate;
+  @HiveField(24)
   Element elementExpirationDate;
+  @HiveField(25)
   String lotNumber;
+  @HiveField(26)
   Element elementLotNumber;
+  @HiveField(27)
   String serialNumber;
+  @HiveField(28)
   Element elementSerialNumber;
+  @HiveField(29)
   List<Device_DeviceName> deviceName;
+  @HiveField(30)
   String modelNumber;
+  @HiveField(31)
   Element elementModelNumber;
+  @HiveField(32)
   String partNumber;
+  @HiveField(33)
   Element elementPartNumber;
+  @HiveField(34)
   CodeableConcept type;
+  @HiveField(35)
   List<Device_Specialization> specialization;
+  @HiveField(36)
   List<Device_Version> version;
+  @HiveField(37)
   List<Device_Property> property;
+  @HiveField(38)
   Reference patient;
+  @HiveField(39)
   Reference owner;
+  @HiveField(40)
   List<ContactPoint> contact;
+  @HiveField(41)
   Reference location;
+  @HiveField(42)
   String url;
+  @HiveField(43)
   Element elementUrl;
+  @HiveField(44)
   List<Annotation> note;
+  @HiveField(45)
   List<CodeableConcept> safety;
+  @HiveField(46)
   Reference parent;
 
   Device({
@@ -232,7 +279,6 @@ class Device {
   Map<String, dynamic> toJson() => _$DeviceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Device_UdiCarrier {
   static Future<Device_UdiCarrier> newInstance({
     String id,
@@ -272,20 +318,35 @@ class Device_UdiCarrier {
     return newDevice_UdiCarrier;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String deviceIdentifier;
+  @HiveField(4)
   Element elementDeviceIdentifier;
+  @HiveField(5)
   String issuer;
+  @HiveField(6)
   Element elementIssuer;
+  @HiveField(7)
   String jurisdiction;
+  @HiveField(8)
   Element elementJurisdiction;
+  @HiveField(9)
   String carrierAIDC;
+  @HiveField(10)
   Element elementCarrierAIDC;
+  @HiveField(11)
   String carrierHRF;
+  @HiveField(12)
   Element elementCarrierHRF;
+  @HiveField(13)
   String entryType;
+  @HiveField(14)
   Element elementEntryType;
 
   Device_UdiCarrier({
@@ -311,7 +372,6 @@ class Device_UdiCarrier {
   Map<String, dynamic> toJson() => _$Device_UdiCarrierToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Device_DeviceName {
   static Future<Device_DeviceName> newInstance({
     String id,
@@ -335,12 +395,19 @@ class Device_DeviceName {
     return newDevice_DeviceName;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String name;
+  @HiveField(4)
   Element elementName;
+  @HiveField(5)
   String type;
+  @HiveField(6)
   Element elementType;
 
   Device_DeviceName({
@@ -358,7 +425,6 @@ class Device_DeviceName {
   Map<String, dynamic> toJson() => _$Device_DeviceNameToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Device_Specialization {
   static Future<Device_Specialization> newInstance({
     String id,
@@ -380,11 +446,17 @@ class Device_Specialization {
     return newDevice_Specialization;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept systemType;
+  @HiveField(4)
   String version;
+  @HiveField(5)
   Element elementVersion;
 
   Device_Specialization({
@@ -401,7 +473,6 @@ class Device_Specialization {
   Map<String, dynamic> toJson() => _$Device_SpecializationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Device_Version {
   static Future<Device_Version> newInstance({
     String id,
@@ -425,12 +496,19 @@ class Device_Version {
     return newDevice_Version;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   Identifier component;
+  @HiveField(5)
   String value;
+  @HiveField(6)
   Element elementValue;
 
   Device_Version({
@@ -448,7 +526,6 @@ class Device_Version {
   Map<String, dynamic> toJson() => _$Device_VersionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Device_Property {
   static Future<Device_Property> newInstance({
     String id,
@@ -470,11 +547,17 @@ class Device_Property {
     return newDevice_Property;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   List<Quantity> valueQuantity;
+  @HiveField(5)
   List<CodeableConcept> valueCode;
 
   Device_Property({
@@ -959,4 +1042,381 @@ Map<String, dynamic> _$Device_PropertyToJson(Device_Property instance) {
   writeNotNull(
       'valueCode', instance.valueCode?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DeviceAdapter extends TypeAdapter<Device> {
+  @override
+  Device read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Device(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      definition: fields[12] as Reference,
+      udiCarrier: (fields[13] as List)?.cast<Device_UdiCarrier>(),
+      status: fields[14] as String,
+      elementStatus: fields[15] as Element,
+      statusReason: (fields[16] as List)?.cast<CodeableConcept>(),
+      distinctIdentifier: fields[17] as String,
+      elementDistinctIdentifier: fields[18] as Element,
+      manufacturer: fields[19] as String,
+      elementManufacturer: fields[20] as Element,
+      manufactureDate: fields[21] as DateTime,
+      elementManufactureDate: fields[22] as Element,
+      expirationDate: fields[23] as DateTime,
+      elementExpirationDate: fields[24] as Element,
+      lotNumber: fields[25] as String,
+      elementLotNumber: fields[26] as Element,
+      serialNumber: fields[27] as String,
+      elementSerialNumber: fields[28] as Element,
+      deviceName: (fields[29] as List)?.cast<Device_DeviceName>(),
+      modelNumber: fields[30] as String,
+      elementModelNumber: fields[31] as Element,
+      partNumber: fields[32] as String,
+      elementPartNumber: fields[33] as Element,
+      type: fields[34] as CodeableConcept,
+      specialization: (fields[35] as List)?.cast<Device_Specialization>(),
+      version: (fields[36] as List)?.cast<Device_Version>(),
+      property: (fields[37] as List)?.cast<Device_Property>(),
+      patient: fields[38] as Reference,
+      owner: fields[39] as Reference,
+      contact: (fields[40] as List)?.cast<ContactPoint>(),
+      location: fields[41] as Reference,
+      url: fields[42] as String,
+      elementUrl: fields[43] as Element,
+      note: (fields[44] as List)?.cast<Annotation>(),
+      safety: (fields[45] as List)?.cast<CodeableConcept>(),
+      parent: fields[46] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Device obj) {
+    writer
+      ..writeByte(47)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.definition)
+      ..writeByte(13)
+      ..write(obj.udiCarrier)
+      ..writeByte(14)
+      ..write(obj.status)
+      ..writeByte(15)
+      ..write(obj.elementStatus)
+      ..writeByte(16)
+      ..write(obj.statusReason)
+      ..writeByte(17)
+      ..write(obj.distinctIdentifier)
+      ..writeByte(18)
+      ..write(obj.elementDistinctIdentifier)
+      ..writeByte(19)
+      ..write(obj.manufacturer)
+      ..writeByte(20)
+      ..write(obj.elementManufacturer)
+      ..writeByte(21)
+      ..write(obj.manufactureDate)
+      ..writeByte(22)
+      ..write(obj.elementManufactureDate)
+      ..writeByte(23)
+      ..write(obj.expirationDate)
+      ..writeByte(24)
+      ..write(obj.elementExpirationDate)
+      ..writeByte(25)
+      ..write(obj.lotNumber)
+      ..writeByte(26)
+      ..write(obj.elementLotNumber)
+      ..writeByte(27)
+      ..write(obj.serialNumber)
+      ..writeByte(28)
+      ..write(obj.elementSerialNumber)
+      ..writeByte(29)
+      ..write(obj.deviceName)
+      ..writeByte(30)
+      ..write(obj.modelNumber)
+      ..writeByte(31)
+      ..write(obj.elementModelNumber)
+      ..writeByte(32)
+      ..write(obj.partNumber)
+      ..writeByte(33)
+      ..write(obj.elementPartNumber)
+      ..writeByte(34)
+      ..write(obj.type)
+      ..writeByte(35)
+      ..write(obj.specialization)
+      ..writeByte(36)
+      ..write(obj.version)
+      ..writeByte(37)
+      ..write(obj.property)
+      ..writeByte(38)
+      ..write(obj.patient)
+      ..writeByte(39)
+      ..write(obj.owner)
+      ..writeByte(40)
+      ..write(obj.contact)
+      ..writeByte(41)
+      ..write(obj.location)
+      ..writeByte(42)
+      ..write(obj.url)
+      ..writeByte(43)
+      ..write(obj.elementUrl)
+      ..writeByte(44)
+      ..write(obj.note)
+      ..writeByte(45)
+      ..write(obj.safety)
+      ..writeByte(46)
+      ..write(obj.parent);
+  }
+}
+
+class Device_UdiCarrierAdapter extends TypeAdapter<Device_UdiCarrier> {
+  @override
+  Device_UdiCarrier read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Device_UdiCarrier(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      deviceIdentifier: fields[3] as String,
+      elementDeviceIdentifier: fields[4] as Element,
+      issuer: fields[5] as String,
+      elementIssuer: fields[6] as Element,
+      jurisdiction: fields[7] as String,
+      elementJurisdiction: fields[8] as Element,
+      carrierAIDC: fields[9] as String,
+      elementCarrierAIDC: fields[10] as Element,
+      carrierHRF: fields[11] as String,
+      elementCarrierHRF: fields[12] as Element,
+      entryType: fields[13] as String,
+      elementEntryType: fields[14] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Device_UdiCarrier obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.deviceIdentifier)
+      ..writeByte(4)
+      ..write(obj.elementDeviceIdentifier)
+      ..writeByte(5)
+      ..write(obj.issuer)
+      ..writeByte(6)
+      ..write(obj.elementIssuer)
+      ..writeByte(7)
+      ..write(obj.jurisdiction)
+      ..writeByte(8)
+      ..write(obj.elementJurisdiction)
+      ..writeByte(9)
+      ..write(obj.carrierAIDC)
+      ..writeByte(10)
+      ..write(obj.elementCarrierAIDC)
+      ..writeByte(11)
+      ..write(obj.carrierHRF)
+      ..writeByte(12)
+      ..write(obj.elementCarrierHRF)
+      ..writeByte(13)
+      ..write(obj.entryType)
+      ..writeByte(14)
+      ..write(obj.elementEntryType);
+  }
+}
+
+class Device_DeviceNameAdapter extends TypeAdapter<Device_DeviceName> {
+  @override
+  Device_DeviceName read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Device_DeviceName(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      type: fields[5] as String,
+      elementType: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Device_DeviceName obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.elementType);
+  }
+}
+
+class Device_SpecializationAdapter extends TypeAdapter<Device_Specialization> {
+  @override
+  Device_Specialization read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Device_Specialization(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      systemType: fields[3] as CodeableConcept,
+      version: fields[4] as String,
+      elementVersion: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Device_Specialization obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.systemType)
+      ..writeByte(4)
+      ..write(obj.version)
+      ..writeByte(5)
+      ..write(obj.elementVersion);
+  }
+}
+
+class Device_VersionAdapter extends TypeAdapter<Device_Version> {
+  @override
+  Device_Version read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Device_Version(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      component: fields[4] as Identifier,
+      value: fields[5] as String,
+      elementValue: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Device_Version obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.component)
+      ..writeByte(5)
+      ..write(obj.value)
+      ..writeByte(6)
+      ..write(obj.elementValue);
+  }
+}
+
+class Device_PropertyAdapter extends TypeAdapter<Device_Property> {
+  @override
+  Device_Property read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Device_Property(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      valueQuantity: (fields[4] as List)?.cast<Quantity>(),
+      valueCode: (fields[5] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Device_Property obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.valueQuantity)
+      ..writeByte(5)
+      ..write(obj.valueCode);
+  }
 }

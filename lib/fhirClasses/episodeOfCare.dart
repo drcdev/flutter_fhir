@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class EpisodeOfCare {
   static Future<EpisodeOfCare> newInstance({
     String resourceType,
@@ -82,29 +82,53 @@ class EpisodeOfCare {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'EpisodeOfCare';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   List<EpisodeOfCare_StatusHistory> statusHistory;
+  @HiveField(15)
   List<CodeableConcept> type;
+  @HiveField(16)
   List<EpisodeOfCare_Diagnosis> diagnosis;
+  @HiveField(17)
   Reference patient;
+  @HiveField(18)
   Reference managingOrganization;
+  @HiveField(19)
   Period period;
+  @HiveField(20)
   List<Reference> referralRequest;
+  @HiveField(21)
   Reference careManager;
+  @HiveField(22)
   List<Reference> team;
+  @HiveField(23)
   List<Reference> account;
 
   EpisodeOfCare({
@@ -139,7 +163,6 @@ class EpisodeOfCare {
   Map<String, dynamic> toJson() => _$EpisodeOfCareToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class EpisodeOfCare_StatusHistory {
   static Future<EpisodeOfCare_StatusHistory> newInstance({
     String id,
@@ -162,11 +185,17 @@ class EpisodeOfCare_StatusHistory {
     return newEpisodeOfCare_StatusHistory;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String status;
+  @HiveField(4)
   Element elementStatus;
+  @HiveField(5)
   Period period;
 
   EpisodeOfCare_StatusHistory({
@@ -183,7 +212,6 @@ class EpisodeOfCare_StatusHistory {
   Map<String, dynamic> toJson() => _$EpisodeOfCare_StatusHistoryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class EpisodeOfCare_Diagnosis {
   static Future<EpisodeOfCare_Diagnosis> newInstance({
     String id,
@@ -208,12 +236,19 @@ class EpisodeOfCare_Diagnosis {
     return newEpisodeOfCare_Diagnosis;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Reference condition;
+  @HiveField(4)
   CodeableConcept role;
+  @HiveField(5)
   int rank;
+  @HiveField(6)
   Element elementRank;
 
   EpisodeOfCare_Diagnosis({
@@ -449,4 +484,176 @@ Map<String, dynamic> _$EpisodeOfCare_DiagnosisToJson(
   writeNotNull('rank', instance.rank);
   writeNotNull('elementRank', instance.elementRank?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class EpisodeOfCareAdapter extends TypeAdapter<EpisodeOfCare> {
+  @override
+  EpisodeOfCare read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EpisodeOfCare(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      statusHistory: (fields[14] as List)?.cast<EpisodeOfCare_StatusHistory>(),
+      type: (fields[15] as List)?.cast<CodeableConcept>(),
+      diagnosis: (fields[16] as List)?.cast<EpisodeOfCare_Diagnosis>(),
+      patient: fields[17] as Reference,
+      managingOrganization: fields[18] as Reference,
+      period: fields[19] as Period,
+      referralRequest: (fields[20] as List)?.cast<Reference>(),
+      careManager: fields[21] as Reference,
+      team: (fields[22] as List)?.cast<Reference>(),
+      account: (fields[23] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, EpisodeOfCare obj) {
+    writer
+      ..writeByte(24)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.statusHistory)
+      ..writeByte(15)
+      ..write(obj.type)
+      ..writeByte(16)
+      ..write(obj.diagnosis)
+      ..writeByte(17)
+      ..write(obj.patient)
+      ..writeByte(18)
+      ..write(obj.managingOrganization)
+      ..writeByte(19)
+      ..write(obj.period)
+      ..writeByte(20)
+      ..write(obj.referralRequest)
+      ..writeByte(21)
+      ..write(obj.careManager)
+      ..writeByte(22)
+      ..write(obj.team)
+      ..writeByte(23)
+      ..write(obj.account);
+  }
+}
+
+class EpisodeOfCare_StatusHistoryAdapter
+    extends TypeAdapter<EpisodeOfCare_StatusHistory> {
+  @override
+  EpisodeOfCare_StatusHistory read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EpisodeOfCare_StatusHistory(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      status: fields[3] as String,
+      elementStatus: fields[4] as Element,
+      period: fields[5] as Period,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, EpisodeOfCare_StatusHistory obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.status)
+      ..writeByte(4)
+      ..write(obj.elementStatus)
+      ..writeByte(5)
+      ..write(obj.period);
+  }
+}
+
+class EpisodeOfCare_DiagnosisAdapter
+    extends TypeAdapter<EpisodeOfCare_Diagnosis> {
+  @override
+  EpisodeOfCare_Diagnosis read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EpisodeOfCare_Diagnosis(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      condition: fields[3] as Reference,
+      role: fields[4] as CodeableConcept,
+      rank: fields[5] as int,
+      elementRank: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, EpisodeOfCare_Diagnosis obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.condition)
+      ..writeByte(4)
+      ..write(obj.role)
+      ..writeByte(5)
+      ..write(obj.rank)
+      ..writeByte(6)
+      ..write(obj.elementRank);
+  }
 }

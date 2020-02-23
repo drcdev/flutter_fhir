@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
@@ -15,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RelatedPerson {
   static Future<RelatedPerson> newInstance({
     String resourceType,
@@ -90,31 +90,57 @@ class RelatedPerson {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'RelatedPerson';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   bool active;
+  @HiveField(13)
   Element elementActive;
+  @HiveField(14)
   Reference patient;
+  @HiveField(15)
   List<CodeableConcept> relationship;
+  @HiveField(16)
   List<HumanName> name;
+  @HiveField(17)
   List<ContactPoint> telecom;
+  @HiveField(18)
   String gender;
+  @HiveField(19)
   Element elementGender;
+  @HiveField(20)
   String birthDate;
+  @HiveField(21)
   Element elementBirthDate;
+  @HiveField(22)
   List<Address> address;
+  @HiveField(23)
   List<Attachment> photo;
+  @HiveField(24)
   Period period;
+  @HiveField(25)
   List<RelatedPerson_Communication> communication;
 
   RelatedPerson({
@@ -151,7 +177,6 @@ class RelatedPerson {
   Map<String, dynamic> toJson() => _$RelatedPersonToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RelatedPerson_Communication {
   static Future<RelatedPerson_Communication> newInstance({
     String id,
@@ -174,11 +199,17 @@ class RelatedPerson_Communication {
     return newRelatedPerson_Communication;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept language;
+  @HiveField(4)
   bool preferred;
+  @HiveField(5)
   Element elementPreferred;
 
   RelatedPerson_Communication({
@@ -367,4 +398,142 @@ Map<String, dynamic> _$RelatedPerson_CommunicationToJson(
   writeNotNull('preferred', instance.preferred);
   writeNotNull('elementPreferred', instance.elementPreferred?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class RelatedPersonAdapter extends TypeAdapter<RelatedPerson> {
+  @override
+  RelatedPerson read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RelatedPerson(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      active: fields[12] as bool,
+      elementActive: fields[13] as Element,
+      patient: fields[14] as Reference,
+      relationship: (fields[15] as List)?.cast<CodeableConcept>(),
+      name: (fields[16] as List)?.cast<HumanName>(),
+      telecom: (fields[17] as List)?.cast<ContactPoint>(),
+      gender: fields[18] as String,
+      elementGender: fields[19] as Element,
+      birthDate: fields[20] as String,
+      elementBirthDate: fields[21] as Element,
+      address: (fields[22] as List)?.cast<Address>(),
+      photo: (fields[23] as List)?.cast<Attachment>(),
+      period: fields[24] as Period,
+      communication: (fields[25] as List)?.cast<RelatedPerson_Communication>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RelatedPerson obj) {
+    writer
+      ..writeByte(26)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.active)
+      ..writeByte(13)
+      ..write(obj.elementActive)
+      ..writeByte(14)
+      ..write(obj.patient)
+      ..writeByte(15)
+      ..write(obj.relationship)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.telecom)
+      ..writeByte(18)
+      ..write(obj.gender)
+      ..writeByte(19)
+      ..write(obj.elementGender)
+      ..writeByte(20)
+      ..write(obj.birthDate)
+      ..writeByte(21)
+      ..write(obj.elementBirthDate)
+      ..writeByte(22)
+      ..write(obj.address)
+      ..writeByte(23)
+      ..write(obj.photo)
+      ..writeByte(24)
+      ..write(obj.period)
+      ..writeByte(25)
+      ..write(obj.communication);
+  }
+}
+
+class RelatedPerson_CommunicationAdapter
+    extends TypeAdapter<RelatedPerson_Communication> {
+  @override
+  RelatedPerson_Communication read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RelatedPerson_Communication(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      language: fields[3] as CodeableConcept,
+      preferred: fields[4] as bool,
+      elementPreferred: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RelatedPerson_Communication obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.language)
+      ..writeByte(4)
+      ..write(obj.preferred)
+      ..writeByte(5)
+      ..write(obj.elementPreferred);
+  }
 }

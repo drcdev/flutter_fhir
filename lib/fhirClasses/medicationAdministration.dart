@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationAdministration {
   static Future<MedicationAdministration> newInstance({
     String resourceType,
@@ -109,40 +109,75 @@ class MedicationAdministration {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'MedicationAdministration';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   List<String> instantiates;
+  @HiveField(13)
   List<Element> elementInstantiates;
+  @HiveField(14)
   List<Reference> partOf;
+  @HiveField(15)
   String status;
+  @HiveField(16)
   Element elementStatus;
+  @HiveField(17)
   List<CodeableConcept> statusReason;
+  @HiveField(18)
   CodeableConcept category;
+  @HiveField(19)
   CodeableConcept medicationCodeableConcept;
+  @HiveField(20)
   Reference medicationReference;
+  @HiveField(21)
   Reference subject;
+  @HiveField(22)
   Reference context;
+  @HiveField(23)
   List<Reference> supportingInformation;
+  @HiveField(24)
   String effectiveDateTime;
+  @HiveField(25)
   Element elementEffectiveDateTime;
+  @HiveField(26)
   Period effectivePeriod;
+  @HiveField(27)
   List<MedicationAdministration_Performer> performer;
+  @HiveField(28)
   List<CodeableConcept> reasonCode;
+  @HiveField(29)
   List<Reference> reasonReference;
+  @HiveField(30)
   Reference request;
+  @HiveField(31)
   List<Reference> device;
+  @HiveField(32)
   List<Annotation> note;
+  @HiveField(33)
   MedicationAdministration_Dosage dosage;
+  @HiveField(34)
   List<Reference> eventHistory;
 
   MedicationAdministration({
@@ -188,7 +223,6 @@ class MedicationAdministration {
   Map<String, dynamic> toJson() => _$MedicationAdministrationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationAdministration_Performer {
   static Future<MedicationAdministration_Performer> newInstance({
     String id,
@@ -209,10 +243,15 @@ class MedicationAdministration_Performer {
     return newMedicationAdministration_Performer;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept function;
+  @HiveField(4)
   Reference actor;
 
   MedicationAdministration_Performer({
@@ -230,7 +269,6 @@ class MedicationAdministration_Performer {
       _$MedicationAdministration_PerformerToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationAdministration_Dosage {
   static Future<MedicationAdministration_Dosage> newInstance({
     String id,
@@ -263,16 +301,27 @@ class MedicationAdministration_Dosage {
     return newMedicationAdministration_Dosage;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String text;
+  @HiveField(4)
   Element elementText;
+  @HiveField(5)
   CodeableConcept site;
+  @HiveField(6)
   CodeableConcept route;
+  @HiveField(7)
   CodeableConcept method;
+  @HiveField(8)
   Quantity dose;
+  @HiveField(9)
   Ratio rateRatio;
+  @HiveField(10)
   Quantity rateQuantity;
 
   MedicationAdministration_Dosage({
@@ -584,4 +633,220 @@ Map<String, dynamic> _$MedicationAdministration_DosageToJson(
   writeNotNull('rateRatio', instance.rateRatio?.toJson());
   writeNotNull('rateQuantity', instance.rateQuantity?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MedicationAdministrationAdapter
+    extends TypeAdapter<MedicationAdministration> {
+  @override
+  MedicationAdministration read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationAdministration(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      instantiates: (fields[12] as List)?.cast<String>(),
+      elementInstantiates: (fields[13] as List)?.cast<Element>(),
+      partOf: (fields[14] as List)?.cast<Reference>(),
+      status: fields[15] as String,
+      elementStatus: fields[16] as Element,
+      statusReason: (fields[17] as List)?.cast<CodeableConcept>(),
+      category: fields[18] as CodeableConcept,
+      medicationCodeableConcept: fields[19] as CodeableConcept,
+      medicationReference: fields[20] as Reference,
+      subject: fields[21] as Reference,
+      context: fields[22] as Reference,
+      supportingInformation: (fields[23] as List)?.cast<Reference>(),
+      effectiveDateTime: fields[24] as String,
+      elementEffectiveDateTime: fields[25] as Element,
+      effectivePeriod: fields[26] as Period,
+      performer:
+          (fields[27] as List)?.cast<MedicationAdministration_Performer>(),
+      reasonCode: (fields[28] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[29] as List)?.cast<Reference>(),
+      request: fields[30] as Reference,
+      device: (fields[31] as List)?.cast<Reference>(),
+      note: (fields[32] as List)?.cast<Annotation>(),
+      dosage: fields[33] as MedicationAdministration_Dosage,
+      eventHistory: (fields[34] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationAdministration obj) {
+    writer
+      ..writeByte(35)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.instantiates)
+      ..writeByte(13)
+      ..write(obj.elementInstantiates)
+      ..writeByte(14)
+      ..write(obj.partOf)
+      ..writeByte(15)
+      ..write(obj.status)
+      ..writeByte(16)
+      ..write(obj.elementStatus)
+      ..writeByte(17)
+      ..write(obj.statusReason)
+      ..writeByte(18)
+      ..write(obj.category)
+      ..writeByte(19)
+      ..write(obj.medicationCodeableConcept)
+      ..writeByte(20)
+      ..write(obj.medicationReference)
+      ..writeByte(21)
+      ..write(obj.subject)
+      ..writeByte(22)
+      ..write(obj.context)
+      ..writeByte(23)
+      ..write(obj.supportingInformation)
+      ..writeByte(24)
+      ..write(obj.effectiveDateTime)
+      ..writeByte(25)
+      ..write(obj.elementEffectiveDateTime)
+      ..writeByte(26)
+      ..write(obj.effectivePeriod)
+      ..writeByte(27)
+      ..write(obj.performer)
+      ..writeByte(28)
+      ..write(obj.reasonCode)
+      ..writeByte(29)
+      ..write(obj.reasonReference)
+      ..writeByte(30)
+      ..write(obj.request)
+      ..writeByte(31)
+      ..write(obj.device)
+      ..writeByte(32)
+      ..write(obj.note)
+      ..writeByte(33)
+      ..write(obj.dosage)
+      ..writeByte(34)
+      ..write(obj.eventHistory);
+  }
+}
+
+class MedicationAdministration_PerformerAdapter
+    extends TypeAdapter<MedicationAdministration_Performer> {
+  @override
+  MedicationAdministration_Performer read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationAdministration_Performer(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      function: fields[3] as CodeableConcept,
+      actor: fields[4] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationAdministration_Performer obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.function)
+      ..writeByte(4)
+      ..write(obj.actor);
+  }
+}
+
+class MedicationAdministration_DosageAdapter
+    extends TypeAdapter<MedicationAdministration_Dosage> {
+  @override
+  MedicationAdministration_Dosage read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationAdministration_Dosage(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      text: fields[3] as String,
+      elementText: fields[4] as Element,
+      site: fields[5] as CodeableConcept,
+      route: fields[6] as CodeableConcept,
+      method: fields[7] as CodeableConcept,
+      dose: fields[8] as Quantity,
+      rateRatio: fields[9] as Ratio,
+      rateQuantity: fields[10] as Quantity,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationAdministration_Dosage obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.text)
+      ..writeByte(4)
+      ..write(obj.elementText)
+      ..writeByte(5)
+      ..write(obj.site)
+      ..writeByte(6)
+      ..write(obj.route)
+      ..writeByte(7)
+      ..write(obj.method)
+      ..writeByte(8)
+      ..write(obj.dose)
+      ..writeByte(9)
+      ..write(obj.rateRatio)
+      ..writeByte(10)
+      ..write(obj.rateQuantity);
+  }
 }

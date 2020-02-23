@@ -1,13 +1,13 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Identifier {
   static Future<Identifier> newInstance({
     String id,
@@ -39,16 +39,27 @@ class Identifier {
     return newIdentifier;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   String use;
+  @HiveField(3)
   Element elementUse;
+  @HiveField(4)
   CodeableConcept type;
+  @HiveField(5)
   String system;
+  @HiveField(6)
   Element elementSystem;
+  @HiveField(7)
   String value;
+  @HiveField(8)
   Element elementValue;
+  @HiveField(9)
   Period period;
+  @HiveField(10)
   Reference assigner;
 
   Identifier({
@@ -128,4 +139,60 @@ Map<String, dynamic> _$IdentifierToJson(Identifier instance) {
   writeNotNull('period', instance.period?.toJson());
   writeNotNull('assigner', instance.assigner?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class IdentifierAdapter extends TypeAdapter<Identifier> {
+  @override
+  Identifier read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Identifier(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      use: fields[2] as String,
+      elementUse: fields[3] as Element,
+      type: fields[4] as CodeableConcept,
+      system: fields[5] as String,
+      elementSystem: fields[6] as Element,
+      value: fields[7] as String,
+      elementValue: fields[8] as Element,
+      period: fields[9] as Period,
+      assigner: fields[10] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Identifier obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.use)
+      ..writeByte(3)
+      ..write(obj.elementUse)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.system)
+      ..writeByte(6)
+      ..write(obj.elementSystem)
+      ..writeByte(7)
+      ..write(obj.value)
+      ..writeByte(8)
+      ..write(obj.elementValue)
+      ..writeByte(9)
+      ..write(obj.period)
+      ..writeByte(10)
+      ..write(obj.assigner);
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceSourceMaterial {
   static Future<SubstanceSourceMaterial> newInstance({
     String resourceType,
@@ -88,32 +88,59 @@ class SubstanceSourceMaterial {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'SubstanceSourceMaterial';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   CodeableConcept sourceMaterialClass;
+  @HiveField(12)
   CodeableConcept sourceMaterialType;
+  @HiveField(13)
   CodeableConcept sourceMaterialState;
+  @HiveField(14)
   Identifier organismId;
+  @HiveField(15)
   String organismName;
+  @HiveField(16)
   Element elementOrganismName;
+  @HiveField(17)
   List<Identifier> parentSubstanceId;
+  @HiveField(18)
   List<String> parentSubstanceName;
+  @HiveField(19)
   List<Element> elementParentSubstanceName;
+  @HiveField(20)
   List<CodeableConcept> countryOfOrigin;
+  @HiveField(21)
   List<String> geographicalLocation;
+  @HiveField(22)
   List<Element> elementGeographicalLocation;
+  @HiveField(23)
   CodeableConcept developmentStage;
+  @HiveField(24)
   List<SubstanceSourceMaterial_FractionDescription> fractionDescription;
+  @HiveField(25)
   SubstanceSourceMaterial_Organism organism;
+  @HiveField(26)
   List<SubstanceSourceMaterial_PartDescription> partDescription;
 
   SubstanceSourceMaterial({
@@ -151,7 +178,6 @@ class SubstanceSourceMaterial {
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterialToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceSourceMaterial_FractionDescription {
   static Future<SubstanceSourceMaterial_FractionDescription> newInstance({
     String id,
@@ -175,11 +201,17 @@ class SubstanceSourceMaterial_FractionDescription {
     return newSubstanceSourceMaterial_FractionDescription;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String fraction;
+  @HiveField(4)
   Element elementFraction;
+  @HiveField(5)
   CodeableConcept materialType;
 
   SubstanceSourceMaterial_FractionDescription({
@@ -198,7 +230,6 @@ class SubstanceSourceMaterial_FractionDescription {
       _$SubstanceSourceMaterial_FractionDescriptionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceSourceMaterial_Organism {
   static Future<SubstanceSourceMaterial_Organism> newInstance({
     String id,
@@ -233,17 +264,29 @@ class SubstanceSourceMaterial_Organism {
     return newSubstanceSourceMaterial_Organism;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept family;
+  @HiveField(4)
   CodeableConcept genus;
+  @HiveField(5)
   CodeableConcept species;
+  @HiveField(6)
   CodeableConcept intraspecificType;
+  @HiveField(7)
   String intraspecificDescription;
+  @HiveField(8)
   Element elementIntraspecificDescription;
+  @HiveField(9)
   List<SubstanceSourceMaterial_Author> author;
+  @HiveField(10)
   SubstanceSourceMaterial_Hybrid hybrid;
+  @HiveField(11)
   SubstanceSourceMaterial_OrganismGeneral organismGeneral;
 
   SubstanceSourceMaterial_Organism({
@@ -268,7 +311,6 @@ class SubstanceSourceMaterial_Organism {
       _$SubstanceSourceMaterial_OrganismToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceSourceMaterial_Author {
   static Future<SubstanceSourceMaterial_Author> newInstance({
     String id,
@@ -291,11 +333,17 @@ class SubstanceSourceMaterial_Author {
     return newSubstanceSourceMaterial_Author;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept authorType;
+  @HiveField(4)
   String authorDescription;
+  @HiveField(5)
   Element elementAuthorDescription;
 
   SubstanceSourceMaterial_Author({
@@ -312,7 +360,6 @@ class SubstanceSourceMaterial_Author {
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_AuthorToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceSourceMaterial_Hybrid {
   static Future<SubstanceSourceMaterial_Hybrid> newInstance({
     String id,
@@ -347,17 +394,29 @@ class SubstanceSourceMaterial_Hybrid {
     return newSubstanceSourceMaterial_Hybrid;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String maternalOrganismId;
+  @HiveField(4)
   Element elementMaternalOrganismId;
+  @HiveField(5)
   String maternalOrganismName;
+  @HiveField(6)
   Element elementMaternalOrganismName;
+  @HiveField(7)
   String paternalOrganismId;
+  @HiveField(8)
   Element elementPaternalOrganismId;
+  @HiveField(9)
   String paternalOrganismName;
+  @HiveField(10)
   Element elementPaternalOrganismName;
+  @HiveField(11)
   CodeableConcept hybridType;
 
   SubstanceSourceMaterial_Hybrid({
@@ -380,7 +439,6 @@ class SubstanceSourceMaterial_Hybrid {
   Map<String, dynamic> toJson() => _$SubstanceSourceMaterial_HybridToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceSourceMaterial_OrganismGeneral {
   static Future<SubstanceSourceMaterial_OrganismGeneral> newInstance({
     String id,
@@ -406,12 +464,19 @@ class SubstanceSourceMaterial_OrganismGeneral {
     return newSubstanceSourceMaterial_OrganismGeneral;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept kingdom;
+  @HiveField(4)
   CodeableConcept phylum;
+  @HiveField(5)
   CodeableConcept classs;
+  @HiveField(6)
   CodeableConcept order;
 
   SubstanceSourceMaterial_OrganismGeneral({
@@ -431,7 +496,6 @@ class SubstanceSourceMaterial_OrganismGeneral {
       _$SubstanceSourceMaterial_OrganismGeneralToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceSourceMaterial_PartDescription {
   static Future<SubstanceSourceMaterial_PartDescription> newInstance({
     String id,
@@ -453,10 +517,15 @@ class SubstanceSourceMaterial_PartDescription {
     return newSubstanceSourceMaterial_PartDescription;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept part;
+  @HiveField(4)
   CodeableConcept partLocation;
 
   SubstanceSourceMaterial_PartDescription({
@@ -951,4 +1020,370 @@ Map<String, dynamic> _$SubstanceSourceMaterial_PartDescriptionToJson(
   writeNotNull('part', instance.part?.toJson());
   writeNotNull('partLocation', instance.partLocation?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class SubstanceSourceMaterialAdapter
+    extends TypeAdapter<SubstanceSourceMaterial> {
+  @override
+  SubstanceSourceMaterial read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceSourceMaterial(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      sourceMaterialClass: fields[11] as CodeableConcept,
+      sourceMaterialType: fields[12] as CodeableConcept,
+      sourceMaterialState: fields[13] as CodeableConcept,
+      organismId: fields[14] as Identifier,
+      organismName: fields[15] as String,
+      elementOrganismName: fields[16] as Element,
+      parentSubstanceId: (fields[17] as List)?.cast<Identifier>(),
+      parentSubstanceName: (fields[18] as List)?.cast<String>(),
+      elementParentSubstanceName: (fields[19] as List)?.cast<Element>(),
+      countryOfOrigin: (fields[20] as List)?.cast<CodeableConcept>(),
+      geographicalLocation: (fields[21] as List)?.cast<String>(),
+      elementGeographicalLocation: (fields[22] as List)?.cast<Element>(),
+      developmentStage: fields[23] as CodeableConcept,
+      fractionDescription: (fields[24] as List)
+          ?.cast<SubstanceSourceMaterial_FractionDescription>(),
+      organism: fields[25] as SubstanceSourceMaterial_Organism,
+      partDescription:
+          (fields[26] as List)?.cast<SubstanceSourceMaterial_PartDescription>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceSourceMaterial obj) {
+    writer
+      ..writeByte(27)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.sourceMaterialClass)
+      ..writeByte(12)
+      ..write(obj.sourceMaterialType)
+      ..writeByte(13)
+      ..write(obj.sourceMaterialState)
+      ..writeByte(14)
+      ..write(obj.organismId)
+      ..writeByte(15)
+      ..write(obj.organismName)
+      ..writeByte(16)
+      ..write(obj.elementOrganismName)
+      ..writeByte(17)
+      ..write(obj.parentSubstanceId)
+      ..writeByte(18)
+      ..write(obj.parentSubstanceName)
+      ..writeByte(19)
+      ..write(obj.elementParentSubstanceName)
+      ..writeByte(20)
+      ..write(obj.countryOfOrigin)
+      ..writeByte(21)
+      ..write(obj.geographicalLocation)
+      ..writeByte(22)
+      ..write(obj.elementGeographicalLocation)
+      ..writeByte(23)
+      ..write(obj.developmentStage)
+      ..writeByte(24)
+      ..write(obj.fractionDescription)
+      ..writeByte(25)
+      ..write(obj.organism)
+      ..writeByte(26)
+      ..write(obj.partDescription);
+  }
+}
+
+class SubstanceSourceMaterial_FractionDescriptionAdapter
+    extends TypeAdapter<SubstanceSourceMaterial_FractionDescription> {
+  @override
+  SubstanceSourceMaterial_FractionDescription read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceSourceMaterial_FractionDescription(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      fraction: fields[3] as String,
+      elementFraction: fields[4] as Element,
+      materialType: fields[5] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, SubstanceSourceMaterial_FractionDescription obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.fraction)
+      ..writeByte(4)
+      ..write(obj.elementFraction)
+      ..writeByte(5)
+      ..write(obj.materialType);
+  }
+}
+
+class SubstanceSourceMaterial_OrganismAdapter
+    extends TypeAdapter<SubstanceSourceMaterial_Organism> {
+  @override
+  SubstanceSourceMaterial_Organism read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceSourceMaterial_Organism(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      family: fields[3] as CodeableConcept,
+      genus: fields[4] as CodeableConcept,
+      species: fields[5] as CodeableConcept,
+      intraspecificType: fields[6] as CodeableConcept,
+      intraspecificDescription: fields[7] as String,
+      elementIntraspecificDescription: fields[8] as Element,
+      author: (fields[9] as List)?.cast<SubstanceSourceMaterial_Author>(),
+      hybrid: fields[10] as SubstanceSourceMaterial_Hybrid,
+      organismGeneral: fields[11] as SubstanceSourceMaterial_OrganismGeneral,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceSourceMaterial_Organism obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.family)
+      ..writeByte(4)
+      ..write(obj.genus)
+      ..writeByte(5)
+      ..write(obj.species)
+      ..writeByte(6)
+      ..write(obj.intraspecificType)
+      ..writeByte(7)
+      ..write(obj.intraspecificDescription)
+      ..writeByte(8)
+      ..write(obj.elementIntraspecificDescription)
+      ..writeByte(9)
+      ..write(obj.author)
+      ..writeByte(10)
+      ..write(obj.hybrid)
+      ..writeByte(11)
+      ..write(obj.organismGeneral);
+  }
+}
+
+class SubstanceSourceMaterial_AuthorAdapter
+    extends TypeAdapter<SubstanceSourceMaterial_Author> {
+  @override
+  SubstanceSourceMaterial_Author read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceSourceMaterial_Author(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      authorType: fields[3] as CodeableConcept,
+      authorDescription: fields[4] as String,
+      elementAuthorDescription: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceSourceMaterial_Author obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.authorType)
+      ..writeByte(4)
+      ..write(obj.authorDescription)
+      ..writeByte(5)
+      ..write(obj.elementAuthorDescription);
+  }
+}
+
+class SubstanceSourceMaterial_HybridAdapter
+    extends TypeAdapter<SubstanceSourceMaterial_Hybrid> {
+  @override
+  SubstanceSourceMaterial_Hybrid read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceSourceMaterial_Hybrid(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      maternalOrganismId: fields[3] as String,
+      elementMaternalOrganismId: fields[4] as Element,
+      maternalOrganismName: fields[5] as String,
+      elementMaternalOrganismName: fields[6] as Element,
+      paternalOrganismId: fields[7] as String,
+      elementPaternalOrganismId: fields[8] as Element,
+      paternalOrganismName: fields[9] as String,
+      elementPaternalOrganismName: fields[10] as Element,
+      hybridType: fields[11] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceSourceMaterial_Hybrid obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.maternalOrganismId)
+      ..writeByte(4)
+      ..write(obj.elementMaternalOrganismId)
+      ..writeByte(5)
+      ..write(obj.maternalOrganismName)
+      ..writeByte(6)
+      ..write(obj.elementMaternalOrganismName)
+      ..writeByte(7)
+      ..write(obj.paternalOrganismId)
+      ..writeByte(8)
+      ..write(obj.elementPaternalOrganismId)
+      ..writeByte(9)
+      ..write(obj.paternalOrganismName)
+      ..writeByte(10)
+      ..write(obj.elementPaternalOrganismName)
+      ..writeByte(11)
+      ..write(obj.hybridType);
+  }
+}
+
+class SubstanceSourceMaterial_OrganismGeneralAdapter
+    extends TypeAdapter<SubstanceSourceMaterial_OrganismGeneral> {
+  @override
+  SubstanceSourceMaterial_OrganismGeneral read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceSourceMaterial_OrganismGeneral(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      kingdom: fields[3] as CodeableConcept,
+      phylum: fields[4] as CodeableConcept,
+      classs: fields[5] as CodeableConcept,
+      order: fields[6] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceSourceMaterial_OrganismGeneral obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.kingdom)
+      ..writeByte(4)
+      ..write(obj.phylum)
+      ..writeByte(5)
+      ..write(obj.classs)
+      ..writeByte(6)
+      ..write(obj.order);
+  }
+}
+
+class SubstanceSourceMaterial_PartDescriptionAdapter
+    extends TypeAdapter<SubstanceSourceMaterial_PartDescription> {
+  @override
+  SubstanceSourceMaterial_PartDescription read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceSourceMaterial_PartDescription(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      part: fields[3] as CodeableConcept,
+      partLocation: fields[4] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceSourceMaterial_PartDescription obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.part)
+      ..writeByte(4)
+      ..write(obj.partLocation);
+  }
 }

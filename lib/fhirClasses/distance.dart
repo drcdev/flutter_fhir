@@ -1,10 +1,10 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Distance {
   static Future<Distance> newInstance({
     String id,
@@ -38,17 +38,29 @@ class Distance {
     return newDistance;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   double value;
+  @HiveField(3)
   Element elementValue;
+  @HiveField(4)
   String comparator;
+  @HiveField(5)
   Element elementComparator;
+  @HiveField(6)
   String unit;
+  @HiveField(7)
   Element elementUnit;
+  @HiveField(8)
   String system;
+  @HiveField(9)
   Element elementSystem;
+  @HiveField(10)
   String code;
+  @HiveField(11)
   Element elementCode;
 
   Distance({
@@ -129,4 +141,63 @@ Map<String, dynamic> _$DistanceToJson(Distance instance) {
   writeNotNull('code', instance.code);
   writeNotNull('elementCode', instance.elementCode?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DistanceAdapter extends TypeAdapter<Distance> {
+  @override
+  Distance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Distance(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      value: fields[2] as double,
+      elementValue: fields[3] as Element,
+      comparator: fields[4] as String,
+      elementComparator: fields[5] as Element,
+      unit: fields[6] as String,
+      elementUnit: fields[7] as Element,
+      system: fields[8] as String,
+      elementSystem: fields[9] as Element,
+      code: fields[10] as String,
+      elementCode: fields[11] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Distance obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.value)
+      ..writeByte(3)
+      ..write(obj.elementValue)
+      ..writeByte(4)
+      ..write(obj.comparator)
+      ..writeByte(5)
+      ..write(obj.elementComparator)
+      ..writeByte(6)
+      ..write(obj.unit)
+      ..writeByte(7)
+      ..write(obj.elementUnit)
+      ..writeByte(8)
+      ..write(obj.system)
+      ..writeByte(9)
+      ..write(obj.elementSystem)
+      ..writeByte(10)
+      ..write(obj.code)
+      ..writeByte(11)
+      ..write(obj.elementCode);
+  }
 }

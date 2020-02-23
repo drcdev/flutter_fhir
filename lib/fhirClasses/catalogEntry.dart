@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CatalogEntry {
   static Future<CatalogEntry> newInstance({
     String resourceType,
@@ -90,33 +90,61 @@ class CatalogEntry {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'CatalogEntry';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   CodeableConcept type;
+  @HiveField(13)
   bool orderable;
+  @HiveField(14)
   Element elementOrderable;
+  @HiveField(15)
   Reference referencedItem;
+  @HiveField(16)
   List<Identifier> additionalIdentifier;
+  @HiveField(17)
   List<CodeableConcept> classification;
+  @HiveField(18)
   String status;
+  @HiveField(19)
   Element elementStatus;
+  @HiveField(20)
   Period validityPeriod;
+  @HiveField(21)
   DateTime validTo;
+  @HiveField(22)
   Element elementValidTo;
+  @HiveField(23)
   DateTime lastUpdated;
+  @HiveField(24)
   Element elementLastUpdated;
+  @HiveField(25)
   List<CodeableConcept> additionalCharacteristic;
+  @HiveField(26)
   List<CodeableConcept> additionalClassification;
+  @HiveField(27)
   List<CatalogEntry_RelatedEntry> relatedEntry;
 
   CatalogEntry({
@@ -155,7 +183,6 @@ class CatalogEntry {
   Map<String, dynamic> toJson() => _$CatalogEntryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CatalogEntry_RelatedEntry {
   static Future<CatalogEntry_RelatedEntry> newInstance({
     String id,
@@ -178,11 +205,17 @@ class CatalogEntry_RelatedEntry {
     return newCatalogEntry_RelatedEntry;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String relationtype;
+  @HiveField(4)
   Element elementRelationtype;
+  @HiveField(5)
   Reference item;
 
   CatalogEntry_RelatedEntry({
@@ -385,4 +418,148 @@ Map<String, dynamic> _$CatalogEntry_RelatedEntryToJson(
   writeNotNull('elementRelationtype', instance.elementRelationtype?.toJson());
   writeNotNull('item', instance.item?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CatalogEntryAdapter extends TypeAdapter<CatalogEntry> {
+  @override
+  CatalogEntry read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CatalogEntry(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      type: fields[12] as CodeableConcept,
+      orderable: fields[13] as bool,
+      elementOrderable: fields[14] as Element,
+      referencedItem: fields[15] as Reference,
+      additionalIdentifier: (fields[16] as List)?.cast<Identifier>(),
+      classification: (fields[17] as List)?.cast<CodeableConcept>(),
+      status: fields[18] as String,
+      elementStatus: fields[19] as Element,
+      validityPeriod: fields[20] as Period,
+      validTo: fields[21] as DateTime,
+      elementValidTo: fields[22] as Element,
+      lastUpdated: fields[23] as DateTime,
+      elementLastUpdated: fields[24] as Element,
+      additionalCharacteristic: (fields[25] as List)?.cast<CodeableConcept>(),
+      additionalClassification: (fields[26] as List)?.cast<CodeableConcept>(),
+      relatedEntry: (fields[27] as List)?.cast<CatalogEntry_RelatedEntry>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CatalogEntry obj) {
+    writer
+      ..writeByte(28)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.type)
+      ..writeByte(13)
+      ..write(obj.orderable)
+      ..writeByte(14)
+      ..write(obj.elementOrderable)
+      ..writeByte(15)
+      ..write(obj.referencedItem)
+      ..writeByte(16)
+      ..write(obj.additionalIdentifier)
+      ..writeByte(17)
+      ..write(obj.classification)
+      ..writeByte(18)
+      ..write(obj.status)
+      ..writeByte(19)
+      ..write(obj.elementStatus)
+      ..writeByte(20)
+      ..write(obj.validityPeriod)
+      ..writeByte(21)
+      ..write(obj.validTo)
+      ..writeByte(22)
+      ..write(obj.elementValidTo)
+      ..writeByte(23)
+      ..write(obj.lastUpdated)
+      ..writeByte(24)
+      ..write(obj.elementLastUpdated)
+      ..writeByte(25)
+      ..write(obj.additionalCharacteristic)
+      ..writeByte(26)
+      ..write(obj.additionalClassification)
+      ..writeByte(27)
+      ..write(obj.relatedEntry);
+  }
+}
+
+class CatalogEntry_RelatedEntryAdapter
+    extends TypeAdapter<CatalogEntry_RelatedEntry> {
+  @override
+  CatalogEntry_RelatedEntry read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CatalogEntry_RelatedEntry(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      relationtype: fields[3] as String,
+      elementRelationtype: fields[4] as Element,
+      item: fields[5] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CatalogEntry_RelatedEntry obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.relationtype)
+      ..writeByte(4)
+      ..write(obj.elementRelationtype)
+      ..writeByte(5)
+      ..write(obj.item);
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/dataRequirement.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class GuidanceResponse {
   static Future<GuidanceResponse> newInstance({
     String resourceType,
@@ -99,37 +99,69 @@ class GuidanceResponse {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'GuidanceResponse';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   Identifier requestIdentifier;
+  @HiveField(12)
   List<Identifier> identifier;
+  @HiveField(13)
   String moduleUri;
+  @HiveField(14)
   Element elementModuleUri;
+  @HiveField(15)
   String moduleCanonical;
+  @HiveField(16)
   Element elementModuleCanonical;
+  @HiveField(17)
   CodeableConcept moduleCodeableConcept;
+  @HiveField(18)
   String status;
+  @HiveField(19)
   Element elementStatus;
+  @HiveField(20)
   Reference subject;
+  @HiveField(21)
   Reference encounter;
+  @HiveField(22)
   DateTime occurrenceDateTime;
+  @HiveField(23)
   Element elementOccurrenceDateTime;
+  @HiveField(24)
   Reference performer;
+  @HiveField(25)
   List<CodeableConcept> reasonCode;
+  @HiveField(26)
   List<Reference> reasonReference;
+  @HiveField(27)
   List<Annotation> note;
+  @HiveField(28)
   List<Reference> evaluationMessage;
+  @HiveField(29)
   Reference outputParameters;
+  @HiveField(30)
   Reference result;
+  @HiveField(31)
   List<DataRequirement> dataRequirement;
 
   GuidanceResponse({
@@ -334,4 +366,123 @@ Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) {
   writeNotNull('dataRequirement',
       instance.dataRequirement?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class GuidanceResponseAdapter extends TypeAdapter<GuidanceResponse> {
+  @override
+  GuidanceResponse read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return GuidanceResponse(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      requestIdentifier: fields[11] as Identifier,
+      identifier: (fields[12] as List)?.cast<Identifier>(),
+      moduleUri: fields[13] as String,
+      elementModuleUri: fields[14] as Element,
+      moduleCanonical: fields[15] as String,
+      elementModuleCanonical: fields[16] as Element,
+      moduleCodeableConcept: fields[17] as CodeableConcept,
+      status: fields[18] as String,
+      elementStatus: fields[19] as Element,
+      subject: fields[20] as Reference,
+      encounter: fields[21] as Reference,
+      occurrenceDateTime: fields[22] as DateTime,
+      elementOccurrenceDateTime: fields[23] as Element,
+      performer: fields[24] as Reference,
+      reasonCode: (fields[25] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[26] as List)?.cast<Reference>(),
+      note: (fields[27] as List)?.cast<Annotation>(),
+      evaluationMessage: (fields[28] as List)?.cast<Reference>(),
+      outputParameters: fields[29] as Reference,
+      result: fields[30] as Reference,
+      dataRequirement: (fields[31] as List)?.cast<DataRequirement>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, GuidanceResponse obj) {
+    writer
+      ..writeByte(32)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.requestIdentifier)
+      ..writeByte(12)
+      ..write(obj.identifier)
+      ..writeByte(13)
+      ..write(obj.moduleUri)
+      ..writeByte(14)
+      ..write(obj.elementModuleUri)
+      ..writeByte(15)
+      ..write(obj.moduleCanonical)
+      ..writeByte(16)
+      ..write(obj.elementModuleCanonical)
+      ..writeByte(17)
+      ..write(obj.moduleCodeableConcept)
+      ..writeByte(18)
+      ..write(obj.status)
+      ..writeByte(19)
+      ..write(obj.elementStatus)
+      ..writeByte(20)
+      ..write(obj.subject)
+      ..writeByte(21)
+      ..write(obj.encounter)
+      ..writeByte(22)
+      ..write(obj.occurrenceDateTime)
+      ..writeByte(23)
+      ..write(obj.elementOccurrenceDateTime)
+      ..writeByte(24)
+      ..write(obj.performer)
+      ..writeByte(25)
+      ..write(obj.reasonCode)
+      ..writeByte(26)
+      ..write(obj.reasonReference)
+      ..writeByte(27)
+      ..write(obj.note)
+      ..writeByte(28)
+      ..write(obj.evaluationMessage)
+      ..writeByte(29)
+      ..write(obj.outputParameters)
+      ..writeByte(30)
+      ..write(obj.result)
+      ..writeByte(31)
+      ..write(obj.dataRequirement);
+  }
 }

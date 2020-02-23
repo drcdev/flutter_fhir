@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SearchParameter {
   static Future<SearchParameter> newInstance({
     String resourceType,
@@ -149,63 +149,121 @@ class SearchParameter {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'SearchParameter';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   String version;
+  @HiveField(14)
   Element elementVersion;
+  @HiveField(15)
   String name;
+  @HiveField(16)
   Element elementName;
+  @HiveField(17)
   String derivedFrom;
+  @HiveField(18)
   String status;
+  @HiveField(19)
   Element elementStatus;
+  @HiveField(20)
   bool experimental;
+  @HiveField(21)
   Element elementExperimental;
+  @HiveField(22)
   DateTime date;
+  @HiveField(23)
   Element elementDate;
+  @HiveField(24)
   String publisher;
+  @HiveField(25)
   Element elementPublisher;
+  @HiveField(26)
   List<ContactDetail> contact;
+  @HiveField(27)
   String description;
+  @HiveField(28)
   Element elementDescription;
+  @HiveField(29)
   List<UsageContext> useContext;
+  @HiveField(30)
   List<CodeableConcept> jurisdiction;
+  @HiveField(31)
   String purpose;
+  @HiveField(32)
   Element elementPurpose;
+  @HiveField(33)
   String code;
+  @HiveField(34)
   Element elementCode;
+  @HiveField(35)
   List<String> base;
+  @HiveField(36)
   List<Element> elementBase;
+  @HiveField(37)
   String type;
+  @HiveField(38)
   Element elementType;
+  @HiveField(39)
   String expression;
+  @HiveField(40)
   Element elementExpression;
+  @HiveField(41)
   String xpath;
+  @HiveField(42)
   Element elementXpath;
+  @HiveField(43)
   String xpathUsage;
+  @HiveField(44)
   Element elementXpathUsage;
+  @HiveField(45)
   List<String> target;
+  @HiveField(46)
   List<Element> elementTarget;
+  @HiveField(47)
   bool multipleOr;
+  @HiveField(48)
   Element elementMultipleOr;
+  @HiveField(49)
   bool multipleAnd;
+  @HiveField(50)
   Element elementMultipleAnd;
+  @HiveField(51)
   String comparator;
+  @HiveField(52)
   List<Element> elementComparator;
+  @HiveField(53)
   String modifier;
+  @HiveField(54)
   List<Element> elementModifier;
+  @HiveField(55)
   List<String> chain;
+  @HiveField(56)
   List<Element> elementChain;
+  @HiveField(57)
   List<SearchParameter_Component> component;
 
   SearchParameter({
@@ -274,7 +332,6 @@ class SearchParameter {
   Map<String, dynamic> toJson() => _$SearchParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SearchParameter_Component {
   static Future<SearchParameter_Component> newInstance({
     String id,
@@ -297,11 +354,17 @@ class SearchParameter_Component {
     return newSearchParameter_Component;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String definition;
+  @HiveField(4)
   String expression;
+  @HiveField(5)
   Element elementExpression;
 
   SearchParameter_Component({
@@ -586,4 +649,238 @@ Map<String, dynamic> _$SearchParameter_ComponentToJson(
   writeNotNull('expression', instance.expression);
   writeNotNull('elementExpression', instance.elementExpression?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class SearchParameterAdapter extends TypeAdapter<SearchParameter> {
+  @override
+  SearchParameter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SearchParameter(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      version: fields[13] as String,
+      elementVersion: fields[14] as Element,
+      name: fields[15] as String,
+      elementName: fields[16] as Element,
+      derivedFrom: fields[17] as String,
+      status: fields[18] as String,
+      elementStatus: fields[19] as Element,
+      experimental: fields[20] as bool,
+      elementExperimental: fields[21] as Element,
+      date: fields[22] as DateTime,
+      elementDate: fields[23] as Element,
+      publisher: fields[24] as String,
+      elementPublisher: fields[25] as Element,
+      contact: (fields[26] as List)?.cast<ContactDetail>(),
+      description: fields[27] as String,
+      elementDescription: fields[28] as Element,
+      useContext: (fields[29] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[30] as List)?.cast<CodeableConcept>(),
+      purpose: fields[31] as String,
+      elementPurpose: fields[32] as Element,
+      code: fields[33] as String,
+      elementCode: fields[34] as Element,
+      base: (fields[35] as List)?.cast<String>(),
+      elementBase: (fields[36] as List)?.cast<Element>(),
+      type: fields[37] as String,
+      elementType: fields[38] as Element,
+      expression: fields[39] as String,
+      elementExpression: fields[40] as Element,
+      xpath: fields[41] as String,
+      elementXpath: fields[42] as Element,
+      xpathUsage: fields[43] as String,
+      elementXpathUsage: fields[44] as Element,
+      target: (fields[45] as List)?.cast<String>(),
+      elementTarget: (fields[46] as List)?.cast<Element>(),
+      multipleOr: fields[47] as bool,
+      elementMultipleOr: fields[48] as Element,
+      multipleAnd: fields[49] as bool,
+      elementMultipleAnd: fields[50] as Element,
+      comparator: fields[51] as String,
+      elementComparator: (fields[52] as List)?.cast<Element>(),
+      modifier: fields[53] as String,
+      elementModifier: (fields[54] as List)?.cast<Element>(),
+      chain: (fields[55] as List)?.cast<String>(),
+      elementChain: (fields[56] as List)?.cast<Element>(),
+      component: (fields[57] as List)?.cast<SearchParameter_Component>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SearchParameter obj) {
+    writer
+      ..writeByte(58)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.version)
+      ..writeByte(14)
+      ..write(obj.elementVersion)
+      ..writeByte(15)
+      ..write(obj.name)
+      ..writeByte(16)
+      ..write(obj.elementName)
+      ..writeByte(17)
+      ..write(obj.derivedFrom)
+      ..writeByte(18)
+      ..write(obj.status)
+      ..writeByte(19)
+      ..write(obj.elementStatus)
+      ..writeByte(20)
+      ..write(obj.experimental)
+      ..writeByte(21)
+      ..write(obj.elementExperimental)
+      ..writeByte(22)
+      ..write(obj.date)
+      ..writeByte(23)
+      ..write(obj.elementDate)
+      ..writeByte(24)
+      ..write(obj.publisher)
+      ..writeByte(25)
+      ..write(obj.elementPublisher)
+      ..writeByte(26)
+      ..write(obj.contact)
+      ..writeByte(27)
+      ..write(obj.description)
+      ..writeByte(28)
+      ..write(obj.elementDescription)
+      ..writeByte(29)
+      ..write(obj.useContext)
+      ..writeByte(30)
+      ..write(obj.jurisdiction)
+      ..writeByte(31)
+      ..write(obj.purpose)
+      ..writeByte(32)
+      ..write(obj.elementPurpose)
+      ..writeByte(33)
+      ..write(obj.code)
+      ..writeByte(34)
+      ..write(obj.elementCode)
+      ..writeByte(35)
+      ..write(obj.base)
+      ..writeByte(36)
+      ..write(obj.elementBase)
+      ..writeByte(37)
+      ..write(obj.type)
+      ..writeByte(38)
+      ..write(obj.elementType)
+      ..writeByte(39)
+      ..write(obj.expression)
+      ..writeByte(40)
+      ..write(obj.elementExpression)
+      ..writeByte(41)
+      ..write(obj.xpath)
+      ..writeByte(42)
+      ..write(obj.elementXpath)
+      ..writeByte(43)
+      ..write(obj.xpathUsage)
+      ..writeByte(44)
+      ..write(obj.elementXpathUsage)
+      ..writeByte(45)
+      ..write(obj.target)
+      ..writeByte(46)
+      ..write(obj.elementTarget)
+      ..writeByte(47)
+      ..write(obj.multipleOr)
+      ..writeByte(48)
+      ..write(obj.elementMultipleOr)
+      ..writeByte(49)
+      ..write(obj.multipleAnd)
+      ..writeByte(50)
+      ..write(obj.elementMultipleAnd)
+      ..writeByte(51)
+      ..write(obj.comparator)
+      ..writeByte(52)
+      ..write(obj.elementComparator)
+      ..writeByte(53)
+      ..write(obj.modifier)
+      ..writeByte(54)
+      ..write(obj.elementModifier)
+      ..writeByte(55)
+      ..write(obj.chain)
+      ..writeByte(56)
+      ..write(obj.elementChain)
+      ..writeByte(57)
+      ..write(obj.component);
+  }
+}
+
+class SearchParameter_ComponentAdapter
+    extends TypeAdapter<SearchParameter_Component> {
+  @override
+  SearchParameter_Component read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SearchParameter_Component(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      definition: fields[3] as String,
+      expression: fields[4] as String,
+      elementExpression: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SearchParameter_Component obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.definition)
+      ..writeByte(4)
+      ..write(obj.expression)
+      ..writeByte(5)
+      ..write(obj.elementExpression);
+  }
 }

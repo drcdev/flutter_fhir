@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class VisionPrescription {
   static Future<VisionPrescription> newInstance({
     String resourceType,
@@ -80,27 +80,49 @@ class VisionPrescription {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'VisionPrescription';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   DateTime created;
+  @HiveField(15)
   Element elementCreated;
+  @HiveField(16)
   Reference patient;
+  @HiveField(17)
   Reference encounter;
+  @HiveField(18)
   DateTime dateWritten;
+  @HiveField(19)
   Element elementDateWritten;
+  @HiveField(20)
   Reference prescriber;
+  @HiveField(21)
   List<VisionPrescription_LensSpecification> lensSpecification;
 
   VisionPrescription({
@@ -133,7 +155,6 @@ class VisionPrescription {
   Map<String, dynamic> toJson() => _$VisionPrescriptionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class VisionPrescription_LensSpecification {
   static Future<VisionPrescription_LensSpecification> newInstance({
     String id,
@@ -199,32 +220,59 @@ class VisionPrescription_LensSpecification {
     return newVisionPrescription_LensSpecification;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept product;
+  @HiveField(4)
   String eye;
+  @HiveField(5)
   Element elementEye;
+  @HiveField(6)
   double sphere;
+  @HiveField(7)
   Element elementSphere;
+  @HiveField(8)
   double cylinder;
+  @HiveField(9)
   Element elementCylinder;
+  @HiveField(10)
   int axis;
+  @HiveField(11)
   Element elementAxis;
+  @HiveField(12)
   List<VisionPrescription_Prism> prism;
+  @HiveField(13)
   double add;
+  @HiveField(14)
   Element elementAdd;
+  @HiveField(15)
   double power;
+  @HiveField(16)
   Element elementPower;
+  @HiveField(17)
   double backCurve;
+  @HiveField(18)
   Element elementBackCurve;
+  @HiveField(19)
   double diameter;
+  @HiveField(20)
   Element elementDiameter;
+  @HiveField(21)
   Quantity duration;
+  @HiveField(22)
   String color;
+  @HiveField(23)
   Element elementColor;
+  @HiveField(24)
   String brand;
+  @HiveField(25)
   Element elementBrand;
+  @HiveField(26)
   List<Annotation> note;
 
   VisionPrescription_LensSpecification({
@@ -264,7 +312,6 @@ class VisionPrescription_LensSpecification {
       _$VisionPrescription_LensSpecificationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class VisionPrescription_Prism {
   static Future<VisionPrescription_Prism> newInstance({
     String id,
@@ -289,12 +336,19 @@ class VisionPrescription_Prism {
     return newVisionPrescription_Prism;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   double amount;
+  @HiveField(4)
   Element elementAmount;
+  @HiveField(5)
   String base;
+  @HiveField(6)
   Element elementBase;
 
   VisionPrescription_Prism({
@@ -580,4 +634,234 @@ Map<String, dynamic> _$VisionPrescription_PrismToJson(
   writeNotNull('base', instance.base);
   writeNotNull('elementBase', instance.elementBase?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class VisionPrescriptionAdapter extends TypeAdapter<VisionPrescription> {
+  @override
+  VisionPrescription read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VisionPrescription(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      created: fields[14] as DateTime,
+      elementCreated: fields[15] as Element,
+      patient: fields[16] as Reference,
+      encounter: fields[17] as Reference,
+      dateWritten: fields[18] as DateTime,
+      elementDateWritten: fields[19] as Element,
+      prescriber: fields[20] as Reference,
+      lensSpecification:
+          (fields[21] as List)?.cast<VisionPrescription_LensSpecification>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VisionPrescription obj) {
+    writer
+      ..writeByte(22)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.created)
+      ..writeByte(15)
+      ..write(obj.elementCreated)
+      ..writeByte(16)
+      ..write(obj.patient)
+      ..writeByte(17)
+      ..write(obj.encounter)
+      ..writeByte(18)
+      ..write(obj.dateWritten)
+      ..writeByte(19)
+      ..write(obj.elementDateWritten)
+      ..writeByte(20)
+      ..write(obj.prescriber)
+      ..writeByte(21)
+      ..write(obj.lensSpecification);
+  }
+}
+
+class VisionPrescription_LensSpecificationAdapter
+    extends TypeAdapter<VisionPrescription_LensSpecification> {
+  @override
+  VisionPrescription_LensSpecification read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VisionPrescription_LensSpecification(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      product: fields[3] as CodeableConcept,
+      eye: fields[4] as String,
+      elementEye: fields[5] as Element,
+      sphere: fields[6] as double,
+      elementSphere: fields[7] as Element,
+      cylinder: fields[8] as double,
+      elementCylinder: fields[9] as Element,
+      axis: fields[10] as int,
+      elementAxis: fields[11] as Element,
+      prism: (fields[12] as List)?.cast<VisionPrescription_Prism>(),
+      add: fields[13] as double,
+      elementAdd: fields[14] as Element,
+      power: fields[15] as double,
+      elementPower: fields[16] as Element,
+      backCurve: fields[17] as double,
+      elementBackCurve: fields[18] as Element,
+      diameter: fields[19] as double,
+      elementDiameter: fields[20] as Element,
+      duration: fields[21] as Quantity,
+      color: fields[22] as String,
+      elementColor: fields[23] as Element,
+      brand: fields[24] as String,
+      elementBrand: fields[25] as Element,
+      note: (fields[26] as List)?.cast<Annotation>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VisionPrescription_LensSpecification obj) {
+    writer
+      ..writeByte(27)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.product)
+      ..writeByte(4)
+      ..write(obj.eye)
+      ..writeByte(5)
+      ..write(obj.elementEye)
+      ..writeByte(6)
+      ..write(obj.sphere)
+      ..writeByte(7)
+      ..write(obj.elementSphere)
+      ..writeByte(8)
+      ..write(obj.cylinder)
+      ..writeByte(9)
+      ..write(obj.elementCylinder)
+      ..writeByte(10)
+      ..write(obj.axis)
+      ..writeByte(11)
+      ..write(obj.elementAxis)
+      ..writeByte(12)
+      ..write(obj.prism)
+      ..writeByte(13)
+      ..write(obj.add)
+      ..writeByte(14)
+      ..write(obj.elementAdd)
+      ..writeByte(15)
+      ..write(obj.power)
+      ..writeByte(16)
+      ..write(obj.elementPower)
+      ..writeByte(17)
+      ..write(obj.backCurve)
+      ..writeByte(18)
+      ..write(obj.elementBackCurve)
+      ..writeByte(19)
+      ..write(obj.diameter)
+      ..writeByte(20)
+      ..write(obj.elementDiameter)
+      ..writeByte(21)
+      ..write(obj.duration)
+      ..writeByte(22)
+      ..write(obj.color)
+      ..writeByte(23)
+      ..write(obj.elementColor)
+      ..writeByte(24)
+      ..write(obj.brand)
+      ..writeByte(25)
+      ..write(obj.elementBrand)
+      ..writeByte(26)
+      ..write(obj.note);
+  }
+}
+
+class VisionPrescription_PrismAdapter
+    extends TypeAdapter<VisionPrescription_Prism> {
+  @override
+  VisionPrescription_Prism read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VisionPrescription_Prism(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      amount: fields[3] as double,
+      elementAmount: fields[4] as Element,
+      base: fields[5] as String,
+      elementBase: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VisionPrescription_Prism obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.amount)
+      ..writeByte(4)
+      ..write(obj.elementAmount)
+      ..writeByte(5)
+      ..write(obj.base)
+      ..writeByte(6)
+      ..write(obj.elementBase);
+  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:hive/hive.dart';
 
-@HiveType()
 class HiveResource {
   @HiveField(0)
   String resourceType;
@@ -16,7 +15,7 @@ class HiveResource {
   DateTime lastUpdated;
 
   @HiveField(5)
-  dynamic resource;
+  String resource;
 
   HiveResource(
       {this.resourceType,
@@ -29,33 +28,33 @@ class HiveResource {
     resourceType = json['resourceType'] as String;
     id = json['id'] as String;
     createdAt = json['createdAt'] == null
-    ? null
+        ? null
         : DateTime.parse(json['createdAt'] as String);
     lastUpdated = json['lastUpdated'] == null
-    ? null
+        ? null
         : DateTime.parse(json['lastUpdated'] as String);
     resource = json['resource'] == null
         ? null
         : ResourceTypes(json['resource']['resourceType'],
-        json['resource'] as Map<String, dynamic>);
+            json['resource'] as Map<String, dynamic>);
   }
 
-    Map<String, dynamic> toJson() {
-      final val = <String, dynamic>{};
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
 
-      void writeNotNull(String key, dynamic value) {
-        if (value != null) {
-          val[key] = value;
-        }
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
       }
-
-      writeNotNull('resourceType', this.resourceType);
-      writeNotNull('id', this.id);
-      writeNotNull('createdAt', this.createdAt?.toIso8601String());
-      writeNotNull('lastUpdated', this.lastUpdated?.toIso8601String());
-      writeNotNull('resource', this.resource);
-      return val;
     }
+
+    writeNotNull('resourceType', this.resourceType);
+    writeNotNull('id', this.id);
+    writeNotNull('createdAt', this.createdAt?.toIso8601String());
+    writeNotNull('lastUpdated', this.lastUpdated?.toIso8601String());
+    writeNotNull('resource', this.resource);
+    return val;
+  }
 }
 
 // **************************************************************************

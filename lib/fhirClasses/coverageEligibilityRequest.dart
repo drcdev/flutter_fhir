@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CoverageEligibilityRequest {
   static Future<CoverageEligibilityRequest> newInstance({
     String resourceType,
@@ -98,35 +98,65 @@ class CoverageEligibilityRequest {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'CoverageEligibilityRequest';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   CodeableConcept priority;
+  @HiveField(15)
   String purpose;
+  @HiveField(16)
   List<Element> elementPurpose;
+  @HiveField(17)
   Reference patient;
+  @HiveField(18)
   String servicedDate;
+  @HiveField(19)
   Element elementServicedDate;
+  @HiveField(20)
   Period servicedPeriod;
+  @HiveField(21)
   DateTime created;
+  @HiveField(22)
   Element elementCreated;
+  @HiveField(23)
   Reference enterer;
+  @HiveField(24)
   Reference provider;
+  @HiveField(25)
   Reference insurer;
+  @HiveField(26)
   Reference facility;
+  @HiveField(27)
   List<CoverageEligibilityRequest_SupportingInfo> supportingInfo;
+  @HiveField(28)
   List<CoverageEligibilityRequest_Insurance> insurance;
+  @HiveField(29)
   List<CoverageEligibilityRequest_Item> item;
 
   CoverageEligibilityRequest({
@@ -167,7 +197,6 @@ class CoverageEligibilityRequest {
   Map<String, dynamic> toJson() => _$CoverageEligibilityRequestToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CoverageEligibilityRequest_SupportingInfo {
   static Future<CoverageEligibilityRequest_SupportingInfo> newInstance({
     String id,
@@ -195,13 +224,21 @@ class CoverageEligibilityRequest_SupportingInfo {
     return newCoverageEligibilityRequest_SupportingInfo;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   Reference information;
+  @HiveField(6)
   bool appliesToAll;
+  @HiveField(7)
   Element elementAppliesToAll;
 
   CoverageEligibilityRequest_SupportingInfo({
@@ -222,7 +259,6 @@ class CoverageEligibilityRequest_SupportingInfo {
       _$CoverageEligibilityRequest_SupportingInfoToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CoverageEligibilityRequest_Insurance {
   static Future<CoverageEligibilityRequest_Insurance> newInstance({
     String id,
@@ -250,13 +286,21 @@ class CoverageEligibilityRequest_Insurance {
     return newCoverageEligibilityRequest_Insurance;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   bool focal;
+  @HiveField(4)
   Element elementFocal;
+  @HiveField(5)
   Reference coverage;
+  @HiveField(6)
   String businessArrangement;
+  @HiveField(7)
   Element elementBusinessArrangement;
 
   CoverageEligibilityRequest_Insurance({
@@ -277,7 +321,6 @@ class CoverageEligibilityRequest_Insurance {
       _$CoverageEligibilityRequest_InsuranceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CoverageEligibilityRequest_Item {
   static Future<CoverageEligibilityRequest_Item> newInstance({
     String id,
@@ -316,19 +359,33 @@ class CoverageEligibilityRequest_Item {
     return newCoverageEligibilityRequest_Item;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<int> supportingInfoSequence;
+  @HiveField(4)
   List<Element> elementSupportingInfoSequence;
+  @HiveField(5)
   CodeableConcept category;
+  @HiveField(6)
   CodeableConcept productOrService;
+  @HiveField(7)
   List<CodeableConcept> modifier;
+  @HiveField(8)
   Reference provider;
+  @HiveField(9)
   Quantity quantity;
+  @HiveField(10)
   Money unitPrice;
+  @HiveField(11)
   Reference facility;
+  @HiveField(12)
   List<CoverageEligibilityRequest_Diagnosis> diagnosis;
+  @HiveField(13)
   List<Reference> detail;
 
   CoverageEligibilityRequest_Item({
@@ -354,7 +411,6 @@ class CoverageEligibilityRequest_Item {
       _$CoverageEligibilityRequest_ItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CoverageEligibilityRequest_Diagnosis {
   static Future<CoverageEligibilityRequest_Diagnosis> newInstance({
     String id,
@@ -376,10 +432,15 @@ class CoverageEligibilityRequest_Diagnosis {
     return newCoverageEligibilityRequest_Diagnosis;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept diagnosisCodeableConcept;
+  @HiveField(4)
   Reference diagnosisReference;
 
   CoverageEligibilityRequest_Diagnosis({
@@ -784,4 +845,303 @@ Map<String, dynamic> _$CoverageEligibilityRequest_DiagnosisToJson(
       'diagnosisCodeableConcept', instance.diagnosisCodeableConcept?.toJson());
   writeNotNull('diagnosisReference', instance.diagnosisReference?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CoverageEligibilityRequestAdapter
+    extends TypeAdapter<CoverageEligibilityRequest> {
+  @override
+  CoverageEligibilityRequest read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityRequest(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      priority: fields[14] as CodeableConcept,
+      purpose: fields[15] as String,
+      elementPurpose: (fields[16] as List)?.cast<Element>(),
+      patient: fields[17] as Reference,
+      servicedDate: fields[18] as String,
+      elementServicedDate: fields[19] as Element,
+      servicedPeriod: fields[20] as Period,
+      created: fields[21] as DateTime,
+      elementCreated: fields[22] as Element,
+      enterer: fields[23] as Reference,
+      provider: fields[24] as Reference,
+      insurer: fields[25] as Reference,
+      facility: fields[26] as Reference,
+      supportingInfo: (fields[27] as List)
+          ?.cast<CoverageEligibilityRequest_SupportingInfo>(),
+      insurance:
+          (fields[28] as List)?.cast<CoverageEligibilityRequest_Insurance>(),
+      item: (fields[29] as List)?.cast<CoverageEligibilityRequest_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityRequest obj) {
+    writer
+      ..writeByte(30)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.priority)
+      ..writeByte(15)
+      ..write(obj.purpose)
+      ..writeByte(16)
+      ..write(obj.elementPurpose)
+      ..writeByte(17)
+      ..write(obj.patient)
+      ..writeByte(18)
+      ..write(obj.servicedDate)
+      ..writeByte(19)
+      ..write(obj.elementServicedDate)
+      ..writeByte(20)
+      ..write(obj.servicedPeriod)
+      ..writeByte(21)
+      ..write(obj.created)
+      ..writeByte(22)
+      ..write(obj.elementCreated)
+      ..writeByte(23)
+      ..write(obj.enterer)
+      ..writeByte(24)
+      ..write(obj.provider)
+      ..writeByte(25)
+      ..write(obj.insurer)
+      ..writeByte(26)
+      ..write(obj.facility)
+      ..writeByte(27)
+      ..write(obj.supportingInfo)
+      ..writeByte(28)
+      ..write(obj.insurance)
+      ..writeByte(29)
+      ..write(obj.item);
+  }
+}
+
+class CoverageEligibilityRequest_SupportingInfoAdapter
+    extends TypeAdapter<CoverageEligibilityRequest_SupportingInfo> {
+  @override
+  CoverageEligibilityRequest_SupportingInfo read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityRequest_SupportingInfo(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      information: fields[5] as Reference,
+      appliesToAll: fields[6] as bool,
+      elementAppliesToAll: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, CoverageEligibilityRequest_SupportingInfo obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.information)
+      ..writeByte(6)
+      ..write(obj.appliesToAll)
+      ..writeByte(7)
+      ..write(obj.elementAppliesToAll);
+  }
+}
+
+class CoverageEligibilityRequest_InsuranceAdapter
+    extends TypeAdapter<CoverageEligibilityRequest_Insurance> {
+  @override
+  CoverageEligibilityRequest_Insurance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityRequest_Insurance(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      focal: fields[3] as bool,
+      elementFocal: fields[4] as Element,
+      coverage: fields[5] as Reference,
+      businessArrangement: fields[6] as String,
+      elementBusinessArrangement: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityRequest_Insurance obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.focal)
+      ..writeByte(4)
+      ..write(obj.elementFocal)
+      ..writeByte(5)
+      ..write(obj.coverage)
+      ..writeByte(6)
+      ..write(obj.businessArrangement)
+      ..writeByte(7)
+      ..write(obj.elementBusinessArrangement);
+  }
+}
+
+class CoverageEligibilityRequest_ItemAdapter
+    extends TypeAdapter<CoverageEligibilityRequest_Item> {
+  @override
+  CoverageEligibilityRequest_Item read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityRequest_Item(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      supportingInfoSequence: (fields[3] as List)?.cast<int>(),
+      elementSupportingInfoSequence: (fields[4] as List)?.cast<Element>(),
+      category: fields[5] as CodeableConcept,
+      productOrService: fields[6] as CodeableConcept,
+      modifier: (fields[7] as List)?.cast<CodeableConcept>(),
+      provider: fields[8] as Reference,
+      quantity: fields[9] as Quantity,
+      unitPrice: fields[10] as Money,
+      facility: fields[11] as Reference,
+      diagnosis:
+          (fields[12] as List)?.cast<CoverageEligibilityRequest_Diagnosis>(),
+      detail: (fields[13] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityRequest_Item obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.supportingInfoSequence)
+      ..writeByte(4)
+      ..write(obj.elementSupportingInfoSequence)
+      ..writeByte(5)
+      ..write(obj.category)
+      ..writeByte(6)
+      ..write(obj.productOrService)
+      ..writeByte(7)
+      ..write(obj.modifier)
+      ..writeByte(8)
+      ..write(obj.provider)
+      ..writeByte(9)
+      ..write(obj.quantity)
+      ..writeByte(10)
+      ..write(obj.unitPrice)
+      ..writeByte(11)
+      ..write(obj.facility)
+      ..writeByte(12)
+      ..write(obj.diagnosis)
+      ..writeByte(13)
+      ..write(obj.detail);
+  }
+}
+
+class CoverageEligibilityRequest_DiagnosisAdapter
+    extends TypeAdapter<CoverageEligibilityRequest_Diagnosis> {
+  @override
+  CoverageEligibilityRequest_Diagnosis read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityRequest_Diagnosis(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      diagnosisCodeableConcept: fields[3] as CodeableConcept,
+      diagnosisReference: fields[4] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityRequest_Diagnosis obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.diagnosisCodeableConcept)
+      ..writeByte(4)
+      ..write(obj.diagnosisReference);
+  }
 }

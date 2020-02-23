@@ -1,13 +1,13 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ProdCharacteristic {
   static Future<ProdCharacteristic> newInstance({
     String id,
@@ -51,22 +51,39 @@ class ProdCharacteristic {
     return newProdCharacteristic;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Quantity height;
+  @HiveField(4)
   Quantity width;
+  @HiveField(5)
   Quantity depth;
+  @HiveField(6)
   Quantity weight;
+  @HiveField(7)
   Quantity nominalVolume;
+  @HiveField(8)
   Quantity externalDiameter;
+  @HiveField(9)
   String shape;
+  @HiveField(10)
   Element elementShape;
+  @HiveField(11)
   List<String> color;
+  @HiveField(12)
   List<Element> elementColor;
+  @HiveField(13)
   List<String> imprint;
+  @HiveField(14)
   List<Element> elementImprint;
+  @HiveField(15)
   List<Attachment> image;
+  @HiveField(16)
   CodeableConcept scoring;
 
   ProdCharacteristic({
@@ -183,4 +200,78 @@ Map<String, dynamic> _$ProdCharacteristicToJson(ProdCharacteristic instance) {
   writeNotNull('image', instance.image?.map((e) => e?.toJson())?.toList());
   writeNotNull('scoring', instance.scoring?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ProdCharacteristicAdapter extends TypeAdapter<ProdCharacteristic> {
+  @override
+  ProdCharacteristic read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ProdCharacteristic(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      height: fields[3] as Quantity,
+      width: fields[4] as Quantity,
+      depth: fields[5] as Quantity,
+      weight: fields[6] as Quantity,
+      nominalVolume: fields[7] as Quantity,
+      externalDiameter: fields[8] as Quantity,
+      shape: fields[9] as String,
+      elementShape: fields[10] as Element,
+      color: (fields[11] as List)?.cast<String>(),
+      elementColor: (fields[12] as List)?.cast<Element>(),
+      imprint: (fields[13] as List)?.cast<String>(),
+      elementImprint: (fields[14] as List)?.cast<Element>(),
+      image: (fields[15] as List)?.cast<Attachment>(),
+      scoring: fields[16] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ProdCharacteristic obj) {
+    writer
+      ..writeByte(17)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.height)
+      ..writeByte(4)
+      ..write(obj.width)
+      ..writeByte(5)
+      ..write(obj.depth)
+      ..writeByte(6)
+      ..write(obj.weight)
+      ..writeByte(7)
+      ..write(obj.nominalVolume)
+      ..writeByte(8)
+      ..write(obj.externalDiameter)
+      ..writeByte(9)
+      ..write(obj.shape)
+      ..writeByte(10)
+      ..write(obj.elementShape)
+      ..writeByte(11)
+      ..write(obj.color)
+      ..writeByte(12)
+      ..write(obj.elementColor)
+      ..writeByte(13)
+      ..write(obj.imprint)
+      ..writeByte(14)
+      ..write(obj.elementImprint)
+      ..writeByte(15)
+      ..write(obj.image)
+      ..writeByte(16)
+      ..write(obj.scoring);
+  }
 }

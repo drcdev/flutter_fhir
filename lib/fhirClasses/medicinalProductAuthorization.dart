@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductAuthorization {
   static Future<MedicinalProductAuthorization> newInstance({
     String resourceType,
@@ -99,37 +99,68 @@ class MedicinalProductAuthorization {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'MedicinalProductAuthorization';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   Reference subject;
+  @HiveField(13)
   List<CodeableConcept> country;
+  @HiveField(14)
   List<CodeableConcept> jurisdiction;
+  @HiveField(15)
   CodeableConcept status;
+  @HiveField(16)
   DateTime statusDate;
+  @HiveField(17)
   Element elementStatusDate;
+  @HiveField(18)
   DateTime restoreDate;
+  @HiveField(19)
   Element elementRestoreDate;
+  @HiveField(20)
   Period validityPeriod;
+  @HiveField(21)
   Period dataExclusivityPeriod;
+  @HiveField(22)
   DateTime dateOfFirstAuthorization;
+  @HiveField(23)
   Element elementDateOfFirstAuthorization;
+  @HiveField(24)
   DateTime internationalBirthDate;
+  @HiveField(25)
   Element elementInternationalBirthDate;
+  @HiveField(26)
   CodeableConcept legalBasis;
+  @HiveField(27)
   List<MedicinalProductAuthorization_JurisdictionalAuthorization>
       jurisdictionalAuthorization;
+  @HiveField(28)
   Reference holder;
+  @HiveField(29)
   Reference regulator;
+  @HiveField(30)
   MedicinalProductAuthorization_Procedure procedure;
 
   MedicinalProductAuthorization({
@@ -171,7 +202,6 @@ class MedicinalProductAuthorization {
   Map<String, dynamic> toJson() => _$MedicinalProductAuthorizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductAuthorization_JurisdictionalAuthorization {
   static Future<MedicinalProductAuthorization_JurisdictionalAuthorization>
       newInstance({
@@ -200,13 +230,21 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
     return newMedicinalProductAuthorization_JurisdictionalAuthorization;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<Identifier> identifier;
+  @HiveField(4)
   CodeableConcept country;
+  @HiveField(5)
   List<CodeableConcept> jurisdiction;
+  @HiveField(6)
   CodeableConcept legalStatusOfSupply;
+  @HiveField(7)
   Period validityPeriod;
 
   MedicinalProductAuthorization_JurisdictionalAuthorization({
@@ -227,7 +265,6 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
       _$MedicinalProductAuthorization_JurisdictionalAuthorizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductAuthorization_Procedure {
   static Future<MedicinalProductAuthorization_Procedure> newInstance({
     String id,
@@ -257,14 +294,23 @@ class MedicinalProductAuthorization_Procedure {
     return newMedicinalProductAuthorization_Procedure;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Identifier identifier;
+  @HiveField(4)
   CodeableConcept type;
+  @HiveField(5)
   Period datePeriod;
+  @HiveField(6)
   String dateDateTime;
+  @HiveField(7)
   Element elementDateDateTime;
+  @HiveField(8)
   List<MedicinalProductAuthorization_Procedure> application;
 
   MedicinalProductAuthorization_Procedure({
@@ -573,4 +619,215 @@ Map<String, dynamic> _$MedicinalProductAuthorization_ProcedureToJson(
   writeNotNull(
       'application', instance.application?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MedicinalProductAuthorizationAdapter
+    extends TypeAdapter<MedicinalProductAuthorization> {
+  @override
+  MedicinalProductAuthorization read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductAuthorization(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      subject: fields[12] as Reference,
+      country: (fields[13] as List)?.cast<CodeableConcept>(),
+      jurisdiction: (fields[14] as List)?.cast<CodeableConcept>(),
+      status: fields[15] as CodeableConcept,
+      statusDate: fields[16] as DateTime,
+      elementStatusDate: fields[17] as Element,
+      restoreDate: fields[18] as DateTime,
+      elementRestoreDate: fields[19] as Element,
+      validityPeriod: fields[20] as Period,
+      dataExclusivityPeriod: fields[21] as Period,
+      dateOfFirstAuthorization: fields[22] as DateTime,
+      elementDateOfFirstAuthorization: fields[23] as Element,
+      internationalBirthDate: fields[24] as DateTime,
+      elementInternationalBirthDate: fields[25] as Element,
+      legalBasis: fields[26] as CodeableConcept,
+      jurisdictionalAuthorization: (fields[27] as List)
+          ?.cast<MedicinalProductAuthorization_JurisdictionalAuthorization>(),
+      holder: fields[28] as Reference,
+      regulator: fields[29] as Reference,
+      procedure: fields[30] as MedicinalProductAuthorization_Procedure,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicinalProductAuthorization obj) {
+    writer
+      ..writeByte(31)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.subject)
+      ..writeByte(13)
+      ..write(obj.country)
+      ..writeByte(14)
+      ..write(obj.jurisdiction)
+      ..writeByte(15)
+      ..write(obj.status)
+      ..writeByte(16)
+      ..write(obj.statusDate)
+      ..writeByte(17)
+      ..write(obj.elementStatusDate)
+      ..writeByte(18)
+      ..write(obj.restoreDate)
+      ..writeByte(19)
+      ..write(obj.elementRestoreDate)
+      ..writeByte(20)
+      ..write(obj.validityPeriod)
+      ..writeByte(21)
+      ..write(obj.dataExclusivityPeriod)
+      ..writeByte(22)
+      ..write(obj.dateOfFirstAuthorization)
+      ..writeByte(23)
+      ..write(obj.elementDateOfFirstAuthorization)
+      ..writeByte(24)
+      ..write(obj.internationalBirthDate)
+      ..writeByte(25)
+      ..write(obj.elementInternationalBirthDate)
+      ..writeByte(26)
+      ..write(obj.legalBasis)
+      ..writeByte(27)
+      ..write(obj.jurisdictionalAuthorization)
+      ..writeByte(28)
+      ..write(obj.holder)
+      ..writeByte(29)
+      ..write(obj.regulator)
+      ..writeByte(30)
+      ..write(obj.procedure);
+  }
+}
+
+class MedicinalProductAuthorization_JurisdictionalAuthorizationAdapter
+    extends TypeAdapter<
+        MedicinalProductAuthorization_JurisdictionalAuthorization> {
+  @override
+  MedicinalProductAuthorization_JurisdictionalAuthorization read(
+      BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductAuthorization_JurisdictionalAuthorization(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identifier: (fields[3] as List)?.cast<Identifier>(),
+      country: fields[4] as CodeableConcept,
+      jurisdiction: (fields[5] as List)?.cast<CodeableConcept>(),
+      legalStatusOfSupply: fields[6] as CodeableConcept,
+      validityPeriod: fields[7] as Period,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer,
+      MedicinalProductAuthorization_JurisdictionalAuthorization obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.identifier)
+      ..writeByte(4)
+      ..write(obj.country)
+      ..writeByte(5)
+      ..write(obj.jurisdiction)
+      ..writeByte(6)
+      ..write(obj.legalStatusOfSupply)
+      ..writeByte(7)
+      ..write(obj.validityPeriod);
+  }
+}
+
+class MedicinalProductAuthorization_ProcedureAdapter
+    extends TypeAdapter<MedicinalProductAuthorization_Procedure> {
+  @override
+  MedicinalProductAuthorization_Procedure read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductAuthorization_Procedure(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identifier: fields[3] as Identifier,
+      type: fields[4] as CodeableConcept,
+      datePeriod: fields[5] as Period,
+      dateDateTime: fields[6] as String,
+      elementDateDateTime: fields[7] as Element,
+      application:
+          (fields[8] as List)?.cast<MedicinalProductAuthorization_Procedure>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicinalProductAuthorization_Procedure obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.identifier)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.datePeriod)
+      ..writeByte(6)
+      ..write(obj.dateDateTime)
+      ..writeByte(7)
+      ..write(obj.elementDateDateTime)
+      ..writeByte(8)
+      ..write(obj.application);
+  }
 }

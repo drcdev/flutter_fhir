@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MeasureReport {
   static Future<MeasureReport> newInstance({
     String resourceType,
@@ -85,30 +85,55 @@ class MeasureReport {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'MeasureReport';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   String type;
+  @HiveField(15)
   Element elementType;
+  @HiveField(16)
   String measure;
+  @HiveField(17)
   Reference subject;
+  @HiveField(18)
   DateTime date;
+  @HiveField(19)
   Element elementDate;
+  @HiveField(20)
   Reference reporter;
+  @HiveField(21)
   Period period;
+  @HiveField(22)
   CodeableConcept improvementNotation;
+  @HiveField(23)
   List<MeasureReport_Group> group;
+  @HiveField(24)
   List<Reference> evaluatedResource;
 
   MeasureReport({
@@ -144,7 +169,6 @@ class MeasureReport {
   Map<String, dynamic> toJson() => _$MeasureReportToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MeasureReport_Group {
   static Future<MeasureReport_Group> newInstance({
     String id,
@@ -168,12 +192,19 @@ class MeasureReport_Group {
     return newMeasureReport_Group;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   List<MeasureReport_Population> population;
+  @HiveField(5)
   Quantity measureScore;
+  @HiveField(6)
   List<MeasureReport_Stratifier> stratifier;
 
   MeasureReport_Group({
@@ -191,7 +222,6 @@ class MeasureReport_Group {
   Map<String, dynamic> toJson() => _$MeasureReport_GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MeasureReport_Population {
   static Future<MeasureReport_Population> newInstance({
     String id,
@@ -216,12 +246,19 @@ class MeasureReport_Population {
     return newMeasureReport_Population;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   int count;
+  @HiveField(5)
   Element elementCount;
+  @HiveField(6)
   Reference subjectResults;
 
   MeasureReport_Population({
@@ -239,7 +276,6 @@ class MeasureReport_Population {
   Map<String, dynamic> toJson() => _$MeasureReport_PopulationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MeasureReport_Stratifier {
   static Future<MeasureReport_Stratifier> newInstance({
     String id,
@@ -260,10 +296,15 @@ class MeasureReport_Stratifier {
     return newMeasureReport_Stratifier;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<CodeableConcept> code;
+  @HiveField(4)
   List<MeasureReport_Stratum> stratum;
 
   MeasureReport_Stratifier({
@@ -279,7 +320,6 @@ class MeasureReport_Stratifier {
   Map<String, dynamic> toJson() => _$MeasureReport_StratifierToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MeasureReport_Stratum {
   static Future<MeasureReport_Stratum> newInstance({
     String id,
@@ -303,12 +343,19 @@ class MeasureReport_Stratum {
     return newMeasureReport_Stratum;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept value;
+  @HiveField(4)
   List<MeasureReport_Component> component;
+  @HiveField(5)
   List<MeasureReport_Population1> population;
+  @HiveField(6)
   Quantity measureScore;
 
   MeasureReport_Stratum({
@@ -326,7 +373,6 @@ class MeasureReport_Stratum {
   Map<String, dynamic> toJson() => _$MeasureReport_StratumToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MeasureReport_Component {
   static Future<MeasureReport_Component> newInstance({
     String id,
@@ -347,10 +393,15 @@ class MeasureReport_Component {
     return newMeasureReport_Component;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   CodeableConcept value;
 
   MeasureReport_Component({
@@ -366,7 +417,6 @@ class MeasureReport_Component {
   Map<String, dynamic> toJson() => _$MeasureReport_ComponentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MeasureReport_Population1 {
   static Future<MeasureReport_Population1> newInstance({
     String id,
@@ -391,12 +441,19 @@ class MeasureReport_Population1 {
     return newMeasureReport_Population1;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   int count;
+  @HiveField(5)
   Element elementCount;
+  @HiveField(6)
   Reference subjectResults;
 
   MeasureReport_Population1({
@@ -820,4 +877,328 @@ Map<String, dynamic> _$MeasureReport_Population1ToJson(
   writeNotNull('elementCount', instance.elementCount?.toJson());
   writeNotNull('subjectResults', instance.subjectResults?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MeasureReportAdapter extends TypeAdapter<MeasureReport> {
+  @override
+  MeasureReport read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MeasureReport(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      type: fields[14] as String,
+      elementType: fields[15] as Element,
+      measure: fields[16] as String,
+      subject: fields[17] as Reference,
+      date: fields[18] as DateTime,
+      elementDate: fields[19] as Element,
+      reporter: fields[20] as Reference,
+      period: fields[21] as Period,
+      improvementNotation: fields[22] as CodeableConcept,
+      group: (fields[23] as List)?.cast<MeasureReport_Group>(),
+      evaluatedResource: (fields[24] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MeasureReport obj) {
+    writer
+      ..writeByte(25)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.type)
+      ..writeByte(15)
+      ..write(obj.elementType)
+      ..writeByte(16)
+      ..write(obj.measure)
+      ..writeByte(17)
+      ..write(obj.subject)
+      ..writeByte(18)
+      ..write(obj.date)
+      ..writeByte(19)
+      ..write(obj.elementDate)
+      ..writeByte(20)
+      ..write(obj.reporter)
+      ..writeByte(21)
+      ..write(obj.period)
+      ..writeByte(22)
+      ..write(obj.improvementNotation)
+      ..writeByte(23)
+      ..write(obj.group)
+      ..writeByte(24)
+      ..write(obj.evaluatedResource);
+  }
+}
+
+class MeasureReport_GroupAdapter extends TypeAdapter<MeasureReport_Group> {
+  @override
+  MeasureReport_Group read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MeasureReport_Group(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      population: (fields[4] as List)?.cast<MeasureReport_Population>(),
+      measureScore: fields[5] as Quantity,
+      stratifier: (fields[6] as List)?.cast<MeasureReport_Stratifier>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MeasureReport_Group obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.population)
+      ..writeByte(5)
+      ..write(obj.measureScore)
+      ..writeByte(6)
+      ..write(obj.stratifier);
+  }
+}
+
+class MeasureReport_PopulationAdapter
+    extends TypeAdapter<MeasureReport_Population> {
+  @override
+  MeasureReport_Population read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MeasureReport_Population(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      count: fields[4] as int,
+      elementCount: fields[5] as Element,
+      subjectResults: fields[6] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MeasureReport_Population obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.count)
+      ..writeByte(5)
+      ..write(obj.elementCount)
+      ..writeByte(6)
+      ..write(obj.subjectResults);
+  }
+}
+
+class MeasureReport_StratifierAdapter
+    extends TypeAdapter<MeasureReport_Stratifier> {
+  @override
+  MeasureReport_Stratifier read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MeasureReport_Stratifier(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: (fields[3] as List)?.cast<CodeableConcept>(),
+      stratum: (fields[4] as List)?.cast<MeasureReport_Stratum>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MeasureReport_Stratifier obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.stratum);
+  }
+}
+
+class MeasureReport_StratumAdapter extends TypeAdapter<MeasureReport_Stratum> {
+  @override
+  MeasureReport_Stratum read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MeasureReport_Stratum(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      value: fields[3] as CodeableConcept,
+      component: (fields[4] as List)?.cast<MeasureReport_Component>(),
+      population: (fields[5] as List)?.cast<MeasureReport_Population1>(),
+      measureScore: fields[6] as Quantity,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MeasureReport_Stratum obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.value)
+      ..writeByte(4)
+      ..write(obj.component)
+      ..writeByte(5)
+      ..write(obj.population)
+      ..writeByte(6)
+      ..write(obj.measureScore);
+  }
+}
+
+class MeasureReport_ComponentAdapter
+    extends TypeAdapter<MeasureReport_Component> {
+  @override
+  MeasureReport_Component read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MeasureReport_Component(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      value: fields[4] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MeasureReport_Component obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.value);
+  }
+}
+
+class MeasureReport_Population1Adapter
+    extends TypeAdapter<MeasureReport_Population1> {
+  @override
+  MeasureReport_Population1 read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MeasureReport_Population1(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      count: fields[4] as int,
+      elementCount: fields[5] as Element,
+      subjectResults: fields[6] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MeasureReport_Population1 obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.count)
+      ..writeByte(5)
+      ..write(obj.elementCount)
+      ..writeByte(6)
+      ..write(obj.subjectResults);
+  }
 }

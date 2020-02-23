@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskEvidenceSynthesis {
   static Future<RiskEvidenceSynthesis> newInstance({
     String resourceType,
@@ -145,58 +145,111 @@ class RiskEvidenceSynthesis {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'RiskEvidenceSynthesis';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   List<Identifier> identifier;
+  @HiveField(14)
   String version;
+  @HiveField(15)
   Element elementVersion;
+  @HiveField(16)
   String name;
+  @HiveField(17)
   Element elementName;
+  @HiveField(18)
   String title;
+  @HiveField(19)
   Element elementTitle;
+  @HiveField(20)
   String status;
+  @HiveField(21)
   Element elementStatus;
+  @HiveField(22)
   DateTime date;
+  @HiveField(23)
   Element elementDate;
+  @HiveField(24)
   String publisher;
+  @HiveField(25)
   Element elementPublisher;
+  @HiveField(26)
   List<ContactDetail> contact;
+  @HiveField(27)
   String description;
+  @HiveField(28)
   Element elementDescription;
+  @HiveField(29)
   List<Annotation> note;
+  @HiveField(30)
   List<UsageContext> useContext;
+  @HiveField(31)
   List<CodeableConcept> jurisdiction;
+  @HiveField(32)
   String copyright;
+  @HiveField(33)
   Element elementCopyright;
+  @HiveField(34)
   String approvalDate;
+  @HiveField(35)
   Element elementApprovalDate;
+  @HiveField(36)
   String lastReviewDate;
+  @HiveField(37)
   Element elementLastReviewDate;
+  @HiveField(38)
   Period effectivePeriod;
+  @HiveField(39)
   List<CodeableConcept> topic;
+  @HiveField(40)
   List<ContactDetail> author;
+  @HiveField(41)
   List<ContactDetail> editor;
+  @HiveField(42)
   List<ContactDetail> reviewer;
+  @HiveField(43)
   List<ContactDetail> endorser;
+  @HiveField(44)
   List<RelatedArtifact> relatedArtifact;
+  @HiveField(45)
   CodeableConcept synthesisType;
+  @HiveField(46)
   CodeableConcept studyType;
+  @HiveField(47)
   Reference population;
+  @HiveField(48)
   Reference exposure;
+  @HiveField(49)
   Reference outcome;
+  @HiveField(50)
   RiskEvidenceSynthesis_SampleSize sampleSize;
+  @HiveField(51)
   RiskEvidenceSynthesis_RiskEstimate riskEstimate;
+  @HiveField(52)
   List<RiskEvidenceSynthesis_Certainty> certainty;
 
   RiskEvidenceSynthesis({
@@ -260,7 +313,6 @@ class RiskEvidenceSynthesis {
   Map<String, dynamic> toJson() => _$RiskEvidenceSynthesisToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskEvidenceSynthesis_SampleSize {
   static Future<RiskEvidenceSynthesis_SampleSize> newInstance({
     String id,
@@ -289,14 +341,23 @@ class RiskEvidenceSynthesis_SampleSize {
     return newRiskEvidenceSynthesis_SampleSize;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String description;
+  @HiveField(4)
   Element elementDescription;
+  @HiveField(5)
   int numberOfStudies;
+  @HiveField(6)
   Element elementNumberOfStudies;
+  @HiveField(7)
   int numberOfParticipants;
+  @HiveField(8)
   Element elementNumberOfParticipants;
 
   RiskEvidenceSynthesis_SampleSize({
@@ -318,7 +379,6 @@ class RiskEvidenceSynthesis_SampleSize {
       _$RiskEvidenceSynthesis_SampleSizeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskEvidenceSynthesis_RiskEstimate {
   static Future<RiskEvidenceSynthesis_RiskEstimate> newInstance({
     String id,
@@ -357,19 +417,33 @@ class RiskEvidenceSynthesis_RiskEstimate {
     return newRiskEvidenceSynthesis_RiskEstimate;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String description;
+  @HiveField(4)
   Element elementDescription;
+  @HiveField(5)
   CodeableConcept type;
+  @HiveField(6)
   double value;
+  @HiveField(7)
   Element elementValue;
+  @HiveField(8)
   CodeableConcept unitOfMeasure;
+  @HiveField(9)
   int denominatorCount;
+  @HiveField(10)
   Element elementDenominatorCount;
+  @HiveField(11)
   int numeratorCount;
+  @HiveField(12)
   Element elementNumeratorCount;
+  @HiveField(13)
   List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
   RiskEvidenceSynthesis_RiskEstimate({
@@ -396,7 +470,6 @@ class RiskEvidenceSynthesis_RiskEstimate {
       _$RiskEvidenceSynthesis_RiskEstimateToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskEvidenceSynthesis_PrecisionEstimate {
   static Future<RiskEvidenceSynthesis_PrecisionEstimate> newInstance({
     String id,
@@ -428,15 +501,25 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
     return newRiskEvidenceSynthesis_PrecisionEstimate;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   double level;
+  @HiveField(5)
   Element elementLevel;
+  @HiveField(6)
   double from;
+  @HiveField(7)
   Element elementFrom;
+  @HiveField(8)
   double to;
+  @HiveField(9)
   Element elementTo;
 
   RiskEvidenceSynthesis_PrecisionEstimate({
@@ -459,7 +542,6 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
       _$RiskEvidenceSynthesis_PrecisionEstimateToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskEvidenceSynthesis_Certainty {
   static Future<RiskEvidenceSynthesis_Certainty> newInstance({
     String id,
@@ -482,11 +564,17 @@ class RiskEvidenceSynthesis_Certainty {
     return newRiskEvidenceSynthesis_Certainty;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<CodeableConcept> rating;
+  @HiveField(4)
   List<Annotation> note;
+  @HiveField(5)
   List<RiskEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
   RiskEvidenceSynthesis_Certainty({
@@ -504,7 +592,6 @@ class RiskEvidenceSynthesis_Certainty {
       _$RiskEvidenceSynthesis_CertaintyToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskEvidenceSynthesis_CertaintySubcomponent {
   static Future<RiskEvidenceSynthesis_CertaintySubcomponent> newInstance({
     String id,
@@ -528,11 +615,17 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
     return newRiskEvidenceSynthesis_CertaintySubcomponent;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   List<CodeableConcept> rating;
+  @HiveField(5)
   List<Annotation> note;
 
   RiskEvidenceSynthesis_CertaintySubcomponent({
@@ -1086,4 +1179,419 @@ Map<String, dynamic> _$RiskEvidenceSynthesis_CertaintySubcomponentToJson(
   writeNotNull('rating', instance.rating?.map((e) => e?.toJson())?.toList());
   writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class RiskEvidenceSynthesisAdapter extends TypeAdapter<RiskEvidenceSynthesis> {
+  @override
+  RiskEvidenceSynthesis read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskEvidenceSynthesis(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      status: fields[20] as String,
+      elementStatus: fields[21] as Element,
+      date: fields[22] as DateTime,
+      elementDate: fields[23] as Element,
+      publisher: fields[24] as String,
+      elementPublisher: fields[25] as Element,
+      contact: (fields[26] as List)?.cast<ContactDetail>(),
+      description: fields[27] as String,
+      elementDescription: fields[28] as Element,
+      note: (fields[29] as List)?.cast<Annotation>(),
+      useContext: (fields[30] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[31] as List)?.cast<CodeableConcept>(),
+      copyright: fields[32] as String,
+      elementCopyright: fields[33] as Element,
+      approvalDate: fields[34] as String,
+      elementApprovalDate: fields[35] as Element,
+      lastReviewDate: fields[36] as String,
+      elementLastReviewDate: fields[37] as Element,
+      effectivePeriod: fields[38] as Period,
+      topic: (fields[39] as List)?.cast<CodeableConcept>(),
+      author: (fields[40] as List)?.cast<ContactDetail>(),
+      editor: (fields[41] as List)?.cast<ContactDetail>(),
+      reviewer: (fields[42] as List)?.cast<ContactDetail>(),
+      endorser: (fields[43] as List)?.cast<ContactDetail>(),
+      relatedArtifact: (fields[44] as List)?.cast<RelatedArtifact>(),
+      synthesisType: fields[45] as CodeableConcept,
+      studyType: fields[46] as CodeableConcept,
+      population: fields[47] as Reference,
+      exposure: fields[48] as Reference,
+      outcome: fields[49] as Reference,
+      sampleSize: fields[50] as RiskEvidenceSynthesis_SampleSize,
+      riskEstimate: fields[51] as RiskEvidenceSynthesis_RiskEstimate,
+      certainty: (fields[52] as List)?.cast<RiskEvidenceSynthesis_Certainty>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RiskEvidenceSynthesis obj) {
+    writer
+      ..writeByte(53)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.status)
+      ..writeByte(21)
+      ..write(obj.elementStatus)
+      ..writeByte(22)
+      ..write(obj.date)
+      ..writeByte(23)
+      ..write(obj.elementDate)
+      ..writeByte(24)
+      ..write(obj.publisher)
+      ..writeByte(25)
+      ..write(obj.elementPublisher)
+      ..writeByte(26)
+      ..write(obj.contact)
+      ..writeByte(27)
+      ..write(obj.description)
+      ..writeByte(28)
+      ..write(obj.elementDescription)
+      ..writeByte(29)
+      ..write(obj.note)
+      ..writeByte(30)
+      ..write(obj.useContext)
+      ..writeByte(31)
+      ..write(obj.jurisdiction)
+      ..writeByte(32)
+      ..write(obj.copyright)
+      ..writeByte(33)
+      ..write(obj.elementCopyright)
+      ..writeByte(34)
+      ..write(obj.approvalDate)
+      ..writeByte(35)
+      ..write(obj.elementApprovalDate)
+      ..writeByte(36)
+      ..write(obj.lastReviewDate)
+      ..writeByte(37)
+      ..write(obj.elementLastReviewDate)
+      ..writeByte(38)
+      ..write(obj.effectivePeriod)
+      ..writeByte(39)
+      ..write(obj.topic)
+      ..writeByte(40)
+      ..write(obj.author)
+      ..writeByte(41)
+      ..write(obj.editor)
+      ..writeByte(42)
+      ..write(obj.reviewer)
+      ..writeByte(43)
+      ..write(obj.endorser)
+      ..writeByte(44)
+      ..write(obj.relatedArtifact)
+      ..writeByte(45)
+      ..write(obj.synthesisType)
+      ..writeByte(46)
+      ..write(obj.studyType)
+      ..writeByte(47)
+      ..write(obj.population)
+      ..writeByte(48)
+      ..write(obj.exposure)
+      ..writeByte(49)
+      ..write(obj.outcome)
+      ..writeByte(50)
+      ..write(obj.sampleSize)
+      ..writeByte(51)
+      ..write(obj.riskEstimate)
+      ..writeByte(52)
+      ..write(obj.certainty);
+  }
+}
+
+class RiskEvidenceSynthesis_SampleSizeAdapter
+    extends TypeAdapter<RiskEvidenceSynthesis_SampleSize> {
+  @override
+  RiskEvidenceSynthesis_SampleSize read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskEvidenceSynthesis_SampleSize(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      description: fields[3] as String,
+      elementDescription: fields[4] as Element,
+      numberOfStudies: fields[5] as int,
+      elementNumberOfStudies: fields[6] as Element,
+      numberOfParticipants: fields[7] as int,
+      elementNumberOfParticipants: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RiskEvidenceSynthesis_SampleSize obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.description)
+      ..writeByte(4)
+      ..write(obj.elementDescription)
+      ..writeByte(5)
+      ..write(obj.numberOfStudies)
+      ..writeByte(6)
+      ..write(obj.elementNumberOfStudies)
+      ..writeByte(7)
+      ..write(obj.numberOfParticipants)
+      ..writeByte(8)
+      ..write(obj.elementNumberOfParticipants);
+  }
+}
+
+class RiskEvidenceSynthesis_RiskEstimateAdapter
+    extends TypeAdapter<RiskEvidenceSynthesis_RiskEstimate> {
+  @override
+  RiskEvidenceSynthesis_RiskEstimate read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskEvidenceSynthesis_RiskEstimate(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      description: fields[3] as String,
+      elementDescription: fields[4] as Element,
+      type: fields[5] as CodeableConcept,
+      value: fields[6] as double,
+      elementValue: fields[7] as Element,
+      unitOfMeasure: fields[8] as CodeableConcept,
+      denominatorCount: fields[9] as int,
+      elementDenominatorCount: fields[10] as Element,
+      numeratorCount: fields[11] as int,
+      elementNumeratorCount: fields[12] as Element,
+      precisionEstimate:
+          (fields[13] as List)?.cast<RiskEvidenceSynthesis_PrecisionEstimate>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RiskEvidenceSynthesis_RiskEstimate obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.description)
+      ..writeByte(4)
+      ..write(obj.elementDescription)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.value)
+      ..writeByte(7)
+      ..write(obj.elementValue)
+      ..writeByte(8)
+      ..write(obj.unitOfMeasure)
+      ..writeByte(9)
+      ..write(obj.denominatorCount)
+      ..writeByte(10)
+      ..write(obj.elementDenominatorCount)
+      ..writeByte(11)
+      ..write(obj.numeratorCount)
+      ..writeByte(12)
+      ..write(obj.elementNumeratorCount)
+      ..writeByte(13)
+      ..write(obj.precisionEstimate);
+  }
+}
+
+class RiskEvidenceSynthesis_PrecisionEstimateAdapter
+    extends TypeAdapter<RiskEvidenceSynthesis_PrecisionEstimate> {
+  @override
+  RiskEvidenceSynthesis_PrecisionEstimate read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskEvidenceSynthesis_PrecisionEstimate(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      level: fields[4] as double,
+      elementLevel: fields[5] as Element,
+      from: fields[6] as double,
+      elementFrom: fields[7] as Element,
+      to: fields[8] as double,
+      elementTo: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RiskEvidenceSynthesis_PrecisionEstimate obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.level)
+      ..writeByte(5)
+      ..write(obj.elementLevel)
+      ..writeByte(6)
+      ..write(obj.from)
+      ..writeByte(7)
+      ..write(obj.elementFrom)
+      ..writeByte(8)
+      ..write(obj.to)
+      ..writeByte(9)
+      ..write(obj.elementTo);
+  }
+}
+
+class RiskEvidenceSynthesis_CertaintyAdapter
+    extends TypeAdapter<RiskEvidenceSynthesis_Certainty> {
+  @override
+  RiskEvidenceSynthesis_Certainty read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskEvidenceSynthesis_Certainty(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      rating: (fields[3] as List)?.cast<CodeableConcept>(),
+      note: (fields[4] as List)?.cast<Annotation>(),
+      certaintySubcomponent: (fields[5] as List)
+          ?.cast<RiskEvidenceSynthesis_CertaintySubcomponent>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RiskEvidenceSynthesis_Certainty obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.rating)
+      ..writeByte(4)
+      ..write(obj.note)
+      ..writeByte(5)
+      ..write(obj.certaintySubcomponent);
+  }
+}
+
+class RiskEvidenceSynthesis_CertaintySubcomponentAdapter
+    extends TypeAdapter<RiskEvidenceSynthesis_CertaintySubcomponent> {
+  @override
+  RiskEvidenceSynthesis_CertaintySubcomponent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskEvidenceSynthesis_CertaintySubcomponent(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      rating: (fields[4] as List)?.cast<CodeableConcept>(),
+      note: (fields[5] as List)?.cast<Annotation>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, RiskEvidenceSynthesis_CertaintySubcomponent obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.rating)
+      ..writeByte(5)
+      ..write(obj.note);
+  }
 }

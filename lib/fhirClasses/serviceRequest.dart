@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -16,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ServiceRequest {
   static Future<ServiceRequest> newInstance({
     String resourceType,
@@ -155,63 +155,121 @@ class ServiceRequest {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'ServiceRequest';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   List<String> instantiatesCanonical;
+  @HiveField(13)
   List<String> instantiatesUri;
+  @HiveField(14)
   List<Element> elementInstantiatesUri;
+  @HiveField(15)
   List<Reference> basedOn;
+  @HiveField(16)
   List<Reference> replaces;
+  @HiveField(17)
   Identifier requisition;
+  @HiveField(18)
   String status;
+  @HiveField(19)
   Element elementStatus;
+  @HiveField(20)
   String intent;
+  @HiveField(21)
   Element elementIntent;
+  @HiveField(22)
   List<CodeableConcept> category;
+  @HiveField(23)
   String priority;
+  @HiveField(24)
   Element elementPriority;
+  @HiveField(25)
   bool doNotPerform;
+  @HiveField(26)
   Element elementDoNotPerform;
+  @HiveField(27)
   CodeableConcept code;
+  @HiveField(28)
   List<CodeableConcept> orderDetail;
+  @HiveField(29)
   Quantity quantityQuantity;
+  @HiveField(30)
   Ratio quantityRatio;
+  @HiveField(31)
   Range quantityRange;
+  @HiveField(32)
   Reference subject;
+  @HiveField(33)
   Reference encounter;
+  @HiveField(34)
   String occurrenceDateTime;
+  @HiveField(35)
   Element elementOccurrenceDateTime;
+  @HiveField(36)
   Period occurrencePeriod;
+  @HiveField(37)
   Timing occurrenceTiming;
+  @HiveField(38)
   bool asNeededBoolean;
+  @HiveField(39)
   Element elementAsNeededBoolean;
+  @HiveField(40)
   CodeableConcept asNeededCodeableConcept;
+  @HiveField(41)
   DateTime authoredOn;
+  @HiveField(42)
   Element elementAuthoredOn;
+  @HiveField(43)
   Reference requester;
+  @HiveField(44)
   CodeableConcept performerType;
+  @HiveField(45)
   List<Reference> performer;
+  @HiveField(46)
   List<CodeableConcept> locationCode;
+  @HiveField(47)
   List<Reference> locationReference;
+  @HiveField(48)
   List<CodeableConcept> reasonCode;
+  @HiveField(49)
   List<Reference> reasonReference;
+  @HiveField(50)
   List<Reference> insurance;
+  @HiveField(51)
   List<Reference> supportingInfo;
+  @HiveField(52)
   List<Reference> specimen;
+  @HiveField(53)
   List<CodeableConcept> bodySite;
+  @HiveField(54)
   List<Annotation> note;
+  @HiveField(55)
   String patientInstruction;
+  @HiveField(56)
   Element elementPatientInstruction;
+  @HiveField(57)
   List<Reference> relevantHistory;
 
   ServiceRequest({
@@ -562,4 +620,201 @@ Map<String, dynamic> _$ServiceRequestToJson(ServiceRequest instance) {
   writeNotNull('relevantHistory',
       instance.relevantHistory?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ServiceRequestAdapter extends TypeAdapter<ServiceRequest> {
+  @override
+  ServiceRequest read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ServiceRequest(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      instantiatesCanonical: (fields[12] as List)?.cast<String>(),
+      instantiatesUri: (fields[13] as List)?.cast<String>(),
+      elementInstantiatesUri: (fields[14] as List)?.cast<Element>(),
+      basedOn: (fields[15] as List)?.cast<Reference>(),
+      replaces: (fields[16] as List)?.cast<Reference>(),
+      requisition: fields[17] as Identifier,
+      status: fields[18] as String,
+      elementStatus: fields[19] as Element,
+      intent: fields[20] as String,
+      elementIntent: fields[21] as Element,
+      category: (fields[22] as List)?.cast<CodeableConcept>(),
+      priority: fields[23] as String,
+      elementPriority: fields[24] as Element,
+      doNotPerform: fields[25] as bool,
+      elementDoNotPerform: fields[26] as Element,
+      code: fields[27] as CodeableConcept,
+      orderDetail: (fields[28] as List)?.cast<CodeableConcept>(),
+      quantityQuantity: fields[29] as Quantity,
+      quantityRatio: fields[30] as Ratio,
+      quantityRange: fields[31] as Range,
+      subject: fields[32] as Reference,
+      encounter: fields[33] as Reference,
+      occurrenceDateTime: fields[34] as String,
+      elementOccurrenceDateTime: fields[35] as Element,
+      occurrencePeriod: fields[36] as Period,
+      occurrenceTiming: fields[37] as Timing,
+      asNeededBoolean: fields[38] as bool,
+      elementAsNeededBoolean: fields[39] as Element,
+      asNeededCodeableConcept: fields[40] as CodeableConcept,
+      authoredOn: fields[41] as DateTime,
+      elementAuthoredOn: fields[42] as Element,
+      requester: fields[43] as Reference,
+      performerType: fields[44] as CodeableConcept,
+      performer: (fields[45] as List)?.cast<Reference>(),
+      locationCode: (fields[46] as List)?.cast<CodeableConcept>(),
+      locationReference: (fields[47] as List)?.cast<Reference>(),
+      reasonCode: (fields[48] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[49] as List)?.cast<Reference>(),
+      insurance: (fields[50] as List)?.cast<Reference>(),
+      supportingInfo: (fields[51] as List)?.cast<Reference>(),
+      specimen: (fields[52] as List)?.cast<Reference>(),
+      bodySite: (fields[53] as List)?.cast<CodeableConcept>(),
+      note: (fields[54] as List)?.cast<Annotation>(),
+      patientInstruction: fields[55] as String,
+      elementPatientInstruction: fields[56] as Element,
+      relevantHistory: (fields[57] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ServiceRequest obj) {
+    writer
+      ..writeByte(58)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.instantiatesCanonical)
+      ..writeByte(13)
+      ..write(obj.instantiatesUri)
+      ..writeByte(14)
+      ..write(obj.elementInstantiatesUri)
+      ..writeByte(15)
+      ..write(obj.basedOn)
+      ..writeByte(16)
+      ..write(obj.replaces)
+      ..writeByte(17)
+      ..write(obj.requisition)
+      ..writeByte(18)
+      ..write(obj.status)
+      ..writeByte(19)
+      ..write(obj.elementStatus)
+      ..writeByte(20)
+      ..write(obj.intent)
+      ..writeByte(21)
+      ..write(obj.elementIntent)
+      ..writeByte(22)
+      ..write(obj.category)
+      ..writeByte(23)
+      ..write(obj.priority)
+      ..writeByte(24)
+      ..write(obj.elementPriority)
+      ..writeByte(25)
+      ..write(obj.doNotPerform)
+      ..writeByte(26)
+      ..write(obj.elementDoNotPerform)
+      ..writeByte(27)
+      ..write(obj.code)
+      ..writeByte(28)
+      ..write(obj.orderDetail)
+      ..writeByte(29)
+      ..write(obj.quantityQuantity)
+      ..writeByte(30)
+      ..write(obj.quantityRatio)
+      ..writeByte(31)
+      ..write(obj.quantityRange)
+      ..writeByte(32)
+      ..write(obj.subject)
+      ..writeByte(33)
+      ..write(obj.encounter)
+      ..writeByte(34)
+      ..write(obj.occurrenceDateTime)
+      ..writeByte(35)
+      ..write(obj.elementOccurrenceDateTime)
+      ..writeByte(36)
+      ..write(obj.occurrencePeriod)
+      ..writeByte(37)
+      ..write(obj.occurrenceTiming)
+      ..writeByte(38)
+      ..write(obj.asNeededBoolean)
+      ..writeByte(39)
+      ..write(obj.elementAsNeededBoolean)
+      ..writeByte(40)
+      ..write(obj.asNeededCodeableConcept)
+      ..writeByte(41)
+      ..write(obj.authoredOn)
+      ..writeByte(42)
+      ..write(obj.elementAuthoredOn)
+      ..writeByte(43)
+      ..write(obj.requester)
+      ..writeByte(44)
+      ..write(obj.performerType)
+      ..writeByte(45)
+      ..write(obj.performer)
+      ..writeByte(46)
+      ..write(obj.locationCode)
+      ..writeByte(47)
+      ..write(obj.locationReference)
+      ..writeByte(48)
+      ..write(obj.reasonCode)
+      ..writeByte(49)
+      ..write(obj.reasonReference)
+      ..writeByte(50)
+      ..write(obj.insurance)
+      ..writeByte(51)
+      ..write(obj.supportingInfo)
+      ..writeByte(52)
+      ..write(obj.specimen)
+      ..writeByte(53)
+      ..write(obj.bodySite)
+      ..writeByte(54)
+      ..write(obj.note)
+      ..writeByte(55)
+      ..write(obj.patientInstruction)
+      ..writeByte(56)
+      ..write(obj.elementPatientInstruction)
+      ..writeByte(57)
+      ..write(obj.relevantHistory);
+  }
 }

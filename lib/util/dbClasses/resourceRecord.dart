@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-@HiveType()
 class ResourceRecord {
   @HiveField(0)
   String resourceType;
@@ -40,22 +39,22 @@ class ResourceRecord {
         : DateTime.parse(json['lastUpdated'] as String);
   }
 
-    Map<String, dynamic> toJson() {
-      final val = <String, dynamic>{};
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
 
-      void writeNotNull(String key, dynamic value) {
-        if (value != null) {
-          val[key] = value;
-        }
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
       }
+    }
 
-      writeNotNull('resourceType', this.resourceType);
-      writeNotNull('id', this.id);
-      writeNotNull('deviceId', this.deviceId);
-      writeNotNull('lastId', this.lastId);
-      writeNotNull('total', this.total);
-      writeNotNull('lastUpdated', this.lastUpdated?.toIso8601String());
-      return val;
+    writeNotNull('resourceType', this.resourceType);
+    writeNotNull('id', this.id);
+    writeNotNull('deviceId', this.deviceId);
+    writeNotNull('lastId', this.lastId);
+    writeNotNull('total', this.total);
+    writeNotNull('lastUpdated', this.lastUpdated?.toIso8601String());
+    return val;
   }
 }
 

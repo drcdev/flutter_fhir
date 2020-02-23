@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap {
   static Future<ConceptMap> newInstance({
     String resourceType,
@@ -126,51 +126,97 @@ class ConceptMap {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'ConceptMap';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   Identifier identifier;
+  @HiveField(14)
   String version;
+  @HiveField(15)
   Element elementVersion;
+  @HiveField(16)
   String name;
+  @HiveField(17)
   Element elementName;
+  @HiveField(18)
   String title;
+  @HiveField(19)
   Element elementTitle;
+  @HiveField(20)
   String status;
+  @HiveField(21)
   Element elementStatus;
+  @HiveField(22)
   bool experimental;
+  @HiveField(23)
   Element elementExperimental;
+  @HiveField(24)
   DateTime date;
+  @HiveField(25)
   Element elementDate;
+  @HiveField(26)
   String publisher;
+  @HiveField(27)
   Element elementPublisher;
+  @HiveField(28)
   List<ContactDetail> contact;
+  @HiveField(29)
   String description;
+  @HiveField(30)
   Element elementDescription;
+  @HiveField(31)
   List<UsageContext> useContext;
+  @HiveField(32)
   List<CodeableConcept> jurisdiction;
+  @HiveField(33)
   String purpose;
+  @HiveField(34)
   Element elementPurpose;
+  @HiveField(35)
   String copyright;
+  @HiveField(36)
   Element elementCopyright;
+  @HiveField(37)
   String sourceUri;
+  @HiveField(38)
   Element elementSourceUri;
+  @HiveField(39)
   String sourceCanonical;
+  @HiveField(40)
   Element elementSourceCanonical;
+  @HiveField(41)
   String targetUri;
+  @HiveField(42)
   Element elementTargetUri;
+  @HiveField(43)
   String targetCanonical;
+  @HiveField(44)
   Element elementTargetCanonical;
+  @HiveField(45)
   List<ConceptMap_Group> group;
 
   ConceptMap({
@@ -227,7 +273,6 @@ class ConceptMap {
   Map<String, dynamic> toJson() => _$ConceptMapToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Group {
   static Future<ConceptMap_Group> newInstance({
     String id,
@@ -263,18 +308,31 @@ class ConceptMap_Group {
     return newConceptMap_Group;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String source;
+  @HiveField(4)
   Element elementSource;
+  @HiveField(5)
   String sourceVersion;
+  @HiveField(6)
   Element elementSourceVersion;
+  @HiveField(7)
   String target;
+  @HiveField(8)
   Element elementTarget;
+  @HiveField(9)
   String targetVersion;
+  @HiveField(10)
   Element elementTargetVersion;
+  @HiveField(11)
   List<ConceptMap_Element> element;
+  @HiveField(12)
   ConceptMap_Unmapped unmapped;
 
   ConceptMap_Group({
@@ -298,7 +356,6 @@ class ConceptMap_Group {
   Map<String, dynamic> toJson() => _$ConceptMap_GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Element {
   static Future<ConceptMap_Element> newInstance({
     String id,
@@ -324,13 +381,21 @@ class ConceptMap_Element {
     return newConceptMap_Element;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String code;
+  @HiveField(4)
   Element elementCode;
+  @HiveField(5)
   String display;
+  @HiveField(6)
   Element elementDisplay;
+  @HiveField(7)
   List<ConceptMap_Target> target;
 
   ConceptMap_Element({
@@ -349,7 +414,6 @@ class ConceptMap_Element {
   Map<String, dynamic> toJson() => _$ConceptMap_ElementToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Target {
   static Future<ConceptMap_Target> newInstance({
     String id,
@@ -385,18 +449,31 @@ class ConceptMap_Target {
     return newConceptMap_Target;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String code;
+  @HiveField(4)
   Element elementCode;
+  @HiveField(5)
   String display;
+  @HiveField(6)
   Element elementDisplay;
+  @HiveField(7)
   String equivalence;
+  @HiveField(8)
   Element elementEquivalence;
+  @HiveField(9)
   String comment;
+  @HiveField(10)
   Element elementComment;
+  @HiveField(11)
   List<ConceptMap_DependsOn> dependsOn;
+  @HiveField(12)
   List<ConceptMap_DependsOn> product;
 
   ConceptMap_Target({
@@ -420,7 +497,6 @@ class ConceptMap_Target {
   Map<String, dynamic> toJson() => _$ConceptMap_TargetToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_DependsOn {
   static Future<ConceptMap_DependsOn> newInstance({
     String id,
@@ -450,15 +526,25 @@ class ConceptMap_DependsOn {
     return newConceptMap_DependsOn;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String property;
+  @HiveField(4)
   Element elementProperty;
+  @HiveField(5)
   String system;
+  @HiveField(6)
   String value;
+  @HiveField(7)
   Element elementValue;
+  @HiveField(8)
   String display;
+  @HiveField(9)
   Element elementDisplay;
 
   ConceptMap_DependsOn({
@@ -479,7 +565,6 @@ class ConceptMap_DependsOn {
   Map<String, dynamic> toJson() => _$ConceptMap_DependsOnToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConceptMap_Unmapped {
   static Future<ConceptMap_Unmapped> newInstance({
     String id,
@@ -509,15 +594,25 @@ class ConceptMap_Unmapped {
     return newConceptMap_Unmapped;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String mode;
+  @HiveField(4)
   Element elementMode;
+  @HiveField(5)
   String code;
+  @HiveField(6)
   Element elementCode;
+  @HiveField(7)
   String display;
+  @HiveField(8)
   Element elementDisplay;
+  @HiveField(9)
   String url;
 
   ConceptMap_Unmapped({
@@ -1012,4 +1107,417 @@ Map<String, dynamic> _$ConceptMap_UnmappedToJson(ConceptMap_Unmapped instance) {
   writeNotNull('elementDisplay', instance.elementDisplay?.toJson());
   writeNotNull('url', instance.url);
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ConceptMapAdapter extends TypeAdapter<ConceptMap> {
+  @override
+  ConceptMap read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ConceptMap(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: fields[13] as Identifier,
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      status: fields[20] as String,
+      elementStatus: fields[21] as Element,
+      experimental: fields[22] as bool,
+      elementExperimental: fields[23] as Element,
+      date: fields[24] as DateTime,
+      elementDate: fields[25] as Element,
+      publisher: fields[26] as String,
+      elementPublisher: fields[27] as Element,
+      contact: (fields[28] as List)?.cast<ContactDetail>(),
+      description: fields[29] as String,
+      elementDescription: fields[30] as Element,
+      useContext: (fields[31] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
+      purpose: fields[33] as String,
+      elementPurpose: fields[34] as Element,
+      copyright: fields[35] as String,
+      elementCopyright: fields[36] as Element,
+      sourceUri: fields[37] as String,
+      elementSourceUri: fields[38] as Element,
+      sourceCanonical: fields[39] as String,
+      elementSourceCanonical: fields[40] as Element,
+      targetUri: fields[41] as String,
+      elementTargetUri: fields[42] as Element,
+      targetCanonical: fields[43] as String,
+      elementTargetCanonical: fields[44] as Element,
+      group: (fields[45] as List)?.cast<ConceptMap_Group>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ConceptMap obj) {
+    writer
+      ..writeByte(46)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.status)
+      ..writeByte(21)
+      ..write(obj.elementStatus)
+      ..writeByte(22)
+      ..write(obj.experimental)
+      ..writeByte(23)
+      ..write(obj.elementExperimental)
+      ..writeByte(24)
+      ..write(obj.date)
+      ..writeByte(25)
+      ..write(obj.elementDate)
+      ..writeByte(26)
+      ..write(obj.publisher)
+      ..writeByte(27)
+      ..write(obj.elementPublisher)
+      ..writeByte(28)
+      ..write(obj.contact)
+      ..writeByte(29)
+      ..write(obj.description)
+      ..writeByte(30)
+      ..write(obj.elementDescription)
+      ..writeByte(31)
+      ..write(obj.useContext)
+      ..writeByte(32)
+      ..write(obj.jurisdiction)
+      ..writeByte(33)
+      ..write(obj.purpose)
+      ..writeByte(34)
+      ..write(obj.elementPurpose)
+      ..writeByte(35)
+      ..write(obj.copyright)
+      ..writeByte(36)
+      ..write(obj.elementCopyright)
+      ..writeByte(37)
+      ..write(obj.sourceUri)
+      ..writeByte(38)
+      ..write(obj.elementSourceUri)
+      ..writeByte(39)
+      ..write(obj.sourceCanonical)
+      ..writeByte(40)
+      ..write(obj.elementSourceCanonical)
+      ..writeByte(41)
+      ..write(obj.targetUri)
+      ..writeByte(42)
+      ..write(obj.elementTargetUri)
+      ..writeByte(43)
+      ..write(obj.targetCanonical)
+      ..writeByte(44)
+      ..write(obj.elementTargetCanonical)
+      ..writeByte(45)
+      ..write(obj.group);
+  }
+}
+
+class ConceptMap_GroupAdapter extends TypeAdapter<ConceptMap_Group> {
+  @override
+  ConceptMap_Group read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ConceptMap_Group(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      source: fields[3] as String,
+      elementSource: fields[4] as Element,
+      sourceVersion: fields[5] as String,
+      elementSourceVersion: fields[6] as Element,
+      target: fields[7] as String,
+      elementTarget: fields[8] as Element,
+      targetVersion: fields[9] as String,
+      elementTargetVersion: fields[10] as Element,
+      element: (fields[11] as List)?.cast<ConceptMap_Element>(),
+      unmapped: fields[12] as ConceptMap_Unmapped,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ConceptMap_Group obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.source)
+      ..writeByte(4)
+      ..write(obj.elementSource)
+      ..writeByte(5)
+      ..write(obj.sourceVersion)
+      ..writeByte(6)
+      ..write(obj.elementSourceVersion)
+      ..writeByte(7)
+      ..write(obj.target)
+      ..writeByte(8)
+      ..write(obj.elementTarget)
+      ..writeByte(9)
+      ..write(obj.targetVersion)
+      ..writeByte(10)
+      ..write(obj.elementTargetVersion)
+      ..writeByte(11)
+      ..write(obj.element)
+      ..writeByte(12)
+      ..write(obj.unmapped);
+  }
+}
+
+class ConceptMap_ElementAdapter extends TypeAdapter<ConceptMap_Element> {
+  @override
+  ConceptMap_Element read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ConceptMap_Element(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      display: fields[5] as String,
+      elementDisplay: fields[6] as Element,
+      target: (fields[7] as List)?.cast<ConceptMap_Target>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ConceptMap_Element obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.display)
+      ..writeByte(6)
+      ..write(obj.elementDisplay)
+      ..writeByte(7)
+      ..write(obj.target);
+  }
+}
+
+class ConceptMap_TargetAdapter extends TypeAdapter<ConceptMap_Target> {
+  @override
+  ConceptMap_Target read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ConceptMap_Target(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      display: fields[5] as String,
+      elementDisplay: fields[6] as Element,
+      equivalence: fields[7] as String,
+      elementEquivalence: fields[8] as Element,
+      comment: fields[9] as String,
+      elementComment: fields[10] as Element,
+      dependsOn: (fields[11] as List)?.cast<ConceptMap_DependsOn>(),
+      product: (fields[12] as List)?.cast<ConceptMap_DependsOn>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ConceptMap_Target obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.display)
+      ..writeByte(6)
+      ..write(obj.elementDisplay)
+      ..writeByte(7)
+      ..write(obj.equivalence)
+      ..writeByte(8)
+      ..write(obj.elementEquivalence)
+      ..writeByte(9)
+      ..write(obj.comment)
+      ..writeByte(10)
+      ..write(obj.elementComment)
+      ..writeByte(11)
+      ..write(obj.dependsOn)
+      ..writeByte(12)
+      ..write(obj.product);
+  }
+}
+
+class ConceptMap_DependsOnAdapter extends TypeAdapter<ConceptMap_DependsOn> {
+  @override
+  ConceptMap_DependsOn read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ConceptMap_DependsOn(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      property: fields[3] as String,
+      elementProperty: fields[4] as Element,
+      system: fields[5] as String,
+      value: fields[6] as String,
+      elementValue: fields[7] as Element,
+      display: fields[8] as String,
+      elementDisplay: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ConceptMap_DependsOn obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.property)
+      ..writeByte(4)
+      ..write(obj.elementProperty)
+      ..writeByte(5)
+      ..write(obj.system)
+      ..writeByte(6)
+      ..write(obj.value)
+      ..writeByte(7)
+      ..write(obj.elementValue)
+      ..writeByte(8)
+      ..write(obj.display)
+      ..writeByte(9)
+      ..write(obj.elementDisplay);
+  }
+}
+
+class ConceptMap_UnmappedAdapter extends TypeAdapter<ConceptMap_Unmapped> {
+  @override
+  ConceptMap_Unmapped read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ConceptMap_Unmapped(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      mode: fields[3] as String,
+      elementMode: fields[4] as Element,
+      code: fields[5] as String,
+      elementCode: fields[6] as Element,
+      display: fields[7] as String,
+      elementDisplay: fields[8] as Element,
+      url: fields[9] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ConceptMap_Unmapped obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.mode)
+      ..writeByte(4)
+      ..write(obj.elementMode)
+      ..writeByte(5)
+      ..write(obj.code)
+      ..writeByte(6)
+      ..write(obj.elementCode)
+      ..writeByte(7)
+      ..write(obj.display)
+      ..writeByte(8)
+      ..write(obj.elementDisplay)
+      ..writeByte(9)
+      ..write(obj.url);
+  }
 }

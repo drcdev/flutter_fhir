@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -16,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Questionnaire {
   static Future<Questionnaire> newInstance({
     String resourceType,
@@ -133,52 +133,99 @@ class Questionnaire {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Questionnaire';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   List<Identifier> identifier;
+  @HiveField(14)
   String version;
+  @HiveField(15)
   Element elementVersion;
+  @HiveField(16)
   String name;
+  @HiveField(17)
   Element elementName;
+  @HiveField(18)
   String title;
+  @HiveField(19)
   Element elementTitle;
+  @HiveField(20)
   List<String> derivedFrom;
+  @HiveField(21)
   String status;
+  @HiveField(22)
   Element elementStatus;
+  @HiveField(23)
   bool experimental;
+  @HiveField(24)
   Element elementExperimental;
+  @HiveField(25)
   List<String> subjectType;
+  @HiveField(26)
   List<Element> elementSubjectType;
+  @HiveField(27)
   DateTime date;
+  @HiveField(28)
   Element elementDate;
+  @HiveField(29)
   String publisher;
+  @HiveField(30)
   Element elementPublisher;
+  @HiveField(31)
   List<ContactDetail> contact;
+  @HiveField(32)
   String description;
+  @HiveField(33)
   Element elementDescription;
+  @HiveField(34)
   List<UsageContext> useContext;
+  @HiveField(35)
   List<CodeableConcept> jurisdiction;
+  @HiveField(36)
   String purpose;
+  @HiveField(37)
   Element elementPurpose;
+  @HiveField(38)
   String copyright;
+  @HiveField(39)
   Element elementCopyright;
+  @HiveField(40)
   String approvalDate;
+  @HiveField(41)
   Element elementApprovalDate;
+  @HiveField(42)
   String lastReviewDate;
+  @HiveField(43)
   Element elementLastReviewDate;
+  @HiveField(44)
   Period effectivePeriod;
+  @HiveField(45)
   List<Coding> code;
+  @HiveField(46)
   List<Questionnaire_Item> item;
 
   Questionnaire({
@@ -236,7 +283,6 @@ class Questionnaire {
   Map<String, dynamic> toJson() => _$QuestionnaireToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Questionnaire_Item {
   static Future<Questionnaire_Item> newInstance({
     String id,
@@ -304,34 +350,63 @@ class Questionnaire_Item {
     return newQuestionnaire_Item;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String linkId;
+  @HiveField(4)
   Element elementLinkId;
+  @HiveField(5)
   String definition;
+  @HiveField(6)
   Element elementDefinition;
+  @HiveField(7)
   List<Coding> code;
+  @HiveField(8)
   String prefix;
+  @HiveField(9)
   Element elementPrefix;
+  @HiveField(10)
   String text;
+  @HiveField(11)
   Element elementText;
+  @HiveField(12)
   String type;
+  @HiveField(13)
   Element elementType;
+  @HiveField(14)
   List<Questionnaire_EnableWhen> enableWhen;
+  @HiveField(15)
   String enableBehavior;
+  @HiveField(16)
   Element elementEnableBehavior;
+  @HiveField(17)
   bool required;
+  @HiveField(18)
   Element elementRequired;
+  @HiveField(19)
   bool repeats;
+  @HiveField(20)
   Element elementRepeats;
+  @HiveField(21)
   bool readOnly;
+  @HiveField(22)
   Element elementReadOnly;
+  @HiveField(23)
   int maxLength;
+  @HiveField(24)
   Element elementMaxLength;
+  @HiveField(25)
   String answerValueSet;
+  @HiveField(26)
   List<Questionnaire_AnswerOption> answerOption;
+  @HiveField(27)
   List<Questionnaire_Initial> initial;
+  @HiveField(28)
   List<Questionnaire_Item> item;
 
   Questionnaire_Item({
@@ -371,7 +446,6 @@ class Questionnaire_Item {
   Map<String, dynamic> toJson() => _$Questionnaire_ItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Questionnaire_EnableWhen {
   static Future<Questionnaire_EnableWhen> newInstance({
     String id,
@@ -430,29 +504,53 @@ class Questionnaire_EnableWhen {
     return newQuestionnaire_EnableWhen;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String question;
+  @HiveField(4)
   Element elementQuestion;
+  @HiveField(5)
   String operator;
+  @HiveField(6)
   Element elementOperator;
+  @HiveField(7)
   bool answerBoolean;
+  @HiveField(8)
   Element elementAnswerBoolean;
+  @HiveField(9)
   int answerDecimal;
+  @HiveField(10)
   Element elementAnswerDecimal;
+  @HiveField(11)
   int answerInteger;
+  @HiveField(12)
   Element elementAnswerInteger;
+  @HiveField(13)
   String answerDate;
+  @HiveField(14)
   Element elementAnswerDate;
+  @HiveField(15)
   String answerDateTime;
+  @HiveField(16)
   Element elementAnswerDateTime;
+  @HiveField(17)
   String answerTime;
+  @HiveField(18)
   Element elementAnswerTime;
+  @HiveField(19)
   String answerString;
+  @HiveField(20)
   Element elementAnswerString;
+  @HiveField(21)
   Coding answerCoding;
+  @HiveField(22)
   Quantity answerQuantity;
+  @HiveField(23)
   Reference answerReference;
 
   Questionnaire_EnableWhen({
@@ -487,7 +585,6 @@ class Questionnaire_EnableWhen {
   Map<String, dynamic> toJson() => _$Questionnaire_EnableWhenToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Questionnaire_AnswerOption {
   static Future<Questionnaire_AnswerOption> newInstance({
     String id,
@@ -528,20 +625,35 @@ class Questionnaire_AnswerOption {
     return newQuestionnaire_AnswerOption;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int valueInteger;
+  @HiveField(4)
   Element elementValueInteger;
+  @HiveField(5)
   String valueDate;
+  @HiveField(6)
   Element elementValueDate;
+  @HiveField(7)
   String valueTime;
+  @HiveField(8)
   Element elementValueTime;
+  @HiveField(9)
   String valueString;
+  @HiveField(10)
   Element elementValueString;
+  @HiveField(11)
   Coding valueCoding;
+  @HiveField(12)
   Reference valueReference;
+  @HiveField(13)
   bool initialSelected;
+  @HiveField(14)
   Element elementInitialSelected;
 
   Questionnaire_AnswerOption({
@@ -567,7 +679,6 @@ class Questionnaire_AnswerOption {
   Map<String, dynamic> toJson() => _$Questionnaire_AnswerOptionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Questionnaire_Initial {
   static Future<Questionnaire_Initial> newInstance({
     String id,
@@ -623,28 +734,51 @@ class Questionnaire_Initial {
     return newQuestionnaire_Initial;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   bool valueBoolean;
+  @HiveField(4)
   Element elementValueBoolean;
+  @HiveField(5)
   int valueDecimal;
+  @HiveField(6)
   Element elementValueDecimal;
+  @HiveField(7)
   int valueInteger;
+  @HiveField(8)
   Element elementValueInteger;
+  @HiveField(9)
   String valueDate;
+  @HiveField(10)
   Element elementValueDate;
+  @HiveField(11)
   String valueDateTime;
+  @HiveField(12)
   Element elementValueDateTime;
+  @HiveField(13)
   String valueTime;
+  @HiveField(14)
   Element elementValueTime;
+  @HiveField(15)
   String valueString;
+  @HiveField(16)
   Element elementValueString;
+  @HiveField(17)
   String valueUri;
+  @HiveField(18)
   Element elementValueUri;
+  @HiveField(19)
   Attachment valueAttachment;
+  @HiveField(20)
   Coding valueCoding;
+  @HiveField(21)
   Quantity valueQuantity;
+  @HiveField(22)
   Reference valueReference;
 
   Questionnaire_Initial({
@@ -1274,4 +1408,515 @@ Map<String, dynamic> _$Questionnaire_InitialToJson(
   writeNotNull('valueQuantity', instance.valueQuantity?.toJson());
   writeNotNull('valueReference', instance.valueReference?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class QuestionnaireAdapter extends TypeAdapter<Questionnaire> {
+  @override
+  Questionnaire read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Questionnaire(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      derivedFrom: (fields[20] as List)?.cast<String>(),
+      status: fields[21] as String,
+      elementStatus: fields[22] as Element,
+      experimental: fields[23] as bool,
+      elementExperimental: fields[24] as Element,
+      subjectType: (fields[25] as List)?.cast<String>(),
+      elementSubjectType: (fields[26] as List)?.cast<Element>(),
+      date: fields[27] as DateTime,
+      elementDate: fields[28] as Element,
+      publisher: fields[29] as String,
+      elementPublisher: fields[30] as Element,
+      contact: (fields[31] as List)?.cast<ContactDetail>(),
+      description: fields[32] as String,
+      elementDescription: fields[33] as Element,
+      useContext: (fields[34] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[35] as List)?.cast<CodeableConcept>(),
+      purpose: fields[36] as String,
+      elementPurpose: fields[37] as Element,
+      copyright: fields[38] as String,
+      elementCopyright: fields[39] as Element,
+      approvalDate: fields[40] as String,
+      elementApprovalDate: fields[41] as Element,
+      lastReviewDate: fields[42] as String,
+      elementLastReviewDate: fields[43] as Element,
+      effectivePeriod: fields[44] as Period,
+      code: (fields[45] as List)?.cast<Coding>(),
+      item: (fields[46] as List)?.cast<Questionnaire_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Questionnaire obj) {
+    writer
+      ..writeByte(47)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.derivedFrom)
+      ..writeByte(21)
+      ..write(obj.status)
+      ..writeByte(22)
+      ..write(obj.elementStatus)
+      ..writeByte(23)
+      ..write(obj.experimental)
+      ..writeByte(24)
+      ..write(obj.elementExperimental)
+      ..writeByte(25)
+      ..write(obj.subjectType)
+      ..writeByte(26)
+      ..write(obj.elementSubjectType)
+      ..writeByte(27)
+      ..write(obj.date)
+      ..writeByte(28)
+      ..write(obj.elementDate)
+      ..writeByte(29)
+      ..write(obj.publisher)
+      ..writeByte(30)
+      ..write(obj.elementPublisher)
+      ..writeByte(31)
+      ..write(obj.contact)
+      ..writeByte(32)
+      ..write(obj.description)
+      ..writeByte(33)
+      ..write(obj.elementDescription)
+      ..writeByte(34)
+      ..write(obj.useContext)
+      ..writeByte(35)
+      ..write(obj.jurisdiction)
+      ..writeByte(36)
+      ..write(obj.purpose)
+      ..writeByte(37)
+      ..write(obj.elementPurpose)
+      ..writeByte(38)
+      ..write(obj.copyright)
+      ..writeByte(39)
+      ..write(obj.elementCopyright)
+      ..writeByte(40)
+      ..write(obj.approvalDate)
+      ..writeByte(41)
+      ..write(obj.elementApprovalDate)
+      ..writeByte(42)
+      ..write(obj.lastReviewDate)
+      ..writeByte(43)
+      ..write(obj.elementLastReviewDate)
+      ..writeByte(44)
+      ..write(obj.effectivePeriod)
+      ..writeByte(45)
+      ..write(obj.code)
+      ..writeByte(46)
+      ..write(obj.item);
+  }
+}
+
+class Questionnaire_ItemAdapter extends TypeAdapter<Questionnaire_Item> {
+  @override
+  Questionnaire_Item read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Questionnaire_Item(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      linkId: fields[3] as String,
+      elementLinkId: fields[4] as Element,
+      definition: fields[5] as String,
+      elementDefinition: fields[6] as Element,
+      code: (fields[7] as List)?.cast<Coding>(),
+      prefix: fields[8] as String,
+      elementPrefix: fields[9] as Element,
+      text: fields[10] as String,
+      elementText: fields[11] as Element,
+      type: fields[12] as String,
+      elementType: fields[13] as Element,
+      enableWhen: (fields[14] as List)?.cast<Questionnaire_EnableWhen>(),
+      enableBehavior: fields[15] as String,
+      elementEnableBehavior: fields[16] as Element,
+      required: fields[17] as bool,
+      elementRequired: fields[18] as Element,
+      repeats: fields[19] as bool,
+      elementRepeats: fields[20] as Element,
+      readOnly: fields[21] as bool,
+      elementReadOnly: fields[22] as Element,
+      maxLength: fields[23] as int,
+      elementMaxLength: fields[24] as Element,
+      answerValueSet: fields[25] as String,
+      answerOption: (fields[26] as List)?.cast<Questionnaire_AnswerOption>(),
+      initial: (fields[27] as List)?.cast<Questionnaire_Initial>(),
+      item: (fields[28] as List)?.cast<Questionnaire_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Questionnaire_Item obj) {
+    writer
+      ..writeByte(29)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.linkId)
+      ..writeByte(4)
+      ..write(obj.elementLinkId)
+      ..writeByte(5)
+      ..write(obj.definition)
+      ..writeByte(6)
+      ..write(obj.elementDefinition)
+      ..writeByte(7)
+      ..write(obj.code)
+      ..writeByte(8)
+      ..write(obj.prefix)
+      ..writeByte(9)
+      ..write(obj.elementPrefix)
+      ..writeByte(10)
+      ..write(obj.text)
+      ..writeByte(11)
+      ..write(obj.elementText)
+      ..writeByte(12)
+      ..write(obj.type)
+      ..writeByte(13)
+      ..write(obj.elementType)
+      ..writeByte(14)
+      ..write(obj.enableWhen)
+      ..writeByte(15)
+      ..write(obj.enableBehavior)
+      ..writeByte(16)
+      ..write(obj.elementEnableBehavior)
+      ..writeByte(17)
+      ..write(obj.required)
+      ..writeByte(18)
+      ..write(obj.elementRequired)
+      ..writeByte(19)
+      ..write(obj.repeats)
+      ..writeByte(20)
+      ..write(obj.elementRepeats)
+      ..writeByte(21)
+      ..write(obj.readOnly)
+      ..writeByte(22)
+      ..write(obj.elementReadOnly)
+      ..writeByte(23)
+      ..write(obj.maxLength)
+      ..writeByte(24)
+      ..write(obj.elementMaxLength)
+      ..writeByte(25)
+      ..write(obj.answerValueSet)
+      ..writeByte(26)
+      ..write(obj.answerOption)
+      ..writeByte(27)
+      ..write(obj.initial)
+      ..writeByte(28)
+      ..write(obj.item);
+  }
+}
+
+class Questionnaire_EnableWhenAdapter
+    extends TypeAdapter<Questionnaire_EnableWhen> {
+  @override
+  Questionnaire_EnableWhen read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Questionnaire_EnableWhen(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      question: fields[3] as String,
+      elementQuestion: fields[4] as Element,
+      operator: fields[5] as String,
+      elementOperator: fields[6] as Element,
+      answerBoolean: fields[7] as bool,
+      elementAnswerBoolean: fields[8] as Element,
+      answerDecimal: fields[9] as int,
+      elementAnswerDecimal: fields[10] as Element,
+      answerInteger: fields[11] as int,
+      elementAnswerInteger: fields[12] as Element,
+      answerDate: fields[13] as String,
+      elementAnswerDate: fields[14] as Element,
+      answerDateTime: fields[15] as String,
+      elementAnswerDateTime: fields[16] as Element,
+      answerTime: fields[17] as String,
+      elementAnswerTime: fields[18] as Element,
+      answerString: fields[19] as String,
+      elementAnswerString: fields[20] as Element,
+      answerCoding: fields[21] as Coding,
+      answerQuantity: fields[22] as Quantity,
+      answerReference: fields[23] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Questionnaire_EnableWhen obj) {
+    writer
+      ..writeByte(24)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.question)
+      ..writeByte(4)
+      ..write(obj.elementQuestion)
+      ..writeByte(5)
+      ..write(obj.operator)
+      ..writeByte(6)
+      ..write(obj.elementOperator)
+      ..writeByte(7)
+      ..write(obj.answerBoolean)
+      ..writeByte(8)
+      ..write(obj.elementAnswerBoolean)
+      ..writeByte(9)
+      ..write(obj.answerDecimal)
+      ..writeByte(10)
+      ..write(obj.elementAnswerDecimal)
+      ..writeByte(11)
+      ..write(obj.answerInteger)
+      ..writeByte(12)
+      ..write(obj.elementAnswerInteger)
+      ..writeByte(13)
+      ..write(obj.answerDate)
+      ..writeByte(14)
+      ..write(obj.elementAnswerDate)
+      ..writeByte(15)
+      ..write(obj.answerDateTime)
+      ..writeByte(16)
+      ..write(obj.elementAnswerDateTime)
+      ..writeByte(17)
+      ..write(obj.answerTime)
+      ..writeByte(18)
+      ..write(obj.elementAnswerTime)
+      ..writeByte(19)
+      ..write(obj.answerString)
+      ..writeByte(20)
+      ..write(obj.elementAnswerString)
+      ..writeByte(21)
+      ..write(obj.answerCoding)
+      ..writeByte(22)
+      ..write(obj.answerQuantity)
+      ..writeByte(23)
+      ..write(obj.answerReference);
+  }
+}
+
+class Questionnaire_AnswerOptionAdapter
+    extends TypeAdapter<Questionnaire_AnswerOption> {
+  @override
+  Questionnaire_AnswerOption read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Questionnaire_AnswerOption(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      valueInteger: fields[3] as int,
+      elementValueInteger: fields[4] as Element,
+      valueDate: fields[5] as String,
+      elementValueDate: fields[6] as Element,
+      valueTime: fields[7] as String,
+      elementValueTime: fields[8] as Element,
+      valueString: fields[9] as String,
+      elementValueString: fields[10] as Element,
+      valueCoding: fields[11] as Coding,
+      valueReference: fields[12] as Reference,
+      initialSelected: fields[13] as bool,
+      elementInitialSelected: fields[14] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Questionnaire_AnswerOption obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.valueInteger)
+      ..writeByte(4)
+      ..write(obj.elementValueInteger)
+      ..writeByte(5)
+      ..write(obj.valueDate)
+      ..writeByte(6)
+      ..write(obj.elementValueDate)
+      ..writeByte(7)
+      ..write(obj.valueTime)
+      ..writeByte(8)
+      ..write(obj.elementValueTime)
+      ..writeByte(9)
+      ..write(obj.valueString)
+      ..writeByte(10)
+      ..write(obj.elementValueString)
+      ..writeByte(11)
+      ..write(obj.valueCoding)
+      ..writeByte(12)
+      ..write(obj.valueReference)
+      ..writeByte(13)
+      ..write(obj.initialSelected)
+      ..writeByte(14)
+      ..write(obj.elementInitialSelected);
+  }
+}
+
+class Questionnaire_InitialAdapter extends TypeAdapter<Questionnaire_Initial> {
+  @override
+  Questionnaire_Initial read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Questionnaire_Initial(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      valueBoolean: fields[3] as bool,
+      elementValueBoolean: fields[4] as Element,
+      valueDecimal: fields[5] as int,
+      elementValueDecimal: fields[6] as Element,
+      valueInteger: fields[7] as int,
+      elementValueInteger: fields[8] as Element,
+      valueDate: fields[9] as String,
+      elementValueDate: fields[10] as Element,
+      valueDateTime: fields[11] as String,
+      elementValueDateTime: fields[12] as Element,
+      valueTime: fields[13] as String,
+      elementValueTime: fields[14] as Element,
+      valueString: fields[15] as String,
+      elementValueString: fields[16] as Element,
+      valueUri: fields[17] as String,
+      elementValueUri: fields[18] as Element,
+      valueAttachment: fields[19] as Attachment,
+      valueCoding: fields[20] as Coding,
+      valueQuantity: fields[21] as Quantity,
+      valueReference: fields[22] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Questionnaire_Initial obj) {
+    writer
+      ..writeByte(23)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.valueBoolean)
+      ..writeByte(4)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(5)
+      ..write(obj.valueDecimal)
+      ..writeByte(6)
+      ..write(obj.elementValueDecimal)
+      ..writeByte(7)
+      ..write(obj.valueInteger)
+      ..writeByte(8)
+      ..write(obj.elementValueInteger)
+      ..writeByte(9)
+      ..write(obj.valueDate)
+      ..writeByte(10)
+      ..write(obj.elementValueDate)
+      ..writeByte(11)
+      ..write(obj.valueDateTime)
+      ..writeByte(12)
+      ..write(obj.elementValueDateTime)
+      ..writeByte(13)
+      ..write(obj.valueTime)
+      ..writeByte(14)
+      ..write(obj.elementValueTime)
+      ..writeByte(15)
+      ..write(obj.valueString)
+      ..writeByte(16)
+      ..write(obj.elementValueString)
+      ..writeByte(17)
+      ..write(obj.valueUri)
+      ..writeByte(18)
+      ..write(obj.elementValueUri)
+      ..writeByte(19)
+      ..write(obj.valueAttachment)
+      ..writeByte(20)
+      ..write(obj.valueCoding)
+      ..writeByte(21)
+      ..write(obj.valueQuantity)
+      ..writeByte(22)
+      ..write(obj.valueReference);
+  }
 }

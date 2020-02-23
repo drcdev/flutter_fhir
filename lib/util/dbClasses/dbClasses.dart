@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-@HiveType()
 class Server {
   @HiveField(0)
   String name;
@@ -35,28 +34,27 @@ class Server {
         : DateTime.parse(json['lastUpdated'] as String);
   }
 
-    Map<String, dynamic> toJson() {
-      final val = <String, dynamic>{};
+  Map<String, dynamic> toJson() {
+    final val = <String, dynamic>{};
 
-      void writeNotNull(String key, dynamic value) {
-        if (value != null) {
-          val[key] = value;
-        }
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) {
+        val[key] = value;
       }
+    }
 
-      writeNotNull('name', this.name);
-      writeNotNull('url', this.url);
-      writeNotNull('clientId', this.clientId);
-      writeNotNull('clientUdun', this.clientUdun);
-      writeNotNull('lastUpdated', this.lastUpdated?.toIso8601String());
-      return val;
+    writeNotNull('name', this.name);
+    writeNotNull('url', this.url);
+    writeNotNull('clientId', this.clientId);
+    writeNotNull('clientUdun', this.clientUdun);
+    writeNotNull('lastUpdated', this.lastUpdated?.toIso8601String());
+    return val;
   }
 }
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
-
 
 class ServerAdapter extends TypeAdapter<Server> {
   @override

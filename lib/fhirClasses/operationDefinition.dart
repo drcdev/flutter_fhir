@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OperationDefinition {
   static Future<OperationDefinition> newInstance({
     String resourceType,
@@ -144,60 +144,115 @@ class OperationDefinition {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'OperationDefinition';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   String version;
+  @HiveField(14)
   Element elementVersion;
+  @HiveField(15)
   String name;
+  @HiveField(16)
   Element elementName;
+  @HiveField(17)
   String title;
+  @HiveField(18)
   Element elementTitle;
+  @HiveField(19)
   String status;
+  @HiveField(20)
   Element elementStatus;
+  @HiveField(21)
   String kind;
+  @HiveField(22)
   Element elementKind;
+  @HiveField(23)
   bool experimental;
+  @HiveField(24)
   Element elementExperimental;
+  @HiveField(25)
   DateTime date;
+  @HiveField(26)
   Element elementDate;
+  @HiveField(27)
   String publisher;
+  @HiveField(28)
   Element elementPublisher;
+  @HiveField(29)
   List<ContactDetail> contact;
+  @HiveField(30)
   String description;
+  @HiveField(31)
   Element elementDescription;
+  @HiveField(32)
   List<UsageContext> useContext;
+  @HiveField(33)
   List<CodeableConcept> jurisdiction;
+  @HiveField(34)
   String purpose;
+  @HiveField(35)
   Element elementPurpose;
+  @HiveField(36)
   bool affectsState;
+  @HiveField(37)
   Element elementAffectsState;
+  @HiveField(38)
   String code;
+  @HiveField(39)
   Element elementCode;
+  @HiveField(40)
   String comment;
+  @HiveField(41)
   Element elementComment;
+  @HiveField(42)
   String base;
+  @HiveField(43)
   List<String> resource;
+  @HiveField(44)
   List<Element> elementResource;
+  @HiveField(45)
   bool system;
+  @HiveField(46)
   Element elementSystem;
+  @HiveField(47)
   bool type;
+  @HiveField(48)
   Element elementType;
+  @HiveField(49)
   bool instance;
+  @HiveField(50)
   Element elementInstance;
+  @HiveField(51)
   String inputProfile;
+  @HiveField(52)
   String outputProfile;
+  @HiveField(53)
   List<OperationDefinition_Parameter> parameter;
+  @HiveField(54)
   List<OperationDefinition_Overload> overload;
 
   OperationDefinition({
@@ -263,7 +318,6 @@ class OperationDefinition {
   Map<String, dynamic> toJson() => _$OperationDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OperationDefinition_Parameter {
   static Future<OperationDefinition_Parameter> newInstance({
     String id,
@@ -316,26 +370,47 @@ class OperationDefinition_Parameter {
     return newOperationDefinition_Parameter;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String name;
+  @HiveField(4)
   Element elementName;
+  @HiveField(5)
   String use;
+  @HiveField(6)
   Element elementUse;
+  @HiveField(7)
   int min;
+  @HiveField(8)
   Element elementMin;
+  @HiveField(9)
   String max;
+  @HiveField(10)
   Element elementMax;
+  @HiveField(11)
   String documentation;
+  @HiveField(12)
   Element elementDocumentation;
+  @HiveField(13)
   String type;
+  @HiveField(14)
   Element elementType;
+  @HiveField(15)
   List<String> targetProfile;
+  @HiveField(16)
   String searchType;
+  @HiveField(17)
   Element elementSearchType;
+  @HiveField(18)
   OperationDefinition_Binding binding;
+  @HiveField(19)
   List<OperationDefinition_ReferencedFrom> referencedFrom;
+  @HiveField(20)
   List<OperationDefinition_Parameter> part;
 
   OperationDefinition_Parameter({
@@ -367,7 +442,6 @@ class OperationDefinition_Parameter {
   Map<String, dynamic> toJson() => _$OperationDefinition_ParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OperationDefinition_Binding {
   static Future<OperationDefinition_Binding> newInstance({
     String id,
@@ -390,11 +464,17 @@ class OperationDefinition_Binding {
     return newOperationDefinition_Binding;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String strength;
+  @HiveField(4)
   Element elementStrength;
+  @HiveField(5)
   String valueSet;
 
   OperationDefinition_Binding({
@@ -411,7 +491,6 @@ class OperationDefinition_Binding {
   Map<String, dynamic> toJson() => _$OperationDefinition_BindingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OperationDefinition_ReferencedFrom {
   static Future<OperationDefinition_ReferencedFrom> newInstance({
     String id,
@@ -436,12 +515,19 @@ class OperationDefinition_ReferencedFrom {
     return newOperationDefinition_ReferencedFrom;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String source;
+  @HiveField(4)
   Element elementSource;
+  @HiveField(5)
   String sourceId;
+  @HiveField(6)
   Element elementSourceId;
 
   OperationDefinition_ReferencedFrom({
@@ -461,7 +547,6 @@ class OperationDefinition_ReferencedFrom {
       _$OperationDefinition_ReferencedFromToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OperationDefinition_Overload {
   static Future<OperationDefinition_Overload> newInstance({
     String id,
@@ -486,12 +571,19 @@ class OperationDefinition_Overload {
     return newOperationDefinition_Overload;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<String> parameterName;
+  @HiveField(4)
   List<Element> elementParameterName;
+  @HiveField(5)
   String comment;
+  @HiveField(6)
   Element elementComment;
 
   OperationDefinition_Overload({
@@ -953,4 +1045,392 @@ Map<String, dynamic> _$OperationDefinition_OverloadToJson(
   writeNotNull('comment', instance.comment);
   writeNotNull('elementComment', instance.elementComment?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class OperationDefinitionAdapter extends TypeAdapter<OperationDefinition> {
+  @override
+  OperationDefinition read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OperationDefinition(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      version: fields[13] as String,
+      elementVersion: fields[14] as Element,
+      name: fields[15] as String,
+      elementName: fields[16] as Element,
+      title: fields[17] as String,
+      elementTitle: fields[18] as Element,
+      status: fields[19] as String,
+      elementStatus: fields[20] as Element,
+      kind: fields[21] as String,
+      elementKind: fields[22] as Element,
+      experimental: fields[23] as bool,
+      elementExperimental: fields[24] as Element,
+      date: fields[25] as DateTime,
+      elementDate: fields[26] as Element,
+      publisher: fields[27] as String,
+      elementPublisher: fields[28] as Element,
+      contact: (fields[29] as List)?.cast<ContactDetail>(),
+      description: fields[30] as String,
+      elementDescription: fields[31] as Element,
+      useContext: (fields[32] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[33] as List)?.cast<CodeableConcept>(),
+      purpose: fields[34] as String,
+      elementPurpose: fields[35] as Element,
+      affectsState: fields[36] as bool,
+      elementAffectsState: fields[37] as Element,
+      code: fields[38] as String,
+      elementCode: fields[39] as Element,
+      comment: fields[40] as String,
+      elementComment: fields[41] as Element,
+      base: fields[42] as String,
+      resource: (fields[43] as List)?.cast<String>(),
+      elementResource: (fields[44] as List)?.cast<Element>(),
+      system: fields[45] as bool,
+      elementSystem: fields[46] as Element,
+      type: fields[47] as bool,
+      elementType: fields[48] as Element,
+      instance: fields[49] as bool,
+      elementInstance: fields[50] as Element,
+      inputProfile: fields[51] as String,
+      outputProfile: fields[52] as String,
+      parameter: (fields[53] as List)?.cast<OperationDefinition_Parameter>(),
+      overload: (fields[54] as List)?.cast<OperationDefinition_Overload>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OperationDefinition obj) {
+    writer
+      ..writeByte(55)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.version)
+      ..writeByte(14)
+      ..write(obj.elementVersion)
+      ..writeByte(15)
+      ..write(obj.name)
+      ..writeByte(16)
+      ..write(obj.elementName)
+      ..writeByte(17)
+      ..write(obj.title)
+      ..writeByte(18)
+      ..write(obj.elementTitle)
+      ..writeByte(19)
+      ..write(obj.status)
+      ..writeByte(20)
+      ..write(obj.elementStatus)
+      ..writeByte(21)
+      ..write(obj.kind)
+      ..writeByte(22)
+      ..write(obj.elementKind)
+      ..writeByte(23)
+      ..write(obj.experimental)
+      ..writeByte(24)
+      ..write(obj.elementExperimental)
+      ..writeByte(25)
+      ..write(obj.date)
+      ..writeByte(26)
+      ..write(obj.elementDate)
+      ..writeByte(27)
+      ..write(obj.publisher)
+      ..writeByte(28)
+      ..write(obj.elementPublisher)
+      ..writeByte(29)
+      ..write(obj.contact)
+      ..writeByte(30)
+      ..write(obj.description)
+      ..writeByte(31)
+      ..write(obj.elementDescription)
+      ..writeByte(32)
+      ..write(obj.useContext)
+      ..writeByte(33)
+      ..write(obj.jurisdiction)
+      ..writeByte(34)
+      ..write(obj.purpose)
+      ..writeByte(35)
+      ..write(obj.elementPurpose)
+      ..writeByte(36)
+      ..write(obj.affectsState)
+      ..writeByte(37)
+      ..write(obj.elementAffectsState)
+      ..writeByte(38)
+      ..write(obj.code)
+      ..writeByte(39)
+      ..write(obj.elementCode)
+      ..writeByte(40)
+      ..write(obj.comment)
+      ..writeByte(41)
+      ..write(obj.elementComment)
+      ..writeByte(42)
+      ..write(obj.base)
+      ..writeByte(43)
+      ..write(obj.resource)
+      ..writeByte(44)
+      ..write(obj.elementResource)
+      ..writeByte(45)
+      ..write(obj.system)
+      ..writeByte(46)
+      ..write(obj.elementSystem)
+      ..writeByte(47)
+      ..write(obj.type)
+      ..writeByte(48)
+      ..write(obj.elementType)
+      ..writeByte(49)
+      ..write(obj.instance)
+      ..writeByte(50)
+      ..write(obj.elementInstance)
+      ..writeByte(51)
+      ..write(obj.inputProfile)
+      ..writeByte(52)
+      ..write(obj.outputProfile)
+      ..writeByte(53)
+      ..write(obj.parameter)
+      ..writeByte(54)
+      ..write(obj.overload);
+  }
+}
+
+class OperationDefinition_ParameterAdapter
+    extends TypeAdapter<OperationDefinition_Parameter> {
+  @override
+  OperationDefinition_Parameter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OperationDefinition_Parameter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      use: fields[5] as String,
+      elementUse: fields[6] as Element,
+      min: fields[7] as int,
+      elementMin: fields[8] as Element,
+      max: fields[9] as String,
+      elementMax: fields[10] as Element,
+      documentation: fields[11] as String,
+      elementDocumentation: fields[12] as Element,
+      type: fields[13] as String,
+      elementType: fields[14] as Element,
+      targetProfile: (fields[15] as List)?.cast<String>(),
+      searchType: fields[16] as String,
+      elementSearchType: fields[17] as Element,
+      binding: fields[18] as OperationDefinition_Binding,
+      referencedFrom:
+          (fields[19] as List)?.cast<OperationDefinition_ReferencedFrom>(),
+      part: (fields[20] as List)?.cast<OperationDefinition_Parameter>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OperationDefinition_Parameter obj) {
+    writer
+      ..writeByte(21)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.use)
+      ..writeByte(6)
+      ..write(obj.elementUse)
+      ..writeByte(7)
+      ..write(obj.min)
+      ..writeByte(8)
+      ..write(obj.elementMin)
+      ..writeByte(9)
+      ..write(obj.max)
+      ..writeByte(10)
+      ..write(obj.elementMax)
+      ..writeByte(11)
+      ..write(obj.documentation)
+      ..writeByte(12)
+      ..write(obj.elementDocumentation)
+      ..writeByte(13)
+      ..write(obj.type)
+      ..writeByte(14)
+      ..write(obj.elementType)
+      ..writeByte(15)
+      ..write(obj.targetProfile)
+      ..writeByte(16)
+      ..write(obj.searchType)
+      ..writeByte(17)
+      ..write(obj.elementSearchType)
+      ..writeByte(18)
+      ..write(obj.binding)
+      ..writeByte(19)
+      ..write(obj.referencedFrom)
+      ..writeByte(20)
+      ..write(obj.part);
+  }
+}
+
+class OperationDefinition_BindingAdapter
+    extends TypeAdapter<OperationDefinition_Binding> {
+  @override
+  OperationDefinition_Binding read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OperationDefinition_Binding(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      strength: fields[3] as String,
+      elementStrength: fields[4] as Element,
+      valueSet: fields[5] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OperationDefinition_Binding obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.strength)
+      ..writeByte(4)
+      ..write(obj.elementStrength)
+      ..writeByte(5)
+      ..write(obj.valueSet);
+  }
+}
+
+class OperationDefinition_ReferencedFromAdapter
+    extends TypeAdapter<OperationDefinition_ReferencedFrom> {
+  @override
+  OperationDefinition_ReferencedFrom read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OperationDefinition_ReferencedFrom(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      source: fields[3] as String,
+      elementSource: fields[4] as Element,
+      sourceId: fields[5] as String,
+      elementSourceId: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OperationDefinition_ReferencedFrom obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.source)
+      ..writeByte(4)
+      ..write(obj.elementSource)
+      ..writeByte(5)
+      ..write(obj.sourceId)
+      ..writeByte(6)
+      ..write(obj.elementSourceId);
+  }
+}
+
+class OperationDefinition_OverloadAdapter
+    extends TypeAdapter<OperationDefinition_Overload> {
+  @override
+  OperationDefinition_Overload read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OperationDefinition_Overload(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      parameterName: (fields[3] as List)?.cast<String>(),
+      elementParameterName: (fields[4] as List)?.cast<Element>(),
+      comment: fields[5] as String,
+      elementComment: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OperationDefinition_Overload obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.parameterName)
+      ..writeByte(4)
+      ..write(obj.elementParameterName)
+      ..writeByte(5)
+      ..write(obj.comment)
+      ..writeByte(6)
+      ..write(obj.elementComment);
+  }
 }

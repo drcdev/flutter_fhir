@@ -1,10 +1,10 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Narrative {
   static Future<Narrative> newInstance({
     String id,
@@ -24,10 +24,15 @@ class Narrative {
     return newNarrative;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   String status;
+  @HiveField(3)
   Element elementStatus;
+  @HiveField(4)
   String div;
 
   Narrative({
@@ -79,4 +84,42 @@ Map<String, dynamic> _$NarrativeToJson(Narrative instance) {
   writeNotNull('elementStatus', instance.elementStatus?.toJson());
   writeNotNull('div', instance.div);
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class NarrativeAdapter extends TypeAdapter<Narrative> {
+  @override
+  Narrative read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Narrative(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      status: fields[2] as String,
+      elementStatus: fields[3] as Element,
+      div: fields[4] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Narrative obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.status)
+      ..writeByte(3)
+      ..write(obj.elementStatus)
+      ..writeByte(4)
+      ..write(obj.div);
+  }
 }

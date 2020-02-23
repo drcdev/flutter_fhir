@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class OrganizationAffiliation {
   static Future<OrganizationAffiliation> newInstance({
     String resourceType,
@@ -85,29 +85,53 @@ class OrganizationAffiliation {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'OrganizationAffiliation';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   bool active;
+  @HiveField(13)
   Element elementActive;
+  @HiveField(14)
   Period period;
+  @HiveField(15)
   Reference organization;
+  @HiveField(16)
   Reference participatingOrganization;
+  @HiveField(17)
   List<Reference> network;
+  @HiveField(18)
   List<CodeableConcept> code;
+  @HiveField(19)
   List<CodeableConcept> specialty;
+  @HiveField(20)
   List<Reference> location;
+  @HiveField(21)
   List<Reference> healthcareService;
+  @HiveField(22)
   List<ContactPoint> telecom;
+  @HiveField(23)
   List<Reference> endpoint;
 
   OrganizationAffiliation({
@@ -274,4 +298,100 @@ Map<String, dynamic> _$OrganizationAffiliationToJson(
   writeNotNull(
       'endpoint', instance.endpoint?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class OrganizationAffiliationAdapter
+    extends TypeAdapter<OrganizationAffiliation> {
+  @override
+  OrganizationAffiliation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return OrganizationAffiliation(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      active: fields[12] as bool,
+      elementActive: fields[13] as Element,
+      period: fields[14] as Period,
+      organization: fields[15] as Reference,
+      participatingOrganization: fields[16] as Reference,
+      network: (fields[17] as List)?.cast<Reference>(),
+      code: (fields[18] as List)?.cast<CodeableConcept>(),
+      specialty: (fields[19] as List)?.cast<CodeableConcept>(),
+      location: (fields[20] as List)?.cast<Reference>(),
+      healthcareService: (fields[21] as List)?.cast<Reference>(),
+      telecom: (fields[22] as List)?.cast<ContactPoint>(),
+      endpoint: (fields[23] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, OrganizationAffiliation obj) {
+    writer
+      ..writeByte(24)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.active)
+      ..writeByte(13)
+      ..write(obj.elementActive)
+      ..writeByte(14)
+      ..write(obj.period)
+      ..writeByte(15)
+      ..write(obj.organization)
+      ..writeByte(16)
+      ..write(obj.participatingOrganization)
+      ..writeByte(17)
+      ..write(obj.network)
+      ..writeByte(18)
+      ..write(obj.code)
+      ..writeByte(19)
+      ..write(obj.specialty)
+      ..writeByte(20)
+      ..write(obj.location)
+      ..writeByte(21)
+      ..write(obj.healthcareService)
+      ..writeByte(22)
+      ..write(obj.telecom)
+      ..writeByte(23)
+      ..write(obj.endpoint);
+  }
 }

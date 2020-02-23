@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
@@ -37,7 +38,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap {
   static Future<StructureMap> newInstance({
     String resourceType,
@@ -140,45 +140,85 @@ class StructureMap {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'StructureMap';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   List<Identifier> identifier;
+  @HiveField(14)
   String version;
+  @HiveField(15)
   Element elementVersion;
+  @HiveField(16)
   String name;
+  @HiveField(17)
   Element elementName;
+  @HiveField(18)
   String title;
+  @HiveField(19)
   Element elementTitle;
+  @HiveField(20)
   String status;
+  @HiveField(21)
   Element elementStatus;
+  @HiveField(22)
   bool experimental;
+  @HiveField(23)
   Element elementExperimental;
+  @HiveField(24)
   DateTime date;
+  @HiveField(25)
   Element elementDate;
+  @HiveField(26)
   String publisher;
+  @HiveField(27)
   Element elementPublisher;
+  @HiveField(28)
   List<ContactDetail> contact;
+  @HiveField(29)
   String description;
+  @HiveField(30)
   Element elementDescription;
+  @HiveField(31)
   List<UsageContext> useContext;
+  @HiveField(32)
   List<CodeableConcept> jurisdiction;
+  @HiveField(33)
   String purpose;
+  @HiveField(34)
   Element elementPurpose;
+  @HiveField(35)
   String copyright;
+  @HiveField(36)
   Element elementCopyright;
+  @HiveField(37)
   List<StructureMap_Structure> structure;
+  @HiveField(38)
   List<String> import;
+  @HiveField(39)
   List<StructureMap_Group> group;
 
   StructureMap({
@@ -229,7 +269,6 @@ class StructureMap {
   Map<String, dynamic> toJson() => _$StructureMapToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Structure {
   static Future<StructureMap_Structure> newInstance({
     String id,
@@ -260,15 +299,25 @@ class StructureMap_Structure {
     return newStructureMap_Structure;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String url;
+  @HiveField(4)
   String mode;
+  @HiveField(5)
   Element elementMode;
+  @HiveField(6)
   String alias;
+  @HiveField(7)
   Element elementAlias;
+  @HiveField(8)
   String documentation;
+  @HiveField(9)
   Element elementDocumentation;
 
   StructureMap_Structure({
@@ -289,7 +338,6 @@ class StructureMap_Structure {
   Map<String, dynamic> toJson() => _$StructureMap_StructureToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Group {
   static Future<StructureMap_Group> newInstance({
     String id,
@@ -325,18 +373,31 @@ class StructureMap_Group {
     return newStructureMap_Group;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String name;
+  @HiveField(4)
   Element elementName;
+  @HiveField(5)
   String extend;
+  @HiveField(6)
   Element elementExtends;
+  @HiveField(7)
   String typeMode;
+  @HiveField(8)
   Element elementTypeMode;
+  @HiveField(9)
   String documentation;
+  @HiveField(10)
   Element elementDocumentation;
+  @HiveField(11)
   List<StructureMap_Input> input;
+  @HiveField(12)
   List<StructureMap_Rule> rule;
 
   StructureMap_Group({
@@ -360,7 +421,6 @@ class StructureMap_Group {
   Map<String, dynamic> toJson() => _$StructureMap_GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Input {
   static Future<StructureMap_Input> newInstance({
     String id,
@@ -392,16 +452,27 @@ class StructureMap_Input {
     return newStructureMap_Input;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String name;
+  @HiveField(4)
   Element elementName;
+  @HiveField(5)
   String type;
+  @HiveField(6)
   Element elementType;
+  @HiveField(7)
   String mode;
+  @HiveField(8)
   Element elementMode;
+  @HiveField(9)
   String documentation;
+  @HiveField(10)
   Element elementDocumentation;
 
   StructureMap_Input({
@@ -423,7 +494,6 @@ class StructureMap_Input {
   Map<String, dynamic> toJson() => _$StructureMap_InputToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Rule {
   static Future<StructureMap_Rule> newInstance({
     String id,
@@ -455,16 +525,27 @@ class StructureMap_Rule {
     return newStructureMap_Rule;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String name;
+  @HiveField(4)
   Element elementName;
+  @HiveField(5)
   List<StructureMap_Source> source;
+  @HiveField(6)
   List<StructureMap_Target> target;
+  @HiveField(7)
   List<StructureMap_Rule> rule;
+  @HiveField(8)
   List<StructureMap_Dependent> dependent;
+  @HiveField(9)
   String documentation;
+  @HiveField(10)
   Element elementDocumentation;
 
   StructureMap_Rule({
@@ -486,7 +567,6 @@ class StructureMap_Rule {
   Map<String, dynamic> toJson() => _$StructureMap_RuleToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Source {
   static Future<StructureMap_Source> newInstance({
     String id,
@@ -680,97 +760,189 @@ class StructureMap_Source {
     return newStructureMap_Source;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String context;
+  @HiveField(4)
   Element elementContext;
+  @HiveField(5)
   int min;
+  @HiveField(6)
   Element elementMin;
+  @HiveField(7)
   String max;
+  @HiveField(8)
   Element elementMax;
+  @HiveField(9)
   String type;
+  @HiveField(10)
   Element elementType;
+  @HiveField(11)
   String defaultValueBase64Binary;
+  @HiveField(12)
   Element elementDefaultValueBase64Binary;
+  @HiveField(13)
   bool defaultValueBoolean;
+  @HiveField(14)
   Element elementDefaultValueBoolean;
+  @HiveField(15)
   String defaultValueCanonical;
+  @HiveField(16)
   Element elementDefaultValueCanonical;
+  @HiveField(17)
   String defaultValueCode;
+  @HiveField(18)
   Element elementDefaultValueCode;
+  @HiveField(19)
   String defaultValueDate;
+  @HiveField(20)
   Element elementDefaultValueDate;
+  @HiveField(21)
   String defaultValueDateTime;
+  @HiveField(22)
   Element elementDefaultValueDateTime;
+  @HiveField(23)
   int defaultValueDecimal;
+  @HiveField(24)
   Element elementDefaultValueDecimal;
+  @HiveField(25)
   String defaultValueId;
+  @HiveField(26)
   Element elementDefaultValueId;
+  @HiveField(27)
   String defaultValueInstant;
+  @HiveField(28)
   Element elementDefaultValueInstant;
+  @HiveField(29)
   int defaultValueInteger;
+  @HiveField(30)
   Element elementDefaultValueInteger;
+  @HiveField(31)
   String defaultValueMarkdown;
+  @HiveField(32)
   Element elementDefaultValueMarkdown;
+  @HiveField(33)
   String defaultValueOid;
+  @HiveField(34)
   Element elementDefaultValueOid;
+  @HiveField(35)
   int defaultValuePositiveInt;
+  @HiveField(36)
   Element elementDefaultValuePositiveInt;
+  @HiveField(37)
   String defaultValueString;
+  @HiveField(38)
   Element elementDefaultValueString;
+  @HiveField(39)
   String defaultValueTime;
+  @HiveField(40)
   Element elementDefaultValueTime;
+  @HiveField(41)
   int defaultValueUnsignedInt;
+  @HiveField(42)
   Element elementDefaultValueUnsignedInt;
+  @HiveField(43)
   String defaultValueUri;
+  @HiveField(44)
   Element elementDefaultValueUri;
+  @HiveField(45)
   String defaultValueUrl;
+  @HiveField(46)
   Element elementDefaultValueUrl;
+  @HiveField(47)
   String defaultValueUuid;
+  @HiveField(48)
   Element elementDefaultValueUuid;
+  @HiveField(49)
   Address defaultValueAddress;
+  @HiveField(50)
   Age defaultValueAge;
+  @HiveField(51)
   Annotation defaultValueAnnotation;
+  @HiveField(52)
   Attachment defaultValueAttachment;
+  @HiveField(53)
   CodeableConcept defaultValueCodeableConcept;
+  @HiveField(54)
   Coding defaultValueCoding;
+  @HiveField(55)
   ContactPoint defaultValueContactPoint;
+  @HiveField(56)
   Count defaultValueCount;
+  @HiveField(57)
   Distance defaultValueDistance;
+  @HiveField(58)
   Duration defaultValueDuration;
+  @HiveField(59)
   HumanName defaultValueHumanName;
+  @HiveField(60)
   Identifier defaultValueIdentifier;
+  @HiveField(61)
   Money defaultValueMoney;
+  @HiveField(62)
   Period defaultValuePeriod;
+  @HiveField(63)
   Quantity defaultValueQuantity;
+  @HiveField(64)
   Range defaultValueRange;
+  @HiveField(65)
   Ratio defaultValueRatio;
+  @HiveField(66)
   Reference defaultValueReference;
+  @HiveField(67)
   SampledData defaultValueSampledData;
+  @HiveField(68)
   Signature defaultValueSignature;
+  @HiveField(69)
   Timing defaultValueTiming;
+  @HiveField(70)
   ContactDetail defaultValueContactDetail;
+  @HiveField(71)
   Contributor defaultValueContributor;
+  @HiveField(72)
   DataRequirement defaultValueDataRequirement;
+  @HiveField(73)
   Expression defaultValueExpression;
+  @HiveField(74)
   ParameterDefinition defaultValueParameterDefinition;
+  @HiveField(75)
   RelatedArtifact defaultValueRelatedArtifact;
+  @HiveField(76)
   TriggerDefinition defaultValueTriggerDefinition;
+  @HiveField(77)
   UsageContext defaultValueUsageContext;
+  @HiveField(78)
   Dosage defaultValueDosage;
+  @HiveField(79)
   Meta defaultValueMeta;
+  @HiveField(80)
   String element;
+  @HiveField(81)
   Element elementElement;
+  @HiveField(82)
   String listMode;
+  @HiveField(83)
   Element elementListMode;
+  @HiveField(84)
   String variable;
+  @HiveField(85)
   Element elementVariable;
+  @HiveField(86)
   String condition;
+  @HiveField(87)
   Element elementCondition;
+  @HiveField(88)
   String check;
+  @HiveField(89)
   Element elementCheck;
+  @HiveField(90)
   String logMessage;
+  @HiveField(91)
   Element elementLogMessage;
 
   StructureMap_Source({
@@ -873,7 +1045,6 @@ class StructureMap_Source {
   Map<String, dynamic> toJson() => _$StructureMap_SourceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Target {
   static Future<StructureMap_Target> newInstance({
     String id,
@@ -919,23 +1090,41 @@ class StructureMap_Target {
     return newStructureMap_Target;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String context;
+  @HiveField(4)
   Element elementContext;
+  @HiveField(5)
   String contextType;
+  @HiveField(6)
   Element elementContextType;
+  @HiveField(7)
   String element;
+  @HiveField(8)
   Element elementElement;
+  @HiveField(9)
   String variable;
+  @HiveField(10)
   Element elementVariable;
+  @HiveField(11)
   String listMode;
+  @HiveField(12)
   List<Element> elementListMode;
+  @HiveField(13)
   String listRuleId;
+  @HiveField(14)
   Element elementListRuleId;
+  @HiveField(15)
   String transform;
+  @HiveField(16)
   Element elementTransform;
+  @HiveField(17)
   List<StructureMap_Parameter> parameter;
 
   StructureMap_Target({
@@ -964,7 +1153,6 @@ class StructureMap_Target {
   Map<String, dynamic> toJson() => _$StructureMap_TargetToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Parameter {
   static Future<StructureMap_Parameter> newInstance({
     String id,
@@ -1001,18 +1189,31 @@ class StructureMap_Parameter {
     return newStructureMap_Parameter;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String valueId;
+  @HiveField(4)
   Element elementValueId;
+  @HiveField(5)
   String valueString;
+  @HiveField(6)
   Element elementValueString;
+  @HiveField(7)
   bool valueBoolean;
+  @HiveField(8)
   Element elementValueBoolean;
+  @HiveField(9)
   int valueInteger;
+  @HiveField(10)
   Element elementValueInteger;
+  @HiveField(11)
   int valueDecimal;
+  @HiveField(12)
   Element elementValueDecimal;
 
   StructureMap_Parameter({
@@ -1036,7 +1237,6 @@ class StructureMap_Parameter {
   Map<String, dynamic> toJson() => _$StructureMap_ParameterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class StructureMap_Dependent {
   static Future<StructureMap_Dependent> newInstance({
     String id,
@@ -1061,12 +1261,19 @@ class StructureMap_Dependent {
     return newStructureMap_Dependent;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String name;
+  @HiveField(4)
   Element elementName;
+  @HiveField(5)
   List<String> variable;
+  @HiveField(6)
   List<Element> elementVariable;
 
   StructureMap_Dependent({
@@ -2100,4 +2307,819 @@ Map<String, dynamic> _$StructureMap_DependentToJson(
   writeNotNull('elementVariable',
       instance.elementVariable?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class StructureMapAdapter extends TypeAdapter<StructureMap> {
+  @override
+  StructureMap read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      status: fields[20] as String,
+      elementStatus: fields[21] as Element,
+      experimental: fields[22] as bool,
+      elementExperimental: fields[23] as Element,
+      date: fields[24] as DateTime,
+      elementDate: fields[25] as Element,
+      publisher: fields[26] as String,
+      elementPublisher: fields[27] as Element,
+      contact: (fields[28] as List)?.cast<ContactDetail>(),
+      description: fields[29] as String,
+      elementDescription: fields[30] as Element,
+      useContext: (fields[31] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
+      purpose: fields[33] as String,
+      elementPurpose: fields[34] as Element,
+      copyright: fields[35] as String,
+      elementCopyright: fields[36] as Element,
+      structure: (fields[37] as List)?.cast<StructureMap_Structure>(),
+      import: (fields[38] as List)?.cast<String>(),
+      group: (fields[39] as List)?.cast<StructureMap_Group>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap obj) {
+    writer
+      ..writeByte(40)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.status)
+      ..writeByte(21)
+      ..write(obj.elementStatus)
+      ..writeByte(22)
+      ..write(obj.experimental)
+      ..writeByte(23)
+      ..write(obj.elementExperimental)
+      ..writeByte(24)
+      ..write(obj.date)
+      ..writeByte(25)
+      ..write(obj.elementDate)
+      ..writeByte(26)
+      ..write(obj.publisher)
+      ..writeByte(27)
+      ..write(obj.elementPublisher)
+      ..writeByte(28)
+      ..write(obj.contact)
+      ..writeByte(29)
+      ..write(obj.description)
+      ..writeByte(30)
+      ..write(obj.elementDescription)
+      ..writeByte(31)
+      ..write(obj.useContext)
+      ..writeByte(32)
+      ..write(obj.jurisdiction)
+      ..writeByte(33)
+      ..write(obj.purpose)
+      ..writeByte(34)
+      ..write(obj.elementPurpose)
+      ..writeByte(35)
+      ..write(obj.copyright)
+      ..writeByte(36)
+      ..write(obj.elementCopyright)
+      ..writeByte(37)
+      ..write(obj.structure)
+      ..writeByte(38)
+      ..write(obj.import)
+      ..writeByte(39)
+      ..write(obj.group);
+  }
+}
+
+class StructureMap_StructureAdapter
+    extends TypeAdapter<StructureMap_Structure> {
+  @override
+  StructureMap_Structure read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Structure(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      url: fields[3] as String,
+      mode: fields[4] as String,
+      elementMode: fields[5] as Element,
+      alias: fields[6] as String,
+      elementAlias: fields[7] as Element,
+      documentation: fields[8] as String,
+      elementDocumentation: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Structure obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.url)
+      ..writeByte(4)
+      ..write(obj.mode)
+      ..writeByte(5)
+      ..write(obj.elementMode)
+      ..writeByte(6)
+      ..write(obj.alias)
+      ..writeByte(7)
+      ..write(obj.elementAlias)
+      ..writeByte(8)
+      ..write(obj.documentation)
+      ..writeByte(9)
+      ..write(obj.elementDocumentation);
+  }
+}
+
+class StructureMap_GroupAdapter extends TypeAdapter<StructureMap_Group> {
+  @override
+  StructureMap_Group read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Group(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      extend: fields[5] as String,
+      elementExtends: fields[6] as Element,
+      typeMode: fields[7] as String,
+      elementTypeMode: fields[8] as Element,
+      documentation: fields[9] as String,
+      elementDocumentation: fields[10] as Element,
+      input: (fields[11] as List)?.cast<StructureMap_Input>(),
+      rule: (fields[12] as List)?.cast<StructureMap_Rule>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Group obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.extend)
+      ..writeByte(6)
+      ..write(obj.elementExtends)
+      ..writeByte(7)
+      ..write(obj.typeMode)
+      ..writeByte(8)
+      ..write(obj.elementTypeMode)
+      ..writeByte(9)
+      ..write(obj.documentation)
+      ..writeByte(10)
+      ..write(obj.elementDocumentation)
+      ..writeByte(11)
+      ..write(obj.input)
+      ..writeByte(12)
+      ..write(obj.rule);
+  }
+}
+
+class StructureMap_InputAdapter extends TypeAdapter<StructureMap_Input> {
+  @override
+  StructureMap_Input read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Input(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      type: fields[5] as String,
+      elementType: fields[6] as Element,
+      mode: fields[7] as String,
+      elementMode: fields[8] as Element,
+      documentation: fields[9] as String,
+      elementDocumentation: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Input obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.elementType)
+      ..writeByte(7)
+      ..write(obj.mode)
+      ..writeByte(8)
+      ..write(obj.elementMode)
+      ..writeByte(9)
+      ..write(obj.documentation)
+      ..writeByte(10)
+      ..write(obj.elementDocumentation);
+  }
+}
+
+class StructureMap_RuleAdapter extends TypeAdapter<StructureMap_Rule> {
+  @override
+  StructureMap_Rule read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Rule(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      source: (fields[5] as List)?.cast<StructureMap_Source>(),
+      target: (fields[6] as List)?.cast<StructureMap_Target>(),
+      rule: (fields[7] as List)?.cast<StructureMap_Rule>(),
+      dependent: (fields[8] as List)?.cast<StructureMap_Dependent>(),
+      documentation: fields[9] as String,
+      elementDocumentation: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Rule obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.source)
+      ..writeByte(6)
+      ..write(obj.target)
+      ..writeByte(7)
+      ..write(obj.rule)
+      ..writeByte(8)
+      ..write(obj.dependent)
+      ..writeByte(9)
+      ..write(obj.documentation)
+      ..writeByte(10)
+      ..write(obj.elementDocumentation);
+  }
+}
+
+class StructureMap_SourceAdapter extends TypeAdapter<StructureMap_Source> {
+  @override
+  StructureMap_Source read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Source(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      context: fields[3] as String,
+      elementContext: fields[4] as Element,
+      min: fields[5] as int,
+      elementMin: fields[6] as Element,
+      max: fields[7] as String,
+      elementMax: fields[8] as Element,
+      type: fields[9] as String,
+      elementType: fields[10] as Element,
+      defaultValueBase64Binary: fields[11] as String,
+      elementDefaultValueBase64Binary: fields[12] as Element,
+      defaultValueBoolean: fields[13] as bool,
+      elementDefaultValueBoolean: fields[14] as Element,
+      defaultValueCanonical: fields[15] as String,
+      elementDefaultValueCanonical: fields[16] as Element,
+      defaultValueCode: fields[17] as String,
+      elementDefaultValueCode: fields[18] as Element,
+      defaultValueDate: fields[19] as String,
+      elementDefaultValueDate: fields[20] as Element,
+      defaultValueDateTime: fields[21] as String,
+      elementDefaultValueDateTime: fields[22] as Element,
+      defaultValueDecimal: fields[23] as int,
+      elementDefaultValueDecimal: fields[24] as Element,
+      defaultValueId: fields[25] as String,
+      elementDefaultValueId: fields[26] as Element,
+      defaultValueInstant: fields[27] as String,
+      elementDefaultValueInstant: fields[28] as Element,
+      defaultValueInteger: fields[29] as int,
+      elementDefaultValueInteger: fields[30] as Element,
+      defaultValueMarkdown: fields[31] as String,
+      elementDefaultValueMarkdown: fields[32] as Element,
+      defaultValueOid: fields[33] as String,
+      elementDefaultValueOid: fields[34] as Element,
+      defaultValuePositiveInt: fields[35] as int,
+      elementDefaultValuePositiveInt: fields[36] as Element,
+      defaultValueString: fields[37] as String,
+      elementDefaultValueString: fields[38] as Element,
+      defaultValueTime: fields[39] as String,
+      elementDefaultValueTime: fields[40] as Element,
+      defaultValueUnsignedInt: fields[41] as int,
+      elementDefaultValueUnsignedInt: fields[42] as Element,
+      defaultValueUri: fields[43] as String,
+      elementDefaultValueUri: fields[44] as Element,
+      defaultValueUrl: fields[45] as String,
+      elementDefaultValueUrl: fields[46] as Element,
+      defaultValueUuid: fields[47] as String,
+      elementDefaultValueUuid: fields[48] as Element,
+      defaultValueAddress: fields[49] as Address,
+      defaultValueAge: fields[50] as Age,
+      defaultValueAnnotation: fields[51] as Annotation,
+      defaultValueAttachment: fields[52] as Attachment,
+      defaultValueCodeableConcept: fields[53] as CodeableConcept,
+      defaultValueCoding: fields[54] as Coding,
+      defaultValueContactPoint: fields[55] as ContactPoint,
+      defaultValueCount: fields[56] as Count,
+      defaultValueDistance: fields[57] as Distance,
+      defaultValueDuration: fields[58] as Duration,
+      defaultValueHumanName: fields[59] as HumanName,
+      defaultValueIdentifier: fields[60] as Identifier,
+      defaultValueMoney: fields[61] as Money,
+      defaultValuePeriod: fields[62] as Period,
+      defaultValueQuantity: fields[63] as Quantity,
+      defaultValueRange: fields[64] as Range,
+      defaultValueRatio: fields[65] as Ratio,
+      defaultValueReference: fields[66] as Reference,
+      defaultValueSampledData: fields[67] as SampledData,
+      defaultValueSignature: fields[68] as Signature,
+      defaultValueTiming: fields[69] as Timing,
+      defaultValueContactDetail: fields[70] as ContactDetail,
+      defaultValueContributor: fields[71] as Contributor,
+      defaultValueDataRequirement: fields[72] as DataRequirement,
+      defaultValueExpression: fields[73] as Expression,
+      defaultValueParameterDefinition: fields[74] as ParameterDefinition,
+      defaultValueRelatedArtifact: fields[75] as RelatedArtifact,
+      defaultValueTriggerDefinition: fields[76] as TriggerDefinition,
+      defaultValueUsageContext: fields[77] as UsageContext,
+      defaultValueDosage: fields[78] as Dosage,
+      defaultValueMeta: fields[79] as Meta,
+      element: fields[80] as String,
+      elementElement: fields[81] as Element,
+      listMode: fields[82] as String,
+      elementListMode: fields[83] as Element,
+      variable: fields[84] as String,
+      elementVariable: fields[85] as Element,
+      condition: fields[86] as String,
+      elementCondition: fields[87] as Element,
+      check: fields[88] as String,
+      elementCheck: fields[89] as Element,
+      logMessage: fields[90] as String,
+      elementLogMessage: fields[91] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Source obj) {
+    writer
+      ..writeByte(92)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.context)
+      ..writeByte(4)
+      ..write(obj.elementContext)
+      ..writeByte(5)
+      ..write(obj.min)
+      ..writeByte(6)
+      ..write(obj.elementMin)
+      ..writeByte(7)
+      ..write(obj.max)
+      ..writeByte(8)
+      ..write(obj.elementMax)
+      ..writeByte(9)
+      ..write(obj.type)
+      ..writeByte(10)
+      ..write(obj.elementType)
+      ..writeByte(11)
+      ..write(obj.defaultValueBase64Binary)
+      ..writeByte(12)
+      ..write(obj.elementDefaultValueBase64Binary)
+      ..writeByte(13)
+      ..write(obj.defaultValueBoolean)
+      ..writeByte(14)
+      ..write(obj.elementDefaultValueBoolean)
+      ..writeByte(15)
+      ..write(obj.defaultValueCanonical)
+      ..writeByte(16)
+      ..write(obj.elementDefaultValueCanonical)
+      ..writeByte(17)
+      ..write(obj.defaultValueCode)
+      ..writeByte(18)
+      ..write(obj.elementDefaultValueCode)
+      ..writeByte(19)
+      ..write(obj.defaultValueDate)
+      ..writeByte(20)
+      ..write(obj.elementDefaultValueDate)
+      ..writeByte(21)
+      ..write(obj.defaultValueDateTime)
+      ..writeByte(22)
+      ..write(obj.elementDefaultValueDateTime)
+      ..writeByte(23)
+      ..write(obj.defaultValueDecimal)
+      ..writeByte(24)
+      ..write(obj.elementDefaultValueDecimal)
+      ..writeByte(25)
+      ..write(obj.defaultValueId)
+      ..writeByte(26)
+      ..write(obj.elementDefaultValueId)
+      ..writeByte(27)
+      ..write(obj.defaultValueInstant)
+      ..writeByte(28)
+      ..write(obj.elementDefaultValueInstant)
+      ..writeByte(29)
+      ..write(obj.defaultValueInteger)
+      ..writeByte(30)
+      ..write(obj.elementDefaultValueInteger)
+      ..writeByte(31)
+      ..write(obj.defaultValueMarkdown)
+      ..writeByte(32)
+      ..write(obj.elementDefaultValueMarkdown)
+      ..writeByte(33)
+      ..write(obj.defaultValueOid)
+      ..writeByte(34)
+      ..write(obj.elementDefaultValueOid)
+      ..writeByte(35)
+      ..write(obj.defaultValuePositiveInt)
+      ..writeByte(36)
+      ..write(obj.elementDefaultValuePositiveInt)
+      ..writeByte(37)
+      ..write(obj.defaultValueString)
+      ..writeByte(38)
+      ..write(obj.elementDefaultValueString)
+      ..writeByte(39)
+      ..write(obj.defaultValueTime)
+      ..writeByte(40)
+      ..write(obj.elementDefaultValueTime)
+      ..writeByte(41)
+      ..write(obj.defaultValueUnsignedInt)
+      ..writeByte(42)
+      ..write(obj.elementDefaultValueUnsignedInt)
+      ..writeByte(43)
+      ..write(obj.defaultValueUri)
+      ..writeByte(44)
+      ..write(obj.elementDefaultValueUri)
+      ..writeByte(45)
+      ..write(obj.defaultValueUrl)
+      ..writeByte(46)
+      ..write(obj.elementDefaultValueUrl)
+      ..writeByte(47)
+      ..write(obj.defaultValueUuid)
+      ..writeByte(48)
+      ..write(obj.elementDefaultValueUuid)
+      ..writeByte(49)
+      ..write(obj.defaultValueAddress)
+      ..writeByte(50)
+      ..write(obj.defaultValueAge)
+      ..writeByte(51)
+      ..write(obj.defaultValueAnnotation)
+      ..writeByte(52)
+      ..write(obj.defaultValueAttachment)
+      ..writeByte(53)
+      ..write(obj.defaultValueCodeableConcept)
+      ..writeByte(54)
+      ..write(obj.defaultValueCoding)
+      ..writeByte(55)
+      ..write(obj.defaultValueContactPoint)
+      ..writeByte(56)
+      ..write(obj.defaultValueCount)
+      ..writeByte(57)
+      ..write(obj.defaultValueDistance)
+      ..writeByte(58)
+      ..write(obj.defaultValueDuration)
+      ..writeByte(59)
+      ..write(obj.defaultValueHumanName)
+      ..writeByte(60)
+      ..write(obj.defaultValueIdentifier)
+      ..writeByte(61)
+      ..write(obj.defaultValueMoney)
+      ..writeByte(62)
+      ..write(obj.defaultValuePeriod)
+      ..writeByte(63)
+      ..write(obj.defaultValueQuantity)
+      ..writeByte(64)
+      ..write(obj.defaultValueRange)
+      ..writeByte(65)
+      ..write(obj.defaultValueRatio)
+      ..writeByte(66)
+      ..write(obj.defaultValueReference)
+      ..writeByte(67)
+      ..write(obj.defaultValueSampledData)
+      ..writeByte(68)
+      ..write(obj.defaultValueSignature)
+      ..writeByte(69)
+      ..write(obj.defaultValueTiming)
+      ..writeByte(70)
+      ..write(obj.defaultValueContactDetail)
+      ..writeByte(71)
+      ..write(obj.defaultValueContributor)
+      ..writeByte(72)
+      ..write(obj.defaultValueDataRequirement)
+      ..writeByte(73)
+      ..write(obj.defaultValueExpression)
+      ..writeByte(74)
+      ..write(obj.defaultValueParameterDefinition)
+      ..writeByte(75)
+      ..write(obj.defaultValueRelatedArtifact)
+      ..writeByte(76)
+      ..write(obj.defaultValueTriggerDefinition)
+      ..writeByte(77)
+      ..write(obj.defaultValueUsageContext)
+      ..writeByte(78)
+      ..write(obj.defaultValueDosage)
+      ..writeByte(79)
+      ..write(obj.defaultValueMeta)
+      ..writeByte(80)
+      ..write(obj.element)
+      ..writeByte(81)
+      ..write(obj.elementElement)
+      ..writeByte(82)
+      ..write(obj.listMode)
+      ..writeByte(83)
+      ..write(obj.elementListMode)
+      ..writeByte(84)
+      ..write(obj.variable)
+      ..writeByte(85)
+      ..write(obj.elementVariable)
+      ..writeByte(86)
+      ..write(obj.condition)
+      ..writeByte(87)
+      ..write(obj.elementCondition)
+      ..writeByte(88)
+      ..write(obj.check)
+      ..writeByte(89)
+      ..write(obj.elementCheck)
+      ..writeByte(90)
+      ..write(obj.logMessage)
+      ..writeByte(91)
+      ..write(obj.elementLogMessage);
+  }
+}
+
+class StructureMap_TargetAdapter extends TypeAdapter<StructureMap_Target> {
+  @override
+  StructureMap_Target read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Target(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      context: fields[3] as String,
+      elementContext: fields[4] as Element,
+      contextType: fields[5] as String,
+      elementContextType: fields[6] as Element,
+      element: fields[7] as String,
+      elementElement: fields[8] as Element,
+      variable: fields[9] as String,
+      elementVariable: fields[10] as Element,
+      listMode: fields[11] as String,
+      elementListMode: (fields[12] as List)?.cast<Element>(),
+      listRuleId: fields[13] as String,
+      elementListRuleId: fields[14] as Element,
+      transform: fields[15] as String,
+      elementTransform: fields[16] as Element,
+      parameter: (fields[17] as List)?.cast<StructureMap_Parameter>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Target obj) {
+    writer
+      ..writeByte(18)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.context)
+      ..writeByte(4)
+      ..write(obj.elementContext)
+      ..writeByte(5)
+      ..write(obj.contextType)
+      ..writeByte(6)
+      ..write(obj.elementContextType)
+      ..writeByte(7)
+      ..write(obj.element)
+      ..writeByte(8)
+      ..write(obj.elementElement)
+      ..writeByte(9)
+      ..write(obj.variable)
+      ..writeByte(10)
+      ..write(obj.elementVariable)
+      ..writeByte(11)
+      ..write(obj.listMode)
+      ..writeByte(12)
+      ..write(obj.elementListMode)
+      ..writeByte(13)
+      ..write(obj.listRuleId)
+      ..writeByte(14)
+      ..write(obj.elementListRuleId)
+      ..writeByte(15)
+      ..write(obj.transform)
+      ..writeByte(16)
+      ..write(obj.elementTransform)
+      ..writeByte(17)
+      ..write(obj.parameter);
+  }
+}
+
+class StructureMap_ParameterAdapter
+    extends TypeAdapter<StructureMap_Parameter> {
+  @override
+  StructureMap_Parameter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Parameter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      valueId: fields[3] as String,
+      elementValueId: fields[4] as Element,
+      valueString: fields[5] as String,
+      elementValueString: fields[6] as Element,
+      valueBoolean: fields[7] as bool,
+      elementValueBoolean: fields[8] as Element,
+      valueInteger: fields[9] as int,
+      elementValueInteger: fields[10] as Element,
+      valueDecimal: fields[11] as int,
+      elementValueDecimal: fields[12] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Parameter obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.valueId)
+      ..writeByte(4)
+      ..write(obj.elementValueId)
+      ..writeByte(5)
+      ..write(obj.valueString)
+      ..writeByte(6)
+      ..write(obj.elementValueString)
+      ..writeByte(7)
+      ..write(obj.valueBoolean)
+      ..writeByte(8)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(9)
+      ..write(obj.valueInteger)
+      ..writeByte(10)
+      ..write(obj.elementValueInteger)
+      ..writeByte(11)
+      ..write(obj.valueDecimal)
+      ..writeByte(12)
+      ..write(obj.elementValueDecimal);
+  }
+}
+
+class StructureMap_DependentAdapter
+    extends TypeAdapter<StructureMap_Dependent> {
+  @override
+  StructureMap_Dependent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StructureMap_Dependent(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      variable: (fields[5] as List)?.cast<String>(),
+      elementVariable: (fields[6] as List)?.cast<Element>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StructureMap_Dependent obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.variable)
+      ..writeByte(6)
+      ..write(obj.elementVariable);
+  }
 }

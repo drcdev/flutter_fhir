@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -15,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Measure {
   static Future<Measure> newInstance({
     String resourceType,
@@ -189,80 +189,155 @@ class Measure {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Measure';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   List<Identifier> identifier;
+  @HiveField(14)
   String version;
+  @HiveField(15)
   Element elementVersion;
+  @HiveField(16)
   String name;
+  @HiveField(17)
   Element elementName;
+  @HiveField(18)
   String title;
+  @HiveField(19)
   Element elementTitle;
+  @HiveField(20)
   String subtitle;
+  @HiveField(21)
   Element elementSubtitle;
+  @HiveField(22)
   String status;
+  @HiveField(23)
   Element elementStatus;
+  @HiveField(24)
   bool experimental;
+  @HiveField(25)
   Element elementExperimental;
+  @HiveField(26)
   CodeableConcept subjectCodeableConcept;
+  @HiveField(27)
   Reference subjectReference;
+  @HiveField(28)
   DateTime date;
+  @HiveField(29)
   Element elementDate;
+  @HiveField(30)
   String publisher;
+  @HiveField(31)
   Element elementPublisher;
+  @HiveField(32)
   List<ContactDetail> contact;
+  @HiveField(33)
   String description;
+  @HiveField(34)
   Element elementDescription;
+  @HiveField(35)
   List<UsageContext> useContext;
+  @HiveField(36)
   List<CodeableConcept> jurisdiction;
+  @HiveField(37)
   String purpose;
+  @HiveField(38)
   Element elementPurpose;
+  @HiveField(39)
   String usage;
+  @HiveField(40)
   Element elementUsage;
+  @HiveField(41)
   String copyright;
+  @HiveField(42)
   Element elementCopyright;
+  @HiveField(43)
   String approvalDate;
+  @HiveField(44)
   Element elementApprovalDate;
+  @HiveField(45)
   String lastReviewDate;
+  @HiveField(46)
   Element elementLastReviewDate;
+  @HiveField(47)
   Period effectivePeriod;
+  @HiveField(48)
   List<CodeableConcept> topic;
+  @HiveField(49)
   List<ContactDetail> author;
+  @HiveField(50)
   List<ContactDetail> editor;
+  @HiveField(51)
   List<ContactDetail> reviewer;
+  @HiveField(52)
   List<ContactDetail> endorser;
+  @HiveField(53)
   List<RelatedArtifact> relatedArtifact;
+  @HiveField(54)
   List<String> library;
+  @HiveField(55)
   String disclaimer;
+  @HiveField(56)
   Element elementDisclaimer;
+  @HiveField(57)
   CodeableConcept scoring;
+  @HiveField(58)
   CodeableConcept compositeScoring;
+  @HiveField(59)
   List<CodeableConcept> type;
+  @HiveField(60)
   String riskAdjustment;
+  @HiveField(61)
   Element elementRiskAdjustment;
+  @HiveField(62)
   String rateAggregation;
+  @HiveField(63)
   Element elementRateAggregation;
+  @HiveField(64)
   String rationale;
+  @HiveField(65)
   Element elementRationale;
+  @HiveField(66)
   String clinicalRecommendationStatement;
+  @HiveField(67)
   Element elementClinicalRecommendationStatement;
+  @HiveField(68)
   CodeableConcept improvementNotation;
+  @HiveField(69)
   List<String> definition;
+  @HiveField(70)
   List<Element> elementDefinition;
+  @HiveField(71)
   String guidance;
+  @HiveField(72)
   Element elementGuidance;
+  @HiveField(73)
   List<Measure_Group> group;
+  @HiveField(74)
   List<Measure_SupplementalData> supplementalData;
 
   Measure({
@@ -348,7 +423,6 @@ class Measure {
   Map<String, dynamic> toJson() => _$MeasureToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Measure_Group {
   static Future<Measure_Group> newInstance({
     String id,
@@ -374,13 +448,21 @@ class Measure_Group {
     return newMeasure_Group;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   String description;
+  @HiveField(5)
   Element elementDescription;
+  @HiveField(6)
   List<Measure_Population> population;
+  @HiveField(7)
   List<Measure_Stratifier> stratifier;
 
   Measure_Group({
@@ -399,7 +481,6 @@ class Measure_Group {
   Map<String, dynamic> toJson() => _$Measure_GroupToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Measure_Population {
   static Future<Measure_Population> newInstance({
     String id,
@@ -423,12 +504,19 @@ class Measure_Population {
     return newMeasure_Population;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   String description;
+  @HiveField(5)
   Element elementDescription;
+  @HiveField(6)
   Expression criteria;
 
   Measure_Population({
@@ -446,7 +534,6 @@ class Measure_Population {
   Map<String, dynamic> toJson() => _$Measure_PopulationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Measure_Stratifier {
   static Future<Measure_Stratifier> newInstance({
     String id,
@@ -472,13 +559,21 @@ class Measure_Stratifier {
     return newMeasure_Stratifier;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   String description;
+  @HiveField(5)
   Element elementDescription;
+  @HiveField(6)
   Expression criteria;
+  @HiveField(7)
   List<Measure_Component> component;
 
   Measure_Stratifier({
@@ -497,7 +592,6 @@ class Measure_Stratifier {
   Map<String, dynamic> toJson() => _$Measure_StratifierToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Measure_Component {
   static Future<Measure_Component> newInstance({
     String id,
@@ -521,12 +615,19 @@ class Measure_Component {
     return newMeasure_Component;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   String description;
+  @HiveField(5)
   Element elementDescription;
+  @HiveField(6)
   Expression criteria;
 
   Measure_Component({
@@ -544,7 +645,6 @@ class Measure_Component {
   Map<String, dynamic> toJson() => _$Measure_ComponentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Measure_SupplementalData {
   static Future<Measure_SupplementalData> newInstance({
     String id,
@@ -571,13 +671,21 @@ class Measure_SupplementalData {
     return newMeasure_SupplementalData;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   List<CodeableConcept> usage;
+  @HiveField(5)
   String description;
+  @HiveField(6)
   Element elementDescription;
+  @HiveField(7)
   Expression criteria;
 
   Measure_SupplementalData({
@@ -1167,4 +1275,457 @@ Map<String, dynamic> _$Measure_SupplementalDataToJson(
   writeNotNull('elementDescription', instance.elementDescription?.toJson());
   writeNotNull('criteria', instance.criteria?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MeasureAdapter extends TypeAdapter<Measure> {
+  @override
+  Measure read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Measure(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      subtitle: fields[20] as String,
+      elementSubtitle: fields[21] as Element,
+      status: fields[22] as String,
+      elementStatus: fields[23] as Element,
+      experimental: fields[24] as bool,
+      elementExperimental: fields[25] as Element,
+      subjectCodeableConcept: fields[26] as CodeableConcept,
+      subjectReference: fields[27] as Reference,
+      date: fields[28] as DateTime,
+      elementDate: fields[29] as Element,
+      publisher: fields[30] as String,
+      elementPublisher: fields[31] as Element,
+      contact: (fields[32] as List)?.cast<ContactDetail>(),
+      description: fields[33] as String,
+      elementDescription: fields[34] as Element,
+      useContext: (fields[35] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[36] as List)?.cast<CodeableConcept>(),
+      purpose: fields[37] as String,
+      elementPurpose: fields[38] as Element,
+      usage: fields[39] as String,
+      elementUsage: fields[40] as Element,
+      copyright: fields[41] as String,
+      elementCopyright: fields[42] as Element,
+      approvalDate: fields[43] as String,
+      elementApprovalDate: fields[44] as Element,
+      lastReviewDate: fields[45] as String,
+      elementLastReviewDate: fields[46] as Element,
+      effectivePeriod: fields[47] as Period,
+      topic: (fields[48] as List)?.cast<CodeableConcept>(),
+      author: (fields[49] as List)?.cast<ContactDetail>(),
+      editor: (fields[50] as List)?.cast<ContactDetail>(),
+      reviewer: (fields[51] as List)?.cast<ContactDetail>(),
+      endorser: (fields[52] as List)?.cast<ContactDetail>(),
+      relatedArtifact: (fields[53] as List)?.cast<RelatedArtifact>(),
+      library: (fields[54] as List)?.cast<String>(),
+      disclaimer: fields[55] as String,
+      elementDisclaimer: fields[56] as Element,
+      scoring: fields[57] as CodeableConcept,
+      compositeScoring: fields[58] as CodeableConcept,
+      type: (fields[59] as List)?.cast<CodeableConcept>(),
+      riskAdjustment: fields[60] as String,
+      elementRiskAdjustment: fields[61] as Element,
+      rateAggregation: fields[62] as String,
+      elementRateAggregation: fields[63] as Element,
+      rationale: fields[64] as String,
+      elementRationale: fields[65] as Element,
+      clinicalRecommendationStatement: fields[66] as String,
+      elementClinicalRecommendationStatement: fields[67] as Element,
+      improvementNotation: fields[68] as CodeableConcept,
+      definition: (fields[69] as List)?.cast<String>(),
+      elementDefinition: (fields[70] as List)?.cast<Element>(),
+      guidance: fields[71] as String,
+      elementGuidance: fields[72] as Element,
+      group: (fields[73] as List)?.cast<Measure_Group>(),
+      supplementalData: (fields[74] as List)?.cast<Measure_SupplementalData>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Measure obj) {
+    writer
+      ..writeByte(75)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.subtitle)
+      ..writeByte(21)
+      ..write(obj.elementSubtitle)
+      ..writeByte(22)
+      ..write(obj.status)
+      ..writeByte(23)
+      ..write(obj.elementStatus)
+      ..writeByte(24)
+      ..write(obj.experimental)
+      ..writeByte(25)
+      ..write(obj.elementExperimental)
+      ..writeByte(26)
+      ..write(obj.subjectCodeableConcept)
+      ..writeByte(27)
+      ..write(obj.subjectReference)
+      ..writeByte(28)
+      ..write(obj.date)
+      ..writeByte(29)
+      ..write(obj.elementDate)
+      ..writeByte(30)
+      ..write(obj.publisher)
+      ..writeByte(31)
+      ..write(obj.elementPublisher)
+      ..writeByte(32)
+      ..write(obj.contact)
+      ..writeByte(33)
+      ..write(obj.description)
+      ..writeByte(34)
+      ..write(obj.elementDescription)
+      ..writeByte(35)
+      ..write(obj.useContext)
+      ..writeByte(36)
+      ..write(obj.jurisdiction)
+      ..writeByte(37)
+      ..write(obj.purpose)
+      ..writeByte(38)
+      ..write(obj.elementPurpose)
+      ..writeByte(39)
+      ..write(obj.usage)
+      ..writeByte(40)
+      ..write(obj.elementUsage)
+      ..writeByte(41)
+      ..write(obj.copyright)
+      ..writeByte(42)
+      ..write(obj.elementCopyright)
+      ..writeByte(43)
+      ..write(obj.approvalDate)
+      ..writeByte(44)
+      ..write(obj.elementApprovalDate)
+      ..writeByte(45)
+      ..write(obj.lastReviewDate)
+      ..writeByte(46)
+      ..write(obj.elementLastReviewDate)
+      ..writeByte(47)
+      ..write(obj.effectivePeriod)
+      ..writeByte(48)
+      ..write(obj.topic)
+      ..writeByte(49)
+      ..write(obj.author)
+      ..writeByte(50)
+      ..write(obj.editor)
+      ..writeByte(51)
+      ..write(obj.reviewer)
+      ..writeByte(52)
+      ..write(obj.endorser)
+      ..writeByte(53)
+      ..write(obj.relatedArtifact)
+      ..writeByte(54)
+      ..write(obj.library)
+      ..writeByte(55)
+      ..write(obj.disclaimer)
+      ..writeByte(56)
+      ..write(obj.elementDisclaimer)
+      ..writeByte(57)
+      ..write(obj.scoring)
+      ..writeByte(58)
+      ..write(obj.compositeScoring)
+      ..writeByte(59)
+      ..write(obj.type)
+      ..writeByte(60)
+      ..write(obj.riskAdjustment)
+      ..writeByte(61)
+      ..write(obj.elementRiskAdjustment)
+      ..writeByte(62)
+      ..write(obj.rateAggregation)
+      ..writeByte(63)
+      ..write(obj.elementRateAggregation)
+      ..writeByte(64)
+      ..write(obj.rationale)
+      ..writeByte(65)
+      ..write(obj.elementRationale)
+      ..writeByte(66)
+      ..write(obj.clinicalRecommendationStatement)
+      ..writeByte(67)
+      ..write(obj.elementClinicalRecommendationStatement)
+      ..writeByte(68)
+      ..write(obj.improvementNotation)
+      ..writeByte(69)
+      ..write(obj.definition)
+      ..writeByte(70)
+      ..write(obj.elementDefinition)
+      ..writeByte(71)
+      ..write(obj.guidance)
+      ..writeByte(72)
+      ..write(obj.elementGuidance)
+      ..writeByte(73)
+      ..write(obj.group)
+      ..writeByte(74)
+      ..write(obj.supplementalData);
+  }
+}
+
+class Measure_GroupAdapter extends TypeAdapter<Measure_Group> {
+  @override
+  Measure_Group read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Measure_Group(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      description: fields[4] as String,
+      elementDescription: fields[5] as Element,
+      population: (fields[6] as List)?.cast<Measure_Population>(),
+      stratifier: (fields[7] as List)?.cast<Measure_Stratifier>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Measure_Group obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.description)
+      ..writeByte(5)
+      ..write(obj.elementDescription)
+      ..writeByte(6)
+      ..write(obj.population)
+      ..writeByte(7)
+      ..write(obj.stratifier);
+  }
+}
+
+class Measure_PopulationAdapter extends TypeAdapter<Measure_Population> {
+  @override
+  Measure_Population read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Measure_Population(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      description: fields[4] as String,
+      elementDescription: fields[5] as Element,
+      criteria: fields[6] as Expression,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Measure_Population obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.description)
+      ..writeByte(5)
+      ..write(obj.elementDescription)
+      ..writeByte(6)
+      ..write(obj.criteria);
+  }
+}
+
+class Measure_StratifierAdapter extends TypeAdapter<Measure_Stratifier> {
+  @override
+  Measure_Stratifier read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Measure_Stratifier(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      description: fields[4] as String,
+      elementDescription: fields[5] as Element,
+      criteria: fields[6] as Expression,
+      component: (fields[7] as List)?.cast<Measure_Component>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Measure_Stratifier obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.description)
+      ..writeByte(5)
+      ..write(obj.elementDescription)
+      ..writeByte(6)
+      ..write(obj.criteria)
+      ..writeByte(7)
+      ..write(obj.component);
+  }
+}
+
+class Measure_ComponentAdapter extends TypeAdapter<Measure_Component> {
+  @override
+  Measure_Component read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Measure_Component(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      description: fields[4] as String,
+      elementDescription: fields[5] as Element,
+      criteria: fields[6] as Expression,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Measure_Component obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.description)
+      ..writeByte(5)
+      ..write(obj.elementDescription)
+      ..writeByte(6)
+      ..write(obj.criteria);
+  }
+}
+
+class Measure_SupplementalDataAdapter
+    extends TypeAdapter<Measure_SupplementalData> {
+  @override
+  Measure_SupplementalData read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Measure_SupplementalData(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      usage: (fields[4] as List)?.cast<CodeableConcept>(),
+      description: fields[5] as String,
+      elementDescription: fields[6] as Element,
+      criteria: fields[7] as Expression,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Measure_SupplementalData obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.usage)
+      ..writeByte(5)
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.elementDescription)
+      ..writeByte(7)
+      ..write(obj.criteria);
+  }
 }

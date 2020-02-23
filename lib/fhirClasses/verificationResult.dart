@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class VerificationResult {
   static Future<VerificationResult> newInstance({
     String resourceType,
@@ -95,35 +95,65 @@ class VerificationResult {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'VerificationResult';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Reference> target;
+  @HiveField(12)
   List<String> targetLocation;
+  @HiveField(13)
   List<Element> elementTargetLocation;
+  @HiveField(14)
   CodeableConcept need;
+  @HiveField(15)
   String status;
+  @HiveField(16)
   Element elementStatus;
+  @HiveField(17)
   DateTime statusDate;
+  @HiveField(18)
   Element elementStatusDate;
+  @HiveField(19)
   CodeableConcept validationType;
+  @HiveField(20)
   List<CodeableConcept> validationProcess;
+  @HiveField(21)
   Timing frequency;
+  @HiveField(22)
   DateTime lastPerformed;
+  @HiveField(23)
   Element elementLastPerformed;
+  @HiveField(24)
   String nextScheduled;
+  @HiveField(25)
   Element elementNextScheduled;
+  @HiveField(26)
   CodeableConcept failureAction;
+  @HiveField(27)
   List<VerificationResult_PrimarySource> primarySource;
+  @HiveField(28)
   VerificationResult_Attestation attestation;
+  @HiveField(29)
   List<VerificationResult_Validator> validator;
 
   VerificationResult({
@@ -164,7 +194,6 @@ class VerificationResult {
   Map<String, dynamic> toJson() => _$VerificationResultToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class VerificationResult_PrimarySource {
   static Future<VerificationResult_PrimarySource> newInstance({
     String id,
@@ -197,16 +226,27 @@ class VerificationResult_PrimarySource {
     return newVerificationResult_PrimarySource;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Reference who;
+  @HiveField(4)
   List<CodeableConcept> type;
+  @HiveField(5)
   List<CodeableConcept> communicationMethod;
+  @HiveField(6)
   CodeableConcept validationStatus;
+  @HiveField(7)
   DateTime validationDate;
+  @HiveField(8)
   Element elementValidationDate;
+  @HiveField(9)
   CodeableConcept canPushUpdates;
+  @HiveField(10)
   List<CodeableConcept> pushTypeAvailable;
 
   VerificationResult_PrimarySource({
@@ -230,7 +270,6 @@ class VerificationResult_PrimarySource {
       _$VerificationResult_PrimarySourceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class VerificationResult_Attestation {
   static Future<VerificationResult_Attestation> newInstance({
     String id,
@@ -269,19 +308,33 @@ class VerificationResult_Attestation {
     return newVerificationResult_Attestation;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Reference who;
+  @HiveField(4)
   Reference onBehalfOf;
+  @HiveField(5)
   CodeableConcept communicationMethod;
+  @HiveField(6)
   String date;
+  @HiveField(7)
   Element elementDate;
+  @HiveField(8)
   String sourceIdentityCertificate;
+  @HiveField(9)
   Element elementSourceIdentityCertificate;
+  @HiveField(10)
   String proxyIdentityCertificate;
+  @HiveField(11)
   Element elementProxyIdentityCertificate;
+  @HiveField(12)
   Signature proxySignature;
+  @HiveField(13)
   Signature sourceSignature;
 
   VerificationResult_Attestation({
@@ -306,7 +359,6 @@ class VerificationResult_Attestation {
   Map<String, dynamic> toJson() => _$VerificationResult_AttestationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class VerificationResult_Validator {
   static Future<VerificationResult_Validator> newInstance({
     String id,
@@ -331,12 +383,19 @@ class VerificationResult_Validator {
     return newVerificationResult_Validator;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Reference organization;
+  @HiveField(4)
   String identityCertificate;
+  @HiveField(5)
   Element elementIdentityCertificate;
+  @HiveField(6)
   Signature attestationSignature;
 
   VerificationResult_Validator({
@@ -711,4 +770,271 @@ Map<String, dynamic> _$VerificationResult_ValidatorToJson(
       instance.elementIdentityCertificate?.toJson());
   writeNotNull('attestationSignature', instance.attestationSignature?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class VerificationResultAdapter extends TypeAdapter<VerificationResult> {
+  @override
+  VerificationResult read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      target: (fields[11] as List)?.cast<Reference>(),
+      targetLocation: (fields[12] as List)?.cast<String>(),
+      elementTargetLocation: (fields[13] as List)?.cast<Element>(),
+      need: fields[14] as CodeableConcept,
+      status: fields[15] as String,
+      elementStatus: fields[16] as Element,
+      statusDate: fields[17] as DateTime,
+      elementStatusDate: fields[18] as Element,
+      validationType: fields[19] as CodeableConcept,
+      validationProcess: (fields[20] as List)?.cast<CodeableConcept>(),
+      frequency: fields[21] as Timing,
+      lastPerformed: fields[22] as DateTime,
+      elementLastPerformed: fields[23] as Element,
+      nextScheduled: fields[24] as String,
+      elementNextScheduled: fields[25] as Element,
+      failureAction: fields[26] as CodeableConcept,
+      primarySource:
+          (fields[27] as List)?.cast<VerificationResult_PrimarySource>(),
+      attestation: fields[28] as VerificationResult_Attestation,
+      validator: (fields[29] as List)?.cast<VerificationResult_Validator>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult obj) {
+    writer
+      ..writeByte(30)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.target)
+      ..writeByte(12)
+      ..write(obj.targetLocation)
+      ..writeByte(13)
+      ..write(obj.elementTargetLocation)
+      ..writeByte(14)
+      ..write(obj.need)
+      ..writeByte(15)
+      ..write(obj.status)
+      ..writeByte(16)
+      ..write(obj.elementStatus)
+      ..writeByte(17)
+      ..write(obj.statusDate)
+      ..writeByte(18)
+      ..write(obj.elementStatusDate)
+      ..writeByte(19)
+      ..write(obj.validationType)
+      ..writeByte(20)
+      ..write(obj.validationProcess)
+      ..writeByte(21)
+      ..write(obj.frequency)
+      ..writeByte(22)
+      ..write(obj.lastPerformed)
+      ..writeByte(23)
+      ..write(obj.elementLastPerformed)
+      ..writeByte(24)
+      ..write(obj.nextScheduled)
+      ..writeByte(25)
+      ..write(obj.elementNextScheduled)
+      ..writeByte(26)
+      ..write(obj.failureAction)
+      ..writeByte(27)
+      ..write(obj.primarySource)
+      ..writeByte(28)
+      ..write(obj.attestation)
+      ..writeByte(29)
+      ..write(obj.validator);
+  }
+}
+
+class VerificationResult_PrimarySourceAdapter
+    extends TypeAdapter<VerificationResult_PrimarySource> {
+  @override
+  VerificationResult_PrimarySource read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult_PrimarySource(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      who: fields[3] as Reference,
+      type: (fields[4] as List)?.cast<CodeableConcept>(),
+      communicationMethod: (fields[5] as List)?.cast<CodeableConcept>(),
+      validationStatus: fields[6] as CodeableConcept,
+      validationDate: fields[7] as DateTime,
+      elementValidationDate: fields[8] as Element,
+      canPushUpdates: fields[9] as CodeableConcept,
+      pushTypeAvailable: (fields[10] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult_PrimarySource obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.who)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.communicationMethod)
+      ..writeByte(6)
+      ..write(obj.validationStatus)
+      ..writeByte(7)
+      ..write(obj.validationDate)
+      ..writeByte(8)
+      ..write(obj.elementValidationDate)
+      ..writeByte(9)
+      ..write(obj.canPushUpdates)
+      ..writeByte(10)
+      ..write(obj.pushTypeAvailable);
+  }
+}
+
+class VerificationResult_AttestationAdapter
+    extends TypeAdapter<VerificationResult_Attestation> {
+  @override
+  VerificationResult_Attestation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult_Attestation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      who: fields[3] as Reference,
+      onBehalfOf: fields[4] as Reference,
+      communicationMethod: fields[5] as CodeableConcept,
+      date: fields[6] as String,
+      elementDate: fields[7] as Element,
+      sourceIdentityCertificate: fields[8] as String,
+      elementSourceIdentityCertificate: fields[9] as Element,
+      proxyIdentityCertificate: fields[10] as String,
+      elementProxyIdentityCertificate: fields[11] as Element,
+      proxySignature: fields[12] as Signature,
+      sourceSignature: fields[13] as Signature,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult_Attestation obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.who)
+      ..writeByte(4)
+      ..write(obj.onBehalfOf)
+      ..writeByte(5)
+      ..write(obj.communicationMethod)
+      ..writeByte(6)
+      ..write(obj.date)
+      ..writeByte(7)
+      ..write(obj.elementDate)
+      ..writeByte(8)
+      ..write(obj.sourceIdentityCertificate)
+      ..writeByte(9)
+      ..write(obj.elementSourceIdentityCertificate)
+      ..writeByte(10)
+      ..write(obj.proxyIdentityCertificate)
+      ..writeByte(11)
+      ..write(obj.elementProxyIdentityCertificate)
+      ..writeByte(12)
+      ..write(obj.proxySignature)
+      ..writeByte(13)
+      ..write(obj.sourceSignature);
+  }
+}
+
+class VerificationResult_ValidatorAdapter
+    extends TypeAdapter<VerificationResult_Validator> {
+  @override
+  VerificationResult_Validator read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult_Validator(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      organization: fields[3] as Reference,
+      identityCertificate: fields[4] as String,
+      elementIdentityCertificate: fields[5] as Element,
+      attestationSignature: fields[6] as Signature,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult_Validator obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.organization)
+      ..writeByte(4)
+      ..write(obj.identityCertificate)
+      ..writeByte(5)
+      ..write(obj.elementIdentityCertificate)
+      ..writeByte(6)
+      ..write(obj.attestationSignature);
+  }
 }

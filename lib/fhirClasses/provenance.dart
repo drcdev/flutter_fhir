@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Provenance {
   static Future<Provenance> newInstance({
     String resourceType,
@@ -84,30 +84,55 @@ class Provenance {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Provenance';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Reference> target;
+  @HiveField(12)
   Period occurredPeriod;
+  @HiveField(13)
   String occurredDateTime;
+  @HiveField(14)
   Element elementOccurredDateTime;
+  @HiveField(15)
   DateTime recorded;
+  @HiveField(16)
   Element elementRecorded;
+  @HiveField(17)
   List<String> policy;
+  @HiveField(18)
   List<Element> elementPolicy;
+  @HiveField(19)
   Reference location;
+  @HiveField(20)
   List<CodeableConcept> reason;
+  @HiveField(21)
   CodeableConcept activity;
+  @HiveField(22)
   List<Provenance_Agent> agent;
+  @HiveField(23)
   List<Provenance_Entity> entity;
+  @HiveField(24)
   List<Signature> signature;
 
   Provenance({
@@ -143,7 +168,6 @@ class Provenance {
   Map<String, dynamic> toJson() => _$ProvenanceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Provenance_Agent {
   static Future<Provenance_Agent> newInstance({
     String id,
@@ -167,12 +191,19 @@ class Provenance_Agent {
     return newProvenance_Agent;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   List<CodeableConcept> role;
+  @HiveField(5)
   Reference who;
+  @HiveField(6)
   Reference onBehalfOf;
 
   Provenance_Agent({
@@ -190,7 +221,6 @@ class Provenance_Agent {
   Map<String, dynamic> toJson() => _$Provenance_AgentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Provenance_Entity {
   static Future<Provenance_Entity> newInstance({
     String id,
@@ -214,12 +244,19 @@ class Provenance_Entity {
     return newProvenance_Entity;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String role;
+  @HiveField(4)
   Element elementRole;
+  @HiveField(5)
   Reference what;
+  @HiveField(6)
   List<Provenance_Agent> agent;
 
   Provenance_Entity({
@@ -461,4 +498,180 @@ Map<String, dynamic> _$Provenance_EntityToJson(Provenance_Entity instance) {
   writeNotNull('what', instance.what?.toJson());
   writeNotNull('agent', instance.agent?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ProvenanceAdapter extends TypeAdapter<Provenance> {
+  @override
+  Provenance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Provenance(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      target: (fields[11] as List)?.cast<Reference>(),
+      occurredPeriod: fields[12] as Period,
+      occurredDateTime: fields[13] as String,
+      elementOccurredDateTime: fields[14] as Element,
+      recorded: fields[15] as DateTime,
+      elementRecorded: fields[16] as Element,
+      policy: (fields[17] as List)?.cast<String>(),
+      elementPolicy: (fields[18] as List)?.cast<Element>(),
+      location: fields[19] as Reference,
+      reason: (fields[20] as List)?.cast<CodeableConcept>(),
+      activity: fields[21] as CodeableConcept,
+      agent: (fields[22] as List)?.cast<Provenance_Agent>(),
+      entity: (fields[23] as List)?.cast<Provenance_Entity>(),
+      signature: (fields[24] as List)?.cast<Signature>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Provenance obj) {
+    writer
+      ..writeByte(25)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.target)
+      ..writeByte(12)
+      ..write(obj.occurredPeriod)
+      ..writeByte(13)
+      ..write(obj.occurredDateTime)
+      ..writeByte(14)
+      ..write(obj.elementOccurredDateTime)
+      ..writeByte(15)
+      ..write(obj.recorded)
+      ..writeByte(16)
+      ..write(obj.elementRecorded)
+      ..writeByte(17)
+      ..write(obj.policy)
+      ..writeByte(18)
+      ..write(obj.elementPolicy)
+      ..writeByte(19)
+      ..write(obj.location)
+      ..writeByte(20)
+      ..write(obj.reason)
+      ..writeByte(21)
+      ..write(obj.activity)
+      ..writeByte(22)
+      ..write(obj.agent)
+      ..writeByte(23)
+      ..write(obj.entity)
+      ..writeByte(24)
+      ..write(obj.signature);
+  }
+}
+
+class Provenance_AgentAdapter extends TypeAdapter<Provenance_Agent> {
+  @override
+  Provenance_Agent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Provenance_Agent(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      role: (fields[4] as List)?.cast<CodeableConcept>(),
+      who: fields[5] as Reference,
+      onBehalfOf: fields[6] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Provenance_Agent obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.role)
+      ..writeByte(5)
+      ..write(obj.who)
+      ..writeByte(6)
+      ..write(obj.onBehalfOf);
+  }
+}
+
+class Provenance_EntityAdapter extends TypeAdapter<Provenance_Entity> {
+  @override
+  Provenance_Entity read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Provenance_Entity(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      role: fields[3] as String,
+      elementRole: fields[4] as Element,
+      what: fields[5] as Reference,
+      agent: (fields[6] as List)?.cast<Provenance_Agent>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Provenance_Entity obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.role)
+      ..writeByte(4)
+      ..write(obj.elementRole)
+      ..writeByte(5)
+      ..write(obj.what)
+      ..writeByte(6)
+      ..write(obj.agent);
+  }
 }

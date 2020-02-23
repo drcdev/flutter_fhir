@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
-@HiveType()
 class User {
   @HiveField(0)
   String userName;

@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Invoice {
   static Future<Invoice> newInstance({
     String resourceType,
@@ -97,36 +97,67 @@ class Invoice {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Invoice';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   String cancelledReason;
+  @HiveField(15)
   Element elementCancelledReason;
+  @HiveField(16)
   CodeableConcept type;
+  @HiveField(17)
   Reference subject;
+  @HiveField(18)
   Reference recipient;
+  @HiveField(19)
   DateTime date;
+  @HiveField(20)
   Element elementDate;
+  @HiveField(21)
   List<Invoice_Participant> participant;
+  @HiveField(22)
   Reference issuer;
+  @HiveField(23)
   Reference account;
+  @HiveField(24)
   List<Invoice_LineItem> lineItem;
+  @HiveField(25)
   List<Invoice_PriceComponent> totalPriceComponent;
+  @HiveField(26)
   Money totalNet;
+  @HiveField(27)
   Money totalGross;
+  @HiveField(28)
   String paymentTerms;
+  @HiveField(29)
   Element elementPaymentTerms;
+  @HiveField(30)
   List<Annotation> note;
 
   Invoice({
@@ -168,7 +199,6 @@ class Invoice {
   Map<String, dynamic> toJson() => _$InvoiceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Invoice_Participant {
   static Future<Invoice_Participant> newInstance({
     String id,
@@ -188,10 +218,15 @@ class Invoice_Participant {
     return newInvoice_Participant;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept role;
+  @HiveField(4)
   Reference actor;
 
   Invoice_Participant({
@@ -207,7 +242,6 @@ class Invoice_Participant {
   Map<String, dynamic> toJson() => _$Invoice_ParticipantToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Invoice_LineItem {
   static Future<Invoice_LineItem> newInstance({
     String id,
@@ -233,13 +267,21 @@ class Invoice_LineItem {
     return newInvoice_LineItem;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   Reference chargeItemReference;
+  @HiveField(6)
   CodeableConcept chargeItemCodeableConcept;
+  @HiveField(7)
   List<Invoice_PriceComponent> priceComponent;
 
   Invoice_LineItem({
@@ -258,7 +300,6 @@ class Invoice_LineItem {
   Map<String, dynamic> toJson() => _$Invoice_LineItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Invoice_PriceComponent {
   static Future<Invoice_PriceComponent> newInstance({
     String id,
@@ -287,14 +328,23 @@ class Invoice_PriceComponent {
     return newInvoice_PriceComponent;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String type;
+  @HiveField(4)
   Element elementType;
+  @HiveField(5)
   CodeableConcept code;
+  @HiveField(6)
   double factor;
+  @HiveField(7)
   Element elementFactor;
+  @HiveField(8)
   Money amount;
 
   Invoice_PriceComponent({
@@ -610,4 +660,241 @@ Map<String, dynamic> _$Invoice_PriceComponentToJson(
   writeNotNull('elementFactor', instance.elementFactor?.toJson());
   writeNotNull('amount', instance.amount?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class InvoiceAdapter extends TypeAdapter<Invoice> {
+  @override
+  Invoice read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Invoice(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      cancelledReason: fields[14] as String,
+      elementCancelledReason: fields[15] as Element,
+      type: fields[16] as CodeableConcept,
+      subject: fields[17] as Reference,
+      recipient: fields[18] as Reference,
+      date: fields[19] as DateTime,
+      elementDate: fields[20] as Element,
+      participant: (fields[21] as List)?.cast<Invoice_Participant>(),
+      issuer: fields[22] as Reference,
+      account: fields[23] as Reference,
+      lineItem: (fields[24] as List)?.cast<Invoice_LineItem>(),
+      totalPriceComponent: (fields[25] as List)?.cast<Invoice_PriceComponent>(),
+      totalNet: fields[26] as Money,
+      totalGross: fields[27] as Money,
+      paymentTerms: fields[28] as String,
+      elementPaymentTerms: fields[29] as Element,
+      note: (fields[30] as List)?.cast<Annotation>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Invoice obj) {
+    writer
+      ..writeByte(31)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.cancelledReason)
+      ..writeByte(15)
+      ..write(obj.elementCancelledReason)
+      ..writeByte(16)
+      ..write(obj.type)
+      ..writeByte(17)
+      ..write(obj.subject)
+      ..writeByte(18)
+      ..write(obj.recipient)
+      ..writeByte(19)
+      ..write(obj.date)
+      ..writeByte(20)
+      ..write(obj.elementDate)
+      ..writeByte(21)
+      ..write(obj.participant)
+      ..writeByte(22)
+      ..write(obj.issuer)
+      ..writeByte(23)
+      ..write(obj.account)
+      ..writeByte(24)
+      ..write(obj.lineItem)
+      ..writeByte(25)
+      ..write(obj.totalPriceComponent)
+      ..writeByte(26)
+      ..write(obj.totalNet)
+      ..writeByte(27)
+      ..write(obj.totalGross)
+      ..writeByte(28)
+      ..write(obj.paymentTerms)
+      ..writeByte(29)
+      ..write(obj.elementPaymentTerms)
+      ..writeByte(30)
+      ..write(obj.note);
+  }
+}
+
+class Invoice_ParticipantAdapter extends TypeAdapter<Invoice_Participant> {
+  @override
+  Invoice_Participant read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Invoice_Participant(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      role: fields[3] as CodeableConcept,
+      actor: fields[4] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Invoice_Participant obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.role)
+      ..writeByte(4)
+      ..write(obj.actor);
+  }
+}
+
+class Invoice_LineItemAdapter extends TypeAdapter<Invoice_LineItem> {
+  @override
+  Invoice_LineItem read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Invoice_LineItem(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      chargeItemReference: fields[5] as Reference,
+      chargeItemCodeableConcept: fields[6] as CodeableConcept,
+      priceComponent: (fields[7] as List)?.cast<Invoice_PriceComponent>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Invoice_LineItem obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.chargeItemReference)
+      ..writeByte(6)
+      ..write(obj.chargeItemCodeableConcept)
+      ..writeByte(7)
+      ..write(obj.priceComponent);
+  }
+}
+
+class Invoice_PriceComponentAdapter
+    extends TypeAdapter<Invoice_PriceComponent> {
+  @override
+  Invoice_PriceComponent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Invoice_PriceComponent(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as String,
+      elementType: fields[4] as Element,
+      code: fields[5] as CodeableConcept,
+      factor: fields[6] as double,
+      elementFactor: fields[7] as Element,
+      amount: fields[8] as Money,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Invoice_PriceComponent obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.elementType)
+      ..writeByte(5)
+      ..write(obj.code)
+      ..writeByte(6)
+      ..write(obj.factor)
+      ..writeByte(7)
+      ..write(obj.elementFactor)
+      ..writeByte(8)
+      ..write(obj.amount);
+  }
 }

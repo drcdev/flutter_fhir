@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceNucleicAcid {
   static Future<SubstanceNucleicAcid> newInstance({
     String resourceType,
@@ -70,23 +70,41 @@ class SubstanceNucleicAcid {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'SubstanceNucleicAcid';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   CodeableConcept sequenceType;
+  @HiveField(12)
   int numberOfSubunits;
+  @HiveField(13)
   Element elementNumberOfSubunits;
+  @HiveField(14)
   String areaOfHybridisation;
+  @HiveField(15)
   Element elementAreaOfHybridisation;
+  @HiveField(16)
   CodeableConcept oligoNucleotideType;
+  @HiveField(17)
   List<SubstanceNucleicAcid_Subunit> subunit;
 
   SubstanceNucleicAcid({
@@ -115,7 +133,6 @@ class SubstanceNucleicAcid {
   Map<String, dynamic> toJson() => _$SubstanceNucleicAcidToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceNucleicAcid_Subunit {
   static Future<SubstanceNucleicAcid_Subunit> newInstance({
     String id,
@@ -154,19 +171,33 @@ class SubstanceNucleicAcid_Subunit {
     return newSubstanceNucleicAcid_Subunit;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int subunit;
+  @HiveField(4)
   Element elementSubunit;
+  @HiveField(5)
   String sequence;
+  @HiveField(6)
   Element elementSequence;
+  @HiveField(7)
   int length;
+  @HiveField(8)
   Element elementLength;
+  @HiveField(9)
   Attachment sequenceAttachment;
+  @HiveField(10)
   CodeableConcept fivePrime;
+  @HiveField(11)
   CodeableConcept threePrime;
+  @HiveField(12)
   List<SubstanceNucleicAcid_Linkage> linkage;
+  @HiveField(13)
   List<SubstanceNucleicAcid_Sugar> sugar;
 
   SubstanceNucleicAcid_Subunit({
@@ -191,7 +222,6 @@ class SubstanceNucleicAcid_Subunit {
   Map<String, dynamic> toJson() => _$SubstanceNucleicAcid_SubunitToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceNucleicAcid_Linkage {
   static Future<SubstanceNucleicAcid_Linkage> newInstance({
     String id,
@@ -222,15 +252,25 @@ class SubstanceNucleicAcid_Linkage {
     return newSubstanceNucleicAcid_Linkage;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String connectivity;
+  @HiveField(4)
   Element elementConnectivity;
+  @HiveField(5)
   Identifier identifier;
+  @HiveField(6)
   String name;
+  @HiveField(7)
   Element elementName;
+  @HiveField(8)
   String residueSite;
+  @HiveField(9)
   Element elementResidueSite;
 
   SubstanceNucleicAcid_Linkage({
@@ -251,7 +291,6 @@ class SubstanceNucleicAcid_Linkage {
   Map<String, dynamic> toJson() => _$SubstanceNucleicAcid_LinkageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceNucleicAcid_Sugar {
   static Future<SubstanceNucleicAcid_Sugar> newInstance({
     String id,
@@ -278,13 +317,21 @@ class SubstanceNucleicAcid_Sugar {
     return newSubstanceNucleicAcid_Sugar;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Identifier identifier;
+  @HiveField(4)
   String name;
+  @HiveField(5)
   Element elementName;
+  @HiveField(6)
   String residueSite;
+  @HiveField(7)
   Element elementResidueSite;
 
   SubstanceNucleicAcid_Sugar({
@@ -579,4 +626,234 @@ Map<String, dynamic> _$SubstanceNucleicAcid_SugarToJson(
   writeNotNull('residueSite', instance.residueSite);
   writeNotNull('elementResidueSite', instance.elementResidueSite?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class SubstanceNucleicAcidAdapter extends TypeAdapter<SubstanceNucleicAcid> {
+  @override
+  SubstanceNucleicAcid read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceNucleicAcid(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      sequenceType: fields[11] as CodeableConcept,
+      numberOfSubunits: fields[12] as int,
+      elementNumberOfSubunits: fields[13] as Element,
+      areaOfHybridisation: fields[14] as String,
+      elementAreaOfHybridisation: fields[15] as Element,
+      oligoNucleotideType: fields[16] as CodeableConcept,
+      subunit: (fields[17] as List)?.cast<SubstanceNucleicAcid_Subunit>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceNucleicAcid obj) {
+    writer
+      ..writeByte(18)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.sequenceType)
+      ..writeByte(12)
+      ..write(obj.numberOfSubunits)
+      ..writeByte(13)
+      ..write(obj.elementNumberOfSubunits)
+      ..writeByte(14)
+      ..write(obj.areaOfHybridisation)
+      ..writeByte(15)
+      ..write(obj.elementAreaOfHybridisation)
+      ..writeByte(16)
+      ..write(obj.oligoNucleotideType)
+      ..writeByte(17)
+      ..write(obj.subunit);
+  }
+}
+
+class SubstanceNucleicAcid_SubunitAdapter
+    extends TypeAdapter<SubstanceNucleicAcid_Subunit> {
+  @override
+  SubstanceNucleicAcid_Subunit read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceNucleicAcid_Subunit(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      subunit: fields[3] as int,
+      elementSubunit: fields[4] as Element,
+      sequence: fields[5] as String,
+      elementSequence: fields[6] as Element,
+      length: fields[7] as int,
+      elementLength: fields[8] as Element,
+      sequenceAttachment: fields[9] as Attachment,
+      fivePrime: fields[10] as CodeableConcept,
+      threePrime: fields[11] as CodeableConcept,
+      linkage: (fields[12] as List)?.cast<SubstanceNucleicAcid_Linkage>(),
+      sugar: (fields[13] as List)?.cast<SubstanceNucleicAcid_Sugar>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceNucleicAcid_Subunit obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.subunit)
+      ..writeByte(4)
+      ..write(obj.elementSubunit)
+      ..writeByte(5)
+      ..write(obj.sequence)
+      ..writeByte(6)
+      ..write(obj.elementSequence)
+      ..writeByte(7)
+      ..write(obj.length)
+      ..writeByte(8)
+      ..write(obj.elementLength)
+      ..writeByte(9)
+      ..write(obj.sequenceAttachment)
+      ..writeByte(10)
+      ..write(obj.fivePrime)
+      ..writeByte(11)
+      ..write(obj.threePrime)
+      ..writeByte(12)
+      ..write(obj.linkage)
+      ..writeByte(13)
+      ..write(obj.sugar);
+  }
+}
+
+class SubstanceNucleicAcid_LinkageAdapter
+    extends TypeAdapter<SubstanceNucleicAcid_Linkage> {
+  @override
+  SubstanceNucleicAcid_Linkage read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceNucleicAcid_Linkage(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      connectivity: fields[3] as String,
+      elementConnectivity: fields[4] as Element,
+      identifier: fields[5] as Identifier,
+      name: fields[6] as String,
+      elementName: fields[7] as Element,
+      residueSite: fields[8] as String,
+      elementResidueSite: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceNucleicAcid_Linkage obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.connectivity)
+      ..writeByte(4)
+      ..write(obj.elementConnectivity)
+      ..writeByte(5)
+      ..write(obj.identifier)
+      ..writeByte(6)
+      ..write(obj.name)
+      ..writeByte(7)
+      ..write(obj.elementName)
+      ..writeByte(8)
+      ..write(obj.residueSite)
+      ..writeByte(9)
+      ..write(obj.elementResidueSite);
+  }
+}
+
+class SubstanceNucleicAcid_SugarAdapter
+    extends TypeAdapter<SubstanceNucleicAcid_Sugar> {
+  @override
+  SubstanceNucleicAcid_Sugar read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceNucleicAcid_Sugar(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identifier: fields[3] as Identifier,
+      name: fields[4] as String,
+      elementName: fields[5] as Element,
+      residueSite: fields[6] as String,
+      elementResidueSite: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceNucleicAcid_Sugar obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.identifier)
+      ..writeByte(4)
+      ..write(obj.name)
+      ..writeByte(5)
+      ..write(obj.elementName)
+      ..writeByte(6)
+      ..write(obj.residueSite)
+      ..writeByte(7)
+      ..write(obj.elementResidueSite);
+  }
 }

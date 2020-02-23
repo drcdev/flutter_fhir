@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationStatement {
   static Future<MedicationStatement> newInstance({
     String resourceType,
@@ -103,38 +103,71 @@ class MedicationStatement {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'MedicationStatement';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   List<Reference> basedOn;
+  @HiveField(13)
   List<Reference> partOf;
+  @HiveField(14)
   String status;
+  @HiveField(15)
   Element elementStatus;
+  @HiveField(16)
   List<CodeableConcept> statusReason;
+  @HiveField(17)
   CodeableConcept category;
+  @HiveField(18)
   CodeableConcept medicationCodeableConcept;
+  @HiveField(19)
   Reference medicationReference;
+  @HiveField(20)
   Reference subject;
+  @HiveField(21)
   Reference context;
+  @HiveField(22)
   String effectiveDateTime;
+  @HiveField(23)
   Element elementEffectiveDateTime;
+  @HiveField(24)
   Period effectivePeriod;
+  @HiveField(25)
   DateTime dateAsserted;
+  @HiveField(26)
   Element elementDateAsserted;
+  @HiveField(27)
   Reference informationSource;
+  @HiveField(28)
   List<Reference> derivedFrom;
+  @HiveField(29)
   List<CodeableConcept> reasonCode;
+  @HiveField(30)
   List<Reference> reasonReference;
+  @HiveField(31)
   List<Annotation> note;
+  @HiveField(32)
   List<Dosage> dosage;
 
   MedicationStatement({
@@ -346,4 +379,126 @@ Map<String, dynamic> _$MedicationStatementToJson(MedicationStatement instance) {
   writeNotNull('note', instance.note?.map((e) => e?.toJson())?.toList());
   writeNotNull('dosage', instance.dosage?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MedicationStatementAdapter extends TypeAdapter<MedicationStatement> {
+  @override
+  MedicationStatement read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationStatement(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      basedOn: (fields[12] as List)?.cast<Reference>(),
+      partOf: (fields[13] as List)?.cast<Reference>(),
+      status: fields[14] as String,
+      elementStatus: fields[15] as Element,
+      statusReason: (fields[16] as List)?.cast<CodeableConcept>(),
+      category: fields[17] as CodeableConcept,
+      medicationCodeableConcept: fields[18] as CodeableConcept,
+      medicationReference: fields[19] as Reference,
+      subject: fields[20] as Reference,
+      context: fields[21] as Reference,
+      effectiveDateTime: fields[22] as String,
+      elementEffectiveDateTime: fields[23] as Element,
+      effectivePeriod: fields[24] as Period,
+      dateAsserted: fields[25] as DateTime,
+      elementDateAsserted: fields[26] as Element,
+      informationSource: fields[27] as Reference,
+      derivedFrom: (fields[28] as List)?.cast<Reference>(),
+      reasonCode: (fields[29] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[30] as List)?.cast<Reference>(),
+      note: (fields[31] as List)?.cast<Annotation>(),
+      dosage: (fields[32] as List)?.cast<Dosage>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationStatement obj) {
+    writer
+      ..writeByte(33)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.basedOn)
+      ..writeByte(13)
+      ..write(obj.partOf)
+      ..writeByte(14)
+      ..write(obj.status)
+      ..writeByte(15)
+      ..write(obj.elementStatus)
+      ..writeByte(16)
+      ..write(obj.statusReason)
+      ..writeByte(17)
+      ..write(obj.category)
+      ..writeByte(18)
+      ..write(obj.medicationCodeableConcept)
+      ..writeByte(19)
+      ..write(obj.medicationReference)
+      ..writeByte(20)
+      ..write(obj.subject)
+      ..writeByte(21)
+      ..write(obj.context)
+      ..writeByte(22)
+      ..write(obj.effectiveDateTime)
+      ..writeByte(23)
+      ..write(obj.elementEffectiveDateTime)
+      ..writeByte(24)
+      ..write(obj.effectivePeriod)
+      ..writeByte(25)
+      ..write(obj.dateAsserted)
+      ..writeByte(26)
+      ..write(obj.elementDateAsserted)
+      ..writeByte(27)
+      ..write(obj.informationSource)
+      ..writeByte(28)
+      ..write(obj.derivedFrom)
+      ..writeByte(29)
+      ..write(obj.reasonCode)
+      ..writeByte(30)
+      ..write(obj.reasonReference)
+      ..writeByte(31)
+      ..write(obj.note)
+      ..writeByte(32)
+      ..write(obj.dosage);
+  }
 }

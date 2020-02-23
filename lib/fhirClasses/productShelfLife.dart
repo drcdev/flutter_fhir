@@ -1,12 +1,12 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ProductShelfLife {
   static Future<ProductShelfLife> newInstance({
     String id,
@@ -30,12 +30,19 @@ class ProductShelfLife {
     return newProductShelfLife;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Identifier identifier;
+  @HiveField(4)
   CodeableConcept type;
+  @HiveField(5)
   Quantity period;
+  @HiveField(6)
   List<CodeableConcept> specialPrecautionsForStorage;
 
   ProductShelfLife({
@@ -106,4 +113,49 @@ Map<String, dynamic> _$ProductShelfLifeToJson(ProductShelfLife instance) {
   writeNotNull('specialPrecautionsForStorage',
       instance.specialPrecautionsForStorage?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ProductShelfLifeAdapter extends TypeAdapter<ProductShelfLife> {
+  @override
+  ProductShelfLife read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ProductShelfLife(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identifier: fields[3] as Identifier,
+      type: fields[4] as CodeableConcept,
+      period: fields[5] as Quantity,
+      specialPrecautionsForStorage:
+          (fields[6] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ProductShelfLife obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.identifier)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.period)
+      ..writeByte(6)
+      ..write(obj.specialPrecautionsForStorage);
+  }
 }

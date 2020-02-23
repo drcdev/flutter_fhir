@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -15,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Patient {
   static Future<Patient> newInstance({
     String resourceType,
@@ -110,41 +110,77 @@ class Patient {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Patient';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   bool active;
+  @HiveField(13)
   Element elementActive;
+  @HiveField(14)
   List<HumanName> name;
+  @HiveField(15)
   List<ContactPoint> telecom;
+  @HiveField(16)
   String gender;
+  @HiveField(17)
   Element elementGender;
+  @HiveField(18)
   String birthDate;
+  @HiveField(19)
   Element elementBirthDate;
+  @HiveField(20)
   bool deceasedBoolean;
+  @HiveField(21)
   Element elementDeceasedBoolean;
+  @HiveField(22)
   String deceasedDateTime;
+  @HiveField(23)
   Element elementDeceasedDateTime;
+  @HiveField(24)
   List<Address> address;
+  @HiveField(25)
   CodeableConcept maritalStatus;
+  @HiveField(26)
   bool multipleBirthBoolean;
+  @HiveField(27)
   Element elementMultipleBirthBoolean;
+  @HiveField(28)
   int multipleBirthInteger;
+  @HiveField(29)
   Element elementMultipleBirthInteger;
+  @HiveField(30)
   List<Attachment> photo;
+  @HiveField(31)
   List<Patient_Contact> contact;
+  @HiveField(32)
   List<Patient_Communication> communication;
+  @HiveField(33)
   List<Reference> generalPractitioner;
+  @HiveField(34)
   Reference managingOrganization;
+  @HiveField(35)
   List<Patient_Link> link;
 
   Patient({
@@ -197,7 +233,6 @@ class Patient {
   Map<String, dynamic> toJson() => _$PatientToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Patient_Contact {
   static Future<Patient_Contact> newInstance({
     String id,
@@ -229,16 +264,27 @@ class Patient_Contact {
     return newPatient_Contact;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<CodeableConcept> relationship;
+  @HiveField(4)
   HumanName name;
+  @HiveField(5)
   List<ContactPoint> telecom;
+  @HiveField(6)
   Address address;
+  @HiveField(7)
   String gender;
+  @HiveField(8)
   Element elementGender;
+  @HiveField(9)
   Reference organization;
+  @HiveField(10)
   Period period;
 
   Patient_Contact({
@@ -260,7 +306,6 @@ class Patient_Contact {
   Map<String, dynamic> toJson() => _$Patient_ContactToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Patient_Communication {
   static Future<Patient_Communication> newInstance({
     String id,
@@ -282,11 +327,17 @@ class Patient_Communication {
     return newPatient_Communication;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept language;
+  @HiveField(4)
   bool preferred;
+  @HiveField(5)
   Element elementPreferred;
 
   Patient_Communication({
@@ -303,7 +354,6 @@ class Patient_Communication {
   Map<String, dynamic> toJson() => _$Patient_CommunicationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Patient_Link {
   static Future<Patient_Link> newInstance({
     String id,
@@ -325,11 +375,17 @@ class Patient_Link {
     return newPatient_Link;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Reference other;
+  @HiveField(4)
   String type;
+  @HiveField(5)
   Element elementType;
 
   Patient_Link({
@@ -668,4 +724,258 @@ Map<String, dynamic> _$Patient_LinkToJson(Patient_Link instance) {
   writeNotNull('type', instance.type);
   writeNotNull('elementType', instance.elementType?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class PatientAdapter extends TypeAdapter<Patient> {
+  @override
+  Patient read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      active: fields[12] as bool,
+      elementActive: fields[13] as Element,
+      name: (fields[14] as List)?.cast<HumanName>(),
+      telecom: (fields[15] as List)?.cast<ContactPoint>(),
+      gender: fields[16] as String,
+      elementGender: fields[17] as Element,
+      birthDate: fields[18] as String,
+      elementBirthDate: fields[19] as Element,
+      deceasedBoolean: fields[20] as bool,
+      elementDeceasedBoolean: fields[21] as Element,
+      deceasedDateTime: fields[22] as String,
+      elementDeceasedDateTime: fields[23] as Element,
+      address: (fields[24] as List)?.cast<Address>(),
+      maritalStatus: fields[25] as CodeableConcept,
+      multipleBirthBoolean: fields[26] as bool,
+      elementMultipleBirthBoolean: fields[27] as Element,
+      multipleBirthInteger: fields[28] as int,
+      elementMultipleBirthInteger: fields[29] as Element,
+      photo: (fields[30] as List)?.cast<Attachment>(),
+      contact: (fields[31] as List)?.cast<Patient_Contact>(),
+      communication: (fields[32] as List)?.cast<Patient_Communication>(),
+      generalPractitioner: (fields[33] as List)?.cast<Reference>(),
+      managingOrganization: fields[34] as Reference,
+      link: (fields[35] as List)?.cast<Patient_Link>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient obj) {
+    writer
+      ..writeByte(36)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.active)
+      ..writeByte(13)
+      ..write(obj.elementActive)
+      ..writeByte(14)
+      ..write(obj.name)
+      ..writeByte(15)
+      ..write(obj.telecom)
+      ..writeByte(16)
+      ..write(obj.gender)
+      ..writeByte(17)
+      ..write(obj.elementGender)
+      ..writeByte(18)
+      ..write(obj.birthDate)
+      ..writeByte(19)
+      ..write(obj.elementBirthDate)
+      ..writeByte(20)
+      ..write(obj.deceasedBoolean)
+      ..writeByte(21)
+      ..write(obj.elementDeceasedBoolean)
+      ..writeByte(22)
+      ..write(obj.deceasedDateTime)
+      ..writeByte(23)
+      ..write(obj.elementDeceasedDateTime)
+      ..writeByte(24)
+      ..write(obj.address)
+      ..writeByte(25)
+      ..write(obj.maritalStatus)
+      ..writeByte(26)
+      ..write(obj.multipleBirthBoolean)
+      ..writeByte(27)
+      ..write(obj.elementMultipleBirthBoolean)
+      ..writeByte(28)
+      ..write(obj.multipleBirthInteger)
+      ..writeByte(29)
+      ..write(obj.elementMultipleBirthInteger)
+      ..writeByte(30)
+      ..write(obj.photo)
+      ..writeByte(31)
+      ..write(obj.contact)
+      ..writeByte(32)
+      ..write(obj.communication)
+      ..writeByte(33)
+      ..write(obj.generalPractitioner)
+      ..writeByte(34)
+      ..write(obj.managingOrganization)
+      ..writeByte(35)
+      ..write(obj.link);
+  }
+}
+
+class Patient_ContactAdapter extends TypeAdapter<Patient_Contact> {
+  @override
+  Patient_Contact read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient_Contact(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      relationship: (fields[3] as List)?.cast<CodeableConcept>(),
+      name: fields[4] as HumanName,
+      telecom: (fields[5] as List)?.cast<ContactPoint>(),
+      address: fields[6] as Address,
+      gender: fields[7] as String,
+      elementGender: fields[8] as Element,
+      organization: fields[9] as Reference,
+      period: fields[10] as Period,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient_Contact obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.relationship)
+      ..writeByte(4)
+      ..write(obj.name)
+      ..writeByte(5)
+      ..write(obj.telecom)
+      ..writeByte(6)
+      ..write(obj.address)
+      ..writeByte(7)
+      ..write(obj.gender)
+      ..writeByte(8)
+      ..write(obj.elementGender)
+      ..writeByte(9)
+      ..write(obj.organization)
+      ..writeByte(10)
+      ..write(obj.period);
+  }
+}
+
+class Patient_CommunicationAdapter extends TypeAdapter<Patient_Communication> {
+  @override
+  Patient_Communication read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient_Communication(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      language: fields[3] as CodeableConcept,
+      preferred: fields[4] as bool,
+      elementPreferred: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient_Communication obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.language)
+      ..writeByte(4)
+      ..write(obj.preferred)
+      ..writeByte(5)
+      ..write(obj.elementPreferred);
+  }
+}
+
+class Patient_LinkAdapter extends TypeAdapter<Patient_Link> {
+  @override
+  Patient_Link read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient_Link(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      other: fields[3] as Reference,
+      type: fields[4] as String,
+      elementType: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient_Link obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.other)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.elementType);
+  }
 }

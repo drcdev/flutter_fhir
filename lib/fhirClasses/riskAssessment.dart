@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskAssessment {
   static Future<RiskAssessment> newInstance({
     String resourceType,
@@ -100,37 +100,69 @@ class RiskAssessment {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'RiskAssessment';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   Reference basedOn;
+  @HiveField(13)
   Reference parent;
+  @HiveField(14)
   String status;
+  @HiveField(15)
   Element elementStatus;
+  @HiveField(16)
   CodeableConcept method;
+  @HiveField(17)
   CodeableConcept code;
+  @HiveField(18)
   Reference subject;
+  @HiveField(19)
   Reference encounter;
+  @HiveField(20)
   String occurrenceDateTime;
+  @HiveField(21)
   Element elementOccurrenceDateTime;
+  @HiveField(22)
   Period occurrencePeriod;
+  @HiveField(23)
   Reference condition;
+  @HiveField(24)
   Reference performer;
+  @HiveField(25)
   List<CodeableConcept> reasonCode;
+  @HiveField(26)
   List<Reference> reasonReference;
+  @HiveField(27)
   List<Reference> basis;
+  @HiveField(28)
   List<RiskAssessment_Prediction> prediction;
+  @HiveField(29)
   String mitigation;
+  @HiveField(30)
   Element elementMitigation;
+  @HiveField(31)
   List<Annotation> note;
 
   RiskAssessment({
@@ -173,7 +205,6 @@ class RiskAssessment {
   Map<String, dynamic> toJson() => _$RiskAssessmentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class RiskAssessment_Prediction {
   static Future<RiskAssessment_Prediction> newInstance({
     String id,
@@ -212,19 +243,33 @@ class RiskAssessment_Prediction {
     return newRiskAssessment_Prediction;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept outcome;
+  @HiveField(4)
   int probabilityDecimal;
+  @HiveField(5)
   Element elementProbabilityDecimal;
+  @HiveField(6)
   Range probabilityRange;
+  @HiveField(7)
   CodeableConcept qualitativeRisk;
+  @HiveField(8)
   double relativeRisk;
+  @HiveField(9)
   Element elementRelativeRisk;
+  @HiveField(10)
   Period whenPeriod;
+  @HiveField(11)
   Range whenRange;
+  @HiveField(12)
   String rationale;
+  @HiveField(13)
   Element elementRationale;
 
   RiskAssessment_Prediction({
@@ -478,4 +523,184 @@ Map<String, dynamic> _$RiskAssessment_PredictionToJson(
   writeNotNull('rationale', instance.rationale);
   writeNotNull('elementRationale', instance.elementRationale?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class RiskAssessmentAdapter extends TypeAdapter<RiskAssessment> {
+  @override
+  RiskAssessment read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskAssessment(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      basedOn: fields[12] as Reference,
+      parent: fields[13] as Reference,
+      status: fields[14] as String,
+      elementStatus: fields[15] as Element,
+      method: fields[16] as CodeableConcept,
+      code: fields[17] as CodeableConcept,
+      subject: fields[18] as Reference,
+      encounter: fields[19] as Reference,
+      occurrenceDateTime: fields[20] as String,
+      elementOccurrenceDateTime: fields[21] as Element,
+      occurrencePeriod: fields[22] as Period,
+      condition: fields[23] as Reference,
+      performer: fields[24] as Reference,
+      reasonCode: (fields[25] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[26] as List)?.cast<Reference>(),
+      basis: (fields[27] as List)?.cast<Reference>(),
+      prediction: (fields[28] as List)?.cast<RiskAssessment_Prediction>(),
+      mitigation: fields[29] as String,
+      elementMitigation: fields[30] as Element,
+      note: (fields[31] as List)?.cast<Annotation>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RiskAssessment obj) {
+    writer
+      ..writeByte(32)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.basedOn)
+      ..writeByte(13)
+      ..write(obj.parent)
+      ..writeByte(14)
+      ..write(obj.status)
+      ..writeByte(15)
+      ..write(obj.elementStatus)
+      ..writeByte(16)
+      ..write(obj.method)
+      ..writeByte(17)
+      ..write(obj.code)
+      ..writeByte(18)
+      ..write(obj.subject)
+      ..writeByte(19)
+      ..write(obj.encounter)
+      ..writeByte(20)
+      ..write(obj.occurrenceDateTime)
+      ..writeByte(21)
+      ..write(obj.elementOccurrenceDateTime)
+      ..writeByte(22)
+      ..write(obj.occurrencePeriod)
+      ..writeByte(23)
+      ..write(obj.condition)
+      ..writeByte(24)
+      ..write(obj.performer)
+      ..writeByte(25)
+      ..write(obj.reasonCode)
+      ..writeByte(26)
+      ..write(obj.reasonReference)
+      ..writeByte(27)
+      ..write(obj.basis)
+      ..writeByte(28)
+      ..write(obj.prediction)
+      ..writeByte(29)
+      ..write(obj.mitigation)
+      ..writeByte(30)
+      ..write(obj.elementMitigation)
+      ..writeByte(31)
+      ..write(obj.note);
+  }
+}
+
+class RiskAssessment_PredictionAdapter
+    extends TypeAdapter<RiskAssessment_Prediction> {
+  @override
+  RiskAssessment_Prediction read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RiskAssessment_Prediction(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      outcome: fields[3] as CodeableConcept,
+      probabilityDecimal: fields[4] as int,
+      elementProbabilityDecimal: fields[5] as Element,
+      probabilityRange: fields[6] as Range,
+      qualitativeRisk: fields[7] as CodeableConcept,
+      relativeRisk: fields[8] as double,
+      elementRelativeRisk: fields[9] as Element,
+      whenPeriod: fields[10] as Period,
+      whenRange: fields[11] as Range,
+      rationale: fields[12] as String,
+      elementRationale: fields[13] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RiskAssessment_Prediction obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.outcome)
+      ..writeByte(4)
+      ..write(obj.probabilityDecimal)
+      ..writeByte(5)
+      ..write(obj.elementProbabilityDecimal)
+      ..writeByte(6)
+      ..write(obj.probabilityRange)
+      ..writeByte(7)
+      ..write(obj.qualitativeRisk)
+      ..writeByte(8)
+      ..write(obj.relativeRisk)
+      ..writeByte(9)
+      ..write(obj.elementRelativeRisk)
+      ..writeByte(10)
+      ..write(obj.whenPeriod)
+      ..writeByte(11)
+      ..write(obj.whenRange)
+      ..writeByte(12)
+      ..write(obj.rationale)
+      ..writeByte(13)
+      ..write(obj.elementRationale);
+  }
 }

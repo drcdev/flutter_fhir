@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem {
   static Future<CodeSystem> newInstance({
     String resourceType,
@@ -143,59 +143,113 @@ class CodeSystem {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'CodeSystem';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   String url;
+  @HiveField(12)
   Element elementUrl;
+  @HiveField(13)
   List<Identifier> identifier;
+  @HiveField(14)
   String version;
+  @HiveField(15)
   Element elementVersion;
+  @HiveField(16)
   String name;
+  @HiveField(17)
   Element elementName;
+  @HiveField(18)
   String title;
+  @HiveField(19)
   Element elementTitle;
+  @HiveField(20)
   String status;
+  @HiveField(21)
   Element elementStatus;
+  @HiveField(22)
   bool experimental;
+  @HiveField(23)
   Element elementExperimental;
+  @HiveField(24)
   DateTime date;
+  @HiveField(25)
   Element elementDate;
+  @HiveField(26)
   String publisher;
+  @HiveField(27)
   Element elementPublisher;
+  @HiveField(28)
   List<ContactDetail> contact;
+  @HiveField(29)
   String description;
+  @HiveField(30)
   Element elementDescription;
+  @HiveField(31)
   List<UsageContext> useContext;
+  @HiveField(32)
   List<CodeableConcept> jurisdiction;
+  @HiveField(33)
   String purpose;
+  @HiveField(34)
   Element elementPurpose;
+  @HiveField(35)
   String copyright;
+  @HiveField(36)
   Element elementCopyright;
+  @HiveField(37)
   bool caseSensitive;
+  @HiveField(38)
   Element elementCaseSensitive;
+  @HiveField(39)
   String valueSet;
+  @HiveField(40)
   String hierarchyMeaning;
+  @HiveField(41)
   Element elementHierarchyMeaning;
+  @HiveField(42)
   bool compositional;
+  @HiveField(43)
   Element elementCompositional;
+  @HiveField(44)
   bool versionNeeded;
+  @HiveField(45)
   Element elementVersionNeeded;
+  @HiveField(46)
   String content;
+  @HiveField(47)
   Element elementContent;
+  @HiveField(48)
   String supplements;
+  @HiveField(49)
   int count;
+  @HiveField(50)
   Element elementCount;
+  @HiveField(51)
   List<CodeSystem_Filter> filter;
+  @HiveField(52)
   List<CodeSystem_Property> property;
+  @HiveField(53)
   List<CodeSystem_Concept> concept;
 
   CodeSystem({
@@ -260,7 +314,6 @@ class CodeSystem {
   Map<String, dynamic> toJson() => _$CodeSystemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Filter {
   static Future<CodeSystem_Filter> newInstance({
     String id,
@@ -292,16 +345,27 @@ class CodeSystem_Filter {
     return newCodeSystem_Filter;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String code;
+  @HiveField(4)
   Element elementCode;
+  @HiveField(5)
   String description;
+  @HiveField(6)
   Element elementDescription;
+  @HiveField(7)
   List<String> operator;
+  @HiveField(8)
   List<Element> elementOperator;
+  @HiveField(9)
   String value;
+  @HiveField(10)
   Element elementValue;
 
   CodeSystem_Filter({
@@ -323,7 +387,6 @@ class CodeSystem_Filter {
   Map<String, dynamic> toJson() => _$CodeSystem_FilterToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Property {
   static Future<CodeSystem_Property> newInstance({
     String id,
@@ -355,16 +418,27 @@ class CodeSystem_Property {
     return newCodeSystem_Property;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String code;
+  @HiveField(4)
   Element elementCode;
+  @HiveField(5)
   String uri;
+  @HiveField(6)
   Element elementUri;
+  @HiveField(7)
   String description;
+  @HiveField(8)
   Element elementDescription;
+  @HiveField(9)
   String type;
+  @HiveField(10)
   Element elementType;
 
   CodeSystem_Property({
@@ -386,7 +460,6 @@ class CodeSystem_Property {
   Map<String, dynamic> toJson() => _$CodeSystem_PropertyToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Concept {
   static Future<CodeSystem_Concept> newInstance({
     String id,
@@ -420,17 +493,29 @@ class CodeSystem_Concept {
     return newCodeSystem_Concept;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String code;
+  @HiveField(4)
   Element elementCode;
+  @HiveField(5)
   String display;
+  @HiveField(6)
   Element elementDisplay;
+  @HiveField(7)
   String definition;
+  @HiveField(8)
   Element elementDefinition;
+  @HiveField(9)
   List<CodeSystem_Designation> designation;
+  @HiveField(10)
   List<CodeSystem_Property1> property;
+  @HiveField(11)
   List<CodeSystem_Concept> concept;
 
   CodeSystem_Concept({
@@ -453,7 +538,6 @@ class CodeSystem_Concept {
   Map<String, dynamic> toJson() => _$CodeSystem_ConceptToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Designation {
   static Future<CodeSystem_Designation> newInstance({
     String id,
@@ -480,13 +564,21 @@ class CodeSystem_Designation {
     return newCodeSystem_Designation;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String language;
+  @HiveField(4)
   Element elementLanguage;
+  @HiveField(5)
   Coding use;
+  @HiveField(6)
   String value;
+  @HiveField(7)
   Element elementValue;
 
   CodeSystem_Designation({
@@ -505,7 +597,6 @@ class CodeSystem_Designation {
   Map<String, dynamic> toJson() => _$CodeSystem_DesignationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class CodeSystem_Property1 {
   static Future<CodeSystem_Property1> newInstance({
     String id,
@@ -551,23 +642,41 @@ class CodeSystem_Property1 {
     return newCodeSystem_Property1;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String code;
+  @HiveField(4)
   Element elementCode;
+  @HiveField(5)
   String valueCode;
+  @HiveField(6)
   Element elementValueCode;
+  @HiveField(7)
   Coding valueCoding;
+  @HiveField(8)
   String valueString;
+  @HiveField(9)
   Element elementValueString;
+  @HiveField(10)
   int valueInteger;
+  @HiveField(11)
   Element elementValueInteger;
+  @HiveField(12)
   bool valueBoolean;
+  @HiveField(13)
   Element elementValueBoolean;
+  @HiveField(14)
   String valueDateTime;
+  @HiveField(15)
   Element elementValueDateTime;
+  @HiveField(16)
   int valueDecimal;
+  @HiveField(17)
   Element elementValueDecimal;
 
   CodeSystem_Property1({
@@ -1123,4 +1232,460 @@ Map<String, dynamic> _$CodeSystem_Property1ToJson(
   writeNotNull('valueDecimal', instance.valueDecimal);
   writeNotNull('elementValueDecimal', instance.elementValueDecimal?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CodeSystemAdapter extends TypeAdapter<CodeSystem> {
+  @override
+  CodeSystem read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      status: fields[20] as String,
+      elementStatus: fields[21] as Element,
+      experimental: fields[22] as bool,
+      elementExperimental: fields[23] as Element,
+      date: fields[24] as DateTime,
+      elementDate: fields[25] as Element,
+      publisher: fields[26] as String,
+      elementPublisher: fields[27] as Element,
+      contact: (fields[28] as List)?.cast<ContactDetail>(),
+      description: fields[29] as String,
+      elementDescription: fields[30] as Element,
+      useContext: (fields[31] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
+      purpose: fields[33] as String,
+      elementPurpose: fields[34] as Element,
+      copyright: fields[35] as String,
+      elementCopyright: fields[36] as Element,
+      caseSensitive: fields[37] as bool,
+      elementCaseSensitive: fields[38] as Element,
+      valueSet: fields[39] as String,
+      hierarchyMeaning: fields[40] as String,
+      elementHierarchyMeaning: fields[41] as Element,
+      compositional: fields[42] as bool,
+      elementCompositional: fields[43] as Element,
+      versionNeeded: fields[44] as bool,
+      elementVersionNeeded: fields[45] as Element,
+      content: fields[46] as String,
+      elementContent: fields[47] as Element,
+      supplements: fields[48] as String,
+      count: fields[49] as int,
+      elementCount: fields[50] as Element,
+      filter: (fields[51] as List)?.cast<CodeSystem_Filter>(),
+      property: (fields[52] as List)?.cast<CodeSystem_Property>(),
+      concept: (fields[53] as List)?.cast<CodeSystem_Concept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem obj) {
+    writer
+      ..writeByte(54)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.status)
+      ..writeByte(21)
+      ..write(obj.elementStatus)
+      ..writeByte(22)
+      ..write(obj.experimental)
+      ..writeByte(23)
+      ..write(obj.elementExperimental)
+      ..writeByte(24)
+      ..write(obj.date)
+      ..writeByte(25)
+      ..write(obj.elementDate)
+      ..writeByte(26)
+      ..write(obj.publisher)
+      ..writeByte(27)
+      ..write(obj.elementPublisher)
+      ..writeByte(28)
+      ..write(obj.contact)
+      ..writeByte(29)
+      ..write(obj.description)
+      ..writeByte(30)
+      ..write(obj.elementDescription)
+      ..writeByte(31)
+      ..write(obj.useContext)
+      ..writeByte(32)
+      ..write(obj.jurisdiction)
+      ..writeByte(33)
+      ..write(obj.purpose)
+      ..writeByte(34)
+      ..write(obj.elementPurpose)
+      ..writeByte(35)
+      ..write(obj.copyright)
+      ..writeByte(36)
+      ..write(obj.elementCopyright)
+      ..writeByte(37)
+      ..write(obj.caseSensitive)
+      ..writeByte(38)
+      ..write(obj.elementCaseSensitive)
+      ..writeByte(39)
+      ..write(obj.valueSet)
+      ..writeByte(40)
+      ..write(obj.hierarchyMeaning)
+      ..writeByte(41)
+      ..write(obj.elementHierarchyMeaning)
+      ..writeByte(42)
+      ..write(obj.compositional)
+      ..writeByte(43)
+      ..write(obj.elementCompositional)
+      ..writeByte(44)
+      ..write(obj.versionNeeded)
+      ..writeByte(45)
+      ..write(obj.elementVersionNeeded)
+      ..writeByte(46)
+      ..write(obj.content)
+      ..writeByte(47)
+      ..write(obj.elementContent)
+      ..writeByte(48)
+      ..write(obj.supplements)
+      ..writeByte(49)
+      ..write(obj.count)
+      ..writeByte(50)
+      ..write(obj.elementCount)
+      ..writeByte(51)
+      ..write(obj.filter)
+      ..writeByte(52)
+      ..write(obj.property)
+      ..writeByte(53)
+      ..write(obj.concept);
+  }
+}
+
+class CodeSystem_FilterAdapter extends TypeAdapter<CodeSystem_Filter> {
+  @override
+  CodeSystem_Filter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Filter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      description: fields[5] as String,
+      elementDescription: fields[6] as Element,
+      operator: (fields[7] as List)?.cast<String>(),
+      elementOperator: (fields[8] as List)?.cast<Element>(),
+      value: fields[9] as String,
+      elementValue: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Filter obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.elementDescription)
+      ..writeByte(7)
+      ..write(obj.operator)
+      ..writeByte(8)
+      ..write(obj.elementOperator)
+      ..writeByte(9)
+      ..write(obj.value)
+      ..writeByte(10)
+      ..write(obj.elementValue);
+  }
+}
+
+class CodeSystem_PropertyAdapter extends TypeAdapter<CodeSystem_Property> {
+  @override
+  CodeSystem_Property read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Property(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      uri: fields[5] as String,
+      elementUri: fields[6] as Element,
+      description: fields[7] as String,
+      elementDescription: fields[8] as Element,
+      type: fields[9] as String,
+      elementType: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Property obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.uri)
+      ..writeByte(6)
+      ..write(obj.elementUri)
+      ..writeByte(7)
+      ..write(obj.description)
+      ..writeByte(8)
+      ..write(obj.elementDescription)
+      ..writeByte(9)
+      ..write(obj.type)
+      ..writeByte(10)
+      ..write(obj.elementType);
+  }
+}
+
+class CodeSystem_ConceptAdapter extends TypeAdapter<CodeSystem_Concept> {
+  @override
+  CodeSystem_Concept read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Concept(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      display: fields[5] as String,
+      elementDisplay: fields[6] as Element,
+      definition: fields[7] as String,
+      elementDefinition: fields[8] as Element,
+      designation: (fields[9] as List)?.cast<CodeSystem_Designation>(),
+      property: (fields[10] as List)?.cast<CodeSystem_Property1>(),
+      concept: (fields[11] as List)?.cast<CodeSystem_Concept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Concept obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.display)
+      ..writeByte(6)
+      ..write(obj.elementDisplay)
+      ..writeByte(7)
+      ..write(obj.definition)
+      ..writeByte(8)
+      ..write(obj.elementDefinition)
+      ..writeByte(9)
+      ..write(obj.designation)
+      ..writeByte(10)
+      ..write(obj.property)
+      ..writeByte(11)
+      ..write(obj.concept);
+  }
+}
+
+class CodeSystem_DesignationAdapter
+    extends TypeAdapter<CodeSystem_Designation> {
+  @override
+  CodeSystem_Designation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Designation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      language: fields[3] as String,
+      elementLanguage: fields[4] as Element,
+      use: fields[5] as Coding,
+      value: fields[6] as String,
+      elementValue: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Designation obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.language)
+      ..writeByte(4)
+      ..write(obj.elementLanguage)
+      ..writeByte(5)
+      ..write(obj.use)
+      ..writeByte(6)
+      ..write(obj.value)
+      ..writeByte(7)
+      ..write(obj.elementValue);
+  }
+}
+
+class CodeSystem_Property1Adapter extends TypeAdapter<CodeSystem_Property1> {
+  @override
+  CodeSystem_Property1 read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Property1(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      valueCode: fields[5] as String,
+      elementValueCode: fields[6] as Element,
+      valueCoding: fields[7] as Coding,
+      valueString: fields[8] as String,
+      elementValueString: fields[9] as Element,
+      valueInteger: fields[10] as int,
+      elementValueInteger: fields[11] as Element,
+      valueBoolean: fields[12] as bool,
+      elementValueBoolean: fields[13] as Element,
+      valueDateTime: fields[14] as String,
+      elementValueDateTime: fields[15] as Element,
+      valueDecimal: fields[16] as int,
+      elementValueDecimal: fields[17] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Property1 obj) {
+    writer
+      ..writeByte(18)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.valueCode)
+      ..writeByte(6)
+      ..write(obj.elementValueCode)
+      ..writeByte(7)
+      ..write(obj.valueCoding)
+      ..writeByte(8)
+      ..write(obj.valueString)
+      ..writeByte(9)
+      ..write(obj.elementValueString)
+      ..writeByte(10)
+      ..write(obj.valueInteger)
+      ..writeByte(11)
+      ..write(obj.elementValueInteger)
+      ..writeByte(12)
+      ..write(obj.valueBoolean)
+      ..writeByte(13)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(14)
+      ..write(obj.valueDateTime)
+      ..writeByte(15)
+      ..write(obj.elementValueDateTime)
+      ..writeByte(16)
+      ..write(obj.valueDecimal)
+      ..writeByte(17)
+      ..write(obj.elementValueDecimal);
+  }
 }

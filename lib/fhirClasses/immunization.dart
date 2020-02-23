@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Immunization {
   static Future<Immunization> newInstance({
     String resourceType,
@@ -131,53 +131,101 @@ class Immunization {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Immunization';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   CodeableConcept statusReason;
+  @HiveField(15)
   CodeableConcept vaccineCode;
+  @HiveField(16)
   Reference patient;
+  @HiveField(17)
   Reference encounter;
+  @HiveField(18)
   String occurrenceDateTime;
+  @HiveField(19)
   Element elementOccurrenceDateTime;
+  @HiveField(20)
   String occurrenceString;
+  @HiveField(21)
   Element elementOccurrenceString;
+  @HiveField(22)
   DateTime recorded;
+  @HiveField(23)
   Element elementRecorded;
+  @HiveField(24)
   bool primarySource;
+  @HiveField(25)
   Element elementPrimarySource;
+  @HiveField(26)
   CodeableConcept reportOrigin;
+  @HiveField(27)
   Reference location;
+  @HiveField(28)
   Reference manufacturer;
+  @HiveField(29)
   String lotNumber;
+  @HiveField(30)
   Element elementLotNumber;
+  @HiveField(31)
   String expirationDate;
+  @HiveField(32)
   Element elementExpirationDate;
+  @HiveField(33)
   CodeableConcept site;
+  @HiveField(34)
   CodeableConcept route;
+  @HiveField(35)
   Quantity doseQuantity;
+  @HiveField(36)
   List<Immunization_Performer> performer;
+  @HiveField(37)
   List<Annotation> note;
+  @HiveField(38)
   List<CodeableConcept> reasonCode;
+  @HiveField(39)
   List<Reference> reasonReference;
+  @HiveField(40)
   bool isSubpotent;
+  @HiveField(41)
   Element elementIsSubpotent;
+  @HiveField(42)
   List<CodeableConcept> subpotentReason;
+  @HiveField(43)
   List<Immunization_Education> education;
+  @HiveField(44)
   List<CodeableConcept> programEligibility;
+  @HiveField(45)
   CodeableConcept fundingSource;
+  @HiveField(46)
   List<Immunization_Reaction> reaction;
+  @HiveField(47)
   List<Immunization_ProtocolApplied> protocolApplied;
 
   Immunization({
@@ -236,7 +284,6 @@ class Immunization {
   Map<String, dynamic> toJson() => _$ImmunizationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Immunization_Performer {
   static Future<Immunization_Performer> newInstance({
     String id,
@@ -257,10 +304,15 @@ class Immunization_Performer {
     return newImmunization_Performer;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept function;
+  @HiveField(4)
   Reference actor;
 
   Immunization_Performer({
@@ -276,7 +328,6 @@ class Immunization_Performer {
   Map<String, dynamic> toJson() => _$Immunization_PerformerToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Immunization_Education {
   static Future<Immunization_Education> newInstance({
     String id,
@@ -309,16 +360,27 @@ class Immunization_Education {
     return newImmunization_Education;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String documentType;
+  @HiveField(4)
   Element elementDocumentType;
+  @HiveField(5)
   String reference;
+  @HiveField(6)
   Element elementReference;
+  @HiveField(7)
   DateTime publicationDate;
+  @HiveField(8)
   Element elementPublicationDate;
+  @HiveField(9)
   DateTime presentationDate;
+  @HiveField(10)
   Element elementPresentationDate;
 
   Immunization_Education({
@@ -340,7 +402,6 @@ class Immunization_Education {
   Map<String, dynamic> toJson() => _$Immunization_EducationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Immunization_Reaction {
   static Future<Immunization_Reaction> newInstance({
     String id,
@@ -366,13 +427,21 @@ class Immunization_Reaction {
     return newImmunization_Reaction;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   DateTime date;
+  @HiveField(4)
   Element elementDate;
+  @HiveField(5)
   Reference detail;
+  @HiveField(6)
   bool reported;
+  @HiveField(7)
   Element elementReported;
 
   Immunization_Reaction({
@@ -391,7 +460,6 @@ class Immunization_Reaction {
   Map<String, dynamic> toJson() => _$Immunization_ReactionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Immunization_ProtocolApplied {
   static Future<Immunization_ProtocolApplied> newInstance({
     String id,
@@ -432,20 +500,35 @@ class Immunization_ProtocolApplied {
     return newImmunization_ProtocolApplied;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String series;
+  @HiveField(4)
   Element elementSeries;
+  @HiveField(5)
   Reference authority;
+  @HiveField(6)
   List<CodeableConcept> targetDisease;
+  @HiveField(7)
   int doseNumberPositiveInt;
+  @HiveField(8)
   Element elementDoseNumberPositiveInt;
+  @HiveField(9)
   String doseNumberString;
+  @HiveField(10)
   Element elementDoseNumberString;
+  @HiveField(11)
   int seriesDosesPositiveInt;
+  @HiveField(12)
   Element elementSeriesDosesPositiveInt;
+  @HiveField(13)
   String seriesDosesString;
+  @HiveField(14)
   Element elementSeriesDosesString;
 
   Immunization_ProtocolApplied({
@@ -942,4 +1025,364 @@ Map<String, dynamic> _$Immunization_ProtocolAppliedToJson(
   writeNotNull(
       'elementSeriesDosesString', instance.elementSeriesDosesString?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ImmunizationAdapter extends TypeAdapter<Immunization> {
+  @override
+  Immunization read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Immunization(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      statusReason: fields[14] as CodeableConcept,
+      vaccineCode: fields[15] as CodeableConcept,
+      patient: fields[16] as Reference,
+      encounter: fields[17] as Reference,
+      occurrenceDateTime: fields[18] as String,
+      elementOccurrenceDateTime: fields[19] as Element,
+      occurrenceString: fields[20] as String,
+      elementOccurrenceString: fields[21] as Element,
+      recorded: fields[22] as DateTime,
+      elementRecorded: fields[23] as Element,
+      primarySource: fields[24] as bool,
+      elementPrimarySource: fields[25] as Element,
+      reportOrigin: fields[26] as CodeableConcept,
+      location: fields[27] as Reference,
+      manufacturer: fields[28] as Reference,
+      lotNumber: fields[29] as String,
+      elementLotNumber: fields[30] as Element,
+      expirationDate: fields[31] as String,
+      elementExpirationDate: fields[32] as Element,
+      site: fields[33] as CodeableConcept,
+      route: fields[34] as CodeableConcept,
+      doseQuantity: fields[35] as Quantity,
+      performer: (fields[36] as List)?.cast<Immunization_Performer>(),
+      note: (fields[37] as List)?.cast<Annotation>(),
+      reasonCode: (fields[38] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[39] as List)?.cast<Reference>(),
+      isSubpotent: fields[40] as bool,
+      elementIsSubpotent: fields[41] as Element,
+      subpotentReason: (fields[42] as List)?.cast<CodeableConcept>(),
+      education: (fields[43] as List)?.cast<Immunization_Education>(),
+      programEligibility: (fields[44] as List)?.cast<CodeableConcept>(),
+      fundingSource: fields[45] as CodeableConcept,
+      reaction: (fields[46] as List)?.cast<Immunization_Reaction>(),
+      protocolApplied:
+          (fields[47] as List)?.cast<Immunization_ProtocolApplied>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Immunization obj) {
+    writer
+      ..writeByte(48)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.statusReason)
+      ..writeByte(15)
+      ..write(obj.vaccineCode)
+      ..writeByte(16)
+      ..write(obj.patient)
+      ..writeByte(17)
+      ..write(obj.encounter)
+      ..writeByte(18)
+      ..write(obj.occurrenceDateTime)
+      ..writeByte(19)
+      ..write(obj.elementOccurrenceDateTime)
+      ..writeByte(20)
+      ..write(obj.occurrenceString)
+      ..writeByte(21)
+      ..write(obj.elementOccurrenceString)
+      ..writeByte(22)
+      ..write(obj.recorded)
+      ..writeByte(23)
+      ..write(obj.elementRecorded)
+      ..writeByte(24)
+      ..write(obj.primarySource)
+      ..writeByte(25)
+      ..write(obj.elementPrimarySource)
+      ..writeByte(26)
+      ..write(obj.reportOrigin)
+      ..writeByte(27)
+      ..write(obj.location)
+      ..writeByte(28)
+      ..write(obj.manufacturer)
+      ..writeByte(29)
+      ..write(obj.lotNumber)
+      ..writeByte(30)
+      ..write(obj.elementLotNumber)
+      ..writeByte(31)
+      ..write(obj.expirationDate)
+      ..writeByte(32)
+      ..write(obj.elementExpirationDate)
+      ..writeByte(33)
+      ..write(obj.site)
+      ..writeByte(34)
+      ..write(obj.route)
+      ..writeByte(35)
+      ..write(obj.doseQuantity)
+      ..writeByte(36)
+      ..write(obj.performer)
+      ..writeByte(37)
+      ..write(obj.note)
+      ..writeByte(38)
+      ..write(obj.reasonCode)
+      ..writeByte(39)
+      ..write(obj.reasonReference)
+      ..writeByte(40)
+      ..write(obj.isSubpotent)
+      ..writeByte(41)
+      ..write(obj.elementIsSubpotent)
+      ..writeByte(42)
+      ..write(obj.subpotentReason)
+      ..writeByte(43)
+      ..write(obj.education)
+      ..writeByte(44)
+      ..write(obj.programEligibility)
+      ..writeByte(45)
+      ..write(obj.fundingSource)
+      ..writeByte(46)
+      ..write(obj.reaction)
+      ..writeByte(47)
+      ..write(obj.protocolApplied);
+  }
+}
+
+class Immunization_PerformerAdapter
+    extends TypeAdapter<Immunization_Performer> {
+  @override
+  Immunization_Performer read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Immunization_Performer(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      function: fields[3] as CodeableConcept,
+      actor: fields[4] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Immunization_Performer obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.function)
+      ..writeByte(4)
+      ..write(obj.actor);
+  }
+}
+
+class Immunization_EducationAdapter
+    extends TypeAdapter<Immunization_Education> {
+  @override
+  Immunization_Education read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Immunization_Education(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      documentType: fields[3] as String,
+      elementDocumentType: fields[4] as Element,
+      reference: fields[5] as String,
+      elementReference: fields[6] as Element,
+      publicationDate: fields[7] as DateTime,
+      elementPublicationDate: fields[8] as Element,
+      presentationDate: fields[9] as DateTime,
+      elementPresentationDate: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Immunization_Education obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.documentType)
+      ..writeByte(4)
+      ..write(obj.elementDocumentType)
+      ..writeByte(5)
+      ..write(obj.reference)
+      ..writeByte(6)
+      ..write(obj.elementReference)
+      ..writeByte(7)
+      ..write(obj.publicationDate)
+      ..writeByte(8)
+      ..write(obj.elementPublicationDate)
+      ..writeByte(9)
+      ..write(obj.presentationDate)
+      ..writeByte(10)
+      ..write(obj.elementPresentationDate);
+  }
+}
+
+class Immunization_ReactionAdapter extends TypeAdapter<Immunization_Reaction> {
+  @override
+  Immunization_Reaction read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Immunization_Reaction(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      date: fields[3] as DateTime,
+      elementDate: fields[4] as Element,
+      detail: fields[5] as Reference,
+      reported: fields[6] as bool,
+      elementReported: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Immunization_Reaction obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.date)
+      ..writeByte(4)
+      ..write(obj.elementDate)
+      ..writeByte(5)
+      ..write(obj.detail)
+      ..writeByte(6)
+      ..write(obj.reported)
+      ..writeByte(7)
+      ..write(obj.elementReported);
+  }
+}
+
+class Immunization_ProtocolAppliedAdapter
+    extends TypeAdapter<Immunization_ProtocolApplied> {
+  @override
+  Immunization_ProtocolApplied read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Immunization_ProtocolApplied(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      series: fields[3] as String,
+      elementSeries: fields[4] as Element,
+      authority: fields[5] as Reference,
+      targetDisease: (fields[6] as List)?.cast<CodeableConcept>(),
+      doseNumberPositiveInt: fields[7] as int,
+      elementDoseNumberPositiveInt: fields[8] as Element,
+      doseNumberString: fields[9] as String,
+      elementDoseNumberString: fields[10] as Element,
+      seriesDosesPositiveInt: fields[11] as int,
+      elementSeriesDosesPositiveInt: fields[12] as Element,
+      seriesDosesString: fields[13] as String,
+      elementSeriesDosesString: fields[14] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Immunization_ProtocolApplied obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.series)
+      ..writeByte(4)
+      ..write(obj.elementSeries)
+      ..writeByte(5)
+      ..write(obj.authority)
+      ..writeByte(6)
+      ..write(obj.targetDisease)
+      ..writeByte(7)
+      ..write(obj.doseNumberPositiveInt)
+      ..writeByte(8)
+      ..write(obj.elementDoseNumberPositiveInt)
+      ..writeByte(9)
+      ..write(obj.doseNumberString)
+      ..writeByte(10)
+      ..write(obj.elementDoseNumberString)
+      ..writeByte(11)
+      ..write(obj.seriesDosesPositiveInt)
+      ..writeByte(12)
+      ..write(obj.elementSeriesDosesPositiveInt)
+      ..writeByte(13)
+      ..write(obj.seriesDosesString)
+      ..writeByte(14)
+      ..write(obj.elementSeriesDosesString);
+  }
 }

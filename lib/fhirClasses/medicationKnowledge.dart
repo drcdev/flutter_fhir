@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -14,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge {
   static Future<MedicationKnowledge> newInstance({
     String resourceType,
@@ -111,42 +111,78 @@ class MedicationKnowledge {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'MedicationKnowledge';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   CodeableConcept code;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   Reference manufacturer;
+  @HiveField(15)
   CodeableConcept doseForm;
+  @HiveField(16)
   Quantity amount;
+  @HiveField(17)
   List<String> synonym;
+  @HiveField(18)
   List<Element> elementSynonym;
+  @HiveField(19)
   List<MedicationKnowledge_RelatedMedicationKnowledge>
       relatedMedicationKnowledge;
+  @HiveField(20)
   List<Reference> associatedMedication;
+  @HiveField(21)
   List<CodeableConcept> productType;
+  @HiveField(22)
   List<MedicationKnowledge_Monograph> monograph;
+  @HiveField(23)
   List<MedicationKnowledge_Ingredient> ingredient;
+  @HiveField(24)
   String preparationInstruction;
+  @HiveField(25)
   Element elementPreparationInstruction;
+  @HiveField(26)
   List<CodeableConcept> intendedRoute;
+  @HiveField(27)
   List<MedicationKnowledge_Cost> cost;
+  @HiveField(28)
   List<MedicationKnowledge_MonitoringProgram> monitoringProgram;
+  @HiveField(29)
   List<MedicationKnowledge_AdministrationGuidelines> administrationGuidelines;
+  @HiveField(30)
   List<MedicationKnowledge_MedicineClassification> medicineClassification;
+  @HiveField(31)
   MedicationKnowledge_Packaging packaging;
+  @HiveField(32)
   List<MedicationKnowledge_DrugCharacteristic> drugCharacteristic;
+  @HiveField(33)
   List<Reference> contraindication;
+  @HiveField(34)
   List<MedicationKnowledge_Regulatory> regulatory;
+  @HiveField(35)
   List<MedicationKnowledge_Kinetics> kinetics;
 
   MedicationKnowledge({
@@ -193,7 +229,6 @@ class MedicationKnowledge {
   Map<String, dynamic> toJson() => _$MedicationKnowledgeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_RelatedMedicationKnowledge {
   static Future<MedicationKnowledge_RelatedMedicationKnowledge> newInstance({
     String id,
@@ -215,10 +250,15 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
     return newMedicationKnowledge_RelatedMedicationKnowledge;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   List<Reference> reference;
 
   MedicationKnowledge_RelatedMedicationKnowledge({
@@ -236,7 +276,6 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
       _$MedicationKnowledge_RelatedMedicationKnowledgeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Monograph {
   static Future<MedicationKnowledge_Monograph> newInstance({
     String id,
@@ -257,10 +296,15 @@ class MedicationKnowledge_Monograph {
     return newMedicationKnowledge_Monograph;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   Reference source;
 
   MedicationKnowledge_Monograph({
@@ -276,7 +320,6 @@ class MedicationKnowledge_Monograph {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_MonographToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Ingredient {
   static Future<MedicationKnowledge_Ingredient> newInstance({
     String id,
@@ -303,13 +346,21 @@ class MedicationKnowledge_Ingredient {
     return newMedicationKnowledge_Ingredient;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept itemCodeableConcept;
+  @HiveField(4)
   Reference itemReference;
+  @HiveField(5)
   bool isActive;
+  @HiveField(6)
   Element elementIsActive;
+  @HiveField(7)
   Ratio strength;
 
   MedicationKnowledge_Ingredient({
@@ -328,7 +379,6 @@ class MedicationKnowledge_Ingredient {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_IngredientToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Cost {
   static Future<MedicationKnowledge_Cost> newInstance({
     String id,
@@ -353,12 +403,19 @@ class MedicationKnowledge_Cost {
     return newMedicationKnowledge_Cost;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   String source;
+  @HiveField(5)
   Element elementSource;
+  @HiveField(6)
   Money cost;
 
   MedicationKnowledge_Cost({
@@ -376,7 +433,6 @@ class MedicationKnowledge_Cost {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_CostToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_MonitoringProgram {
   static Future<MedicationKnowledge_MonitoringProgram> newInstance({
     String id,
@@ -400,11 +456,17 @@ class MedicationKnowledge_MonitoringProgram {
     return newMedicationKnowledge_MonitoringProgram;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   String name;
+  @HiveField(5)
   Element elementName;
 
   MedicationKnowledge_MonitoringProgram({
@@ -423,7 +485,6 @@ class MedicationKnowledge_MonitoringProgram {
       _$MedicationKnowledge_MonitoringProgramToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_AdministrationGuidelines {
   static Future<MedicationKnowledge_AdministrationGuidelines> newInstance({
     String id,
@@ -449,12 +510,19 @@ class MedicationKnowledge_AdministrationGuidelines {
     return newMedicationKnowledge_AdministrationGuidelines;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<MedicationKnowledge_Dosage> dosage;
+  @HiveField(4)
   CodeableConcept indicationCodeableConcept;
+  @HiveField(5)
   Reference indicationReference;
+  @HiveField(6)
   List<MedicationKnowledge_PatientCharacteristics> patientCharacteristics;
 
   MedicationKnowledge_AdministrationGuidelines({
@@ -474,7 +542,6 @@ class MedicationKnowledge_AdministrationGuidelines {
       _$MedicationKnowledge_AdministrationGuidelinesToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Dosage {
   static Future<MedicationKnowledge_Dosage> newInstance({
     String id,
@@ -495,10 +562,15 @@ class MedicationKnowledge_Dosage {
     return newMedicationKnowledge_Dosage;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   List<Dosage> dosage;
 
   MedicationKnowledge_Dosage({
@@ -514,7 +586,6 @@ class MedicationKnowledge_Dosage {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_DosageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_PatientCharacteristics {
   static Future<MedicationKnowledge_PatientCharacteristics> newInstance({
     String id,
@@ -540,12 +611,19 @@ class MedicationKnowledge_PatientCharacteristics {
     return newMedicationKnowledge_PatientCharacteristics;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept characteristicCodeableConcept;
+  @HiveField(4)
   Quantity characteristicQuantity;
+  @HiveField(5)
   List<String> value;
+  @HiveField(6)
   List<Element> elementValue;
 
   MedicationKnowledge_PatientCharacteristics({
@@ -565,7 +643,6 @@ class MedicationKnowledge_PatientCharacteristics {
       _$MedicationKnowledge_PatientCharacteristicsToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_MedicineClassification {
   static Future<MedicationKnowledge_MedicineClassification> newInstance({
     String id,
@@ -587,10 +664,15 @@ class MedicationKnowledge_MedicineClassification {
     return newMedicationKnowledge_MedicineClassification;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   List<CodeableConcept> classification;
 
   MedicationKnowledge_MedicineClassification({
@@ -608,7 +690,6 @@ class MedicationKnowledge_MedicineClassification {
       _$MedicationKnowledge_MedicineClassificationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Packaging {
   static Future<MedicationKnowledge_Packaging> newInstance({
     String id,
@@ -629,10 +710,15 @@ class MedicationKnowledge_Packaging {
     return newMedicationKnowledge_Packaging;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   Quantity quantity;
 
   MedicationKnowledge_Packaging({
@@ -648,7 +734,6 @@ class MedicationKnowledge_Packaging {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_PackagingToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_DrugCharacteristic {
   static Future<MedicationKnowledge_DrugCharacteristic> newInstance({
     String id,
@@ -680,15 +765,25 @@ class MedicationKnowledge_DrugCharacteristic {
     return newMedicationKnowledge_DrugCharacteristic;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   CodeableConcept valueCodeableConcept;
+  @HiveField(5)
   String valueString;
+  @HiveField(6)
   Element elementValueString;
+  @HiveField(7)
   Quantity valueQuantity;
+  @HiveField(8)
   String valueBase64Binary;
+  @HiveField(9)
   Element elementValueBase64Binary;
 
   MedicationKnowledge_DrugCharacteristic({
@@ -711,7 +806,6 @@ class MedicationKnowledge_DrugCharacteristic {
       _$MedicationKnowledge_DrugCharacteristicToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Regulatory {
   static Future<MedicationKnowledge_Regulatory> newInstance({
     String id,
@@ -736,12 +830,19 @@ class MedicationKnowledge_Regulatory {
     return newMedicationKnowledge_Regulatory;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Reference regulatoryAuthority;
+  @HiveField(4)
   List<MedicationKnowledge_Substitution> substitution;
+  @HiveField(5)
   List<MedicationKnowledge_Schedule> schedule;
+  @HiveField(6)
   MedicationKnowledge_MaxDispense maxDispense;
 
   MedicationKnowledge_Regulatory({
@@ -759,7 +860,6 @@ class MedicationKnowledge_Regulatory {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_RegulatoryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Substitution {
   static Future<MedicationKnowledge_Substitution> newInstance({
     String id,
@@ -782,11 +882,17 @@ class MedicationKnowledge_Substitution {
     return newMedicationKnowledge_Substitution;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   bool allowed;
+  @HiveField(5)
   Element elementAllowed;
 
   MedicationKnowledge_Substitution({
@@ -805,7 +911,6 @@ class MedicationKnowledge_Substitution {
       _$MedicationKnowledge_SubstitutionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Schedule {
   static Future<MedicationKnowledge_Schedule> newInstance({
     String id,
@@ -824,9 +929,13 @@ class MedicationKnowledge_Schedule {
     return newMedicationKnowledge_Schedule;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept schedule;
 
   MedicationKnowledge_Schedule({
@@ -841,7 +950,6 @@ class MedicationKnowledge_Schedule {
   Map<String, dynamic> toJson() => _$MedicationKnowledge_ScheduleToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_MaxDispense {
   static Future<MedicationKnowledge_MaxDispense> newInstance({
     String id,
@@ -862,10 +970,15 @@ class MedicationKnowledge_MaxDispense {
     return newMedicationKnowledge_MaxDispense;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Quantity quantity;
+  @HiveField(4)
   Duration period;
 
   MedicationKnowledge_MaxDispense({
@@ -882,7 +995,6 @@ class MedicationKnowledge_MaxDispense {
       _$MedicationKnowledge_MaxDispenseToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicationKnowledge_Kinetics {
   static Future<MedicationKnowledge_Kinetics> newInstance({
     String id,
@@ -905,11 +1017,17 @@ class MedicationKnowledge_Kinetics {
     return newMedicationKnowledge_Kinetics;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<Quantity> areaUnderCurve;
+  @HiveField(4)
   List<Quantity> lethalDose50;
+  @HiveField(5)
   Duration halfLifePeriod;
 
   MedicationKnowledge_Kinetics({
@@ -1891,4 +2009,744 @@ Map<String, dynamic> _$MedicationKnowledge_KineticsToJson(
       'lethalDose50', instance.lethalDose50?.map((e) => e?.toJson())?.toList());
   writeNotNull('halfLifePeriod', instance.halfLifePeriod?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MedicationKnowledgeAdapter extends TypeAdapter<MedicationKnowledge> {
+  @override
+  MedicationKnowledge read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      code: fields[11] as CodeableConcept,
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      manufacturer: fields[14] as Reference,
+      doseForm: fields[15] as CodeableConcept,
+      amount: fields[16] as Quantity,
+      synonym: (fields[17] as List)?.cast<String>(),
+      elementSynonym: (fields[18] as List)?.cast<Element>(),
+      relatedMedicationKnowledge: (fields[19] as List)
+          ?.cast<MedicationKnowledge_RelatedMedicationKnowledge>(),
+      associatedMedication: (fields[20] as List)?.cast<Reference>(),
+      productType: (fields[21] as List)?.cast<CodeableConcept>(),
+      monograph: (fields[22] as List)?.cast<MedicationKnowledge_Monograph>(),
+      ingredient: (fields[23] as List)?.cast<MedicationKnowledge_Ingredient>(),
+      preparationInstruction: fields[24] as String,
+      elementPreparationInstruction: fields[25] as Element,
+      intendedRoute: (fields[26] as List)?.cast<CodeableConcept>(),
+      cost: (fields[27] as List)?.cast<MedicationKnowledge_Cost>(),
+      monitoringProgram:
+          (fields[28] as List)?.cast<MedicationKnowledge_MonitoringProgram>(),
+      administrationGuidelines: (fields[29] as List)
+          ?.cast<MedicationKnowledge_AdministrationGuidelines>(),
+      medicineClassification: (fields[30] as List)
+          ?.cast<MedicationKnowledge_MedicineClassification>(),
+      packaging: fields[31] as MedicationKnowledge_Packaging,
+      drugCharacteristic:
+          (fields[32] as List)?.cast<MedicationKnowledge_DrugCharacteristic>(),
+      contraindication: (fields[33] as List)?.cast<Reference>(),
+      regulatory: (fields[34] as List)?.cast<MedicationKnowledge_Regulatory>(),
+      kinetics: (fields[35] as List)?.cast<MedicationKnowledge_Kinetics>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge obj) {
+    writer
+      ..writeByte(36)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.code)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.manufacturer)
+      ..writeByte(15)
+      ..write(obj.doseForm)
+      ..writeByte(16)
+      ..write(obj.amount)
+      ..writeByte(17)
+      ..write(obj.synonym)
+      ..writeByte(18)
+      ..write(obj.elementSynonym)
+      ..writeByte(19)
+      ..write(obj.relatedMedicationKnowledge)
+      ..writeByte(20)
+      ..write(obj.associatedMedication)
+      ..writeByte(21)
+      ..write(obj.productType)
+      ..writeByte(22)
+      ..write(obj.monograph)
+      ..writeByte(23)
+      ..write(obj.ingredient)
+      ..writeByte(24)
+      ..write(obj.preparationInstruction)
+      ..writeByte(25)
+      ..write(obj.elementPreparationInstruction)
+      ..writeByte(26)
+      ..write(obj.intendedRoute)
+      ..writeByte(27)
+      ..write(obj.cost)
+      ..writeByte(28)
+      ..write(obj.monitoringProgram)
+      ..writeByte(29)
+      ..write(obj.administrationGuidelines)
+      ..writeByte(30)
+      ..write(obj.medicineClassification)
+      ..writeByte(31)
+      ..write(obj.packaging)
+      ..writeByte(32)
+      ..write(obj.drugCharacteristic)
+      ..writeByte(33)
+      ..write(obj.contraindication)
+      ..writeByte(34)
+      ..write(obj.regulatory)
+      ..writeByte(35)
+      ..write(obj.kinetics);
+  }
+}
+
+class MedicationKnowledge_RelatedMedicationKnowledgeAdapter
+    extends TypeAdapter<MedicationKnowledge_RelatedMedicationKnowledge> {
+  @override
+  MedicationKnowledge_RelatedMedicationKnowledge read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_RelatedMedicationKnowledge(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      reference: (fields[4] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicationKnowledge_RelatedMedicationKnowledge obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.reference);
+  }
+}
+
+class MedicationKnowledge_MonographAdapter
+    extends TypeAdapter<MedicationKnowledge_Monograph> {
+  @override
+  MedicationKnowledge_Monograph read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Monograph(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      source: fields[4] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Monograph obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.source);
+  }
+}
+
+class MedicationKnowledge_IngredientAdapter
+    extends TypeAdapter<MedicationKnowledge_Ingredient> {
+  @override
+  MedicationKnowledge_Ingredient read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Ingredient(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      itemCodeableConcept: fields[3] as CodeableConcept,
+      itemReference: fields[4] as Reference,
+      isActive: fields[5] as bool,
+      elementIsActive: fields[6] as Element,
+      strength: fields[7] as Ratio,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Ingredient obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.itemCodeableConcept)
+      ..writeByte(4)
+      ..write(obj.itemReference)
+      ..writeByte(5)
+      ..write(obj.isActive)
+      ..writeByte(6)
+      ..write(obj.elementIsActive)
+      ..writeByte(7)
+      ..write(obj.strength);
+  }
+}
+
+class MedicationKnowledge_CostAdapter
+    extends TypeAdapter<MedicationKnowledge_Cost> {
+  @override
+  MedicationKnowledge_Cost read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Cost(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      source: fields[4] as String,
+      elementSource: fields[5] as Element,
+      cost: fields[6] as Money,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Cost obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.source)
+      ..writeByte(5)
+      ..write(obj.elementSource)
+      ..writeByte(6)
+      ..write(obj.cost);
+  }
+}
+
+class MedicationKnowledge_MonitoringProgramAdapter
+    extends TypeAdapter<MedicationKnowledge_MonitoringProgram> {
+  @override
+  MedicationKnowledge_MonitoringProgram read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_MonitoringProgram(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      name: fields[4] as String,
+      elementName: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_MonitoringProgram obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.name)
+      ..writeByte(5)
+      ..write(obj.elementName);
+  }
+}
+
+class MedicationKnowledge_AdministrationGuidelinesAdapter
+    extends TypeAdapter<MedicationKnowledge_AdministrationGuidelines> {
+  @override
+  MedicationKnowledge_AdministrationGuidelines read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_AdministrationGuidelines(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      dosage: (fields[3] as List)?.cast<MedicationKnowledge_Dosage>(),
+      indicationCodeableConcept: fields[4] as CodeableConcept,
+      indicationReference: fields[5] as Reference,
+      patientCharacteristics: (fields[6] as List)
+          ?.cast<MedicationKnowledge_PatientCharacteristics>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicationKnowledge_AdministrationGuidelines obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.dosage)
+      ..writeByte(4)
+      ..write(obj.indicationCodeableConcept)
+      ..writeByte(5)
+      ..write(obj.indicationReference)
+      ..writeByte(6)
+      ..write(obj.patientCharacteristics);
+  }
+}
+
+class MedicationKnowledge_DosageAdapter
+    extends TypeAdapter<MedicationKnowledge_Dosage> {
+  @override
+  MedicationKnowledge_Dosage read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Dosage(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      dosage: (fields[4] as List)?.cast<Dosage>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Dosage obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.dosage);
+  }
+}
+
+class MedicationKnowledge_PatientCharacteristicsAdapter
+    extends TypeAdapter<MedicationKnowledge_PatientCharacteristics> {
+  @override
+  MedicationKnowledge_PatientCharacteristics read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_PatientCharacteristics(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      characteristicCodeableConcept: fields[3] as CodeableConcept,
+      characteristicQuantity: fields[4] as Quantity,
+      value: (fields[5] as List)?.cast<String>(),
+      elementValue: (fields[6] as List)?.cast<Element>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicationKnowledge_PatientCharacteristics obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.characteristicCodeableConcept)
+      ..writeByte(4)
+      ..write(obj.characteristicQuantity)
+      ..writeByte(5)
+      ..write(obj.value)
+      ..writeByte(6)
+      ..write(obj.elementValue);
+  }
+}
+
+class MedicationKnowledge_MedicineClassificationAdapter
+    extends TypeAdapter<MedicationKnowledge_MedicineClassification> {
+  @override
+  MedicationKnowledge_MedicineClassification read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_MedicineClassification(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      classification: (fields[4] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicationKnowledge_MedicineClassification obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.classification);
+  }
+}
+
+class MedicationKnowledge_PackagingAdapter
+    extends TypeAdapter<MedicationKnowledge_Packaging> {
+  @override
+  MedicationKnowledge_Packaging read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Packaging(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      quantity: fields[4] as Quantity,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Packaging obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.quantity);
+  }
+}
+
+class MedicationKnowledge_DrugCharacteristicAdapter
+    extends TypeAdapter<MedicationKnowledge_DrugCharacteristic> {
+  @override
+  MedicationKnowledge_DrugCharacteristic read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_DrugCharacteristic(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      valueCodeableConcept: fields[4] as CodeableConcept,
+      valueString: fields[5] as String,
+      elementValueString: fields[6] as Element,
+      valueQuantity: fields[7] as Quantity,
+      valueBase64Binary: fields[8] as String,
+      elementValueBase64Binary: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_DrugCharacteristic obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.valueCodeableConcept)
+      ..writeByte(5)
+      ..write(obj.valueString)
+      ..writeByte(6)
+      ..write(obj.elementValueString)
+      ..writeByte(7)
+      ..write(obj.valueQuantity)
+      ..writeByte(8)
+      ..write(obj.valueBase64Binary)
+      ..writeByte(9)
+      ..write(obj.elementValueBase64Binary);
+  }
+}
+
+class MedicationKnowledge_RegulatoryAdapter
+    extends TypeAdapter<MedicationKnowledge_Regulatory> {
+  @override
+  MedicationKnowledge_Regulatory read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Regulatory(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      regulatoryAuthority: fields[3] as Reference,
+      substitution:
+          (fields[4] as List)?.cast<MedicationKnowledge_Substitution>(),
+      schedule: (fields[5] as List)?.cast<MedicationKnowledge_Schedule>(),
+      maxDispense: fields[6] as MedicationKnowledge_MaxDispense,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Regulatory obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.regulatoryAuthority)
+      ..writeByte(4)
+      ..write(obj.substitution)
+      ..writeByte(5)
+      ..write(obj.schedule)
+      ..writeByte(6)
+      ..write(obj.maxDispense);
+  }
+}
+
+class MedicationKnowledge_SubstitutionAdapter
+    extends TypeAdapter<MedicationKnowledge_Substitution> {
+  @override
+  MedicationKnowledge_Substitution read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Substitution(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      allowed: fields[4] as bool,
+      elementAllowed: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Substitution obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.allowed)
+      ..writeByte(5)
+      ..write(obj.elementAllowed);
+  }
+}
+
+class MedicationKnowledge_ScheduleAdapter
+    extends TypeAdapter<MedicationKnowledge_Schedule> {
+  @override
+  MedicationKnowledge_Schedule read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Schedule(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      schedule: fields[3] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Schedule obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.schedule);
+  }
+}
+
+class MedicationKnowledge_MaxDispenseAdapter
+    extends TypeAdapter<MedicationKnowledge_MaxDispense> {
+  @override
+  MedicationKnowledge_MaxDispense read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_MaxDispense(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      quantity: fields[3] as Quantity,
+      period: fields[4] as Duration,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_MaxDispense obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.quantity)
+      ..writeByte(4)
+      ..write(obj.period);
+  }
+}
+
+class MedicationKnowledge_KineticsAdapter
+    extends TypeAdapter<MedicationKnowledge_Kinetics> {
+  @override
+  MedicationKnowledge_Kinetics read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicationKnowledge_Kinetics(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      areaUnderCurve: (fields[3] as List)?.cast<Quantity>(),
+      lethalDose50: (fields[4] as List)?.cast<Quantity>(),
+      halfLifePeriod: fields[5] as Duration,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicationKnowledge_Kinetics obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.areaUnderCurve)
+      ..writeByte(4)
+      ..write(obj.lethalDose50)
+      ..writeByte(5)
+      ..write(obj.halfLifePeriod);
+  }
 }

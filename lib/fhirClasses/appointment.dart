@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Appointment {
   static Future<Appointment> newInstance({
     String resourceType,
@@ -118,47 +118,89 @@ class Appointment {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Appointment';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   CodeableConcept cancelationReason;
+  @HiveField(15)
   List<CodeableConcept> serviceCategory;
+  @HiveField(16)
   List<CodeableConcept> serviceType;
+  @HiveField(17)
   List<CodeableConcept> specialty;
+  @HiveField(18)
   CodeableConcept appointmentType;
+  @HiveField(19)
   List<CodeableConcept> reasonCode;
+  @HiveField(20)
   List<Reference> reasonReference;
+  @HiveField(21)
   int priority;
+  @HiveField(22)
   Element elementPriority;
+  @HiveField(23)
   String description;
+  @HiveField(24)
   Element elementDescription;
+  @HiveField(25)
   List<Reference> supportingInformation;
+  @HiveField(26)
   DateTime start;
+  @HiveField(27)
   Element elementStart;
+  @HiveField(28)
   DateTime end;
+  @HiveField(29)
   Element elementEnd;
+  @HiveField(30)
   int minutesDuration;
+  @HiveField(31)
   Element elementMinutesDuration;
+  @HiveField(32)
   List<Reference> slot;
+  @HiveField(33)
   DateTime created;
+  @HiveField(34)
   Element elementCreated;
+  @HiveField(35)
   String comment;
+  @HiveField(36)
   Element elementComment;
+  @HiveField(37)
   String patientInstruction;
+  @HiveField(38)
   Element elementPatientInstruction;
+  @HiveField(39)
   List<Reference> basedOn;
+  @HiveField(40)
   List<Appointment_Participant> participant;
+  @HiveField(41)
   List<Period> requestedPeriod;
 
   Appointment({
@@ -211,7 +253,6 @@ class Appointment {
   Map<String, dynamic> toJson() => _$AppointmentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Appointment_Participant {
   static Future<Appointment_Participant> newInstance({
     String id,
@@ -242,15 +283,25 @@ class Appointment_Participant {
     return newAppointment_Participant;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<CodeableConcept> type;
+  @HiveField(4)
   Reference actor;
+  @HiveField(5)
   String required;
+  @HiveField(6)
   Element elementRequired;
+  @HiveField(7)
   String status;
+  @HiveField(8)
   Element elementStatus;
+  @HiveField(9)
   Period period;
 
   Appointment_Participant({
@@ -533,4 +584,202 @@ Map<String, dynamic> _$Appointment_ParticipantToJson(
   writeNotNull('elementStatus', instance.elementStatus?.toJson());
   writeNotNull('period', instance.period?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class AppointmentAdapter extends TypeAdapter<Appointment> {
+  @override
+  Appointment read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Appointment(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      cancelationReason: fields[14] as CodeableConcept,
+      serviceCategory: (fields[15] as List)?.cast<CodeableConcept>(),
+      serviceType: (fields[16] as List)?.cast<CodeableConcept>(),
+      specialty: (fields[17] as List)?.cast<CodeableConcept>(),
+      appointmentType: fields[18] as CodeableConcept,
+      reasonCode: (fields[19] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[20] as List)?.cast<Reference>(),
+      priority: fields[21] as int,
+      elementPriority: fields[22] as Element,
+      description: fields[23] as String,
+      elementDescription: fields[24] as Element,
+      supportingInformation: (fields[25] as List)?.cast<Reference>(),
+      start: fields[26] as DateTime,
+      elementStart: fields[27] as Element,
+      end: fields[28] as DateTime,
+      elementEnd: fields[29] as Element,
+      minutesDuration: fields[30] as int,
+      elementMinutesDuration: fields[31] as Element,
+      slot: (fields[32] as List)?.cast<Reference>(),
+      created: fields[33] as DateTime,
+      elementCreated: fields[34] as Element,
+      comment: fields[35] as String,
+      elementComment: fields[36] as Element,
+      patientInstruction: fields[37] as String,
+      elementPatientInstruction: fields[38] as Element,
+      basedOn: (fields[39] as List)?.cast<Reference>(),
+      participant: (fields[40] as List)?.cast<Appointment_Participant>(),
+      requestedPeriod: (fields[41] as List)?.cast<Period>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Appointment obj) {
+    writer
+      ..writeByte(42)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.cancelationReason)
+      ..writeByte(15)
+      ..write(obj.serviceCategory)
+      ..writeByte(16)
+      ..write(obj.serviceType)
+      ..writeByte(17)
+      ..write(obj.specialty)
+      ..writeByte(18)
+      ..write(obj.appointmentType)
+      ..writeByte(19)
+      ..write(obj.reasonCode)
+      ..writeByte(20)
+      ..write(obj.reasonReference)
+      ..writeByte(21)
+      ..write(obj.priority)
+      ..writeByte(22)
+      ..write(obj.elementPriority)
+      ..writeByte(23)
+      ..write(obj.description)
+      ..writeByte(24)
+      ..write(obj.elementDescription)
+      ..writeByte(25)
+      ..write(obj.supportingInformation)
+      ..writeByte(26)
+      ..write(obj.start)
+      ..writeByte(27)
+      ..write(obj.elementStart)
+      ..writeByte(28)
+      ..write(obj.end)
+      ..writeByte(29)
+      ..write(obj.elementEnd)
+      ..writeByte(30)
+      ..write(obj.minutesDuration)
+      ..writeByte(31)
+      ..write(obj.elementMinutesDuration)
+      ..writeByte(32)
+      ..write(obj.slot)
+      ..writeByte(33)
+      ..write(obj.created)
+      ..writeByte(34)
+      ..write(obj.elementCreated)
+      ..writeByte(35)
+      ..write(obj.comment)
+      ..writeByte(36)
+      ..write(obj.elementComment)
+      ..writeByte(37)
+      ..write(obj.patientInstruction)
+      ..writeByte(38)
+      ..write(obj.elementPatientInstruction)
+      ..writeByte(39)
+      ..write(obj.basedOn)
+      ..writeByte(40)
+      ..write(obj.participant)
+      ..writeByte(41)
+      ..write(obj.requestedPeriod);
+  }
+}
+
+class Appointment_ParticipantAdapter
+    extends TypeAdapter<Appointment_Participant> {
+  @override
+  Appointment_Participant read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Appointment_Participant(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: (fields[3] as List)?.cast<CodeableConcept>(),
+      actor: fields[4] as Reference,
+      required: fields[5] as String,
+      elementRequired: fields[6] as Element,
+      status: fields[7] as String,
+      elementStatus: fields[8] as Element,
+      period: fields[9] as Period,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Appointment_Participant obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.actor)
+      ..writeByte(5)
+      ..write(obj.required)
+      ..writeByte(6)
+      ..write(obj.elementRequired)
+      ..writeByte(7)
+      ..write(obj.status)
+      ..writeByte(8)
+      ..write(obj.elementStatus)
+      ..writeByte(9)
+      ..write(obj.period);
+  }
 }

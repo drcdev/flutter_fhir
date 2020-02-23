@@ -1,11 +1,11 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Address {
   static Future<Address> newInstance({
     String id,
@@ -57,26 +57,47 @@ class Address {
     return newAddress;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   String use;
+  @HiveField(3)
   Element elementUse;
+  @HiveField(4)
   String type;
+  @HiveField(5)
   Element elementType;
+  @HiveField(6)
   String text;
+  @HiveField(7)
   Element elementText;
+  @HiveField(8)
   List<String> line;
+  @HiveField(9)
   List<Element> elementLine;
+  @HiveField(10)
   String city;
+  @HiveField(11)
   Element elementCity;
+  @HiveField(12)
   String district;
+  @HiveField(13)
   Element elementDistrict;
+  @HiveField(14)
   String state;
+  @HiveField(15)
   Element elementState;
+  @HiveField(16)
   String postalCode;
+  @HiveField(17)
   Element elementPostalCode;
+  @HiveField(18)
   String country;
+  @HiveField(19)
   Element elementCountry;
+  @HiveField(20)
   Period period;
 
   Address({
@@ -196,4 +217,90 @@ Map<String, dynamic> _$AddressToJson(Address instance) {
   writeNotNull('elementCountry', instance.elementCountry?.toJson());
   writeNotNull('period', instance.period?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class AddressAdapter extends TypeAdapter<Address> {
+  @override
+  Address read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Address(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      use: fields[2] as String,
+      elementUse: fields[3] as Element,
+      type: fields[4] as String,
+      elementType: fields[5] as Element,
+      text: fields[6] as String,
+      elementText: fields[7] as Element,
+      line: (fields[8] as List)?.cast<String>(),
+      elementLine: (fields[9] as List)?.cast<Element>(),
+      city: fields[10] as String,
+      elementCity: fields[11] as Element,
+      district: fields[12] as String,
+      elementDistrict: fields[13] as Element,
+      state: fields[14] as String,
+      elementState: fields[15] as Element,
+      postalCode: fields[16] as String,
+      elementPostalCode: fields[17] as Element,
+      country: fields[18] as String,
+      elementCountry: fields[19] as Element,
+      period: fields[20] as Period,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Address obj) {
+    writer
+      ..writeByte(21)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.use)
+      ..writeByte(3)
+      ..write(obj.elementUse)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.elementType)
+      ..writeByte(6)
+      ..write(obj.text)
+      ..writeByte(7)
+      ..write(obj.elementText)
+      ..writeByte(8)
+      ..write(obj.line)
+      ..writeByte(9)
+      ..write(obj.elementLine)
+      ..writeByte(10)
+      ..write(obj.city)
+      ..writeByte(11)
+      ..write(obj.elementCity)
+      ..writeByte(12)
+      ..write(obj.district)
+      ..writeByte(13)
+      ..write(obj.elementDistrict)
+      ..writeByte(14)
+      ..write(obj.state)
+      ..writeByte(15)
+      ..write(obj.elementState)
+      ..writeByte(16)
+      ..write(obj.postalCode)
+      ..writeByte(17)
+      ..write(obj.elementPostalCode)
+      ..writeByte(18)
+      ..write(obj.country)
+      ..writeByte(19)
+      ..write(obj.elementCountry)
+      ..writeByte(20)
+      ..write(obj.period);
+  }
 }

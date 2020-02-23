@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class QuestionnaireResponse {
   static Future<QuestionnaireResponse> newInstance({
     String resourceType,
@@ -84,29 +84,53 @@ class QuestionnaireResponse {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'QuestionnaireResponse';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   Identifier identifier;
+  @HiveField(12)
   List<Reference> basedOn;
+  @HiveField(13)
   List<Reference> partOf;
+  @HiveField(14)
   String questionnaire;
+  @HiveField(15)
   String status;
+  @HiveField(16)
   Element elementStatus;
+  @HiveField(17)
   Reference subject;
+  @HiveField(18)
   Reference encounter;
+  @HiveField(19)
   DateTime authored;
+  @HiveField(20)
   Element elementAuthored;
+  @HiveField(21)
   Reference author;
+  @HiveField(22)
   Reference source;
+  @HiveField(23)
   List<QuestionnaireResponse_Item> item;
 
   QuestionnaireResponse({
@@ -141,7 +165,6 @@ class QuestionnaireResponse {
   Map<String, dynamic> toJson() => _$QuestionnaireResponseToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class QuestionnaireResponse_Item {
   static Future<QuestionnaireResponse_Item> newInstance({
     String id,
@@ -174,16 +197,27 @@ class QuestionnaireResponse_Item {
     return newQuestionnaireResponse_Item;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String linkId;
+  @HiveField(4)
   Element elementLinkId;
+  @HiveField(5)
   String definition;
+  @HiveField(6)
   Element elementDefinition;
+  @HiveField(7)
   String text;
+  @HiveField(8)
   Element elementText;
+  @HiveField(9)
   List<QuestionnaireResponse_Answer> answer;
+  @HiveField(10)
   List<QuestionnaireResponse_Item> item;
 
   QuestionnaireResponse_Item({
@@ -205,7 +239,6 @@ class QuestionnaireResponse_Item {
   Map<String, dynamic> toJson() => _$QuestionnaireResponse_ItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class QuestionnaireResponse_Answer {
   static Future<QuestionnaireResponse_Answer> newInstance({
     String id,
@@ -264,29 +297,53 @@ class QuestionnaireResponse_Answer {
     return newQuestionnaireResponse_Answer;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   bool valueBoolean;
+  @HiveField(4)
   Element elementValueBoolean;
+  @HiveField(5)
   int valueDecimal;
+  @HiveField(6)
   Element elementValueDecimal;
+  @HiveField(7)
   int valueInteger;
+  @HiveField(8)
   Element elementValueInteger;
+  @HiveField(9)
   String valueDate;
+  @HiveField(10)
   Element elementValueDate;
+  @HiveField(11)
   String valueDateTime;
+  @HiveField(12)
   Element elementValueDateTime;
+  @HiveField(13)
   String valueTime;
+  @HiveField(14)
   Element elementValueTime;
+  @HiveField(15)
   String valueString;
+  @HiveField(16)
   Element elementValueString;
+  @HiveField(17)
   String valueUri;
+  @HiveField(18)
   Element elementValueUri;
+  @HiveField(19)
   Attachment valueAttachment;
+  @HiveField(20)
   Coding valueCoding;
+  @HiveField(21)
   Quantity valueQuantity;
+  @HiveField(22)
   Reference valueReference;
+  @HiveField(23)
   List<QuestionnaireResponse_Item> item;
 
   QuestionnaireResponse_Answer({
@@ -605,4 +662,242 @@ Map<String, dynamic> _$QuestionnaireResponse_AnswerToJson(
   writeNotNull('valueReference', instance.valueReference?.toJson());
   writeNotNull('item', instance.item?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class QuestionnaireResponseAdapter extends TypeAdapter<QuestionnaireResponse> {
+  @override
+  QuestionnaireResponse read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return QuestionnaireResponse(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: fields[11] as Identifier,
+      basedOn: (fields[12] as List)?.cast<Reference>(),
+      partOf: (fields[13] as List)?.cast<Reference>(),
+      questionnaire: fields[14] as String,
+      status: fields[15] as String,
+      elementStatus: fields[16] as Element,
+      subject: fields[17] as Reference,
+      encounter: fields[18] as Reference,
+      authored: fields[19] as DateTime,
+      elementAuthored: fields[20] as Element,
+      author: fields[21] as Reference,
+      source: fields[22] as Reference,
+      item: (fields[23] as List)?.cast<QuestionnaireResponse_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, QuestionnaireResponse obj) {
+    writer
+      ..writeByte(24)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.basedOn)
+      ..writeByte(13)
+      ..write(obj.partOf)
+      ..writeByte(14)
+      ..write(obj.questionnaire)
+      ..writeByte(15)
+      ..write(obj.status)
+      ..writeByte(16)
+      ..write(obj.elementStatus)
+      ..writeByte(17)
+      ..write(obj.subject)
+      ..writeByte(18)
+      ..write(obj.encounter)
+      ..writeByte(19)
+      ..write(obj.authored)
+      ..writeByte(20)
+      ..write(obj.elementAuthored)
+      ..writeByte(21)
+      ..write(obj.author)
+      ..writeByte(22)
+      ..write(obj.source)
+      ..writeByte(23)
+      ..write(obj.item);
+  }
+}
+
+class QuestionnaireResponse_ItemAdapter
+    extends TypeAdapter<QuestionnaireResponse_Item> {
+  @override
+  QuestionnaireResponse_Item read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return QuestionnaireResponse_Item(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      linkId: fields[3] as String,
+      elementLinkId: fields[4] as Element,
+      definition: fields[5] as String,
+      elementDefinition: fields[6] as Element,
+      text: fields[7] as String,
+      elementText: fields[8] as Element,
+      answer: (fields[9] as List)?.cast<QuestionnaireResponse_Answer>(),
+      item: (fields[10] as List)?.cast<QuestionnaireResponse_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, QuestionnaireResponse_Item obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.linkId)
+      ..writeByte(4)
+      ..write(obj.elementLinkId)
+      ..writeByte(5)
+      ..write(obj.definition)
+      ..writeByte(6)
+      ..write(obj.elementDefinition)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.elementText)
+      ..writeByte(9)
+      ..write(obj.answer)
+      ..writeByte(10)
+      ..write(obj.item);
+  }
+}
+
+class QuestionnaireResponse_AnswerAdapter
+    extends TypeAdapter<QuestionnaireResponse_Answer> {
+  @override
+  QuestionnaireResponse_Answer read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return QuestionnaireResponse_Answer(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      valueBoolean: fields[3] as bool,
+      elementValueBoolean: fields[4] as Element,
+      valueDecimal: fields[5] as int,
+      elementValueDecimal: fields[6] as Element,
+      valueInteger: fields[7] as int,
+      elementValueInteger: fields[8] as Element,
+      valueDate: fields[9] as String,
+      elementValueDate: fields[10] as Element,
+      valueDateTime: fields[11] as String,
+      elementValueDateTime: fields[12] as Element,
+      valueTime: fields[13] as String,
+      elementValueTime: fields[14] as Element,
+      valueString: fields[15] as String,
+      elementValueString: fields[16] as Element,
+      valueUri: fields[17] as String,
+      elementValueUri: fields[18] as Element,
+      valueAttachment: fields[19] as Attachment,
+      valueCoding: fields[20] as Coding,
+      valueQuantity: fields[21] as Quantity,
+      valueReference: fields[22] as Reference,
+      item: (fields[23] as List)?.cast<QuestionnaireResponse_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, QuestionnaireResponse_Answer obj) {
+    writer
+      ..writeByte(24)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.valueBoolean)
+      ..writeByte(4)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(5)
+      ..write(obj.valueDecimal)
+      ..writeByte(6)
+      ..write(obj.elementValueDecimal)
+      ..writeByte(7)
+      ..write(obj.valueInteger)
+      ..writeByte(8)
+      ..write(obj.elementValueInteger)
+      ..writeByte(9)
+      ..write(obj.valueDate)
+      ..writeByte(10)
+      ..write(obj.elementValueDate)
+      ..writeByte(11)
+      ..write(obj.valueDateTime)
+      ..writeByte(12)
+      ..write(obj.elementValueDateTime)
+      ..writeByte(13)
+      ..write(obj.valueTime)
+      ..writeByte(14)
+      ..write(obj.elementValueTime)
+      ..writeByte(15)
+      ..write(obj.valueString)
+      ..writeByte(16)
+      ..write(obj.elementValueString)
+      ..writeByte(17)
+      ..write(obj.valueUri)
+      ..writeByte(18)
+      ..write(obj.elementValueUri)
+      ..writeByte(19)
+      ..write(obj.valueAttachment)
+      ..writeByte(20)
+      ..write(obj.valueCoding)
+      ..writeByte(21)
+      ..write(obj.valueQuantity)
+      ..writeByte(22)
+      ..write(obj.valueReference)
+      ..writeByte(23)
+      ..write(obj.item);
+  }
 }

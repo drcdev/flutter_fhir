@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -15,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim {
   static Future<Claim> newInstance({
     String resourceType,
@@ -120,46 +120,87 @@ class Claim {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Claim';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   String status;
+  @HiveField(13)
   Element elementStatus;
+  @HiveField(14)
   CodeableConcept type;
+  @HiveField(15)
   CodeableConcept subType;
+  @HiveField(16)
   String use;
+  @HiveField(17)
   Element elementUse;
+  @HiveField(18)
   Reference patient;
+  @HiveField(19)
   Period billablePeriod;
+  @HiveField(20)
   DateTime created;
+  @HiveField(21)
   Element elementCreated;
+  @HiveField(22)
   Reference enterer;
+  @HiveField(23)
   Reference insurer;
+  @HiveField(24)
   Reference provider;
+  @HiveField(25)
   CodeableConcept priority;
+  @HiveField(26)
   CodeableConcept fundsReserve;
+  @HiveField(27)
   List<Claim_Related> related;
+  @HiveField(28)
   Reference prescription;
+  @HiveField(29)
   Reference originalPrescription;
+  @HiveField(30)
   Claim_Payee payee;
+  @HiveField(31)
   Reference referral;
+  @HiveField(32)
   Reference facility;
+  @HiveField(33)
   List<Claim_CareTeam> careTeam;
+  @HiveField(34)
   List<Claim_SupportingInfo> supportingInfo;
+  @HiveField(35)
   List<Claim_Diagnosis> diagnosis;
+  @HiveField(36)
   List<Claim_Procedure> procedure;
+  @HiveField(37)
   List<Claim_Insurance> insurance;
+  @HiveField(38)
   Claim_Accident accident;
+  @HiveField(39)
   List<Claim_Item> item;
+  @HiveField(40)
   Money total;
 
   Claim({
@@ -210,7 +251,6 @@ class Claim {
   Map<String, dynamic> toJson() => _$ClaimToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Related {
   static Future<Claim_Related> newInstance({
     String id,
@@ -232,11 +272,17 @@ class Claim_Related {
     return newClaim_Related;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   Reference claim;
+  @HiveField(4)
   CodeableConcept relationship;
+  @HiveField(5)
   Identifier reference;
 
   Claim_Related({
@@ -253,7 +299,6 @@ class Claim_Related {
   Map<String, dynamic> toJson() => _$Claim_RelatedToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Payee {
   static Future<Claim_Payee> newInstance({
     String id,
@@ -273,10 +318,15 @@ class Claim_Payee {
     return newClaim_Payee;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept type;
+  @HiveField(4)
   Reference party;
 
   Claim_Payee({
@@ -292,7 +342,6 @@ class Claim_Payee {
   Map<String, dynamic> toJson() => _$Claim_PayeeToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_CareTeam {
   static Future<Claim_CareTeam> newInstance({
     String id,
@@ -322,15 +371,25 @@ class Claim_CareTeam {
     return newClaim_CareTeam;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   Reference provider;
+  @HiveField(6)
   bool responsible;
+  @HiveField(7)
   Element elementResponsible;
+  @HiveField(8)
   CodeableConcept role;
+  @HiveField(9)
   CodeableConcept qualification;
 
   Claim_CareTeam({
@@ -351,7 +410,6 @@ class Claim_CareTeam {
   Map<String, dynamic> toJson() => _$Claim_CareTeamToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_SupportingInfo {
   static Future<Claim_SupportingInfo> newInstance({
     String id,
@@ -397,23 +455,41 @@ class Claim_SupportingInfo {
     return newClaim_SupportingInfo;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   CodeableConcept category;
+  @HiveField(6)
   CodeableConcept code;
+  @HiveField(7)
   String timingDate;
+  @HiveField(8)
   Element elementTimingDate;
+  @HiveField(9)
   Period timingPeriod;
+  @HiveField(10)
   bool valueBoolean;
+  @HiveField(11)
   Element elementValueBoolean;
+  @HiveField(12)
   String valueString;
+  @HiveField(13)
   Element elementValueString;
+  @HiveField(14)
   Quantity valueQuantity;
+  @HiveField(15)
   Attachment valueAttachment;
+  @HiveField(16)
   Reference valueReference;
+  @HiveField(17)
   CodeableConcept reason;
 
   Claim_SupportingInfo({
@@ -442,7 +518,6 @@ class Claim_SupportingInfo {
   Map<String, dynamic> toJson() => _$Claim_SupportingInfoToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Diagnosis {
   static Future<Claim_Diagnosis> newInstance({
     String id,
@@ -472,15 +547,25 @@ class Claim_Diagnosis {
     return newClaim_Diagnosis;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   CodeableConcept diagnosisCodeableConcept;
+  @HiveField(6)
   Reference diagnosisReference;
+  @HiveField(7)
   List<CodeableConcept> type;
+  @HiveField(8)
   CodeableConcept onAdmission;
+  @HiveField(9)
   CodeableConcept packageCode;
 
   Claim_Diagnosis({
@@ -501,7 +586,6 @@ class Claim_Diagnosis {
   Map<String, dynamic> toJson() => _$Claim_DiagnosisToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Procedure {
   static Future<Claim_Procedure> newInstance({
     String id,
@@ -533,16 +617,27 @@ class Claim_Procedure {
     return newClaim_Procedure;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   List<CodeableConcept> type;
+  @HiveField(6)
   DateTime date;
+  @HiveField(7)
   Element elementDate;
+  @HiveField(8)
   CodeableConcept procedureCodeableConcept;
+  @HiveField(9)
   Reference procedureReference;
+  @HiveField(10)
   List<Reference> udi;
 
   Claim_Procedure({
@@ -564,7 +659,6 @@ class Claim_Procedure {
   Map<String, dynamic> toJson() => _$Claim_ProcedureToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Insurance {
   static Future<Claim_Insurance> newInstance({
     String id,
@@ -602,19 +696,33 @@ class Claim_Insurance {
     return newClaim_Insurance;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   bool focal;
+  @HiveField(6)
   Element elementFocal;
+  @HiveField(7)
   Identifier identifier;
+  @HiveField(8)
   Reference coverage;
+  @HiveField(9)
   String businessArrangement;
+  @HiveField(10)
   Element elementBusinessArrangement;
+  @HiveField(11)
   List<String> preAuthRef;
+  @HiveField(12)
   List<Element> elementPreAuthRef;
+  @HiveField(13)
   Reference claimResponse;
 
   Claim_Insurance({
@@ -639,7 +747,6 @@ class Claim_Insurance {
   Map<String, dynamic> toJson() => _$Claim_InsuranceToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Accident {
   static Future<Claim_Accident> newInstance({
     String id,
@@ -665,13 +772,21 @@ class Claim_Accident {
     return newClaim_Accident;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String date;
+  @HiveField(4)
   Element elementDate;
+  @HiveField(5)
   CodeableConcept type;
+  @HiveField(6)
   Address locationAddress;
+  @HiveField(7)
   Reference locationReference;
 
   Claim_Accident({
@@ -690,7 +805,6 @@ class Claim_Accident {
   Map<String, dynamic> toJson() => _$Claim_AccidentToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Item {
   static Future<Claim_Item> newInstance({
     String id,
@@ -768,39 +882,73 @@ class Claim_Item {
     return newClaim_Item;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   List<int> careTeamSequence;
+  @HiveField(6)
   List<Element> elementCareTeamSequence;
+  @HiveField(7)
   List<int> diagnosisSequence;
+  @HiveField(8)
   List<Element> elementDiagnosisSequence;
+  @HiveField(9)
   List<int> procedureSequence;
+  @HiveField(10)
   List<Element> elementProcedureSequence;
+  @HiveField(11)
   List<int> informationSequence;
+  @HiveField(12)
   List<Element> elementInformationSequence;
+  @HiveField(13)
   CodeableConcept revenue;
+  @HiveField(14)
   CodeableConcept category;
+  @HiveField(15)
   CodeableConcept productOrService;
+  @HiveField(16)
   List<CodeableConcept> modifier;
+  @HiveField(17)
   List<CodeableConcept> programCode;
+  @HiveField(18)
   String servicedDate;
+  @HiveField(19)
   Element elementServicedDate;
+  @HiveField(20)
   Period servicedPeriod;
+  @HiveField(21)
   CodeableConcept locationCodeableConcept;
+  @HiveField(22)
   Address locationAddress;
+  @HiveField(23)
   Reference locationReference;
+  @HiveField(24)
   Quantity quantity;
+  @HiveField(25)
   Money unitPrice;
+  @HiveField(26)
   double factor;
+  @HiveField(27)
   Element elementFactor;
+  @HiveField(28)
   Money net;
+  @HiveField(29)
   List<Reference> udi;
+  @HiveField(30)
   CodeableConcept bodySite;
+  @HiveField(31)
   List<CodeableConcept> subSite;
+  @HiveField(32)
   List<Reference> encounter;
+  @HiveField(33)
   List<Claim_Detail> detail;
 
   Claim_Item({
@@ -845,7 +993,6 @@ class Claim_Item {
   Map<String, dynamic> toJson() => _$Claim_ItemToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_Detail {
   static Future<Claim_Detail> newInstance({
     String id,
@@ -889,22 +1036,39 @@ class Claim_Detail {
     return newClaim_Detail;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   CodeableConcept revenue;
+  @HiveField(6)
   CodeableConcept category;
+  @HiveField(7)
   CodeableConcept productOrService;
+  @HiveField(8)
   List<CodeableConcept> modifier;
+  @HiveField(9)
   List<CodeableConcept> programCode;
+  @HiveField(10)
   Quantity quantity;
+  @HiveField(11)
   Money unitPrice;
+  @HiveField(12)
   double factor;
+  @HiveField(13)
   Element elementFactor;
+  @HiveField(14)
   Money net;
+  @HiveField(15)
   List<Reference> udi;
+  @HiveField(16)
   List<Claim_SubDetail> subDetail;
 
   Claim_Detail({
@@ -932,7 +1096,6 @@ class Claim_Detail {
   Map<String, dynamic> toJson() => _$Claim_DetailToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Claim_SubDetail {
   static Future<Claim_SubDetail> newInstance({
     String id,
@@ -974,21 +1137,37 @@ class Claim_SubDetail {
     return newClaim_SubDetail;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int sequence;
+  @HiveField(4)
   Element elementSequence;
+  @HiveField(5)
   CodeableConcept revenue;
+  @HiveField(6)
   CodeableConcept category;
+  @HiveField(7)
   CodeableConcept productOrService;
+  @HiveField(8)
   List<CodeableConcept> modifier;
+  @HiveField(9)
   List<CodeableConcept> programCode;
+  @HiveField(10)
   Quantity quantity;
+  @HiveField(11)
   Money unitPrice;
+  @HiveField(12)
   double factor;
+  @HiveField(13)
   Element elementFactor;
+  @HiveField(14)
   Money net;
+  @HiveField(15)
   List<Reference> udi;
 
   Claim_SubDetail({
@@ -2035,4 +2214,795 @@ Map<String, dynamic> _$Claim_SubDetailToJson(Claim_SubDetail instance) {
   writeNotNull('net', instance.net?.toJson());
   writeNotNull('udi', instance.udi?.map((e) => e?.toJson())?.toList());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ClaimAdapter extends TypeAdapter<Claim> {
+  @override
+  Claim read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      type: fields[14] as CodeableConcept,
+      subType: fields[15] as CodeableConcept,
+      use: fields[16] as String,
+      elementUse: fields[17] as Element,
+      patient: fields[18] as Reference,
+      billablePeriod: fields[19] as Period,
+      created: fields[20] as DateTime,
+      elementCreated: fields[21] as Element,
+      enterer: fields[22] as Reference,
+      insurer: fields[23] as Reference,
+      provider: fields[24] as Reference,
+      priority: fields[25] as CodeableConcept,
+      fundsReserve: fields[26] as CodeableConcept,
+      related: (fields[27] as List)?.cast<Claim_Related>(),
+      prescription: fields[28] as Reference,
+      originalPrescription: fields[29] as Reference,
+      payee: fields[30] as Claim_Payee,
+      referral: fields[31] as Reference,
+      facility: fields[32] as Reference,
+      careTeam: (fields[33] as List)?.cast<Claim_CareTeam>(),
+      supportingInfo: (fields[34] as List)?.cast<Claim_SupportingInfo>(),
+      diagnosis: (fields[35] as List)?.cast<Claim_Diagnosis>(),
+      procedure: (fields[36] as List)?.cast<Claim_Procedure>(),
+      insurance: (fields[37] as List)?.cast<Claim_Insurance>(),
+      accident: fields[38] as Claim_Accident,
+      item: (fields[39] as List)?.cast<Claim_Item>(),
+      total: fields[40] as Money,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim obj) {
+    writer
+      ..writeByte(41)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.type)
+      ..writeByte(15)
+      ..write(obj.subType)
+      ..writeByte(16)
+      ..write(obj.use)
+      ..writeByte(17)
+      ..write(obj.elementUse)
+      ..writeByte(18)
+      ..write(obj.patient)
+      ..writeByte(19)
+      ..write(obj.billablePeriod)
+      ..writeByte(20)
+      ..write(obj.created)
+      ..writeByte(21)
+      ..write(obj.elementCreated)
+      ..writeByte(22)
+      ..write(obj.enterer)
+      ..writeByte(23)
+      ..write(obj.insurer)
+      ..writeByte(24)
+      ..write(obj.provider)
+      ..writeByte(25)
+      ..write(obj.priority)
+      ..writeByte(26)
+      ..write(obj.fundsReserve)
+      ..writeByte(27)
+      ..write(obj.related)
+      ..writeByte(28)
+      ..write(obj.prescription)
+      ..writeByte(29)
+      ..write(obj.originalPrescription)
+      ..writeByte(30)
+      ..write(obj.payee)
+      ..writeByte(31)
+      ..write(obj.referral)
+      ..writeByte(32)
+      ..write(obj.facility)
+      ..writeByte(33)
+      ..write(obj.careTeam)
+      ..writeByte(34)
+      ..write(obj.supportingInfo)
+      ..writeByte(35)
+      ..write(obj.diagnosis)
+      ..writeByte(36)
+      ..write(obj.procedure)
+      ..writeByte(37)
+      ..write(obj.insurance)
+      ..writeByte(38)
+      ..write(obj.accident)
+      ..writeByte(39)
+      ..write(obj.item)
+      ..writeByte(40)
+      ..write(obj.total);
+  }
+}
+
+class Claim_RelatedAdapter extends TypeAdapter<Claim_Related> {
+  @override
+  Claim_Related read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Related(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      claim: fields[3] as Reference,
+      relationship: fields[4] as CodeableConcept,
+      reference: fields[5] as Identifier,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Related obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.claim)
+      ..writeByte(4)
+      ..write(obj.relationship)
+      ..writeByte(5)
+      ..write(obj.reference);
+  }
+}
+
+class Claim_PayeeAdapter extends TypeAdapter<Claim_Payee> {
+  @override
+  Claim_Payee read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Payee(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      party: fields[4] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Payee obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.party);
+  }
+}
+
+class Claim_CareTeamAdapter extends TypeAdapter<Claim_CareTeam> {
+  @override
+  Claim_CareTeam read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_CareTeam(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      provider: fields[5] as Reference,
+      responsible: fields[6] as bool,
+      elementResponsible: fields[7] as Element,
+      role: fields[8] as CodeableConcept,
+      qualification: fields[9] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_CareTeam obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.provider)
+      ..writeByte(6)
+      ..write(obj.responsible)
+      ..writeByte(7)
+      ..write(obj.elementResponsible)
+      ..writeByte(8)
+      ..write(obj.role)
+      ..writeByte(9)
+      ..write(obj.qualification);
+  }
+}
+
+class Claim_SupportingInfoAdapter extends TypeAdapter<Claim_SupportingInfo> {
+  @override
+  Claim_SupportingInfo read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_SupportingInfo(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      category: fields[5] as CodeableConcept,
+      code: fields[6] as CodeableConcept,
+      timingDate: fields[7] as String,
+      elementTimingDate: fields[8] as Element,
+      timingPeriod: fields[9] as Period,
+      valueBoolean: fields[10] as bool,
+      elementValueBoolean: fields[11] as Element,
+      valueString: fields[12] as String,
+      elementValueString: fields[13] as Element,
+      valueQuantity: fields[14] as Quantity,
+      valueAttachment: fields[15] as Attachment,
+      valueReference: fields[16] as Reference,
+      reason: fields[17] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_SupportingInfo obj) {
+    writer
+      ..writeByte(18)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.category)
+      ..writeByte(6)
+      ..write(obj.code)
+      ..writeByte(7)
+      ..write(obj.timingDate)
+      ..writeByte(8)
+      ..write(obj.elementTimingDate)
+      ..writeByte(9)
+      ..write(obj.timingPeriod)
+      ..writeByte(10)
+      ..write(obj.valueBoolean)
+      ..writeByte(11)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(12)
+      ..write(obj.valueString)
+      ..writeByte(13)
+      ..write(obj.elementValueString)
+      ..writeByte(14)
+      ..write(obj.valueQuantity)
+      ..writeByte(15)
+      ..write(obj.valueAttachment)
+      ..writeByte(16)
+      ..write(obj.valueReference)
+      ..writeByte(17)
+      ..write(obj.reason);
+  }
+}
+
+class Claim_DiagnosisAdapter extends TypeAdapter<Claim_Diagnosis> {
+  @override
+  Claim_Diagnosis read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Diagnosis(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      diagnosisCodeableConcept: fields[5] as CodeableConcept,
+      diagnosisReference: fields[6] as Reference,
+      type: (fields[7] as List)?.cast<CodeableConcept>(),
+      onAdmission: fields[8] as CodeableConcept,
+      packageCode: fields[9] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Diagnosis obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.diagnosisCodeableConcept)
+      ..writeByte(6)
+      ..write(obj.diagnosisReference)
+      ..writeByte(7)
+      ..write(obj.type)
+      ..writeByte(8)
+      ..write(obj.onAdmission)
+      ..writeByte(9)
+      ..write(obj.packageCode);
+  }
+}
+
+class Claim_ProcedureAdapter extends TypeAdapter<Claim_Procedure> {
+  @override
+  Claim_Procedure read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Procedure(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      type: (fields[5] as List)?.cast<CodeableConcept>(),
+      date: fields[6] as DateTime,
+      elementDate: fields[7] as Element,
+      procedureCodeableConcept: fields[8] as CodeableConcept,
+      procedureReference: fields[9] as Reference,
+      udi: (fields[10] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Procedure obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.date)
+      ..writeByte(7)
+      ..write(obj.elementDate)
+      ..writeByte(8)
+      ..write(obj.procedureCodeableConcept)
+      ..writeByte(9)
+      ..write(obj.procedureReference)
+      ..writeByte(10)
+      ..write(obj.udi);
+  }
+}
+
+class Claim_InsuranceAdapter extends TypeAdapter<Claim_Insurance> {
+  @override
+  Claim_Insurance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Insurance(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      focal: fields[5] as bool,
+      elementFocal: fields[6] as Element,
+      identifier: fields[7] as Identifier,
+      coverage: fields[8] as Reference,
+      businessArrangement: fields[9] as String,
+      elementBusinessArrangement: fields[10] as Element,
+      preAuthRef: (fields[11] as List)?.cast<String>(),
+      elementPreAuthRef: (fields[12] as List)?.cast<Element>(),
+      claimResponse: fields[13] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Insurance obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.focal)
+      ..writeByte(6)
+      ..write(obj.elementFocal)
+      ..writeByte(7)
+      ..write(obj.identifier)
+      ..writeByte(8)
+      ..write(obj.coverage)
+      ..writeByte(9)
+      ..write(obj.businessArrangement)
+      ..writeByte(10)
+      ..write(obj.elementBusinessArrangement)
+      ..writeByte(11)
+      ..write(obj.preAuthRef)
+      ..writeByte(12)
+      ..write(obj.elementPreAuthRef)
+      ..writeByte(13)
+      ..write(obj.claimResponse);
+  }
+}
+
+class Claim_AccidentAdapter extends TypeAdapter<Claim_Accident> {
+  @override
+  Claim_Accident read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Accident(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      date: fields[3] as String,
+      elementDate: fields[4] as Element,
+      type: fields[5] as CodeableConcept,
+      locationAddress: fields[6] as Address,
+      locationReference: fields[7] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Accident obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.date)
+      ..writeByte(4)
+      ..write(obj.elementDate)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.locationAddress)
+      ..writeByte(7)
+      ..write(obj.locationReference);
+  }
+}
+
+class Claim_ItemAdapter extends TypeAdapter<Claim_Item> {
+  @override
+  Claim_Item read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Item(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      careTeamSequence: (fields[5] as List)?.cast<int>(),
+      elementCareTeamSequence: (fields[6] as List)?.cast<Element>(),
+      diagnosisSequence: (fields[7] as List)?.cast<int>(),
+      elementDiagnosisSequence: (fields[8] as List)?.cast<Element>(),
+      procedureSequence: (fields[9] as List)?.cast<int>(),
+      elementProcedureSequence: (fields[10] as List)?.cast<Element>(),
+      informationSequence: (fields[11] as List)?.cast<int>(),
+      elementInformationSequence: (fields[12] as List)?.cast<Element>(),
+      revenue: fields[13] as CodeableConcept,
+      category: fields[14] as CodeableConcept,
+      productOrService: fields[15] as CodeableConcept,
+      modifier: (fields[16] as List)?.cast<CodeableConcept>(),
+      programCode: (fields[17] as List)?.cast<CodeableConcept>(),
+      servicedDate: fields[18] as String,
+      elementServicedDate: fields[19] as Element,
+      servicedPeriod: fields[20] as Period,
+      locationCodeableConcept: fields[21] as CodeableConcept,
+      locationAddress: fields[22] as Address,
+      locationReference: fields[23] as Reference,
+      quantity: fields[24] as Quantity,
+      unitPrice: fields[25] as Money,
+      factor: fields[26] as double,
+      elementFactor: fields[27] as Element,
+      net: fields[28] as Money,
+      udi: (fields[29] as List)?.cast<Reference>(),
+      bodySite: fields[30] as CodeableConcept,
+      subSite: (fields[31] as List)?.cast<CodeableConcept>(),
+      encounter: (fields[32] as List)?.cast<Reference>(),
+      detail: (fields[33] as List)?.cast<Claim_Detail>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Item obj) {
+    writer
+      ..writeByte(34)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.careTeamSequence)
+      ..writeByte(6)
+      ..write(obj.elementCareTeamSequence)
+      ..writeByte(7)
+      ..write(obj.diagnosisSequence)
+      ..writeByte(8)
+      ..write(obj.elementDiagnosisSequence)
+      ..writeByte(9)
+      ..write(obj.procedureSequence)
+      ..writeByte(10)
+      ..write(obj.elementProcedureSequence)
+      ..writeByte(11)
+      ..write(obj.informationSequence)
+      ..writeByte(12)
+      ..write(obj.elementInformationSequence)
+      ..writeByte(13)
+      ..write(obj.revenue)
+      ..writeByte(14)
+      ..write(obj.category)
+      ..writeByte(15)
+      ..write(obj.productOrService)
+      ..writeByte(16)
+      ..write(obj.modifier)
+      ..writeByte(17)
+      ..write(obj.programCode)
+      ..writeByte(18)
+      ..write(obj.servicedDate)
+      ..writeByte(19)
+      ..write(obj.elementServicedDate)
+      ..writeByte(20)
+      ..write(obj.servicedPeriod)
+      ..writeByte(21)
+      ..write(obj.locationCodeableConcept)
+      ..writeByte(22)
+      ..write(obj.locationAddress)
+      ..writeByte(23)
+      ..write(obj.locationReference)
+      ..writeByte(24)
+      ..write(obj.quantity)
+      ..writeByte(25)
+      ..write(obj.unitPrice)
+      ..writeByte(26)
+      ..write(obj.factor)
+      ..writeByte(27)
+      ..write(obj.elementFactor)
+      ..writeByte(28)
+      ..write(obj.net)
+      ..writeByte(29)
+      ..write(obj.udi)
+      ..writeByte(30)
+      ..write(obj.bodySite)
+      ..writeByte(31)
+      ..write(obj.subSite)
+      ..writeByte(32)
+      ..write(obj.encounter)
+      ..writeByte(33)
+      ..write(obj.detail);
+  }
+}
+
+class Claim_DetailAdapter extends TypeAdapter<Claim_Detail> {
+  @override
+  Claim_Detail read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_Detail(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      revenue: fields[5] as CodeableConcept,
+      category: fields[6] as CodeableConcept,
+      productOrService: fields[7] as CodeableConcept,
+      modifier: (fields[8] as List)?.cast<CodeableConcept>(),
+      programCode: (fields[9] as List)?.cast<CodeableConcept>(),
+      quantity: fields[10] as Quantity,
+      unitPrice: fields[11] as Money,
+      factor: fields[12] as double,
+      elementFactor: fields[13] as Element,
+      net: fields[14] as Money,
+      udi: (fields[15] as List)?.cast<Reference>(),
+      subDetail: (fields[16] as List)?.cast<Claim_SubDetail>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_Detail obj) {
+    writer
+      ..writeByte(17)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.revenue)
+      ..writeByte(6)
+      ..write(obj.category)
+      ..writeByte(7)
+      ..write(obj.productOrService)
+      ..writeByte(8)
+      ..write(obj.modifier)
+      ..writeByte(9)
+      ..write(obj.programCode)
+      ..writeByte(10)
+      ..write(obj.quantity)
+      ..writeByte(11)
+      ..write(obj.unitPrice)
+      ..writeByte(12)
+      ..write(obj.factor)
+      ..writeByte(13)
+      ..write(obj.elementFactor)
+      ..writeByte(14)
+      ..write(obj.net)
+      ..writeByte(15)
+      ..write(obj.udi)
+      ..writeByte(16)
+      ..write(obj.subDetail);
+  }
+}
+
+class Claim_SubDetailAdapter extends TypeAdapter<Claim_SubDetail> {
+  @override
+  Claim_SubDetail read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Claim_SubDetail(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      revenue: fields[5] as CodeableConcept,
+      category: fields[6] as CodeableConcept,
+      productOrService: fields[7] as CodeableConcept,
+      modifier: (fields[8] as List)?.cast<CodeableConcept>(),
+      programCode: (fields[9] as List)?.cast<CodeableConcept>(),
+      quantity: fields[10] as Quantity,
+      unitPrice: fields[11] as Money,
+      factor: fields[12] as double,
+      elementFactor: fields[13] as Element,
+      net: fields[14] as Money,
+      udi: (fields[15] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Claim_SubDetail obj) {
+    writer
+      ..writeByte(16)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.revenue)
+      ..writeByte(6)
+      ..write(obj.category)
+      ..writeByte(7)
+      ..write(obj.productOrService)
+      ..writeByte(8)
+      ..write(obj.modifier)
+      ..writeByte(9)
+      ..write(obj.programCode)
+      ..writeByte(10)
+      ..write(obj.quantity)
+      ..writeByte(11)
+      ..write(obj.unitPrice)
+      ..writeByte(12)
+      ..write(obj.factor)
+      ..writeByte(13)
+      ..write(obj.elementFactor)
+      ..writeByte(14)
+      ..write(obj.net)
+      ..writeByte(15)
+      ..write(obj.udi);
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPharmaceutical {
   static Future<MedicinalProductPharmaceutical> newInstance({
     String resourceType,
@@ -75,23 +75,41 @@ class MedicinalProductPharmaceutical {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'MedicinalProductPharmaceutical';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<Identifier> identifier;
+  @HiveField(12)
   CodeableConcept administrableDoseForm;
+  @HiveField(13)
   CodeableConcept unitOfPresentation;
+  @HiveField(14)
   List<Reference> ingredient;
+  @HiveField(15)
   List<Reference> device;
+  @HiveField(16)
   List<MedicinalProductPharmaceutical_Characteristics> characteristics;
+  @HiveField(17)
   List<MedicinalProductPharmaceutical_RouteOfAdministration>
       routeOfAdministration;
 
@@ -121,7 +139,6 @@ class MedicinalProductPharmaceutical {
   Map<String, dynamic> toJson() => _$MedicinalProductPharmaceuticalToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPharmaceutical_Characteristics {
   static Future<MedicinalProductPharmaceutical_Characteristics> newInstance({
     String id,
@@ -143,10 +160,15 @@ class MedicinalProductPharmaceutical_Characteristics {
     return newMedicinalProductPharmaceutical_Characteristics;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   CodeableConcept status;
 
   MedicinalProductPharmaceutical_Characteristics({
@@ -164,7 +186,6 @@ class MedicinalProductPharmaceutical_Characteristics {
       _$MedicinalProductPharmaceutical_CharacteristicsToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPharmaceutical_RouteOfAdministration {
   static Future<MedicinalProductPharmaceutical_RouteOfAdministration>
       newInstance({
@@ -197,15 +218,25 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
     return newMedicinalProductPharmaceutical_RouteOfAdministration;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   Quantity firstDose;
+  @HiveField(5)
   Quantity maxSingleDose;
+  @HiveField(6)
   Quantity maxDosePerDay;
+  @HiveField(7)
   Ratio maxDosePerTreatmentPeriod;
+  @HiveField(8)
   Duration maxTreatmentPeriod;
+  @HiveField(9)
   List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies;
 
   MedicinalProductPharmaceutical_RouteOfAdministration({
@@ -228,7 +259,6 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
       _$MedicinalProductPharmaceutical_RouteOfAdministrationToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPharmaceutical_TargetSpecies {
   static Future<MedicinalProductPharmaceutical_TargetSpecies> newInstance({
     String id,
@@ -250,10 +280,15 @@ class MedicinalProductPharmaceutical_TargetSpecies {
     return newMedicinalProductPharmaceutical_TargetSpecies;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept code;
+  @HiveField(4)
   List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod;
 
   MedicinalProductPharmaceutical_TargetSpecies({
@@ -271,7 +306,6 @@ class MedicinalProductPharmaceutical_TargetSpecies {
       _$MedicinalProductPharmaceutical_TargetSpeciesToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class MedicinalProductPharmaceutical_WithdrawalPeriod {
   static Future<MedicinalProductPharmaceutical_WithdrawalPeriod> newInstance({
     String id,
@@ -297,12 +331,19 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
     return newMedicinalProductPharmaceutical_WithdrawalPeriod;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept tissue;
+  @HiveField(4)
   Quantity value;
+  @HiveField(5)
   String supportingInformation;
+  @HiveField(6)
   Element elementSupportingInformation;
 
   MedicinalProductPharmaceutical_WithdrawalPeriod({
@@ -638,4 +679,248 @@ Map<String, dynamic> _$MedicinalProductPharmaceutical_WithdrawalPeriodToJson(
   writeNotNull('elementSupportingInformation',
       instance.elementSupportingInformation?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MedicinalProductPharmaceuticalAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical> {
+  @override
+  MedicinalProductPharmaceutical read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      administrableDoseForm: fields[12] as CodeableConcept,
+      unitOfPresentation: fields[13] as CodeableConcept,
+      ingredient: (fields[14] as List)?.cast<Reference>(),
+      device: (fields[15] as List)?.cast<Reference>(),
+      characteristics: (fields[16] as List)
+          ?.cast<MedicinalProductPharmaceutical_Characteristics>(),
+      routeOfAdministration: (fields[17] as List)
+          ?.cast<MedicinalProductPharmaceutical_RouteOfAdministration>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicinalProductPharmaceutical obj) {
+    writer
+      ..writeByte(18)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.administrableDoseForm)
+      ..writeByte(13)
+      ..write(obj.unitOfPresentation)
+      ..writeByte(14)
+      ..write(obj.ingredient)
+      ..writeByte(15)
+      ..write(obj.device)
+      ..writeByte(16)
+      ..write(obj.characteristics)
+      ..writeByte(17)
+      ..write(obj.routeOfAdministration);
+  }
+}
+
+class MedicinalProductPharmaceutical_CharacteristicsAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_Characteristics> {
+  @override
+  MedicinalProductPharmaceutical_Characteristics read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_Characteristics(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      status: fields[4] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicinalProductPharmaceutical_Characteristics obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.status);
+  }
+}
+
+class MedicinalProductPharmaceutical_RouteOfAdministrationAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_RouteOfAdministration> {
+  @override
+  MedicinalProductPharmaceutical_RouteOfAdministration read(
+      BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_RouteOfAdministration(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      firstDose: fields[4] as Quantity,
+      maxSingleDose: fields[5] as Quantity,
+      maxDosePerDay: fields[6] as Quantity,
+      maxDosePerTreatmentPeriod: fields[7] as Ratio,
+      maxTreatmentPeriod: fields[8] as Duration,
+      targetSpecies: (fields[9] as List)
+          ?.cast<MedicinalProductPharmaceutical_TargetSpecies>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer,
+      MedicinalProductPharmaceutical_RouteOfAdministration obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.firstDose)
+      ..writeByte(5)
+      ..write(obj.maxSingleDose)
+      ..writeByte(6)
+      ..write(obj.maxDosePerDay)
+      ..writeByte(7)
+      ..write(obj.maxDosePerTreatmentPeriod)
+      ..writeByte(8)
+      ..write(obj.maxTreatmentPeriod)
+      ..writeByte(9)
+      ..write(obj.targetSpecies);
+  }
+}
+
+class MedicinalProductPharmaceutical_TargetSpeciesAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_TargetSpecies> {
+  @override
+  MedicinalProductPharmaceutical_TargetSpecies read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_TargetSpecies(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as CodeableConcept,
+      withdrawalPeriod: (fields[4] as List)
+          ?.cast<MedicinalProductPharmaceutical_WithdrawalPeriod>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicinalProductPharmaceutical_TargetSpecies obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.withdrawalPeriod);
+  }
+}
+
+class MedicinalProductPharmaceutical_WithdrawalPeriodAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_WithdrawalPeriod> {
+  @override
+  MedicinalProductPharmaceutical_WithdrawalPeriod read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_WithdrawalPeriod(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      tissue: fields[3] as CodeableConcept,
+      value: fields[4] as Quantity,
+      supportingInformation: fields[5] as String,
+      elementSupportingInformation: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer,
+      MedicinalProductPharmaceutical_WithdrawalPeriod obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.tissue)
+      ..writeByte(4)
+      ..write(obj.value)
+      ..writeByte(5)
+      ..write(obj.supportingInformation)
+      ..writeByte(6)
+      ..write(obj.elementSupportingInformation);
+  }
 }

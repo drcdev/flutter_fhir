@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ObservationDefinition {
   static Future<ObservationDefinition> newInstance({
     String resourceType,
@@ -89,32 +89,59 @@ class ObservationDefinition {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'ObservationDefinition';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   List<CodeableConcept> category;
+  @HiveField(12)
   CodeableConcept code;
+  @HiveField(13)
   List<Identifier> identifier;
+  @HiveField(14)
   String permittedDataType;
+  @HiveField(15)
   List<Element> elementPermittedDataType;
+  @HiveField(16)
   bool multipleResultsAllowed;
+  @HiveField(17)
   Element elementMultipleResultsAllowed;
+  @HiveField(18)
   CodeableConcept method;
+  @HiveField(19)
   String preferredReportName;
+  @HiveField(20)
   Element elementPreferredReportName;
+  @HiveField(21)
   ObservationDefinition_QuantitativeDetails quantitativeDetails;
+  @HiveField(22)
   List<ObservationDefinition_QualifiedInterval> qualifiedInterval;
+  @HiveField(23)
   Reference validCodedValueSet;
+  @HiveField(24)
   Reference normalCodedValueSet;
+  @HiveField(25)
   Reference abnormalCodedValueSet;
+  @HiveField(26)
   Reference criticalCodedValueSet;
 
   ObservationDefinition({
@@ -152,7 +179,6 @@ class ObservationDefinition {
   Map<String, dynamic> toJson() => _$ObservationDefinitionToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ObservationDefinition_QuantitativeDetails {
   static Future<ObservationDefinition_QuantitativeDetails> newInstance({
     String id,
@@ -182,14 +208,23 @@ class ObservationDefinition_QuantitativeDetails {
     return newObservationDefinition_QuantitativeDetails;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   CodeableConcept customaryUnit;
+  @HiveField(4)
   CodeableConcept unit;
+  @HiveField(5)
   double conversionFactor;
+  @HiveField(6)
   Element elementConversionFactor;
+  @HiveField(7)
   int decimalPrecision;
+  @HiveField(8)
   Element elementDecimalPrecision;
 
   ObservationDefinition_QuantitativeDetails({
@@ -211,7 +246,6 @@ class ObservationDefinition_QuantitativeDetails {
       _$ObservationDefinition_QuantitativeDetailsToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ObservationDefinition_QualifiedInterval {
   static Future<ObservationDefinition_QualifiedInterval> newInstance({
     String id,
@@ -251,19 +285,33 @@ class ObservationDefinition_QualifiedInterval {
     return newObservationDefinition_QualifiedInterval;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String category;
+  @HiveField(4)
   Element elementCategory;
+  @HiveField(5)
   Range range;
+  @HiveField(6)
   CodeableConcept context;
+  @HiveField(7)
   List<CodeableConcept> appliesTo;
+  @HiveField(8)
   String gender;
+  @HiveField(9)
   Element elementGender;
+  @HiveField(10)
   Range age;
+  @HiveField(11)
   Range gestationalAge;
+  @HiveField(12)
   String condition;
+  @HiveField(13)
   Element elementCondition;
 
   ObservationDefinition_QualifiedInterval({
@@ -569,4 +617,218 @@ Map<String, dynamic> _$ObservationDefinition_QualifiedIntervalToJson(
   writeNotNull('condition', instance.condition);
   writeNotNull('elementCondition', instance.elementCondition?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ObservationDefinitionAdapter extends TypeAdapter<ObservationDefinition> {
+  @override
+  ObservationDefinition read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ObservationDefinition(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      category: (fields[11] as List)?.cast<CodeableConcept>(),
+      code: fields[12] as CodeableConcept,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      permittedDataType: fields[14] as String,
+      elementPermittedDataType: (fields[15] as List)?.cast<Element>(),
+      multipleResultsAllowed: fields[16] as bool,
+      elementMultipleResultsAllowed: fields[17] as Element,
+      method: fields[18] as CodeableConcept,
+      preferredReportName: fields[19] as String,
+      elementPreferredReportName: fields[20] as Element,
+      quantitativeDetails:
+          fields[21] as ObservationDefinition_QuantitativeDetails,
+      qualifiedInterval:
+          (fields[22] as List)?.cast<ObservationDefinition_QualifiedInterval>(),
+      validCodedValueSet: fields[23] as Reference,
+      normalCodedValueSet: fields[24] as Reference,
+      abnormalCodedValueSet: fields[25] as Reference,
+      criticalCodedValueSet: fields[26] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ObservationDefinition obj) {
+    writer
+      ..writeByte(27)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.category)
+      ..writeByte(12)
+      ..write(obj.code)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.permittedDataType)
+      ..writeByte(15)
+      ..write(obj.elementPermittedDataType)
+      ..writeByte(16)
+      ..write(obj.multipleResultsAllowed)
+      ..writeByte(17)
+      ..write(obj.elementMultipleResultsAllowed)
+      ..writeByte(18)
+      ..write(obj.method)
+      ..writeByte(19)
+      ..write(obj.preferredReportName)
+      ..writeByte(20)
+      ..write(obj.elementPreferredReportName)
+      ..writeByte(21)
+      ..write(obj.quantitativeDetails)
+      ..writeByte(22)
+      ..write(obj.qualifiedInterval)
+      ..writeByte(23)
+      ..write(obj.validCodedValueSet)
+      ..writeByte(24)
+      ..write(obj.normalCodedValueSet)
+      ..writeByte(25)
+      ..write(obj.abnormalCodedValueSet)
+      ..writeByte(26)
+      ..write(obj.criticalCodedValueSet);
+  }
+}
+
+class ObservationDefinition_QuantitativeDetailsAdapter
+    extends TypeAdapter<ObservationDefinition_QuantitativeDetails> {
+  @override
+  ObservationDefinition_QuantitativeDetails read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ObservationDefinition_QuantitativeDetails(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      customaryUnit: fields[3] as CodeableConcept,
+      unit: fields[4] as CodeableConcept,
+      conversionFactor: fields[5] as double,
+      elementConversionFactor: fields[6] as Element,
+      decimalPrecision: fields[7] as int,
+      elementDecimalPrecision: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, ObservationDefinition_QuantitativeDetails obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.customaryUnit)
+      ..writeByte(4)
+      ..write(obj.unit)
+      ..writeByte(5)
+      ..write(obj.conversionFactor)
+      ..writeByte(6)
+      ..write(obj.elementConversionFactor)
+      ..writeByte(7)
+      ..write(obj.decimalPrecision)
+      ..writeByte(8)
+      ..write(obj.elementDecimalPrecision);
+  }
+}
+
+class ObservationDefinition_QualifiedIntervalAdapter
+    extends TypeAdapter<ObservationDefinition_QualifiedInterval> {
+  @override
+  ObservationDefinition_QualifiedInterval read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ObservationDefinition_QualifiedInterval(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      category: fields[3] as String,
+      elementCategory: fields[4] as Element,
+      range: fields[5] as Range,
+      context: fields[6] as CodeableConcept,
+      appliesTo: (fields[7] as List)?.cast<CodeableConcept>(),
+      gender: fields[8] as String,
+      elementGender: fields[9] as Element,
+      age: fields[10] as Range,
+      gestationalAge: fields[11] as Range,
+      condition: fields[12] as String,
+      elementCondition: fields[13] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ObservationDefinition_QualifiedInterval obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.category)
+      ..writeByte(4)
+      ..write(obj.elementCategory)
+      ..writeByte(5)
+      ..write(obj.range)
+      ..writeByte(6)
+      ..write(obj.context)
+      ..writeByte(7)
+      ..write(obj.appliesTo)
+      ..writeByte(8)
+      ..write(obj.gender)
+      ..writeByte(9)
+      ..write(obj.elementGender)
+      ..writeByte(10)
+      ..write(obj.age)
+      ..writeByte(11)
+      ..write(obj.gestationalAge)
+      ..writeByte(12)
+      ..write(obj.condition)
+      ..writeByte(13)
+      ..write(obj.elementCondition);
+  }
 }

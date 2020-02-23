@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Linkage {
   static Future<Linkage> newInstance({
     String resourceType,
@@ -61,20 +61,35 @@ class Linkage {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Linkage';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   bool active;
+  @HiveField(12)
   Element elementActive;
+  @HiveField(13)
   Reference author;
+  @HiveField(14)
   List<Linkage_Item> item;
 
   Linkage({
@@ -100,7 +115,6 @@ class Linkage {
   Map<String, dynamic> toJson() => _$LinkageToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Linkage_Item {
   static Future<Linkage_Item> newInstance({
     String id,
@@ -122,11 +136,17 @@ class Linkage_Item {
     return newLinkage_Item;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String type;
+  @HiveField(4)
   Element elementType;
+  @HiveField(5)
   Reference resource;
 
   Linkage_Item({
@@ -262,4 +282,108 @@ Map<String, dynamic> _$Linkage_ItemToJson(Linkage_Item instance) {
   writeNotNull('elementType', instance.elementType?.toJson());
   writeNotNull('resource', instance.resource?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class LinkageAdapter extends TypeAdapter<Linkage> {
+  @override
+  Linkage read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Linkage(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      active: fields[11] as bool,
+      elementActive: fields[12] as Element,
+      author: fields[13] as Reference,
+      item: (fields[14] as List)?.cast<Linkage_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Linkage obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.active)
+      ..writeByte(12)
+      ..write(obj.elementActive)
+      ..writeByte(13)
+      ..write(obj.author)
+      ..writeByte(14)
+      ..write(obj.item);
+  }
+}
+
+class Linkage_ItemAdapter extends TypeAdapter<Linkage_Item> {
+  @override
+  Linkage_Item read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Linkage_Item(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as String,
+      elementType: fields[4] as Element,
+      resource: fields[5] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Linkage_Item obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.elementType)
+      ..writeByte(5)
+      ..write(obj.resource);
+  }
 }

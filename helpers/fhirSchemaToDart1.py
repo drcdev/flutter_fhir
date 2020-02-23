@@ -110,7 +110,8 @@ def allTogether(newInstance, objects, newResource, variables, constructor):
 def imported():
     return(''.join(["import 'package:flutter_fhir/util/db.dart';\n",
                     "import 'package:flutter/foundation.dart';\n",
-                     "import 'package:json_annotation/json_annotation.dart';\n"]))
+                     "import 'package:json_annotation/json_annotation.dart';\n",
+                     "import 'package:hive/hive.dart';"]))
 
 def idMetaResourceType(key, objects, isResource):
     if(key == 'id' and isResource):
@@ -262,7 +263,8 @@ for objects in definitions:
                 varDict[field] = 'String'
 
         dartCode = ''.join([dartCode, 
-                            '\n@JsonSerializable(explicitToJson: true, includeIfNull: false)\nclass ',
+                            '@JsonSerializable(explicitToJson: true, includeIfNull: false)\n',
+                            'class ',
                             lists(objects),
                             '{\n\n\tstatic Future<',
                             lists(objects),
@@ -271,7 +273,9 @@ for objects in definitions:
         newResource = ''
         variables = ''
         constructor = ''
+        hiveField = -1
         for key, val in varDict.items():
+            hiveField += 1
             key = rem_(key)
             newInstance = ''.join([newInstance, 
                                    "\t", 
@@ -285,7 +289,8 @@ for objects in definitions:
                                    ': ',
                                    idMetaResourceType(key, objects, 'resourceType' in properties),
                                    ',\n'])
-            variables = ''.join([variables, 
+            variables = ''.join([variables,
+                                 f'\t@HiveField({hiveField})\n',
                                  "\t", 
                                  primitiveDart(val), 
                                  " ", 

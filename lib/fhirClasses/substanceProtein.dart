@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceProtein {
   static Future<SubstanceProtein> newInstance({
     String resourceType,
@@ -67,22 +67,39 @@ class SubstanceProtein {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'SubstanceProtein';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Narrative text;
+  @HiveField(8)
   List<dynamic> contained;
+  @HiveField(9)
   List<Extension> extension;
+  @HiveField(10)
   List<Extension> modifierExtension;
+  @HiveField(11)
   CodeableConcept sequenceType;
+  @HiveField(12)
   int numberOfSubunits;
+  @HiveField(13)
   Element elementNumberOfSubunits;
+  @HiveField(14)
   List<String> disulfideLinkage;
+  @HiveField(15)
   List<Element> elementDisulfideLinkage;
+  @HiveField(16)
   List<SubstanceProtein_Subunit> subunit;
 
   SubstanceProtein({
@@ -110,7 +127,6 @@ class SubstanceProtein {
   Map<String, dynamic> toJson() => _$SubstanceProteinToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubstanceProtein_Subunit {
   static Future<SubstanceProtein_Subunit> newInstance({
     String id,
@@ -153,21 +169,37 @@ class SubstanceProtein_Subunit {
     return newSubstanceProtein_Subunit;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   int subunit;
+  @HiveField(4)
   Element elementSubunit;
+  @HiveField(5)
   String sequence;
+  @HiveField(6)
   Element elementSequence;
+  @HiveField(7)
   int length;
+  @HiveField(8)
   Element elementLength;
+  @HiveField(9)
   Attachment sequenceAttachment;
+  @HiveField(10)
   Identifier nTerminalModificationId;
+  @HiveField(11)
   String nTerminalModification;
+  @HiveField(12)
   Element elementNTerminalModification;
+  @HiveField(13)
   Identifier cTerminalModificationId;
+  @HiveField(14)
   String cTerminalModification;
+  @HiveField(15)
   Element elementCTerminalModification;
 
   SubstanceProtein_Subunit({
@@ -369,4 +401,145 @@ Map<String, dynamic> _$SubstanceProtein_SubunitToJson(
   writeNotNull('elementCTerminalModification',
       instance.elementCTerminalModification?.toJson());
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class SubstanceProteinAdapter extends TypeAdapter<SubstanceProtein> {
+  @override
+  SubstanceProtein read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceProtein(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      sequenceType: fields[11] as CodeableConcept,
+      numberOfSubunits: fields[12] as int,
+      elementNumberOfSubunits: fields[13] as Element,
+      disulfideLinkage: (fields[14] as List)?.cast<String>(),
+      elementDisulfideLinkage: (fields[15] as List)?.cast<Element>(),
+      subunit: (fields[16] as List)?.cast<SubstanceProtein_Subunit>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceProtein obj) {
+    writer
+      ..writeByte(17)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.sequenceType)
+      ..writeByte(12)
+      ..write(obj.numberOfSubunits)
+      ..writeByte(13)
+      ..write(obj.elementNumberOfSubunits)
+      ..writeByte(14)
+      ..write(obj.disulfideLinkage)
+      ..writeByte(15)
+      ..write(obj.elementDisulfideLinkage)
+      ..writeByte(16)
+      ..write(obj.subunit);
+  }
+}
+
+class SubstanceProtein_SubunitAdapter
+    extends TypeAdapter<SubstanceProtein_Subunit> {
+  @override
+  SubstanceProtein_Subunit read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceProtein_Subunit(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      subunit: fields[3] as int,
+      elementSubunit: fields[4] as Element,
+      sequence: fields[5] as String,
+      elementSequence: fields[6] as Element,
+      length: fields[7] as int,
+      elementLength: fields[8] as Element,
+      sequenceAttachment: fields[9] as Attachment,
+      nTerminalModificationId: fields[10] as Identifier,
+      nTerminalModification: fields[11] as String,
+      elementNTerminalModification: fields[12] as Element,
+      cTerminalModificationId: fields[13] as Identifier,
+      cTerminalModification: fields[14] as String,
+      elementCTerminalModification: fields[15] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceProtein_Subunit obj) {
+    writer
+      ..writeByte(16)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.subunit)
+      ..writeByte(4)
+      ..write(obj.elementSubunit)
+      ..writeByte(5)
+      ..write(obj.sequence)
+      ..writeByte(6)
+      ..write(obj.elementSequence)
+      ..writeByte(7)
+      ..write(obj.length)
+      ..writeByte(8)
+      ..write(obj.elementLength)
+      ..writeByte(9)
+      ..write(obj.sequenceAttachment)
+      ..writeByte(10)
+      ..write(obj.nTerminalModificationId)
+      ..writeByte(11)
+      ..write(obj.nTerminalModification)
+      ..writeByte(12)
+      ..write(obj.elementNTerminalModification)
+      ..writeByte(13)
+      ..write(obj.cTerminalModificationId)
+      ..writeByte(14)
+      ..write(obj.cTerminalModification)
+      ..writeByte(15)
+      ..write(obj.elementCTerminalModification);
+  }
 }

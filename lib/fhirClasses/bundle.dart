@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/util/db.dart';
 import 'package:flutter/foundation.dart';
-import 'package:json_annotation/json_annotation.dart';
+
+import 'package:hive/hive.dart';
 import 'package:flutter_fhir/util/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 import 'package:flutter_fhir/fhirClasses/signature.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle {
   static Future<Bundle> newInstance({
     String resourceType,
@@ -65,22 +65,39 @@ class Bundle {
     this.save();
   }
 
+  @HiveField(0)
   String resourceType = 'Bundle';
+  @HiveField(1)
   String id;
+  @HiveField(2)
   Meta meta;
+  @HiveField(3)
   String implicitRules;
+  @HiveField(4)
   Element elementImplicitRules;
+  @HiveField(5)
   String language;
+  @HiveField(6)
   Element elementLanguage;
+  @HiveField(7)
   Identifier identifier;
+  @HiveField(8)
   String type;
+  @HiveField(9)
   Element elementType;
+  @HiveField(10)
   DateTime timestamp;
+  @HiveField(11)
   Element elementTimestamp;
+  @HiveField(12)
   int total;
+  @HiveField(13)
   Element elementTotal;
+  @HiveField(14)
   List<Bundle_Link> link;
+  @HiveField(15)
   List<Bundle_Entry> entry;
+  @HiveField(16)
   Signature signature;
 
   Bundle({
@@ -107,7 +124,6 @@ class Bundle {
   Map<String, dynamic> toJson() => _$BundleToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Link {
   static Future<Bundle_Link> newInstance({
     String id,
@@ -131,12 +147,19 @@ class Bundle_Link {
     return newBundle_Link;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String relation;
+  @HiveField(4)
   Element elementRelation;
+  @HiveField(5)
   String url;
+  @HiveField(6)
   Element elementUrl;
 
   Bundle_Link({
@@ -154,7 +177,6 @@ class Bundle_Link {
   Map<String, dynamic> toJson() => _$Bundle_LinkToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Entry {
   static Future<Bundle_Entry> newInstance({
     String id,
@@ -184,15 +206,25 @@ class Bundle_Entry {
     return newBundle_Entry;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   List<Bundle_Link> link;
+  @HiveField(4)
   String fullUrl;
+  @HiveField(5)
   Element elementFullUrl;
+  @HiveField(6)
   dynamic resource;
+  @HiveField(7)
   Bundle_Search search;
+  @HiveField(8)
   Bundle_Request request;
+  @HiveField(9)
   Bundle_Response response;
 
   Bundle_Entry({
@@ -213,7 +245,6 @@ class Bundle_Entry {
   Map<String, dynamic> toJson() => _$Bundle_EntryToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Search {
   static Future<Bundle_Search> newInstance({
     String id,
@@ -237,12 +268,19 @@ class Bundle_Search {
     return newBundle_Search;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String mode;
+  @HiveField(4)
   Element elementMode;
+  @HiveField(5)
   double score;
+  @HiveField(6)
   Element elementScore;
 
   Bundle_Search({
@@ -260,7 +298,6 @@ class Bundle_Search {
   Map<String, dynamic> toJson() => _$Bundle_SearchToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Request {
   static Future<Bundle_Request> newInstance({
     String id,
@@ -300,20 +337,35 @@ class Bundle_Request {
     return newBundle_Request;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String method;
+  @HiveField(4)
   Element elementMethod;
+  @HiveField(5)
   String url;
+  @HiveField(6)
   Element elementUrl;
+  @HiveField(7)
   String ifNoneMatch;
+  @HiveField(8)
   Element elementIfNoneMatch;
+  @HiveField(9)
   DateTime ifModifiedSince;
+  @HiveField(10)
   Element elementIfModifiedSince;
+  @HiveField(11)
   String ifMatch;
+  @HiveField(12)
   Element elementIfMatch;
+  @HiveField(13)
   String ifNoneExist;
+  @HiveField(14)
   Element elementIfNoneExist;
 
   Bundle_Request({
@@ -339,7 +391,6 @@ class Bundle_Request {
   Map<String, dynamic> toJson() => _$Bundle_RequestToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Bundle_Response {
   static Future<Bundle_Response> newInstance({
     String id,
@@ -373,17 +424,29 @@ class Bundle_Response {
     return newBundle_Response;
   }
 
+  @HiveField(0)
   String id;
+  @HiveField(1)
   List<Extension> extension;
+  @HiveField(2)
   List<Extension> modifierExtension;
+  @HiveField(3)
   String status;
+  @HiveField(4)
   Element elementStatus;
+  @HiveField(5)
   String location;
+  @HiveField(6)
   Element elementLocation;
+  @HiveField(7)
   String etag;
+  @HiveField(8)
   Element elementEtag;
+  @HiveField(9)
   DateTime lastModified;
+  @HiveField(10)
   Element elementLastModified;
+  @HiveField(11)
   dynamic outcome;
 
   Bundle_Response({
@@ -763,4 +826,321 @@ Map<String, dynamic> _$Bundle_ResponseToJson(Bundle_Response instance) {
   writeNotNull('elementLastModified', instance.elementLastModified?.toJson());
   writeNotNull('outcome', instance.outcome);
   return val;
+}
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class BundleAdapter extends TypeAdapter<Bundle> {
+  @override
+  Bundle read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Bundle(
+      resourceType: fields[0] as String,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      identifier: fields[7] as Identifier,
+      type: fields[8] as String,
+      elementType: fields[9] as Element,
+      timestamp: fields[10] as DateTime,
+      elementTimestamp: fields[11] as Element,
+      total: fields[12] as int,
+      elementTotal: fields[13] as Element,
+      link: (fields[14] as List)?.cast<Bundle_Link>(),
+      entry: (fields[15] as List)?.cast<Bundle_Entry>(),
+      signature: fields[16] as Signature,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Bundle obj) {
+    writer
+      ..writeByte(17)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.identifier)
+      ..writeByte(8)
+      ..write(obj.type)
+      ..writeByte(9)
+      ..write(obj.elementType)
+      ..writeByte(10)
+      ..write(obj.timestamp)
+      ..writeByte(11)
+      ..write(obj.elementTimestamp)
+      ..writeByte(12)
+      ..write(obj.total)
+      ..writeByte(13)
+      ..write(obj.elementTotal)
+      ..writeByte(14)
+      ..write(obj.link)
+      ..writeByte(15)
+      ..write(obj.entry)
+      ..writeByte(16)
+      ..write(obj.signature);
+  }
+}
+
+class Bundle_LinkAdapter extends TypeAdapter<Bundle_Link> {
+  @override
+  Bundle_Link read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Bundle_Link(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      relation: fields[3] as String,
+      elementRelation: fields[4] as Element,
+      url: fields[5] as String,
+      elementUrl: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Bundle_Link obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.relation)
+      ..writeByte(4)
+      ..write(obj.elementRelation)
+      ..writeByte(5)
+      ..write(obj.url)
+      ..writeByte(6)
+      ..write(obj.elementUrl);
+  }
+}
+
+class Bundle_EntryAdapter extends TypeAdapter<Bundle_Entry> {
+  @override
+  Bundle_Entry read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Bundle_Entry(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      link: (fields[3] as List)?.cast<Bundle_Link>(),
+      fullUrl: fields[4] as String,
+      elementFullUrl: fields[5] as Element,
+      resource: fields[6] as dynamic,
+      search: fields[7] as Bundle_Search,
+      request: fields[8] as Bundle_Request,
+      response: fields[9] as Bundle_Response,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Bundle_Entry obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.link)
+      ..writeByte(4)
+      ..write(obj.fullUrl)
+      ..writeByte(5)
+      ..write(obj.elementFullUrl)
+      ..writeByte(6)
+      ..write(obj.resource)
+      ..writeByte(7)
+      ..write(obj.search)
+      ..writeByte(8)
+      ..write(obj.request)
+      ..writeByte(9)
+      ..write(obj.response);
+  }
+}
+
+class Bundle_SearchAdapter extends TypeAdapter<Bundle_Search> {
+  @override
+  Bundle_Search read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Bundle_Search(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      mode: fields[3] as String,
+      elementMode: fields[4] as Element,
+      score: fields[5] as double,
+      elementScore: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Bundle_Search obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.mode)
+      ..writeByte(4)
+      ..write(obj.elementMode)
+      ..writeByte(5)
+      ..write(obj.score)
+      ..writeByte(6)
+      ..write(obj.elementScore);
+  }
+}
+
+class Bundle_RequestAdapter extends TypeAdapter<Bundle_Request> {
+  @override
+  Bundle_Request read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Bundle_Request(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      method: fields[3] as String,
+      elementMethod: fields[4] as Element,
+      url: fields[5] as String,
+      elementUrl: fields[6] as Element,
+      ifNoneMatch: fields[7] as String,
+      elementIfNoneMatch: fields[8] as Element,
+      ifModifiedSince: fields[9] as DateTime,
+      elementIfModifiedSince: fields[10] as Element,
+      ifMatch: fields[11] as String,
+      elementIfMatch: fields[12] as Element,
+      ifNoneExist: fields[13] as String,
+      elementIfNoneExist: fields[14] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Bundle_Request obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.method)
+      ..writeByte(4)
+      ..write(obj.elementMethod)
+      ..writeByte(5)
+      ..write(obj.url)
+      ..writeByte(6)
+      ..write(obj.elementUrl)
+      ..writeByte(7)
+      ..write(obj.ifNoneMatch)
+      ..writeByte(8)
+      ..write(obj.elementIfNoneMatch)
+      ..writeByte(9)
+      ..write(obj.ifModifiedSince)
+      ..writeByte(10)
+      ..write(obj.elementIfModifiedSince)
+      ..writeByte(11)
+      ..write(obj.ifMatch)
+      ..writeByte(12)
+      ..write(obj.elementIfMatch)
+      ..writeByte(13)
+      ..write(obj.ifNoneExist)
+      ..writeByte(14)
+      ..write(obj.elementIfNoneExist);
+  }
+}
+
+class Bundle_ResponseAdapter extends TypeAdapter<Bundle_Response> {
+  @override
+  Bundle_Response read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Bundle_Response(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      status: fields[3] as String,
+      elementStatus: fields[4] as Element,
+      location: fields[5] as String,
+      elementLocation: fields[6] as Element,
+      etag: fields[7] as String,
+      elementEtag: fields[8] as Element,
+      lastModified: fields[9] as DateTime,
+      elementLastModified: fields[10] as Element,
+      outcome: fields[11] as dynamic,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Bundle_Response obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.status)
+      ..writeByte(4)
+      ..write(obj.elementStatus)
+      ..writeByte(5)
+      ..write(obj.location)
+      ..writeByte(6)
+      ..write(obj.elementLocation)
+      ..writeByte(7)
+      ..write(obj.etag)
+      ..writeByte(8)
+      ..write(obj.elementEtag)
+      ..writeByte(9)
+      ..write(obj.lastModified)
+      ..writeByte(10)
+      ..write(obj.elementLastModified)
+      ..writeByte(11)
+      ..write(obj.outcome);
+  }
 }
